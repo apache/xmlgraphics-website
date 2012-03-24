@@ -1,4 +1,4 @@
-xmlgraphics.apache.org - Apache XML Graphics Project
+
 # Welcome to the Apache XML Graphics Project
 
 The Apache XML Graphics Project is responsible for software licensed to the Apache Software Foundation intended for the creation & maintenance of:
@@ -28,4 +28,30 @@ Another ambition for the Batik project is to make it highly [extensible](http://
 
 Find out more about [Apache Batik](http://xmlgraphics.apache.org/batik/).
 
+# Apache FOP: a Java-based XSL-FO (Formatting Objects) processor
 
+FOP (Formatting Objects Processor) is the world's first print formatter driven by [XSL formatting objects](http://www.w3.org/TR/xsl/) (XSL-FO) and the world's first output independent formatter. It is a Java application that reads a formatting object (FO) tree and renders the resulting pages to a specified output. The primary output target is PDF but other [output formats](http://xmlgraphics.apache.org/fop/output.html) currently supported include:
+
+- PDF (Portable Document Format)
+- PS (Adobe Postscript)
+- PCL (Printer Control Language)
+- AFP (MO:DCA)
+- SVG (Scalable Vector Graphics)
+- XML (area tree representation)
+- Print
+- AWT/Java2D
+- MIF
+- RTF (Rich Text Format)
+- TXT (text)
+
+Find out more about [Apache FOP](http://xmlgraphics.apache.org/fop/).
+
+# Apache XML Graphics Commons
+
+Apache XML Graphics Commons is a library that consists of several reusable components used by Apache Batik and Apache FOP. Many of these components can easily be used separately outside the domains of SVG and XSL-FO. You'll find components such as a PDF library, an RTF library, Graphics2D implementations that let you generate PDF and PostScript files and much more.
+
+Apache XML Graphics Commons has only just started. It's in the process of being populated with components coming from Apache Batik and Apache FOP. Stay tuned for exciting treasures made available.
+
+In the Wiki, we have a [plan for building Apache XML Graphics Commons](http://wiki.apache.org/xmlgraphics/XmlGraphicsCommonComponents). The plan will give you an idea of what you can expect to find here when we're finished migrating components.
+
+Find out more about [Apache XML Graphics Commons](http://xmlgraphics.apache.org/commons/).
