@@ -32,15 +32,9 @@
 	
 	  <div id="bannertext">
         <a href="/"><img src="/images/apache-xml-graphics.gif" alt="The Apache XML Graphics Project" width="220" heigh="51" /></a>
-        <h1>The Apache XML Graphics Project</h1>
-        <h2>{% block tagline %}{{ headers.title }}{% endblock %}</h2>
+        <h1>{% block tagline %}{{ headers.title }}{% endblock %}</h1>
       </div>
         <p>{{ breadcrumbs|safe }}</p>
-        <form name="search" id="search" action="http://www.google.com/search" method="get">
-          <input value="*.apache.org" name="sitesearch" type="hidden"/>
-          <input type="text" name="q" id="query">
-          <input type="submit" id="submit" value="Search">
-        </form>
       </div>
       <div class="clear"></div>
       {% block content %}<div id="content" class="grid_16"><div class="section-content">{{ content|markdown }}</div></div>{% endblock %}
