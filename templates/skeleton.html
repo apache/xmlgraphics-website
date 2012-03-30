@@ -5,9 +5,11 @@
 
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
-
+<!--
     <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/code.css">
+-->
+    <link href="/css/accumulo.css" rel="stylesheet" type="text/css">
 
     </style>
 
@@ -21,27 +23,18 @@
   </head>
 
   <body>
-    <div id="page" class="container_16">
-      <div id="header" class="grid_8">
-        <img src="http://www.apache.org/images/feather-small.gif" alt="The Apache Software Foundation">
-        <h1>The Apache Software Foundation</h1>
+	  <div id="banner">&nbsp;
+	  </div>
+
+	  <div id="navigation">
+	  {% filter markdown %}{% include "sidenav.mdtext" %}{% endfilter %}
+	  </div>
+	
+	  <div id="bannertext">
+        <a href="/"><img src="/images/apache-xml-graphics.gif" alt="The Apache XML Graphics Project" width="220" heigh="51" /></a>
+        <h1>The Apache XML Graphics Project</h1>
         <h2>{% block tagline %}{{ headers.title }}{% endblock %}</h2>
       </div>
-      <div id="nav" class="grid_8">
-        <ul>
-          <li><a href="http://xmlgraphics.apache.org/" title="Welcome!">Home</a></li>
-          <li><a href="http://xmlgraphics.apache.org/fop/" title="Apache FOP">Apache FOP</a></li>
-          <li><a href="http://xmlgraphics.apache.org/batik/" title="Apache Batik">Apache Batik</a></li>
-          <li><a href="http://xmlgraphics.apache.org/batik/" title="Apache XML Graphics Commons">Apache XML Graphics Commons</a></li>
-          <!--
-          <li><a href="http://www.apache.org/foundation/" title="The Foundation">Foundation</a></li>
-          <li><a href="http://projects.apache.org" title="The Projects">Projects</a></li>
-          <li><a href="http://people.apache.org" title="The People">People</a></li>
-          <li><a href="http://www.apache.org/foundation/getinvolved.html" title="Get Involved">Get Involved</a></li>
-          <li><a href="http://www.apache.org/dyn/closer.cgi" title="Download">Download</a></li>
-          <li><a href="http://www.apache.org/foundation/sponsorship.html" title="Support Apache">Support Apache</a></li>
-          -->
-        </ul>
         <p>{{ breadcrumbs|safe }}</p>
         <form name="search" id="search" action="http://www.google.com/search" method="get">
           <input value="*.apache.org" name="sitesearch" type="hidden"/>
@@ -52,10 +45,22 @@
       <div class="clear"></div>
       {% block content %}<div id="content" class="grid_16"><div class="section-content">{{ content|markdown }}</div></div>{% endblock %}
       <div class="clear"></div>
-    </div>
 
-    <div id="copyright" class="container_16">
-      <p>Copyright &#169; 2011 The Apache Software Foundation, Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.<br/>Apache and the Apache feather logo are trademarks of The Apache Software Foundation.</p>
-    </div>
+	  <div id="footer">
+		<a alt="Apache Software Foundation" href="http://www.apache.org">
+		  <img id="asf-logo" alt="Apache Software Foundation" src="/images/feather-small.gif"/ width="100">
+		</a>
+		<div class="copyright">
+		  <p>
+			Copyright &copy; 2011 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, the Apache feather logo, and the Apache XML Graphics logos are
+			trademarks of <a href="http://www.apache.org">The Apache Software Foundation</a>. All other
+			marks mentioned may be trademarks or registered trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
   </body>
 </html>
