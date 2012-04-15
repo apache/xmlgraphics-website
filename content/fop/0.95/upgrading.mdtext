@@ -1,0 +1,38 @@
+Title: Upgrading from an Earlier Version of Apache™ FOP
+<version>$Revision: 1298724 $</version>
+
+# Important! # {#important}
+
+If you're planning to upgrade to the latest Apache™ FOP version there are a few very important things to consider:
+
+
+- More than half of the codebase has been rewritten over the last four years. With version 0.93 the code has reached **production level** , and continues to improve with version 0.94 and 0.95.
+
+- The API of FOP has changed considerably and is not backwards-compatible with versions 0.20.5 and 0.91beta. Version 0.92 introduced the **new stable API** .
+
+- Since version 0.92 some deprecated methods which were part of the old API have been removed. If you upgrade from 0.91 beta, you will need to adjust your Java code. Similarly if you upgrade from 0.92 and use deprecated methods.
+
+- If you are using a configuration file for version 0.20.5, you have to rebuild it in the new format. The format of the configuration files has changed since version 0.20.5. See conf/fop.xconf for an example configuration file. A XML Schema file can be found under src/foschema/fop-configuration.xsd.
+
+- Beginning with version 0.94 you can skip the generation of font metric files and remove the "font-metrics" attribute in the font configuration. The font metrics files are, for the moment, still required if you use a TrueType Collection (*.ttc) and in that case you need to regenerate the font metrics file if yours are from a FOP version before 0.93.
+
+- 
+The new code is much more strict about the interpretation of the XSL-FO 1.1 specification. Things that worked fine in version 0.20.5 might start to produce warnings or even errors now. FOP 0.20.5 contains many bugs which have been corrected in the new code.
+While FOP 0.20.5 allowed you to have empty `fo:table-cell` elements, the new code will complain about that (unless relaxed validation is enabled) because the specification demands at least one block-level element ( `(%block;)+` , see [XSL-FO 1.1, 6.7.10](http://www.w3.org/TR/xsl/#fo_table-cell) ) inside an `fo:table-cell` element.
+
+- Extensions and Renderers written for version 0.20.5 will not work with the new code! The new FOP extension for [Barcode4J](http://barcode4j.sourceforge.net) is available since January 2007.
+
+- The SVG Renderer and the MIF Handler have not been resurrected, yet! They are currently non-functional and hope for someone to step up and reimplement them.
+
+# What you need to know when you upgrade! # {#issues}
+
+When you use your existing FO files or XML/XSL files which work fine with FOP version 0.20.5 against this FOP version some things may not work as expected. The following list will hopefully help you to identify and correct those problems. This does not mean that the new FOP is at fault. Quite the opposite actually! See below:
+
+
+- Check the [Compliance page](../compliance.html) for the feature causing trouble. It may contain the necessary information to understand and resolve the problem.
+
+- As stated above empty table cells `<fo:table-cell></fo:table-cell>` are not allowed by the specification. The same applies to empty `static-content` and `block-container` elements, for example.
+
+- 0.20.5 is not XSL-FO compliant with respect to sizing images ( `external-graphic` ) or `instream-foreign-object` objects. If images or SVGs are sized differently in your outputs with the new FOP version check [Bug 37136](http://issues.apache.org/bugzilla/show_bug.cgi?id=37136) as it contains some hints on what to do. The file [](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/fo/basic/images.fo?view=markup) has a number of good examples that show the new, more correct behaviour.
+
+- The `fox:outline` extension is not implemented in this version anymore. It has been superseded by the new bookmark elements from XSL-FO 1.1. So please update your stylesheets accordingly.

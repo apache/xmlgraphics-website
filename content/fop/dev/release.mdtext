@@ -1,0 +1,140 @@
+Title: Apache™ FOP Development: Release Mechanics
+<version>$Revision: 1310603 $</version>
+
+# Introduction # {#intro}
+
+This page documents the process of creating a Apache™ FOP release. FOP releases are coordinated by some designated member of the team. The purpose of documenting it here is to facilitate consistency, ensure that the process is captured, and to allow others to comment on the process.
+
+The checklist below is based on a combination of input from from Christian Geisert and Simon Pepping.
+
+# Checklist # {#checklist}
+
+
+- Determine which open bugs must be solved before a release can take place (release critical bugs). Make this bug depend on each release critical bug and write a short argument why the bug is release critical.
+
+- Determine whether this is a Release Candidate or a Release.
+
+- Determine whether further testing is required.
+
+- Commit any outstanding changes
+
+- Create a branch called `branches/fop-v_vv` 
+
+- Edit release notes ( `README` and `status.xml` in the root).
+
+- Add the release to `news-data.xml` ; remove links to release notes of older versions from this file.
+
+- Update the FAQ ( `faq.xml` ) to the new release, e.g., update the answer for "When is the next release planned?".
+
+- Check and update the copyright year in NOTICE and build.xml.
+
+- Update the file `doap.rdf` , and the files `index.xml` , `site.xml` , `download.xml` , `fo.xml` , `maillist.xml` , and `quickstartguide.xml` in directory `xdocs` for the new version.
+
+- Update the version numbers in the release column on the compliance page ( `compliance.xml` ); update the compliance in the release column to the current state (development column).
+
+- Update version number in `build.xml` (not to be merged back into trunk).
+
+- Copy trunk documentation directory to a new directory with the new version number, and update the `.htaccess` file for redirections.
+
+- Copy `test/fotree/disabled-testcases.xml` and `test/layoutengine/disabled-testcases.xml` to the new version directory `<version>/fotree/disabled-testcases.xml` and `<version>/layoutengine/disabled-testcases.xml` . Copy `known-issues.xml` to the new version directory. Copy `knownissues-overview.xml` from the current to the new version directory, and update the `xi:include` links in it.
+
+- Update the tab names and directories in `tabs.xml` 
+
+- Delete the previous version directory.
+
+- Update `index.xml` in the new version directory.
+
+- Update `compiling.xml` in the new version directory: change the introduction for trunk to that for a release.
+
+- Build the dist files ( `build[.sh] dist` ) and upload them to your web directory on `people.apache.org` 
+
+- Ask on `fop-dev` ML to check the branch and the generated dist files for errors.
+
+- Tag the source tree with the release ID. For example, if the release is 1.0: `svn copy https://svn.apache.org/repos/asf/xmlgraphics/fop/branches/fop-1_0 https://svn.apache.org/repos/asf/xmlgraphics/fop/tags/fop-1_0` 
+
+- Make a fresh checkout with the just created tag: `svn co https://svn.apache.org/repos/asf/xmlgraphics/fop/tags/fop-1_0` 
+
+- Copy the hyphenation patterns jar file `fop-hyph.jar` to `lib` (e.g. from `http://sourceforge.net/projects/offo` 
+
+- Alternatively, create a `build-local.properties` file that points to the above libraries.
+
+- Run `build[.sh] dist` . Do this using Sun JDK 1.5 or later. A Forrest installation is needed.
+
+- Create signatures. Don't forget to upload your KEY: `gpg -a -b --force-v3-sigs fop-1.0-src.tar.gz` etc.
+
+- Upload the dist and signature files to your web directory on people.apache.org (An account on minotaur is needed): `scp fop-1.0*.tar.gz* chrisg@people.apache.org:public_html/` 
+
+- Check permissions: `chmod 664 ... ; chgrp xmlgraphics ...` 
+
+- Add MD5 sums: `md5 fop-1.0-src.tar.gz > fop-1.0-src.tar.gz.md5` etc.
+
+- Make a test download.
+
+- Start a vote for the release on `general@xmlgraphics.apache.org` . The message should point to the release files and list the MD5 sums ( `cat *.md5` ). The vote should remain open for 72hrs.
+
+- When the release is accepted, copy the release files, their md5 sum files and the signature files to `/www/www.apache.org/dist/xmlgraphics/fop/` in the subdirectories `source` and `binaries` . Create links to all files in the `fop` directory. Remove the links to the files of the previous version.
+
+- Update `HEADER.html` and `README.html` in `people.apache.org:/www/www.apache.org/dist/xmlgraphics/fop/` .
+
+- Wait 24 hours (for the mirrors to catch up).
+
+- Merge the changes of the subversion release branch back into trunk (not the version number in the build file) and delete the branch.
+
+- Deploy the updated documentation to the FOP website.
+
+- Post announcements on `fop-dev` and `fop-user` and other related mailing lists.
+
+- Ask an FOP bugzilla admin to add a bugzilla entry for the new release id, or create an issue at `https://issues.apache.org/jira/browse/INFRA` .
+
+- Deploy the maven bundle.
+
+# Resources # {#other-checklists}
+
+The following is a sample of some other project release checklists, which might be consulted for ideas:
+
+
+- <jump href="http://svn.apache.org/repos/asf/xmlgraphics/batik/trunk/MAINTAIN">Apache Batik</jump>
+
+- <jump href="http://svn.apache.org/repos/asf/ant/core/trunk/ReleaseInstructions">Apache Ant</jump>
+
+- <jump href="http://jakarta.apache.org/cactus/participating/release_checklist.html">Apache Cactus</jump>
+
+
+
+Following are links with information about mirroring:
+
+
+- <jump href="http://www.apache.org/dev/mirrors.html">Apache Mirroring</jump>
+
+- Stefan Bodewig's<jump href="http://people.apache.org/~bodewig/mirror.html">Making your Downloads Mirrorable</jump>
+
+# Announcing the release # {#announcements}
+
+Here's a suggested list of places where to announce new FOP releases:
+
+
+- fop-dev@xmlgraphics.apache.org
+
+- fop-users@xmlgraphics.apache.org
+
+- general@xmlgraphics.apache.org
+
+- general@xml.apache.org
+
+- announce@apache.org (from your apache.org address)
+
+- xsl-list@lists.mulberrytech.com (subscriber-only)
+
+- xsl-fo@yahoogroups.com (subscriber-only)
+
+- www-xsl-fo@w3.org
+
+- docbook-apps@lists.oasis-open.org (subscriber-only)
+
+- dita-users@yahoogroups.com (subscriber-only) (http://dita-ot.sourceforge.net/)
+
+- http://xslfo-zone.com/news/index.jsp
+
+- http://www.w3.org/Style/XSL/
+
+- http://freshmeat.net/projects/fop/

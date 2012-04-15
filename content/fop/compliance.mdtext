@@ -1,0 +1,580 @@
+<!--<meta content="HTML Tidy, see www.w3.org" name="generator"></meta>-->Title: Apache™ FOP Compliance Page
+
+
+# W3C XSL-FO 1.1 Standard # {#W3C+XSL-FO+1.1+Standard}
+
+One of Apache™ FOP's design goals is conformance to the [W3C XSL-FO 1.1 standard](http://www.w3.org/TR/xsl/) , which specifies three levels of "conformance": basic, extended, and complete. Although FOP does not currently conform to any of these levels, it is nevertheless a useful work-in-progress for many applications. The information presented here demonstrates FOP's progress toward the goal of conformance, which progress consists of implementation of specific objects and properties in the standard. The information presented is useful not only to the developers as a sort of "to do" list, but also for setting proper expectations for users and potential users.
+
+The following table shows the legend used for the tables below:
+
+| yes | indicates conformance |
+| partial | indicates partial conformance |
+| no | indicates a lack of conformance |
+| na | indicates that the item is "not applicable" to FOP usually because FOP supports only visual media |
+
+## XSL-FO Object Support ## {#}
+
+
+-  ** [Declarations and Pagination and Layout Formatting Objects](#fo-object-decl-section) :**  [root](#fo-object-root) , [declarations](#fo-object-declarations) , [color-profile](#fo-object-color-profile) , [page-sequence](#fo-object-page-sequence) , [page-sequence-wrapper](#fo-object-page-sequence-wrapper) , [layout-master-set](#fo-object-layout-master-set) , [page-sequence-master](#fo-object-page-sequence-master) , [single-page-master-reference](#fo-object-single-page-master-reference) , [repeatable-page-master-reference](#fo-object-repeatable-page-master-reference) , [repeatable-page-master-alternatives](#fo-object-repeatable-page-master-alternatives) , [conditional-page-master-reference](#fo-object-conditional-page-master-reference) , [simple-page-master](#fo-object-simple-page-master) , [region-body](#fo-object-region-body) , [region-before](#fo-object-region-before) , [region-after](#fo-object-region-after) , [region-start](#fo-object-region-start) , [region-end](#fo-object-region-end) , [flow](#fo-object-flow) , [static-content](#fo-object-static-content) , [title](#fo-object-title) , [flow-map](#fo-object-flow-map) , [flow-assignment](#fo-object-flow-assignment) , [flow-source-list](#fo-object-flow-source-list) , [flow-name-specifier](#fo-object-flow-name-specifier) , [flow-target-list](#fo-object-flow-target-list) , [region-name-specifier](#fo-object-region-name-specifier) 
+
+-  ** [Block Formatting Objects](#fo-object-block-section) :**  [block](#fo-object-block) , [block-container](#fo-object-block-container) 
+
+-  ** [Inline Formatting Objects](#fo-object-inline-section) :**  [bidi-override](#fo-object-bidi-override) , [character](#fo-object-character) , [initial-property-set](#fo-object-initial-property-set) , [external-graphic](#fo-object-external-graphic) , [instream-foreign-object](#fo-object-instream-foreign-object) , [inline](#fo-object-inline) , [inline-container](#fo-object-inline-container) , [leader](#fo-object-leader) , [page-number](#fo-object-page-number) , [page-number-citation](#fo-object-page-number-citation) , [page-number-citation-last](#fo-object-page-number-citation-last) , [folio-prefix](#fo-object-folio-prefix) , [folio-suffix](#fo-object-folio-suffix) , [scaling-value-citation](#fo-object-scaling-value-citation) 
+
+-  ** [Table Formatting Objects](#fo-object-table-section) :**  [table-and-caption](#fo-object-table-and-caption) , [table](#fo-object-table) , [table-column](#fo-object-table-column) , [table-caption](#fo-object-table-caption) , [table-header](#fo-object-table-header) , [table-footer](#fo-object-table-footer) , [table-body](#fo-object-table-body) , [table-row](#fo-object-table-row) , [table-cell](#fo-object-table-cell) 
+
+-  ** [List Formatting Objects](#fo-object-list-section) :**  [list-block](#fo-object-list-block) , [list-item](#fo-object-list-item) , [list-item-body](#fo-object-list-item-body) , [list-item-label](#fo-object-list-item-label) 
+
+-  ** [Link and Multi Formatting Objects](#fo-object-link-section) :**  [basic-link](#fo-object-basic-link) , [multi-switch](#fo-object-multi-switch) , [multi-case](#fo-object-multi-case) , [multi-toggle](#fo-object-multi-toggle) , [multi-properties](#fo-object-multi-properties) , [multi-property-set](#fo-object-multi-property-set) 
+
+-  ** [Formatting Objects for Indexing](#fo-object-indexing-section) :**  [index-page-number-prefix](#fo-object-index-page-number-prefix) , [index-page-number-suffix](#fo-object-index-page-number-suffix) , [index-range-begin](#fo-object-index-range-begin) , [index-range-end](#fo-object-index-range-end) , [index-key-reference](#fo-object-index-key-reference) , [index-page-citation-list](#fo-object-index-page-citation-list) , [index-page-citation-list-separator](#fo-object-index-page-citation-list-separator) , [index-page-citation-range-separator](#fo-object-index-page-citation-range-separator) 
+
+-  ** [Formatting Objects for Bookmarks](#fo-object-bookmarks-section) :**  [bookmark-tree](#fo-object-bookmark-tree) , [bookmark](#fo-object-bookmark) , [bookmark-title](#fo-object-bookmark-title) 
+
+-  ** [Out-of-line Formatting Objects](#fo-object-outofline-section) :**  [float](#fo-object-float) , [footnote](#fo-object-footnote) , [footnote-body](#fo-object-footnote-body) 
+
+-  ** [Other Formatting Objects](#fo-object-other-section) :**  [change-bar-begin](#fo-object-change-bar-begin) , [change-bar-end](#fo-object-change-bar-end) , [wrapper](#fo-object-wrapper) , [marker](#fo-object-marker) , [retrieve-marker](#fo-object-retrieve-marker) , [retrieve-table-marker](#fo-object-retrieve-table-marker) 
+
+## XSL-FO Property Support ## {#-N101BD}
+
+
+-  ** [Common Accessibility Properties](#fo-property-commonaccess-section) :**  [source-document](#fo-property-source-document) , [role](#fo-property-role) 
+
+-  ** [Common Absolute Position Properties](#fo-property-commonabspos-section) :**  [absolute-position](#fo-property-absolute-position) , [top](#fo-property-top) , [right](#fo-property-right) , [bottom](#fo-property-bottom) , [left](#fo-property-left) 
+
+-  ** [Common Aural Properties](#fo-property-commonaural-section) :**  [azimuth](#fo-property-azimuth) , [cue-after](#fo-property-cue-after) , [cue-before](#fo-property-cue-before) , [elevation](#fo-property-elevation) , [pause-after](#fo-property-pause-after) , [pause-before](#fo-property-pause-before) , [pitch](#fo-property-pitch) , [pitch-range](#fo-property-pitch-range) , [play-during](#fo-property-play-during) , [richness](#fo-property-richness) , [speak](#fo-property-speak) , [speak-header](#fo-property-speak-header) , [speak-numeral](#fo-property-speak-numeral) , [speak-punctuation](#fo-property-speak-punctuation) , [speech-rate](#fo-property-speech-rate) , [stress](#fo-property-stress) , [voice-family](#fo-property-voice-family) , [volume](#fo-property-volume) 
+
+-  ** [Common Border, Padding, and Background Properties](#fo-property-commonenv-section) :**  [background-attachment](#fo-property-background-attachment) , [background-color](#fo-property-background-color) , [background-image](#fo-property-background-image) , [background-repeat](#fo-property-background-repeat) , [background-position-horizontal](#fo-property-background-position-horizontal) , [background-position-vertical](#fo-property-background-position-vertical) , [border-before-color](#fo-property-border-before-color) , [border-before-style](#fo-property-border-before-style) , [border-before-width](#fo-property-border-before-width) , [border-after-color](#fo-property-border-after-color) , [border-after-style](#fo-property-border-after-style) , [border-after-width](#fo-property-border-after-width) , [border-start-color](#fo-property-border-start-color) , [border-start-style](#fo-property-border-start-style) , [border-start-width](#fo-property-border-start-width) , [border-end-color](#fo-property-border-end-color) , [border-end-style](#fo-property-border-end-style) , [border-end-width](#fo-property-border-end-width) , [border-top-color](#fo-property-border-top-color) , [border-top-style](#fo-property-border-top-style) , [border-top-width](#fo-property-border-top-width) , [border-bottom-color](#fo-property-border-bottom-color) , [border-bottom-style](#fo-property-border-bottom-style) , [border-bottom-width](#fo-property-border-bottom-width) , [border-left-color](#fo-property-border-left-color) , [border-left-style](#fo-property-border-left-style) , [border-left-width](#fo-property-border-left-width) , [border-right-color](#fo-property-border-right-color) , [border-right-style](#fo-property-border-right-style) , [border-right-width](#fo-property-border-right-width) , [padding-before](#fo-property-padding-before) , [padding-after](#fo-property-padding-after) , [padding-start](#fo-property-padding-start) , [padding-end](#fo-property-padding-end) , [padding-top](#fo-property-padding-top) , [padding-bottom](#fo-property-padding-bottom) , [padding-left](#fo-property-padding-left) , [padding-right](#fo-property-padding-right) 
+
+-  ** [Common Font Properties](#fo-property-commonfont-section) :**  [font-family](#fo-property-font-family) , [font-selection-strategy](#fo-property-font-selection-strategy) , [font-size](#fo-property-font-size) , [font-stretch](#fo-property-font-stretch) , [font-size-adjust](#fo-property-font-size-adjust) , [font-style](#fo-property-font-style) , [font-variant](#fo-property-font-variant) , [font-weight](#fo-property-font-weight) 
+
+-  ** [Common Hyphenation Properties](#fo-property-commonhyphen-section) :**  [country](#fo-property-country) , [language](#fo-property-language) , [script](#fo-property-script) , [hyphenate](#fo-property-hyphenate) , [hyphenation-character](#fo-property-hyphenation-character) , [hyphenation-push-character-count](#fo-property-hyphenation-push-character-count) , [hyphenation-remain-character-count](#fo-property-hyphenation-remain-character-count) 
+
+-  ** [Common Margin Properties - Block](#fo-property-commonmarginblock-section) :**  [margin-top](#fo-property-margin-top) , [margin-bottom](#fo-property-margin-bottom) , [margin-left](#fo-property-margin-left) , [margin-right](#fo-property-margin-right) , [space-before](#fo-property-space-before) , [space-after](#fo-property-space-after) , [start-indent](#fo-property-start-indent) , [end-indent](#fo-property-end-indent) 
+
+-  ** [Common Margin Properties - Inline](#fo-property-commonmargininline-section) :**  [margin-top](#fo-property-margin-top-inline) , [margin-bottom](#fo-property-margin-bottom-inline) , [margin-left](#fo-property-margin-left-inline) , [margin-right](#fo-property-margin-right-inline) , [space-end](#fo-property-space-end) , [space-start](#fo-property-space-start) 
+
+-  ** [Common Relative Position Properties](#fo-property-commonrelpos-section) :**  [top](#fo-property-top-relative) , [right](#fo-property-right-relative) , [bottom](#fo-property-bottom-relative) , [left](#fo-property-left-relative) , [relative-position](#fo-property-relative-position) 
+
+-  ** [Area Alignment Properties](#fo-property-areaalign-section) :**  [alignment-adjust](#fo-property-alignment-adjust) , [alignment-baseline](#fo-property-alignment-baseline) , [baseline-shift](#fo-property-baseline-shift) , [display-align](#fo-property-display-align) , [dominant-baseline](#fo-property-dominant-baseline) , [relative-align](#fo-property-relative-align) 
+
+-  ** [Area Dimension Properties](#fo-property-areadim-section) :**  [allowed-height-scale](#fo-property-allowed-height-scale) , [allowed-width-scale](#fo-property-allowed-width-scale) , [block-progression-dimension](#fo-property-block-progression-dimension) , [content-height](#fo-property-content-height) , [content-width](#fo-property-content-width) , [height](#fo-property-height) , [inline-progression-dimension](#fo-property-inline-progression-dimension) , [max-height](#fo-property-max-height) , [max-width](#fo-property-max-width) , [min-height](#fo-property-min-height) , [min-width](#fo-property-min-width) , [scaling](#fo-property-scaling) , [scaling-method](#fo-property-scaling-method) , [width](#fo-property-width) 
+
+-  ** [Block and Line-related Properties](#fo-property-blockandline-section) :**  [hyphenation-keep](#fo-property-hyphenation-keep) , [hyphenation-ladder-count](#fo-property-hyphenation-ladder-count) , [last-line-end-indent](#fo-property-last-line-end-indent) , [line-height](#fo-property-line-height) , [line-height-shift-adjustment](#fo-property-line-height-shift-adjustment) , [line-stacking-strategy](#fo-property-line-stacking-strategy) , [linefeed-treatment](#fo-property-linefeed-treatment) , [white-space-treatment](#fo-property-white-space-treatment) , [text-align](#fo-property-text-align) , [text-align-last](#fo-property-text-align-last) , [text-indent](#fo-property-text-indent) , [white-space-collapse](#fo-property-white-space-collapse) , [wrap-option](#fo-property-wrap-option) 
+
+-  ** [Character Properties](#fo-property-char-section) :**  [character](#fo-property-character) , [letter-spacing](#fo-property-letter-spacing) , [suppress-at-line-break](#fo-property-suppress-at-line-break) , [text-decoration](#fo-property-text-decoration) , [text-shadow](#fo-property-text-shadow) , [text-transform](#fo-property-text-transform) , [treat-as-word-space](#fo-property-treat-as-word-space) , [word-spacing](#fo-property-word-spacing) 
+
+-  ** [Color-related Properties](#fo-property-color-section) :**  [color](#fo-property-color) , [color-profile-name](#fo-property-color-profile-name) , [rendering-intent](#fo-property-rendering-intent) 
+
+-  ** [Float-related Properties](#fo-property-float-section) :**  [clear](#fo-property-clear) , [float](#fo-property-float) , [intrusion-displace](#fo-property-intrusion-displace) 
+
+-  ** [Keeps and Breaks Properties](#fo-property-keepsbreaks-section) :**  [break-after](#fo-property-break-after) , [break-before](#fo-property-break-before) , [keep-together](#fo-property-keep-together) , [keep-with-next](#fo-property-keep-with-next) , [keep-with-previous](#fo-property-keep-with-previous) , [orphans](#fo-property-orphans) , [widows](#fo-property-widows) 
+
+-  ** [Layout-related Properties](#fo-property-layout-section) :**  [clip](#fo-property-clip) , [overflow](#fo-property-overflow) , [reference-orientation](#fo-property-reference-orientation) , [span](#fo-property-span) 
+
+-  ** [Leader and Rule Properties](#fo-property-leader-section) :**  [leader-alignment](#fo-property-leader-alignment) , [leader-pattern](#fo-property-leader-pattern) , [leader-pattern-width](#fo-property-leader-pattern-width) , [leader-length](#fo-property-leader-length) , [rule-style](#fo-property-rule-style) , [rule-thickness](#fo-property-rule-thickness) 
+
+-  ** [Properties for Dynamic Effects Formatting Objects](#fo-property-dynamiceffects-section) :**  [active-state](#fo-property-active-state) , [auto-restore](#fo-property-auto-restore) , [case-name](#fo-property-case-name) , [case-title](#fo-property-case-title) , [destination-placement-offset](#fo-property-destination-placement-offset) , [external-destination](#fo-property-external-destination) , [indicate-destination](#fo-property-indicate-destination) , [internal-destination](#fo-property-internal-destination) , [show-destination](#fo-property-show-destination) , [starting-state](#fo-property-starting-state) , [switch-to](#fo-property-switch-to) , [target-presentation-context](#fo-property-target-presentation-context) , [target-processing-context](#fo-property-target-processing-context) , [target-stylesheet](#fo-property-target-stylesheet) 
+
+-  ** [Properties for Indexing](#fo-property-indexing-section) :**  [index-class](#fo-property-index-class) , [index-key](#fo-property-index-key) , [page-number-treatment](#fo-property-page-number-treatment) , [merge-ranges-across-index-key-references](#fo-property-merge-ranges-across-index-key-references) , [merge-sequential-page-numbers](#fo-property-merge-sequential-page-numbers) , [merge-pages-across-index-key-references](#fo-property-merge-pages-across-index-key-references) , [ref-index-key](#fo-property-ref-index-key) 
+
+-  ** [Properties for Markers](#fo-property-markers-section) :**  [marker-class-name](#fo-property-marker-class-name) , [retrieve-boundary-within-table](#fo-property-retrieve-boundary-within-table) , [retrieve-class-name](#fo-property-retrieve-class-name) , [retrieve-position](#fo-property-retrieve-position) , [retrieve-boundary](#fo-property-retrieve-boundary) , [retrieve-position-within-table](#fo-property-retrieve-position-within-table) 
+
+-  ** [Properties for Number to String Conversion](#fo-property-numberstring-section) :**  [format](#fo-property-format) , [grouping-separator](#fo-property-grouping-separator) , [grouping-size](#fo-property-grouping-size) , [letter-value](#fo-property-letter-value) 
+
+-  ** [Pagination and Layout Properties](#fo-property-pagination-section) :**  [blank-or-not-blank](#fo-property-blank-or-not-blank) , [column-count](#fo-property-column-count) , [column-gap](#fo-property-column-gap) , [extent](#fo-property-extent) , [flow-name](#fo-property-flow-name) , [force-page-count](#fo-property-force-page-count) , [initial-page-number](#fo-property-initial-page-number) , [master-name](#fo-property-master-name) , [master-reference](#fo-property-master-reference) , [maximum-repeats](#fo-property-maximum-repeats) , [media-usage](#fo-property-media-usage) , [odd-or-even](#fo-property-odd-or-even) , [page-height](#fo-property-page-height) , [page-position](#fo-property-page-position) , [page-width](#fo-property-page-width) , [precedence](#fo-property-precedence) , [region-name](#fo-property-region-name) , [flow-map-name](#fo-property-flow-map-name) , [flow-map-reference](#fo-property-flow-map-reference) , [flow-name-reference](#fo-property-flow-name-reference) , [region-name-reference](#fo-property-region-name-reference) 
+
+-  ** [Table Properties](#fo-property-table-section) :**  [border-after-precedence](#fo-property-border-after-precedence) , [border-before-precedence](#fo-property-border-before-precedence) , [border-collapse](#fo-property-border-collapse) , [border-end-precedence](#fo-property-border-end-precedence) , [border-separation](#fo-property-border-separation) , [border-start-precedence](#fo-property-border-start-precedence) , [caption-side](#fo-property-caption-side) , [column-number](#fo-property-column-number) , [column-width](#fo-property-column-width) , [empty-cells](#fo-property-empty-cells) , [ends-row](#fo-property-ends-row) , [number-columns-repeated](#fo-property-number-columns-repeated) , [number-columns-spanned](#fo-property-number-columns-spanned) , [number-rows-spanned](#fo-property-number-rows-spanned) , [starts-row](#fo-property-starts-row) , [table-layout](#fo-property-table-layout) , [table-omit-footer-at-break](#fo-property-table-omit-footer-at-break) , [table-omit-header-at-break](#fo-property-table-omit-header-at-break) 
+
+-  ** [Writing-mode-related Properties](#fo-property-writingmode-section) :**  [direction](#fo-property-direction) , [glyph-orientation-horizontal](#fo-property-glyph-orientation-horizontal) , [glyph-orientation-vertical](#fo-property-glyph-orientation-vertical) , [text-altitude](#fo-property-text-altitude) , [text-depth](#fo-property-text-depth) , [unicode-bidi](#fo-property-unicode-bidi) , [writing-mode](#fo-property-writing-mode) 
+
+-  ** [Miscellaneous Properties](#fo-property-misc-section) :**  [change-bar-class](#fo-property-change-bar-class) , [change-bar-color](#fo-property-change-bar-color) , [change-bar-offset](#fo-property-change-bar-offset) , [change-bar-placement](#fo-property-change-bar-placement) , [change-bar-style](#fo-property-change-bar-style) , [change-bar-width](#fo-property-change-bar-width) , [content-type](#fo-property-content-type) , [id](#fo-property-id) , [intrinsic-scale-value](#fo-property-intrinsic-scale-value) , [page-citation-strategy](#fo-property-page-citation-strategy) , [provisional-label-separation](#fo-property-provisional-label-separation) , [provisional-distance-between-starts](#fo-property-provisional-distance-between-starts) , [ref-id](#fo-property-ref-id) , [scale-option](#fo-property-scale-option) , [score-spaces](#fo-property-score-spaces) , [src](#fo-property-src) , [visibility](#fo-property-visibility) , [z-index](#fo-property-z-index) 
+
+-  ** [Shorthand Properties](#fo-property-shorthand-section) :**  [background](#fo-property-background) , [background-position](#fo-property-background-position) , [border](#fo-property-border) , [border-bottom](#fo-property-border-bottom) , [border-color](#fo-property-border-color) , [border-left](#fo-property-border-left) , [border-right](#fo-property-border-right) , [border-style](#fo-property-border-style) , [border-spacing](#fo-property-border-spacing) , [border-top](#fo-property-border-top) , [border-width](#fo-property-border-width) , [cue](#fo-property-cue) , [font](#fo-property-font) , [margin](#fo-property-margin) , [padding](#fo-property-padding) , [page-break-after](#fo-property-page-break-after) , [page-break-before](#fo-property-page-break-before) , [page-break-inside](#fo-property-page-break-inside) , [pause](#fo-property-pause) , [position](#fo-property-position) , [size](#fo-property-size) , [vertical-align](#fo-property-vertical-align) , [white-space](#fo-property-white-space) , [xml:lang](#fo-property-xml:lang) 
+
+## XSL-FO Core Function Library Support ## {#-N106C6}
+
+
+-  ** [Number Functions](#fo-function-number-section) :**  [floor](#fo-function-floor) , [ceiling](#fo-function-ceiling) , [round](#fo-function-round) , [min](#fo-function-min) , [max](#fo-function-max) , [abs](#fo-function-abs) 
+
+-  ** [Color Functions](#fo-function-color-section) :**  [rgb](#fo-function-rgb) , [rgb-icc](#fo-function-rgb-icc) , [system-color](#fo-function-system-color) 
+
+-  ** [Font Functions](#fo-function-font-section) :**  [system-font](#fo-function-system-font) 
+
+-  ** [Property Value Functions](#fo-function-property-value-section) :**  [inherited-property-value](#fo-function-inherited-property-value) , [label-end](#fo-function-label-end) , [body-start](#fo-function-body-start) , [from-parent](#fo-function-from-parent) , [from-nearest-specified-value](#fo-function-from-nearest-specified-value) , [from-page-master-region](#fo-function-from-page-master-region) , [from-table-column](#fo-function-from-table-column) , [proportional-column-width](#fo-function-proportional-column-width) , [merge-property-values](#fo-function-merge-property-values) 
+
+# XSL-FO Object Support Table (§6) # {#fo-object-section}
+
+The following is a summary of FOP's current support for the standard XSL-FO objects.
+
+| Citation | Object Name | XSL-FO Conformance Level | Support in FOP | Comments |
+|----------|-------------|--------------------------|----------------|----------|
+| 0.95 (stable) | 1.0 (stable) | develop- ment |
+|---------------|--------------|---------------|
+|  [§6.4](http://www.w3.org/TR/xsl/#d0e7057)  | <a id="fo-object-decl-section" name="fo-object-decl-section">Declarations and Pagination and Layout Formatting Objects</a> |
+|  [§6.4.2](http://www.w3.org/TR/xsl/#fo_root)  | <a id="fo-object-root" name="fo-object-root">root</a> | Basic | yes | yes | yes |   |
+|  [§6.4.3](http://www.w3.org/TR/xsl/#fo_declarations)  | <a id="fo-object-declarations" name="fo-object-declarations">declarations</a> | Basic | yes | yes | yes |   |
+|  [§6.4.4](http://www.w3.org/TR/xsl/#fo_color-profile)  | <a id="fo-object-color-profile" name="fo-object-color-profile">color-profile</a> | Extended | yes | yes | yes |   |
+|  [§6.4.5](http://www.w3.org/TR/xsl/#fo_page-sequence)  | <a id="fo-object-page-sequence" name="fo-object-page-sequence">page-sequence</a> | Basic | yes | yes | yes |   |
+|  [§6.4.6](http://www.w3.org/TR/xsl/#fo_page-sequence-wrapper)  | <a id="fo-object-page-sequence-wrapper" name="fo-object-page-sequence-wrapper">page-sequence-wrapper</a> | Basic | no | no | no |   |
+|  [§6.4.7](http://www.w3.org/TR/xsl/#fo_layout-master-set)  | <a id="fo-object-layout-master-set" name="fo-object-layout-master-set">layout-master-set</a> | Basic | yes | yes | yes |   |
+|  [§6.4.8](http://www.w3.org/TR/xsl/#fo_page-sequence-master)  | <a id="fo-object-page-sequence-master" name="fo-object-page-sequence-master">page-sequence-master</a> | Basic | yes | yes | yes |   |
+|  [§6.4.9](http://www.w3.org/TR/xsl/#fo_single-page-master-reference)  | <a id="fo-object-single-page-master-reference" name="fo-object-single-page-master-reference">single-page-master-reference</a> | Basic | yes | yes | yes |   |
+|  [§6.4.10](http://www.w3.org/TR/xsl/#fo_repeatable-page-master-reference)  | <a id="fo-object-repeatable-page-master-reference" name="fo-object-repeatable-page-master-reference">repeatable-page-master-reference</a> | Basic | yes | yes | yes |   |
+|  [§6.4.11](http://www.w3.org/TR/xsl/#fo_repeatable-page-master-alternatives)  | <a id="fo-object-repeatable-page-master-alternatives" name="fo-object-repeatable-page-master-alternatives">repeatable-page-master-alternatives</a> | Extended | yes | yes | yes |   |
+|  [§6.4.12](http://www.w3.org/TR/xsl/#fo_conditional-page-master-reference)  | <a id="fo-object-conditional-page-master-reference" name="fo-object-conditional-page-master-reference">conditional-page-master-reference</a> | Extended | yes | yes | yes |   |
+|  [§6.4.13](http://www.w3.org/TR/xsl/#fo_simple-page-master)  | <a id="fo-object-simple-page-master" name="fo-object-simple-page-master">simple-page-master</a> | Basic | partial | partial | partial | The page width may not change among pages of the same page-sequence unless a forced break is inserted. |
+|  [§6.4.14](http://www.w3.org/TR/xsl/#fo_region-body)  | <a id="fo-object-region-body" name="fo-object-region-body">region-body</a> | Basic | yes | yes | yes |  |
+|  [§6.4.15](http://www.w3.org/TR/xsl/#fo_region-before)  | <a id="fo-object-region-before" name="fo-object-region-before">region-before</a> | Extended | yes | yes | yes |   |
+|  [§6.4.16](http://www.w3.org/TR/xsl/#fo_region-after)  | <a id="fo-object-region-after" name="fo-object-region-after">region-after</a> | Extended | yes | yes | yes |   |
+|  [§6.4.17](http://www.w3.org/TR/xsl/#fo_region-start)  | <a id="fo-object-region-start" name="fo-object-region-start">region-start</a> | Extended | yes | yes | yes |   |
+|  [§6.4.18](http://www.w3.org/TR/xsl/#fo_region-end)  | <a id="fo-object-region-end" name="fo-object-region-end">region-end</a> | Extended | yes | yes | yes |   |
+|  [§6.4.19](http://www.w3.org/TR/xsl/#fo_flow)  | <a id="fo-object-flow" name="fo-object-flow">flow</a> | Basic | yes | yes | yes |   |
+|  [§6.4.20](http://www.w3.org/TR/xsl/#fo_static-content)  | <a id="fo-object-static-content" name="fo-object-static-content">static-content</a> | Extended | yes | yes | yes |   |
+|  [§6.4.21](http://www.w3.org/TR/xsl/#fo_title)  | <a id="fo-object-title" name="fo-object-title">title</a> | Extended | yes | yes | yes |   |
+|  [§6.4.22](http://www.w3.org/TR/xsl/#fo_flow-map)  | <a id="fo-object-flow-map" name="fo-object-flow-map">flow-map</a> | Extended | no | no | no |   |
+|  [§6.4.23](http://www.w3.org/TR/xsl/#fo_flow-assignment)  | <a id="fo-object-flow-assignment" name="fo-object-flow-assignment">flow-assignment</a> | Extended | no | no | no |   |
+|  [§6.4.24](http://www.w3.org/TR/xsl/#fo_flow-source-list)  | <a id="fo-object-flow-source-list" name="fo-object-flow-source-list">flow-source-list</a> | Extended | no | no | no |   |
+|  [§6.4.25](http://www.w3.org/TR/xsl/#fo_flow-name-specifier)  | <a id="fo-object-flow-name-specifier" name="fo-object-flow-name-specifier">flow-name-specifier</a> | Extended | no | no | no |   |
+|  [§6.4.26](http://www.w3.org/TR/xsl/#fo_flow-target-list)  | <a id="fo-object-flow-target-list" name="fo-object-flow-target-list">flow-target-list</a> | Extended | no | no | no |   |
+|  [§6.4.27](http://www.w3.org/TR/xsl/#fo_region-name-specifier)  | <a id="fo-object-region-name-specifier" name="fo-object-region-name-specifier">region-name-specifier</a> | Extended | no | no | no |   |
+|  [§6.5](http://www.w3.org/TR/xsl/#d0e9451)  | <a id="fo-object-block-section" name="fo-object-block-section">Block Formatting Objects</a> |
+|  [§6.5.2](http://www.w3.org/TR/xsl/#fo_block)  | <a id="fo-object-block" name="fo-object-block">block</a> | Basic | yes | yes | yes |   |
+|  [§6.5.3](http://www.w3.org/TR/xsl/#fo_block-container)  | <a id="fo-object-block-container" name="fo-object-block-container">block-container</a> | Extended | partial | partial | partial |   |
+|  [§6.6](http://www.w3.org/TR/xsl/#d0e9759)  | <a id="fo-object-inline-section" name="fo-object-inline-section">Inline Formatting Objects</a> |
+|  [§6.6.2](http://www.w3.org/TR/xsl/#fo_bidi-override)  | <a id="fo-object-bidi-override" name="fo-object-bidi-override">bidi-override</a> | Extended | no | no | no |   |
+|  [§6.6.3](http://www.w3.org/TR/xsl/#fo_character)  | <a id="fo-object-character" name="fo-object-character">character</a> | Basic | yes | yes | yes |   |
+|  [§6.6.4](http://www.w3.org/TR/xsl/#fo_initial-property-set)  | <a id="fo-object-initial-property-set" name="fo-object-initial-property-set">initial-property-set</a> | Extended | no | no | no |   |
+|  [§6.6.5](http://www.w3.org/TR/xsl/#fo_external-graphic)  | <a id="fo-object-external-graphic" name="fo-object-external-graphic">external-graphic</a> | Basic | yes | yes | yes |   |
+|  [§6.6.6](http://www.w3.org/TR/xsl/#fo_instream-foreign-object)  | <a id="fo-object-instream-foreign-object" name="fo-object-instream-foreign-object">instream-foreign-object</a> | Extended | yes | yes | yes | Built-in support for SVG only, additional namespaces through optional extensions. |
+|  [§6.6.7](http://www.w3.org/TR/xsl/#fo_inline)  | <a id="fo-object-inline" name="fo-object-inline">inline</a> | Basic | yes | yes | yes |   |
+|  [§6.6.8](http://www.w3.org/TR/xsl/#fo_inline-container)  | <a id="fo-object-inline-container" name="fo-object-inline-container">inline-container</a> | Extended | no | no | no |   |
+|  [§6.6.9](http://www.w3.org/TR/xsl/#fo_leader)  | <a id="fo-object-leader" name="fo-object-leader">leader</a> | Basic | yes | yes | yes |   |
+|  [§6.6.10](http://www.w3.org/TR/xsl/#fo_page-number)  | <a id="fo-object-page-number" name="fo-object-page-number">page-number</a> | Basic | yes | yes | yes |   |
+|  [§6.6.11](http://www.w3.org/TR/xsl/#fo_page-number-citation)  | <a id="fo-object-page-number-citation" name="fo-object-page-number-citation">page-number-citation</a> | Extended | partial | partial | partial | After the page number is known, no relayout is performed. The appearance may be suboptimal depending on the use case. |
+|  [§6.6.12](http://www.w3.org/TR/xsl/#fo_page-number-citation-last)  | <a id="fo-object-page-number-citation-last" name="fo-object-page-number-citation-last">page-number-citation-last</a> | Extended | partial | partial | partial | 
+
+- Works only for page-sequence so far.
+
+- After the page number is known, no relayout is performed. The appearance may be suboptimal depending on the use case.
+ |
+|  [§6.6.13](http://www.w3.org/TR/xsl/#fo_folio-prefix)  | <a id="fo-object-folio-prefix" name="fo-object-folio-prefix">folio-prefix</a> | Extended | no | no | no |   |
+|  [§6.6.14](http://www.w3.org/TR/xsl/#fo_folio-suffix)  | <a id="fo-object-folio-suffix" name="fo-object-folio-suffix">folio-suffix</a> | Extended | no | no | no |   |
+|  [§6.6.15](http://www.w3.org/TR/xsl/#fo_scaling-value-citation)  | <a id="fo-object-scaling-value-citation" name="fo-object-scaling-value-citation">scaling-value-citation</a> | Extended | no | no | no |   |
+|  [§6.7](http://www.w3.org/TR/xsl/#d0e11404)  | <a id="fo-object-table-section" name="fo-object-table-section">Table Formatting Objects</a> |
+|  [§6.7.2](http://www.w3.org/TR/xsl/#fo_table-and-caption)  | <a id="fo-object-table-and-caption" name="fo-object-table-and-caption">table-and-caption</a> | Basic | no | no | no |   |
+|  [§6.7.3](http://www.w3.org/TR/xsl/#fo_table)  | <a id="fo-object-table" name="fo-object-table">table</a> | Basic | partial | partial | partial | No support for auto layout yet |
+|  [§6.7.4](http://www.w3.org/TR/xsl/#fo_table-column)  | <a id="fo-object-table-column" name="fo-object-table-column">table-column</a> | Basic | yes | yes | yes |   |
+|  [§6.7.5](http://www.w3.org/TR/xsl/#fo_table-caption)  | <a id="fo-object-table-caption" name="fo-object-table-caption">table-caption</a> | Extended | no | no | no |   |
+|  [§6.7.6](http://www.w3.org/TR/xsl/#fo_table-header)  | <a id="fo-object-table-header" name="fo-object-table-header">table-header</a> | Basic | yes | yes | yes |   |
+|  [§6.7.7](http://www.w3.org/TR/xsl/#fo_table-footer)  | <a id="fo-object-table-footer" name="fo-object-table-footer">table-footer</a> | Extended | yes | yes | yes |   |
+|  [§6.7.8](http://www.w3.org/TR/xsl/#fo_table-body)  | <a id="fo-object-table-body" name="fo-object-table-body">table-body</a> | Basic | yes | yes | yes |   |
+|  [§6.7.9](http://www.w3.org/TR/xsl/#fo_table-row)  | <a id="fo-object-table-row" name="fo-object-table-row">table-row</a> | Basic | yes | yes | yes |   |
+|  [§6.7.10](http://www.w3.org/TR/xsl/#fo_table-cell)  | <a id="fo-object-table-cell" name="fo-object-table-cell">table-cell</a> | Basic | yes | yes | yes |   |
+|  [§6.8](http://www.w3.org/TR/xsl/#d0e12374)  | <a id="fo-object-list-section" name="fo-object-list-section">List Formatting Objects</a> |
+|  [§6.8.2](http://www.w3.org/TR/xsl/#fo_list-block)  | <a id="fo-object-list-block" name="fo-object-list-block">list-block</a> | Basic | yes | yes | yes |   |
+|  [§6.8.3](http://www.w3.org/TR/xsl/#fo_list-item)  | <a id="fo-object-list-item" name="fo-object-list-item">list-item</a> | Basic | yes | yes | yes |   |
+|  [§6.8.4](http://www.w3.org/TR/xsl/#fo_list-item-body)  | <a id="fo-object-list-item-body" name="fo-object-list-item-body">list-item-body</a> | Basic | yes | yes | yes |   |
+|  [§6.8.5](http://www.w3.org/TR/xsl/#fo_list-item-label)  | <a id="fo-object-list-item-label" name="fo-object-list-item-label">list-item-label</a> | Extended | yes | yes | yes |   |
+|  [§6.9](http://www.w3.org/TR/xsl/#d0e12855)  | <a id="fo-object-link-section" name="fo-object-link-section">Link and Multi Formatting Objects</a> |
+|  [§6.9.2](http://www.w3.org/TR/xsl/#fo_basic-link)  | <a id="fo-object-basic-link" name="fo-object-basic-link">basic-link</a> | Extended | yes | yes | yes | both internal and external supported |
+|  [§6.9.3](http://www.w3.org/TR/xsl/#fo_multi-switch)  | <a id="fo-object-multi-switch" name="fo-object-multi-switch">multi-switch</a> | Extended | no | no | no |   |
+|  [§6.9.4](http://www.w3.org/TR/xsl/#fo_multi-case)  | <a id="fo-object-multi-case" name="fo-object-multi-case">multi-case</a> | Basic | no | no | no |   |
+|  [§6.9.5](http://www.w3.org/TR/xsl/#fo_multi-toggle)  | <a id="fo-object-multi-toggle" name="fo-object-multi-toggle">multi-toggle</a> | Extended | no | no | no |   |
+|  [§6.9.6](http://www.w3.org/TR/xsl/#fo_multi-properties)  | <a id="fo-object-multi-properties" name="fo-object-multi-properties">multi-properties</a> | Extended | no | no | no |   |
+|  [§6.9.7](http://www.w3.org/TR/xsl/#fo_multi-property-set)  | <a id="fo-object-multi-property-set" name="fo-object-multi-property-set">multi-property-set</a> | Extended | no | no | no |   |
+|  [§6.10](http://www.w3.org/TR/xsl11/#d0e13293)  | <a id="fo-object-indexing-section" name="fo-object-indexing-section">Formatting Objects for Indexing</a> |
+|  [§6.10.2](http://www.w3.org/TR/xsl11/#fo_index-page-number-prefix)  | <a id="fo-object-index-page-number-prefix" name="fo-object-index-page-number-prefix">index-page-number-prefix</a> | Extended | no | no | no |   |
+|  [§6.10.3](http://www.w3.org/TR/xsl11/#fo_index-page-number-suffix)  | <a id="fo-object-index-page-number-suffix" name="fo-object-index-page-number-suffix">index-page-number-suffix</a> | Extended | no | no | no |   |
+|  [§6.10.4](http://www.w3.org/TR/xsl11/#fo_index-range-begin)  | <a id="fo-object-index-range-begin" name="fo-object-index-range-begin">index-range-begin</a> | Extended | no | no | no |   |
+|  [§6.10.5](http://www.w3.org/TR/xsl11/#fo_index-range-end)  | <a id="fo-object-index-range-end" name="fo-object-index-range-end">index-range-end</a> | Extended | no | no | no |   |
+|  [§6.10.6](http://www.w3.org/TR/xsl11/#fo_index-key-reference)  | <a id="fo-object-index-key-reference" name="fo-object-index-key-reference">index-key-reference</a> | Extended | no | no | no |   |
+|  [§6.10.7](http://www.w3.org/TR/xsl11/#fo_index-page-citation-list)  | <a id="fo-object-index-page-citation-list" name="fo-object-index-page-citation-list">index-page-citation-list</a> | Extended | no | no | no |   |
+|  [§6.10.8](http://www.w3.org/TR/xsl11/#fo_index-page-citation-list-separator)  | <a id="fo-object-index-page-citation-list-separator" name="fo-object-index-page-citation-list-separator">index-page-citation-list-separator</a> | Extended | no | no | no |   |
+|  [§6.10.9](http://www.w3.org/TR/xsl11/#fo_index-page-citation-range-separator)  | <a id="fo-object-index-page-citation-range-separator" name="fo-object-index-page-citation-range-separator">index-page-citation-range-separator</a> | Extended | no | no | no |   |
+|  [§6.11](http://www.w3.org/TR/xsl11/#d0e14206)  | <a id="fo-object-bookmarks-section" name="fo-object-bookmarks-section">Formatting Objects for Bookmarks</a> |
+|  [§6.11.1](http://www.w3.org/TR/xsl11/#fo_bookmark-tree)  | <a id="fo-object-bookmark-tree" name="fo-object-bookmark-tree">bookmark-tree</a> | Extended | yes | yes | yes |   |
+|  [§6.11.2](http://www.w3.org/TR/xsl11/#fo_bookmark)  | <a id="fo-object-bookmark" name="fo-object-bookmark">bookmark</a> | Extended | partial | partial | partial | external-destination is not yet supported. |
+|  [§6.11.3](http://www.w3.org/TR/xsl11/#fo_bookmark-title)  | <a id="fo-object-bookmark-title" name="fo-object-bookmark-title">bookmark-title</a> | Extended | partial | partial | partial | color, font-style and font-weight are not supported, yet. |
+|  [§6.12](http://www.w3.org/TR/xsl/#d0e14340)  | <a id="fo-object-outofline-section" name="fo-object-outofline-section">Out-of-line Formatting Objects</a> |
+|  [§6.12.2](http://www.w3.org/TR/xsl/#fo_float)  | <a id="fo-object-float" name="fo-object-float">float</a> | Extended | no | no | no |   |
+|  [§6.12.3](http://www.w3.org/TR/xsl/#fo_footnote)  | <a id="fo-object-footnote" name="fo-object-footnote">footnote</a> | Extended | partial | partial | partial | Restrictions with multi-column documents. |
+|  [§6.12.4](http://www.w3.org/TR/xsl/#fo_footnote-body)  | <a id="fo-object-footnote-body" name="fo-object-footnote-body">footnote-body</a> | Extended | yes | yes | yes |   |
+|  [§6.13](http://www.w3.org/TR/xsl/#d0e14653)  | <a id="fo-object-other-section" name="fo-object-other-section">Other Formatting Objects</a> |
+|  [§6.13.2](http://www.w3.org/TR/xsl/#fo_change-bar-begin)  | <a id="fo-object-change-bar-begin" name="fo-object-change-bar-begin">change-bar-begin</a> | Extended | no | no | no |   |
+|  [§6.13.3](http://www.w3.org/TR/xsl/#fo_change-bar-end)  | <a id="fo-object-change-bar-end" name="fo-object-change-bar-end">change-bar-end</a> | Extended | no | no | no |   |
+|  [§6.13.4](http://www.w3.org/TR/xsl/#fo_wrapper)  | <a id="fo-object-wrapper" name="fo-object-wrapper">wrapper</a> | Basic | partial | yes | yes | Only works as expected with inline-level content. |
+|  [§6.13.5](http://www.w3.org/TR/xsl/#fo_marker)  | <a id="fo-object-marker" name="fo-object-marker">marker</a> | Extended | yes | yes | yes |   |
+|  [§6.13.6](http://www.w3.org/TR/xsl/#fo_retrieve-marker)  | <a id="fo-object-retrieve-marker" name="fo-object-retrieve-marker">retrieve-marker</a> | Extended | yes | yes | yes |   |
+|  [§6.13.7](http://www.w3.org/TR/xsl/#fo_retrieve-table-marker)  | <a id="fo-object-retrieve-table-marker" name="fo-object-retrieve-table-marker">retrieve-table-marker</a> | Extended | no | no | no |   |
+
+# XSL-FO Property Support Table (§7) # {#fo-property-section}
+
+The following is a summary of FOP's current support for the standard XSL-FO properties.
+
+| Citation | Property Name | XSL-FO Conformance Level | Support in FOP | Comments |
+|----------|---------------|--------------------------|----------------|----------|
+| 0.95 (stable) | 1.0 (stable) | develop- ment |
+|---------------|--------------|---------------|
+|  [§7.5](http://www.w3.org/TR/xsl/#common-accessibility-properties)  | <a id="fo-property-commonaccess-section" name="fo-property-commonaccess-section">Common Accessibility Properties</a> |
+|  [§7.5.1](http://www.w3.org/TR/xsl/#source-document)  | <a id="fo-property-source-document" name="fo-property-source-document">source-document</a> | Basic | no | no | no |   |
+|  [§7.5.2](http://www.w3.org/TR/xsl/#role)  | <a id="fo-property-role" name="fo-property-role">role</a> | Basic | no | no | no |   |
+|  [§7.6](http://www.w3.org/TR/xsl/#common-absolute-position-properties)  | <a id="fo-property-commonabspos-section" name="fo-property-commonabspos-section">Common Absolute Position Properties</a> |
+|  [§7.6.1](http://www.w3.org/TR/xsl/#absolute-position)  | <a id="fo-property-absolute-position" name="fo-property-absolute-position">absolute-position</a> | Complete | yes | yes | yes |   |
+|  [§7.6.2](http://www.w3.org/TR/xsl/#top)  | <a id="fo-property-top" name="fo-property-top">top</a> | Extended | yes | yes | yes |   |
+|  [§7.6.3](http://www.w3.org/TR/xsl/#right)  | <a id="fo-property-right" name="fo-property-right">right</a> | Extended | yes | yes | yes |   |
+|  [§7.6.4](http://www.w3.org/TR/xsl/#bottom)  | <a id="fo-property-bottom" name="fo-property-bottom">bottom</a> | Extended | yes | yes | yes |   |
+|  [§7.6.5](http://www.w3.org/TR/xsl/#left)  | <a id="fo-property-left" name="fo-property-left">left</a> | Extended | yes | yes | yes |   |
+|  [§7.7](http://www.w3.org/TR/xsl/#common-aural-properties)  | <a id="fo-property-commonaural-section" name="fo-property-commonaural-section">Common Aural Properties</a> |
+|  [§7.7.1](http://www.w3.org/TR/xsl/#azimuth)  | <a id="fo-property-azimuth" name="fo-property-azimuth">azimuth</a> | Basic | na | na | na | na |   |
+|  [§7.7.2](http://www.w3.org/TR/xsl/#cue-after)  | <a id="fo-property-cue-after" name="fo-property-cue-after">cue-after</a> | Basic | na | na | na | na |   |
+|  [§7.7.3](http://www.w3.org/TR/xsl/#cue-before)  | <a id="fo-property-cue-before" name="fo-property-cue-before">cue-before</a> | Basic | na | na | na | na |   |
+|  [§7.7.4](http://www.w3.org/TR/xsl/#elevation)  | <a id="fo-property-elevation" name="fo-property-elevation">elevation</a> | Basic | na | na | na | na |   |
+|  [§7.7.5](http://www.w3.org/TR/xsl/#pause-after)  | <a id="fo-property-pause-after" name="fo-property-pause-after">pause-after</a> | Basic | na | na | na | na |   |
+|  [§7.7.6](http://www.w3.org/TR/xsl/#pause-before)  | <a id="fo-property-pause-before" name="fo-property-pause-before">pause-before</a> | Basic | na | na | na | na |   |
+|  [§7.7.7](http://www.w3.org/TR/xsl/#pitch)  | <a id="fo-property-pitch" name="fo-property-pitch">pitch</a> | Basic | na | na | na | na |   |
+|  [§7.7.8](http://www.w3.org/TR/xsl/#pitch-range)  | <a id="fo-property-pitch-range" name="fo-property-pitch-range">pitch-range</a> | Basic | na | na | na | na |   |
+|  [§7.7.9](http://www.w3.org/TR/xsl/#play-during)  | <a id="fo-property-play-during" name="fo-property-play-during">play-during</a> | Basic | na | na | na | na |   |
+|  [§7.7.10](http://www.w3.org/TR/xsl/#richness)  | <a id="fo-property-richness" name="fo-property-richness">richness</a> | Basic | na | na | na | na |   |
+|  [§7.7.11](http://www.w3.org/TR/xsl/#speak)  | <a id="fo-property-speak" name="fo-property-speak">speak</a> | Basic | na | na | na | na |   |
+|  [§7.7.12](http://www.w3.org/TR/xsl/#speak-header)  | <a id="fo-property-speak-header" name="fo-property-speak-header">speak-header</a> | Basic | na | na | na | na |   |
+|  [§7.7.13](http://www.w3.org/TR/xsl/#speak-numeral)  | <a id="fo-property-speak-numeral" name="fo-property-speak-numeral">speak-numeral</a> | Basic | na | na | na | na |   |
+|  [§7.7.14](http://www.w3.org/TR/xsl/#speak-punctuation)  | <a id="fo-property-speak-punctuation" name="fo-property-speak-punctuation">speak-punctuation</a> | Basic | na | na | na | na |   |
+|  [§7.7.15](http://www.w3.org/TR/xsl/#speech-rate)  | <a id="fo-property-speech-rate" name="fo-property-speech-rate">speech-rate</a> | Basic | na | na | na | na |   |
+|  [§7.7.16](http://www.w3.org/TR/xsl/#stress)  | <a id="fo-property-stress" name="fo-property-stress">stress</a> | Basic | na | na | na | na |   |
+|  [§7.7.17](http://www.w3.org/TR/xsl/#voice-family)  | <a id="fo-property-voice-family" name="fo-property-voice-family">voice-family</a> | Basic | na | na | na | na |   |
+|  [§7.7.18](http://www.w3.org/TR/xsl/#volume)  | <a id="fo-property-volume" name="fo-property-volume">volume</a> | Basic | na | na | na | na |   |
+|  [§7.8](http://www.w3.org/TR/xsl/#common-border-padding-and-background-properties)  | <a id="fo-property-commonenv-section" name="fo-property-commonenv-section">Common Border, Padding, and Background Properties</a> |
+|  [§7.8.1](http://www.w3.org/TR/xsl/#background-attachment)  | <a id="fo-property-background-attachment" name="fo-property-background-attachment">background-attachment</a> | Extended | no | no | no |   |
+|  [§7.8.2](http://www.w3.org/TR/xsl/#background-color)  | <a id="fo-property-background-color" name="fo-property-background-color">background-color</a> | Basic | yes | yes | yes |   |
+|  [§7.8.3](http://www.w3.org/TR/xsl/#background-image)  | <a id="fo-property-background-image" name="fo-property-background-image">background-image</a> | Extended | yes | yes | yes |   |
+|  [§7.8.4](http://www.w3.org/TR/xsl/#background-repeat)  | <a id="fo-property-background-repeat" name="fo-property-background-repeat">background-repeat</a> | Extended | yes | yes | yes |   |
+|  [§7.8.5](http://www.w3.org/TR/xsl/#background-position-horizontal)  | <a id="fo-property-background-position-horizontal" name="fo-property-background-position-horizontal">background-position-horizontal</a> | Extended | partial | partial | partial | Ignored when background-repeat set to "repeat" or "repeat-x" |
+|  [§7.8.6](http://www.w3.org/TR/xsl/#background-position-vertical)  | <a id="fo-property-background-position-vertical" name="fo-property-background-position-vertical">background-position-vertical</a> | Extended | partial | partial | partial | Ignored when background-repeat set to "repeat" or "repeat-y" |
+|  [§7.8.7](http://www.w3.org/TR/xsl/#border-before-color)  | <a id="fo-property-border-before-color" name="fo-property-border-before-color">border-before-color</a> | Basic | yes | yes | yes |   |
+|  [§7.8.8](http://www.w3.org/TR/xsl/#border-before-style)  | <a id="fo-property-border-before-style" name="fo-property-border-before-style">border-before-style</a> | Basic | yes | yes | yes |   |
+|  [§7.8.9](http://www.w3.org/TR/xsl/#border-before-width)  | <a id="fo-property-border-before-width" name="fo-property-border-before-width">border-before-width</a> | Basic | yes | yes | yes |   |
+|  [§7.8.10](http://www.w3.org/TR/xsl/#border-after-color)  | <a id="fo-property-border-after-color" name="fo-property-border-after-color">border-after-color</a> | Basic | yes | yes | yes |   |
+|  [§7.8.11](http://www.w3.org/TR/xsl/#border-after-style)  | <a id="fo-property-border-after-style" name="fo-property-border-after-style">border-after-style</a> | Basic | yes | yes | yes |   |
+|  [§7.8.12](http://www.w3.org/TR/xsl/#border-after-width)  | <a id="fo-property-border-after-width" name="fo-property-border-after-width">border-after-width</a> | Basic | yes | yes | yes |   |
+|  [§7.8.13](http://www.w3.org/TR/xsl/#border-start-color)  | <a id="fo-property-border-start-color" name="fo-property-border-start-color">border-start-color</a> | Basic | yes | yes | yes |   |
+|  [§7.8.14](http://www.w3.org/TR/xsl/#border-start-style)  | <a id="fo-property-border-start-style" name="fo-property-border-start-style">border-start-style</a> | Basic | yes | yes | yes |   |
+|  [§7.8.15](http://www.w3.org/TR/xsl/#border-start-width)  | <a id="fo-property-border-start-width" name="fo-property-border-start-width">border-start-width</a> | Basic | yes | yes | yes |   |
+|  [§7.8.16](http://www.w3.org/TR/xsl/#border-end-color)  | <a id="fo-property-border-end-color" name="fo-property-border-end-color">border-end-color</a> | Basic | yes | yes | yes |   |
+|  [§7.8.17](http://www.w3.org/TR/xsl/#border-end-style)  | <a id="fo-property-border-end-style" name="fo-property-border-end-style">border-end-style</a> | Basic | yes | yes | yes |   |
+|  [§7.8.18](http://www.w3.org/TR/xsl/#border-end-width)  | <a id="fo-property-border-end-width" name="fo-property-border-end-width">border-end-width</a> | Basic | yes | yes | yes |   |
+|  [§7.8.19](http://www.w3.org/TR/xsl/#border-top-color)  | <a id="fo-property-border-top-color" name="fo-property-border-top-color">border-top-color</a> | Basic | yes | yes | yes |   |
+|  [§7.8.20](http://www.w3.org/TR/xsl/#border-top-style)  | <a id="fo-property-border-top-style" name="fo-property-border-top-style">border-top-style</a> | Basic | yes | yes | yes |   |
+|  [§7.8.21](http://www.w3.org/TR/xsl/#border-top-width)  | <a id="fo-property-border-top-width" name="fo-property-border-top-width">border-top-width</a> | Basic | yes | yes | yes |   |
+|  [§7.8.22](http://www.w3.org/TR/xsl/#border-bottom-color)  | <a id="fo-property-border-bottom-color" name="fo-property-border-bottom-color">border-bottom-color</a> | Basic | yes | yes | yes |   |
+|  [§7.8.23](http://www.w3.org/TR/xsl/#border-bottom-style)  | <a id="fo-property-border-bottom-style" name="fo-property-border-bottom-style">border-bottom-style</a> | Basic | yes | yes | yes |   |
+|  [§7.8.24](http://www.w3.org/TR/xsl/#border-bottom-width)  | <a id="fo-property-border-bottom-width" name="fo-property-border-bottom-width">border-bottom-width</a> | Basic | yes | yes | yes |   |
+|  [§7.8.25](http://www.w3.org/TR/xsl/#border-left-color)  | <a id="fo-property-border-left-color" name="fo-property-border-left-color">border-left-color</a> | Basic | yes | yes | yes |   |
+|  [§7.8.26](http://www.w3.org/TR/xsl/#border-left-style)  | <a id="fo-property-border-left-style" name="fo-property-border-left-style">border-left-style</a> | Basic | yes | yes | yes |   |
+|  [§7.8.27](http://www.w3.org/TR/xsl/#border-left-width)  | <a id="fo-property-border-left-width" name="fo-property-border-left-width">border-left-width</a> | Basic | yes | yes | yes |   |
+|  [§7.8.28](http://www.w3.org/TR/xsl/#border-right-color)  | <a id="fo-property-border-right-color" name="fo-property-border-right-color">border-right-color</a> | Basic | yes | yes | yes |   |
+|  [§7.8.29](http://www.w3.org/TR/xsl/#border-right-style)  | <a id="fo-property-border-right-style" name="fo-property-border-right-style">border-right-style</a> | Basic | yes | yes | yes |   |
+|  [§7.8.30](http://www.w3.org/TR/xsl/#border-right-width)  | <a id="fo-property-border-right-width" name="fo-property-border-right-width">border-right-width</a> | Basic | yes | yes | yes |   |
+|  [§7.8.31](http://www.w3.org/TR/xsl/#padding-before)  | <a id="fo-property-padding-before" name="fo-property-padding-before">padding-before</a> | Basic | yes | yes | yes |   |
+|  [§7.8.32](http://www.w3.org/TR/xsl/#padding-after)  | <a id="fo-property-padding-after" name="fo-property-padding-after">padding-after</a> | Basic | yes | yes | yes |   |
+|  [§7.8.33](http://www.w3.org/TR/xsl/#padding-start)  | <a id="fo-property-padding-start" name="fo-property-padding-start">padding-start</a> | Basic | yes | yes | yes |   |
+|  [§7.8.34](http://www.w3.org/TR/xsl/#padding-end)  | <a id="fo-property-padding-end" name="fo-property-padding-end">padding-end</a> | Basic | yes | yes | yes |   |
+|  [§7.8.35](http://www.w3.org/TR/xsl/#padding-top)  | <a id="fo-property-padding-top" name="fo-property-padding-top">padding-top</a> | Basic | yes | yes | yes |   |
+|  [§7.8.36](http://www.w3.org/TR/xsl/#padding-bottom)  | <a id="fo-property-padding-bottom" name="fo-property-padding-bottom">padding-bottom</a> | Basic | yes | yes | yes |   |
+|  [§7.8.37](http://www.w3.org/TR/xsl/#padding-left)  | <a id="fo-property-padding-left" name="fo-property-padding-left">padding-left</a> | Basic | yes | yes | yes |   |
+|  [§7.8.38](http://www.w3.org/TR/xsl/#padding-right)  | <a id="fo-property-padding-right" name="fo-property-padding-right">padding-right</a> | Basic | yes | yes | yes |   |
+|  [§7.9](http://www.w3.org/TR/xsl/#common-font-properties)  | <a id="fo-property-commonfont-section" name="fo-property-commonfont-section">Common Font Properties</a> |
+|  [§7.9.2](http://www.w3.org/TR/xsl/#font-family)  | <a id="fo-property-font-family" name="fo-property-font-family">font-family</a> | Basic | partial | partial | partial | font-family lists are allowed but glyph based font selection is not supported |
+|  [§7.9.3](http://www.w3.org/TR/xsl/#font-selection-strategy)  | <a id="fo-property-font-selection-strategy" name="fo-property-font-selection-strategy">font-selection-strategy</a> | Complete | no | no | no |   |
+|  [§7.9.4](http://www.w3.org/TR/xsl/#font-size)  | <a id="fo-property-font-size" name="fo-property-font-size">font-size</a> | Basic | yes | yes | yes |   |
+|  [§7.9.5](http://www.w3.org/TR/xsl/#font-stretch)  | <a id="fo-property-font-stretch" name="fo-property-font-stretch">font-stretch</a> | Extended | no | no | no |   |
+|  [§7.9.6](http://www.w3.org/TR/xsl/#font-size-adjust)  | <a id="fo-property-font-size-adjust" name="fo-property-font-size-adjust">font-size-adjust</a> | Extended | no | no | no |   |
+|  [§7.9.7](http://www.w3.org/TR/xsl/#font-style)  | <a id="fo-property-font-style" name="fo-property-font-style">font-style</a> | Basic | yes | yes | yes |   |
+|  [§7.9.8](http://www.w3.org/TR/xsl/#font-variant)  | <a id="fo-property-font-variant" name="fo-property-font-variant">font-variant</a> | Basic | no | no | no |   |
+|  [§7.9.9](http://www.w3.org/TR/xsl/#font-weight)  | <a id="fo-property-font-weight" name="fo-property-font-weight">font-weight</a> | Basic | partial | partial | partial | TODO <relative> font weights |
+|  [§7.10](http://www.w3.org/TR/xsl/#common-hyphenation-properties)  | <a id="fo-property-commonhyphen-section" name="fo-property-commonhyphen-section">Common Hyphenation Properties</a> |
+|  [§7.10.1](http://www.w3.org/TR/xsl/#country)  | <a id="fo-property-country" name="fo-property-country">country</a> | Extended | yes | yes | yes | For PDF output: Only 2-letter codes from ISO 3166 are supported properly to identify the natural language! |
+|  [§7.10.2](http://www.w3.org/TR/xsl/#language)  | <a id="fo-property-language" name="fo-property-language">language</a> | Extended | yes | yes | yes | For PDF output: Only 2-letter codes from ISO 639 are supported properly to identify the natural language! |
+|  [§7.10.3](http://www.w3.org/TR/xsl/#script)  | <a id="fo-property-script" name="fo-property-script">script</a> | Extended | no | no | no |   |
+|  [§7.10.4](http://www.w3.org/TR/xsl/#hyphenate)  | <a id="fo-property-hyphenate" name="fo-property-hyphenate">hyphenate</a> | Extended | yes | yes | yes |   |
+|  [§7.10.5](http://www.w3.org/TR/xsl/#hyphenation-character)  | <a id="fo-property-hyphenation-character" name="fo-property-hyphenation-character">hyphenation-character</a> | Extended | yes | yes | yes |   |
+|  [§7.10.6](http://www.w3.org/TR/xsl/#hyphenation-push-character-count)  | <a id="fo-property-hyphenation-push-character-count" name="fo-property-hyphenation-push-character-count">hyphenation-push-character-count</a> | Extended | yes | yes | yes |   |
+|  [§7.10.7](http://www.w3.org/TR/xsl/#hyphenation-remain-character-count)  | <a id="fo-property-hyphenation-remain-character-count" name="fo-property-hyphenation-remain-character-count">hyphenation-remain-character-count</a> | Extended | yes | yes | yes |   |
+|  [§7.11](http://www.w3.org/TR/xsl/#common-margin-properties-block)  | <a id="fo-property-commonmarginblock-section" name="fo-property-commonmarginblock-section">Common Margin Properties - Block</a> |
+|  [§7.11.1](http://www.w3.org/TR/xsl/#margin-top)  | <a id="fo-property-margin-top" name="fo-property-margin-top">margin-top</a> | Basic | yes | yes | yes |   |
+|  [§7.11.2](http://www.w3.org/TR/xsl/#margin-bottom)  | <a id="fo-property-margin-bottom" name="fo-property-margin-bottom">margin-bottom</a> | Basic | yes | yes | yes |   |
+|  [§7.11.3](http://www.w3.org/TR/xsl/#margin-left)  | <a id="fo-property-margin-left" name="fo-property-margin-left">margin-left</a> | Basic | yes | yes | yes |   |
+|  [§7.11.4](http://www.w3.org/TR/xsl/#margin-right)  | <a id="fo-property-margin-right" name="fo-property-margin-right">margin-right</a> | Basic | yes | yes | yes |   |
+|  [§7.11.5](http://www.w3.org/TR/xsl/#space-before)  | <a id="fo-property-space-before" name="fo-property-space-before">space-before</a> | Basic | partial | partial | partial | Space adjustment may not fully work everywhere, yet. |
+|  [§7.11.6](http://www.w3.org/TR/xsl/#space-after)  | <a id="fo-property-space-after" name="fo-property-space-after">space-after</a> | Basic | partial | partial | partial | Space adjustment may not fully work everywhere, yet. |
+|  [§7.11.7](http://www.w3.org/TR/xsl/#start-indent)  | <a id="fo-property-start-indent" name="fo-property-start-indent">start-indent</a> | Basic | yes | yes | yes |   |
+|  [§7.11.8](http://www.w3.org/TR/xsl/#end-indent)  | <a id="fo-property-end-indent" name="fo-property-end-indent">end-indent</a> | Basic | yes | yes | yes |   |
+|  [§7.12](http://www.w3.org/TR/xsl/#common-margin-properties-inline)  | <a id="fo-property-commonmargininline-section" name="fo-property-commonmargininline-section">Common Margin Properties - Inline</a> |
+|  [§7.12.1](http://www.w3.org/TR/xsl/#d0e21775)  | <a id="fo-property-margin-top-inline" name="fo-property-margin-top-inline">margin-top</a> | Basic | no | no | no |   |
+|  [§7.12.2](http://www.w3.org/TR/xsl/#d0e21783)  | <a id="fo-property-margin-bottom-inline" name="fo-property-margin-bottom-inline">margin-bottom</a> | Basic | no | no | no |   |
+|  [§7.12.3](http://www.w3.org/TR/xsl/#d0e21791)  | <a id="fo-property-margin-left-inline" name="fo-property-margin-left-inline">margin-left</a> | Basic | no | no | no |   |
+|  [§7.12.4](http://www.w3.org/TR/xsl/#d0e21799)  | <a id="fo-property-margin-right-inline" name="fo-property-margin-right-inline">margin-right</a> | Basic | no | no | no |   |
+|  [§7.12.5](http://www.w3.org/TR/xsl/#space-end)  | <a id="fo-property-space-end" name="fo-property-space-end">space-end</a> | Basic | no | no | no |   |
+|  [§7.12.6](http://www.w3.org/TR/xsl/#space-start)  | <a id="fo-property-space-start" name="fo-property-space-start">space-start</a> | Basic | no | no | no |   |
+|  [§7.13](http://www.w3.org/TR/xsl/#common-relative-position-properties)  | <a id="fo-property-commonrelpos-section" name="fo-property-commonrelpos-section">Common Relative Position Properties</a> |
+|  [§7.13.1](http://www.w3.org/TR/xsl/#d0e21934)  | <a id="fo-property-top-relative" name="fo-property-top-relative">top</a> | Extended | no | no | no |   |
+|  [§7.13.2](http://www.w3.org/TR/xsl/#d0e21942)  | <a id="fo-property-right-relative" name="fo-property-right-relative">right</a> | Extended | no | no | no |   |
+|  [§7.13.3](http://www.w3.org/TR/xsl/#d0e21950)  | <a id="fo-property-bottom-relative" name="fo-property-bottom-relative">bottom</a> | Extended | no | no | no |   |
+|  [§7.13.4](http://www.w3.org/TR/xsl/#d0e21958)  | <a id="fo-property-left-relative" name="fo-property-left-relative">left</a> | Extended | no | no | no |   |
+|  [§7.13.5](http://www.w3.org/TR/xsl/#relative-position)  | <a id="fo-property-relative-position" name="fo-property-relative-position">relative-position</a> | Extended | no | no | no |   |
+|  [§7.14](http://www.w3.org/TR/xsl/#area-alignment)  | <a id="fo-property-areaalign-section" name="fo-property-areaalign-section">Area Alignment Properties</a> |
+|  [§7.14.1](http://www.w3.org/TR/xsl/#alignment-adjust)  | <a id="fo-property-alignment-adjust" name="fo-property-alignment-adjust">alignment-adjust</a> | Basic | yes | yes | yes |   |
+|  [§7.14.2](http://www.w3.org/TR/xsl/#alignment-baseline)  | <a id="fo-property-alignment-baseline" name="fo-property-alignment-baseline">alignment-baseline</a> | Basic | yes | yes | yes |   |
+|  [§7.14.3](http://www.w3.org/TR/xsl/#baseline-shift)  | <a id="fo-property-baseline-shift" name="fo-property-baseline-shift">baseline-shift</a> | Basic | yes | yes | yes |   |
+|  [§7.14.4](http://www.w3.org/TR/xsl/#display-align)  | <a id="fo-property-display-align" name="fo-property-display-align">display-align</a> | Extended | partial | partial | partial | TODO Check e-g, i-f-o. |
+|  [§7.14.5](http://www.w3.org/TR/xsl/#dominant-baseline)  | <a id="fo-property-dominant-baseline" name="fo-property-dominant-baseline">dominant-baseline</a> | Basic | yes | yes | yes |   |
+|  [§7.14.6](http://www.w3.org/TR/xsl/#relative-align)  | <a id="fo-property-relative-align" name="fo-property-relative-align">relative-align</a> | Extended | no | no | no |   |
+|  [§7.15](http://www.w3.org/TR/xsl/#d0e22982)  | <a id="fo-property-areadim-section" name="fo-property-areadim-section">Area Dimension Properties</a> |
+|  [§7.15.1](http://www.w3.org/TR/xsl/#allowed-height-scale)  | <a id="fo-property-allowed-height-scale" name="fo-property-allowed-height-scale">allowed-height-scale</a> | Extended | no | no | no |   |
+|  [§7.15.2](http://www.w3.org/TR/xsl/#allowed-width-scale)  | <a id="fo-property-allowed-width-scale" name="fo-property-allowed-width-scale">allowed-width-scale</a> | Extended | no | no | no |   |
+|  [§7.15.3](http://www.w3.org/TR/xsl/#block-progression-dimension)  | <a id="fo-property-block-progression-dimension" name="fo-property-block-progression-dimension">block-progression-dimension</a> | Basic | yes | yes | yes |   |
+|  [§7.15.4](http://www.w3.org/TR/xsl/#content-height)  | <a id="fo-property-content-height" name="fo-property-content-height">content-height</a> | Extended | yes | yes | yes |   |
+|  [§7.15.5](http://www.w3.org/TR/xsl/#content-width)  | <a id="fo-property-content-width" name="fo-property-content-width">content-width</a> | Extended | yes | yes | yes |   |
+|  [§7.15.6](http://www.w3.org/TR/xsl/#height)  | <a id="fo-property-height" name="fo-property-height">height</a> | Basic | yes | yes | yes |   |
+|  [§7.15.7](http://www.w3.org/TR/xsl/#inline-progression-dimension)  | <a id="fo-property-inline-progression-dimension" name="fo-property-inline-progression-dimension">inline-progression-dimension</a> | Basic | yes | yes | yes |   |
+|  [§7.15.8](http://www.w3.org/TR/xsl/#max-height)  | <a id="fo-property-max-height" name="fo-property-max-height">max-height</a> | Complete | no | yes | yes |   |
+|  [§7.15.9](http://www.w3.org/TR/xsl/#max-width)  | <a id="fo-property-max-width" name="fo-property-max-width">max-width</a> | Complete | no | yes | yes |   |
+|  [§7.15.10](http://www.w3.org/TR/xsl/#min-height)  | <a id="fo-property-min-height" name="fo-property-min-height">min-height</a> | Complete | no | yes | yes |   |
+|  [§7.15.11](http://www.w3.org/TR/xsl/#min-width)  | <a id="fo-property-min-width" name="fo-property-min-width">min-width</a> | Complete | no | yes | yes |   |
+|  [§7.15.12](http://www.w3.org/TR/xsl/#scaling)  | <a id="fo-property-scaling" name="fo-property-scaling">scaling</a> | Extended | yes | yes | yes |   |
+|  [§7.15.13](http://www.w3.org/TR/xsl/#scaling-method)  | <a id="fo-property-scaling-method" name="fo-property-scaling-method">scaling-method</a> | Extended | no | no | no |   |
+|  [§7.15.14](http://www.w3.org/TR/xsl/#width)  | <a id="fo-property-width" name="fo-property-width">width</a> | Basic | yes | yes | yes |   |
+|  [§7.16](http://www.w3.org/TR/xsl/#d0e24119)  | <a id="fo-property-blockandline-section" name="fo-property-blockandline-section">Block and Line-related Properties</a> |
+|  [§7.16.1](http://www.w3.org/TR/xsl/#hyphenation-keep)  | <a id="fo-property-hyphenation-keep" name="fo-property-hyphenation-keep">hyphenation-keep</a> | Extended | no | no | no |   |
+|  [§7.16.2](http://www.w3.org/TR/xsl/#hyphenation-ladder-count)  | <a id="fo-property-hyphenation-ladder-count" name="fo-property-hyphenation-ladder-count">hyphenation-ladder-count</a> | Extended | yes | yes | yes |   |
+|  [§7.16.3](http://www.w3.org/TR/xsl/#last-line-end-indent)  | <a id="fo-property-last-line-end-indent" name="fo-property-last-line-end-indent">last-line-end-indent</a> | Extended | yes | yes | yes |   |
+|  [§7.16.4](http://www.w3.org/TR/xsl/#line-height)  | <a id="fo-property-line-height" name="fo-property-line-height">line-height</a> | Basic | yes | yes | yes |   |
+|  [§7.16.5](http://www.w3.org/TR/xsl/#line-height-shift-adjustment)  | <a id="fo-property-line-height-shift-adjustment" name="fo-property-line-height-shift-adjustment">line-height-shift-adjustment</a> | Extended | yes | yes | yes |   |
+|  [§7.16.6](http://www.w3.org/TR/xsl/#line-stacking-strategy)  | <a id="fo-property-line-stacking-strategy" name="fo-property-line-stacking-strategy">line-stacking-strategy</a> | Basic | partial | partial | partial | value "line-height" not supported |
+|  [§7.16.7](http://www.w3.org/TR/xsl/#linefeed-treatment)  | <a id="fo-property-linefeed-treatment" name="fo-property-linefeed-treatment">linefeed-treatment</a> | Extended | yes | yes | yes |   |
+|  [§7.16.8](http://www.w3.org/TR/xsl/#white-space-treatment)  | <a id="fo-property-white-space-treatment" name="fo-property-white-space-treatment">white-space-treatment</a> | Extended | partial | partial | partial | inline elements may interfere with correct handling of this property in some cases |
+|  [§7.16.9](http://www.w3.org/TR/xsl/#text-align)  | <a id="fo-property-text-align" name="fo-property-text-align">text-align</a> | Basic | partial | partial | partial | Only start, end, center and justify are supported |
+|  [§7.16.10](http://www.w3.org/TR/xsl/#text-align-last)  | <a id="fo-property-text-align-last" name="fo-property-text-align-last">text-align-last</a> | Extended | partial | partial | partial | Only start, end, center and justify are supported |
+|  [§7.16.11](http://www.w3.org/TR/xsl/#text-indent)  | <a id="fo-property-text-indent" name="fo-property-text-indent">text-indent</a> | Basic | yes | yes | yes |   |
+|  [§7.16.12](http://www.w3.org/TR/xsl/#white-space-collapse)  | <a id="fo-property-white-space-collapse" name="fo-property-white-space-collapse">white-space-collapse</a> | Extended | yes | yes | yes |   |
+|  [§7.16.13](http://www.w3.org/TR/xsl/#wrap-option)  | <a id="fo-property-wrap-option" name="fo-property-wrap-option">wrap-option</a> | Basic | partial | partial | partial | Only supported on fo:block. |
+|  [§7.17](http://www.w3.org/TR/xsl/#d0e25178)  | <a id="fo-property-char-section" name="fo-property-char-section">Character Properties</a> |
+|  [§7.17.1](http://www.w3.org/TR/xsl/#character)  | <a id="fo-property-character" name="fo-property-character">character</a> | Basic | yes | yes | yes |   |
+|  [§7.17.2](http://www.w3.org/TR/xsl/#letter-spacing)  | <a id="fo-property-letter-spacing" name="fo-property-letter-spacing">letter-spacing</a> | Extended | yes | yes | yes |   |
+|  [§7.17.3](http://www.w3.org/TR/xsl/#suppress-at-line-break)  | <a id="fo-property-suppress-at-line-break" name="fo-property-suppress-at-line-break">suppress-at-line-break</a> | Extended | no | no | no |   |
+|  [§7.17.4](http://www.w3.org/TR/xsl/#text-decoration)  | <a id="fo-property-text-decoration" name="fo-property-text-decoration">text-decoration</a> | Extended | yes | yes | yes |   |
+|  [§7.17.5](http://www.w3.org/TR/xsl/#text-shadow)  | <a id="fo-property-text-shadow" name="fo-property-text-shadow">text-shadow</a> | Extended | no | no | no |   |
+|  [§7.17.6](http://www.w3.org/TR/xsl/#text-transform)  | <a id="fo-property-text-transform" name="fo-property-text-transform">text-transform</a> | Extended | yes | yes | yes |   |
+|  [§7.17.7](http://www.w3.org/TR/xsl/#treat-as-word-space)  | <a id="fo-property-treat-as-word-space" name="fo-property-treat-as-word-space">treat-as-word-space</a> | Extended | no | no | no |   |
+|  [§7.17.8](http://www.w3.org/TR/xsl/#word-spacing)  | <a id="fo-property-word-spacing" name="fo-property-word-spacing">word-spacing</a> | Extended | yes | yes | yes |   |
+|  [§7.18](http://www.w3.org/TR/xsl/#d0e25895)  | <a id="fo-property-color-section" name="fo-property-color-section">Color-related Properties</a> |
+|  [§7.18.1](http://www.w3.org/TR/xsl/#color)  | <a id="fo-property-color" name="fo-property-color">color</a> | Basic | yes | yes | yes |   |
+|  [§7.18.2](http://www.w3.org/TR/xsl/#color-profile-name)  | <a id="fo-property-color-profile-name" name="fo-property-color-profile-name">color-profile-name</a> | Extended | no | no | no |   |
+|  [§7.18.3](http://www.w3.org/TR/xsl/#rendering-intent)  | <a id="fo-property-rendering-intent" name="fo-property-rendering-intent">rendering-intent</a> | Extended | no | no | no |   |
+|  [§7.19](http://www.w3.org/TR/xsl/#d0e26080)  | <a id="fo-property-float-section" name="fo-property-float-section">Float-related Properties</a> |
+|  [§7.19.1](http://www.w3.org/TR/xsl/#clear)  | <a id="fo-property-clear" name="fo-property-clear">clear</a> | Extended | no | no | no |   |
+|  [§7.19.2](http://www.w3.org/TR/xsl/#float)  | <a id="fo-property-float" name="fo-property-float">float</a> | Extended | no | no | no |   |
+|  [§7.19.3](http://www.w3.org/TR/xsl/#intrusion-displace)  | <a id="fo-property-intrusion-displace" name="fo-property-intrusion-displace">intrusion-displace</a> | Extended | no | no | no |   |
+|  [§7.20](http://www.w3.org/TR/xsl/#d0e26492)  | <a id="fo-property-keepsbreaks-section" name="fo-property-keepsbreaks-section">Keeps and Breaks Properties</a> |
+|  [§7.20.1](http://www.w3.org/TR/xsl/#break-after)  | <a id="fo-property-break-after" name="fo-property-break-after">break-after</a> | Basic | yes | yes | yes |   |
+|  [§7.20.2](http://www.w3.org/TR/xsl/#break-before)  | <a id="fo-property-break-before" name="fo-property-break-before">break-before</a> | Basic | yes | yes | yes |   |
+|  [§7.20.3](http://www.w3.org/TR/xsl/#keep-together)  | <a id="fo-property-keep-together" name="fo-property-keep-together">keep-together</a> | Extended | partial | partial | partial | 
+
+- [0.95] <integer> values are not supported.
+
+- [1.0 and later] minimal support for <integer> value.
+ |
+|  [§7.20.4](http://www.w3.org/TR/xsl/#keep-with-next)  | <a id="fo-property-keep-with-next" name="fo-property-keep-with-next">keep-with-next</a> | Basic | partial | partial | partial | 
+
+- works on all implemented block-level FOs, but not on inline-level FOs.
+
+- [0.95] <integer> values are not supported.
+
+- [1.0 and later] minimal support for <integer> value.
+ |
+|  [§7.20.5](http://www.w3.org/TR/xsl/#keep-with-previous)  | <a id="fo-property-keep-with-previous" name="fo-property-keep-with-previous">keep-with-previous</a> | Basic | partial | partial | partial | 
+
+- [0.95] works on all implemented FOs, except list- and inline-level FOs.
+
+- [1.0 and later] works on all implemented block-level FOs, but not on inline-level FOs.
+
+- [0.95] <integer> values are not supported.
+
+- [1.0 and later] minimal support for <integer> value.
+ |
+|  [§7.20.6](http://www.w3.org/TR/xsl/#orphans)  | <a id="fo-property-orphans" name="fo-property-orphans">orphans</a> | Basic | yes | yes | yes |   |
+|  [§7.20.7](http://www.w3.org/TR/xsl/#widows)  | <a id="fo-property-widows" name="fo-property-widows">widows</a> | Basic | yes | yes | yes |   |
+|  [§7.21](http://www.w3.org/TR/xsl/#d0e26965)  | <a id="fo-property-layout-section" name="fo-property-layout-section">Layout-related Properties</a> |
+|  [§7.21.1](http://www.w3.org/TR/xsl/#clip)  | <a id="fo-property-clip" name="fo-property-clip">clip</a> | Extended | no | no | no |   |
+|  [§7.21.2](http://www.w3.org/TR/xsl/#overflow)  | <a id="fo-property-overflow" name="fo-property-overflow">overflow</a> | Basic | yes | yes | yes |   |
+|  [§7.21.3](http://www.w3.org/TR/xsl/#reference-orientation)  | <a id="fo-property-reference-orientation" name="fo-property-reference-orientation">reference-orientation</a> | Extended | yes | yes | yes |   |
+|  [§7.21.4](http://www.w3.org/TR/xsl/#span)  | <a id="fo-property-span" name="fo-property-span">span</a> | Extended | yes | yes | yes |   |
+|  [§7.22](http://www.w3.org/TR/xsl/#d0e27308)  | <a id="fo-property-leader-section" name="fo-property-leader-section">Leader and Rule Properties</a> |
+|  [§7.22.1](http://www.w3.org/TR/xsl/#leader-alignment)  | <a id="fo-property-leader-alignment" name="fo-property-leader-alignment">leader-alignment</a> | Extended | no | no | no | Not supported |
+|  [§7.22.2](http://www.w3.org/TR/xsl/#leader-pattern)  | <a id="fo-property-leader-pattern" name="fo-property-leader-pattern">leader-pattern</a> | Basic | yes | yes | yes | Value "use-content" does not work in all circumstances. |
+|  [§7.22.3](http://www.w3.org/TR/xsl/#leader-pattern-width)  | <a id="fo-property-leader-pattern-width" name="fo-property-leader-pattern-width">leader-pattern-width</a> | Extended | yes | yes | yes |   |
+|  [§7.22.4](http://www.w3.org/TR/xsl/#leader-length)  | <a id="fo-property-leader-length" name="fo-property-leader-length">leader-length</a> | Basic | yes | yes | yes |   |
+|  [§7.22.5](http://www.w3.org/TR/xsl/#rule-style)  | <a id="fo-property-rule-style" name="fo-property-rule-style">rule-style</a> | Basic | yes | yes | yes |   |
+|  [§7.22.6](http://www.w3.org/TR/xsl/#rule-thickness)  | <a id="fo-property-rule-thickness" name="fo-property-rule-thickness">rule-thickness</a> | Basic | yes | yes | yes |   |
+|  [§7.23](http://www.w3.org/TR/xsl/#d0e27719)  | <a id="fo-property-dynamiceffects-section" name="fo-property-dynamiceffects-section">Properties for Dynamic Effects Formatting Objects</a> |
+|  [§7.23.1](http://www.w3.org/TR/xsl/#active-state)  | <a id="fo-property-active-state" name="fo-property-active-state">active-state</a> | Extended | no | no | no |   |
+|  [§7.23.2](http://www.w3.org/TR/xsl/#auto-restore)  | <a id="fo-property-auto-restore" name="fo-property-auto-restore">auto-restore</a> | Extended | no | no | no |   |
+|  [§7.23.3](http://www.w3.org/TR/xsl/#case-name)  | <a id="fo-property-case-name" name="fo-property-case-name">case-name</a> | Extended | no | no | no |   |
+|  [§7.23.4](http://www.w3.org/TR/xsl/#case-title)  | <a id="fo-property-case-title" name="fo-property-case-title">case-title</a> | Extended | no | no | no |   |
+|  [§7.23.5](http://www.w3.org/TR/xsl/#destination-placement-offset)  | <a id="fo-property-destination-placement-offset" name="fo-property-destination-placement-offset">destination-placement-offset</a> | Extended | no | no | no |   |
+|  [§7.23.6](http://www.w3.org/TR/xsl/#external-destination)  | <a id="fo-property-external-destination" name="fo-property-external-destination">external-destination</a> | Extended | yes | yes | yes |   |
+|  [§7.23.7](http://www.w3.org/TR/xsl/#indicate-destination)  | <a id="fo-property-indicate-destination" name="fo-property-indicate-destination">indicate-destination</a> | Extended | no | no | no |   |
+|  [§7.23.8](http://www.w3.org/TR/xsl/#internal-destination)  | <a id="fo-property-internal-destination" name="fo-property-internal-destination">internal-destination</a> | Extended | yes | yes | yes |   |
+|  [§7.23.9](http://www.w3.org/TR/xsl/#show-destination)  | <a id="fo-property-show-destination" name="fo-property-show-destination">show-destination</a> | Extended | no | partial | partial | [1.0 and later] only has effect in PDF output, for external PDF destinations (links pointing to destinations in *another* PDF), and only works reliably when the PDF is viewed in a standalone PDF viewer.
+Adobe's browser plugin, for example, ignores the `/NewWindow` flag.
+ |
+|  [§7.23.10](http://www.w3.org/TR/xsl/#starting-state)  | <a id="fo-property-starting-state" name="fo-property-starting-state">starting-state</a> | Extended | partial | partial | partial | support for starting-state on fo:bookmark |
+|  [§7.23.11](http://www.w3.org/TR/xsl/#switch-to)  | <a id="fo-property-switch-to" name="fo-property-switch-to">switch-to</a> | Extended | no | no | no |   |
+|  [§7.23.12](http://www.w3.org/TR/xsl/#target-presentation-context)  | <a id="fo-property-target-presentation-context" name="fo-property-target-presentation-context">target-presentation-context</a> | Extended | no | no | no |   |
+|  [§7.23.13](http://www.w3.org/TR/xsl/#target-processing-context)  | <a id="fo-property-target-processing-context" name="fo-property-target-processing-context">target-processing-context</a> | Extended | no | no | no |   |
+|  [§7.23.14](http://www.w3.org/TR/xsl/#target-stylesheet)  | <a id="fo-property-target-stylesheet" name="fo-property-target-stylesheet">target-stylesheet</a> | Extended | no | no | no |   |
+|  [§7.24](http://www.w3.org/TR/xsl/#d0e28521)  | <a id="fo-property-indexing-section" name="fo-property-indexing-section">Properties for Indexing</a> |
+|  [§7.24.1](http://www.w3.org/TR/xsl/#index-class)  | <a id="fo-property-index-class" name="fo-property-index-class">index-class</a> | Extended | no | no | no |   |
+|  [§7.24.2](http://www.w3.org/TR/xsl/#index-key)  | <a id="fo-property-index-key" name="fo-property-index-key">index-key</a> | Extended | no | no | no |   |
+|  [§7.24.3](http://www.w3.org/TR/xsl/#page-number-treatment)  | <a id="fo-property-page-number-treatment" name="fo-property-page-number-treatment">page-number-treatment</a> | Extended | no | no | no |   |
+|  [§7.24.4](http://www.w3.org/TR/xsl/#merge-ranges-across-index-key-references)  | <a id="fo-property-merge-ranges-across-index-key-references" name="fo-property-merge-ranges-across-index-key-references">merge-ranges-across-index-key-references</a> | Extended | no | no | no |   |
+|  [§7.24.5](http://www.w3.org/TR/xsl/#merge-sequential-page-numbers)  | <a id="fo-property-merge-sequential-page-numbers" name="fo-property-merge-sequential-page-numbers">merge-sequential-page-numbers</a> | Extended | no | no | no |   |
+|  [§7.24.6](http://www.w3.org/TR/xsl/#merge-pages-across-index-key-references)  | <a id="fo-property-merge-pages-across-index-key-references" name="fo-property-merge-pages-across-index-key-references">merge-pages-across-index-key-references</a> | Extended | no | no | no |   |
+|  [§7.24.7](http://www.w3.org/TR/xsl/#ref-index-key)  | <a id="fo-property-ref-index-key" name="fo-property-ref-index-key">ref-index-key</a> | Extended | no | no | no |   |
+|  [§7.25](http://www.w3.org/TR/xsl/#d0e28896)  | <a id="fo-property-markers-section" name="fo-property-markers-section">Properties for Markers</a> |
+|  [§7.25.1](http://www.w3.org/TR/xsl/#marker-class-name)  | <a id="fo-property-marker-class-name" name="fo-property-marker-class-name">marker-class-name</a> | Extended | yes | yes | yes |   |
+|  [§7.25.2](http://www.w3.org/TR/xsl/#retrieve-boundary-within-table)  | <a id="fo-property-retrieve-boundary-within-table" name="fo-property-retrieve-boundary-within-table">retrieve-boundary-within-table</a> | Extended | no | no | no |   |
+|  [§7.25.3](http://www.w3.org/TR/xsl/#retrieve-class-name)  | <a id="fo-property-retrieve-class-name" name="fo-property-retrieve-class-name">retrieve-class-name</a> | Extended | yes | yes | yes |   |
+|  [§7.53.4](http://www.w3.org/TR/xsl/#retrieve-position)  | <a id="fo-property-retrieve-position" name="fo-property-retrieve-position">retrieve-position</a> | Extended | yes | yes | yes |   |
+|  [§7.25.5](http://www.w3.org/TR/xsl/#retrieve-boundary)  | <a id="fo-property-retrieve-boundary" name="fo-property-retrieve-boundary">retrieve-boundary</a> | Extended | yes | yes | yes |   |
+|  [§7.25.6](http://www.w3.org/TR/xsl/#retrieve-position-within-table)  | <a id="fo-property-retrieve-position-within-table" name="fo-property-retrieve-position-within-table">retrieve-position-within-table</a> | Extended | no | no | no |   |
+|  [§7.26](http://www.w3.org/TR/xsl/#d0e29313)  | <a id="fo-property-numberstring-section" name="fo-property-numberstring-section">Properties for Number to String Conversion</a> |
+|  [§7.26.1](http://www.w3.org/TR/xsl/#format)  | <a id="fo-property-format" name="fo-property-format">format</a> | Basic | partial | partial | partial | only values '0*1', 'a', 'A', 'i', 'I' supported |
+|  [§7.26.2](http://www.w3.org/TR/xsl/#grouping-separator)  | <a id="fo-property-grouping-separator" name="fo-property-grouping-separator">grouping-separator</a> | Extended | no | no | no |   |
+|  [§7.26.3](http://www.w3.org/TR/xsl/#grouping-size)  | <a id="fo-property-grouping-size" name="fo-property-grouping-size">grouping-size</a> | Extended | no | no | no |   |
+|  [§7.26.4](http://www.w3.org/TR/xsl/#letter-value)  | <a id="fo-property-letter-value" name="fo-property-letter-value">letter-value</a> | Basic | no | no | no |   |
+|  [§7.27](http://www.w3.org/TR/xsl/#d0e29484)  | <a id="fo-property-pagination-section" name="fo-property-pagination-section">Pagination and Layout Properties</a> |
+|  [§7.27.1](http://www.w3.org/TR/xsl/#blank-or-not-blank)  | <a id="fo-property-blank-or-not-blank" name="fo-property-blank-or-not-blank">blank-or-not-blank</a> | Extended | yes | yes | yes |   |
+|  [§7.27.2](http://www.w3.org/TR/xsl/#column-count)  | <a id="fo-property-column-count" name="fo-property-column-count">column-count</a> | Extended | yes | yes | yes |   |
+|  [§7.27.3](http://www.w3.org/TR/xsl/#column-gap)  | <a id="fo-property-column-gap" name="fo-property-column-gap">column-gap</a> | Extended | yes | yes | yes |   |
+|  [§7.27.4](http://www.w3.org/TR/xsl/#extent)  | <a id="fo-property-extent" name="fo-property-extent">extent</a> | Extended | yes | yes | yes |   |
+|  [§7.27.5](http://www.w3.org/TR/xsl/#flow-name)  | <a id="fo-property-flow-name" name="fo-property-flow-name">flow-name</a> | Basic | yes | yes | yes |   |
+|  [§7.27.6](http://www.w3.org/TR/xsl/#force-page-count)  | <a id="fo-property-force-page-count" name="fo-property-force-page-count">force-page-count</a> | Extended | yes | yes | yes |   |
+|  [§7.27.7](http://www.w3.org/TR/xsl/#initial-page-number)  | <a id="fo-property-initial-page-number" name="fo-property-initial-page-number">initial-page-number</a> | Basic | yes | yes | yes |   |
+|  [§7.27.8](http://www.w3.org/TR/xsl/#master-name)  | <a id="fo-property-master-name" name="fo-property-master-name">master-name</a> | Basic | yes | yes | yes |   |
+|  [§7.27.9](http://www.w3.org/TR/xsl/#master-reference)  | <a id="fo-property-master-reference" name="fo-property-master-reference">master-reference</a> | Basic | yes | yes | yes |   |
+|  [§7.27.10](http://www.w3.org/TR/xsl/#maximum-repeats)  | <a id="fo-property-maximum-repeats" name="fo-property-maximum-repeats">maximum-repeats</a> | Extended | yes | yes | yes |   |
+|  [§7.27.11](http://www.w3.org/TR/xsl/#media-usage)  | <a id="fo-property-media-usage" name="fo-property-media-usage">media-usage</a> | Extended | no | no | no |   |
+|  [§7.27.12](http://www.w3.org/TR/xsl/#odd-or-even)  | <a id="fo-property-odd-or-even" name="fo-property-odd-or-even">odd-or-even</a> | Extended | yes | yes | yes |   |
+|  [§7.27.13](http://www.w3.org/TR/xsl/#page-height)  | <a id="fo-property-page-height" name="fo-property-page-height">page-height</a> | Basic | partial | partial | partial | value "indefinite" not yet supported |
+|  [§7.27.14](http://www.w3.org/TR/xsl/#page-position)  | <a id="fo-property-page-position" name="fo-property-page-position">page-position</a> | Extended | partial | yes | yes | value "only" not supported |
+|  [§7.27.15](http://www.w3.org/TR/xsl/#page-width)  | <a id="fo-property-page-width" name="fo-property-page-width">page-width</a> | Basic | partial | partial | partial | value "indefinite" not yet supported |
+|  [§7.27.16](http://www.w3.org/TR/xsl/#precedence)  | <a id="fo-property-precedence" name="fo-property-precedence">precedence</a> | Extended | yes | yes | yes |   |
+|  [§7.27.17](http://www.w3.org/TR/xsl/#region-name)  | <a id="fo-property-region-name" name="fo-property-region-name">region-name</a> | Basic | yes | yes | yes |   |
+|  [§7.27.18](http://www.w3.org/TR/xsl/#flow-map-name)  | <a id="fo-property-flow-map-name" name="fo-property-flow-map-name">flow-map-name</a> | Extended | no | no | no |   |
+|  [§7.27.19](http://www.w3.org/TR/xsl/#flow-map-reference)  | <a id="fo-property-flow-map-reference" name="fo-property-flow-map-reference">flow-map-reference</a> | Extended | no | no | no |   |
+|  [§7.27.20](http://www.w3.org/TR/xsl/#flow-name-reference)  | <a id="fo-property-flow-name-reference" name="fo-property-flow-name-reference">flow-name-reference</a> | Extended | no | no | no |   |
+|  [§7.27.21](http://www.w3.org/TR/xsl/#region-name-reference)  | <a id="fo-property-region-name-reference" name="fo-property-region-name-reference">region-name-reference</a> | Extended | no | no | no |   |
+|  [§7.28](http://www.w3.org/TR/xsl/#d0e30798)  | <a id="fo-property-table-section" name="fo-property-table-section">Table Properties</a> |
+|  [§7.28.1](http://www.w3.org/TR/xsl/#border-after-precedence)  | <a id="fo-property-border-after-precedence" name="fo-property-border-after-precedence">border-after-precedence</a> | Basic | no | no | no |   |
+|  [§7.28.2](http://www.w3.org/TR/xsl/#border-before-precedence)  | <a id="fo-property-border-before-precedence" name="fo-property-border-before-precedence">border-before-precedence</a> | Basic | no | no | no |   |
+|  [§7.28.3](http://www.w3.org/TR/xsl/#border-collapse)  | <a id="fo-property-border-collapse" name="fo-property-border-collapse">border-collapse</a> | Extended | partial | partial | partial | value "collapse-with-precedence" not yet supported |
+|  [§7.28.4](http://www.w3.org/TR/xsl/#border-end-precedence)  | <a id="fo-property-border-end-precedence" name="fo-property-border-end-precedence">border-end-precedence</a> | Basic | no | no | no |   |
+|  [§7.28.5](http://www.w3.org/TR/xsl/#border-separation)  | <a id="fo-property-border-separation" name="fo-property-border-separation">border-separation</a> | Extended | yes | yes | yes |   |
+|  [§7.28.6](http://www.w3.org/TR/xsl/#border-start-precedence)  | <a id="fo-property-border-start-precedence" name="fo-property-border-start-precedence">border-start-precedence</a> | Basic | no | no | no |   |
+|  [§7.28.7](http://www.w3.org/TR/xsl/#caption-side)  | <a id="fo-property-caption-side" name="fo-property-caption-side">caption-side</a> | Complete | no | no | no |   |
+|  [§7.28.8](http://www.w3.org/TR/xsl/#column-number)  | <a id="fo-property-column-number" name="fo-property-column-number">column-number</a> | Basic | yes | yes | yes |   |
+|  [§7.28.9](http://www.w3.org/TR/xsl/#column-width)  | <a id="fo-property-column-width" name="fo-property-column-width">column-width</a> | Basic | yes | yes | yes |   |
+|  [§7.28.10](http://www.w3.org/TR/xsl/#empty-cells)  | <a id="fo-property-empty-cells" name="fo-property-empty-cells">empty-cells</a> | Extended | no | no | no |   |
+|  [§7.28.11](http://www.w3.org/TR/xsl/#ends-row)  | <a id="fo-property-ends-row" name="fo-property-ends-row">ends-row</a> | Extended | yes | yes | yes |   |
+|  [§7.28.12](http://www.w3.org/TR/xsl/#number-columns-repeated)  | <a id="fo-property-number-columns-repeated" name="fo-property-number-columns-repeated">number-columns-repeated</a> | Basic | yes | yes | yes |   |
+|  [§7.28.13](http://www.w3.org/TR/xsl/#number-columns-spanned)  | <a id="fo-property-number-columns-spanned" name="fo-property-number-columns-spanned">number-columns-spanned</a> | Basic | yes | yes | yes |   |
+|  [§7.28.14](http://www.w3.org/TR/xsl/#number-rows-spanned)  | <a id="fo-property-number-rows-spanned" name="fo-property-number-rows-spanned">number-rows-spanned</a> | Basic | yes | yes | yes |   |
+|  [§7.28.15](http://www.w3.org/TR/xsl/#starts-row)  | <a id="fo-property-starts-row" name="fo-property-starts-row">starts-row</a> | Extended | yes | yes | yes |   |
+|  [§7.28.16](http://www.w3.org/TR/xsl/#table-layout)  | <a id="fo-property-table-layout" name="fo-property-table-layout">table-layout</a> | Extended | no | no | no |   |
+|  [§7.28.17](http://www.w3.org/TR/xsl/#table-omit-footer-at-break)  | <a id="fo-property-table-omit-footer-at-break" name="fo-property-table-omit-footer-at-break">table-omit-footer-at-break</a> | Extended | yes | yes | yes |   |
+|  [§7.28.18](http://www.w3.org/TR/xsl/#table-omit-header-at-break)  | <a id="fo-property-table-omit-header-at-break" name="fo-property-table-omit-header-at-break">table-omit-header-at-break</a> | Extended | yes | yes | yes |   |
+|  [§7.29](http://www.w3.org/TR/xsl/#writing-mode-related)  | <a id="fo-property-writingmode-section" name="fo-property-writingmode-section">Writing-mode-related Properties</a> |
+|  [§7.29.1](http://www.w3.org/TR/xsl/#direction)  | <a id="fo-property-direction" name="fo-property-direction">direction</a> | Basic | no | no | no |   |
+|  [§7.29.2](http://www.w3.org/TR/xsl/#glyph-orientation-horizontal)  | <a id="fo-property-glyph-orientation-horizontal" name="fo-property-glyph-orientation-horizontal">glyph-orientation-horizontal</a> | Extended | no | no | no |   |
+|  [§7.29.3](http://www.w3.org/TR/xsl/#glyph-orientation-vertical)  | <a id="fo-property-glyph-orientation-vertical" name="fo-property-glyph-orientation-vertical">glyph-orientation-vertical</a> | Extended | no | no | no |   |
+|  [§7.29.4](http://www.w3.org/TR/xsl/#text-altitude)  | <a id="fo-property-text-altitude" name="fo-property-text-altitude">text-altitude</a> | Extended | no | no | no |   |
+|  [§7.29.5](http://www.w3.org/TR/xsl/#text-depth)  | <a id="fo-property-text-depth" name="fo-property-text-depth">text-depth</a> | Extended | no | no | no |   |
+|  [§7.29.6](http://www.w3.org/TR/xsl/#unicode-bidi)  | <a id="fo-property-unicode-bidi" name="fo-property-unicode-bidi">unicode-bidi</a> | Extended | no | no | no |   |
+|  [§7.29.7](http://www.w3.org/TR/xsl/#writing-mode)  | <a id="fo-property-writing-mode" name="fo-property-writing-mode">writing-mode</a> | Basic | no | no | no |   |
+|  [§7.30](http://www.w3.org/TR/xsl/#d0e32871)  | <a id="fo-property-misc-section" name="fo-property-misc-section">Miscellaneous Properties</a> |
+|  [§7.30.1](http://www.w3.org/TR/xsl/#change-bar-class)  | <a id="fo-property-change-bar-class" name="fo-property-change-bar-class">change-bar-class</a> | Extended | no | no | no |   |
+|  [§7.30.2](http://www.w3.org/TR/xsl/#change-bar-color)  | <a id="fo-property-change-bar-color" name="fo-property-change-bar-color">change-bar-color</a> | Extended | no | no | no |   |
+|  [§7.30.3](http://www.w3.org/TR/xsl/#change-bar-offset)  | <a id="fo-property-change-bar-offset" name="fo-property-change-bar-offset">change-bar-offset</a> | Extended | no | no | no |   |
+|  [§7.30.4](http://www.w3.org/TR/xsl/#change-bar-placement)  | <a id="fo-property-change-bar-placement" name="fo-property-change-bar-placement">change-bar-placement</a> | Extended | no | no | no |   |
+|  [§7.30.5](http://www.w3.org/TR/xsl/#change-bar-style)  | <a id="fo-property-change-bar-style" name="fo-property-change-bar-style">change-bar-style</a> | Extended | no | no | no |   |
+|  [§7.30.6](http://www.w3.org/TR/xsl/#change-bar-width)  | <a id="fo-property-change-bar-width" name="fo-property-change-bar-width">change-bar-width</a> | Extended | no | no | no |   |
+|  [§7.30.7](http://www.w3.org/TR/xsl/#content-type)  | <a id="fo-property-content-type" name="fo-property-content-type">content-type</a> | Extended | no | no | no |   |
+|  [§7.30.8](http://www.w3.org/TR/xsl/#id)  | <a id="fo-property-id" name="fo-property-id">id</a> | Basic | partial | partial | partial | IDs on table-header, table-footer, table-body, table-row, table-and-caption, table-caption, inline-container and bidi-override are not available, yet. |
+|  [§7.30.9](http://www.w3.org/TR/xsl/#intrinsic-scale-value)  | <a id="fo-property-intrinsic-scale-value" name="fo-property-intrinsic-scale-value">intrinsic-scale-value</a> | Extended | no | no | no |   |
+|  [§7.30.10](http://www.w3.org/TR/xsl/#page-citation-strategy)  | <a id="fo-property-page-citation-strategy" name="fo-property-page-citation-strategy">page-citation-strategy</a> | Extended | no | no | no |   |
+|  [§7.30.11](http://www.w3.org/TR/xsl/#provisional-label-separation)  | <a id="fo-property-provisional-label-separation" name="fo-property-provisional-label-separation">provisional-label-separation</a> | Basic | yes | yes | yes |   |
+|  [§7.30.12](http://www.w3.org/TR/xsl/#provisional-distance-between-starts)  | <a id="fo-property-provisional-distance-between-starts" name="fo-property-provisional-distance-between-starts">provisional-distance-between-starts</a> | Basic | yes | yes | yes |   |
+|  [§7.30.13](http://www.w3.org/TR/xsl/#ref-id)  | <a id="fo-property-ref-id" name="fo-property-ref-id">ref-id</a> | Extended | yes | yes | yes |   |
+|  [§7.30.14](http://www.w3.org/TR/xsl/#scale-option)  | <a id="fo-property-scale-option" name="fo-property-scale-option">scale-option</a> | Extended | no | no | no |   |
+|  [§7.30.15](http://www.w3.org/TR/xsl/#score-spaces)  | <a id="fo-property-score-spaces" name="fo-property-score-spaces">score-spaces</a> | Extended | no | no | no |   |
+|  [§7.30.16](http://www.w3.org/TR/xsl/#src)  | <a id="fo-property-src" name="fo-property-src">src</a> | Basic | yes | yes | yes |   |
+|  [§7.30.17](http://www.w3.org/TR/xsl/#visibility)  | <a id="fo-property-visibility" name="fo-property-visibility">visibility</a> | Extended | no | no | no |   |
+|  [§7.30.18](http://www.w3.org/TR/xsl/#z-index)  | <a id="fo-property-z-index" name="fo-property-z-index">z-index</a> | Extended | no | no | no |   |
+|  [§7.31](http://www.w3.org/TR/xsl/#d0e33965)  | <a id="fo-property-shorthand-section" name="fo-property-shorthand-section">Shorthand Properties</a> |
+|  [§7.31.1](http://www.w3.org/TR/xsl/#background)  | <a id="fo-property-background" name="fo-property-background">background</a> | Complete | no | no | no |   |
+|  [§7.31.2](http://www.w3.org/TR/xsl/#background-position)  | <a id="fo-property-background-position" name="fo-property-background-position">background-position</a> | Complete | yes | yes | yes |   |
+|  [§7.31.3](http://www.w3.org/TR/xsl/#border)  | <a id="fo-property-border" name="fo-property-border">border</a> | Complete | yes | yes | yes |   |
+|  [§7.31.4](http://www.w3.org/TR/xsl/#border-bottom)  | <a id="fo-property-border-bottom" name="fo-property-border-bottom">border-bottom</a> | Complete | yes | yes | yes |   |
+|  [§7.31.5](http://www.w3.org/TR/xsl/#border-color)  | <a id="fo-property-border-color" name="fo-property-border-color">border-color</a> | Complete | yes | yes | yes |   |
+|  [§7.31.6](http://www.w3.org/TR/xsl/#border-left)  | <a id="fo-property-border-left" name="fo-property-border-left">border-left</a> | Complete | yes | yes | yes |   |
+|  [§7.31.7](http://www.w3.org/TR/xsl/#border-right)  | <a id="fo-property-border-right" name="fo-property-border-right">border-right</a> | Complete | yes | yes | yes |   |
+|  [§7.31.8](http://www.w3.org/TR/xsl/#border-style)  | <a id="fo-property-border-style" name="fo-property-border-style">border-style</a> | Complete | yes | yes | yes |   |
+|  [§7.31.9](http://www.w3.org/TR/xsl/#border-spacing)  | <a id="fo-property-border-spacing" name="fo-property-border-spacing">border-spacing</a> | Complete | yes | yes | yes |   |
+|  [§7.31.10](http://www.w3.org/TR/xsl/#border-top)  | <a id="fo-property-border-top" name="fo-property-border-top">border-top</a> | Complete | yes | yes | yes |   |
+|  [§7.31.11](http://www.w3.org/TR/xsl/#border-width)  | <a id="fo-property-border-width" name="fo-property-border-width">border-width</a> | Complete | yes | yes | yes |   |
+|  [§7.31.12](http://www.w3.org/TR/xsl/#cue)  | <a id="fo-property-cue" name="fo-property-cue">cue</a> | Complete | na | na | na | na |   |
+|  [§7.31.13](http://www.w3.org/TR/xsl/#font)  | <a id="fo-property-font" name="fo-property-font">font</a> | Complete | partial | partial | partial | Enum values other than "inherit" not yet supported. |
+|  [§7.31.14](http://www.w3.org/TR/xsl/#margin)  | <a id="fo-property-margin" name="fo-property-margin">margin</a> | Complete | yes | yes | yes |   |
+|  [§7.31.15](http://www.w3.org/TR/xsl/#padding)  | <a id="fo-property-padding" name="fo-property-padding">padding</a> | Complete | yes | yes | yes |   |
+|  [§7.31.16](http://www.w3.org/TR/xsl/#page-break-after)  | <a id="fo-property-page-break-after" name="fo-property-page-break-after">page-break-after</a> | Complete | yes | yes | yes |   |
+|  [§7.31.17](http://www.w3.org/TR/xsl/#page-break-before)  | <a id="fo-property-page-break-before" name="fo-property-page-break-before">page-break-before</a> | Complete | yes | yes | yes |   |
+|  [§7.31.18](http://www.w3.org/TR/xsl/#page-break-inside)  | <a id="fo-property-page-break-inside" name="fo-property-page-break-inside">page-break-inside</a> | Complete | yes | yes | yes |   |
+|  [§7.31.19](http://www.w3.org/TR/xsl/#pause)  | <a id="fo-property-pause" name="fo-property-pause">pause</a> | Complete | na | na | na | na |   |
+|  [§7.31.20](http://www.w3.org/TR/xsl/#position)  | <a id="fo-property-position" name="fo-property-position">position</a> | Complete | yes | yes | yes |   |
+|  [§7.31.21](http://www.w3.org/TR/xsl/#size)  | <a id="fo-property-size" name="fo-property-size">size</a> | Complete | no | no | no |   |
+|  [§7.31.22](http://www.w3.org/TR/xsl/#vertical-align)  | <a id="fo-property-vertical-align" name="fo-property-vertical-align">vertical-align</a> | Complete | partial | partial | partial | Percentages are not supported, yet. |
+|  [§7.31.23](http://www.w3.org/TR/xsl/#white-space)  | <a id="fo-property-white-space" name="fo-property-white-space">white-space</a> | Complete | yes | yes | yes |   |
+|  [§7.31.24](http://www.w3.org/TR/xsl/#xml.lang)  | <a id="fo-property-xml:lang" name="fo-property-xml:lang">xml:lang</a> | Complete | yes | yes | yes | Very basic parsing; no validation of the specified value. |
+
+# XSL-FO Core Function Library Support Table (§5.10) # {#fo-function-core-library-section}
+
+The following is a summary of FOP's current support for the XSL-FO Core Function Library.
+
+| Citation | Function Name | XSL-FO Conformance Level | Support in FOP | Comments |
+|----------|---------------|--------------------------|----------------|----------|
+| 0.95 (stable) | 1.0 (stable) | develop- ment |
+|---------------|--------------|---------------|
+|  [§5.10.1](http://www.w3.org/TR/xsl/#d0e5860)  | <a id="fo-function-number-section" name="fo-function-number-section">Number Functions</a> |
+|  [§5.10.1](http://www.w3.org/TR/xsl/#d0e5860)  | <a id="fo-function-floor" name="fo-function-floor">floor</a> | Basic | yes | yes | yes |   |
+|  [§5.10.1](http://www.w3.org/TR/xsl/#d0e5860)  | <a id="fo-function-ceiling" name="fo-function-ceiling">ceiling</a> | Basic | yes | yes | yes |   |
+|  [§5.10.1](http://www.w3.org/TR/xsl/#d0e5860)  | <a id="fo-function-round" name="fo-function-round">round</a> | Basic | yes | yes | yes |   |
+|  [§5.10.1](http://www.w3.org/TR/xsl/#d0e5860)  | <a id="fo-function-min" name="fo-function-min">min</a> | Basic | yes | yes | yes |   |
+|  [§5.10.1](http://www.w3.org/TR/xsl/#d0e5860)  | <a id="fo-function-max" name="fo-function-max">max</a> | Basic | yes | yes | yes |   |
+|  [§5.10.1](http://www.w3.org/TR/xsl/#d0e5860)  | <a id="fo-function-abs" name="fo-function-abs">abs</a> | Basic | yes | yes | yes |   |
+|  [§5.10.2](http://www.w3.org/TR/xsl/#expr-color-functions)  | <a id="fo-function-color-section" name="fo-function-color-section">Color Functions</a> |
+|  [§5.10.2](http://www.w3.org/TR/xsl/#expr-color-functions)  | <a id="fo-function-rgb" name="fo-function-rgb">rgb</a> | Basic | yes | yes | yes |   |
+|  [§5.10.2](http://www.w3.org/TR/xsl/#expr-color-functions)  | <a id="fo-function-rgb-icc" name="fo-function-rgb-icc">rgb-icc</a> | Basic | yes | yes | yes |   |
+|  [§5.10.2](http://www.w3.org/TR/xsl/#expr-color-functions)  | <a id="fo-function-system-color" name="fo-function-system-color">system-color</a> | Basic | yes | yes | yes |   |
+|  [§5.10.3](http://www.w3.org/TR/xsl/#d0e5948)  | <a id="fo-function-font-section" name="fo-function-font-section">Font Functions</a> |
+|  [§5.10.3](http://www.w3.org/TR/xsl/#d0e5948)  | <a id="fo-function-system-font" name="fo-function-system-font">system-font</a> | Basic | no | no | no |   |
+|  [§5.10.4](http://www.w3.org/TR/xsl/#d0e5961)  | <a id="fo-function-property-value-section" name="fo-function-property-value-section">Property Value Functions</a> |
+|  [§5.10.4](http://www.w3.org/TR/xsl/#d0e5961)  | <a id="fo-function-inherited-property-value" name="fo-function-inherited-property-value">inherited-property-value</a> | Basic | yes | yes | yes |   |
+|  [§5.10.4](http://www.w3.org/TR/xsl/#d0e5961)  | <a id="fo-function-label-end" name="fo-function-label-end">label-end</a> | Basic | yes | yes | yes |   |
+|  [§5.10.4](http://www.w3.org/TR/xsl/#d0e5961)  | <a id="fo-function-body-start" name="fo-function-body-start">body-start</a> | Basic | yes | yes | yes |   |
+|  [§5.10.4](http://www.w3.org/TR/xsl/#d0e5961)  | <a id="fo-function-from-parent" name="fo-function-from-parent">from-parent</a> | Basic | yes | yes | yes |   |
+|  [§5.10.4](http://www.w3.org/TR/xsl/#d0e5961)  | <a id="fo-function-from-nearest-specified-value" name="fo-function-from-nearest-specified-value">from-nearest-specified-value</a> | Basic | yes | yes | yes |   |
+|  [§5.10.4](http://www.w3.org/TR/xsl/#d0e5961)  | <a id="fo-function-from-page-master-region" name="fo-function-from-page-master-region">from-page-master-region</a> | Basic | no | no | no |   |
+|  [§5.10.4](http://www.w3.org/TR/xsl/#d0e5961)  | <a id="fo-function-from-table-column" name="fo-function-from-table-column">from-table-column</a> | Basic | yes | yes | yes |   |
+|  [§5.10.4](http://www.w3.org/TR/xsl/#d0e5961)  | <a id="fo-function-proportional-column-width" name="fo-function-proportional-column-width">proportional-column-width</a> | Basic | yes | yes | yes |   |
+|  [§5.10.4](http://www.w3.org/TR/xsl/#d0e5961)  | <a id="fo-function-merge-property-values" name="fo-function-merge-property-values">merge-property-values</a> | Basic | no | no | no |   |

@@ -1,0 +1,36 @@
+Title: Apache™ FOP Development: Adding an Extension
+<version>$Revision: 1298724 $</version>
+
+# Overview # {#overview}
+
+For documentation of standard Apache™ FOP extensions, see the [User FOP Extensions](../trunk/extensions.html) document.
+
+If the default funtionality of FOP needs to be extended for some reason then you can write an extension.
+
+There are three types of extensions possible:
+
+
+- An output document extension such as the PDF bookmarks
+
+- an instream-foreign-object extensions such as SVG
+
+- an fo extension that creates an area in the area tree where normal xsl:fo is not possible
+
+# Adding Your Own # {#adding}
+
+To add your own extension you need to do the following things.
+
+
+1. Write code that implements your extension functionality. The easiest place to start is by looking at the code in org.apache.fop.fo.extensions, and by looking at the examples in the `examples` directory.
+
+1. Create a class that extends the abstract org.apache.fop.fo.ElementMapping class. ElementMapping is a hashmap of all of the elements in a particular namespace, which makes it easier for FOP to create a different object for each element. ElementMapping objects are static to save on memory. They are loaded by FOP when parsing starts to validate input.
+
+1. Create the following file: "/META-INF/services/org.apache.fop.fo.ElementMapping", which should contain the fully qualified classname of your ElementMapping implementation class.
+
+1. Create a jar file containing all of the above files.
+
+1. Create your XSL-FO file with the extra XML data embedded in the file with the correct name space. The examples for SVG and pdfoutline.fo show how this can be done. The pdf documents on the FOP site use this extension. See also [Examples](../examples.html) for more examples.
+
+1. Put your jar file in the classpath
+
+1. Run FOP using your XSL-FO file as input.

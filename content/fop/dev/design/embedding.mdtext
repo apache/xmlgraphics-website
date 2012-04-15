@@ -1,0 +1,91 @@
+Title: Apache™ FOP Design: Embedding Apache� FOP in Other Applications
+<version>$Revision: 1298724 $</version><authors><person email="keiron@aftexsw.com" name="Keiron Liddle"></person></authors>
+
+# Introduction # {#intro}
+
+This is the design for the external interface when Apache™ FOP is to be embedded inside another java application.
+
+Common places where FOP is embedded is in a report production application of a server side application such as<jump href="http://xml.apache.org/cocoon/index.html">Cocoon</jump>.
+
+# Settings # {#Settings}
+
+## User Agent ## {#User+Agent}
+
+Possible meanings for a user agent:
+
+
+- something that makes decisions where the specifiction indicates that the user agent should decide
+
+- FOP as the user agent, represented by a class that handles various setup and decision values
+
+- an class that handles context for a particular FOP conversion that can be configured/overridden when embedding
+
+The user agent is responsible for supplying user or context specific information. The list of user agent values can be found on the<jump href="useragent.html">User Agent</jump>page.
+
+## Logging ## {#Logging}
+
+
+- logging level
+
+- logging messages of various levels
+
+- error handling
+
+- Logging setup (LogKit, Log4J, JDK14Logging)
+
+## XML input ## {#XML+input}
+
+
+- various ways to supply FOP with the xsl:fo file, fo, xml+xsl
+
+- sax handler
+
+## general options ## {#general+options}
+
+
+- base url
+
+- uri resolvers
+
+- which implementation of a particular LayoutManager to use
+
+## Rendering Options ## {#Rendering+Options}
+
+
+- embedding fonts
+
+- compression in pdf
+
+- image embedding
+
+for the PS renderer (eventually):
+
+
+- PostScript Level
+
+- PPD to use
+
+- binary/ascii switch
+
+## Render Results ## {#Render+Results}
+
+Generate Output statistics from FOP:
+
+
+- Number of pages total
+
+- Number of pages of each page-sequence
+
+- page-master used for each page (could be used to control the paper bin to get paper from, important for me in conjunction with PS Renderer)
+
+- recoverable errors such as overflow
+
+## Setting Up ## {#Setting+Up}
+
+The Driver handles the XML input. The user agent information is through the FOUserAgent. Handle logging through the user agent. Options could also be handled through the user agent, using mime type selection for renderer options.
+
+## Others ## {#Others}
+
+Render to more than one renderer at once (maybe not from the command line). For example you could generate a PDF for the archive and the PS for the printer in one run. It would probably be faster than converting the PDF to PostScript afterwards. Make the fo tree reuseable. If the fonts are the same then use the same area tree to output to different renderers.
+
+Several code pieces for resolving URLs and/or file locations are scattered all over FOP and Batik. These should be replaced with an URIResolver invocation to unify behaviour and remove redundancies.

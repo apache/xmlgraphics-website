@@ -1,0 +1,74 @@
+Title: History of Changes 0.95
+
+
+ [](changes_0.95.rss) 
+
+# Introduction and explanation of symbols # {#introduction}
+
+Changes are sorted by "type" and then chronologically with the most recent at the top. These symbols denote the various action types:<icon alt="add" src="../images/add.jpg"></icon>=add,<icon alt="fix" src="../images/fix.jpg"></icon>=fix,<icon alt="remove" src="../images/remove.jpg"></icon>=remove,<icon alt="update" src="../images/update.jpg"></icon>=update
+
+# Version 0.95 (05 August 2008) # {#version_0.95}
+
+## Changes to the End-User API ## {#API_0.95}
+
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fixed the -imagein command-line option. Committed by JM.
+
+## Changes to the Code Base ## {#Code_0.95}
+
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fixed potential multi-threading problem concerning the use of DecimalFormat. Committed by JM. See Issue [44887](http://issues.apache.org/bugzilla/show_bug.cgi?id=44887) .
+
+## Changes to the Font Subsystem ## {#Fonts_0.95}
+
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fixed text extraction problem with ZapfDingbats and Symbol font in PDF output. Committed by JM.
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fixed NullPointerException when loading a TrueType font using XML font metric files. Committed by JM.
+
+## Changes to the Image Support ## {#Images_0.95}
+
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fixed two bugs concerning resolution handling with SVG images and their conversion to bitmaps for RTF output. Committed by JM.
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fixed a performance problem concerning image serialization. Committed by JM.
+
+## Changes to the Layout Engine ## {#Layout_0.95}
+
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fixed NullPointerException when page-number-citations are used inside a marker. Committed by AD. See Issue [45295](http://issues.apache.org/bugzilla/show_bug.cgi?id=45295) .
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Regression bugfix: Multiple collapsible breaks don't cause empty pages anymore. Committed by JM. See Issue [44412](http://issues.apache.org/bugzilla/show_bug.cgi?id=44412) .
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Various bugfixes for table layout. Committed by VH. See Issue [44621](http://issues.apache.org/bugzilla/show_bug.cgi?id=44621) .
+
+## Changes to Renderers (Output Formats) ## {#Renderers_0.95}
+
+
+- <icon alt="add" src="../images/add.jpg"></icon>Added support for fo:leader for RTF output (no full support!). Fixes problems with empty leaders being used to force empty lines among other issues. Committed by JM. Thanks to Maximilian Aster. See Issue [43825](http://issues.apache.org/bugzilla/show_bug.cgi?id=43825) .
+
+- <icon alt="add" src="../images/add.jpg"></icon>Added support for page-number-citation for RTF output. Committed by JM. Thanks to Maximilian Aster. See Issue [43824](http://issues.apache.org/bugzilla/show_bug.cgi?id=43824) .
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fixed a color selection problem which occurred after an image has been painted through the Graphics2DAdapter in PDF output. Committed by JM.
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fixed page ordering problem with AWTRenderer. Committed by JM. See Issue [41306](http://issues.apache.org/bugzilla/show_bug.cgi?id=41306) .
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fixed image scaling for RTF output. Committed by JM. See Issue [39980](http://issues.apache.org/bugzilla/show_bug.cgi?id=39980) .
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fixed handling of proportional-column-width() and percentages for table column in RTF output. Committed by JM. Thanks to Maximilian Aster. See Issue [43606](http://issues.apache.org/bugzilla/show_bug.cgi?id=43606) .
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fixed resolution handling inside AWT preview dialog. Committed by JM.
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fixed positioning of absolutely positioned block-containers in multi-column documents. Committed by JM.
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fixed rendering of fixed block-containers in AFP output. Committed by JM.
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fixed regression causing bad positioning of block-containers if used as descendant of a table-cell. Committed by JM.
+
+## Contributors to this release ## {#contributors_0.95}
+
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:<br></br>Andreas Delmelle (AD), Jeremias Märki (JM), Vincent Hennebert (VH).
+
+This is a list of other contributors:<br></br>Maximilian Aster.

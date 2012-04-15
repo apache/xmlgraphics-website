@@ -1,0 +1,53 @@
+Title: Apache™ FOP: Getting Help
+<subtitle>Checklist for Finding Appropriate Resources</subtitle><version>$Revision: 1298724 $</version>
+
+The Apache™ FOP developer community is eager to help you maximize the usefulness of FOP. However, to make wise use of its limited resources, support must be primarily self-service. Go through the following checklist sequentially to determine what kind of help you need, and where to get it:
+
+# Understand Underlying Technologies # {#underlying}
+
+If you have a questions about XML, XSLT, or XSL-FO that are not directly related to FOP, please consult resources that are appropriate for those questions. FOP is an implementation of these technologies, and when you use FOP, there is a presumption that you have a working understanding of them. We have included several useful links on our [Resources](resources.html) page that may help you get started.
+
+# Understand FOP's Limitations # {#limitations}
+
+FOP is a work in progress, and has some limitations.
+
+FOP does not yet fully comply with the W3C XSL-FO standard. The developers track which standard requirements have been implemented, and have documented these capabilities on the [Compliance](compliance.html) page. FOP has other limitations regarding specific output formats, graphic formats, etc. These limitations are noted in appropriate places in the documentation. If these documents appear to be in error, continue down this checklist so that either the document or the software can be corrected. Otherwise, please do not submit mailing list questions or bug reports regarding features documented in the standard, or documented as limitations in other parts of the documentation.
+
+Please especially do not submit questions asking when a particular feature will be implemented. There are too many unknowns to make even a reasonable estimate. Every time a developer stops to answer such a question, the answer will inevitably be "I don't know", but the time taken to respond is time spent away from development. The only sure way to get a feature implemented is to [pitch in and help](#how-to-help) .
+
+# Read the Documentation # {#doc}
+
+Review the documentation pages on this site. There is information about how to run FOP, how to embed it, how to add custom fonts etc.
+
+# Check the FAQs # {#faq}
+
+Consult the [Frequently Asked Questions (FAQ)](faq.html) to see if your question has already been answered.
+
+# Review FOP User Mailing List Archive # {#user-archive}
+
+It is possible that your question has already been answered but has not yet found its way into the FAQ. Links to the FOP User mailing list archives are on the [Mailing List](maillist.html#fop-user) page.
+
+# Look for an Existing Issue Report # {#existing-issue}
+
+See [Reported Issues](bugs.html#issues_existing) for instructions on how to use the list of open issues. Review these open issues to see if any match your concerns. If so, please do not post a mailing list question or report another issue, as these will only slow the development team down.
+
+# Submit Question to FOP User Mailing List # {#user-mailing-list}
+
+See [FOP User Mailing List](maillist.html#fop-user) for details.
+Please don't write to any developer directly. Only if you submit questions to the [FOP User Mailing List](maillist.html#fop-user) will other FOP users be able to profit from answers given to your question. Another point is that a developer may have gone inactive or is on holidays in which case you may not get an answer in time.
+# Enter an Issue Report # {#enter-issue}
+
+If, and only if, you have followed all of the above steps, and believe that there is a bug or needed feature that you would like to report, please enter an issue in Bugzilla. Never use Bugzilla to post questions, only to enter issues that have already been asked on the user mailing list.
+
+See [Reporting New Issues](bugs.html#issues_new) for detailed instructions on how to enter an issue.
+
+# Find Out How You Can Help # {#how-to-help}
+
+As stated above, the FOP development team is a limited resource. Most make their livings doing things other than writing and supporting FOP. Perhaps you need a feature from the XSL-FO standard to be implemented right away, or a bug fixed, or a new output format, or .... If so, there are several ways that you can help:
+
+
+- Become a [FOP developer](dev/index.html) .
+
+- Fund a developer (or part of one). There is usually at least one FOP developer who would be glad to devote more time to FOP development if funding were in place.
+
+- Help out on the user mailing list. Users giving good answers to other users allows developers to focus more on development and less on support.
