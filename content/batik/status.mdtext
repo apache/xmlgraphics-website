@@ -1,0 +1,6483 @@
+Title: Batik implementation status
+
+
+This page details information about Batik’s implementation of the [SVG 1.1](http://www.w3.org/TR/SVG11/) and related specifications. The features of the implementation are annotated with their level of support, which can be at one of three levels:
+
+
+
+Not supported
+:    
+If a feature is<span class="no">not</span>supported, this means that Batik performs no useful processing for it. This feature could be silently ignored or an exception might be thrown when trying to use it.
+
+
+Partially supported
+:    
+If a feature is<span class="partial">partially</span>suppored, this means that Batik performs some processing for it, but there are known bugs with this processing.
+
+
+Fully supported
+:    
+If a feature is<span class="yes">fully</span>supported, this means that Batik performs the correct processing for it, as detailed in the relevant specification.
+
+Note that the information on this page is based on the code in the Subversion repository trunk.
+
+# Elements, attributes and properties # {#elements}
+
+The table below lists the SVG elements and the attributes and properties on them that are supported by Batik. For an element to be fully supported, its attributes and the properties that apply to it must also be fully supported. If an attribute of the element or a property that applies to the element is only partially supported or is not supported, the element can be at most partially supported. An element is not supported if it is not processed by Batik, even if some of its attributes are supported (such as the core attributes `id` or `xml:base` ).
+
+Note that all presentation attributes are supported on all stylable elements. These attributes are not listed in the table. Only those properties that apply to a given element are listed.
+
+|  | <a name="svg:a"></a>svg:a |  |  |
+|-------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| target | no | While `target` is not supported, new windows can be opened with `xlink:show="new"` . |
+|--------|
+| transform | yes |  |
+|-----------|
+| xlink:actuate | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:arcrole | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:href | partial | URI references to animation elements will not trigger the animation when the link is activated. |
+|------------|
+| xlink:role | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:show | yes |  |
+|------------|
+| xlink:title | yes |  [[1]](#noteXLink)  |
+|-------------|
+| xlink:type | yes |  [[1]](#noteXLink)  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip-path | yes |  |
+|-----------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| display | yes |  |
+|---------|
+| enable-background | yes |  |
+|-------------------|
+| filter | yes |  |
+|--------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+|  | <a name="svg:altGlyph"></a>svg:altGlyph |  |  |
+|--------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| dx | yes |  |
+|----|
+| dy | yes |  |
+|----|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| format | no |  |
+|--------|
+| glyphRef | no |  |
+|----------|
+| id | yes |  |
+|----|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| rotate | yes |  |
+|--------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xlink:actuate | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:arcrole | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:href | yes |  |
+|------------|
+| xlink:role | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:show | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:title | yes |  [[1]](#noteXLink)  |
+|-------------|
+| xlink:type | yes |  [[1]](#noteXLink)  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| alignment-baseline | no |  |
+|--------------------|
+| baseline-shift | yes |  |
+|----------------|
+| color | yes |  |
+|-------|
+| direction | yes |  |
+|-----------|
+| display | yes |  |
+|---------|
+| dominant-baseline | no |  |
+|-------------------|
+| fill | yes |  |
+|------|
+| fill-opacity | yes |  |
+|--------------|
+| fill-rule | yes |  |
+|-----------|
+| font | yes |  |
+|------|
+| font-family | yes |  |
+|-------------|
+| font-size | yes |  |
+|-----------|
+| font-size-adjust | no |  |
+|------------------|
+| font-stretch | no |  |
+|--------------|
+| font-style | yes |  |
+|------------|
+| font-variant | no |  |
+|--------------|
+| font-weight | yes |  |
+|-------------|
+| glyph-orientation-horizontal | yes |  |
+|------------------------------|
+| glyph-orientation-vertical | yes |  |
+|----------------------------|
+| kerning | yes |  |
+|---------|
+| letter-spacing | yes |  |
+|----------------|
+| stroke | yes |  |
+|--------|
+| stroke-dasharray | yes |  |
+|------------------|
+| stroke-dashoffset | yes |  |
+|-------------------|
+| stroke-linecap | yes |  |
+|----------------|
+| stroke-linejoin | yes |  |
+|-----------------|
+| stroke-miterlimit | yes |  |
+|-------------------|
+| stroke-opacity | yes |  |
+|----------------|
+| stroke-width | yes |  |
+|--------------|
+| text-anchor | yes |  |
+|-------------|
+| text-decoration | yes |  |
+|-----------------|
+| unicode-bidi | yes |  |
+|--------------|
+| visibility | yes |  |
+|------------|
+| word-spacing | yes |  |
+|--------------|
+|  | <a name="svg:altGlyphDef"></a>svg:altGlyphDef |  |  |
+|-----------------|--|--|
+| Attributes |
+|------------|
+| id | yes |  |
+|----|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:altGlyphItem"></a>svg:altGlyphItem |  |  |
+|------------------|--|--|
+| Attributes |
+|------------|
+| id | yes |  |
+|----|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:animate"></a>svg:animate |  |  |
+|-------------|--|--|
+| Attributes |
+|------------|
+| accumulate | yes |  |
+|------------|
+| additive | yes |  |
+|----------|
+| attributeName | yes |  |
+|---------------|
+| attributeType | yes |  |
+|---------------|
+| begin | yes |  |
+|-------|
+| by | yes |  |
+|----|
+| calcMode | yes |  |
+|----------|
+| dur | yes |  |
+|-----|
+| end | yes |  |
+|-----|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| fill | yes |  |
+|------|
+| from | yes |  |
+|------|
+| id | yes |  |
+|----|
+| keySplines | yes |  |
+|------------|
+| keyTimes | yes |  |
+|----------|
+| max | yes |  |
+|-----|
+| min | yes |  |
+|-----|
+| onbegin | yes |  |
+|---------|
+| onend | yes |  |
+|-------|
+| onload | yes |  |
+|--------|
+| onrepeat | yes |  |
+|----------|
+| repeatCount | yes |  |
+|-------------|
+| repeatDur | yes |  |
+|-----------|
+| requiredExtensions | no |  |
+|--------------------|
+| requiredFeatures | no |  |
+|------------------|
+| restart | yes |  |
+|---------|
+| systemLanguage | no |  |
+|----------------|
+| to | yes |  |
+|----|
+| values | yes |  |
+|--------|
+|  | <a name="svg:animateColor"></a>svg:animateColor |  |  |
+|------------------|--|--|
+| Attributes |
+|------------|
+| accumulate | yes |  |
+|------------|
+| additive | yes |  |
+|----------|
+| attributeName | yes |  |
+|---------------|
+| attributeType | yes |  |
+|---------------|
+| begin | yes |  |
+|-------|
+| by | yes |  |
+|----|
+| calcMode | yes |  |
+|----------|
+| dur | yes |  |
+|-----|
+| end | yes |  |
+|-----|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| fill | yes |  |
+|------|
+| from | yes |  |
+|------|
+| id | yes |  |
+|----|
+| keySplines | yes |  |
+|------------|
+| keyTimes | yes |  |
+|----------|
+| max | yes |  |
+|-----|
+| min | yes |  |
+|-----|
+| onbegin | yes |  |
+|---------|
+| onend | yes |  |
+|-------|
+| onload | yes |  |
+|--------|
+| onrepeat | yes |  |
+|----------|
+| repeatCount | yes |  |
+|-------------|
+| repeatDur | yes |  |
+|-----------|
+| requiredExtensions | no |  |
+|--------------------|
+| requiredFeatures | no |  |
+|------------------|
+| restart | yes |  |
+|---------|
+| systemLanguage | no |  |
+|----------------|
+| to | yes |  |
+|----|
+| values | yes |  |
+|--------|
+| Properties |
+|------------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+|  | <a name="svg:animateMotion"></a>svg:animateMotion |  |  |
+|-------------------|--|--|
+| Attributes |
+|------------|
+| accumulate | yes |  |
+|------------|
+| additive | yes |  |
+|----------|
+| attributeName | yes |  |
+|---------------|
+| attributeType | yes |  |
+|---------------|
+| begin | yes |  |
+|-------|
+| by | yes |  |
+|----|
+| calcMode | yes |  |
+|----------|
+| dur | yes |  |
+|-----|
+| end | yes |  |
+|-----|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| fill | yes |  |
+|------|
+| from | yes |  |
+|------|
+| id | yes |  |
+|----|
+| keyPoints | yes |  |
+|-----------|
+| keySplines | yes |  |
+|------------|
+| keyTimes | yes |  |
+|----------|
+| max | yes |  |
+|-----|
+| min | yes |  |
+|-----|
+| onbegin | yes |  |
+|---------|
+| onend | yes |  |
+|-------|
+| onload | yes |  |
+|--------|
+| onrepeat | yes |  |
+|----------|
+| origin | yes |  |
+|--------|
+| path | yes |  |
+|------|
+| repeatCount | yes |  |
+|-------------|
+| repeatDur | yes |  |
+|-----------|
+| requiredExtensions | no |  |
+|--------------------|
+| requiredFeatures | no |  |
+|------------------|
+| restart | yes |  |
+|---------|
+| rotate | yes |  |
+|--------|
+| systemLanguage | no |  |
+|----------------|
+| to | yes |  |
+|----|
+| values | yes |  |
+|--------|
+|  | <a name="svg:animateTransform"></a>svg:animateTransform |  |  |
+|----------------------|--|--|
+| Attributes |
+|------------|
+| accumulate | yes |  |
+|------------|
+| additive | yes |  |
+|----------|
+| attributeName | yes |  |
+|---------------|
+| attributeType | yes |  |
+|---------------|
+| begin | yes |  |
+|-------|
+| by | yes |  |
+|----|
+| calcMode | yes |  |
+|----------|
+| dur | yes |  |
+|-----|
+| end | yes |  |
+|-----|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| fill | yes |  |
+|------|
+| from | yes |  |
+|------|
+| id | yes |  |
+|----|
+| keySplines | yes |  |
+|------------|
+| keyTimes | yes |  |
+|----------|
+| max | yes |  |
+|-----|
+| min | yes |  |
+|-----|
+| onbegin | yes |  |
+|---------|
+| onend | yes |  |
+|-------|
+| onload | yes |  |
+|--------|
+| onrepeat | yes |  |
+|----------|
+| repeatCount | yes |  |
+|-------------|
+| repeatDur | yes |  |
+|-----------|
+| requiredExtensions | no |  |
+|--------------------|
+| requiredFeatures | no |  |
+|------------------|
+| restart | yes |  |
+|---------|
+| systemLanguage | no |  |
+|----------------|
+| to | yes |  |
+|----|
+| type | yes |  |
+|------|
+| values | yes |  |
+|--------|
+|  | <a name="svg:circle"></a>svg:circle |  |  |
+|------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| cx | yes |  |
+|----|
+| cy | yes |  |
+|----|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| r | yes |  |
+|---|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| transform | yes |  |
+|-----------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip-path | yes |  |
+|-----------|
+| clip-rule | yes |  |
+|-----------|
+| color | yes |  |
+|-------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| fill | yes |  |
+|------|
+| fill-opacity | yes |  |
+|--------------|
+| fill-rule | yes |  |
+|-----------|
+| filter | yes |  |
+|--------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+| pointer-events | yes |  |
+|----------------|
+| shape-rendering | yes |  |
+|-----------------|
+| stroke | yes |  |
+|--------|
+| stroke-dasharray | yes |  |
+|------------------|
+| stroke-dashoffset | yes |  |
+|-------------------|
+| stroke-linecap | yes |  |
+|----------------|
+| stroke-linejoin | yes |  |
+|-----------------|
+| stroke-miterlimit | yes |  |
+|-------------------|
+| stroke-opacity | yes |  |
+|----------------|
+| stroke-width | yes |  |
+|--------------|
+| visibility | yes |  |
+|------------|
+|  | <a name="svg:clipPath"></a>svg:clipPath |  |  |
+|--------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| clipPathUnits | yes |  |
+|---------------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| transform | yes |  |
+|-----------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip-path | yes |  |
+|-----------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| enable-background | no |  |
+|-------------------|
+| filter | yes |  |
+|--------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+|  | <a name="svg:color-profile"></a>svg:color-profile |  |  |
+|-------------------|--|--|
+| Attributes |
+|------------|
+| id | yes |  |
+|----|
+| local | no |  |
+|-------|
+| name | yes |  |
+|------|
+| rendering-intent | yes |  |
+|------------------|
+| xlink:actuate | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:arcrole | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:href | yes |  |
+|------------|
+| xlink:role | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:show | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:title | yes |  [[1]](#noteXLink)  |
+|-------------|
+| xlink:type | yes |  [[1]](#noteXLink)  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:cursor"></a>svg:cursor |  |  |
+|------------|--|--|
+| Attributes |
+|------------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| systemLanguage | yes |  |
+|----------------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xlink:actuate | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:arcrole | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:href | yes |  |
+|------------|
+| xlink:role | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:show | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:title | yes |  [[1]](#noteXLink)  |
+|-------------|
+| xlink:type | yes |  [[1]](#noteXLink)  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:definition-src"></a>svg:definition-src |  |  |
+|--------------------|--|--|
+| Attributes |
+|------------|
+| id | yes |  |
+|----|
+| xlink:actuate | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:arcrole | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:href | no |  |
+|------------|
+| xlink:role | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:show | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:title | yes |  [[1]](#noteXLink)  |
+|-------------|
+| xlink:type | yes |  [[1]](#noteXLink)  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:defs"></a>svg:defs |  |  |
+|----------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| transform | yes |  |
+|-----------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip-path | yes |  |
+|-----------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| enable-background | no |  |
+|-------------------|
+| filter | yes |  |
+|--------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+|  | <a name="svg:desc"></a>svg:desc |  |  |
+|----------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| id | yes |  |
+|----|
+| style | yes |  |
+|-------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:ellipse"></a>svg:ellipse |  |  |
+|-------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| cx | yes |  |
+|----|
+| cy | yes |  |
+|----|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| rx | yes |  |
+|----|
+| ry | yes |  |
+|----|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| transform | yes |  |
+|-----------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip-path | yes |  |
+|-----------|
+| clip-rule | yes |  |
+|-----------|
+| color | yes |  |
+|-------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| fill | yes |  |
+|------|
+| fill-opacity | yes |  |
+|--------------|
+| fill-rule | yes |  |
+|-----------|
+| filter | yes |  |
+|--------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+| pointer-events | yes |  |
+|----------------|
+| shape-rendering | yes |  |
+|-----------------|
+| stroke | yes |  |
+|--------|
+| stroke-dasharray | yes |  |
+|------------------|
+| stroke-dashoffset | yes |  |
+|-------------------|
+| stroke-linecap | yes |  |
+|----------------|
+| stroke-linejoin | yes |  |
+|-----------------|
+| stroke-miterlimit | yes |  |
+|-------------------|
+| stroke-opacity | yes |  |
+|----------------|
+| stroke-width | yes |  |
+|--------------|
+| visibility | yes |  |
+|------------|
+|  | <a name="svg:feBlend"></a>svg:feBlend |  |  |
+|-------------|--|--|
+| Attributes |
+|------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| in | yes |  |
+|----|
+| in2 | yes |  |
+|-----|
+| mode | yes |  |
+|------|
+| result | yes |  |
+|--------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| color-interpolation-filters | yes |  |
+|-----------------------------|
+|  | <a name="svg:feColorMatrix"></a>svg:feColorMatrix |  |  |
+|-------------------|--|--|
+| Attributes |
+|------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| in | yes |  |
+|----|
+| result | yes |  |
+|--------|
+| type | yes |  |
+|------|
+| values | yes |  |
+|--------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| color-interpolation-filters | yes |  |
+|-----------------------------|
+|  | <a name="svg:feComponentTransfer"></a>svg:feComponentTransfer |  |  |
+|-------------------------|--|--|
+| Attributes |
+|------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| in | yes |  |
+|----|
+| result | yes |  |
+|--------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| color-interpolation-filters | yes |  |
+|-----------------------------|
+|  | <a name="svg:feComposite"></a>svg:feComposite |  |  |
+|-----------------|--|--|
+| Attributes |
+|------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| in | yes |  |
+|----|
+| in2 | yes |  |
+|-----|
+| k1 | yes |  |
+|----|
+| k2 | yes |  |
+|----|
+| k3 | yes |  |
+|----|
+| k4 | yes |  |
+|----|
+| operator | yes |  |
+|----------|
+| result | yes |  |
+|--------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| color-interpolation-filters | yes |  |
+|-----------------------------|
+|  | <a name="svg:feConvolveMatrix"></a>svg:feConvolveMatrix |  |  |
+|----------------------|--|--|
+| Attributes |
+|------------|
+| bias | yes |  |
+|------|
+| divisor | yes |  |
+|---------|
+| edgeMode | yes |  |
+|----------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| in | yes |  |
+|----|
+| kernelMatrix | yes |  |
+|--------------|
+| kernelUnitLength | yes |  |
+|------------------|
+| order | yes |  |
+|-------|
+| preserveAlpha | yes |  |
+|---------------|
+| result | yes |  |
+|--------|
+| targetX | yes |  |
+|---------|
+| targetY | yes |  |
+|---------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| color-interpolation-filters | yes |  |
+|-----------------------------|
+|  | <a name="svg:feDiffuseLighting"></a>svg:feDiffuseLighting |  |  |
+|-----------------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| diffuseConstant | yes |  |
+|-----------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| in | yes |  |
+|----|
+| kernelUnitLength | no |  |
+|------------------|
+| result | yes |  |
+|--------|
+| style | yes |  |
+|-------|
+| surfaceScale | yes |  |
+|--------------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| color | yes |  |
+|-------|
+| color-interpolation-filters | yes |  |
+|-----------------------------|
+| lighting-color | yes |  |
+|----------------|
+|  | <a name="svg:feDisplacementMap"></a>svg:feDisplacementMap |  |  |
+|-----------------------|--|--|
+| Attributes |
+|------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| in | yes |  |
+|----|
+| in2 | yes |  |
+|-----|
+| result | yes |  |
+|--------|
+| scale | yes |  |
+|-------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| xChannelSelector | yes |  |
+|------------------|
+| y | yes |  |
+|---|
+| yChannelSelector | yes |  |
+|------------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| color-interpolation-filters | yes |  |
+|-----------------------------|
+|  | <a name="svg:feDistantLight"></a>svg:feDistantLight |  |  |
+|--------------------|--|--|
+| Attributes |
+|------------|
+| azimuth | yes |  |
+|---------|
+| elevation | yes |  |
+|-----------|
+| id | yes |  |
+|----|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:feFlood"></a>svg:feFlood |  |  |
+|-------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| in | yes |  |
+|----|
+| result | yes |  |
+|--------|
+| style | yes |  |
+|-------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| color | yes |  |
+|-------|
+| color-interpolation-filters | yes |  |
+|-----------------------------|
+| flood-color | yes |  |
+|-------------|
+| flood-opacity | yes |  |
+|---------------|
+|  | <a name="svg:feFuncA"></a>svg:feFuncA |  |  |
+|-------------|--|--|
+| Attributes |
+|------------|
+| amplitude | yes |  |
+|-----------|
+| exponent | yes |  |
+|----------|
+| id | yes |  |
+|----|
+| intercept | yes |  |
+|-----------|
+| offset | yes |  |
+|--------|
+| slope | yes |  |
+|-------|
+| tableValues | yes |  |
+|-------------|
+| type | yes |  |
+|------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:feFuncB"></a>svg:feFuncB |  |  |
+|-------------|--|--|
+| Attributes |
+|------------|
+| amplitude | yes |  |
+|-----------|
+| exponent | yes |  |
+|----------|
+| id | yes |  |
+|----|
+| intercept | yes |  |
+|-----------|
+| offset | yes |  |
+|--------|
+| slope | yes |  |
+|-------|
+| tableValues | yes |  |
+|-------------|
+| type | yes |  |
+|------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:feFuncG"></a>svg:feFuncG |  |  |
+|-------------|--|--|
+| Attributes |
+|------------|
+| amplitude | yes |  |
+|-----------|
+| exponent | yes |  |
+|----------|
+| id | yes |  |
+|----|
+| intercept | yes |  |
+|-----------|
+| offset | yes |  |
+|--------|
+| slope | yes |  |
+|-------|
+| tableValues | yes |  |
+|-------------|
+| type | yes |  |
+|------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:feFuncR"></a>svg:feFuncR |  |  |
+|-------------|--|--|
+| Attributes |
+|------------|
+| amplitude | yes |  |
+|-----------|
+| exponent | yes |  |
+|----------|
+| id | yes |  |
+|----|
+| intercept | yes |  |
+|-----------|
+| offset | yes |  |
+|--------|
+| slope | yes |  |
+|-------|
+| tableValues | yes |  |
+|-------------|
+| type | yes |  |
+|------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:feGaussianBlur"></a>svg:feGaussianBlur |  |  |
+|--------------------|--|--|
+| Attributes |
+|------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| in | yes |  |
+|----|
+| result | yes |  |
+|--------|
+| stdDeviation | yes |  |
+|--------------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| color-interpolation-filters | yes |  |
+|-----------------------------|
+|  | <a name="svg:feImage"></a>svg:feImage |  |  |
+|-------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| preserveAspectRatio | no |  |
+|---------------------|
+| result | yes |  |
+|--------|
+| style | yes |  |
+|-------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xlink:actuate | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:arcrole | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:href | yes |  |
+|------------|
+| xlink:role | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:show | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:title | yes |  [[1]](#noteXLink)  |
+|-------------|
+| xlink:type | yes |  [[1]](#noteXLink)  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip | no |  |
+|------|
+| clip-path | yes |  |
+|-----------|
+| clip-rule | yes |  |
+|-----------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-interpolation-filters | yes |  |
+|-----------------------------|
+| color-profile | yes |  |
+|---------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| filter | yes |  |
+|--------|
+| image-rendering | yes |  |
+|-----------------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+| overflow | yes |  |
+|----------|
+| pointer-events | yes |  |
+|----------------|
+| visibility | yes |  |
+|------------|
+|  | <a name="svg:feMerge"></a>svg:feMerge |  |  |
+|-------------|--|--|
+| Attributes |
+|------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| result | yes |  |
+|--------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| color-interpolation-filters | yes |  |
+|-----------------------------|
+|  | <a name="svg:feMergeNode"></a>svg:feMergeNode |  |  |
+|-----------------|--|--|
+| Attributes |
+|------------|
+| id | yes |  |
+|----|
+| in | yes |  |
+|----|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:feMorphology"></a>svg:feMorphology |  |  |
+|------------------|--|--|
+| Attributes |
+|------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| in | yes |  |
+|----|
+| operator | yes |  |
+|----------|
+| radius | yes |  |
+|--------|
+| result | yes |  |
+|--------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| color-interpolation-filters | yes |  |
+|-----------------------------|
+|  | <a name="svg:feOffset"></a>svg:feOffset |  |  |
+|--------------|--|--|
+| Attributes |
+|------------|
+| dx | yes |  |
+|----|
+| dy | yes |  |
+|----|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| in | yes |  |
+|----|
+| result | yes |  |
+|--------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| color-interpolation-filters | yes |  |
+|-----------------------------|
+|  | <a name="svg:fePointLight"></a>svg:fePointLight |  |  |
+|------------------|--|--|
+| Attributes |
+|------------|
+| id | yes |  |
+|----|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| z | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:feSpecularLighting"></a>svg:feSpecularLighting |  |  |
+|------------------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| in | yes |  |
+|----|
+| kernelUnitLength | yes |  |
+|------------------|
+| result | yes |  |
+|--------|
+| specularConstant | yes |  |
+|------------------|
+| specularExponent | yes |  |
+|------------------|
+| style | yes |  |
+|-------|
+| surfaceScale | yes |  |
+|--------------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| color | yes |  |
+|-------|
+| color-interpolation-filters | yes |  |
+|-----------------------------|
+| lighting-color | yes |  |
+|----------------|
+|  | <a name="svg:feSpotLight"></a>svg:feSpotLight |  |  |
+|-----------------|--|--|
+| Attributes |
+|------------|
+| id | yes |  |
+|----|
+| limitingConeAngle | yes |  |
+|-------------------|
+| pointsAtX | yes |  |
+|-----------|
+| pointsAtY | yes |  |
+|-----------|
+| pointsAtZ | yes |  |
+|-----------|
+| specularExponent | yes |  |
+|------------------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| z | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:feTile"></a>svg:feTile |  |  |
+|------------|--|--|
+| Attributes |
+|------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| in | yes |  |
+|----|
+| result | yes |  |
+|--------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| color-interpolation-filters | yes |  |
+|-----------------------------|
+|  | <a name="svg:feTurbulence"></a>svg:feTurbulence |  |  |
+|------------------|--|--|
+| Attributes |
+|------------|
+| baseFrequency | yes |  |
+|---------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| numOctaves | yes |  |
+|------------|
+| result | yes |  |
+|--------|
+| seed | yes |  |
+|------|
+| stitchTiles | yes |  |
+|-------------|
+| type | yes |  |
+|------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| color-interpolation-filters | yes |  |
+|-----------------------------|
+|  | <a name="svg:filter"></a>svg:filter |  |  |
+|------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| filterRes | yes |  |
+|-----------|
+| filterUnits | yes |  |
+|-------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| primitiveUnits | yes |  |
+|----------------|
+| style | yes |  |
+|-------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xlink:actuate | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:arcrole | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:href | yes |  |
+|------------|
+| xlink:role | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:show | yes |  |
+|------------|
+| xlink:title | yes |  [[1]](#noteXLink)  |
+|-------------|
+| xlink:type | yes |  [[1]](#noteXLink)  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:font"></a>svg:font |  |  |
+|----------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| horiz-adv-x | yes |  |
+|-------------|
+| horiz-origin-x | yes |  |
+|----------------|
+| horiz-origin-y | yes |  |
+|----------------|
+| id | yes |  |
+|----|
+| style | yes |  |
+|-------|
+| vert-adv-y | yes |  |
+|------------|
+| vert-origin-x | yes |  |
+|---------------|
+| vert-origin-y | yes |  |
+|---------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:font-face"></a>svg:font-face |  |  |
+|---------------|--|--|
+| Attributes |
+|------------|
+| accent-height | no |  |
+|---------------|
+| alphabetic | no |  |
+|------------|
+| ascent | yes |  |
+|--------|
+| bbox | no |  |
+|------|
+| cap-height | no |  |
+|------------|
+| descent | yes |  |
+|---------|
+| font-family | yes |  |
+|-------------|
+| font-size | no |  |
+|-----------|
+| font-stretch | no |  |
+|--------------|
+| font-style | yes |  |
+|------------|
+| font-variant | no |  |
+|--------------|
+| font-weight | yes |  |
+|-------------|
+| hanging | no |  |
+|---------|
+| id | yes |  |
+|----|
+| ideographic | no |  |
+|-------------|
+| mathematical | no |  |
+|--------------|
+| overline-position | yes |  |
+|-------------------|
+| overline-thickness | yes |  |
+|--------------------|
+| panose-1 | yes |  |
+|----------|
+| slope | yes |  |
+|-------|
+| stemh | no |  |
+|-------|
+| stemv | no |  |
+|-------|
+| strikethrough-position | yes |  |
+|------------------------|
+| strikethrough-thickness | yes |  |
+|-------------------------|
+| underline-position | yes |  |
+|--------------------|
+| underline-thickness | yes |  |
+|---------------------|
+| unicode-range | no |  |
+|---------------|
+| units-per-em | yes |  |
+|--------------|
+| v-alphabetic | no |  |
+|--------------|
+| v-hanging | no |  |
+|-----------|
+| v-ideographic | no |  |
+|---------------|
+| v-mathematical | no |  |
+|----------------|
+| widths | no |  |
+|--------|
+| x-height | no |  |
+|----------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:font-face-format"></a>svg:font-face-format |  |  |
+|----------------------|--|--|
+| Attributes |
+|------------|
+| id | yes |  |
+|----|
+| string | no |  |
+|--------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:font-face-name"></a>svg:font-face-name |  |  |
+|--------------------|--|--|
+| Attributes |
+|------------|
+| id | yes |  |
+|----|
+| name | yes |  |
+|------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:font-face-src"></a>svg:font-face-src |  |  |
+|-------------------|--|--|
+| Attributes |
+|------------|
+| id | yes |  |
+|----|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:font-face-uri"></a>svg:font-face-uri |  |  |
+|-------------------|--|--|
+| Attributes |
+|------------|
+| id | yes |  |
+|----|
+| xlink:actuate | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:arcrole | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:href | yes |  |
+|------------|
+| xlink:role | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:show | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:title | yes |  [[1]](#noteXLink)  |
+|-------------|
+| xlink:type | yes |  [[1]](#noteXLink)  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:foreignObject"></a>svg:foreignObject |  |  |
+|-------------------|--|--|
+| Attributes |
+|------------|
+| class | no |  |
+|-------|
+| height | no |  |
+|--------|
+| id | yes |  |
+|----|
+| onactivate | no |  |
+|------------|
+| onclick | no |  |
+|---------|
+| onfocusin | no |  |
+|-----------|
+| onfocusout | no |  |
+|------------|
+| onload | no |  |
+|--------|
+| onmousedown | no |  |
+|-------------|
+| onmousemove | no |  |
+|-------------|
+| onmouseout | no |  |
+|------------|
+| onmouseover | no |  |
+|-------------|
+| onmouseup | no |  |
+|-----------|
+| requiredExtensions | no |  |
+|--------------------|
+| requiredFeatures | no |  |
+|------------------|
+| style | no |  |
+|-------|
+| systemLanguage | no |  |
+|----------------|
+| transform | no |  |
+|-----------|
+| width | no |  |
+|-------|
+| x | no |  |
+|---|
+| y | no |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip | no |  |
+|------|
+| display | no |  |
+|---------|
+| overflow | no |  |
+|----------|
+|  | <a name="svg:g"></a>svg:g |  |  |
+|-------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| transform | yes |  |
+|-----------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip-path | yes |  |
+|-----------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| display | yes |  |
+|---------|
+| enable-background | yes |  |
+|-------------------|
+| filter | yes |  |
+|--------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+|  | <a name="svg:glyph"></a>svg:glyph |  |  |
+|-----------|--|--|
+| Attributes |
+|------------|
+| arabic-form | yes |  |
+|-------------|
+| class | yes |  |
+|-------|
+| d | yes |  |
+|---|
+| glyph-name | yes |  |
+|------------|
+| horiz-adv-x | yes |  |
+|-------------|
+| id | yes |  |
+|----|
+| lang | yes |  |
+|------|
+| orientation | yes |  |
+|-------------|
+| style | yes |  |
+|-------|
+| unicode | yes |  |
+|---------|
+| vert-adv-y | yes |  |
+|------------|
+| vert-origin-x | yes |  |
+|---------------|
+| vert-origin-y | yes |  |
+|---------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:glyphRef"></a>svg:glyphRef |  |  |
+|--------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| dx | no |  |
+|----|
+| dy | no |  |
+|----|
+| font-family | no |  [[2]](#noteGlyphRef)  |
+|-------------|
+| font-size | no |  [[2]](#noteGlyphRef)  |
+|-----------|
+| font-size-adjust | no |  [[2]](#noteGlyphRef)  |
+|------------------|
+| font-stretch | no |  [[2]](#noteGlyphRef)  |
+|--------------|
+| font-style | no |  [[2]](#noteGlyphRef)  |
+|------------|
+| font-variant | no |  [[2]](#noteGlyphRef)  |
+|--------------|
+| font-weight | no |  [[2]](#noteGlyphRef)  |
+|-------------|
+| format | no |  |
+|--------|
+| glyphRef | no |  |
+|----------|
+| id | yes |  |
+|----|
+| style | yes |  |
+|-------|
+| x | no |  |
+|---|
+| y | no |  |
+|---|
+| xlink:actuate | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:arcrole | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:href | yes |  |
+|------------|
+| xlink:role | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:show | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:title | yes |  [[1]](#noteXLink)  |
+|-------------|
+| xlink:type | yes |  [[1]](#noteXLink)  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:hkern"></a>svg:hkern |  |  |
+|-----------|--|--|
+| Attributes |
+|------------|
+| g1 | yes |  |
+|----|
+| g2 | yes |  |
+|----|
+| id | yes |  |
+|----|
+| k | yes |  |
+|---|
+| u1 | yes |  |
+|----|
+| u2 | yes |  |
+|----|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:image"></a>svg:image |  |  |
+|-----------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| preserveAspectRatio | yes |  |
+|---------------------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| transform | yes |  |
+|-----------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xlink:actuate | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:arcrole | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:href | yes |  |
+|------------|
+| xlink:role | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:show | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:title | yes |  [[1]](#noteXLink)  |
+|-------------|
+| xlink:type | yes |  [[1]](#noteXLink)  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip | no |  |
+|------|
+| clip-path | yes |  |
+|-----------|
+| clip-rule | yes |  |
+|-----------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-profile | yes |  |
+|---------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| filter | yes |  |
+|--------|
+| image-rendering | yes |  |
+|-----------------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+| overflow | yes |  |
+|----------|
+| pointer-events | yes |  |
+|----------------|
+| visibility | yes |  |
+|------------|
+|  | <a name="svg:line"></a>svg:line |  |  |
+|----------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| transform | yes |  |
+|-----------|
+| x1 | yes |  |
+|----|
+| x2 | yes |  |
+|----|
+| y1 | yes |  |
+|----|
+| y2 | yes |  |
+|----|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip-path | yes |  |
+|-----------|
+| clip-rule | yes |  |
+|-----------|
+| color | yes |  |
+|-------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| fill | yes |  |
+|------|
+| fill-opacity | yes |  |
+|--------------|
+| fill-rule | yes |  |
+|-----------|
+| filter | yes |  |
+|--------|
+| marker | yes |  |
+|--------|
+| marker-end | yes |  |
+|------------|
+| marker-mid | yes |  |
+|------------|
+| marker-start | yes |  |
+|--------------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+| pointer-events | yes |  |
+|----------------|
+| shape-rendering | yes |  |
+|-----------------|
+| stroke | yes |  |
+|--------|
+| stroke-dasharray | yes |  |
+|------------------|
+| stroke-dashoffset | yes |  |
+|-------------------|
+| stroke-linecap | yes |  |
+|----------------|
+| stroke-linejoin | yes |  |
+|-----------------|
+| stroke-miterlimit | yes |  |
+|-------------------|
+| stroke-opacity | yes |  |
+|----------------|
+| stroke-width | yes |  |
+|--------------|
+| visibility | yes |  |
+|------------|
+|  | <a name="svg:linearGradient"></a>svg:linearGradient |  |  |
+|--------------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| color | yes |  |
+|-------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| gradientTransform | yes |  |
+|-------------------|
+| gradientUnits | yes |  |
+|---------------|
+| id | yes |  |
+|----|
+| spreadMethod | yes |  |
+|--------------|
+| stop-color | yes |  |
+|------------|
+| stop-opacity | yes |  |
+|--------------|
+| style | yes |  |
+|-------|
+| x1 | yes |  |
+|----|
+| x2 | yes |  |
+|----|
+| y1 | yes |  |
+|----|
+| y2 | yes |  |
+|----|
+| xlink:actuate | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:arcrole | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:href | yes |  |
+|------------|
+| xlink:role | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:show | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:title | yes |  [[1]](#noteXLink)  |
+|-------------|
+| xlink:type | yes |  [[1]](#noteXLink)  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:marker"></a>svg:marker |  |  |
+|------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| markerHeight | yes |  |
+|--------------|
+| markerUnits | yes |  |
+|-------------|
+| markerWidth | yes |  |
+|-------------|
+| orient | yes |  |
+|--------|
+| preserveAspectRatio | yes |  |
+|---------------------|
+| refX | yes |  |
+|------|
+| refY | yes |  |
+|------|
+| style | yes |  |
+|-------|
+| viewBox | yes |  |
+|---------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip-path | yes |  |
+|-----------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| enable-background | no |  |
+|-------------------|
+| filter | yes |  |
+|--------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+|  | <a name="svg:mask"></a>svg:mask |  |  |
+|----------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| maskContentUnits | yes |  |
+|------------------|
+| maskUnits | yes |  |
+|-----------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip-path | yes |  |
+|-----------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| enable-background | no |  |
+|-------------------|
+| filter | yes |  |
+|--------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+|  | <a name="svg:metadata"></a>svg:metadata |  |  |
+|--------------|--|--|
+| Attributes |
+|------------|
+| id | yes |  |
+|----|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:missing-glyph"></a>svg:missing-glyph |  |  |
+|-------------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| d | yes |  |
+|---|
+| horiz-adv-x | yes |  |
+|-------------|
+| id | yes |  |
+|----|
+| style | yes |  |
+|-------|
+| vert-adv-y | yes |  |
+|------------|
+| vert-origin-x | yes |  |
+|---------------|
+| vert-origin-y | yes |  |
+|---------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:mpath"></a>svg:mpath |  |  |
+|-----------|--|--|
+| Attributes |
+|------------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| xlink:actuate | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:arcrole | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:href | yes |  |
+|------------|
+| xlink:role | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:show | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:title | yes |  [[1]](#noteXLink)  |
+|-------------|
+| xlink:type | yes |  [[1]](#noteXLink)  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:path"></a>svg:path |  |  |
+|----------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| d | yes |  |
+|---|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| pathLength | no | Author specified path length is ignored. |
+|------------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| transform | yes |  |
+|-----------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip-path | yes |  |
+|-----------|
+| clip-rule | yes |  |
+|-----------|
+| color | yes |  |
+|-------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| fill | yes |  |
+|------|
+| fill-opacity | yes |  |
+|--------------|
+| fill-rule | yes |  |
+|-----------|
+| filter | yes |  |
+|--------|
+| marker | yes |  |
+|--------|
+| marker-end | yes |  |
+|------------|
+| marker-mid | yes |  |
+|------------|
+| marker-start | yes |  |
+|--------------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+| pointer-events | yes |  |
+|----------------|
+| shape-rendering | yes |  |
+|-----------------|
+| stroke | yes |  |
+|--------|
+| stroke-dasharray | yes |  |
+|------------------|
+| stroke-dashoffset | yes |  |
+|-------------------|
+| stroke-linecap | yes |  |
+|----------------|
+| stroke-linejoin | yes |  |
+|-----------------|
+| stroke-miterlimit | yes |  |
+|-------------------|
+| stroke-opacity | yes |  |
+|----------------|
+| stroke-width | yes |  |
+|--------------|
+| visibility | yes |  |
+|------------|
+|  | <a name="svg:pattern"></a>svg:pattern |  |  |
+|-------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| patternContentUnits | yes |  |
+|---------------------|
+| patternTransform | yes |  |
+|------------------|
+| patternUnits | yes |  |
+|--------------|
+| preserveAspectRatio | yes |  |
+|---------------------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| viewBox | yes |  |
+|---------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xlink:actuate | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:arcrole | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:href | yes |  |
+|------------|
+| xlink:role | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:show | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:title | yes |  [[1]](#noteXLink)  |
+|-------------|
+| xlink:type | yes |  [[1]](#noteXLink)  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip-path | yes |  |
+|-----------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| enable-background | no |  |
+|-------------------|
+| filter | yes |  |
+|--------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+|  | <a name="svg:polygon"></a>svg:polygon |  |  |
+|-------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| points | yes |  |
+|--------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| transform | yes |  |
+|-----------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip-path | yes |  |
+|-----------|
+| clip-rule | yes |  |
+|-----------|
+| color | yes |  |
+|-------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| fill | yes |  |
+|------|
+| fill-opacity | yes |  |
+|--------------|
+| fill-rule | yes |  |
+|-----------|
+| filter | yes |  |
+|--------|
+| marker | yes |  |
+|--------|
+| marker-end | yes |  |
+|------------|
+| marker-mid | yes |  |
+|------------|
+| marker-start | yes |  |
+|--------------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+| pointer-events | yes |  |
+|----------------|
+| shape-rendering | yes |  |
+|-----------------|
+| stroke | yes |  |
+|--------|
+| stroke-dasharray | yes |  |
+|------------------|
+| stroke-dashoffset | yes |  |
+|-------------------|
+| stroke-linecap | yes |  |
+|----------------|
+| stroke-linejoin | yes |  |
+|-----------------|
+| stroke-miterlimit | yes |  |
+|-------------------|
+| stroke-opacity | yes |  |
+|----------------|
+| stroke-width | yes |  |
+|--------------|
+| visibility | yes |  |
+|------------|
+|  | <a name="svg:polyline"></a>svg:polyline |  |  |
+|--------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| points | yes |  |
+|--------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| transform | yes |  |
+|-----------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip-path | yes |  |
+|-----------|
+| clip-rule | yes |  |
+|-----------|
+| color | yes |  |
+|-------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| fill | yes |  |
+|------|
+| fill-opacity | yes |  |
+|--------------|
+| fill-rule | yes |  |
+|-----------|
+| filter | yes |  |
+|--------|
+| marker | yes |  |
+|--------|
+| marker-end | yes |  |
+|------------|
+| marker-mid | yes |  |
+|------------|
+| marker-start | yes |  |
+|--------------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+| pointer-events | yes |  |
+|----------------|
+| shape-rendering | yes |  |
+|-----------------|
+| stroke | yes |  |
+|--------|
+| stroke-dasharray | yes |  |
+|------------------|
+| stroke-dashoffset | yes |  |
+|-------------------|
+| stroke-linecap | yes |  |
+|----------------|
+| stroke-linejoin | yes |  |
+|-----------------|
+| stroke-miterlimit | yes |  |
+|-------------------|
+| stroke-opacity | yes |  |
+|----------------|
+| stroke-width | yes |  |
+|--------------|
+| visibility | yes |  |
+|------------|
+|  | <a name="svg:radialGradient"></a>svg:radialGradient |  |  |
+|--------------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| cx | yes |  |
+|----|
+| cy | yes |  |
+|----|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| fx | yes |  |
+|----|
+| fy | yes |  |
+|----|
+| gradientTransform | yes |  |
+|-------------------|
+| gradientUnits | yes |  |
+|---------------|
+| id | yes |  |
+|----|
+| r | yes |  |
+|---|
+| spreadMethod | yes |  |
+|--------------|
+| style | yes |  |
+|-------|
+| xlink:actuate | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:arcrole | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:href | yes |  |
+|------------|
+| xlink:role | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:show | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:title | yes |  [[1]](#noteXLink)  |
+|-------------|
+| xlink:type | yes |  [[1]](#noteXLink)  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:rect"></a>svg:rect |  |  |
+|----------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| rx | yes |  |
+|----|
+| ry | yes |  |
+|----|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| transform | yes |  |
+|-----------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip-path | yes |  |
+|-----------|
+| clip-rule | yes |  |
+|-----------|
+| color | yes |  |
+|-------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| fill | yes |  |
+|------|
+| fill-opacity | yes |  |
+|--------------|
+| fill-rule | yes |  |
+|-----------|
+| filter | yes |  |
+|--------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+| pointer-events | yes |  |
+|----------------|
+| shape-rendering | yes |  |
+|-----------------|
+| stroke | yes |  |
+|--------|
+| stroke-dasharray | yes |  |
+|------------------|
+| stroke-dashoffset | yes |  |
+|-------------------|
+| stroke-linecap | yes |  |
+|----------------|
+| stroke-linejoin | yes |  |
+|-----------------|
+| stroke-miterlimit | yes |  |
+|-------------------|
+| stroke-opacity | yes |  |
+|----------------|
+| stroke-width | yes |  |
+|--------------|
+| visibility | yes |  |
+|------------|
+|  | <a name="svg:script"></a>svg:script |  |  |
+|------------|--|--|
+| Attributes |
+|------------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| type | yes |  |
+|------|
+| xlink:actuate | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:arcrole | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:href | yes |  |
+|------------|
+| xlink:role | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:show | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:title | yes |  [[1]](#noteXLink)  |
+|-------------|
+| xlink:type | yes |  [[1]](#noteXLink)  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:set"></a>svg:set |  |  |
+|---------|--|--|
+| Attributes |
+|------------|
+| attributeName | yes |  |
+|---------------|
+| attributeType | yes |  |
+|---------------|
+| begin | yes |  |
+|-------|
+| dur | yes |  |
+|-----|
+| end | yes |  |
+|-----|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| fill | yes |  |
+|------|
+| from | yes |  |
+|------|
+| id | yes |  |
+|----|
+| max | yes |  |
+|-----|
+| min | yes |  |
+|-----|
+| onbegin | yes |  |
+|---------|
+| onend | yes |  |
+|-------|
+| onload | yes |  |
+|--------|
+| onrepeat | yes |  |
+|----------|
+| repeatCount | yes |  |
+|-------------|
+| repeatDur | yes |  |
+|-----------|
+| requiredExtensions | no |  |
+|--------------------|
+| requiredFeatures | no |  |
+|------------------|
+| restart | yes |  |
+|---------|
+| systemLanguage | no |  |
+|----------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:stop"></a>svg:stop |  |  |
+|----------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| id | yes |  |
+|----|
+| offset | yes |  |
+|--------|
+| style | yes |  |
+|-------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| color | yes |  |
+|-------|
+| stop-color | yes |  |
+|------------|
+| stop-opacity | yes |  |
+|--------------|
+|  | <a name="svg:style"></a>svg:style |  |  |
+|-----------|--|--|
+|  |  | <notes>The `:hover` , `:link` , `:visited` , `:active` and `:focus` pseudo-classes are not supported in selectors.</notes> |
+| Attributes |
+|------------|
+| id | yes |  |
+|----|
+| media | yes |  |
+|-------|
+| title | yes |  |
+|-------|
+| type | yes |  |
+|------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:svg"></a>svg:svg |  |  |
+|---------|--|--|
+| Attributes |
+|------------|
+| baseProfile | no |  |
+|-------------|
+| class | yes |  |
+|-------|
+| contentScriptType | yes |  |
+|-------------------|
+| contentStyleType | no |  `text/css` is always the default style type. |
+|------------------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| onabort | yes |  |
+|---------|
+| onclick | yes |  |
+|---------|
+| onerror | yes | The event listener is added, but the error event is never fired by the implementation. |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| onresize | yes |  |
+|----------|
+| onscroll | yes |  |
+|----------|
+| onunload | yes |  |
+|----------|
+| onzoom | yes |  |
+|--------|
+| preserveAspectRatio | yes |  |
+|---------------------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| version | yes |  |
+|---------|
+| viewBox | partial | Attribute not animatable. |
+|---------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| zoomAndPan | yes |  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip | no |  |
+|------|
+| clip-path | yes |  |
+|-----------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| display | yes |  |
+|---------|
+| enable-background | yes |  |
+|-------------------|
+| filter | yes |  |
+|--------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+| overflow | yes |  |
+|----------|
+|  | <a name="svg:switch"></a>svg:switch |  |  |
+|------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| transform | yes |  |
+|-----------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip-path | yes |  |
+|-----------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| display | yes |  |
+|---------|
+| enable-background | no |  |
+|-------------------|
+| filter | yes |  |
+|--------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+|  | <a name="svg:symbol"></a>svg:symbol |  |  |
+|------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| preserveAspectRatio | yes |  |
+|---------------------|
+| style | yes |  |
+|-------|
+| viewBox | yes |  |
+|---------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip | no |  |
+|------|
+| clip-path | yes |  |
+|-----------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| enable-background | no |  |
+|-------------------|
+| filter | yes |  |
+|--------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+| overflow | yes |  |
+|----------|
+|  | <a name="svg:text"></a>svg:text |  |  |
+|----------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| dx | yes |  |
+|----|
+| dy | yes |  |
+|----|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| lengthAdjust | yes |  |
+|--------------|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| rotate | yes |  |
+|--------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| textLength | yes |  |
+|------------|
+| transform | yes |  |
+|-----------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip-path | yes |  |
+|-----------|
+| clip-rule | yes |  |
+|-----------|
+| color | yes |  |
+|-------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| direction | yes |  |
+|-----------|
+| display | yes |  |
+|---------|
+| dominant-baseline | no |  |
+|-------------------|
+| fill | yes |  |
+|------|
+| fill-opacity | yes |  |
+|--------------|
+| fill-rule | yes |  |
+|-----------|
+| filter | yes |  |
+|--------|
+| font | yes |  |
+|------|
+| font-family | yes |  |
+|-------------|
+| font-size | yes |  |
+|-----------|
+| font-size-adjust | no |  |
+|------------------|
+| font-stretch | no |  |
+|--------------|
+| font-style | yes |  |
+|------------|
+| font-variant | no |  |
+|--------------|
+| font-weight | yes |  |
+|-------------|
+| glyph-orientation-horizontal | yes |  |
+|------------------------------|
+| glyph-orientation-vertical | yes |  |
+|----------------------------|
+| kerning | yes |  |
+|---------|
+| letter-spacing | yes |  |
+|----------------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+| pointer-events | yes |  |
+|----------------|
+| stroke | yes |  |
+|--------|
+| stroke-dasharray | yes |  |
+|------------------|
+| stroke-dashoffset | yes |  |
+|-------------------|
+| stroke-linecap | yes |  |
+|----------------|
+| stroke-linejoin | yes |  |
+|-----------------|
+| stroke-miterlimit | yes |  |
+|-------------------|
+| stroke-opacity | yes |  |
+|----------------|
+| stroke-width | yes |  |
+|--------------|
+| text-anchor | yes |  |
+|-------------|
+| text-decoration | yes |  |
+|-----------------|
+| text-rendering | yes |  |
+|----------------|
+| unicode-bidi | yes |  |
+|--------------|
+| visibility | yes |  |
+|------------|
+| word-spacing | yes |  |
+|--------------|
+| writing-mode | yes |  |
+|--------------|
+|  | <a name="svg:textPath"></a>svg:textPath |  |  |
+|--------------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| lengthAdjust | yes |  |
+|--------------|
+| method | no |  `align` is always used. |
+|--------|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| spacing | no |  `exact` is always used. |
+|---------|
+| startOffset | yes |  |
+|-------------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| textLength | yes |  |
+|------------|
+| xlink:actuate | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:arcrole | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:href | yes |  |
+|------------|
+| xlink:role | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:show | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:title | yes |  [[1]](#noteXLink)  |
+|-------------|
+| xlink:type | yes |  [[1]](#noteXLink)  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| alignment-baseline | no |  |
+|--------------------|
+| baseline-shift | yes |  |
+|----------------|
+| color | yes |  |
+|-------|
+| direction | yes |  |
+|-----------|
+| display | yes |  |
+|---------|
+| dominant-baseline | no |  |
+|-------------------|
+| fill | yes |  |
+|------|
+| fill-opacity | yes |  |
+|--------------|
+| fill-rule | yes |  |
+|-----------|
+| font | yes |  |
+|------|
+| font-family | yes |  |
+|-------------|
+| font-size | yes |  |
+|-----------|
+| font-size-adjust | no |  |
+|------------------|
+| font-stretch | no |  |
+|--------------|
+| font-style | yes |  |
+|------------|
+| font-variant | no |  |
+|--------------|
+| font-weight | yes |  |
+|-------------|
+| glyph-orientation-horizontal | yes |  |
+|------------------------------|
+| glyph-orientation-vertical | yes |  |
+|----------------------------|
+| kerning | yes |  |
+|---------|
+| letter-spacing | yes |  |
+|----------------|
+| stroke | yes |  |
+|--------|
+| stroke-dasharray | yes |  |
+|------------------|
+| stroke-dashoffset | yes |  |
+|-------------------|
+| stroke-linecap | yes |  |
+|----------------|
+| stroke-linejoin | yes |  |
+|-----------------|
+| stroke-miterlimit | yes |  |
+|-------------------|
+| stroke-opacity | yes |  |
+|----------------|
+| stroke-width | yes |  |
+|--------------|
+| text-anchor | yes |  |
+|-------------|
+| text-decoration | yes |  |
+|-----------------|
+| unicode-bidi | yes |  |
+|--------------|
+| visibility | yes |  |
+|------------|
+| word-spacing | yes |  |
+|--------------|
+|  | <a name="svg:title"></a>svg:title |  |  |
+|-----------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| id | yes |  |
+|----|
+| style | yes |  |
+|-------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:tref"></a>svg:tref |  |  |
+|----------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| dx | yes |  |
+|----|
+| dy | yes |  |
+|----|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| lengthAdjust | yes |  |
+|--------------|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| rotate | yes |  |
+|--------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| textLength | yes |  |
+|------------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xlink:actuate | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:arcrole | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:href | yes |  |
+|------------|
+| xlink:role | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:show | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:title | yes |  [[1]](#noteXLink)  |
+|-------------|
+| xlink:type | yes |  [[1]](#noteXLink)  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| alignment-baseline | no |  |
+|--------------------|
+| baseline-shift | yes |  |
+|----------------|
+| color | yes |  |
+|-------|
+| direction | yes |  |
+|-----------|
+| display | yes |  |
+|---------|
+| dominant-baseline | no |  |
+|-------------------|
+| fill | yes |  |
+|------|
+| fill-opacity | yes |  |
+|--------------|
+| fill-rule | yes |  |
+|-----------|
+| font | yes |  |
+|------|
+| font-family | yes |  |
+|-------------|
+| font-size | yes |  |
+|-----------|
+| font-size-adjust | no |  |
+|------------------|
+| font-stretch | no |  |
+|--------------|
+| font-style | yes |  |
+|------------|
+| font-variant | no |  |
+|--------------|
+| font-weight | yes |  |
+|-------------|
+| glyph-orientation-horizontal | yes |  |
+|------------------------------|
+| glyph-orientation-vertical | yes |  |
+|----------------------------|
+| kerning | yes |  |
+|---------|
+| letter-spacing | yes |  |
+|----------------|
+| stroke | yes |  |
+|--------|
+| stroke-dasharray | yes |  |
+|------------------|
+| stroke-dashoffset | yes |  |
+|-------------------|
+| stroke-linecap | yes |  |
+|----------------|
+| stroke-linejoin | yes |  |
+|-----------------|
+| stroke-miterlimit | yes |  |
+|-------------------|
+| stroke-opacity | yes |  |
+|----------------|
+| stroke-width | yes |  |
+|--------------|
+| text-anchor | yes |  |
+|-------------|
+| text-decoration | yes |  |
+|-----------------|
+| unicode-bidi | yes |  |
+|--------------|
+| visibility | yes |  |
+|------------|
+| word-spacing | yes |  |
+|--------------|
+|  | <a name="svg:tspan"></a>svg:tspan |  |  |
+|-----------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| dx | yes |  |
+|----|
+| dy | yes |  |
+|----|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| lengthAdjust | yes |  |
+|--------------|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| rotate | yes |  |
+|--------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| textLength | yes |  |
+|------------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| alignment-baseline | no |  |
+|--------------------|
+| baseline-shift | yes |  |
+|----------------|
+| color | yes |  |
+|-------|
+| direction | yes |  |
+|-----------|
+| display | yes |  |
+|---------|
+| dominant-baseline | no |  |
+|-------------------|
+| fill | yes |  |
+|------|
+| fill-opacity | yes |  |
+|--------------|
+| fill-rule | yes |  |
+|-----------|
+| font | yes |  |
+|------|
+| font-family | yes |  |
+|-------------|
+| font-size | yes |  |
+|-----------|
+| font-size-adjust | no |  |
+|------------------|
+| font-stretch | no |  |
+|--------------|
+| font-style | yes |  |
+|------------|
+| font-variant | no |  |
+|--------------|
+| font-weight | yes |  |
+|-------------|
+| glyph-orientation-horizontal | yes |  |
+|------------------------------|
+| glyph-orientation-vertical | yes |  |
+|----------------------------|
+| kerning | yes |  |
+|---------|
+| letter-spacing | yes |  |
+|----------------|
+| stroke | yes |  |
+|--------|
+| stroke-dasharray | yes |  |
+|------------------|
+| stroke-dashoffset | yes |  |
+|-------------------|
+| stroke-linecap | yes |  |
+|----------------|
+| stroke-linejoin | yes |  |
+|-----------------|
+| stroke-miterlimit | yes |  |
+|-------------------|
+| stroke-opacity | yes |  |
+|----------------|
+| stroke-width | yes |  |
+|--------------|
+| text-anchor | yes |  |
+|-------------|
+| text-decoration | yes |  |
+|-----------------|
+| unicode-bidi | yes |  |
+|--------------|
+| visibility | yes |  |
+|------------|
+| word-spacing | yes |  |
+|--------------|
+|  | <a name="svg:use"></a>svg:use |  |  |
+|---------|--|--|
+| Attributes |
+|------------|
+| class | yes |  |
+|-------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| height | yes |  |
+|--------|
+| id | yes |  |
+|----|
+| onclick | yes |  |
+|---------|
+| onfocusin | yes |  |
+|-----------|
+| onfocusout | yes |  |
+|------------|
+| onload | yes |  |
+|--------|
+| onmousedown | yes |  |
+|-------------|
+| onmousemove | yes |  |
+|-------------|
+| onmouseout | yes |  |
+|------------|
+| onmouseover | yes |  |
+|-------------|
+| onmouseup | yes |  |
+|-----------|
+| requiredExtensions | yes |  |
+|--------------------|
+| requiredFeatures | yes |  |
+|------------------|
+| style | yes |  |
+|-------|
+| systemLanguage | yes |  |
+|----------------|
+| transform | yes |  |
+|-----------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| xlink:actuate | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:arcrole | yes |  [[1]](#noteXLink)  |
+|---------------|
+| xlink:href | yes |  |
+|------------|
+| xlink:role | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:show | yes |  [[1]](#noteXLink)  |
+|------------|
+| xlink:title | yes |  [[1]](#noteXLink)  |
+|-------------|
+| xlink:type | yes |  [[1]](#noteXLink)  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+| Properties |
+|------------|
+| clip-path | yes |  |
+|-----------|
+| clip-rule | yes |  |
+|-----------|
+| color-interpolation | yes |  |
+|---------------------|
+| color-rendering | yes |  |
+|-----------------|
+| cursor | yes |  |
+|--------|
+| filter | yes |  |
+|--------|
+| mask | yes |  |
+|------|
+| opacity | yes |  |
+|---------|
+| pointer-events | yes |  |
+|----------------|
+| visibility | yes |  |
+|------------|
+|  | <a name="svg:view"></a>svg:view |  |  |
+|----------|--|--|
+| Attributes |
+|------------|
+| externalResourcesRequired | no |  |
+|---------------------------|
+| id | yes |  |
+|----|
+| preserveAspectRatio | yes |  |
+|---------------------|
+| viewBox | yes |  |
+|---------|
+| viewTarget | no | No highlighting is performed. |
+|------------|
+| zoomAndPan | yes |  |
+|------------|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+|  | <a name="svg:vkern"></a>svg:vkern |  |  |
+|-----------|--|--|
+| Attributes |
+|------------|
+| g1 | yes |  |
+|----|
+| g2 | yes |  |
+|----|
+| id | yes |  |
+|----|
+| k | yes |  |
+|---|
+| u1 | yes |  |
+|----|
+| u2 | yes |  |
+|----|
+| xml:base | yes |  |
+|----------|
+| xml:lang | yes |  |
+|----------|
+| xml:space | yes |  |
+|-----------|
+
+Notes:
+
+
+1. <a name="noteXLink"></a>
+Values for the XLink attributes other than `xlink:href` that are not those required by SVG are ignored. For example, setting `xlink:title="Something"` or `xlink:actuate="other"` has no effect.
+
+
+1. <a name="noteGlyphRef"></a>
+ `glyphRef` elements can reference glyphs only by URI, not by font properties.
+
+
+# DOM interfaces # {#dom}
+
+The table below lists the SVG DOM interfaces that are supported by Batik. For each interface, the name of each IDL attribute and operation introduced on the interface is given, along with its level of support. For cases where the implementation of an attribute or operation introduced in a superinterface may differ depending on which subinterface has inherited it, this is noted next to that attribute or operation. Both the ECMAScript and Java bindings have the same implementation level as specified for the IDL interfaces in the table.
+
+|  | <a name="GetSVGDocument"></a>GetSVGDocument |  |  |
+|----------------|--|--|
+| Operations |
+|------------|
+| getSVGDocument | no | No objects implement this interface. |
+|----------------|
+|  | <a name="SVGAElement"></a>SVGAElement |  |  |
+|-------------|--|--|
+| Attributes |
+|------------|
+| target | yes |  |
+|--------|
+|  | <a name="SVGAltGlyphDefElement"></a>SVGAltGlyphDefElement |  |  |
+|-----------------------|--|--|
+|  | <a name="SVGAltGlyphElement"></a>SVGAltGlyphElement |  |  |
+|--------------------|--|--|
+| Attributes |
+|------------|
+| format | yes |  |
+|--------|
+| glyphRef | yes |  |
+|----------|
+|  | <a name="SVGAltGlyphItemElement"></a>SVGAltGlyphItemElement |  |  |
+|------------------------|--|--|
+|  | <a name="SVGAngle"></a>SVGAngle |  |  |
+|----------|--|--|
+| Attributes |
+|------------|
+| unitType | yes |  |
+|----------|
+| value | yes |  |
+|-------|
+| valueAsString | yes |  |
+|---------------|
+| valueInSpecifiedUnits | yes |  |
+|-----------------------|
+| Operations |
+|------------|
+| newValueSpecifiedUnits | yes |  |
+|------------------------|
+| convertToSpecifiedUnits | yes |  |
+|-------------------------|
+|  | <a name="SVGAnimateColorElement"></a>SVGAnimateColorElement |  |  |
+|------------------------|--|--|
+|  | <a name="SVGAnimatedAngle"></a>SVGAnimatedAngle |  |  |
+|------------------|--|--|
+| Attributes |
+|------------|
+| animVal | yes |  |
+|---------|
+| baseVal | yes |  |
+|---------|
+|  | <a name="SVGAnimatedBoolean"></a>SVGAnimatedBoolean |  |  |
+|--------------------|--|--|
+| Attributes |
+|------------|
+| animVal | yes |  |
+|---------|
+| baseVal | yes |  |
+|---------|
+|  | <a name="SVGAnimatedEnumeration"></a>SVGAnimatedEnumeration |  |  |
+|------------------------|--|--|
+| Attributes |
+|------------|
+| animVal | yes |  |
+|---------|
+| baseVal | yes |  |
+|---------|
+|  | <a name="SVGAnimatedInteger"></a>SVGAnimatedInteger |  |  |
+|--------------------|--|--|
+| Attributes |
+|------------|
+| animVal | yes |  |
+|---------|
+| baseVal | yes |  |
+|---------|
+|  | <a name="SVGAnimatedLength"></a>SVGAnimatedLength |  |  |
+|-------------------|--|--|
+| Attributes |
+|------------|
+| animVal | yes |  |
+|---------|
+| baseVal | yes |  |
+|---------|
+|  | <a name="SVGAnimatedLengthList"></a>SVGAnimatedLengthList |  |  |
+|-----------------------|--|--|
+| Attributes |
+|------------|
+| animVal | yes |  |
+|---------|
+| baseVal | yes |  |
+|---------|
+|  | <a name="SVGAnimatedNumber"></a>SVGAnimatedNumber |  |  |
+|-------------------|--|--|
+| Attributes |
+|------------|
+| animVal | yes |  |
+|---------|
+| baseVal | yes |  |
+|---------|
+|  | <a name="SVGAnimatedNumberList"></a>SVGAnimatedNumberList |  |  |
+|-----------------------|--|--|
+| Attributes |
+|------------|
+| animVal | yes |  |
+|---------|
+| baseVal | yes |  |
+|---------|
+|  | <a name="SVGAnimatedPathData"></a>SVGAnimatedPathData |  |  |
+|---------------------|--|--|
+| Attributes |
+|------------|
+| animatedNormalizedPathSegList | no |  |
+|-------------------------------|
+| animatedPathSegList | yes |  |
+|---------------------|
+| normalizedPathSegList | yes |  |
+|-----------------------|
+| pathSegList | yes |  |
+|-------------|
+|  | <a name="SVGAnimatedPoints"></a>SVGAnimatedPoints |  |  |
+|-------------------|--|--|
+| Attributes |
+|------------|
+| animatedPoints | yes |  |
+|----------------|
+| points | yes |  |
+|--------|
+|  | <a name="SVGAnimatedPreserveAspectRatio"></a>SVGAnimatedPreserveAspectRatio |  |  |
+|--------------------------------|--|--|
+| Attributes |
+|------------|
+| animVal | yes |  |
+|---------|
+| baseVal | yes |  |
+|---------|
+|  | <a name="SVGAnimatedRect"></a>SVGAnimatedRect |  |  |
+|-----------------|--|--|
+| Attributes |
+|------------|
+| animVal | yes |  |
+|---------|
+| baseVal | yes |  |
+|---------|
+|  | <a name="SVGAnimatedString"></a>SVGAnimatedString |  |  |
+|-------------------|--|--|
+| Attributes |
+|------------|
+| animVal | yes |  |
+|---------|
+| baseVal | yes |  |
+|---------|
+|  | <a name="SVGAnimatedTransformList"></a>SVGAnimatedTransformList |  |  |
+|--------------------------|--|--|
+| Attributes |
+|------------|
+| animVal | yes |  |
+|---------|
+| baseVal | yes |  |
+|---------|
+|  | <a name="SVGAnimateElement"></a>SVGAnimateElement |  |  |
+|-------------------|--|--|
+|  | <a name="SVGAnimateMotionElement"></a>SVGAnimateMotionElement |  |  |
+|-------------------------|--|--|
+|  | <a name="SVGAnimateTransformElement"></a>SVGAnimateTransformElement |  |  |
+|----------------------------|--|--|
+|  | <a name="SVGAnimationElement"></a>SVGAnimationElement |  |  |
+|---------------------|--|--|
+| Attributes |
+|------------|
+| targetElement | yes |  |
+|---------------|
+| Operations |
+|------------|
+| getStartTime | yes |  |
+|--------------|
+| getCurrentTime | yes |  |
+|----------------|
+| getSimpleDuration | yes |  |
+|-------------------|
+|  | <a name="SVGCircleElement"></a>SVGCircleElement |  |  |
+|------------------|--|--|
+| Attributes |
+|------------|
+| cx | yes |  |
+|----|
+| cy | yes |  |
+|----|
+| r | yes |  |
+|---|
+|  | <a name="SVGClipPathElement"></a>SVGClipPathElement |  |  |
+|--------------------|--|--|
+| Attributes |
+|------------|
+| clipPathUnits | yes |  |
+|---------------|
+|  | <a name="SVGColor"></a>SVGColor |  |  |
+|----------|--|--|
+| Attributes |
+|------------|
+| colorType | yes |  |
+|-----------|
+| iccColor | yes |  |
+|----------|
+| rgbColor | yes |  |
+|----------|
+| Operations |
+|------------|
+| setRGBColor | yes |  |
+|-------------|
+| setRGBColorICCColor | yes |  |
+|---------------------|
+| setColor | yes |  |
+|----------|
+|  | <a name="SVGColorProfileElement"></a>SVGColorProfileElement |  |  |
+|------------------------|--|--|
+| Attributes |
+|------------|
+| local | yes |  |
+|-------|
+| name | yes |  |
+|------|
+| renderingIntent | yes |  |
+|-----------------|
+|  | <a name="SVGColorProfileRule"></a>SVGColorProfileRule |  |  |
+|---------------------|--|--|
+| Attributes |
+|------------|
+| name | no |  |
+|------|
+| renderingIntent | no |  |
+|-----------------|
+| src | no |  |
+|-----|
+|  | <a name="SVGComponentTransferFunctionElement"></a>SVGComponentTransferFunctionElement |  |  |
+|-------------------------------------|--|--|
+| Attributes |
+|------------|
+| amplitude | yes |  |
+|-----------|
+| exponent | yes |  |
+|----------|
+| intercept | yes |  |
+|-----------|
+| offset | yes |  |
+|--------|
+| slope | yes |  |
+|-------|
+| tableValues | no |  |
+|-------------|
+| type | yes |  |
+|------|
+|  | <a name="SVGCSSRule"></a>SVGCSSRule |  |  |
+|------------|--|--|
+|  | <a name="SVGCursorElement"></a>SVGCursorElement |  |  |
+|------------------|--|--|
+| Attributes |
+|------------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGDefinitionSrcElement"></a>SVGDefinitionSrcElement |  |  |
+|-------------------------|--|--|
+|  | <a name="SVGDefinitionSrcElement"></a>SVGDefinitionSrcElement |  |  |
+|-------------------------|--|--|
+|  | <a name="SVGDefsElement"></a>SVGDefsElement |  |  |
+|----------------|--|--|
+|  | <a name="SVGDescElement"></a>SVGDescElement |  |  |
+|----------------|--|--|
+|  | <a name="SVGDocument"></a>SVGDocument |  |  |
+|-------------|--|--|
+| Attributes |
+|------------|
+| domain | yes |  |
+|--------|
+| referrer | yes |  |
+|----------|
+| rootElement | yes |  |
+|-------------|
+| title | yes |  |
+|-------|
+| URL | yes |  |
+|-----|
+|  | <a name="SVGElement"></a>SVGElement |  |  |
+|------------|--|--|
+| Attributes |
+|------------|
+| id | yes |  |
+|----|
+| ownerSVGElement | yes |  |
+|-----------------|
+| viewportElement | yes |  |
+|-----------------|
+| xmlbase | yes |  |
+|---------|
+|  | <a name="SVGElementInstance"></a>SVGElementInstance |  |  |
+|--------------------|--|--|
+| Attributes |
+|------------|
+| childNodes | no |  |
+|------------|
+| correspondingElement | no |  |
+|----------------------|
+| correspondingUseElement | no |  |
+|-------------------------|
+| firstChild | no |  |
+|------------|
+| lastChild | no |  |
+|-----------|
+| nextSibling | no |  |
+|-------------|
+| parentNode | no |  |
+|------------|
+| previousSibling | no |  |
+|-----------------|
+|  | <a name="SVGElementInstanceList"></a>SVGElementInstanceList |  |  |
+|------------------------|--|--|
+| Attributes |
+|------------|
+| length | no |  |
+|--------|
+| Operations |
+|------------|
+| item | no |  |
+|------|
+|  | <a name="SVGEllipseElement"></a>SVGEllipseElement |  |  |
+|-------------------|--|--|
+| Attributes |
+|------------|
+| cx | yes |  |
+|----|
+| cy | yes |  |
+|----|
+| rx | yes |  |
+|----|
+| ry | yes |  |
+|----|
+|  | <a name="SVGEvent"></a>SVGEvent |  |  |
+|----------|--|--|
+|  | <a name="SVGExternalResourcesRequired"></a>SVGExternalResourcesRequired |  |  |
+|------------------------------|--|--|
+| Attributes |
+|------------|
+| externalResourcesRequired | yes |  |
+|---------------------------|
+|  | <a name="SVGFEBlendElement"></a>SVGFEBlendElement |  |  |
+|-------------------|--|--|
+| Attributes |
+|------------|
+| in1 | yes |  |
+|-----|
+| in2 | yes |  |
+|-----|
+| mode | yes |  |
+|------|
+|  | <a name="SVGFEColorMatrixElement"></a>SVGFEColorMatrixElement |  |  |
+|-------------------------|--|--|
+| Attributes |
+|------------|
+| in1 | yes |  |
+|-----|
+| type | yes |  |
+|------|
+| values | no |  |
+|--------|
+|  | <a name="SVGFEComponentTransferElement"></a>SVGFEComponentTransferElement |  |  |
+|-------------------------------|--|--|
+| Attributes |
+|------------|
+| in1 | yes |  |
+|-----|
+|  | <a name="SVGFECompositeElement"></a>SVGFECompositeElement |  |  |
+|-----------------------|--|--|
+| Attributes |
+|------------|
+| in1 | yes |  |
+|-----|
+| in2 | yes |  |
+|-----|
+| k1 | yes |  |
+|----|
+| k2 | yes |  |
+|----|
+| k3 | yes |  |
+|----|
+| k4 | yes |  |
+|----|
+| operator | yes |  |
+|----------|
+|  | <a name="SVGFEConvolveMatrixElement"></a>SVGFEConvolveMatrixElement |  |  |
+|----------------------------|--|--|
+| Attributes |
+|------------|
+| bias | yes |  |
+|------|
+| divisor | no |  |
+|---------|
+| edgeMode | yes |  |
+|----------|
+| kernelMatrix | no |  |
+|--------------|
+| kernelUnitLengthX | no |  |
+|-------------------|
+| kernelUnitLengthY | no |  |
+|-------------------|
+| orderX | no |  |
+|--------|
+| orderY | no |  |
+|--------|
+| preserveAlpha | yes |  |
+|---------------|
+| targetX | no |  |
+|---------|
+| targetY | no |  |
+|---------|
+|  | <a name="SVGFEDiffuseLightingElement"></a>SVGFEDiffuseLightingElement |  |  |
+|-----------------------------|--|--|
+| Attributes |
+|------------|
+| diffuseConstant | yes |  |
+|-----------------|
+| in1 | yes |  |
+|-----|
+| kernelUnitLengthX | yes |  |
+|-------------------|
+| kernelUnitLengthY | yes |  |
+|-------------------|
+| surfaceScale | yes |  |
+|--------------|
+|  | <a name="SVGFEDisplacementMapElement"></a>SVGFEDisplacementMapElement |  |  |
+|-----------------------------|--|--|
+| Attributes |
+|------------|
+| in1 | yes |  |
+|-----|
+| in2 | yes |  |
+|-----|
+| scale | yes |  |
+|-------|
+| xChannelSelector | yes |  |
+|------------------|
+| yChannelSelector | yes |  |
+|------------------|
+|  | <a name="SVGFEDistantLightElement"></a>SVGFEDistantLightElement |  |  |
+|--------------------------|--|--|
+| Attributes |
+|------------|
+| azimuth | yes |  |
+|---------|
+| elevation | yes |  |
+|-----------|
+|  | <a name="SVGFEFloodElement"></a>SVGFEFloodElement |  |  |
+|-------------------|--|--|
+| Attributes |
+|------------|
+| in1 | yes |  |
+|-----|
+|  | <a name="SVGFEFuncAElement"></a>SVGFEFuncAElement |  |  |
+|-------------------|--|--|
+|  | <a name="SVGFEFuncBElement"></a>SVGFEFuncBElement |  |  |
+|-------------------|--|--|
+|  | <a name="SVGFEFuncGElement"></a>SVGFEFuncGElement |  |  |
+|-------------------|--|--|
+|  | <a name="SVGFEFuncRElement"></a>SVGFEFuncRElement |  |  |
+|-------------------|--|--|
+|  | <a name="SVGFEGaussianBlurElement"></a>SVGFEGaussianBlurElement |  |  |
+|--------------------------|--|--|
+| Attributes |
+|------------|
+| in1 | yes |  |
+|-----|
+| stdDeviationX | no |  |
+|---------------|
+| stdDeviationY | no |  |
+|---------------|
+| Operations |
+|------------|
+| setStdDeviation | yes |  |
+|-----------------|
+|  | <a name="SVGFEImageElement"></a>SVGFEImageElement |  |  |
+|-------------------|--|--|
+| Attributes |
+|------------|
+| preserveAspectRatio | no |  |
+|---------------------|
+|  | <a name="SVGFEMergeElement"></a>SVGFEMergeElement |  |  |
+|-------------------|--|--|
+|  | <a name="SVGFEMergeNodeElement"></a>SVGFEMergeNodeElement |  |  |
+|-----------------------|--|--|
+| Attributes |
+|------------|
+| in1 | yes |  |
+|-----|
+|  | <a name="SVGFEMorphologyElement"></a>SVGFEMorphologyElement |  |  |
+|------------------------|--|--|
+| Attributes |
+|------------|
+| in1 | yes |  |
+|-----|
+| operator | yes |  |
+|----------|
+| radiusX | no |  |
+|---------|
+| radiusY | no |  |
+|---------|
+|  | <a name="SVGFEOffsetElement"></a>SVGFEOffsetElement |  |  |
+|--------------------|--|--|
+| Attributes |
+|------------|
+| dx | yes |  |
+|----|
+| dy | yes |  |
+|----|
+| in1 | yes |  |
+|-----|
+|  | <a name="SVGFEPointLightElement"></a>SVGFEPointLightElement |  |  |
+|------------------------|--|--|
+| Attributes |
+|------------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| z | yes |  |
+|---|
+|  | <a name="SVGFESpecularLightingElement"></a>SVGFESpecularLightingElement |  |  |
+|------------------------------|--|--|
+| Attributes |
+|------------|
+| in1 | yes |  |
+|-----|
+| specularConstant | yes |  |
+|------------------|
+| specularExponent | yes |  |
+|------------------|
+| surfaceScale | yes |  |
+|--------------|
+|  | <a name="SVGFESpotLightElement"></a>SVGFESpotLightElement |  |  |
+|-----------------------|--|--|
+| Attributes |
+|------------|
+| limitingConeAngle | yes |  |
+|-------------------|
+| pointsAtX | yes |  |
+|-----------|
+| pointsAtY | yes |  |
+|-----------|
+| pointsAtZ | yes |  |
+|-----------|
+| specularExponent | yes |  |
+|------------------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| z | yes |  |
+|---|
+|  | <a name="SVGFETileElement"></a>SVGFETileElement |  |  |
+|------------------|--|--|
+| Attributes |
+|------------|
+| in1 | yes |  |
+|-----|
+|  | <a name="SVGFETurbulenceElement"></a>SVGFETurbulenceElement |  |  |
+|------------------------|--|--|
+| Attributes |
+|------------|
+| baseFrequencyX | no |  |
+|----------------|
+| baseFrequencyY | no |  |
+|----------------|
+| numOctaves | yes |  |
+|------------|
+| seed | yes |  |
+|------|
+| stitchTiles | yes |  |
+|-------------|
+| type | yes |  |
+|------|
+|  | <a name="SVGFilterElement"></a>SVGFilterElement |  |  |
+|------------------|--|--|
+| Attributes |
+|------------|
+| filterResX | no |  |
+|------------|
+| filterResY | no |  |
+|------------|
+| filterUnits | yes |  |
+|-------------|
+| height | yes |  |
+|--------|
+| primitiveUnits | yes |  |
+|----------------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| Operations |
+|------------|
+| setFilterRes | no |  |
+|--------------|
+|  | <a name="SVGFilterPrimitiveStandardAttributes"></a>SVGFilterPrimitiveStandardAttributes |  |  |
+|--------------------------------------|--|--|
+| Attributes |
+|------------|
+| height | yes |  |
+|--------|
+| result | yes |  |
+|--------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGFitToViewBox"></a>SVGFitToViewBox |  |  |
+|-----------------|--|--|
+| Attributes |
+|------------|
+| preserveAspectRatio | yes |  |
+|---------------------|
+| viewBox | partial | Implemented for `<svg>` elements. |
+|---------|
+|  | <a name="SVGFontElement"></a>SVGFontElement |  |  |
+|----------------|--|--|
+|  | <a name="SVGFontFaceElement"></a>SVGFontFaceElement |  |  |
+|--------------------|--|--|
+|  | <a name="SVGFontFaceFormatElement"></a>SVGFontFaceFormatElement |  |  |
+|--------------------------|--|--|
+|  | <a name="SVGFontFaceNameElement"></a>SVGFontFaceNameElement |  |  |
+|------------------------|--|--|
+|  | <a name="SVGFontFaceSrcElement"></a>SVGFontFaceSrcElement |  |  |
+|-----------------------|--|--|
+|  | <a name="SVGFontFaceUriElement"></a>SVGFontFaceUriElement |  |  |
+|-----------------------|--|--|
+|  | <a name="SVGForeignObjectElement"></a>SVGForeignObjectElement |  |  |
+|-------------------------|--|--|
+| Attributes |
+|------------|
+| height | yes |  |
+|--------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGGElement"></a>SVGGElement |  |  |
+|-------------|--|--|
+|  | <a name="SVGGlyphElement"></a>SVGGlyphElement |  |  |
+|-----------------|--|--|
+|  | <a name="SVGGlyphRefElement"></a>SVGGlyphRefElement |  |  |
+|--------------------|--|--|
+| Attributes |
+|------------|
+| dx | yes |  |
+|----|
+| dy | yes |  |
+|----|
+| format | yes |  |
+|--------|
+| glyphRef | yes |  |
+|----------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGGradientElement"></a>SVGGradientElement |  |  |
+|--------------------|--|--|
+| Attributes |
+|------------|
+| gradientTransform | yes |  |
+|-------------------|
+| gradientUnits | yes |  |
+|---------------|
+| spreadMethod | yes |  |
+|--------------|
+|  | <a name="SVGHKernElement"></a>SVGHKernElement |  |  |
+|-----------------|--|--|
+|  | <a name="SVGICCColor"></a>SVGICCColor |  |  |
+|-------------|--|--|
+| Attributes |
+|------------|
+| colorProfile | yes |  |
+|--------------|
+| colors | yes |  |
+|--------|
+|  | <a name="SVGImageElement"></a>SVGImageElement |  |  |
+|-----------------|--|--|
+| Attributes |
+|------------|
+| height | yes |  |
+|--------|
+| preserveAspectRatio | yes |  |
+|---------------------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGLangSpace"></a>SVGLangSpace |  |  |
+|--------------|--|--|
+| Attributes |
+|------------|
+| xmllang | yes |  |
+|---------|
+| xmlspace | yes |  |
+|----------|
+|  | <a name="SVGLength"></a>SVGLength |  |  |
+|-----------|--|--|
+| Attributes |
+|------------|
+| unitType | yes |  |
+|----------|
+| value | yes |  |
+|-------|
+| valueAsString | yes |  |
+|---------------|
+| valueInSpecifiedUnits | yes |  |
+|-----------------------|
+| Operations |
+|------------|
+| newValueSpecifiedUnits | yes |  |
+|------------------------|
+| convertToSpecifiedUnits | yes |  |
+|-------------------------|
+|  | <a name="SVGLengthList"></a>SVGLengthList |  |  |
+|---------------|--|--|
+| Attributes |
+|------------|
+| numberOfItems | yes |  |
+|---------------|
+| Operations |
+|------------|
+| clear | yes |  |
+|-------|
+| initialize | yes |  |
+|------------|
+| getItem | yes |  |
+|---------|
+| insertItemBefore | yes |  |
+|------------------|
+| replaceItem | yes |  |
+|-------------|
+| removeItem | yes |  |
+|------------|
+| appendItem | yes |  |
+|------------|
+|  | <a name="SVGLinearGradientElement"></a>SVGLinearGradientElement |  |  |
+|--------------------------|--|--|
+| Attributes |
+|------------|
+| x1 | yes |  |
+|----|
+| x2 | yes |  |
+|----|
+| y1 | yes |  |
+|----|
+| y2 | yes |  |
+|----|
+|  | <a name="SVGLineElement"></a>SVGLineElement |  |  |
+|----------------|--|--|
+| Attributes |
+|------------|
+| x1 | yes |  |
+|----|
+| x2 | yes |  |
+|----|
+| y1 | yes |  |
+|----|
+| y2 | yes |  |
+|----|
+|  | <a name="SVGLocatable"></a>SVGLocatable |  |  |
+|--------------|--|--|
+| Attributes |
+|------------|
+| farthestViewportElement | yes |  |
+|-------------------------|
+| nearestViewportElement | yes |  |
+|------------------------|
+| Operations |
+|------------|
+| getBBox | yes |  |
+|---------|
+| getCTM | yes |  |
+|--------|
+| getScreenCTM | yes |  |
+|--------------|
+| getTransformToElement | yes |  |
+|-----------------------|
+|  | <a name="SVGMarkerElement"></a>SVGMarkerElement |  |  |
+|------------------|--|--|
+| Attributes |
+|------------|
+| markerHeight | yes |  |
+|--------------|
+| markerUnits | yes |  |
+|-------------|
+| markerWidth | yes |  |
+|-------------|
+| orientAngle | yes |  |
+|-------------|
+| orientType | yes |  |
+|------------|
+| refX | yes |  |
+|------|
+| refY | yes |  |
+|------|
+| Operations |
+|------------|
+| setOrientToAuto | yes |  |
+|-----------------|
+| setOrientToAngle | yes |  |
+|------------------|
+|  | <a name="SVGMaskElement"></a>SVGMaskElement |  |  |
+|----------------|--|--|
+| Attributes |
+|------------|
+| height | yes |  |
+|--------|
+| maskContentUnits | yes |  |
+|------------------|
+| maskUnits | yes |  |
+|-----------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGMatrix"></a>SVGMatrix |  |  |
+|-----------|--|--|
+| Attributes |
+|------------|
+| a | yes |  |
+|---|
+| b | yes |  |
+|---|
+| c | yes |  |
+|---|
+| d | yes |  |
+|---|
+| e | yes |  |
+|---|
+| f | yes |  |
+|---|
+| Operations |
+|------------|
+| multiply | yes |  |
+|----------|
+| inverse | yes |  |
+|---------|
+| translate | yes |  |
+|-----------|
+| scale | yes |  |
+|-------|
+| scaleNonUniform | yes |  |
+|-----------------|
+| rotate | yes |  |
+|--------|
+| rotateFromVector | yes |  |
+|------------------|
+| flipX | yes |  |
+|-------|
+| flipY | yes |  |
+|-------|
+| skewX | yes |  |
+|-------|
+| skewY | yes |  |
+|-------|
+|  | <a name="SVGMetadataElement"></a>SVGMetadataElement |  |  |
+|--------------------|--|--|
+|  | <a name="SVGMissingGlyphElement"></a>SVGMissingGlyphElement |  |  |
+|------------------------|--|--|
+|  | <a name="SVGMPathElement"></a>SVGMPathElement |  |  |
+|-----------------|--|--|
+|  | <a name="SVGNumber"></a>SVGNumber |  |  |
+|-----------|--|--|
+| Attributes |
+|------------|
+| value | yes |  |
+|-------|
+|  | <a name="SVGNumberList"></a>SVGNumberList |  |  |
+|---------------|--|--|
+| Attributes |
+|------------|
+| numberOfItems | yes |  |
+|---------------|
+| Operations |
+|------------|
+| clear | yes |  |
+|-------|
+| initialize | yes |  |
+|------------|
+| getItem | yes |  |
+|---------|
+| insertItemBefore | yes |  |
+|------------------|
+| replaceItem | yes |  |
+|-------------|
+| removeItem | yes |  |
+|------------|
+| appendItem | yes |  |
+|------------|
+|  | <a name="SVGPaint"></a>SVGPaint |  |  |
+|----------|--|--|
+| Attributes |
+|------------|
+| paintType | yes |  |
+|-----------|
+| uri | yes |  |
+|-----|
+| Operations |
+|------------|
+| setUri | yes |  |
+|--------|
+| setPaint | yes |  |
+|----------|
+|  | <a name="SVGPathElement"></a>SVGPathElement |  |  |
+|----------------|--|--|
+| Attributes |
+|------------|
+| pathLength | no |  |
+|------------|
+| Operations |
+|------------|
+| getTotalLength | yes |  |
+|----------------|
+| getPointAtLength | yes |  |
+|------------------|
+| getPathSegAtLength | yes |  |
+|--------------------|
+| createSVGPathSegClosePath | yes |  |
+|---------------------------|
+| createSVGPathSegMovetoAbs | yes |  |
+|---------------------------|
+| createSVGPathSegMovetoRel | yes |  |
+|---------------------------|
+| createSVGPathSegLinetoAbs | yes |  |
+|---------------------------|
+| createSVGPathSegLinetoRel | yes |  |
+|---------------------------|
+| createSVGPathSegCurvetoCubicAbs | yes |  |
+|---------------------------------|
+| createSVGPathSegCurvetoCubicRel | yes |  |
+|---------------------------------|
+| createSVGPathSegCurvetoQuadraticAbs | yes |  |
+|-------------------------------------|
+| createSVGPathSegCurvetoQuadraticRel | yes |  |
+|-------------------------------------|
+| createSVGPathSegArcAbs | yes |  |
+|------------------------|
+| createSVGPathSegArcRel | yes |  |
+|------------------------|
+| createSVGPathSegLinetoHorizontalAbs | yes |  |
+|-------------------------------------|
+| createSVGPathSegLinetoHorizontalRel | yes |  |
+|-------------------------------------|
+| createSVGPathSegLinetoVerticalAbs | yes |  |
+|-----------------------------------|
+| createSVGPathSegLinetoVerticalRel | yes |  |
+|-----------------------------------|
+| createSVGPathSegCurvetoCubicSmoothAbs | yes |  |
+|---------------------------------------|
+| createSVGPathSegCurvetoCubicSmoothRel | yes |  |
+|---------------------------------------|
+| createSVGPathSegCurvetoQuadraticSmoothAbs | yes |  |
+|-------------------------------------------|
+| createSVGPathSegCurvetoQuadraticSmoothRel | yes |  |
+|-------------------------------------------|
+|  | <a name="SVGPathSeg"></a>SVGPathSeg |  |  |
+|------------|--|--|
+| Attributes |
+|------------|
+| pathSegType | yes |  |
+|-------------|
+| pathSegTypeAsLetter | yes |  |
+|---------------------|
+|  | <a name="SVGPathSegArcAbs"></a>SVGPathSegArcAbs |  |  |
+|------------------|--|--|
+| Attributes |
+|------------|
+| angle | yes |  |
+|-------|
+| largeArcFlag | yes |  |
+|--------------|
+| r1 | yes |  |
+|----|
+| r2 | yes |  |
+|----|
+| sweepFlag | yes |  |
+|-----------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGPathSegArcRel"></a>SVGPathSegArcRel |  |  |
+|------------------|--|--|
+| Attributes |
+|------------|
+| angle | yes |  |
+|-------|
+| largeArcFlag | yes |  |
+|--------------|
+| r1 | yes |  |
+|----|
+| r2 | yes |  |
+|----|
+| sweepFlag | yes |  |
+|-----------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGPathSegClosePath"></a>SVGPathSegClosePath |  |  |
+|---------------------|--|--|
+|  | <a name="SVGPathSegCurvetoCubicAbs"></a>SVGPathSegCurvetoCubicAbs |  |  |
+|---------------------------|--|--|
+| Attributes |
+|------------|
+| x | yes |  |
+|---|
+| x1 | yes |  |
+|----|
+| x2 | yes |  |
+|----|
+| y | yes |  |
+|---|
+| y1 | yes |  |
+|----|
+| y2 | yes |  |
+|----|
+|  | <a name="SVGPathSegCurvetoCubicRel"></a>SVGPathSegCurvetoCubicRel |  |  |
+|---------------------------|--|--|
+| Attributes |
+|------------|
+| x | yes |  |
+|---|
+| x1 | yes |  |
+|----|
+| x2 | yes |  |
+|----|
+| y | yes |  |
+|---|
+| y1 | yes |  |
+|----|
+| y2 | yes |  |
+|----|
+|  | <a name="SVGPathSegCurvetoCubicSmoothAbs"></a>SVGPathSegCurvetoCubicSmoothAbs |  |  |
+|---------------------------------|--|--|
+| Attributes |
+|------------|
+| x | yes |  |
+|---|
+| x2 | yes |  |
+|----|
+| y | yes |  |
+|---|
+| y2 | yes |  |
+|----|
+|  | <a name="SVGPathSegCurvetoCubicSmoothRel"></a>SVGPathSegCurvetoCubicSmoothRel |  |  |
+|---------------------------------|--|--|
+| Attributes |
+|------------|
+| x | yes |  |
+|---|
+| x2 | yes |  |
+|----|
+| y | yes |  |
+|---|
+| y2 | yes |  |
+|----|
+|  | <a name="SVGPathSegCurvetoQuadraticAbs"></a>SVGPathSegCurvetoQuadraticAbs |  |  |
+|-------------------------------|--|--|
+| Attributes |
+|------------|
+| x | yes |  |
+|---|
+| x1 | yes |  |
+|----|
+| y | yes |  |
+|---|
+| y1 | yes |  |
+|----|
+|  | <a name="SVGPathSegCurvetoQuadraticRel"></a>SVGPathSegCurvetoQuadraticRel |  |  |
+|-------------------------------|--|--|
+| Attributes |
+|------------|
+| x | yes |  |
+|---|
+| x1 | yes |  |
+|----|
+| y | yes |  |
+|---|
+| y1 | yes |  |
+|----|
+|  | <a name="SVGPathSegCurvetoQuadraticSmoothAbs"></a>SVGPathSegCurvetoQuadraticSmoothAbs |  |  |
+|-------------------------------------|--|--|
+| Attributes |
+|------------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGPathSegCurvetoQuadraticSmoothRel"></a>SVGPathSegCurvetoQuadraticSmoothRel |  |  |
+|-------------------------------------|--|--|
+| Attributes |
+|------------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGPathSegLinetoAbs"></a>SVGPathSegLinetoAbs |  |  |
+|---------------------|--|--|
+| Attributes |
+|------------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGPathSegLinetoHorizontalAbs"></a>SVGPathSegLinetoHorizontalAbs |  |  |
+|-------------------------------|--|--|
+| Attributes |
+|------------|
+| x | yes |  |
+|---|
+|  | <a name="SVGPathSegLinetoHorizontalRel"></a>SVGPathSegLinetoHorizontalRel |  |  |
+|-------------------------------|--|--|
+| Attributes |
+|------------|
+| x | yes |  |
+|---|
+|  | <a name="SVGPathSegLinetoRel"></a>SVGPathSegLinetoRel |  |  |
+|---------------------|--|--|
+| Attributes |
+|------------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGPathSegLinetoVerticalAbs"></a>SVGPathSegLinetoVerticalAbs |  |  |
+|-----------------------------|--|--|
+| Attributes |
+|------------|
+| y | yes |  |
+|---|
+|  | <a name="SVGPathSegLinetoVerticalRel"></a>SVGPathSegLinetoVerticalRel |  |  |
+|-----------------------------|--|--|
+| Attributes |
+|------------|
+| y | yes |  |
+|---|
+|  | <a name="SVGPathSegList"></a>SVGPathSegList |  |  |
+|----------------|--|--|
+| Attributes |
+|------------|
+| numberOfItems | yes |  |
+|---------------|
+| Operations |
+|------------|
+| clear | yes |  |
+|-------|
+| initialize | yes |  |
+|------------|
+| getItem | yes |  |
+|---------|
+| insertItemBefore | yes |  |
+|------------------|
+| replaceItem | yes |  |
+|-------------|
+| removeItem | yes |  |
+|------------|
+| appendItem | yes |  |
+|------------|
+|  | <a name="SVGPathSegMovetoAbs"></a>SVGPathSegMovetoAbs |  |  |
+|---------------------|--|--|
+| Attributes |
+|------------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGPathSegMovetoRel"></a>SVGPathSegMovetoRel |  |  |
+|---------------------|--|--|
+| Attributes |
+|------------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGPatternElement"></a>SVGPatternElement |  |  |
+|-------------------|--|--|
+| Attributes |
+|------------|
+| height | yes |  |
+|--------|
+| patternContentUnits | yes |  |
+|---------------------|
+| patternTransform | no |  |
+|------------------|
+| patternUnits | yes |  |
+|--------------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGPoint"></a>SVGPoint |  |  |
+|----------|--|--|
+| Attributes |
+|------------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| Operations |
+|------------|
+| matrixTransform | partial | Not implemented for any `SVGPoint` in an `SVGPointList` . |
+|-----------------|
+|  | <a name="SVGPointList"></a>SVGPointList |  |  |
+|--------------|--|--|
+| Attributes |
+|------------|
+| numberOfItems | yes |  |
+|---------------|
+| Operations |
+|------------|
+| clear | yes |  |
+|-------|
+| initialize | yes |  |
+|------------|
+| getItem | yes |  |
+|---------|
+| insertItemBefore | yes |  |
+|------------------|
+| replaceItem | yes |  |
+|-------------|
+| removeItem | yes |  |
+|------------|
+| appendItem | yes |  |
+|------------|
+|  | <a name="SVGPolygonElement"></a>SVGPolygonElement |  |  |
+|-------------------|--|--|
+|  | <a name="SVGPolylineElement"></a>SVGPolylineElement |  |  |
+|--------------------|--|--|
+|  | <a name="SVGPreserveAspectRatio"></a>SVGPreserveAspectRatio |  |  |
+|------------------------|--|--|
+| Attributes |
+|------------|
+| align | yes |  |
+|-------|
+| meetOrSlice | yes |  |
+|-------------|
+|  | <a name="SVGRadialGradientElement"></a>SVGRadialGradientElement |  |  |
+|--------------------------|--|--|
+| Attributes |
+|------------|
+| cx | yes |  |
+|----|
+| cy | yes |  |
+|----|
+| fx | yes |  |
+|----|
+| fy | yes |  |
+|----|
+| r | yes |  |
+|---|
+|  | <a name="SVGRect"></a>SVGRect |  |  |
+|---------|--|--|
+| Attributes |
+|------------|
+| height | yes |  |
+|--------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGRectElement"></a>SVGRectElement |  |  |
+|----------------|--|--|
+| Attributes |
+|------------|
+| height | yes |  |
+|--------|
+| rx | yes |  |
+|----|
+| ry | yes |  |
+|----|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGRenderingIntent"></a>SVGRenderingIntent |  |  |
+|--------------------|--|--|
+|  | <a name="SVGScriptElement"></a>SVGScriptElement |  |  |
+|------------------|--|--|
+| Attributes |
+|------------|
+| type | yes |  |
+|------|
+|  | <a name="SVGSetElement"></a>SVGSetElement |  |  |
+|---------------|--|--|
+|  | <a name="SVGStopElement"></a>SVGStopElement |  |  |
+|----------------|--|--|
+| Attributes |
+|------------|
+| offset | yes |  |
+|--------|
+|  | <a name="SVGStringList"></a>SVGStringList |  |  |
+|---------------|--|--|
+| Attributes |
+|------------|
+| numberOfItems | no |  |
+|---------------|
+| Operations |
+|------------|
+| clear | no |  |
+|-------|
+| initialize | no |  |
+|------------|
+| getItem | no |  |
+|---------|
+| insertItemBefore | no |  |
+|------------------|
+| replaceItem | no |  |
+|-------------|
+| removeItem | no |  |
+|------------|
+| appendItem | no |  |
+|------------|
+|  | <a name="SVGStylable"></a>SVGStylable |  |  |
+|-------------|--|--|
+| Attributes |
+|------------|
+| className | yes |  |
+|-----------|
+| style | yes |  |
+|-------|
+| Operations |
+|------------|
+| getPresentationAttribute | yes |  |
+|--------------------------|
+|  | <a name="SVGStyleElement"></a>SVGStyleElement |  |  |
+|-----------------|--|--|
+| Attributes |
+|------------|
+| media | yes |  |
+|-------|
+| title | yes |  |
+|-------|
+| type | yes |  |
+|------|
+| xmlspace | yes |  |
+|----------|
+|  | <a name="SVGSVGElement"></a>SVGSVGElement |  |  |
+|---------------|--|--|
+| Attributes |
+|------------|
+| contentScriptType | yes |  |
+|-------------------|
+| contentStyleType | yes |  |
+|------------------|
+| currentScale | yes |  |
+|--------------|
+| currentTranslate | yes |  |
+|------------------|
+| currentView | no |  |
+|-------------|
+| height | yes |  |
+|--------|
+| pixelUnitToMillimeterX | yes |  |
+|------------------------|
+| pixelUnitToMillimeterY | yes |  |
+|------------------------|
+| screenPixelToMillimeterX | yes |  |
+|--------------------------|
+| screenPixelToMillimeterY | yes |  |
+|--------------------------|
+| useCurrentView | no |  |
+|----------------|
+| viewport | yes |  |
+|----------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+| Operations |
+|------------|
+| suspendRedraw | yes |  |
+|---------------|
+| unsuspendRedraw | yes |  |
+|-----------------|
+| unsuspendRedrawAll | yes |  |
+|--------------------|
+| forceRedraw | yes |  |
+|-------------|
+| pauseAnimations | yes |  |
+|-----------------|
+| unpauseAnimations | yes |  |
+|-------------------|
+| animationsPaused | yes |  |
+|------------------|
+| getCurrentTime | yes |  |
+|----------------|
+| setCurrentTime | yes |  |
+|----------------|
+| getIntersectionList | yes |  |
+|---------------------|
+| getEnclosureList | yes |  |
+|------------------|
+| checkIntersection | yes |  |
+|-------------------|
+| checkEnclosure | yes |  |
+|----------------|
+| deselectAll | yes |  |
+|-------------|
+| createSVGNumber | yes |  |
+|-----------------|
+| createSVGLength | yes |  |
+|-----------------|
+| createSVGAngle | yes |  |
+|----------------|
+| createSVGPoint | yes |  |
+|----------------|
+| createSVGMatrix | yes |  |
+|-----------------|
+| createSVGRect | yes |  |
+|---------------|
+| createSVGTransform | yes |  |
+|--------------------|
+| createSVGTransformFromMatrix | yes |  |
+|------------------------------|
+| getElementById | yes |  |
+|----------------|
+|  | <a name="SVGSwitchElement"></a>SVGSwitchElement |  |  |
+|------------------|--|--|
+|  | <a name="SVGSymbolElement"></a>SVGSymbolElement |  |  |
+|------------------|--|--|
+|  | <a name="SVGTests"></a>SVGTests |  |  |
+|----------|--|--|
+| Attributes |
+|------------|
+| requiredExtensions | no |  |
+|--------------------|
+| requiredFeatures | no |  |
+|------------------|
+| systemLanguage | no |  |
+|----------------|
+| Operations |
+|------------|
+| hasExtension | no |  |
+|--------------|
+|  | <a name="SVGTextContentElement"></a>SVGTextContentElement |  |  |
+|-----------------------|--|--|
+| Attributes |
+|------------|
+| lengthAdjust | yes |  |
+|--------------|
+| textLength | yes |  |
+|------------|
+| Operations |
+|------------|
+| getNumberOfChars | yes |  |
+|------------------|
+| getComputedTextLength | yes |  |
+|-----------------------|
+| getSubStringLength | yes |  |
+|--------------------|
+| getStartPositionOfChar | yes |  |
+|------------------------|
+| getEndPositionOfChar | yes |  |
+|----------------------|
+| getExtentOfChar | yes |  |
+|-----------------|
+| getRotationOfChar | yes |  |
+|-------------------|
+| getCharNumAtPosition | yes |  |
+|----------------------|
+| selectSubString | yes |  |
+|-----------------|
+|  | <a name="SVGTextElement"></a>SVGTextElement |  |  |
+|----------------|--|--|
+|  | <a name="SVGTextPathElement"></a>SVGTextPathElement |  |  |
+|--------------------|--|--|
+| Attributes |
+|------------|
+| method | yes |  |
+|--------|
+| spacing | yes |  |
+|---------|
+| startOffset | yes |  |
+|-------------|
+|  | <a name="SVGTextPositioningElement"></a>SVGTextPositioningElement |  |  |
+|---------------------------|--|--|
+| Attributes |
+|------------|
+| dx | yes |  |
+|----|
+| dy | yes |  |
+|----|
+| rotate | yes |  |
+|--------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGTitleElement"></a>SVGTitleElement |  |  |
+|-----------------|--|--|
+|  | <a name="SVGTransform"></a>SVGTransform |  |  |
+|--------------|--|--|
+| Attributes |
+|------------|
+| angle | yes |  |
+|-------|
+| matrix | yes |  |
+|--------|
+| type | yes |  |
+|------|
+| Operations |
+|------------|
+| setMatrix | yes |  |
+|-----------|
+| setTranslate | yes |  |
+|--------------|
+| setScale | yes |  |
+|----------|
+| setRotate | yes |  |
+|-----------|
+| setSkewX | yes |  |
+|----------|
+| setSkewY | yes |  |
+|----------|
+|  | <a name="SVGTransformable"></a>SVGTransformable |  |  |
+|------------------|--|--|
+| Attributes |
+|------------|
+| transform | yes |  |
+|-----------|
+|  | <a name="SVGTransformList"></a>SVGTransformList |  |  |
+|------------------|--|--|
+| Attributes |
+|------------|
+| numberOfItems | yes |  |
+|---------------|
+| Operations |
+|------------|
+| clear | yes |  |
+|-------|
+| initialize | yes |  |
+|------------|
+| getItem | yes |  |
+|---------|
+| insertItemBefore | yes |  |
+|------------------|
+| replaceItem | yes |  |
+|-------------|
+| removeItem | yes |  |
+|------------|
+| appendItem | yes |  |
+|------------|
+| createSVGTransformFromMatrix | yes |  |
+|------------------------------|
+| consolidate | yes |  |
+|-------------|
+|  | <a name="SVGTRefElement"></a>SVGTRefElement |  |  |
+|----------------|--|--|
+|  | <a name="SVGTSpanElement"></a>SVGTSpanElement |  |  |
+|-----------------|--|--|
+|  | <a name="SVGUnitTypes"></a>SVGUnitTypes |  |  |
+|--------------|--|--|
+|  | <a name="SVGURIReference"></a>SVGURIReference |  |  |
+|-----------------|--|--|
+| Attributes |
+|------------|
+| href | yes |  |
+|------|
+|  | <a name="SVGUseElement"></a>SVGUseElement |  |  |
+|---------------|--|--|
+| Attributes |
+|------------|
+| animatedInstanceRoot | no |  |
+|----------------------|
+| height | yes |  |
+|--------|
+| instanceRoot | no |  |
+|--------------|
+| width | yes |  |
+|-------|
+| x | yes |  |
+|---|
+| y | yes |  |
+|---|
+|  | <a name="SVGViewElement"></a>SVGViewElement |  |  |
+|----------------|--|--|
+| Attributes |
+|------------|
+| viewTarget | no |  |
+|------------|
+|  | <a name="SVGViewSpec"></a>SVGViewSpec |  |  |
+|-------------|--|--|
+| Attributes |
+|------------|
+| preserveAspectRatioString | no |  |
+|---------------------------|
+| transform | no |  |
+|-----------|
+| transformString | no |  |
+|-----------------|
+| viewBoxString | no |  |
+|---------------|
+| viewTarget | no |  |
+|------------|
+| viewTargetString | no |  |
+|------------------|
+|  | <a name="SVGVKernElement"></a>SVGVKernElement |  |  |
+|-----------------|--|--|
+|  | <a name="SVGZoomAndPan"></a>SVGZoomAndPan |  |  |
+|---------------|--|--|
+| Attributes |
+|------------|
+| zoomAndPan | yes |  |
+|------------|
+|  | <a name="SVGZoomEvent"></a>SVGZoomEvent |  |  |
+|--------------|--|--|
+| Attributes |
+|------------|
+| newScale | no |  |
+|----------|
+| newTranslate | no |  |
+|--------------|
+| previousScale | no |  |
+|---------------|
+| previousTranslate | no |  |
+|-------------------|
+| zoomRectScreen | no |  |
+|----------------|
+
+# ECMAScript objects # {#ecmascript}
+
+In addition to the host objects exposed to ECMAScript that implement the SVG DOM, the following objects are also available.
+<div class="object"><div class="object-header">Global object</div><div class="object-section-header">Properties</div><div class="object-property-header">document</div><div class="object-property-desc">
+The current SVG document.
+</div><div class="object-property-header">event</div><div class="object-property-desc">
+The most recently dispatched event object.
+</div><div class="object-property-header">evt</div><div class="object-property-desc">
+An alias for `event` .
+</div><div class="object-property-header">location</div><div class="object-property-desc">
+Implementation of the [Location](http://www.w3.org/TR/SVGTiny12/svgudom.html#dom__Location) interface. Methods `assign` and `reload` are available.
+This interface is available since version 1.8.</div><div class="object-property-header">window</div><div class="object-property-desc">
+The global object (a self-reference).
+</div><div class="object-section-header">Function properties</div><div class="object-property-header">alert<span class="object-property-func-params">(message)</span></div><div class="object-property-desc">
+Displays an alert dialog with the specified `message` .
+</div><div class="object-property-header">clearInterval<span class="object-property-func-params">(intervalID)</span></div><div class="object-property-desc">
+Cancels an interval that was set by a call to `setInterval` . The `intervalID` must be an object that has been returned by a previous `setInterval` call.
+</div><div class="object-property-header">clearTimeout<span class="object-property-func-params">(timeoutID)</span></div><div class="object-property-desc">
+Cancels a timeout that was set by a call to `setTimeout` . The `timeoutID` must be an object that has been returned by a previous `clearTimeout` call.
+</div><div class="object-property-header">confirm<span class="object-property-func-params">(message)</span></div><div class="object-property-desc">
+Displays a confirmation dialog with the specified `message` . The window has an OK and a Cancel button. The function returns `true` if the user clicks on the OK button, and `false` otherwise.
+</div><div class="object-property-header">getURL<span class="object-property-func-params">(uri, function[, encoding])</span></div><div class="object-property-desc">
+Gets data from the given `uri` . This method returns immediately and the given `function` is called when the data is fully downloaded. The optional `encoding` argument is the encoding to assume the data is in, defaulting to UTF-8. The argument passed to the function is an object with three properties:
+
+
+
+success
+:     `true` if the data is available, `false` otherwise.
+
+contentType
+:    The content type of the data, if it is known by the implementation.
+
+content
+:    A string holding the data.</div><div class="object-property-header">parseXML<span class="object-property-func-params">(text, document)</span></div><div class="object-property-desc">
+Parses and returns a `DocumentFragment` object. `text` is the string that is to be parsed as XML data, and `document` is a `Document` that will be used for creating new DOM objects.
+</div><div class="object-property-header">postURL<span class="object-property-func-params">(uri, content, function[, type, encoding])</span></div><div class="object-property-desc">
+Sends data to the given `uri` . This method returns immediately and the given `function` is called when the data is fully downloaded. The optional `type` argument will specify the `Content-Type` HTTP header to use, defaulting to `text/plain` . The optional `encoding` argument is the encoding to assume the data is in, defaulting to UTF-8. The argument passed to the function is an object with three properties:
+
+
+
+success
+:     `true` if the data is available, `false` otherwise.
+
+contentType
+:    The content type of the data, if it is known by the implementation.
+
+content
+:    A string holding the data.</div><div class="object-property-header">printNode<span class="object-property-func-params">(node)</span></div><div class="object-property-desc">
+Returns a string that is the serialization of the given DOM node.
+</div><div class="object-property-header">prompt<span class="object-property-func-params">(message[, defaultValue])</span></div><div class="object-property-desc">
+Displays an input dialog with the specified `message` . The `defaultValue` parameter specifies the initial contents of the text box in the window. The function returns the string entered by the user, or null if the window was cancelled.
+</div><div class="object-property-header">setInterval<span class="object-property-func-params">(script, interval)</span></div><div class="object-property-desc">
+Evaluates the given `script` repeatedly after the specified amount of time. The value for `script` must be either a string, which is evaluated by `eval` every interval, or an ECMAScript function object, which is called every interval. This method does not stall the script: the evaluation is scheduled and the script continues its execution. The function returns an object that can be passed to the `clearInterval` function.
+</div><div class="object-property-header">setTimeout<span class="object-property-func-params">(script, timeout)</span></div><div class="object-property-desc">
+Evaluates the given `script` after the specified amount of time. The value for `script` must be either a string, which is evaluated by `eval` after the timeout, or an ECMAScript function object, which is called after the timeout. This method does not stall the script: the evaluation is scheduled and the script continues its execution. The function returns an object that can be passed to the `clearInterval` function. The function returns an object that can be passed to the `clearTimeout` function.
+</div></div>
+# SVG 1.1 test suite # {#test}
+
+The table below lists the test cases from the December 2006 release of the [SVG 1.1 test suite](http://www.w3.org/Graphics/SVG/Test/) and whether the latest Batik code in the Subversion repository passes each one.
+
+|  | SVG 1.1 test suite |  |  |
+|----------------------------------------|--|--|
+|  [animate-elem-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-02-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-03-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-04-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-05-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-05-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-06-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-06-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-07-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-07-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-08-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-08-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-09-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-09-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-10-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-10-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-11-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-11-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-12-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-12-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-13-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-13-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-14-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-14-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-15-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-15-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-17-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-17-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-19-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-19-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-20-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-20-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-21-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-21-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-22-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-22-b.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-23-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-23-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-24-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-24-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-25-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-25-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-26-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-26-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-27-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-27-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-28-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-28-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-29-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-29-b.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-30-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-30-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-31-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-31-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-32-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-32-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-33-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-33-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-34-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-34-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-36-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-36-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-37-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-37-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-39-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-39-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-40-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-40-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-41-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-41-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-44-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-44-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-46-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-46-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-52-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-52-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-60-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-60-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-61-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-61-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-62-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-62-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-63-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-63-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-64-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-64-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-65-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-65-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-66-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-66-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-67-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-67-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-68-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-68-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-69-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-69-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-70-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-70-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-77-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-77-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-78-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-78-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-80-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-80-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-81-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-81-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-82-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-82-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-83-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-83-t.svg)  | partial | Performing interpolating animation of paths between an absolute and a corresponding relative path command (e.g. from `"M0,0 L10,10"` to `"M0,0 l10,20"` ) is not supported. |
+|-------------------|
+|  [animate-elem-84-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-84-t.svg)  | yes |  |
+|-------------------|
+|  [animate-elem-85-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-85-t.svg)  | partial | Performing interpolating animation of colors to or from the `currentColor` keyword is not supported. |
+|-------------------|
+|  [color-prof-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/color-prof-01-f.svg)  | yes |  |
+|-----------------|
+|  [color-prop-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/color-prop-01-b.svg)  | yes |  |
+|-----------------|
+|  [color-prop-02-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/color-prop-02-f.svg)  | yes |  |
+|-----------------|
+|  [color-prop-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/color-prop-03-t.svg)  | yes |  |
+|-----------------|
+|  [coords-coord-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-coord-01-t.svg)  | yes |  |
+|-------------------|
+|  [coords-coord-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-coord-02-t.svg)  | yes |  |
+|-------------------|
+|  [coords-trans-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-trans-01-b.svg)  | yes |  |
+|-------------------|
+|  [coords-trans-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-trans-02-t.svg)  | yes |  |
+|-------------------|
+|  [coords-trans-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-trans-03-t.svg)  | yes |  |
+|-------------------|
+|  [coords-trans-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-trans-04-t.svg)  | yes |  |
+|-------------------|
+|  [coords-trans-05-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-trans-05-t.svg)  | yes |  |
+|-------------------|
+|  [coords-trans-06-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-trans-06-t.svg)  | yes |  |
+|-------------------|
+|  [coords-units-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-units-01-b.svg)  | yes |  |
+|-------------------|
+|  [coords-units-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-units-02-b.svg)  | yes |  |
+|-------------------|
+|  [coords-units-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-units-03-b.svg)  | yes |  |
+|-------------------|
+|  [coords-viewattr-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-viewattr-01-b.svg)  | yes |  |
+|----------------------|
+|  [coords-viewattr-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-viewattr-02-b.svg)  | yes |  |
+|----------------------|
+|  [coords-viewattr-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-viewattr-03-b.svg)  | yes |  |
+|----------------------|
+|  [extend-namespace-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/extend-namespace-01-f.svg)  | yes |  |
+|-----------------------|
+|  [filters-blend-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-blend-01-b.svg)  | yes |  |
+|--------------------|
+|  [filters-color-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-color-01-b.svg)  | yes |  |
+|--------------------|
+|  [filters-composite-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-composite-02-b.svg)  | yes |  |
+|------------------------|
+|  [filters-comptran-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-comptran-01-b.svg)  | yes |  |
+|-----------------------|
+|  [filters-conv-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-conv-01-f.svg)  | partial |  |
+|-------------------|
+|  [filters-diffuse-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-diffuse-01-f.svg)  | yes |  |
+|----------------------|
+|  [filters-displace-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-displace-01-f.svg)  | yes |  |
+|-----------------------|
+|  [filters-example-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-example-01-b.svg)  | yes |  |
+|----------------------|
+|  [filters-felem-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-felem-01-b.svg)  | no |  |
+|--------------------|
+|  [filters-gauss-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-gauss-01-b.svg)  | yes |  |
+|--------------------|
+|  [filters-image-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-image-01-b.svg)  | yes |  |
+|--------------------|
+|  [filters-light-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-light-01-f.svg)  | yes |  |
+|--------------------|
+|  [filters-morph-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-morph-01-f.svg)  | yes |  |
+|--------------------|
+|  [filters-offset-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-offset-01-b.svg)  | yes |  |
+|---------------------|
+|  [filters-specular-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-specular-01-f.svg)  | yes |  |
+|-----------------------|
+|  [filters-tile-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-tile-01-b.svg)  | yes |  |
+|-------------------|
+|  [filters-turb-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-turb-01-f.svg)  | yes |  |
+|-------------------|
+|  [fonts-desc-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-desc-02-t.svg)  | partial | Font glyph selection based on certain properties is not supported. |
+|-----------------|
+|  [fonts-elem-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-elem-01-t.svg)  | yes |  |
+|-----------------|
+|  [fonts-elem-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-elem-02-t.svg)  | yes |  |
+|-----------------|
+|  [fonts-elem-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-elem-03-b.svg)  | yes |  |
+|-----------------|
+|  [fonts-elem-04-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-elem-04-b.svg)  | yes |  |
+|-----------------|
+|  [fonts-elem-05-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-elem-05-t.svg)  | yes |  |
+|-----------------|
+|  [fonts-elem-06-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-elem-06-t.svg)  | yes |  |
+|-----------------|
+|  [fonts-elem-07-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-elem-07-b.svg)  | yes |  |
+|-----------------|
+|  [fonts-glyph-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-glyph-02-t.svg)  | yes |  |
+|------------------|
+|  [fonts-glyph-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-glyph-03-t.svg)  | yes |  |
+|------------------|
+|  [fonts-glyph-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-glyph-04-t.svg)  | yes |  |
+|------------------|
+|  [fonts-kern-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-kern-01-t.svg)  | yes |  |
+|-----------------|
+|  [interact-cursor-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/interact-cursor-01-f.svg)  | yes |  |
+|----------------------|
+|  [interact-dom-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/interact-dom-01-b.svg)  | yes |  |
+|-------------------|
+|  [interact-events-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/interact-events-01-b.svg)  | yes |  |
+|----------------------|
+|  [interact-order-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/interact-order-01-b.svg)  | yes |  |
+|---------------------|
+|  [interact-order-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/interact-order-02-b.svg)  | yes |  |
+|---------------------|
+|  [interact-order-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/interact-order-03-b.svg)  | yes |  |
+|---------------------|
+|  [interact-zoom-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/interact-zoom-01-t.svg)  | partial | Test is incorrect. |
+|--------------------|
+|  [linking-a-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/linking-a-01-b.svg)  | yes |  |
+|----------------|
+|  [linking-a-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/linking-a-02-b.svg)  | yes |  |
+|----------------|
+|  [linking-a-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/linking-a-03-b.svg)  | yes |  |
+|----------------|
+|  [linking-a-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/linking-a-04-t.svg)  | yes |  |
+|----------------|
+|  [linking-a-05-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/linking-a-05-t.svg)  | yes |  |
+|----------------|
+|  [linking-a-07-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/linking-a-07-t.svg)  | no | The `target` attribute of the `a` element is ignored. |
+|----------------|
+|  [linking-uri-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/linking-uri-01-b.svg)  | yes |  |
+|------------------|
+|  [linking-uri-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/linking-uri-02-b.svg)  | yes |  |
+|------------------|
+|  [linking-uri-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/linking-uri-03-t.svg)  | yes |  |
+|------------------|
+|  [masking-intro-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/masking-intro-01-f.svg)  | yes |  |
+|--------------------|
+|  [masking-mask-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/masking-mask-01-b.svg)  | yes |  |
+|-------------------|
+|  [masking-opacity-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/masking-opacity-01-b.svg)  | yes |  |
+|----------------------|
+|  [masking-path-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/masking-path-01-b.svg)  | yes |  |
+|-------------------|
+|  [masking-path-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/masking-path-02-b.svg)  | yes |  |
+|-------------------|
+|  [masking-path-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/masking-path-03-b.svg)  | yes |  |
+|-------------------|
+|  [masking-path-04-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/masking-path-04-b.svg)  | yes |  |
+|-------------------|
+|  [masking-path-05-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/masking-path-05-f.svg)  | yes |  |
+|-------------------|
+|  [metadata-example-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/metadata-example-01-b.svg)  | yes |  |
+|-----------------------|
+|  [painting-fill-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-fill-01-t.svg)  | yes |  |
+|--------------------|
+|  [painting-fill-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-fill-02-t.svg)  | yes |  |
+|--------------------|
+|  [painting-fill-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-fill-03-t.svg)  | yes |  |
+|--------------------|
+|  [painting-fill-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-fill-04-t.svg)  | yes |  |
+|--------------------|
+|  [painting-fill-05-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-fill-05-b.svg)  | yes |  |
+|--------------------|
+|  [painting-marker-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-marker-01-f.svg)  | yes |  |
+|----------------------|
+|  [painting-marker-02-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-marker-02-f.svg)  | yes |  |
+|----------------------|
+|  [painting-marker-03-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-marker-03-f.svg)  | yes |  |
+|----------------------|
+|  [painting-render-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-render-01-b.svg)  | yes |  |
+|----------------------|
+|  [painting-stroke-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-stroke-01-t.svg)  | yes |  |
+|----------------------|
+|  [painting-stroke-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-stroke-02-t.svg)  | yes |  |
+|----------------------|
+|  [painting-stroke-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-stroke-03-t.svg)  | yes |  |
+|----------------------|
+|  [painting-stroke-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-stroke-04-t.svg)  | yes |  |
+|----------------------|
+|  [painting-stroke-07-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-stroke-07-t.svg)  | partial |  |
+|----------------------|
+|  [paths-data-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-01-t.svg)  | yes |  |
+|-----------------|
+|  [paths-data-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-02-t.svg)  | yes |  |
+|-----------------|
+|  [paths-data-03-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-03-f.svg)  | yes |  |
+|-----------------|
+|  [paths-data-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-04-t.svg)  | yes |  |
+|-----------------|
+|  [paths-data-05-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-05-t.svg)  | yes |  |
+|-----------------|
+|  [paths-data-06-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-06-t.svg)  | yes |  |
+|-----------------|
+|  [paths-data-07-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-07-t.svg)  | yes |  |
+|-----------------|
+|  [paths-data-08-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-08-t.svg)  | yes |  |
+|-----------------|
+|  [paths-data-09-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-09-t.svg)  | yes |  |
+|-----------------|
+|  [paths-data-10-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-10-t.svg)  | yes |  |
+|-----------------|
+|  [paths-data-12-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-12-t.svg)  | yes |  |
+|-----------------|
+|  [paths-data-13-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-13-t.svg)  | yes |  |
+|-----------------|
+|  [paths-data-14-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-14-t.svg)  | yes |  |
+|-----------------|
+|  [paths-data-15-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-15-t.svg)  | yes |  |
+|-----------------|
+|  [pservers-grad-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-01-b.svg)  | yes |  |
+|--------------------|
+|  [pservers-grad-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-02-b.svg)  | yes |  |
+|--------------------|
+|  [pservers-grad-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-03-b.svg)  | yes |  |
+|--------------------|
+|  [pservers-grad-04-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-04-b.svg)  | yes |  |
+|--------------------|
+|  [pservers-grad-05-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-05-b.svg)  | yes |  |
+|--------------------|
+|  [pservers-grad-06-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-06-b.svg)  | yes |  |
+|--------------------|
+|  [pservers-grad-07-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-07-b.svg)  | yes |  |
+|--------------------|
+|  [pservers-grad-08-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-08-b.svg)  | yes |  |
+|--------------------|
+|  [pservers-grad-09-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-09-b.svg)  | yes |  |
+|--------------------|
+|  [pservers-grad-10-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-10-b.svg)  | yes |  |
+|--------------------|
+|  [pservers-grad-11-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-11-b.svg)  | yes |  |
+|--------------------|
+|  [pservers-grad-12-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-12-b.svg)  | yes |  |
+|--------------------|
+|  [pservers-grad-13-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-13-b.svg)  | yes |  |
+|--------------------|
+|  [pservers-grad-14-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-14-b.svg)  | yes |  |
+|--------------------|
+|  [pservers-grad-15-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-15-b.svg)  | yes |  |
+|--------------------|
+|  [pservers-grad-16-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-16-b.svg)  | yes |  |
+|--------------------|
+|  [pservers-grad-17-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-17-b.svg)  | yes |  |
+|--------------------|
+|  [pservers-grad-18-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-18-b.svg)  | yes |  |
+|--------------------|
+|  [pservers-grad-19-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-19-b.svg)  | no | Animation of gradients do not affect referencing elements. |
+|--------------------|
+|  [pservers-pattern-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-pattern-01-b.svg)  | yes |  |
+|-----------------------|
+|  [render-elems-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/render-elems-01-t.svg)  | yes |  |
+|-------------------|
+|  [render-elems-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/render-elems-02-t.svg)  | yes |  |
+|-------------------|
+|  [render-elems-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/render-elems-03-t.svg)  | yes |  |
+|-------------------|
+|  [render-elems-06-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/render-elems-06-t.svg)  | yes |  |
+|-------------------|
+|  [render-elems-07-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/render-elems-07-t.svg)  | yes |  |
+|-------------------|
+|  [render-elems-08-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/render-elems-08-t.svg)  | yes |  |
+|-------------------|
+|  [render-groups-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/render-groups-01-b.svg)  | yes |  |
+|--------------------|
+|  [render-groups-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/render-groups-03-t.svg)  | yes |  |
+|--------------------|
+|  [script-handle-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/script-handle-01-b.svg)  | yes |  |
+|--------------------|
+|  [script-handle-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/script-handle-02-b.svg)  | yes |  |
+|--------------------|
+|  [script-handle-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/script-handle-03-b.svg)  | yes |  |
+|--------------------|
+|  [script-handle-04-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/script-handle-04-b.svg)  | yes |  |
+|--------------------|
+|  [shapes-circle-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-circle-01-t.svg)  | yes |  |
+|--------------------|
+|  [shapes-circle-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-circle-02-t.svg)  | yes |  |
+|--------------------|
+|  [shapes-ellipse-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-ellipse-01-t.svg)  | yes |  |
+|---------------------|
+|  [shapes-ellipse-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-ellipse-02-t.svg)  | yes |  |
+|---------------------|
+|  [shapes-intro-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-intro-01-t.svg)  | yes |  |
+|-------------------|
+|  [shapes-line-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-line-01-t.svg)  | yes |  |
+|------------------|
+|  [shapes-polygon-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-polygon-01-t.svg)  | yes |  |
+|---------------------|
+|  [shapes-polyline-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-polyline-01-t.svg)  | yes |  |
+|----------------------|
+|  [shapes-rect-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-rect-01-t.svg)  | yes |  |
+|------------------|
+|  [shapes-rect-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-rect-02-t.svg)  | yes |  |
+|------------------|
+|  [struct-cond-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-cond-01-t.svg)  | yes |  |
+|------------------|
+|  [struct-cond-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-cond-02-t.svg)  | yes |  |
+|------------------|
+|  [struct-cond-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-cond-03-t.svg)  | yes |  |
+|------------------|
+|  [struct-defs-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-defs-01-t.svg)  | yes |  |
+|------------------|
+|  [struct-dom-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-dom-01-b.svg)  | yes |  |
+|-----------------|
+|  [struct-dom-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-dom-02-b.svg)  | yes |  |
+|-----------------|
+|  [struct-dom-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-dom-03-b.svg)  | yes |  |
+|-----------------|
+|  [struct-dom-04-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-dom-04-b.svg)  | yes |  |
+|-----------------|
+|  [struct-dom-05-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-dom-05-b.svg)  | yes |  |
+|-----------------|
+|  [struct-dom-06-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-dom-06-b.svg)  | yes |  |
+|-----------------|
+|  [struct-frag-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-frag-01-t.svg)  | yes |  |
+|------------------|
+|  [struct-frag-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-frag-02-t.svg)  | yes |  |
+|------------------|
+|  [struct-frag-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-frag-03-t.svg)  | yes |  |
+|------------------|
+|  [struct-frag-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-frag-04-t.svg)  | yes |  |
+|------------------|
+|  [struct-frag-05-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-frag-05-t.svg)  | yes |  |
+|------------------|
+|  [struct-frag-06-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-frag-06-t.svg)  | yes |  |
+|------------------|
+|  [struct-group-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-group-01-t.svg)  | yes |  |
+|-------------------|
+|  [struct-group-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-group-02-b.svg)  | yes |  |
+|-------------------|
+|  [struct-group-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-group-03-t.svg)  | yes |  |
+|-------------------|
+|  [struct-image-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-01-t.svg)  | yes |  |
+|-------------------|
+|  [struct-image-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-02-b.svg)  | yes |  |
+|-------------------|
+|  [struct-image-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-03-t.svg)  | yes |  |
+|-------------------|
+|  [struct-image-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-04-t.svg)  | yes |  |
+|-------------------|
+|  [struct-image-05-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-05-b.svg)  | yes |  |
+|-------------------|
+|  [struct-image-06-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-06-t.svg)  | yes |  |
+|-------------------|
+|  [struct-image-07-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-07-t.svg)  | yes |  |
+|-------------------|
+|  [struct-image-08-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-08-t.svg)  | yes |  |
+|-------------------|
+|  [struct-image-09-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-09-t.svg)  | yes |  |
+|-------------------|
+|  [struct-image-10-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-10-t.svg)  | no |  |
+|-------------------|
+|  [struct-symbol-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-symbol-01-b.svg)  | yes |  |
+|--------------------|
+|  [struct-use-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-use-01-t.svg)  | yes |  |
+|-----------------|
+|  [struct-use-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-use-03-t.svg)  | yes |  |
+|-----------------|
+|  [struct-use-05-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-use-05-b.svg)  | yes |  |
+|-----------------|
+|  [styling-css-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-css-01-b.svg)  | yes |  |
+|------------------|
+|  [styling-css-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-css-02-b.svg)  | yes |  |
+|------------------|
+|  [styling-css-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-css-03-b.svg)  | yes |  |
+|------------------|
+|  [styling-css-04-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-css-04-f.svg)  | yes |  |
+|------------------|
+|  [styling-css-05-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-css-05-b.svg)  | yes |  |
+|------------------|
+|  [styling-css-06-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-css-06-b.svg)  | no | The `:hover` , `:link` , `:visited` , `:active` and `:focus` pseudo-classes are not supported in selectors. |
+|------------------|
+|  [styling-inherit-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-inherit-01-b.svg)  | yes |  |
+|----------------------|
+|  [styling-pres-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-pres-01-t.svg)  | yes |  |
+|-------------------|
+|  [text-align-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-align-01-b.svg)  | yes |  |
+|-----------------|
+|  [text-align-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-align-02-b.svg)  | yes |  |
+|-----------------|
+|  [text-align-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-align-03-b.svg)  | yes |  |
+|-----------------|
+|  [text-align-04-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-align-04-b.svg)  | yes |  |
+|-----------------|
+|  [text-align-05-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-align-05-b.svg)  | yes |  |
+|-----------------|
+|  [text-align-06-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-align-06-b.svg)  | yes |  |
+|-----------------|
+|  [text-align-08-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-align-08-b.svg)  | no |  |
+|-----------------|
+|  [text-altglyph-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-altglyph-01-b.svg)  | yes |  |
+|--------------------|
+|  [text-deco-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-deco-01-b.svg)  | yes |  |
+|----------------|
+|  [text-fonts-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-fonts-01-t.svg)  | yes |  |
+|-----------------|
+|  [text-fonts-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-fonts-02-t.svg)  | yes |  |
+|-----------------|
+|  [text-fonts-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-fonts-03-t.svg)  | yes |  |
+|-----------------|
+|  [text-intro-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-intro-01-t.svg)  | yes |  |
+|-----------------|
+|  [text-intro-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-intro-02-b.svg)  | yes |  |
+|-----------------|
+|  [text-intro-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-intro-03-b.svg)  | yes |  |
+|-----------------|
+|  [text-intro-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-intro-04-t.svg)  | yes |  |
+|-----------------|
+|  [text-intro-05-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-intro-05-t.svg)  | yes |  |
+|-----------------|
+|  [text-path-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-path-01-b.svg)  | yes |  |
+|----------------|
+|  [text-spacing-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-spacing-01-b.svg)  | yes |  |
+|-------------------|
+|  [text-text-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-text-01-b.svg)  | yes |  |
+|----------------|
+|  [text-text-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-text-03-b.svg)  | yes |  |
+|----------------|
+|  [text-text-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-text-04-t.svg)  | yes |  |
+|----------------|
+|  [text-text-05-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-text-05-t.svg)  | no |  |
+|----------------|
+|  [text-text-06-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-text-06-t.svg)  | yes |  |
+|----------------|
+|  [text-text-07-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-text-07-t.svg)  | yes |  |
+|----------------|
+|  [text-text-08-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-text-08-b.svg)  | yes |  |
+|----------------|
+|  [text-tref-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-tref-01-b.svg)  | yes |  |
+|----------------|
+|  [text-tselect-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-tselect-01-b.svg)  | yes |  |
+|-------------------|
+|  [text-tselect-02-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-tselect-02-f.svg)  | partial |  |
+|-------------------|
+|  [text-tspan-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-tspan-01-b.svg)  | yes |  |
+|-----------------|
+|  [text-ws-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-ws-01-t.svg)  | yes |  |
+|--------------|
+|  [text-ws-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-ws-02-t.svg)  | yes |  |
+|--------------|
+|  [types-basicDOM-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/types-basicDOM-01-b.svg)  | yes |  |
+|---------------------|
