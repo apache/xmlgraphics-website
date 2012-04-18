@@ -11,7 +11,21 @@
 -->
     <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css">
 
+    <style type="text/css">
+    
     </style>
+    <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+    </script>
 
     {% if headers.atom %}
       <link rel="alternate" href="{{ headers.atom.url }}"
@@ -31,12 +45,16 @@
 	  </div>
 	
 	  <div id="bannertext">
-        <a href="/"><img src="/images/apache-xml-graphics.gif" alt="The Apache XML Graphics Project" width="220" heigh="51" /></a>
+        <a href="/"><img src="/images/apache-xml-graphics.gif" alt="The Apache XML Graphics Project" width="226" heigh="51" /></a>
         <h1>{% block tagline %}{{ headers.title }}{% endblock %}</h1>
       </div>
-        <p>{{ breadcrumbs|safe }}</p>
       </div>
-      {% block content %}<div id="content" class="grid_16"><div class="section-content">{{ content|markdown }}</div></div>{% endblock %}
+      {% block content %}
+      <div id="content" class="grid_16">
+      	<div id="breadcrumb">{{ breadcrumbs|safe }}</div>
+      	<div class="section-content">{{ content|markdown }}</div>
+      </div>
+      {% endblock %}
       <div class="clear"></div>
 
 	  <div id="footer">
