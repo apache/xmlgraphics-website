@@ -50,7 +50,6 @@ a img {
     border: medium none;
 }
 h1, h2, h3, h4, h5, h6 {
-    border-bottom: 2px dashed #666666;
     color: black;
     text-transform: uppercase;
 }
@@ -104,8 +103,10 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: auto;
     margin-right: auto;
 }
-#navigation h1 {
+#navigation > ul > li > ul > li > h1 {
     border-bottom: 2px dashed #666666;
+}
+#navigation h1 {
     color: #000000;
     font-size: 1em;
     margin-bottom: 0;
@@ -129,6 +130,15 @@ h1, h2, h3, h4, h5, h6 {
 #navigation li a:hover {
     background: none repeat scroll 0 0 transparent;
     color: #193240;
+}
+#navigation > ul > li > ul > li > ul {
+    display: none;
+}
+#navigation ul ul, #navigation ul ul li {
+	margin-left:5px;
+}
+#navigation h1 {
+	margin-left:-5px;
 }
 #footer {
     border-top: 1px solid #CCCCCC;
