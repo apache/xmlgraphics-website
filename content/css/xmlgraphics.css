@@ -53,9 +53,11 @@ h1, h2, h3, h4, h5, h6 {
     color: black;
     text-transform: uppercase;
 }
+#content, #footer, #bannertext {
+    margin: 0  280px 20px 50px;
+}
 #content {
     color: #333333;
-    margin: 0 150px 20px 220px;
     padding: 0 8px 40px;
 }
 #content h1 {
@@ -88,15 +90,15 @@ h1, h2, h3, h4, h5, h6 {
     -moz-border-top-colors: none;
     background: none repeat scroll 0 0 #F5F8FA;
     border-color: #C0C0C0 #C0C0C0 #C0C0C0 -moz-use-text-color;
-    border-radius: 0 10px 10px 0;
-    border-style: solid solid solid none;
-    border-width: 1px 1px 1px medium;
+    border-radius: 10px 0 0 10px;
+    border-style: solid none solid solid;
+    border-width: 1px medium 1px 1px;
     color: #000033;
-    float: left;
+    float: right;
     font-size: 0.9em;
     margin: 0 0 20px;
     padding: 15px 15px 5px 25px;
-    width: 170px;
+    width: 225px;
 }
 #navigation img {
     display: block;
@@ -144,7 +146,6 @@ h1, h2, h3, h4, h5, h6 {
     border-top: 1px solid #CCCCCC;
     color: #666666;
     font-size: 0.8em;
-    margin: 20px 150px 20px 250px;
     padding: 0 8px;
     text-align: center;
 }
