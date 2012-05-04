@@ -45,11 +45,10 @@
 	  {% filter markdown %}{% include "sidenav.mdtext" %}{% endfilter %}
 	  </div>
 	
-	  <div id="bannertext" style="float:left;">
+	  <div id="bannertext" style="border-bottom: 2px dashed #666666; height: 60px;">
         <a href="/"><img src="/images/apache-xml-graphics.gif" alt="The Apache XML Graphics Project" width="226" height="51" style="float:left; margin-right: 15px;" /></a>
         <h2>The Apache&trade; XML Graphics Project</h2>
       </div>
-      <br clear="left" />
       <h1>{% block tagline %}{{ headers.title }}{% endblock %}</h1>
       {% block content %}
       <div id="content" class="grid_16">
@@ -61,7 +60,7 @@
 
 	  <div id="footer">
 		<a alt="Apache Software Foundation" href="http://www.apache.org">
-		  <img id="asf-logo" alt="Apache Software Foundation" src="/images/feather-small.gif"/ width="100">
+		  <img id="asf-logo" alt="Apache Software Foundation" src="/images/feather-small.gif" width="100" />
 		</a>
 		<div class="copyright">
 		  <p>
