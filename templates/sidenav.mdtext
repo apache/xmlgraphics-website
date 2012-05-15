@@ -203,7 +203,7 @@
 
 <script type="text/javascript">
 $(document).ready(function () {
-    $('#navigation h1').click(function () {
+    $('#navigation :header').click(function () {
         var text = $(this).siblings('ul');
         if (text.is(':hidden')) {
             text.slideDown('200');
@@ -213,8 +213,8 @@ $(document).ready(function () {
             //$(this).children('span').html('+');     
         }
     });
-    if ($('#navigation h1').siblings('ul')) {
-		$('#navigation h1').append(' &raquo;');
+    if ($('#navigation :header').siblings('ul')) {
+		$('#navigation :header').append(' &raquo;');
     }
 	$('#navigation > ul > li ul').hide();
 });
