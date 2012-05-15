@@ -56,9 +56,9 @@ a:hover {
 a img {
     border: medium none;
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
     color: black;
-    text-transform: uppercase;
+    font-variant: small-caps;
 }
 #content {
     color: #333333;
@@ -66,12 +66,12 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: -12px;
 }
 #content h1 {
-    font-size: 1.4em;
+    font-size: 1.7em;
     padding: 15px;
 }
 #content h2 {
     border-bottom: 1px dashed #666666;
-    font-size: 1.2em;
+    font-size: 1.4em;
     margin-top: 2em;
 }
 #content h3, h4, h5, h6 {
@@ -115,10 +115,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 #navigation h1 {
     color: #000000;
-    font-size: 1em;
+    font-size: 1.4em;
     margin-bottom: 0;
     margin-top: 0.8em;
     padding: 0;
+}
+#navigation h2 {
+    font-size: 1.2em;
+}
+#navigation h3 {
+    font-size: 1.2em;
 }
 #navigation ul {
     list-style: none outside none;
