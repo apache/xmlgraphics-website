@@ -209,11 +209,11 @@ $(document).ready(function () {
         if (text.is(':hidden')) {
             text.slideDown('200');
         } else {
-			alert($(this).text());
 			if ($(this).text() != 'Project Overview') {
 	            text.slideUp('200');
 			}
         }
+		alert($(this).text());
     });
     if ($('#navigation :header').siblings('ul')) {
 		$('#navigation :header').append(' &raquo;');
