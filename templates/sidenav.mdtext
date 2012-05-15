@@ -213,11 +213,11 @@ $(document).ready(function () {
                         text.slideUp('200');
                 }
         }
-		alert($(this).text());
+        alert($(this).text());
     });
     if ($('#navigation :header').siblings('ul')) {
-		$('#navigation :header').append(' &raquo;');
+        $('#navigation :header').append(' &raquo;');
     }
-	$('#navigation > ul > li ul').hide();
+    $('#navigation > ul > li ul').hide();
 });
 </script>
