@@ -2,7 +2,7 @@
 
 # Apache&trade; XML Graphics
 
-  - ## Project Overview
+  - ## Project Overview {project-overview}
     - [Overview](/)
     - [Who We Are](/team.html)
     - [Legal Stuff](/legal.html)
@@ -208,10 +208,10 @@ $(document).ready(function () {
         var text = $(this).siblings('ul');
         if (text.is(':hidden')) {
             text.slideDown('200');
-            //$(this).children('span').html('-');     
         } else {
-            text.slideUp('200');
-            //$(this).children('span').html('+');     
+			if ($(this).text() != 'Project Overview') {
+	            text.slideUp('200');
+			}
         }
     });
     if ($('#navigation :header').siblings('ul')) {
