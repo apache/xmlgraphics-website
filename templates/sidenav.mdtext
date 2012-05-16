@@ -221,6 +221,12 @@ $(document).ready(function () {
   $("#navigation li a").each(function() {
     if (str.indexOf(this.href.toLowerCase()) > -1) {
       $(this).parent().slideDown('200');
+        if ($(this).parent().is(':hidden')) {
+            $(this).parent().slideDown('200');
+		}
+        if ($(this).parent().parent().is(':hidden')) {
+            $(this).parent().parent().slideDown('200');
+		}
     }
   });
 })
