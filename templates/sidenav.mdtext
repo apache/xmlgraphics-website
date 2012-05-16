@@ -207,10 +207,8 @@ $(document).ready(function () {
         var text = $(this).siblings('ul');
         if (text.is(':hidden')) {
             text.slideDown('200');
-            //$(this).children('span').html('-');     
         } else {
             text.slideUp('200');
-            //$(this).children('span').html('+');     
         }
     });
     if ($('#navigation :header').siblings('ul')) {
@@ -220,13 +218,7 @@ $(document).ready(function () {
   var str=location.href.toLowerCase();
   $("#navigation li a").each(function() {
     if (str.indexOf(this.href.toLowerCase()) > -1) {
-      $(this).parent().slideDown('200');
-        if ($(this).parent().is(':hidden')) {
-            $(this).parent().slideDown('200');
-		}
-        if ($(this).parent().parent().is(':hidden')) {
-            $(this).parent().parent().slideDown('200');
-		}
+      $(this).parents().slideDown('200');
     }
   });
 })
