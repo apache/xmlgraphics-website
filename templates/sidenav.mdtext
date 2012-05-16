@@ -1,9 +1,7 @@
 [![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
 
-# Apache&trade; XML Graphics
-
-  - ## Project Overview {#project-overview}
-    - [Overview](/)
+- # Apache&trade; XML Graphics
+  - ### Project Overview
     - [Who We Are](/team.html)
     - [Legal Stuff](/legal.html)
     - [Project Charter](/charter.html)
@@ -13,6 +11,7 @@
     - [ASF Thanks](http://www.apache.org/foundation/thanks.html)
     - [Licenses](http://www.apache.org/licenses/)
     - [Security](http://www.apache.org/security/)
+
 - # Apache Batik
   - [Batik Home](/batik/)
   - [License](/batik/license.html)
@@ -143,11 +142,11 @@
         - [Hyphenation](/fop/0.95/hyphenation.html)
         - [Extensions](/fop/0.95/extensions.html)
         - [Metadata](/fop/0.95/metadata.html)
-    - ## Apache&trade; FOP Development
+    - # Apache&trade; FOP Development
       - [General Info](/fop/dev/)
-      - ### Design
+      - ## Design
         - [Design Info](/fop/dev/design/)
-      - ### Core Process
+      - ## Core Process
         - [Startup](/fop/dev/design/startup.html)
         - [XML Parsing](/fop/dev/design/parsing.html)
         - [FO Tree](/fop/dev/design/fotree.html)
@@ -156,7 +155,7 @@
         - [Break Possibility](/fop/dev/design/breakpos.html)
         - [Area Tree](/fop/dev/design/areas.html)
         - [Renderers](/fop/dev/design/renderers.html)
-      - ### Miscellaneous
+      - ## Miscellaneous
         - [Images](/fop/dev/design/images.html)
         - [PDF Library](/fop/dev/design/pdf-library.html)
         - [SVG](/fop/dev/design/svg.html)
@@ -167,21 +166,21 @@
       - [Unresolved (Wiki)](http://wiki.apache.org/xmlgraphics-fop/FOPProjectPages)
       - [SVG](/fop/dev/svg.html)
       - [Extensions](/fop/dev/extensions.html)
-      - ### Develop
+      - ## Develop
         - [Walk-Thru](/fop/dev/implement.html)
         - [Patch Queue](http://issues.apache.org/bugzilla/buglist.cgi?bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED&amp;email1=&amp;emailtype1=substring&amp;emailassigned_to1=1&amp;email2=&amp;emailtype2=substring&amp;emailreporter2=1&amp;bugidtype=include&amp;bug_id=&amp;changedin=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;product=Fop&amp;short_desc=%5BPATCH%5D&amp;short_desc_type=allwordssubstr&amp;long_desc=&amp;long_desc_type=allwordssubstr&amp;bug_file_loc=&amp;bug_file_loc_type=allwordssubstr&amp;keywords=&amp;keywords_type=anywords&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0=&amp;namedcmd=Fop+all&amp;newqueryname=fop+patch+queue&amp;tofooter=1&amp;order=Reuse+same+sort+as+last+time)
         - [Conventions](/fop/dev/conventions.html)
-      - ### Test
+      - ## Test
         - [Testing](/fop/dev/testing.html)
-      - ### Deploy
+      - ## Deploy
         - [Doc Mgmt](/fop/dev/doc.html)
         - [Release](/fop/dev/release.html)
         - [Bugs](http://issues.apache.org/bugzilla/buglist.cgi?bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED&amp;email1=&amp;emailtype1=substring&amp;emailassigned_to1=1&amp;email2=&amp;emailtype2=substring&amp;emailreporter2=1&amp;bugidtype=include&amp;bug_id=&amp;changedin=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;product=Fop&amp;short_desc=&amp;short_desc_type=allwordssubstr&amp;long_desc=&amp;long_desc_type=allwordssubstr&amp;bug_file_loc=&amp;bug_file_loc_type=allwordssubstr&amp;keywords=&amp;keywords_type=anywords&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0=&amp;order=bug_severity%2Cpriority%20DESC)
-      - # Resources
+      - ## Resources
         - [FAQs](/fop/dev/faq.html)
         - [Tools](/fop/dev/tools.html)
         - [ViewVC](http://svn.apache.org/viewvc/xmlgraphics/fop)
-      - ### SubPackages
+      - ## SubPackages
         - [RTFlib](/fop/dev/rtflib.html)
 - # XML Graphics Commons
   - [Overview](/commons/)
@@ -207,16 +206,15 @@ $(document).ready(function () {
         var text = $(this).siblings('ul');
         if (text.is(':hidden')) {
             text.slideDown('200');
+            //$(this).children('span').html('-');     
         } else {
-                if (!$('#project-overview') {
-                        text.slideUp('200');
-                }
+            text.slideUp('200');
+            //$(this).children('span').html('+');     
         }
-        alert($(this).text());
     });
     if ($('#navigation :header').siblings('ul')) {
-        $('#navigation :header').append(' &raquo;');
+		$('#navigation :header').append(' &raquo;');
     }
-    $('#navigation > ul > li ul').hide();
+	$('#navigation > ul > li > ul').hide();
 });
 </script>
