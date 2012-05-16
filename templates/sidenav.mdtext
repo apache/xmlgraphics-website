@@ -201,6 +201,10 @@
   <input type="submit" id="submit" value="Search" />
 </form>
 
+<style type="text/css">
+.highlight {color: red;}
+</style>
+
 <script type="text/javascript">
 $(document).ready(function () {
     $('#navigation :header').click(function () {
@@ -219,6 +223,8 @@ $(document).ready(function () {
   $("#navigation li a").each(function() {
     if (str.indexOf(this.href.toLowerCase()) > -1) {
       $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
     }
   });
 })
