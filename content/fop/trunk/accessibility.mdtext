@@ -51,6 +51,20 @@ You may want to customize that mapping to improve the accuracy of the tagging or
 ...
 If a non-standard structure type is specified, FOP will issue a warning and fall back to the default tag associated to the Formatting Object.
 
+# Treating Content as Artifact
+
+If your document has content that is not meant to appear in the structure tree, you can wrap it in an `fo:wrapper` element whose `role` property has been set to ‘artifact’. For example:
+
+    <fo:block>blah... blah...
+      <fo:wrapper role="artifact">Funny graphical thing without logical meaning</fo:wrapper>
+      blah... blah... </fo:block>
+
+This special value for the `role` property can also be applied to `fo:static-content` elements; indeed such elements are often used to contain page header information, that is there purely as a reading aid for sighted people and is meaningless when read out loud by a screen reader.
+
+    <fo:static-content flow-name="xsl-region-before" role="artifact">
+      <fo:block>Page <fo:page-number/></fo:block>
+    </fo:static-content>
+
 # Testing # {#testing}
 
 Accessible PDFs can be tested, for example, using Adobe Acrobat Professional. Its Accessibility Check feature creates a report indicating any deficiencies with a PDF document. Alternatively, you can just let a screen reader read the document aloud.
