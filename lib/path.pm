@@ -15,7 +15,11 @@ our @patterns = (
        template => "single_narrative.html",
     } ],
 
-	[qr!\.mdtext$!, single_narrative => { template => "single_narrative.html" }],
+	[qr!\.mdtext$!, single_narrative => {
+        header => "xgc-top.html",
+        footer => "bottom.html",
+		template => "single_narrative.html"
+	}],
 
 	[qr!/sitemap\.html$!, sitemap => { headers => { title => "Sitemap" }} ],
 
@@ -47,3 +51,4 @@ our %dependencies = (
            KIND, either express or implied.  See the License for the
            specific language governing permissions and limitations
            under the License.
+
