@@ -3,13 +3,13 @@ package path;
 # taken from django's url.py
 
 our @patterns = (
-	[ qr!^/batik/.*\.mdtext$!, batikpage => {
+	[ qr!^/batik/.*\.mdtext$!, single_narrative => {
          header => "batik-top.html",
          footer => "bottom.html",
        template => "single_narrative.html",
     } ],
 
-	[ qr!^/fop/.*\.mdtext$!, foppage => {
+	[ qr!^/fop/.*\.mdtext$!, single_narrative => {
          header => "fop-top.html",
          footer => "bottom.html",
        template => "single_narrative.html",
