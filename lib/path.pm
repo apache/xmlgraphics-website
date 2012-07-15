@@ -19,10 +19,13 @@ our @patterns = (
         header => "xgc-top.html",
         footer => "bottom.html",
 		template => "single_narrative.html"
-	}],
+	} ],
 
-	[qr!/sitemap\.html$!, sitemap => { headers => { title => "Sitemap" }} ],
-
+	[qr!/sitemap\.html$!, sitemap => {
+        headers => { title => "Sitemap" },
+        footer  => "bottom.html",
+        header  => "xgc-top.html",
+    } ],
 ) ;
 
 # for specifying interdependencies between files
