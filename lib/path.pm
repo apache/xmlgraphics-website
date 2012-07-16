@@ -5,28 +5,28 @@ package path;
 our @patterns = (
 	[ qr!^/batik/.*\.mdtext$!, single_narrative => {
          header => "batik-top.html",
-         sidenav => "batik-top.html",
+         sidenav => "batik-sidenav.html",
          footer => "bottom.html",
        template => "single_narrative.html",
     } ],
 
 	[ qr!^/fop/.*\.mdtext$!, single_narrative => {
          header => "fop-top.html",
-         sidenav => "fop-top.html",
+         sidenav => "fop-sidenav.html",
          footer => "bottom.html",
        template => "single_narrative.html",
     } ],
 
 	[qr!\.mdtext$!, single_narrative => {
         header => "xgc-top.html",
-        sidenav => "xgc-top.html",
+        sidenav => "xgc-sidenav.html",
         footer => "bottom.html",
 		template => "single_narrative.html"
 	} ],
 
 	[qr!/sitemap\.html$!, sitemap => {
         headers => { title => "Sitemap" },
-        sidenav => "xgc-top.html",
+        sidenav => "xgc-sidenav.html",
         footer  => "bottom.html",
         header  => "xgc-top.html",
     } ],
