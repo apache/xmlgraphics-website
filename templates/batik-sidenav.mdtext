@@ -1,0 +1,87 @@
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache Batik
+  - [Overview](/batik/)
+  - [License](/batik/license.html)
+  - [Download](/batik/download.cgi)
+  - [Installation notes](/batik/install.html)
+  - [Status](/batik/status.html)
+  - [Demo](/batik/demo.html)
+  - [FAQs](/batik/faq.html)
+  - [Mailing lists](/batik/mailing-lists.html)
+  - [Contributors](/batik/contributors.html)
+  - [Bug database](http://issues.apache.org/bugzilla/buglist.cgi?query_format=specific&amp;bug_status=__open__&amp;product=Batik)
+  - [Projects using Batik](/batik/uses.html)
+  - ## Batik Tools
+      - [Browser](/batik/tools/browser.html)
+      - [Rasterizer](/batik/tools/rasterizer.html)
+      - [Font converter](/batik/tools/font-converter.html)
+      - [Pretty printer](/batik/tools/pretty-printer.html)
+  - ## Using Batik
+    - [Architecture](/batik/using/architecture.html)
+    - [Javadoc APIs](/batik/javadoc/)
+    - [DOM API](/batik/using/dom-api.html)
+    - [Parsers](/batik/using/parsers.html)
+    - ### Scripting
+      - [Scripting with ECMAScript](/batik/using/scripting/ecmascript.html)
+      - [Scripting with Java](/batik/using/scripting/java.html)
+      - [Security](/batik/using/scripting/security.html)
+    - [SVG generator](/batik/using/svg-generator.html)
+    - [Swing components](/batik/using/swing.html)
+    - [Transcoder API](/batik/using/transcoder.html)
+    - [Extending Batik](/batik/using/extending.html)
+  - ## Development
+    - [Branches](/batik/dev/branches.html)
+    - [SVG 1.2 support](/batik/dev/svg12.html)
+    - [Test infrastructure](/batik/dev/test.html)
+
+# Apache&trade; XML Graphics
+  - ### Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](http://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](http://www.apache.org/foundation/thanks.html)
+    - [Licenses](http://www.apache.org/licenses/)
+    - [Security](http://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache Batik](/batik/)
+  - [Apache FOP](/fop/)
+
+<form name="search" id="search" action="http://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" /><br />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+<style type="text/css">
+.highlight {color: red;}
+</style>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').append(' &raquo;');
+    }
+  $('#navigation > ul > li > ul').hide();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>
