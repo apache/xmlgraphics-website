@@ -1,0 +1,442 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<TITLE>
+EventTarget (Apache Batik Javadoc)
+</TITLE>
+
+<META NAME="keywords" CONTENT="org.w3c.dom.events.EventTarget interface">
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    parent.document.title="EventTarget (Apache Batik Javadoc)";
+}
+</SCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=3 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/EventTarget.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../index-files/index-1.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../org/w3c/dom/events/EventListener.html" title="interface in org.w3c.dom.events"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../org/w3c/dom/events/KeyboardEvent.html" title="interface in org.w3c.dom.events"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../index.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="EventTarget.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;FIELD&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;FIELD&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<!-- ======== START OF CLASS DATA ======== -->
+<H2>
+<FONT SIZE="-1">
+org.w3c.dom.events</FONT>
+<BR>
+Interface EventTarget</H2>
+<DL>
+<DT><B>All Known Subinterfaces:</B> <DD><A HREF="../../../../org/apache/batik/dom/ExtendedNode.html" title="interface in org.apache.batik.dom">ExtendedNode</A>, <A HREF="../../../../org/apache/batik/dom/events/NodeEventTarget.html" title="interface in org.apache.batik.dom.events">NodeEventTarget</A></DD>
+</DL>
+<DL>
+<DT><B>All Known Implementing Classes:</B> <DD><A HREF="../../../../org/apache/batik/dom/svg/AbstractElement.html" title="class in org.apache.batik.dom.svg">AbstractElement</A>, <A HREF="../../../../org/apache/batik/dom/AbstractNode.html" title="class in org.apache.batik.dom">AbstractNode</A></DD>
+</DL>
+<HR>
+<DL>
+<DT>public interface <B>EventTarget</B></DL>
+
+<P>
+The <code>EventTarget</code> interface is implemented by all the objects 
+ which could be event targets in an implementation which supports the . 
+ The interface allows registration and removal of event listeners, and 
+ dispatch of events to an event target. 
+ <p> When used with , this interface is implemented by all target nodes and 
+ target ancestors, i.e. all DOM <code>Nodes</code> of the tree support 
+ this interface when the implementation conforms to DOM Level 3 Events 
+ and, therefore, this interface can be obtained by using binding-specific 
+ casting methods on an instance of the <code>Node</code> interface. 
+ <p> Invoking <code>addEventListener</code> or 
+ <code>addEventListenerNS</code> repeatedly on the same 
+ <code>EventTarget</code> with the same values for the parameters 
+ <code>namespaceURI</code>, <code>type</code>, <code>listener</code>, and 
+ <code>useCapture</code> has no effect. Doing so does not cause the 
+ <code>EventListener</code> to be called more than once and does not cause 
+ a change in the triggering order. In order to register a listener for a 
+ different event group () the previously registered listener has to be 
+ removed first. 
+ <p>See also the <a href='http://www.w3.org/TR/2006/WD-DOM-Level-3-Events-20060413'>
+   Document Object Model (DOM) Level 3 Events Specification
+  </a>.
+<P>
+
+<P>
+<DL>
+<DT><B>Since:</B></DT>
+  <DD>DOM Level 2</DD>
+</DL>
+<HR>
+
+<P>
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+
+
+<!-- =========== FIELD SUMMARY =========== -->
+
+
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+
+<A NAME="method_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TD COLSPAN=2><FONT SIZE="+2">
+<B>Method Summary</B></FONT></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/w3c/dom/events/EventTarget.html#addEventListener(java.lang.String, org.w3c.dom.events.EventListener, boolean)">addEventListener</A></B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;type,
+                 <A HREF="../../../../org/w3c/dom/events/EventListener.html" title="interface in org.w3c.dom.events">EventListener</A>&nbsp;listener,
+                 boolean&nbsp;useCapture)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This method allows the registration of an event listener in the 
+ default group and, depending on the <code>useCapture</code> 
+ parameter, on the capture phase of the DOM event flow or its target 
+ and bubbling phases.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/w3c/dom/events/EventTarget.html#addEventListenerNS(java.lang.String, java.lang.String, org.w3c.dom.events.EventListener, boolean, java.lang.Object)">addEventListenerNS</A></B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;namespaceURI,
+                   <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;type,
+                   <A HREF="../../../../org/w3c/dom/events/EventListener.html" title="interface in org.w3c.dom.events">EventListener</A>&nbsp;listener,
+                   boolean&nbsp;useCapture,
+                   <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/Object.html" title="class or interface in java.lang">Object</A>&nbsp;evtGroup)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This method allows the registration of an event listener in a 
+ specified group or the default group and, depending on the 
+ <code>useCapture</code> parameter, on the capture phase of the DOM 
+ event flow or its target and bubbling phases.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/w3c/dom/events/EventTarget.html#dispatchEvent(org.w3c.dom.events.Event)">dispatchEvent</A></B>(<A HREF="../../../../org/w3c/dom/events/Event.html" title="interface in org.w3c.dom.events">Event</A>&nbsp;evt)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This method allows the dispatch of events into the implementation's 
+ event model.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/w3c/dom/events/EventTarget.html#removeEventListener(java.lang.String, org.w3c.dom.events.EventListener, boolean)">removeEventListener</A></B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;type,
+                    <A HREF="../../../../org/w3c/dom/events/EventListener.html" title="interface in org.w3c.dom.events">EventListener</A>&nbsp;listener,
+                    boolean&nbsp;useCapture)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This method allows the removal of event listeners from the default 
+ group.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/w3c/dom/events/EventTarget.html#removeEventListenerNS(java.lang.String, java.lang.String, org.w3c.dom.events.EventListener, boolean)">removeEventListenerNS</A></B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;namespaceURI,
+                      <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;type,
+                      <A HREF="../../../../org/w3c/dom/events/EventListener.html" title="interface in org.w3c.dom.events">EventListener</A>&nbsp;listener,
+                      boolean&nbsp;useCapture)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This method allows the removal of an event listener, independently of 
+ the associated event group.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<!-- ============ FIELD DETAIL =========== -->
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+
+
+<!-- ============ METHOD DETAIL ========== -->
+
+<A NAME="method_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TD COLSPAN=1><FONT SIZE="+2">
+<B>Method Detail</B></FONT></TD>
+</TR>
+</TABLE>
+
+<A NAME="addEventListener(java.lang.String, org.w3c.dom.events.EventListener, boolean)"><!-- --></A><H3>
+addEventListener</H3>
+<PRE>
+public void <B>addEventListener</B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;type,
+                             <A HREF="../../../../org/w3c/dom/events/EventListener.html" title="interface in org.w3c.dom.events">EventListener</A>&nbsp;listener,
+                             boolean&nbsp;useCapture)</PRE>
+<DL>
+<DD>This method allows the registration of an event listener in the 
+ default group and, depending on the <code>useCapture</code> 
+ parameter, on the capture phase of the DOM event flow or its target 
+ and bubbling phases. Invoking this method is equivalent to invoking 
+ <code>addEventListenerNS</code> with the same values for the 
+ parameters <code>type</code>, <code>listener</code>, and 
+ <code>useCapture</code>, and the value <code>null</code> for the 
+ parameters <code>namespaceURI</code> and <code>evtGroup</code>.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>type</CODE> - Specifies the <code>Event.type</code> associated with the 
+   event for which the user is registering.<DD><CODE>listener</CODE> - The <code>listener</code> parameter takes an object 
+   implemented by the user which implements the 
+   <code>EventListener</code> interface and contains the method to be 
+   called when the event occurs.<DD><CODE>useCapture</CODE> - If true, <code>useCapture</code> indicates that the 
+   user wishes to add the event listener for the capture phase only, 
+   i.e. this event listener will not be triggered during the target 
+   and bubbling phases. If <code>false</code>, the event listener will 
+   only be triggered during the target and bubbling phases.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="removeEventListener(java.lang.String, org.w3c.dom.events.EventListener, boolean)"><!-- --></A><H3>
+removeEventListener</H3>
+<PRE>
+public void <B>removeEventListener</B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;type,
+                                <A HREF="../../../../org/w3c/dom/events/EventListener.html" title="interface in org.w3c.dom.events">EventListener</A>&nbsp;listener,
+                                boolean&nbsp;useCapture)</PRE>
+<DL>
+<DD>This method allows the removal of event listeners from the default 
+ group. Calling <code>removeEventListener</code> with arguments which 
+ do not identify any currently registered <code>EventListener</code> 
+ on the <code>EventTarget</code> has no effect. The 
+ <code>Event.namespaceURI</code> for which the user registered the 
+ event listener is implied and is <code>null</code>. 
+ <p ><b>Note:</b>  Event listeners registered for other event groups 
+ than the default group cannot be removed using this method; see 
+ <code>EventTarget.removeEventListenerNS()</code> for that effect.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>type</CODE> - Specifies the <code>Event.type</code> for which the user 
+   registered the event listener.<DD><CODE>listener</CODE> - The <code>EventListener</code> to be removed.<DD><CODE>useCapture</CODE> - Specifies whether the <code>EventListener</code> 
+   being removed was registered for the capture phase or not. If a 
+   listener was registered twice, once for the capture phase and once 
+   for the target and bubbling phases, each must be removed 
+   separately. Removal of an event listener registered for the capture 
+   phase does not affect the same event listener registered for the 
+   target and bubbling phases, and vice versa.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="dispatchEvent(org.w3c.dom.events.Event)"><!-- --></A><H3>
+dispatchEvent</H3>
+<PRE>
+public boolean <B>dispatchEvent</B>(<A HREF="../../../../org/w3c/dom/events/Event.html" title="interface in org.w3c.dom.events">Event</A>&nbsp;evt)
+                      throws <A HREF="../../../../org/w3c/dom/events/EventException.html" title="class in org.w3c.dom.events">EventException</A>,
+                             <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/DOMException.html" title="class or interface in org.w3c.dom">DOMException</A></PRE>
+<DL>
+<DD>This method allows the dispatch of events into the implementation's 
+ event model. The event target of the event is the 
+ <code>EventTarget</code> object on which <code>dispatchEvent</code> 
+ is called.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>evt</CODE> - The event to be dispatched.
+<DT><B>Returns:</B><DD>Indicates whether any of the listeners which handled the 
+   event called <code>Event.preventDefault()</code>. If 
+   <code>Event.preventDefault()</code> was called the returned value 
+   is <code>false</code>, else it is <code>true</code>.
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/w3c/dom/events/EventException.html" title="class in org.w3c.dom.events">EventException</A></CODE> - UNSPECIFIED_EVENT_TYPE_ERR: Raised if the <code>Event.type</code> 
+   was not specified by initializing the event before 
+   <code>dispatchEvent</code> was called. Specification of the 
+   <code>Event.type</code> as <code>null</code> or an empty string 
+   will also trigger this exception. 
+   <br> DISPATCH_REQUEST_ERR: Raised if the <code>Event</code> object is 
+   already being dispatched.
+<DD><CODE><A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/DOMException.html" title="class or interface in org.w3c.dom">DOMException</A></CODE> - NOT_SUPPORTED_ERR: Raised if the <code>Event</code> object has not 
+   been created using <code>DocumentEvent.createEvent()</code>. 
+   <br> INVALID_CHARACTER_ERR: Raised if <code>Event.type</code> is not 
+   an <a href='http://www.w3.org/TR/2004/REC-xml-names11-20040204/#NT-NCName'>NCName</a> as defined in [<a href='http://www.w3.org/TR/2004/REC-xml-names11-20040204/'>XML Namespaces 1.1</a>]
+   .</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="addEventListenerNS(java.lang.String, java.lang.String, org.w3c.dom.events.EventListener, boolean, java.lang.Object)"><!-- --></A><H3>
+addEventListenerNS</H3>
+<PRE>
+public void <B>addEventListenerNS</B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;namespaceURI,
+                               <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;type,
+                               <A HREF="../../../../org/w3c/dom/events/EventListener.html" title="interface in org.w3c.dom.events">EventListener</A>&nbsp;listener,
+                               boolean&nbsp;useCapture,
+                               <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/Object.html" title="class or interface in java.lang">Object</A>&nbsp;evtGroup)</PRE>
+<DL>
+<DD>This method allows the registration of an event listener in a 
+ specified group or the default group and, depending on the 
+ <code>useCapture</code> parameter, on the capture phase of the DOM 
+ event flow or its target and bubbling phases.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>namespaceURI</CODE> - Specifies the <code>Event.namespaceURI</code> 
+   associated with the event for which the user is registering.<DD><CODE>type</CODE> - Refer to the <code>EventTarget.addEventListener()</code> 
+   method for a description of this parameter.<DD><CODE>listener</CODE> - Refer to the 
+   <code>EventTarget.addEventListener()</code> method for a 
+   description of this parameter.<DD><CODE>useCapture</CODE> - Refer to the 
+   <code>EventTarget.addEventListener()</code> method for a 
+   description of this parameter.<DD><CODE>evtGroup</CODE> - The object that represents the event group to 
+   associate with the <code>EventListener</code> (see also ). Use 
+   <code>null</code> to attach the event listener to the default 
+   group.<DT><B>Since:</B></DT>
+  <DD>DOM Level 3</DD>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="removeEventListenerNS(java.lang.String, java.lang.String, org.w3c.dom.events.EventListener, boolean)"><!-- --></A><H3>
+removeEventListenerNS</H3>
+<PRE>
+public void <B>removeEventListenerNS</B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;namespaceURI,
+                                  <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;type,
+                                  <A HREF="../../../../org/w3c/dom/events/EventListener.html" title="interface in org.w3c.dom.events">EventListener</A>&nbsp;listener,
+                                  boolean&nbsp;useCapture)</PRE>
+<DL>
+<DD>This method allows the removal of an event listener, independently of 
+ the associated event group. Calling <code>removeEventListenerNS</code>
+  with arguments which do not identify any currently registered 
+ <code>EventListener</code> on the <code>EventTarget</code> has no 
+ effect.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>namespaceURI</CODE> - Specifies the <code>Event.namespaceURI</code> 
+   associated with the event for which the user registered the event 
+   listener.<DD><CODE>type</CODE> - Refer to the 
+   <code>EventTarget.removeEventListener()</code> method for a 
+   description of this parameter.<DD><CODE>listener</CODE> - Refer to the 
+   <code>EventTarget.removeEventListener()</code> method for a 
+   description of this parameter.<DD><CODE>useCapture</CODE> - Refer to the 
+   <code>EventTarget.removeEventListener()</code> method for a 
+   description of this parameter.<DT><B>Since:</B></DT>
+  <DD>DOM Level 3</DD>
+</DL>
+</DD>
+</DL>
+<!-- ========= END OF CLASS DATA ========= -->
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=3 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/EventTarget.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../index-files/index-1.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../org/w3c/dom/events/EventListener.html" title="interface in org.w3c.dom.events"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../org/w3c/dom/events/KeyboardEvent.html" title="interface in org.w3c.dom.events"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../index.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="EventTarget.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;FIELD&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;FIELD&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright © 2009 <a href='http://www.apache.org/'>Apache Software Foundation</a>. All Rights Reserved.
+</BODY>
+</HTML>
