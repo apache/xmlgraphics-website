@@ -1,4 +1,5 @@
 Title: Standard Apache™ FOP Extensions
+
 <version>$Revision: 1298724 $</version>
 
 By "extension", we mean any data that can be placed in the input XML document that is not addressed by the XSL-FO standard. By having a mechanism for supporting extensions, Apache™ FOP is able to add features that are not covered in the specification.
@@ -29,6 +30,10 @@ Use the fox:destination element to define "named destinations" inside a PDF docu
 ## Table Continuation Label ## {#table-continue-label}
 
 This extension element hasn't been reimplemented for the redesigned code, yet.
+
+## Row Scope for Header Table Cells
+
+This feature is described in the [Accessibility](accessibility.html) section.
 
 ## fox:orphan-content-limit and fox:widow-content-limit ## {#widow-orphan-content-limit}
 
