@@ -66,17 +66,17 @@ This special value for the `role` property can also be applied to `fo:static-con
       <fo:block>Page <fo:page-number/></fo:block>
     </fo:static-content>
 
-# Scope of Header Table Cells
+# Scope of Header Table Cells {#fox:header}
 
-In XSL-FO, tables are inherently defined row by row. The `fo:table-header` element can be used to define ‘header rows’, in which each cell is a header of the corresponding column (in HTML, the `TH` element would be used for that).
+In XSL-FO, tables are inherently defined row by row. The `fo:table-header` element can be used to define ‘header rows’, in which each cell is a header of the corresponding column (like `TH` cells in HTML). The cell is said to have a column *scope*.
 
-There is no way, however, to define ‘row headers’: cells that are headers of the corresponding row. Of course it is possible to style a cell to make it look like a header (for example, by using a bolder font), but that won’t be reflected in the structure of the document.
+There is no way, however, to define ‘row headers’: cells that have a row scope. Of course it is possible to style a cell to make it look like a header (for example, by using a bolder font), but that won’t be reflected in the structure of the document.
 
-When creating accessible document, it is desirable to define the _scope_ of a header cell: whether the header applies to the column, or the row, or both. That information can then be used by a screen reader to better help the user to build a mental representation of the table.
+When creating accessible documents, it is desirable to have that information, as it can be used by a screen reader to help the user build a mental representation of the table.
 
-FOP defines the `fox:header` extension property for that purpose. If an `fo:table-column` element has this property set to `true`, then the corresponding cells will receive the `TH` structure type, and the `Scope` structure attribute will have one of the following value:
+For that purpose, FOP defines the `fox:header` extension property. If an `fo:table-column` element has this property set to `true`, then the corresponding cells will receive the `TH` structure type, and the `Scope` structure attribute will have one of the following value:
 
-* ‘Both’ if the cell is a descendant of `fo:table-header`;
+* ‘Both’ if the cell also is a descendant of `fo:table-header`;
 * ‘Row’ otherwise.
 
 `fox:header` |
@@ -91,7 +91,7 @@ If for some reason a cell inside a header column is not meant to be a header cel
 For example, the following table:
 
     <fo:table width="100%" table-layout="fixed">
-      <fo:table-column fox:header="true" column-width="proportional-column-width(1)"/>
+      <fo:table-column xmlns:fox="http://xmlgraphics.apache.org/fop/extensions" fox:header="true" column-width="proportional-column-width(1)"/>
       <fo:table-column column-width="proportional-column-width(1)"/>
       <fo:table-column column-width="proportional-column-width(1)"/>
       <fo:table-header font-weight="bold">
@@ -150,7 +150,7 @@ Header Scope = Both     | Header Scope = Column | Header Scope = Column
 ----------------------- | --------------------- | ---------------------
 **Header Scope = Row**  | Cell 1.1              | Cell 1.2
 **Header Scope = Row**  | Cell 2.1              | Cell 2.2
-Non-header              | Cell 2.1              | Cell 2.2
+Non-header              | Cell 3.1              | Cell 3.2
 
 # Testing # {#testing}
 
