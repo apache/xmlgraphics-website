@@ -66,6 +66,92 @@ This special value for the `role` property can also be applied to `fo:static-con
       <fo:block>Page <fo:page-number/></fo:block>
     </fo:static-content>
 
+# Scope of Header Table Cells
+
+In XSL-FO, tables are inherently defined row by row. The `fo:table-header` element can be used to define ‘header rows’, in which each cell is a header of the corresponding column (in HTML, the `TH` element would be used for that).
+
+There is no way, however, to define ‘row headers’: cells that are headers of the corresponding row. Of course it is possible to style a cell to make it look like a header (for example, by using a bolder font), but that won’t be reflected in the structure of the document.
+
+When creating accessible document, it is desirable to define the _scope_ of a header cell: whether the header applies to the column, or the row, or both. That information can then be used by a screen reader to better help the user to build a mental representation of the table.
+
+FOP defines the `fox:header` extension property for that purpose. If an `fo:table-column` element has this property set to `true`, then the corresponding cells will receive the `TH` structure type, and the `Scope` structure attribute will have one of the following value:
+
+* ‘Both’ if the cell is a descendant of `fo:table-header`;
+* ‘Row’ otherwise.
+
+`fox:header` |
+---------|-----------
+Value: | true &#x7C; false |
+Initial: | false |
+Inherited: | no |
+Applies to: | `fo:table-column` |
+
+If for some reason a cell inside a header column is not meant to be a header cell, the `role` property can be used to override the default behavior and set the structure type to `TD`.
+
+For example, the following table:
+
+    <fo:table width="100%" table-layout="fixed">
+      <fo:table-column fox:header="true" column-width="proportional-column-width(1)"/>
+      <fo:table-column column-width="proportional-column-width(1)"/>
+      <fo:table-column column-width="proportional-column-width(1)"/>
+      <fo:table-header font-weight="bold">
+        <fo:table-row>
+          <fo:table-cell border="1pt solid black" padding-left="1pt">
+            <fo:block>Header Scope = Both</fo:block>
+          </fo:table-cell>
+          <fo:table-cell border="1pt solid black" padding-left="1pt">
+            <fo:block>Header Scope = Column</fo:block>
+          </fo:table-cell>
+          <fo:table-cell border="1pt solid black" padding-left="1pt">
+            <fo:block>Header Scope = Column</fo:block>
+          </fo:table-cell>
+        </fo:table-row>
+      </fo:table-header>
+      <fo:table-body>
+        <fo:table-row>
+          <fo:table-cell border="1pt solid black" padding-left="1pt" font-weight="bold">
+            <fo:block>Header Scope = Row</fo:block>
+          </fo:table-cell>
+          <fo:table-cell border="1pt solid black" padding-left="1pt">
+            <fo:block>Cell 1.1</fo:block>
+          </fo:table-cell>
+          <fo:table-cell border="1pt solid black" padding-left="1pt">
+            <fo:block>Cell 1.2</fo:block>
+          </fo:table-cell>
+        </fo:table-row>
+        <fo:table-row>
+          <fo:table-cell border="1pt solid black" padding-left="1pt" font-weight="bold">
+            <fo:block>Header Scope = Row</fo:block>
+          </fo:table-cell>
+          <fo:table-cell border="1pt solid black" padding-left="1pt">
+            <fo:block>Cell 2.1</fo:block>
+          </fo:table-cell>
+          <fo:table-cell border="1pt solid black" padding-left="1pt">
+            <fo:block>Cell 2.2</fo:block>
+          </fo:table-cell>
+        </fo:table-row>
+        <fo:table-row>
+          <fo:table-cell border="1pt solid black" padding-left="1pt" role="TD">
+            <fo:block>Non-header</fo:block>
+          </fo:table-cell>
+          <fo:table-cell border="1pt solid black" padding-left="1pt">
+            <fo:block>Cell 3.1</fo:block>
+          </fo:table-cell>
+          <fo:table-cell border="1pt solid black" padding-left="1pt">
+            <fo:block>Cell 3.2</fo:block>
+          </fo:table-cell>
+        </fo:table-row>
+      </fo:table-body>
+    </fo:table>
+
+will be rendered into this:
+
+Header Scope = Both     | Header Scope = Column | Header Scope = Column
+----------------------- | --------------------- | ---------------------
+**Header Scope = Row**  | Cell 1.1              | Cell 1.2
+**Header Scope = Row**  | Cell 2.1              | Cell 2.2
+Non-header              | Cell 2.1              | Cell 2.2
+
 # Testing # {#testing}
 
 Accessible PDFs can be tested, for example, using Adobe Acrobat Professional. Its Accessibility Check feature creates a report indicating any deficiencies with a PDF document. Alternatively, you can just let a screen reader read the document aloud.
