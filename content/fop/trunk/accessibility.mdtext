@@ -1,6 +1,5 @@
 Title: Apache™ FOP: Accessibility
 
-
 # Overview # {#overview}
 
 This page describes the [accessibility](http://en.wikipedia.org/wiki/Accessibility) features of Apache™ FOP. [Section 508](http://www.section508.gov/) defines accessibility in the context of electronic documents for the USA but other countries have similar requirements.
@@ -45,10 +44,12 @@ The [PDF Reference](#PDFReference) defines a set of standard Structure Types to 
 FOP provides a default mapping of Formatting Objects to elements from that standard set. For example, `fo:page-sequence` is mapped to ‘Part’, `fo:block` is mapped to ‘P’, `fo:list-block` to ‘L’, etc.
 
 You may want to customize that mapping to improve the accuracy of the tagging or deal with particular FO constructs. For example, you may want to make use of the ‘H1’ to ‘H6’ tags to make the hierarchical structure of the document appear in the PDF. This is achieved by using the `role` XSL-FO property:
-...
-<fo:block role="H1" font-weight="bold">I. A Level 1 Heading</fo:block>
-<fo:block>This is the first paragraph of the first section...</fo:block>
-...
+
+    ...
+    <fo:block role="H1" font-weight="bold">I. A Level 1 Heading</fo:block>
+    <fo:block>This is the first paragraph of the first section...</fo:block>
+    ...
+
 If a non-standard structure type is specified, FOP will issue a warning and fall back to the default tag associated to the Formatting Object.
 
 # Treating Content as Artifact
