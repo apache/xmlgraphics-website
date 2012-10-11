@@ -24,7 +24,6 @@ function get(id) {
 	}
 	return e;
 }
-
 function update() {
 	chart = get("chart");
 	updateBar("ShoeBar");
@@ -32,7 +31,6 @@ function update() {
 	updateBar("TravelBar");
 	updateBar("ComputerBar");
 }
-
 function updateBar(name) {
 	var input = get(name);
 	var value = Number(input.value);
