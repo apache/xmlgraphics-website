@@ -13,5 +13,32 @@ This page demonstrates the use of Batik’s [JSVGCanvas](using/swing.html) swing
 
 <button onclick="update()">Update chart</button>
  |
-<script>var chart; function get(id) { var e = document.getElementById(id); // This loop just gets around the problem of IE returning the 'a' // element looked up by name, rather than the desired element by id. while (e.nodeType != 1 || e.getAttribute("id") != id) { e = e.nextSibling; } return e; } function update() { chart = get("chart"); updateBar("ShoeBar"); updateBar("CarBar"); updateBar("TravelBar"); updateBar("ComputerBar"); } function updateBar(name) { var input = get(name); var value = Number(input.value); if (!isNaN(value) && value >= 0) { chart.updateBar(name, value); } }</script>
+<script>
+var chart;
+function get(id) {
+	var e = document.getElementById(id);
+	// This loop just gets around the problem of IE returning the 'a'
+	// element looked up by name, rather than the desired element by id.
+	while (e.nodeType != 1 || e.getAttribute("id") != id) {
+		e = e.nextSibling;
+	}
+	return e;
+}
+
+function update() {
+	chart = get("chart");
+	updateBar("ShoeBar");
+	updateBar("CarBar");
+	updateBar("TravelBar");
+	updateBar("ComputerBar");
+}
+
+function updateBar(name) {
+	var input = get(name);
+	var value = Number(input.value);
+	if (!isNaN(value) && value >= 0) {
+		chart.updateBar(name, value);
+	}
+}
+</script>
 The applet ( [view source](demo/AppletDemo.java) ) displays the [barChart.svg](http://svn.apache.org/repos/asf/xmlgraphics/batik/trunk/samples/barChart.svg) sample from the Batik distribution using a `JSVGCanvas` . Script in the web page then interacts with the applet, by calling the `updateBar` method of the applet object when the **Update chart** button is pressed. This method modifies the SVG document being displayed to update the heights of the bars.
