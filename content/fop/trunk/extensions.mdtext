@@ -128,7 +128,7 @@ The `rgb-icc` function will respond to a pseudo-profile called "#CMYK" which ind
 ## Rounded Corners ## {#rounded-corners}
 
 Rounded corners on block areas can be specified with the `fox:border-*-radius-*` properties. Each corner can be specified with two radii that define a quarter ellipse that defines the shape of the corner of the outer border edge (in accordance with the [W3 CSS3 Recommendation](http://www.w3.org/TR/css3-background/#the-border-radius)).
-The property `fox:border-A-radius-B` specifies the radius of the corner connecting border segments *A* and *B*, in the direction perpendicular to segment *A*.
+The property `fox:border-A-radius-B` specifies the radius of the corner connecting border segments *A* and *B* in '*before|after|start|end*', and in the direction perpendicular to segment *A*.
 
 The shorthand property `fox:border-radius` can be used to specify uniform corners and takes 1 or 2 values.  A single value will generate circular corners.  Two values define elliptic corners where the first value defines the radius in the *Inline Progression Direction*, and the second the radius in the *Block Progression Direction*.
 
