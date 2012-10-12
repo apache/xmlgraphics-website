@@ -125,6 +125,15 @@ The `rgb-icc` function will respond to a pseudo-profile called "#CMYK" which ind
 
 -  `rgb-icc(153, 153, 102, #CMYK, 0, 0, 0.2, 0.4)` 
 
+## Rounded Corners ## {#rounded-corners}
+
+Rounded corners on block areas can be specified with the `fox:border-*-radius-*` properties. Each corner can be specified with two radii that define a quarter ellipse that defines the shape of the corner of the outer border edge (in accordance with the [W3 CSS3 Recommendation](http://www.w3.org/TR/css3-background/#the-border-radius)).
+The property `fox:border-A-radius-B` specifies the radius of the corner connecting border segments *A* and *B*, in the direction perpendicular to segment *A*.
+
+The shorthand property `fox:border-radius` can be used to specify uniform corners and takes 1 or 2 values.  A single value will generate circular corners.  Two values define elliptic corners where the first value defines the radius in the *Inline Progression Direction*, and the second the radius in the *Block Progression Direction*.
+
+The example fo `examples/fo/advanced/rounded-corners.fo` demonstrates some finer points of this extension.
+
 ## Prepress Support ## {#prepress}
 
 This section defines a number of extensions related to [prepress](http://en.wikipedia.org/wiki/Prepress) support. `fox:scale` defines a general scale factor for the generated pages. `fox:bleed` defines the [bleed area](http://en.wikipedia.org/wiki/Bleed_%28printing%29) for a page. `fox:crop-offset` defines the outer edges of the area in which crop marks, registration marks, color bars and page information are placed. For details, please read on below.
