@@ -1,9 +1,9 @@
-Title: Apache™ FOP: Events/Processing Feedback
+Title: Apache&trade; FOP: Events/Processing Feedback
 <version>$Revision: 1298724 $</version>
 
 # Introduction # {#introduction}
 
-In versions until 0.20.5, Apache™ FOP used [Avalon-style Logging](http://excalibur.apache.org/framework/index.html) where it was possible to supply a logger per processing run. During the redesign the logging infrastructure was switched over to [Commons Logging](http://commons.apache.org/logging/) which is (like Log4J or java.util.logging) a "static" logging framework (the logger is accessed through static variables). This made it very difficult in a multi-threaded system to retrieve information for a single processing run.
+In versions until 0.20.5, Apache&trade; FOP used [Avalon-style Logging](http://excalibur.apache.org/framework/index.html) where it was possible to supply a logger per processing run. During the redesign the logging infrastructure was switched over to [Commons Logging](http://commons.apache.org/logging/) which is (like Log4J or java.util.logging) a "static" logging framework (the logger is accessed through static variables). This made it very difficult in a multi-threaded system to retrieve information for a single processing run.
 
 With FOP's event subsystem, we'd like to close this gap again and even go further. The first point is to realize that we have two kinds of "logging". Firstly, we have the logging infrastructure for the (FOP) developer who needs to be able to enable finer log messages for certain parts of FOP to track down a certain problem. Secondly, we have the user who would like to be informed about missing images, overflowing lines or substituted fonts. These messages (or events) are targeted at less technical people and may ideally be localized (translated). Furthermore, tool and solution builders would like to integrate FOP into their own solutions. For example, an FO editor should be able to point the user to the right place where a particular problem occurred while developing a document template. Finally, some integrators would like to abort processing if a resource (an image or a font) has not been found, while others would simply continue. The event system allows to react on these events.
 

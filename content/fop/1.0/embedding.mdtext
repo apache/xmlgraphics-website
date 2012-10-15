@@ -1,11 +1,11 @@
-Title: Apache™ FOP: Embedding
+Title: Apache&trade; FOP: Embedding
 <subtitle>How to Embed Apache� FOP in a Java application</subtitle><version>$Revision: 1298724 $</version>
 
 # Overview # {#overview}
 
 Review [Running FOP](running.html) for important information that applies to embedded applications as well as command-line use, such as options and performance.
 
-To embed Apache™ FOP in your application, first create a new org.apache.fop.apps.FopFactory instance. This object can be used to launch multiple rendering runs. For each run, create a new org.apache.fop.apps.Fop instance through one of the factory methods of FopFactory. In the method call you specify which output format (i.e. Renderer) to use and, if the selected renderer requires an OutputStream, which OutputStream to use for the results of the rendering. You can customize FOP's behaviour in a rendering run by supplying your own FOUserAgent instance. The FOUserAgent can, for example, be used to set your own Renderer instance (details below). Finally, you retrieve a SAX DefaultHandler instance from the Fop object and use that as the SAXResult of your transformation.
+To embed Apache&trade; FOP in your application, first create a new org.apache.fop.apps.FopFactory instance. This object can be used to launch multiple rendering runs. For each run, create a new org.apache.fop.apps.Fop instance through one of the factory methods of FopFactory. In the method call you specify which output format (i.e. Renderer) to use and, if the selected renderer requires an OutputStream, which OutputStream to use for the results of the rendering. You can customize FOP's behaviour in a rendering run by supplying your own FOUserAgent instance. The FOUserAgent can, for example, be used to set your own Renderer instance (details below). Finally, you retrieve a SAX DefaultHandler instance from the Fop object and use that as the SAXResult of your transformation.
 We recently changed FOP's outer API to what we consider the final API. This might require some changes in your application. The main reasons for these changes were performance improvements due to better reuse of reusable objects and reduced use of static variables for added flexibility in complex environments.
 # Basic Usage Pattern # {#basics}
 

@@ -1,4 +1,4 @@
-Title: Apache™ FOP: Metadata
+Title: Apache&trade; FOP: Metadata
 
 
 # Overview # {#overview}
@@ -7,7 +7,7 @@ Document metadata is an important tool for categorizing and finding documents. V
 
 # Embedding XMP in an XSL-FO document # {#xmp-in-fo}
 
-As noted above, there's no officially recommended way to embed metadata in XSL-FO. Apache™ FOP supports embedding XMP in XSL-FO. Currently, only support for document-level metadata is implemented. Object-level metadata will be implemented when there's interest.
+As noted above, there's no officially recommended way to embed metadata in XSL-FO. Apache&trade; FOP supports embedding XMP in XSL-FO. Currently, only support for document-level metadata is implemented. Object-level metadata will be implemented when there's interest.
 
 Document-level metadata can be specified in the `fo:declarations` element. XMP specification recommends to use `x:xmpmeta` , `rdf:RDF` , and `rdf:Description` elements as shown in example below. Both `x:xmpmeta` and `rdf:RDF` elements are recognized as the top-level element introducing an XMP fragment (as per the XMP specification).
 
