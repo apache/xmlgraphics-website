@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="en">
   <head>
-    <title>Apache™ FOP</title>
+    <title>Apache™ Batik - Demo</title>
 
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
@@ -28,209 +28,126 @@
     })
     </script>
     
+	<style>
+	.highlight {color: red;}
+	</style>
   </head>
 
   <body>
 
-	<div id="banner">&nbsp;</div>
+	<div id="banner">&nbsp;
+	</div>
 
-<div id="top">
-<!--+
-    |breadtrail
-    +-->
-<div class="breadtrail">
-<a href="http://www.apache.org/">apache</a> &gt; <a href="http://xml.apache.org/">xml</a> &gt; <a href="http://xmlgraphics.apache.org/">graphics</a><script src="skin/breadcrumbs.js" language="JavaScript" type="text/javascript"></script>
-</div>
-<!--+
-    |header
-    +-->
-<div class="header">
-<!--+
-    |start group logo
-    +-->
-<div class="grouplogo">
-<a href="http://xmlgraphics.apache.org/"><img class="logoImage" alt="Apache XML Graphics" src="images/group-logo.png" title="Apache XML Graphics"></a>
-</div>
-<!--+
-    |end group logo
-    +-->
-<!--+
-    |start Project Logo
-    +-->
-<div class="projectlogoA1">
-<a href="http://xmlgraphics.apache.org/batik/"><img class="logoImage" alt="Apache Batik" src="images/batik.png" title="Apache Batik"></a>
-</div>
-<!--+
-    |end Project Logo
-    +-->
-<!--+
-    |start Tabs
-    +-->
-<ul id="tabs">
-<li class="current">
-<a class="selected" href="index.html">Home</a>
+	<div id="navigation">
+	<p><a href="/"><img alt="Apache XML Graphics Project Logo" src="/images/apache-xml-graphics.gif" title="Apache XML Graphics Project" /></a></p>
+<h1 id="apache-batik">Apache Batik - Demo</h1>
+<ul>
+<li><a href="/batik/">Overview</a></li>
+<li><a href="/batik/license.html">License</a></li>
+<li><a href="/batik/download.html">Download</a></li>
+<li><a href="/batik/install.html">Installation notes</a></li>
+<li><a href="/batik/status.html">Status</a></li>
+<li><a href="/batik/demo.html">Demo</a></li>
+<li><a href="/batik/faq.html">FAQs</a></li>
+<li><a href="/batik/mailing-lists.html">Mailing lists</a></li>
+<li><a href="/batik/contributors.html">Contributors</a></li>
+<li><a href="http://issues.apache.org/bugzilla/buglist.cgi?query_format=specific&amp;amp;bug_status=__open__&amp;amp;product=Batik">Bug database</a></li>
+<li><a href="/batik/uses.html">Projects using Batik</a></li>
+<li>
+<h2 id="batik-tools">Batik Tools</h2>
+<ul>
+<li><a href="/batik/tools/">Overview</a></li>
+<li><a href="/batik/tools/browser.html">Browser</a></li>
+<li><a href="/batik/tools/rasterizer.html">Rasterizer</a></li>
+<li><a href="/batik/tools/font-converter.html">Font converter</a></li>
+<li><a href="/batik/tools/pretty-printer.html">Pretty printer</a></li>
+</ul>
 </li>
 <li>
-<a class="unselected" href="tools/index.html">Tools and applications</a>
+<h2 id="using-batik">Using Batik</h2>
+<ul>
+<li><a href="/batik/using/">Overview</a></li>
+<li><a href="/batik/using/architecture.html">Architecture</a></li>
+<li><a href="/batik/javadoc/">Javadoc APIs</a></li>
+<li><a href="/batik/using/dom-api.html">DOM API</a></li>
+<li><a href="/batik/using/parsers.html">Parsers</a></li>
+<li>
+<h3 id="scripting">Scripting</h3>
+</li>
+<li><a href="/batik/using/scripting/ecmascript.html">Scripting with ECMAScript</a></li>
+<li><a href="/batik/using/scripting/java.html">Scripting with Java</a></li>
+<li><a href="/batik/using/scripting/security.html">Security</a></li>
+<li><a href="/batik/using/svg-generator.html">SVG generator</a></li>
+<li><a href="/batik/using/swing.html">Swing components</a></li>
+<li><a href="/batik/using/transcoder.html">Transcoder API</a></li>
+<li><a href="/batik/using/extending.html">Extending Batik</a></li>
+</ul>
 </li>
 <li>
-<a class="unselected" href="using/index.html">Using Batik</a>
-</li>
-<li>
-<a class="unselected" href="dev/index.html">Development</a>
+<h2 id="development">Development</h2>
+<ul>
+<li><a href="/batik/dev/">Overview</a></li>
+<li><a href="/batik/dev/branches.html">Branches</a></li>
+<li><a href="/batik/dev/svg12.html">SVG 1.2 support</a></li>
+<li><a href="/batik/dev/test.html">Test infrastructure</a></li>
+</ul>
 </li>
 </ul>
-<!--+
-    |end Tabs
-    +-->
-</div>
-</div>
-<div id="main">
-<div id="publishedStrip">
-<!--+
-    |start Subtabs
-    +-->
-<div id="level2tabs"></div>
-<!--+
-    |end Endtabs
-    +-->
-<script type="text/javascript"><!--
-document.write("Last Published: " + document.lastModified);
-//  --></script>
-</div>
-<!--+
-    |breadtrail
-    +-->
-<div class="breadtrail">
-             
-             &nbsp;
-           </div>
-<!--+
-    |start Menu, mainarea
-    +-->
-<!--+
-    |start Menu
-    +-->
-<div id="menu">
-<div onclick="SwitchMenu('menu_selected_1.1', 'skin/')" id="menu_selected_1.1Title" class="menutitle" style="background-image: url('skin/images/chapter_open.gif');">Project</div>
-<div id="menu_selected_1.1" class="selectedmenuitemgroup" style="display: block;">
-<div class="menuitem">
-<a href="index.html">Overview</a>
-</div>
-<div class="menuitem">
-<a href="license.html">License</a>
-</div>
-<div class="menuitem">
-<a href="download.cgi">Download</a>
-</div>
-<div class="menuitem">
-<a href="install.html">Installation notes</a>
-</div>
-<div class="menuitem">
-<a href="status.html">Status</a>
-</div>
-<div class="menupage">
-<div class="menupagetitle">Demo</div>
-</div>
-<div class="menuitem">
-<a href="faq.html">FAQs</a>
-</div>
-<div class="menuitem">
-<a href="mailing-lists.html">Mailing lists</a>
-</div>
-<div class="menuitem">
-<a href="contributors.html">Contributors</a>
-</div>
-<div class="menuitem">
-<a href="http://issues.apache.org/bugzilla/buglist.cgi?query_format=specific&bug_status=__open__&product=Batik">Bug database</a>
-</div>
-<div class="menuitem">
-<a href="uses.html">Projects using Batik</a>
-</div>
-<div class="menuitem">
-<a href="http://www.apache.org/foundation/sponsorship.html">ASF sponsorship program</a>
-</div>
-<div class="menuitem">
-<a href="http://www.apache.org/foundation/thanks.html">ASF thanks</a>
-</div>
-</div>
-<div onclick="SwitchMenu('menu_1.2', 'skin/')" id="menu_1.2Title" class="menutitle">Resources</div>
-<div id="menu_1.2" class="menuitemgroup">
-<div onclick="SwitchMenu('menu_1.2.1', 'skin/')" id="menu_1.2.1Title" class="menutitle">Specifications</div>
-<div id="menu_1.2.1" class="menuitemgroup">
-<div onclick="SwitchMenu('menu_1.2.1.1', 'skin/')" id="menu_1.2.1.1Title" class="menutitle">For SVG 1.1</div>
-<div id="menu_1.2.1.1" class="menuitemgroup">
-<div class="menuitem">
-<a href="http://www.w3.org/TR/SVG11/">SVG 1.1</a>
-</div>
-<div class="menuitem">
-<a href="http://www.w3.org/TR/REC-CSS2/">CSS Level 2</a>
-</div>
-<div class="menuitem">
-<a href="http://www.w3.org/TR/DOM-Level-2-Core/">DOM Level 2 Core</a>
-</div>
-<div class="menuitem">
-<a href="http://www.w3.org/TR/DOM-Level-2-Events/">DOM Level 2 Events</a>
-</div>
-<div class="menuitem">
-<a href="http://www.w3.org/TR/DOM-Level-2-Style/">DOM Level 2 Style</a>
-</div>
-<div class="menuitem">
-<a href="http://www.ecma-international.org/publications/standards/Ecma-262.htm">ECMAScript 3rd ed.</a>
-</div>
-<div class="menuitem">
-<a href="http://www.w3.org/TR/2001/REC-smil-animation-20010904/">SMIL Animation</a>
-</div>
-</div>
-<div onclick="SwitchMenu('menu_1.2.1.2', 'skin/')" id="menu_1.2.1.2Title" class="menutitle">For SVG 1.2</div>
-<div id="menu_1.2.1.2" class="menuitemgroup">
-<div class="menuitem">
-<a href="http://www.w3.org/TR/SVGMobile12/">SVG Tiny 1.2 (draft)</a>
-</div>
-<div class="menuitem">
-<a href="http://www.w3.org/TR/SVG12/">SVG Full 1.2 (draft)</a>
-</div>
-<div class="menuitem">
-<a href="http://www.w3.org/TR/DOM-Level-3-Core/">DOM Level 3 Core</a>
-</div>
-<div class="menuitem">
-<a href="http://www.w3.org/TR/DOM-Level-3-Events/">DOM Level 3 Events (draft)</a>
-</div>
-<div class="menuitem">
-<a href="http://www.w3.org/TR/DOM-Level-3-XPath/">DOM Level 3 XPath (note)</a>
-</div>
-</div>
-</div>
-<div class="menuitem">
-<a href="http://wiki.apache.org/xmlgraphics-batik/FrontPage">Batik wiki</a>
-</div>
-<div class="menuitem">
-<a href="http://wiki.svg.org/">SVG wiki</a>
-</div>
-<div class="menuitem">
-<a href="http://groups.yahoo.com/group/svg-developers/">SVG Developers mailing list</a>
-</div>
-<div class="menuitem">
-<a href="http://lists.w3.org/Archives/Public/www-svg/">W3C SVG mailing list</a>
-</div>
-<div class="menuitem">
-<a href="http://svg.jibbering.com/">#svg IRC channel</a>
-</div>
-</div>
-<div id="credit"></div>
-<div id="roundbottom">
-<img style="display: none" class="corner" height="15" width="15" alt="" src="skin/images/rc-b-l-15-1body-2menu-3menu.png"></div>
-<!--+
-  |alternative credits
-  +-->
-<div id="credit2"></div>
-</div>
-<!--+
-    |end Menu
-    +-->
-<!--+
-    |start content
-    +-->
+<h1 id="apachewzxhzdk2-xml-graphics">Apache&trade; XML Graphics</h1>
+<ul>
+<li>
+<h3 id="project-overview">Project Overview</h3>
+<ul>
+<li><a href="/team.html">Who We Are</a></li>
+<li><a href="/legal.html">Legal Stuff</a></li>
+<li><a href="/charter.html">Project Charter</a></li>
+<li><a href="/mail.html">Mailing Lists</a></li>
+<li><a href="/repo.html">Code Repositories</a></li>
+<li><a href="http://www.apache.org/foundation/sponsorship.html">ASF Sponsorship Program</a></li>
+<li><a href="http://www.apache.org/foundation/thanks.html">ASF Thanks</a></li>
+<li><a href="http://www.apache.org/licenses/">Licenses</a></li>
+<li><a href="http://www.apache.org/security/">Security</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="sub-projects">Sub Projects</h1>
+<ul>
+<li><a href="/fop/">Apache FOP</a></li>
+<li><a href="/commons/">Apache XML Graphics Commons</a></li>
+</ul>
+<h2 id="search-apache-xml-graphics">Search Apache XML Graphics</h2>
+<form name="search" id="search" action="http://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').append(' &raquo;');
+    }
+  $('#navigation > ul > li ul').hide();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>
+	</div>
+
 <div id="content">
 <h1>Batik Demo</h1>
     
