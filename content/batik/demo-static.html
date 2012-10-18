@@ -1,20 +1,39 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta content="Apache Forrest" name="Generator">
-<meta name="Forrest-version" content="0.8-dev">
-<meta name="Forrest-skin-name" content="pelt">
-<title>Batik Demo</title>
-<link type="text/css" href="skin/basic.css" rel="stylesheet">
-<link media="screen" type="text/css" href="skin/screen.css" rel="stylesheet">
-<link media="print" type="text/css" href="skin/print.css" rel="stylesheet">
-<link type="text/css" href="skin/profile.css" rel="stylesheet">
-<script src="skin/getBlank.js" language="javascript" type="text/javascript"></script><script src="skin/getMenu.js" language="javascript" type="text/javascript"></script><script src="skin/fontsize.js" language="javascript" type="text/javascript"></script>
-<link rel="shortcut icon" href="">
-</head>
-<body onload="init()">
-<script type="text/javascript">ndeSetTextSize();</script>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+  <head>
+    <title>Apache™ FOP</title>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/code.css">
+-->
+    <link href="/css/profile.css" rel="stylesheet" type="text/css">
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css">
+
+    <style type="text/css">
+    
+    </style>
+    <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+    </script>
+    
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;</div>
+
 <div id="top">
 <!--+
     |breadtrail
@@ -333,22 +352,26 @@ document.write("Last Published: " + document.lastModified);
     +-->
 <div class="clearboth">&nbsp;</div>
 </div>
-<div id="footer">
-<!--+
-    |start bottomstrip
-    +-->
-<div class="lastmodified">
-<script type="text/javascript"><!--
-document.write("Last Published: " + document.lastModified);
-//  --></script>
-</div>
-<div class="copyright">
-        Copyright &copy;
-         2000&ndash;2009 <a href="http://www.apache.org/licenses/">The Apache Software Foundation.</a>
-</div>
-<!--+
-    |end bottomstrip
-    +-->
-</div>
-</body>
+
+<!-- {% include footer %} -->
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/feather-small.gif" width="100" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2012 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+
+  </body>
 </html>
