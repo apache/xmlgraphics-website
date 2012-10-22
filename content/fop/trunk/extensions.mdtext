@@ -127,12 +127,17 @@ The `rgb-icc` function will respond to a pseudo-profile called "#CMYK" which ind
 
 ## Rounded Corners ## {#rounded-corners}
 
-Rounded corners on block areas can be specified with the `fox:border-*-radius-*` properties. Each corner can be specified with two radii that define a quarter ellipse that defines the shape of the corner of the outer border edge (in accordance with the [W3 CSS3 Recommendation](http://www.w3.org/TR/css3-background/#the-border-radius)).
-The property `fox:border-A-radius-B` specifies the radius of the corner connecting border segments *A* and *B* in '*before|after|start|end*', and in the direction perpendicular to segment *A*.
+Rounded corners on block areas can be specified with the `fox:border-*-*-radius` properties. Each corner can be specified with two radii that define a quarter ellipse that defines the shape of the corner of the outer border edge (in accordance with the [W3 CSS3 Recommendation](http://www.w3.org/TR/css3-background/#the-border-radius)).
+The property `fox:border-BP-IP-radius` specifies the radius of the corner connecting border segment *BP* is one of '*before|after*' and *IP* is one of 'start|end*', and takes one or two values.  A single value will generate circular corners.  Two values define elliptic corners where the first value defines the radius in the *Inline Progression Direction*, and the second the radius in the *Block Progression Direction*.
 
-The shorthand property `fox:border-radius` can be used to specify uniform corners and takes 1 or 2 values.  A single value will generate circular corners.  Two values define elliptic corners where the first value defines the radius in the *Inline Progression Direction*, and the second the radius in the *Block Progression Direction*.
+The shorthand property `fox:border-radius` can be used to specify uniform corners and takes 1 or 2 values, as above.
 
 The example fo `examples/fo/advanced/rounded-corners.fo` demonstrates some finer points of this extension.
+
+###Current Limitations###
+-  CSS3-style absolute properties, e.g `border-top-left-radius`, are not supported
+-  Rounded corners on tables are not directly supported.  To set rounded corners at the table level the table must have the property `border-collapse` property set to `separate`
+
 
 ## Prepress Support ## {#prepress}
 
