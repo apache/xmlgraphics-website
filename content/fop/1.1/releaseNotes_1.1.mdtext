@@ -1,36 +1,102 @@
-Title: Release Notes for Apache FOP 1.0
+Title: Release Notes for Apache FOP 1.1
 
 
-# Major Changes in Version 1.0 # {#version_1.0}
-This is not a complete list of changes, just some of the more important ones. A full list of changes in this release [is available](changes_1.0.html) .
+# Major Changes in Version 1.1 # {#version_1.1}
+This is not a complete list of changes, just some of the more important ones. A full list of changes in this release [is available](changes_1.1.html) .
 ## Changes to the Code Base ## {#Changes+to+the+Code+Base}
 
 
-- <icon alt="fix" src="../images/fix.jpg"></icon>Fixed memory leak in property cache (not cleaning stale PropertyCache$CacheEntry instances). Committed by JM.
+- <icon alt="fix" src="../images/fix.jpg"></icon>Update to use of checkstyle-5.5 as default configuration. Remove checkstyle-4.0 configuration. Also, import environment build properties before local properties, so that latter can refer to former. Committed by GA. See Issue [53083](http://issues.apache.org/bugzilla/show_bug.cgi?id=53083) .
 
-- <icon alt="update" src="../images/update.jpg"></icon>Changed FONode.addCharacters() parameter to closer match the signature of the standard SAX characters() event (reduces confusion and computations). *!! Implementors of extensions that subclass FONode directly, and offer an implementation for addCharacters() should take care to make similar modifications in their code !!* Committed by AD.
+- <icon alt="fix" src="../images/fix.jpg"></icon>Invoke JVM in headless mode from FOP command scripts and JS shell to prevent stealing focus from GUI applications. Committed by GA. See Issue [50062](http://issues.apache.org/bugzilla/show_bug.cgi?id=50062) .
 
-- <icon alt="add" src="../images/add.jpg"></icon>Added an event handling framework which allows to get better feedback from within FOP with the ability to customize problem management. Committed by JM.
+- <icon alt="fix" src="../images/fix.jpg"></icon>Support list-block in marker, thus preventing NPE. Committed by GA. See Issue [52763](http://issues.apache.org/bugzilla/show_bug.cgi?id=52763) .
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Allow https scheme URI for PDF external action target. Committed by GA. Thanks to Paul Huemer. See Issue [51599](http://issues.apache.org/bugzilla/show_bug.cgi?id=51599) .
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fixed incorrect rejection of fo:wrapper inside fo:inline inside fo:footnote-body. Committed by GA. Thanks to Alberto Simões. See Issue [53005](http://issues.apache.org/bugzilla/show_bug.cgi?id=53005) .
+
+- <icon alt="add" src="../images/add.jpg"></icon>Added support for PDF Object Streams. When accessibility is enabled and PDF version 1.5 selected, the structure tree will be stored in object streams in order to reduce the size of the final PDF. Committed by VH. Thanks to Peter Hancock.
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fixed bug that caused a configured and installed SVG font to be stroked, also added an event indicating when fonts are stroked. Committed by MH. Thanks to Luis Bernardo. See Issue [52849](http://issues.apache.org/bugzilla/show_bug.cgi?id=52849) .
+
+- <icon alt="add" src="../images/add.jpg"></icon>Improved support for empty flow-name mapping. Committed by PH. See Issue [50391](http://issues.apache.org/bugzilla/show_bug.cgi?id=50391) .
+
+- <icon alt="add" src="../images/add.jpg"></icon>Add support for different flow-name of fo:region-body in FOP Committed by CB. Thanks to Peter Hancock. See Issue [50391](http://issues.apache.org/bugzilla/show_bug.cgi?id=50391) .
+
+- <icon alt="add" src="../images/add.jpg"></icon>Allow JPEG images to be embedded in an AFP document as is, without being decoded and encoded. Committed by PH. Thanks to Mehdi Houshmand. See Issue [52089](http://issues.apache.org/bugzilla/show_bug.cgi?id=52089) .
+
+- <icon alt="add" src="../images/add.jpg"></icon>Fix for when the last simple-page-master referenced in a page-sequence-master is not chosen when force-page-count=odd. Committed by PH. Thanks to Mehdi Houshmand. See Issue [51962](http://issues.apache.org/bugzilla/show_bug.cgi?id=51962) .
+
+- <icon alt="add" src="../images/add.jpg"></icon>Upgraded all tests to JUnit 4. Committed by VH. Thanks to Mehdi Houshmand. See Issue [51928](http://issues.apache.org/bugzilla/show_bug.cgi?id=51928) .
+
+- <icon alt="add" src="../images/add.jpg"></icon>Added support for resolution of relative URIs against a specified xml:base during property refinement. Committed by AD. See Issue [48334](http://issues.apache.org/bugzilla/show_bug.cgi?id=48334) .
+
+## Changes to the User Configuration ## {#Changes+to+the+User+Configuration}
+
+
+- <icon alt="add" src="../images/add.jpg"></icon>Added configuration option to set the version of the output PDF document. Committed by VH. Thanks to Mehdi Houshmand. See Issue [51385](http://issues.apache.org/bugzilla/show_bug.cgi?id=51385) .
 
 ## Changes to the Font Subsystem ## {#Changes+to+the+Font+Subsystem}
 
 
-- <icon alt="add" src="../images/add.jpg"></icon>Add support for font substitution. Committed by AC.
+- <icon alt="add" src="../images/add.jpg"></icon>Add support for OpenType advanced typographic tables (GDEF, GSUB, GPOS). Committed by GA.
 
-- <icon alt="add" src="../images/add.jpg"></icon>Added support for addressing all glyphs available in a Type 1 font, not just the ones in the font's primary encoding. Committed by JM.
+- <icon alt="fix" src="../images/fix.jpg"></icon>Changes the way PostScript handles Graphics2D images such that if the language is set to level 3, the image is stored as an embedded file which has no length limit. Previously it was stored as an array which has a implementation limit of 65535 elements. Committed by PH. Thanks to Mehdi Houshmand. See Issue [51760](http://issues.apache.org/bugzilla/show_bug.cgi?id=51760) .
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Improved support for EBCDIC encoded double byte fonts fo AFP. Committed by PH. Thanks to Mehdi Houshmand. See Issue [51530](http://issues.apache.org/bugzilla/show_bug.cgi?id=51530) .
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Reinstated support for being able to specify a font cache filepath in the fop user configuration. Committed by AC.
+
+- <icon alt="add" src="../images/add.jpg"></icon>Added convenience support for the flushing of the Fop font cache file from the command line. Committed by AC.
+
+## Changes to the Image Support ## {#Changes+to+the+Image+Support}
+
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Support use of ImageLoaderRawPNG decoder in order to prevent re-encoding of PNG images (and unnecssary output file bloat). Committed by GA. Thanks to Luis Bernardo, Matthias Reischenbacher. See Issue [40676](http://issues.apache.org/bugzilla/show_bug.cgi?id=40676) .
 
 ## Changes to the Layout Engine ## {#Changes+to+the+Layout+Engine}
 
 
-- <icon alt="add" src="../images/add.jpg"></icon>Added limited support for pages of different inline-progression-dimensions within a page-sequence. Committed by VH.
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fix for break before (break-before) not respected on blocks nested in inlines. Committed by GA. Thanks to Luis Bernardo. See Issue [45715](http://issues.apache.org/bugzilla/show_bug.cgi?id=45715) .
 
-- <icon alt="add" src="../images/add.jpg"></icon>Added minimal support for integer keep values on the various keep properties on block-level FOs. For now, all integer values are treated the same (i.e. without strength distinction). Using integers allows to avoid overflows that can happen when "always" is used extensively. Committed by JM.
+- <icon alt="fix" src="../images/fix.jpg"></icon>Ensure square image is appropriately scaled. Committed by GA. Thanks to Luis Bernardo. See Issue [52514](http://issues.apache.org/bugzilla/show_bug.cgi?id=52514) .
+
+- <icon alt="add" src="../images/add.jpg"></icon>Add support for complex scripts, including: full bidi support, support for advanced typographic tables, advanced support for number conversion. Committed by GA. See Issue [32789](http://issues.apache.org/bugzilla/show_bug.cgi?id=32789) , [49008](http://issues.apache.org/bugzilla/show_bug.cgi?id=49008) , [49687](http://issues.apache.org/bugzilla/show_bug.cgi?id=49687) .
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Implemented non-standard behavior for basic-link areas, such that they take into account the heights of their descendants areas. Committed by VH.
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fix for keep-together does not apply to fo:table-cell. Committed by VH.
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fix for keep-together on a table containing row-spanning cells that was not honored. Committed by VH.
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fix forpadding-start ignored when table-header/footer is repeated. Committed by VH. Thanks to Matthias Reischenbacher. See Issue [50196](http://issues.apache.org/bugzilla/show_bug.cgi?id=50196) .
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Fix for correct behavior of keep-together.within-line in case there are nested inlines Committed by AD. See Issue [49848](http://issues.apache.org/bugzilla/show_bug.cgi?id=49848) .
 
 ## Changes to Renderers (Output Formats) ## {#Changes+to+Renderers+%28Output+Formats%29}
 
 
-- <icon alt="add" src="../images/add.jpg"></icon>AFP Output: An AFPGraphics2D implementation which provides the ability to use Batik to drive the production of AFP Graphics (GOCA) output from SVG. Committed by AC.
+- <icon alt="add" src="../images/add.jpg"></icon>Added possibility to embed TrueType fonts in PostScript. Committed by VH. See Issue [52338](http://issues.apache.org/bugzilla/show_bug.cgi?id=52338) .
 
-- <icon alt="add" src="../images/add.jpg"></icon>AFP Output: Resource group leveling, external streaming, and de-duplication of images and graphics using IncludeObject and ResourceGroup. Committed by AC.
+- <icon alt="fix" src="../images/fix.jpg"></icon>Add extension to place code just before PostScript %PageTrailer. Committed by GA. Thanks to Luis Bernardo. See Issue [53295](http://issues.apache.org/bugzilla/show_bug.cgi?id=53295) .
 
-- <icon alt="add" src="../images/add.jpg"></icon>AFP Output: Native image embedding support (e.g. JPEG, GIF, TIFF) using ObjectContainer and a MOD:CA Registry implementation. Committed by AC.
+- <icon alt="add" src="../images/add.jpg"></icon>Added support for 128bit encryption in PDF output. Committed by VH. Thanks to Michael Rubin.
+
+- <icon alt="add" src="../images/add.jpg"></icon>Added an IFDocumentHandler filter for triggering rendering events. Created an Event that captures an end page event with the page number. Committed by PH.
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>AFP GOCA: Changed the way FOP fonts are selected based on Batik's GVT fonts to match the behaviour of PDF/PS output. Committed by JM.
+
+- <icon alt="add" src="../images/add.jpg"></icon>Added option to place AFP NOPs right before the end of a named page group (page-sequence), rather than after the start. Committed by JM.
+
+- <icon alt="add" src="../images/add.jpg"></icon>Added option for PostScript output to optimize for file size rather than quality. Committed by JM.
+
+- <icon alt="add" src="../images/add.jpg"></icon>AFP GOCA: Added option to disable GOCA and to control text painting inside GOCA graphics. Committed by JM.
+
+- <icon alt="fix" src="../images/fix.jpg"></icon>Increased maximum possible PDF size from 2GB to around 9GB (hard maximum imposed by the PDF specification). Committed by JM.
+
+- <icon alt="add" src="../images/add.jpg"></icon>Added support for CIE Lab colors (from XSL-FO 2.0 WD). Committed by JM.
+
+- <icon alt="add" src="../images/add.jpg"></icon>Initial work on spot colors (aka named colors) for PDF output. Committed by JM. Thanks to Patrick Jaromin. See Issue [49403](http://issues.apache.org/bugzilla/show_bug.cgi?id=49403) .
+
+- <icon alt="add" src="../images/add.jpg"></icon>Added ability to embed an external AFP page segment resource file (AFP output only). Committed by JM. Thanks to Peter Hancock. See Issue [49379](http://issues.apache.org/bugzilla/show_bug.cgi?id=49379) .
