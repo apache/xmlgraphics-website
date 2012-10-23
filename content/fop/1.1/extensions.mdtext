@@ -1,5 +1,5 @@
 Title: Standard Apache&trade; FOP Extensions
-<version>$Revision: 1298724 $</version>
+<version>$Revision$</version>
 
 By "extension", we mean any data that can be placed in the input XML document that is not addressed by the XSL-FO standard. By having a mechanism for supporting extensions, Apache&trade; FOP is able to add features that are not covered in the specification.
 
@@ -18,7 +18,7 @@ By convention, FO extensions in FOP use the "fox" namespace prefix. To use any o
                xmlns:fox="http://xmlgraphics.apache.org/fop/extensions">
 ## PDF Bookmarks ## {#bookmarks}
 
-In previous versions of Apache FOP there was a `fox:outline` element which was used to create outlines in PDF files. The redesigned code makes use of the new [bookmark feature defined in the latest XSL 1.1 working draft](http://www.w3.org/TR/xsl11/#fo_bookmark-tree) .
+In old versions of Apache FOP there was a `fox:outline` element which was used to create outlines in PDF files. The redesigned code makes use of the [bookmark feature defined in the W3C XSL 1.1 standard](http://www.w3.org/TR/xsl11/#fo_bookmark-tree) .
 
 ## Anchors or Named Destinations ## {#named-destinations}
 

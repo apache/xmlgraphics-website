@@ -1,5 +1,5 @@
 Title: Apache&trade; FOP: PDF encryption.
-<version>$Revision: 1298724 $</version><authors><person email="pietsch@apache.org" name="J.Pietschmann"></person><person email="jeremias@apache.org" name="Jeremias Märki"></person></authors>
+<version>$Revision$</version><authors><person email="pietsch@apache.org" name="J.Pietschmann"></person><person email="jeremias@apache.org" name="Jeremias Märki"></person></authors>
 
 # Overview # {#Overview}
 
@@ -17,7 +17,18 @@ If no owner password has been supplied but FOP was asked to apply some restricti
 
 A user password, supplied with the `-u` option, will cause the PDF display software to ask the reader for this password in order to view the contents of the document. If no user password was supplied, viewing the content is not restricted.
 
-Further restrictions can be imposed by using the `-noprint` , `-nocopy` , `-noedit` and `-noannotations` options, which disable printing, copying text, editing in Adobe Acrobat and making annotations, respectively.
+Further restrictions can be imposed by using the following command-line options:
+| Option | Description |
+|--------|-------------|
+|  `-noprint`  | disable printing |
+|  `-nocopy`  | disable copy/paste of content |
+|  `-noedit`  | disable editing in Adobe Acrobat |
+|  `-noannotations`  | disable editing of annotations |
+|  `-nofillinforms`  | disable filling in forms |
+|  `-noaccesscontent`  | disable text and graphics extraction for accessibility purposes |
+|  `-noassembledoc`  | disable assembling documents |
+|  `-noprinthq`  | disable high quality printing |
+
 
 # Usage (embedded) # {#Usage+%28embedded%29}
 
@@ -25,12 +36,17 @@ When FOP is embedded in another Java application you need to set an options map 
 
 | Option | Description | Values | Default |
 |--------|-------------|--------|---------|
+| encryption-length | The encryption length in bit | Any multiple of 8 between 40 and 128 | 40 |
 | ownerPassword | The owner password | String |  |
 | userPassword | The user password | String |  |
 | allowPrint | Allows/disallows printing of the PDF | "TRUE" or "FALSE" | "TRUE" |
 | allowCopyContent | Allows/disallows copy/paste of content | "TRUE" or "FALSE" | "TRUE" |
-| allowEditContent | Allows/disallows editing of content | "TRUE" or "FALSE" | "TRUE" |
+| allowEditContent | Allows/disallows editing in Adobe Acrobat | "TRUE" or "FALSE" | "TRUE" |
 | allowEditAnnotations | Allows/disallows editing of annotations | "TRUE" or "FALSE" | "TRUE" |
+| allowFillInForms | Allows/disallows filling in forms | "TRUE" or "FALSE" | "TRUE" |
+| allowAccessContent | Allows/disallows text and graphics extraction for accessibility purposes | "TRUE" or "FALSE" | "TRUE" |
+| allowAssembleDocument | Allows/disallows assembling document | "TRUE" or "FALSE" | "TRUE" |
+| allowPrintHq | Allows/disallows high quality printing | "TRUE" or "FALSE" | "TRUE" |
 Encryption is enabled as soon as one of these options is set.
 An example to enable PDF encryption in Java code:
 
@@ -58,6 +74,14 @@ The parameters for the constructor of PDFEncryptionParams are:
 
 1. allowEditAnnotations: true if editing annotations is allowed
 
+1. allowFillInForms: true if filling in forms is allowed.
+
+1. allowAccessContent: true if extracting text and graphics is allowed
+
+1. allowAssembleDocument: true if assembling document is allowed
+
+1. allowPrintHq: true if printing to high quality is allowed
+
 Alternatively, you can set each value separately in the Map provided by FOUserAgent.getRendererOptions() by using the following keys:
 
 
@@ -72,6 +96,14 @@ Alternatively, you can set each value separately in the Map provided by FOUserAg
 1. noedit: Boolean or "true"/"false"
 
 1. noannotations: Boolean or "true"/"false"
+
+1. nofillinforms: Boolean or "true"/"false"
+
+1. noaccesscontent: Boolean or "true"/"false"
+
+1. noassembledoc: Boolean or "true"/"false"
+
+1. noprinthq: Boolean or "true"/"false"
 
 # Environment # {#Environment}
 

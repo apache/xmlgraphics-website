@@ -1,5 +1,5 @@
 Title: Running Apache&trade; FOP
-<version>$Revision: 1298724 $</version>
+<version>$Revision$</version>
 
 # System Requirements # {#require}
 
@@ -61,6 +61,7 @@ Fop [options] [-fo|-xml] infile [-xsl file] [-awt|-pdf|-mif|-rtf|-tiff|-png|-pcl
   -q                quiet mode
   -c cfg.xml        use additional configuration file cfg.xml
   -l lang           the language to use for user information
+  -nocs             disable complex script features
   -r                relaxed/less strict validation (where available)
   -dpi xxx          target resolution in dots per inch (dpi) where xxx is a number
   -s                for area tree XML, down to block areas only
@@ -72,12 +73,19 @@ Fop [options] [-fo|-xml] infile [-xsl file] [-awt|-pdf|-mif|-rtf|-tiff|-png|-pcl
   -nocopy           PDF file will be encrypted without copy content permission
   -noedit           PDF file will be encrypted without edit content permission
   -noannotations    PDF file will be encrypted without edit annotation permission
+  -nofillinforms    PDF file will be encrypted without fill in forms permission
+  -noaccesscontent  PDF file will be encrypted without extract text and graphics permission
+  -noassembledoc    PDF file will be encrypted without assemble the document permission
+  -noprinthq        PDF file will be encrypted without print high quality permission
   -a                enables accessibility features (Tagged PDF etc., default off)
   -pdfprofile prof  PDF file will be generated with the specified profile
                     (Examples for prof: PDF/A-1b or PDF/X-3:2003)
 
-  -conserve         Enable memory-conservation policy (trades memory-consumption for disk I/O)
+  -conserve         enable memory-conservation policy (trades memory-consumption for disk I/O)
                     (Note: currently only influences whether the area tree is serialized.)
+
+  -cache            specifies a file/directory path location
+  -flush            flushes the current font cache file
 
  [INPUT]
   infile            xsl:fo input file (the same as the next)

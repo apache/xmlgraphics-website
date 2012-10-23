@@ -1,12 +1,9 @@
 Title: Apache&trade; FOP: Building from Source Code
-
-<version>$Revision: 1298724 $</version>
+<version>$Revision$</version>
 
 # Do You Need To Build? # {#build-needed}
 
-Apache&trade; FOP distributions are either pre-compiled binary or source. If you are using a binary distribution, it is already built and there is no need to build it again. See the [Download Instructions](../download.html) for information about whether a binary or source distribution is best for your needs.
-
-If you got the source code from a repository snapshot or via Subversion you will need to build FOP in any case.
+Apache&trade; FOP snapshots are either pre-compiled binary or source. If you are using a binary snapshot, it is already built and there is no need to build it again. If you got the source code from a repository snapshot or via Subversion you will need to build FOP. See the [Download Instructions](../download.html) for information about where to obtain binary or repository snapshots, and whether a binary or source snapshot is best for your needs.
 
 # Set Up Your Environment # {#env}
 
@@ -39,7 +36,7 @@ The most useful targets are:
 
 -  **clean** : Cleans the build directory. This is useful for making sure that any build errors are cleaned up before starting a new build. It should not ordinarily be needed, but may be helpful if you are having problems with the build process itself.
 
--  **javadocs** : Creates the FOP API documentation.A minimum JDK version of 1.4.2 is required for generating the javadocs.
+-  **javadocs** : Creates the FOP API documentation.
 
 To run the build:
 ant [target ...]

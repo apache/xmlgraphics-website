@@ -1,5 +1,5 @@
 Title: Apache&trade; FOP Output Formats
-<version>$Revision: 1298724 $</version><authors><person email="keiron@aftexsw.com" name="Keiron Liddle"></person><person email="" name="Art Welch"></person></authors>
+<version>$Revision$</version><authors><person email="keiron@aftexsw.com" name="Keiron Liddle"></person><person email="" name="Art Welch"></person></authors>
 
 Apache&trade; FOP supports multiple output formats by using a different renderer for each format. The renderers do not all have the same set of capabilities, sometimes because of the output format itself, sometimes because some renderers get more development attention than others.
 
@@ -107,6 +107,30 @@ In addition to the [PDF Post-processing](#pdf-postprocess) options, consider the
 
 - (submitted by Trevor Campbell) Place an image in a region that overlaps the flowing text. For example, make region-before large enough to contain your image. Then include a block (if necessary, use an absolutely positioned block-container) containing the watermark image in the static-content for the region-before. Note that the image will be drawn on top of the normal content.
 
+## Extensions ## {#pdf-extensions}
+
+The PDF Renderer supports some PDF specific extensions which can be embedded into the input FO document. To use the extensions the appropriate namespace must be declared in the fo:root element like this:
+
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
+         xmlns:pdf="http://xmlgraphics.apache.org/fop/extensions/pdf">
+  
+### Embedded Files ### {#pdf-embedded-file}
+
+It is possible to attach/embed arbitrary files into a PDF file. You can give a name and a description of the file. Example:
+
+  <fo:declarations>
+    <pdf:embedded-file filename="image.jpg" src="url(file:///C:/Temp/myimage.jpg)" description="My image"/>
+    <pdf:embedded-file src="url(file:///C:/Temp/MyTextDoc.odt)"/>
+  </fo:declarations>
+  
+ `pdf:embedded-file` must be a child of `fo:declarations` . The "src" property is used to reference the file that is to be embedded. This property uses the "uri-specification" datatype from the XSL-FO specification. The "filename" property is optional. If it is missing the filename is automatically set from the URI/IRI of the "src" property. An optional description can also be added to further describe the file attachment.
+
+It is also possible to reference an embedded file from an `fo:basic-link` . Use the special "embedded-file:" URI scheme with the filename as single argument after the URI scheme. Example:
+
+<fo:basic-link external-destination="url(embedded-file:image.jpg)">Attached Image</fo:basic-link>
+
+Note: Not all PDF Viewers (including some Acrobat Versions) will open the embedded file when clicking on the link. In that case, the user will have to open he attachment via the separate list of file attachments.
+
 # PostScript # {#ps}
 
 The PostScript renderer has been brought up to a similar quality as the PDF renderer, but may still be missing certain features. It provides good support for most text and layout. Images and SVG are not fully supported, yet. Currently, the PostScript renderer generates PostScript Level 3 with most DSC comments. Actually, the only Level 3 features used are the FlateDecode and DCTDecode filter (the latter is used for 1:1 embedding of JPEG images), everything else is Level 2.
@@ -120,6 +144,7 @@ The PostScript renderer configuration currently allows the following settings:
   <optimize-resources>false</optimize-resources>
   <safe-set-page-device>false</safe-set-page-device>
   <dsc-compliant>true</dsc-compliant>
+  <rendering>quality</rendering>
 </renderer>
 The default value for the "auto-rotate-landscape" setting is "false". Setting it to "true" will automatically rotate landscape pages and will mark them as landscape.
 
@@ -130,6 +155,8 @@ The default value for the "optimize-resources" setting is "false". Setting it to
 The default value for the "safe-set-page-device" setting is "false". Setting it to "true" will cause the renderer to invoke a postscript macro which guards against the possibility of invalid/unsupported postscript key/values being issued to the implementing postscript page device.
 
 The default value for the "dsc-compliant" setting is "true". Setting it to "false" will break DSC compliance by minimizing the number of setpagedevice calls in the postscript document output. This feature may be useful when unwanted blank pages are experienced in your postscript output. This problem is caused by the particular postscript implementation issuing unwanted postscript subsystem initgraphics/erasepage calls on each setpagedevice call.
+
+The default value for the "rendering" setting is "quality". Setting it to "size" optimizes rendering for smaller file sizes which can involve minor compromises in rendering quality. For example, solid borders are then painted as plain rectangles instead of the elaborate painting instructions required for mixed-color borders.
 
 ## Limitations ## {#ps-limitations}
 
@@ -177,7 +204,7 @@ The output created by the PCLRenderer is generic PCL 5, HP GL/2 and PJL. This sh
 ## Configuration ## {#pcl-configuration}
 
 The PCL renderer configuration currently allows the following settings:
-<renderer mime="application/vnd.hp-PCL">
+<renderer mime="application/x-pcl">
   <rendering>quality</rendering>
   <text-rendering>bitmap</text-rendering>
   <disable-pjl>false</disable-pjl>
@@ -408,11 +435,20 @@ Experimentation has shown that the font metrics for the FOP built-in Base14 font
       </font>
 By default, all manually configured fonts are embedded, unless they are matched in the [section of the configuration file](fonts.html#embedding) . However, the default fonts shown above will not be embedded.
 
+For double byte EBCDIC encoded character sets, there is an optional tag that must be set to prevent characters from being miscoded. This defaults to "false" if not specified.
+
+        <afp-font type="CIDKeyed" codepage="T10835  " encoding="Cp937" characterset="CZTKAI" ebcdic-dbcs="true"/>
+          
 ### Output Resolution ### {#afp-renderer-resolution-config}
 
 By default the AFP Renderer creates output with a resolution of 240 dpi. This can be overridden by the <renderer-resolution/> configuration element. Example:
 
       <renderer-resolution>240</renderer-resolution>
+### Line Width Correction ### {#afp-line-width-correction-config}
+
+The default line width in AFP is device dependent. This means that a line width specified in, say, a SVG source file may not render the way it was intended. The output AFP line with can be corrected by the <line-width-correction/> configuration element. Example:
+
+      <line-width-correction>2.5</line-width-correction>
 ### Images ### {#afp-image-config}
 
 By default the AFP Renderer converts all images to 8 bit grey level. This can be overridden by the <images/> configuration element. Example:
@@ -437,6 +473,29 @@ Setting `cmyk="true"` on the `images` element will enable CMYK colors. This will
 When the color mode is set to 1 bit (bi-level), the "dithering-quality" attribute can be used to select the level of quality to use when converting images to bi-level images. Valid values for this attribute are floating point numbers from 0.0 (fastest) to 1.0 (best), or special values: "minimum" (=0.0), "maximum" (1.0), "medium" (0.5, the default). For the higher settings to work as expected, JAI needs to be present in the classpath. If JAI is present, 0.0 results in a minimal darkness-level switching between white and black. 0.5 does bayer-based dithering and 1.0 will use error-diffusion dithering. The higher the value, the higher the quality and the slower the processing of the images.
 
       <images mode="b+w" bits-per-pixel="1" dithering-quality="maximum"/>
+When the boolean attribute pseg (default false) is set to true, non-inline FS11 and FS45 IOCA images are wrapped in page segment. This option is provided to support printers/print servers that require this MO:DCA structure.
+
+      <images mode="b+w" bits-per-pixel="8" pseg="true"/>
+Setting the boolean attribute fs45 to true (default false) will force all images to FS45.
+
+      <images mode="b+w" bits-per-pixel="8" fs45="true"/>
+By default, JPEG images are rasterized to a bitmap and the bitmap is included in the AFP doc. However it is possible to encode in a lossless way to maintain maximum quality. But due to lack of support for compression schemes like LZW (patent concerns), bitmap data is currently not compressed resulting in large AFP files. Using the "allow-embedding" attribute on jpeg child element allows the user to pass the JPEG as is in the document. The default is set to "false" since there are compatibility concerns as some AFP printers don't support JPEG decoding. Using the "bitmap-encoding-quality" attribute it is possible to enable lossy compression (JPEG baseline DCT). The default is "1.0" which means lossless encoding. Setting a value lower than 1.0, JPEG compression is enabled and the setting is used as the quality setting when encoding bitmap data. Note that this setting does not always have an effect. Bi-level (1 bit) bitmaps are not compressed using JPEG. Example:
+
+      <images mode="color" cmyk="true">
+        <jpeg allow-embedding="false" bitmap-encoding-quality="0.8"/>
+      </images>
+### GOCA (Vector Graphics) ### {#afp-goca-config}
+
+Not all AFP implementations support GOCA. Some also have bugs related to GOCA. Therefore, it is desirable to have some control over the generation of GOCA graphics.
+
+GOCA is enabled by default. You can disable GOCA entirely in which case the AFP support falls back to generating bitmaps for vector graphics. Example:
+
+      <goca enabled="false"/>
+Some AFP implementations have trouble rendering text in GOCA. You can instruct the AFP support to render text as shapes (i.e. use vector graphics to paint text). Example:
+
+      <goca enabled="true" text="shapes"/>
+If you disable GOCA or let text render as shapes, the size of the generated AFP usually increases considerably.
+
 ### Shading ### {#afp-shading-config}
 
 By default, filled rectangles are painted using their given color using a PTOCA I-axis rule (DIR). But not all environments handle these colors correctly. That's why a setting is supported that paints the rectangles using an ordered dither pattern (bi-level) with an inline IOCA FS10 image that is used together with the "replicate and trim" mapping. The optional "shading" element can be used to control the shading mode. Its default value is "color". To enable the dithered mode, use "dithered". Example:
@@ -495,6 +554,8 @@ The include-page-segment extension element can only occur within a simple-page-m
 
 The effect here is that whenever FOP encounters the URI specified in the extension, it will effectively generate code to include the page segment with the given name instead of embedding the image referenced by the URI. The URI is still required as the underlying image serves as a provider for the intrinsic size of the image (At the moment, FOP is unable to extract the intrinsic size of the page segment from an AFP resource file). For the image to appear in an AFP viewer or to be printed, the AFP resource must be available on the target device. FOP does not embed the page segment in the generated file. Please also note that page segments cannot be scaled. They are always rendered in their intrinsic size.
 
+The include-page-segment extension element has the optional attribute *resource-file* . The value of this is a URI to a resource containing a page segment with the declared name. In this case FOP embeds the page segment into the generated document so that the external resource does not have to be supplied in the print job.
+
 ### Tag Logical Element (TLE) Extension ### {#afp-tag-logical-element}
 
 The tag-logical-element extension element allows to injects TLEs into the AFP output stream. Example:
@@ -527,7 +588,7 @@ The no-operation extension provides the ability to carry up to 32K of comments o
         </fo:simple-page-master>
       </fo:layout-master-set>
 
-The no-operation extension element can only occur within a simple-page-master. Multiple no-operation extension elements within a simple-page-master are allowed. The name attribute is mandatory.
+The no-operation extension element can appear as child of `simple-page-master` (appears after "Begin Page" BPG), `page-sequence` (appears after "Begin Named Page Group" BNG and `declarations` (appears after "Begin Document" BDT). Multiple no-operation extension elements inside the same formatting object are allowed. Each NOP will appear right after the respective "Begin" field indicated above even if it is specified as the last child under its parent. The order inside the parent will be maintained. The "placement" attribute can be used to have the NOP appear before the "End" field of the object rather than after the "Begin" field. Specify `placement="before-end"` to do that. Please note that, at the moment, this only has an effect for NOPs that are children of the `page-sequence` formatting object. The "name" attribute is mandatory but will not appear inside the AFP stream.
 
 ### Invoke Medium Map (IMM) Extension ### {#afp-invoke-medium-map}
 
@@ -713,16 +774,14 @@ userAgent.getRenderingOptions().put(
 
 The text renderer produces plain ASCII text output that attempts to match the output of the PDFRenderer as closely as possible. This was originally developed to accommodate an archive system that could only accept plain text files, and is primarily useful for getting a quick-and-dirty view of the document text. The renderer is very limited, so do not be surprised if it gives unsatisfactory results.
 
-The Text renderer works with a fixed size page buffer. The size of this buffer is controlled with the textCPI and textLPI public variables. The textCPI is the effective horizontal characters per inch to use. The textLPI is the vertical lines per inch to use. From these values and the page width and height the size of the buffer is calculated. The formatting objects to be rendered are then mapped to this grid. Graphic elements (lines, borders, etc) are assigned a lower priority than text, so text will overwrite any graphic element representations.
-
 Because FOP lays the text onto a grid during layout, there are frequently extra or missing spaces between characters and lines, which is generally unsatisfactory. Users have reported that the optimal settings to avoid such spacing problems are:
 
 
 - font-family="Courier"
 
-- font-size="7.3pt"
+- font-size="10pt"
 
-- line-height="10.5pt"
+- line-height="10pt"
 
 # Output Formats in the Sandbox # {#sandbox}
 

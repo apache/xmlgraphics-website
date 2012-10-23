@@ -1,12 +1,32 @@
 Title: Apache&trade; FOP: Embedding
-<subtitle>How to Embed Apache� FOP in a Java application</subtitle><version>$Revision: 1298724 $</version>
+<subtitle>How to Embed FOP in a Java application</subtitle><version>$Revision$</version>
 
 # Overview # {#overview}
 
-Review [Running FOP](running.html) for important information that applies to embedded applications as well as command-line use, such as options and performance.
+Review [Running Apache&trade; FOP](running.html) for important information that applies to embedded applications as well as command-line use, such as options and performance.
 
-To embed Apache&trade; FOP in your application, first create a new org.apache.fop.apps.FopFactory instance. This object can be used to launch multiple rendering runs. For each run, create a new org.apache.fop.apps.Fop instance through one of the factory methods of FopFactory. In the method call you specify which output format (i.e. Renderer) to use and, if the selected renderer requires an OutputStream, which OutputStream to use for the results of the rendering. You can customize FOP's behaviour in a rendering run by supplying your own FOUserAgent instance. The FOUserAgent can, for example, be used to set your own Renderer instance (details below). Finally, you retrieve a SAX DefaultHandler instance from the Fop object and use that as the SAXResult of your transformation.
-We recently changed FOP's outer API to what we consider the final API. This might require some changes in your application. The main reasons for these changes were performance improvements due to better reuse of reusable objects and reduced use of static variables for added flexibility in complex environments.
+To embed Apache&trade; FOP in your application, first create a new org.apache.fop.apps.FopFactory instance. This object can be used to launch multiple rendering runs. For each run, create a new org.apache.fop.apps.Fop instance through one of the factory methods of FopFactory. In the method call you specify which output format (i.e. MIME type) to use and, if the selected output format requires an OutputStream, which OutputStream to use for the results of the rendering. You can customize FOP's behaviour in a rendering run by supplying your own FOUserAgent instance. The FOUserAgent can, for example, be used to set your own document handler instance (details below). Finally, you retrieve a SAX DefaultHandler instance from the Fop object and use that as the SAXResult of your transformation.
+
+# The API # {#API}
+
+FOP has many classes which express the "public" access modifier, however, this is not indicative of their inclusion into the public API. Every attempt will be made to keep the public API static, to minimize regressions for existing users, however, since the API is not clearly defined, the list of classes below are the generally agreed public API:
+org.apache.fop.apps.*
+org.apache.fop.fo.FOEventHandler
+org.apache.fop.fo.ElementMappingRegistry
+org.apache.fop.fonts.FontManager
+org.apache.fop.events.EventListener
+org.apache.fop.events.Event
+org.apache.fop.events.model.EventSeverity
+org.apache.fop.render.ImageHandlerRegistry
+org.apache.fop.render.RendererFactory
+org.apache.fop.render.intermediate.IFContext
+org.apache.fop.render.intermediate.IFDocumentHandler
+org.apache.fop.render.intermediate.IFException
+org.apache.fop.render.intermediate.IFParser
+org.apache.fop.render.intermediate.IFSerializer
+org.apache.fop.render.intermediate.IFUtil
+org.apache.fop.render.intermediate.util.IFConcatenator
+
 # Basic Usage Pattern # {#basics}
 
 Apache FOP relies heavily on JAXP. It uses SAX events exclusively to receive the XSL-FO input document. It is therefore a good idea that you know a few things about JAXP (which is a good skill anyway). Let's look at the basic usage pattern for FOP...
@@ -204,8 +224,8 @@ Set the **target resolution** for the document. This is used to specify the outp
 userAgent.setTargetResolution(300); // =300dpi (dots/pixels per Inch)
 
 - 
-Set **your own Renderer instance** . If you want to supply your own renderer or configure a Renderer in a special way you can give the instance to the FOUserAgent. Normally, the Renderer instance is created by FOP. Example:
-userAgent.setRendererOverride(myRenderer); // myRenderer is an org.apache.fop.render.Renderer
+Set **your own Document Handler** . This feature can be used for several purposes, the most likey usage of which would probably be binding a MIME type when the output is Intermediate Format (see [Document Handlers](#documenthandlers) ). This also allows advanced users to create their own implementation of the document handler.
+userAgent.setDocumentHandlerOverride(documentHandler) // documentHandler is an instance of org.apache.fop.render.intermediate.IFDocumentHandler
 
 - 
 Set **your own FOEventHandler instance** . If you want to supply your own FOEventHandler or configure an FOEventHandler subclass in a special way you can give the instance to the FOUserAgent. Normally, the FOEventHandler instance is created by FOP. Example:
@@ -232,6 +252,18 @@ fopFactory.setUserConfig(cfg);
 
 fopFactory.setUserConfig(new File("C:/Temp/mycfg.xml"));
 The layout of the configuration file is described on the [Configuration page](configuration.html) .
+
+# Document Handlers # {#documenthandlers}
+
+The document handlers are classes that inherit from `org.apache.fop.render.intermediate.IFDocumentHandler` . This is an interface for which a MIME type specific implementation can be created. This same handler is used either when XSL-FO is used as the input or when Intermediate Format is used. Since IF is output format agnostic, if custom fonts or other configuration information that affect layout (specific to a particular MIME type) are given then FOP needs that contextual information. The document handler provides that context so that when the IF is rendered, it is more visually consistent with FO rendering. The code below shows an example of how a document handler can be used to provide PDF configuration data to the IFSerializer.
+IFDocumentHandler targetHandler = userAgent.getRendererFactory().createDocumentHandler(userAgent, MimeConstants.MIME_PDF);
+
+IFSerializer ifSerializer = new IFSerializer();  //Create the IFSerializer to write the intermediate format
+ifSerializer.setContext(new IFContext(userAgent));
+ifSerializer.mimicDocumentHandler(targetHandler);   //Tell the IFSerializer to mimic the target format
+
+userAgent.setDocumentHandlerOverride(ifSerializer);  //Make sure the prepared document handler is used
+      The rest of the code is the same as in [Basic Usage Patterns](#basics) .
 
 # Hints # {#hints}
 
@@ -313,6 +345,10 @@ This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/
 ## ExampleSVG2PDF.java (PDF Transcoder example) ## {#ExampleSVG2PDF}
 
 This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/embedding/java/embedding/ExampleSVG2PDF.java?view=markup) shows the usage of the PDF Transcoder, a sub-application within FOP. It is used to generate a PDF document from an SVG file.
+
+## ExampleConcat.java (IF Concatenation example) ## {#ExampleConcat}
+
+This can be found in the `embedding.intermediate` package within the examples and describes how IF can be concatenated to produce a document. Because IF has been through FOPs layout engine, it should be visually consistent with FO rendered documents while allowing the user to merge numerous documents together.
 
 ## Final notes ## {#example-notes}
 
