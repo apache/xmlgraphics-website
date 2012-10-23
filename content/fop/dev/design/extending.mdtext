@@ -1,11 +1,11 @@
 Title: Apache&trade; FOP Design: Extensions
 <version>$Revision: 1298724 $</version><authors><person email="keiron@aftexsw.com" name="Keiron Liddle"></person></authors>
 
-# Introduction  <a id="#intro"></a>
+# Introduction  <a id="intro"></a>
 
 Apache&trade; FOP provides an extension mechanism to add extra functionality. There are a number of different types of extensions that apply to different steps when converting FO into the rendered output.
 
-# Extensions  <a id="#Extensions"></a>
+# Extensions  <a id="Extensions"></a>
 
 SVG Graphic - This applies to svg and any other xml document that can be converted into svg in the output. All that is required is the element mapping for the xml and a converter that changes the document into svg. This conversion is done in the FO Tree. The conversion is done by the top level element of the namespace or in the case of an external image a Converter.
 
@@ -22,7 +22,7 @@ Resolveable - In some cases it may require information to be resolved for inform
 
 - Separate page number display for a subsection. ie. - master document is page 4 of 7, but subsection is page 2 of 3.
 
-# Examples  <a id="#Examples"></a>
+# Examples  <a id="Examples"></a>
 
 Plan - The plan extension is a simple SVG graphic extension. Given a plan document either inside an InstreamForeignObject or as an external graphic, it converts the plan document into an svg graphic. The svg graphic is then passed through the Area Tree to the Renderer. The Renderer then renders the svg graphic as normal.
 
@@ -39,11 +39,11 @@ to result in a text box referencing the following PDF action:
 /S /JavaScript
 /JS (app.execMenuItem("AcroSrch:Query");)
 >>
-# Status  <a id="#status"></a>
+# Status  <a id="status"></a>
 
-## To Do # <a id="#status-todo"></a>
+## To Do # <a id="status-todo"></a>
 
-## Work In Progress # <a id="#status-wip"></a>
+## Work In Progress # <a id="status-wip"></a>
 
 
 - mathml extension
@@ -52,7 +52,7 @@ to result in a text box referencing the following PDF action:
 
 - svg text normal text if that can be handled otherwise stroked this is done automatically
 
-## Completed # <a id="#status-complete"></a>
+## Completed # <a id="status-complete"></a>
 
 
 - svg now in an xml handler, FOP can be used without batik

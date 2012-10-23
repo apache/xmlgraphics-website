@@ -3,9 +3,9 @@ Title: Apache&trade; FOP Output Formats
 
 Apache&trade; FOP supports multiple output formats by using a different renderer for each format. The renderers do not all have the same set of capabilities, sometimes because of the output format itself, sometimes because some renderers get more development attention than others.
 
-# General Information  <a id="#general"></a>
+# General Information  <a id="general"></a>
 
-## Fonts # <a id="#general-fonts"></a>
+## Fonts # <a id="general-fonts"></a>
 
 Most FOP renderers use a FOP-specific system for font registration. However, the Java2D/AWT and print renderers use the Java AWT package, which gets its font information from the operating system registration. This can result in several differences, including actually using different fonts, and having different font metrics for the same font. The net effect is that the layout of a given FO document can be quite different between renderers that do not use the same font information.
 
@@ -27,7 +27,7 @@ With a work-around, it is possible to match the PDF/PS output in a Java2D-based 
 -  `fop -atin myfile.at.xml -tiff myfile.tiff` 
 
 
-## Output to a Printer or Other Device # <a id="#general-direct-output"></a>
+## Output to a Printer or Other Device # <a id="general-direct-output"></a>
 
 The most obvious way to print your document is to use the FOP [print renderer](#print) , which uses the Java2D API (AWT). However, you can also send output from the Postscript renderer directly to a Postscript device, or output from the PCL renderer directly to a PCL device.
 
@@ -38,17 +38,17 @@ proc = Runtime.getRuntime().exec("lp -d" + print_queue + " -o -dp -");
 out = proc.getOutputStream();
 Set the output MIME type to "application/x-pcl" (MimeConstants.MIME_PCL) and it happily sends the PCL to the UNIX printer queue.
 
-# PDF  <a id="#pdf"></a>
+# PDF  <a id="pdf"></a>
 
 PDF is the best supported output format. It is also the most accurate with text and layout. This creates a PDF document that is streamed out as each page is rendered. This means that the internal page index information is stored near the end of the document. The PDF version supported is 1.4. PDF versions are forwards/backwards compatible.
 
 Note that FOP does not currently support PDF/A-1a. Support for [Tagged PDF](accessibility.html) , [PDF/A-1b](pdfa.html) and [PDF/X](pdfx.html) has recently been added, however.
 
-## Fonts # <a id="#pdf-fonts"></a>
+## Fonts # <a id="pdf-fonts"></a>
 
 PDF has a set of fonts that are always available to all PDF viewers; to quote from the PDF Specification: *"PDF prescribes a set of 14 standard fonts that can be used without prior definition. These include four faces each of three Latin text typefaces (Courier, Helvetica, and Times), as well as two symbolic fonts (Symbol and ITC Zapf Dingbats). These fonts, or suitable substitute fonts with the same metrics, are guaranteed to be available in all PDF viewer applications."* 
 
-## Post-processing # <a id="#pdf-postprocess"></a>
+## Post-processing # <a id="pdf-postprocess"></a>
 
 FOP does not currently support several desirable PDF features: watermarks and signatures. One workaround is to use Adobe Acrobat (the full version, not the Reader) to process the file manually or with scripting that it supports.
 
@@ -98,7 +98,7 @@ public static void main(String args[]) {
 }
 Check the iText tutorial and documentation for setting access flags, password, encryption strength and other parameters.
 
-## Watermarks # <a id="#pdf-watermark"></a>
+## Watermarks # <a id="pdf-watermark"></a>
 
 In addition to the [PDF Post-processing](#pdf-postprocess) options, consider the following workarounds:
 
@@ -107,14 +107,14 @@ In addition to the [PDF Post-processing](#pdf-postprocess) options, consider the
 
 - (submitted by Trevor Campbell) Place an image in a region that overlaps the flowing text. For example, make region-before large enough to contain your image. Then include a block (if necessary, use an absolutely positioned block-container) containing the watermark image in the static-content for the region-before. Note that the image will be drawn on top of the normal content.
 
-## Extensions # <a id="#pdf-extensions"></a>
+## Extensions # <a id="pdf-extensions"></a>
 
 The PDF Renderer supports some PDF specific extensions which can be embedded into the input FO document. To use the extensions the appropriate namespace must be declared in the fo:root element like this:
 
 <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
          xmlns:pdf="http://xmlgraphics.apache.org/fop/extensions/pdf">
   
-### Embedded Files ## <a id="#pdf-embedded-file"></a>
+### Embedded Files ## <a id="pdf-embedded-file"></a>
 
 It is possible to attach/embed arbitrary files into a PDF file. You can give a name and a description of the file. Example:
 
@@ -131,11 +131,11 @@ It is also possible to reference an embedded file from an `fo:basic-link` . Use 
 
 Note: Not all PDF Viewers (including some Acrobat Versions) will open the embedded file when clicking on the link. In that case, the user will have to open he attachment via the separate list of file attachments.
 
-# PostScript  <a id="#ps"></a>
+# PostScript  <a id="ps"></a>
 
 The PostScript renderer has been brought up to a similar quality as the PDF renderer, but may still be missing certain features. It provides good support for most text and layout. Images and SVG are not fully supported, yet. Currently, the PostScript renderer generates PostScript Level 3 with most DSC comments. Actually, the only Level 3 features used are the FlateDecode and DCTDecode filter (the latter is used for 1:1 embedding of JPEG images), everything else is Level 2.
 
-## Configuration # <a id="#ps-configuration"></a>
+## Configuration # <a id="ps-configuration"></a>
 
 The PostScript renderer configuration currently allows the following settings:
 <renderer mime="application/postscript">
@@ -158,7 +158,7 @@ The default value for the "dsc-compliant" setting is "true". Setting it to "fals
 
 The default value for the "rendering" setting is "quality". Setting it to "size" optimizes rendering for smaller file sizes which can involve minor compromises in rendering quality. For example, solid borders are then painted as plain rectangles instead of the elaborate painting instructions required for mixed-color borders.
 
-## Limitations # <a id="#ps-limitations"></a>
+## Limitations # <a id="ps-limitations"></a>
 
 
 - Images and SVG may not be displayed correctly. SVG support is far from being complete. No image transparency is available.
@@ -169,20 +169,20 @@ The default value for the "rendering" setting is "quality". Setting it to "size"
 
 - PPD support is still missing.
 
-# PCL  <a id="#pcl"></a>
+# PCL  <a id="pcl"></a>
 
 This format is for the Hewlett-Packard PCL printers and other printers supporting PCL. It should produce output as close to identical as possible to the printed output of the PDFRenderer within the limitations of the renderer, and output device.
 
 The output created by the PCLRenderer is generic PCL 5, HP GL/2 and PJL. This should allow any device fully supporting PCL 5 to be able to print the output generated by the PCLRenderer. PJL is used to control the print job and switch to the PCL language. PCL 5 is used for text, raster graphics and rectangular fill graphics. HP GL/2 is used for more complex painting operations. Certain painting operations are done off-screen and rendered to PCL as bitmaps because of limitations in PCL 5.
 
-## References # <a id="#pcl-references"></a>
+## References # <a id="pcl-references"></a>
 
 
 -  [WikiPedia entry on PCL](http://en.wikipedia.org/wiki/Printer_Control_Language) 
 
 -  [Technical reference documents on PCL from Hewlett-Packard](http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=bpl04568) 
 
-## Limitations # <a id="#pcl-limitations"></a>
+## Limitations # <a id="pcl-limitations"></a>
 
 
 - Text or graphics outside the left or top of the printable area are not rendered properly. This is a limitation of PCL, not FOP. In general, things that should print to the left of the printable area are shifted to the right so that they start at the left edge of the printable area.
@@ -201,7 +201,7 @@ The output created by the PCLRenderer is generic PCL 5, HP GL/2 and PJL. This sh
 
 - Currently, there's no support for clipping and image transparency, largely because PCL 5 has certain limitations.
 
-## Configuration # <a id="#pcl-configuration"></a>
+## Configuration # <a id="pcl-configuration"></a>
 
 The PCL renderer configuration currently allows the following settings:
 <renderer mime="application/x-pcl">
@@ -217,14 +217,14 @@ The default value for the "disable-pjl" setting is "false". This means that the 
 
 You can control the output resolution for the PCL using the "target resolution" setting on the FOUserAgent. The actual value will be rounded up to the next supported PCL resolution. Currently, only 300 and 600 dpi are supported which should be enough for most use cases. Note that this setting directly affects the size of the output file and the print quality.
 
-## Extensions # <a id="#pcl-extensions"></a>
+## Extensions # <a id="pcl-extensions"></a>
 
 The PCL Renderer supports some PCL specific extensions which can be embedded into the input FO document. To use the extensions the appropriate namespace must be declared in the fo:root element like this:
 
       <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
                xmlns:pcl="http://xmlgraphics.apache.org/fop/extensions/pcl">
 
-### Page Source (Tray selection) ## <a id="#pcl-page-source"></a>
+### Page Source (Tray selection) ## <a id="pcl-page-source"></a>
 
 The page-source extension attribute on fo:simple-page-master allows to select the paper tray the sheet for a particular simple-page-master is to be taken from. Example:
 
@@ -236,7 +236,7 @@ The page-source extension attribute on fo:simple-page-master allows to select th
 
 Note: the tray number is a positive integer and the value depends on the target printer. Not all PCL printers support the same paper trays. Usually, "1" is the default tray, "2" is the manual paper feed, "3" is the manual envelope feed, "4" is the "lower" tray and "7" is "auto-select". Consult the technical reference for your printer for all available values.
 
-### Output Bin ## <a id="#pcl-output-bin"></a>
+### Output Bin ## <a id="pcl-output-bin"></a>
 
 The `output-bin` extension attribute on fo:simple-page-master allows to select the output bin into which the printed output should be fed. Example:
 
@@ -248,7 +248,7 @@ The `output-bin` extension attribute on fo:simple-page-master allows to select t
 
 Note: the output bin number is a positive integer and the value depends on the target printer. Not all PCL printers support the same output bins. Usually, "1" is the upper output bin, "2" is the lower (rear) output bin. Consult the technical reference for your printer for all available values.
 
-### Page Duplex Mode ## <a id="#pcl-duplex-mode"></a>
+### Page Duplex Mode ## <a id="pcl-duplex-mode"></a>
 
 The duplex-mode extension attribute on fo:simple-page-master allows to select the duplex mode to be used for a particular simple-page-master. Example:
 
@@ -260,7 +260,7 @@ The duplex-mode extension attribute on fo:simple-page-master allows to select th
 
 Note: the duplex is a positive integer and the value depends on the target printer. Not all PCL printers support duplexing. Usually, "0" is simplex, "1" is duplex (long-edge binding), "2" is duplex (short-edge binding). Consult the technical reference for your printer for all available values.
 
-# AFP  <a id="#afp"></a>
+# AFP  <a id="afp"></a>
 
 The FOP AFP Renderer deals with creating documents conforming to the IBM AFP document architecture also refered to as MO:DCA (Mixed Object Document Content Architecture).
 
@@ -274,7 +274,7 @@ The mapping of XSL-FO elements to the major MO:DCA structures is as follows:
 
 FOP creates exactly one Document per Printfile with an optional Resource Group at the beginning. FOP does not create document indices.
 
-## References # <a id="#afp-references"></a>
+## References # <a id="afp-references"></a>
 
 
 -  [AFP (Advanced Function Presentation)](http://en.wikipedia.org/wiki/Advanced_Function_Presentation) 
@@ -283,7 +283,7 @@ FOP creates exactly one Document per Printfile with an optional Resource Group a
 
 -  [Technical notes on AFP output in FOP](http://wiki.apache.org/xmlgraphics-fop/AFPOutput) 
 
-## Limitations # <a id="#afp-limitations"></a>
+## Limitations # <a id="afp-limitations"></a>
 
 This list is most likely badly incomplete.
 
@@ -292,13 +292,13 @@ This list is most likely badly incomplete.
 
 - Only IBM outline and raster fonts and to a limited extend the original fonts built into FOP are supported. Support for TrueType fonts may be added later.
 
-## Deployment in older environments # <a id="#afp-compatibility"></a>
+## Deployment in older environments # <a id="afp-compatibility"></a>
 
 There are still a big number of older (or limited) MO:DCA/IPDS environments in production out there. AFP has grown in functionality over time and not every environment supports the latest features. We're trying to make AFP output work in as many environments as possible. However, to make AFP output work on older environments it is recommended to set to configuration to 1 bit per pixel (see below on how to do this). In this case, all images are converted to bi-level images using IOCA function set 10 (FS10) and are enclosed in page-segments since some implementation cannot deal with IOCA objects directly. If a higher number of bits per pixel is configured, FOP has to switch to at least FS11 which may not work everywhere.
 
-## Configuration # <a id="#afp-configuration"></a>
+## Configuration # <a id="afp-configuration"></a>
 
-### Fonts ## <a id="#afp-font-config"></a>
+### Fonts ## <a id="afp-font-config"></a>
 
 The AFP Renderer requires special configuration particularly related to fonts. AFP Render configuration is done through the normal FOP configuration file. The MIME type for the AFP Renderer is application/x-afp which means the AFP Renderer section in the FOP configuration file looks like:
 <renderer mime="application/x-afp">
@@ -439,17 +439,17 @@ For double byte EBCDIC encoded character sets, there is an optional tag that mus
 
         <afp-font type="CIDKeyed" codepage="T10835  " encoding="Cp937" characterset="CZTKAI" ebcdic-dbcs="true"/>
           
-### Output Resolution ## <a id="#afp-renderer-resolution-config"></a>
+### Output Resolution ## <a id="afp-renderer-resolution-config"></a>
 
 By default the AFP Renderer creates output with a resolution of 240 dpi. This can be overridden by the <renderer-resolution/> configuration element. Example:
 
       <renderer-resolution>240</renderer-resolution>
-### Line Width Correction ## <a id="#afp-line-width-correction-config"></a>
+### Line Width Correction ## <a id="afp-line-width-correction-config"></a>
 
 The default line width in AFP is device dependent. This means that a line width specified in, say, a SVG source file may not render the way it was intended. The output AFP line with can be corrected by the <line-width-correction/> configuration element. Example:
 
       <line-width-correction>2.5</line-width-correction>
-### Images ## <a id="#afp-image-config"></a>
+### Images ## <a id="afp-image-config"></a>
 
 By default the AFP Renderer converts all images to 8 bit grey level. This can be overridden by the <images/> configuration element. Example:
 
@@ -484,7 +484,7 @@ By default, JPEG images are rasterized to a bitmap and the bitmap is included in
       <images mode="color" cmyk="true">
         <jpeg allow-embedding="false" bitmap-encoding-quality="0.8"/>
       </images>
-### GOCA (Vector Graphics) ## <a id="#afp-goca-config"></a>
+### GOCA (Vector Graphics) ## <a id="afp-goca-config"></a>
 
 Not all AFP implementations support GOCA. Some also have bugs related to GOCA. Therefore, it is desirable to have some control over the generation of GOCA graphics.
 
@@ -496,19 +496,19 @@ Some AFP implementations have trouble rendering text in GOCA. You can instruct t
       <goca enabled="true" text="shapes"/>
 If you disable GOCA or let text render as shapes, the size of the generated AFP usually increases considerably.
 
-### Shading ## <a id="#afp-shading-config"></a>
+### Shading ## <a id="afp-shading-config"></a>
 
 By default, filled rectangles are painted using their given color using a PTOCA I-axis rule (DIR). But not all environments handle these colors correctly. That's why a setting is supported that paints the rectangles using an ordered dither pattern (bi-level) with an inline IOCA FS10 image that is used together with the "replicate and trim" mapping. The optional "shading" element can be used to control the shading mode. Its default value is "color". To enable the dithered mode, use "dithered". Example:
 
       <shading>dithered</shading>
 
-### Resource Group File ## <a id="#afp-resource-group-file"></a>
+### Resource Group File ## <a id="afp-resource-group-file"></a>
 
 By default the AFP Renderer will place all data resource objects such as images within the document of the main output datastream. An external resource group file where document resources may be specified with the <resource-group-file/> configuration element. Example:
 
       <resource-group-file>external_resources.afp</resource-group-file>
 Be careful when using this option not to overwrite existing resource files from previous rendering runs.
-### Resource Level Defaults ## <a id="#afp-resource-level-defaults"></a>
+### Resource Level Defaults ## <a id="afp-resource-level-defaults"></a>
 
 By default, bitmap image objects (or page segments derived from them) are put in the print-file-level resource group and GOCA graphics are inlined for compatibility with the AFP Workbench tool.
 
@@ -517,14 +517,14 @@ It is possible to override these defaults, either per image (see the [afp:resour
 <default-resource-levels goca="print-file" bitmap="inline"/>
 "goca" refers to GOCA graphics and "bitmap" refers to IOCA images. The possible values for the attributes are "inline" and "print-file". In the future, additional possibilities may be added.
 
-## Extensions # <a id="#afp-extensions"></a>
+## Extensions # <a id="afp-extensions"></a>
 
 The AFP Renderer supports some AFP specific extensions which can be embedded into the input fo document. To use the extensions the appropriate namespace must be declared in the fo:root element like this:
 
       <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
                xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
 
-### Page Overlay (IPO) Extension ## <a id="#afp-page-overlay"></a>
+### Page Overlay (IPO) Extension ## <a id="afp-page-overlay"></a>
 
 The include-page-overlay extension element allows to define on a per simple-page-master basis a page overlay resource. Example:
 
@@ -537,7 +537,7 @@ The include-page-overlay extension element allows to define on a per simple-page
 
 The mandatory name attribute must refer to an 8 character (space padded) resource name that must be known in the AFP processing environment. Optional x and y attributes can be specified to place the Overlay at an offset from the top left of the page.
 
-### Page Segment (IPS) Extension ## <a id="#afp-page-segment"></a>
+### Page Segment (IPS) Extension ## <a id="afp-page-segment"></a>
 
 The include-page-segment extension element allows to define resource substitution for fo:external-graphics elements. Example:
 
@@ -556,7 +556,7 @@ The effect here is that whenever FOP encounters the URI specified in the extensi
 
 The include-page-segment extension element has the optional attribute *resource-file* . The value of this is a URI to a resource containing a page segment with the declared name. In this case FOP embeds the page segment into the generated document so that the external resource does not have to be supplied in the print job.
 
-### Tag Logical Element (TLE) Extension ## <a id="#afp-tag-logical-element"></a>
+### Tag Logical Element (TLE) Extension ## <a id="afp-tag-logical-element"></a>
 
 The tag-logical-element extension element allows to injects TLEs into the AFP output stream. Example:
 
@@ -576,7 +576,7 @@ The tag-logical-element extension element allows to injects TLEs into the AFP ou
 
 The tag-logical-element extension element can appear within a simple-page-master (page level) or it can appear as child of page-sequence (page group level). Multiple tag-logical-element extension elements within a simple-page-master or page-sequence are allowed. The name and value attributes are mandatory.
 
-### No Operation (NOP) Extension ## <a id="#afp-no-operation"></a>
+### No Operation (NOP) Extension ## <a id="afp-no-operation"></a>
 
 The no-operation extension provides the ability to carry up to 32K of comments or any other type of unarchitected data into the AFP output stream. Example:
 
@@ -590,7 +590,7 @@ The no-operation extension provides the ability to carry up to 32K of comments o
 
 The no-operation extension element can appear as child of `simple-page-master` (appears after "Begin Page" BPG), `page-sequence` (appears after "Begin Named Page Group" BNG and `declarations` (appears after "Begin Document" BDT). Multiple no-operation extension elements inside the same formatting object are allowed. Each NOP will appear right after the respective "Begin" field indicated above even if it is specified as the last child under its parent. The order inside the parent will be maintained. The "placement" attribute can be used to have the NOP appear before the "End" field of the object rather than after the "Begin" field. Specify `placement="before-end"` to do that. Please note that, at the moment, this only has an effect for NOPs that are children of the `page-sequence` formatting object. The "name" attribute is mandatory but will not appear inside the AFP stream.
 
-### Invoke Medium Map (IMM) Extension ## <a id="#afp-invoke-medium-map"></a>
+### Invoke Medium Map (IMM) Extension ## <a id="afp-invoke-medium-map"></a>
 
 The invoke-medium-map extension allows to generate IMM fields (Invoke Medium Map) in the generated AFP output. Example:
 
@@ -604,7 +604,7 @@ The invoke-medium-map extension allows to generate IMM fields (Invoke Medium Map
 
 The invoke-medium-map element is allowed as child of fo:page-sequence (page group level) or fo:simple-page-master. It is NOT supported on document level (fo:root), yet. FOP also doesn't support specifying medium maps inside XML (using BMM/EMM). It can only reference an existing medium map by name. The medium map has to be constructed through different means and available on the target platform.
 
-### Form Maps/Defs ## <a id="#afp-form-maps"></a>
+### Form Maps/Defs ## <a id="afp-form-maps"></a>
 
 Apache FOP supports embedding an external form map resource in the generated AFP output. This is done using the `afp:include-form-map` extension. An example:
 
@@ -617,9 +617,9 @@ Apache FOP supports embedding an external form map resource in the generated AFP
 
 The `afp:include-form-map` is to be placed as a direct child of `fo:declarations` . The `name` is an AFP resource name (max. 8 characters) and the `src` attribute is the URI identifying the external form map resource. When such a form map is embedded, you can use the `afp:invoke-medium-map` extension (described above) to invoke any medium map included in the form map.
 Apache FOP doesn't support a way to define a form map or medium map using XML means inside an XSL-FO document. You will have to build the form map with some third-party tool.
-## Foreign Attributes # <a id="#afp-foreign-attributes"></a>
+## Foreign Attributes # <a id="afp-foreign-attributes"></a>
 
-### Resource ## <a id="#afp-foreign-attributes-resource"></a>
+### Resource ## <a id="afp-foreign-attributes-resource"></a>
 
 The resource foreign attributes provides the ability to name and control where data object resources (e.g. images/scalable vector graphics) will reside in the AFP output. The afp foreign attributes are only used in conjuntion with <fo:external-graphic/> and <instream-foreign-object/>. Example:
 
@@ -648,7 +648,7 @@ The resource-level attribute where the resource object will reside in the AFP ou
 
 
 
-# RTF  <a id="#rtf"></a>
+# RTF  <a id="rtf"></a>
 
 JFOR, an open source XSL-FO to RTF converter has been integrated into Apache FOP. This will create an RTF (rich text format) document that will attempt to contain as much information from the XSL-FO document as possible. It should be noted that is not possible (due to RTF's limitations) to map all XSL-FO features to RTF. For complex documents, the RTF output will never reach the feature level from PDF, for example. Thus, using RTF output is only recommended for simple documents such as letters.
 
@@ -676,27 +676,27 @@ These are some known restrictions compared to other supported output formats (no
 
 - percentages are not supported everywhere
 
-# XML (Area Tree XML)  <a id="#xml"></a>
+# XML (Area Tree XML)  <a id="xml"></a>
 
 This is primarily for testing and verification. The XML created is simply a representation of the internal area tree put into XML. We use that to verify the functionality of FOP's layout engine.
 
 The other use case of the Area Tree XML is as FOP's "intermediate format". More information on that can be found on the page dedicated to the [Intermediate Format](intermediate.html) .
 
-# Java2D/AWT  <a id="#awt"></a>
+# Java2D/AWT  <a id="awt"></a>
 
 The Java2DRenderer provides the basic functionality for all Java2D-based output formats (AWT viewer, direct print, PNG, TIFF).
 
 The AWT viewer shows a window with the pages displayed inside a Java graphic. It displays one page at a time. The fonts used for the formatting and viewing depend on the fonts available to your JRE.
 
-# Print  <a id="#print"></a>
+# Print  <a id="print"></a>
 
 It is possible to directly print the document from the command line. This is done with the same code that renders to the Java2D/AWT renderer.
 
-## Known issues # <a id="#print-issues"></a>
+## Known issues # <a id="print-issues"></a>
 
 If you run into the problem that the printed output is incomplete on Windows: this often happens to users printing to a PCL printer. There seems to be an incompatibility between Java and certain PCL printer drivers on Windows. Since most network-enabled laser printers support PostScript, try switching to the PostScript printer driver for that printer model.
 
-# Bitmap (TIFF/PNG)  <a id="#bitmap"></a>
+# Bitmap (TIFF/PNG)  <a id="bitmap"></a>
 
 It is possible to directly create bitmap images from the individual pages generated by the layout engine. This is done with the same code that renders to the Java2D/AWT renderer.
 
@@ -704,7 +704,7 @@ Currently, two output formats are supported: PNG and TIFF. TIFF produces one fil
 
 The quality of the bitmap depends on the target resolution setting on the FOUserAgent and on further settings described below.
 
-## Configuration # <a id="#bitmap-configuration"></a>
+## Configuration # <a id="bitmap-configuration"></a>
 
 The TIFF and PNG renderer configuration currently allows the following settings:
 <renderer mime="image/png">
@@ -736,7 +736,7 @@ The default value for the `"anti-aliasing"` setting is `"true"` . You can set th
 
 The default value for the `"rendering"` setting is `"true"` . You can set this value to `"false"` to improve rendering speeds a bit at the loss of some image quality. If this setting has an actual effect depends on the JVM's Java2D backend.
 
-## TIFF-specific Configuration # <a id="#tiff-configuration"></a>
+## TIFF-specific Configuration # <a id="tiff-configuration"></a>
 
 In addition to the above values the TIFF renderer configuration allows some additional settings:
 <renderer mime="image/tiff">
@@ -765,12 +765,12 @@ The default value for the "compression" setting is "PackBits" which which is a w
 
 This setting may override any setting made using the `"color-mode"` . For example, if `"CCITT T.6"` is selected, the color mode is automatically forced to `"bi-level"` because this compression format only supports bi-level images.
 If you want to use CCITT compression, please make sure you've got [Java Advanced Imaging Image I/O Tools](http://java.sun.com/products/java-media/jai/current.html) in your classpath. The Sun JRE doesn't come with a TIFF codec built in, so it has to be added separately. The internal TIFF codec from XML Graphics Commons only supports PackBits, Deflate and JPEG compression for writing.
-## Runtime Rendering Options # <a id="#bitmap-rendering-options"></a>
+## Runtime Rendering Options # <a id="bitmap-rendering-options"></a>
 
 The IF-based bitmap output implementations support a rendering option with the key "target-bitmap-size" (value: java.awt.Dimension) that allows to force the pages to be proportionally fit into a bitmap of a given size. This can be used to produce thumbnails or little preview images of the individual pages. An example:
 userAgent.getRenderingOptions().put(
     "target-bitmap-size", new Dimension(320, 200));
-# TXT  <a id="#txt"></a>
+# TXT  <a id="txt"></a>
 
 The text renderer produces plain ASCII text output that attempts to match the output of the PDFRenderer as closely as possible. This was originally developed to accommodate an archive system that could only accept plain text files, and is primarily useful for getting a quick-and-dirty view of the document text. The renderer is very limited, so do not be surprised if it gives unsatisfactory results.
 
@@ -783,19 +783,19 @@ Because FOP lays the text onto a grid during layout, there are frequently extra 
 
 - line-height="10pt"
 
-# Output Formats in the Sandbox  <a id="#sandbox"></a>
+# Output Formats in the Sandbox  <a id="sandbox"></a>
 
 Due to the state of certain renderers we moved some of them to a "sandbox" area until they are ready for more serious use. The renderers and FOEventHandlers in the sandbox can be found under src/sandbox and are compiled into build/fop-sandbox.jar during the main build. The output formats in the sandbox are marked as such below.
 
-## MIF # <a id="#mif"></a>
+## MIF # <a id="mif"></a>
 <warning>The MIF handler is in the sandbox and not yet functional in FOP Trunk!!! Please help us ressurrect this feature.</warning>
 This format is the Maker Interchange Format which is used by Adobe Framemaker.
 
-## SVG # <a id="#svg"></a>
+## SVG # <a id="svg"></a>
 <warning>The SVG renderer is in the sandbox and may not work as expected in FOP Trunk!!! Please help us improve this feature.</warning>
 This format creates an SVG document that has links between the pages. This is primarily for slides and creating svg images of pages. Large documents will create SVG files that are far too large for an SVG viewer to handle. Since FO documents usually have text the SVG document will have a large number of text elements. The font information for the text is obtained from the JVM in the same way as for the AWT viewer. If the SVG is viewed on a system where the fonts are different, such as another platform, then the page may look wrong.
 
-# Wish list  <a id="#wishlist"></a>
+# Wish list  <a id="wishlist"></a>
 
 Apache FOP is easily extensible and allows you to add new output formats to enhance FOP's functionality. There's a number of output formats which are on our wish list. We're looking for volunteers to help us implement them.
 

@@ -1,7 +1,7 @@
 Title: Apache&trade; FOP: Fonts
 <version>$Revision$</version><authors><person email="" name="Jeremias Märki"></person><person email="" name="Tore Engvig"></person><person email="" name="Adrian Cumiskey"></person><person email="" name="Max Berger"></person></authors>
 
-# Summary  <a id="#intro"></a>
+# Summary  <a id="intro"></a>
 
 The following table summarizes the font capabilities of the various Apache� FOP renderers:
 
@@ -17,7 +17,7 @@ The following table summarizes the font capabilities of the various Apache� FO
 | TXT | yes (used for layout but not for output) | no | yes (used for layout but not for output) | no |
 | XML | yes | no | yes | n/a |
 
-# Base-14 Fonts  <a id="#Base-14+Fonts"></a>
+# Base-14 Fonts  <a id="Base-14+Fonts"></a>
 
 The Adobe PostScript and PDF Specification specify a set of 14 fonts that must be available to every PostScript interpreter and PDF reader: Helvetica (normal, bold, italic, bold italic), Times (normal, bold, italic, bold italic), Courier (normal, bold, italic, bold italic), Symbol and ZapfDingbats.
 
@@ -33,21 +33,21 @@ The following font family names are hard-coded into FOP for the Base-14 font set
 
 Please note that recent versions of Adobe Acrobat Reader replace "Helvetica" with "Arial" and "Times" with "Times New Roman" internally. GhostScript replaces "Helvetica" with "Nimbus Sans L" and "Times" with "Nimbus Roman No9 L". Other document viewers may do similar font substitutions. If you need to make sure that there are no such substitutions, you need to specify an explicit font and embed it in the target document.
 
-# Missing Fonts  <a id="#missing-fonts"></a>
+# Missing Fonts  <a id="missing-fonts"></a>
 
 When FOP does not have a specific font at its disposal (because it's not installed in the operating system or set up in FOP's configuration), the font is replaced with "any". "any" is internally mapped to the Base-14 font "Times" (see above).
 
-# Missing Glyphs  <a id="#missing-glyphs"></a>
+# Missing Glyphs  <a id="missing-glyphs"></a>
 
 Every font contains a particular set of [glyphs](http://en.wikipedia.org/wiki/Glyph) . If no glyph can be found for a given character, FOP will issue a warning and use the glpyh for "#" (if available) instead. Before it does that, it consults a (currently hard-coded) registry of glyph substitution groups (see Glyphs.java in Apache XML Graphics Commons). This registry can supply alternative glyphs in some cases (like using space when a no-break space is requested). But there's no guarantee that the result will be as expected (for example, in the case of hyphens and similar glyphs). A better way is to use a font that has all the necessary glyphs. This glyph substitution is only a last resort.
 
-# Java2D/AWT/Operating System Fonts  <a id="#awt"></a>
+# Java2D/AWT/Operating System Fonts  <a id="awt"></a>
 
 The Java2D family of renderers (Java2D, AWT, Print, TIFF, PNG), use the Java AWT subsystem for font metric information. Through operating system registration, the AWT subsystem knows what fonts are available on the system, and the font metrics for each one.
 
 When working with one of these output formats and you're missing a font, just install it in your operating system and they should be available for these renderers. Please note that this is not true for other output formats such as PDF or PostScript.
 
-# Custom Fonts  <a id="#custom"></a>
+# Custom Fonts  <a id="custom"></a>
 
 Support for custom fonts is highly output format dependent (see above table). This section shows how to add Type 1 and TrueType fonts to the PDF, PostScript and Java2D-based renderers. Other renderers (like AFP) support other font formats. Details in this case can be found on the page about [output formats](output.html) .
 
@@ -60,7 +60,7 @@ Basic information about fonts can be found at:
 
 -  [Adobe Font Technote](http://partners.adobe.com/asn/developer/technotes/fonts.html) 
 
-# Basic font configuration  <a id="#basics"></a>
+# Basic font configuration  <a id="basics"></a>
 
 If you want FOP to use custom fonts, you need to tell it where to find them. This is done in the configuration file and once per renderer (because each output format is a little different). In the basic form, you can either tell FOP to find your operating system fonts or you can specify directories that it will search for support fonts. These fonts will then automatically be registered.
 
@@ -78,11 +78,11 @@ If you want FOP to use custom fonts, you need to tell it where to find them. Thi
       </fonts>
    </renderer>
 </renderers>Review the documentation for [FOP Configuration](configuration.html) for instructions on making the FOP configuration available to FOP when it runs. Otherwise, FOP has no way of finding your custom font information. It is currently not possible to easily configure fonts from Java code.
-# Advanced font configuration  <a id="#advanced"></a>
+# Advanced font configuration  <a id="advanced"></a>
 
 The instructions found above should be sufficient for most users. Below are some additional instructions in case the basic font configuration doesn't lead to the desired results.
 
-## Type 1 Font Metrics # <a id="#type1-metrics"></a>
+## Type 1 Font Metrics # <a id="type1-metrics"></a>
 
 FOP includes PFMReader, which reads the PFM file that normally comes with a Type 1 font, and generates an appropriate font metrics file for it. To use it, run the class org.apache.fop.fonts.apps.PFMReader:
 
@@ -97,7 +97,7 @@ PFMReader [options]:
 
 -  **-fn <fontname>** By default, FOP uses the fontname from the .pfm file when embedding the font. Use the "-fn" option to override this name with one you have chosen. This may be useful in some cases to ensure that applications using the output document (Acrobat Reader for example) use the embedded font instead of a local font with the same name.
 The classpath in the above example has been simplified for readability. You will have to adjust the classpath to the names of the actual JAR files in the lib directory. xml-apis.jar, xercesImpl.jar, xalan.jar and serializer.jar are not necessary for JDK version 1.4 or later.The tool will construct some values (FontBBox, StemV and ItalicAngle) based on assumptions and calculations which are only an approximation to the real values. FontBBox and Italic Angle can be found in the human-readable part of the PFB file or in the AFM file. The PFMReader tool does not yet interpret PFB or AFM files, so if you want to be correct, you may have to adjust the values in the XML file manually. The constructed values however appear to have no visible influence.
-## TrueType Font Metrics # <a id="#truetype-metrics"></a>
+## TrueType Font Metrics # <a id="truetype-metrics"></a>
 
 FOP includes TTFReader, which reads the TTF file and generates an appropriate font metrics file for it. Use it in a similar manner to PFMReader. For example, to create such a metrics file in Windows from the TrueType font at c:\myfonts\cmr10.ttf:
 java -cp build\fop.jar;lib\avalon-framework.jar;lib\commons-logging.jar;lib\commons-io.jar
@@ -119,7 +119,7 @@ TTFReader [options]:
 | Usable Character Set | Limited to WinAnsi character set, which is roughly equivalent to iso-8889-1. | Limited only by the characters in the font itself. |
 | Embedding the Font | Optional. | Mandatory. Not embedding the font produces invalid PDF documents. |
 <warning>You may experience failures with certain TrueType fonts, especially if they don't contain the so-called Unicode "cmap" table. TTFReader can currently not deal with font like this.</warning>
-## TrueType Collections # <a id="#truetype-collections-metrics"></a>
+## TrueType Collections # <a id="truetype-collections-metrics"></a>
 
 TrueType collections (.ttc files) contain more than one font. To create metrics files for these fonts, you must specify which font in the collection should be generated, by using the "-ttcname" option with the TTFReader.
 
@@ -133,7 +133,7 @@ Alternatively, the individual sub-fonts of a TrueType Collections can be selecte
 <font embed-url="gulim.ttc" sub-font="GulimChe">
   <font-triplet name="GulimChe" style="normal" weight="normal"/>
 </font>
-## Register Fonts with FOP # <a id="#register"></a>
+## Register Fonts with FOP # <a id="register"></a>
 
 You must tell FOP how to find and use the font metrics files by registering them in the [FOP Configuration](configuration.html) . Add entries for your custom fonts, regardless of font type, to the configuration file in a manner similar to the following:
 
@@ -190,7 +190,7 @@ You must tell FOP how to find and use the font metrics files by registering them
 
 - If relative URLs are specified, they are evaluated relative to the value of the "font-base" setting. If there is no "font-base" setting, the fonts are evaluated relative to the base directory.
 
-## Auto-Detect and auto-embed feature # <a id="#autodetect"></a>
+## Auto-Detect and auto-embed feature # <a id="autodetect"></a>
 
 When the "auto-detect" flag is set in the configuration, FOP will automatically search for fonts in the default paths for your operating system.
 
@@ -201,13 +201,13 @@ Manifest-Version: 1.0
           Content-Type: application/x-font
 This feature allows you to create JAR files containing fonts. The JAR files can be added to fop by providem them in the classpath, e.g. copying them into the lib/ directory.
 
-### The font cache ## <a id="#font-cache"></a>
+### The font cache ## <a id="font-cache"></a>
 
 Apache FOP maintains a cache file that is used to speed up auto-detection. This file is usually found in the ".fop" directory under the user's home directory. It's called "fop-fonts.cache". When the user's home directory is not writable, the font cache file is put in the directory for temporary files.
 
 If there was a problem loading a particular font, it is flagged in the cache file so it is not loaded anymore. So, if a font is actually around but is still not found by Apache FOP, it's worth a try to delete the font cache file which forces Apache FOP to reparse all fonts.
 
-## Embedding # <a id="#embedding"></a>
+## Embedding # <a id="embedding"></a>
 
 By default, all fonts are embedded if an output format supports font embedding. In some cases, however, it is preferred that some fonts are only referenced. When working with referenced fonts it is important to be in control of the target environment where the produced document is consumed, i.e. the necessary fonts have to be installed there.
 
@@ -243,7 +243,7 @@ Various notes related to embedded fonts:
 
 - When embedding TrueType fonts (ttf) or TrueType Collections (ttc), a subset of the original font, containing only the glyphs used, is embedded in the output document. That's the default, but if you specify encoding-mode="single-byte" (see above), the complete font is embedded.
 
-## Substitution # <a id="#substitution"></a>
+## Substitution # <a id="substitution"></a>
 
 When a <substitutions/> section is defined in the configuration, FOP will re-map any font-family references found in your FO input to a given substitution font.
 
@@ -268,7 +268,7 @@ For example you could make all FO font-family references to 'Arial' with weights
       </substitutions>
    </fonts>
 </fop>
-# Font Selection Strategies  <a id="#selection"></a>
+# Font Selection Strategies  <a id="selection"></a>
 
 There are two font selection strategies: character-by-character or auto. The default is auto.
 
@@ -285,6 +285,6 @@ Auto selected the first font from the list which is able to display the most cha
 
 Character-by-Character is NOT yet supported!
 
-# Font List Command-Line Tool  <a id="#font-list"></a>
+# Font List Command-Line Tool  <a id="font-list"></a>
 
 FOP contains a small command-line tool that lets you generate a list of all configured fonts. Its class name is: `org.apache.fop.tools.fontlist.FontListMain` . Run it with the "-?" parameter to get help for the various options.

@@ -3,7 +3,7 @@ Title: Apache&trade; FOP: Ant task
 
 Apache&trade; FOP provides an Ant task for automating the document build process.
 
-# Description  <a id="#basics"></a>
+# Description  <a id="basics"></a>
 
 The FOP Ant task will convert XSL-FO documents to PDF, PS, PCL etc. output (see [Output formats](output.html) for available formats).
 
@@ -26,7 +26,7 @@ To call FOP tasks within Ant, first add a FOP task definition to your Ant build 
     
 Then create FOP tasks within your Ant build file, using the FOP task parameters listed below.
 
-# Parameters for FOP Ant task  <a id="#parameters"></a>
+# Parameters for FOP Ant task  <a id="parameters"></a>
 
 <caption>Parameters specified as attributes</caption>| Attribute | Description | Required |
 |-----------|-------------|----------|
@@ -47,7 +47,7 @@ Then create FOP tasks within your Ant build file, using the FOP task parameters 
 |-----------|-------------|----------|
 | fileset |  [FileSets](http://ant.apache.org/manual/CoreTypes/fileset.html) are used to specify multiple XSL-FO files to be rendered. | Yes, if no fofile attribute is supplied |
 
-# Examples  <a id="#examples"></a>
+# Examples  <a id="examples"></a>
 
 The following example converts a single XSL-FO file to a PDF document:
 

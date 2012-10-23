@@ -3,7 +3,7 @@ Title: Batik Swing components
 
 The goal of the Batik Swing component module is to provide a Swing component that can used to display SVG documents. With the [JSVGCanvas](../javadoc/org/apache/batik/swing/JSVGCanvas.html) class, you can easily display an SVG document (from a URI or a DOM tree) and allow the user to manipulate it, such as rotating, zooming, panning, selecting text or activating hyperlinks. First this document explains how to create a `JSVGCanvas` and integrate it in to a Swing application. Then, it descibes some advanced features such as the listener mechanism used to track all events that occurred while displaying or manipulating an SVG document.
 
-# Creating a JSVGCanvas  <a id="#creatingJSVGCanvas"></a>
+# Creating a JSVGCanvas  <a id="creatingJSVGCanvas"></a>
 
 The following example illustrates how to create a `JSVGCanvas` , which is a Swing component that follows the Swing design rule. This means that the component is not thread safe and all operations on the component or the document it is displaying must be performed as described in [the Swing tutorial](http://java.sun.com/docs/books/tutorial/uiswing/overview/threads.html) . The `JSVGCanvas` is also a [JavaBean](http://java.sun.com/products/javabeans/) , so it can be used in visual application builders.
 If you try this example, do not forget to set your `CLASSPATH` so that it contains the Batik classes and resources, as well as Xerces ( `lib/xerces_2_5_0.jar` ) and the XML APIs jars ( `lib/xml-apis.jar` and `lib/xml-apis-ext.jar` ).import java.awt.*;
@@ -115,7 +115,7 @@ public class SVGApplication {
         return panel;
     }
 }<div class="figure"> ![Screenshot of the example SVGApplication program](images/svgapplication.png "") </div>
-# Handling events  <a id="#eventhandling"></a>
+# Handling events  <a id="eventhandling"></a>
 
 Each time you set a URI or an SVG DOM tree to be displayed in a `JSVGCanvas` (using the `setURI` or `setSVGDocument` method), the specified document is first parsed (in case of a URI), built, rendered and optionally updated. The proper way to be notified of these different phases is to implement a listener and attach it to the component. There are five types of listener:
 
@@ -157,6 +157,6 @@ For static documents, you can assume that the JSVGCanvas has completed its job (
 
 In the case of dynamic documents, the end of the computation (parsing, building, SVGLoad dispatch, initial rendering and updates) is marked by a call to the `updateManagerStopped` method.
 
-# Adding an Interactor  <a id="#interactor"></a>
+# Adding an Interactor  <a id="interactor"></a>
 
 The `JSVGCanvas` provides a set of build-in interactors that let the users manipulate the displayed document, including ones for zooming, panning and rotating. Interactors catch user input to the `JSVGCanvas` component and translate them into behaviour. If you want to add new behaviors to the `JSVGCanvas` , you can implement the [Interactor](../javadoc/org/apache/batik/swing/gvt/Interactor.html) interface. Then, you can register this new interactor to the component by adding an element to the `List` returned by the `getInteractors()` method of the canvas.

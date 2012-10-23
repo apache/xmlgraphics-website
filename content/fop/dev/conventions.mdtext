@@ -3,7 +3,7 @@ Title: Apache&trade; FOP Development: Coding Conventions
 
 Acknowledgement: Some content in this guide was adapted from other Apache&trade; projects such as Avalon, Cactus, Turbine and Velocity.
 
-# Subversion Repository  <a id="#svn"></a>
+# Subversion Repository  <a id="svn"></a>
 
 Conventions in this section apply to Repository content, regardless of type:
 
@@ -14,9 +14,9 @@ Conventions in this section apply to Repository content, regardless of type:
 
 - In order to be able to discern commits from a committer from those where a committer applied a patch from a contributor, the commit message must contain a separate line following this pattern: **"Submitted by: [contributor's name] <[contributor's obfuscated e-mail address]>"** . This also helps doing audits on the repository.
 
-# Java  <a id="#java"></a>
+# Java  <a id="java"></a>
 
-## Java Style # <a id="#java-style"></a>
+## Java Style # <a id="java-style"></a>
 
 In order to facilitate the human reading of FOP source code, reduce churning in code, and prevent disputes, the FOP developers have agreed on a set of coding conventions. The basis of these coding conventions is documented in the [Apache XML Project Guidelines](http://xml.apache.org/source.html) , which requires that **all Java Language source code in the repository must be written in conformance to Sun's**  [Code Conventions for the Java Programming Language](http://java.sun.com/docs/codeconv/html/CodeConvTOC.doc.html) . In addition, the FOP developers have agreed to other conventions, which are summarized in the following table:
 
@@ -35,7 +35,7 @@ In order to facilitate the human reading of FOP source code, reduce churning in 
 
 For developers that dislike these conventions, one workaround is to develop using their own style, then use a formatting tool like [astyle](http://astyle.sourceforge.net/) (Artistic Style) before committing.
 
-## Checkstyle # <a id="#java-checkstyle"></a>
+## Checkstyle # <a id="java-checkstyle"></a>
 
 The java syntax checker "<jump href="http://checkstyle.sourceforge.net">Checkstyle</jump>" is used to enforce many of the FOP coding standards. The standards enforced through Checkstyle are documented in its configuration file (xml-fop/checkstyle.cfg). The conventions defined in the configuration file are an integral part of FOP's coding conventions, and should not be changed without common consent. In other words, the configuration file contains additional conventions that are not documented on this page, but are generally accepted as good style within the java community (i.e. they are the default behavior of checkstyle, which the FOP developers have decided to adopt *de facto* ). Any apparent contradiction between the configuration file and this document should be raised on the fop-dev mailing list so that it can be clarified.
 
@@ -43,7 +43,7 @@ To use the "checkstyle" target in FOP's build process, download the source from 
 
 Checkstyle is probably most useful when integrated into your IDE. See the Checkstyle web site for more information about IDE plugins.
 
-## Java Best Practices # <a id="#java-best-practices"></a>
+## Java Best Practices # <a id="java-best-practices"></a>
 
 The following general principles are a distillation of best practice expectations on the FOP project.
 
@@ -68,21 +68,21 @@ The following general principles are a distillation of best practice expectation
 
 - Try to avoid catching Throwable or Exception and catch specific exceptions instead.
 
-## Resources # <a id="#java-resources"></a>
+## Resources # <a id="java-resources"></a>
 
 
 - [book on code style] Code Complete by Steve McConnell.
 
 - [code formatting software]<jump href="http://jrefactory.sourceforge.net">JRefactory</jump>.
 
-## Related Links # <a id="#java-links"></a>
+## Related Links # <a id="java-links"></a>
 
 
 - <jump href="http://xmlgraphics.apache.org/repo.html">Apache XML Graphics Code Repositories</jump>
 
 - <jump href="http://jakarta.apache.org/site/faqs.html#Coding%20Conventions%20and%20Standards">Jakarta Code Conventions and Standards</jump>(see Coding Conventions and Standards section)
 
-# XML  <a id="#xml"></a>
+# XML  <a id="xml"></a>
 
 | Convention | Rationale | Enforced By |
 |------------|-----------|-------------|

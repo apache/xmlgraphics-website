@@ -1,11 +1,11 @@
 Title: Apache&trade; FOP: Servlets
 <subtitle>How to use Apache� FOP in a Servlet</subtitle><version>$Revision: 1298724 $</version>
 
-# Overview  <a id="#overview"></a>
+# Overview  <a id="overview"></a>
 
 This page discusses topic all around using Apache&trade; FOP in a servlet environment.
 
-# Example Servlets in the FOP distribution  <a id="#example-servlets"></a>
+# Example Servlets in the FOP distribution  <a id="example-servlets"></a>
 
 In the directory {fop-dir}/src/java/org/apache/fop/servlet, you'll find a working example of a FOP-enabled servlet.
 
@@ -20,9 +20,9 @@ The servlet is automatically built when you build Apache FOP using the supplied 
 
 The source code for the servlet can be found under {fop-dir}/src/java/org/apache/fop/servlet/FopServlet.java.
 This example servlet should not be used on a public web server connected to the Internet as it does not contain any measures to prevent Denial-of-Service-Attacks. It is provided as an example and as a starting point for your own servlet.
-# Create your own Servlet  <a id="#servlet"></a>
+# Create your own Servlet  <a id="servlet"></a>
 This section assumes you are familiar with [embedding FOP](embedding.html) .
-## A minimal Servlet # <a id="#minimal-servlet"></a>
+## A minimal Servlet # <a id="minimal-servlet"></a>
 
 Here is a minimal code snippet to demonstrate the basics:
 private FopFactory fopFactory = FopFactory.newInstance();
@@ -41,7 +41,7 @@ public void doGet(HttpServletRequest request,
         throw new ServletException(ex);
     }
 }There are numerous problems with the code snippet above. Its purpose is only to demonstrate the basic concepts. See below for details.
-## Adding XSL tranformation (XSLT) # <a id="#xslt"></a>
+## Adding XSL tranformation (XSLT) # <a id="xslt"></a>
 
 A common requirement is to transform an XML source to XSL-FO using an XSL transformation. It is recommended to use JAXP for this task. The following snippet shows the basic code:
 private FopFactory fopFactory = FopFactory.newInstance();
@@ -84,11 +84,11 @@ The `Source` instance used above is simply an example. If you have to read the X
 
 Because you have an explicit `Transformer` object, you can also use it to explicitely set parameters for the transformation run.
 
-## Custom configuration # <a id="#cfg"></a>
+## Custom configuration # <a id="cfg"></a>
 
 You can easily set up your own FOUserAgent as demonstrated on the [Embedding page](embedding.html) .
 
-## Improving performance # <a id="#performance"></a>
+## Improving performance # <a id="performance"></a>
 
 There are several options to consider:
 
@@ -99,7 +99,7 @@ There are several options to consider:
 
 Of course, the [performance hints from the Embedding page](embedding.html#performance) apply here, too.
 
-## Accessing resources in your web application # <a id="#uriresolver"></a>
+## Accessing resources in your web application # <a id="uriresolver"></a>
 
 Often, you will want to use resources (stylesheets, images etc.) which are bundled with your web application. FOP provides a URIResolver implementation that lets you access files via the Servlet's ServletContext. The class is called `org.apache.fop.servlet.ServletContextURIResolver` .
 
@@ -142,7 +142,7 @@ Source xsltSrc = this.uriResolver.resolve(
     "servlet-context:/xslt/mystylesheet.xsl", null);
 Transformer transformer = this.transFactory.newTransformer(xsltSrc);
 transformer.setURIResolver(this.uriResolver);
-# Notes on Microsoft Internet Explorer  <a id="#ie"></a>
+# Notes on Microsoft Internet Explorer  <a id="ie"></a>
 
 Some versions of Internet Explorer will not automatically show the PDF or call the servlet multiple times. These are well-known limitations of Internet Explorer and are not a problem of the servlet. However, Internet Explorer can still be used to download the PDF so that it can be viewed later. Here are some suggestions in this context:
 
@@ -155,18 +155,18 @@ Some versions of Internet Explorer will not automatically show the PDF or call t
 
 - Cache in the server. It may help to include a parameter in the URL which has a timestamp as the value min order to decide whether a request is repeated. IEx is reported to retrieve a document up to three times, but never more often.
 
-# Servlet Engines  <a id="#servlet-engine"></a>
+# Servlet Engines  <a id="servlet-engine"></a>
 
 When using a servlet engine, there are potential CLASSPATH issues, and potential conflicts with existing XML/XSLT libraries. Servlet containers also often use their own classloaders for loading webapps, which can cause bugs and security problems.
 
-## Tomcat # <a id="#tomcat"></a>
+## Tomcat # <a id="tomcat"></a>
 
 Check Tomcat's documentation for detailed instructions about installing FOP and Cocoon. There are known bugs that must be addressed, particularly for Tomcat 4.0.3.
 
-## WebSphere 3.5 # <a id="#websphere"></a>
+## WebSphere 3.5 # <a id="websphere"></a>
 
 Put a copy of a working parser in some directory where WebSphere can access it. For example, if /usr/webapps/yourapp/servlets is the CLASSPATH for your servlets, copy the Xerces jar into it (any other directory would also be fine). Do not add the jar to the servlet CLASSPATH, but add it to the CLASSPATH of the application server which contains your web application. In the WebSphere administration console, click on the "environment" button in the "general" tab. In the "variable name" box, enter "CLASSPATH". In the "value" box, enter the correct path to the parser jar file (/usr/webapps/yourapp/servlets/Xerces.jar in our example here). Press "OK", then apply the change and restart the application server.
 
-# Handling complex use cases  <a id="#complex-usecases"></a>
+# Handling complex use cases  <a id="complex-usecases"></a>
 
 Sometimes the requirements for a servlet get quite sophisticated: SQL data sources, multiple XSL transformations, merging of several datasources etc. In such a case consider using [Apache Cocoon](http://cocoon.apache.org/) instead of a custom servlet to accomplish your goal.

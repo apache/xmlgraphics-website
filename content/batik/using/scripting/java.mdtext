@@ -3,7 +3,7 @@ Title: Scripting With Java
 
 This page explains how to manipulate the DOM tree of an SVG document from a Java program.
 
-# How to manipulate a document in a JSVGCanvas  <a id="#Swing"></a>
+# How to manipulate a document in a JSVGCanvas  <a id="Swing"></a>
 
 The follow code template demonstrates how to manipulate an SVG document displayed in a [JSVGCanvas](../../javadoc/org/apache/batik/swing/JSVGCanvas.html) directly from a Java program.
 You don’t have to worry about graphics updates; after each event listener invocation the canvas is updated if needed.import java.awt.event.WindowAdapter;
@@ -116,7 +116,7 @@ public class SVGApplication {
     }
 }
 
-# Writing thread-safe code  <a id="#Threads"></a>
+# Writing thread-safe code  <a id="Threads"></a>
 
 The DOM listeners registered on the SVG document are called from the canvas update thread. To avoid race conditions, do not manipulate the DOM tree from another thread.
 
@@ -138,7 +138,7 @@ canvas.getUpdateManager().getUpdateRunnableQueue().
     });
 Like with event listeners, when a [Runnable](http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.html) is invoked from the update thread, the graphics are updated.
 It is very dangerous to call `invokeAndWait` from the Swing event thread. This is the only thread that can be used to interact with Swing components. In some cases DOM calls may need to query the canvas for information (such as actual Swing component size, etc). If this happens you will get a thread deadlock. You should only make invokeAndWait calls from “third party” threads.
-# Using the SVG DOM  <a id="#SVGDOM"></a>
+# Using the SVG DOM  <a id="SVGDOM"></a>
 
 Batik provides a fairly complete implementation of the SVG DOM. The SVG DOM provides all the functionality most applications require. In particular, the DOM implements DOM Events, including mutation and UI Events. As an example, DOM events allow you to get notified when the cursor moves over elements of interest:
 // Element of Interest.
@@ -163,7 +163,7 @@ SVGPoint  cPt  = document.getRootElement().createSVGPoint();
 cPt.setX(uiEvt.getClientX());
 cPt.setY(uiEvt.getClientY());
 cPt = cPt.matrixTransform(imat);
-# Referencing Java code from a document  <a id="#javaInDocument"></a>
+# Referencing Java code from a document  <a id="javaInDocument"></a>
 
 Batik implements the Java bindings for SVG, and thus allows Java code to be referenced from `script` elements. This feature is available to any application of Batik that uses the bridge module (for example the Swing component and the transcoders).
 

@@ -3,7 +3,7 @@ Title: Parser module
 
 SVG has a number of microsyntaxes that are used within attribute values, such as the `transform` attribute on `SVGTransformable` elements, and the path data `d` attribute on `path` elements. Since these are not trivial to parse, this functionality has been factored out into a separate package that can be used by other SVG-processing applications if needed.
 
-# Parsers, handlers and producers  <a id="#parsersHandlersAndProducers"></a>
+# Parsers, handlers and producers  <a id="parsersHandlersAndProducers"></a>
 
 In the parser module, each microsyntax is supported by a pair of classes: a parser and a handler. The parser is a class that implements the [Parser](../javadoc/org/apache/batik/parser/Parser.html) interface, which has methods to parse values from a [Reader](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Reader.html) or a [String](http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html) . The handler is an interface specific to the microsyntax that will have its methods called whenever the corresponding element in the input is parsed. For those handler interfaces that have more than one method, adapter classes are provided (named `Default` *).
 
@@ -69,7 +69,7 @@ Implemented by [TransformListParser](../javadoc/org/apache/batik/parser/Transfor
 
 Some microsyntaxes also have a corresponding producer class, which is an implementation of the handler interface that generates an object while parsing.
 
-# Examples  <a id="#examples"></a>
+# Examples  <a id="examples"></a>
 
 The following example code demonstrates how to use the parser classes to parse a list of points:
 import java.awt.geom.Point2D;

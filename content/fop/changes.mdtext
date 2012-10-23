@@ -3,13 +3,13 @@ Title: History of Changes
 
  [](changes.rss) 
 
-# Introduction and explanation of symbols  <a id="#introduction"></a>
+# Introduction and explanation of symbols  <a id="introduction"></a>
 
 Changes are sorted by "type" and then chronologically with the most recent at the top. These symbols denote the various action types:<icon alt="add" src="images/add.jpg"></icon>=add,<icon alt="fix" src="images/fix.jpg"></icon>=fix,<icon alt="remove" src="images/remove.jpg"></icon>=remove,<icon alt="update" src="images/update.jpg"></icon>=update
 
-# Version FOP Trunk (TBD)  <a id="#version_FOP Trunk"></a>
+# Version FOP Trunk (TBD)  <a id="version_FOP Trunk"></a>
 
-## Changes to the Code Base # <a id="#Code_FOP Trunk"></a>
+## Changes to the Code Base # <a id="Code_FOP Trunk"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>A global setting to wrap F11 images in page segments. Committed by PH. See Issue [49893](http://issues.apache.org/bugzilla/show_bug.cgi?id=49893) .
@@ -118,12 +118,12 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - <icon alt="update" src="images/update.jpg"></icon>Add run target for embedded examples. Add increased JVM memory heap flag for example8 in case font cache is rebuilt. Committed by GA. See Issue [51617](http://issues.apache.org/bugzilla/show_bug.cgi?id=51617) .
 
-## Changes to the User Configuration # <a id="#Config_FOP Trunk"></a>
+## Changes to the User Configuration # <a id="Config_FOP Trunk"></a>
 
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Bugfix: relative URIs in the configuration file (base, font-base, hyphenation-base) are evaluated relative to the base URI of the configuration file. Committed by SP.
 
-## Changes to the Font Subsystem # <a id="#Fonts_FOP Trunk"></a>
+## Changes to the Font Subsystem # <a id="Fonts_FOP Trunk"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Add support for OpenType advanced typographic tables (GDEF, GSUB, GPOS). Committed by GA.
@@ -150,7 +150,7 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Reinstated support for being able to specify a font cache filepath in the fop user configuration. Committed by AC.
 
-## Changes to the Layout Engine # <a id="#Layout_FOP Trunk"></a>
+## Changes to the Layout Engine # <a id="Layout_FOP Trunk"></a>
 
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Bugzilla 50965: Fixed a regression in BlockContainerLayoutManager where margins were no longer reset after forced breaks. Committed by AD. Thanks to Martin Koegler. See Issue [50965](http://issues.apache.org/bugzilla/show_bug.cgi?id=50965) .
@@ -175,7 +175,7 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Fixed retrieval of available BPD for cases spanning columns and multiple pages with differing page masters. Committed by JM. See Issue [49885](http://issues.apache.org/bugzilla/show_bug.cgi?id=49885) .
 
-## Changes to Renderers (Output Formats) # <a id="#Renderers_FOP Trunk"></a>
+## Changes to Renderers (Output Formats) # <a id="Renderers_FOP Trunk"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Various bugfixes to make PDFDocumentGraphics2D operational again. Committed by JM.
@@ -244,7 +244,7 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - <icon alt="remove" src="images/remove.jpg"></icon>Removed old Renderer implementations for those output formats that have a version based on the new DocumentHandler architecture available (AFP, PCL, PDF, PS). Committed by VH.
 
-## Contributors to this release # <a id="#contributors_FOP Trunk"></a>
+## Contributors to this release # <a id="contributors_FOP Trunk"></a>
 
 We thank the following people for their contributions to this release.
 
@@ -252,14 +252,14 @@ This is a list of all people who participated as committers:<br></br>Adrian Cumi
 
 This is a list of other contributors:<br></br>Adrian Buza, Alberto Simões, Alexandros Papadakis, Alexios Giotis, Alexis Giotis, Andrejus Chaliapinas, Armin Haaf, Carsten Pfeiffer, Georg Datterl, Glenn Adams, JM, Mehdi Houshmand, Joshua Marquart, Julien Aymé, Luis Bernardo, Martin Koegler, Matthias Reischenbacher, Max Aster, Maximilian Aster, Mehdi Houshmand, Melanie Drake, mkoegler.AT.auto.tuwien.ac.at, Pascal Sancho, Patrick Jaromin, Paul Huemer, Peter Hancock, Sergey Vladimirov, Simon Pepping, VH and PH.
 
-# Version 1.0 (21 July 2010)  <a id="#version_1.0"></a>
+# Version 1.0 (21 July 2010)  <a id="version_1.0"></a>
 
-## Changes to the End-User API # <a id="#API_1.0"></a>
+## Changes to the End-User API # <a id="API_1.0"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Added a command-line option '-catalog' to use a catalog resolver for the XML and XSLT files Committed by SP.
 
-## Changes to the Code Base # <a id="#Code_1.0"></a>
+## Changes to the Code Base # <a id="Code_1.0"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Added support for xmlfile and xsltfile parameters in FOP's Ant Task. Committed by AC.
@@ -305,12 +305,12 @@ Committed by AD. Thanks to rogov.AT.devexperts.com. See Issue [46211](http://iss
 
 - <icon alt="update" src="images/update.jpg"></icon>Changed FONode.addCharacters() parameter to closer match the signature of the standard SAX characters() event (reduces confusion and computations). *!! Implementors of extensions that subclass FONode directly, and offer an implementation for addCharacters() should take care to make similar modifications in their code !!* Committed by AD.
 
-## Changes to the Bundled Extensions # <a id="#Extensions_1.0"></a>
+## Changes to the Bundled Extensions # <a id="Extensions_1.0"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Added support for the #CMYK pseudo-profile supported by some commercial XSL implementations on the rgb-icc() function. Committed by JM.
 
-## Changes to the Font Subsystem # <a id="#Fonts_1.0"></a>
+## Changes to the Font Subsystem # <a id="Fonts_1.0"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Added support for TrueType fonts with symbol character maps (like "Wingdings" and "Symbol"). Character for these fonts are usually found in the 0xF020 to 0xF0FF range (a Unicode private use area). Committed by JM.
@@ -347,7 +347,7 @@ Committed by AD. Thanks to rogov.AT.devexperts.com. See Issue [46211](http://iss
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Fix for PFMReader after bug #43089 changed the behavior of PFMFile. Fixes baseline problems when Type 1 fonts are used in conjunction with XML font metric files. Committed by JM. Thanks to J. Frantzius. See Issue [45734](http://issues.apache.org/bugzilla/show_bug.cgi?id=45734) .
 
-## Changes to the Image Support # <a id="#Images_1.0"></a>
+## Changes to the Image Support # <a id="Images_1.0"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Added customization ability for the image loading framework from FOP's configuration file. Committed by JM.
@@ -356,7 +356,7 @@ Committed by AD. Thanks to rogov.AT.devexperts.com. See Issue [46211](http://iss
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Bugfix: use the effective color profile supplied by the ImageEncodingHelper, instead of the original one. Committed by JM.
 
-## Changes to the Layout Engine # <a id="#Layout_1.0"></a>
+## Changes to the Layout Engine # <a id="Layout_1.0"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Implement internal character classes if the hyphenation pattern file does not contain them Committed by SP.
@@ -421,7 +421,7 @@ Committed by AD. Thanks to rogov.AT.devexperts.com. See Issue [46211](http://iss
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Activated min-height/max-height and min-width/max-width properties. Committed by AD. See Issue [43591](http://issues.apache.org/bugzilla/show_bug.cgi?id=43591) .
 
-## Changes to Renderers (Output Formats) # <a id="#Renderers_1.0"></a>
+## Changes to Renderers (Output Formats) # <a id="Renderers_1.0"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>AFP Output: Added enhanced dithering functionality for images that are converted to bi-level images. Committed by JM.
@@ -557,7 +557,7 @@ Committed by AD.
 
 - <icon alt="update" src="images/update.jpg"></icon>When a JPEG image is embedded, an optionally embedded color profile is filtered out as it's already embedded separately in the PDF file. Committed by JM.
 
-## Contributors to this release # <a id="#contributors_1.0"></a>
+## Contributors to this release # <a id="contributors_1.0"></a>
 
 We thank the following people for their contributions to this release.
 
@@ -565,33 +565,33 @@ This is a list of all people who participated as committers:<br></br>Adrian Cumi
 
 This is a list of other contributors:<br></br>Alexander Stamenov, Alok Singh, Antti Karanta, Bharat Attaluri, Carsten Siedentop, D.W. Harks, Dario Laera, Emil Maskovsky, Francois Fernandes, Georg Datterl, Harald G. Henne, J. Frantzius, Jason Harrop, Jonathan Levinson, Jost Klopfstein, Martin Edge, Maxim Wirt, Nicolas Peninguy, Pavel Kysilka, Peter Coppens, Peter Hancock, Richard Wheeldon, rogov.AT.devexperts.com, Thomas Stieler, Tow Browder, Venkat Reddy, Yegor Kozlov.
 
-# Version 0.95 (05 August 2008)  <a id="#version_0.95"></a>
+# Version 0.95 (05 August 2008)  <a id="version_0.95"></a>
 
-## Changes to the End-User API # <a id="#API_0.95"></a>
+## Changes to the End-User API # <a id="API_0.95"></a>
 
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Fixed the -imagein command-line option. Committed by JM.
 
-## Changes to the Code Base # <a id="#Code_0.95"></a>
+## Changes to the Code Base # <a id="Code_0.95"></a>
 
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Fixed potential multi-threading problem concerning the use of DecimalFormat. Committed by JM. See Issue [44887](http://issues.apache.org/bugzilla/show_bug.cgi?id=44887) .
 
-## Changes to the Font Subsystem # <a id="#Fonts_0.95"></a>
+## Changes to the Font Subsystem # <a id="Fonts_0.95"></a>
 
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Fixed text extraction problem with ZapfDingbats and Symbol font in PDF output. Committed by JM.
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Fixed NullPointerException when loading a TrueType font using XML font metric files. Committed by JM.
 
-## Changes to the Image Support # <a id="#Images_0.95"></a>
+## Changes to the Image Support # <a id="Images_0.95"></a>
 
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Fixed two bugs concerning resolution handling with SVG images and their conversion to bitmaps for RTF output. Committed by JM.
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Fixed a performance problem concerning image serialization. Committed by JM.
 
-## Changes to the Layout Engine # <a id="#Layout_0.95"></a>
+## Changes to the Layout Engine # <a id="Layout_0.95"></a>
 
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Fixed NullPointerException when page-number-citations are used inside a marker. Committed by AD. See Issue [45295](http://issues.apache.org/bugzilla/show_bug.cgi?id=45295) .
@@ -600,7 +600,7 @@ This is a list of other contributors:<br></br>Alexander Stamenov, Alok Singh, An
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Various bugfixes for table layout. Committed by VH. See Issue [44621](http://issues.apache.org/bugzilla/show_bug.cgi?id=44621) .
 
-## Changes to Renderers (Output Formats) # <a id="#Renderers_0.95"></a>
+## Changes to Renderers (Output Formats) # <a id="Renderers_0.95"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Added support for fo:leader for RTF output (no full support!). Fixes problems with empty leaders being used to force empty lines among other issues. Committed by JM. Thanks to Maximilian Aster. See Issue [43825](http://issues.apache.org/bugzilla/show_bug.cgi?id=43825) .
@@ -623,7 +623,7 @@ This is a list of other contributors:<br></br>Alexander Stamenov, Alok Singh, An
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Fixed regression causing bad positioning of block-containers if used as descendant of a table-cell. Committed by JM.
 
-## Contributors to this release # <a id="#contributors_0.95"></a>
+## Contributors to this release # <a id="contributors_0.95"></a>
 
 We thank the following people for their contributions to this release.
 
@@ -631,14 +631,14 @@ This is a list of all people who participated as committers:<br></br>Andreas Del
 
 This is a list of other contributors:<br></br>Maximilian Aster.
 
-# Version 0.95beta (26 March 2008)  <a id="#version_0.95beta"></a>
+# Version 0.95beta (26 March 2008)  <a id="version_0.95beta"></a>
 
-## Changes to the End-User API # <a id="#API_0.95beta"></a>
+## Changes to the End-User API # <a id="API_0.95beta"></a>
 
 
 - <icon alt="remove" src="images/remove.jpg"></icon>Removed deprecated methods in the "apps" package that were left-overs from the API discussions. Committed by JM.
 
-## Changes to the Code Base # <a id="#Code_0.95beta"></a>
+## Changes to the Code Base # <a id="Code_0.95beta"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Turned on XInclude processing for the main source given on the command line. Committed by MB.
@@ -659,14 +659,14 @@ This is a list of other contributors:<br></br>Maximilian Aster.
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Avoid a NullPointerException in AreaTreeHandler.endDocument(). Committed by JM. Thanks to David Delbecq. See Issue [43910](http://issues.apache.org/bugzilla/show_bug.cgi?id=43910) .
 
-## Changes to the Bundled Extensions # <a id="#Extensions_0.95beta"></a>
+## Changes to the Bundled Extensions # <a id="Extensions_0.95beta"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>New extension attribute fox:transform on fo:block-container allows free-form transformation (rotation, scaling etc.) of absolute and fixed block-containers. Supported only for PDF, PS and Java2D-based renderers. Committed by JM.
 
 - <icon alt="add" src="images/add.jpg"></icon>Added new extension element: fox:external-document. It allows to add whole documents such as multi-page TIFF images to be inserted as peers to a page-sequence. Each image will make up an entire page. See the documentation for details. Committed by JM.
 
-## Changes to the Font Subsystem # <a id="#Fonts_0.95beta"></a>
+## Changes to the Font Subsystem # <a id="Fonts_0.95beta"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Added support for unusual font encodings (like for Symbol or Cyrillic fonts) of Type 1 fonts in PDF and PostScript output. Committed by JM.
@@ -689,12 +689,12 @@ This is a list of other contributors:<br></br>Maximilian Aster.
 
 - <icon alt="update" src="images/update.jpg"></icon>Improved font auto-detection and handling of AWT-supplied fonts in order to achieve better results when using multiple output formats. Whenever possible, the font names appearing in the operating system can also be used in XSL-FO. Committed by JM.
 
-## Changes to the Image Support # <a id="#Images_0.95beta"></a>
+## Changes to the Image Support # <a id="Images_0.95beta"></a>
 
 
 - <icon alt="fix" src="images/fix.jpg"></icon>A new image loading framework has been introduced to fix various problems with external graphics and improve performance. Committed by JM.
 
-## Changes to the Layout Engine # <a id="#Layout_0.95beta"></a>
+## Changes to the Layout Engine # <a id="Layout_0.95beta"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Added support for background on fo:table-column and fo:table-header/footer/body elements. Committed by VH.
@@ -773,7 +773,7 @@ This is a list of other contributors:<br></br>Maximilian Aster.
 
 - <icon alt="update" src="images/update.jpg"></icon>PropertyCache phase 2:<br></br>• improvement of the PropertyCache itself should now guarantee acceptable performance of the static caches in multi-session environments, which is a possible problem with synchronizedMap.<br></br>• changed CommonFont to use the cache: added CachedCommonFont to contain the properties that are always cacheable CommonFont itself is only cached if the remaining properties are absolutes.<br></br>• changed CommonHyphenation, KeepProperty, ColorProperty and FontFamilyProperty to use the cache.<br></br>Committed by AD.
 
-## Changes to Renderers (Output Formats) # <a id="#Renderers_0.95beta"></a>
+## Changes to Renderers (Output Formats) # <a id="Renderers_0.95beta"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Added an option to disable the default sRGB profile in PDF output for those who don't care about color fidelity, but care about PDF file size. Committed by JM.
@@ -814,7 +814,7 @@ This is a list of other contributors:<br></br>Maximilian Aster.
 
 - <icon alt="update" src="images/update.jpg"></icon>PDF Transcoder (SVG) text painting has been completely rewritten. Except for some special cases (with filters for example), all text (including flow text) is now painted using PDF text operators. Committed by JM.
 
-## Contributors to this release # <a id="#contributors_0.95beta"></a>
+## Contributors to this release # <a id="contributors_0.95beta"></a>
 
 We thank the following people for their contributions to this release.
 
@@ -822,9 +822,9 @@ This is a list of all people who participated as committers:<br></br>Adrian Cumi
 
 This is a list of other contributors:<br></br>Adrian Cumiskey, Andrejus Chaliapinas, Bruno Feurer, ckohrn.at.tng.de, David Churavy, David Delbecq, Gordon Cooke, Justus Piater, Max Berger, Patrick Jaromin, Stefan Ziel, V. Schappert.
 
-# Version 0.94 (24th August 2007)  <a id="#version_0.94"></a>
+# Version 0.94 (24th August 2007)  <a id="version_0.94"></a>
 
-## Changes to the Code Base # <a id="#Code_0.94"></a>
+## Changes to the Code Base # <a id="Code_0.94"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Support for keep-together.within-line="always". Committed by MM.
@@ -907,7 +907,7 @@ This is a list of other contributors:<br></br>Adrian Cumiskey, Andrejus Chaliapi
 
 - <icon alt="update" src="images/update.jpg"></icon>Use source resolution setting for bitmap images which don't provide their own resolution. Committed by JM. Thanks to Hussein Shafie. See Issue [42406](http://issues.apache.org/bugzilla/show_bug.cgi?id=42406) .
 
-## Contributors to this release # <a id="#contributors_0.94"></a>
+## Contributors to this release # <a id="contributors_0.94"></a>
 
 We thank the following people for their contributions to this release.
 
@@ -915,9 +915,9 @@ This is a list of all people who participated as committers:<br></br>Andreas Del
 
 This is a list of other contributors:<br></br>Adrian Cumiskey, Erwin Tratar, Hussein Shafie, Martin Kögler, Max Berger, Paul Vinkenoog, Richard Wheeldon.
 
-# Version 0.93 (9 January 2007)  <a id="#version_0.93"></a>
+# Version 0.93 (9 January 2007)  <a id="version_0.93"></a>
 
-## Changes to the Code Base # <a id="#Code_0.93"></a>
+## Changes to the Code Base # <a id="Code_0.93"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Added support for the use of Open Type fonts Committed by BD.
@@ -1038,7 +1038,7 @@ This is a list of other contributors:<br></br>Adrian Cumiskey, Erwin Tratar, Hus
 
 - <icon alt="update" src="images/update.jpg"></icon>Content in block-containers makes better use of shrink to fit content vertically into the available area. This can be used indirectly to justify content vertically in a block-container. Committed by JM.
 
-## Contributors to this release # <a id="#contributors_0.93"></a>
+## Contributors to this release # <a id="contributors_0.93"></a>
 
 We thank the following people for their contributions to this release.
 
@@ -1046,9 +1046,9 @@ This is a list of all people who participated as committers:<br></br>Andreas Del
 
 This is a list of other contributors:<br></br>Adam Strzelecki, Victor Mote, Dominic Brügger, Gary Reed, Gerhard Oettl, Gilles Beaugeais, Igor Istomin, Jeroen Meijer, Julien Aymé, Max Berger, Oliver Hernàndez Valls, Peter Coppens, Pierre-Henri Kraus, Richard Wheeldon.
 
-# Version 0.92beta (18 Apr 2006)  <a id="#version_0.92beta"></a>
+# Version 0.92beta (18 Apr 2006)  <a id="version_0.92beta"></a>
 
-## Changes to the Code Base # <a id="#Code_0.92beta"></a>
+## Changes to the Code Base # <a id="Code_0.92beta"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Initial support for page-position="last" added. Committed by JM.
@@ -1153,7 +1153,7 @@ This is a list of other contributors:<br></br>Adam Strzelecki, Victor Mote, Domi
 
 - <icon alt="update" src="images/update.jpg"></icon>Revision of refinement white-space handling. Committed by AD.
 
-## Contributors to this release # <a id="#contributors_0.92beta"></a>
+## Contributors to this release # <a id="contributors_0.92beta"></a>
 
 We thank the following people for their contributions to this release.
 
@@ -1161,9 +1161,9 @@ This is a list of all people who participated as committers:<br></br>Andreas Del
 
 This is a list of other contributors:<br></br>Gerhard Oettl, Gerhard Oettl (gerhard.oettl.at.oesoft.at), Jirí Mareš, Max Berger, Richard Wheeldon.
 
-# Version 0.91beta (23 Dec 2005)  <a id="#version_0.91beta"></a>
+# Version 0.91beta (23 Dec 2005)  <a id="version_0.91beta"></a>
 
-## Changes to the Code Base # <a id="#Code_0.91beta"></a>
+## Changes to the Code Base # <a id="Code_0.91beta"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Added checks that warn about tables and block-containers that are wider than the available content area. Committed by JM.
@@ -1238,7 +1238,7 @@ This is a list of other contributors:<br></br>Gerhard Oettl, Gerhard Oettl (gerh
 
 - <icon alt="update" src="images/update.jpg"></icon>Improvements on leader painting in PDF output. Committed by JM.
 
-## Contributors to this release # <a id="#contributors_0.91beta"></a>
+## Contributors to this release # <a id="contributors_0.91beta"></a>
 
 We thank the following people for their contributions to this release.
 
@@ -1246,33 +1246,33 @@ This is a list of all people who participated as committers:<br></br>Jeremias M�
 
 This is a list of other contributors:<br></br>Tom Craddock.
 
-# Version 0.90alpha1 (22 Nov 2005)  <a id="#version_0.90alpha1"></a>
+# Version 0.90alpha1 (22 Nov 2005)  <a id="version_0.90alpha1"></a>
 
-## Changes to the Code Base # <a id="#Code_0.90alpha1"></a>
+## Changes to the Code Base # <a id="Code_0.90alpha1"></a>
 
 
 - <icon alt="update" src="images/update.jpg"></icon> **Complete redesign of the FOP codebase** in the period between Dec 2001 and Nov 2005. There are just too many changes to list here. If you like to know details, run `"svn log --verbose http://svn.apache.org/repos/asf/xmlgraphics/fop/trunk/"` . Committed by all.
 
-## Contributors to this release # <a id="#contributors_0.90alpha1"></a>
+## Contributors to this release # <a id="contributors_0.90alpha1"></a>
 
 We thank the following people for their contributions to this release.
 
 This is a list of all people who participated as committers:<br></br>the FOP committers (all).
 
-# Version 0.20.5 (18 July 2003)  <a id="#version_0.20.5"></a>
+# Version 0.20.5 (18 July 2003)  <a id="version_0.20.5"></a>
 
-## Changes to the Code Base # <a id="#Code_0.20.5"></a>
+## Changes to the Code Base # <a id="Code_0.20.5"></a>
 
 
 - <icon alt="update" src="images/update.jpg"></icon>For the change log for the maintenance branch (where FOP 0.20.5 came from), please see the "CHANGES" file in the distribution, or [the CHANGES file in the SVN repository](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/branches/fop-0_20_2-maintain/CHANGES?view=markup) . Committed by all.
 
-## Contributors to this release # <a id="#contributors_0.20.5"></a>
+## Contributors to this release # <a id="contributors_0.20.5"></a>
 
 We thank the following people for their contributions to this release.
 
 This is a list of all people who participated as committers:<br></br>the FOP committers (all).
 
-# All Committers  <a id="#all-committers"></a>
+# All Committers  <a id="all-committers"></a>
 
 This is a list of all people who have ever participated as committers on this project.
 

@@ -1,21 +1,21 @@
 Title: Apache&trade; FOP Design: Layout Managers
 <subtitle>Break Possibility Proposal</subtitle><version>$Revision: 1298724 $</version><authors><person email="klease@club-internet.fr" name="Karen Lease"></person></authors>
 
-# Introduction  <a id="#intro"></a>
+# Introduction  <a id="intro"></a>
 
 As explained in [Layout](layout.html) , the hierarchy of Layout Managers is responsible for building and placing areas. Each Layout Manager is responsible for creating and filling areas of a particular type, either inline or block. This document explains one potential algorithm for this process. It is based on the the generation of *break possibilities* (BP for short). The Layout Managers (LM for short), will generate one or more BP and choose the best one. The BP is then used to generate the corresponding areas.
 
-# Anatomy of a Break Possibility  <a id="#Anatomy+of+a+Break+Possibility"></a>
+# Anatomy of a Break Possibility  <a id="Anatomy+of+a+Break+Possibility"></a>
 
 A break possibility is represented by the BreakPoss class. A BreakPoss contains size information in the stacking direction and in the non-stacking direction (at least for inline areas, it must have both). Flags indicating various conditions (ISFIRST, ISLAST, CAN_BREAK_AFTER, FORCE_BREAK_AFTER, ANCHORS etc). A BreakPoss contains a reference to the top-level LayoutManager which generated it.
 
 A BreakPoss contains an object implementing the BreakPoss.Position interface. This object is specific to the layout manager which created the BreakPoss. It should indicate where the break occurs and allow the LM to create an area corresponding to the BP. A higher level LM Position must somehow reference or wrap the Position returned by its child LM in its BreakPoss object. The layout manager modifies the flags and dimension information in the BP to reflect its own requirements. For example an inline FO layout manager might add space-start, space-end, border and padding values to the stacking or non-stacking dimensions. It might also modify the flags based its on keep properties.
 
-# Turning Break Possibilities into Areas  <a id="#Turning+Break+Possibilities+into+Areas"></a>
+# Turning Break Possibilities into Areas  <a id="Turning+Break+Possibilities+into+Areas"></a>
 
 Once break possibilities have been generated, the galley-level layout manager selects the best one and passes it back to the LayoutManager which generated it to create the area. A LayoutManager is responsible for storing enough information in its Position objects to be able to create the corresponding areas.
 
-# A walk-through  <a id="#A+walk-through"></a>
+# A walk-through  <a id="A+walk-through"></a>
 
 Layout Managers are created from the top down. First the page sequence creates a PageLM and a FlowLM. The PageLM will manage finding the right page model (with help from the PageSequenceMaster) and managing the balancing act between before-floats, footnotes and the normal text flow. The FlowLM will manage the normal content in the main flow. We can think of it as a *galley* manager.
 
@@ -45,15 +45,15 @@ The FlowLM sees if the returned stacking dimension will still fit in its availab
 
 If the returned BP has any new before-float or footnote anchors in it (ANCHOR flag in the BP), the FlowLM will also return to the PageLM. The PageLM must then try to find space to place the floats, possibly asking the FlowLM for help if the body contains multiple columns.
 
-# Some issues  <a id="#Some+issues"></a>
+# Some issues  <a id="Some+issues"></a>
 
 Following are a few remarks on specific issues.
 
-## Where Line Layout Managers are created # <a id="#Where+Line+Layout+Managers+are+created"></a>
+## Where Line Layout Managers are created # <a id="Where+Line+Layout+Managers+are+created"></a>
 
 If the first child FO in a block FO is an inline-level FO such as text, the block LM creates an intermediate level LineLM to layout the sequence of inline content into Lines. Note that the whole sequence of inline FOs is managed by a single instance of LineLM. The LineLM becomes the parent to the various inline-level LM created by each individual inline FO. Since an fo:block can have both block and inline content, its LM may create a sequence of intermixed BlockLM and LineLM.
 
-## Getting the reference IPD # <a id="#getRefIPD"></a>
+## Getting the reference IPD # <a id="getRefIPD"></a>
 
 When the layout process starts, with the FlowLM asking its first child LM for a break possibility, the IPD isn't known, since we don't know whether the first FO might be spanning, or on which page it might start. (Of course, if all page masters in the sequence have the same region-body IPD and all have only a single column, the IPD will never change and could already be calculated before starting layout.) The FlowLM gets its first child LM and calls its getNextBreakPoss method. That is a child LM for some block-level FO. For now, suppose it's an fo:block. The BlockLM will create its first child LM, which may be another block-level LM in the case of nested blocks or a LineLM as explained above. (Question: do we need a START flag for layout status?)
 
@@ -61,11 +61,11 @@ We keep calling getNextBreakPoss on lower level layout managers until we get dow
 
 Using this information, the BlockLM parent can now calculate the available IPD for its LineLM child, based on its indents. (If there are any side-floats information about the intrusion must be passed down by the FlowLM to lower level managers.) The LineLM can now generate a series of BreakPoss objects, which it passes back to its parent LM.
 
-## Hyphenation # <a id="#Hyphenation"></a>
+## Hyphenation # <a id="Hyphenation"></a>
 
 The LineLM is responsible for initiating hyphenation if it is allowed by the properties and if no satisfactory BP can be found without hyphenating. The hyphenation manager is passed two break possibilities, one whose IPD is less than the desired line area IPD and one whose IPD is greater. These break possibilities might have been generated by different inline-level layout managers (text + a wrapper with a color change for example), though frequently they represent two positions in a single text run. If hyphenation is successful, a new BP is returned. The LineLM may look for several intermediate BP based on the "cost" of the returned possibilities. If no intermediate BP is found, the line will be "short", the white-space stretch will be exceeded, or perhaps the content will be overflowed or clipped, depending on various property settings.
 
-## Optimizing # <a id="#Optimizing"></a>
+## Optimizing # <a id="Optimizing"></a>
 
 It obviously seems inefficient to go down to the lowest level LM and back up to the FlowLM for every possible line-break decision. It seems like it would be possible to optimize by letting the lower level layout managers run until they had exceeded the current limit in the stacking direction. They would then return control to the "galley" level (LineLM or FlowLM) which would fine-tune the break decision by asking the lower level LM to find a previous BP which would fit. At the inline level, this means hyphenation as described above.
 
