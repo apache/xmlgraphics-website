@@ -1,9 +1,9 @@
 Title: Release Notes for Apache FOP 1.1
 
 
-# Major Changes in Version 1.1 # {#version_1.1}
+# Major Changes in Version 1.1  <a id="#version_1.1"></a>
 This is not a complete list of changes, just some of the more important ones. A full list of changes in this release [is available](changes_1.1.html) .
-## Changes to the Code Base ## {#Changes+to+the+Code+Base}
+## Changes to the Code Base # <a id="#Changes+to+the+Code+Base"></a>
 
 
 - <icon alt="fix" src="../images/fix.jpg"></icon>Update to use of checkstyle-5.5 as default configuration. Remove checkstyle-4.0 configuration. Also, import environment build properties before local properties, so that latter can refer to former. Committed by GA. See Issue [53083](http://issues.apache.org/bugzilla/show_bug.cgi?id=53083) .
@@ -32,12 +32,12 @@ This is not a complete list of changes, just some of the more important ones. A 
 
 - <icon alt="add" src="../images/add.jpg"></icon>Added support for resolution of relative URIs against a specified xml:base during property refinement. Committed by AD. See Issue [48334](http://issues.apache.org/bugzilla/show_bug.cgi?id=48334) .
 
-## Changes to the User Configuration ## {#Changes+to+the+User+Configuration}
+## Changes to the User Configuration # <a id="#Changes+to+the+User+Configuration"></a>
 
 
 - <icon alt="add" src="../images/add.jpg"></icon>Added configuration option to set the version of the output PDF document. Committed by VH. Thanks to Mehdi Houshmand. See Issue [51385](http://issues.apache.org/bugzilla/show_bug.cgi?id=51385) .
 
-## Changes to the Font Subsystem ## {#Changes+to+the+Font+Subsystem}
+## Changes to the Font Subsystem # <a id="#Changes+to+the+Font+Subsystem"></a>
 
 
 - <icon alt="add" src="../images/add.jpg"></icon>Add support for OpenType advanced typographic tables (GDEF, GSUB, GPOS). Committed by GA.
@@ -50,12 +50,12 @@ This is not a complete list of changes, just some of the more important ones. A 
 
 - <icon alt="add" src="../images/add.jpg"></icon>Added convenience support for the flushing of the Fop font cache file from the command line. Committed by AC.
 
-## Changes to the Image Support ## {#Changes+to+the+Image+Support}
+## Changes to the Image Support # <a id="#Changes+to+the+Image+Support"></a>
 
 
 - <icon alt="fix" src="../images/fix.jpg"></icon>Support use of ImageLoaderRawPNG decoder in order to prevent re-encoding of PNG images (and unnecssary output file bloat). Committed by GA. Thanks to Luis Bernardo, Matthias Reischenbacher. See Issue [40676](http://issues.apache.org/bugzilla/show_bug.cgi?id=40676) .
 
-## Changes to the Layout Engine ## {#Changes+to+the+Layout+Engine}
+## Changes to the Layout Engine # <a id="#Changes+to+the+Layout+Engine"></a>
 
 
 - <icon alt="fix" src="../images/fix.jpg"></icon>Fix for break before (break-before) not respected on blocks nested in inlines. Committed by GA. Thanks to Luis Bernardo. See Issue [45715](http://issues.apache.org/bugzilla/show_bug.cgi?id=45715) .
@@ -74,7 +74,7 @@ This is not a complete list of changes, just some of the more important ones. A 
 
 - <icon alt="fix" src="../images/fix.jpg"></icon>Fix for correct behavior of keep-together.within-line in case there are nested inlines Committed by AD. See Issue [49848](http://issues.apache.org/bugzilla/show_bug.cgi?id=49848) .
 
-## Changes to Renderers (Output Formats) ## {#Changes+to+Renderers+%28Output+Formats%29}
+## Changes to Renderers (Output Formats) # <a id="#Changes+to+Renderers+%28Output+Formats%29"></a>
 
 
 - <icon alt="add" src="../images/add.jpg"></icon>Added possibility to embed TrueType fonts in PostScript. Committed by VH. See Issue [52338](http://issues.apache.org/bugzilla/show_bug.cgi?id=52338) .

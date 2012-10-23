@@ -1,32 +1,32 @@
 Title: Apache&trade; FOP Development: Managing Documentation
 <version>$Revision: 1298724 $</version>
 
-# General Information # {#general}
+# General Information  <a id="#general"></a>
 
 All raw documentation content is managed in the Apache&trade; FOP SVN repository. Updates should be committed to the repository, then the repository files are used to generate usable output. The remaining discussions on this page assume that the SVN repository is the starting place for processing. The path to the documentation is src/documentation/content/xdocs.
 All documentation is maintained on the trunk.
 Basic documents are stored in XML files, and use DTDs provided by Apache Forrest.
 
-# Design Principles # {#design}
+# Design Principles  <a id="#design"></a>
 
 These principles are not written in stone, but reflect the current philosophy, and are documented here primarily to help achieve consistency. These principles should be changed if better or more practical ones are found, but they should probably be discussed and changed by common consent.
 
-## Where ## {#where}
+## Where # <a id="#where"></a>
 
 
 - To the extent possible, keep user content separate from developer content, primarily so the user doesn't have to filter out technical information.
 
 - To the extent possible, try to document a topic exactly once, in the place the user is most likely to look for it, then link to that from other locations as appropriate. This is somewhat contrary to the principle above, which should be applied as a higher priority.
 
-## When ## {#design-when}
+## When # <a id="#design-when"></a>
 
 The documentation and the product are in a constant state of change, and there is some difficulty in deciding what product state the website content should reflect. The current thinking is that the website should reflect the current state of the repository code branch from which releases are made. Features or other documentation that applies to unreleased code should be marked in such a way within the content that the user can determine whether and how it applies to the version they are using. For example, "Feature xyz is first available in Release n.nn.n".
 
 Other approaches were considered, but all seemed to have significantly higher costs both to the users and the developers. From the user's standpoint, the choice is either that they potentially have to look multiple places to get the information they need (which was rejected), or they have to filter out an occasional feature that is in code available subsequent to their release (which was accepted).
 
-# Website # {#web}
+# Website  <a id="#web"></a>
 
-## Background ## {#web-background}
+## Background # <a id="#web-background"></a>
 
 The FOP web site and documentation are generated using [Apache Forrest](http://forrest.apache.org) .
 
@@ -38,7 +38,7 @@ The following table summarizes the flow of data to the FOP website in chronologi
 | Developer builds and uploads documentation using ForrestBot. | /www/xmlgraphics.apache.org/fop on people.apache.org | sync-ready | n/a |
 | Cron job runs rsync to synchronize the website with the real web server (runs every few hours). | Infrastructure knows. :-) | web-ready |  [FOP Web Site](http://xmlgraphics.apache.org/fop)  |
 Server-side ForrestBot is currently not available for website publishing. We use it locally and with manual invocation.
-## ForrestBot "publish" Step-by-Step ## {#web-forrestbot-publish}
+## ForrestBot "publish" Step-by-Step # <a id="#web-forrestbot-publish"></a>
 
 We're using ForrestBot for build and deploy the FOP website. ForrestBot comes with Apache Forrest 0.8. The root directory of your FOP checkout contains the file "publish.xml" which is an Ant build file that manages the build and the deployment of the FOP website. Please look into this file for further instructions to set up ForrestBot on your machine. Basically, we're simply running ForrestBot manually by typing "ant -f publish.xml" once we're happy with our changes to the site. Step-by-step instructions for the deployment process again:
 Please make sure you use Forrest from the Trunk (revision 632959 or later) for the time being. You will need to download it directly from SVN: [http://svn.apache.org/repos/asf/forrest/trunk](http://svn.apache.org/repos/asf/forrest/trunk) 
@@ -53,7 +53,7 @@ Please make sure you use Forrest from the Trunk (revision 632959 or later) for t
 
 The reason for putting the generated website in the SVN repository: The infrastructure people want to be able to restore the websites themselves in case of a crash.
 
-## Using a Local Forrest ## {#web-local-forrest}
+## Using a Local Forrest # <a id="#web-local-forrest"></a>
 
 To use a local Forrest (during website development, not for deployment):
 
@@ -70,13 +70,13 @@ To use a local Forrest (during website development, not for deployment):
 
 - run forrest(.bat), which will build the web-site documents in xml-fop/build/site.
 You can use "forrest run" to start a local web server. That improves development speed as you can simply refresh in the browser after a change.
-## Updating Distribution Files ## {#distribution}
+## Updating Distribution Files # <a id="#distribution"></a>
 
 The Apache distribution system mirrors distributions around the world. Since it uses [Apache httpd](http://httpd.apache.org/) Module [mod_autoindex](http://httpd.apache.org/docs/2.2/mod/mod_autoindex.html#headername) you also need to manually update the HEADER.html & READER.html files on `people.apache.org` in `/www/www.apache.org/dist/xmlgraphics/fop/` .
 
 Please be careful when doing stuff like that.
 
-## Deleting Documentation Files ## {#delete}
+## Deleting Documentation Files # <a id="#delete"></a>
 
 ForrestBot simply uploads the whole generated site. It doesn't delete obsolete files. You can do that manually in the /www/xmlgraphics.apache.org/fop folder on cvs.apache.org. Be careful when doing stuff like that.
 Please make sure you always have **group rw permissions on all files** under the /www directory!

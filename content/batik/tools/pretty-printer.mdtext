@@ -3,15 +3,15 @@ Title: SVG Pretty Printer
 
 This page describes the features of the SVG pretty printer utility that comes with the Batik distribution. The SVG pretty printer is a utility that can format SVG files. The tool formats an SVG document according to the arguments passed on the command line.
 
-# Downloading the pretty printer # {#downloading}
+# Downloading the pretty printer  <a id="#downloading"></a>
 
 Refer to the [install page](../install.html) and the [download page](../download.cgi) to find out what to download and how to download it. Remember that you can get either the source or binary distribution.
 
-# Pretty printing an SVG file # {#using}
+# Pretty printing an SVG file  <a id="#using"></a>
 
 The method for starting the pretty-printer depends on the distribution of Batik that you chose to download. The following describes how to run the pretty printer for each distribution.
 
-## Using the binary distribution ## {#using-binary}
+## Using the binary distribution # <a id="#using-binary"></a>
 
 If you downloaded the binary distribution of Batik, you should have a file called `batik-1.6.zip` (or similar), and, after expanding that file, a jar file called `batik-svgpp.jar` . To start the pretty printer, open a console, change to the directory where you expanded the distribution (and where `batik-svgpp.jar` is located) and simply type the following at the command prompt:
 java -jar batik-svgpp.jar [OPTIONS] FILES
@@ -71,7 +71,7 @@ java -jar batik-svgpp.jar -no-format -doctype change -public-id "-//W3C//DTD SVG
      -system-id "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" src.svg dest.svg
 will format `src.svg` and write it to `dest.svg` unchanged, except for the doctype public and system IDs, which will be replaced by those specified.
 
-## Using the source distribution ## {#using-source}
+## Using the source distribution # <a id="#using-source"></a>
 
 If you downloaded the source distribution of Batik, you will have a zip or tar file that expanded into a directory called `xml-batik` or<code>batik- *version* </code>. In that directory, you can find build scripts for the platform you are running on. For example, there is a `build.bat` script for users of the Windows platform and there is a `build.sh` script for UNIX users.
 

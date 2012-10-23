@@ -11,7 +11,7 @@ The [Core modules](#coreComponents) are the heart of Batik and the primary deliv
 
 Finally, the [Low level modules](#lowLevelComponents) are used internally by the core modules to accomplish their work. These modules are not typically used by developers directly.
 
-# Application modules # {#applicationComponents}
+# Application modules  <a id="#applicationComponents"></a>
 
 As mentioned earlier, the application modules illustrate the functionality that Batik offers.
 
@@ -25,7 +25,7 @@ Finally, the [SVG rasterizer](../tools/rasterizer.html) shows how to leverage th
 
 Note that even though the application modules are meant to be useful and fun to use, they are not the primary deliverables of the Batik project. Instead, they are illustrations of how the Batik core modules might be used and combined.
 
-# Core modules # {#coreComponents}
+# Core modules  <a id="#coreComponents"></a>
 
 The Batik core modules are the heart of the Batik architecture. They can be used individually or in combination for various purposes, and the [application modules](#applicationComponents) offer some usage examples.
 
@@ -40,7 +40,7 @@ The Batik core modules are the heart of the Batik architecture. They can be used
 
 - The [transcoder](../using/transcoder.html) is a module that provides a generic API for transcoding an input to an output. This module transcodes an input stream or a document into a particular ouput format, used for converting SVG documents to other types.
 
-# Low level modules # {#lowLevelComponents}
+# Low level modules  <a id="#lowLevelComponents"></a>
 
 The low level modules are not expected to be used directly by developers using the Batik API. Rather, they support the operation of the core modules. The low level modules include:
 

@@ -1,7 +1,7 @@
 Title: Apache&trade; XML Graphics Commons: Image Loader Framework
 
 
-# Overview # {#overview}
+# Overview  <a id="#overview"></a>
 
 Apache&trade; XML Graphics Commons contains a unified framework for loading and processing images (bitmap and vector). The package name is `org.apache.xmlgraphics.image.loader` . Key features:
 
@@ -31,9 +31,9 @@ Apache&trade; XML Graphics Commons contains a unified framework for loading and 
 
 - An image cache speeds up the processing for images that are requested multiple times.
 
-# Tutorial # {#tutorial}
+# Tutorial  <a id="#tutorial"></a>
 
-## Setting up the manager ## {#manager-setup}
+## Setting up the manager # <a id="#manager-setup"></a>
 
 Before we can start to work with the package we need to set up the `ImageManager` . It provides convenience methods to load and convert images and holds the image cache.
 
@@ -47,7 +47,7 @@ import org.apache.xmlgraphics.image.loader.impl.DefaultImageContext;
 
   ImageManager imageManager = new ImageManager(new DefaultImageContext());
   In this example, `DefaultImageContext` is used. You may need to write your own implementation of `ImageContext` for your use case.
-## Preloading an image ## {#preloading}
+## Preloading an image # <a id="#preloading"></a>
 
 In order to load an image, it needs to be "preloaded" first, i.e. the image content type is detected and the intrinsic size of the image is determined. The result of this process is an `ImageInfo` instance which contains the URI, MIME type and intrinsic size. In most cases, this is done without loading the whole image (see SPI section below for information on exceptions to this rule).
 
@@ -65,7 +65,7 @@ import org.apache.xmlgraphics.image.loader.impl.DefaultImageSessionContext;
 
   ImageInfo info = imageManager.getImageInfo(uri, sessionContext);
   
-## Loading an image ## {#loading}
+## Loading an image # <a id="#loading"></a>
 
 Once the image is "preloaded", it can be fully loaded in the form/flavor that is needed by the consuming application. The required flavor is indicated through the `ImageFlavor` class. If you want the image as a bitmap image in memory, you could request an `ImageFlavor.RENDERED_IMAGE` . Again, the `ImageSessionContext` will be needed.
 
@@ -107,12 +107,12 @@ import org.apache.xmlgraphics.image.loader.ImageFlavor;
       throw new IllegalStateException("Unexpected flavor");
   }
   While each `BufferedImage` is also a `RenderedImage` , it can be more efficient to also specify `ImageFlavor.BUFFERED_IMAGE` in the flavor array.
-# Tips & Tricks # {#tipsntricks}
+# Tips & Tricks  <a id="#tipsntricks"></a>
 
 If you are loading bitmap images and you get an error like `"Cannot load image (no suitable loader/converter combination available) for
         myimage.tif (image/tiff)` , you maybe be missing the necessary ImageIO codec to decode the image. A number of well-written codecs can be found in [JAI Image I/O Tools Project](https://jai-imageio.dev.java.net/) . Just download the distribution and add the JAR to the classpath. ImageIO will automatically pick up the new codecs and they will subsequently be available to the image framework.
 
-# Service Provider Interface (SPI, Plug-ins) # {#spi}
+# Service Provider Interface (SPI, Plug-ins)  <a id="#spi"></a>
 
 The whole image framework is designed to be highly extensible. There are various extension points where new functionality can be added. The three main SPI interfaces are:
 
@@ -127,7 +127,7 @@ If you plan to write an implementation of one of the above interfaces, please al
 
 Throughout the SPI, you'll find a `Map` parameter (hints) in the most important methods. That's a way to supply additional information to the implementation by the caller. For example, the source and target resolutions from the image (session) context is stored in the hints. The implementation should not rely on the presence of specialized information and should always have sensible defaults to rely on in this case.
 
-## ImagePreloader ## {#ImagePreloader}
+## ImagePreloader # <a id="#ImagePreloader"></a>
 
 The first task is identifying whether the implementation supports the given image. If the image is loaded using an ImageInputStream it is important to always reset the stream position to the beginning of the file at the end of the `preloadImage()` method, because all registered preloaders are check in turn until one implementation signals that it supports the format. In that case, it has to extract only the minimal information from the image necessary to identify the image's intrinsic size. For most formats, this is doable without loading the whole image into memory.
 
@@ -135,7 +135,7 @@ However, for some formats (like MathML or WMF), loading the whole image at prelo
 
 The priority the implementation reports is used to sort all registered implementations. This is to fine-tune the inner workings and to optimize performance since some formats are usually used more frequently than others.
 Normally, if you implement an `ImagePreloader` you will also need to implement the respective `ImageLoader/ImageLoaderFactory` , or vice versa.
-## ImageLoader and ImageLoaderFactory ## {#ImageLoader}
+## ImageLoader and ImageLoaderFactory # <a id="#ImageLoader"></a>
 
 The factory interface has been created to allow checking if some library that an implementation depends on is really in the classpath so it can report back that the `ImageLoader` is not funtional. The factory also reports what kind of image formats it supports and which image flavors it can return. There can be a complex relationship between the two. It is recommmended, however, to write smaller implementations rather than big, almighty ones.
 
@@ -143,21 +143,21 @@ The usage penalty is used when constructing image conversion pipelines. There ca
 
 While the factory basically just provides information and creates new `ImageLoader` instances, the image loaders are doing the actual leg work of decoding the images. The image flavor returned by the loader must match the flavor that is returned by `getTargetFlavor()` .
 
-## ImageConverter ## {#ImageConverter}
+## ImageConverter # <a id="#ImageConverter"></a>
 
 The image converter is responsible to transform one image representation into another. Bundled implementations support these conversions: Java2D to bitmap, bitmap to Java2D and RenderedImage to "raw" PNG. Ideas for additional image converters could be: PDF to Java2D, EPS to Java2D or MathML to SVG or Java2D.
 
 Each ImageConverter comes with a usage penalty which is used when constructing conversion pipelines so the pipeline with the least penalty value can be chosen. This is necessary as the consuming application my support multiple image flavors and there can be multiple ways to convert an image in one of the requested image flavors. Internally, [Dijkstra's shortest path algorithm](http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm) is used to find the best path using the penalties as "way lengths".
 
-# Customization # {#customization}
+# Customization  <a id="#customization"></a>
 
-## Disabling Source Re-use ## {#source-reuse}
+## Disabling Source Re-use # <a id="#source-reuse"></a>
 
 By default, the Source object being used during the pre-loading stage is re-used when the image is fully loaded later (assuming an ImageSessionContext is used that descends from AbstractImageSessionContext). That means that a stream is only opened once and the image loading framework tries to re-wind the stream when it has to re-read portions of the stream when loading the complete image.
 
 In some situations, this behavior may be undesired. Therefore, it can be disabled through a system property ( `org.apache.xmlgraphics.image.loader.impl.AbstractImageSessionContext.no-source-reuse` ). Set it to "true" and that feature will be disabled.
 
-## Adjusting plug-in penalties ## {#plugin-penalties}
+## Adjusting plug-in penalties # <a id="#plugin-penalties"></a>
 
 Every image loader plug-in has a hard-coded usage penalty that influences which solution is chosen if there are multiple possibilities to load an image. Sometimes, though, these penalties need to be tweaked. The `ImageImplRegistry` (reachable through `ImageManager.getRegistry()` ) supports storing additional penalty values. An example:
 ImageImplRegistry registry = imageManager.getRegistry();

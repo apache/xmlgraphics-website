@@ -3,7 +3,7 @@ Title: Transcoder API
 
 The goal of the transcoder API (package `org.apache.batik.transcoder` ) is to provide a generic API for transcoding an input to an output. First, this document explains the basic transcoder API that [Transcoder](../javadoc/org/apache/batik/transcoder/Transcoder.html) , [TranscoderInput](../javadoc/org/apache/batik/transcoder/TranscoderInput.html) and [TranscoderOutput](../javadoc/org/apache/batik/transcoder/TranscoderOutput.html) define, and thus all transcoders have in common. Next, it describes how to use the image transcoder API (package `org.apache.batik.transcoder.image` ), which lets you rasterize an SVG document fragment to a raster image such as JPEG, PNG or TIFF.
 
-# The transcoder API # {#transcoderAPI}
+# The transcoder API  <a id="#transcoderAPI"></a>
 
 The `org.apache.batik.transcoder` package defines 5 major classes:
 
@@ -33,11 +33,11 @@ ErrorHandler
 :    
 The [ErrorHandler](../javadoc/org/apache/batik/transcoder/ErrorHandler.html) class provides a way to get any errors or warnings that might occur while transcoding. A default implementation is provided but you can, for example, implement your own handler that displays a dialog instead of stack trace.
 
-# How to use the image transcoder API # {#howtousetranscoderAPI}
+# How to use the image transcoder API  <a id="#howtousetranscoderAPI"></a>
 
 The `org.apache.batik.transcoder.image` package provides an easy way to transcode an SVG document to a raster image such as JPEG, PNG or TIFF. Additional raster image formats can be added by subclassing the `ImageTranscoder` class and implementing the `writeImage` method. Although, in next sections, the examples will use the JPEG transcoder, the PNG transcoder works the same way.
 
-## Creating an image ## {#createImage}
+## Creating an image # <a id="#createImage"></a>
 
 The following example, using the `JPEGTranscoder` , shows how to transform an SVG document to a JPEG image.
 import java.io.*;
@@ -97,13 +97,13 @@ java SaveAsJPEG filename.svg
 Inspect the output file `out.jpg` .
 
 
-## Defining the size of the image ## {#defineSizeOfImage}
+## Defining the size of the image # <a id="#defineSizeOfImage"></a>
 
 By adding the following line of code to the previous example, you will specify the raster image size (in pixels). The transcoding hint `KEY_WIDTH` lets you specify the raster image width. If the raster image height is not provided (using the `KEY_HEIGHT` ), the transcoder will compute the raster image height by keeping the aspect ratio of the SVG document.
 t.addTranscodingHint(JPEGTranscoder.KEY_WIDTH, new Float(100));
 The transcoder will have the same behavior if you specify the `KEY_HEIGHT` without initializing the `KEY_WIDTH` . In all cases (even if both keys are provided), the transcoder will preserve the apsect ratio of the SVG document.
 
-## Selecting an area of interest ## {#selectAreaOfIntrest}
+## Selecting an area of interest # <a id="#selectAreaOfIntrest"></a>
 
 The image transcoder lets you specify an area of interest (that is, a part of the SVG document). The key `KEY_AOI` allows you to select the region of the SVG document to render. The value of this key must be a [java.awt.Rectangle](http://java.sun.com/j2se/1.5.0/docs/api/java/awt/Rectangle.html) specified in pixels, using the coordinate space of the SVG document. The following example shows how you can split an SVG document into 4 tiles.
 import java.io.*;
@@ -184,7 +184,7 @@ java SaveAsJPEGTiles
 Inspect the output files `tileTopRight.jpg` , `tileTopRight.jpg` , `tileBottomRight.jpg` and `tileBottomLeft.jpg` .
 
 
-## Other transcoding hints ## {#otherTransHints}
+## Other transcoding hints # <a id="#otherTransHints"></a>
 
 The `ImageTranscoder` provides additional `TranscodingHints` that let you customize the generated images.
 
@@ -219,7 +219,7 @@ trans.addTranscodingHint(ImageTranscoder.KEY_PIXEL_TO_MM, new Float(0.3528f));
 :    
 This hint lets you choose a background color. For example:
 trans.addTranscodingHint(ImageTranscoder.KEY_BACKGROUND_COLOR, Color.white);
-## Generating an image from an SVG DOM tree ## {#genImagefromSVGDOM}
+## Generating an image from an SVG DOM tree # <a id="#genImagefromSVGDOM"></a>
 
 The following code creates and saves an SVG DOM tree to a raster image.
 import java.io.*;

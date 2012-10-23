@@ -1,13 +1,13 @@
 Title: Apache&trade; FOP: Embedding
 <subtitle>How to Embed Apache&trade; FOP in a Java application</subtitle><version>$Revision: 1298724 $</version>
 
-# Overview # {#overview}
+# Overview  <a id="#overview"></a>
 
 Review [Running Apache&trade; FOP](running.html) for important information that applies to embedded applications as well as command-line use, such as options and performance.
 
 To embed Apache&trade; FOP in your application, first create a new org.apache.fop.apps.FopFactory instance. This object can be used to launch multiple rendering runs. For each run, create a new org.apache.fop.apps.Fop instance through one of the factory methods of FopFactory. In the method call you specify which output format (i.e. Renderer) to use and, if the selected renderer requires an OutputStream, which OutputStream to use for the results of the rendering. You can customize FOP's behaviour in a rendering run by supplying your own FOUserAgent instance. The FOUserAgent can, for example, be used to set your own Renderer instance (details below). Finally, you retrieve a SAX DefaultHandler instance from the Fop object and use that as the SAXResult of your transformation.
 We recently changed FOP's outer API to what we consider the final API. This might require some changes in your application. The main reasons for these changes were performance improvements due to better reuse of reusable objects and reduced use of static variables for added flexibility in complex environments.
-# Basic Usage Pattern # {#basics}
+# Basic Usage Pattern  <a id="#basics"></a>
 
 Apache FOP relies heavily on JAXP. It uses SAX events exclusively to receive the XSL-FO input document. It is therefore a good idea that you know a few things about JAXP (which is a good skill anyway). Let's look at the basic usage pattern for FOP...
 
@@ -68,17 +68,17 @@ If you're not totally familiar with JAXP Transformers, please have a look at the
 
 This may look complicated at first, but it's really just the combination of an XSL transformation and a FOP run. It's also easy to comment out the FOP part for debugging purposes, for example when you're tracking down a bug in your stylesheet. You can easily write the XSL-FO output from the XSL transformation to a file to check if that part generates the expected output. An example for that can be found in the [Embedding examples](#examples) (See "ExampleXML2FO").
 
-## Logging ## {#basic-logging}
+## Logging # <a id="#basic-logging"></a>
 
 Logging is now a little different than it was in FOP 0.20.5. We've switched from Avalon Logging to [Jakarta Commons Logging](http://commons.apache.org/logging/) . While with Avalon Logging the loggers were directly given to FOP, FOP now retrieves its logger(s) through a statically available LogFactory. This is similar to the general pattern that you use when you work with Apache Log4J directly, for example. We call this "static logging" (Commons Logging, Log4J) as opposed to "instance logging" (Avalon Logging). This has a consequence: You can't give FOP a logger for each processing run anymore. The log output of multiple, simultaneously running FOP instances is sent to the same logger.
 We know this may be an issue in multi-threaded server environments if you'd like to know what's going on in every single FOP processing run. We're planning to add an additional feedback facility to FOP which can be used to obtain all sorts of specific feedback (validation messages, layout problems etc.). "Static logging" is mainly interesting for a developer working on FOP and for advanced users who are debugging FOP. We don't consider the logging output to be useful to normal FOP users. Please have some patience until we can add this feature or jump in and help us build it. We've set up a [Wiki page](http://wiki.apache.org/xmlgraphics-fop/ProcessingFeedback) which documents what we're going to build.
 By default, [Jakarta Commons Logging](http://commons.apache.org/logging/) uses JDK logging (available in JDKs 1.4 or higher) as its backend. You can configure Commons Logging to use an alternative backend, for example Log4J. Please consult the [documentation for Jakarta Commons Logging](http://commons.apache.org/logging/) on how to configure alternative backends.
 
-## Processing XSL-FO ## {#render}
+## Processing XSL-FO # <a id="#render"></a>
 
 Once the Fop instance is set up, call `getDefaultHandler()` to obtain a SAX DefaultHandler instance to which you can send the SAX events making up the XSL-FO document you'd like to render. FOP processing starts as soon as the DefaultHandler's `startDocument()` method is called. Processing stops again when the DefaultHandler's `endDocument()` method is called. Please refer to the basic usage pattern shown above to render a simple XSL-FO document.
 
-## Processing XSL-FO generated from XML+XSLT ## {#render-with-xslt}
+## Processing XSL-FO generated from XML+XSLT # <a id="#render-with-xslt"></a>
 
 If you want to process XSL-FO generated from XML using XSLT we recommend again using standard JAXP to do the XSLT part and piping the generated SAX events directly through to FOP. The only thing you'd change to do that on the basic usage pattern above is to set up the Transformer differently:
 
@@ -88,7 +88,7 @@ If you want to process XSL-FO generated from XML using XSLT we recommend again u
   //with XSLT:
   Source xslt = new StreamSource(new File("mystylesheet.xsl"));
   Transformer transformer = factory.newTransformer(xslt);
-# Input Sources # {#input}
+# Input Sources  <a id="#input"></a>
 
 The input XSL-FO document is always received by FOP as a SAX stream (see the [Parsing Design Document](../dev/design/parsing.html) for the rationale).
 
@@ -111,11 +111,11 @@ However, you may not always have your input document available as a SAX stream. 
 
 There are a variety of upstream data manipulations possible. For example, you may have a DOM and an XSL stylesheet; or you may want to set variables in the stylesheet. Interface documentation and some cookbook solutions to these situations are provided in [Xalan Basic Usage Patterns](http://xml.apache.org/xalan-j/usagepatterns.html) .
 
-# Configuring Apache FOP Programmatically # {#config-internal}
+# Configuring Apache FOP Programmatically  <a id="#config-internal"></a>
 
 Apache FOP provides two levels on which you can customize FOP's behaviour: the FopFactory and the user agent.
 
-## Customizing the FopFactory ## {#fop-factory}
+## Customizing the FopFactory # <a id="#fop-factory"></a>
 
 The FopFactory holds configuration data and references to objects which are reusable over multiple rendering runs. It's important to instantiate it only once (except in special environments) and reuse it every time to create new FOUserAgent and Fop instances.
 
@@ -150,7 +150,7 @@ fopFactory.addElementMapping(myElementMapping); // myElementMapping is a org.apa
 Set a **URIResolver** for custom URI resolution. By supplying a JAXP URIResolver you can add custom URI resolution functionality to FOP. For example, you can use [Apache XML Commons Resolver](http://xml.apache.org/commons/components/resolver/) to make use of XCatalogs. Example:
 fopFactory.setURIResolver(myResolver); // myResolver is a javax.xml.transform.URIResolverBoth the FopFactory and the FOUserAgent have a method to set a URIResolver. The URIResolver on the FopFactory is primarily used to resolve URIs on factory-level (hyphenation patterns, for example) and it is always used if no other URIResolver (for example on the FOUserAgent) resolved the URI first.
 
-## Customizing the User Agent ## {#user-agent}
+## Customizing the User Agent # <a id="#user-agent"></a>
 
 The user agent is the entity that allows you to interact with a single rendering run, i.e. the processing of a single document. If you wish to customize the user agent's behaviour, the first step is to create your own instance of FOUserAgent using the appropriate factory method on FopFactory and pass that to the factory method that will create a new Fop instance:
 
@@ -206,7 +206,7 @@ userAgent.setFOEventHandlerOverride(myFOEventHandler); // myFOEventHandler is an
 Set a **URIResolver** for custom URI resolution. By supplying a JAXP URIResolver you can add custom URI resolution functionality to FOP. For example, you can use [Apache XML Commons Resolver](http://xml.apache.org/commons/components/resolver/) to make use of XCatalogs. Example:
 userAgent.setURIResolver(myResolver); // myResolver is a javax.xml.transform.URIResolverBoth the FopFactory and the FOUserAgent have a method to set a URIResolver. The URIResolver on the FOUserAgent is used for resolving URIs which are document-related. If it's not set or cannot resolve a URI, the URIResolver from the FopFactory is used.
 You should not reuse an FOUserAgent instance between FOP rendering runs although you can. Especially in multi-threaded environment, this is a bad idea.
-# Using a Configuration File # {#config-external}
+# Using a Configuration File  <a id="#config-external"></a>
 
 Instead of setting the parameters manually in code as shown above you can also set many values from an XML configuration file:
 
@@ -224,13 +224,13 @@ fopFactory.setUserConfig(cfg);
 fopFactory.setUserConfig(new File("C:/Temp/mycfg.xml"));
 The layout of the configuration file is described on the [Configuration page](configuration.html) .
 
-# Hints # {#hints}
+# Hints  <a id="#hints"></a>
 
-## Object reuse ## {#object-reuse}
+## Object reuse # <a id="#object-reuse"></a>
 
 Fop instances shouldn't (and can't) be reused. Please recreate Fop and FOUserAgent instances for each rendering run using the FopFactory. This is a cheap operation as all reusable information is held in the FopFactory. That's why it's so important to reuse the FopFactory instance.
 
-## AWT issues ## {#awt}
+## AWT issues # <a id="#awt"></a>
 
 If your XSL-FO files contain SVG then Apache Batik will be used. When Batik is initialised it uses certain classes in `java.awt` that intialise the Java AWT classes. This means that a daemon thread is created by the JVM and on Unix it will need to connect to a DISPLAY.
 
@@ -238,11 +238,11 @@ The thread means that the Java application may not automatically quit when finis
 
 If you run into trouble running FOP on a head-less server, please see the [notes on Batik](graphics.html#batik) .
 
-## Getting information on the rendering process ## {#render-info}
+## Getting information on the rendering process # <a id="#render-info"></a>
 
 To get the number of pages that were rendered by FOP you can call `Fop.getResults()` . This returns a `FormattingResults` object where you can look up the number of pages produced. It also gives you the page-sequences that were produced along with their id attribute and their numbers of pages. This is particularly useful if you render multiple documents (each enclosed by a page-sequence) and have to know the number of pages of each document.
 
-# Improving performance # {#performance}
+# Improving performance  <a id="#performance"></a>
 
 There are several options to consider:
 
@@ -257,31 +257,31 @@ There are several options to consider:
 
 - Fine-tune your stylesheet to make the XSLT process more efficient and to create XSL-FO that can be processed by FOP more efficiently. Less is more: Try to make use of property inheritance where possible.
 
-# Multithreading FOP # {#multithreading}
+# Multithreading FOP  <a id="#multithreading"></a>
 
 Apache FOP may currently not be completely thread safe. The code has not been fully tested for multi-threading issues, yet. If you encounter any suspicious behaviour, please notify us.
 
 There is also a known issue with fonts being jumbled between threads when using the Java2D/AWT renderer (which is used by the -awt and -print output options). In general, you cannot safely run multiple threads through the AWT renderer.
 
-# Examples # {#examples}
+# Examples  <a id="#examples"></a>
 
 The directory "{fop-dir}/examples/embedding" contains several working examples.
 
-## ExampleFO2PDF.java ## {#ExampleFO2PDF}
+## ExampleFO2PDF.java # <a id="#ExampleFO2PDF"></a>
 
 This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/embedding/java/embedding/ExampleFO2PDF.java?view=markup) demonstrates the basic usage pattern to transform an XSL-FO file to PDF using FOP.
 <figure alt="Example XSL-FO to PDF" src="images/EmbeddingExampleFO2PDF.png"></figure>
-## ExampleXML2FO.java ## {#ExampleXML2FO}
+## ExampleXML2FO.java # <a id="#ExampleXML2FO"></a>
 
 This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/embedding/java/embedding/ExampleXML2FO.java?view=markup) has nothing to do with FOP. It is there to show you how an XML file can be converted to XSL-FO using XSLT. The JAXP API is used to do the transformation. Make sure you've got a JAXP-compliant XSLT processor in your classpath (ex. [Xalan](http://xml.apache.org/xalan-j) ).
 <figure alt="Example XML to XSL-FO" src="images/EmbeddingExampleXML2FO.png"></figure>
-## ExampleXML2PDF.java ## {#ExampleXML2PDF}
+## ExampleXML2PDF.java # <a id="#ExampleXML2PDF"></a>
 
 This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/embedding/java/embedding/ExampleXML2PDF.java?view=markup) demonstrates how you can convert an arbitrary XML file to PDF using XSLT and XSL-FO/FOP. It is a combination of the first two examples above. The example uses JAXP to transform the XML file to XSL-FO and FOP to transform the XSL-FO to PDF.
 <figure alt="Example XML to PDF (via XSL-FO)" src="images/EmbeddingExampleXML2PDF.png"></figure>
 The output (XSL-FO) from the XSL transformation is piped through to FOP using SAX events. This is the most efficient way to do this because the intermediate result doesn't have to be saved somewhere. Often, novice users save the intermediate result in a file, a byte array or a DOM tree. We strongly discourage you to do this if it isn't absolutely necessary. The performance is significantly higher with SAX.
 
-## ExampleObj2XML.java ## {#ExampleObj2XML}
+## ExampleObj2XML.java # <a id="#ExampleObj2XML"></a>
 
 This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/embedding/java/embedding/ExampleObj2XML.java?view=markup) is a preparatory example for the next one. It's an example that shows how an arbitrary Java object can be converted to XML. It's an often needed task to do this. Often people create a DOM tree from a Java object and use that. This is pretty straightforward. The example here, however, shows how to do this using SAX, which will probably be faster and not even more complicated once you know how this works.
 <figure alt="Example Java object to XML" src="images/EmbeddingExampleObj2XML.png"></figure>
@@ -291,18 +291,18 @@ The XMLReader implementation (regard it as a special kind of XML parser) is resp
 
 Have a look at the source of ExampleObj2XML.java to find out how this is used. For more detailed information see other resources on JAXP (ex. [An older JAXP tutorial](http://java.sun.com/xml/jaxp/dist/1.1/docs/tutorial/xslt/3_generate.html) ).
 
-## ExampleObj2PDF.java ## {#ExampleObj2PDF}
+## ExampleObj2PDF.java # <a id="#ExampleObj2PDF"></a>
 
 This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/embedding/java/embedding/ExampleObj2PDF.java?view=markup) combines the previous and the third to demonstrate how you can transform a Java object to a PDF directly in one smooth run by generating SAX events from the Java object that get fed to an XSL transformation. The result of the transformation is then converted to PDF using FOP as before.
 <figure alt="Example Java object to PDF (via XML and XSL-FO)" src="images/EmbeddingExampleObj2PDF.png"></figure>
-## ExampleDOM2PDF.java ## {#ExampleDOM2PDF}
+## ExampleDOM2PDF.java # <a id="#ExampleDOM2PDF"></a>
 
 This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/embedding/java/embedding/ExampleDOM2PDF.java?view=markup) has FOP use a DOMSource instead of a StreamSource in order to use a DOM tree as input for an XSL transformation.
 
-## ExampleSVG2PDF.java (PDF Transcoder example) ## {#ExampleSVG2PDF}
+## ExampleSVG2PDF.java (PDF Transcoder example) # <a id="#ExampleSVG2PDF"></a>
 
 This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/embedding/java/embedding/ExampleSVG2PDF.java?view=markup) shows the usage of the PDF Transcoder, a sub-application within FOP. It is used to generate a PDF document from an SVG file.
 
-## Final notes ## {#example-notes}
+## Final notes # <a id="#example-notes"></a>
 
 These examples should give you an idea of what's possible. It should be easy to adjust these examples to your needs. Also, if you have other examples that you think should be added here, please let us know via either the fop-users or fop-dev mailing lists. Finally, for more help please send your questions to the fop-users mailing list.

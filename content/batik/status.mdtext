@@ -21,7 +21,7 @@ If a feature is<span class="yes">fully</span>supported, this means that Batik pe
 
 Note that the information on this page is based on the code in the Subversion repository trunk.
 
-# Elements, attributes and properties # {#elements}
+# Elements, attributes and properties  <a id="#elements"></a>
 
 The table below lists the SVG elements and the attributes and properties on them that are supported by Batik. For an element to be fully supported, its attributes and the properties that apply to it must also be fully supported. If an attribute of the element or a property that applies to the element is only partially supported or is not supported, the element can be at most partially supported. An element is not supported if it is not processed by Batik, even if some of its attributes are supported (such as the core attributes `id` or `xml:base` ).
 
@@ -4218,7 +4218,7 @@ Values for the XLink attributes other than `xlink:href` that are not those requi
  `glyphRef` elements can reference glyphs only by URI, not by font properties.
 
 
-# DOM interfaces # {#dom}
+# DOM interfaces  <a id="#dom"></a>
 
 The table below lists the SVG DOM interfaces that are supported by Batik. For each interface, the name of each IDL attribute and operation introduced on the interface is given, along with its level of support. For cases where the implementation of an attribute or operation introduced in a superinterface may differ depending on which subinterface has inherited it, this is noted next to that attribute or operation. Both the ECMAScript and Java bindings have the same implementation level as specified for the IDL interfaces in the table.
 
@@ -5869,7 +5869,7 @@ The table below lists the SVG DOM interfaces that are supported by Batik. For ea
 | zoomRectScreen | no |  |
 |----------------|
 
-# ECMAScript objects # {#ecmascript}
+# ECMAScript objects  <a id="#ecmascript"></a>
 
 In addition to the host objects exposed to ECMAScript that implement the SVG DOM, the following objects are also available.
 <div class="object"><div class="object-header">Global object</div><div class="object-section-header">Properties</div><div class="object-property-header">document</div><div class="object-property-desc">
@@ -5925,7 +5925,7 @@ Evaluates the given `script` repeatedly after the specified amount of time. The 
 </div><div class="object-property-header">setTimeout<span class="object-property-func-params">(script, timeout)</span></div><div class="object-property-desc">
 Evaluates the given `script` after the specified amount of time. The value for `script` must be either a string, which is evaluated by `eval` after the timeout, or an ECMAScript function object, which is called after the timeout. This method does not stall the script: the evaluation is scheduled and the script continues its execution. The function returns an object that can be passed to the `clearInterval` function. The function returns an object that can be passed to the `clearTimeout` function.
 </div></div>
-# SVG 1.1 test suite # {#test}
+# SVG 1.1 test suite  <a id="#test"></a>
 
 The table below lists the test cases from the December 2006 release of the [SVG 1.1 test suite](http://www.w3.org/Graphics/SVG/Test/) and whether the latest Batik code in the Subversion repository passes each one.
 

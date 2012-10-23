@@ -1,13 +1,13 @@
 Title: Apache&trade; FOP: PDF/A (ISO 19005)
 <version>$Revision$</version><authors><person email="jeremias@apache.org" name="Jeremias Märki"></person></authors>
 
-# Overview # {#overview}
+# Overview  <a id="#overview"></a>
 
 PDF/A is a standard which turns PDF into an "electronic document file format for long-term preservation". PDF/A-1 is the first part of the standard and is documented in [ISO 19005-1:2005(E)](http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=38920&ICS1=37&ICS2=100&ICS3=99) . Work on PDF/A-2 is in progress at [AIIM](http://www.aiim.org/standards.asp?ID=25013) .
 
 Design documentation on PDF/A can be found on FOP's Wiki on the [PDFA1ConformanceNotes](http://wiki.apache.org/xmlgraphics-fop/PDFA1ConformanceNotes) page.
 
-# Implementation Status # {#status}
+# Implementation Status  <a id="#status"></a>
 
  **PDF/A-1b** is implemented to the degree that FOP supports the creation of the elements described in ISO 19005-1.
 
@@ -15,13 +15,13 @@ Tests have been performed against jHove and Adobe Acrobat 7.0.7 (Preflight funct
 
  **PDF/A-1a** is based on PDF-A-1b and adds accessibility features (such as Tagged PDF). This format is available within the limitation described on the [Accessibility page](accessibility.html) .
 
-# Usage (command line) # {#command-line}
+# Usage (command line)  <a id="#command-line"></a>
 
 To activate PDF/A-1b from the command-line, specify "-pdfprofile PDF/A-1b" as a parameter. If there is a violation of one of the validation rules for PDF/A, an error message is presented and the processing stops.
 
 PDF/A-1a is enabled by specifying "-pdfprofile PDF/A-1a".
 
-# Usage (embedded) # {#embedded}
+# Usage (embedded)  <a id="#embedded"></a>
 
 When FOP is embedded in another Java application you can set a special option on the renderer options in the user agent to activate the PDF/A-1b profile. Here's an example:
 
@@ -32,7 +32,7 @@ If one of the validation rules of PDF/A is violated, an PDFConformanceException 
 
 For PDF/A-1a, just use the string "PDF/A-1a" instead of "PDF/A-1b".
 
-# PDF/A in Action # {#rules}
+# PDF/A in Action  <a id="#rules"></a>
 
 There are a number of things that must be looked after if you activate a PDF/A profile. If you receive a PDFConformanceException, have a look at the following list (not necessarily comprehensive):
 
@@ -51,11 +51,11 @@ There are a number of things that must be looked after if you activate a PDF/A p
 
 - No filter must be specified explicitely for metadata objects. Metadata must be embedded in clear text so non-PDF-aware applications can extract the XMP metadata.
 There are additional requirements if you want to enabled PDF/A-1a (Tagged PDF). This is particularly the specification of the natural language and alternative descriptions for images. Please refer to the [Accessibility page](accessibility.html) for details.
-# PDF profile compatibility # {#profile-compatibility}
+# PDF profile compatibility  <a id="#profile-compatibility"></a>
 
 The PDF profiles "PDF/X-3:2003" and "PDF/A-1b" (or "PDF/A-1a") are compatible and can both be activated at the same time.
 
-# Interoperability # {#interoperability}
+# Interoperability  <a id="#interoperability"></a>
 
 There has been some confusion about the namespace for the PDF/A indicator in the XMP metadata. At least three variants have been seen in the wild:
 

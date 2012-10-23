@@ -1,13 +1,13 @@
 Title: Apache&trade; FOP: PDF encryption.
 <version>$Revision: 1298724 $</version><authors><person email="pietsch@apache.org" name="J.Pietschmann"></person><person email="jeremias@apache.org" name="Jeremias Märki"></person></authors>
 
-# Overview # {#Overview}
+# Overview  <a id="#Overview"></a>
 
 Apache&trade; FOP supports encryption of PDF output, thanks to Patrick C. Lankswert. This feature is commonly used to prevent unauthorized viewing, printing, editing, copying text from the document and doing annotations. It is also possible to ask the user for a password in order to view the contents. Note that there already exist third party applications which can decrypt an encrypted PDF without effort and allow the aforementioned operations, therefore the degree of protection is limited.
 
 For further information about features and restrictions regarding PDF encryption, look at the documentation coming with Adobe Acrobat or the technical documentation on the Adobe web site.
 
-# Usage (command line) # {#Usage+%28command+line%29}
+# Usage (command line)  <a id="#Usage+%28command+line%29"></a>
 
 Encryption is enabled by supplying any of the encryption related options.
 
@@ -30,7 +30,7 @@ Further restrictions can be imposed by using the following command-line options:
 |  `-noprinthq`  | disable high quality printing |
 
 
-# Usage (embedded) # {#Usage+%28embedded%29}
+# Usage (embedded)  <a id="#Usage+%28embedded%29"></a>
 
 When FOP is embedded in another Java application you need to set an options map on the renderer. These are the supported options:
 
@@ -105,7 +105,7 @@ Alternatively, you can set each value separately in the Map provided by FOUserAg
 
 1. noprinthq: Boolean or "true"/"false"
 
-# Environment # {#Environment}
+# Environment  <a id="#Environment"></a>
 
 In order to use PDF encryption, FOP has to be compiled with cryptography support. Currently, only [JCE](http://java.sun.com/j2se/1.4/docs/guide/security/jce/JCERefGuide.html) is supported. JCE is part of JDK 1.4. For earlier JDKs, it can be installed separately. The build process automatically detects JCE presence and installs PDF encryption support if possible, otherwise a stub is compiled in.
 
@@ -115,7 +115,7 @@ then you don't have the needed infrastructure.
 
 There are several commercial and a few Open Source packages which provide RC4. A pure Java implementation is produced by [The Legion of the Bouncy Castle](http://www.bouncycastle.org/) . [Mozilla JSS](http://www.mozilla.org/projects/security/pki/jss/) is an interface to a native implementation.
 
-# Installing a crypto provider # {#install_crypto}
+# Installing a crypto provider  <a id="#install_crypto"></a>
 
 The pure Java implementation from [Bouncy Castle](http://www.bouncycastle.org/) is easy to install.
 

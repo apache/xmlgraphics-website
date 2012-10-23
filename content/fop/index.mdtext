@@ -1,7 +1,7 @@
 Title: Apache&trade; FOP
 <version>$Revision: 1298724 $</version>
 
-# Introduction # {#intro}
+# Introduction  <a id="#intro"></a>
 
 Apache&trade; FOP (Formatting Objects Processor) is a print formatter driven by XSL formatting objects (XSL-FO) and an output independent formatter. It is a Java application that reads a formatting object (FO) tree and renders the resulting pages to a specified output. [Output formats](1.0/output.html) currently supported include PDF, PS, PCL, AFP, XML (area tree representation), Print, AWT and PNG, and to a lesser extent, RTF and TXT. The primary output target is PDF.
 
@@ -13,13 +13,13 @@ Support for each of the standard's objects and properties is detailed in [FOP Co
 
 FOP is proud to be part of [Apache's XML Graphics project](http://xmlgraphics.apache.org) .
 
-# Demonstration # {#demo}
+# Demonstration  <a id="#demo"></a>
 <figure alt="Formatting Diagram" height="260" src="images/layout.jpg" width="480"></figure>
 This image is a demonstration of a real two page document. The XML data on the left is formatted into the two pages on the right. The document contains static areas that appear on every page, an external graphic, a footnote on the first page, and a table that goes across both pages.
 
 FOP uses the standard XSL-FO file format as input, lays the content out into pages, then renders it to the requested output. One great advantage of using XSL-FO as input is that XSL-FO is itself an XML file, which means that it can be conveniently created from a variety of sources. The most common method is to convert semantic XML to XSL-FO, using an XSLT transformation.
 
-# FOP Objectives # {#objectives}
+# FOP Objectives  <a id="#objectives"></a>
 
 The goals of the Apache FOP project are to deliver an XSL-FO to PDF formatter that is compliant to at least the Basic conformance level described in the W3C Recommendation from 05 December 2006, and that complies with the November 2001 Portable Document Format Specification (Version 1.4) from Adobe Systems.
 
