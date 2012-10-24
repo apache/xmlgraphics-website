@@ -1,11 +1,13 @@
 Title: Apache(tm) FOP: PDF/X (ISO 15930)
+
+#Apache(tm) FOP: PDF/X (ISO 15930)
 <version>$Revision$</version><authors><person email="jeremias@apache.org" name="Jeremias Märki"></person></authors>
 
-# Overview  <a id="overview"></a>
+## Overview  <a id="overview"></a>
 <warning>Support for PDF/X is available beginning with version 0.93. This feature is new and may not be 100% complete, yet. Feedback is welcome.</warning>
 PDF/X is a standard which faciliates prepress digital data exchange using PDF. Currently, only PDF/X-3:2003 is implemented out of the many different flavours of PDF/X profiles. PDF/X-3:2003 is documented in [ISO 15930-6:2003(E)](http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=39940&ICS1=37&ICS2=100&ICS3=99) . More info on PDF/X can be found on the [PDF/X info site](http://www.pdfx.info/) .
 
-# Implementation Status  <a id="status"></a>
+## Implementation Status  <a id="status"></a>
 
  **PDF/X-3:2003** is implemented to the degree that FOP supports the creation of the elements described in ISO 15930-6.
 
@@ -13,11 +15,11 @@ An important restriction of the current implementation is that all normal RGB co
 
 Tests have been performed against Adobe Acrobat 7.0.7 (Preflight function). Note that there are bugs in Adobe Acrobat which cause false alarms if both PDF/A-1b and PDF/X-3:2003 are activated at the same time.
 
-# Usage (command line)  <a id="command-line"></a>
+## Usage (command line)  <a id="command-line"></a>
 
 To activate PDF/X-3:2003 from the command-line, specify "-pdfprofile PDF/X-3:2003" as a parameter. If there is a violation of one of the validation rules for PDF/X, an error message is presented and the processing stops.
 
-# Usage (embedded)  <a id="embedded"></a>
+## Usage (embedded)  <a id="embedded"></a>
 
 When FOP is embedded in another Java application you can set a special option on the renderer options in the user agent to activate the PDF/A-1b profile. Here's an example:
 
@@ -27,7 +29,7 @@ Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent);
 [..]
 If one of the validation rules of PDF/X is violated, an PDFConformanceException (descendant of RuntimeException) is thrown.
 
-# PDF/X in Action  <a id="rules"></a>
+## PDF/X in Action  <a id="rules"></a>
 
 There are a number of things that must be looked after if you activate a PDF/X profile. If you receive a PDFConformanceException, have a look at the following list (not necessarily comprehensive):
 
@@ -44,6 +46,6 @@ There are a number of things that must be looked after if you activate a PDF/X p
 
 - PDF is forced to version 1.4 if PDF/X-3:2003 is activated.
 
-# PDF profile compatibility  <a id="profile-compatibility"></a>
+## PDF profile compatibility  <a id="profile-compatibility"></a>
 
 The PDF profiles "PDF/X-3:2003" and "PDF/A-1b" are compatible and can both be activated at the same time.

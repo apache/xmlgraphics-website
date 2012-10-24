@@ -1,9 +1,11 @@
 Title: SVG DOM API
 
+#SVG DOM API
+
 
 The [Document Object Model](http://www.w3.org/dom/) (DOM) is an API for XML documents. It defines the logical structure of documents and the way a document is accessed and manipulated. This page shows how to create an SVG document using the DOM API.
 
-# Getting started  <a id="gettingStarted"></a>
+## Getting started  <a id="gettingStarted"></a>
 
 The DOM API defines an interface called [DOMImplementation](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/DOMImplementation.html) , which represents the bootstrap of any DOM implementation. The role of this class is to bootstrap a particular implementation of the DOM by providing a method to create a [Document](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html) . Then, the concrete `Document` represents an XML document and also acts like a factory for the various DOM objects such as [Element](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Element.html) , [Attr](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Attr.html) and [Text](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Text.html) .
 
@@ -14,7 +16,7 @@ import org.apache.batik.dom.svg.SVGDOMImplementation;
 DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
 Once you have an instance of a `DOMImplementation` , you are not relying on Batik-specific code any more and ready to use the DOM API.
 
-# Creating a Document  <a id="creating"></a>
+## Creating a Document  <a id="creating"></a>
 
 Using the `DOMImplementation` , you are now able to create a `Document` . The following example illustrates how to create an SVG document. Note that the Batik’s DOM implementation can be used to represent either an SVG document fragment or any kind of XML document. Note that by choosing the namespace URI and the local name of the root element of SVG, we are creating an SVG document.
 import org.apache.batik.dom.svg.SVGDOMImplementation;
@@ -27,7 +29,7 @@ DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
 Document doc = impl.createDocument(svgNS, "svg", null);
 As we have created an SVG `Document` , we can cast this document to an [SVGDocument](../javadoc/org/w3c/dom/svg/SVGDocument.html) (defined in the `org.w3c.dom.svg` package) if needed.
 
-# Building an SVG Document  <a id="buildsvgdoc"></a>
+## Building an SVG Document  <a id="buildsvgdoc"></a>
 
 Finally, using the `Document` object, we are now able to construct SVG content. Note that the document created before supports both generic XML and SVG. Though the DOM implementation of Batik is an SVG DOM implementation, the SVG-specific methods that rely on the document having been rendered (particularly geometry related methods, such as [SVGLocatable.getBBox](../javadoc/org/w3c/dom/svg/SVGLocatable.html#getBBox()) ) cannot be used at this point.
 
@@ -83,7 +85,7 @@ try {
     
 As we have created an SVG `Document` , we can cast this document to an `SVGDocument` (defined in the `org.w3c.dom.svg` package) if needed.
 
-# Rendering an SVG Document  <a id="rendering"></a>
+## Rendering an SVG Document  <a id="rendering"></a>
 
 Batik provides several ways to use an SVG DOM tree. Two modules can be immediately used to render your SVG document.
 

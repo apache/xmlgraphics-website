@@ -1,9 +1,11 @@
 Title: SVG 1.2 support
 
+#SVG 1.2 support
+
 
 This page details information atbout Batik’s implementation of features from SVG 1.2, [Tiny](http://www.w3.org/TR/SVGTiny12/) and [Full](http://www.w3.org/TR/SVG12/) . Note that the information on this page is based on the code in the Subversion repository trunk.
 
-# DOM Level 3  <a id="dom3"></a>
+## DOM Level 3  <a id="dom3"></a>
 
 DOM Level 3 [Core](http://www.w3.org/TR/DOM-Level-3-Core/) , [Events](http://www.w3.org/TR/DOM-Level-3-Events/) and [XPath](http://www.w3.org/TR/DOM-Level-3-XPath/) are all supported. These features are available regardless of whether the document has `version="1.1"` or `version="1.2"` set on the root `svg` element.
 
@@ -18,7 +20,7 @@ There are a few issues with the DOM Level 3 Core implementation:
 
 1.  `Document.normalizeDocument` ignores the `"entities"` parameter in the document’s `DOMConfiguration` .
 
-## Using DOM Level 3 functionality from Java # <a id="dom3java"></a>
+### Using DOM Level 3 functionality from Java # <a id="dom3java"></a>
 
 JREs before 1.5 include the DOM Level 2 interfaces and this can cause problems when trying to use the DOM Level 3 versions of these same interface files ( `org.w3c.dom.*` ). Though the concrete Batik DOM classes implement the DOM Level 3 functionality, you won’t be able to access those methods through the `org.w3c.dom` interfaces on these earlier JREs.
 
@@ -86,7 +88,7 @@ Note that using these org.apache.batik.dom interfaces is only needed for the DOM
 
 Of course, none of this matters if you are just using the DOM 3 functionality in ECMAScript, as the matter of interfaces is hidden from the scripting environment.
 
-# XML Binding Language for SVG (sXBL)  <a id="sxbl"></a>
+## XML Binding Language for SVG (sXBL)  <a id="sxbl"></a>
 
 sXBL is supported in documents with `version="1.2"` . However, the following issues exist:
 
@@ -101,13 +103,13 @@ Two content selector languages are supported: XPath 1.0 Patterns and the drastic
 
 Note that sXBL is likely to be dropped in favor of [XBL 2.0](http://www.w3.org/TR/xbl2) in [SVG 1.2 Full](http://www.w3.org/TR/SVG12/) .
 
-# Flowing text and graphics  <a id="flowtext"></a>
+## Flowing text and graphics  <a id="flowtext"></a>
 
 The `flowRoot` , `flowRegion` , `flowDiv` , `flowPara` , `flowSpan` , `flowRegionBreak` and `flowLine` elements from [SVG 1.2 Full](http://www.w3.org/TR/SVG12/) ’s [Flowing Text and Graphics](http://www.w3.org/TR/2004/WD-SVG12-20041027/flow.html) chapter are supported in documents with `version="1.2"` .
 
 The more recent [SVG 1.2 Tiny](http://www.w3.org/TR/SVGTiny12/) draft specifies a different syntax for (a more restricted version of) flowing text, and the full flowing text syntax is therefore likely to change.
 
-# Other SVG 1.2 features  <a id="other"></a>
+## Other SVG 1.2 features  <a id="other"></a>
 
 The following other features from SVG 1.2 are supported:
 

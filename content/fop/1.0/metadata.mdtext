@@ -1,17 +1,19 @@
 Title: Apache(tm) FOP: Metadata
 
+#Apache(tm) FOP: Metadata
 
-# Overview  <a id="overview"></a>
+
+## Overview  <a id="overview"></a>
 
 Document metadata is an important tool for categorizing and finding documents. Various formats support different kinds of metadata representation and to different levels. One of the more popular and flexible means of representing document or object metadata is [XMP (eXtensible Metadata Platform, specified by Adobe)](http://www.adobe.com/products/xmp/) . PDF 1.4 introduced the use of XMP. The XMP specification lists recommendation for embedding XMP metdata in other document and image formats. Given its flexibility it makes sense to make use this approach in the XSL-FO context. Unfortunately, unlike SVG which also refers to XMP, XSL-FO doesn't recommend a preferred way of specifying document and object metadata. Therefore, there's no portable way to represent metadata in XSL-FO documents. Each implementation does it differently.
 
-# Embedding XMP in an XSL-FO document  <a id="xmp-in-fo"></a>
+## Embedding XMP in an XSL-FO document  <a id="xmp-in-fo"></a>
 
 As noted above, there's no officially recommended way to embed metadata in XSL-FO. Apache FOP supports embedding XMP in XSL-FO. Currently, only support for document-level metadata is implemented. Object-level metadata will be implemented when there's interest.
 
 Document-level metadata can be specified in the `fo:declarations` element. XMP specification recommends to use `x:xmpmeta` , `rdf:RDF` , and `rdf:Description` elements as shown in example below. Both `x:xmpmeta` and `rdf:RDF` elements are recognized as the top-level element introducing an XMP fragment (as per the XMP specification).
 
-## Example # <a id="xmp-example"></a>
+### Example # <a id="xmp-example"></a>
 [..]
 </fo:layout-master-set>
 <fo:declarations>
@@ -73,7 +75,7 @@ Please refer to the [XMP Specification](http://partners.adobe.com/public/develop
 
 Property sets (Namespaces) not listed here are simply passed through to the final document (if supported). That is useful if you want to specify a custom metadata schema.
 
-# Links  <a id="links"></a>
+## Links  <a id="links"></a>
 
 
 -  [Adobe's Extensible Metadata Platform (XMP) website](http://www.adobe.com/products/xmp/) 

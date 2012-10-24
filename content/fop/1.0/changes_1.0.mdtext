@@ -1,20 +1,22 @@
 Title: History of Changes 1.0
 
+#History of Changes 1.0
+
 
  [](changes_1.0.rss) 
 
-# Introduction and explanation of symbols  <a id="introduction"></a>
+## Introduction and explanation of symbols  <a id="introduction"></a>
 
 Changes are sorted by "type" and then chronologically with the most recent at the top. These symbols denote the various action types:<icon alt="add" src="../images/add.jpg"></icon>=add,<icon alt="fix" src="../images/fix.jpg"></icon>=fix,<icon alt="remove" src="../images/remove.jpg"></icon>=remove,<icon alt="update" src="../images/update.jpg"></icon>=update
 
-# Version 1.0 (21 July 2010)  <a id="version_1.0"></a>
+## Version 1.0 (21 July 2010)  <a id="version_1.0"></a>
 
-## Changes to the End-User API # <a id="API_1.0"></a>
+### Changes to the End-User API # <a id="API_1.0"></a>
 
 
 - <icon alt="add" src="../images/add.jpg"></icon>Added a command-line option '-catalog' to use a catalog resolver for the XML and XSLT files Committed by SP.
 
-## Changes to the Code Base # <a id="Code_1.0"></a>
+### Changes to the Code Base # <a id="Code_1.0"></a>
 
 
 - <icon alt="add" src="../images/add.jpg"></icon>Added support for xmlfile and xsltfile parameters in FOP's Ant Task. Committed by AC.
@@ -60,12 +62,12 @@ Committed by AD. Thanks to rogov.AT.devexperts.com. See Issue [46211](http://iss
 
 - <icon alt="update" src="../images/update.jpg"></icon>Changed FONode.addCharacters() parameter to closer match the signature of the standard SAX characters() event (reduces confusion and computations). *!! Implementors of extensions that subclass FONode directly, and offer an implementation for addCharacters() should take care to make similar modifications in their code !!* Committed by AD.
 
-## Changes to the Bundled Extensions # <a id="Extensions_1.0"></a>
+### Changes to the Bundled Extensions # <a id="Extensions_1.0"></a>
 
 
 - <icon alt="add" src="../images/add.jpg"></icon>Added support for the #CMYK pseudo-profile supported by some commercial XSL implementations on the rgb-icc() function. Committed by JM.
 
-## Changes to the Font Subsystem # <a id="Fonts_1.0"></a>
+### Changes to the Font Subsystem # <a id="Fonts_1.0"></a>
 
 
 - <icon alt="add" src="../images/add.jpg"></icon>Added support for TrueType fonts with symbol character maps (like "Wingdings" and "Symbol"). Character for these fonts are usually found in the 0xF020 to 0xF0FF range (a Unicode private use area). Committed by JM.
@@ -102,7 +104,7 @@ Committed by AD. Thanks to rogov.AT.devexperts.com. See Issue [46211](http://iss
 
 - <icon alt="fix" src="../images/fix.jpg"></icon>Fix for PFMReader after bug #43089 changed the behavior of PFMFile. Fixes baseline problems when Type 1 fonts are used in conjunction with XML font metric files. Committed by JM. Thanks to J. Frantzius. See Issue [45734](http://issues.apache.org/bugzilla/show_bug.cgi?id=45734) .
 
-## Changes to the Image Support # <a id="Images_1.0"></a>
+### Changes to the Image Support # <a id="Images_1.0"></a>
 
 
 - <icon alt="add" src="../images/add.jpg"></icon>Added customization ability for the image loading framework from FOP's configuration file. Committed by JM.
@@ -111,7 +113,7 @@ Committed by AD. Thanks to rogov.AT.devexperts.com. See Issue [46211](http://iss
 
 - <icon alt="fix" src="../images/fix.jpg"></icon>Bugfix: use the effective color profile supplied by the ImageEncodingHelper, instead of the original one. Committed by JM.
 
-## Changes to the Layout Engine # <a id="Layout_1.0"></a>
+### Changes to the Layout Engine # <a id="Layout_1.0"></a>
 
 
 - <icon alt="add" src="../images/add.jpg"></icon>Implement internal character classes if the hyphenation pattern file does not contain them Committed by SP.
@@ -176,7 +178,7 @@ Committed by AD. Thanks to rogov.AT.devexperts.com. See Issue [46211](http://iss
 
 - <icon alt="fix" src="../images/fix.jpg"></icon>Activated min-height/max-height and min-width/max-width properties. Committed by AD. See Issue [43591](http://issues.apache.org/bugzilla/show_bug.cgi?id=43591) .
 
-## Changes to Renderers (Output Formats) # <a id="Renderers_1.0"></a>
+### Changes to Renderers (Output Formats) # <a id="Renderers_1.0"></a>
 
 
 - <icon alt="add" src="../images/add.jpg"></icon>AFP Output: Added enhanced dithering functionality for images that are converted to bi-level images. Committed by JM.
@@ -312,7 +314,7 @@ Committed by AD.
 
 - <icon alt="update" src="../images/update.jpg"></icon>When a JPEG image is embedded, an optionally embedded color profile is filtered out as it's already embedded separately in the PDF file. Committed by JM.
 
-## Contributors to this release # <a id="contributors_1.0"></a>
+### Contributors to this release # <a id="contributors_1.0"></a>
 
 We thank the following people for their contributions to this release.
 

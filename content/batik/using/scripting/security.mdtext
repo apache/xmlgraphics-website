@@ -1,23 +1,25 @@
 Title: Script security
 
+#Script security
+
 
 With the addition of scripting support in Batik 1.5, security features have also been added to enable users of the Batik toolkit to run scripts in a secure manner.
 
 If you are using script, please make sure you have reviewed the [Script Security Warning](../../index.html#SecurityWarning) with regards to the Batik 1.5 release.
 
-# Running scripts securely  <a id="sandbox"></a>
+## Running scripts securely  <a id="sandbox"></a>
 
 The Java platform offers a lot of options for running applications securely. Running an application securely requires that it runs in a so-called security sand-box which controls all the access the application makes to restricted resources (such as the file system).
 
 The concept of Java security is an application-wide concept. As such, it has to be applied at the application level (and not at the framework level). In the Batik distribution, the sample applications (such as the [Squiggle Browser](../../tools/browser.html) and the [SVG rasterizer](../../tools/rasterizer.html) ) apply security (or disable it) but the framework does not apply it: it is security-aware (meaning that it is able to handle security exceptions).
 
-## Enforcing security in a Batik application # <a id="enforcing"></a>
+### Enforcing security in a Batik application # <a id="enforcing"></a>
 
 Enforcing security in a Batik application is done by setting a [java.lang.SecurityManager](http://java.sun.com/j2se/1.5.0/docs/api/java/lang/SecurityManager.html) . This security manager will apply the security settings of the Java platform (as defined by the *jre-dir*  `/lib/security/java.policy` and, optionally, by the policy file whose URL is defined in the `java.security.policy` system property).
 
 The [org.apache.batik.util.ApplicationSecurityEnforcer](../../javadoc/org/apache/batik/util/ApplicationSecurityEnforcer.html) helper class makes it easier for Batik application developers to add security support in their applications. That helper class is used by the sample Batik applications.
 
-## Squiggle security # <a id="squiggle"></a>
+### Squiggle security # <a id="squiggle"></a>
 
 The Squiggle browser lets the user decide whether or not scripts should be run securely (see the “Browser Options” in the preference dialog box). When scripts are run securely, Squiggle will enforce the security settings as follows:
 
@@ -40,7 +42,7 @@ in the `resources/org/apache/batik/apps/svgbrowser/resources/svgbrowser.policy` 
 
 Alternatively, you can write your own policy file and specify its URL through the `java.security.policy` system property (which you can specify through the `-Djava.security.policy=`  *url* command line option).
 
-# Controlling access to external resources  <a id="externalResources"></a>
+## Controlling access to external resources  <a id="externalResources"></a>
 
 SVG makes a very powerful use of external resources in many elements such as `image` , `use` , `font` , `script` and `radialGradient` . There are over fifteen SVG elements that may reference external resources that way.
 

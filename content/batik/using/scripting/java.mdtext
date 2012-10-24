@@ -1,9 +1,11 @@
 Title: Scripting With Java
 
+#Scripting With Java
+
 
 This page explains how to manipulate the DOM tree of an SVG document from a Java program.
 
-# How to manipulate a document in a JSVGCanvas  <a id="Swing"></a>
+## How to manipulate a document in a JSVGCanvas  <a id="Swing"></a>
 
 The follow code template demonstrates how to manipulate an SVG document displayed in a [JSVGCanvas](../../javadoc/org/apache/batik/swing/JSVGCanvas.html) directly from a Java program.
 You don’t have to worry about graphics updates; after each event listener invocation the canvas is updated if needed.import java.awt.event.WindowAdapter;
@@ -116,7 +118,7 @@ public class SVGApplication {
     }
 }
 
-# Writing thread-safe code  <a id="Threads"></a>
+## Writing thread-safe code  <a id="Threads"></a>
 
 The DOM listeners registered on the SVG document are called from the canvas update thread. To avoid race conditions, do not manipulate the DOM tree from another thread.
 

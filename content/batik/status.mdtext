@@ -1,5 +1,7 @@
 Title: Batik implementation status
 
+#Batik implementation status
+
 
 This page details information about Batik’s implementation of the [SVG 1.1](http://www.w3.org/TR/SVG11/) and related specifications. The features of the implementation are annotated with their level of support, which can be at one of three levels:
 
@@ -21,7 +23,7 @@ If a feature is<span class="yes">fully</span>supported, this means that Batik pe
 
 Note that the information on this page is based on the code in the Subversion repository trunk.
 
-# Elements, attributes and properties  <a id="elements"></a>
+## Elements, attributes and properties  <a id="elements"></a>
 
 The table below lists the SVG elements and the attributes and properties on them that are supported by Batik. For an element to be fully supported, its attributes and the properties that apply to it must also be fully supported. If an attribute of the element or a property that applies to the element is only partially supported or is not supported, the element can be at most partially supported. An element is not supported if it is not processed by Batik, even if some of its attributes are supported (such as the core attributes `id` or `xml:base` ).
 
@@ -4218,7 +4220,7 @@ Values for the XLink attributes other than `xlink:href` that are not those requi
  `glyphRef` elements can reference glyphs only by URI, not by font properties.
 
 
-# DOM interfaces  <a id="dom"></a>
+## DOM interfaces  <a id="dom"></a>
 
 The table below lists the SVG DOM interfaces that are supported by Batik. For each interface, the name of each IDL attribute and operation introduced on the interface is given, along with its level of support. For cases where the implementation of an attribute or operation introduced in a superinterface may differ depending on which subinterface has inherited it, this is noted next to that attribute or operation. Both the ECMAScript and Java bindings have the same implementation level as specified for the IDL interfaces in the table.
 
@@ -5869,7 +5871,7 @@ The table below lists the SVG DOM interfaces that are supported by Batik. For ea
 | zoomRectScreen | no |  |
 |----------------|
 
-# ECMAScript objects  <a id="ecmascript"></a>
+## ECMAScript objects  <a id="ecmascript"></a>
 
 In addition to the host objects exposed to ECMAScript that implement the SVG DOM, the following objects are also available.
 <div class="object"><div class="object-header">Global object</div><div class="object-section-header">Properties</div><div class="object-property-header">document</div><div class="object-property-desc">

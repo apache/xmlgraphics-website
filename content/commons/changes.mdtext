@@ -1,15 +1,17 @@
 Title: History of Changes
 
+#History of Changes
+
 
  [](changes.rss) 
 
-# Introduction and explanation of symbols  <a id="introduction"></a>
+## Introduction and explanation of symbols  <a id="introduction"></a>
 
 Changes are sorted by "type" and then chronologically with the most recent at the top. These symbols denote the various action types:<icon alt="add" src="images/add.jpg"></icon>=add,<icon alt="fix" src="images/fix.jpg"></icon>=fix,<icon alt="remove" src="images/remove.jpg"></icon>=remove,<icon alt="update" src="images/update.jpg"></icon>=update
 
-# Version Trunk (n/a)  <a id="version_Trunk"></a>
+## Version Trunk (n/a)  <a id="version_Trunk"></a>
 
-## Changes to the Code Base # <a id="Code_Trunk"></a>
+### Changes to the Code Base # <a id="Code_Trunk"></a>
 
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Support rdf:resource attributes in XMP. Committed by GA. Thanks to Brian Carlson. See Issue [50497](http://issues.apache.org/bugzilla/show_bug.cgi?id=50497) .
@@ -34,7 +36,7 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - <icon alt="update" src="images/update.jpg"></icon>Various code style fixes Committed by JM. Thanks to Glenn Adams. See Issue [49703](http://issues.apache.org/bugzilla/show_bug.cgi?id=49703) .
 
-## Contributors to this release # <a id="contributors_Trunk"></a>
+### Contributors to this release # <a id="contributors_Trunk"></a>
 
 We thank the following people for their contributions to this release.
 
@@ -42,9 +44,9 @@ This is a list of all people who participated as committers:<br></br>Glenn Adams
 
 This is a list of other contributors:<br></br>Brian Carlson, Florian Barbera Vila Bollain, Glenn Adams, JM and Mehdi Houshmand, Joshua Marquart, Sebastian Bazley.
 
-# Version 1.4 (7 July 2010)  <a id="version_1.4"></a>
+## Version 1.4 (7 July 2010)  <a id="version_1.4"></a>
 
-## Changes to the Code Base # <a id="Code_1.4"></a>
+### Changes to the Code Base # <a id="Code_1.4"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Added getter and setter for enabling/disabling comments in PSGenerator. Committed by JM. Thanks to Julien Aymé. See Issue [49250](http://issues.apache.org/bugzilla/show_bug.cgi?id=49250) .
@@ -105,7 +107,7 @@ This is a list of other contributors:<br></br>Brian Carlson, Florian Barbera Vil
 
 - <icon alt="update" src="images/update.jpg"></icon>Moved method disableClipping from AbstractPSDocumentGraphics2D to PSGraphics2D. Committed by JM. Thanks to Julien Aymé. See Issue [49337](http://issues.apache.org/bugzilla/show_bug.cgi?id=49337) .
 
-## Contributors to this release # <a id="contributors_1.4"></a>
+### Contributors to this release # <a id="contributors_1.4"></a>
 
 We thank the following people for their contributions to this release.
 
@@ -113,9 +115,9 @@ This is a list of all people who participated as committers:<br></br>Adrian Cumi
 
 This is a list of other contributors:<br></br>Andrey Koltunov, Calixte Denizet, Jiří Kunhart, Julien Aymé, Peter Hancock, Venkat Reddy.
 
-# Version 1.3.1 (11 June 2008)  <a id="version_1.3.1"></a>
+## Version 1.3.1 (11 June 2008)  <a id="version_1.3.1"></a>
 
-## Changes to the Code Base # <a id="Code_1.3.1"></a>
+### Changes to the Code Base # <a id="Code_1.3.1"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Added fallbacks for Type 1 fonts which don't have the normal "one", "two" etc. glyphs, but actually only provide "oneoldstyle", "twooldstyle" etc. Committed by JM.
@@ -142,15 +144,15 @@ This is a list of other contributors:<br></br>Andrey Koltunov, Calixte Denizet, 
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Bugfix for EOFException when pre-loading very small PNG images (file size < 88 bytes). Committed by JM.
 
-## Contributors to this release # <a id="contributors_1.3.1"></a>
+### Contributors to this release # <a id="contributors_1.3.1"></a>
 
 We thank the following people for their contributions to this release.
 
 This is a list of all people who participated as committers:<br></br>Jeremias Märki (JM), Max Berger (MB).
 
-# Version 1.3 (07 Feb 2008)  <a id="version_1.3"></a>
+## Version 1.3 (07 Feb 2008)  <a id="version_1.3"></a>
 
-## Changes to the Code Base # <a id="Code_1.3"></a>
+### Changes to the Code Base # <a id="Code_1.3"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Image Loading: Support for passing in SAXSource instance. Committed by JM. Thanks to Adam Strzelecki. See Issue [44466](http://issues.apache.org/bugzilla/show_bug.cgi?id=44466) .
@@ -179,7 +181,7 @@ This is a list of all people who participated as committers:<br></br>Jeremias M�
 
 - <icon alt="update" src="images/update.jpg"></icon>PostScript: Improved PSImageUtils by introducing the ImageEncoder interface and allowing for streams instead of byte arrays for data transfer which can lower memory consumption. Committed by JM.
 
-## Contributors to this release # <a id="contributors_1.3"></a>
+### Contributors to this release # <a id="contributors_1.3"></a>
 
 We thank the following people for their contributions to this release.
 
@@ -187,9 +189,9 @@ This is a list of all people who participated as committers:<br></br>Chris Bowdi
 
 This is a list of other contributors:<br></br>Adam Strzelecki, Adrian Cumiskey, Max Berger, Sergey Orlov.
 
-# Version 1.2 (21 July 2007)  <a id="version_1.2"></a>
+## Version 1.2 (21 July 2007)  <a id="version_1.2"></a>
 
-## Changes to the Code Base # <a id="Code_1.2"></a>
+### Changes to the Code Base # <a id="Code_1.2"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Added support for CMYK and GRAY color spaces for PSGenerator (moved there from PSGraphics2D). Committed by JM. Thanks to Adrian Cumiskey. See Issue [42507](http://issues.apache.org/bugzilla/show_bug.cgi?id=42507) .
@@ -198,7 +200,7 @@ This is a list of other contributors:<br></br>Adam Strzelecki, Adrian Cumiskey, 
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Fixed the PDF/A namespace according to ISO-19005-1:2005/Cor.1:2007 and deprecated the use of the draft PDF/A namespace used by Adobe Acrobat 7.x. Committed by JM.
 
-## Contributors to this release # <a id="contributors_1.2"></a>
+### Contributors to this release # <a id="contributors_1.2"></a>
 
 We thank the following people for their contributions to this release.
 
@@ -206,9 +208,9 @@ This is a list of all people who participated as committers:<br></br>Jeremias M�
 
 This is a list of other contributors:<br></br>Adrian Cumiskey.
 
-# Version 1.1 (22 Dec 2006)  <a id="version_1.1"></a>
+## Version 1.1 (22 Dec 2006)  <a id="version_1.1"></a>
 
-## Changes to the Code Base # <a id="Code_1.1"></a>
+### Changes to the Code Base # <a id="Code_1.1"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Added the start of an XMP metadata framework. Committed by JM.
@@ -223,7 +225,7 @@ This is a list of other contributors:<br></br>Adrian Cumiskey.
 
 - <icon alt="fix" src="images/fix.jpg"></icon>Bugfix: The generation of the PostScript setdash command was assuming that only integer values can be used but that isn't the case. Committed by JM.
 
-## Contributors to this release # <a id="contributors_1.1"></a>
+### Contributors to this release # <a id="contributors_1.1"></a>
 
 We thank the following people for their contributions to this release.
 
@@ -231,20 +233,20 @@ This is a list of all people who participated as committers:<br></br>Jeremias M�
 
 This is a list of other contributors:<br></br>Max Berger.
 
-# Version 1.0 (17 Apr 2006)  <a id="version_1.0"></a>
+## Version 1.0 (17 Apr 2006)  <a id="version_1.0"></a>
 
-## Changes to the Code Base # <a id="Code_1.0"></a>
+### Changes to the Code Base # <a id="Code_1.0"></a>
 
 
 - <icon alt="add" src="images/add.jpg"></icon>Initial release with several components from Batik and FOP: Image codecs, Image writer abstraction, I/O classes, Java2D helpers, PostScript library with Graphics2D implementation. Committed by JM.
 
-## Contributors to this release # <a id="contributors_1.0"></a>
+### Contributors to this release # <a id="contributors_1.0"></a>
 
 We thank the following people for their contributions to this release.
 
 This is a list of all people who participated as committers:<br></br>Jeremias Märki (JM).
 
-# All Committers  <a id="all-committers"></a>
+## All Committers  <a id="all-committers"></a>
 
 This is a list of all people who have ever participated as committers on this project.
 

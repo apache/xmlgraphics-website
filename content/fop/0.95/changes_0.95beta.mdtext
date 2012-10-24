@@ -1,20 +1,22 @@
 Title: History of Changes 0.95beta
 
+#History of Changes 0.95beta
+
 
  [](changes_0.95beta.rss) 
 
-# Introduction and explanation of symbols  <a id="introduction"></a>
+## Introduction and explanation of symbols  <a id="introduction"></a>
 
 Changes are sorted by "type" and then chronologically with the most recent at the top. These symbols denote the various action types:<icon alt="add" src="../images/add.jpg"></icon>=add,<icon alt="fix" src="../images/fix.jpg"></icon>=fix,<icon alt="remove" src="../images/remove.jpg"></icon>=remove,<icon alt="update" src="../images/update.jpg"></icon>=update
 
-# Version 0.95beta (26 March 2008)  <a id="version_0.95beta"></a>
+## Version 0.95beta (26 March 2008)  <a id="version_0.95beta"></a>
 
-## Changes to the End-User API # <a id="API_0.95beta"></a>
+### Changes to the End-User API # <a id="API_0.95beta"></a>
 
 
 - <icon alt="remove" src="../images/remove.jpg"></icon>Removed deprecated methods in the "apps" package that were left-overs from the API discussions. Committed by JM.
 
-## Changes to the Code Base # <a id="Code_0.95beta"></a>
+### Changes to the Code Base # <a id="Code_0.95beta"></a>
 
 
 - <icon alt="add" src="../images/add.jpg"></icon>Turned on XInclude processing for the main source given on the command line. Committed by MB.
@@ -35,14 +37,14 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - <icon alt="fix" src="../images/fix.jpg"></icon>Avoid a NullPointerException in AreaTreeHandler.endDocument(). Committed by JM. Thanks to David Delbecq. See Issue [43910](http://issues.apache.org/bugzilla/show_bug.cgi?id=43910) .
 
-## Changes to the Bundled Extensions # <a id="Extensions_0.95beta"></a>
+### Changes to the Bundled Extensions # <a id="Extensions_0.95beta"></a>
 
 
 - <icon alt="add" src="../images/add.jpg"></icon>New extension attribute fox:transform on fo:block-container allows free-form transformation (rotation, scaling etc.) of absolute and fixed block-containers. Supported only for PDF, PS and Java2D-based renderers. Committed by JM.
 
 - <icon alt="add" src="../images/add.jpg"></icon>Added new extension element: fox:external-document. It allows to add whole documents such as multi-page TIFF images to be inserted as peers to a page-sequence. Each image will make up an entire page. See the documentation for details. Committed by JM.
 
-## Changes to the Font Subsystem # <a id="Fonts_0.95beta"></a>
+### Changes to the Font Subsystem # <a id="Fonts_0.95beta"></a>
 
 
 - <icon alt="add" src="../images/add.jpg"></icon>Added support for unusual font encodings (like for Symbol or Cyrillic fonts) of Type 1 fonts in PDF and PostScript output. Committed by JM.
@@ -65,12 +67,12 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - <icon alt="update" src="../images/update.jpg"></icon>Improved font auto-detection and handling of AWT-supplied fonts in order to achieve better results when using multiple output formats. Whenever possible, the font names appearing in the operating system can also be used in XSL-FO. Committed by JM.
 
-## Changes to the Image Support # <a id="Images_0.95beta"></a>
+### Changes to the Image Support # <a id="Images_0.95beta"></a>
 
 
 - <icon alt="fix" src="../images/fix.jpg"></icon>A new image loading framework has been introduced to fix various problems with external graphics and improve performance. Committed by JM.
 
-## Changes to the Layout Engine # <a id="Layout_0.95beta"></a>
+### Changes to the Layout Engine # <a id="Layout_0.95beta"></a>
 
 
 - <icon alt="add" src="../images/add.jpg"></icon>Added support for background on fo:table-column and fo:table-header/footer/body elements. Committed by VH.
@@ -149,7 +151,7 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - <icon alt="update" src="../images/update.jpg"></icon>PropertyCache phase 2:<br></br>• improvement of the PropertyCache itself should now guarantee acceptable performance of the static caches in multi-session environments, which is a possible problem with synchronizedMap.<br></br>• changed CommonFont to use the cache: added CachedCommonFont to contain the properties that are always cacheable CommonFont itself is only cached if the remaining properties are absolutes.<br></br>• changed CommonHyphenation, KeepProperty, ColorProperty and FontFamilyProperty to use the cache.<br></br>Committed by AD.
 
-## Changes to Renderers (Output Formats) # <a id="Renderers_0.95beta"></a>
+### Changes to Renderers (Output Formats) # <a id="Renderers_0.95beta"></a>
 
 
 - <icon alt="add" src="../images/add.jpg"></icon>Added an option to disable the default sRGB profile in PDF output for those who don't care about color fidelity, but care about PDF file size. Committed by JM.
@@ -190,7 +192,7 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - <icon alt="update" src="../images/update.jpg"></icon>PDF Transcoder (SVG) text painting has been completely rewritten. Except for some special cases (with filters for example), all text (including flow text) is now painted using PDF text operators. Committed by JM.
 
-## Contributors to this release # <a id="contributors_0.95beta"></a>
+### Contributors to this release # <a id="contributors_0.95beta"></a>
 
 We thank the following people for their contributions to this release.
 

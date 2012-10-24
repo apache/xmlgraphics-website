@@ -1,7 +1,9 @@
 Title: Installing Batik
 
+#Installing Batik
 
-# System requirements  <a id="systemRequirements"></a>
+
+## System requirements  <a id="systemRequirements"></a>
 
 Batik requires the following to be already installed in your system:
 
@@ -11,7 +13,7 @@ Java Runtime Environment
 :    
 A Java 1.4 or above compatible runtime environment must be present.
 
-# Choosing a distribution to download  <a id="distributions"></a>
+## Choosing a distribution to download  <a id="distributions"></a>
 
 To install Batik, you will need to go to the [download page](download.cgi) and download one or more ZIP file containing the distribution of your choice. It is good practice to [verify the integrity](#verify) of the distribution files, especially if you are using one of our mirror sites. Here are the various components you will find in the download area and their intended use:
 
@@ -83,7 +85,7 @@ After running this script, a Finder window will be opened where you can find the
 
 - Now you can follow the instructions specific to the application you want to use. For example, see the [SVG Browser](tools/browser.html) page or the [SVG Rasterizer](tools/rasterizer.html) page for an explanation on how to use these tools.
 
-# Optional components  <a id="optionalComponents"></a>
+## Optional components  <a id="optionalComponents"></a>
 
 By default, the Batik source distribution comes with the [Mozilla Rhino](http://www.mozilla.org/rhino/) JavaScript Engine ( `js.jar` ).
 
@@ -96,7 +98,7 @@ To enable other scripting languages support, you will only need to install the c
 
 Conversely, you can remove the `js.jar` of the Batik `lib` directory to remove JavaScript support and have a smaller distribution.
 
-# Jar file dependency graph  <a id="dependencyGraph"></a>
+## Jar file dependency graph  <a id="dependencyGraph"></a>
 <warning label="Out of date">
 Note that the dependency graph in this section is out of date, and needs to be updated.
 </warning>
@@ -108,7 +110,7 @@ When boxes touch, the box on top depends on the box below it (there is no horizo
 <div class="figure"> ![Batik jar file dependency graph](jarDependImg.png "") </div>Some jar file names are shortened for clarity. All `batik` package references are short for `org.apache.batik` .
 It is worth pointing out that a determined/clever programmer may be able to pare down some of these dependencies. For example the `batik-dom.jar` depends on `xerces.jar` because of the `SAXDocumentFactory` class in `org.apache.batik.dom.util` . If you didn’t need to parse XML it would be possible to ignore or break this dependency and still use the `batik-dom.jar` file for its DOM implementation.
 
-# Verify releases  <a id="verify"></a>
+## Verify releases  <a id="verify"></a>
 
 It is essential that you verify the integrity of the downloaded files using the PGP or MD5 signatures.
 

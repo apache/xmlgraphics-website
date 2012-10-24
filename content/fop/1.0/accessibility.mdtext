@@ -1,13 +1,15 @@
 Title: Apache(tm) FOP: Accessibility
 
+#Apache(tm) FOP: Accessibility
 
-# Overview  <a id="overview"></a>
+
+## Overview  <a id="overview"></a>
 
 This page describes the [accessibility](http://en.wikipedia.org/wiki/Accessibility) features of Apache&trade; FOP. [Section 508](http://www.section508.gov/) defines accessibility in the context of electronic documents for the USA but other countries have similar requirements.
 
 Accessibility features are available only for the PDF output format and there are some implementation limitations. Also, certain actions must be undertaken by the content creator to ensure that FOP can create a truly accessible document.
 
-# Enabling accessibility  <a id="Enabling+accessibility"></a>
+## Enabling accessibility  <a id="Enabling+accessibility"></a>
 
 There are 3 ways to enable accessibility:
 
@@ -38,7 +40,7 @@ Apache FOP cannot automatically generate accessible PDFs. Some of the work can o
 
 - Specify the natural language of the document using the language and country properties (or via the `xml:lang` shorthand property).
 
-# Customized Tagging  <a id="customTags"></a>
+## Customized Tagging  <a id="customTags"></a>
 
 The [PDF Reference](#PDFReference) defines a set of standard Structure Types to tag content. For example, ‘P’ is used for identifying paragraphs, ‘H1’ to ‘H6’ for headers, ‘L’ for lists, ‘Div’ for block-level groups of elements, etc. This standard set is aimed at improving interoperability between applications producing or consuming PDF.
 
@@ -51,11 +53,11 @@ You may want to customize that mapping to improve the accuracy of the tagging or
 ...
 If a non-standard structure type is specified, FOP will issue a warning and fall back to the default tag associated to the Formatting Object.
 
-# Testing  <a id="testing"></a>
+## Testing  <a id="testing"></a>
 
 Accessible PDFs can be tested, for example, using Adobe Acrobat Professional. Its Accessibility Check feature creates a report indicating any deficiencies with a PDF document. Alternatively, you can just let a screen reader read the document aloud.
 
-# Limitations  <a id="limitations"></a>
+## Limitations  <a id="limitations"></a>
 
 Accessibility support in Apache FOP is relatively new, so there are certain limitations. Please help us identify and close any gaps.
 
@@ -68,7 +70,7 @@ Accessibility support in Apache FOP is relatively new, so there are certain limi
 
 - The side regions (region-before, region-after etc.) are currently not specially identified. Screen readers may read their content at page changes.
 
-# Related Links  <a id="links"></a>
+## Related Links  <a id="links"></a>
 
 Many resources providing guidance about creating accessible documents can be found on the web. Here are a few links, along with additional resources around the topic:
 

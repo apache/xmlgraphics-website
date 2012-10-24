@@ -1,7 +1,9 @@
 Title: Tools for Adobe PostScript
 
+#Tools for Adobe PostScript
 
-# Overview  <a id="overview"></a>
+
+## Overview  <a id="overview"></a>
 
 Apache&trade; XML Graphics Commons contains various tools for writing and processing Adobe PostScript files. This includes:
 
@@ -18,11 +20,11 @@ The "PSGenerator" class can help writing PostScript files. It deals with things 
 
 You will rarely interact with the PS generator itself, as it is probably more interesting to generate a PostScript file using Java2D which is described in the following section.
 
-# Java2D: Graphics2D implementation for generating PostScript and EPS  <a id="java2d"></a>
+## Java2D: Graphics2D implementation for generating PostScript and EPS  <a id="java2d"></a>
 
 We provide two classes (PSDocumentGraphics2D and EPSDocumentGraphics2D) which you can use to generated complete PostScript files using normal Java2D means. The difference between the two classes is that the EPS variant creates a fully compliant Encapsulated PostScript file while the PS variant simply creates a normal DSC-compliant level 2 PostScript file. It depends on your requirement which variant you choose. The PS variant is mostly for printing purposes while the EPS variant is better suited for inclusion in other documents.
 
-## Creating an EPS file # <a id="creating-eps"></a>
+### Creating an EPS file # <a id="creating-eps"></a>
 
 Creating an EPS file using the Graphics2D implementation is easy. Instantiate EPSDocumentGraphics2D, set a GraphicContext and set up the output document. Here's an example:
 
@@ -43,7 +45,7 @@ g2d.finish(); //Wrap up and finalize the EPS file
         
 A complete example for generating an EPS files can be found in the ["examples" directory](http://svn.apache.org/viewvc/xmlgraphics/commons/trunk/examples/java/java2d/ps/) in the distribution.
 
-# DSC parser/processor  <a id="dsc"></a>
+## DSC parser/processor  <a id="dsc"></a>
 
 Many PostScript files use special comments to structure a document. This allows manipulation of PostScript files without interpreting them. These special comments are defined in the [Document Structuring Conventions](http://partners.adobe.com/public/developer/en/ps/5001.DSC_Spec.pdf) . The code in Commons is designed to work with DSC 3.0. For details on how DSC is used, please take a look at the DSC specification.
 
