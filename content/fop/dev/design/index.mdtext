@@ -3,7 +3,7 @@ Title: Apache(tm) FOP Design: Introduction
 #Apache&trade; FOP Design: Introduction
 <version>$Revision: 1298724 $</version><authors><person email="keiron@aftexsw.com" name="Keiron Liddle"></person></authors>
 The articles in this section pertain mainly to the *redesign* or *trunk* line of development. The redesign is mainly focusing on parts of the layout process (converting the FO tree into the Area Tree). Therefore other (non-layout) sections in this document are probably largely accurate for the maintenance branch, but should be used with care in that context.
-# The Black Box View  <a id="black-box"></a>
+# The Black Box View <a id="black-box"></a>
 
 From a user's standpoint, Apache&trade; FOP is a black box that an xml file as input, performs some magic, then creates the desired output:
 
@@ -14,25 +14,25 @@ From a user's standpoint, Apache&trade; FOP is a black box that an xml file as i
 
 Although this is simple, it is useful in defining the outer limits of FOP's core processing. There may be other things going on under FOP's control that are not really part of FOP. For example, FOP provides a convenience mechanism that takes semantic XML + an XSLT transformation as input, instead of XSL-FO. This is done outside of FOP's core processing (by Xalan), and it is therefore outside the scope of FOP's design, and outside the scope of the FOP design documents.
 
-## Primary Design Goals  <a id="primary-goals"></a>
+## Primary Design Goals <a id="primary-goals"></a>
 
 A discussion of project design properly begins with a list of the goals of the project. Out of these goals will flow the design issues and details, and eventually, the implementation.
 
-### Conformance to the XSL-FO Specification # <a id="pri-goal-conformance"></a>
+### Conformance to the XSL-FO Specification <a id="pri-goal-conformance"></a>
 
 The current design goal is to reach the "basic" level of conformance, and to have enough flexibility in the design to reach "complete" conformance without major rewriting. After "basic" conformance is achieved, it is probable that higher levels of conformance will be sought.
 
-### Process Files of Arbitrary Size # <a id="pri-goal-unlimited-size"></a>
+### Process Files of Arbitrary Size <a id="pri-goal-unlimited-size"></a>
 
 Except for user storage limitations, the design goal is to be able to process files of any size. In a separate but related issue, the design goal is to be able to process page-sequence elements of any size. (See [Recycling FO Tree Memory](fotree.html#recycle) for a discussion of the use of page-sequence as a logical subdivided "chunk" on an FO document).
 
-## Secondary Design Goals  <a id="secondary-goals"></a>
+## Secondary Design Goals <a id="secondary-goals"></a>
 
-### Minimize Memory Use # <a id="sec-goal-memory"></a>
+### Minimize Memory Use <a id="sec-goal-memory"></a>
 
 Many FOP design decisions revolve around trying to minimize the use of memory. The primary purpose here is to reduce the amount of data that must be serialized to storage during processing. Since our primary design goals include the ability to process files of arbitrary size, there is no way to avoid the need to serialize. However, many FOP users provide web access to documents that are created in real time. Performance is therefore an important issue in these real-world applications. To the extent that it can be done so without jeopardizing the primary design goals, FOP developers have identified keeping a small memory footprint as being an important secondary goal.
 
-## The Big Picture View  <a id="big-picture"></a>
+## The Big Picture View <a id="big-picture"></a>
 
 With our design goals outlined, we'll now open the Black Box and look at the major processes inside. FOP has adopted the basic structure of the XSL-FO standard itself as a convenient model for the major processes in FOP. The Result in each row is the input for the next.
 
@@ -48,7 +48,7 @@ In general, each piece of data will be processed in the same way. However, some 
 
 For a detailed discussion of the design of any component, follow its link in the table above. Each component outlines the design issues which have already been addressed. These resolution of these design issues is in support of the primary and secondary goals, so they are not necessarily written in stone. However, most of them have been discussed at length among the developers, and are reasonably well settled.
 
-## Vocabulary  <a id="vocabulary"></a>
+## Vocabulary <a id="vocabulary"></a>
 
 This section will attempt to provide information about any jargon used in the design documentation.
 

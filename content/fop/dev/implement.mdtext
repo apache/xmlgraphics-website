@@ -5,11 +5,11 @@ Title: Apache(tm) FOP Development: Implementation Overview
 
 The purpose of this document is to tie together the Apache&trade; FOP design (interface) with some of the key points where control is passed within FOP (implementation), so that developers can quickly find the section of code that is relevant to their needs. The process described is for a "typical" command-line document. All classes are in org.apache.fop unless otherwise designated.
 
-## Overview  <a id="Overview"></a>
+## Overview <a id="Overview"></a>
 
 The input FO document is sent to the FO tree builder via SAX events. Fragments of an FO Tree are built from this process. As each page-sequence element is completed, it is passed to a layout processor, which in turn converts it into an Area Tree. The Area Tree is then given to the Renderer, which converts it into a stream of data containing the output document. The sections below will provide additional details. Where needed differences between the trunk and maintenance branches are shown in tabular format.
 
-## Startup  <a id="Startup"></a>
+## Startup <a id="Startup"></a>
 
 
 - The job starts in *apps.Fop.main()* .
@@ -18,7 +18,7 @@ The input FO document is sent to the FO tree builder via SAX events. Fragments o
 
 - Control is passed to *apps.Driver.render()* . This class fires up a SAX parser, the events from which indirectly control the remaining processing, including building the FO Tree, building the Area Tree, rendering, output and logging.
 
-## Formatting Object Tree  <a id="Formatting+Object+Tree"></a>
+## Formatting Object Tree <a id="Formatting+Object+Tree"></a>
 
 | Trunk | Maintenance |
 |-------|-------------|
@@ -28,17 +28,17 @@ The input FO document is sent to the FO tree builder via SAX events. Fragments o
 | . |  `fo.pagination.PageSequence.makePage()` creates a BodyArea and passes it to *fo.Flow.layout*  |
 | . | the layout process is then driven from `fo.pagination.PageSequence.format()` . |
 
-## Layout  <a id="Layout"></a>
+## Layout <a id="Layout"></a>
 
 There are layout managers for each type of layout decision. They take an FO Tree as input and build a laid-out Area Tree from it. The layout process involves finding out where line breaks and page breaks should be made, then creating the areas on the page. Static areas can then be added for any static regions. As pages are completed, they are added to the Area Tree.
 
-## Area Tree  <a id="Area+Tree"></a>
+## Area Tree <a id="Area+Tree"></a>
 
 The area tree is a data structure designed to hold the page areas. These pages are then filled with the page regions and various areas. The area tree is used primarily as a minimal structure that can be rendered by the renderers.
 
 The area tree is supported by an area tree model. This model handles the adding of pages to the area tree. It also handles page sequence starts, document level extensions, id references and unresolved id areas. This model allows the pages to be handled directly by a renderer or to store the pages for later use.
 
-## Rendering  <a id="Rendering"></a>
+## Rendering <a id="Rendering"></a>
 
 The renderer receives pages from the area tree and renders those pages. If a renderer supports out of order rendering then it will either render or prepare a page in the correct order. Otherwise the pages are rendered in order. The task of the renderer is to take the pages and output them to the requested type. In the case of the AWTRenderer it needs to be able to view any page.
 

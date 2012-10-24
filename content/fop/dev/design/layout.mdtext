@@ -3,7 +3,7 @@ Title: Apache(tm) FOP Design: Layout
 #Apache&trade; FOP Design: Layout
 <version>$Revision: 1298724 $</version><authors><person email="keiron@aftexsw.com" name="Keiron Liddle"></person></authors>
 
-## Introduction  <a id="into"></a>
+## Introduction <a id="into"></a>
 
 The role of the layout managers is to build the Area Tree by using the information from the FO Tree. The layout managers decide where information is placed in the area tree.
 
@@ -21,21 +21,21 @@ The layout process is handled by a set of layout managers. The block level layou
 
 The traversal is done by the layout or structure process only in the flow elements.
 
-## Design Issues  <a id="issues"></a>
+## Design Issues <a id="issues"></a>
 
-### Keep Layouts Simple # <a id="issue-simple-layout"></a>
+### Keep Layouts Simple <a id="issue-simple-layout"></a>
 
 Layout should handle floats, footnotes and keeps in a simple, straightforward way.
 
-### Keep ID References Simple # <a id="issue-simple-id-refs"></a>
+### Keep ID References Simple <a id="issue-simple-id-refs"></a>
 
-### Render Pages ASAP # <a id="issue-area-recycle"></a>
+### Render Pages ASAP <a id="issue-area-recycle"></a>
 
 The issue here is that we wish to recycle the Area Tree memory as much as possible. The problem is that forward references prevent pages from being resolved until the forward references are resolved. If memory is insufficient to store unresolved pages, Area Tree fragments must be serialized until resolved.
 
 FOP developers have discussed adding the capability of using an Area Tree to render to more than one output target in the same run, which would be a complicating factor in disposal of pages as they are rendered.
 
-## Layout Managers  <a id="lm"></a>
+## Layout Managers <a id="lm"></a>
 
 The layout managers are set up from the hierarchy of the formatting object tree. A manager represents a hierachy of area producing objects. A manager is able to handle the block area(s) that it creates and organise or split areas for page breaks.
 
@@ -47,7 +47,7 @@ A layout manager is essentially a bridge between the formatting objects and the 
 
 The objects in the area tree that are organised by the manager will mostly contain the information about there layout such as spacing and keeps, this information will be thrown away once the layout for a page is finalised.
 
-## Creating Managers  <a id="creating"></a>
+## Creating Managers <a id="creating"></a>
 
 The managers are created by the page sequence. The top level manager is the Page manager. This asks the flow to add all managers in this page sequence.
 
@@ -55,13 +55,13 @@ For block level objects they have a layout manager. Neutral objects don't repres
 
 Any nested block areas or inline areas may be handled by the layout manager at a later stage.
 
-## Using Managers  <a id="using"></a>
+## Using Managers <a id="using"></a>
 
 Block area layout managers are used to create a block area, other block level managers may ask their child layout managers to create block areas which are then added to the area tree(subset).
 
 A manager is used to add areas to a page until the page is full, then the manages contain all the information necessary to make the decision about page break and spacing. A manager can split an area that it has created will keep a status about what has been added to the current area tree.
 
-## Page Layout  <a id="page"></a>
+## Page Layout <a id="page"></a>
 
 Once the Page layout manager, belonging to the page sequence, is ready then we can start laying out each page. The page sequence will create the current page to put the page data, the next page and if it exists a last page.
 
@@ -75,11 +75,11 @@ This should handle the situation where there are keeps on some block areas that 
 
 The spacing and keep information is stored so that the area positions and sizes can be adjusted.
 
-## Balancing Page  <a id="page-balance"></a>
+## Balancing Page <a id="page-balance"></a>
 
 The page is vertically justified so that it distributes the areas on the page for the best result when considering keeps and spacing.
 
-## Finding Break  <a id="finding-break"></a>
+## Finding Break <a id="finding-break"></a>
 
 First the keeps are checked. The available space on the page may have changed due to the presence of before floats or footnotes. The page break will need to be at a height <= the available space on the page.
 
@@ -91,11 +91,11 @@ If the page contains before floats or footnotes then as each area or line area i
 
 The before float and footnote regions are managed so that the separator regions will be present if it contains at least one area.
 
-## Optimising  <a id="optimize"></a>
+## Optimising <a id="optimize"></a>
 
 Once the areas for the page are finalised then the spacing will need to be adjusted. The available height on the page is compared with the min and max spacing. All of the spacing in all the areas on the page is then adjusted by the appropriate percentage value.
 
-## Multi-Column Pages  <a id="multi-column"></a>
+## Multi-Column Pages <a id="multi-column"></a>
 
 In the case of multi-column pages the column breaks and eventually the page break must be found in a slightly different way.
 
@@ -103,7 +103,7 @@ The columns need to be layed out completely from first to last but this can only
 
 So first the complete page is layed out with all columns filled with areas and the spacing at a minimum. Then if there are any before floats or footnotes then the availabe space is adjusted. Then each the best break is found for each column starting from the first column. If any before floats or footnotes are removed as a result of the new breaks and optimised spacing then all the columns should still be layed out for the same column height.
 
-## Completing Page  <a id="page-complete"></a>
+## Completing Page <a id="page-complete"></a>
 
 After the region body has been finished the static areas can be layed out. The width of the static area is set and the height is inifinite, that is all block areas should be placed in the area and their visibility is controlled be other factors.
 
@@ -111,7 +111,7 @@ The area tree for the region body will contain the information about markers tha
 
 The ordering of the area tree must be adjusted so that the areas are before, start, body, end and after in that order. The body region should be in the order before float, main then footnote.
 
-## Line Areas  <a id="line-area"></a>
+## Line Areas <a id="line-area"></a>
 
 Creating a line areas uses a similair concept. Each inline area is placed across the available space until there is no room left. The line is then split by considering all keeps and spacing.
 
@@ -119,7 +119,7 @@ Each word (group of adjacent character inline areas) will have keeps based on hy
 
 Once a line has been layed out for a particular width then that line is fixed for the page (except for unresolved page references).
 
-## Before Floats and Footnotes  <a id="before-float-footnote"></a>
+## Before Floats and Footnotes <a id="before-float-footnote"></a>
 
 The before float region and footnote region are handled by the page layoutmanger. These regions will handle the addition and removal of the separator regions when before floats/footnotes area added and removed.
 
@@ -127,7 +127,7 @@ Footnotes and Before Floats are placed in special areas in the body region of th
 
 A layout manager handles the adding and removing of footnotes/floats, this in turn effects the available space in the main reference area.
 
-## Side Floats  <a id="side-float"></a>
+## Side Floats <a id="side-float"></a>
 
 If a float anchor is present in a particular line area then the available space for that line (and other in the block) will be reduced. The side float adds to the height of the block area and this height also depends on the clear value of subsequent blocks. The keep status of the block is also effected as there must be enough space on the page to fit the side float.
 
@@ -135,7 +135,7 @@ Side floats alter the length of the inline progression dimension for the current
 
 This means that the float needs to be handled by the block layout manager so that it can adjust the available inline progression dimension for the relevant line areas.
 
-## Unresolved Areas  <a id="unresolved-area"></a>
+## Unresolved Areas <a id="unresolved-area"></a>
 
 Once the layout of the page is complete there may be unresolved areas.
 
@@ -147,47 +147,47 @@ Each page contains a map of all unresolved id's and the corresponding areas.
 
 In the case of page number citations, the areas reserves the equivalent of 3 number nines in the current font. When the area is resolved then the area is adjusted to its proper size and the line area is re-aligned to accomodate the change.
 
-## ID and Link Areas  <a id="id-link-area"></a>
+## ID and Link Areas <a id="id-link-area"></a>
 
 Any formatting object that has an ID or any inline link defines an area that will be required when rendering and resolving id references.
 
 This area is stored in the parent area and may be a shape that exists in more than one page, for example over a page break. This shape consists of the boundary of all inline (or block) areas that the shape is defined for.
 
-## Inline Areas  <a id="inline-area"></a>
+## Inline Areas <a id="inline-area"></a>
 
 This is the definition of all inline areas that will exist in the area.
 
-## Fixed Areas  <a id="fixed-area"></a>
+## Fixed Areas <a id="fixed-area"></a>
 
 instream-foreign-object, external-graphic, inline-container
 
 These areas have a fixed width and height. They also have a viewport.
 
-## Stretch Areas  <a id="stretch-area"></a>
+## Stretch Areas <a id="stretch-area"></a>
 
 leader, inline space
 
 These areas have a fixed height but the width may vary.
 
-## Character Areas  <a id="character-area"></a>
+## Character Areas <a id="character-area"></a>
 
 character
 
 This is an simple character that has fixed properties according to the current font. There are implicit keeps with adjacent characters.
 
-## Anchor Areas  <a id="anchor-area"></a>
+## Anchor Areas <a id="anchor-area"></a>
 
 float anchor, footnote anchor
 
 This area has no size. It keeps the position for footnotes and floats and has a keep with the associated inline area.
 
-## Unresolved Page Numbers  <a id="unresolved-page-num"></a>
+## Unresolved Page Numbers <a id="unresolved-page-num"></a>
 
 page-number-citation
 
 A page number area that needs resolving, behaves as a character and has the space of 3 normal characters reserved. The size will adjust when the value is resolved.
 
-## Block Areas  <a id="block-area"></a>
+## Block Areas <a id="block-area"></a>
 
 When a block creating element is complete then it is possible to build the block area and add it to the paprent.
 
@@ -214,35 +214,35 @@ The block area has info about the following:
 
 Once the layout has been finalised then this information can be discarded.
 
-## Page Areas  <a id="page-area"></a>
+## Page Areas <a id="page-area"></a>
 
 Contains inforamtion about all the block areas in the body, before area and footer area.
 
 Has a list of the unresolved page references and a list of id refences that can be used to obtain the area associated with that id.
 
-## Test Cases  <a id="test-cases"></a>
+## Test Cases <a id="test-cases"></a>
 
 Here a few layout possibilities areas explored to determine how the layout process will handle these situations.
 
-### Simple Pages # <a id="test-simple"></a>
+### Simple Pages <a id="test-simple"></a>
 
 All blocks (including nested) are placed on the page with minimum spacing and the last block has the minimum number of lines past the page end. The lowest keep value is then found within the body area limits. Then the next equally low keep is found to determine if the spacing will be closer to the optimum values.
 
-### Before Floats/Footnotes # <a id="test-before-float-footnote"></a>
+### Before Floats/Footnotes <a id="test-before-float-footnote"></a>
 
 After filling the page with the block areas then the new body height is used to find the best position to break. Before each line area or block area is remove any associated before floats and footnotes are removed. This will then adjust the available space on the page and may allow for a different breaking point. Areas are removed towards the new breaking point until the areas fit on the page. When finding the optimum spacing the removal of before floats and footnotes must also be onsidered.
 
-### Multicolumn # <a id="test-multi-column"></a>
+### Multicolumn <a id="test-multi-column"></a>
 
 First the page is filled with all columns for the intial page area. Then each column is adjusted for the new height starting from the first column. The best break for the column is found then the next column is considered, any left over areas a pre-pended to the next column. Once all the columns are finished then all the columns are adjusted to fit in the same height columns. This handles the situation where before floats or footnotes may have been removed.
 
-### Last Page # <a id="test-last-page"></a>
+### Last Page <a id="test-last-page"></a>
 
 If in the process of adding areas to a page it is found that there are no more areas in the flow then this page will need to be changed to the last page (if applicable). The areas are then placed on a last page.
 
-## Status  <a id="status"></a>
+## Status <a id="status"></a>
 
-### To Do # <a id="status-todo"></a>
+### To Do <a id="status-todo"></a>
 
 | Task | Priority | Notes |
 |------|----------|-------|
@@ -264,6 +264,6 @@ If in the process of adding areas to a page it is found that there are no more a
 | Fine-tuning all other borders | Low | Not sure what Joerg means by this, border collapse priorties? Dashed and dotted borders have been implemented in PDF |
 | BIDI support | Low |  |
 
-### Work in Progress # <a id="status-wip"></a>
+### Work in Progress <a id="status-wip"></a>
 
-### Completed # <a id="status-complete"></a>
+### Completed <a id="status-complete"></a>

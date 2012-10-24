@@ -3,9 +3,9 @@ Title: FOP FAQ
 #FOP FAQ
 
 
-## Questions  <a id="Questions"></a>
+## Questions <a id="Questions"></a>
 
-### 1. Apache&trade; FOP: General questions # <a id="part-general"></a>
+### 1. Apache&trade; FOP: General questions <a id="part-general"></a>
 
 #### 1.1. What is Apache&trade; FOP? ## <a id="fop-general"></a>
 
@@ -76,7 +76,7 @@ The code redesign of FOP was necessary in order to be able to adress following i
 
 There are numerous ways that you can help. They are outlined in the [Developer's Introduction](dev/index.html) page.
 
-### 2. Problems running FOP # <a id="part-running"></a>
+### 2. Problems running FOP <a id="part-running"></a>
 
 #### 2.1. I get the error: [ERROR]: 'master-reference' for 'fo:page-sequence' matches no 'simple-page-master' or 'page-sequence-master' ## <a id="no-page-master"></a>
 
@@ -192,7 +192,7 @@ This message is a warning that FOP failed to read from the Font cache. Which mea
 
 To avoid the warning you can simply delete the old Font Cache file, which lives in ${base}\conf\font.cache (see [font-base configuration](1.0/configuration.html#general-elements) ). Or you can disable Font Caching altogether using the option "use-cache."
 
-### 3. Problems with FOP output # <a id="part-output"></a>
+### 3. Problems with FOP output <a id="part-output"></a>
 
 #### 3.1. Leaders don't work in current FOP. Instead of filling the line, only three dots or a short ruler is output. ## <a id="leader-expansion"></a>
 
@@ -323,7 +323,7 @@ No, although you might easily think so. The problem has to do with property inhe
 
 If you render the same document once to a PNG or TIFF and once into a PDF, the output may not be the same, i.e. line breaks are different or lines may have different heights. The reason for this: The Java2D-based renderers use the font subsystem of Java2D/AWT. The PDF and PS renderers use FOP's own font subsystem which provides much better font metrics than Java2D. These can lead to different layout decisions when the same document is rendered with different renderers. An alternative approach to fix this problem might be available but it hasn't been tested, yet. See also the [notes on fonts in the various output formats](1.0/output.html#general-fonts) .
 
-### 4. Embedding FOP. Using FOP in a servlet. # <a id="part-embedding"></a>
+### 4. Embedding FOP. Using FOP in a servlet. <a id="part-embedding"></a>
 
 #### 4.1. How do I use FOP in a servlet? ## <a id="servlet"></a>
 
@@ -357,7 +357,7 @@ See [Servlet Engines](1.0/servlets.html#servlet-engine) .
 
 See [Multithreading FOP](1.0/embedding.html#multithreading) .
 
-### 5. SVG specific questions # <a id="part-svg"></a>
+### 5. SVG specific questions <a id="part-svg"></a>
 
 #### 5.1. The rendering of SVG text in my PDF is of poor quality. Can I control this? ## <a id="svg-text"></a>
 
@@ -402,7 +402,7 @@ Bug description: In a namespace-enabled Level 3 DOM, an attribute in the default
 
 Work-around: Use the latest version of Apache Xalan-J. Note that starting with JDK 1.4 it's not enough to replace Xalan-J on the normal application classpath and you need to override the Xalan-J version bundled with the Sun JVM using the [Endorsed Standards Override Mechanism](http://java.sun.com/j2se/1.4.2/docs/guide/standards/) , i.e. you must place Xalan-J in the `"lib/endorsed"` directory of your JRE.
 
-### 6. PDF specific (includes Acrobat peculiarities) # <a id="part-pdf"></a>
+### 6. PDF specific (includes Acrobat peculiarities) <a id="part-pdf"></a>
 
 #### 6.1. How do I embed fonts in PDF? ## <a id="pdf-embed-font"></a>
 
@@ -456,7 +456,7 @@ Here an example of how the effect can look like (left: anti-aliasing on, right: 
 <figure alt="Left: anti-aliasing on, Right: off" src="images/acrobat-anti-aliasing-artifacts.png"></figure>
 Unfortunately, it is not possible to control the above settings from within the PDF file. The user has to change these settings himself. Improving FOP to avoid this kind of problem would be possible although rather hard to achieve because we'd need to add a considerable amount of code to combine the various line segments. Something like that has been tried already years ago showing that this is a tricky task. Also, the improvement may not justify the amount of effort required.
 
-### 7. IEx specific stuff # <a id="part-iex"></a>
+### 7. IEx specific stuff <a id="part-iex"></a>
 
 #### 7.1. The FOP servlet is called multiple times! ## <a id="iex-servlet-multiple"></a>
 
@@ -472,7 +472,7 @@ For the second task, you can use some client side script to start Acrobat Reader
 
 See also [http://marc.theaimsgroup.com/?l=fop-dev&m=101065988325115&w=2](http://marc.theaimsgroup.com/?l=fop-dev&m=101065988325115&w=2) 
 
-### 8. General questions regarding XSLT, XSLFO, and basic XML # <a id="part-input"></a>
+### 8. General questions regarding XSLT, XSLFO, and basic XML <a id="part-input"></a>
 
 #### 8.1. (FO) How do I vertically center an image or a table (or whatever)? ## <a id="fo-center"></a>
 
@@ -550,13 +550,13 @@ You will get better results if you transform your source XML directly into XSLFO
 
 The [FOP Resources page](resources.html) has links to a tool called [html2fo](http://html2fo.sourceforge.net/) which can be used to make such a transformation. In addition, there are tools on the Antenna House [XSL-FO Tutorial and Sample](http://www.antennahouse.com/XSLsample/XSLsample.htm) page.
 
-### 9. Development-related Questions. # <a id="dev-help"></a>
+### 9. Development-related Questions. <a id="dev-help"></a>
 
 #### 9.1. Where can I learn how the FOP docs and web site are built? ## <a id="doc-mgt"></a>
 
 See FOP [Doc Management](dev/doc.html) . ;-)
 
-### 10. General suggestions. How to solve problems. # <a id="part-help"></a>
+### 10. General suggestions. How to solve problems. <a id="part-help"></a>
 
 #### 10.1. I think I have found a bug in FOP. What should I do? ## <a id="bugs"></a>
 

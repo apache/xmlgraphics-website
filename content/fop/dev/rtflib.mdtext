@@ -3,9 +3,9 @@ Title: Apache(tm) FOP Development: RTFLib (jfor)
 #Apache&trade; FOP Development: RTFLib (jfor)
 <version>$Revision: 1298724 $</version>
 
-## General Information  <a id="general"></a>
+## General Information <a id="general"></a>
 
-### Introduction # <a id="intro"></a>
+### Introduction <a id="intro"></a>
 
 The RTFLib package is an open-source, *independent* package suitable for writing RTF files in a java environment. By *independent* we mean:
 
@@ -16,17 +16,17 @@ The RTFLib package is an open-source, *independent* package suitable for writing
 
 The FOP development team intends to keep the RTFLib package independent so that it can be used for other purposes.
 
-### History # <a id="history"></a>
+### History <a id="history"></a>
 
 RTFLib was originally developed by [Bertrand Delacrétaz](mailto:bdelacretaz@apache.org) and the [jfor](http://www.jfor.org) team. jfor was written under an Apache-style license, and the jfor team contributed the code to the Apache Software Foundation in June, 2003. RTFLib is a subset of the original jfor project, which also includes an XSL-FO parsing mechanism for a complete XSL-FO to RTF solution.
 
-### Status # <a id="status"></a>
+### Status <a id="status"></a>
 
 Although FOP's implementation of the RTFLib package is very incomplete, the RTFLib package itself is relatively mature. RTFLib is only available in the trunk [line of FOP development](index.html#lines) .
 <warning>This documentation is a work in progress. If you see errors or omissions, please report them to the [fop-dev mailing list](index.html#mail-fop-dev) .</warning>
-# User Documentation  <a id="userdoc"></a>
+# User Documentation <a id="userdoc"></a>
 
-### Overview # <a id="userdoc-overview"></a>
+### Overview <a id="userdoc-overview"></a>
 
 Perhaps the easiest way to see how to use RTFLib is by looking at an example. A set of test documents is part of the package, and can be [viewed online](http://cvs.apache.org/viewcvs.cgi/xml-fop/src/java/org/apache/fop/rtf/rtflib/testdocs/) . A quick look at the Abstract [TestDocument](http://cvs.apache.org/viewcvs.cgi/xml-fop/src/java/org/apache/fop/rtf/rtflib/testdocs/TestDocument.java?rev=HEAD&content-type=text/vnd.viewcvs-markup) class, and one of the Concrete subclasses, [SimpleDocument](http://cvs.apache.org/viewcvs.cgi/xml-fop/src/java/org/apache/fop/rtf/rtflib/testdocs/SimpleDocument.java?rev=HEAD&content-type=text/vnd.viewcvs-markup) will provide the basics of how to use the package.
 
@@ -39,7 +39,7 @@ There are two basic concepts you will need to understand in order to use RTFLib:
 
 RTFLib handles the process of converting to and writing the RTF content as the document is created. All you need to do is flush the document at the end to make sure that the last pieces get written.
 
-### Document Structure # <a id="userdoc-structure"></a>
+### Document Structure <a id="userdoc-structure"></a>
 <warning>This section is very incomplete.</warning>
 The documentation in this section is intended to provide a high-level view of the process of building an RTF document. For more detailed API documentation of the various methods, be sure to consult the Javadocs for RTFLib.
 
@@ -59,7 +59,7 @@ The following table summarizes the various containers that can be created:
 | JforCmd | RtfSection.newJforCmd | . | . |
 | Text | RtfParagraph.newText() | Character Formatting | N/A |
 
-### Attributes # <a id="userdoc-attributes"></a>
+### Attributes <a id="userdoc-attributes"></a>
 <warning>This section is very incomplete.</warning>
 Attributes can be set for each container and piece of content in the document. The general approach is to build an RtfAttributes object containing the various attributes, then pass that RtfAttributes object to the method that creates the new container or content. See the Javadoc API documentation for RtfAttributes for details on the syntax for creating an RtfAttributes object. The following information lists the various attributes that can be set for each type of container.
 

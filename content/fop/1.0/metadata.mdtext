@@ -3,17 +3,17 @@ Title: Apache(tm) FOP: Metadata
 #Apache&trade; FOP: Metadata
 
 
-## Overview  <a id="overview"></a>
+## Overview <a id="overview"></a>
 
 Document metadata is an important tool for categorizing and finding documents. Various formats support different kinds of metadata representation and to different levels. One of the more popular and flexible means of representing document or object metadata is [XMP (eXtensible Metadata Platform, specified by Adobe)](http://www.adobe.com/products/xmp/) . PDF 1.4 introduced the use of XMP. The XMP specification lists recommendation for embedding XMP metdata in other document and image formats. Given its flexibility it makes sense to make use this approach in the XSL-FO context. Unfortunately, unlike SVG which also refers to XMP, XSL-FO doesn't recommend a preferred way of specifying document and object metadata. Therefore, there's no portable way to represent metadata in XSL-FO documents. Each implementation does it differently.
 
-## Embedding XMP in an XSL-FO document  <a id="xmp-in-fo"></a>
+## Embedding XMP in an XSL-FO document <a id="xmp-in-fo"></a>
 
 As noted above, there's no officially recommended way to embed metadata in XSL-FO. Apache FOP supports embedding XMP in XSL-FO. Currently, only support for document-level metadata is implemented. Object-level metadata will be implemented when there's interest.
 
 Document-level metadata can be specified in the `fo:declarations` element. XMP specification recommends to use `x:xmpmeta` , `rdf:RDF` , and `rdf:Description` elements as shown in example below. Both `x:xmpmeta` and `rdf:RDF` elements are recognized as the top-level element introducing an XMP fragment (as per the XMP specification).
 
-### Example # <a id="xmp-example"></a>
+### Example <a id="xmp-example"></a>
 [..]
 </fo:layout-master-set>
 <fo:declarations>
@@ -36,7 +36,7 @@ Document-level metadata can be specified in the `fo:declarations` element. XMP s
 </fo:declarations>
 <fo:page-sequence ...
 [..] `fo:declarations`  **must** be declared after `fo:layout-master-set` and before the first `page-sequence` .
-# Implementation in Apache FOP  <a id="xmp-impl-in-fop"></a>
+# Implementation in Apache FOP <a id="xmp-impl-in-fop"></a>
 
 Currently, XMP support is only available for PDF output.
 
@@ -59,7 +59,7 @@ The mapping between the Info and the Metadata object used by Apache FOP comes fr
 | CreationDate | date | xmp:CreationDate | Date | Internal |
 | ModDate | date | xmp:ModifyDate | Date | Internal |
 "Internal" in the Category column means that the user should not set this value. It is set by the application.The "Subject" used to be mapped to `dc:subject` in the initial publication of PDF/A-1 (ISO 19005-1). In the [Technical Corrigendum 1](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=45613) this was changed to map to `dc:description["x-default"]` .
-## Namespaces # <a id="namespaces"></a>
+## Namespaces <a id="namespaces"></a>
 
 Metadata is made of property sets where each property set uses a different namespace URI.
 
@@ -75,7 +75,7 @@ Please refer to the [XMP Specification](http://partners.adobe.com/public/develop
 
 Property sets (Namespaces) not listed here are simply passed through to the final document (if supported). That is useful if you want to specify a custom metadata schema.
 
-## Links  <a id="links"></a>
+## Links <a id="links"></a>
 
 
 -  [Adobe's Extensible Metadata Platform (XMP) website](http://www.adobe.com/products/xmp/) 

@@ -3,11 +3,11 @@ Title: Apache(tm) FOP Design: FO Tree
 #Apache&trade; FOP Design: FO Tree
 <version>$Revision: 1298724 $</version><authors><person email="keiron@aftexsw.com" name="Keiron Liddle"></person></authors>
 
-## Introduction  <a id="intro"></a>
+## Introduction <a id="intro"></a>
 
 The FO Tree is an internal hierarchical representation (java objects and properties) of the input XSL-FO document, and is created from the [parsing](parsing.html) of that XSL-FO document. The process of building the FO Tree corresponds to the **Objectify** step in the XSL-FO spec. The FO Tree is an intermediate structure which will later be [converted into the area tree](layout.html) .
 
-## Processing  <a id="process"></a>
+## Processing <a id="process"></a>
 
 The SAX Events that are fired by the parsing process are caught by the FO Tree system. Events for starting an element, ending an element, and text data are assembled by the FO Tree system into a set of objects that represent the input FO document. A class exists for each element in the XSL-FO set, and an object in the appropriate class is created for each element in the input XSL-FO.
 
@@ -26,7 +26,7 @@ For unrecognized namespaces, a dummy object or a generic DOM is created.
 
 While the tree building is mainly about creating the FO Tree, some FO Tree events trigger processes in other parts of FOP. The end of a page-sequence element triggers the layout process for that page-sequence (see discussion of [Recycling](#recycle) ). Also, the end of the XML document tells the renderer that it can finalize the output document.
 
-## Recycling FO Tree Memory  <a id="recycle"></a>
+## Recycling FO Tree Memory <a id="recycle"></a>
 
 To minimize the amount of memory used by FOP, we wish to recycle FO Tree memory as much as possible. There are at least three possible places that FO Tree fragments could be passed to the Layout process, so that their memory can be reused:
 
@@ -37,27 +37,27 @@ To minimize the amount of memory used by FOP, we wish to recycle FO Tree memory 
 
 -  **fo:page-sequence** The page-sequence object provides a nice clean break in the document. Content from one page-sequence will never interfere with nor affect the placement of the content of another. FOP uses this option as the optimum way to maintain compliance with the standard and to minimize memory consumption.
 
-## FO Tree Serialization  <a id="serialize"></a>
+## FO Tree Serialization <a id="serialize"></a>
 
 This issue is implied by the requirement to process documents of arbitrary size. Unless some arbitrary limit is placed on the size of page-sequence objects, FOP must be able to serialize FO tree fragments as necessary.
 
-## Notes About Specific Elements  <a id="specific-elements"></a>
+## Notes About Specific Elements <a id="specific-elements"></a>
 
-### page-master # <a id="page-master"></a>
+### page-master <a id="page-master"></a>
 
 The first elements in a document are the elements for the page master setup. This is usually only a small number and will be used throughout the document to create new pages. The root element keeps these objects as a factory to create the page and appropriate regions whenever a new page is requested by the layout. The objects in the FO Tree that represent these elements are themselves the factory.
 
-### flow # <a id="flow"></a>
+### flow <a id="flow"></a>
 
 The elements within the flow of a page-sequence are those that are needed for the layout process. These element will later be used to create areas in the layout process.
 
-### Other Elements # <a id="other-elements"></a>
+### Other Elements <a id="other-elements"></a>
 
 The remaining FO Objects are things like page-sequence, title and color-profile. Each is handled by its parent element. The root handles declarations, and declarations maintains a list of colour profiles. The page-sequences are direct descendants of root.
 
-## Implementation Notes  <a id="implement"></a>
+## Implementation Notes <a id="implement"></a>
 
-### FONode # <a id="fonode"></a>
+### FONode <a id="fonode"></a>
 
 The base class for all objects in the tree is FONode. The base class for all FO Objects is FObj (which is a subclass of FONode). Other FONode subclasses are for foreign and unknown XML.
 
@@ -74,7 +74,7 @@ Each xml element is represented by a java object. The classes for these objects 
 
 - other: `org.apache.fop.fo.*.` 
 
-### Creating FO Objects # <a id="create-fo"></a>
+### Creating FO Objects <a id="create-fo"></a>
 
 The process of creating an FO Object is as follows (see `FOTreeBuilder.startElement()` for details):
 
@@ -89,7 +89,7 @@ The process of creating an FO Object is as follows (see `FOTreeBuilder.startElem
 
 - Child elements are then processed. This is an iterative process: the child elements go through the same process here documented for their parent.
 
-### Foreign XML # <a id="foreign"></a>
+### Foreign XML <a id="foreign"></a>
 
 For SVG, the DOM needs to be created with Batik, so an element mapping is used to read all elements in the SVG namespace and pass them into the Batik DOM.
 
@@ -101,6 +101,6 @@ Foreign XML will usually be in an fo:instream-foreign-object. The XML will be pa
 
 See [Input Parsing Namespaces](parsing.html#namespaces) for more discussion and links to information about using foreign XML in FOP.
 
-### Unknown Elements # <a id="unknown"></a>
+### Unknown Elements <a id="unknown"></a>
 
 If an element is in a known namespace but the element is unknown within that namespace, then an Unknown object is created. This generally indicates an input error: perhaps an element from an older version of the XSL-FO standard, or a misspelling. The Unknown object is mainly used to provide information to the user.

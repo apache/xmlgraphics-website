@@ -3,7 +3,7 @@ Title: Apache(tm) FOP: Complex Scripts
 #Apache&trade; FOP: Complex Scripts
 
 
-## Overview  <a id="overview"></a>
+## Overview <a id="overview"></a>
 
 This page describes the [complex scripts](http://en.wikipedia.org/wiki/Complex_scripts) features of Apache&trade; FOP, which include:
 
@@ -16,7 +16,7 @@ This page describes the [complex scripts](http://en.wikipedia.org/wiki/Complex_s
 
 - Support for advanced number to string formatting.
 
-## Disabling complex scripts  <a id="Disabling+complex+scripts"></a>
+## Disabling complex scripts <a id="Disabling+complex+scripts"></a>
 
 Complex script features are enabled by default. If some application of FOP does not require this support, then it can be disabled in three ways:
 
@@ -34,7 +34,7 @@ Complex script features are enabled by default. If some application of FOP does 
 
 When complex scripts features are enabled, additional information related to bidirectional level resolution, the association between characters and glyphs, and glyph position adjustments are added to the internal, parsed representation of the XSL-FO tree and its corresponding formatted area tree. This additional information will somewhat increase the memory requirements for processing documents that use these features.
 A document author need not make explicit use of any complex scripts feature in order for this additional information to be created. For example, if the author makes use of a font that contains OpenType GSUB and/or GPOS tables, then those tables will be automatically used unless complex scripts features are disabled.
-# Changes to your XSL-FO input files  <a id="source"></a>
+# Changes to your XSL-FO input files <a id="source"></a>
 
 In most circumstances, XSL-FO content does not need to change in order to make use of complex scripts features; however, in certain contexts, fully automatic processing is not sufficient. In these cases, an author may make use of the following XSL-FO constructs:
 
@@ -53,11 +53,11 @@ In most circumstances, XSL-FO content does not need to change in order to make u
 
 - Explicit join control characters: U+200C ZWNJ and U+200D ZWJ.
 
-## Authoring Details  <a id="details"></a>
+## Authoring Details <a id="details"></a>
 
 The complex scripts related effects of the above enumerated XSL-FO constructs are more fully described in the following sub-sections.
 
-### Script Property # <a id="script_property"></a>
+### Script Property <a id="script_property"></a>
 
 In order to apply font specific complex script features, it is necessary to know the script that applies to the text undergoing layout processing. This script is determined using the following algorithm:
 
@@ -123,23 +123,23 @@ The following table enumerates a number of non-standard extended script codes re
 |  `tml2`  | Tamil | OpenType Indic Version 2 (May 2008 and following) behavior. |
 |  `tel2`  | Telugu | OpenType Indic Version 2 (May 2008 and following) behavior. |
 <warning>Explicit use of one of the above extended script codes is not portable, and should be limited to use with FOP only.</warning>When performing automatic script determination, FOP selects the OpenType Indic Version 2 script codes by default. If the author requires Version 1 behavior, then an explicit, non-extension script code should be specified in a governing `script` property.
-## Language Property # <a id="language_property"></a>
+## Language Property <a id="language_property"></a>
 
 Certain fonts that support complex script features can make use of language information in order for language specific processing rules to be applied. For example, a font designed for the Arabic script may support typographic variations according to whether the written language is Arabic, Farsi (Persian), Sindhi, Urdu, or another language written with the Arabic script. In order to apply these language specific features, the author may explicitly mark the text with a [](http://www.w3.org/TR/2006/REC-xsl11-20061205/#language) property.
 
 When specifying the `language` property, the value of the property must be either an [ISO639-2 3-letter code](http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes) or an [ISO639-1 2-letter code](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) . Comparison of language codes is performed in a case-insensitive manner, so it does not matter what case is used when specifying these codes in an XSL-FO document.
 
-### Writing Mode Property # <a id="writing_mode_property"></a>
+### Writing Mode Property <a id="writing_mode_property"></a>
 
-### Number Conversion Properties # <a id="number_conversion_properties"></a>
+### Number Conversion Properties <a id="number_conversion_properties"></a>
 
-### Bidi Override Element # <a id="bidi_override_element"></a>
+### Bidi Override Element <a id="bidi_override_element"></a>
 
-### Bidi Control Characters # <a id="bidi_controls"></a>
+### Bidi Control Characters <a id="bidi_controls"></a>
 
-### Join Control Characters # <a id="join_controls"></a>
+### Join Control Characters <a id="join_controls"></a>
 
-## Supported Scripts  <a id="supported_scripts"></a>
+## Supported Scripts <a id="supported_scripts"></a>
 
 Support for specific complex scripts is enumerated in the following table. Support for those marked as not being supported is expected to be added in future revisions.
 
@@ -163,11 +163,11 @@ Support for specific complex scripts is enumerated in the following table. Suppo
 |  [Tibetan](http://en.wikipedia.org/wiki/Tibetan_alphabet)  | none | none |  |
 |  [Thai](http://en.wikipedia.org/wiki/Thai_alphabet)  | none | none |  |
 
-## Supported Fonts  <a id="supported_fonts"></a>
+## Supported Fonts <a id="supported_fonts"></a>
 
 Support for specific fonts is enumerated in the following sub-sections. If a given font is not listed, then it has not been tested with these complex scripts features.
 
-### Arabic Fonts # <a id="fonts_arabic"></a>
+### Arabic Fonts <a id="fonts_arabic"></a>
 
 <colgrp><col style="width: 15%"></col><col style="width: 10%"></col><col style="width: 10%"></col><col style="width: 65%"></col></colgrp>| Font | Version | Glyphs | Comments |
 |------|---------|--------|----------|
@@ -181,7 +181,7 @@ Support for specific fonts is enumerated in the following sub-sections. If a giv
 |  [Traditional Arabic](http://www.microsoft.com/typography/fonts/font.aspx?FID=264)  |  [5.00](http://www.microsoft.com/typography/fonts/font.aspx?FMID=1658)  | 530 | lacks GPOS support |
 |  [Traditional Arabic](http://www.microsoft.com/typography/fonts/font.aspx?FID=264)  | 5.92 | 589 | includes GPOS for advanced position adjustment |
 
-### Devanagari Fonts # <a id="devanagari_fonts"></a>
+### Devanagari Fonts <a id="devanagari_fonts"></a>
 
 <colgrp><col style="width: 15%"></col><col style="width: 10%"></col><col style="width: 10%"></col><col style="width: 65%"></col></colgrp>| Font | Version | Glyphs | Comments |
 |------|---------|--------|----------|
@@ -190,7 +190,7 @@ Support for specific fonts is enumerated in the following sub-sections. If a giv
 |  [Mangal](http://www.microsoft.com/typography/fonts/family.aspx?FID=243)  |  [5.01](http://www.microsoft.com/typography/fonts/font.aspx?FMID=1759)  | 885 | designed for use in user interfaces |
 |  [Utsaah](http://www.microsoft.com/typography/fonts/family.aspx?FID=384)  |  [1.00](http://www.microsoft.com/typography/fonts/font.aspx?FMID=1811)  | 706 |  |
 
-## Other Limitations  <a id="limitations"></a>
+## Other Limitations <a id="limitations"></a>
 
 Complex scripts support in Apache FOP is relatively new, so there are certain limitations. Please help us identify and close any gaps.
 
@@ -199,7 +199,7 @@ Complex scripts support in Apache FOP is relatively new, so there are certain li
 
 - Shaping context does not extend across an element boundary. This limitation prevents the use of `fo:character` , `fo:inline` or `fo:wrapper` in order to colorize individual Arabic letters without affecting shaping behavior across the element boundary.
 
-## Related Links  <a id="links"></a>
+## Related Links <a id="links"></a>
 
 In addition to the XSL-FO specification, a number of external resources provide guidance about authoring documents that employ complex scripts and the features described above:
 

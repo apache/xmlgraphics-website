@@ -3,9 +3,9 @@ Title: Release Notes for Apache FOP 1.0
 #Release Notes for Apache FOP 1.0
 
 
-## Major Changes in Version 1.0  <a id="version_1.0"></a>
+## Major Changes in Version 1.0 <a id="version_1.0"></a>
 This is not a complete list of changes, just some of the more important ones. A full list of changes in this release [is available](changes_1.0.html) .
-## Changes to the Code Base # <a id="Changes+to+the+Code+Base"></a>
+## Changes to the Code Base <a id="Changes+to+the+Code+Base"></a>
 
 
 - <icon alt="fix" src="../images/fix.jpg"></icon>Fixed memory leak in property cache (not cleaning stale PropertyCache$CacheEntry instances). Committed by JM.
@@ -14,21 +14,21 @@ This is not a complete list of changes, just some of the more important ones. A 
 
 - <icon alt="add" src="../images/add.jpg"></icon>Added an event handling framework which allows to get better feedback from within FOP with the ability to customize problem management. Committed by JM.
 
-### Changes to the Font Subsystem # <a id="Changes+to+the+Font+Subsystem"></a>
+### Changes to the Font Subsystem <a id="Changes+to+the+Font+Subsystem"></a>
 
 
 - <icon alt="add" src="../images/add.jpg"></icon>Add support for font substitution. Committed by AC.
 
 - <icon alt="add" src="../images/add.jpg"></icon>Added support for addressing all glyphs available in a Type 1 font, not just the ones in the font's primary encoding. Committed by JM.
 
-### Changes to the Layout Engine # <a id="Changes+to+the+Layout+Engine"></a>
+### Changes to the Layout Engine <a id="Changes+to+the+Layout+Engine"></a>
 
 
 - <icon alt="add" src="../images/add.jpg"></icon>Added limited support for pages of different inline-progression-dimensions within a page-sequence. Committed by VH.
 
 - <icon alt="add" src="../images/add.jpg"></icon>Added minimal support for integer keep values on the various keep properties on block-level FOs. For now, all integer values are treated the same (i.e. without strength distinction). Using integers allows to avoid overflows that can happen when "always" is used extensively. Committed by JM.
 
-### Changes to Renderers (Output Formats) # <a id="Changes+to+Renderers+%28Output+Formats%29"></a>
+### Changes to Renderers (Output Formats) <a id="Changes+to+Renderers+%28Output+Formats%29"></a>
 
 
 - <icon alt="add" src="../images/add.jpg"></icon>AFP Output: An AFPGraphics2D implementation which provides the ability to use Batik to drive the production of AFP Graphics (GOCA) output from SVG. Committed by AC.

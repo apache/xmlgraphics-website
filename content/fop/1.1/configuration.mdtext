@@ -3,13 +3,13 @@ Title: Apache(tm) FOP: Configuration
 #Apache&trade; FOP: Configuration
 <version>$Revision$</version>
 
-## Configuration File Basics  <a id="general"></a>
+## Configuration File Basics <a id="general"></a>
 
 The Apache&trade; FOP configuration file is an XML file containing a variety of settings that are useful for controlling FOP's behavior, and for helping it find resources that you wish it to use.
 
 The easiest way to get started using a FOP configuration file is to copy the sample found at `{fop-dir}/conf/fop.xconf` to a location of your choice, and then to edit it according to your needs. It contains templates for the various configuration options, most of which are commented out. Remove the comments and change the settings for entries that you wish to use. Be sure to follow any instructions, including comments which specify the value range. Also, since the configuration file is XML, be sure to keep it well-formed.
 
-### Making Configuration Available to FOP # <a id="general-available"></a>
+### Making Configuration Available to FOP <a id="general-available"></a>
 
 After creating your configuration file, you must tell FOP how to find it:
 
@@ -20,7 +20,7 @@ After creating your configuration file, you must tell FOP how to find it:
 
 See [Setting the Configuration Programmatically](embedding.html#config-internal) for instructions on how to do so in an embedded environment.
 
-## Summary of the General Configuration Options  <a id="general-elements"></a>
+## Summary of the General Configuration Options <a id="general-elements"></a>
 
 | Element | Data Type (for the value) | Description | Default Value |
 |---------|---------------------------|-------------|---------------|
@@ -70,7 +70,7 @@ This is an excerpt from the example configuration file coming with FOP:
   
   <!-- etc. etc..... -->
 </fop>
-# Image Loading Customization  <a id="image-loading"></a>
+# Image Loading Customization <a id="image-loading"></a>
 
 Apache FOP uses the image loading framework from [Apache XML Graphics Commons](http://xmlgraphics.apache.org/commons/) to load images using various plug-ins. Every image loader plug-in has a hard-coded usage penalty that influences which solution is chosen if there are multiple possibilities to load an image. Sometimes, though, these penalties need to be tweaked and this can be done in the FOP configuration. An example:
 <fop version="1.0">
@@ -89,7 +89,7 @@ The second penalty element sets an "infinite" penalty for the TIFF loader using 
 
 Negative penalties are possible to promote a plug-in but a negative penalty sum will be treated as zero penalty in most cases. For more details on the image loading framework, please consult the documentation there.
 
-## Renderer configuration  <a id="renderers"></a>
+## Renderer configuration <a id="renderers"></a>
 
 Each Renderer has its own configuration section which is identified by the MIME type the Renderer is written for, ex. "application/pdf" for the PDF Renderer.
 
@@ -117,7 +117,7 @@ The configuration for the PDF Renderer could look like this:
     <!-- etc. etc..... -->
 The details on the font configuration can be found on the separate [Fonts](fonts.html) page. Note especially the section entitled [Register Fonts with FOP](fonts.html#register) .
 
-### Special Settings for the PDF Renderer # <a id="pdf-renderer"></a>
+### Special Settings for the PDF Renderer <a id="pdf-renderer"></a>
 
 The configuration element for the PDF renderer contains two elements. One is for the font configuration (please follow the link above) and one is for the "filter list". The filter list controls how the individual objects in a PDF file are encoded. By default, all objects get "flate" encoded (i.e. simply compressed with the same algorithm that is also used in ZIP files). Most users don't need to change that setting. For debugging purposes, it may be desired not to compress the internal objects at all so the generated PDF commands can be read. In that case, you can simply use the following filter list. The second filter list (type="image") ensures that all images still get compressed but also ASCII-85 encoded so the produced PDF file is still easily readable in a text editor.
 
@@ -173,7 +173,7 @@ By default FOP produces PDF files of version 1.4, but this can be changed in ord
         <!-- Versions 1.4, 1.5, 1.6 and 1.7 are accepted, all other values are invalid -->
       </renderer>
 
-### Special Settings for the PostScript Renderer # <a id="ps-renderer"></a>
+### Special Settings for the PostScript Renderer <a id="ps-renderer"></a>
 
 Besides the normal font configuration (the same "fonts" element as for the PDF renderer) the PostScript renderer has an additional setting to force landscape pages to be rotated to fit on a page inserted into the printer in portrait mode. Set the value to "true" to activate this feature. The default is "false". Example:
 
@@ -191,7 +191,7 @@ Besides the normal font configuration (the same "fonts" element as for the PDF r
         </font>
       </fonts>
     </renderer>
-## Special Settings for the PCL Renderer # <a id="pcl-renderer"></a>
+## Special Settings for the PCL Renderer <a id="pcl-renderer"></a>
 
 Non-standard fonts for the PCL renderer are made available through the Java2D subsystem which means that you don't have to do any custom font configuration in this case but you have to use the font names offered by Java.
 
@@ -204,7 +204,7 @@ The default value for the "rendering" setting is "speed" which causes borders to
 
 The default value for the "text-rendering" setting is "auto" which paints the base fonts using PCL fonts. Non-base fonts are painted as bitmaps through Java2D. If the mix of painting methods results in unwelcome output, you can set this to "bitmap" which causes all text to be rendered as bitmaps.
 
-### Special Settings for the AFP Renderer # <a id="afp-renderer"></a>
+### Special Settings for the AFP Renderer <a id="afp-renderer"></a>
 
 
 
@@ -225,7 +225,7 @@ The default line width is device dependent and may need to be fine tuned so that
 
 By default if there is no configuration definition for "resource-group-file", external resources will be placed in a file called resources.afp.
 
-## When it does not work  <a id="When+it+does+not+work"></a>
+## When it does not work <a id="When+it+does+not+work"></a>
 
 FOP searches the configuration file for the information it expects, at the position it expects. When that information is not present, FOP will not complain, it will just continue. When there is other information in the file, FOP will not complain, it will just ignore it. That means that when your configuration information is in the file but in a different XML element, or in a different XML path, than FOP expects, it will be silently ignored.
 

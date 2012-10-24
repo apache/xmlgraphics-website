@@ -5,9 +5,9 @@ Title: Apache(tm) FOP Output Formats
 
 Apache&trade; FOP supports multiple output formats by using a different renderer for each format. The renderers do not all have the same set of capabilities, sometimes because of the output format itself, sometimes because some renderers get more development attention than others.
 
-## General Information  <a id="general"></a>
+## General Information <a id="general"></a>
 
-### Fonts # <a id="general-fonts"></a>
+### Fonts <a id="general-fonts"></a>
 
 Most FOP renderers use a FOP-specific system for font registration. However, the Java2D/AWT and print renderers use the Java AWT package, which gets its font information from the operating system registration. This can result in several differences, including actually using different fonts, and having different font metrics for the same font. The net effect is that the layout of a given FO document can be quite different between renderers that do not use the same font information.
 
@@ -29,7 +29,7 @@ With a work-around, it is possible to match the PDF/PS output in a Java2D-based 
 -  `fop -atin myfile.at.xml -tiff myfile.tiff` 
 
 
-### Output to a Printer or Other Device # <a id="general-direct-output"></a>
+### Output to a Printer or Other Device <a id="general-direct-output"></a>
 
 The most obvious way to print your document is to use the FOP [print renderer](#print) , which uses the Java2D API (AWT). However, you can also send output from the Postscript renderer directly to a Postscript device, or output from the PCL renderer directly to a PCL device.
 
@@ -40,17 +40,17 @@ proc = Runtime.getRuntime().exec("lp -d" + print_queue + " -o -dp -");
 out = proc.getOutputStream();
 Set the output MIME type to "application/x-pcl" (MimeConstants.MIME_PCL) and it happily sends the PCL to the UNIX printer queue.
 
-## PDF  <a id="pdf"></a>
+## PDF <a id="pdf"></a>
 
 PDF is the best supported output format. It is also the most accurate with text and layout. This creates a PDF document that is streamed out as each page is rendered. This means that the internal page index information is stored near the end of the document. The PDF version supported is 1.4. PDF versions are forwards/backwards compatible.
 
 Note that FOP does not currently support "tagged PDF" or PDF/A-1a. Support for [PDF/A-1b](pdfa.html) and [PDF/X](pdfx.html) has recently been added, however.
 
-### Fonts # <a id="pdf-fonts"></a>
+### Fonts <a id="pdf-fonts"></a>
 
 PDF has a set of fonts that are always available to all PDF viewers; to quote from the PDF Specification: *"PDF prescribes a set of 14 standard fonts that can be used without prior definition. These include four faces each of three Latin text typefaces (Courier, Helvetica, and Times), as well as two symbolic fonts (Symbol and ITC Zapf Dingbats). These fonts, or suitable substitute fonts with the same metrics, are guaranteed to be available in all PDF viewer applications."* 
 
-### Post-processing # <a id="pdf-postprocess"></a>
+### Post-processing <a id="pdf-postprocess"></a>
 
 FOP does not currently support several desirable PDF features: watermarks and signatures. One workaround is to use Adobe Acrobat (the full version, not the Reader) to process the file manually or with scripting that it supports.
 
@@ -100,7 +100,7 @@ public static void main(String args[]) {
 }
 Check the iText tutorial and documentation for setting access flags, password, encryption strength and other parameters.
 
-### Watermarks # <a id="pdf-watermark"></a>
+### Watermarks <a id="pdf-watermark"></a>
 
 In addition to the [PDF Post-processing](#pdf-postprocess) options, consider the following workarounds:
 
@@ -109,11 +109,11 @@ In addition to the [PDF Post-processing](#pdf-postprocess) options, consider the
 
 - (submitted by Trevor Campbell) Place an image in a region that overlaps the flowing text. For example, make region-before large enough to contain your image. Then include a block (if necessary, use an absolutely positioned block-container) containing the watermark image in the static-content for the region-before. Note that the image will be drawn on top of the normal content.
 
-## PostScript  <a id="ps"></a>
+## PostScript <a id="ps"></a>
 
 The PostScript renderer has been brought up to a similar quality as the PDF renderer, but may still be missing certain features. It provides good support for most text and layout. Images and SVG are not fully supported, yet. Currently, the PostScript renderer generates PostScript Level 3 with most DSC comments. Actually, the only Level 3 features used are the FlateDecode and DCTDecode filter (the latter is used for 1:1 embedding of JPEG images), everything else is Level 2.
 
-### Configuration # <a id="ps-configuration"></a>
+### Configuration <a id="ps-configuration"></a>
 
 The PostScript renderer configuration currently allows the following settings:
 <renderer mime="application/postscript">
@@ -133,7 +133,7 @@ The default value for the "safe-set-page-device" setting is "false". Setting it 
 
 The default value for the "dsc-compliant" setting is "true". Setting it to "false" will break DSC compliance by minimizing the number of setpagedevice calls in the postscript document output. This feature may be useful when unwanted blank pages are experienced in your postscript output. This problem is caused by the particular postscript implementation issuing unwanted postscript subsystem initgraphics/erasepage calls on each setpagedevice call.
 
-### Limitations # <a id="ps-limitations"></a>
+### Limitations <a id="ps-limitations"></a>
 
 
 - Images and SVG may not be displayed correctly. SVG support is far from being complete. No image transparency is available.
@@ -144,20 +144,20 @@ The default value for the "dsc-compliant" setting is "true". Setting it to "fals
 
 - PPD support is still missing.
 
-## PCL  <a id="pcl"></a>
+## PCL <a id="pcl"></a>
 
 This format is for the Hewlett-Packard PCL printers and other printers supporting PCL. It should produce output as close to identical as possible to the printed output of the PDFRenderer within the limitations of the renderer, and output device.
 
 The output created by the PCLRenderer is generic PCL 5, HP GL/2 and PJL. This should allow any device fully supporting PCL 5 to be able to print the output generated by the PCLRenderer. PJL is used to control the print job and switch to the PCL language. PCL 5 is used for text, raster graphics and rectangular fill graphics. HP GL/2 is used for more complex painting operations. Certain painting operations are done off-screen and rendered to PCL as bitmaps because of limitations in PCL 5.
 
-### References # <a id="pcl-references"></a>
+### References <a id="pcl-references"></a>
 
 
 -  [WikiPedia entry on PCL](http://en.wikipedia.org/wiki/Printer_Control_Language) 
 
 -  [Technical reference documents on PCL from Hewlett-Packard](http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=bpl04568) 
 
-### Limitations # <a id="pcl-limitations"></a>
+### Limitations <a id="pcl-limitations"></a>
 
 
 - Text or graphics outside the left or top of the printable area are not rendered properly. This is a limitation of PCL, not FOP. In general, things that should print to the left of the printable area are shifted to the right so that they start at the left edge of the printable area.
@@ -176,7 +176,7 @@ The output created by the PCLRenderer is generic PCL 5, HP GL/2 and PJL. This sh
 
 - Currently, there's no support for clipping and image transparency, largely because PCL 5 has certain limitations.
 
-### Configuration # <a id="pcl-configuration"></a>
+### Configuration <a id="pcl-configuration"></a>
 
 The PCL renderer configuration currently allows the following settings:
 <renderer mime="application/vnd.hp-PCL">
@@ -192,7 +192,7 @@ The default value for the "disable-pjl" setting is "false". This means that the 
 
 You can control the output resolution for the PCL using the "target resolution" setting on the FOUserAgent. The actual value will be rounded up to the next supported PCL resolution. Currently, only 300 and 600 dpi are supported which should be enough for most use cases. Note that this setting directly affects the size of the output file and the print quality.
 
-### Extensions # <a id="pcl-extensions"></a>
+### Extensions <a id="pcl-extensions"></a>
 
 The PCL Renderer supports some PCL specific extensions which can be embedded into the input FO document. To use the extensions the appropriate namespace must be declared in the fo:root element like this:
 
@@ -211,18 +211,18 @@ The page-source extension attribute on fo:simple-page-master allows to select th
 
 Note: the tray number is a positive integer and the value depends on the target printer. Not all PCL printers support the same paper trays. Usually, "1" is the default tray, "2" is the manual paper feed, "3" is the manual envelope feed, "4" is the "lower" tray and "7" is "auto-select". Consult the technical reference for your printer for all available values.
 
-## AFP  <a id="afp"></a>
+## AFP <a id="afp"></a>
 <warning>The AFP Renderer is a new addition (27-Apr-2006) to the sandbox and as such not yet fully tested or feature complete.</warning>
 The FOP AFP Renderer deals with creating documents conforming to the IBM AFP document architecture also refered to as MO:DCA (Mixed Object Document Content Architecture).
 
-### References # <a id="afp-references"></a>
+### References <a id="afp-references"></a>
 
 
 -  [AFP (Advanced Function Presentation)](http://en.wikipedia.org/wiki/Advanced_Function_Presentation) 
 
 -  [AFP Resources on the FOP WIKI](http://wiki.apache.org/xmlgraphics-fop/AFPResources) 
 
-### Limitations # <a id="afp-limitations"></a>
+### Limitations <a id="afp-limitations"></a>
 
 This list is most likely badly incomplete.
 
@@ -231,7 +231,7 @@ This list is most likely badly incomplete.
 
 - Only IBM outline and raster fonts and to a limited extend the original fonts built into FOP are supported. Support for TrueType fonts may be added later.
 
-### Configuration # <a id="afp-configuration"></a>
+### Configuration <a id="afp-configuration"></a>
 
 #### Fonts ## <a id="afp-font-config"></a>
 
@@ -371,7 +371,7 @@ This will put images as RGB images into the AFP output stream. The default setti
 
 Only the values "color" and "b+w" are allowed for the mode attribute. The bits-per-pixel attribute is ignored if mode is "color". For "b+w" mode is must be 1, 4, or 8.
 
-### Extensions # <a id="afp-extensions"></a>
+### Extensions <a id="afp-extensions"></a>
 
 The AFP Renderer supports some AFP specific extensions which can be embedded into the input fo document. To use the extensions the appropriate namespace must be declared in the fo:root element like this:
 
@@ -435,7 +435,7 @@ The no-operation extension provides the ability to carry up to 32K of comments o
 
 The no-operation extension element can only occur within a simple-page-master. Multiple no-operation extension elements within a simple-page-master are allowed. The name attribute is mandatory.
 
-## RTF  <a id="rtf"></a>
+## RTF <a id="rtf"></a>
 
 JFOR, an open source XSL-FO to RTF converter has been integrated into Apache FOP. This will create an RTF (rich text format) document that will attempt to contain as much information from the XSL-FO document as possible. It should be noted that is not possible (due to RTF's limitations) to map all XSL-FO features to RTF. For complex documents, the RTF output will never reach the feature level from PDF, for example. Thus, using RTF output is only recommended for simple documents such as letters.
 
@@ -463,33 +463,33 @@ These are some known restrictions compared to other supported output formats (no
 
 - percentages are not supported everywhere
 
-## XML (Area Tree XML)  <a id="xml"></a>
+## XML (Area Tree XML) <a id="xml"></a>
 
 This is primarily for testing and verification. The XML created is simply a representation of the internal area tree put into XML. We use that to verify the functionality of FOP's layout engine.
 
 The other use case of the Area Tree XML is as FOP's "intermediate format". More information on that can be found on the page dedicated to the [Intermediate Format](intermediate.html) .
 
-## Java2D/AWT  <a id="awt"></a>
+## Java2D/AWT <a id="awt"></a>
 
 The Java2DRenderer provides the basic functionality for all Java2D-based output formats (AWT viewer, direct print, PNG, TIFF).
 
 The AWT viewer shows a window with the pages displayed inside a Java graphic. It displays one page at a time. The fonts used for the formatting and viewing depend on the fonts available to your JRE.
 
-## Print  <a id="print"></a>
+## Print <a id="print"></a>
 
 It is possible to directly print the document from the command line. This is done with the same code that renders to the Java2D/AWT renderer.
 
-### Known issues # <a id="print-issues"></a>
+### Known issues <a id="print-issues"></a>
 
 If you run into the problem that the printed output is incomplete on Windows: this often happens to users printing to a PCL printer. There seems to be an incompatibility between Java and certain PCL printer drivers on Windows. Since most network-enabled laser printers support PostScript, try switching to the PostScript printer driver for that printer model.
 
-## Bitmap (TIFF/PNG)  <a id="bitmap"></a>
+## Bitmap (TIFF/PNG) <a id="bitmap"></a>
 
 It is possible to directly create bitmap images from the individual pages generated by the layout engine. This is done with the same code that renders to the Java2D/AWT renderer.
 
 Currently, two output formats are supported: PNG and TIFF. TIFF produces one file with multiple pages, while PNG output produces one file per page. The quality of the bitmap depends on the target resolution setting on the FOUserAgent.
 
-### Configuration # <a id="bitmap-configuration"></a>
+### Configuration <a id="bitmap-configuration"></a>
 
 The TIFF and PNG renderer configuration currently allows the following settings:
 <renderer mime="image/png">
@@ -498,7 +498,7 @@ The TIFF and PNG renderer configuration currently allows the following settings:
 </renderer>
 The default value for the "transparent-page-background" setting is "false" which paints an opaque, white background for the whole image. If you set this to true, no such background will be painted and you will get a transparent image if an alpha channel is available in the output format.
 
-### TIFF-specific Configuration # <a id="tiff-configuration"></a>
+### TIFF-specific Configuration <a id="tiff-configuration"></a>
 
 In addition to the above values the TIFF renderer configuration allows some additional settings:
 <renderer mime="image/tiff">
@@ -525,7 +525,7 @@ The default value for the "compression" setting is "PackBits" which which is a w
 
 - CCITT T.6 (Fax Group 4)
 If you want to use CCITT compression, please make sure you've got a J2SE 1.4 or later and [Java Advanced Imaging Image I/O Tools](http://java.sun.com/products/java-media/jai/current.html) in your classpath. The Sun JRE doesn't come with a TIFF codec built in, so it has to be added separately. The internal TIFF codec from XML Graphics Commons only supports PackBits, Deflate and JPEG compression for writing.
-# TXT  <a id="txt"></a>
+# TXT <a id="txt"></a>
 
 The text renderer produces plain ASCII text output that attempts to match the output of the PDFRenderer as closely as possible. This was originally developed to accommodate an archive system that could only accept plain text files, and is primarily useful for getting a quick-and-dirty view of the document text. The renderer is very limited, so do not be surprised if it gives unsatisfactory results.
 
@@ -540,19 +540,19 @@ Because FOP lays the text onto a grid during layout, there are frequently extra 
 
 - line-height="10.5pt"
 
-## Output Formats in the Sandbox  <a id="sandbox"></a>
+## Output Formats in the Sandbox <a id="sandbox"></a>
 
 Due to the state of certain renderers we moved some of them to a "sandbox" area until they are ready for more serious use. The renderers and FOEventHandlers in the sandbox can be found under src/sandbox and are compiled into build/fop-sandbox.jar during the main build. The output formats in the sandbox are marked as such below.
 
-### MIF # <a id="mif"></a>
+### MIF <a id="mif"></a>
 <warning>The MIF handler is in the sandbox and not yet functional in FOP Trunk!!! Please help us ressurrect this feature.</warning>
 This format is the Maker Interchange Format which is used by Adobe Framemaker.
 
-### SVG # <a id="svg"></a>
+### SVG <a id="svg"></a>
 <warning>The SVG renderer is in the sandbox and may not work as expected in FOP Trunk!!! Please help us improve this feature.</warning>
 This format creates an SVG document that has links between the pages. This is primarily for slides and creating svg images of pages. Large documents will create SVG files that are far too large for an SVG viewer to handle. Since FO documents usually have text the SVG document will have a large number of text elements. The font information for the text is obtained from the JVM in the same way as for the AWT viewer. If the SVG is viewed on a system where the fonts are different, such as another platform, then the page may look wrong.
 
-## Wish list  <a id="wishlist"></a>
+## Wish list <a id="wishlist"></a>
 
 Apache FOP is easily extensible and allows you to add new output formats to enhance FOP's functionality. There's a number of output formats which are on our wish list. We're looking for volunteers to help us implement them.
 

@@ -3,11 +3,11 @@ Title: Apache(tm) FOP Design: Input Parsing
 #Apache&trade; FOP Design: Input Parsing
 <version>$Revision: 1298724 $</version>
 
-## Introduction  <a id="intro"></a>
+## Introduction <a id="intro"></a>
 
 Parsing is the process of reading the XSL-FO input and making the information in it available to Apache&trade; FOP.
 
-## SAX for Input  <a id="input"></a>
+## SAX for Input <a id="input"></a>
 
 The two standard ways of dealing with XML input are SAX and DOM. SAX basically creates events as it parses an XML document in a serial fashion; a program using SAX (and not storing anything internally) will only see a small window of the document at any point in time, and can never look forward in the document. DOM creates and stores a tree representation of the document, allowing a view of the entire document as an integrated whole. One issue that may seem counter-intuitive to some new FOP developers, and which has from time to time been contentious, is that FOP uses SAX for input. (DOM can be used as input as well, but it is converted into SAX events before entering FOP, effectively negating its advantages).
 
@@ -22,7 +22,7 @@ See the [Input Section of the User Embedding Document](../../trunk/embedding.htm
 
 FOP's [FO Tree Mechanism](fotree.html) is responsible for catching the SAX events and processing them.
 
-## Validation  <a id="validation"></a>
+## Validation <a id="validation"></a>
 
 If the input XML is not well-formed, that will be reported.
 
@@ -30,7 +30,7 @@ There is no DTD for XSL-FO, so no formal validation is possible at the parser le
 
 The SAX handler will report an error for unrecognized [namespaces](#namespaces) .
 
-## Namespaces  <a id="namespaces"></a>
+## Namespaces <a id="namespaces"></a>
 
 To allow for extensions to the XSL-FO language, FOP provides a mechanism for handling foreign namespaces.
 
@@ -38,13 +38,13 @@ See [User Extensions](../../trunk/extensions.html) for a discussion of standard 
 
 See [Developer Extensions](../extensions.html) for a discussion of the mechanisms in place to allow developers to add their own extensions, including how to tell FOP about the foreign namespace.
 
-## Status  <a id="status"></a>
+## Status <a id="status"></a>
 
-### To Do # <a id="status-todo"></a>
+### To Do <a id="status-todo"></a>
 
-### Work In Progress # <a id="status-wip"></a>
+### Work In Progress <a id="status-wip"></a>
 
-### Completed # <a id="status-complete"></a>
+### Completed <a id="status-complete"></a>
 
 
 - better handling of unknown xml and xml from an unknown namespace

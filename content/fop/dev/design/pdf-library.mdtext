@@ -3,17 +3,17 @@ Title: Apache(tm) FOP Design: PDF Library
 #Apache&trade; FOP Design: PDF Library
 <version>$Revision: 1298724 $</version>
 
-## Introduction  <a id="intro"></a>
+## Introduction <a id="intro"></a>
 
 The PDF Library is an independant package of classes in Apache&trade; FOP. These class provide a simple way to construct documents and add the contents. The classes are found in `org.apache.fop.pdf.*` .
 
-## PDF Document  <a id="PDF+Document"></a>
+## PDF Document <a id="PDF+Document"></a>
 
 This is where most of the document is created and put together.
 
 It sets up the header, trailer and resources. Each page is made and added to the document. There are a number of methods that can be used to create/add certain PDF objects to the document.
 
-## Building PDF  <a id="Building+PDF"></a>
+## Building PDF <a id="Building+PDF"></a>
 
 The PDF Document is built by creating a page for each page in the Area Tree.
 
@@ -27,25 +27,25 @@ It has a separate object for the image data and another bit of markup to display
 
 The java objects that represent a pdf object implement a method that returns the markup for inserting into a stream. The method is: byte[] toPDF().
 
-## Features  <a id="Features"></a>
+## Features <a id="Features"></a>
 
-### Fonts # <a id="Fonts"></a>
+### Fonts <a id="Fonts"></a>
 
 Support for embedding fonts and using the default Acrobat fonts.
 
-### Images # <a id="Images"></a>
+### Images <a id="Images"></a>
 
 Images can be inserted into a page. The image can either be inserted as a pixel map or directly insert a jpeg image.
 
-### Stream Filters # <a id="Stream+Filters"></a>
+### Stream Filters <a id="Stream+Filters"></a>
 
 A number of filters are available to encode the pdf streams. These filters can compress the data or change it such as converting to hex.
 
-### Links # <a id="Links"></a>
+### Links <a id="Links"></a>
 
 A pdf link can be added for an area on the page. This link can then point to an external destination or a position on any page in the document.
 
-### Patterns # <a id="Patterns"></a>
+### Patterns <a id="Patterns"></a>
 
 The fill and stroke of graphical objects can be set with a colour, pattern or gradient.
 

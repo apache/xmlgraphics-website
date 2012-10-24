@@ -3,15 +3,15 @@ Title: Apache(tm) FOP Design: Embedding Apache� FOP in Other Applications
 #Apache&trade; FOP Design: Embedding Apache� FOP in Other Applications
 <version>$Revision: 1298724 $</version><authors><person email="keiron@aftexsw.com" name="Keiron Liddle"></person></authors>
 
-## Introduction  <a id="intro"></a>
+## Introduction <a id="intro"></a>
 
 This is the design for the external interface when Apache&trade; FOP is to be embedded inside another java application.
 
 Common places where FOP is embedded is in a report production application of a server side application such as<jump href="http://xml.apache.org/cocoon/index.html">Cocoon</jump>.
 
-## Settings  <a id="Settings"></a>
+## Settings <a id="Settings"></a>
 
-### User Agent # <a id="User+Agent"></a>
+### User Agent <a id="User+Agent"></a>
 
 Possible meanings for a user agent:
 
@@ -24,7 +24,7 @@ Possible meanings for a user agent:
 
 The user agent is responsible for supplying user or context specific information. The list of user agent values can be found on the<jump href="useragent.html">User Agent</jump>page.
 
-### Logging # <a id="Logging"></a>
+### Logging <a id="Logging"></a>
 
 
 - logging level
@@ -35,14 +35,14 @@ The user agent is responsible for supplying user or context specific information
 
 - Logging setup (LogKit, Log4J, JDK14Logging)
 
-### XML input # <a id="XML+input"></a>
+### XML input <a id="XML+input"></a>
 
 
 - various ways to supply FOP with the xsl:fo file, fo, xml+xsl
 
 - sax handler
 
-### general options # <a id="general+options"></a>
+### general options <a id="general+options"></a>
 
 
 - base url
@@ -51,7 +51,7 @@ The user agent is responsible for supplying user or context specific information
 
 - which implementation of a particular LayoutManager to use
 
-### Rendering Options # <a id="Rendering+Options"></a>
+### Rendering Options <a id="Rendering+Options"></a>
 
 
 - embedding fonts
@@ -69,7 +69,7 @@ for the PS renderer (eventually):
 
 - binary/ascii switch
 
-### Render Results # <a id="Render+Results"></a>
+### Render Results <a id="Render+Results"></a>
 
 Generate Output statistics from FOP:
 
@@ -82,11 +82,11 @@ Generate Output statistics from FOP:
 
 - recoverable errors such as overflow
 
-### Setting Up # <a id="Setting+Up"></a>
+### Setting Up <a id="Setting+Up"></a>
 
 The Driver handles the XML input. The user agent information is through the FOUserAgent. Handle logging through the user agent. Options could also be handled through the user agent, using mime type selection for renderer options.
 
-### Others # <a id="Others"></a>
+### Others <a id="Others"></a>
 
 Render to more than one renderer at once (maybe not from the command line). For example you could generate a PDF for the archive and the PS for the printer in one run. It would probably be faster than converting the PDF to PostScript afterwards. Make the fo tree reuseable. If the fonts are the same then use the same area tree to output to different renderers.
 
