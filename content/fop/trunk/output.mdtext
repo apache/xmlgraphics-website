@@ -481,6 +481,9 @@ By default, JPEG images are rasterized to a bitmap and the bitmap is included in
       <images mode="color" cmyk="true">
         <jpeg allow-embedding="false" bitmap-encoding-quality="0.8"/>
       </images>
+
+IOCA image data placed in the AFP Resource Group (i.e. non-inline images) is wrapped in a Page Segment for single-bit and monochrome images.
+
 ### GOCA (Vector Graphics) ## <a id="afp-goca-config"></a>
 
 Not all AFP implementations support GOCA. Some also have bugs related to GOCA. Therefore, it is desirable to have some control over the generation of GOCA graphics.
