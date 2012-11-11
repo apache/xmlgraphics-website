@@ -453,7 +453,9 @@ First of all, these artifacts do not appear in print since no anti-aliasing is d
 To get rid of the artifacts, you can call up the "Preferences" dialog of Adobe Acrobat and select the tab "Page display". Enabling "Enhance thin lines" may help in some situations. Otherwise, you can disable "Smooth line art". You may have to disable "Use 2D graphics acceleration", too, so you can disable "Smooth line art" in the first place.
 
 Here an example of how the effect can look like (left: anti-aliasing on, right: anti-aliasing off):
-<figure alt="Left: anti-aliasing on, Right: off" src="images/acrobat-anti-aliasing-artifacts.png"></figure>
+
+![Left: anti-aliasing on, Right: off](images/acrobat-anti-aliasing-artifacts.png)
+
 Unfortunately, it is not possible to control the above settings from within the PDF file. The user has to change these settings himself. Improving FOP to avoid this kind of problem would be possible although rather hard to achieve because we'd need to add a considerable amount of code to combine the various line segments. Something like that has been tried already years ago showing that this is a tricky task. Also, the improvement may not justify the amount of effort required.
 
 ### 7. IEx specific stuff <a id="part-iex"></a>
