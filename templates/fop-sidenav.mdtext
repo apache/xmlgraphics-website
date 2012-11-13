@@ -177,6 +177,7 @@ $(document).ready(function () {
       $('#navigation :header').not('#search-apache-xml-graphics').not('#apachewzxhzdk3-xml-graphics').not('#sub-projects').append(' &raquo;');
     }
   $('#navigation > ul > li > ul > li ul').hide();
+  $('#project-overview').next().hide();
   $('#versions').next().show();
   var str=location.href.toLowerCase();
   $("#navigation li a").each(function() {
