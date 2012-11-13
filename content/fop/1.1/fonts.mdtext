@@ -158,7 +158,7 @@ Manifest-Version: 1.0
           Content-Type: application/x-font
 This feature allows you to create JAR files containing fonts. The JAR files can be added to fop by providem them in the classpath, e.g. copying them into the lib/ directory.
 
-#### The font cache ## <a id="font-cache"></a>
+#### The font cache <a id="font-cache"></a>
 
 Apache FOP maintains a cache file that is used to speed up auto-detection. This file is usually found in the ".fop" directory under the user's home directory. It's called "fop-fonts.cache". When the user's home directory is not writable, the font cache file is put in the directory for temporary files.
 
@@ -200,6 +200,10 @@ TTFReader [options]:
 
 -  **-enc ansi** Creates a WinAnsi-encoded font metrics file. Without this option, a CID-keyed font metrics file is created. The table below summarizes the differences between these two encoding options as currently used within FOP. Please note that this information only applies to TrueType fonts and TrueType collections:
 
+<table>
+<tr><th>Issue</th><th>WinAnsi</th><th>CID-Keyed</th></tr>
+</table>
+
 | Issue | WinAnsi | CID-keyed |
 |-------|---------|-----------|
 | Usable Character Set | Limited to WinAnsi character set, which is roughly equivalent to iso-8889-1. | Limited only by the characters in the font itself. |
@@ -218,14 +222,15 @@ There are two different ways how you can specify that a font should be reference
 
 1. For automatically configured fonts there's a different mechanism to specify which fonts should be referenced rather than embedded. This is done in the "referenced-fonts" element in the configuration. Here's an example:
 
-<fop version="1.0">
-   <fonts>
-      <referenced-fonts>
-        <match font-family="Helvetica"/>
-        <match font-family="DejaVu.*"/>
-      </referenced-fonts>
-   </fonts>
-</fop>
+	<fop version="1.0">
+	   <fonts>
+		  <referenced-fonts>
+			<match font-family="Helvetica"/>
+			<match font-family="DejaVu.*"/>
+		  </referenced-fonts>
+	   </fonts>
+	</fop>
+
 At the moment, you can only match fonts against their font-family. It is possible to use regular expressions as is shown in the second example above ("DejaVu.*"). The syntax for the regular expressions used here are the one used by the [package](http://java.sun.com/j2se/1.4/docs/api/java/util/regex/package-summary.html) . So, in the above snippet "Helvetica" and all variants of the "DejaVu" font family are referenced. If you want to reference all fonts, just specify `font-family=".*"` .
 
 The `referenced-fonts` element can be placed either inside the general `fonts` element (right under the root) or in the `fonts` element under the renderer configuration. In the first case, matches apply to all renderers. In the second case, matches only apply to the renderer where the element was specified. Both cases can be used at the same time.
@@ -254,20 +259,21 @@ When a <substitutions/> section is defined in the configuration, FOP will re-map
 
 For example you could make all FO font-family references to 'Arial' with weights between 700 and 900 reference the normal 'Arial Black' font.
 
-<fop version="1.0">
-   <fonts>
-      <substitutions>
-         <substitution>
-            <from font-family="Arial" font-weight="700..900"/>
-            <to font-family="Arial Black"/>
-         </substitution>
-         <substitution>
-            <from font-family="FrutigerLight"/>
-            <to font-family="Times" font-weight="bold" font-style="italic"/>
-         </substitution>
-      </substitutions>
-   </fonts>
-</fop>
+	<fop version="1.0">
+	   <fonts>
+		  <substitutions>
+			 <substitution>
+				<from font-family="Arial" font-weight="700..900"/>
+				<to font-family="Arial Black"/>
+			 </substitution>
+			 <substitution>
+				<from font-family="FrutigerLight"/>
+				<to font-family="Times" font-weight="bold" font-style="italic"/>
+			 </substitution>
+		  </substitutions>
+	   </fonts>
+	</fop>
+
 # Font Selection Strategies <a id="selection"></a>
 
 There are two font selection strategies: character-by-character or auto. The default is auto.
