@@ -176,7 +176,7 @@ $(document).ready(function () {
     if ($('#navigation :header').siblings('ul')) {
       $('#navigation :header').not('#search-apache-xml-graphics').not('#apachewzxhzdk3-xml-graphics').not('#sub-projects').append(' &raquo;');
     }
-  $('#navigation > ul > li ul').hide();
+  $('#navigation > ul > li > ul > li ul').hide();
   $('#versions').next().show();
   var str=location.href.toLowerCase();
   $("#navigation li a").each(function() {
