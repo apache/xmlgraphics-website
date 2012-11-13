@@ -165,7 +165,7 @@
 </form>
 <script>
 $(document).ready(function () {
-    $('#navigation :header').click(function () {
+    $('#navigation :header').not('#search-apache-xml-graphics').not('#apachewzxhzdk3-xml-graphics').not('#sub-projects').click(function () {
         var text = $(this).siblings('ul');
         if (text.is(':hidden')) {
             text.slideDown('200');
