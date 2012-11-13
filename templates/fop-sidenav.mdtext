@@ -181,10 +181,10 @@ $(document).ready(function () {
   $("#navigation li a").each(function() {
     if (str.indexOf(this.href.toLowerCase()) > -1) {
       $(this).parents().slideDown('200');
-       $("li.highlight").removeClass("highlight");
-       $(this).parent().addClass("highlight");
+      $("li.highlight").removeClass("highlight");
+      $(this).parent().addClass("highlight");
     }
   });
-  $('#versions').slideDown('200');
+  $('#versions').show();
 })
 </script>
