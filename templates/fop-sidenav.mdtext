@@ -177,7 +177,7 @@ $(document).ready(function () {
     $('#navigation :header').append(' &raquo;');
     }
   $('#navigation > ul > li ul').hide();
-  $('#versions').show();
+  $('#versions').slideDown('200');
   var str=location.href.toLowerCase();
   $("#navigation li a").each(function() {
     if (str.indexOf(this.href.toLowerCase()) > -1) {
