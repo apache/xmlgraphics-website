@@ -186,7 +186,7 @@ The classpath in the above example has been simplified for readability. You will
 Note that metrics files are optional and no longer required
 
 FOP includes TTFReader, which reads the TTF file and generates an appropriate font metrics file for it. Use it in a similar manner to PFMReader. For example, to create such a metrics file in Windows from the TrueType font at c:\myfonts\cmr10.ttf:
-java -cp build\fop.jar;lib\avalon-framework.jar;lib\commons-logging.jar;lib\commons-io.jar
+java -cp build\fop.jar;lib\avalon-framework-4.2.0.jar;lib\commons-logging-1.0.4.jar;lib\commons-io-1.3.1.jar;lib\commons-logging-1.0.4.jar;lib\xmlgraphics-commons-1.5.jar
           org.apache.fop.fonts.apps.TTFReader [options]
           C:\myfonts\cmr10.ttf ttfcm.xml
 TTFReader [options]:
