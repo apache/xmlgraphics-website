@@ -165,7 +165,7 @@
 </form>
 <script>
 $(document).ready(function () {
-    $('#navigation :header').not('#search-apache-xml-graphics').not('#apachewzxhzdk3-xml-graphics').not('#sub-projects').click(function () {
+    $('#navigation :header').click(function () {
         var text = $(this).siblings('ul');
         if (text.is(':hidden')) {
             text.slideDown('200');
@@ -174,7 +174,7 @@ $(document).ready(function () {
         }
     });
     if ($('#navigation :header').siblings('ul')) {
-    $('#navigation :header').not('#search-apache-xml-graphics').not('#apachewzxhzdk3-xml-graphics').not('#sub-projects').append(' &raquo;');
+      $('#navigation :header').not('#search-apache-xml-graphics').not('#apachewzxhzdk3-xml-graphics').not('#sub-projects').append(' &raquo;');
     }
   $('#navigation > ul > li ul').hide();
   $('#versions').next().show();
