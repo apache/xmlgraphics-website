@@ -177,6 +177,7 @@ $(document).ready(function () {
     $('#navigation :header').append(' &raquo;');
     }
   $('#navigation > ul > li ul').hide();
+  $('#versions').show();
   var str=location.href.toLowerCase();
   $("#navigation li a").each(function() {
     if (str.indexOf(this.href.toLowerCase()) > -1) {
@@ -185,6 +186,5 @@ $(document).ready(function () {
       $(this).parent().addClass("highlight");
     }
   });
-  $('#versions').show();
 })
 </script>
