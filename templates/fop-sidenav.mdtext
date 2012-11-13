@@ -165,17 +165,17 @@
 </form>
 <script>
 $(document).ready(function () {
-    $('#navigation :header').click(function () {
-        var text = $(this).siblings('ul');
-        if (text.is(':hidden')) {
-            text.slideDown('200');
-        } else {
-            text.slideUp('200');
-        }
-    });
-    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
     $('#navigation :header').append(' &raquo;');
-    }
+    }
   $('#navigation > ul > li ul').hide();
   var str=location.href.toLowerCase();
   $("#navigation li a").each(function() {
