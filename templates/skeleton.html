@@ -14,6 +14,7 @@
     <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
 
     <script src="http://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
     <script>
     $(document).ready(function(){
         $('ul#navigation a').each(function() {
@@ -24,6 +25,9 @@
         	
         });
     })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
     </script>
 
     {% if headers.atom %}
