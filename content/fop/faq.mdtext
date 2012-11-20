@@ -9,7 +9,7 @@ Title: FOP FAQ
 
 #### 1.1. What is Apache&trade; FOP? ## <a id="fop-general"></a>
 
-FOP is a print formatter for [XSL formatting objects](#XSLFO) .
+FOP is a print formatter for [XSL formatting objects](#xslfo) .
 
 It can be used to render an XML file containing XSL formatting objects into a page layout. The main target is PDF but other rendering targets are supported, such as AWT, PCL, text and direct printing.
 
@@ -27,17 +27,26 @@ FOP is an acronym for **F** ormatting **O** bject **P** rocessor
 
 #### 1.4. How does FOP interact with other Apache Projects? ## <a id="fop-other-apache"></a>
 
-FOP is distributed with [Cocoon](http://xml.apache.org/cocoon) as a PDF serializer for XSL (FO) documents.
+FOP is distributed with [Cocoon](http://cocoon.apache.org/) as a PDF serializer for XSL (FO) documents.
 
- [Batik](http://xmlgraphics.apache.org/batik) can be used with FOP to [transcode an SVG image](http://xmlgraphics.apache.org/batik/svgrasterizer.html) into a PDF document.
+[XML Graphics Commons](http://xmlgraphics.apache.org/commons) is used with FOP to provide graphics functions that are common to a number of Apache projects.
+
+ [Batik](http://xmlgraphics.apache.org/batik) is used with FOP to [transcode an SVG image](http://xmlgraphics.apache.org/batik/svgrasterizer.html) into a PDF document.
+
+FOP also makes use of the following Apache projects:
+
+- [Avalon Framework](http://excalibur.apache.org/framework/)
+- [Commons IO](http://commons.apache.org/io/)
+- [Commons Logging](http://commons.apache.org/logging/)
+- [Xalan-J](http://xalan.apache.org)
 
 #### 1.5. What is XSL? ## <a id="xsl-def"></a>
 
-XSL is a W3C standard concerned with publishing XML documents. It consists of two parts: [XSLT](#XSLT) and [XSL-FO](#XSLFO) . The acronym expands to e **X** tensible **S** tylesheet **L** anguage.
+XSL is a W3C standard concerned with publishing XML documents. It consists of two parts: [XSLT](#XSLT) and [XSL-FO](#xslfo) . The acronym expands to e **X** tensible **S** tylesheet **L** anguage.
 
 #### 1.6. What is XSL-FO? ## <a id="xslfo"></a>
 
-XSLFO (aka XSL-FO) is an XML vocabulary that is used to specify a pagination and other styling for page layout output. The acronym “FO” stands for **F** ormatting **O** bjects. XSLFO can be used in conjunction with [XSLT](#XSLT) to convert from any XML format into a paginated layout ready for printing or displaying.
+XSLFO (aka XSL-FO) is an XML vocabulary, defined by W3C Recommendation [Extensible Stylesheet Language (XSL) Version 1.1](http://www.w3.org/TR/xsl/), that is used to specify a pagination and other styling for page layout output. The acronym “FO” stands for **F** ormatting **O** bjects. XSLFO can be used in conjunction with [XSLT](#XSLT) to convert from any XML format into a paginated layout ready for printing or displaying.
 
 XSLFO defines a set of elements in XML that describes the way pages are set up. The contents of the pages are filled from flows. There can be static flows that appear on every page (for headers and footers) and the main flow which fills the body of the page.
 
@@ -101,7 +110,7 @@ If you downloaded the source distribution, or a snapshop from the repository, re
 
 #### 2.3. I get a NoSuchMethodException or a NoSuchFieldException exception. ## <a id="NoSuchMethodException"></a>
 
-This is usually caused by an older version of one of the FOP jars or old XML tools in the classpath. Check in particular for parser.jar, jaxp.jar, xml4j.jar or lotusxsl.jar.
+This is usually caused by an older version of one of the FOP jars or old XML tools in the classpath.
 
 Incompatible versions of Batik may also cause this problem. Use the version of Batik that comes with FOP. It is not always possible to use a more recent version of Batik.
 
@@ -121,13 +130,7 @@ A relative file URL starts with anything but a slash, and doesn't have the `file
 
 #### 2.6. I get an "[ERROR]: null", or a NullPointerException. ## <a id="NullPointerException"></a>
 
-This is often caused by an invalid FO document. Currently only very common errors are intercepted and produce a comprehensible error message. If you forgot container elements like `fo:page-sequence` or `fo:flow` and put blocks and inline elements directly as children of `fo:root` or `fo:page-sequence` , you'll only get a NullPointerException. Check whether your FO file has a proper structure. In some cases there are mandatory properties, like the master-reference in `fo:conditional-page-master-reference` , check also whether you got them right.
-
-You may find it helpful to use the [validation tools](#fo-validate) to validate your FO document. This will catch most problems, but should not be relied upon to catch all.
-
-If you use XSLT, problems in your style sheet and in your source XML also can produce a NullPointerException. [Run the transformation separately](1.0/running.html#check-input) to check for this, usually you'll get a detailed error message from the XSLT processor.
-
-If you turn on debugging with the " `-d` " option you may be able to see more detailed information.
+This is very likely a bug in FOP. If you encounter this error, please [Open a New Bug](bugs.html#issues_new).
 
 #### 2.7. FOP returns the message "[ERROR] object|property - 'x' is not implemented yet." When will it be implemented? ## <a id="not-implemented"></a>
 
@@ -135,11 +138,14 @@ See FOP's Standards [Compliance](compliance.html) page.
 
 #### 2.8. FOP hangs. FOP does not exit. ## <a id="fop-hangs"></a>
 
-The most likely reason is a known problem with the Java run time environment which is triggered by rendering SVGs. Suns JDK 1.4 does not have this problem. See also [FOP does not exit if a SVG is included](#svghangs) .
+The most likely reason is a known problem with the Java run time environment which is triggered by rendering SVGs. Sun's JDK 1.4 and later do not have this problem. See also [FOP does not exit if a SVG is included](#svghangs) .
 
 Another possibility is that FOP went into a non terminating loop. Usually this is indicated by lots of log messages of the form "[INFO]: [NNNN]" which indicate a new page has been started or [box overflows](#boxoverflow) . After some time, FOP will crash with an OutOfMemoryException.
 
 If you called the FOP command line application from some other program, for example from Java using Runtime.exec(), it may hang while trying to write log entries to the output pipe. You have to read the FOP output regularly to empty the pipe buffer. It is best to avoid exec'ing FOP, use the library interface instead.
+
+If you can reproduce this problem given a specific input and configuration,
+then please [Open a New Bug](bugs.html#issues_new).
 
 #### 2.9. FOP runs forever, writing lots of ">" to the log. ## <a id="boxoverflow"></a>
 
@@ -155,7 +161,7 @@ Did you get: “Failed to read font metrics file C:\foo\arial.xml : File "C:\foo
 
 If you used a relative URL, make sure your application has the working directory you expect. Currently FOP does not use the baseDir for resolving relative URLs pointing to font metric files.
 
-Try also setting the [font-base configuration](1.0/configuration.html#general-elements) .
+Try also setting the [font-base configuration](1.0/configuration.html#general-elements).
 
 #### 2.12. I get a SAXException: Mismatch: page-sequence vs. root (or similar). ## <a id="saxexception-mismatch"></a>
 
@@ -190,7 +196,7 @@ public class DefaultErrorListener implements ErrorListener {
 
 This message is a warning that FOP failed to read from the Font cache. Which means any Font auto detection or Font directories will be re-scanned. So this failure doesn't break anything.
 
-To avoid the warning you can simply delete the old Font Cache file, which lives in ${base}\conf\font.cache (see [font-base configuration](1.0/configuration.html#general-elements) ). Or you can disable Font Caching altogether using the option "use-cache."
+To avoid the warning you can simply delete the old Font Cache file, which lives in ${base}\conf\font.cache (see [font-base configuration](1.0/configuration.html#general-elements)).
 
 ### 3. Problems with FOP output <a id="part-output"></a>
 
@@ -223,7 +229,7 @@ Most commonly, the external file is not being found by FOP. Check the following:
 
 - Spelling errors in the file name (including using the wrong case).
 
-- Security Problems (i.e. the image could not be accessed because FOP is not allowed to read the file). This is especially a problem if the external file is retrieved over HTTP. Possible issues include security settings on the server, server configuration, and missing cookies or other authorization information. Any easy way to check this is to cut&paste the source URL from the fo:external-graphic into the Location field of a browser **on the machine where the FOP process will be running** .
+- Security Problems (i.e. the image could not be accessed because FOP is not allowed to read the file). This is especially a problem if the external file is retrieved over HTTP. Possible issues include security settings on the server, server configuration, and missing cookies or other authorization information. Any easy way to check this is to cut and paste the source URL from the fo:external-graphic into the Location field of a browser **on the machine where the FOP process will be running** .
 
 Other possibilities:
 
@@ -572,7 +578,7 @@ See [the Bugs page](bugs.html) for information about bugs already reported and h
 
 - If you have a runtime exception or other runtime problem:
 
-    - double-check the [Runtime FAQs](#part-running) .
+    - Double-check the [Runtime FAQs](#part-running) .
 
     - ClassNotFoundException, NoSuchMethodException and NoSuchFieldException problems are almost always a problem with the local environment. Try to get local help first.
 
@@ -581,13 +587,13 @@ See [the Bugs page](bugs.html) for information about bugs already reported and h
     - If none of the above apply, post a question to the fop-dev mailing list.
 
 
-- In the case where something works properly with another formatter, (AntennaHouse, PassiveTex, etc.) but doesn't work with FOP, please check theRelease Notes, the [FOP Standards Compliance](compliance.html) document, and the remaining FAQ in this document. If not found there, look at the list of [Bugs Already Reported](bugs.html#issues_existing) . If not found there, please post a question on the fop-user mailing list or [Open a New Bug](bugs.html#issues_new) .
+- In the case where something works properly with another formatter, (e.g., AntennaHouse, PassiveTex, etc.) but doesn't work with FOP, please check theRelease Notes, the [FOP Standards Compliance](compliance.html) document, and the remaining FAQ in this document. If not found there, look at the list of [Bugs Already Reported](bugs.html#issues_existing) . If not found there, please post a question on the fop-user mailing list or [Open a New Bug](bugs.html#issues_new) .
 
 - Question about how to use FOP, how to perform certain tasks with FOP or how to integrate FOP into another application should be posted to fop-user.
 
 - XSLT specific stuff sould go to the [XSL list](http://www.mulberrytech.com/xsl/xsl-list/) . This includes problems with the language and XSLT HOW-TOs.
 
-- Problems specific to a certain XSLT processor, like Xalan, Saxon or MSXML, should be handled by processor specific lists. This includes problems with deployment, processor specific extensions, suspected bugs and processor specific APIs. Note that JDK 1.4 comes with an XML parser and an XSLT processor which are older versions of Xerces and Xalan, respectively, and both have a number of annoying bugs. See http://java.sun.com/developer/EJTechTips/2003/tt0311.html and http://java.sun.com/j2se/1.4.2/docs/guide/standards/ (or similar pages for later Java releases) for some hints on how to use more recent versions or other packages instead.
+- Problems specific to a certain XSLT processor, like Xalan, Saxon or MSXML, should be handled by processor specific lists. This includes problems with deployment, processor specific extensions, suspected bugs and processor specific APIs. Note that JDK 1.4  and later come with an XML parser and an XSLT processor which may be the source of the problem.
 
 - Problems with servlet containers should be asked on the vendor specific lists for these software packages.
 
