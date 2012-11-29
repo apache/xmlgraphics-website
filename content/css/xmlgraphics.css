@@ -34,7 +34,7 @@ body {
 #bannertext, #content, #footer {
     background-color: #fff;
     color: #333;
-    margin: 0  250px 0 50px;
+    margin: 0 50px 0 250px;
     padding: 20px;
 }
 #bannertext {
@@ -86,8 +86,8 @@ h1, h3 {
 }
 .codehilite {
     background-color: #999999;
-    border-radius: 10px 10px 10px 10px;
-    padding: 0.01em 1em;
+    border-radius: 10px;
+    padding: 0 .01em 1em;
 }
 #navigation, #items {
     -moz-border-bottom-colors: none;
@@ -97,14 +97,14 @@ h1, h3 {
     -moz-border-top-colors: none;
     background: none repeat scroll 0 0 #F5F8FA;
     border-color: #C0C0C0 #C0C0C0 #C0C0C0 -moz-use-text-color;
-    border-radius: 10px 0 0 10px;
-    border-style: solid none solid solid;
+    border-radius: 10px 10px 0 0;
+    border-style: solid solid solid none;
     border-width: 1px medium 1px 1px;
     color: #000033;
     float: right;
     font-size: 0.9em;
     margin: 0 0 20px;
-    padding: 15px 15px 5px 25px;
+    padding: 15px 25px 5px 15px;
     width: 225px;
 }
 #navigation img {
