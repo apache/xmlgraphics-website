@@ -13,19 +13,19 @@ In the Wiki, we have a [Roadmap for Apache XML Graphics Commons](http://wiki.apa
 
 ## Features <a id="features"></a>
 
-Components which have been ported from [Apache Batik](http://xmlgraphics.apache.org/batik/) and [Apache FOP](http://xmlgraphics.apache.org/fop/) include:
+Components which have been ported from [Apache Batik](/batik/) and [Apache FOP](/fop/) include:
 
 | Description | Package | Provenance |
 |-------------|---------|------------|
-| Image codecs for PNG and TIFF | org.apache.xmlgraphics.image.codec | Batik |
-| Bitmap image writer abstraction with implementation for the above codecs and for the Image I/O API. | org.apache.xmlgraphics.image.writer | Batik |
-| Java2D helper classes | org.apache.xmlgraphics.image.rendered and org.apache.xmlgraphics.java2d | Batik |
-| Image loader framework (format detection, conversion and unified handling for bitmap and vector images). | org.apache.xmlgraphics.image.loader | new |
-| Graphics2D implementation that produces PostScript and EPS | org.apache.xmlgraphics.java2d.ps | FOP |
-| Helper classes for PostScript code production | org.apache.xmlgraphics.ps | FOP |
-| Parser/Processor for DSC-compliant PostScript files (DSC = [Document Structuring Conventions](http://partners.adobe.com/public/developer/en/ps/5001.DSC_Spec.pdf) ) | org.apache.xmlgraphics.ps.dsc | new |
-|  [XMP metadata](http://www.adobe.com/products/xmp/index.html) framework | org.apache.xmlgraphics.xmp | new |
-| Various I/O classes, encoders and decoders for various formats | org.apache.xmlgraphics.util.io | Batik/FOP |
+| Image codecs for PNG and TIFF | `org.apache.xmlgraphics.image.codec` | Batik |
+| Bitmap image writer abstraction with implementation for the above codecs and for the Image I/O API. | `org.apache.xmlgraphics.image.writer` | [Apache Batik](/batik/) |
+| Java2D helper classes | `org.apache.xmlgraphics.image.rendered` and `org.apache.xmlgraphics.java2d` | [Apache Batik](/batik/) |
+| Image loader framework (format detection, conversion and unified handling for bitmap and vector images). | `org.apache.xmlgraphics.image.loader` | new |
+| Graphics2D implementation that produces PostScript and EPS | `org.apache.xmlgraphics.java2d.ps` | [Apache FOP](/fop/) |
+| Helper classes for PostScript code production | `org.apache.xmlgraphics.ps` | [Apache FOP](/fop/) |
+| Parser/Processor for DSC-compliant PostScript files (DSC = [Document Structuring Conventions](http://partners.adobe.com/public/developer/en/ps/5001.DSC_Spec.pdf) ) | `org.apache.xmlgraphics.ps.dsc` | new |
+|  [XMP metadata](http://www.adobe.com/products/xmp/index.html) framework | `org.apache.xmlgraphics.xmp` | new |
+| Various I/O classes, encoders and decoders for various formats | `org.apache.xmlgraphics.util.io` | [Apache Batik](/batik/)/[Apache FOP](/fop/) |
 
 ## News <a id="News"></a>
 
