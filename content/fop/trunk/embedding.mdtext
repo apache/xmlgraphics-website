@@ -12,22 +12,23 @@ To embed Apache&trade; FOP in your application, first create a new org.apache.fo
 ## The API <a id="API"></a>
 
 FOP has many classes which express the "public" access modifier, however, this is not indicative of their inclusion into the public API. Every attempt will be made to keep the public API static, to minimize regressions for existing users, however, since the API is not clearly defined, the list of classes below are the generally agreed public API:
-org.apache.fop.apps.*
-org.apache.fop.fo.FOEventHandler
-org.apache.fop.fo.ElementMappingRegistry
-org.apache.fop.fonts.FontManager
-org.apache.fop.events.EventListener
-org.apache.fop.events.Event
-org.apache.fop.events.model.EventSeverity
-org.apache.fop.render.ImageHandlerRegistry
-org.apache.fop.render.RendererFactory
-org.apache.fop.render.intermediate.IFContext
-org.apache.fop.render.intermediate.IFDocumentHandler
-org.apache.fop.render.intermediate.IFException
-org.apache.fop.render.intermediate.IFParser
-org.apache.fop.render.intermediate.IFSerializer
-org.apache.fop.render.intermediate.IFUtil
-org.apache.fop.render.intermediate.util.IFConcatenator
+
+ - org.apache.fop.apps.*
+ - org.apache.fop.fo.FOEventHandler
+ - org.apache.fop.fo.ElementMappingRegistry
+ - org.apache.fop.fonts.FontManager
+ - org.apache.fop.events.EventListener
+ - org.apache.fop.events.Event
+ - org.apache.fop.events.model.EventSeverity
+ - org.apache.fop.render.ImageHandlerRegistry
+ - org.apache.fop.render.RendererFactory
+ - org.apache.fop.render.intermediate.IFContext
+ - org.apache.fop.render.intermediate.IFDocumentHandler
+ - org.apache.fop.render.intermediate.IFException
+ - org.apache.fop.render.intermediate.IFParser
+ - org.apache.fop.render.intermediate.IFSerializer
+ - org.apache.fop.render.intermediate.IFUtil
+ - org.apache.fop.render.intermediate.util.IFConcatenator
 
 ## Basic Usage Pattern <a id="basics"></a>
 
