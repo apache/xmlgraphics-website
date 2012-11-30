@@ -11,26 +11,27 @@ The FOP Ant task will convert XSL-FO documents to PDF, PS, PCL etc. output (see 
 
 To call FOP tasks within Ant, first add a FOP task definition to your Ant build file. One method of defining the task is as follows:
 
-<property name="fop.home" value="....path to your FOP HOME directory..."/>
-
-<taskdef name="fop" 
-         classname="org.apache.fop.tools.anttasks.Fop">
-  <classpath>
-    <fileset dir="${fop.home}/lib">
-      <include name="*.jar"/>
-    </fileset>
-    <fileset dir="${fop.home}/build">
-      <include name="fop.jar"/>
-      <include name="fop-hyph.jar" />
-    </fileset>
-  </classpath>
-</taskdef>
+    <property name="fop.home" value="....path to your FOP HOME directory..."/>
+    
+    <taskdef name="fop" 
+             classname="org.apache.fop.tools.anttasks.Fop">
+      <classpath>
+        <fileset dir="${fop.home}/lib">
+          <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${fop.home}/build">
+          <include name="fop.jar"/>
+          <include name="fop-hyph.jar" />
+        </fileset>
+      </classpath>
+    </taskdef>
     
 Then create FOP tasks within your Ant build file, using the FOP task parameters listed below.
 
 ## Parameters for FOP Ant task <a id="parameters"></a>
 
-<caption>Parameters specified as attributes</caption>| Attribute | Description | Required |
+<caption>Parameters specified as attributes</caption>
+| Attribute | Description | Required |
 |-----------|-------------|----------|
 | fofile | XSL-FO file to be rendered | Yes, if no fileset nested element is used |
 | xmlfile | XML input file | Yes, if no fofile is specified |
@@ -56,42 +57,42 @@ Then create FOP tasks within your Ant build file, using the FOP task parameters 
 
 The following example converts a single XSL-FO file to a PDF document:
 
-<target name="generate-pdf" description="Generates a single PDF file">
-   <fop format="application/pdf" 
-        fofile="c:\working\foDirectory\foDocument.fo"
-        outfile="c:\working\pdfDirectory\pdfDocument.pdf" />
-</target>
+    <target name="generate-pdf" description="Generates a single PDF file">
+       <fop format="application/pdf" 
+            fofile="c:\working\foDirectory\foDocument.fo"
+            outfile="c:\working\pdfDirectory\pdfDocument.pdf" />
+    </target>
     
 This example converts all XSL-FO files within an entire directory to PostScript:
 
-<target name="generate-multiple-ps" 
-        description="Generates multiple PostScript files">
-   <fop format="application/postscript" 
-        outdir="${build.dir}" messagelevel="debug">
-        <fileset dir="${fo.examples.dir}">
-           <include name="*.fo"/>
-        </fileset>
-   </fop>
-</target>
+    <target name="generate-multiple-ps" 
+            description="Generates multiple PostScript files">
+       <fop format="application/postscript" 
+            outdir="${build.dir}" messagelevel="debug">
+            <fileset dir="${fo.examples.dir}">
+               <include name="*.fo"/>
+            </fileset>
+       </fop>
+    </target>
     
 The following example transforms and converts a single XML and XSLT file to an AFP document:
 
-<target name="generate-afp-from-transform" description="Generates a single AFP file from an XSLT stylesheet">
-   <fop format="application/x-afp" 
-        xmlfile="c:\working\foDirectory\Document.xml"
-        xsltfile="c:\working\foDirectory\Document.xslt"
-        outfile="c:\working\afpDirectory\Document.afp" />
-</target>
-    
+    <target name="generate-afp-from-transform" description="Generates a single AFP file from an XSLT stylesheet">
+       <fop format="application/x-afp" 
+            xmlfile="c:\working\foDirectory\Document.xml"
+            xsltfile="c:\working\foDirectory\Document.xslt"
+            outfile="c:\working\afpDirectory\Document.afp" />
+    </target>
+        
 This example transforms and converts all XML files within an entire directory to PostScript:
-
-<target name="generate-multiple-ps-from-transform" description="Generates multiple PostScript files using an XSLT stylesheet">
-   <fop format="application/postscript" 
-        xsltfile="c:\working\foDirectory\Document.xslt"
-        outdir="${build.dir}" messagelevel="debug">
-        <fileset dir="${test.dir}">
-           <include name="*.xml"/>
-        </fileset>
-   </fop>
-</target>
+    
+    <target name="generate-multiple-ps-from-transform" description="Generates multiple PostScript files using an XSLT stylesheet">
+       <fop format="application/postscript" 
+            xsltfile="c:\working\foDirectory\Document.xslt"
+            outdir="${build.dir}" messagelevel="debug">
+            <fileset dir="${test.dir}">
+               <include name="*.xml"/>
+            </fileset>
+       </fop>
+    </target>
     
