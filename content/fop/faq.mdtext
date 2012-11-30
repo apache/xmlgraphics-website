@@ -169,26 +169,27 @@ This exception is usually a follow-up error after another exception. Sometimes t
 
 The work-around is to set an explicit `ErrorListener` on the `Transformer` . The `ErrorListener` can be as simple as this:
 
-import javax.xml.transform.ErrorListener;
-import javax.xml.transform.TransformerException;
+    import javax.xml.transform.ErrorListener;
+    import javax.xml.transform.TransformerException;
 
-public class DefaultErrorListener implements ErrorListener {
+    public class DefaultErrorListener implements ErrorListener {
+    
+        public void warning(TransformerException exc) {
+            System.err.println(exc.toString());
+        }
 
-    public void warning(TransformerException exc) {
-        System.err.println(exc.toString());
+        public void error(TransformerException exc)
+                throws TransformerException {
+            throw exc;
+        }
+
+        public void fatalError(TransformerException exc)
+                throws TransformerException {
+            throw exc;
+        }
+
     }
 
-    public void error(TransformerException exc)
-            throws TransformerException {
-        throw exc;
-    }
-
-    public void fatalError(TransformerException exc)
-            throws TransformerException {
-        throw exc;
-    }
-
-}
 ### 2.13. The following message appears after recently upgrading FOP: "I/O exception while reading font cache (org.apache.fop.fonts.EmbedFontInfo; local class incompatible: stream classdesc serialVersionUID = -9075848379822693399, local class serialVersionUID = 8755432068669997367). Discarding font cache file."<a id="faq-N1026C"></a>
 
 This message is a warning that FOP failed to read from the Font cache. Which means any Font auto detection or Font directories will be re-scanned. So this failure doesn't break anything.
