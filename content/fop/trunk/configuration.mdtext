@@ -72,7 +72,7 @@ This is an excerpt from the example configuration file coming with FOP:
   
       <!-- etc. etc..... -->
     </fop>
-# Image Loading Customization {#image-loading}
+## Image Loading Customization {#image-loading}
 
 Apache FOP uses the image loading framework from [Apache XML Graphics Commons](http://xmlgraphics.apache.org/commons/) to load images using various plug-ins. Every image loader plug-in has a hard-coded usage penalty that influences which solution is chosen if there are multiple possibilities to load an image. Sometimes, though, these penalties need to be tweaked and this can be done in the FOP configuration. An example:
 
