@@ -44,47 +44,48 @@ See [Setting the Configuration Programmatically](embedding.html#config-internal)
 
 This is an excerpt from the example configuration file coming with FOP:
 
-<fop version="1.0">
+    <fop version="1.0">
 
-  <!-- Strict user configuration -->
-  <strict-configuration>true</strict-configuration>
+      <!-- Strict user configuration -->
+      <strict-configuration>true</strict-configuration>
 
-  <!-- Strict FO validation -->
-  <strict-validation>true</strict-validation>
+      <!-- Strict FO validation -->
+      <strict-validation>true</strict-validation>
 
-  <!-- Base URL for resolving relative URLs -->
-  <base>./</base>
+      <!-- Base URL for resolving relative URLs -->
+      <base>./</base>
 
-  <!-- Font Base URL for resolving relative font URLs -->
-  <font-base>./</font-base>
+      <!-- Font Base URL for resolving relative font URLs -->
+      <font-base>./</font-base>
 
-  <!-- Source resolution in dpi (dots/pixels per inch) for determining the size of pixels in SVG and bitmap images, default: 72dpi -->
-  <source-resolution>72</source-resolution>
-  <!-- Target resolution in dpi (dots/pixels per inch) for specifying the target resolution for generated bitmaps, default: 72dpi -->
-  <target-resolution>72</target-resolution>
+      <!-- Source resolution in dpi (dots/pixels per inch) for determining the size of pixels in SVG and bitmap images, default: 72dpi -->
+      <source-resolution>72</source-resolution>
+      <!-- Target resolution in dpi (dots/pixels per inch) for specifying the target resolution for generated bitmaps, default: 72dpi -->
+      <target-resolution>72</target-resolution>
 
-  <!-- default page-height and page-width, in case
-       value is specified as auto -->
-  <default-page-settings height="11in" width="8.26in"/>
+      <!-- default page-height and page-width, in case
+           value is specified as auto -->
+      <default-page-settings height="11in" width="8.26in"/>
 
-  <!-- Use file name nl_Bel instead of the default nl_BE -->
-  <hyphenation-pattern lang="nl" country="BE">nl_Bel</hyphenation-pattern>
+      <!-- Use file name nl_Bel instead of the default nl_BE -->
+      <hyphenation-pattern lang="nl" country="BE">nl_Bel</hyphenation-pattern>
   
-  <!-- etc. etc..... -->
-</fop>
-# Image Loading Customization <a id="image-loading"></a>
+      <!-- etc. etc..... -->
+    </fop>
+# Image Loading Customization {#image-loading}
 
 Apache FOP uses the image loading framework from [Apache XML Graphics Commons](http://xmlgraphics.apache.org/commons/) to load images using various plug-ins. Every image loader plug-in has a hard-coded usage penalty that influences which solution is chosen if there are multiple possibilities to load an image. Sometimes, though, these penalties need to be tweaked and this can be done in the FOP configuration. An example:
-<fop version="1.0">
-  [..]
-  <image-loading>
-    <penalty value="10000"
-      class="org.apache.xmlgraphics.image.loader.impl.ImageLoaderRawCCITTFax"/>
-    <penalty value="INFINITE"
-      class="org.apache.xmlgraphics.image.loader.impl.ImageLoaderInternalTIFF"/>
-  </image-loading>
-  <renderers....
-</fop>
+
+    <fop version="1.0">
+      [..]
+      <image-loading>
+        <penalty value="10000"
+          class="org.apache.xmlgraphics.image.loader.impl.ImageLoaderRawCCITTFax"/>
+        <penalty value="INFINITE"
+          class="org.apache.xmlgraphics.image.loader.impl.ImageLoaderInternalTIFF"/>
+      </image-loading>
+      <renderers....
+    </fop>
 The first penalty element increases the penalty for the raw CCITT loader. This practically forces the decoding of CCITT compressed TIFF images except if there are no TIFF codecs available.
 
 The second penalty element sets an "infinite" penalty for the TIFF loader using the internal TIFF codec. This practically disables that plug-in as it will never be chosen as a possible solution.
@@ -97,26 +98,26 @@ Each Renderer has its own configuration section which is identified by the MIME 
 
 The configuration for the PDF Renderer could look like this:
 
-  <renderers>
-    <renderer mime="application/pdf">
-      <filterList>
-        <!-- provides compression using zlib flate (default is on) -->
-        <value>flate</value>
-      </filterList>
-      <fonts>
-        <font metrics-url="arial.xml" kerning="yes" embed-url="arial.ttf">
-          <font-triplet name="Arial" style="normal" weight="normal"/>
-          <font-triplet name="ArialMT" style="normal" weight="normal"/>
-        </font>
-        <font metrics-url="arialb.xml" kerning="yes" embed-url="arialb.ttf">
-          <font-triplet name="Arial" style="normal" weight="bold"/>
-          <font-triplet name="ArialMT" style="normal" weight="bold"/>
-        </font>
-      </fonts>
-    </renderer>
-    
-    <renderer mime="application/postscript">
-    <!-- etc. etc..... -->
+    <renderers>
+      <renderer mime="application/pdf">
+        <filterList>
+          <!-- provides compression using zlib flate (default is on) -->
+          <value>flate</value>
+        </filterList>
+        <fonts>
+          <font metrics-url="arial.xml" kerning="yes" embed-url="arial.ttf">
+            <font-triplet name="Arial" style="normal" weight="normal"/>
+            <font-triplet name="ArialMT" style="normal" weight="normal"/>
+          </font>
+          <font metrics-url="arialb.xml" kerning="yes" embed-url="arialb.ttf">
+            <font-triplet name="Arial" style="normal" weight="bold"/>
+            <font-triplet name="ArialMT" style="normal" weight="bold"/>
+          </font>
+        </fonts>
+      </renderer>
+      
+      <renderer mime="application/postscript">
+      <!-- etc. etc..... -->
 The details on the font configuration can be found on the separate [Fonts](fonts.html) page. Note especially the section entitled [Register Fonts with FOP](fonts.html#register) .
 
 ### Special Settings for the PDF Renderer <a id="pdf-renderer"></a>
@@ -170,6 +171,7 @@ FOP supports encryption of PDF output, thanks to Patrick C. Lankswert. This feat
       </encryption-params>
     </renderer>
 By default FOP produces PDF files of version 1.4, but this can be changed in order to benefit from features that appeared in newer versions of PDF. At the moment, only a few features from PDF 1.5 have been implemented, but the configuration element will accept any value between 1.4 and 1.7. This is the value that will appear in the PDF header, although only features up to 1.5 will actually be used.
+
       <renderer mime="application/pdf">
         <version>1.5</version>
         <!-- Versions 1.4, 1.5, 1.6 and 1.7 are accepted, all other values are invalid -->
@@ -198,10 +200,11 @@ Besides the normal font configuration (the same "fonts" element as for the PDF r
 Non-standard fonts for the PCL renderer are made available through the Java2D subsystem which means that you don't have to do any custom font configuration in this case but you have to use the font names offered by Java.
 
 Additionally, there are certain settings that control how the renderer handles various elements.
-<renderer mime="application/vnd.hp-PCL">
-  <rendering>quality</rendering>
-  <text-rendering>bitmap</text-rendering>
-</renderer>
+
+    <renderer mime="application/vnd.hp-PCL">
+      <rendering>quality</rendering>
+      <text-rendering>bitmap</text-rendering>
+    </renderer>
 The default value for the "rendering" setting is "speed" which causes borders to be painted as plain rectangles. In this mode, no special borders (dotted, dashed etc.) are available. If you want support for all border modes, set the value to "quality" as indicated above. This will cause the borders to be painted as bitmaps.
 
 The default value for the "text-rendering" setting is "auto" which paints the base fonts using PCL fonts. Non-base fonts are painted as bitmaps through Java2D. If the mix of painting methods results in unwelcome output, you can set this to "bitmap" which causes all text to be rendered as bitmaps.
@@ -211,13 +214,14 @@ The default value for the "text-rendering" setting is "auto" which paints the ba
 
 
 Additionally, there are certain settings that control how the renderer handles various elements.
-<renderer mime="application/x-afp">
-  <images mode="b+w" bits-per-pixel="8" native="true"/>
-  <renderer-resolution>240</renderer-resolution>
-  
-  <!-- a default external resource group file -->
-  <resource-group-file>resources.afp</resource-group-file>
-</renderer>
+
+    <renderer mime="application/x-afp">
+      <images mode="b+w" bits-per-pixel="8" native="true"/>
+      <renderer-resolution>240</renderer-resolution>
+      
+      <!-- a default external resource group file -->
+      <resource-group-file>resources.afp</resource-group-file>
+    </renderer>
 The default value for the images "mode" setting is "b+w" (black and white). When the images "mode" setting is "b+w" a "bits-per-pixel" setting can be provided to aid the grayscale conversion process. With this setting all images referenced in your source document are converted to an IOCA FS45 grayscale bitmap image form. When the setting is "color" all images are converted to an IOCA FS45 color bitmap image form. When "native" setting is "true", all images encountered (TIFF, GIF, JPEG and Encapsulated Postscript etc.) will be embedded directly in the datastream in their native form using a MO:DCA Object Container.
 
 The default value for the "renderer-resolution" is 240 dpi.
