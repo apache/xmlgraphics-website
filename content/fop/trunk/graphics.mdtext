@@ -21,7 +21,6 @@ The actual [image loading framework](http://xmlgraphics.apache.org/commons/image
 The table below summarizes the *theoretical* support for graphical formats within FOP. In other words, within the constraints of the limitations listed here, these formats *should* work. However, many of them have not been tested, and there may be limitations that have not yet been discovered or documented. The packages needed to support some formats are not included in the FOP distribution and must be installed separately. Follow the links in the "Support Through" columns for more details.
 
 | Format | Type | Support Through |
-|--------|------|-----------------|
 |  [Apache FOP (native)](#native)  |  [Apache Batik](#batik)  |  [Image I/O](#imageio)  |
 |---------------------|--------------|-----------|
 |  [BMP](#bmp) (Microsoft Windows Bitmap) | bitmap |  |  | X [1] |
@@ -125,11 +124,11 @@ PNG images are supported through an Image&nbsp;I/O codec. Transparency is suppor
 
 ### SVG <a id="svg"></a>
 
-#### Introduction ## <a id="svg-intro"></a>
+#### Introduction<a id="svg-intro"></a>
 
 FOP uses [Apache Batik](#batik) for SVG support. This format can be handled as an `fo:instream-foreign-object` or in a separate file referenced with `fo:external-graphic` .
 Batik's SVG Rasterizer utility may also be used to convert standalone SVG documents into PDF. For more information please see the [SVG Rasterizer documentation](http://xmlgraphics.apache.org/batik/svgrasterizer.html) on the Batik site.
-### Placing SVG Graphics into PDF ## <a id="svg-pdf-graphics"></a>
+### Placing SVG Graphics into PDF<a id="svg-pdf-graphics"></a>
 
 The SVG is rendered into PDF by using PDF commands to draw and fill lines and curves. This means that the graphical objects created with this remain as vector graphics. The same applies to PostScript output. For other output formats the SVG graphic may be converted to a bitmap image.
 
@@ -137,7 +136,7 @@ There are a number of SVG things that cannot be converted directly into PDF. Par
 
 Currently transparency is limited in PDF so some SVG images that contain effects or graphics with transparent areas may not be displayed correctly.
 
-#### Placing SVG Text into PDF and PostScript ## <a id="svg-pdf-text"></a>
+#### Placing SVG Text into PDF and PostScript<a id="svg-pdf-text"></a>
 
 If possible, Batik will use normal PDF or PostScript text when inserting text. It does this by checking if the text can be drawn normally and the font is supported. This example svg [text.svg](../dev/svg/text.svg) / [text.pdf](../dev/svg/text.pdf) / [text.png](../dev/svg/text.png) shows how various types and effects with text are handled. Note that SVG font support is not yet implemented. Furthermore, text handling in PostScript output is inferior to PDF output - more text will be painted as shapes in PS than in PDF.
 
@@ -145,19 +144,19 @@ When there's no support to paint text using native text operations, text is conv
 
 Note that because SVG text can be rendered as either text or a vector graphic, you may need to consider settings in your viewer for both. The Acrobat viewer has both "smooth line art" and "smooth text" settings that may need to be set for SVG images to be displayed nicely on your screen (see Edit / Preferences / Display). This setting will not affect the printing of your document, which should be OK in any case, but will only affect the quality of the screen display.
 
-#### Font selection notes ## <a id="svg-font-selection"></a>
+#### Font selection notes<a id="svg-font-selection"></a>
 
 Apache Batik uses the AWT/Java2D subsystem as font source while FOP has its own font subsystem. Great care has been taken that font selection does the best possible choices. But it must be noted when creating PDF or PostScript that a font used in SVG graphics needs to be registered with the operating system as well as in FOP's configuration. By using FOP's font auto-detection, you simply have to install the font in the operating system and not care about anything else. This is less of an issue if you create formats like TIFFs, PNGs or PCL because in these cases SVG graphics are usually rendered to bitmaps which means that on both sides (Batik and FOP), AWT/Java2D is used as the single font source.
 
 Whenever an SVG is converted into a PDF or PostScript file, the font that has been used inside Batik has to be mapped to a font used by the actual output format. Features like font substitution in FOP may need to be taken into account but can also be an advantage when working around font mapping issues. Like for XSL-FO content, you'll get a warning if a particular font could not be found and had to be substituted, or if a particular glyph is missing in a font.
 
-#### Scaling ## <a id="svg-scaling"></a>
+#### Scaling<a id="svg-scaling"></a>
 
 Currently, SVG images are rendered with the dimensions specified *in the SVG file* , within the viewport specified in the fo:external-graphic element. For everything to work properly, the two should be equal. The SVG standard leaves this issue as an implementation detail. Additional scaling options are available through XSL-FO means.
 
 If you use pixels to specify the size of an SVG graphic the "source resolution" setting in the [configuration](configuration.html) will be used to determine the size of a pixel. The use of pixels to specify sizes is discouraged as they may be interpreted differently in different environments.
 
-#### Known Problems ## <a id="svg-problems"></a>
+#### Known Problems<a id="svg-problems"></a>
 
 
 - Soft mask transparency is combined with white so that it looks better on PDF 1.3 viewers but this causes the soft mask to be slightly lighter or darker on PDF 1.4 viewers.
