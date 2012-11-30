@@ -14,10 +14,7 @@ There are 3 ways to enable accessibility:
 
 
 1.  **Command line:** The command line option -a turns on accessibility:<br/>`fop -a -fo mydocument.fo -pdf mydocument.pdf` 
-1.  **Embedding:**
-
-  `userAgent.setAccessibility(true);` 
-
+1.  **Embedding:**<br/>`userAgent.setAccessibility(true);` 
 1.  **Optional setting in fop.xconf file:**<br/>`<fop version="1.0">`<br/>`<accessibility>true</accessibility>`<br/>`...`<br/>`</fop>`
 
 When accessibility is enabled, additional information relating to the logical structure of the document is added to the PDF. That information allows the PDF viewer (or a text-to-speech application) to retrieve the natural reading order of the document.
