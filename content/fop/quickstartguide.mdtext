@@ -48,7 +48,7 @@ This section walks you through a "Hello World!" page with Apache FOP. We're assu
 
 1. Now, take your favorite XML editor and create a small XML file like the following. Replace "Frank" with your own first name to make it a bit more personal and save it as `name.xml` :<br></br><name>Frank</name>
 
-1. To produce a PDF file from this XML file, we need an XSLT stylesheet that converts the XML to XSL-FO. This is the first step in the processing chain. The second step will be done by FOP when it reads the generated XSL-FO document and formats it to a PDF document. You can copy the following minimal XSLT stylesheet, which takes your first name and produces a "Hello World!"-style document (save it as `name2fo.xsl` ):<br></br><?xml version="1.0" encoding="utf-8"?>
+1. To produce a PDF file from this XML file, we need an XSLT stylesheet that converts the XML to XSL-FO. This is the first step in the processing chain. The second step will be done by FOP when it reads the generated XSL-FO document and formats it to a PDF document. You can copy the following minimal XSLT stylesheet, which takes your first name and produces a "Hello World!"-style document (save it as `name2fo.xsl` ):
 
         <xsl:stylesheet version="1.0"
               xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
