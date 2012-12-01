@@ -39,15 +39,15 @@ A document author need not make explicit use of any complex scripts feature in o
 In most circumstances, XSL-FO content does not need to change in order to make use of complex scripts features; however, in certain contexts, fully automatic processing is not sufficient. In these cases, an author may make use of the following XSL-FO constructs:
 
 
-- The [](http://www.w3.org/TR/2006/REC-xsl11-20061205/#script) property.
+- The [http://www.w3.org/TR/2006/REC-xsl11-20061205/#script](http://www.w3.org/TR/2006/REC-xsl11-20061205/#script) property.
 
-- The [](http://www.w3.org/TR/2006/REC-xsl11-20061205/#language) property.
+- The [http://www.w3.org/TR/2006/REC-xsl11-20061205/#language](http://www.w3.org/TR/2006/REC-xsl11-20061205/#language) property.
 
-- The [](http://www.w3.org/TR/2006/REC-xsl11-20061205/#writing-mode) property.
+- The [http://www.w3.org/TR/2006/REC-xsl11-20061205/#writing-mode](http://www.w3.org/TR/2006/REC-xsl11-20061205/#writing-mode) property.
 
-- The number to string conversion properties: [](http://www.w3.org/TR/2006/REC-xsl11-20061205/#format) , [](http://www.w3.org/TR/2006/REC-xsl11-20061205/#grouping-separator) , [](http://www.w3.org/TR/2006/REC-xsl11-20061205/#grouping-size) , [](http://www.w3.org/TR/2006/REC-xsl11-20061205/#letter-value) , and `fox:number-conversion-features` .
+- The number to string conversion properties: [http://www.w3.org/TR/2006/REC-xsl11-20061205/#format](http://www.w3.org/TR/2006/REC-xsl11-20061205/#format) , [http://www.w3.org/TR/2006/REC-xsl11-20061205/#grouping-separator](http://www.w3.org/TR/2006/REC-xsl11-20061205/#grouping-separator) , [http://www.w3.org/TR/2006/REC-xsl11-20061205/#grouping-size](http://www.w3.org/TR/2006/REC-xsl11-20061205/#grouping-size) , [http://www.w3.org/TR/2006/REC-xsl11-20061205/#letter-value](http://www.w3.org/TR/2006/REC-xsl11-20061205/#letter-value) , and `fox:number-conversion-features` .
 
-- The [](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override) element.
+- The [http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override) element.
 
 - Explicit bidirectional control characters: U+200E LRM, U+200F RLM, U+202A LRE, U+202B RLE, U+202C PDF, U+202D LRO, U+202E RLO.
 
@@ -62,7 +62,7 @@ The complex scripts related effects of the above enumerated XSL-FO constructs ar
 In order to apply font specific complex script features, it is necessary to know the script that applies to the text undergoing layout processing. This script is determined using the following algorithm:
 
 
-1. If the FO element that governs the text specifies a [](http://www.w3.org/TR/2006/REC-xsl11-20061205/#script) property and its value is not the empty string or `"auto"` , then that script is used.
+1. If the FO element that governs the text specifies a [http://www.w3.org/TR/2006/REC-xsl11-20061205/#script](http://www.w3.org/TR/2006/REC-xsl11-20061205/#script) property and its value is not the empty string or `"auto"` , then that script is used.
 
 1. Otherwise, the dominant script of the text is determined automatically by finding the script whose constituent characters appear most frequently in the text.
 
@@ -125,7 +125,7 @@ The following table enumerates a number of non-standard extended script codes re
 <warning>Explicit use of one of the above extended script codes is not portable, and should be limited to use with FOP only.</warning>When performing automatic script determination, FOP selects the OpenType Indic Version 2 script codes by default. If the author requires Version 1 behavior, then an explicit, non-extension script code should be specified in a governing `script` property.
 ## Language Property <a id="language_property"></a>
 
-Certain fonts that support complex script features can make use of language information in order for language specific processing rules to be applied. For example, a font designed for the Arabic script may support typographic variations according to whether the written language is Arabic, Farsi (Persian), Sindhi, Urdu, or another language written with the Arabic script. In order to apply these language specific features, the author may explicitly mark the text with a [](http://www.w3.org/TR/2006/REC-xsl11-20061205/#language) property.
+Certain fonts that support complex script features can make use of language information in order for language specific processing rules to be applied. For example, a font designed for the Arabic script may support typographic variations according to whether the written language is Arabic, Farsi (Persian), Sindhi, Urdu, or another language written with the Arabic script. In order to apply these language specific features, the author may explicitly mark the text with a [http://www.w3.org/TR/2006/REC-xsl11-20061205/#language](http://www.w3.org/TR/2006/REC-xsl11-20061205/#language) property.
 
 When specifying the `language` property, the value of the property must be either an [ISO639-2 3-letter code](http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes) or an [ISO639-1 2-letter code](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) . Comparison of language codes is performed in a case-insensitive manner, so it does not matter what case is used when specifying these codes in an XSL-FO document.
 
@@ -165,7 +165,7 @@ Writing modes that employ a vertical inline progression direction are not yet su
 
 ### Bidi Override Element <a id="bidi_override_element"></a>
 
-The [](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override) element may be used to override default bidirectional processing behavior, including default embedding levels and default character directionality. In the absence of either this element or use of explicit [Bidi Control Characters](#bidi_controls) , the default behavior prescribed by the [Unicode Bidirectional Algorithm](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override) applies.
+The [http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override) element may be used to override default bidirectional processing behavior, including default embedding levels and default character directionality. In the absence of either this element or use of explicit [Bidi Control Characters](#bidi_controls) , the default behavior prescribed by the [Unicode Bidirectional Algorithm](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override) applies.
 
 ### Bidi Control Characters <a id="bidi_controls"></a>
 
