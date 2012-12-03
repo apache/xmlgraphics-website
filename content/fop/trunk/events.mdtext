@@ -114,7 +114,7 @@ This throws a `RuntimeException` with the `FileNotFoundException` as the cause. 
 
 This section is primarily for FOP and FOP plug-in developers. It describes how to use the event subsystem for producing events.
 The event package has been designed in order to be theoretically useful for use cases outside FOP. If you think this is interesting independently from FOP, please talk to [us](mailto:fop-dev@xmlgraphics.apache.org).
-## Producing and sending an event <a id="basic-event-production"></a>
+### Producing and sending an event <a id="basic-event-production"></a>
 
 The basics are very simple. Just instantiate an `Event` object and fill it with the necessary parameters. Then pass it to the `EventBroadcaster` which distributes the events to the interested listeneners. Here's a code example:
 
@@ -162,7 +162,7 @@ To produce the same event as in the first example above, you'd use the following
     EventBroadcaster broadcaster = [get it from somewhere];
     TestEventProducer producer = TestEventProducer.Provider.get(broadcaster);
     producer.complain(this, "I'm tired", 23);
-## The event model <a id="event-model"></a>
+### The event model <a id="event-model"></a>
 
 Inside an invocation handler for a dynamic proxy, there's no information about the names of each parameter. The JVM doesn't provide it. The only thing you know is the interface and method name. In order to properly fill the `Event` 's parameter map we need to know the parameter names. These are retrieved from an event object model. This is found in the `org.apache.fop.events.model` package. The data for the object model is retrieved from an XML representation of the event model that is loaded as a resource. The XML representation is generated using an Ant task at build time ( `ant resourcegen` ). The Ant task (found in `src/codegen/java/org/apache/fop/tools/EventProducerCollectorTask.java` ) scans FOP's sources for descendants of the `EventProducer` interface and uses [QDox](http://qdox.codehaus.org/) to parse these interfaces.
 
