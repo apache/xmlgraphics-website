@@ -39,119 +39,127 @@ See [Setting the Configuration Programmatically](embedding.html#config-internal)
 
 This is an excerpt from the example configuration file coming with FOP:
 
-<fop version="1.0">
+    <fop version="1.0">
+    
+      <!-- Strict user configuration -->
+      <strict-configuration>true</strict-configuration>
+    
+      <!-- Strict FO validation -->
+      <strict-validation>true</strict-validation>
+    
+      <!-- Base URL for resolving relative URLs -->
+      <base>./</base>
+    
+      <!-- Font Base URL for resolving relative font URLs -->
+      <font-base>./</font-base>
+    
+      <!-- Source resolution in dpi (dots/pixels per inch) for determining the size of pixels in SVG and bitmap images, default: 72dpi -->
+      <source-resolution>72</source-resolution>
+      <!-- Target resolution in dpi (dots/pixels per inch) for specifying the target resolution for generated bitmaps, default: 72dpi -->
+      <target-resolution>72</target-resolution>
+    
+      <!-- default page-height and page-width, in case
+           value is specified as auto -->
+      <default-page-settings height="11in" width="8.26in"/>
+      
+      <!-- etc. etc..... -->
+    </fop>
 
-  <!-- Strict user configuration -->
-  <strict-configuration>true</strict-configuration>
-
-  <!-- Strict FO validation -->
-  <strict-validation>true</strict-validation>
-
-  <!-- Base URL for resolving relative URLs -->
-  <base>./</base>
-
-  <!-- Font Base URL for resolving relative font URLs -->
-  <font-base>./</font-base>
-
-  <!-- Source resolution in dpi (dots/pixels per inch) for determining the size of pixels in SVG and bitmap images, default: 72dpi -->
-  <source-resolution>72</source-resolution>
-  <!-- Target resolution in dpi (dots/pixels per inch) for specifying the target resolution for generated bitmaps, default: 72dpi -->
-  <target-resolution>72</target-resolution>
-
-  <!-- default page-height and page-width, in case
-       value is specified as auto -->
-  <default-page-settings height="11in" width="8.26in"/>
-  
-  <!-- etc. etc..... -->
-</fop>
 # Renderer configuration <a id="renderers"></a>
 
 Each Renderer has its own configuration section which is identified by the MIME type the Renderer is written for, ex. "application/pdf" for the PDF Renderer.
 
 The configuration for the PDF Renderer could look like this:
 
-  <renderers>
-    <renderer mime="application/pdf">
-      <filterList>
-        <!-- provides compression using zlib flate (default is on) -->
-        <value>flate</value>
-      </filterList>
-      <fonts>
-        <font metrics-url="arial.xml" kerning="yes" embed-url="arial.ttf">
-          <font-triplet name="Arial" style="normal" weight="normal"/>
-          <font-triplet name="ArialMT" style="normal" weight="normal"/>
-        </font>
-        <font metrics-url="arialb.xml" kerning="yes" embed-url="arialb.ttf">
-          <font-triplet name="Arial" style="normal" weight="bold"/>
-          <font-triplet name="ArialMT" style="normal" weight="bold"/>
-        </font>
-      </fonts>
-    </renderer>
-    
-    <renderer mime="application/postscript">
-    <!-- etc. etc..... -->
+      <renderers>
+        <renderer mime="application/pdf">
+          <filterList>
+            <!-- provides compression using zlib flate (default is on) -->
+            <value>flate</value>
+          </filterList>
+          <fonts>
+            <font metrics-url="arial.xml" kerning="yes" embed-url="arial.ttf">
+              <font-triplet name="Arial" style="normal" weight="normal"/>
+              <font-triplet name="ArialMT" style="normal" weight="normal"/>
+            </font>
+            <font metrics-url="arialb.xml" kerning="yes" embed-url="arialb.ttf">
+              <font-triplet name="Arial" style="normal" weight="bold"/>
+              <font-triplet name="ArialMT" style="normal" weight="bold"/>
+            </font>
+          </fonts>
+        </renderer>
+        
+        <renderer mime="application/postscript">
+        <!-- etc. etc..... -->
+
 The details on the font configuration can be found on the separate [Fonts](fonts.html) page. Note especially the section entitled [Register Fonts with FOP](fonts.html#register) .
 
 ### Special Settings for the PDF Renderer <a id="pdf-renderer"></a>
 
 The configuration element for the PDF renderer contains two elements. One is for the font configuration (please follow the link above) and one is for the "filter list". The filter list controls how the individual objects in a PDF file are encoded. By default, all objects get "flate" encoded (i.e. simply compressed with the same algorithm that is also used in ZIP files). Most users don't need to change that setting. For debugging purposes, it may be desired not to compress the internal objects at all so the generated PDF commands can be read. In that case, you can simply use the following filter list. The second filter list (type="image") ensures that all images still get compressed but also ASCII-85 encoded so the produced PDF file is still easily readable in a text editor.
 
-    <renderer mime="application/pdf">
-      <filterList>
-        <value>null</value>
-      </filterList>
-      <filterList type="image">
-        <value>flate</value>
-        <value>ascii-85</value>
-      </filterList>
-      
-      <fonts....
-    </renderer>
+        <renderer mime="application/pdf">
+          <filterList>
+            <value>null</value>
+          </filterList>
+          <filterList type="image">
+            <value>flate</value>
+            <value>ascii-85</value>
+          </filterList>
+          
+          <fonts....
+        </renderer>
+
 Another (optional) setting specific to the PDF Renderer is an output color profile, an ICC color profile which indicates the target color space the PDF file is generated for. This setting is mainly used in conjunction with the [PDF/X](pdfx.html) feature. An example:
 
-    <renderer mime="application/pdf">
-      <filterList...
-      
-      <output-profile>C:\FOP\Color\EuropeISOCoatedFOGRA27.icc</output-profile>
-      
-      <fonts....
-      </renderer>
+        <renderer mime="application/pdf">
+          <filterList...
+          
+          <output-profile>C:\FOP\Color\EuropeISOCoatedFOGRA27.icc</output-profile>
+          
+          <fonts....
+          </renderer>
+
 Some people don't have high requirements on color fidelity but instead want the smallest PDF file sizes possible. In this case it's possible to disable the default sRGB color space which XSL-FO requires. This will cause RGB colors to be generated as device-specific RGB. Please note that this option is unavailable (and will cause an error) if you enable PDF/A or PDF/X functionality or if you specify an output profile. This setting will make the PDF about 4KB smaller. To disable the sRGB color space add the following setting:
 
-    <renderer mime="application/pdf">
-      <filterList...
-      
-      <disable-srgb-colorspace>true</disable-srgb-colorspace>
-      
-      <fonts....
-      </renderer>
+        <renderer mime="application/pdf">
+          <filterList...
+          
+          <disable-srgb-colorspace>true</disable-srgb-colorspace>
+          
+          <fonts....
+          </renderer>
+
 ## Special Settings for the PostScript Renderer <a id="ps-renderer"></a>
 
 Besides the normal font configuration (the same "fonts" element as for the PDF renderer) the PostScript renderer has an additional setting to force landscape pages to be rotated to fit on a page inserted into the printer in portrait mode. Set the value to "true" to activate this feature. The default is "false". Example:
 
-    <renderer mime="application/postscript">
-      <auto-rotate-landscape>true</auto-rotate-landscape>
-      
-      <fonts>
-        <font metrics-url="arial.xml" kerning="yes" embed-url="arial.ttf">
-          <font-triplet name="Arial" style="normal" weight="normal"/>
-          <font-triplet name="ArialMT" style="normal" weight="normal"/>
-        </font>
-        <font metrics-url="arialb.xml" kerning="yes" embed-url="arialb.ttf">
-          <font-triplet name="Arial" style="normal" weight="bold"/>
-          <font-triplet name="ArialMT" style="normal" weight="bold"/>
-        </font>
-      </fonts>
-    </renderer>
+        <renderer mime="application/postscript">
+          <auto-rotate-landscape>true</auto-rotate-landscape>
+          
+          <fonts>
+            <font metrics-url="arial.xml" kerning="yes" embed-url="arial.ttf">
+              <font-triplet name="Arial" style="normal" weight="normal"/>
+              <font-triplet name="ArialMT" style="normal" weight="normal"/>
+            </font>
+            <font metrics-url="arialb.xml" kerning="yes" embed-url="arialb.ttf">
+              <font-triplet name="Arial" style="normal" weight="bold"/>
+              <font-triplet name="ArialMT" style="normal" weight="bold"/>
+            </font>
+          </fonts>
+        </renderer>
+
 ## Special Settings for the PCL Renderer <a id="pcl-renderer"></a>
 
 Non-standard fonts for the PCL renderer are made available through the Java2D subsystem which means that you don't have to do any custom font configuration in this case but you have to use the font names offered by Java.
 
 Additionally, there are certain settings that control how the renderer handles various elements.
-<renderer mime="application/vnd.hp-PCL">
-  <rendering>quality</rendering>
-  <text-rendering>bitmap</text-rendering>
-</renderer>
+
+    <renderer mime="application/vnd.hp-PCL">
+      <rendering>quality</rendering>
+      <text-rendering>bitmap</text-rendering>
+    </renderer>
+
 The default value for the "rendering" setting is "speed" which causes borders to be painted as plain rectangles. In this mode, no special borders (dotted, dashed etc.) are available. If you want support for all border modes, set the value to "quality" as indicated above. This will cause the borders to be painted as bitmaps.
 
 The default value for the "text-rendering" setting is "auto" which paints the base fonts using PCL fonts. Non-base fonts are painted as bitmaps through Java2D. If the mix of painting methods results in unwelcome output, you can set this to "bitmap" which causes all text to be rendered as bitmaps.
@@ -165,10 +173,13 @@ Check the following possibilities:
 
 - The format of the configuration file has changed considerably between FOP 0.20.5 and FOP 1.0 and its beta versions. Did you convert your file to the new format?
 
-- The FOP distribution contains a schema for configuration files, at src/foschema/fop-configuration.xsd. Did you validate your configuration file against it? Add the following schema location to the `schema` element:<fop
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:noNamespaceSchemaLocation=
-"http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/src/foschema/fop-configuration.xsd?view=co">
+- The FOP distribution contains a schema for configuration files, at src/foschema/fop-configuration.xsd. Did you validate your configuration file against it? Add the following schema location to the `schema` element:
+
+	<fop
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation=
+		"http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/src/foschema/fop-configuration.xsd?view=co">
+
 and run the configuration file through a validating schema parser. Note that the schema cannot detect all errors, and that it is stricter about the order of some elements than FOP itself is.
 
 - Run FOP in debug mode (command line option `-d` ). This makes FOP report which configuration information it finds. Check if FOP finds what you expect.

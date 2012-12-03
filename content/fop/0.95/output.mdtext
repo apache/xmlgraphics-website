@@ -250,6 +250,7 @@ There are 3 font configuration variants supported:
 1. FOP built-in Base14 fonts
 
 A typical raster font configuration looks like:
+
       <!-- This is an example of mapping actual IBM raster fonts / code pages to a FOP font -->
         <font>
         <!-- The afp-font element defines the IBM code page, the matching Java encoding and the
@@ -276,7 +277,9 @@ A typical raster font configuration looks like:
         <font-triplet name="Times-Roman" style="normal" weight="normal"/>
         <font-triplet name="TimesNewRoman" style="normal" weight="normal"/>
       </font>
+
 An outline font configuration is simpler as the individual font size entries are not required. However, the characterset definition is now required within the afp-font element.
+
       <font>
           <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH200  "
              path="fonts/ibm" />
@@ -286,6 +289,7 @@ An outline font configuration is simpler as the individual font size entries are
       </font>
 
 Experimentation has shown that the font metrics for the FOP built-in Base14 fonts are actually very similar to some of the IBM outline and raster fonts. In cases were the IBM font files are not available the path attribute in the afp-font element can be replaced by a base14-font attribute giving the name of the matching Base14 font. In this case the AFP Renderer will take the font metrics from the built-in font.
+
       <!-- The following are examples of defining outline fonts based on FOP built-in
            font metrics for the Adobe Base14 fonts -->
       <!-- sans-serif fonts based on Helvetica -->
@@ -326,7 +330,7 @@ Experimentation has shown that the font metrics for the FOP built-in Base14 font
           <font-triplet name="Times" style="normal" weight="normal"/>
           <font-triplet name="Times-Roman" style="normal" weight="normal"/>
       </font>
-
+    
       <!-- The following are examples of defining raster fonts based on FOP built-in
            font metrics for the Adobe Base14 fonts -->
       <!-- monospaced fonts based on Courier -->
@@ -354,11 +358,13 @@ Experimentation has shown that the font metrics for the FOP built-in Base14 font
         <font-triplet name="monospace" style="normal" weight="bold"/>
         <font-triplet name="Courier" style="normal" weight="bold"/>
       </font>
+
 ### Output Resolution ## <a id="afp-renderer-resolution-config"></a>
 
 By default the AFP Renderer creates output with a resolution of 240 dpi. This can be overridden by the <renderer-resolution/> configuration element. Example:
 
       <renderer-resolution>240</renderer-resolution>
+
 ### Images ## <a id="afp-image-config"></a>
 
 By default the AFP Renderer converts all images to 8 bit grey level. This can be overridden by the <images> configuration element. Example:
@@ -492,20 +498,24 @@ Currently, two output formats are supported: PNG and TIFF. TIFF produces one fil
 ### Configuration <a id="bitmap-configuration"></a>
 
 The TIFF and PNG renderer configuration currently allows the following settings:
-<renderer mime="image/png">
-  <transparent-page-background>true</transparent-page-background>
-  <fonts><!-- described elsewhere --></fonts>
-</renderer>
+
+    <renderer mime="image/png">
+      <transparent-page-background>true</transparent-page-background>
+      <fonts><!-- described elsewhere --></fonts>
+    </renderer>
+
 The default value for the "transparent-page-background" setting is "false" which paints an opaque, white background for the whole image. If you set this to true, no such background will be painted and you will get a transparent image if an alpha channel is available in the output format.
 
 ### TIFF-specific Configuration <a id="tiff-configuration"></a>
 
 In addition to the above values the TIFF renderer configuration allows some additional settings:
-<renderer mime="image/tiff">
-  <transparent-page-background>true</transparent-page-background>
-  <compression>CCITT T.6</compression>
-  <fonts><!-- described elsewhere --></fonts>
-</renderer>
+
+    <renderer mime="image/tiff">
+      <transparent-page-background>true</transparent-page-background>
+      <compression>CCITT T.6</compression>
+      <fonts><!-- described elsewhere --></fonts>
+    </renderer>
+
 The default value for the "compression" setting is "PackBits" which which is a widely supported RLE compression scheme for TIFF. The set of compression names to be used here matches the set that the Image I/O API uses. Note that not all compression schemes may be available during runtime. This depends on the actual codecs being available. Here is a list of possible values:
 
 

@@ -53,21 +53,21 @@ Then create FOP tasks within your Ant build file, using the FOP task parameters 
 
 The following example converts a single XSL-FO file to a PDF document:
 
-<target name="generate-pdf" description="Generates a single PDF file">
-   <fop format="application/pdf" 
-        fofile="c:\working\foDirectory\foDocument.fo"
-        outfile="c:\working\pdfDirectory\pdfDocument.pdf" />
-</target>
+    <target name="generate-pdf" description="Generates a single PDF file">
+       <fop format="application/pdf" 
+            fofile="c:\working\foDirectory\foDocument.fo"
+            outfile="c:\working\pdfDirectory\pdfDocument.pdf" />
+    </target>
     
 This example converts all XSL-FO files within an entire directory to PostScript:
 
-<target name="generate-multiple-ps" 
-        description="Generates multiple PostScript files">
-   <fop format="application/postscript" 
-        outdir="${build.dir}" messagelevel="debug">
-        <fileset dir="${fo.examples.dir}">
-           <include name="*.fo"/>
-        </fileset>
-   </fop>
-</target>
+    <target name="generate-multiple-ps" 
+            description="Generates multiple PostScript files">
+       <fop format="application/postscript" 
+            outdir="${build.dir}" messagelevel="debug">
+            <fileset dir="${fo.examples.dir}">
+               <include name="*.fo"/>
+            </fileset>
+       </fop>
+    </target>
     

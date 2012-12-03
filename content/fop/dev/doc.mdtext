@@ -40,6 +40,7 @@ The following table summarizes the flow of data to the FOP website in chronologi
 | Developer builds and uploads documentation using ForrestBot. | /www/xmlgraphics.apache.org/fop on people.apache.org | sync-ready | n/a |
 | Cron job runs rsync to synchronize the website with the real web server (runs every few hours). | Infrastructure knows. :-) | web-ready |  [FOP Web Site](http://xmlgraphics.apache.org/fop)  |
 Server-side ForrestBot is currently not available for website publishing. We use it locally and with manual invocation.
+
 ## ForrestBot "publish" Step-by-Step <a id="web-forrestbot-publish"></a>
 
 We're using ForrestBot for build and deploy the FOP website. ForrestBot comes with Apache Forrest 0.8. The root directory of your FOP checkout contains the file "publish.xml" which is an Ant build file that manages the build and the deployment of the FOP website. Please look into this file for further instructions to set up ForrestBot on your machine. Basically, we're simply running ForrestBot manually by typing "ant -f publish.xml" once we're happy with our changes to the site. Step-by-step instructions for the deployment process again:
@@ -72,6 +73,7 @@ To use a local Forrest (during website development, not for deployment):
 
 - run forrest(.bat), which will build the web-site documents in xml-fop/build/site.
 You can use "forrest run" to start a local web server. That improves development speed as you can simply refresh in the browser after a change.
+
 ## Updating Distribution Files <a id="distribution"></a>
 
 The Apache distribution system mirrors distributions around the world. Since it uses [Apache httpd](http://httpd.apache.org/) Module [mod_autoindex](http://httpd.apache.org/docs/2.2/mod/mod_autoindex.html#headername) you also need to manually update the HEADER.html & READER.html files on `people.apache.org` in `/www/www.apache.org/dist/xmlgraphics/fop/` .

@@ -66,20 +66,22 @@ Basic information about fonts can be found at:
 
 If you want FOP to use custom fonts, you need to tell it where to find them. This is done in the configuration file and once per renderer (because each output format is a little different). In the basic form, you can either tell FOP to find your operating system fonts or you can specify directories that it will search for support fonts. These fonts will then automatically be registered.
 
-<renderers>
-   <renderer mime="application/pdf">
-      <fonts>
-         <!-- register all the fonts found in a directory -->
-         <directory>C:\MyFonts1</directory>
-  
-         <!-- register all the fonts found in a directory and all of its sub directories (use with care) -->
-         <directory recursive="true">C:\MyFonts2</directory>
+    <renderers>
+       <renderer mime="application/pdf">
+          <fonts>
+             <!-- register all the fonts found in a directory -->
+             <directory>C:\MyFonts1</directory>
+      
+             <!-- register all the fonts found in a directory and all of its sub directories (use with care) -->
+             <directory recursive="true">C:\MyFonts2</directory>
+    
+             <!-- automatically detect operating system installed fonts -->
+             <auto-detect/>  
+          </fonts>
+       </renderer>
+    </renderers>
 
-         <!-- automatically detect operating system installed fonts -->
-         <auto-detect/>  
-      </fonts>
-   </renderer>
-</renderers>Review the documentation for [FOP Configuration](configuration.html) for instructions on making the FOP configuration available to FOP when it runs. Otherwise, FOP has no way of finding your custom font information. It is currently not possible to easily configure fonts from Java code.
+Review the documentation for [FOP Configuration](configuration.html) for instructions on making the FOP configuration available to FOP when it runs. Otherwise, FOP has no way of finding your custom font information. It is currently not possible to easily configure fonts from Java code.
 # Advanced font configuration <a id="advanced"></a>
 
 The instructions found above should be sufficient for most users. Below are some additional instructions in case the basic font configuration doesn't lead to the desired results.
@@ -132,34 +134,36 @@ java -cp build\fop.jar;lib\avalon-framework.jar;lib\commons-logging.jar;lib\comm
           org.apache.fop.fonts.apps.TTFReader -ttcname "MS Mincho"
           msmincho.ttc msminch.xml
 Alternatively, the individual sub-fonts of a TrueType Collections can be selected using the "sub-font" attribute on the "font" element. That means that generating an XML font metrics file for TrueType collections is not necessary anymore. Example:
-<font embed-url="gulim.ttc" sub-font="GulimChe">
-  <font-triplet name="GulimChe" style="normal" weight="normal"/>
-</font>
+
+    <font embed-url="gulim.ttc" sub-font="GulimChe">
+      <font-triplet name="GulimChe" style="normal" weight="normal"/>
+    </font>
+
 ## Register Fonts with FOP <a id="register"></a>
 
 You must tell FOP how to find and use the font metrics files by registering them in the [FOP Configuration](configuration.html) . Add entries for your custom fonts, regardless of font type, to the configuration file in a manner similar to the following:
 
-<renderers>
-   <renderer mime="application/pdf">
-      <fonts>
-         <!-- register a particular font -->
-         <font metrics-url="file:///C:/myfonts/FTL_____.xml" kerning="yes"
-           embed-url="file:///C:/myfonts/FTL_____.pfb"
-           encoding-mode="single-byte">
-            <font-triplet name="FrutigerLight" style="normal" weight="normal"/>
-         </font>
-  
-         <!-- register all the fonts found in a directory -->
-         <directory>C:\MyFonts1</directory>
-  
-         <!-- register all the fonts found in a directory and all of its sub directories (use with care) -->
-         <directory recursive="true">C:\MyFonts2</directory>
-
-         <!-- automatically detect operating system installed fonts -->
-         <auto-detect/>  
-      </fonts>
-   </renderer>
-</renderers>
+    <renderers>
+       <renderer mime="application/pdf">
+          <fonts>
+             <!-- register a particular font -->
+             <font metrics-url="file:///C:/myfonts/FTL_____.xml" kerning="yes"
+               embed-url="file:///C:/myfonts/FTL_____.pfb"
+               encoding-mode="single-byte">
+                <font-triplet name="FrutigerLight" style="normal" weight="normal"/>
+             </font>
+      
+             <!-- register all the fonts found in a directory -->
+             <directory>C:\MyFonts1</directory>
+      
+             <!-- register all the fonts found in a directory and all of its sub directories (use with care) -->
+             <directory recursive="true">C:\MyFonts2</directory>
+    
+             <!-- automatically detect operating system installed fonts -->
+             <auto-detect/>  
+          </fonts>
+       </renderer>
+    </renderers>
 
 - URLs are used to access the font metric and font files. Relative URLs are resolved relative to the font-base property (or base) if available. See [FOP: Configuration](configuration.html) for more information.
 
@@ -214,14 +218,15 @@ There are two different ways how you can specify that a font should be reference
 
 1. For automatically configured fonts there's a different mechanism to specify which fonts should be referenced rather than embedded. This is done in the "referenced-fonts" element in the configuration. Here's an example:
 
-<fop version="1.0">
-   <fonts>
-      <referenced-fonts>
-        <match font-family="Helvetica"/>
-        <match font-family="DejaVu.*"/>
-      </referenced-fonts>
-   </fonts>
-</fop>
+    <fop version="1.0">
+       <fonts>
+          <referenced-fonts>
+            <match font-family="Helvetica"/>
+            <match font-family="DejaVu.*"/>
+          </referenced-fonts>
+       </fonts>
+    </fop>
+
 At the moment, you can only match fonts against their font-family. It is possible to use regular expressions as is shown in the second example above ("DejaVu.*"). The syntax for the regular expressions used here are the one used by the [package](http://java.sun.com/j2se/1.4/docs/api/java/util/regex/package-summary.html) . So, in the above snippet "Helvetica" and all variants of the "DejaVu" font family are referenced. If you want to reference all fonts, just specify `font-family=".*"` .
 
 The `referenced-fonts` element can be placed either inside the general `fonts` element (right under the root) or in the `fonts` element under the renderer configuration. In the first case, matches apply to all renderers. In the second case, matches only apply to the renderer where the element was specified. Both cases can be used at the same time.
@@ -250,20 +255,21 @@ When a <substitutions/> section is defined in the configuration, FOP will re-map
 
 For example you could make all FO font-family references to 'Arial' with weights between 700 and 900 reference the normal 'Arial Black' font.
 
-<fop version="1.0">
-   <fonts>
-      <substitutions>
-         <substitution>
-            <from font-family="Arial" font-weight="700..900"/>
-            <to font-family="Arial Black"/>
-         </substitution>
-         <substitution>
-            <from font-family="FrutigerLight"/>
-            <to font-family="Times" font-weight="bold" font-style="italic"/>
-         </substitution>
-      </substitutions>
-   </fonts>
-</fop>
+    <fop version="1.0">
+       <fonts>
+          <substitutions>
+             <substitution>
+                <from font-family="Arial" font-weight="700..900"/>
+                <to font-family="Arial Black"/>
+             </substitution>
+             <substitution>
+                <from font-family="FrutigerLight"/>
+                <to font-family="Times" font-weight="bold" font-style="italic"/>
+             </substitution>
+          </substitutions>
+       </fonts>
+    </fop>
+
 # Font Selection Strategies <a id="selection"></a>
 
 There are two font selection strategies: character-by-character or auto. The default is auto.

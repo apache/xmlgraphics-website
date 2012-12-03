@@ -16,8 +16,10 @@ Please see the [SVG documentation](graphics.html#svg) for more details.
 ### Namespace <a id="fox-namespace"></a>
 
 By convention, FO extensions in FOP use the "fox" namespace prefix. To use any of the FO extensions, add a namespace entry for `http://xmlgraphics.apache.org/fop/extensions` to the root element:
-<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
+
+    <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
                xmlns:fox="http://xmlgraphics.apache.org/fop/extensions">
+
 ## PDF Bookmarks <a id="bookmarks"></a>
 
 In previous versions of Apache FOP there was a `fox:outline` element which was used to create outlines in PDF files. The redesigned code makes use of the new [bookmark feature defined in the latest XSL 1.1 working draft](http://www.w3.org/TR/xsl11/#fo_bookmark-tree) .
@@ -25,9 +27,10 @@ In previous versions of Apache FOP there was a `fox:outline` element which was u
 ### Anchors or Named Destinations <a id="named-destinations"></a>
 
 Use the fox:destination element to define "named destinations" inside a PDF document. These are useful as fragment identifiers, e.g. "http://server/document.pdf#anchor-name". fox:destination elements can be placed almost anywhere in the fo document, including a child of root, a block-level element, or an inline-level element. For the destination to actually work, it must correspond to an "id" attribute on some fo element within the document. In other words, the "id" attribute actually creates the "view" within the PDF document. The fox:destination simply gives that view an independent name.
-<fox:destination internal-destination="table-of-contents"/>
-...
-<fo:block id="table-of-contents">Table of Contents</fo:block><warning>It is possible that in some future release of FOP, *all* elements with "id" attributes will generate named-destinations, which will eliminate the need for fox:destination.</warning>
+    <fox:destination internal-destination="table-of-contents"/>
+    ...
+    <fo:block id="table-of-contents">Table of Contents</fo:block><warning>It is possible that in some future release of FOP, *all* elements with "id" attributes will generate named-destinations, which will eliminate the need for fox:destination.</warning>
+
 ## Table Continuation Label <a id="table-continue-label"></a>
 
 This extension element hasn't been reimplemented for the redesigned code, yet.

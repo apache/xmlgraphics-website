@@ -26,10 +26,10 @@ Complex script features are enabled by default. If some application of FOP does 
 1.  **Embedding:**  `userAgent.setComplexScriptFeaturesEnabled(false);` 
 
 1.  **Optional setting in fop.xconf file:**  `
-<fop version="1.0">
-  <complex-scripts disabled="true"/>
-  ...
-</fop>
+    <fop version="1.0">
+      <complex-scripts disabled="true"/>
+      ...
+    </fop>
           ` 
 
 When complex scripts features are enabled, additional information related to bidirectional level resolution, the association between characters and glyphs, and glyph position adjustments are added to the internal, parsed representation of the XSL-FO tree and its corresponding formatted area tree. This additional information will somewhat increase the memory requirements for processing documents that use these features.

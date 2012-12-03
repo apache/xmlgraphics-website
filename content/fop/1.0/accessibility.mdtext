@@ -18,7 +18,8 @@ There are 3 ways to enable accessibility:
 
 1.  **Embedding:**  `userAgent.setAccessibility(true);` 
 
-1.  **Optional setting in fop.xconf file:**  `
+1.  **Optional setting in fop.xconf file:**  
+`
           <fop version="1.0">
               <accessibility>true</accessibility>
               ...
@@ -48,8 +49,10 @@ FOP provides a default mapping of Formatting Objects to elements from that stand
 
 You may want to customize that mapping to improve the accuracy of the tagging or deal with particular FO constructs. For example, you may want to make use of the ‘H1’ to ‘H6’ tags to make the hierarchical structure of the document appear in the PDF. This is achieved by using the `role` XSL-FO property:
 ...
-<fo:block role="H1" font-weight="bold">I. A Level 1 Heading</fo:block>
-<fo:block>This is the first paragraph of the first section...</fo:block>
+
+    <fo:block role="H1" font-weight="bold">I. A Level 1 Heading</fo:block>
+    <fo:block>This is the first paragraph of the first section...</fo:block>
+
 ...
 If a non-standard structure type is specified, FOP will issue a warning and fall back to the default tag associated to the Formatting Object.
 
