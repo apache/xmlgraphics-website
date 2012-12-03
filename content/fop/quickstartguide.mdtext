@@ -52,6 +52,7 @@ This section walks you through a "Hello World!" page with Apache FOP. We're assu
 
 1. To produce a PDF file from this XML file, we need an XSLT stylesheet that converts the XML to XSL-FO. This is the first step in the processing chain. The second step will be done by FOP when it reads the generated XSL-FO document and formats it to a PDF document. You can copy the following minimal XSLT stylesheet, which takes your first name and produces a "Hello World!"-style document (save it as `name2fo.xsl` ):<br></br>
 
+`
     <?xml version="1.0" encoding="utf-8"?>
     <xsl:stylesheet version="1.0"
           xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -75,6 +76,7 @@ This section walks you through a "Hello World!" page with Apache FOP. We're assu
         </fo:root>
       </xsl:template>
     </xsl:stylesheet>
+`
 
 1. Finally, let's put the previous two steps together: Go back to the command prompt and enter the following command:<br></br>Windows: `fop -xml name.xml -xsl name2fo.xsl -pdf name.pdf` <br></br>Unix: `./fop -xml name.xml -xsl name2fo.xsl -pdf name.pdf` <br></br>
 
