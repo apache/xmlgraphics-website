@@ -43,14 +43,14 @@ If you are using Mac OS X, and you have generated the Squiggle application bundl
 
 ### Starting the browser for the source distribution <a id="starting-source"></a>
 
-If you downloaded the [source distribution](../install.html#distributions) of Batik, you should have a zip file called `batik-src-1.6.zip` (or similar) that expanded into a directory called `xml-batik` or<code>batik- *version* </code>. In that directory, you can find build scripts for the platform you are running on. For example, there is a `build.bat` script for users of the Windows platform and there is a `build.sh` script for UNIX users.
+If you downloaded the [source distribution](../install.html#distributions) of Batik, you should have a zip file called `batik-src-1.6.zip` (or similar) that expanded into a directory called `xml-batik` or <code>batik- *version*</code>. In that directory, you can find build scripts for the platform you are running on. For example, there is a `build.bat` script for users of the Windows platform and there is a `build.sh` script for UNIX users.
 
 To start the browser you should:
 
 
 - Make sure that your `JAVA_HOME` environment variable is set to your JDK installation directory
 
-- Open a command line window and change to the `xml-batik` or<code>batik- *version* </code>directory where the Batik distribution was expanded
+- Open a command line window and change to the `xml-batik` or <code>batik- *version*</code> directory where the Batik distribution was expanded
 
 - 
 For Windows, type the following at the command prompt:
@@ -73,6 +73,7 @@ Note that the number of files that can be opened on Windows from the command lin
 The following image shows the result of starting the browser, from the binary or source distribution, with the `-font-size 10
             samples/batikFX.svg` options.
 <div class="figure"> ![Screenshot of Squiggle showing the batikFX.svg sample](images/svgviewerDefaultRegular.png "") </div>
+
 # Viewing SVG documents <a id="viewing"></a>
 
 The browser has several features to view and browse SVG documents:
@@ -92,14 +93,17 @@ The browser has several features to view and browse SVG documents:
 
 In situations where you want to open SVG files locally on the machine where you are running Squiggle, you can use **File→Open File** menu item to open that file, or use the **Ctrl-F** key accelerator. Doing so brings up a file chooser that lets you select the file you want to view.
 <div class="figure"> ![Screenshot of Squiggle showing the 'File→Open' menu and file chooser](images/svgviewerFileOpen.png "") </div>
+
 ## Opening an SVG file from the web <a id="urlFile"></a>
 
 There are many situations where the SVG content you want to view is not local to the machine where Squiggle is running. In that case, you can use the **File→Open Location** menu item, or use the **Ctrl-A** key accelerator to open that page. Doing so brings up a dialog box where you can type in the URL for the file you want to view.
 <div class="figure"> ![Screenshot of Squiggle showing the 'File→Open Location' menu and window](images/svgviewerOpenPage.png "") </div>
+
 ## Using the location bar text field to view an SVG file <a id="locationBar"></a>
 
 When you know the URL of the document you want to view, you can enter it directly in the location bar text field at the top of Squiggle, the same way you can enter a URL in an HTML browser.
 <div class="figure"> ![Screenshot of Squiggle showing the location bar](images/svgviewerLocationBar.png "") </div>
+
 ## Browsing SVG files <a id="browsing"></a>
 
 As with HTML content, it is common to navigate back and forth between SVG files (remember that SVG files contain hyperlinks, just like HTML does) and, as described later in this document, it is possible to [zoom](#zoomInOut) into SVG documents, [pan](#panning) and [rotate](#rotating) .
@@ -134,17 +138,19 @@ When working on an SVG document, you may want the browser to reprocess a documen
 
 The **File→Print** menu item or **Ctrl-P** will print the currently displayed SVG document.
 
-The **File→Export As** menu item offers the option to export the currently displayed SVG document to various raster formats. Currently, the browser supports the<abbr title="Portable Network Graphics">PNG</abbr>,<abbr title="Joint Photographic Expert Group">JPEG</abbr>and<abbr title="Tagged Image File Format">TIFF</abbr>formats.
+The **File→Export As** menu item offers the option to export the currently displayed SVG document to various raster formats. Currently, the browser supports the <abbr title="Portable Network Graphics">PNG</abbr>, <abbr title="Joint Photographic Expert Group">JPEG</abbr> and <abbr title="Tagged Image File Format">TIFF</abbr> formats.
 
 ## Inspecting the SVG source <a id="inspecting"></a>
 
 The browser offers two ways to inspect the source of an SVG document: [viewing the plain source](#viewingSource) or [viewing the document tree](#viewingTree) . Both are explained below.
 
 ### Viewing the source <a id="viewingSource"></a>
+
 <div class="figure"> ![Screenshot of Squiggle showing the 'View→View Source' menu item and the source window](images/svgviewerViewSource.png "") </div>
 When the browser displays an SVG file, you can select the **View→View Source...** menu item or use the **Ctrl-U** keyboard accelerator to view the source code.
 
 ### Viewing the document tree <a id="viewingTree"></a>
+
 <div class="figure"> ![Screenshot of Squiggle showing the 'View→DOM Viewer...' menu item and the DOM viewer window](images/svgviewerViewTree.png "") </div>
 When the browser displays an SVG file, you can select the **View→DOM Viewer...** menu item or use the **Ctrl-D** keyboard accelerator to open a window that shows the SVG document in the form of a tree. The window lets you navigate the tree, select individual elements, such as a path elements, and view the attributes and CSS values that apply to these elements. While the View Source window shows the SVG source as it was when it was loaded, the DOM Viewer window reflects the current state of the document, including any modifications that have occurred due to script.
 
@@ -226,7 +232,8 @@ There are several methods to zoom in or out an SVG document:
 - If the mouse is over the document in the display area, you can press the **Ctrl key** then **click the left mouse button and drag** to select the area of interest in the document. This can only be used to zoom into a document.
 
 - If the mouse is over the document in the display area, you can press the **Shift key** then **click the right mouse button and drag** it. This is called the *real time* zoom and can be used both for zooming in and out.
-<div class="figure"> ![Screenshot of Squiggle showing the Zoom In and Zoom Out menu items and tool bar buttons](images/svgviewerZoomin.png "") </div><div class="figure"> ![Screenshot of Squiggle zooming to an area of interest](images/svgviewerAOI.png "") </div><anchor id="panning"></anchor>
+<div class="figure"> ![Screenshot of Squiggle showing the Zoom In and Zoom Out menu items and tool bar buttons](images/svgviewerZoomin.png "") </div><div class="figure"> ![Screenshot of Squiggle zooming to an area of interest](images/svgviewerAOI.png "") </div>
+
 ## Panning a document <a id="panning"></a>
 
 Some documents are too big to fit into the browser, especially when you [zoom](#zoomInOut) in with a large zoom factor. In these circumstances, it is useful to be able to move around the document and pan to view different parts of the documents. Again, there are multiple ways to do this:
@@ -236,6 +243,7 @@ Some documents are too big to fit into the browser, especially when you [zoom](#
 
 - If you have the [thumbnail](#thumbnail) open, you can select the marker showing the current area of interest and move it to the desired location.
 <div class="figure"> ![Screenshot of Squiggle illustrating the panning gesture](images/svgviewerPan.png "") </div>
+
 ## Rotating a document <a id="rotating"></a>
 
 It is sometimes useful to be able to rotate a document (maps for example). You can do this in the Batik browser by first pressing the **Ctrl key** and then **clicking and dragging the right mouse button** to a new location. The browser will dynamically rotate the image as you move your cursor. When you are satisfied with that angle, you can release the mouse button and the document will be displayed with that new angle.

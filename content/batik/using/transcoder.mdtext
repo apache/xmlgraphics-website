@@ -42,40 +42,42 @@ The `org.apache.batik.transcoder.image` package provides an easy way to transcod
 ### Creating an image <a id="createImage"></a>
 
 The following example, using the `JPEGTranscoder` , shows how to transform an SVG document to a JPEG image.
-import java.io.*;
 
-import org.apache.batik.transcoder.image.JPEGTranscoder;
-import org.apache.batik.transcoder.TranscoderInput;
-import org.apache.batik.transcoder.TranscoderOutput;
+	import java.io.*;
+	
+	import org.apache.batik.transcoder.image.JPEGTranscoder;
+	import org.apache.batik.transcoder.TranscoderInput;
+	import org.apache.batik.transcoder.TranscoderOutput;
+	
+	public class SaveAsJPEG {
+	
+		public static void main(String[] args) throws Exception {
+	
+			// Create a JPEG transcoder
+			JPEGTranscoder t = new JPEGTranscoder();
+	
+			// Set the transcoding hints.
+			t.addTranscodingHint(JPEGTranscoder.KEY_QUALITY,
+								 new Float(.8));
+	
+			// Create the transcoder input.
+			String svgURI = new File(args[0]).toURL().toString();
+			TranscoderInput input = new TranscoderInput(svgURI);
+	
+			// Create the transcoder output.
+			OutputStream ostream = new FileOutputStream("out.jpg");
+			TranscoderOutput output = new TranscoderOutput(ostream);
+	
+			// Save the image.
+			t.transcode(input, output);
+	
+			// Flush and close the stream.
+			ostream.flush();
+			ostream.close();
+			System.exit(0);
+		}
+	}
 
-public class SaveAsJPEG {
-
-    public static void main(String[] args) throws Exception {
-
-        // Create a JPEG transcoder
-        JPEGTranscoder t = new JPEGTranscoder();
-
-        // Set the transcoding hints.
-        t.addTranscodingHint(JPEGTranscoder.KEY_QUALITY,
-                             new Float(.8));
-
-        // Create the transcoder input.
-        String svgURI = new File(args[0]).toURL().toString();
-        TranscoderInput input = new TranscoderInput(svgURI);
-
-        // Create the transcoder output.
-        OutputStream ostream = new FileOutputStream("out.jpg");
-        TranscoderOutput output = new TranscoderOutput(ostream);
-
-        // Save the image.
-        t.transcode(input, output);
-
-        // Flush and close the stream.
-        ostream.flush();
-        ostream.close();
-        System.exit(0);
-    }
-}
 The code creates a `JPEGTranscoder` and sets a transcoding hint. The hint indicates the encoding quality. Then, an input and an output are created. The input is created using the first command line argument, which should be a URI. The output is a byte stream for a file called `out.jpg` . Finally, the `transcode` method is invoked and the byte stream is closed.
 
 Although not shown above, the program might have specified additional hints to indicate a user stylesheet, the preferred language of the document or the background color.
@@ -108,59 +110,61 @@ The transcoder will have the same behavior if you specify the `KEY_HEIGHT` witho
 ### Selecting an area of interest <a id="selectAreaOfIntrest"></a>
 
 The image transcoder lets you specify an area of interest (that is, a part of the SVG document). The key `KEY_AOI` allows you to select the region of the SVG document to render. The value of this key must be a [java.awt.Rectangle](http://java.sun.com/j2se/1.5.0/docs/api/java/awt/Rectangle.html) specified in pixels, using the coordinate space of the SVG document. The following example shows how you can split an SVG document into 4 tiles.
-import java.io.*;
-import java.awt.*;
 
-import org.apache.batik.transcoder.image.JPEGTranscoder;
-import org.apache.batik.transcoder.TranscoderInput;
-import org.apache.batik.transcoder.TranscoderOutput;
+	import java.io.*;
+	import java.awt.*;
+	
+	import org.apache.batik.transcoder.image.JPEGTranscoder;
+	import org.apache.batik.transcoder.TranscoderInput;
+	import org.apache.batik.transcoder.TranscoderOutput;
+	
+	public class SaveAsJPEGTiles {
+	
+		JPEGTranscoder trans = new JPEGTranscoder();
+	
+		public SaveAsJPEGTiles() {
+			trans.addTranscodingHint(JPEGTranscoder.KEY_QUALITY,
+									 new Float(.8));
+		}
+	
+		public void tile(String inputFilename,
+						 String outputFilename,
+						 Rectangle aoi) throws Exception {
+			// Set hints to indicate the dimensions of the output image
+			// and the input area of interest.
+			trans.addTranscodingHint(JPEGTranscoder.KEY_WIDTH,
+									 new Float(aoi.width));trans.addTranscodingHint(JPEGTranscoder.KEY_HEIGHT,
+									 new Float(aoi.height));trans.addTranscodingHint(JPEGTranscoder.KEY_AOI, aoi);
+	
+			// Transcode the file.
+			String svgURI = new File(inputFilename).toURL().toString();
+			TranscoderInput input = new TranscoderInput(svgURI);
+			OutputStream ostream = new FileOutputStream(outputFilename);
+			TranscoderOutput output = new TranscoderOutput(ostream);
+			trans.transcode(input, output);
+	
+			// Flush and close the output.
+			ostream.flush();
+			ostream.close();
+		}
+	
+		public static void main(String[] args) throws Exception {
+			// Rasterize the samples/anne.svg document and save it
+			// as four tiles.
+			SaveAsJPEGTiles p = new SaveAsJPEGTiles();
+			String in = "samples/anne.svg";
+			int documentWidth = 450;
+			int documentHeight = 500;
+			int dw2 = documentWidth / 2;
+			int dh2 = documentHeight / 2;
+			p.tile(in, "tileTopLeft.jpg", new Rectangle(0, 0, dw2, dh2));
+			p.tile(in, "tileTopRight.jpg", new Rectangle(dw2, 0, dw2, dh2));
+			p.tile(in, "tileBottomLeft.jpg", new Rectangle(0, dh2, dw2, dh2));
+			p.tile(in, "tileBottomRight.jpg", new Rectangle(dw2, dh2, dw2, dh2));
+			System.exit(0);
+		}
+	}
 
-public class SaveAsJPEGTiles {
-
-    JPEGTranscoder trans = new JPEGTranscoder();
-
-    public SaveAsJPEGTiles() {
-        trans.addTranscodingHint(JPEGTranscoder.KEY_QUALITY,
-                                 new Float(.8));
-    }
-
-    public void tile(String inputFilename,
-                     String outputFilename,
-                     Rectangle aoi) throws Exception {
-        // Set hints to indicate the dimensions of the output image
-        // and the input area of interest.
-        trans.addTranscodingHint(JPEGTranscoder.KEY_WIDTH,
-                                 new Float(aoi.width));trans.addTranscodingHint(JPEGTranscoder.KEY_HEIGHT,
-                                 new Float(aoi.height));trans.addTranscodingHint(JPEGTranscoder.KEY_AOI, aoi);
-
-        // Transcode the file.
-        String svgURI = new File(inputFilename).toURL().toString();
-        TranscoderInput input = new TranscoderInput(svgURI);
-        OutputStream ostream = new FileOutputStream(outputFilename);
-        TranscoderOutput output = new TranscoderOutput(ostream);
-        trans.transcode(input, output);
-
-        // Flush and close the output.
-        ostream.flush();
-        ostream.close();
-    }
-
-    public static void main(String[] args) throws Exception {
-        // Rasterize the samples/anne.svg document and save it
-        // as four tiles.
-        SaveAsJPEGTiles p = new SaveAsJPEGTiles();
-        String in = "samples/anne.svg";
-        int documentWidth = 450;
-        int documentHeight = 500;
-        int dw2 = documentWidth / 2;
-        int dh2 = documentHeight / 2;
-        p.tile(in, "tileTopLeft.jpg", new Rectangle(0, 0, dw2, dh2));
-        p.tile(in, "tileTopRight.jpg", new Rectangle(dw2, 0, dw2, dh2));
-        p.tile(in, "tileBottomLeft.jpg", new Rectangle(0, dh2, dw2, dh2));
-        p.tile(in, "tileBottomRight.jpg", new Rectangle(dw2, dh2, dw2, dh2));
-        System.exit(0);
-    }
-}
 This code splits the same document `anne.svg` into four tiles of the same size. Considering the document and its original size, we can determine four regions. Then we rasterize each region using the `KEY_AOI` key. Note that we also specify the image width and height to be the same as the area of interest width and height (so we keep a 1:1 zoom factor). You can of course use different values for the `KEY_WIDTH` and `KEY_HEIGHT` , that do not match the dimensions of the `KEY_AOI` key. In that case, first the area of interest will determine which part of the SVG document has to be rendered, then that part could be zoomed in or out depending on the specified raster image size.
 
 To try this program:
@@ -224,76 +228,77 @@ trans.addTranscodingHint(ImageTranscoder.KEY_BACKGROUND_COLOR, Color.white);
 ## Generating an image from an SVG DOM tree <a id="genImagefromSVGDOM"></a>
 
 The following code creates and saves an SVG DOM tree to a raster image.
-import java.io.*;
 
-import org.apache.batik.transcoder.image.JPEGTranscoder;
-import org.apache.batik.transcoder.TranscoderInput;
-import org.apache.batik.transcoder.TranscoderOutput;
-import org.apache.batik.dom.svg.SVGDOMImplementation;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.DOMImplementation;
-
-public class DOMRasterizer {
-
-    public Document createDocument() {
-
-        // Create a new document.
-        DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
-        String svgNS = SVGDOMImplementation.SVG_NAMESPACE_URI;
-        Document document =
-            impl.createDocument(svgNS, "svg", null);
-        Element root = document.getDocumentElement();
-        root.setAttributeNS(null, "width", "450");
-        root.setAttributeNS(null, "height", "500");
-
-        // Add some content to the document.
-        Element e;
-        e = document.createElementNS(svgNS, "rect");
-        e.setAttributeNS(null, "x", "10");
-        e.setAttributeNS(null, "y", "10");
-        e.setAttributeNS(null, "width", "200");
-        e.setAttributeNS(null, "height", "300");
-        e.setAttributeNS(null, "style", "fill:red;stroke:black;stroke-width:4");
-        root.appendChild(e);
-
-        e = document.createElementNS(svgNS, "circle");
-        e.setAttributeNS(null, "cx", "225");
-        e.setAttributeNS(null, "cy", "250");
-        e.setAttributeNS(null, "r", "100");
-        e.setAttributeNS(null, "style", "fill:green;fill-opacity:.5");
-        root.appendChild(e);
-
-        return document;
-    }
-
-    public void save(Document document) throws Exception {
-
-        // Create a JPEGTranscoder and set its quality hint.
-        JPEGTranscoder t = new JPEGTranscoder();
-        t.addTranscodingHint(JPEGTranscoder.KEY_QUALITY,
-                             new Float(.8));
-
-        // Set the transcoder input and output.
-        TranscoderInput input = new TranscoderInput(document);
-        OutputStream ostream = new FileOutputStream("out.jpg");
-        TranscoderOutput output = new TranscoderOutput(ostream);
-
-        // Perform the transcoding.
-        t.transcode(input, output);
-        ostream.flush();
-        ostream.close();
-    }
-
-    public static void main(String[] args) throws Exception {
-        // Runs the example.
-        DOMRasterizer rasterizer = new DOMRasterizer();
-        Document document = rasterizer.createDocument();
-        rasterizer.save(document);
-        System.exit(0);
-    }
-}
+	import java.io.*;
+	
+	import org.apache.batik.transcoder.image.JPEGTranscoder;
+	import org.apache.batik.transcoder.TranscoderInput;
+	import org.apache.batik.transcoder.TranscoderOutput;
+	import org.apache.batik.dom.svg.SVGDOMImplementation;
+	
+	import org.w3c.dom.Document;
+	import org.w3c.dom.Element;
+	import org.w3c.dom.DOMImplementation;
+	
+	public class DOMRasterizer {
+	
+		public Document createDocument() {
+	
+			// Create a new document.
+			DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
+			String svgNS = SVGDOMImplementation.SVG_NAMESPACE_URI;
+			Document document =
+				impl.createDocument(svgNS, "svg", null);
+			Element root = document.getDocumentElement();
+			root.setAttributeNS(null, "width", "450");
+			root.setAttributeNS(null, "height", "500");
+	
+			// Add some content to the document.
+			Element e;
+			e = document.createElementNS(svgNS, "rect");
+			e.setAttributeNS(null, "x", "10");
+			e.setAttributeNS(null, "y", "10");
+			e.setAttributeNS(null, "width", "200");
+			e.setAttributeNS(null, "height", "300");
+			e.setAttributeNS(null, "style", "fill:red;stroke:black;stroke-width:4");
+			root.appendChild(e);
+	
+			e = document.createElementNS(svgNS, "circle");
+			e.setAttributeNS(null, "cx", "225");
+			e.setAttributeNS(null, "cy", "250");
+			e.setAttributeNS(null, "r", "100");
+			e.setAttributeNS(null, "style", "fill:green;fill-opacity:.5");
+			root.appendChild(e);
+	
+			return document;
+		}
+	
+		public void save(Document document) throws Exception {
+	
+			// Create a JPEGTranscoder and set its quality hint.
+			JPEGTranscoder t = new JPEGTranscoder();
+			t.addTranscodingHint(JPEGTranscoder.KEY_QUALITY,
+								 new Float(.8));
+	
+			// Set the transcoder input and output.
+			TranscoderInput input = new TranscoderInput(document);
+			OutputStream ostream = new FileOutputStream("out.jpg");
+			TranscoderOutput output = new TranscoderOutput(ostream);
+	
+			// Perform the transcoding.
+			t.transcode(input, output);
+			ostream.flush();
+			ostream.close();
+		}
+	
+		public static void main(String[] args) throws Exception {
+			// Runs the example.
+			DOMRasterizer rasterizer = new DOMRasterizer();
+			Document document = rasterizer.createDocument();
+			rasterizer.save(document);
+			System.exit(0);
+		}
+	}
 
 This code is divided into two distinct parts.
 

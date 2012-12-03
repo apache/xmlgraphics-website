@@ -61,9 +61,11 @@ rectangle.setAttributeNS(null, "fill", "red");
 // Attach the rectangle to the root 'svg' element.
 svgRoot.appendChild(rectangle);
 The example given constructs a document equivalent to parsing the following SVG file:
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="450">
-  <rect x="10" y="20" width="100" height="50" fill="red"/>
-</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="400" height="450">
+        <rect x="10" y="20" width="100" height="50" fill="red"/>
+    </svg>
+
 # Creating a Document from an SVG file <a id="createdocfromsvgfile"></a>
 
 With Batik, you can also create an SVG DOM tree from a URI, an [InputStream](http://java.sun.com/j2se/1.5.0/docs/api/java/io/InputStream.html) , or a [Reader](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Reader.html) , using the [SAXSVGDocumentFactory](../javadoc/org/apache/batik/dom/util/SAXDocumentFactory.html) . The following example illustrates how to create an SVG document from a URI using the `SAXSVGDocumentFactory` class.

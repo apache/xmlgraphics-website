@@ -3,7 +3,7 @@ Title: SVG Rasterizer
 #SVG Rasterizer
 
 
-This page describes the features of the SVG Rasterizer utility that comes with the Batik distribution. The SVG Rasterizer is a utility that can convert SVG files to a raster format. The tool can convert individual files or sets of files, making it easy to convert entire directories of SVG files. The provided formats are<abbr title="Joint Photography Expert Group">JPEG</abbr>,<abbr title="Portable Network Graphics">PNG</abbr>and<abbr title="Tagged Image File Format">TIFF</abbr>, however the design allows new formats to be added easily. In addition, the rasterizer can (despite its name) transcode to<abbr title="Portable Document Format">PDF</abbr>.
+This page describes the features of the SVG Rasterizer utility that comes with the Batik distribution. The SVG Rasterizer is a utility that can convert SVG files to a raster format. The tool can convert individual files or sets of files, making it easy to convert entire directories of SVG files. The provided formats are <abbr title="Joint Photography Expert Group">JPEG</abbr>, <abbr title="Portable Network Graphics">PNG</abbr> and <abbr title="Tagged Image File Format">TIFF</abbr>, however the design allows new formats to be added easily. In addition, the rasterizer can (despite its name) transcode to <abbr title="Portable Document Format">PDF</abbr>.
 
 ## Downloading the rasterizer <a id="downloading"></a>
 
@@ -144,14 +144,14 @@ will generate JPEG images for all the SVG files found in the samples directory.
 
 ### Using the source distribution <a id="usingSource"></a>
 
-If you downloaded the source distribution of Batik, you got a zip or tar file that expanded into a directory called `xml-batik` or<code>batik- *version* </code>. In that directory, you can find build scripts for the platform you are running on. For example, there is a `build.bat` script for users of the Windows platform and there is a `build.sh` script for UNIX users.
+If you downloaded the source distribution of Batik, you got a zip or tar file that expanded into a directory called `xml-batik` or <code>batik- *version*</code> . In that directory, you can find build scripts for the platform you are running on. For example, there is a `build.bat` script for users of the Windows platform and there is a `build.sh` script for UNIX users.
 
 To start the rasterizer you should:
 
 
 - Make sure that your `JAVA_HOME` environment variable is set to your JDK installation directory.
 
-- Open a command line window and go to the `xml-batik` or<code>batik- *version* </code>directory where the Batik distribution was expanded.
+- Open a command line window and go to the `xml-batik` or <code>batik- *version*</code> directory where the Batik distribution was expanded.
 
 - 
 For windows, type the following at the command prompt:
@@ -171,7 +171,7 @@ Refer to [“Using the binary distribution”](#using-binary) for an explanation
 
 The Rasterizer task is an [Ant](http://ant.apache.org/) version of the rasterizer utility. It fulfills the same basic purpose as the utility but has a different syntax and a slightly different set of features.
 
-The task is able to produce four raster formats:<abbr title="Portable Network Graphics">PNG</abbr>,<abbr title="Joint Photographic Expert Group">JPEG</abbr>,<abbr title="Tagged Image File Format">TIFF</abbr>and<abbr title="Portable Document Format">PDF</abbr>.
+The task is able to produce four raster formats: <abbr title="Portable Network Graphics">PNG</abbr>, <abbr title="Joint Photographic Expert Group">JPEG</abbr>, <abbr title="Tagged Image File Format">TIFF</abbr> and <abbr title="Portable Document Format">PDF</abbr>.
 
 ### Using the rasterizer task <a id="initTask"></a>
 
@@ -180,8 +180,10 @@ The first thing to do is to compile rasterizer task classes. Download the source
 After building, ensure that the generated `batik-rasterizer.jar` and the classes (or jar file) of the rasterizer task are in your `CLASSPATH` .
 
 Next you have to define the task in your Ant project. To do this, add the following line either after the `project` start tag or after the `target` start tag in the target you are using the rasterizer task:
-  <taskdef name="rasterize" 
+
+    <taskdef name="rasterize" 
            classname="org.apache.tools.ant.taskdefs.optional.RasterizerTask"/>
+
 Now you can use the rasterizer task in your project. See the [parameters section](#taskParameters) for an explanation of the available parameters or the [examples section](#taskExamples) to see few usage examples.
 
 ### Parameters of the Ant task <a id="taskParameters"></a>
@@ -212,21 +214,21 @@ You can use `fileset` elements to select input files and directories. See the [A
 ### Examples of using the rasterizer task <a id="taskExamples"></a>
 
 The following example is the complete Ant project that converts an SVG image (called `input.svg` ) to a PNG image (called `output.png` ):
-<?xml version="1.0"?>
 
-<project name="RasterizerExample" default="main" basedir=".">
-
-  <taskdef name="rasterize" 
+    <?xml version="1.0"?>
+    <project name="RasterizerExample" default="main" basedir=".">
+        <taskdef name="rasterize" 
            classname="org.apache.tools.ant.taskdefs.optional.RasterizerTask"/>
+        <target name="main">
+            <rasterize result="image/png" src="input.svg" dest="output.png"/>
+        </target>
+    </project>
 
-  <target name="main">
-    <rasterize result="image/png" src="input.svg" dest="output.png"/>
-  </target>
-</project>
 The next example is just one task in a project. It converts all files with a `.svg` suffix in the `images` directory and all files in the `images2` directory to TIFF images. The resulting image files are placed in the `results` directory.
-  <rasterize result="image/tiff" destdir="results">
-    <fileset dir="images">
-      <include name="**/*.svg"/>
-    </fileset>
-    <fileset dir="images2"/>
-  </rasterize>
+
+    <rasterize result="image/tiff" destdir="results">
+        <fileset dir="images">
+            <include name="**/*.svg"/>
+        </fileset>
+        <fileset dir="images2"/>
+    </rasterize>
