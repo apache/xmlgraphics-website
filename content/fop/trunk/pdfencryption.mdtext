@@ -20,6 +20,7 @@ If no owner password has been supplied but FOP was asked to apply some restricti
 A user password, supplied with the `-u` option, will cause the PDF display software to ask the reader for this password in order to view the contents of the document. If no user password was supplied, viewing the content is not restricted.
 
 Further restrictions can be imposed by using the following command-line options:
+
 | Option | Description |
 |--------|-------------|
 |  `-noprint`  | disable printing |
@@ -52,15 +53,15 @@ When FOP is embedded in another Java application you need to set an options map 
 Encryption is enabled as soon as one of these options is set.
 An example to enable PDF encryption in Java code:
 
-import org.apache.fop.pdf.PDFEncryptionParams;
-
-[..]
-
-FOUserAgent userAgent = fopFactory.newFOUserAgent();
-useragent.getRendererOptions().put("encryption-params", new PDFEncryptionParams(
-    null, "password", false, false, true, true));
-Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent);
-[..]
+    import org.apache.fop.pdf.PDFEncryptionParams;
+    
+    [..]
+    
+    FOUserAgent userAgent = fopFactory.newFOUserAgent();
+    useragent.getRendererOptions().put("encryption-params", new PDFEncryptionParams(
+        null, "password", false, false, true, true));
+    Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent);
+    [..]
 The parameters for the constructor of PDFEncryptionParams are:
 
 
