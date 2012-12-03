@@ -306,6 +306,7 @@ There are still a big number of older (or limited) MO:DCA/IPDS environments in p
 #### Fonts<a id="afp-font-config"></a>
 
 The AFP Renderer requires special configuration particularly related to fonts. AFP Render configuration is done through the normal FOP configuration file. The MIME type for the AFP Renderer is application/x-afp which means the AFP Renderer section in the FOP configuration file looks like:
+
     <renderer mime="application/x-afp">
       <!-- AFP Renderer -->
       ...

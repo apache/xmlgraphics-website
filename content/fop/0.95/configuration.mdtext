@@ -65,7 +65,7 @@ This is an excerpt from the example configuration file coming with FOP:
       <!-- etc. etc..... -->
     </fop>
 
-# Renderer configuration <a id="renderers"></a>
+## Renderer configuration <a id="renderers"></a>
 
 Each Renderer has its own configuration section which is identified by the MIME type the Renderer is written for, ex. "application/pdf" for the PDF Renderer.
 
@@ -130,7 +130,7 @@ Some people don't have high requirements on color fidelity but instead want the 
           <fonts....
           </renderer>
 
-## Special Settings for the PostScript Renderer <a id="ps-renderer"></a>
+### Special Settings for the PostScript Renderer <a id="ps-renderer"></a>
 
 Besides the normal font configuration (the same "fonts" element as for the PDF renderer) the PostScript renderer has an additional setting to force landscape pages to be rotated to fit on a page inserted into the printer in portrait mode. Set the value to "true" to activate this feature. The default is "false". Example:
 
@@ -149,7 +149,7 @@ Besides the normal font configuration (the same "fonts" element as for the PDF r
           </fonts>
         </renderer>
 
-## Special Settings for the PCL Renderer <a id="pcl-renderer"></a>
+### Special Settings for the PCL Renderer <a id="pcl-renderer"></a>
 
 Non-standard fonts for the PCL renderer are made available through the Java2D subsystem which means that you don't have to do any custom font configuration in this case but you have to use the font names offered by Java.
 

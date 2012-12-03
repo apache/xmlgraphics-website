@@ -3,7 +3,6 @@ Title: Standard Apache&trade; FOP Extensions
 #Standard Apache&trade; FOP Extensions
 
 
-
 By "extension", we mean any data that can be placed in the input XML document that is not addressed by the XSL-FO standard. By having a mechanism for supporting extensions, Apache&trade; FOP is able to add features that are not covered in the specification.
 
 The extensions documented here are included with FOP, and are automatically available to you. If you wish to add an extension of your own to FOP, please see the [Developers' Extension Page](../dev/extensions.html).
@@ -26,7 +25,7 @@ In old versions of Apache FOP there was a `fox:outline` element which was used t
 
 ### Anchors or Named Destinations <a id="named-destinations"></a>
 
-Use the fox:destination element to define "named destinations"inside a PDF document. These are useful as fragment identifiers, e.g. "http://server/document.pdf#anchor-name". fox:destination elements can be placed almost anywhere in the fo document, including a child of root, a block-level element, or an inline-level element. For the destination to actually work, it must correspond to an "id" attribute on some fo element within the document. In other words, the "id" attribute actually creates the "view" within the PDF document. The fox:destination simply gives that view an independent name.
+Use the fox:destination element to define "named destinations" inside a PDF document. These are useful as fragment identifiers, e.g. "http://server/document.pdf#anchor-name". fox:destination elements can be placed almost anywhere in the fo document, including a child of root, a block-level element, or an inline-level element. For the destination to actually work, it must correspond to an "id" attribute on some fo element within the document. In other words, the "id" attribute actually creates the "view" within the PDF document. The fox:destination simply gives that view an independent name.
 
     <fox:destination internal-destination="table-of-contents"/>
     ...

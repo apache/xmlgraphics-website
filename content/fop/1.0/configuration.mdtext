@@ -66,7 +66,7 @@ This is an excerpt from the example configuration file coming with FOP:
       <!-- etc. etc..... -->
     </fop>
 
-# Image Loading Customization <a id="image-loading"></a>
+## Image Loading Customization <a id="image-loading"></a>
 
 Apache FOP uses the image loading framework from [Apache XML Graphics Commons](http://xmlgraphics.apache.org/commons/) to load images using various plug-ins. Every image loader plug-in has a hard-coded usage penalty that influences which solution is chosen if there are multiple possibilities to load an image. Sometimes, though, these penalties need to be tweaked and this can be done in the FOP configuration. An example:
 
@@ -165,7 +165,7 @@ FOP supports encryption of PDF output, thanks to Patrick C. Lankswert. This feat
       </encryption-params>
     </renderer>
 
-## Special Settings for the PostScript Renderer <a id="ps-renderer"></a>
+### Special Settings for the PostScript Renderer <a id="ps-renderer"></a>
 
 Besides the normal font configuration (the same "fonts" element as for the PDF renderer) the PostScript renderer has an additional setting to force landscape pages to be rotated to fit on a page inserted into the printer in portrait mode. Set the value to "true" to activate this feature. The default is "false". Example:
 
@@ -184,7 +184,7 @@ Besides the normal font configuration (the same "fonts" element as for the PDF r
       </fonts>
     </renderer>
 
-## Special Settings for the PCL Renderer <a id="pcl-renderer"></a>
+### Special Settings for the PCL Renderer <a id="pcl-renderer"></a>
 
 Non-standard fonts for the PCL renderer are made available through the Java2D subsystem which means that you don't have to do any custom font configuration in this case but you have to use the font names offered by Java.
 

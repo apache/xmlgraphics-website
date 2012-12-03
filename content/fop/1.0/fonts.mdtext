@@ -82,7 +82,7 @@ If you want FOP to use custom fonts, you need to tell it where to find them. Thi
     </renderers>
 
 Review the documentation for [FOP Configuration](configuration.html) for instructions on making the FOP configuration available to FOP when it runs. Otherwise, FOP has no way of finding your custom font information. It is currently not possible to easily configure fonts from Java code.
-# Advanced font configuration <a id="advanced"></a>
+## Advanced font configuration <a id="advanced"></a>
 
 The instructions found above should be sufficient for most users. Below are some additional instructions in case the basic font configuration doesn't lead to the desired results.
 
@@ -246,10 +246,10 @@ Various notes related to embedded fonts:
 
 ### Substitution <a id="substitution"></a>
 
-When a <substitutions/> section is defined in the configuration, FOP will re-map any font-family references found in your FO input to a given substitution font.
+When a `<substitutions/>` section is defined in the configuration, FOP will re-map any font-family references found in your FO input to a given substitution font.
 
 
-- If a <substitution/> is declared, it is mandatory that both a <from/> and <to/> child element is declared with a font-family attribute.
+- If a `<substitution/>` is declared, it is mandatory that both a <from/> and <to/> child element is declared with a font-family attribute.
 
 - Both font-weight and font-style are optional attributes, if they are provided then a value of 'normal' is assumed.
 
@@ -270,7 +270,7 @@ For example you could make all FO font-family references to 'Arial' with weights
        </fonts>
     </fop>
 
-# Font Selection Strategies <a id="selection"></a>
+## Font Selection Strategies <a id="selection"></a>
 
 There are two font selection strategies: character-by-character or auto. The default is auto.
 

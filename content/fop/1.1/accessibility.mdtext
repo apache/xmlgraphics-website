@@ -2,7 +2,6 @@ Title: Apache(tm) FOP: Accessibility
 
 #Apache&trade; FOP: Accessibility
 
-
 ## Overview <a id="overview"></a>
 
 This page describes the [accessibility](http://en.wikipedia.org/wiki/Accessibility) features of Apache&trade; FOP. [Section 508](http://www.section508.gov/) defines accessibility in the context of electronic documents for the USA but other countries have similar requirements.
@@ -14,20 +13,13 @@ Accessibility features are available only for the PDF output format and there ar
 There are 3 ways to enable accessibility:
 
 
-1.  **Command line:** The command line option -a turns on accessibility: `fop -a -fo mydocument.fo -pdf mydocument.pdf` 
-
-1.  **Embedding:**  `userAgent.setAccessibility(true);` 
-
-1.  **Optional setting in fop.xconf file:**  `
-          <fop version="1.0">
-              <accessibility>true</accessibility>
-              ...
-          </fop>
-          ` 
+1.  **Command line:** The command line option -a turns on accessibility:<br/>`fop -a -fo mydocument.fo -pdf mydocument.pdf`<br/>
+1.  **Embedding:**<br/>`userAgent.setAccessibility(true);` <br/> 
+1.  **Optional setting in fop.xconf file:**<br/>`<fop version="1.0">`<br/>`<accessibility>true</accessibility>`<br/>`...`<br/>`</fop>`
 
 When accessibility is enabled, additional information relating to the logical structure of the document is added to the PDF. That information allows the PDF viewer (or a text-to-speech application) to retrieve the natural reading order of the document.
 The processing of the logical structure is memory-hungry. You may need to adjust the Java heap size in order to process larger files.
-# Changes to your XSL-FO input files <a id="source"></a>
+## Changes to your XSL-FO input files <a id="source"></a>
 
 Apache FOP cannot automatically generate accessible PDFs. Some of the work can only be performed by the content provider. Following are some changes that may be necessary to your XSL-FO content in order to generate really accessible documents:
 
@@ -47,10 +39,12 @@ The [PDF Reference](#PDFReference) defines a set of standard Structure Types to 
 FOP provides a default mapping of Formatting Objects to elements from that standard set. For example, `fo:page-sequence` is mapped to ‘Part’, `fo:block` is mapped to ‘P’, `fo:list-block` to ‘L’, etc.
 
 You may want to customize that mapping to improve the accuracy of the tagging or deal with particular FO constructs. For example, you may want to make use of the ‘H1’ to ‘H6’ tags to make the hierarchical structure of the document appear in the PDF. This is achieved by using the `role` XSL-FO property:
-...
-<fo:block role="H1" font-weight="bold">I. A Level 1 Heading</fo:block>
-<fo:block>This is the first paragraph of the first section...</fo:block>
-...
+
+    ...
+    <fo:block role="H1" font-weight="bold">I. A Level 1 Heading</fo:block>
+    <fo:block>This is the first paragraph of the first section...</fo:block>
+    ...
+
 If a non-standard structure type is specified, FOP will issue a warning and fall back to the default tag associated to the Formatting Object.
 
 ## Testing <a id="testing"></a>

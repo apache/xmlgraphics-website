@@ -11,26 +11,28 @@ The FOP Ant task will convert XSL-FO documents to PDF, PS, PCL etc. output (see 
 
 To call FOP tasks within Ant, first add a FOP task definition to your Ant build file. One method of defining the task is as follows:
 
-<property name="fop.home" value="....path to your FOP HOME directory..."/>
-
-<taskdef name="fop" 
-         classname="org.apache.fop.tools.anttasks.Fop">
-  <classpath>
-    <fileset dir="${fop.home}/lib">
-      <include name="*.jar"/>
-    </fileset>
-    <fileset dir="${fop.home}/build">
-      <include name="fop.jar"/>
-      <include name="fop-hyph.jar" />
-    </fileset>
-  </classpath>
-</taskdef>
+    <property name="fop.home" value="....path to your FOP HOME directory..."/>
+    
+    <taskdef name="fop" 
+             classname="org.apache.fop.tools.anttasks.Fop">
+      <classpath>
+        <fileset dir="${fop.home}/lib">
+          <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${fop.home}/build">
+          <include name="fop.jar"/>
+          <include name="fop-hyph.jar" />
+        </fileset>
+      </classpath>
+    </taskdef>
     
 Then create FOP tasks within your Ant build file, using the FOP task parameters listed below.
 
 ## Parameters for FOP Ant task <a id="parameters"></a>
 
-<caption>Parameters specified as attributes</caption>| Attribute | Description | Required |
+<caption>Parameters specified as attributes</caption>
+
+| Attribute | Description | Required |
 |-----------|-------------|----------|
 | fofile | XSL-FO file to be rendered | Yes, if no fileset nested element is used |
 | outfile | Output filename | Yes, when fofile is used. (This attribute is not valid for filesets.) |
@@ -43,7 +45,7 @@ Then create FOP tasks within your Ant build file, using the FOP task parameters 
 | messagelevel | Logging level<br></br>Possible values: `error` , `warn` , `info` , `verbose` , `debug` . **Currently doesn't work in FOP Trunk!!!**  | No, defaults to `verbose`  |
 | logFiles | Controls whether the names of the files that are processed are logged ( `true` ) or not ( `false` ). **Currently doesn't work in FOP Trunk!!!**  | No, default is `true`  |
 
-
+<br/>
 
 <caption>Parameters specified as nested elements</caption>| Attribute | Description | Required |
 |-----------|-------------|----------|

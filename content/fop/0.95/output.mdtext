@@ -57,47 +57,48 @@ FOP does not currently support several desirable PDF features: watermarks and si
 Another popular post-processing tool is [iText](http://www.lowagie.com/iText) , which has tools for adding security features, document properties, watermarks, and many other features to PDF files.
 <warning>Caveat: iText may swallow PDF bookmarks. But [Jens Stavnstrup tells us](http://issues.apache.org/bugzilla/show_bug.cgi?id=37589) that this doesn't happen if you use iText's PDFStamper.</warning>
 Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note that FOP now supports [PDF encryption](pdfencryption.html) . However the principles for using iText for other PDF features are similar.)
-public static void main(String args[]) {
-  try {
-    ByteArrayOutputStream fopout = new ByteArrayOutputStream();
-    FileOutputStream outfile = new FileOutputStream(args[2]);
-    FopFactory fopFactory = FopFactory.newInstance();
-    Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, fopout);
-    
-    Transformer transformer = TransformerFactory.newInstance().newTransformer(
-        new StreamSource(new File(args[1])));
-    transformer.transform(new StreamSource(new File(args[0])),
-        new SAXResult(fop.getDefaultHandler()));
-    PdfReader reader = new PdfReader(fopout.toByteArray());
-    int n = reader.getNumberOfPages();
-    Document document = new Document(reader.getPageSizeWithRotation(1));
-    PdfWriter writer = PdfWriter.getInstance(document, outfile);
-    writer.setEncryption(PdfWriter.STRENGTH40BITS, "pdf", null,
-      PdfWriter.AllowCopy);
-    document.open();
-    PdfContentByte cb = writer.getDirectContent();
-    PdfImportedPage page;
-    int rotation;
-    int i = 0;
-    while (i < n) {
-      i++;
-      document.setPageSize(reader.getPageSizeWithRotation(i));
-      document.newPage();
-      page = writer.getImportedPage(reader, i);
-      rotation = reader.getPageRotation(i);
-      if (rotation == 90 || rotation == 270) {
-        cb.addTemplate(page, 0, -1f, 1f, 0, 0,
-        reader.getPageSizeWithRotation(i).height());
-      } else {
-        cb.addTemplate(page, 1f, 0, 0, 1f, 0, 0);
+
+    public static void main(String args[]) {
+      try {
+        ByteArrayOutputStream fopout = new ByteArrayOutputStream();
+        FileOutputStream outfile = new FileOutputStream(args[2]);
+        FopFactory fopFactory = FopFactory.newInstance();
+        Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, fopout);
+        
+        Transformer transformer = TransformerFactory.newInstance().newTransformer(
+            new StreamSource(new File(args[1])));
+        transformer.transform(new StreamSource(new File(args[0])),
+            new SAXResult(fop.getDefaultHandler()));
+        PdfReader reader = new PdfReader(fopout.toByteArray());
+        int n = reader.getNumberOfPages();
+        Document document = new Document(reader.getPageSizeWithRotation(1));
+        PdfWriter writer = PdfWriter.getInstance(document, outfile);
+        writer.setEncryption(PdfWriter.STRENGTH40BITS, "pdf", null,
+          PdfWriter.AllowCopy);
+        document.open();
+        PdfContentByte cb = writer.getDirectContent();
+        PdfImportedPage page;
+        int rotation;
+        int i = 0;
+        while (i < n) {
+          i++;
+          document.setPageSize(reader.getPageSizeWithRotation(i));
+          document.newPage();
+          page = writer.getImportedPage(reader, i);
+          rotation = reader.getPageRotation(i);
+          if (rotation == 90 || rotation == 270) {
+            cb.addTemplate(page, 0, -1f, 1f, 0, 0,
+            reader.getPageSizeWithRotation(i).height());
+          } else {
+            cb.addTemplate(page, 1f, 0, 0, 1f, 0, 0);
+          }
+          System.out.println("Processed page " + i);
+        }
+        document.close();
+      } catch( Exception e) {
+        e.printStackTrace();
       }
-      System.out.println("Processed page " + i);
     }
-    document.close();
-  } catch( Exception e) {
-    e.printStackTrace();
-  }
-}
 Check the iText tutorial and documentation for setting access flags, password, encryption strength and other parameters.
 
 ### Watermarks <a id="pdf-watermark"></a>
@@ -116,13 +117,14 @@ The PostScript renderer has been brought up to a similar quality as the PDF rend
 ### Configuration <a id="ps-configuration"></a>
 
 The PostScript renderer configuration currently allows the following settings:
-<renderer mime="application/postscript">
-  <auto-rotate-landscape>false</auto-rotate-landscape>
-  <language-level>3</language-level>
-  <optimize-resources>false</optimize-resources>
-  <safe-set-page-device>false</safe-set-page-device>
-  <dsc-compliant>true</dsc-compliant>
-</renderer>
+
+    <renderer mime="application/postscript">
+      <auto-rotate-landscape>false</auto-rotate-landscape>
+      <language-level>3</language-level>
+      <optimize-resources>false</optimize-resources>
+      <safe-set-page-device>false</safe-set-page-device>
+      <dsc-compliant>true</dsc-compliant>
+    </renderer>
 The default value for the "auto-rotate-landscape" setting is "false". Setting it to "true" will automatically rotate landscape pages and will mark them as landscape.
 
 The default value for the "language-level" setting is "3". This setting specifies the PostScript language level which should be used by FOP. Set this to "2" only if you don't have a Level 3 capable interpreter.
@@ -179,11 +181,12 @@ The output created by the PCLRenderer is generic PCL 5, HP GL/2 and PJL. This sh
 ### Configuration <a id="pcl-configuration"></a>
 
 The PCL renderer configuration currently allows the following settings:
-<renderer mime="application/vnd.hp-PCL">
-  <rendering>quality</rendering>
-  <text-rendering>bitmap</text-rendering>
-  <disable-pjl>false</disable-pjl>
-</renderer>
+
+    <renderer mime="application/vnd.hp-PCL">
+      <rendering>quality</rendering>
+      <text-rendering>bitmap</text-rendering>
+      <disable-pjl>false</disable-pjl>
+    </renderer>
 The default value for the "rendering" setting is "speed" which causes borders to be painted as plain rectangles. In this mode, no special borders (dotted, dashed etc.) are available. If you want support for all border modes, set the value to "quality" as indicated above. This will cause the borders to be painted as bitmaps.
 
 The default value for the "text-rendering" setting is "auto" which paints the base fonts using PCL fonts. Non-base fonts are painted as bitmaps through Java2D. If the mix of painting methods results in unwelcome output, you can set this to "bitmap" which causes all text to be rendered as bitmaps.
@@ -199,7 +202,7 @@ The PCL Renderer supports some PCL specific extensions which can be embedded int
       <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
                xmlns:pcl="http://xmlgraphics.apache.org/fop/extensions/pcl">
 
-#### Page Source (Tray selection) ## <a id="pcl-page-source"></a>
+#### Page Source (Tray selection)<a id="pcl-page-source"></a>
 
 The page-source extension attribute on fo:simple-page-master allows to select the paper tray the sheet for a particular simple-page-master is to be taken from. Example:
 
@@ -233,13 +236,14 @@ This list is most likely badly incomplete.
 
 ### Configuration <a id="afp-configuration"></a>
 
-#### Fonts ## <a id="afp-font-config"></a>
+#### Fonts<a id="afp-font-config"></a>
 
 The AFP Renderer requires special configuration particularly related to fonts. AFP Render configuration is done through the normal FOP configuration file. The MIME type for the AFP Renderer is application/x-afp which means the AFP Renderer section in the FOP configuration file looks like:
-<renderer mime="application/x-afp">
-  <!-- AFP Renderer -->
-  ...
-</renderer>
+
+    <renderer mime="application/x-afp">
+      <!-- AFP Renderer -->
+      ...
+    </renderer>
 There are 3 font configuration variants supported:
 
 
@@ -359,13 +363,13 @@ Experimentation has shown that the font metrics for the FOP built-in Base14 font
         <font-triplet name="Courier" style="normal" weight="bold"/>
       </font>
 
-### Output Resolution ## <a id="afp-renderer-resolution-config"></a>
+#### Output Resolution<a id="afp-renderer-resolution-config"></a>
 
 By default the AFP Renderer creates output with a resolution of 240 dpi. This can be overridden by the <renderer-resolution/> configuration element. Example:
 
       <renderer-resolution>240</renderer-resolution>
 
-### Images ## <a id="afp-image-config"></a>
+#### Images<a id="afp-image-config"></a>
 
 By default the AFP Renderer converts all images to 8 bit grey level. This can be overridden by the <images> configuration element. Example:
 
@@ -384,7 +388,7 @@ The AFP Renderer supports some AFP specific extensions which can be embedded int
       <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
                xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
 
-#### Page Overlay Extension ## <a id="afp-page-overlay"></a>
+#### Page Overlay Extension<a id="afp-page-overlay"></a>
 
 The include-page-overlay extension element allows to define on a per simple-page-master basis a page overlay resource. Example:
 
@@ -397,7 +401,7 @@ The include-page-overlay extension element allows to define on a per simple-page
 
 The mandatory name attribute must refer to an 8 character (space padded) resource name that must be known in the AFP processing environment.
 
-#### Page Segment Extension ## <a id="afp-page-segment"></a>
+#### Page Segment Extension<a id="afp-page-segment"></a>
 
 The include-page-segment extension element allows to define resource substitution for fo:external-graphics elements. Example:
 
@@ -412,7 +416,7 @@ The include-page-segment extension element allows to define resource substitutio
 
 The include-page-segment extension element can only occur within a simple-page-master. Multiple include-page-segment extension elements within a simple-page-master are allowed. The mandatory name attribute must refer to an 8 character (space padded) resource name that must be known in the AFP processing environment. The value of the mandatory src attribute is compared against the value of the src attribute in fo:external-graphic elements and if it is identical (string matching is used) in the generated AFP the external graphic is replaced by a reference to the given resource.
 
-#### Tag Logical Element Extension ## <a id="afp-tag-logical-element"></a>
+#### Tag Logical Element Extension<a id="afp-tag-logical-element"></a>
 
 The tag-logical-element extension element allows to injects TLEs into the AFP output stream. Example:
 
@@ -427,7 +431,7 @@ The tag-logical-element extension element allows to injects TLEs into the AFP ou
 
 The tag-logical-element extension element can only occur within a simple-page-master. Multiple tag-logical-element extension elements within a simple-page-master are allowed. The name and value attributes are mandatory.
 
-#### No Operation Extension ## <a id="afp-no-operation"></a>
+#### No Operation Extension<a id="afp-no-operation"></a>
 
 The no-operation extension provides the ability to carry up to 32K of comments or any other type of unarchitected data into the AFP output stream. Example:
 
@@ -519,23 +523,23 @@ In addition to the above values the TIFF renderer configuration allows some addi
 The default value for the "compression" setting is "PackBits" which which is a widely supported RLE compression scheme for TIFF. The set of compression names to be used here matches the set that the Image I/O API uses. Note that not all compression schemes may be available during runtime. This depends on the actual codecs being available. Here is a list of possible values:
 
 
-- NONE (no compression)
+- `NONE` (no compression)
 
-- PackBits (RLE, run-length encoding)
+- `PackBits` (RLE, run-length encoding)
 
-- JPEG
+- `JPEG`
 
-- Deflate
+- `Deflate`
 
-- LZW
+- `LZW`
 
-- ZLib
+- `ZLib`
 
-- CCITT T.4 (Fax Group 3)
+- `CCITT T.4` (Fax Group 3)
 
-- CCITT T.6 (Fax Group 4)
+- `CCITT T.6` (Fax Group 4)
 If you want to use CCITT compression, please make sure you've got a J2SE 1.4 or later and [Java Advanced Imaging Image I/O Tools](http://java.sun.com/products/java-media/jai/current.html) in your classpath. The Sun JRE doesn't come with a TIFF codec built in, so it has to be added separately. The internal TIFF codec from XML Graphics Commons only supports PackBits, Deflate and JPEG compression for writing.
-# TXT <a id="txt"></a>
+## TXT <a id="txt"></a>
 
 The text renderer produces plain ASCII text output that attempts to match the output of the PDFRenderer as closely as possible. This was originally developed to accommodate an archive system that could only accept plain text files, and is primarily useful for getting a quick-and-dirty view of the document text. The renderer is very limited, so do not be surprised if it gives unsatisfactory results.
 

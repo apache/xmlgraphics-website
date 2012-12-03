@@ -65,7 +65,7 @@ If you want FOP to use custom fonts, you need to tell it where to find them. Thi
     </fonts>
 
 Review the documentation for [FOP Configuration](configuration.html) for instructions on making the FOP configuration available to FOP when it runs. Otherwise, FOP has no way of finding your custom font information. It is currently not possible to easily configure fonts from Java code.
-# Advanced font configuration <a id="advanced"></a>
+## Advanced font configuration <a id="advanced"></a>
 
 The instructions found above should be sufficient for most users. Below are some additional instructions in case the basic font configuration doesn't lead to the desired results.
 
@@ -160,7 +160,7 @@ You must tell FOP how to find and use the font metrics files by registering them
 
 - If relative URLs are specified, they are evaluated relative to the value of the "font-base" setting. If there is no "font-base" setting, the fonts are evaluated relative to the base directory.
 
-### Auto-Detect and auto-embedd feature <a id="autodetect"></a>
+### Auto-Detect and auto-embed feature <a id="autodetect"></a>
 
 When the "auto-detect" flag is set in the configuration, FOP will automatically search for fonts in the default paths for your operating system.
 

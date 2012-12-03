@@ -83,7 +83,7 @@ If you want FOP to use custom fonts, you need to tell it where to find them. Thi
 
 Review the documentation for [FOP Configuration](configuration.html) for instructions on making the FOP configuration available to FOP when it runs. Otherwise, FOP has no way of finding your custom font information. It is currently not possible to easily configure fonts from Java code.
 
-## Register Fonts with FOP <a id="register"></a>
+### Register Fonts with FOP <a id="register"></a>
 
 You must tell FOP how to find and use the font files by registering them in the [FOP Configuration](configuration.html) . Add entries for your custom fonts, regardless of font type, to the configuration file in a manner similar to the following:
 
@@ -131,7 +131,7 @@ You must tell FOP how to find and use the font files by registering them in the 
 
 - If relative URLs are specified, they are evaluated relative to the value of the "font-base" setting. If there is no "font-base" setting, the fonts are evaluated relative to the base directory.
 
-## TrueType Collections <a id="truetype-collections-metrics"></a>
+### TrueType Collections <a id="truetype-collections-metrics"></a>
 
 TrueType collections (.ttc files) contain more than one font. To create metrics files for these fonts, you must specify which font in the collection should be generated, by using the "-ttcname" option with the TTFReader.
 
@@ -147,7 +147,7 @@ Alternatively, the individual sub-fonts of a TrueType Collections can be selecte
 </font>
 
 
-## Auto-Detect and auto-embed feature <a id="autodetect"></a>
+### Auto-Detect and auto-embed feature <a id="autodetect"></a>
 
 When the "auto-detect" flag is set in the configuration, FOP will automatically search for fonts in the default paths for your operating system.
 
@@ -158,13 +158,13 @@ Manifest-Version: 1.0
           Content-Type: application/x-font
 This feature allows you to create JAR files containing fonts. The JAR files can be added to fop by providem them in the classpath, e.g. copying them into the lib/ directory.
 
-### The font cache <a id="font-cache"></a>
+#### The font cache <a id="font-cache"></a>
 
 Apache FOP maintains a cache file that is used to speed up auto-detection. This file is usually found in the ".fop" directory under the user's home directory. It's called "fop-fonts.cache". When the user's home directory is not writable, the font cache file is put in the directory for temporary files.
 
 If there was a problem loading a particular font, it is flagged in the cache file so it is not loaded anymore. So, if a font is actually around but is still not found by Apache FOP, it's worth a try to delete the font cache file which forces Apache FOP to reparse all fonts.
 
-## Type 1 Font Metrics <a id="type1-metrics"></a>
+### Type 1 Font Metrics <a id="type1-metrics"></a>
 
 Note that metrics files are optional and no longer required
 
@@ -181,7 +181,7 @@ PFMReader [options]:
 
 -  **-fn <fontname>** By default, FOP uses the fontname from the .pfm file when embedding the font. Use the "-fn" option to override this name with one you have chosen. This may be useful in some cases to ensure that applications using the output document (Acrobat Reader for example) use the embedded font instead of a local font with the same name.
 The classpath in the above example has been simplified for readability. You will have to adjust the classpath to the names of the actual JAR files in the lib directory. xml-apis.jar, xercesImpl.jar, xalan.jar and serializer.jar are not necessary for JDK version 1.4 or later.The tool will construct some values (FontBBox, StemV and ItalicAngle) based on assumptions and calculations which are only an approximation to the real values. FontBBox and Italic Angle can be found in the human-readable part of the PFB file or in the AFM file. The PFMReader tool does not yet interpret PFB or AFM files, so if you want to be correct, you may have to adjust the values in the XML file manually. The constructed values however appear to have no visible influence.
-## TrueType Font Metrics <a id="truetype-metrics"></a>
+### TrueType Font Metrics <a id="truetype-metrics"></a>
 
 Note that metrics files are optional and no longer required
 
@@ -200,18 +200,15 @@ TTFReader [options]:
 
 -  **-enc ansi** Creates a WinAnsi-encoded font metrics file. Without this option, a CID-keyed font metrics file is created. The table below summarizes the differences between these two encoding options as currently used within FOP. Please note that this information only applies to TrueType fonts and TrueType collections:
 
-<table>
-<tr><th>Issue</th><th>WinAnsi</th><th>CID-Keyed</th></tr>
-</table>
-
 | Issue | WinAnsi | CID-keyed |
 |-------|---------|-----------|
 | Usable Character Set | Limited to WinAnsi character set, which is roughly equivalent to iso-8889-1. | Limited only by the characters in the font itself. |
 | Embedding the Font | Optional. | Mandatory. Not embedding the font produces invalid PDF documents. |
+
 <warning>You may experience failures with certain TrueType fonts, especially if they don't contain the so-called Unicode "cmap" table. TTFReader can currently not deal with font like this.</warning>
 
 
-## Embedding <a id="embedding"></a>
+### Embedding <a id="embedding"></a>
 
 By default, all fonts are embedded if an output format supports font embedding. In some cases, however, it is preferred that some fonts are only referenced. When working with referenced fonts it is important to be in control of the target environment where the produced document is consumed, i.e. the necessary fonts have to be installed there.
 
@@ -248,12 +245,12 @@ Various notes related to embedded fonts:
 
 - When embedding TrueType fonts (ttf) or TrueType Collections (ttc), a subset of the original font, containing only the glyphs used, is embedded in the output document. That's the default, but if you specify encoding-mode="single-byte" (see above), the complete font is embedded.
 
-## Substitution <a id="substitution"></a>
+### Substitution <a id="substitution"></a>
 
-When a <substitutions/> section is defined in the configuration, FOP will re-map any font-family references found in your FO input to a given substitution font.
+When a `<substitutions/>` section is defined in the configuration, FOP will re-map any font-family references found in your FO input to a given substitution font.
 
 
-- If a <substitution/> is declared, it is mandatory that both a <from/> and <to/> child element is declared with a font-family attribute.
+- If a `<substitution/>` is declared, it is mandatory that both a <from/> and <to/> child element is declared with a font-family attribute.
 
 - Both font-weight and font-style are optional attributes, if they are provided then a value of 'normal' is assumed.
 
@@ -294,4 +291,3 @@ Character-by-Character is NOT yet supported!
 ## Font List Command-Line Tool <a id="font-list"></a>
 
 FOP contains a small command-line tool that lets you generate a list of all configured fonts. Its class name is: `org.apache.fop.tools.fontlist.FontListMain` . Run it with the "-?" parameter to get help for the various options.
-
