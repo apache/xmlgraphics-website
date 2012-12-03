@@ -14,28 +14,30 @@ As noted above, there's no officially recommended way to embed metadata in XSL-F
 Document-level metadata can be specified in the `fo:declarations` element. XMP specification recommends to use `x:xmpmeta` , `rdf:RDF` , and `rdf:Description` elements as shown in example below. Both `x:xmpmeta` and `rdf:RDF` elements are recognized as the top-level element introducing an XMP fragment (as per the XMP specification).
 
 ### Example <a id="xmp-example"></a>
-[..]
-</fo:layout-master-set>
-<fo:declarations>
-  <x:xmpmeta xmlns:x="adobe:ns:meta/">
-    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-      <rdf:Description rdf:about=""
-          xmlns:dc="http://purl.org/dc/elements/1.1/">
-        <!-- Dublin Core properties go here -->
-        <dc:title>Document title</dc:title>
-        <dc:creator>Document author</dc:creator>
-        <dc:description>Document subject</dc:description>
-      </rdf:Description>
-      <rdf:Description rdf:about=""
-          xmlns:xmp="http://ns.adobe.com/xap/1.0/">
-        <!-- XMP properties go here -->
-        <xmp:CreatorTool>Tool used to make the PDF</xmp:CreatorTool>
-      </rdf:Description>
-    </rdf:RDF>
-  </x:xmpmeta>
-</fo:declarations>
-<fo:page-sequence ...
-[..] `fo:declarations`  **must** be declared after `fo:layout-master-set` and before the first `page-sequence` .
+
+    [..]
+    </fo:layout-master-set>
+    <fo:declarations>
+      <x:xmpmeta xmlns:x="adobe:ns:meta/">
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about=""
+              xmlns:dc="http://purl.org/dc/elements/1.1/">
+            <!-- Dublin Core properties go here -->
+            <dc:title>Document title</dc:title>
+            <dc:creator>Document author</dc:creator>
+            <dc:description>Document subject</dc:description>
+          </rdf:Description>
+          <rdf:Description rdf:about=""
+              xmlns:xmp="http://ns.adobe.com/xap/1.0/">
+            <!-- XMP properties go here -->
+            <xmp:CreatorTool>Tool used to make the PDF</xmp:CreatorTool>
+          </rdf:Description>
+        </rdf:RDF>
+      </x:xmpmeta>
+    </fo:declarations>
+    <fo:page-sequence ...
+    [..]
+`fo:declarations`  **must** be declared after `fo:layout-master-set` and before the first `page-sequence`.
 # Implementation in Apache FOP <a id="xmp-impl-in-fop"></a>
 
 Currently, XMP support is only available for PDF output.
@@ -46,9 +48,7 @@ Apache FOP now synchronizes the Info and the Metadata object in PDF, i.e. when y
 
 The mapping between the Info and the Metadata object used by Apache FOP comes from the [PDF/A-1 specification](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=38920) . For convenience, here's the mapping table:
 
-| Document information dictionary | XMP |
-|---------------------------------|-----|
-| Entry | PDF type | Property | XMP type | Category |
+| Document information dictionary<br/>Entry | PDF type | XMP Property | XMP type | XMP Category |
 |-------|----------|----------|----------|----------|
 | Title | text string | dc:title | Text | External |
 | Author | text string | dc:creator | seq Text | External |
@@ -59,7 +59,8 @@ The mapping between the Info and the Metadata object used by Apache FOP comes fr
 | CreationDate | date | xmp:CreationDate | Date | Internal |
 | ModDate | date | xmp:ModifyDate | Date | Internal |
 "Internal" in the Category column means that the user should not set this value. It is set by the application.The "Subject" used to be mapped to `dc:subject` in the initial publication of PDF/A-1 (ISO 19005-1). In the [Technical Corrigendum 1](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=45613) this was changed to map to `dc:description["x-default"]` .
-## Namespaces <a id="namespaces"></a>
+
+### Namespaces <a id="namespaces"></a>
 
 Metadata is made of property sets where each property set uses a different namespace URI.
 
