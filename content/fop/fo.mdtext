@@ -60,9 +60,9 @@ Next, use the java language to retrieve and format the current date and time. He
             ('MMMM d, yyyy, h:mm:ss a (zz)'), java:java.util.Date.new())"/>
     </xsl:template>
 
-# XSL-FO Issues <a id="xsl-fo"></a>
+## XSL-FO Issues <a id="xsl-fo"></a>
 
-## Vertical Centering <a id="fo-center-vertical"></a>
+### Vertical Centering <a id="fo-center-vertical"></a>
 
 To vertically center an image, table, or other item, use display-align="center". See [display-align Compliance](compliance.html#fo-property-display-align) for implementation status. Here is a small, self-contained document centering an image on a page:
 
@@ -92,7 +92,7 @@ To vertically center an image, table, or other item, use display-align="center".
       </fo:page-sequence>
     </fo:root>
 
-## Horizontal Centering (Tables) <a id="fo-center-table-horizon"></a>
+### Horizontal Centering (Tables) <a id="fo-center-table-horizon"></a>
 
 To center a table horizontally, one possibility is to add one column on the left and one on the right which pad the table so that the visible part is centered:
 
@@ -124,11 +124,11 @@ To center a table horizontally, one possibility is to add one column on the left
 
 If your table is more complicated, or if defining borders on individual cells becomes too much work, use the code above and nest your table within the middle cell.
 
-## Right-Aligning (Tables) <a id="fo-right-align-table-horizon"></a>
+### Right-Aligning (Tables) <a id="fo-right-align-table-horizon"></a>
 
 To right-align a table, you can use the same approach as above for centering tables. Just remove the last table-column element which causes all the left-over space not used by the columns with a fixed column-width to be assigned to the first column which effectively right-aligns the table.
 
-## Recto/Verso Static Content Differences <a id="fo-oddeven"></a>
+### Recto/Verso Static Content Differences <a id="fo-oddeven"></a>
 
 One frequent request is that static content be different between recto pages (right-side or odd-numbered pages typically) and verso pages(left-side or even-numbered pages typically). For example, you may wish to place the page number on the "outer" side of each page. There are examples in the FO distribution and in the [XSL FAQ FO section](http://www.dpawson.co.uk/xsl/sect3/index.html) .
 
@@ -174,7 +174,7 @@ First, define a page master with alternating pages masters for odd and even page
       </fo:page-sequence>
     </fo:root>
 
-## Making the First Page Special <a id="fo-first-page"></a>
+### Making the First Page Special <a id="fo-first-page"></a>
 
 To get a special header on the first page, one possibility is to insert it into the flow instead of the static content. Alternatively, use a page master referring to different page masters for the first page and the rest. Here is a code sample:
 
@@ -219,7 +219,7 @@ To get a special header on the first page, one possibility is to insert it into 
       </fo:page-sequence>
     </fo:root>
 
-## Blank Pages <a id="fo-blank-pages"></a>
+### Blank Pages <a id="fo-blank-pages"></a>
 
 Sometimes it is desirable to insert blank pages within your output, starting, for example, a new chapter on an odd page or an even page. A blank page can be forced by using `break-before="page-even"` or similar properties, or by a force-page-count="end-on-odd" on a page sequence.
 
@@ -265,7 +265,7 @@ To write "This page is intentionally left blank" (or something similar) on an in
       </fo:page-sequence>
     </fo:root>
 
-## Preformatting Content <a id="fo-preformat"></a>
+### Preformatting Content <a id="fo-preformat"></a>
 
 Sometimes it is desirable to retain linebreaks and hard spaces, and to get preformatted text to pass through without being changed. The XSL-FO specification provides some properties for this: [white-space-collapse](http://www.w3.org/TR/xsl11/#white-space-collapse) and [linefeed-treatment](http://www.w3.org/TR/2001/REC-xsl-20011015/slice7.html#white-space-collapse) . In FOP, use white-space-collapse="false" on an enclosing block.
 
@@ -351,7 +351,7 @@ Declare and use the parameter "page-count" in your XSLT.
 
 <warning>It is possible to run into a convergence problem with this solution. Replacing the "#" placeholder in the first run with the actual page count in the second run, may change the total number of pages in the document.</warning>
 
-## Aligning Regions <a id="fo-region-align"></a>
+### Aligning Regions <a id="fo-region-align"></a>
 
 Although it may seem counterintuitive, the regions on a page may overlap. Defining a certain body region does not automatically constrain other regions. Instead, this has to be done explicitly. Sometimes for creative reasons it may be desirable to have the regions overlap. Otherwise, you will want to set them up so that the header does not overlap body content or the body extend into the footer.
 
@@ -387,7 +387,7 @@ Pages in landscape format can easily be produced by exchanging the page-height a
       </fo:simple-page-master>
     </fo:layout-master-set>
 
-## External Resources <a id="external-resources"></a>
+### External Resources <a id="external-resources"></a>
 
 Resources needed by an XSL-FO file that are external to it (graphics, for example), are defined in the XSL-FO standard as being of type "uri-specification". This is defined in the standard at <a href="http://www.w3.org/TR/xsl11/#datatype">Section 5.11 Property Datatypes</a>, which includes a link to the URI standard itself. Refer to the XSL-FO and URI standards themselves for more detailed instructions.
 
