@@ -159,10 +159,10 @@ h1, h3 {
     color: #193240;
 }
 #navigation ul ul, #navigation ul ul li {
-	margin-left:5px;
+    margin-left:5px;
 }
 #navigation h1 {
-	margin-left:-5px;
+    margin-left:-5px;
 }
 #footer {
     border-top: 1px solid #CCCCCC;
@@ -179,7 +179,7 @@ h1, h3 {
     padding-top: 15px;
 }
 p {
-	padding: 0 15px;
+    padding: 0 15px;
 }
 dd {
 }
@@ -193,49 +193,82 @@ dt {
   display: none;
 }
 version {
-	display: none;
+    display: none;
 }
 
 /* ToC */
-	#items {
-	/*
-		float: right;
-		width: 260px;
-		padding-bottom: 10px;
-		margin:0 0 10px 20px;
-		*/
-		-moz-border-bottom-colors: none;
-		-moz-border-image: none;
-		-moz-border-left-colors: none;
-		-moz-border-right-colors: none;
-		-moz-border-top-colors: none;
-		background: none repeat scroll 0 0 #eee;
-		border-color: #C0C0C0 #C0C0C0 #C0C0C0 -moz-use-text-color;
-		border-radius: 10px;
-		border-style: solid;
-		border-width: 1px medium 1px 1px;
-		color: #000033;
-		float: right;
-		font-size: 0.9em;
-		margin: 10px 20px;
-		padding: 10px;
-		width: 225px;
-	}
-	#items h3 {
-		margin-top: 0;
-		padding-top: 0;
-	}
-	#items ul {
-		margin: 0 0 0 15px;
-		padding: 0 0 5px;
-		list-style-type: none;
-	}
-	#items ul {
-		font-size: 95%;
-	}
-	#items ul a {
-		font-family: "arial";
-		text-decoration: none;
-		color: #107EC0;
-	}
-	#items ul a:hover { color: #000 }
+#items {
+/*
+    float: right;
+    width: 260px;
+    padding-bottom: 10px;
+    margin:0 0 10px 20px;
+    */
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #eee;
+    border-color: #C0C0C0 #C0C0C0 #C0C0C0 -moz-use-text-color;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px medium 1px 1px;
+    color: #000033;
+    float: right;
+    font-size: 0.9em;
+    margin: 10px 20px;
+    padding: 10px;
+    width: 225px;
+}
+#items h3 {
+    margin-top: 0;
+    padding-top: 0;
+}
+#items ul {
+    margin: 0 0 0 15px;
+    padding: 0 0 5px;
+    list-style-type: none;
+}
+#items ul {
+    font-size: 95%;
+}
+#items ul a {
+    font-family: "arial";
+    text-decoration: none;
+    color: #107EC0;
+}
+#items ul a:hover { color: #000 }
+
+note, warning {
+    margin: 1em 3em;
+    border: solid 1px;
+    display: block;
+    font-size: 90%;
+    line-height: 120%;
+    padding: 5px 10px;
+    color: black;
+}
+note {
+    border-color: #006699;
+    background-color: #f0f0ff;
+}
+warning {
+    border-color: #990000;
+    background-color: #fff0f0;
+}
+note:before, warning:before {
+    display: block;
+    font-weight: bold;
+    padding: 5px 10px;
+    margin: -5px -10px 10px;
+    color: white;
+}
+note:before {
+    content: "Note";
+    background-color: #336699;
+}
+warning:before {
+    content: "Warning";
+    background-color: #cc0000;
+}
