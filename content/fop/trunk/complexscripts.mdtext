@@ -125,13 +125,72 @@ When specifying the `language` property, the value of the property must be eithe
 
 ### Writing Mode Property <a id="writing_mode_property"></a>
 
+The `writing-mode` property is used to determine the axes and direction of the inline progression direction, the block progression direction, the column progression direction (in tables and flows), the shift direction, region placement, the resolution of writing-mode relative property values (such as start, end, before, after), and the default block (paragraph) bidirectionality level.
+
+The `writing-mode` property is inherited, so it can appear on any XSL-FO element type; however, it applies (semantically) only to the following element types:
+
+
+-  `fo:page-sequence` 
+
+-  `fo:simple-page-master` 
+
+-  `fo:region-*` 
+
+-  `fo:block-container` 
+
+-  `fo:inline-container` 
+
+-  `fo:table` 
+
+If it is not specified on one of these element types, but is specified on an ancestor element, then the value specified on that ancestor element (the inherited value) is used; otherwise, the initial value `lr-tb` is used.
+
+At present, only the following values of the `writing-mode` property are supported:
+
+
+-  `lr-tb` 
+
+-  `rl-tb` 
+
+-  `lr` 
+
+-  `rl` 
+
+Writing modes that employ a vertical inline progression direction are not yet supported.
+
 ### Number Conversion Properties <a id="number_conversion_properties"></a>
 
 ### Bidi Override Element <a id="bidi_override_element"></a>
 
+The [fo:bidi-override](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override) element may be used to override default bidirectional processing behavior, including default embedding levels and default character directionality. In the absence of either this element or use of explicit [Bidi Control Characters](#bidi_controls) , the default behavior prescribed by the [Unicode Bidirectional Algorithm](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override) applies.
+
 ### Bidi Control Characters <a id="bidi_controls"></a>
 
+In addition to the use of the [Bidi Override Element](#bidi_override_element) , an author may make use of the following explicit Unicode Bidi Control Characters:
+
+
+- U+200E - LEFT-TO-RIGHT MARK (LRM)
+
+- U+200F - RIGHT-TO-LEFT MARK (RLM)
+
+- U+202A - LEFT-TO-RIGHT EMBEDDING (LRE)
+
+- U+202B - RIGHT-TO-LEFT EMBEDDING (RLE)
+
+- U+202C - POP DIRECTIONAL FORMATTING (PDF)
+
+- U+202D - LEFT-TO-RIGHT OVERRIDE (LRO)
+
+- U+202E - RIGHT-TO-LEFT OVERRIDE (RLO)
+
+If an embedding or override is not terminated (using U+202C PDF) prior to the end of a [delimited text range](http://www.w3.org/TR/2006/REC-xsl11-20061205/#d0e4879) , then it is automatically terminated by FOP.
+
 ### Join Control Characters <a id="join_controls"></a>
+
+In order to prevent joining behavior in contexts where joining occurs by default, for example, between U+0628 ARABIC LETTER BEH and U+0646 ARABIC LETTER NOON, an author may used a U+200C ZERO WIDTH NON-JOINER (ZWNJ).
+
+Conversely, in order to force joining behavior in contexts where joining does not occur by default, for example, between U+0628 ARABIC LETTER BEH and U+0020 SPACE, an author may used a U+200D ZERO WIDTH JOINER (ZWJ).
+
+The behavior of ZWNJ and ZWJ is script specific. See [The Unicode Standard, Chapter 8, Middle Eastern Scripts](http://www.unicode.org/versions/Unicode6.1.0/ch08.pdf) for information on the use of these control characters with the Arabic script. See [The Unicode Standard, Chapter 9, South Asian Scripts - I](http://www.unicode.org/versions/Unicode6.1.0/ch09.pdf) for information on the use of these control characters with common Indic scripts.
 
 ## Supported Scripts <a id="supported_scripts"></a>
 
