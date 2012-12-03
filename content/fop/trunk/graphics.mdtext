@@ -39,7 +39,7 @@ Legend:
 
 - [1]: Requires the presence of [JAI Image I/O Tools](http://jai-imageio.dev.java.net/) (or an equivalent Image I/O compatible codec) in the classpath. JAI Image I/O Tools also adds support for JPEG 2000, WBMP, RAW and PNM. Other Image I/O codecs may provide support for additional formats.
  [JAI Image I/O Tools](http://jai-imageio.dev.java.net/) is not the same as the [JAI library](http://java.sun.com/javase/technologies/desktop/media/jai/) ! The former simply exposes JAI's codecs using the Image&nbsp;I/O API but does not include all the image manipulation functionality.
-## Map of supported image formats by output format <a id="format-map"></a>
+### Map of supported image formats by output format <a id="format-map"></a>
 
 Not all image formats are supported for all output formats! For example, while you can use EPS (Encapsulated PostScript) files when you generate PostScript output, this format will not be supported by any other output format. Here's an overview of which image formats are supported by which output format:
 
@@ -127,7 +127,7 @@ PNG images are supported through an Image&nbsp;I/O codec. Transparency is suppor
 
 FOP uses [Apache Batik](#batik) for SVG support. This format can be handled as an `fo:instream-foreign-object` or in a separate file referenced with `fo:external-graphic` .
 Batik's SVG Rasterizer utility may also be used to convert standalone SVG documents into PDF. For more information please see the [SVG Rasterizer documentation](http://xmlgraphics.apache.org/batik/svgrasterizer.html) on the Batik site.
-### Placing SVG Graphics into PDF<a id="svg-pdf-graphics"></a>
+#### Placing SVG Graphics into PDF<a id="svg-pdf-graphics"></a>
 
 The SVG is rendered into PDF by using PDF commands to draw and fill lines and curves. This means that the graphical objects created with this remain as vector graphics. The same applies to PostScript output. For other output formats the SVG graphic may be converted to a bitmap image.
 
