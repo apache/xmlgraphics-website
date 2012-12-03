@@ -46,11 +46,11 @@ In most circumstances, XSL-FO content does not need to change in order to make u
 
 - Explicit join control characters: U+200C ZWNJ and U+200D ZWJ.
 
-### Authoring Details <a id="details"></a>
+## Authoring Details <a id="details"></a>
 
 The complex scripts related effects of the above enumerated XSL-FO constructs are more fully described in the following sub-sections.
 
-#### Script Property <a id="script_property"></a>
+### Script Property <a id="script_property"></a>
 
 In order to apply font specific complex script features, it is necessary to know the script that applies to the text undergoing layout processing. This script is determined using the following algorithm:
 
@@ -61,7 +61,7 @@ In order to apply font specific complex script features, it is necessary to know
 
 In case the automatic algorithm does not produce the desired results, an author may explicitly specify a `script` property with the desired script. If specified, it must be one of the four-letter script code specified in [ISO 15924 Code List](http://unicode.org/iso15924/iso15924-codes.html) or in the [Extended Script Codes](#extended_script_codes) table. Comparison of script codes is performed in a case-insensitive manner, so it does not matter what case is used when specifying these codes in an XSL-FO document.
 
-##### Standard Script Codes <a id="standard_script_codes"></a>
+#### Standard Script Codes <a id="standard_script_codes"></a>
 
 The following table enumerates the standard ISO 15924 4-letter codes recognized by FOP.
 
@@ -123,15 +123,15 @@ Certain fonts that support complex script features can make use of language info
 
 When specifying the `language` property, the value of the property must be either an [ISO639-2 3-letter code](http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes) or an [ISO639-1 2-letter code](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) . Comparison of language codes is performed in a case-insensitive manner, so it does not matter what case is used when specifying these codes in an XSL-FO document.
 
-#### Writing Mode Property <a id="writing_mode_property"></a>
+### Writing Mode Property <a id="writing_mode_property"></a>
 
-#### Number Conversion Properties <a id="number_conversion_properties"></a>
+### Number Conversion Properties <a id="number_conversion_properties"></a>
 
-#### Bidi Override Element <a id="bidi_override_element"></a>
+### Bidi Override Element <a id="bidi_override_element"></a>
 
-#### Bidi Control Characters <a id="bidi_controls"></a>
+### Bidi Control Characters <a id="bidi_controls"></a>
 
-#### Join Control Characters <a id="join_controls"></a>
+### Join Control Characters <a id="join_controls"></a>
 
 ## Supported Scripts <a id="supported_scripts"></a>
 
