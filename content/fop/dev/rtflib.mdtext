@@ -64,19 +64,19 @@ The following table summarizes the various containers that can be created:
 <warning>This section is very incomplete.</warning>
 Attributes can be set for each container and piece of content in the document. The general approach is to build an RtfAttributes object containing the various attributes, then pass that RtfAttributes object to the method that creates the new container or content. See the Javadoc API documentation for RtfAttributes for details on the syntax for creating an RtfAttributes object. The following information lists the various attributes that can be set for each type of container.
 
-#### Information Group ## <a id="userdoc-attr-ig"></a>
+#### Information Group<a id="userdoc-attr-ig"></a>
 
 These attributes are set when creating a Document.
 
-#### Document Formatting ## <a id="userdoc-attr-df"></a>
+#### Document Formatting<a id="userdoc-attr-df"></a>
 
 These attributes are set when creating a Document.
 
-#### Section Formatting ## <a id="userdoc-attr-sf"></a>
+#### Section Formatting<a id="userdoc-attr-sf"></a>
 
 These attributes are set when creating a Section.
 
-#### Paragraph Formatting ## <a id="userdoc-attr-pf"></a>
+#### Paragraph Formatting<a id="userdoc-attr-pf"></a>
 
 These attributes are set when creating a Paragraph.
 
@@ -104,7 +104,7 @@ These attributes are set when creating a Paragraph.
 | bottom dotted border | RtfText.BDR_BOTTOM_DOTTED | Boolean? | brdrb\\brsp40\\brdrdot |
 | bottom dashed border | RtfText.BDR_BOTTOM_DASH | Boolean? | brdrb\\brsp40\\brdrdash |
 
-#### Character Formatting ## <a id="userdoc-attr-cf"></a>
+#### Character Formatting<a id="userdoc-attr-cf"></a>
 
 These attributes are set when creating a Paragraph, or Text.
 
