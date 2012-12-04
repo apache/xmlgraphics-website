@@ -6,34 +6,34 @@ Title: History of Changes
 
 ## Introduction and explanation of symbols <a id="introduction"></a>
 
-Changes are sorted by "type" and then chronologically with the most recent at the top. These symbols denote the various action types: ![add](images/add.jpg)=add , ![fix](images/fix.jpg)=fix, ![remove](images/remove.jpg)=remove, ![update](images/update.jpg)=update
+Changes are sorted by "type" and then chronologically with the most recent at the top. These symbols denote the various action types: ![add](/images/add.jpg)=add , ![fix](/images/fix.jpg)=fix, ![remove](/images/remove.jpg)=remove, ![update](/images/update.jpg)=update
 
 ## Version Trunk (n/a) <a id="version_Trunk"></a>
 
 ### Changes to the Code Base <a id="Code_Trunk"></a>
 
 
-- ![fix](images/fix.jpg)Support rdf:resource attributes in XMP. Committed by GA. Thanks to Brian Carlson. See Issue [50497](http://issues.apache.org/bugzilla/show_bug.cgi?id=50497) .
+- ![fix](/images/fix.jpg)Support rdf:resource attributes in XMP. Committed by GA. Thanks to Brian Carlson. See Issue [50497](http://issues.apache.org/bugzilla/show_bug.cgi?id=50497) .
 
-- ![fix](images/fix.jpg)Should never use Error to report runtime errors. Committed by GA. Thanks to Sebastian Bazley. See Issue [47174](http://issues.apache.org/bugzilla/show_bug.cgi?id=47174) .
+- ![fix](/images/fix.jpg)Should never use Error to report runtime errors. Committed by GA. Thanks to Sebastian Bazley. See Issue [47174](http://issues.apache.org/bugzilla/show_bug.cgi?id=47174) .
 
-- ![fix](images/fix.jpg)Ensure that throwables have meaningful messages. Committed by GA. Thanks to Sebastian Bazley. See Issue [47175](http://issues.apache.org/bugzilla/show_bug.cgi?id=47175) .
+- ![fix](/images/fix.jpg)Ensure that throwables have meaningful messages. Committed by GA. Thanks to Sebastian Bazley. See Issue [47175](http://issues.apache.org/bugzilla/show_bug.cgi?id=47175) .
 
-- ![fix](images/fix.jpg)Support for T.4 Group 3 1D encoding. Committed by PH. Thanks to JM and Mehdi Houshmand. See Issue [51911](http://issues.apache.org/bugzilla/show_bug.cgi?id=51911) .
+- ![fix](/images/fix.jpg)Support for T.4 Group 3 1D encoding. Committed by PH. Thanks to JM and Mehdi Houshmand. See Issue [51911](http://issues.apache.org/bugzilla/show_bug.cgi?id=51911) .
 
-- ![fix](images/fix.jpg)Fixed a bug formatting ISO 8601 dates with negative two-digit time zones. Committed by JM. Thanks to Florian Barbera Vila Bollain. See Issue [51039](http://issues.apache.org/bugzilla/show_bug.cgi?id=51039) .
+- ![fix](/images/fix.jpg)Fixed a bug formatting ISO 8601 dates with negative two-digit time zones. Committed by JM. Thanks to Florian Barbera Vila Bollain. See Issue [51039](http://issues.apache.org/bugzilla/show_bug.cgi?id=51039) .
 
-- ![fix](images/fix.jpg)Allow to override priority when registering an ImageWriter on the ImageWriterRegistry. Committed by JM. Thanks to Joshua Marquart. See Issue [49696](http://issues.apache.org/bugzilla/show_bug.cgi?id=49696) .
+- ![fix](/images/fix.jpg)Allow to override priority when registering an ImageWriter on the ImageWriterRegistry. Committed by JM. Thanks to Joshua Marquart. See Issue [49696](http://issues.apache.org/bugzilla/show_bug.cgi?id=49696) .
 
-- ![fix](images/fix.jpg)Fix for TIFFs which report zero as their resolution. This resulted in an exception. Committed by JM.
+- ![fix](/images/fix.jpg)Fix for TIFFs which report zero as their resolution. This resulted in an exception. Committed by JM.
 
-- ![remove](images/remove.jpg)Removed dependency on com.sun classes to achieve compatibility with Apache Harmony, OpenJDK and possibly other JVMs. Committed by JM.
+- ![remove](/images/remove.jpg)Removed dependency on com.sun classes to achieve compatibility with Apache Harmony, OpenJDK and possibly other JVMs. Committed by JM.
 
-- ![remove](images/remove.jpg)Removal of the deprecated `TextHandler.drawString(String, float, float)` method. Committed by JM.
+- ![remove](/images/remove.jpg)Removal of the deprecated `TextHandler.drawString(String, float, float)` method. Committed by JM.
 
-- ![update](images/update.jpg)Minor build improvements to eliminate warning and parameterize junit formatting. Eliminate (5) deprecation warnings. Committed by GA.
+- ![update](/images/update.jpg)Minor build improvements to eliminate warning and parameterize junit formatting. Eliminate (5) deprecation warnings. Committed by GA.
 
-- ![update](images/update.jpg)Various code style fixes Committed by JM. Thanks to Glenn Adams. See Issue [49703](http://issues.apache.org/bugzilla/show_bug.cgi?id=49703) .
+- ![update](/images/update.jpg)Various code style fixes Committed by JM. Thanks to Glenn Adams. See Issue [49703](http://issues.apache.org/bugzilla/show_bug.cgi?id=49703) .
 
 ### Contributors to this release <a id="contributors_Trunk"></a>
 
@@ -48,63 +48,63 @@ This is a list of other contributors:<br></br>Brian Carlson, Florian Barbera Vil
 ### Changes to the Code Base <a id="Code_1.4"></a>
 
 
-- ![add](images/add.jpg)Added getter and setter for enabling/disabling comments in PSGenerator. Committed by JM. Thanks to Julien Aymé. See Issue [49250](http://issues.apache.org/bugzilla/show_bug.cgi?id=49250) .
+- ![add](/images/add.jpg)Added getter and setter for enabling/disabling comments in PSGenerator. Committed by JM. Thanks to Julien Aymé. See Issue [49250](http://issues.apache.org/bugzilla/show_bug.cgi?id=49250) .
 
-- ![add](images/add.jpg)Small optimization which only generates code for a clipping area if an element is not fully inside the clipping area. Committed by JM. Thanks to Calixte Denizet. See Issue [49056](http://issues.apache.org/bugzilla/show_bug.cgi?id=49056) .
+- ![add](/images/add.jpg)Small optimization which only generates code for a clipping area if an element is not fully inside the clipping area. Committed by JM. Thanks to Calixte Denizet. See Issue [49056](http://issues.apache.org/bugzilla/show_bug.cgi?id=49056) .
 
-- ![add](images/add.jpg)Added option to enable/disable the generation of compact vs. verbose PostScript code. Committed by JM. See Issue [48797](http://issues.apache.org/bugzilla/show_bug.cgi?id=48797) .
+- ![add](/images/add.jpg)Added option to enable/disable the generation of compact vs. verbose PostScript code. Committed by JM. See Issue [48797](http://issues.apache.org/bugzilla/show_bug.cgi?id=48797) .
 
-- ![add](images/add.jpg)Added shorthands for many PostScript commands to get more compact PostScript files. Committed by JM. Thanks to Calixte Denizet. See Issue [48797](http://issues.apache.org/bugzilla/show_bug.cgi?id=48797) .
+- ![add](/images/add.jpg)Added shorthands for many PostScript commands to get more compact PostScript files. Committed by JM. Thanks to Calixte Denizet. See Issue [48797](http://issues.apache.org/bugzilla/show_bug.cgi?id=48797) .
 
-- ![add](images/add.jpg)Added code for supporting the AdobeStandardCyrillic encoding. Committed by JM. Thanks to Andrey Koltunov. See Issue [48395](http://issues.apache.org/bugzilla/show_bug.cgi?id=48395) .
+- ![add](/images/add.jpg)Added code for supporting the AdobeStandardCyrillic encoding. Committed by JM. Thanks to Andrey Koltunov. See Issue [48395](http://issues.apache.org/bugzilla/show_bug.cgi?id=48395) .
 
-- ![add](images/add.jpg)Added interface for Color Conversions. Committed by CB. Thanks to Peter Hancock. See Issue [48237](http://issues.apache.org/bugzilla/show_bug.cgi?id=48237) .
+- ![add](/images/add.jpg)Added interface for Color Conversions. Committed by CB. Thanks to Peter Hancock. See Issue [48237](http://issues.apache.org/bugzilla/show_bug.cgi?id=48237) .
 
-- ![add](images/add.jpg)Added support for configurable additional penalties for preloader, loader and converter plug-ins in the ImageImplRegistry (in addition to the hard-coded penalties). Committed by JM.
+- ![add](/images/add.jpg)Added support for configurable additional penalties for preloader, loader and converter plug-ins in the ImageImplRegistry (in addition to the hard-coded penalties). Committed by JM.
 
-- ![add](images/add.jpg)Enabled native encoding of CMYK images for PostScript output. Committed by JM. Thanks to Venkat Reddy. See Issue [48264](http://issues.apache.org/bugzilla/show_bug.cgi?id=48264) .
+- ![add](/images/add.jpg)Enabled native encoding of CMYK images for PostScript output. Committed by JM. Thanks to Venkat Reddy. See Issue [48264](http://issues.apache.org/bugzilla/show_bug.cgi?id=48264) .
 
-- ![add](images/add.jpg)Support loading of ICC Profiles from PNG and JPEG when used through ImageIO. Committed by MB.
+- ![add](/images/add.jpg)Support loading of ICC Profiles from PNG and JPEG when used through ImageIO. Committed by MB.
 
-- ![add](images/add.jpg)Added 60 seconds expiration for invalid URIs in the image cache to recover from temporarily unavailable images. Committed by JM.
+- ![add](/images/add.jpg)Added 60 seconds expiration for invalid URIs in the image cache to recover from temporarily unavailable images. Committed by JM.
 
-- ![add](images/add.jpg)Added TexturePaint support for PSGraphics2D (PostScript tiling patterns). Committed by JM. Thanks to Jiří Kunhart. See Issue [46583](http://issues.apache.org/bugzilla/show_bug.cgi?id=46583) .
+- ![add](/images/add.jpg)Added TexturePaint support for PSGraphics2D (PostScript tiling patterns). Committed by JM. Thanks to Jiří Kunhart. See Issue [46583](http://issues.apache.org/bugzilla/show_bug.cgi?id=46583) .
 
-- ![add](images/add.jpg)XMP framework: Added support for the structure property shorthand form and for specifying simple property values as attributes on rdf:Description elements. Committed by JM.
+- ![add](/images/add.jpg)XMP framework: Added support for the structure property shorthand form and for specifying simple property values as attributes on rdf:Description elements. Committed by JM.
 
-- ![add](images/add.jpg)Added RefinedImageFlavor to the image loading framework for better refinement of image flavors. Committed by JM.
+- ![add](/images/add.jpg)Added RefinedImageFlavor to the image loading framework for better refinement of image flavors. Committed by JM.
 
-- ![fix](images/fix.jpg)Two properties didn't get copied in copy constructor of PSState. Committed by JM. Thanks to Julien Aymé. See Issue [49364](http://issues.apache.org/bugzilla/show_bug.cgi?id=49364) .
+- ![fix](/images/fix.jpg)Two properties didn't get copied in copy constructor of PSState. Committed by JM. Thanks to Julien Aymé. See Issue [49364](http://issues.apache.org/bugzilla/show_bug.cgi?id=49364) .
 
-- ![fix](images/fix.jpg)Bugfix for detecting multi-strip CCITT-encoded TIFFs. Committed by JM.
+- ![fix](/images/fix.jpg)Bugfix for detecting multi-strip CCITT-encoded TIFFs. Committed by JM.
 
-- ![fix](images/fix.jpg)Bugfix: Properly handle file URLs where URL.getHost() is an empty string. Committed by JM.
+- ![fix](/images/fix.jpg)Bugfix: Properly handle file URLs where URL.getHost() is an empty string. Committed by JM.
 
-- ![fix](images/fix.jpg)Bugfix: Clip area got lost while cloning GraphicContext. Committed by JM.
+- ![fix](/images/fix.jpg)Bugfix: Clip area got lost while cloning GraphicContext. Committed by JM.
 
-- ![fix](images/fix.jpg)Switched from linear RGB to sRGB for the fallback color model, in order to avoid trouble with some images (CMYK TIFF, for example). Committed by JM.
+- ![fix](/images/fix.jpg)Switched from linear RGB to sRGB for the fallback color model, in order to avoid trouble with some images (CMYK TIFF, for example). Committed by JM.
 
-- ![fix](images/fix.jpg)Bugfix: reset graphic state when a page is finished in PostScript. Committed by JM.
+- ![fix](/images/fix.jpg)Bugfix: reset graphic state when a page is finished in PostScript. Committed by JM.
 
-- ![fix](images/fix.jpg)Bugfix: glyph names starting with ‘u’ but not in the ‘official’ glyph list could cause a StringIndexOutOfBoundsException because they were parsed as u1234-like unicode values. Committed by VH.
+- ![fix](/images/fix.jpg)Bugfix: glyph names starting with ‘u’ but not in the ‘official’ glyph list could cause a StringIndexOutOfBoundsException because they were parsed as u1234-like unicode values. Committed by VH.
 
-- ![fix](images/fix.jpg)Bugfix: Streams were not closed in Service class. Committed by JM.
+- ![fix](/images/fix.jpg)Bugfix: Streams were not closed in Service class. Committed by JM.
 
-- ![fix](images/fix.jpg)Catching IllegalArgumentException in XMPSerializer when the Transformer implementation in use doesn't support the INDENT key. Committed by JM.
+- ![fix](/images/fix.jpg)Catching IllegalArgumentException in XMPSerializer when the Transformer implementation in use doesn't support the INDENT key. Committed by JM.
 
-- ![fix](images/fix.jpg)Added the ability to assign a string value for a key in a postscript dictionary. Committed by AC. Thanks to Jiří Kunhart. See Issue [46292](http://issues.apache.org/bugzilla/show_bug.cgi?id=46292) .
+- ![fix](/images/fix.jpg)Added the ability to assign a string value for a key in a postscript dictionary. Committed by AC. Thanks to Jiří Kunhart. See Issue [46292](http://issues.apache.org/bugzilla/show_bug.cgi?id=46292) .
 
-- ![fix](images/fix.jpg)Made loading images via Image I/O more robust: A PNG with a zero resolution should fall back to the default resolution. Committed by JM. See Issue [45789](http://issues.apache.org/bugzilla/show_bug.cgi?id=45789) .
+- ![fix](/images/fix.jpg)Made loading images via Image I/O more robust: A PNG with a zero resolution should fall back to the default resolution. Committed by JM. See Issue [45789](http://issues.apache.org/bugzilla/show_bug.cgi?id=45789) .
 
-- ![fix](images/fix.jpg)JPEGPreloader: Fixed interpretation of JPEG resolution when "dots per centimeter" is specified. Committed by JM. See Issue [45835](http://issues.apache.org/bugzilla/show_bug.cgi?id=45835) .
+- ![fix](/images/fix.jpg)JPEGPreloader: Fixed interpretation of JPEG resolution when "dots per centimeter" is specified. Committed by JM. See Issue [45835](http://issues.apache.org/bugzilla/show_bug.cgi?id=45835) .
 
-- ![fix](images/fix.jpg)Bugfix: Added missing start/endPrefixMapping() calls when serializing XMP packets. Committed by JM.
+- ![fix](/images/fix.jpg)Bugfix: Added missing start/endPrefixMapping() calls when serializing XMP packets. Committed by JM.
 
-- ![update](images/update.jpg)Optimization for PostScript state handling in (E)PSDocumentGraphics2D. Committed by JM. Thanks to Julien Aymé. See Issue [49339](http://issues.apache.org/bugzilla/show_bug.cgi?id=49339) .
+- ![update](/images/update.jpg)Optimization for PostScript state handling in (E)PSDocumentGraphics2D. Committed by JM. Thanks to Julien Aymé. See Issue [49339](http://issues.apache.org/bugzilla/show_bug.cgi?id=49339) .
 
-- ![update](images/update.jpg)PS output: Using shorthand procedures for rectangles instead of the generic shape processor. Committed by JM. Thanks to Julien Aymé. See Issue [49338](http://issues.apache.org/bugzilla/show_bug.cgi?id=49338) .
+- ![update](/images/update.jpg)PS output: Using shorthand procedures for rectangles instead of the generic shape processor. Committed by JM. Thanks to Julien Aymé. See Issue [49338](http://issues.apache.org/bugzilla/show_bug.cgi?id=49338) .
 
-- ![update](images/update.jpg)Moved method disableClipping from AbstractPSDocumentGraphics2D to PSGraphics2D. Committed by JM. Thanks to Julien Aymé. See Issue [49337](http://issues.apache.org/bugzilla/show_bug.cgi?id=49337) .
+- ![update](/images/update.jpg)Moved method disableClipping from AbstractPSDocumentGraphics2D to PSGraphics2D. Committed by JM. Thanks to Julien Aymé. See Issue [49337](http://issues.apache.org/bugzilla/show_bug.cgi?id=49337) .
 
 ### Contributors to this release <a id="contributors_1.4"></a>
 
@@ -119,29 +119,29 @@ This is a list of other contributors:<br></br>Andrey Koltunov, Calixte Denizet, 
 ### Changes to the Code Base <a id="Code_1.3.1"></a>
 
 
-- ![add](images/add.jpg)Added fallbacks for Type 1 fonts which don't have the normal "one", "two" etc. glyphs, but actually only provide "oneoldstyle", "twooldstyle" etc. Committed by JM.
+- ![add](/images/add.jpg)Added fallbacks for Type 1 fonts which don't have the normal "one", "two" etc. glyphs, but actually only provide "oneoldstyle", "twooldstyle" etc. Committed by JM.
 
-- ![add](images/add.jpg)Added an image loader for XML Graphics Commons' internal TIFF codec. Committed by JM.
+- ![add](/images/add.jpg)Added an image loader for XML Graphics Commons' internal TIFF codec. Committed by JM.
 
-- ![add](images/add.jpg)Added image processing hints to ignore an optionally embedded color profile in JPEG images. Committed by JM.
+- ![add](/images/add.jpg)Added image processing hints to ignore an optionally embedded color profile in JPEG images. Committed by JM.
 
-- ![fix](images/fix.jpg)Made file URLs with a host (as happens when using UNC paths) work when loading images. Committed by JM. See Issue [44902](http://issues.apache.org/bugzilla/show_bug.cgi?id=44902) .
+- ![fix](/images/fix.jpg)Made file URLs with a host (as happens when using UNC paths) work when loading images. Committed by JM. See Issue [44902](http://issues.apache.org/bugzilla/show_bug.cgi?id=44902) .
 
-- ![fix](images/fix.jpg)Bugfix for classpath resources: the code doesn't just check the system class loader anymore. Committed by MB.
+- ![fix](/images/fix.jpg)Bugfix for classpath resources: the code doesn't just check the system class loader anymore. Committed by MB.
 
-- ![fix](images/fix.jpg)Bugfix for a potential multi-threading issue concerning the use of the java.text package. Committed by JM.
+- ![fix](/images/fix.jpg)Bugfix for a potential multi-threading issue concerning the use of the java.text package. Committed by JM.
 
-- ![fix](images/fix.jpg)Bugfix for extracting ICC color profiles from JPEG images. Committed by JM.
+- ![fix](/images/fix.jpg)Bugfix for extracting ICC color profiles from JPEG images. Committed by JM.
 
-- ![fix](images/fix.jpg)Fixed two cases of unclosed input streams in image loader code. Committed by JM.
+- ![fix](/images/fix.jpg)Fixed two cases of unclosed input streams in image loader code. Committed by JM.
 
-- ![fix](images/fix.jpg)Bugfix for unhandled NumberFormatException in Glpyhs when a unknown glyph name starting with "u" is found. Committed by JM.
+- ![fix](/images/fix.jpg)Bugfix for unhandled NumberFormatException in Glpyhs when a unknown glyph name starting with "u" is found. Committed by JM.
 
-- ![fix](images/fix.jpg)Bugfix for ImageEncodingHelper which produced false results if an image's sample model used BGR instead of RGB. Committed by JM.
+- ![fix](/images/fix.jpg)Bugfix for ImageEncodingHelper which produced false results if an image's sample model used BGR instead of RGB. Committed by JM.
 
-- ![fix](images/fix.jpg)Fixed behaviour for the cases where a corrupt PNG image is encountered. Committed by JM.
+- ![fix](/images/fix.jpg)Fixed behaviour for the cases where a corrupt PNG image is encountered. Committed by JM.
 
-- ![fix](images/fix.jpg)Bugfix for EOFException when pre-loading very small PNG images (file size < 88 bytes). Committed by JM.
+- ![fix](/images/fix.jpg)Bugfix for EOFException when pre-loading very small PNG images (file size < 88 bytes). Committed by JM.
 
 ### Contributors to this release <a id="contributors_1.3.1"></a>
 
@@ -154,31 +154,31 @@ This is a list of all people who participated as committers:<br></br>Jeremias M�
 ### Changes to the Code Base <a id="Code_1.3"></a>
 
 
-- ![add](images/add.jpg)Image Loading: Support for passing in SAXSource instance. Committed by JM. Thanks to Adam Strzelecki. See Issue [44466](http://issues.apache.org/bugzilla/show_bug.cgi?id=44466) .
+- ![add](/images/add.jpg)Image Loading: Support for passing in SAXSource instance. Committed by JM. Thanks to Adam Strzelecki. See Issue [44466](http://issues.apache.org/bugzilla/show_bug.cgi?id=44466) .
 
-- ![add](images/add.jpg)The package org.apache.xmlgraphics.image.loader was added. It contains a general image loading framework for various image formats (bitmap & vector). Committed by JM.
+- ![add](/images/add.jpg)The package org.apache.xmlgraphics.image.loader was added. It contains a general image loading framework for various image formats (bitmap & vector). Committed by JM.
 
-- ![add](images/add.jpg)XMP: Added support for structured properties. Committed by JM.
+- ![add](/images/add.jpg)XMP: Added support for structured properties. Committed by JM.
 
-- ![add](images/add.jpg)PostScript: Added classes for "BoundingBox" DSC comments. Committed by JM.
+- ![add](/images/add.jpg)PostScript: Added classes for "BoundingBox" DSC comments. Committed by JM.
 
-- ![add](images/add.jpg)Added support for classpath resources (find files in JAR files in the classpath using their MIME type) Committed by JM. Thanks to Max Berger. See Issue [42980](http://issues.apache.org/bugzilla/show_bug.cgi?id=42980) .
+- ![add](/images/add.jpg)Added support for classpath resources (find files in JAR files in the classpath using their MIME type) Committed by JM. Thanks to Max Berger. See Issue [42980](http://issues.apache.org/bugzilla/show_bug.cgi?id=42980) .
 
-- ![add](images/add.jpg)Application of the patch in Bugzilla 43069: New Macro safe-set-page-device which guards against the possibility of invalid/unsupported postscript key/values being issued to the implementing postscript page device Committed by CB. Thanks to Adrian Cumiskey. See Issue [43069](http://issues.apache.org/bugzilla/show_bug.cgi?id=43069) .
+- ![add](/images/add.jpg)Application of the patch in Bugzilla 43069: New Macro safe-set-page-device which guards against the possibility of invalid/unsupported postscript key/values being issued to the implementing postscript page device Committed by CB. Thanks to Adrian Cumiskey. See Issue [43069](http://issues.apache.org/bugzilla/show_bug.cgi?id=43069) .
 
-- ![fix](images/fix.jpg)Bugfix for ISO 8601 date formatting with negative time zones in the XMP package. Committed by JM.
+- ![fix](/images/fix.jpg)Bugfix for ISO 8601 date formatting with negative time zones in the XMP package. Committed by JM.
 
-- ![fix](images/fix.jpg)Bugfix for XMP serialization: arrays with only one entry were serialized as simple property which could lead to information loss for merge operations. Committed by JM.
+- ![fix](/images/fix.jpg)Bugfix for XMP serialization: arrays with only one entry were serialized as simple property which could lead to information loss for merge operations. Committed by JM.
 
-- ![fix](images/fix.jpg)PostScript: Fixed %%EOF checking for nested documents. Committed by JM.
+- ![fix](/images/fix.jpg)PostScript: Fixed %%EOF checking for nested documents. Committed by JM.
 
-- ![fix](images/fix.jpg)PostScript: Improved robustness of DSC parsing (multi-line comments with no value on the first line don't cause crashes anymore, fallback for unparsable DSC comments). Committed by JM.
+- ![fix](/images/fix.jpg)PostScript: Improved robustness of DSC parsing (multi-line comments with no value on the first line don't cause crashes anymore, fallback for unparsable DSC comments). Committed by JM.
 
-- ![fix](images/fix.jpg)Fixed a possible NPE in the TIFF codec (in the TIFFImage constructor). Committed by JM. Thanks to Sergey Orlov. See Issue [43120](http://issues.apache.org/bugzilla/show_bug.cgi?id=43120) .
+- ![fix](/images/fix.jpg)Fixed a possible NPE in the TIFF codec (in the TIFFImage constructor). Committed by JM. Thanks to Sergey Orlov. See Issue [43120](http://issues.apache.org/bugzilla/show_bug.cgi?id=43120) .
 
-- ![update](images/update.jpg)Support for Java 1.3 has been dropped. Java 1.4 or later is required now. Committed by JM.
+- ![update](/images/update.jpg)Support for Java 1.3 has been dropped. Java 1.4 or later is required now. Committed by JM.
 
-- ![update](images/update.jpg)PostScript: Improved PSImageUtils by introducing the ImageEncoder interface and allowing for streams instead of byte arrays for data transfer which can lower memory consumption. Committed by JM.
+- ![update](/images/update.jpg)PostScript: Improved PSImageUtils by introducing the ImageEncoder interface and allowing for streams instead of byte arrays for data transfer which can lower memory consumption. Committed by JM.
 
 ### Contributors to this release <a id="contributors_1.3"></a>
 
@@ -193,11 +193,11 @@ This is a list of other contributors:<br></br>Adam Strzelecki, Adrian Cumiskey, 
 ### Changes to the Code Base <a id="Code_1.2"></a>
 
 
-- ![add](images/add.jpg)Added support for CMYK and GRAY color spaces for PSGenerator (moved there from PSGraphics2D). Committed by JM. Thanks to Adrian Cumiskey. See Issue [42507](http://issues.apache.org/bugzilla/show_bug.cgi?id=42507) .
+- ![add](/images/add.jpg)Added support for CMYK and GRAY color spaces for PSGenerator (moved there from PSGraphics2D). Committed by JM. Thanks to Adrian Cumiskey. See Issue [42507](http://issues.apache.org/bugzilla/show_bug.cgi?id=42507) .
 
-- ![fix](images/fix.jpg)Fixed literal text string escaping in PSGenerator. Some characters were not properly escaped. Committed by JM.
+- ![fix](/images/fix.jpg)Fixed literal text string escaping in PSGenerator. Some characters were not properly escaped. Committed by JM.
 
-- ![fix](images/fix.jpg)Fixed the PDF/A namespace according to ISO-19005-1:2005/Cor.1:2007 and deprecated the use of the draft PDF/A namespace used by Adobe Acrobat 7.x. Committed by JM.
+- ![fix](/images/fix.jpg)Fixed the PDF/A namespace according to ISO-19005-1:2005/Cor.1:2007 and deprecated the use of the draft PDF/A namespace used by Adobe Acrobat 7.x. Committed by JM.
 
 ### Contributors to this release <a id="contributors_1.2"></a>
 
@@ -212,17 +212,17 @@ This is a list of other contributors:<br></br>Adrian Cumiskey.
 ### Changes to the Code Base <a id="Code_1.1"></a>
 
 
-- ![add](images/add.jpg)Added the start of an XMP metadata framework. Committed by JM.
+- ![add](/images/add.jpg)Added the start of an XMP metadata framework. Committed by JM.
 
-- ![add](images/add.jpg)ImageWriter abstraction now supports writing multi-page formats like TIFF. Committed by JM.
+- ![add](/images/add.jpg)ImageWriter abstraction now supports writing multi-page formats like TIFF. Committed by JM.
 
-- ![add](images/add.jpg)ImageWriter implementation for TIFF output using Image I/O API. Committed by JM.
+- ![add](/images/add.jpg)ImageWriter implementation for TIFF output using Image I/O API. Committed by JM.
 
-- ![add](images/add.jpg)Default implementation for AbstractGraphics2D.drawText(ACI, float, float) so PSGraphics2D supports painting text using the AttributedCharacterIterator. Committed by JM. Thanks to Max Berger.
+- ![add](/images/add.jpg)Default implementation for AbstractGraphics2D.drawText(ACI, float, float) so PSGraphics2D supports painting text using the AttributedCharacterIterator. Committed by JM. Thanks to Max Berger.
 
-- ![fix](images/fix.jpg)Various fixes and improvements in the ImageWriter abstraction. Committed by JM.
+- ![fix](/images/fix.jpg)Various fixes and improvements in the ImageWriter abstraction. Committed by JM.
 
-- ![fix](images/fix.jpg)Bugfix: The generation of the PostScript setdash command was assuming that only integer values can be used but that isn't the case. Committed by JM.
+- ![fix](/images/fix.jpg)Bugfix: The generation of the PostScript setdash command was assuming that only integer values can be used but that isn't the case. Committed by JM.
 
 ### Contributors to this release <a id="contributors_1.1"></a>
 
@@ -237,7 +237,7 @@ This is a list of other contributors:<br></br>Max Berger.
 ### Changes to the Code Base <a id="Code_1.0"></a>
 
 
-- ![add](images/add.jpg)Initial release with several components from Batik and FOP: Image codecs, Image writer abstraction, I/O classes, Java2D helpers, PostScript library with Graphics2D implementation. Committed by JM.
+- ![add](/images/add.jpg)Initial release with several components from Batik and FOP: Image codecs, Image writer abstraction, I/O classes, Java2D helpers, PostScript library with Graphics2D implementation. Committed by JM.
 
 ### Contributors to this release <a id="contributors_1.0"></a>
 
