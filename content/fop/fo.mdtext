@@ -297,6 +297,7 @@ After that, reference the last page the page-sequence generates:
 
 The FOP library provides a method to get the total page count after an FO document has been rendered. One possibility is to implement your own wrapper to do a dummy rendering, inquire the total page count and then perform the real rendering, passing the total page count to the XSLT processor to splice it into the generated FO. For example:
 
+    #!java
     import org.apache.fop.apps.*;
     import org.xml.sax.*;
     import java.io.*;
