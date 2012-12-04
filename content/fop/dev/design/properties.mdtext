@@ -110,12 +110,12 @@ Because the properties defined in the standard are basically static, FOP current
 
 In the properties xml files, one can define generic property definitions which can serve as a basis for individual property definitions. There are currently several generic properties defined in foproperties.xml. An example is GenericColor, which defines basic properties for all ColorType properties. Since the generic specification doesn't include the inherited or default elements, these should be set in each property which is based on GenericColor. Here is an example:
 
-     `<property type='generic'>
-        <name>background-color</name>
-        <use-generic>GenericColor</use-generic>
-        <inherited>false</inherited>
-        <default>transparent</default>
-      </property>` 
+    <property type='generic'>
+      <name>background-color</name>
+      <use-generic>GenericColor</use-generic>
+      <inherited>false</inherited>
+      <default>transparent</default>
+    </property>
 
 A generic property specification can include all of the elements defined for the property element in the DTD, including the description of components for compound properties, and the specification of keyword shorthands.
 
