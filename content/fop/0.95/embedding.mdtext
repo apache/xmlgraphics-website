@@ -15,6 +15,7 @@ Apache FOP relies heavily on JAXP. It uses SAX events exclusively to receive the
 
 Here is the basic pattern to render an XSL-FO file to PDF:
 
+    :::java
     import org.apache.fop.apps.FopFactory;
     import org.apache.fop.apps.Fop;
     import org.apache.fop.apps.MimeConstants;
@@ -51,6 +52,7 @@ Here is the basic pattern to render an XSL-FO file to PDF:
       //Clean-up
       out.close();
     }
+
 Let's discuss these 5 steps in detail:
 
 
@@ -84,12 +86,14 @@ Once the Fop instance is set up, call `getDefaultHandler()` to obtain a SAX Defa
 
 If you want to process XSL-FO generated from XML using XSLT we recommend again using standard JAXP to do the XSLT part and piping the generated SAX events directly through to FOP. The only thing you'd change to do that on the basic usage pattern above is to set up the Transformer differently:
 
-  //without XSLT:
-  //Transformer transformer = factory.newTransformer(); // identity transformer
+    :::java
+    //without XSLT:
+    //Transformer transformer = factory.newTransformer(); // identity transformer
 
-  //with XSLT:
-  Source xslt = new StreamSource(new File("mystylesheet.xsl"));
-  Transformer transformer = factory.newTransformer(xslt);
+    //with XSLT:
+    Source xslt = new StreamSource(new File("mystylesheet.xsl"));
+    Transformer transformer = factory.newTransformer(xslt);
+
 ## Input Sources <a id="input"></a>
 
 The input XSL-FO document is always received by FOP as a SAX stream (see the [Parsing Design Document](../dev/design/parsing.html) for the rationale).
@@ -164,11 +168,13 @@ Both the FopFactory and the FOUserAgent have a method to set a URIResolver. The 
 
 The user agent is the entity that allows you to interact with a single rendering run, i.e. the processing of a single document. If you wish to customize the user agent's behaviour, the first step is to create your own instance of FOUserAgent using the appropriate factory method on FopFactory and pass that to the factory method that will create a new Fop instance:
 
+    :::java
     FopFactory fopFactory = FopFactory.newInstance(); // Reuse the FopFactory if possible!
     // do the following for each new rendering run
     FOUserAgent userAgent = fopFactory.newFOUserAgent();
     // customize userAgent
     Fop fop = fopFactory.newFop(MimeConstants.MIME_POSTSCRIPT, userAgent, out);
+
 You can do all sorts of things on the user agent:
 
 
@@ -232,18 +238,20 @@ Both the FopFactory and the FOUserAgent have a method to set a URIResolver. The 
 
 Instead of setting the parameters manually in code as shown above you can also set many values from an XML configuration file:
 
+    :::java
     import org.apache.avalon.framework.configuration.Configuration;
     import org.apache.avalon.framework.configuration.DefaultConfigurationBuilder;
-    
+
     /*..*/
-    
+
     DefaultConfigurationBuilder cfgBuilder = new DefaultConfigurationBuilder();
     Configuration cfg = cfgBuilder.buildFromFile(new File("C:/Temp/mycfg.xml"));
     fopFactory.setUserConfig(cfg);
-    
+
     /* ..or.. */
-    
+
     fopFactory.setUserConfig(new File("C:/Temp/mycfg.xml"));
+
 The layout of the configuration file is described on the [Configuration page](configuration.html) .
 
 ## Hints <a id="hints"></a>

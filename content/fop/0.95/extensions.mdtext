@@ -17,6 +17,7 @@ Please see the [SVG documentation](graphics.html#svg) for more details.
 
 By convention, FO extensions in FOP use the "fox" namespace prefix. To use any of the FO extensions, add a namespace entry for `http://xmlgraphics.apache.org/fop/extensions` to the root element:
 
+    :::xml
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
                xmlns:fox="http://xmlgraphics.apache.org/fop/extensions">
 
@@ -28,9 +29,11 @@ In previous versions of Apache FOP there was a `fox:outline` element which was u
 
 Use the fox:destination element to define "named destinations" inside a PDF document. These are useful as fragment identifiers, e.g. "http://server/document.pdf#anchor-name". fox:destination elements can be placed almost anywhere in the fo document, including a child of root, a block-level element, or an inline-level element. For the destination to actually work, it must correspond to an "id" attribute on some fo element within the document. In other words, the "id" attribute actually creates the "view" within the PDF document. The fox:destination simply gives that view an independent name.
 
+    :::xml
     <fox:destination internal-destination="table-of-contents"/>
     ...
     <fo:block id="table-of-contents">Table of Contents</fo:block>
+
 <warning>It is possible that in some future release of FOP, *all* elements with "id" attributes will generate named-destinations, which will eliminate the need for fox:destination.</warning>
 
 ### Table Continuation Label <a id="table-continue-label"></a>
@@ -111,6 +114,6 @@ XSL-FO supports specifying color using the rgb(), rgb-icc() and system-color() f
 
 #### cmyk()<a id="color-function-cmyk"></a>
 
- `color cmyk(numeric, numeric, numeric, numeric)` 
+ `color cmyk(numeric, numeric, numeric, numeric)`
 
 This function will construct a color in device-specific CMYK color space. The numbers must be between 0.0 and 1.0. For output formats that don't support device-specific color space the CMYK value is converted to an sRGB value.

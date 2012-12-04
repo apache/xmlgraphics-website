@@ -41,13 +41,15 @@ Before we can start to work with the package we need to set up the `ImageManager
 
 The `ImageManager` needs an `ImageContext` . This interface provides the `ImageManager` with important context and configuration data. Currently this is only the source resolution. The `ImageManager` and `ImageContext` are intended to be shared within an application.
 
-import org.apache.xmlgraphics.image.loader.ImageContext;
-import org.apache.xmlgraphics.image.loader.ImageManager;
-import org.apache.xmlgraphics.image.loader.impl.DefaultImageContext;
+    :::java
+    import org.apache.xmlgraphics.image.loader.ImageContext;
+    import org.apache.xmlgraphics.image.loader.ImageManager;
+    import org.apache.xmlgraphics.image.loader.impl.DefaultImageContext;
 
-[..]
+    [..]
 
-  ImageManager imageManager = new ImageManager(new DefaultImageContext());
+    ImageManager imageManager = new ImageManager(new DefaultImageContext());
+
   In this example, `DefaultImageContext` is used. You may need to write your own implementation of `ImageContext` for your use case.
 ## Preloading an image <a id="preloading"></a>
 
@@ -55,59 +57,61 @@ In order to load an image, it needs to be "preloaded" first, i.e. the image cont
 
 Preloading is normally done through the `ImageManager` 's `getImageInfo()` method. For this operation an `ImageSessionContext` needs to be provided. It is responsible for supplying JAXP `Source` objects, URI resolution and providing other information needed for the image operations. In simple cases you can simply use `DefaultImageSessionContext` , but often you will want to write your own implementation of `ImageSessionContext` . In that case, it's recommended to subclass `AbstractImageSessionContext` which lets you avoid rewriting a lot of code for providing `Source` objects.
 
+    :::java
+    import org.apache.xmlgraphics.image.loader.ImageInfo;
+    import org.apache.xmlgraphics.image.loader.ImageSessionContext;
+    import org.apache.xmlgraphics.image.loader.impl.DefaultImageSessionContext;
 
+    [..]
+    ImageSessionContext sessionContext = new DefaultImageSessionContext(
+            imageManager.getImageContext(), null);
 
-import org.apache.xmlgraphics.image.loader.ImageInfo;
-import org.apache.xmlgraphics.image.loader.ImageSessionContext;
-import org.apache.xmlgraphics.image.loader.impl.DefaultImageSessionContext;
+    ImageInfo info = imageManager.getImageInfo(uri, sessionContext);
 
-[..]
-  ImageSessionContext sessionContext = new DefaultImageSessionContext(
-          imageManager.getImageContext(), null);
-
-  ImageInfo info = imageManager.getImageInfo(uri, sessionContext);
-  
 ## Loading an image <a id="loading"></a>
 
 Once the image is "preloaded", it can be fully loaded in the form/flavor that is needed by the consuming application. The required flavor is indicated through the `ImageFlavor` class. If you want the image as a bitmap image in memory, you could request an `ImageFlavor.RENDERED_IMAGE` . Again, the `ImageSessionContext` will be needed.
 
-import org.apache.xmlgraphics.image.loader.Image;
-import org.apache.xmlgraphics.image.loader.ImageFlavor;
+    :::java
+    import org.apache.xmlgraphics.image.loader.Image;
+    import org.apache.xmlgraphics.image.loader.ImageFlavor;
 
-[..]
-  Image img = this.imageManager.getImage(
-          info, ImageFlavor.RENDERED_IMAGE, sessionContext);
+    [..]
+      Image img = this.imageManager.getImage(
+              info, ImageFlavor.RENDERED_IMAGE, sessionContext);
 
-  ImageRendered imageRend = (ImageRendered)img;
-  RenderedImage ri = imageRend.getRenderedImage();
-  //...and do anything with the RenderedImage
-  
+      ImageRendered imageRend = (ImageRendered)img;
+      RenderedImage ri = imageRend.getRenderedImage();
+      //...and do anything with the RenderedImage
+
 In this example above, we simply acquire the image as a RenderedImage instance. If the original image was a vector graphic image (SVG, WMF etc.), it's automatically converted to a bitmap image. Note: The resolution of the created image is controlled by the target resolution returned by the `ImageSessionContext` .
 
 Of course, the framework can only provide images in the formats, it has image loaders or image converters for. An example: It is possible to load EPS images, but they can only be provided in raw form. In order to provide it as a bitmap image, a PostScript interpreter would be needed to interpret the PostScript code. This interpreter would be integrated using an `ImageConverter` implementation (see SPI section below). If the requested form of the image cannot be provided you will get an `ImageException` on which you'll have to react as needed.
 
 In [Apache FOP](http://xmlgraphics.apache.org/fop/) , each renderer supports a different set of image flavors that can be embedded in the target format. For example: The PDF renderer can deal with Java2D image, bitmaps, XML, native JPEG and CCITT images. The PCL renderer, however, can only consume bitmap images. So, if you can accept more than one flavor, the package allows you to specify all of them in an ordered list (the first in the list is the preferred format). The package will then try to return the best representation possible. Here's a code example:
 
-import org.apache.xmlgraphics.image.loader.Image;
-import org.apache.xmlgraphics.image.loader.ImageFlavor;
+    :::java
+    import org.apache.xmlgraphics.image.loader.Image;
+    import org.apache.xmlgraphics.image.loader.ImageFlavor;
 
-[..]
-  final ImageFlavor[] flavors = new ImageFlavor[]
-          {ImageFlavor.GRAPHICS2D,
-           ImageFlavor.BUFFERED_IMAGE, 
-           ImageFlavor.RENDERED_IMAGE};
+    [..]
+    final ImageFlavor[] flavors = new ImageFlavor[]
+            {ImageFlavor.GRAPHICS2D,
+             ImageFlavor.BUFFERED_IMAGE,
+             ImageFlavor.RENDERED_IMAGE};
 
-  Image img = manager.getImage(
-          info, flavors, sessionContext);
+    Image img = manager.getImage(
+            info, flavors, sessionContext);
 
-  if (img instanceof ImageGraphics2D) {
-      //handle Java2D/Graphics2D image
-  } else if (img instanceof ImageRendered) {
-      //handle BufferedImage and RenderedImage
-      //(BufferedImage is a subclass of RenderedImage)
-  } else {
-      throw new IllegalStateException("Unexpected flavor");
-  }
+    if (img instanceof ImageGraphics2D) {
+        //handle Java2D/Graphics2D image
+    } else if (img instanceof ImageRendered) {
+        //handle BufferedImage and RenderedImage
+        //(BufferedImage is a subclass of RenderedImage)
+    } else {
+        throw new IllegalStateException("Unexpected flavor");
+    }
+
   While each `BufferedImage` is also a `RenderedImage` , it can be more efficient to also specify `ImageFlavor.BUFFERED_IMAGE` in the flavor array.
 # Tips & Tricks <a id="tipsntricks"></a>
 

@@ -15,27 +15,28 @@ Document-level metadata can be specified in the `fo:declarations` element. XMP s
 
 ### Example <a id="xmp-example"></a>
 
-	[..]
-	</fo:layout-master-set>
-	<fo:declarations>
-	  <x:xmpmeta xmlns:x="adobe:ns:meta/">
-		<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-		  <rdf:Description rdf:about=""
-			  xmlns:dc="http://purl.org/dc/elements/1.1/">
-			<!-- Dublin Core properties go here -->
-			<dc:title>Document title</dc:title>
-			<dc:creator>Document author</dc:creator>
-			<dc:description>Document subject</dc:description>
-		  </rdf:Description>
-		  <rdf:Description rdf:about=""
-			  xmlns:xmp="http://ns.adobe.com/xap/1.0/">
-			<!-- XMP properties go here -->
-			<xmp:CreatorTool>Tool used to make the PDF</xmp:CreatorTool>
-		  </rdf:Description>
-		</rdf:RDF>
-	  </x:xmpmeta>
-	</fo:declarations>
-	<fo:page-sequence ...
+    :::xml
+    [..]
+    </fo:layout-master-set>
+    <fo:declarations>
+      <x:xmpmeta xmlns:x="adobe:ns:meta/">
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+        <rdf:Description rdf:about=""
+          xmlns:dc="http://purl.org/dc/elements/1.1/">
+        <!-- Dublin Core properties go here -->
+        <dc:title>Document title</dc:title>
+        <dc:creator>Document author</dc:creator>
+        <dc:description>Document subject</dc:description>
+        </rdf:Description>
+        <rdf:Description rdf:about=""
+          xmlns:xmp="http://ns.adobe.com/xap/1.0/">
+        <!-- XMP properties go here -->
+        <xmp:CreatorTool>Tool used to make the PDF</xmp:CreatorTool>
+        </rdf:Description>
+      </rdf:RDF>
+      </x:xmpmeta>
+    </fo:declarations>
+    <fo:page-sequence ...
     [..]
 
 `fo:declarations`  **must** be declared after `fo:layout-master-set` and before the first `page-sequence`.
@@ -81,10 +82,10 @@ Property sets (Namespaces) not listed here are simply passed through to the fina
 ## Links <a id="links"></a>
 
 
--  [Adobe's Extensible Metadata Platform (XMP) website](http://www.adobe.com/products/xmp/) 
+-  [Adobe's Extensible Metadata Platform (XMP) website](http://www.adobe.com/products/xmp/)
 
--  [Adobe XMP Specification](http://partners.adobe.com/public/developer/en/xmp/sdk/XMPspecification.pdf) 
+-  [Adobe XMP Specification](http://partners.adobe.com/public/developer/en/xmp/sdk/XMPspecification.pdf)
 
--  [Adobe XMP Specification](http://partners.adobe.com/public/developer/en/xmp/sdk/XMPspecification.pdf) 
+-  [Adobe XMP Specification](http://partners.adobe.com/public/developer/en/xmp/sdk/XMPspecification.pdf)
 
--  [http://dublincore.org/](http://dublincore.org/) 
+-  [http://dublincore.org/](http://dublincore.org/)

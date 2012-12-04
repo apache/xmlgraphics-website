@@ -169,11 +169,12 @@ This exception is usually a follow-up error after another exception. Sometimes t
 
 The work-around is to set an explicit `ErrorListener` on the `Transformer` . The `ErrorListener` can be as simple as this:
 
+    :::java
     import javax.xml.transform.ErrorListener;
     import javax.xml.transform.TransformerException;
 
     public class DefaultErrorListener implements ErrorListener {
-    
+
         public void warning(TransformerException exc) {
             System.err.println(exc.toString());
         }
@@ -392,7 +393,7 @@ In any case, the referenced stuff has to be pointed to by an URL. It doesn't nec
 
 Ultimately, both FOP and especially Batik should be fixed to make your code work as expected, but this will not only take some time but also some effort by a standard committee in order to make the semantics of this kind of references in embedded SVG clearer.
 
-See also [MalformedURLException](#MalformedURL) 
+See also [MalformedURLException](#MalformedURL)
 
 ### 5.5. Why is my SVG rendered at a size different from that specified in my fo:external-graphic element?<a id="svg-scaling"></a>
 
@@ -476,7 +477,7 @@ For the first problem, look at the print servlet in the FOP examples. You'll hav
 
 For the second task, you can use some client side script to start Acrobat Reader in print mode, or use a Java applet based on the FOP print servlet. This depends heavily on the client installation and should not be relied on except in tightly controlled environments.
 
-See also [http://marc.theaimsgroup.com/?l=fop-dev&m=101065988325115&w=2](http://marc.theaimsgroup.com/?l=fop-dev&m=101065988325115&w=2) 
+See also [http://marc.theaimsgroup.com/?l=fop-dev&m=101065988325115&w=2](http://marc.theaimsgroup.com/?l=fop-dev&m=101065988325115&w=2)
 
 ## 8. General questions regarding XSLT, XSLFO, and basic XML <a id="part-input"></a>
 

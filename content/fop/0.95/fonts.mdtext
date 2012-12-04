@@ -44,24 +44,25 @@ Prior to FOP version 0.94, it was always necessary to create an XML font metrics
 Basic information about fonts can be found at:
 
 
--  [Adobe font types](http://partners.adobe.com/asn/developer/type/ftypes.html) 
+-  [Adobe font types](http://partners.adobe.com/asn/developer/type/ftypes.html)
 
--  [Adobe Font Technote](http://partners.adobe.com/asn/developer/technotes/fonts.html) 
+-  [Adobe Font Technote](http://partners.adobe.com/asn/developer/technotes/fonts.html)
 
 ## Basic font configuration <a id="basics"></a>
 
 If you want FOP to use custom fonts, you need to tell it where to find them. This is done in the configuration file and once per renderer (because each output format is a little different). In the basic form, you can either tell FOP to find your operating system fonts or you can specify directories that it will search for support fonts. These fonts will then automatically be registered.
 
+    :::xml
     <fonts>
       <!-- register all the fonts found in a directory -->
       <directory>C:\MyFonts1</directory>
-      
+
       <!-- register all the fonts found in a directory
            and all of its sub directories (use with care) -->
       <directory recursive="true">C:\MyFonts2</directory>
-    
+
       <!-- automatically detect operating system installed fonts -->
-      <auto-detect/>  
+      <auto-detect/>
     </fonts>
 
 Review the documentation for [FOP Configuration](configuration.html) for instructions on making the FOP configuration available to FOP when it runs. Otherwise, FOP has no way of finding your custom font information. It is currently not possible to easily configure fonts from Java code.
@@ -120,22 +121,23 @@ java -cp build\fop.jar;lib\avalon-framework.jar;lib\commons-logging.jar;lib\comm
 
 You must tell FOP how to find and use the font metrics files by registering them in the [FOP Configuration](configuration.html) . Add entries for your custom fonts, regardless of font type, to the configuration file in a manner similar to the following:
 
+    :::xml
     <fonts>
       <!-- register a particular font -->
       <font metrics-url="file:///C:/myfonts/FTL_____.xml" kerning="yes"
           embed-url="file:///C:/myfonts/FTL_____.pfb">
          <font-triplet name="FrutigerLight" style="normal" weight="normal"/>
       </font>
-      
+
       <!-- register all the fonts found in a directory -->
       <directory>C:\MyFonts1</directory>
-      
+
       <!-- register all the fonts found in a directory
            and all of its sub directories (use with care) -->
       <directory recursive="true">C:\MyFonts2</directory>
-    
+
       <!-- automatically detect operating system installed fonts -->
-      <auto-detect/>  
+      <auto-detect/>
     </fonts>
 
 - URLs are used to access the font metric and font files. Relative URLs are resolved relative to the font-base property (or base) if available. See [FOP: Configuration](configuration.html) for more information.
@@ -166,7 +168,7 @@ When the "auto-detect" flag is set in the configuration, FOP will automatically 
 
 FOP will also auto-detect fonts which are available in the classpath, if they are described as "application/x-font" in the MANIFEST.MF file. For example, if your .jar file contains font/myfont.ttf:
 Manifest-Version: 1.0
-          
+
           Name: font/myfont.ttf
           Content-Type: application/x-font
 This feature allows you to create JAR files containing fonts. The JAR files can be added to fop by providem them in the classpath, e.g. copying them into the lib/ directory.

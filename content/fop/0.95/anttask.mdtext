@@ -11,9 +11,10 @@ The FOP Ant task will convert XSL-FO documents to PDF, PS, PCL etc. output (see 
 
 To call FOP tasks within Ant, first add a FOP task definition to your Ant build file. One method of defining the task is as follows:
 
+    :::xml
     <property name="fop.home" value="....path to your FOP HOME directory..."/>
-    
-    <taskdef name="fop" 
+
+    <taskdef name="fop"
              classname="org.apache.fop.tools.anttasks.Fop">
       <classpath>
         <fileset dir="${fop.home}/lib">
@@ -25,7 +26,7 @@ To call FOP tasks within Ant, first add a FOP task definition to your Ant build 
         </fileset>
       </classpath>
     </taskdef>
-    
+
 Then create FOP tasks within your Ant build file, using the FOP task parameters listed below.
 
 ## Parameters for FOP Ant task <a id="parameters"></a>
@@ -55,21 +56,22 @@ Then create FOP tasks within your Ant build file, using the FOP task parameters 
 
 The following example converts a single XSL-FO file to a PDF document:
 
+    :::xml
     <target name="generate-pdf" description="Generates a single PDF file">
-       <fop format="application/pdf" 
+       <fop format="application/pdf"
             fofile="c:\working\foDirectory\foDocument.fo"
             outfile="c:\working\pdfDirectory\pdfDocument.pdf" />
     </target>
-    
+
 This example converts all XSL-FO files within an entire directory to PostScript:
 
-    <target name="generate-multiple-ps" 
+    :::xml
+    <target name="generate-multiple-ps"
             description="Generates multiple PostScript files">
-       <fop format="application/postscript" 
+       <fop format="application/postscript"
             outdir="${build.dir}" messagelevel="debug">
             <fileset dir="${fo.examples.dir}">
                <include name="*.fo"/>
             </fileset>
        </fop>
     </target>
-    

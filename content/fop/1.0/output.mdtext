@@ -18,15 +18,15 @@ With a work-around, it is possible to match the PDF/PS output in a Java2D-based 
 
 1. Produce an IF file: `fop -fo myfile.fo -at application/pdf myfile.at.xml` <br></br>Specifying "application/pdf" for the "-at" parameter causes FOP to use FOP's own font subsystem (which is used by the PDF renderer). Note that no PDF file is created in this step.
 
-1. Render to a PDF file: `fop -atin myfile.at.xml -pdf myfile.pdf` 
+1. Render to a PDF file: `fop -atin myfile.at.xml -pdf myfile.pdf`
 
 1. Render to a Java2D-based renderer:
 
--  `fop -atin myfile.at.xml -print` 
+-  `fop -atin myfile.at.xml -print`
 
--  `fop -atin myfile.at.xml -awt` 
+-  `fop -atin myfile.at.xml -awt`
 
--  `fop -atin myfile.at.xml -tiff myfile.tiff` 
+-  `fop -atin myfile.at.xml -tiff myfile.tiff`
 
 
 ### Output to a Printer or Other Device <a id="general-direct-output"></a>
@@ -48,7 +48,7 @@ Note that FOP does not currently support PDF/A-1a. Support for [Tagged PDF](acce
 
 ### Fonts <a id="pdf-fonts"></a>
 
-PDF has a set of fonts that are always available to all PDF viewers; to quote from the PDF Specification: *"PDF prescribes a set of 14 standard fonts that can be used without prior definition. These include four faces each of three Latin text typefaces (Courier, Helvetica, and Times), as well as two symbolic fonts (Symbol and ITC Zapf Dingbats). These fonts, or suitable substitute fonts with the same metrics, are guaranteed to be available in all PDF viewer applications."* 
+PDF has a set of fonts that are always available to all PDF viewers; to quote from the PDF Specification: *"PDF prescribes a set of 14 standard fonts that can be used without prior definition. These include four faces each of three Latin text typefaces (Courier, Helvetica, and Times), as well as two symbolic fonts (Symbol and ITC Zapf Dingbats). These fonts, or suitable substitute fonts with the same metrics, are guaranteed to be available in all PDF viewer applications."*
 
 ### Post-processing <a id="pdf-postprocess"></a>
 
@@ -58,13 +58,14 @@ Another popular post-processing tool is [iText](http://www.lowagie.com/iText) , 
 <warning>Caveat: iText may swallow PDF bookmarks. But [Jens Stavnstrup tells us](http://issues.apache.org/bugzilla/show_bug.cgi?id=37589) that this doesn't happen if you use iText's PDFStamper.</warning>
 Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note that FOP now supports [PDF encryption](pdfencryption.html) . However the principles for using iText for other PDF features are similar.)
 
+    :::java
     public static void main(String args[]) {
       try {
         ByteArrayOutputStream fopout = new ByteArrayOutputStream();
         FileOutputStream outfile = new FileOutputStream(args[2]);
         FopFactory fopFactory = FopFactory.newInstance();
         Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, fopout);
-        
+
         Transformer transformer = TransformerFactory.newInstance().newTransformer(
             new StreamSource(new File(args[1])));
         transformer.transform(new StreamSource(new File(args[0])),
@@ -119,6 +120,7 @@ The PostScript renderer has been brought up to a similar quality as the PDF rend
 
 The PostScript renderer configuration currently allows the following settings:
 
+    :::xml
     <renderer mime="application/postscript">
       <auto-rotate-landscape>false</auto-rotate-landscape>
       <language-level>3</language-level>
@@ -157,9 +159,9 @@ The output created by the PCLRenderer is generic PCL 5, HP GL/2 and PJL. This sh
 ### References <a id="pcl-references"></a>
 
 
--  [WikiPedia entry on PCL](http://en.wikipedia.org/wiki/Printer_Control_Language) 
+-  [WikiPedia entry on PCL](http://en.wikipedia.org/wiki/Printer_Control_Language)
 
--  [Technical reference documents on PCL from Hewlett-Packard](http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=bpl04568) 
+-  [Technical reference documents on PCL from Hewlett-Packard](http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=bpl04568)
 
 ### Limitations <a id="pcl-limitations"></a>
 
@@ -184,6 +186,7 @@ The output created by the PCLRenderer is generic PCL 5, HP GL/2 and PJL. This sh
 
 The PCL renderer configuration currently allows the following settings:
 
+    :::xml
     <renderer mime="application/vnd.hp-PCL">
       <rendering>quality</rendering>
       <text-rendering>bitmap</text-rendering>
@@ -202,18 +205,20 @@ You can control the output resolution for the PCL using the "target resolution" 
 
 The PCL Renderer supports some PCL specific extensions which can be embedded into the input FO document. To use the extensions the appropriate namespace must be declared in the fo:root element like this:
 
-      <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
-               xmlns:pcl="http://xmlgraphics.apache.org/fop/extensions/pcl">
+    :::xml
+    <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
+             xmlns:pcl="http://xmlgraphics.apache.org/fop/extensions/pcl">
 
 #### Page Source (Tray selection)<a id="pcl-page-source"></a>
 
 The page-source extension attribute on fo:simple-page-master allows to select the paper tray the sheet for a particular simple-page-master is to be taken from. Example:
 
-      <fo:layout-master-set>
-        <fo:simple-page-master master-name="simple" pcl:paper-source="2">
-          ...
-        </fo:simple-page-master>
-      </fo:layout-master-set>
+    :::xml
+    <fo:layout-master-set>
+      <fo:simple-page-master master-name="simple" pcl:paper-source="2">
+        ...
+      </fo:simple-page-master>
+    </fo:layout-master-set>
 
 Note: the tray number is a positive integer and the value depends on the target printer. Not all PCL printers support the same paper trays. Usually, "1" is the default tray, "2" is the manual paper feed, "3" is the manual envelope feed, "4" is the "lower" tray and "7" is "auto-select". Consult the technical reference for your printer for all available values.
 
@@ -221,11 +226,12 @@ Note: the tray number is a positive integer and the value depends on the target 
 
 The `output-bin` extension attribute on fo:simple-page-master allows to select the output bin into which the printed output should be fed. Example:
 
-      <fo:layout-master-set>
-        <fo:simple-page-master master-name="simple" pcl:output-bin="2">
-          ...
-        </fo:simple-page-master>
-      </fo:layout-master-set>
+    :::xml
+    <fo:layout-master-set>
+      <fo:simple-page-master master-name="simple" pcl:output-bin="2">
+        ...
+      </fo:simple-page-master>
+    </fo:layout-master-set>
 
 Note: the output bin number is a positive integer and the value depends on the target printer. Not all PCL printers support the same output bins. Usually, "1" is the upper output bin, "2" is the lower (rear) output bin. Consult the technical reference for your printer for all available values.
 
@@ -233,11 +239,12 @@ Note: the output bin number is a positive integer and the value depends on the t
 
 The duplex-mode extension attribute on fo:simple-page-master allows to select the duplex mode to be used for a particular simple-page-master. Example:
 
-      <fo:layout-master-set>
-        <fo:simple-page-master master-name="simple" pcl:duplex-mode="0">
-          ...
-        </fo:simple-page-master>
-      </fo:layout-master-set>
+    :::xml
+    <fo:layout-master-set>
+      <fo:simple-page-master master-name="simple" pcl:duplex-mode="0">
+        ...
+      </fo:simple-page-master>
+    </fo:layout-master-set>
 
 Note: the duplex is a positive integer and the value depends on the target printer. Not all PCL printers support duplexing. Usually, "0" is simplex, "1" is duplex (long-edge binding), "2" is duplex (short-edge binding). Consult the technical reference for your printer for all available values.
 
@@ -258,11 +265,11 @@ FOP creates exactly one Document per Printfile with an optional Resource Group a
 ### References <a id="afp-references"></a>
 
 
--  [AFP (Advanced Function Presentation)](http://en.wikipedia.org/wiki/Advanced_Function_Presentation) 
+-  [AFP (Advanced Function Presentation)](http://en.wikipedia.org/wiki/Advanced_Function_Presentation)
 
--  [AFP Resources on the FOP WIKI](http://wiki.apache.org/xmlgraphics-fop/AFPResources) 
+-  [AFP Resources on the FOP WIKI](http://wiki.apache.org/xmlgraphics-fop/AFPResources)
 
--  [Technical notes on AFP output in FOP](http://wiki.apache.org/xmlgraphics-fop/AFPOutput) 
+-  [Technical notes on AFP output in FOP](http://wiki.apache.org/xmlgraphics-fop/AFPOutput)
 
 ### Limitations <a id="afp-limitations"></a>
 
@@ -283,6 +290,7 @@ There are still a big number of older (or limited) MO:DCA/IPDS environments in p
 
 The AFP Renderer requires special configuration particularly related to fonts. AFP Render configuration is done through the normal FOP configuration file. The MIME type for the AFP Renderer is application/x-afp which means the AFP Renderer section in the FOP configuration file looks like:
 
+    :::xml
     <renderer mime="application/x-afp">
       <!-- AFP Renderer -->
       ...
@@ -301,126 +309,130 @@ There are 4 font configuration variants supported:
 
 A typical raster font configuration looks like:
 
-      <!-- This is an example of mapping actual IBM raster fonts / code pages to a FOP font -->
-        <font>
-        <!-- The afp-font element defines the IBM code page, the matching Java encoding and the
-             base URI for the font -->
-        <afp-font type="raster" codepage="T1V10500" encoding="Cp500" base-uri="fonts/ibm/">
-          <!-- For a raster font a separate element for each font size is required providing
-               the font size and the corresponding IBM Character set name -->
-          <afp-raster-font size="7" characterset="C0N20070"/>
-          <afp-raster-font size="8" characterset="C0N20080"/>
-          <afp-raster-font size="10" characterset="C0N20000"/>
-          <afp-raster-font size="11" characterset="C0N200A0"/>
-          <afp-raster-font size="12" characterset="C0N200B0"/>
-          <afp-raster-font size="14" characterset="C0N200D0"/>
-          <afp-raster-font size="16" characterset="C0N200F0"/>
-          <afp-raster-font size="18" characterset="C0N200H0"/>
-          <afp-raster-font size="20" characterset="C0N200J0"/>
-          <afp-raster-font size="24" characterset="C0N200N0"/>
-          <afp-raster-font size="30" characterset="C0N200T0"/>
-          <afp-raster-font size="36" characterset="C0N200Z0"/>
-        </afp-font>
-        <!-- These are the usual FOP font triplets as they apply to this font -->
-        <font-triplet name="serif" style="normal" weight="normal"/>
-        <font-triplet name="Times" style="normal" weight="normal"/>
-        <font-triplet name="Times-Roman" style="normal" weight="normal"/>
-        <font-triplet name="TimesNewRoman" style="normal" weight="normal"/>
-      </font>
+    :::xml
+    <!-- This is an example of mapping actual IBM raster fonts / code pages to a FOP font -->
+      <font>
+      <!-- The afp-font element defines the IBM code page, the matching Java encoding and the
+           base URI for the font -->
+      <afp-font type="raster" codepage="T1V10500" encoding="Cp500" base-uri="fonts/ibm/">
+        <!-- For a raster font a separate element for each font size is required providing
+             the font size and the corresponding IBM Character set name -->
+        <afp-raster-font size="7" characterset="C0N20070"/>
+        <afp-raster-font size="8" characterset="C0N20080"/>
+        <afp-raster-font size="10" characterset="C0N20000"/>
+        <afp-raster-font size="11" characterset="C0N200A0"/>
+        <afp-raster-font size="12" characterset="C0N200B0"/>
+        <afp-raster-font size="14" characterset="C0N200D0"/>
+        <afp-raster-font size="16" characterset="C0N200F0"/>
+        <afp-raster-font size="18" characterset="C0N200H0"/>
+        <afp-raster-font size="20" characterset="C0N200J0"/>
+        <afp-raster-font size="24" characterset="C0N200N0"/>
+        <afp-raster-font size="30" characterset="C0N200T0"/>
+        <afp-raster-font size="36" characterset="C0N200Z0"/>
+      </afp-font>
+      <!-- These are the usual FOP font triplets as they apply to this font -->
+      <font-triplet name="serif" style="normal" weight="normal"/>
+      <font-triplet name="Times" style="normal" weight="normal"/>
+      <font-triplet name="Times-Roman" style="normal" weight="normal"/>
+      <font-triplet name="TimesNewRoman" style="normal" weight="normal"/>
+    </font>
 
 An outline font configuration is simpler as the individual font size entries are not required. However, the characterset definition is now required within the afp-font element.
 
-      <font>
-          <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH200  "
-             base-uri="file:/fonts/ibm" />
-          <font-triplet name="sans-serif" style="normal" weight="normal"/>
-          <font-triplet name="Helvetica" style="normal" weight="normal"/>
-          <font-triplet name="any" style="normal" weight="normal"/>
-      </font>
+    :::xml
+    <font>
+        <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH200  "
+           base-uri="file:/fonts/ibm" />
+        <font-triplet name="sans-serif" style="normal" weight="normal"/>
+        <font-triplet name="Helvetica" style="normal" weight="normal"/>
+        <font-triplet name="any" style="normal" weight="normal"/>
+    </font>
 
 If "base-uri" is missing or a relative URI, the fonts are resolved relative to the font base URI specified in the configuration (or on the FopFactory).
 Previously, the location of the font files was given by the "path" attribute. This is still supported for the time being, but you should move to using the more flexible "base-uri" attribute so you can profit from the power of URI resolvers.
 A CID-keyed font (Type 0, double-byte outline font) configuration is much the same as an outline font. However, the characterset definition is now required within the afp-font element.
 
-      <font>
-          <afp-font type="CIDKeyed" characterset="CZJHMNU" 
-             codepage="T1120000" encoding="UnicodeBigUnmarked"
-             base-uri="file:/fonts/ibm" />
-          <font-triplet name="J-Heisei Mincho" style="normal" weight="normal" />
-      </font>
+    :::xml
+    <font>
+        <afp-font type="CIDKeyed" characterset="CZJHMNU"
+           codepage="T1120000" encoding="UnicodeBigUnmarked"
+           base-uri="file:/fonts/ibm" />
+        <font-triplet name="J-Heisei Mincho" style="normal" weight="normal" />
+    </font>
 
 Note that the value of the encoding attribute in the example is the double-byte encoding 'UnicodeBigUnmarked' (UTF-16BE).
 
 Experimentation has shown that the font metrics for the FOP built-in Base14 fonts are actually very similar to some of the IBM outline and raster fonts. In cases were the IBM font files are not available the base-uri attribute in the afp-font element can be replaced by a base14-font attribute giving the name of the matching Base14 font. In this case the AFP Renderer will take the font metrics from the built-in font.
 
-      <!-- The following are examples of defining outline fonts based on FOP built-in
-           font metrics for the Adobe Base14 fonts -->
-      <!-- sans-serif fonts based on Helvetica -->
-      <font>
-          <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH200  "
-            base14-font="Helvetica" />
-          <font-triplet name="sans-serif" style="normal" weight="normal"/>
-          <font-triplet name="Helvetica" style="normal" weight="normal"/>
-          <font-triplet name="any" style="normal" weight="normal"/>
-      </font>
-      <font>
-          <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH300  "
-            base14-font="HelveticaOblique" />
-          <font-triplet name="sans-serif" style="italic" weight="normal"/>
-          <font-triplet name="Helvetica" style="italic" weight="normal"/>
-          <font-triplet name="any" style="italic" weight="normal"/>
-      </font>
-      <font>
-          <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH400  "
-            base14-font="HelveticaBold" />
-          <font-triplet name="sans-serif" style="normal" weight="bold"/>
-          <font-triplet name="Helvetica" style="normal" weight="bold"/>
-          <font-triplet name="any" style="normal" weight="bold"/>
-      </font>
-      <font>
-          <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH500  "
-            base14-font="HelveticaBoldOblique" />
-          <font-triplet name="sans-serif" style="italic" weight="bold"/>
-          <font-triplet name="Helvetica" style="italic" weight="bold"/>
-          <font-triplet name="any" style="italic" weight="bold"/>
-      </font>
-      
-      <!-- serif fonts based on Times Roman -->
-      <font>
-          <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZN200  "
-            base14-font="TimesRoman" />
-          <font-triplet name="serif" style="normal" weight="normal"/>
-          <font-triplet name="Times" style="normal" weight="normal"/>
-          <font-triplet name="Times-Roman" style="normal" weight="normal"/>
-      </font>
+    :::xml
+    <!-- The following are examples of defining outline fonts based on FOP built-in
+         font metrics for the Adobe Base14 fonts -->
+    <!-- sans-serif fonts based on Helvetica -->
+    <font>
+        <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH200  "
+          base14-font="Helvetica" />
+        <font-triplet name="sans-serif" style="normal" weight="normal"/>
+        <font-triplet name="Helvetica" style="normal" weight="normal"/>
+        <font-triplet name="any" style="normal" weight="normal"/>
+    </font>
+    <font>
+        <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH300  "
+          base14-font="HelveticaOblique" />
+        <font-triplet name="sans-serif" style="italic" weight="normal"/>
+        <font-triplet name="Helvetica" style="italic" weight="normal"/>
+        <font-triplet name="any" style="italic" weight="normal"/>
+    </font>
+    <font>
+        <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH400  "
+          base14-font="HelveticaBold" />
+        <font-triplet name="sans-serif" style="normal" weight="bold"/>
+        <font-triplet name="Helvetica" style="normal" weight="bold"/>
+        <font-triplet name="any" style="normal" weight="bold"/>
+    </font>
+    <font>
+        <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH500  "
+          base14-font="HelveticaBoldOblique" />
+        <font-triplet name="sans-serif" style="italic" weight="bold"/>
+        <font-triplet name="Helvetica" style="italic" weight="bold"/>
+        <font-triplet name="any" style="italic" weight="bold"/>
+    </font>
 
-      <!-- The following are examples of defining raster fonts based on FOP built-in
-           font metrics for the Adobe Base14 fonts -->
-      <!-- monospaced fonts based on Courier -->
-      <font>
-        <afp-font type="raster" codepage="T1V10500" encoding="Cp500">
-          <afp-raster-font size="7" characterset="C0420070" base14-font="Courier"/>
-          <afp-raster-font size="8" characterset="C0420080" base14-font="Courier"/>
-          <afp-raster-font size="10" characterset="C0420000" base14-font="Courier"/>
-          <afp-raster-font size="12" characterset="C04200B0" base14-font="Courier"/>
-          <afp-raster-font size="14" characterset="C04200D0" base14-font="Courier"/>
-          <afp-raster-font size="20" characterset="C04200J0" base14-font="Courier"/>
-        </afp-font>
-        <font-triplet name="monospace" style="normal" weight="normal"/>
-        <font-triplet name="Courier" style="normal" weight="normal"/>
-      </font>
-      <font>
-        <afp-font type="raster" codepage="T1V10500" encoding="Cp500">
-          <afp-raster-font size="7" characterset="C0440070" base14-font="CourierBold"/>
-          <afp-raster-font size="8" characterset="C0440080" base14-font="CourierBold"/>
-          <afp-raster-font size="10" characterset="C0440000" base14-font="CourierBold"/>
-          <afp-raster-font size="12" characterset="C04400B0" base14-font="CourierBold"/>
-          <afp-raster-font size="14" characterset="C04400D0" base14-font="CourierBold"/>
-          <afp-raster-font size="20" characterset="C04400J0" base14-font="CourierBold"/>
-        </afp-font>
-        <font-triplet name="monospace" style="normal" weight="bold"/>
-        <font-triplet name="Courier" style="normal" weight="bold"/>
-      </font>
+    <!-- serif fonts based on Times Roman -->
+    <font>
+        <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZN200  "
+          base14-font="TimesRoman" />
+        <font-triplet name="serif" style="normal" weight="normal"/>
+        <font-triplet name="Times" style="normal" weight="normal"/>
+        <font-triplet name="Times-Roman" style="normal" weight="normal"/>
+    </font>
+
+    <!-- The following are examples of defining raster fonts based on FOP built-in
+         font metrics for the Adobe Base14 fonts -->
+    <!-- monospaced fonts based on Courier -->
+    <font>
+      <afp-font type="raster" codepage="T1V10500" encoding="Cp500">
+        <afp-raster-font size="7" characterset="C0420070" base14-font="Courier"/>
+        <afp-raster-font size="8" characterset="C0420080" base14-font="Courier"/>
+        <afp-raster-font size="10" characterset="C0420000" base14-font="Courier"/>
+        <afp-raster-font size="12" characterset="C04200B0" base14-font="Courier"/>
+        <afp-raster-font size="14" characterset="C04200D0" base14-font="Courier"/>
+        <afp-raster-font size="20" characterset="C04200J0" base14-font="Courier"/>
+      </afp-font>
+      <font-triplet name="monospace" style="normal" weight="normal"/>
+      <font-triplet name="Courier" style="normal" weight="normal"/>
+    </font>
+    <font>
+      <afp-font type="raster" codepage="T1V10500" encoding="Cp500">
+        <afp-raster-font size="7" characterset="C0440070" base14-font="CourierBold"/>
+        <afp-raster-font size="8" characterset="C0440080" base14-font="CourierBold"/>
+        <afp-raster-font size="10" characterset="C0440000" base14-font="CourierBold"/>
+        <afp-raster-font size="12" characterset="C04400B0" base14-font="CourierBold"/>
+        <afp-raster-font size="14" characterset="C04400D0" base14-font="CourierBold"/>
+        <afp-raster-font size="20" characterset="C04400J0" base14-font="CourierBold"/>
+      </afp-font>
+      <font-triplet name="monospace" style="normal" weight="bold"/>
+      <font-triplet name="Courier" style="normal" weight="bold"/>
+    </font>
 
 By default, all manually configured fonts are embedded, unless they are matched in the [section of the configuration file](fonts.html#embedding) . However, the default fonts shown above will not be embedded.
 
@@ -428,45 +440,53 @@ By default, all manually configured fonts are embedded, unless they are matched 
 
 By default the AFP Renderer creates output with a resolution of 240 dpi. This can be overridden by the <renderer-resolution/> configuration element. Example:
 
-      <renderer-resolution>240</renderer-resolution>
+    :::xml
+    <renderer-resolution>240</renderer-resolution>
 
 #### Images<a id="afp-image-config"></a>
 
 By default the AFP Renderer converts all images to 8 bit grey level. This can be overridden by the <images/> configuration element. Example:
 
-      <images mode="color" />
+    :::xml
+    <images mode="color" />
 
 This will put images as RGB images into the AFP output stream. The default setting is:
 
-      <images mode="b+w" bits-per-pixel="8" native="true"/>
+    :::xml
+    <images mode="b+w" bits-per-pixel="8" native="true"/>
 
 Only the values "color" and "b+w" are allowed for the mode attribute.
 
 The bits-per-pixel attribute is ignored if mode is "color". For "b+w" mode is must be 1, 4, or 8.
 
-      <images native="true"/>
+    :::xml
+    <images native="true"/>
 
 When the native attribute is specified and set to "true", all image resources will be natively injected into the datastream using an object container rather than being converted into an IOCA FS45 image. Support for native image formats (e.g. JPEG, TIFF, GIF) is not always available on printer implementations so by default this configuration option is set to "false".
 
 Setting `cmyk="true"` on the `images` element will enable CMYK colors. This will only have an effect if the color mode is set to "color". Example:
 
-      <images mode="color" cmyk="true"/>
+    :::xml
+    <images mode="color" cmyk="true"/>
 
 When the color mode is set to 1 bit (bi-level), the "dithering-quality" attribute can be used to select the level of quality to use when converting images to bi-level images. Valid values for this attribute are floating point numbers from 0.0 (fastest) to 1.0 (best), or special values: "minimum" (=0.0), "maximum" (1.0), "medium" (0.5, the default). For the higher settings to work as expected, JAI needs to be present in the classpath. If JAI is present, 0.0 results in a minimal darkness-level switching between white and black. 0.5 does bayer-based dithering and 1.0 will use error-diffusion dithering. The higher the value, the higher the quality and the slower the processing of the images.
 
-      <images mode="b+w" bits-per-pixel="1" dithering-quality="maximum"/>
+    :::xml
+    <images mode="b+w" bits-per-pixel="1" dithering-quality="maximum"/>
 
 #### Shading<a id="afp-shading-config"></a>
 
 By default, filled rectangles are painted using their given color using a PTOCA I-axis rule (DIR). But not all environments handle these colors correctly. That's why a setting is supported that paints the rectangles using an ordered dither pattern (bi-level) with an inline IOCA FS10 image that is used together with the "replicate and trim" mapping. The optional "shading" element can be used to control the shading mode. Its default value is "color". To enable the dithered mode, use "dithered". Example:
 
-      <shading>dithered</shading>
+    :::xml
+    <shading>dithered</shading>
 
 #### Resource Group File<a id="afp-resource-group-file"></a>
 
 By default the AFP Renderer will place all data resource objects such as images within the document of the main output datastream. An external resource group file where document resources may be specified with the <resource-group-file/> configuration element. Example:
 
-      <resource-group-file>external_resources.afp</resource-group-file>
+    :::xml
+    <resource-group-file>external_resources.afp</resource-group-file>
 
 Be careful when using this option not to overwrite existing resource files from previous rendering runs.
 
@@ -483,19 +503,21 @@ It is possible to override these defaults, either per image (see the [afp:resour
 
 The AFP Renderer supports some AFP specific extensions which can be embedded into the input fo document. To use the extensions the appropriate namespace must be declared in the fo:root element like this:
 
-      <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
-               xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
+    :::xml
+    <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
+             xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
 
 #### Page Overlay (IPO) Extension<a id="afp-page-overlay"></a>
 
 The include-page-overlay extension element allows to define on a per simple-page-master basis a page overlay resource. Example:
 
-      <fo:layout-master-set>
-        <fo:simple-page-master master-name="simple">
-          <afp:include-page-overlay name="O1SAMP1 " x="20mm" y="30mm" />
-          ...
-        </fo:simple-page-master>
-      </fo:layout-master-set>
+    :::xml
+    <fo:layout-master-set>
+      <fo:simple-page-master master-name="simple">
+        <afp:include-page-overlay name="O1SAMP1 " x="20mm" y="30mm" />
+        ...
+      </fo:simple-page-master>
+    </fo:layout-master-set>
 
 The mandatory name attribute must refer to an 8 character (space padded) resource name that must be known in the AFP processing environment. Optional x and y attributes can be specified to place the Overlay at an offset from the top left of the page.
 
@@ -503,6 +525,7 @@ The mandatory name attribute must refer to an 8 character (space padded) resourc
 
 The include-page-segment extension element allows to define resource substitution for fo:external-graphics elements. Example:
 
+    :::xml
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
      xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
       <fo:layout-master-set>
@@ -520,6 +543,7 @@ The effect here is that whenever FOP encounters the URI specified in the extensi
 
 The tag-logical-element extension element allows to injects TLEs into the AFP output stream. Example:
 
+    :::xml
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
      xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
       <fo:layout-master-set>
@@ -540,6 +564,7 @@ The tag-logical-element extension element can appear within a simple-page-master
 
 The no-operation extension provides the ability to carry up to 32K of comments or any other type of unarchitected data into the AFP output stream. Example:
 
+    :::xml
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
      xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
       <fo:layout-master-set>
@@ -554,6 +579,7 @@ The no-operation extension element can only occur within a simple-page-master. M
 
 The invoke-medium-map extension allows to generate IMM fields (Invoke Medium Map) in the generated AFP output. Example:
 
+    :::xml
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
      xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
       [..]
@@ -568,6 +594,7 @@ The invoke-medium-map element is allowed as child of fo:page-sequence (page grou
 
 Apache FOP supports embedding an external form map resource in the generated AFP output. This is done using the `afp:include-form-map` extension. An example:
 
+    :::xml
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
          xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
       [..]
@@ -583,6 +610,7 @@ Apache FOP doesn't support a way to define a form map or medium map using XML me
 
 The resource foreign attributes provides the ability to name and control where data object resources (e.g. images/scalable vector graphics) will reside in the AFP output. The afp foreign attributes are only used in conjuntion with <fo:external-graphic/> and <instream-foreign-object/>. Example:
 
+    :::xml
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
      xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
      ...
@@ -668,6 +696,7 @@ The quality of the bitmap depends on the target resolution setting on the FOUser
 
 The TIFF and PNG renderer configuration currently allows the following settings:
 
+    :::xml
     <renderer mime="image/png">
       <color-mode>rgba</color-mode>
       <transparent-page-background>true</transparent-page-background>
@@ -702,6 +731,7 @@ The default value for the `"rendering"` setting is `"true"` . You can set this v
 
 In addition to the above values the TIFF renderer configuration allows some additional settings:
 
+    :::xml
     <renderer mime="image/tiff">
       <transparent-page-background>true</transparent-page-background>
       <compression>CCITT T.6</compression>
@@ -715,13 +745,13 @@ The default value for the "compression" setting is "PackBits" which which is a w
 
 -  `PackBits` (RLE, run-length encoding)
 
-- `JPEG` 
+- `JPEG`
 
-- `Deflate` 
+- `Deflate`
 
-- `LZW` 
+- `LZW`
 
-- `ZLib` 
+- `ZLib`
 
 - `CCITT T.4` (Fax Group 3)
 
@@ -734,6 +764,7 @@ If you want to use CCITT compression, please make sure you've got [Java Advanced
 
 The IF-based bitmap output implementations support a rendering option with the key "target-bitmap-size" (value: java.awt.Dimension) that allows to force the pages to be proportionally fit into a bitmap of a given size. This can be used to produce thumbnails or little preview images of the individual pages. An example:
 
+    :::xml
     userAgent.getRenderingOptions().put(
         "target-bitmap-size", new Dimension(320, 200));
 

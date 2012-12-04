@@ -13,7 +13,7 @@ Accessibility features are available only for the PDF output format and there ar
 There are 3 ways to enable accessibility:
 
 
-1.  **Command line:** The command line option -a turns on accessibility:<br/>`fop -a -fo mydocument.fo -pdf mydocument.pdf`<br/> 
+1.  **Command line:** The command line option -a turns on accessibility:<br/>`fop -a -fo mydocument.fo -pdf mydocument.pdf`<br/>
 1.  **Embedding:**<br/>`userAgent.setAccessibility(true);` <br/>
 1.  **Optional setting in fop.xconf file:**<br/>`<fop version="1.0">`<br/>`<accessibility>true</accessibility>`<br/>`...`<br/>`</fop>`
 
@@ -51,12 +51,14 @@ If a non-standard structure type is specified, FOP will issue a warning and fall
 
 If your document has content that is not meant to appear in the structure tree, you can wrap it in an `fo:wrapper` element whose `role` property has been set to ‘artifact’. For example:
 
+    :::xml
     <fo:block>blah... blah...
       <fo:wrapper role="artifact">Funny graphical thing without logical meaning</fo:wrapper>
       blah... blah... </fo:block>
 
 This special value for the `role` property can also be applied to `fo:static-content` elements; indeed such elements are often used to contain page header information, that is there purely as a reading aid for sighted people and is meaningless when read out loud by a screen reader.
 
+    :::xml
     <fo:static-content flow-name="xsl-region-before" role="artifact">
       <fo:block>Page <fo:page-number/></fo:block>
     </fo:static-content>
@@ -85,6 +87,7 @@ If for some reason a cell inside a header column is not meant to be a header cel
 
 For example, the following table:
 
+    :::xml
     <fo:table width="100%" table-layout="fixed">
       <fo:table-column xmlns:fox="http://xmlgraphics.apache.org/fop/extensions" fox:header="true" column-width="proportional-column-width(1)"/>
       <fo:table-column column-width="proportional-column-width(1)"/>
@@ -169,14 +172,14 @@ Accessibility support in Apache FOP is relatively new, so there are certain limi
 Many resources providing guidance about creating accessible documents can be found on the web. Here are a few links, along with additional resources around the topic:
 
 
--  [US Government - Website on Section 508](http://www.section508.gov/) 
+-  [US Government - Website on Section 508](http://www.section508.gov/)
 
--  [Wikipedia on Accessibility in general](http://en.wikipedia.org/wiki/Accessibility) 
+-  [Wikipedia on Accessibility in general](http://en.wikipedia.org/wiki/Accessibility)
 
--  [Wikipedia on Accessibility in PDF](http://en.wikipedia.org/wiki/Portable_Document_Format#Accessibility) 
+-  [Wikipedia on Accessibility in PDF](http://en.wikipedia.org/wiki/Portable_Document_Format#Accessibility)
 
 -  [PDF Reference 1.4](http://partners.adobe.com/public/developer/en/pdf/PDFReference.pdf) (look up chapters 9.7 "Tagged PDF" and 9.8 "Accessibility Support")
 
--  [PDF/A support in Apache FOP](pdfa.html) 
+-  [PDF/A support in Apache FOP](pdfa.html)
 
--  [Developer-oriented details on the accessibility features (on the Wiki)](http://wiki.apache.org/xmlgraphics-fop/PDF_Accessibility) 
+-  [Developer-oriented details on the accessibility features (on the Wiki)](http://wiki.apache.org/xmlgraphics-fop/PDF_Accessibility)

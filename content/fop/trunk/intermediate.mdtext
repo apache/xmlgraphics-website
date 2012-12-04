@@ -53,8 +53,9 @@ The second step is to reparse the file using the **AreaTreeParser** which is fou
 
 The basic pattern to parse the area tree XML format looks like this:
 
-    FopFactory fopFactory = FopFactory.newInstance();      
-          
+    :::java
+    FopFactory fopFactory = FopFactory.newInstance();
+
     // Setup output
     OutputStream out = new java.io.FileOutputStream(pdffile);
     out = new java.io.BufferedOutputStream(out);
@@ -62,16 +63,16 @@ The basic pattern to parse the area tree XML format looks like this:
         //Setup fonts and user agent
         FontInfo fontInfo = new FontInfo();
         FOUserAgent userAgent = fopFactory.newFOUserAgent();
-    
+
         //Construct the AreaTreeModel that will received the individual pages
-        AreaTreeModel treeModel = new RenderPagesModel(userAgent, 
+        AreaTreeModel treeModel = new RenderPagesModel(userAgent,
                 MimeConstants.MIME_PDF, fontInfo, out);
-                
+
         //Parse the area tree file into the area tree
         AreaTreeParser parser = new AreaTreeParser();
         Source src = new StreamSource(myIFFile);
         parser.parse(src, treeModel, userAgent);
-                
+
         //Signal the end of the processing. The renderer can finalize the target document.
         treeModel.endDocument();
     } finally {
@@ -111,32 +112,33 @@ The second step is to reparse the file using the **IFParser** which is found in 
 
 The basic pattern to parse the intermediate format looks like this:
 
+    :::java
     FopFactory fopFactory = FopFactory.newInstance();
-          
+
     // Setup output
     OutputStream out = new java.io.FileOutputStream(pdffile);
     out = new java.io.BufferedOutputStream(out);
     try {
         //Setup user agent
         FOUserAgent userAgent = fopFactory.newFOUserAgent();
-    
+
         //Create IFDocumentHandler instance
         IFDocumentHandler targetHandler;
         String mime = MimeConstants.MIME_PDF;
         targetHandler = fopFactory.getRendererFactory().createDocumentHandler(
                 userAgent, mime);
-    
+
         //Setup fonts
         IFUtil.setupFonts(targetHandler);
-        
+
         //Tell the target handler where to write the PDF to
         targetHandler.setResult(new StreamResult(pdffile));
-    
+
         //Parse the IF file
         IFParser parser = new IFParser();
         Source src = new StreamSource(myIFFile);
         parser.parse(src, targetHandler, userAgent);
-                
+
     } finally {
         out.close();
     }

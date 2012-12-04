@@ -28,21 +28,22 @@ We provide two classes (PSDocumentGraphics2D and EPSDocumentGraphics2D) which yo
 
 Creating an EPS file using the Graphics2D implementation is easy. Instantiate EPSDocumentGraphics2D, set a GraphicContext and set up the output document. Here's an example:
 
-import org.apache.xmlgraphics.java2d.ps.EPSDocumentGraphics2D;
+    :::java
+    import org.apache.xmlgraphics.java2d.ps.EPSDocumentGraphics2D;
 
-[..]
+    [..]
 
-EPSDocumentGraphics2D g2d = new EPSDocumentGraphics2D(false);
-g2d.setGraphicContext(new org.apache.xmlgraphics.java2d.GraphicContext());
+    EPSDocumentGraphics2D g2d = new EPSDocumentGraphics2D(false);
+    g2d.setGraphicContext(new org.apache.xmlgraphics.java2d.GraphicContext());
 
-//Set up the document size
-g2d.setupDocument(out, 400, 200); //400pt x 200pt
-//out is the OutputStream to write the EPS to
-          
-g2d.drawRect(10, 10, 50, 50); //paint a rectangle using normal Java2D calls
-          
-g2d.finish(); //Wrap up and finalize the EPS file
-        
+    //Set up the document size
+    g2d.setupDocument(out, 400, 200); //400pt x 200pt
+    //out is the OutputStream to write the EPS to
+
+    g2d.drawRect(10, 10, 50, 50); //paint a rectangle using normal Java2D calls
+
+    g2d.finish(); //Wrap up and finalize the EPS file
+
 A complete example for generating an EPS files can be found in the ["examples" directory](http://svn.apache.org/viewvc/xmlgraphics/commons/trunk/examples/java/java2d/ps/) in the distribution.
 
 ## DSC parser/processor <a id="dsc"></a>

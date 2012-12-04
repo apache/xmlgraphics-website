@@ -23,6 +23,7 @@ To activate PDF/X-3:2003 from the command-line, specify "-pdfprofile PDF/X-3:200
 
 When FOP is embedded in another Java application you can set a special option on the renderer options in the user agent to activate the PDF/A-1b profile. Here's an example:
 
+    :::java
     FOUserAgent userAgent = fopFactory.newFOUserAgent();
     userAgent.getRendererOptions().put("pdf-x-mode", "PDF/X-3:2003");
     Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent);

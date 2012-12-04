@@ -58,25 +58,26 @@ In earlier FOP versions, it was always necessary to create an XML font metrics f
 Basic information about fonts can be found at:
 
 
--  [Adobe font types](http://partners.adobe.com/asn/developer/type/ftypes.html) 
+-  [Adobe font types](http://partners.adobe.com/asn/developer/type/ftypes.html)
 
--  [Adobe Font Technote](http://partners.adobe.com/asn/developer/technotes/fonts.html) 
+-  [Adobe Font Technote](http://partners.adobe.com/asn/developer/technotes/fonts.html)
 
 ## Basic font configuration <a id="basics"></a>
 
 If you want FOP to use custom fonts, you need to tell it where to find them. This is done in the configuration file and once per renderer (because each output format is a little different). In the basic form, you can either tell FOP to find your operating system fonts or you can specify directories that it will search for support fonts. These fonts will then automatically be registered.
 
+    :::xml
     <renderers>
        <renderer mime="application/pdf">
           <fonts>
              <!-- register all the fonts found in a directory -->
              <directory>C:\MyFonts1</directory>
-      
+
              <!-- register all the fonts found in a directory and all of its sub directories (use with care) -->
              <directory recursive="true">C:\MyFonts2</directory>
-    
+
              <!-- automatically detect operating system installed fonts -->
-             <auto-detect/>  
+             <auto-detect/>
           </fonts>
        </renderer>
     </renderers>
@@ -135,6 +136,7 @@ java -cp build\fop.jar;lib\avalon-framework.jar;lib\commons-logging.jar;lib\comm
           msmincho.ttc msminch.xml
 Alternatively, the individual sub-fonts of a TrueType Collections can be selected using the "sub-font" attribute on the "font" element. That means that generating an XML font metrics file for TrueType collections is not necessary anymore. Example:
 
+    :::xml
     <font embed-url="gulim.ttc" sub-font="GulimChe">
       <font-triplet name="GulimChe" style="normal" weight="normal"/>
     </font>
@@ -143,6 +145,7 @@ Alternatively, the individual sub-fonts of a TrueType Collections can be selecte
 
 You must tell FOP how to find and use the font metrics files by registering them in the [FOP Configuration](configuration.html) . Add entries for your custom fonts, regardless of font type, to the configuration file in a manner similar to the following:
 
+    :::xml
     <renderers>
        <renderer mime="application/pdf">
           <fonts>
@@ -152,15 +155,15 @@ You must tell FOP how to find and use the font metrics files by registering them
                encoding-mode="single-byte">
                 <font-triplet name="FrutigerLight" style="normal" weight="normal"/>
              </font>
-      
+
              <!-- register all the fonts found in a directory -->
              <directory>C:\MyFonts1</directory>
-      
+
              <!-- register all the fonts found in a directory and all of its sub directories (use with care) -->
              <directory recursive="true">C:\MyFonts2</directory>
-    
+
              <!-- automatically detect operating system installed fonts -->
-             <auto-detect/>  
+             <auto-detect/>
           </fonts>
        </renderer>
     </renderers>
@@ -202,7 +205,7 @@ When the "auto-detect" flag is set in the configuration, FOP will automatically 
 
 FOP will also auto-detect fonts which are available in the classpath, if they are described as "application/x-font" in the MANIFEST.MF file. For example, if your .jar file contains font/myfont.ttf:
 Manifest-Version: 1.0
-          
+
           Name: font/myfont.ttf
           Content-Type: application/x-font
 This feature allows you to create JAR files containing fonts. The JAR files can be added to fop by providem them in the classpath, e.g. copying them into the lib/ directory.
@@ -218,6 +221,7 @@ There are two different ways how you can specify that a font should be reference
 
 1. For automatically configured fonts there's a different mechanism to specify which fonts should be referenced rather than embedded. This is done in the "referenced-fonts" element in the configuration. Here's an example:
 
+    :::xml
     <fop version="1.0">
        <fonts>
           <referenced-fonts>
@@ -255,6 +259,7 @@ When a `<substitutions/>` section is defined in the configuration, FOP will re-m
 
 For example you could make all FO font-family references to 'Arial' with weights between 700 and 900 reference the normal 'Arial Black' font.
 
+    :::xml
     <fop version="1.0">
        <fonts>
           <substitutions>

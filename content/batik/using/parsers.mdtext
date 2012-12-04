@@ -16,57 +16,57 @@ The microsyntaxes supported by the parser module are:
 
 
 Angles
-:    
+:
 Implemented by [AngleParser](../javadoc/org/apache/batik/parser/AngleParser.html) , handled with [AngleHandler](../javadoc/org/apache/batik/parser/AngleHandler.html) . This parser is used for parsing angles formed by a floating point number followed by `deg` , `grad` or `rad` . It is not currently used by the rest of the Batik codebase.
 
 
 Clock values
-:    
+:
 Implemented by [ClockParser](../javadoc/org/apache/batik/parser/ClockParser.html) , handled with [ClockHandler](../javadoc/org/apache/batik/parser/ClockHandler.html) . This parser is used for parsing SMIL [clock values](http://www.w3.org/TR/smil-animation/#Timing-ClockValueSyntax) .
 
 
 Fragment identifiers
-:    
+:
 Implemented by [FragmentIdentifierParser](../javadoc/org/apache/batik/parser/FragmentIdentifierParser.html) , handled with [FragmentIdentifierHandler](../javadoc/org/apache/batik/parser/FragmentIdentifierHandler.html) . This parser is used for parsing the various formats of [fragment identifier](http://www.w3.org/TR/SVG11/linking.html#SVGFragmentIdentifiers) that SVG allows.
 
 
 Lengths
-:    
+:
 Implemented by [LengthParser](../javadoc/org/apache/batik/parser/LengthParser.html) , handled with [LengthHandler](../javadoc/org/apache/batik/parser/LengthHandler.html) . This parser is used for parsing SVG length values.
 
 
 Length lists
-:    
+:
 Implemented by [LengthListParser](../javadoc/org/apache/batik/parser/LengthListParser.html) , handled with [LengthListHandler](../javadoc/org/apache/batik/parser/LengthListHandler.html) . This parser is used for parsing lists of comma or space separated SVG lengths.
 
 
 Numbers
-:    
+:
 Implemented by [NumberListParser](../javadoc/org/apache/batik/parser/NumberListParser.html) , handled with [NumberListHandler](../javadoc/org/apache/batik/parser/NumberListHandler.html) . This parser is used for parsing SVG number values.
 
 
 Number lists
-:    
+:
 Implemented by [NumberListParser](../javadoc/org/apache/batik/parser/NumberListParser.html) , handled with [NumberListHandler](../javadoc/org/apache/batik/parser/NumberListHandler.html) . This parser is used for parsing lists of comma or space separated SVG numbers.
 
 
 Path data
-:    
+:
 Implemented by [PathParser](../javadoc/org/apache/batik/parser/PathParser.html) , handled with [PathHandler](../javadoc/org/apache/batik/parser/PathHandler.html) . This parser is used for parsing SVG path data, as found in `path` element `d` attributes.
 
 
 Points
-:    
+:
 Implemented by [PointsParser](../javadoc/org/apache/batik/parser/PointsParser.html) , handled with [PointsHandler](../javadoc/org/apache/batik/parser/PointsHandler.html) . This parser is used for parsing point lists, as found in `polygon` element `points` attributes.
 
 
 Preserve aspect ratio values
-:    
+:
 Implemented by [PreserveAspectRatioParser](../javadoc/org/apache/batik/parser/PreserveAspectRatioParser.html) , handled with [PreserveAspectRatioHandler](../javadoc/org/apache/batik/parser/PreserveAspectRatioHandler.html) . This parser is used for parsing the values found in the `preserveAspectRatio` attribute of `svg` elements.
 
 
 Transform lists
-:    
+:
 Implemented by [TransformListParser](../javadoc/org/apache/batik/parser/TransformListParser.html) , handled with [TransformListHandler](../javadoc/org/apache/batik/parser/TransformListHandler.html) . This parser is used for parsing transform lists, as found in the `transform` attribute of any transformable element.
 
 Some microsyntaxes also have a corresponding producer class, which is an implementation of the handler interface that generates an object while parsing.
@@ -74,45 +74,50 @@ Some microsyntaxes also have a corresponding producer class, which is an impleme
 ## Examples <a id="examples"></a>
 
 The following example code demonstrates how to use the parser classes to parse a list of points:
-import java.awt.geom.Point2D;
-import java.util.LinkedList;
-import java.util.List;
 
-import org.apache.batik.parser.DefaultPointsHandler;
-import org.apache.batik.parser.ParseException;
-import org.apache.batik.parser.PointsHandler;
-import org.apache.batik.parser.PointsParser;
+    :::java
+    import java.awt.geom.Point2D;
+    import java.util.LinkedList;
+    import java.util.List;
 
-public class PointsParserExample {
+    import org.apache.batik.parser.DefaultPointsHandler;
+    import org.apache.batik.parser.ParseException;
+    import org.apache.batik.parser.PointsHandler;
+    import org.apache.batik.parser.PointsParser;
 
-    public List extractPoints(String s) throws ParseException {
-        final LinkedList points = new LinkedList();
-        PointsParser pp = new PointsParser();
-        PointsHandler ph = new DefaultPointsHandler() {
-            public void point(float x, float y) throws ParseException {
-                Point2D p = new Point2D.Float(x, y);
-                points.add(p);
-            }
-        };
-        pp.setPointsHandler(ph);
-        pp.parse(s);
-        return points;
+    public class PointsParserExample {
+
+        public List extractPoints(String s) throws ParseException {
+            final LinkedList points = new LinkedList();
+            PointsParser pp = new PointsParser();
+            PointsHandler ph = new DefaultPointsHandler() {
+                public void point(float x, float y) throws ParseException {
+                    Point2D p = new Point2D.Float(x, y);
+                    points.add(p);
+                }
+            };
+            pp.setPointsHandler(ph);
+            pp.parse(s);
+            return points;
+        }
     }
-}
+
 This example uses the [AWTTransformProducer](../javadoc/org/apache/batik/parser/AWTTransformProducer.html) class to generate an [AffineTransform](http://java.sun.com/j2se/1.5.0/docs/api/java/awt/geom/AffineTransform.html) object from an SVG transform list:
-import java.awt.geom.AffineTransform;
 
-import org.apache.batik.parser.AWTTransformProducer;
-import org.apache.batik.parser.ParseException;
-import org.apache.batik.parser.TransformListParser;
+    :::java
+    import java.awt.geom.AffineTransform;
 
-public class TransformParserExample {
+    import org.apache.batik.parser.AWTTransformProducer;
+    import org.apache.batik.parser.ParseException;
+    import org.apache.batik.parser.TransformListParser;
 
-    public AffineTransform parseTransformList(String s) throws ParseException {
-        TransformListParser p = new TransformListParser();
-        AWTTransformProducer tp = new AWTTransformProducer();
-        p.setTransformListHandler(tp);
-        p.parse(s);
-        return tp.getAffineTransform();
+    public class TransformParserExample {
+
+        public AffineTransform parseTransformList(String s) throws ParseException {
+            TransformListParser p = new TransformListParser();
+            AWTTransformProducer tp = new AWTTransformProducer();
+            p.setTransformListHandler(tp);
+            p.parse(s);
+            return tp.getAffineTransform();
+        }
     }
-}

@@ -36,15 +36,17 @@ When FOP is embedded in another Java application you need to set an options map 
 Encryption is enabled as soon as one of these options is set.
 An example to enable PDF encryption in Java code:
 
+    :::java
     import org.apache.fop.pdf.PDFEncryptionParams;
-    
+
     [..]
-    
+
     FOUserAgent userAgent = fopFactory.newFOUserAgent();
     useragent.getRendererOptions().put("encryption-params", new PDFEncryptionParams(
         null, "password", false, false, true, true));
     Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent);
     [..]
+
 The parameters for the constructor of PDFEncryptionParams are:
 
 

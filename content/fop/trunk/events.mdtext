@@ -32,6 +32,7 @@ A full example of what is shown here can be found in the `examples/embedding/jav
 
 The following code sample shows a very simple EventListener. It basically just sends all events to System.out (stdout) or System.err (stderr) depending on the event severity.
 
+    :::java
     import org.apache.fop.events.Event;
     import org.apache.fop.events.EventFormatter;
     import org.apache.fop.events.EventListener;
@@ -39,7 +40,7 @@ The following code sample shows a very simple EventListener. It basically just s
 
     /** A simple event listener that writes the events to stdout and stderr. */
     public class SysOutEventListener implements EventListener {
-    
+
         /** {@inheritDoc} */
         public void processEvent(Event event) {
             String msg = EventFormatter.format(event);
@@ -68,6 +69,7 @@ It is possible to gather all events for a whole processing run so they can be ev
 
 To register the event listener with FOP, get the `EventBroadcaster` which is associated with the user agent ( `FOUserAgent` ) and add it there:
 
+    :::java
     FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
     foUserAgent.getEventBroadcaster().addEventListener(new SysOutEventListener());
 
@@ -79,8 +81,9 @@ Here's an additional example of an event listener:
 
 By default, FOP continues processing even if an image wasn't found. If you have more strict requirements and want FOP to stop if an image is not available, you can do something like the following in the simplest case:
 
+    :::java
     public class MyEventListener implements EventListener {
-    
+
         public void processEvent(Event event) {
             if ("org.apache.fop.ResourceEventProducer".equals(
                     event.getEventGroupID())) {
@@ -89,27 +92,29 @@ By default, FOP continues processing even if an image wasn't found. If you have 
                 //ignore all other events (or do something of your choice)
             }
         }
-        
+
     }
+
 Increasing the event severity to FATAL will signal the event broadcaster to throw an exception and stop further processing. In the above case, all resource-related events will cause FOP to stop processing.
 
 You can also customize the exception to throw (you can may throw a RuntimeException or subclass yourself) and/or which event to respond to:
 
+    :::java
     public class MyEventListener implements EventListener {
-    
+
         public void processEvent(Event event) {
             if ("org.apache.fop.ResourceEventProducer.imageNotFound"
                     .equals(event.getEventID())) {
-                
+
                 //Get the FileNotFoundException that's part of the event's parameters
                 FileNotFoundException fnfe = (FileNotFoundException)event.getParam("fnfe");
-    
+
                 throw new RuntimeException(EventFormatter.format(event), fnfe);
             } else {
                 //ignore all other events (or do something of your choice)
             }
         }
-        
+
     }
 
 This throws a `RuntimeException` with the `FileNotFoundException` as the cause. Further processing effectively stops in FOP. You can catch the exception in your code and react as you see necessary.
@@ -122,6 +127,7 @@ The event package has been designed in order to be theoretically useful for use 
 
 The basics are very simple. Just instantiate an `Event` object and fill it with the necessary parameters. Then pass it to the `EventBroadcaster` which distributes the events to the interested listeneners. Here's a code example:
 
+    :::java
     Event ev = new Event(this, "complain", EventSeverity.WARN,
             Event.paramsBuilder()
                 .param("reason", "I'm tired")
@@ -142,15 +148,16 @@ To simplify the code needed to get an instance of the event producer interface i
 
 Here's an example of such an event producer interface:
 
+    :::java
     public interface MyEventProducer extends EventProducer {
-    
+
         public class Provider {
-            
+
             public static MyEventProducer get(EventBroadcaster broadcaster) {
                 return (MyEventProducer)broadcaster.getEventProducerFor(MyEventProducer.class);
             }
         }
-    
+
         /**
          * Complain about something.
          * @param source the event source
@@ -159,11 +166,12 @@ Here's an example of such an event producer interface:
          * @event.severity WARN
          */
         void complain(Object source, String reason, int blah);
-        
+
     }
 
 To produce the same event as in the first example above, you'd use the following code:
 
+    :::java
     EventBroadcaster broadcaster = [get it from somewhere];
     TestEventProducer producer = TestEventProducer.Provider.get(broadcaster);
     producer.complain(this, "I'm tired", 23);
@@ -212,6 +220,7 @@ One goal of the event subsystem was to have localized (translated) event message
 
 The XML format used by the `EventFormatter` is the same as [Apache Cocoon's](http://cocoon.apache.org/) catalog format. Here's an example:
 
+    :::xml
     <?xml version="1.0" encoding="UTF-8"?>
     <catalogue xml:lang="en">
       <message key="locator">

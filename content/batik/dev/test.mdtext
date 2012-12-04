@@ -24,23 +24,23 @@ The following are the high level interfaces in the infrastructure.
 
 
 
- [Test](../javadoc/org/apache/batik/test/Test.html) 
-:    
+ [Test](../javadoc/org/apache/batik/test/Test.html)
+:
 A `Test` is performing whatever check is needed in its `run` method, and each run produces a `TestReport` .
 
 
- [TestReport](../javadoc/org/apache/batik/test/TestReport.html) 
-:    
+ [TestReport](../javadoc/org/apache/batik/test/TestReport.html)
+:
 A `TestReport` describes whether a `Test` run passed or failed and provides a description of the failure in terms of an error code (unique in the context of a given `Test` ) and a set of key/value pairs.
 
 
- [TestSuite](../javadoc/org/apache/batik/test/TestSuite.html) 
-:    
+ [TestSuite](../javadoc/org/apache/batik/test/TestSuite.html)
+:
 A `TestSuite` is a test aggregation which can run a set of `Test` instances.
 
 
- [TestReportProcessor](../javadoc/org/apache/batik/test/TestReportProcessor.html) 
-:    
+ [TestReportProcessor](../javadoc/org/apache/batik/test/TestReportProcessor.html)
+:
 A `TestReportProcessor` is used to analyze a `TestReport` . A specific implementation can choose to create graphs, send an email or write an HTML file.
 
 ### Default implementations <a id="Default+implementations"></a>
@@ -49,28 +49,28 @@ The test infrastructure comes with a number of default implementations for the i
 
 
 
- [AbstractTest](../javadoc/org/apache/batik/test/AbstractTest.html) 
-:    
+ [AbstractTest](../javadoc/org/apache/batik/test/AbstractTest.html)
+:
 This implementation of the `Test` interface is intended to make it easier to write a “safe” `Test` implementation. See the [Writing new tests](#writingNewTests) section for a description of how to use that class.
 
 
- [DefaultTestReport](../javadoc/org/apache/batik/test/DefaultTestReport.html) 
-:    
+ [DefaultTestReport](../javadoc/org/apache/batik/test/DefaultTestReport.html)
+:
 This class provides a simple implementation of the `TestReport` interface that most `Test` implementations will be able to use. See the [Writing new tests](#writingNewTests) section for more details.
 
 
- [DefaultTestSuite](../javadoc/org/apache/batik/test/DefaultTestSuite.html) 
-:    
+ [DefaultTestSuite](../javadoc/org/apache/batik/test/DefaultTestSuite.html)
+:
 This class provides an implementation of the `TestSuite` interface and makes it easy to aggregate `Test` instances.
 
 
- [SimpleTestReportProcessor](../javadoc/org/apache/batik/test/SimpleTestReportProcessor.html) 
-:    
+ [SimpleTestReportProcessor](../javadoc/org/apache/batik/test/SimpleTestReportProcessor.html)
+:
 This class is a sample `TestReportProcessor` implementation that simply traces the content of a `TestReport` to an output stream.
 
 
- [TestReportMailer](../javadoc/org/apache/batik/test/TestReportMailer.html) 
-:    
+ [TestReportMailer](../javadoc/org/apache/batik/test/TestReportMailer.html)
+:
 This is another implementation of the `TestReportProcessor` interface that emails a test report to a list of destination e-mail addresses.
 
 ### XML implementations <a id="XML+implementations"></a>
@@ -86,91 +86,107 @@ The infrastructure is designed to make it easy to create, update and modify test
 ### Describing a test suite <a id="Describing+a+test+suite"></a>
 
 Test suites can be described in XML (XML-in refered to earlier in this document). The general format for describing a test suite is:
-<testSuite id="testSuiteA" name="MyFavoriteTestSuite">
-  <!-- Set of tests to be run -->
-  <test id="t1" class="myFavoriteTestClassA"/>
-  <test id="t2" class="myFavoriteTestClassB"/>
-  <test id="t3" class="myFavoriteTestClassC"/>
-</testSuite>
+
+    :::xml
+    <testSuite id="testSuiteA" name="MyFavoriteTestSuite">
+      <!-- Set of tests to be run -->
+      <test id="t1" class="myFavoriteTestClassA"/>
+      <test id="t2" class="myFavoriteTestClassB"/>
+      <test id="t3" class="myFavoriteTestClassC"/>
+    </testSuite>
+
 Note that tests can be grouped in `testGroup` elements, which can have their own `id` and `class` attributes. This is useful because it allows developers to run specific tests or test groups by specifying their IDs. In addition, because the class attribute is inherited by a `test` element from its parent, `testGroup` s allow the developers to group tests which use the same class and specify that class on the group.
 
  `Test` instances listed in a test suite can have arguments passed to them, as defined by the test class. These arguments are passed in using `arg` child elements.
 
 The following example shows a test suite with two tests:
-<testSuite id="sampleTestSuite" name="SAMPLE TEST SUITE">
 
-  <!-- ========================================================================== -->
-  <!-- Validates that the SVGRenderingAccuracyTest class is operating as expected -->
-  <!-- ========================================================================== -->
-  <test id="renderingAccuracyTest" class="org.apache.batik.test.svg.SVGRenderingAccuracyTestValidator"/>
+    :::xml
+    <testSuite id="sampleTestSuite" name="SAMPLE TEST SUITE">
 
-  <!-- ========================================================================== -->
-  <!-- Rendering regression tests                                                 -->
-  <!-- ========================================================================== -->
-  <test id="anne.svg" class="org.apache.batik.test.svg.SVGRenderingAccuracyTest">
-    <arg class="java.net.URL" 
-         value="file:samples/anne.svg"/>
-    <arg class="java.net.URL" 
-         value="file:test-references/samples/solaris/anne.png"/>
-    <property name="VariationURL" 
-           class="java.net.URL" 
-           value="file:test-references/samples/variation/anne.png"/>
-    <property name="SaveVariation" 
-           class="java.io.File" 
-           value="test-references/samples/variation-candidate/anne.png"/>
-  </test>
+      <!-- ========================================================================== -->
+      <!-- Validates that the SVGRenderingAccuracyTest class is operating as expected -->
+      <!-- ========================================================================== -->
+      <test id="renderingAccuracyTest" class="org.apache.batik.test.svg.SVGRenderingAccuracyTestValidator"/>
 
-</testSuite>
+      <!-- ========================================================================== -->
+      <!-- Rendering regression tests                                                 -->
+      <!-- ========================================================================== -->
+      <test id="anne.svg" class="org.apache.batik.test.svg.SVGRenderingAccuracyTest">
+        <arg class="java.net.URL"
+             value="file:samples/anne.svg"/>
+        <arg class="java.net.URL"
+             value="file:test-references/samples/solaris/anne.png"/>
+        <property name="VariationURL"
+               class="java.net.URL"
+               value="file:test-references/samples/variation/anne.png"/>
+        <property name="SaveVariation"
+               class="java.io.File"
+               value="test-references/samples/variation-candidate/anne.png"/>
+      </test>
+
+    </testSuite>
+
 ## Running a test suite <a id="runningATestSuite"></a>
 
 Yet another XML file describes which test to run and how to process the generated test reports. The general syntax is something like:
-<testRun id="regard" name="Test Run Name Here">
 
-  <!-- =================================== -->
-  <!-- Descriptions of processors that     -->
-  <!-- will process the results of the     -->
-  <!-- test suite                          -->
-  <!-- =================================== -->
-  <testReportProcessor class="myFavoriteReportProcessorA"/>
-  <testReportProcessor class="myFavoriteReportProcessorB"/>
+    :::xml
+    <testRun id="regard" name="Test Run Name Here">
 
-  <!-- =================================== -->
-  <!-- Set of test suite to run. They will -->
-  <!-- produce TestReports.                -->
-  <!-- =================================== -->
-  <testSuite href="http://url.to.my.first.test.suite"/>
-  <testSuite href="http://url.to.my.second.test.suite"/>
+      <!-- =================================== -->
+      <!-- Descriptions of processors that     -->
+      <!-- will process the results of the     -->
+      <!-- test suite                          -->
+      <!-- =================================== -->
+      <testReportProcessor class="myFavoriteReportProcessorA"/>
+      <testReportProcessor class="myFavoriteReportProcessorB"/>
 
-</testRun>
+      <!-- =================================== -->
+      <!-- Set of test suite to run. They will -->
+      <!-- produce TestReports.                -->
+      <!-- =================================== -->
+      <testSuite href="http://url.to.my.first.test.suite"/>
+      <testSuite href="http://url.to.my.second.test.suite"/>
+
+    </testRun>
+
  `testRun` elements can be nested. In a nutshell, you can specify a set of `TestReportProcessor` s which should process the `TestReport` generated by the `TestSuite` built from the list of `Test` instances described in the files referenced by the `testSuite` elements.
 
 For example:
-<testRun name="Batik Standard Regression Test Run">
 
-  <testRun name="REGARD">
-    <testReportProcessor class="org.apache.batik.test.xml.XMLTestReportProcessor"> 
-      <arg class="org.apache.batik.test.xml.XSLXMLReportConsumer">
-        <!-- Stylesheet -->
-        <arg class="java.lang.String" value="file:test-resources/org/apache/batik/test/svg/HTMLReport.xsl"/>
-        <!-- Ouput Directory -->
-        <arg class="java.lang.String" value="test-reports/html"/>
-        <!-- Output file prefix -->
-        <arg class="java.lang.String" value="RegardResult"/>
-        <!-- Output file suffix -->
-        <arg class="java.lang.String" value=".html"/>
-      </arg>
-    </testReportProcessor>
+    :::xml
+    <testRun name="Batik Standard Regression Test Run">
 
-    <testSuite href="file:test-resources/org/apache/batik/test/samplesRendering.xml"/> 
-    <testSuite href="file:test-resources/org/apache/batik/svggen/regsvggen.xml"/>
-    <testSuite href="file:test-resources/org/apache/batik/test/unitTesting.xml"/> 
-  </testRun>
+      <testRun name="REGARD">
+        <testReportProcessor class="org.apache.batik.test.xml.XMLTestReportProcessor">
+          <arg class="org.apache.batik.test.xml.XSLXMLReportConsumer">
+            <!-- Stylesheet -->
+            <arg class="java.lang.String" value="file:test-resources/org/apache/batik/test/svg/HTMLReport.xsl"/>
+            <!-- Ouput Directory -->
+            <arg class="java.lang.String" value="test-reports/html"/>
+            <!-- Output file prefix -->
+            <arg class="java.lang.String" value="RegardResult"/>
+            <!-- Output file suffix -->
+            <arg class="java.lang.String" value=".html"/>
+          </arg>
+        </testReportProcessor>
 
-</testRun>
+        <testSuite href="file:test-resources/org/apache/batik/test/samplesRendering.xml"/>
+        <testSuite href="file:test-resources/org/apache/batik/svggen/regsvggen.xml"/>
+        <testSuite href="file:test-resources/org/apache/batik/test/unitTesting.xml"/>
+      </testRun>
+
+    </testRun>
+
 There is a rule in Batik's `build.xml` file to run a test suite defined in an XML file as the one above. At the command line, type the following, for Windows:
+
 build runtestsuite path/to/my/newly/created/testSuite.xml
+
 and for Unix:
+
 build.sh runtestsuite path/to/my/newly/created/testSuite.xml
+
 In addition, the `regard` rule runs a specific set of tests by default, so that you do not need to pass any *testRun* file argument.
 
  ** `regard` is the project’s safeguard against regressions** .
@@ -184,13 +200,21 @@ The following describes how to use the regard tool and some of the most importan
 ### Running regard <a id="Running+regard"></a>
 
 The regard tool lets you run either all the tests or any specific test you want in the test suite. To run all the tests in the regard test suite, type the following at the command line, for Windows:
+
 build regard
+
 and for Unix:
+
 build.sh regard
+
 To run a specific test in the test suite, type the qualified test ID or any substring of that ID:
+
 build.sh regard id-list
+
 For example:
+
 build.sh regard unitTesting.ts batikFX.svg
+
 will run all the tests with an ID containing `unitTesting.ts` (i.e., all the test selection unit testing, see `test-resources/org/apache/batik/gvt/unitTesting.xml` ) and the accuracy rendering test on `batikFX.svg` (because it is the only test with `batikFX.svg` in its ID).
 
 ### Rendering accuracy tests <a id="Rendering+accuracy+tests"></a>
@@ -229,10 +253,14 @@ To set up the test environment the first time, you need to:
 This will generate an HTML test report ( `report.html` ) in the<code>test-reports/ *yyyy* . *mm* . *dd* - *HHhMMmSSs* /html</code>directory. Depending on how much different text rendering is between your work environment and the environment used to create the reference images, you will get more or less test that will fail, because of differences in the way text is rendered on various platforms and because of fonts not being available on some platforms. For example, a running the test on a Windows 2000 laptop against images generated on the Solaris platform caused 16 tests out of 71 to fail.
 
 Review the HTML report to make sure that the differences are really due to text variations. This will usually be the case and you can make sure by clicking on the diff images contained in the report to see them at full scale. You can you can then turn the “candidate” variations generated by the test into “accepted” variations by moving files from one directory to another:
-mv test-references/samples/candidate-variations/*.png test-references/samples/accepted-variations/*.png
-mv test-references/samples/tests/candidate-variations/*.png test-references/samples/tests/accepted-variations/*.png
+
+    mv test-references/samples/candidate-variations/*.png test-references/samples/accepted-variations/*.png
+    mv test-references/samples/tests/candidate-variations/*.png test-references/samples/tests/accepted-variations/*.png
+
 You can now run the test again:
+
 build regard
+
 Check the newly generated HTML report in the `test-reports/html` directory: there should no longer be any test failure.
 
 #### Daily usage ## <a id="Daily+usage"></a>
@@ -251,18 +279,19 @@ Writing a new test involves either configuring a new test or writing a new `Test
 
 Imagine that you add a cool new test case to the `samples` directory, such as `linking-viewBox.svg` . In order to check for regressions on that file you can add the following entry:
 
-        <test id="anne.svg" class="org.apache.batik.test.svg.SVGRenderingAccuracyTest">
-                <arg class="java.net.URL" 
-                    value="file:samples/tests/linkingViewBox.svg"/>
-                <arg class="java.net.URL" 
-                     value="file:test-references/samples/tests/solaris/linkingViewBox.png"/>
-                <property name="VariationURL" 
-                          class="java.net.URL" 
-                          value="file:test-references/samples/tests/variation/linkingViewBox.png"/>
-                <property name="SaveVariation" 
-                          class="java.io.File" 
-                          value="test-references/samples/tests/variation-candidate/linkingViewBox.png"/>
-        </test>
+    :::xml
+    <test id="anne.svg" class="org.apache.batik.test.svg.SVGRenderingAccuracyTest">
+            <arg class="java.net.URL"
+                value="file:samples/tests/linkingViewBox.svg"/>
+            <arg class="java.net.URL"
+                 value="file:test-references/samples/tests/solaris/linkingViewBox.png"/>
+            <property name="VariationURL"
+                      class="java.net.URL"
+                      value="file:test-references/samples/tests/variation/linkingViewBox.png"/>
+            <property name="SaveVariation"
+                      class="java.io.File"
+                      value="test-references/samples/tests/variation-candidate/linkingViewBox.png"/>
+    </test>
 
 to the `test-resources/org/apache/batik/test/samplesRendering.xml` test suite description, the description of the regard test suite. If you have access to the build machine where the reference images are typically generated, you can check 0n the reference image in `test-references/samples/tests` . Otherwise (and this is OK), you can let the test fail the first time it is run on the build/test machine and that will be a reminder for whoever is responsible for that machine that a valid reference image should be checked in.
 
@@ -272,19 +301,20 @@ Imagine you want to validate some aspect of your code, and let's take the bridge
 
 While writing the `Test` you may want to use your own XML file with just your test, for example:
 
-        <testReportProcessor class="org.apache.batik.test.SimpleTestReportProcessor"/> 
-        
-        <test class="org.apache.batik.bridge.ErrorHandlingTest">
-            <!-- Expected error code -->
-            <arg class="java.lang.String" value="expected.error.code"/>
-            <!-- Input SVG that this test manipulates to generate error conditions -->
-            <arg class="java.net.URL" value="file:test-resources/org/apache/batik/bridge/ErrorHandlingBase.svg"/>
-            <!-- Id of the element to test -->
-            <arg class="java.lang.String value="rectangle6"/>
-            <!-- Attribute to test -->
-            <arg class="java.lang.String value="x"/>
-            <!-- Value to test on the attribute -->
-            <arg class="java.lang.String value="abcd"/>
-        </test>
+    :::xml
+    <testReportProcessor class="org.apache.batik.test.SimpleTestReportProcessor"/>
+
+    <test class="org.apache.batik.bridge.ErrorHandlingTest">
+        <!-- Expected error code -->
+        <arg class="java.lang.String" value="expected.error.code"/>
+        <!-- Input SVG that this test manipulates to generate error conditions -->
+        <arg class="java.net.URL" value="file:test-resources/org/apache/batik/bridge/ErrorHandlingBase.svg"/>
+        <!-- Id of the element to test -->
+        <arg class="java.lang.String value="rectangle6"/>
+        <!-- Attribute to test -->
+        <arg class="java.lang.String value="x"/>
+        <!-- Value to test on the attribute -->
+        <arg class="java.lang.String value="abcd"/>
+    </test>
 
 This is just an example and does not pretend to be the right way to go about implementing or specifying this specific type of test. Once done with tuning the test, one or multiple configurations for the test can be added to the relevant test suite’s XML description. In some cases, it will be interesting to create a separate test suite.

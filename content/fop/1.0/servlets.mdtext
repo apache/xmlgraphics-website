@@ -28,9 +28,10 @@ This section assumes you are familiar with [embedding FOP](embedding.html) .
 
 Here is a minimal code snippet to demonstrate the basics:
 
+    :::java
     private FopFactory fopFactory = FopFactory.newInstance();
     private TransformerFactory tFactory = TransformerFactory.newInstance();
-        
+
     public void doGet(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException {
         try {
@@ -51,15 +52,16 @@ There are numerous problems with the code snippet above. Its purpose is only to 
 
 A common requirement is to transform an XML source to XSL-FO using an XSL transformation. It is recommended to use JAXP for this task. The following snippet shows the basic code:
 
+    :::java
     private FopFactory fopFactory = FopFactory.newInstance();
     private TransformerFactory tFactory = TransformerFactory.newInstance();
 
     public void init() throws ServletException {
         //Optionally customize the FopFactory and TransformerFactory here
     }
-    
+
     [..]
-    
+
     //Setup a buffer to obtain the content length
     ByteArrayOutputStream out = new ByteArrayOutputStream();
 
@@ -82,7 +84,7 @@ A common requirement is to transform an XML source to XSL-FO using an XSL transf
     //Prepare response
     response.setContentType("application/pdf");
     response.setContentLength(out.size());
-    
+
     //Send content to Browser
     response.getOutputStream().write(out.toByteArray());
     response.getOutputStream().flush();
@@ -102,7 +104,7 @@ You can easily set up your own FOUserAgent as demonstrated on the [Embedding pag
 There are several options to consider:
 
 
-- Instead of java.io.ByteArrayOutputStream consider using the ByteArrayOutputStream implementation from the [Jakarta Commons IO project](http://commons.apache.org/io/) which allocates less memory. The full class name is: `org.apache.commons.io.output.ByteArrayOutputStream` 
+- Instead of java.io.ByteArrayOutputStream consider using the ByteArrayOutputStream implementation from the [Jakarta Commons IO project](http://commons.apache.org/io/) which allocates less memory. The full class name is: `org.apache.commons.io.output.ByteArrayOutputStream`
 
 - In certain cases it can help to write the generated PDF to a temporary file so you can quickly reuse the file. This is especially useful, if Internet Explorer calls the servlet multiple times with the same request or if you often generate equal PDFs.
 
@@ -114,8 +116,9 @@ Often, you will want to use resources (stylesheets, images etc.) which are bundl
 
 Here's how to set it up in your servlet. Instantiate a new instance in the servlet's init() method:
 
+    :::java
     /** URIResolver for use by this servlet */
-    protected URIResolver uriResolver; 
+    protected URIResolver uriResolver;
 
     public void init() throws ServletException {
         this.uriResolver = new ServletContextURIResolver(getServletContext());
@@ -138,15 +141,15 @@ Here are some example snippets:
     //Setting up the JAXP TransformerFactory
     this.transFactory = TransformerFactory.newInstance();
     this.transFactory.setURIResolver(this.uriResolver);
-    
+
     [..]
-    
+
     //Setting up the FOP factory
     this.fopFactory = FopFactory.newInstance();
     this.fopFactory.setURIResolver(this.uriResolver);
-    
+
     [..]
-    
+
     //The stylesheet for the JAXP Transfomer
     Source xsltSrc = this.uriResolver.resolve(
         "servlet-context:/xslt/mystylesheet.xsl", null);

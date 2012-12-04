@@ -17,8 +17,9 @@ The second step is to reparse the IF file using the **AreaTreeParser** which is 
 
 The basic pattern to parse the IF format looks like this:
 
-    FopFactory fopFactory = FopFactory.newInstance();      
-          
+    :::java
+    FopFactory fopFactory = FopFactory.newInstance();
+
     // Setup output
     OutputStream out = new java.io.FileOutputStream(pdffile);
     out = new java.io.BufferedOutputStream(out);
@@ -26,21 +27,22 @@ The basic pattern to parse the IF format looks like this:
         //Setup fonts and user agent
         FontInfo fontInfo = new FontInfo();
         FOUserAgent userAgent = fopFactory.newFOUserAgent();
-    
+
         //Construct the AreaTreeModel that will received the individual pages
-        AreaTreeModel treeModel = new RenderPagesModel(userAgent, 
+        AreaTreeModel treeModel = new RenderPagesModel(userAgent,
                 MimeConstants.MIME_PDF, fontInfo, out);
-                
+
         //Parse the IF file into the area tree
         AreaTreeParser parser = new AreaTreeParser();
         Source src = new StreamSource(myIFFile);
         parser.parse(src, treeModel, userAgent);
-                
+
         //Signal the end of the processing. The renderer can finalize the target document.
         treeModel.endDocument();
     } finally {
         out.close();
     }
+
 This example simply reads an IF file and renders it to a PDF file. Please note, that in normal FOP operation you're shielded from having to instantiate the FontInfo object yourself. This is normally a task of the AreaTreeHandler which is not present in this scenario. The same applies to the AreaTreeModel instance, in this case an instance of a subclass called RenderPagesModel. RenderPagesModel is ideal in this case as it has very little overhead processing the individual pages. An important line in the example is the call to `endDocument()` on the AreaTreeModel. This lets the Renderer know that the processing is now finished.
 
 The intermediate format can also be used from the [command-line](running.html#standalone-start) by using the "-atin" parameter for specifying the area tree XML as input file. You can also specify a "mimic renderer" by inserting a MIME type between "-at" and the output file.

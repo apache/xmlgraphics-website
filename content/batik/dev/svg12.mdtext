@@ -29,61 +29,67 @@ There are two ways to overcome this problem. The first is to install the DOM Lev
 The second method, which requires less messing about with the JRE, is to cast your DOM objects to the concrete Batik DOM objects and call your DOM Level 3 methods directly on them. The Batik DOM classes are in the `org.apache.batik.dom` package. The classes named `Abstract*` implement the DOM interfaces, and also contain the DOM Level 3 methods. The advantage of this method is that for your code to compile and run in others’ environments, they need not install any jars with the endorsed standards overrides.
 
 Here is an example of using the second method to get access to DOM Level 3 specific methods:
-import org.apache.batik.dom.AbstractDocument;
-import org.apache.batik.dom.svg.SVGDOMImplementation;
 
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+    :::java
+    import org.apache.batik.dom.AbstractDocument;
+    import org.apache.batik.dom.svg.SVGDOMImplementation;
 
-public class C {
-    public void f() {
-        // Create a new SVG document
-        DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
-        Document doc = impl.createDocument("http://www.w3.org/2000/svg", "svg", null);
+    import org.w3c.dom.DOMImplementation;
+    import org.w3c.dom.Document;
+    import org.w3c.dom.Element;
 
-        // Create a 'g' element and append it to the root 'svg' element
-        Element e = doc.createElementNS("http://www.w3.org/2000/svg", "g");
-        doc.getDocumentElement().appendChild(e);
+    public class C {
+        public void f() {
+            // Create a new SVG document
+            DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
+            Document doc = impl.createDocument("http://www.w3.org/2000/svg", "svg", null);
 
-        // Cast the document object to org.apache.batik.dom.AbstractDocument,
-        // so that DOM 3 methods will be guaranteed to be visible
-        AbstractDocument document = (AbstractDocument) doc;
+            // Create a 'g' element and append it to the root 'svg' element
+            Element e = doc.createElementNS("http://www.w3.org/2000/svg", "g");
+            doc.getDocumentElement().appendChild(e);
 
-        // Now a DOM 3 method can be used
-        document.renameNode(e, "http://www.w3.org/2000/svg", "text");
-    }
-}
-For cases where the DOM Level 3 versions of these interfaces contain constants that you wish to use, the constants have been copied into the Batik DOM classes. For example:
-import org.apache.batik.dom.AbstractNode;
-import org.apache.batik.dom.svg.SVGDOMImplementation;
+            // Cast the document object to org.apache.batik.dom.AbstractDocument,
+            // so that DOM 3 methods will be guaranteed to be visible
+            AbstractDocument document = (AbstractDocument) doc;
 
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
-public class C {
-    public void f() {
-        // Create a new SVG document
-        DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
-        Document doc = impl.createDocument("http://www.w3.org/2000/svg", "svg", null);
-
-        // Create a 'g' element and append it to the root 'svg' element
-        Element svg = doc.getDocumentElement();
-        Element e = doc.createElementNS("http://www.w3.org/2000/svg", "g");
-        svg.appendChild(e);
-
-        AbstractNode n1 = (AbstractNode) svg;
-        AbstractNode n2 = (AbstractNode) e;
-        int position = n1.compareDocumentPosition(n2);
-        if (position == AbstractNode.DOCUMENT_POSITION_PRECEDING
-                      | AbstractNode.DOCUMENT_POSITION_CONTAINS) {
-            System.out.println("The svg element contains the g element.");
-        } else {
-            System.out.println("Something is wrong!");
+            // Now a DOM 3 method can be used
+            document.renameNode(e, "http://www.w3.org/2000/svg", "text");
         }
     }
-}
+
+For cases where the DOM Level 3 versions of these interfaces contain constants that you wish to use, the constants have been copied into the Batik DOM classes. For example:
+
+    :::java
+    import org.apache.batik.dom.AbstractNode;
+    import org.apache.batik.dom.svg.SVGDOMImplementation;
+
+    import org.w3c.dom.DOMImplementation;
+    import org.w3c.dom.Document;
+    import org.w3c.dom.Element;
+
+    public class C {
+        public void f() {
+            // Create a new SVG document
+            DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
+            Document doc = impl.createDocument("http://www.w3.org/2000/svg", "svg", null);
+
+            // Create a 'g' element and append it to the root 'svg' element
+            Element svg = doc.getDocumentElement();
+            Element e = doc.createElementNS("http://www.w3.org/2000/svg", "g");
+            svg.appendChild(e);
+
+            AbstractNode n1 = (AbstractNode) svg;
+            AbstractNode n2 = (AbstractNode) e;
+            int position = n1.compareDocumentPosition(n2);
+            if (position == AbstractNode.DOCUMENT_POSITION_PRECEDING
+                          | AbstractNode.DOCUMENT_POSITION_CONTAINS) {
+                System.out.println("The svg element contains the g element.");
+            } else {
+                System.out.println("Something is wrong!");
+            }
+        }
+    }
+
 Note that using these org.apache.batik.dom interfaces is only needed for the DOM Level 3 Core and Events interfaces. There were no earlier versions of the DOM XPath interfaces to conflict with, so these can be used directly ( `org.w3c.dom.xpath` ).
 
 Of course, none of this matters if you are just using the DOM 3 functionality in ECMAScript, as the matter of interfaces is hidden from the scripting environment.
@@ -114,7 +120,7 @@ The more recent [SVG 1.2 Tiny](http://www.w3.org/TR/SVGTiny12/) draft specifies 
 The following other features from SVG 1.2 are supported:
 
 
-- the [paint server element,](http://www.w3.org/TR/SVGTiny12/painting.html#SolidColorElement) 
+- the [paint server element,](http://www.w3.org/TR/SVGTiny12/painting.html#SolidColorElement)
 
 - the `multiImage` , `subImageRef` and `subImage` elements for [Alternate content based on display resolutions](http://www.w3.org/TR/2004/WD-SVG12-20041027/media.html#multires) ,
 
