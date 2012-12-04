@@ -72,6 +72,7 @@ Here is the basic pattern to render an XSL-FO file to PDF:
       //Clean-up
       out.close();
     }
+
 Let's discuss these 5 steps in detail:
 
 
@@ -274,6 +275,7 @@ Instead of setting the parameters manually in code as shown above you can also s
     /* ..or.. */
 
     fopFactory.setUserConfig(new File("C:/Temp/mycfg.xml"));
+
 The layout of the configuration file is described on the [Configuration page](configuration.html) .
 
 ## Document Handlers <a id="documenthandlers"></a>
