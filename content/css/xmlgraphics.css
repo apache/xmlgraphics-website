@@ -84,11 +84,6 @@ h1, h3 {
 #content img {
     vertical-align: middle;
 }
-.codehilite {
-    background-color: #ccc;
-    border-radius: 10px;
-    padding: 0 .01em 1em;
-}
 #navigation, #items {
     -moz-border-bottom-colors: none;
     -moz-border-image: none;
@@ -273,6 +268,11 @@ warning:before {
     background-color: #cc0000;
 }
 
+.codehilite {
+    background-color: #ccc;/* this will be overwritten by http://www.apache.org/css/code.css */
+    border-radius: 10px;
+    padding: 0 0.5em;
+}
 .codehilite pre {
     white-space: pre-wrap;
 }
