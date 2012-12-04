@@ -49,8 +49,6 @@ Different renderers need to have the information in different forms.
 
 ### PDF <a id="PDF"></a>
 
-
-
 original data
 :    JPG, EPS
 
@@ -59,22 +57,21 @@ bitmap
 
 other
 :    SVG
-## PS <a id="PS"></a>
 
-
-
-bitmap
-:    JPG, gif, tiff, bmp, png
-
-other
-:    SVG
-## awt <a id="awt"></a>
-
-
+### PS <a id="PS"></a>
 
 bitmap
 :    JPG, gif, tiff, bmp, png
 
 other
 :    SVG
+
+### awt <a id="awt"></a>
+
+bitmap
+:    JPG, gif, tiff, bmp, png
+
+other
+:    SVG
+
 The renderer uses the url to retrieve the image from the ImageFactory and then load the required data depending on the image mime type. If the renderer can insert the image into the document and use that data for all future references of the same image then it can cache the reference in the renderer and the image can be released from the image cache.
