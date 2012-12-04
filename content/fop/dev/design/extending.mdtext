@@ -33,14 +33,20 @@ PDF Outline - This is output document extension. If rendering to pdf and this ex
 PDF Additions - This can be done with an XML Document extension. A simple xml document is defined that provides the appropriate information. When the document is rendered a handler converts the document into PDF markup.
 
 For example:
-<my:script-link script="app.execMenuItem('AcroSrch:Query');">
-Search
-</my:script-link>
+
+    <my:script-link script="app.execMenuItem('AcroSrch:Query');">
+
+    Search
+
+    </my:script-link>
+
 to result in a text box referencing the following PDF action:
-<<
-/S /JavaScript
-/JS (app.execMenuItem("AcroSrch:Query");)
->>
+
+    <<
+    /S /JavaScript
+    /JS (app.execMenuItem("AcroSrch:Query");)
+    >>
+
 # Status <a id="status"></a>
 
 ### To Do <a id="status-todo"></a>

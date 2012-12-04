@@ -27,9 +27,10 @@ PDF/A-1a is enabled by specifying "-pdfprofile PDF/A-1a".
 
 When FOP is embedded in another Java application you can set a special option on the renderer options in the user agent to activate the PDF/A-1b profile. Here's an example:
 
-userAgent.getRendererOptions().put("pdf-a-mode", "PDF/A-1b");
-Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent);
-[..]
+    userAgent.getRendererOptions().put("pdf-a-mode", "PDF/A-1b");
+    Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent);
+    [..]
+
 If one of the validation rules of PDF/A is violated, an PDFConformanceException (descendant of RuntimeException) is thrown.
 
 For PDF/A-1a, just use the string "PDF/A-1a" instead of "PDF/A-1b".

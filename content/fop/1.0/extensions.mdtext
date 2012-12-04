@@ -31,6 +31,7 @@ Use the fox:destination element to define "named destinations" inside a PDF docu
     <fox:destination internal-destination="table-of-contents"/>
     ...
     <fo:block id="table-of-contents">Table of Contents</fo:block>
+
 <warning>It is possible that in some future release of FOP, *all* elements with "id" attributes will generate named-destinations, which will eliminate the need for fox:destination.</warning>
 
 ### Table Continuation Label <a id="table-continue-label"></a>
@@ -42,6 +43,7 @@ This extension element hasn't been reimplemented for the redesigned code, yet.
 The two proprietary extension properties, `fox:orphan-content-limit` and `fox:widow-content-limit`, are used to improve the layout of list-blocks and tables. If you have a table with many entries, you don't want a single row to be left over on a page. You will want to make sure that at least two or three lines are kept together. The properties take an absolute length which specifies the area at the beginning (`fox:widow-content-limit`) or at the end (`fox:orphan-content-limit`) of a table or list-block. The properties are inherited and only have an effect on `fo:table` and `fo:list-block`. An example: `fox:widow-content-limit="3 * 1.2em"` would make sure the you'll have at least three lines (assuming `line-height="1.2"`) together on a table or list-block.
 
 ### fox:external-document <a id="external-document"></a>
+
 This feature is incomplete. Support for multi-page documents will be added shortly. At the moment, only single-page images will work. And this will not work with RTF output.
 
 This is a proprietary extension element which allows to add whole images as pages to an FO document. For example, if you have a scanned document or a fax as multi-page TIFF file, you can append or insert this document using the `fox:external-document` element. Each page of the external document will create one full page in the target format.
@@ -105,6 +107,7 @@ For `fo:block-container` elements whose `absolute-position` set to "absolute" or
 
 Examples: `fox:transform="rotate(45)"` would rotate the block-container by 45 degrees clock-wise around its upper-left corner. `fox:transform="translate(10000,0)"` would move the block-container to the right by 10 points (=10000 millipoints, FOP uses millipoints internally!).
 This extension attribute doesn't work for all output formats! It's currently only supported for PDF, PS and Java2D-based renderers.
+
 ### Color functions <a id="color-functions"></a>
 
 XSL-FO supports specifying color using the rgb(), rgb-icc() and system-color() functions. Apache FOP provides additional color functions for special use cases. Please note that using these functions compromises the interoperability of an FO document.
@@ -130,6 +133,7 @@ The `rgb-icc` function will respond to a pseudo-profile called "#CMYK" which ind
 
 This section defines a number of extensions related to [prepress](http://en.wikipedia.org/wiki/Prepress) support. `fox:scale` defines a general scale factor for the generated pages. `fox:bleed` defines the [bleed area](http://en.wikipedia.org/wiki/Bleed_%28printing%29) for a page. `fox:crop-offset` defines the outer edges of the area in which crop marks, registration marks, color bars and page information are placed. For details, please read on below.
 Those extensions have been implemented in the PDF and Java2D renderers only.
+
 #### fox:scale<a id="scale"></a>
 
 Value: <number>{1,2}

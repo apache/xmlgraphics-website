@@ -84,7 +84,9 @@ A common requirement is to transform an XML source to XSL-FO using an XSL transf
     
     //Send content to Browser
     response.getOutputStream().write(out.toByteArray());
-    response.getOutputStream().flush();Buffering the generated PDF in a ByteArrayOutputStream is done to avoid potential problems with the Acrobat Reader Plug-in in Microsoft Internet Explorer.
+    response.getOutputStream().flush();
+
+Buffering the generated PDF in a ByteArrayOutputStream is done to avoid potential problems with the Acrobat Reader Plug-in in Microsoft Internet Explorer.
 The `Source` instance used above is simply an example. If you have to read the XML from a string, supply a `new StreamSource(new
           StringReader(xmlstring))` . Constructing and reparsing an XML string is generally less desirable than using a SAXSource if you generate your XML. You can alternatively supply a DOMSource as well. You may also use dynamically generated XSL if you like.
 
@@ -118,6 +120,7 @@ Here's how to set it up in your servlet. Instantiate a new instance in the servl
         this.uriResolver = new ServletContextURIResolver(getServletContext());
         [..]
     }
+
 The ServletContextURIResolver reacts on URIs beginning with "servlet-context:". If you want to access an image in a subdirectory of your web application, you could, for example, use: "servlet-context:/images/myimage.png". Don't forget the leading slash after the colon!
 
 Further down, you can use the URIResolver for various things:
@@ -148,6 +151,7 @@ Here are some example snippets:
         "servlet-context:/xslt/mystylesheet.xsl", null);
     Transformer transformer = this.transFactory.newTransformer(xsltSrc);
     transformer.setURIResolver(this.uriResolver);
+
 ## Notes on Microsoft Internet Explorer <a id="ie"></a>
 
 Some versions of Internet Explorer will not automatically show the PDF or call the servlet multiple times. These are well-known limitations of Internet Explorer and are not a problem of the servlet. However, Internet Explorer can still be used to download the PDF so that it can be viewed later. Here are some suggestions in this context:

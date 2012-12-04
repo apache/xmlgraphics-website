@@ -19,6 +19,7 @@ By convention, FO extensions in FOP use the "fox" namespace prefix. To use any o
 
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
              xmlns:fox="http://xmlgraphics.apache.org/fop/extensions">
+
 ### PDF Bookmarks <a id="bookmarks"></a>
 
 In old versions of Apache FOP there was a `fox:outline` element which was used to create outlines in PDF files. The redesigned code makes use of the [bookmark feature defined in the W3C XSL 1.1 standard](http://www.w3.org/TR/xsl11/#fo_bookmark-tree) .
@@ -30,6 +31,7 @@ Use the fox:destination element to define "named destinations" inside a PDF docu
     <fox:destination internal-destination="table-of-contents"/>
     ...
     <fo:block id="table-of-contents">Table of Contents</fo:block>
+
 <warning>It is possible that in some future release of FOP, *all* elements with "id" attributes will generate named-destinations, which will eliminate the need for fox:destination.</warning>
 ### Table Continuation Label <a id="table-continue-label"></a>
 
@@ -147,6 +149,7 @@ The example fo `examples/fo/advanced/rounded-corners.fo` demonstrates some finer
 
 This section defines a number of extensions related to [prepress](http://en.wikipedia.org/wiki/Prepress) support. `fox:scale` defines a general scale factor for the generated pages. `fox:bleed` defines the [bleed area](http://en.wikipedia.org/wiki/Bleed_%28printing%29) for a page. `fox:crop-offset` defines the outer edges of the area in which crop marks, registration marks, color bars and page information are placed. For details, please read on below.
 Those extensions have been implemented in the PDF and Java2D renderers only.
+
 #### fox:scale<a id="scale"></a>
 
 Value: <number>{1,2}

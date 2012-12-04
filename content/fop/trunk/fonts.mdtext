@@ -142,9 +142,10 @@ java -cp build\fop.jar;lib\avalon-framework.jar;lib\commons-logging.jar;lib\comm
           org.apache.fop.fonts.apps.TTFReader -ttcname "MS Mincho"
           msmincho.ttc msminch.xml
 Alternatively, the individual sub-fonts of a TrueType Collections can be selected using the "sub-font" attribute on the "font" element. That means that generating an XML font metrics file for TrueType collections is not necessary anymore. Example:
-<font embed-url="gulim.ttc" sub-font="GulimChe">
-  <font-triplet name="GulimChe" style="normal" weight="normal"/>
-</font>
+
+    <font embed-url="gulim.ttc" sub-font="GulimChe">
+      <font-triplet name="GulimChe" style="normal" weight="normal"/>
+    </font>
 
 
 ### Auto-Detect and auto-embed feature <a id="autodetect"></a>
@@ -156,6 +157,7 @@ Manifest-Version: 1.0
           
           Name: font/myfont.ttf
           Content-Type: application/x-font
+
 This feature allows you to create JAR files containing fonts. The JAR files can be added to fop by providem them in the classpath, e.g. copying them into the lib/ directory.
 
 #### The font cache <a id="font-cache"></a>

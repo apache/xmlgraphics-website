@@ -142,9 +142,10 @@ java -cp build\fop.jar;lib\avalon-framework.jar;lib\commons-logging.jar;lib\comm
           org.apache.fop.fonts.apps.TTFReader -ttcname "MS Mincho"
           msmincho.ttc msminch.xml
 Alternatively, the individual sub-fonts of a TrueType Collections can be selected using the "sub-font" attribute on the "font" element. That means that generating an XML font metrics file for TrueType collections is not necessary anymore. Example:
-<font embed-url="gulim.ttc" sub-font="GulimChe">
-  <font-triplet name="GulimChe" style="normal" weight="normal"/>
-</font>
+
+    <font embed-url="gulim.ttc" sub-font="GulimChe">
+      <font-triplet name="GulimChe" style="normal" weight="normal"/>
+    </font>
 
 
 ### Auto-Detect and auto-embed feature <a id="autodetect"></a>
@@ -219,14 +220,14 @@ There are two different ways how you can specify that a font should be reference
 
 1. For automatically configured fonts there's a different mechanism to specify which fonts should be referenced rather than embedded. This is done in the "referenced-fonts" element in the configuration. Here's an example:
 
-	<fop version="1.0">
-	   <fonts>
-		  <referenced-fonts>
-			<match font-family="Helvetica"/>
-			<match font-family="DejaVu.*"/>
-		  </referenced-fonts>
-	   </fonts>
-	</fop>
+    <fop version="1.0">
+       <fonts>
+          <referenced-fonts>
+            <match font-family="Helvetica"/>
+            <match font-family="DejaVu.*"/>
+          </referenced-fonts>
+       </fonts>
+    </fop>
 
 At the moment, you can only match fonts against their font-family. It is possible to use regular expressions as is shown in the second example above ("DejaVu.*"). The syntax for the regular expressions used here are the one used by the [package](http://java.sun.com/j2se/1.4/docs/api/java/util/regex/package-summary.html) . So, in the above snippet "Helvetica" and all variants of the "DejaVu" font family are referenced. If you want to reference all fonts, just specify `font-family=".*"` .
 
@@ -256,20 +257,20 @@ When a `<substitutions/>` section is defined in the configuration, FOP will re-m
 
 For example you could make all FO font-family references to 'Arial' with weights between 700 and 900 reference the normal 'Arial Black' font.
 
-	<fop version="1.0">
-	   <fonts>
-		  <substitutions>
-			 <substitution>
-				<from font-family="Arial" font-weight="700..900"/>
-				<to font-family="Arial Black"/>
-			 </substitution>
-			 <substitution>
-				<from font-family="FrutigerLight"/>
-				<to font-family="Times" font-weight="bold" font-style="italic"/>
-			 </substitution>
-		  </substitutions>
-	   </fonts>
-	</fop>
+    <fop version="1.0">
+       <fonts>
+          <substitutions>
+             <substitution>
+                <from font-family="Arial" font-weight="700..900"/>
+                <to font-family="Arial Black"/>
+             </substitution>
+             <substitution>
+                <from font-family="FrutigerLight"/>
+                <to font-family="Times" font-weight="bold" font-style="italic"/>
+             </substitution>
+          </substitutions>
+       </fonts>
+    </fop>
 
 ## Font Selection Strategies <a id="selection"></a>
 

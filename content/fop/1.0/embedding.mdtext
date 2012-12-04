@@ -51,6 +51,7 @@ Here is the basic pattern to render an XSL-FO file to PDF:
       //Clean-up
       out.close();
     }
+
 Let's discuss these 5 steps in detail:
 
 
@@ -99,6 +100,7 @@ If you want to process XSL-FO generated from XML using XSLT we recommend again u
   //with XSLT:
   Source xslt = new StreamSource(new File("mystylesheet.xsl"));
   Transformer transformer = factory.newTransformer(xslt);
+
 ## Input Sources <a id="input"></a>
 
 The input XSL-FO document is always received by FOP as a SAX stream (see the [Parsing Design Document](../dev/design/parsing.html) for the rationale).
@@ -179,6 +181,7 @@ The user agent is the entity that allows you to interact with a single rendering
     FOUserAgent userAgent = fopFactory.newFOUserAgent();
     // customize userAgent
     Fop fop = fopFactory.newFop(MimeConstants.MIME_POSTSCRIPT, userAgent, out);
+
 You can do all sorts of things on the user agent:
 
 

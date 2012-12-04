@@ -99,6 +99,7 @@ Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note t
         e.printStackTrace();
       }
     }
+
 Check the iText tutorial and documentation for setting access flags, password, encryption strength and other parameters.
 
 ### Watermarks <a id="pdf-watermark"></a>
@@ -125,6 +126,7 @@ The PostScript renderer configuration currently allows the following settings:
       <safe-set-page-device>false</safe-set-page-device>
       <dsc-compliant>true</dsc-compliant>
     </renderer>
+
 The default value for the "auto-rotate-landscape" setting is "false". Setting it to "true" will automatically rotate landscape pages and will mark them as landscape.
 
 The default value for the "language-level" setting is "3". This setting specifies the PostScript language level which should be used by FOP. Set this to "2" only if you don't have a Level 3 capable interpreter.
@@ -187,6 +189,7 @@ The PCL renderer configuration currently allows the following settings:
       <text-rendering>bitmap</text-rendering>
       <disable-pjl>false</disable-pjl>
     </renderer>
+
 The default value for the "rendering" setting is "speed" which causes borders to be painted as plain rectangles. In this mode, no special borders (dotted, dashed etc.) are available. If you want support for all border modes, set the value to "quality" as indicated above. This will cause the borders to be painted as bitmaps.
 
 The default value for the "text-rendering" setting is "auto" which paints the base fonts using PCL fonts. Non-base fonts are painted as bitmaps through Java2D. If the mix of painting methods results in unwelcome output, you can set this to "bitmap" which causes all text to be rendered as bitmaps.
@@ -284,6 +287,7 @@ The AFP Renderer requires special configuration particularly related to fonts. A
       <!-- AFP Renderer -->
       ...
     </renderer>
+
 There are 4 font configuration variants supported:
 
 
@@ -417,6 +421,7 @@ Experimentation has shown that the font metrics for the FOP built-in Base14 font
         <font-triplet name="monospace" style="normal" weight="bold"/>
         <font-triplet name="Courier" style="normal" weight="bold"/>
       </font>
+
 By default, all manually configured fonts are embedded, unless they are matched in the [section of the configuration file](fonts.html#embedding) . However, the default fonts shown above will not be embedded.
 
 #### Output Resolution<a id="afp-renderer-resolution-config"></a>
@@ -446,9 +451,11 @@ When the native attribute is specified and set to "true", all image resources wi
 Setting `cmyk="true"` on the `images` element will enable CMYK colors. This will only have an effect if the color mode is set to "color". Example:
 
       <images mode="color" cmyk="true"/>
+
 When the color mode is set to 1 bit (bi-level), the "dithering-quality" attribute can be used to select the level of quality to use when converting images to bi-level images. Valid values for this attribute are floating point numbers from 0.0 (fastest) to 1.0 (best), or special values: "minimum" (=0.0), "maximum" (1.0), "medium" (0.5, the default). For the higher settings to work as expected, JAI needs to be present in the classpath. If JAI is present, 0.0 results in a minimal darkness-level switching between white and black. 0.5 does bayer-based dithering and 1.0 will use error-diffusion dithering. The higher the value, the higher the quality and the slower the processing of the images.
 
       <images mode="b+w" bits-per-pixel="1" dithering-quality="maximum"/>
+
 #### Shading<a id="afp-shading-config"></a>
 
 By default, filled rectangles are painted using their given color using a PTOCA I-axis rule (DIR). But not all environments handle these colors correctly. That's why a setting is supported that paints the rectangles using an ordered dither pattern (bi-level) with an inline IOCA FS10 image that is used together with the "replicate and trim" mapping. The optional "shading" element can be used to control the shading mode. Its default value is "color". To enable the dithered mode, use "dithered". Example:
@@ -460,7 +467,9 @@ By default, filled rectangles are painted using their given color using a PTOCA 
 By default the AFP Renderer will place all data resource objects such as images within the document of the main output datastream. An external resource group file where document resources may be specified with the <resource-group-file/> configuration element. Example:
 
       <resource-group-file>external_resources.afp</resource-group-file>
+
 Be careful when using this option not to overwrite existing resource files from previous rendering runs.
+
 #### Resource Level Defaults<a id="afp-resource-level-defaults"></a>
 
 By default, bitmap image objects (or page segments derived from them) are put in the print-file-level resource group and GOCA graphics are inlined for compatibility with the AFP Workbench tool.
@@ -667,6 +676,7 @@ The TIFF and PNG renderer configuration currently allows the following settings:
       <rendering>quality</rendering>
       <fonts><!-- described elsewhere --></fonts>
     </renderer>
+
 The default value for the `"color-mode"` setting is `"rgba"` which is equivalent to a 24bit RGB image with an 8bit alpha channel for transparency. Valid values are:
 
 
@@ -719,12 +729,14 @@ The default value for the "compression" setting is "PackBits" which which is a w
 
 This setting may override any setting made using the `"color-mode"` . For example, if `"CCITT T.6"` is selected, the color mode is automatically forced to `"bi-level"` because this compression format only supports bi-level images.
 If you want to use CCITT compression, please make sure you've got [Java Advanced Imaging Image I/O Tools](http://java.sun.com/products/java-media/jai/current.html) in your classpath. The Sun JRE doesn't come with a TIFF codec built in, so it has to be added separately. The internal TIFF codec from XML Graphics Commons only supports PackBits, Deflate and JPEG compression for writing.
+
 ### Runtime Rendering Options <a id="bitmap-rendering-options"></a>
 
 The IF-based bitmap output implementations support a rendering option with the key "target-bitmap-size" (value: java.awt.Dimension) that allows to force the pages to be proportionally fit into a bitmap of a given size. This can be used to produce thumbnails or little preview images of the individual pages. An example:
 
     userAgent.getRenderingOptions().put(
         "target-bitmap-size", new Dimension(320, 200));
+
 ## TXT <a id="txt"></a>
 
 The text renderer produces plain ASCII text output that attempts to match the output of the PDFRenderer as closely as possible. This was originally developed to accommodate an archive system that could only accept plain text files, and is primarily useful for getting a quick-and-dirty view of the document text. The renderer is very limited, so do not be surprised if it gives unsatisfactory results.

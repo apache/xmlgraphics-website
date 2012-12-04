@@ -77,6 +77,7 @@ The basic pattern to parse the area tree XML format looks like this:
     } finally {
         out.close();
     }
+
 This example simply reads an area tree file and renders it to a PDF file. Please note, that in normal FOP operation you're shielded from having to instantiate the FontInfo object yourself. This is normally a task of the AreaTreeHandler which is not present in this scenario. The same applies to the AreaTreeModel instance, in this case an instance of a subclass called RenderPagesModel. RenderPagesModel is ideal in this case as it has very little overhead processing the individual pages. An important line in the example is the call to `endDocument()` on the AreaTreeModel. This lets the Renderer know that the processing is now finished.
 
 The area tree XML format can also be used from the [command-line](running.html#standalone-start) by using the "-atin" parameter for specifying the area tree XML as input file. You can also specify a "mimic renderer" by inserting a MIME type between "-at" and the output file.
@@ -139,6 +140,7 @@ The basic pattern to parse the intermediate format looks like this:
     } finally {
         out.close();
     }
+
 This example simply reads an intermediate file and renders it to a PDF file. Here IFParser.parse() is used, but you can also just get a SAX ContentHandler by using the IFParser.getContentHandler() method.
 
 ### Concatenating Documents <a id="concat-if"></a>

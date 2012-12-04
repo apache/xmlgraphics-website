@@ -57,6 +57,7 @@ The following code sample shows a very simple EventListener. It basically just s
             }
         }
     }
+
 You can see that for every event the method `processEvent` of the `EventListener` will be called. Inside this method you can do whatever processing you would like including throwing a `RuntimeException` , if you want to abort the current processing run.
 
 The code above also shows how you can turn an event into a human-readable, localized message that can be presented to a user. The `EventFormatter` class does this for you. It provides additional methods if you'd like to explicitly specify the locale.
@@ -89,6 +90,7 @@ By default, FOP continues processing even if an image wasn't found. If you have 
         }
         
     }
+
 Increasing the event severity to FATAL will signal the event broadcaster to throw an exception and stop further processing. In the above case, all resource-related events will cause FOP to stop processing.
 
 You can also customize the exception to throw (you can may throw a RuntimeException or subclass yourself) and/or which event to respond to:
@@ -109,6 +111,7 @@ You can also customize the exception to throw (you can may throw a RuntimeExcept
         }
         
     }
+
 This throws a `RuntimeException` with the `FileNotFoundException` as the cause. Further processing effectively stops in FOP. You can catch the exception in your code and react as you see necessary.
 
 ## The producer side (for FOP developers) <a id="producer"></a>

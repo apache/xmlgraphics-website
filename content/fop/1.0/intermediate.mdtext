@@ -139,6 +139,7 @@ The basic pattern to parse the intermediate format looks like this:
     } finally {
         out.close();
     }
+
 This example simply reads an intermediate file and renders it to a PDF file. Here IFParser.parse() is used, but you can also just get a SAX ContentHandler by using the IFParser.getContentHandler() method.
 
 ### Concatenating Documents <a id="concat-if"></a>

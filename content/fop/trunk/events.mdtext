@@ -31,6 +31,7 @@ A full example of what is shown here can be found in the `examples/embedding/jav
 ### Writing an EventListener <a id="write-listener"></a>
 
 The following code sample shows a very simple EventListener. It basically just sends all events to System.out (stdout) or System.err (stderr) depending on the event severity.
+
     import org.apache.fop.events.Event;
     import org.apache.fop.events.EventFormatter;
     import org.apache.fop.events.EventListener;
@@ -56,6 +57,7 @@ The following code sample shows a very simple EventListener. It basically just s
             }
         }
     }
+
 You can see that for every event the method `processEvent` of the `EventListener` will be called. Inside this method you can do whatever processing you would like including throwing a `RuntimeException` , if you want to abort the current processing run.
 
 The code above also shows how you can turn an event into a human-readable, localized message that can be presented to a user. The `EventFormatter` class does this for you. It provides additional methods if you'd like to explicitly specify the locale.
@@ -68,6 +70,7 @@ To register the event listener with FOP, get the `EventBroadcaster` which is ass
 
     FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
     foUserAgent.getEventBroadcaster().addEventListener(new SysOutEventListener());
+
 Please note that this is done separately for each processing run, i.e. for each new user agent.
 
 ### An additional listener example <a id="listener-example1"></a>
@@ -108,6 +111,7 @@ You can also customize the exception to throw (you can may throw a RuntimeExcept
         }
         
     }
+
 This throws a `RuntimeException` with the `FileNotFoundException` as the cause. Further processing effectively stops in FOP. You can catch the exception in your code and react as you see necessary.
 
 ## The producer side (for FOP developers) <a id="producer"></a>
@@ -157,11 +161,13 @@ Here's an example of such an event producer interface:
         void complain(Object source, String reason, int blah);
         
     }
+
 To produce the same event as in the first example above, you'd use the following code:
 
     EventBroadcaster broadcaster = [get it from somewhere];
     TestEventProducer producer = TestEventProducer.Provider.get(broadcaster);
     producer.complain(this, "I'm tired", 23);
+
 ### The event model <a id="event-model"></a>
 
 Inside an invocation handler for a dynamic proxy, there's no information about the names of each parameter. The JVM doesn't provide it. The only thing you know is the interface and method name. In order to properly fill the `Event` 's parameter map we need to know the parameter names. These are retrieved from an event object model. This is found in the `org.apache.fop.events.model` package. The data for the object model is retrieved from an XML representation of the event model that is loaded as a resource. The XML representation is generated using an Ant task at build time ( `ant resourcegen` ). The Ant task (found in `src/codegen/java/org/apache/fop/tools/EventProducerCollectorTask.java` ) scans FOP's sources for descendants of the `EventProducer` interface and uses [QDox](http://qdox.codehaus.org/) to parse these interfaces.
