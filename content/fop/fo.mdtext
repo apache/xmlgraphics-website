@@ -294,7 +294,9 @@ In **XSL 1.1** , you get another option to do this: make sure an "id" is set on 
 After that, reference the last page the page-sequence generates:
 
 
-    <fo:page-number-citation-last ref-id="seq1"/><warning>There is no reliable way to get the real total page count with FO mechanisms. You can only get *page numbers* .</warning>
+    <fo:page-number-citation-last ref-id="seq1"/>
+
+<warning>There is no reliable way to get the real total page count with FO mechanisms. You can only get *page numbers* .</warning>
 
 The FOP library provides a method to get the total page count after an FO document has been rendered. One possibility is to implement your own wrapper to do a dummy rendering, inquire the total page count and then perform the real rendering, passing the total page count to the XSLT processor to splice it into the generated FO. For example:
 
