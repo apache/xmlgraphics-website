@@ -380,6 +380,7 @@ FOP also maintains an [Unofficial FOP Schema](http://svn.apache.org/viewvc/xmlgr
 
 Pages in landscape format can easily be produced by exchanging the page-height and page-width values of a simple-page-master element.
 
+    ::::xml
     <fo:layout-master-set>
       <fo:simple-page-master master-name="A4-portrait" page-height="29.7cm" page-width="21cm" [..]>
         <fo:region-body/>
