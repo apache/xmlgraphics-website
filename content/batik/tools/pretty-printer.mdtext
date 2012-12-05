@@ -67,15 +67,19 @@ specifies the public ID to in the doctype declaration, when `-doctype change` is
 specifies the system ID to in the doctype declaration, when `-doctype change` is specified.
 
 For example:
-java -jar batik-svgpp.jar -tab-width 2 -newline cr-lf src.svg dest.svg
+
+    java -jar batik-svgpp.jar -tab-width 2 -newline cr-lf src.svg dest.svg
+
 will format `src.svg` and write it to `dest.svg` using a tabulation width of 2 and Windows-style newlines, and:
-java -jar batik-svgpp.jar -no-format -doctype change -public-id "-//W3C//DTD SVG 1.1//EN" \
-     -system-id "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" src.svg dest.svg
+
+    java -jar batik-svgpp.jar -no-format -doctype change -public-id "-//W3C//DTD SVG 1.1//EN" \
+         -system-id "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" src.svg dest.svg
+
 will format `src.svg` and write it to `dest.svg` unchanged, except for the doctype public and system IDs, which will be replaced by those specified.
 
 ### Using the source distribution <a id="using-source"></a>
 
-If you downloaded the source distribution of Batik, you will have a zip or tar file that expanded into a directory called `xml-batik` or`batik-`*`version`*. In that directory, you can find build scripts for the platform you are running on. For example, there is a `build.bat` script for users of the Windows platform and there is a `build.sh` script for UNIX users.
+If you downloaded the source distribution of Batik, you will have a zip or tar file that expanded into a directory called `xml-batik` or `batik-`*`version`*. In that directory, you can find build scripts for the platform you are running on. For example, there is a `build.bat` script for users of the Windows platform and there is a `build.sh` script for UNIX users.
 
 To start the pretty printer you should:
 
@@ -90,14 +94,20 @@ Open a command line window and go to the `xml-batik` or `batik-`*`version`* dire
 
 -
 For windows, type the following at the command prompt:
-build svgpp
-and for Unix:
-./build.sh svgpp
+
+    build svgpp
+    and for Unix:
+    ./build.sh svgpp
+
 This will print out a help message for the pretty printer.
 
 
 You can pass options to the rasterizer as follows, for Windows:
-build svgpp [OPTIONS] FILES
+
+    build svgpp [OPTIONS] FILES
+
 and for Unix:
-./build.sh svgpp [OPTIONS] FILES
+
+    ./build.sh svgpp [OPTIONS] FILES
+
 Refer to [“Using the binary distribution”](#using-binary) for an explanation of these options.

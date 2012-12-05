@@ -17,142 +17,144 @@ The method for starting the rasterizer depends on the distribution of Batik that
 
 If you downloaded the binary distribution of Batik, you should have a file called `batik-1.6.zip` (or similar), and, after expanding that file, a jar file called `batik-rasterizer.jar`. To start the rasterizer, open a console, go to the directory where you expanded the distribution (and where `batik-rasterizer.jar` is located) and simply type the following at the command prompt:
 
-java -jar batik-rasterizer.jar FILES
+    java -jar batik-rasterizer.jar FILES
 
 For example, if you type:
 
-java -jar batik-rasterizer.jar samples/batikFX.svg
+    java -jar batik-rasterizer.jar samples/batikFX.svg
 
 you will see the following printout:
-Converting file: samples/BatikFX.svg to samples/BatikFX.png
+
+    Converting file: samples/BatikFX.svg to samples/BatikFX.png
+
 Once the conversion is complete, you will find a `batikFX.png` file in the samples directory.
 
 You can pass options on the command line:
 
-java -jar batik-rasterizer.jar [OPTIONS] FILES
+    java -jar batik-rasterizer.jar [OPTIONS] FILES
 
 where, as options:
 
 
 
- **-d**  *dir|file*
+ **`-d`** *`dir|file`*
 :
 specifies the output directory, or the output file if there is only a single input file,
 
 
- **-m**  *mime-type*
+ **`-m`** *`mime-type`*
 :
 specifies the output MIME type, which should be one of `image/png`, `image/jpeg`, `image/tiff` or `application/pdf`,
 
 
- **-w**  *width*
+ **`-w`** *`width`*
 :
 specifies the output width as a floating point value,
 
 
- **-h**  *height*
+ **`-h`** *`height`*
 :
 specifies the output height as a floating point value,
 
 
- **-maxw**  *width*
+ **`-maxw`** *`width`*
 :
 specifies the maximum output width as a floating point value,
 
 
- **-maxh**  *height*
+ **`-maxh`** *`height`*
 :
 specifies the maximum output height as a floating point value,
 
 
- **-a**  *x*  **,**  *y*  **,**  *width*  **,**  *height*
+ **`-a`** *`x`* **`,`** *`y`* **`,`** *`width`* **`,`** *`height`*
 :
 specifies the area of interest (as floating point values) of the SVG file to rasterize (and if not specified, will be determined by the `width` / `height` / `viewBox` attributes if specified in the document, and be 0,0,400,400 otherwise),
 
 
- **-bg**  *alpha*  **.**  *red*  **.**  *green*  **.**  *blue*
+ **`-bg`** *`alpha`* **`.`** *`red`* **`.`** *`green`* **`.`** *`blue`*
 :
 specifies the background fill color as an ARGB quadruple, where each component is an integer in the range 0—255,
 
 
- **-cssMedia**  *media*
+ **`-cssMedia`** *`media`*
 :
 specifies the CSS media type used for matching CSS rules,
 
 
- **-cssAlternate**  *file|uri*
+ **`-cssAlternate`** *`file|uri`*
 :
 specifies the CSS alternate stylesheet to use,
 
 
- **-cssUser**  *file|uri*
+ **`-cssUser`** *`file|uri`*
 :
 specifies the CSS user stylesheet to use in addition to any other referenced or embedded stylesheets,
 
 
- **-font-family**  *defaultFontFamily*
+ **`-font-family`** *`defaultFontFamily`*
 :
 specifies default font family to be used when none is specified,
 
 
- **-lang**  *language-code*
+ **`-lang`** *`language-code`*
 :
 specifies the [RFC 3066](http://www.faqs.org/rfcs/rfc3066.html) language code to use,
 
 
- **-q**  *quality*
+ **`-q`** *`quality`*
 :
 specifies the quality of the output image, as a floating point number in the range 0 < *quality* < 1 when generating JPEG images,
 
 
- **-indexed**  *1|2|4|8*
+ **`-indexed`** *`1|2|4|8`*
 :
 specifies the number of bits per pixel of the output image, using an adaptive pallete, resulting in an indexed image when generating PNG images,
 
 
- **-dpi**  *resolution*
+ **`-dpi`** *`resolution`*
 :
 specifies the resolution of the output image in dots per inch,
 
 
- **-validate**
+ **`-validate`**
 :
 specifies that the source SVG files must be validated against their DTDs,
 
 
- **-onload**
+ **`-onload`**
 :
 specifies that the SVG files should be rasterized after dispatching the SVG load event,
 
 
- **-snapshotTime**
+ **`-snapshotTime`**
 :
 specifies the document time that should be seeked to before rasterizing the document, implying -onload,
 
 
- **-scriptSecurityOff**
+ **`-scriptSecurityOff`**
 :
 specifies that any security checks on the scripts running as a result of dispatching the SVG load event will be bypassed,
 
 
- **-anyScriptOrigin**
+ **`-anyScriptOrigin`**
 :
 specifies that scripts can be loaded from any location, while by default they can only be loaded from the same location as the document, and
 
 
- **-scripts**  *allowed-script-types*
+ **`-scripts`** *`allowed-script-types`*
 :
 specifies a list of script types (i.e., values for the `type` attribute on `script` elements) that should be loaded.
 
 For example:
 
-java -jar batik-rasterizer.jar -d myDir -m image/jpeg samples/*.svg
+    java -jar batik-rasterizer.jar -d myDir -m image/jpeg samples/*.svg
 
 will generate JPEG images for all the SVG files found in the samples directory.
 
 ### Using the source distribution <a id="usingSource"></a>
 
-If you downloaded the source distribution of Batik, you got a zip or tar file that expanded into a directory called `xml-batik` or `batik- *version*`. In that directory, you can find build scripts for the platform you are running on. For example, there is a `build.bat` script for users of the Windows platform and there is a `build.sh` script for UNIX users.
+If you downloaded the source distribution of Batik, you got a zip or tar file that expanded into a directory called `xml-batik` or `batik-`*`version`*. In that directory, you can find build scripts for the platform you are running on. For example, there is a `build.bat` script for users of the Windows platform and there is a `build.sh` script for UNIX users.
 
 To start the rasterizer you should:
 
@@ -164,22 +166,22 @@ To start the rasterizer you should:
 -
 For windows, type the following at the command prompt:
 
-build svgrasterizer
+    build svgrasterizer
 
 and for Unix:
 
-./build.sh svgrasterizer
+    ./build.sh svgrasterizer
 
 This will print out a help message for the rasterizer.
 
 
 You can pass options to the rasterizer as follows, for Windows:
 
-build svgrasterizer [OPTIONS] FILES
+    build svgrasterizer [OPTIONS] FILES
 
 and for Unix:
 
-./build.sh svgrasterizer [OPTIONS] FILES
+    ./build.sh svgrasterizer [OPTIONS] FILES
 
 Refer to [“Using the binary distribution”](#using-binary) for an explanation of the options.
 
