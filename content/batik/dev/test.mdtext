@@ -281,16 +281,16 @@ Imagine that you add a cool new test case to the `samples` directory, such as `l
 
     :::xml
     <test id="anne.svg" class="org.apache.batik.test.svg.SVGRenderingAccuracyTest">
-            <arg class="java.net.URL"
-                value="file:samples/tests/linkingViewBox.svg"/>
-            <arg class="java.net.URL"
-                 value="file:test-references/samples/tests/solaris/linkingViewBox.png"/>
-            <property name="VariationURL"
-                      class="java.net.URL"
-                      value="file:test-references/samples/tests/variation/linkingViewBox.png"/>
-            <property name="SaveVariation"
-                      class="java.io.File"
-                      value="test-references/samples/tests/variation-candidate/linkingViewBox.png"/>
+      <arg class="java.net.URL"
+          value="file:samples/tests/linkingViewBox.svg"/>
+      <arg class="java.net.URL"
+           value="file:test-references/samples/tests/solaris/linkingViewBox.png"/>
+      <property name="VariationURL"
+                class="java.net.URL"
+                value="file:test-references/samples/tests/variation/linkingViewBox.png"/>
+      <property name="SaveVariation"
+                class="java.io.File"
+                value="test-references/samples/tests/variation-candidate/linkingViewBox.png"/>
     </test>
 
 to the `test-resources/org/apache/batik/test/samplesRendering.xml` test suite description, the description of the regard test suite. If you have access to the build machine where the reference images are typically generated, you can check 0n the reference image in `test-references/samples/tests`. Otherwise (and this is OK), you can let the test fail the first time it is run on the build/test machine and that will be a reminder for whoever is responsible for that machine that a valid reference image should be checked in.
@@ -305,16 +305,16 @@ While writing the `Test` you may want to use your own XML file with just your te
     <testReportProcessor class="org.apache.batik.test.SimpleTestReportProcessor"/>
 
     <test class="org.apache.batik.bridge.ErrorHandlingTest">
-        <!-- Expected error code -->
-        <arg class="java.lang.String" value="expected.error.code"/>
-        <!-- Input SVG that this test manipulates to generate error conditions -->
-        <arg class="java.net.URL" value="file:test-resources/org/apache/batik/bridge/ErrorHandlingBase.svg"/>
-        <!-- Id of the element to test -->
-        <arg class="java.lang.String value="rectangle6"/>
-        <!-- Attribute to test -->
-        <arg class="java.lang.String value="x"/>
-        <!-- Value to test on the attribute -->
-        <arg class="java.lang.String value="abcd"/>
+      <!-- Expected error code -->
+      <arg class="java.lang.String" value="expected.error.code"/>
+      <!-- Input SVG that this test manipulates to generate error conditions -->
+      <arg class="java.net.URL" value="file:test-resources/org/apache/batik/bridge/ErrorHandlingBase.svg"/>
+      <!-- Id of the element to test -->
+      <arg class="java.lang.String" value="rectangle6"/>
+      <!-- Attribute to test -->
+      <arg class="java.lang.String" value="x"/>
+      <!-- Value to test on the attribute -->
+      <arg class="java.lang.String" value="abcd"/>
     </test>
 
 This is just an example and does not pretend to be the right way to go about implementing or specifying this specific type of test. Once done with tuning the test, one or multiple configurations for the test can be added to the relevant test suite’s XML description. In some cases, it will be interesting to create a separate test suite.
