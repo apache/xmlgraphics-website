@@ -32,11 +32,11 @@ Note that even though the application modules are meant to be useful and fun to 
 The Batik core modules are the heart of the Batik architecture. They can be used individually or in combination for various purposes, and the [application modules](#applicationComponents) offer some usage examples.
 
 
-- The [SVG generator](../using/svg-generator.html) is a module containing <code> [SVGGraphics2D](../javadoc/org/apache/batik/svggen/SVGGraphics2D.html)</code> class, that lets all Java applications or applets easily convert their graphics to the SVG format, as easily as they draw to a screen or a printer, by leveraging the Java 2D API’s extensible design.
+- The [SVG generator](../using/svg-generator.html) is a module containing [`SVGGraphics2D`](../javadoc/org/apache/batik/svggen/SVGGraphics2D.html) class, that lets all Java applications or applets easily convert their graphics to the SVG format, as easily as they draw to a screen or a printer, by leveraging the Java 2D API’s extensible design.
 
 -  [SVG DOM](../using/dom-api.html) an implementation of the SVG DOM API defined in the SVG recommendation. It lets the programmer manipulate SVG documents in a Java program.
 
-- The [Swing components](../using/swing.html) module includes, primarily, the <code> [JSVGCanvas](../javadoc/org/apache/batik/swing/JSVGCanvas.html)</code> class, a UI component that can display SVG content and let the user interact with that content (zoom, pan, rotate, select text, etc.).
+- The [Swing components](../using/swing.html) module includes, primarily, the [`JSVGCanvas`](../javadoc/org/apache/batik/swing/JSVGCanvas.html) class, a UI component that can display SVG content and let the user interact with that content (zoom, pan, rotate, select text, etc.).
 
 - The **Bridge** module is rarely used directly. It is responsible for creating and maintaining an appropriate object corresponding to an SVG element. The bridge converts an SVG document into the internal representation Batik uses for graphics (GVT, the Graphic Vector Toolkit).
 
