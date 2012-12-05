@@ -17,43 +17,43 @@ where:
 
 
 
- *ttf-path* 
-:    
+ *ttf-path*
+:
 specifies the TrueType Font file containing the characters to be converted,
 
 
- **-l**  *range-begin*  **-h**  *range-end* 
-:    
+ **-l**  *range-begin*  **-h**  *range-end*
+:
 specifies the range of characters (by codepoint, in decimal) to be converted,
 
 
- **-autorange** 
-:    
+ **-autorange**
+:
 automatically determines the available character range, instead of using the default, ASCII printable characters (ranging from 32 to 126),
 
 
- **-ascii** 
-:    
+ **-ascii**
+:
 forces usage of the ASCII character map in the font, instead of the Unicode character map,
 
 
- **-id**  *id* 
-:    
+ **-id**  *id*
+:
 specifies the value for the `id` attribute of the generated `font` element,
 
 
- **-o**  *output-path* 
-:    
+ **-o**  *output-path*
+:
 specifies the pathname of the output SVG document containing the generated SVG font, and
 
 
- **-testcard** 
-:    
+ **-testcard**
+:
 specifies that a sequence of SVG `text` elements should be appended to the output SVG file to test the characters in the SVG font, providing an easy way to validate that generated SVG font visually.
 
 For example:
 java -jar batik-ttf2svg.jar /usr/home/myFont.ttf -l 48 -h 57 -id MySVGFont -o mySVGFont.svg -testcard
-will convert characters 48 to 57, i.e., `'0'` to `'9'` , in the `myFont.ttf` file into their SVG equivalent in the `mySVGFont.svg` file, appending a test card so that the font can be visualized.
+will convert characters 48 to 57, i.e., `'0'` to `'9'`, in the `myFont.ttf` file into their SVG equivalent in the `mySVGFont.svg` file, appending a test card so that the font can be visualized.
 
 
 # Use cases <a id="use-cases"></a>

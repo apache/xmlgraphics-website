@@ -10,7 +10,7 @@ Batik requires the following to be already installed in your system:
 
 
 Java Runtime Environment
-:    
+:
 A Java 1.4 or above compatible runtime environment must be present.
 
 ## Choosing a distribution to download <a id="distributions"></a>
@@ -18,19 +18,19 @@ A Java 1.4 or above compatible runtime environment must be present.
 To install Batik, you will need to go to the [download page](download.cgi) and download one or more ZIP file containing the distribution of your choice. It is good practice to [verify the integrity](#verify) of the distribution files, especially if you are using one of our mirror sites. Here are the various components you will find in the download area and their intended use:
 
 
-- 
+-
  **batik-**  *version*  **.zip** (e.g., `batik-1.6.zip` )
 
 The *binary distribution* contains compiled executable JAR files that let you get started with Batik easily. This is the recommended distribution if you want to look at Batik’s features, or you want to experiment with SVG and see the fun things you can do with Batik. The binary distribution comes with a set of sample SVG files.
 
 
-- 
+-
  **batik-src-**  *version*  **.zip** (e.g., `batik-src-1.6.zip` )
 
 The *source distribution* contains a complete snapshot of the Batik source code, documentation, regression tools and utilities as well as the script for building Batik. That distribution is a snapshot of the SVN repository. This is the recommended distribution for developers who want to dive into the code and understand how Batik can be integrated in their applications or how Batik can be extended.
 
 
-- 
+-
  **batik-docs-**  *version*  **.zip** (e.g., `batik-docs-1.6.zip` )
 
 The *documentation bundle* contains a copy of the Javadoc for the Batik source code.
@@ -39,28 +39,28 @@ The *documentation bundle* contains a copy of the Javadoc for the Batik source c
 We make nightly copies of the source tree available from the [Apache build](http://svn.apache.org/builds/xml-batik) server. These builds represent the current state of development and may or may not be as stable as releases. There are two types of distributions provided:
 
 
-- 
+-
  **batik-svn-**  *date*  **.zip** (e.g., `batik-svn-06-03-29.zip` )
 
-This contains a complete copy of the Subversion repository trunk, including support for running [regard](dev/test.html) , Batik’s regression testing utility. In particular this includes all the reference images for testing. Developers are encouraged to get these or better use [Subversion](download.html#svn) directly.
+This contains a complete copy of the Subversion repository trunk, including support for running [regard](dev/test.html), Batik’s regression testing utility. In particular this includes all the reference images for testing. Developers are encouraged to get these or better use [Subversion](download.html#svn) directly.
 
 
-- 
+-
  **batik-src-**  *date*  **.zip** (e.g., `batik-src-06-03-29.zip` )
 
 This contains all the source code and libraries needed to build and run Batik from source, but does not include the testing facilities.
 
 
-Older releases are available from the [Apache archives](http://archive.apache.org/dist/xmlgraphics/batik) . However, we strongly recommend using the current release of Batik.
+Older releases are available from the [Apache archives](http://archive.apache.org/dist/xmlgraphics/batik). However, we strongly recommend using the current release of Batik.
 
 In all cases, the user should:
 
 
-- Make sure a Java Development Kit (JDK) is installed on the computer where Batik will be installed. See the [system requirements](#systemRequirements) . Make sure that the `java` runtime is in the `PATH` environment variable.
+- Make sure a Java Development Kit (JDK) is installed on the computer where Batik will be installed. See the [system requirements](#systemRequirements). Make sure that the `java` runtime is in the `PATH` environment variable.
 
 - Select the directory where he/she wants to download the distribution.
 
-- Download the desired distribution from the [download page](download.cgi) .
+- Download the desired distribution from the [download page](download.cgi).
 
 - Download the associated PGP signature (.asc) and KEYS file (preferable) or MD5 hash (.md5). This must be done directly from the [Apache download](http://www.apache.org/dist/xmlgraphics/batik) area to mean anything.
 
@@ -68,7 +68,7 @@ In all cases, the user should:
 
 -  [Verify the integrity](#verify) of the distribution.
 
-- 
+-
 Unpack the distribution with Java’s JAR utility:
 jar xvf <distribution>
 For example, if you have downloaded batik-1.6.zip into /home/IamHere, type the following at the command prompt:
@@ -77,7 +77,7 @@ jar xvf batik-1.6.zip
  **IMPORTANT:** UNIX users, do not use the `unzip` utility to unpack the various Batik zip files, as this would not set the directories access rights properly.
 
 
-- 
+-
 If you are using Mac OS X, you can now generate an application bundle for Squiggle, Batik's SVG browser:
 sh lib/make-squiggle-app.sh
 After running this script, a Finder window will be opened where you can find the generated Squiggle application bundle. Drag this to your Applications folder to install it.
@@ -92,9 +92,9 @@ By default, the Batik source distribution comes with the [Mozilla Rhino](http://
 To enable other scripting languages support, you will only need to install the correct jar files in `lib` directory of Batik and recompile your distribution.
 
 
-- For Python, you need to download Jython distribution at [http://www.jython.org/](http://www.jython.org/) . Then you put the `jython.jar` file in the Batik `lib` directory.
+- For Python, you need to download Jython distribution at [http://www.jython.org/](http://www.jython.org/). Then you put the `jython.jar` file in the Batik `lib` directory.
 
-- For Tcl, you need to download Jacl & TclBlend distribution at [http://dev.scriptics.com/software/java/](http://dev.scriptics.com/software/java/) . Then you put the `jacl.jar` and `tcljava.jar` files in the Batik `lib` directory.
+- For Tcl, you need to download Jacl & TclBlend distribution at [http://dev.scriptics.com/software/java/](http://dev.scriptics.com/software/java/). Then you put the `jacl.jar` and `tcljava.jar` files in the Batik `lib` directory.
 
 Conversely, you can remove the `js.jar` of the Batik `lib` directory to remove JavaScript support and have a smaller distribution.
 
@@ -107,23 +107,23 @@ The Batik distribution comes with many jar files. Not all of them are needed in 
 Jar files in white boxes are library jar files that Batik includes from external sources. The light blue boxes correspond to library jar files (those found in the `lib` directory of a binary distribution) built from Batik source code. The dark blue boxes represent the application jar files.
 
 When boxes touch, the box on top depends on the box below it (there is no horizontal touching). Arrows also indicate dependencies (the source of the arrow depends on the destination). In some cases a thick underline with an arrow is used to indicate that a large number of jar files share a common dependency, this however does not indicate any dependency between the jar files underlined.
-<div class="figure"> ![Batik jar file dependency graph](jarDependImg.png "") </div>Some jar file names are shortened for clarity. All `batik` package references are short for `org.apache.batik` .
-It is worth pointing out that a determined/clever programmer may be able to pare down some of these dependencies. For example the `batik-dom.jar` depends on `xerces.jar` because of the `SAXDocumentFactory` class in `org.apache.batik.dom.util` . If you didn’t need to parse XML it would be possible to ignore or break this dependency and still use the `batik-dom.jar` file for its DOM implementation.
+<div class="figure"> ![Batik jar file dependency graph](jarDependImg.png "") </div>Some jar file names are shortened for clarity. All `batik` package references are short for `org.apache.batik`.
+It is worth pointing out that a determined/clever programmer may be able to pare down some of these dependencies. For example the `batik-dom.jar` depends on `xerces.jar` because of the `SAXDocumentFactory` class in `org.apache.batik.dom.util`. If you didn’t need to parse XML it would be possible to ignore or break this dependency and still use the `batik-dom.jar` file for its DOM implementation.
 
 ## Verify releases <a id="verify"></a>
 
 It is essential that you verify the integrity of the downloaded files using the PGP or MD5 signatures.
 
-The PGP signatures can be verified using PGP or GPG. First download the [KEYS](http://www.apache.org/dist/xmlgraphics/batik/KEYS) as well as the `asc` signature file for the particular distribution you choose. Make sure you get these files from the [main distribution directory](http://www.apache.org/dist/xmlgraphics/batik/) , rather than from a mirror. Then verify the signatures using:
+The PGP signatures can be verified using PGP or GPG. First download the [KEYS](http://www.apache.org/dist/xmlgraphics/batik/KEYS) as well as the `asc` signature file for the particular distribution you choose. Make sure you get these files from the [main distribution directory](http://www.apache.org/dist/xmlgraphics/batik/), rather than from a mirror. Then verify the signatures using:
 pgpk -a KEYS
 pgpv batik-1.6.zip.asc
- *or* 
+ *or*
 pgp -ka KEYS
 pgp batik-1.6.zip.asc *or* <br></br>gpg --import KEYS
 pgp batik-1.6.zip.asc
- *or* 
+ *or*
 gpg --import KEYS
 gpg --verify batik-1.6.zip.asc
-Alternatively, you can verify the MD5 signature on the files. A UNIX program called `md5` or `md5sum` is included in many UNIX distributions. It is also available as part of [GNU Textutils](http://www.gnu.org/software/textutils/textutils.html) . Windows users can get binary md5 programs from [here](http://www.fourmilab.ch/md5/) , [here](http://www.pc-tools.net/win32/freeware/console/) , or [here](http://www.slavasoft.com/fsum/) .
+Alternatively, you can verify the MD5 signature on the files. A UNIX program called `md5` or `md5sum` is included in many UNIX distributions. It is also available as part of [GNU Textutils](http://www.gnu.org/software/textutils/textutils.html). Windows users can get binary md5 programs from [here](http://www.fourmilab.ch/md5/), [here](http://www.pc-tools.net/win32/freeware/console/), or [here](http://www.slavasoft.com/fsum/).
 
 We recommend using PGP signatures as they can provide a much higher level of assurance compared with MD5.

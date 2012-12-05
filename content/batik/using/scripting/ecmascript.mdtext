@@ -7,7 +7,7 @@ This page is a brief introduction to scripting SVG documents with ECMAScript, an
 
 ## Scripting basics <a id="scriptingBasics"></a>
 
-As the ECMAScript language (the standardised version of JavaScript) is one of the most popular scripting languages, and as the SVG specification states that an SVG conforming implementation must support it, SVG documents processed by Batik support scripting with ECMAScript using Mozilla’s ECMAScript interpreter, [Rhino](http://www.mozilla.org/rhino/) .
+As the ECMAScript language (the standardised version of JavaScript) is one of the most popular scripting languages, and as the SVG specification states that an SVG conforming implementation must support it, SVG documents processed by Batik support scripting with ECMAScript using Mozilla’s ECMAScript interpreter, [Rhino](http://www.mozilla.org/rhino/).
 
 There are two places in an SVG file where you can put scripts.
 
@@ -37,9 +37,9 @@ Note that inside the event attribute script, there is a variable called `evt` th
 For more information on using scripting in SVG you can have a look at:
 
 
-- the [scripting chapter of the SVG specification](http://www.w3.org/TR/SVG11/script.html) , for advanced information on scripting in SVG, and
+- the [scripting chapter of the SVG specification](http://www.w3.org/TR/SVG11/script.html), for advanced information on scripting in SVG, and
 
-- the [ECMAScript specification](http://www.ecma.ch/ecma1/stand/ecma-262.htm) , for advanced information on the ECMAScript language.
+- the [ECMAScript specification](http://www.ecma.ch/ecma1/stand/ecma-262.htm), for advanced information on the ECMAScript language.
 
 ## Using Rhino features <a id="rhinoFeatures"></a>
 
@@ -157,4 +157,4 @@ Then, you must build an [IntepreterPool](../../javadoc/org/apache/batik/script/I
 
 For example if you are using the Batik SVG browser application you should be able to use the previous piece of code on a subclass of the [JSVGCanvas](../../javadoc/org/apache/batik/swing/JSVGCanvas.html) class in the `createBridgeContext()` method.
 
-For further information on working with Rhino, consult the [Rhino website](http://www.mozilla.org/rhino/) .
+For further information on working with Rhino, consult the [Rhino website](http://www.mozilla.org/rhino/).

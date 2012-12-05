@@ -13,7 +13,7 @@ On this page, we won't discuss logging as such. We will show how the event subsy
 
 ## The consumer side <a id="consumer"></a>
 
-The event subsystem is located in the `org.apache.fop.events` package and its base is the `Event` class. An instance is created for each event and is sent to a set of `EventListener` instances by the `EventBroadcaster` . An `Event` contains:
+The event subsystem is located in the `org.apache.fop.events` package and its base is the `Event` class. An instance is created for each event and is sent to a set of `EventListener` instances by the `EventBroadcaster`. An `Event` contains:
 
 
 - an event ID,
@@ -26,7 +26,7 @@ The event subsystem is located in the `org.apache.fop.events` package and its ba
 
 The `EventFormatter` class can be used to translate the events into human-readable, localized messages.
 
-A full example of what is shown here can be found in the `examples/embedding/java/embedding/events` directory in the FOP distribution. The example can also be accessed [via the web](http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/examples/embedding/java/embedding/events/) .
+A full example of what is shown here can be found in the `examples/embedding/java/embedding/events` directory in the FOP distribution. The example can also be accessed [via the web](http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/examples/embedding/java/embedding/events/).
 
 ### Writing an EventListener <a id="write-listener"></a>
 
@@ -59,7 +59,7 @@ The following code sample shows a very simple EventListener. It basically just s
         }
     }
 
-You can see that for every event the method `processEvent` of the `EventListener` will be called. Inside this method you can do whatever processing you would like including throwing a `RuntimeException` , if you want to abort the current processing run.
+You can see that for every event the method `processEvent` of the `EventListener` will be called. Inside this method you can do whatever processing you would like including throwing a `RuntimeException`, if you want to abort the current processing run.
 
 The code above also shows how you can turn an event into a human-readable, localized message that can be presented to a user. The `EventFormatter` class does this for you. It provides additional methods if you'd like to explicitly specify the locale.
 
@@ -140,9 +140,9 @@ The `Event.paramsBuilder()` is a [fluent interface](http://en.wikipedia.org/wiki
 
 ### The EventProducer interface <a id="event-producer"></a>
 
-To simplify event production, the event subsystem provides the `EventProducer` interface. You can create interfaces which extend `EventProducer` . These interfaces will contain one method per event to be generated. By contract, each event method must have as its first parameter a parameter named "source" (Type Object) which indicates the object that generated the event. After that come an arbitrary number of parameters of any type as needed by the event.
+To simplify event production, the event subsystem provides the `EventProducer` interface. You can create interfaces which extend `EventProducer`. These interfaces will contain one method per event to be generated. By contract, each event method must have as its first parameter a parameter named "source" (Type Object) which indicates the object that generated the event. After that come an arbitrary number of parameters of any type as needed by the event.
 
-The event producer interface does not need to have any implementation. The implementation is produced at runtime by a dynamic proxy created by `DefaultEventBroadcaster` . The dynamic proxy creates `Event` instances for each method call against the event producer interface. Each parameter (except "source") is added to the event's parameter map.
+The event producer interface does not need to have any implementation. The implementation is produced at runtime by a dynamic proxy created by `DefaultEventBroadcaster`. The dynamic proxy creates `Event` instances for each method call against the event producer interface. Each parameter (except "source") is added to the event's parameter map.
 
 To simplify the code needed to get an instance of the event producer interface it is suggested to create a public inner provider class inside the interface.
 
@@ -186,7 +186,7 @@ Primarily, the QDox-based collector task records the parameters' names and types
 
 There's one more information that is extracted from the event producer information for the event model: an optional primary exception. The first exception in the "throws" declaration of an event method is noted. It is used to throw an exception from the invocation handler if the event has an event severity of "FATAL" when all listeners have been called (listeners can update the event severity). Please note that an implementation of `org.apache.fop.events.EventExceptionManager$ExceptionFactory` has to be registered for the `EventExceptionManager` to be able to construct the exception from an event.
 
-For a given application, there can be multiple event models active at the same time. In FOP, each renderer is considered to be a plug-in and provides its own specific event model. The individual event models are provided through an `EventModelFactory` . This interface is implemented for each event model and registered through the service provider mechanism (see the [plug-ins section](#plug-ins) for details).
+For a given application, there can be multiple event models active at the same time. In FOP, each renderer is considered to be a plug-in and provides its own specific event model. The individual event models are provided through an `EventModelFactory`. This interface is implemented for each event model and registered through the service provider mechanism (see the [plug-ins section](#plug-ins) for details).
 
 ### Event severity <a id="event-severity"></a>
 
@@ -212,7 +212,7 @@ The event subsystem is extensible. There are a number of extension points:
 
 -  **`org.apache.fop.events.EventExceptionManager$ExceptionFactory`:** Creates exceptions for events, i.e. turns an event into a specific exception.
 
-The names in bold above are used as filenames for the service provider files that are placed in the `META-INF/services` directory. That way, they are automatically detected. This is a mechanism defined by the [JAR file specification](http://java.sun.com/j2se/1.4.2/docs/guide/jar/jar.html#Service%20Provider) .
+The names in bold above are used as filenames for the service provider files that are placed in the `META-INF/services` directory. That way, they are automatically detected. This is a mechanism defined by the [JAR file specification](http://java.sun.com/j2se/1.4.2/docs/guide/jar/jar.html#Service%20Provider).
 
 ### Localization (L10n) <a id="l10n"></a>
 

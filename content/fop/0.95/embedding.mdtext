@@ -74,7 +74,7 @@ This may look complicated at first, but it's really just the combination of an X
 
 ### Logging <a id="basic-logging"></a>
 
-Logging is now a little different than it was in FOP 0.20.5. We've switched from Avalon Logging to [Jakarta Commons Logging](http://commons.apache.org/logging/) . While with Avalon Logging the loggers were directly given to FOP, FOP now retrieves its logger(s) through a statically available LogFactory. This is similar to the general pattern that you use when you work with Apache Log4J directly, for example. We call this "static logging" (Commons Logging, Log4J) as opposed to "instance logging" (Avalon Logging). This has a consequence: You can't give FOP a logger for each processing run anymore. The log output of multiple, simultaneously running FOP instances is sent to the same logger.
+Logging is now a little different than it was in FOP 0.20.5. We've switched from Avalon Logging to [Jakarta Commons Logging](http://commons.apache.org/logging/). While with Avalon Logging the loggers were directly given to FOP, FOP now retrieves its logger(s) through a statically available LogFactory. This is similar to the general pattern that you use when you work with Apache Log4J directly, for example. We call this "static logging" (Commons Logging, Log4J) as opposed to "instance logging" (Avalon Logging). This has a consequence: You can't give FOP a logger for each processing run anymore. The log output of multiple, simultaneously running FOP instances is sent to the same logger.
 We know this may be an issue in multi-threaded server environments if you'd like to know what's going on in every single FOP processing run. We're planning to add an additional feedback facility to FOP which can be used to obtain all sorts of specific feedback (validation messages, layout problems etc.). "Static logging" is mainly interesting for a developer working on FOP and for advanced users who are debugging FOP. We don't consider the logging output to be useful to normal FOP users. Please have some patience until we can add this feature or jump in and help us build it. We've set up a [Wiki page](http://wiki.apache.org/xmlgraphics-fop/ProcessingFeedback) which documents what we're going to build.
 By default, [Jakarta Commons Logging](http://commons.apache.org/logging/) uses JDK logging (available in JDKs 1.4 or higher) as its backend. You can configure Commons Logging to use an alternative backend, for example Log4J. Please consult the [documentation for Jakarta Commons Logging](http://commons.apache.org/logging/) on how to configure alternative backends.
 
@@ -115,7 +115,7 @@ However, you may not always have your input document available as a SAX stream. 
 
 -  **Java Objects:** Please have a look at the [Embedding examples](#examples) which contain an example for this.
 
-There are a variety of upstream data manipulations possible. For example, you may have a DOM and an XSL stylesheet; or you may want to set variables in the stylesheet. Interface documentation and some cookbook solutions to these situations are provided in [Xalan Basic Usage Patterns](http://xml.apache.org/xalan-j/usagepatterns.html) .
+There are a variety of upstream data manipulations possible. For example, you may have a DOM and an XSL stylesheet; or you may want to set variables in the stylesheet. Interface documentation and some cookbook solutions to these situations are provided in [Xalan Basic Usage Patterns](http://xml.apache.org/xalan-j/usagepatterns.html).
 
 ## Configuring Apache FOP Programmatically <a id="config-internal"></a>
 
@@ -139,7 +139,7 @@ The **hyphenation base URL** to use when resolving relative URLs for hyphenation
     `fopFactory.setHyphenBaseURL("file:///C:/Temp/hyph");`
 
 -
-Disable **strict validation** . When disabled FOP is less strict about the rules established by the XSL-FO specification. Example:
+Disable **strict validation**. When disabled FOP is less strict about the rules established by the XSL-FO specification. Example:
 
     `fopFactory.setStrictValidation(false);`
 
@@ -154,7 +154,7 @@ Set the **source resolution** for the document. This is used internally to deter
     `fopFactory.setSourceResolution(96); // =96dpi (dots/pixels per Inch)`
 
 -
-Manually add an **ElementMapping instance** . If you want to supply a special FOP extension you can give the instance to the FOUserAgent. Normally, the FOP extensions can be automatically detected (see the documentation on extension for more info). Example:
+Manually add an **ElementMapping instance**. If you want to supply a special FOP extension you can give the instance to the FOUserAgent. Normally, the FOP extensions can be automatically detected (see the documentation on extension for more info). Example:
 
     `fopFactory.addElementMapping(myElementMapping); // myElementMapping is a org.apache.fop.fo.ElementMapping`
 
@@ -219,12 +219,12 @@ Set the **target resolution** for the document. This is used to specify the outp
     `userAgent.setTargetResolution(300); // =300dpi (dots/pixels per Inch)`
 
 -
-Set **your own Renderer instance** . If you want to supply your own renderer or configure a Renderer in a special way you can give the instance to the FOUserAgent. Normally, the Renderer instance is created by FOP. Example:
+Set **your own Renderer instance**. If you want to supply your own renderer or configure a Renderer in a special way you can give the instance to the FOUserAgent. Normally, the Renderer instance is created by FOP. Example:
 
     `userAgent.setRendererOverride(myRenderer); // myRenderer is an org.apache.fop.render.Renderer`
 
 -
-Set **your own FOEventHandler instance** . If you want to supply your own FOEventHandler or configure an FOEventHandler subclass in a special way you can give the instance to the FOUserAgent. Normally, the FOEventHandler instance is created by FOP. Example:
+Set **your own FOEventHandler instance**. If you want to supply your own FOEventHandler or configure an FOEventHandler subclass in a special way you can give the instance to the FOUserAgent. Normally, the FOEventHandler instance is created by FOP. Example:
 
     `userAgent.setFOEventHandlerOverride(myFOEventHandler); // myFOEventHandler is an org.apache.fop.fo.FOEventHandler`
 
@@ -252,7 +252,7 @@ Instead of setting the parameters manually in code as shown above you can also s
 
     fopFactory.setUserConfig(new File("C:/Temp/mycfg.xml"));
 
-The layout of the configuration file is described on the [Configuration page](configuration.html) .
+The layout of the configuration file is described on the [Configuration page](configuration.html).
 
 ## Hints <a id="hints"></a>
 
@@ -264,13 +264,13 @@ Fop instances shouldn't (and can't) be reused. Please recreate Fop and FOUserAge
 
 If your XSL-FO files contain SVG then Apache Batik will be used. When Batik is initialised it uses certain classes in `java.awt` that intialise the Java AWT classes. This means that a daemon thread is created by the JVM and on Unix it will need to connect to a DISPLAY.
 
-The thread means that the Java application may not automatically quit when finished, you will need to call `System.exit()` . These issues should be fixed in the JDK 1.4.
+The thread means that the Java application may not automatically quit when finished, you will need to call `System.exit()`. These issues should be fixed in the JDK 1.4.
 
-If you run into trouble running FOP on a head-less server, please see the [notes on Batik](graphics.html#batik) .
+If you run into trouble running FOP on a head-less server, please see the [notes on Batik](graphics.html#batik).
 
 ### Getting information on the rendering process <a id="render-info"></a>
 
-To get the number of pages that were rendered by FOP you can call `Fop.getResults()` . This returns a `FormattingResults` object where you can look up the number of pages produced. It also gives you the page-sequences that were produced along with their id attribute and their numbers of pages. This is particularly useful if you render multiple documents (each enclosed by a page-sequence) and have to know the number of pages of each document.
+To get the number of pages that were rendered by FOP you can call `Fop.getResults()`. This returns a `FormattingResults` object where you can look up the number of pages produced. It also gives you the page-sequences that were produced along with their id attribute and their numbers of pages. This is particularly useful if you render multiple documents (each enclosed by a page-sequence) and have to know the number of pages of each document.
 
 ## Improving performance <a id="performance"></a>
 
@@ -281,7 +281,7 @@ There are several options to consider:
 
 - Depending on the target OutputStream (in case of a FileOutputStream, but not for a ByteArrayOutputStream, for example) it may improve performance considerably if you buffer the OutputStream using a BufferedOutputStream: `out = new java.io.BufferedOutputStream(out);` <br></br>Make sure you properly close the OutputStream when FOP is finished.
 
-- Cache the stylesheet. If you use the same stylesheet multiple times you can set up a JAXP `Templates` object and reuse it each time you do the XSL transformation. (More information can be found [here](http://www.javaworld.com/javaworld/jw-05-2003/jw-0502-xsl.html) .)
+- Cache the stylesheet. If you use the same stylesheet multiple times you can set up a JAXP `Templates` object and reuse it each time you do the XSL transformation. (More information can be found [here](http://www.javaworld.com/javaworld/jw-05-2003/jw-0502-xsl.html).)
 
 - Use an XSLT compiler like [XSLTC](http://xml.apache.org/xalan-j/xsltc_usage.html) that comes with Xalan-J.
 

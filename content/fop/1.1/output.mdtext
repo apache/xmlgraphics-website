@@ -13,7 +13,7 @@ Most FOP renderers use a FOP-specific system for font registration. However, the
 
 Theoretically, there's some potential to make the output of the PDF/PS renderers match the output of the Java2D-based renderers. If FOP used the font metrics from its own font subsystem but still used Java2D for text painting in the Java2D-based renderers, this could probably be achieved. However, this approach hasn't been implemented, yet.
 
-With a work-around, it is possible to match the PDF/PS output in a Java2D-based renderer pretty closely. The clue is to use the [intermediate format](intermediate.html) . The trick is to layout the document using FOP's own font subsystem but then render the document using Java2D. Here are the necessary steps (using the command-line):
+With a work-around, it is possible to match the PDF/PS output in a Java2D-based renderer pretty closely. The clue is to use the [intermediate format](intermediate.html). The trick is to layout the document using FOP's own font subsystem but then render the document using Java2D. Here are the necessary steps (using the command-line):
 
 
 1. Produce an IF file: `fop -fo myfile.fo -at application/pdf myfile.at.xml` <br></br>Specifying "application/pdf" for the "-at" parameter causes FOP to use FOP's own font subsystem (which is used by the PDF renderer). Note that no PDF file is created in this step.
@@ -31,7 +31,7 @@ With a work-around, it is possible to match the PDF/PS output in a Java2D-based 
 
 ### Output to a Printer or Other Device <a id="general-direct-output"></a>
 
-The most obvious way to print your document is to use the FOP [print renderer](#print) , which uses the Java2D API (AWT). However, you can also send output from the Postscript renderer directly to a Postscript device, or output from the PCL renderer directly to a PCL device.
+The most obvious way to print your document is to use the FOP [print renderer](#print), which uses the Java2D API (AWT). However, you can also send output from the Postscript renderer directly to a Postscript device, or output from the PCL renderer directly to a PCL device.
 
 Here are Windows command-line examples for Postscript and PCL:
 fop ... -ps \\computername\printerfop ... -pcl \\computername\printer
@@ -44,7 +44,7 @@ Set the output MIME type to "application/x-pcl" (MimeConstants.MIME_PCL) and it 
 
 PDF is the best supported output format. It is also the most accurate with text and layout. This creates a PDF document that is streamed out as each page is rendered. This means that the internal page index information is stored near the end of the document. The PDF version supported is 1.4. PDF versions are forwards/backwards compatible.
 
-Note that FOP does not currently support PDF/A-1a. Support for [Tagged PDF](accessibility.html) , [PDF/A-1b](pdfa.html) and [PDF/X](pdfx.html) has recently been added, however.
+Note that FOP does not currently support PDF/A-1a. Support for [Tagged PDF](accessibility.html), [PDF/A-1b](pdfa.html) and [PDF/X](pdfx.html) has recently been added, however.
 
 ### Fonts <a id="pdf-fonts"></a>
 
@@ -54,9 +54,9 @@ PDF has a set of fonts that are always available to all PDF viewers; to quote fr
 
 FOP does not currently support several desirable PDF features: watermarks and signatures. One workaround is to use Adobe Acrobat (the full version, not the Reader) to process the file manually or with scripting that it supports.
 
-Another popular post-processing tool is [iText](http://www.lowagie.com/iText) , which has tools for adding security features, document properties, watermarks, and many other features to PDF files.
+Another popular post-processing tool is [iText](http://www.lowagie.com/iText), which has tools for adding security features, document properties, watermarks, and many other features to PDF files.
 <warning>Caveat: iText may swallow PDF bookmarks. But [Jens Stavnstrup tells us](http://issues.apache.org/bugzilla/show_bug.cgi?id=37589) that this doesn't happen if you use iText's PDFStamper.</warning>
-Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note that FOP now supports [PDF encryption](pdfencryption.html) . However the principles for using iText for other PDF features are similar.)
+Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note that FOP now supports [PDF encryption](pdfencryption.html). However the principles for using iText for other PDF features are similar.)
 
     :::java
     public static void main(String args[]) {
@@ -130,9 +130,9 @@ It is possible to attach/embed arbitrary files into a PDF file. You can give a n
       <pdf:embedded-file src="url(file:///C:/Temp/MyTextDoc.odt)"/>
     </fo:declarations>
 
- `pdf:embedded-file` must be a child of `fo:declarations` . The "src" property is used to reference the file that is to be embedded. This property uses the "uri-specification" datatype from the XSL-FO specification. The "filename" property is optional. If it is missing the filename is automatically set from the URI/IRI of the "src" property. An optional description can also be added to further describe the file attachment.
+ `pdf:embedded-file` must be a child of `fo:declarations`. The "src" property is used to reference the file that is to be embedded. This property uses the "uri-specification" datatype from the XSL-FO specification. The "filename" property is optional. If it is missing the filename is automatically set from the URI/IRI of the "src" property. An optional description can also be added to further describe the file attachment.
 
-It is also possible to reference an embedded file from an `fo:basic-link` . Use the special "embedded-file:" URI scheme with the filename as single argument after the URI scheme. Example:
+It is also possible to reference an embedded file from an `fo:basic-link`. Use the special "embedded-file:" URI scheme with the filename as single argument after the URI scheme. Example:
 
     :::xml
     <fo:basic-link external-destination="url(embedded-file:image.jpg)">Attached Image</fo:basic-link>
@@ -462,7 +462,7 @@ Experimentation has shown that the font metrics for the FOP built-in Base14 font
       <font-triplet name="Courier" style="normal" weight="bold"/>
     </font>
 
-By default, all manually configured fonts are embedded, unless they are matched in the [section of the configuration file](fonts.html#embedding) . However, the default fonts shown above will not be embedded.
+By default, all manually configured fonts are embedded, unless they are matched in the [section of the configuration file](fonts.html#embedding). However, the default fonts shown above will not be embedded.
 
 For double byte EBCDIC encoded character sets, there is an optional tag that must be set to prevent characters from being miscoded. This defaults to "false" if not specified.
 
@@ -613,7 +613,7 @@ The include-page-segment extension element can only occur within a simple-page-m
 
 The effect here is that whenever FOP encounters the URI specified in the extension, it will effectively generate code to include the page segment with the given name instead of embedding the image referenced by the URI. The URI is still required as the underlying image serves as a provider for the intrinsic size of the image (At the moment, FOP is unable to extract the intrinsic size of the page segment from an AFP resource file). For the image to appear in an AFP viewer or to be printed, the AFP resource must be available on the target device. FOP does not embed the page segment in the generated file. Please also note that page segments cannot be scaled. They are always rendered in their intrinsic size.
 
-The include-page-segment extension element has the optional attribute *resource-file* . The value of this is a URI to a resource containing a page segment with the declared name. In this case FOP embeds the page segment into the generated document so that the external resource does not have to be supplied in the print job.
+The include-page-segment extension element has the optional attribute *resource-file*. The value of this is a URI to a resource containing a page segment with the declared name. In this case FOP embeds the page segment into the generated document so that the external resource does not have to be supplied in the print job.
 
 #### Tag Logical Element (TLE) Extension<a id="afp-tag-logical-element"></a>
 
@@ -678,7 +678,7 @@ Apache FOP supports embedding an external form map resource in the generated AFP
         <afp:include-form-map name="F1SAMP1" src="file:f1samp1.fde"/>
       </fo:declarations>
 
-The `afp:include-form-map` is to be placed as a direct child of `fo:declarations` . The `name` is an AFP resource name (max. 8 characters) and the `src` attribute is the URI identifying the external form map resource. When such a form map is embedded, you can use the `afp:invoke-medium-map` extension (described above) to invoke any medium map included in the form map.
+The `afp:include-form-map` is to be placed as a direct child of `fo:declarations`. The `name` is an AFP resource name (max. 8 characters) and the `src` attribute is the URI identifying the external form map resource. When such a form map is embedded, you can use the `afp:invoke-medium-map` extension (described above) to invoke any medium map included in the form map.
 Apache FOP doesn't support a way to define a form map or medium map using XML means inside an XSL-FO document. You will have to build the form map with some third-party tool.
 ### Foreign Attributes <a id="afp-foreign-attributes"></a>
 
@@ -744,7 +744,7 @@ These are some known restrictions compared to other supported output formats (no
 
 This is primarily for testing and verification. The XML created is simply a representation of the internal area tree put into XML. We use that to verify the functionality of FOP's layout engine.
 
-The other use case of the Area Tree XML is as FOP's "intermediate format". More information on that can be found on the page dedicated to the [Intermediate Format](intermediate.html) .
+The other use case of the Area Tree XML is as FOP's "intermediate format". More information on that can be found on the page dedicated to the [Intermediate Format](intermediate.html).
 
 ## Java2D/AWT <a id="awt"></a>
 
@@ -785,23 +785,23 @@ The TIFF and PNG renderer configuration currently allows the following settings:
 The default value for the `"color-mode"` setting is `"rgba"` which is equivalent to a 24bit RGB image with an 8bit alpha channel for transparency. Valid values are:
 
 
--  `rgba` : RGB with alpha channel (24bit + 8bit = 32bit)
+-  `rgba`: RGB with alpha channel (24bit + 8bit = 32bit)
 
--  `rgb` : RGB (24bit)
+-  `rgb`: RGB (24bit)
 
--  `gray` : gray (8bit)
+-  `gray`: gray (8bit)
 
 -  `bi-level` (or `binary` ): bi-level (1bit)
 
 Please note that there is currently no dithering or error diffusion available for bi-level bitmap output.
 
-The default value for the `"transparent-page-background"` setting is `"false"` which paints an opaque, white background for the whole image. If you set this to `"true"` , no such background will be painted and you will get a transparent image if an alpha channel is available in the output format.
+The default value for the `"transparent-page-background"` setting is `"false"` which paints an opaque, white background for the whole image. If you set this to `"true"`, no such background will be painted and you will get a transparent image if an alpha channel is available in the output format.
 
-The default value for the `"background-color"` setting is `"white"` . The color specifies in which color the page background is painted. It will only be painted if `"transparent-page-background"` is not set to `"true"` . All XSL-FO colors (including color functions) can be used.
+The default value for the `"background-color"` setting is `"white"`. The color specifies in which color the page background is painted. It will only be painted if `"transparent-page-background"` is not set to `"true"`. All XSL-FO colors (including color functions) can be used.
 
-The default value for the `"anti-aliasing"` setting is `"true"` . You can set this value to `"false"` to disable anti-aliasing and thus improve rendering speeds a bit at the loss of some image quality.
+The default value for the `"anti-aliasing"` setting is `"true"`. You can set this value to `"false"` to disable anti-aliasing and thus improve rendering speeds a bit at the loss of some image quality.
 
-The default value for the `"rendering"` setting is `"true"` . You can set this value to `"false"` to improve rendering speeds a bit at the loss of some image quality. If this setting has an actual effect depends on the JVM's Java2D backend.
+The default value for the `"rendering"` setting is `"true"`. You can set this value to `"false"` to improve rendering speeds a bit at the loss of some image quality. If this setting has an actual effect depends on the JVM's Java2D backend.
 
 ### TIFF-specific Configuration <a id="tiff-configuration"></a>
 
@@ -833,7 +833,7 @@ The default value for the "compression" setting is "PackBits" which which is a w
 
 -  `CCITT T.6` (Fax Group 4)
 
-This setting may override any setting made using the `"color-mode"` . For example, if `"CCITT T.6"` is selected, the color mode is automatically forced to `"bi-level"` because this compression format only supports bi-level images.
+This setting may override any setting made using the `"color-mode"`. For example, if `"CCITT T.6"` is selected, the color mode is automatically forced to `"bi-level"` because this compression format only supports bi-level images.
 If you want to use CCITT compression, please make sure you've got [Java Advanced Imaging Image I/O Tools](http://java.sun.com/products/java-media/jai/current.html) in your classpath. The Sun JRE doesn't come with a TIFF codec built in, so it has to be added separately. The internal TIFF codec from XML Graphics Commons only supports PackBits, Deflate and JPEG compression for writing.
 ### Runtime Rendering Options <a id="bitmap-rendering-options"></a>
 
@@ -873,4 +873,4 @@ This format creates an SVG document that has links between the pages. This is pr
 Apache FOP is easily extensible and allows you to add new output formats to enhance FOP's functionality. There's a number of output formats which are on our wish list. We're looking for volunteers to help us implement them.
 
 
--  [ODF (Open Document Format)](http://en.wikipedia.org/wiki/OpenDocument) : The standardized successor to OpenOffice's file format.
+-  [ODF (Open Document Format)](http://en.wikipedia.org/wiki/OpenDocument): The standardized successor to OpenOffice's file format.

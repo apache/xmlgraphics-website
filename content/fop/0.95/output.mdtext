@@ -13,7 +13,7 @@ Most FOP renderers use a FOP-specific system for font registration. However, the
 
 Theoretically, there's some potential to make the output of the PDF/PS renderers match the output of the Java2D-based renderers. If FOP used the font metrics from its own font subsystem but still used Java2D for text painting in the Java2D-based renderers, this could probably be achieved. However, this approach hasn't been implemented, yet.
 
-With a work-around, it is possible to match the PDF/PS output in a Java2D-based renderer pretty closely. The clue is to use the [intermediate format](intermediate.html) . The trick is to layout the document using FOP's own font subsystem but then render the document using Java2D. Here are the necessary steps (using the command-line):
+With a work-around, it is possible to match the PDF/PS output in a Java2D-based renderer pretty closely. The clue is to use the [intermediate format](intermediate.html). The trick is to layout the document using FOP's own font subsystem but then render the document using Java2D. Here are the necessary steps (using the command-line):
 
 
 1. Produce an IF file: `fop -fo myfile.fo -at application/pdf myfile.at.xml` <br></br>Specifying "application/pdf" for the "-at" parameter causes FOP to use FOP's own font subsystem (which is used by the PDF renderer). Note that no PDF file is created in this step.
@@ -31,7 +31,7 @@ With a work-around, it is possible to match the PDF/PS output in a Java2D-based 
 
 ### Output to a Printer or Other Device <a id="general-direct-output"></a>
 
-The most obvious way to print your document is to use the FOP [print renderer](#print) , which uses the Java2D API (AWT). However, you can also send output from the Postscript renderer directly to a Postscript device, or output from the PCL renderer directly to a PCL device.
+The most obvious way to print your document is to use the FOP [print renderer](#print), which uses the Java2D API (AWT). However, you can also send output from the Postscript renderer directly to a Postscript device, or output from the PCL renderer directly to a PCL device.
 
 Here are Windows command-line examples for Postscript and PCL:
 fop ... -ps \\computername\printerfop ... -pcl \\computername\printer
@@ -54,9 +54,9 @@ PDF has a set of fonts that are always available to all PDF viewers; to quote fr
 
 FOP does not currently support several desirable PDF features: watermarks and signatures. One workaround is to use Adobe Acrobat (the full version, not the Reader) to process the file manually or with scripting that it supports.
 
-Another popular post-processing tool is [iText](http://www.lowagie.com/iText) , which has tools for adding security features, document properties, watermarks, and many other features to PDF files.
+Another popular post-processing tool is [iText](http://www.lowagie.com/iText), which has tools for adding security features, document properties, watermarks, and many other features to PDF files.
 <warning>Caveat: iText may swallow PDF bookmarks. But [Jens Stavnstrup tells us](http://issues.apache.org/bugzilla/show_bug.cgi?id=37589) that this doesn't happen if you use iText's PDFStamper.</warning>
-Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note that FOP now supports [PDF encryption](pdfencryption.html) . However the principles for using iText for other PDF features are similar.)
+Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note that FOP now supports [PDF encryption](pdfencryption.html). However the principles for using iText for other PDF features are similar.)
 
     :::java
     public static void main(String args[]) {
@@ -497,7 +497,7 @@ These are some known restrictions compared to other supported output formats (no
 
 This is primarily for testing and verification. The XML created is simply a representation of the internal area tree put into XML. We use that to verify the functionality of FOP's layout engine.
 
-The other use case of the Area Tree XML is as FOP's "intermediate format". More information on that can be found on the page dedicated to the [Intermediate Format](intermediate.html) .
+The other use case of the Area Tree XML is as FOP's "intermediate format". More information on that can be found on the page dedicated to the [Intermediate Format](intermediate.html).
 
 ## Java2D/AWT <a id="awt"></a>
 
@@ -593,4 +593,4 @@ This format creates an SVG document that has links between the pages. This is pr
 Apache FOP is easily extensible and allows you to add new output formats to enhance FOP's functionality. There's a number of output formats which are on our wish list. We're looking for volunteers to help us implement them.
 
 
--  [ODF (Open Document Format)](http://en.wikipedia.org/wiki/OpenDocument) : The standardized successor to OpenOffice's file format.
+-  [ODF (Open Document Format)](http://en.wikipedia.org/wiki/OpenDocument): The standardized successor to OpenOffice's file format.

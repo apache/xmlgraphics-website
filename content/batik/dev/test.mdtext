@@ -26,7 +26,7 @@ The following are the high level interfaces in the infrastructure.
 
  [Test](../javadoc/org/apache/batik/test/Test.html)
 :
-A `Test` is performing whatever check is needed in its `run` method, and each run produces a `TestReport` .
+A `Test` is performing whatever check is needed in its `run` method, and each run produces a `TestReport`.
 
 
  [TestReport](../javadoc/org/apache/batik/test/TestReport.html)
@@ -41,7 +41,7 @@ A `TestSuite` is a test aggregation which can run a set of `Test` instances.
 
  [TestReportProcessor](../javadoc/org/apache/batik/test/TestReportProcessor.html)
 :
-A `TestReportProcessor` is used to analyze a `TestReport` . A specific implementation can choose to create graphs, send an email or write an HTML file.
+A `TestReportProcessor` is used to analyze a `TestReport`. A specific implementation can choose to create graphs, send an email or write an HTML file.
 
 ### Default implementations <a id="Default+implementations"></a>
 
@@ -77,7 +77,7 @@ This is another implementation of the `TestReportProcessor` interface that email
 
 The test infrastructure is using XML-out (and XML-in too, see the [Running a test suite](#runningATestSuite) section) as a favorite way to generate test reports. The [XMLTestReportProcessor](../javadoc/org/apache/batik/test/XMLTestReportProcessor.html) implementation of the `TestReportProcessor` interface. It outputs reports in XML in a configurable directory.
 
-The `XMLTestReportProcessor` can notify an [XMLReportConsumer](../javadoc/org/apache/batik/test/XMLReportConsumer.html) when it has created a new report. There is one implementation of that interface that can run an XSL stylesheet on the XML report (e.g., to generate an HTML report), called [XSLXMLReportConsumer](../javadoc/org/apache/batik/test/XSLXMLReportConsumer.html) . This is used by the `regard` rule in the Batik build to produce an HTML report for the default regression test suite.
+The `XMLTestReportProcessor` can notify an [XMLReportConsumer](../javadoc/org/apache/batik/test/XMLReportConsumer.html) when it has created a new report. There is one implementation of that interface that can run an XSL stylesheet on the XML report (e.g., to generate an HTML report), called [XSLXMLReportConsumer](../javadoc/org/apache/batik/test/XSLXMLReportConsumer.html). This is used by the `regard` rule in the Batik build to produce an HTML report for the default regression test suite.
 
 ## Managing test suites <a id="managingATestSuite"></a>
 
@@ -189,7 +189,7 @@ build.sh runtestsuite path/to/my/newly/created/testSuite.xml
 
 In addition, the `regard` rule runs a specific set of tests by default, so that you do not need to pass any *testRun* file argument.
 
- ** `regard` is the project’s safeguard against regressions** .
+ ** `regard` is the project’s safeguard against regressions**.
 
 ## regard: the Batik regression test suite <a id="regard"></a>
 
@@ -219,7 +219,7 @@ will run all the tests with an ID containing `unitTesting.ts` (i.e., all the tes
 
 ### Rendering accuracy tests <a id="Rendering+accuracy+tests"></a>
 
-There is a `Test` implementation, [SVGRenderingAccuracyTest](../javadoc/org/apache/batik/test/SVGRenderingAccuracyTest.html) , which checks that Batik’s rendering of an SVG document stays accurate. It compares reference images with the rendering Batik produces and reports any discrepency.
+There is a `Test` implementation, [SVGRenderingAccuracyTest](../javadoc/org/apache/batik/test/SVGRenderingAccuracyTest.html), which checks that Batik’s rendering of an SVG document stays accurate. It compares reference images with the rendering Batik produces and reports any discrepency.
 
 An `SVGRenderingAccuracyTest` ’s constructor configuration is made of:
 
@@ -269,7 +269,7 @@ Once the intial set up has been done, you can use regard by simply updating your
 
 ### SVG generator tests <a id="SVG+generator+tests"></a>
 
-Regard contains over 100 tests for checking regressions on the SVG generator. If you use `svggen` as an argument to regard, all the SVG generator tests will be run (because `regard.xml` points to `test-resources/org/apache/batik/svggen/regsvggen.xml` , which is a test suite description for the SVG generator and that file’s root `testSuite` element has the “svggen” ID).
+Regard contains over 100 tests for checking regressions on the SVG generator. If you use `svggen` as an argument to regard, all the SVG generator tests will be run (because `regard.xml` points to `test-resources/org/apache/batik/svggen/regsvggen.xml`, which is a test suite description for the SVG generator and that file’s root `testSuite` element has the “svggen” ID).
 
 ## Writing new tests <a id="writingNewTests"></a>
 
@@ -277,7 +277,7 @@ Writing a new test involves either configuring a new test or writing a new `Test
 
 ### Adding a new test configuration <a id="Adding+a+new+test+configuration"></a>
 
-Imagine that you add a cool new test case to the `samples` directory, such as `linking-viewBox.svg` . In order to check for regressions on that file you can add the following entry:
+Imagine that you add a cool new test case to the `samples` directory, such as `linking-viewBox.svg`. In order to check for regressions on that file you can add the following entry:
 
     :::xml
     <test id="anne.svg" class="org.apache.batik.test.svg.SVGRenderingAccuracyTest">
@@ -293,11 +293,11 @@ Imagine that you add a cool new test case to the `samples` directory, such as `l
                       value="test-references/samples/tests/variation-candidate/linkingViewBox.png"/>
     </test>
 
-to the `test-resources/org/apache/batik/test/samplesRendering.xml` test suite description, the description of the regard test suite. If you have access to the build machine where the reference images are typically generated, you can check 0n the reference image in `test-references/samples/tests` . Otherwise (and this is OK), you can let the test fail the first time it is run on the build/test machine and that will be a reminder for whoever is responsible for that machine that a valid reference image should be checked in.
+to the `test-resources/org/apache/batik/test/samplesRendering.xml` test suite description, the description of the regard test suite. If you have access to the build machine where the reference images are typically generated, you can check 0n the reference image in `test-references/samples/tests`. Otherwise (and this is OK), you can let the test fail the first time it is run on the build/test machine and that will be a reminder for whoever is responsible for that machine that a valid reference image should be checked in.
 
 ### Writing a new test <a id="Writing+a+new+test"></a>
 
-Imagine you want to validate some aspect of your code, and let's take the bridge error handling as an example. You could create a new class in the `test-sources` directory, in `test-sources/org/apache/batik/bridge` in our example, and let's call it `ErrorHandlingTest` . To simplify the implementation of the `Test` interface, you can choose to derive from the `AbstractTest` class and generate a `DefaultTestReport` .
+Imagine you want to validate some aspect of your code, and let's take the bridge error handling as an example. You could create a new class in the `test-sources` directory, in `test-sources/org/apache/batik/bridge` in our example, and let's call it `ErrorHandlingTest`. To simplify the implementation of the `Test` interface, you can choose to derive from the `AbstractTest` class and generate a `DefaultTestReport`.
 
 While writing the `Test` you may want to use your own XML file with just your test, for example:
 

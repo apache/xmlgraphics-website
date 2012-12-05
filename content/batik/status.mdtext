@@ -8,17 +8,17 @@ This page details information about Batik’s implementation of the [SVG 1.1](ht
 
 
 Not supported
-:    
+:
 If a feature is<span class="no">not</span>supported, this means that Batik performs no useful processing for it. This feature could be silently ignored or an exception might be thrown when trying to use it.
 
 
 Partially supported
-:    
+:
 If a feature is<span class="partial">partially</span>suppored, this means that Batik performs some processing for it, but there are known bugs with this processing.
 
 
 Fully supported
-:    
+:
 If a feature is<span class="yes">fully</span>supported, this means that Batik performs the correct processing for it, as detailed in the relevant specification.
 
 Note that the information on this page is based on the code in the Subversion repository trunk.
@@ -65,7 +65,7 @@ Note that all presentation attributes are supported on all stylable elements. Th
 |-------|
 | systemLanguage | yes |  |
 |----------------|
-| target | no | While `target` is not supported, new windows can be opened with `xlink:show="new"` . |
+| target | no | While `target` is not supported, new windows can be opened with `xlink:show="new"`. |
 |--------|
 | transform | yes |  |
 |-----------|
@@ -3269,7 +3269,7 @@ Note that all presentation attributes are supported on all stylable elements. Th
 |--------------|
 |  | <a name="svg:style"></a>svg:style |  |  |
 |-----------|--|--|
-|  |  | <notes>The `:hover` , `:link` , `:visited` , `:active` and `:focus` pseudo-classes are not supported in selectors.</notes> |
+|  |  | <notes>The `:hover`, `:link`, `:visited`, `:active` and `:focus` pseudo-classes are not supported in selectors.</notes> |
 | Attributes |
 |------------|
 | id | yes |  |
@@ -5446,7 +5446,7 @@ The table below lists the SVG DOM interfaces that are supported by Batik. For ea
 |---|
 | Operations |
 |------------|
-| matrixTransform | partial | Not implemented for any `SVGPoint` in an `SVGPointList` . |
+| matrixTransform | partial | Not implemented for any `SVGPoint` in an `SVGPointList`. |
 |-----------------|
 |  | <a name="SVGPointList"></a>SVGPointList |  |  |
 |--------------|--|--|
@@ -5879,21 +5879,21 @@ The current SVG document.
 </div><div class="object-property-header">event</div><div class="object-property-desc">
 The most recently dispatched event object.
 </div><div class="object-property-header">evt</div><div class="object-property-desc">
-An alias for `event` .
+An alias for `event`.
 </div><div class="object-property-header">location</div><div class="object-property-desc">
 Implementation of the [Location](http://www.w3.org/TR/SVGTiny12/svgudom.html#dom__Location) interface. Methods `assign` and `reload` are available.
 This interface is available since version 1.8.</div><div class="object-property-header">window</div><div class="object-property-desc">
 The global object (a self-reference).
 </div><div class="object-section-header">Function properties</div><div class="object-property-header">alert<span class="object-property-func-params">(message)</span></div><div class="object-property-desc">
-Displays an alert dialog with the specified `message` .
+Displays an alert dialog with the specified `message`.
 </div><div class="object-property-header">clearInterval<span class="object-property-func-params">(intervalID)</span></div><div class="object-property-desc">
-Cancels an interval that was set by a call to `setInterval` . The `intervalID` must be an object that has been returned by a previous `setInterval` call.
+Cancels an interval that was set by a call to `setInterval`. The `intervalID` must be an object that has been returned by a previous `setInterval` call.
 </div><div class="object-property-header">clearTimeout<span class="object-property-func-params">(timeoutID)</span></div><div class="object-property-desc">
-Cancels a timeout that was set by a call to `setTimeout` . The `timeoutID` must be an object that has been returned by a previous `clearTimeout` call.
+Cancels a timeout that was set by a call to `setTimeout`. The `timeoutID` must be an object that has been returned by a previous `clearTimeout` call.
 </div><div class="object-property-header">confirm<span class="object-property-func-params">(message)</span></div><div class="object-property-desc">
-Displays a confirmation dialog with the specified `message` . The window has an OK and a Cancel button. The function returns `true` if the user clicks on the OK button, and `false` otherwise.
+Displays a confirmation dialog with the specified `message`. The window has an OK and a Cancel button. The function returns `true` if the user clicks on the OK button, and `false` otherwise.
 </div><div class="object-property-header">getURL<span class="object-property-func-params">(uri, function[, encoding])</span></div><div class="object-property-desc">
-Gets data from the given `uri` . This method returns immediately and the given `function` is called when the data is fully downloaded. The optional `encoding` argument is the encoding to assume the data is in, defaulting to UTF-8. The argument passed to the function is an object with three properties:
+Gets data from the given `uri`. This method returns immediately and the given `function` is called when the data is fully downloaded. The optional `encoding` argument is the encoding to assume the data is in, defaulting to UTF-8. The argument passed to the function is an object with three properties:
 
 
 
@@ -5907,7 +5907,7 @@ content
 :    A string holding the data.</div><div class="object-property-header">parseXML<span class="object-property-func-params">(text, document)</span></div><div class="object-property-desc">
 Parses and returns a `DocumentFragment` object. `text` is the string that is to be parsed as XML data, and `document` is a `Document` that will be used for creating new DOM objects.
 </div><div class="object-property-header">postURL<span class="object-property-func-params">(uri, content, function[, type, encoding])</span></div><div class="object-property-desc">
-Sends data to the given `uri` . This method returns immediately and the given `function` is called when the data is fully downloaded. The optional `type` argument will specify the `Content-Type` HTTP header to use, defaulting to `text/plain` . The optional `encoding` argument is the encoding to assume the data is in, defaulting to UTF-8. The argument passed to the function is an object with three properties:
+Sends data to the given `uri`. This method returns immediately and the given `function` is called when the data is fully downloaded. The optional `type` argument will specify the `Content-Type` HTTP header to use, defaulting to `text/plain`. The optional `encoding` argument is the encoding to assume the data is in, defaulting to UTF-8. The argument passed to the function is an object with three properties:
 
 
 
@@ -5921,7 +5921,7 @@ content
 :    A string holding the data.</div><div class="object-property-header">printNode<span class="object-property-func-params">(node)</span></div><div class="object-property-desc">
 Returns a string that is the serialization of the given DOM node.
 </div><div class="object-property-header">prompt<span class="object-property-func-params">(message[, defaultValue])</span></div><div class="object-property-desc">
-Displays an input dialog with the specified `message` . The `defaultValue` parameter specifies the initial contents of the text box in the window. The function returns the string entered by the user, or null if the window was cancelled.
+Displays an input dialog with the specified `message`. The `defaultValue` parameter specifies the initial contents of the text box in the window. The function returns the string entered by the user, or null if the window was cancelled.
 </div><div class="object-property-header">setInterval<span class="object-property-func-params">(script, interval)</span></div><div class="object-property-desc">
 Evaluates the given `script` repeatedly after the specified amount of time. The value for `script` must be either a string, which is evaluated by `eval` every interval, or an ECMAScript function object, which is called every interval. This method does not stall the script: the evaluation is scheduled and the script continues its execution. The function returns an object that can be passed to the `clearInterval` function.
 </div><div class="object-property-header">setTimeout<span class="object-property-func-params">(script, timeout)</span></div><div class="object-property-desc">
@@ -6411,7 +6411,7 @@ The table below lists the test cases from the December 2006 release of the [SVG 
 |------------------|
 |  [styling-css-05-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-css-05-b.svg)  | yes |  |
 |------------------|
-|  [styling-css-06-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-css-06-b.svg)  | no | The `:hover` , `:link` , `:visited` , `:active` and `:focus` pseudo-classes are not supported in selectors. |
+|  [styling-css-06-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-css-06-b.svg)  | no | The `:hover`, `:link`, `:visited`, `:active` and `:focus` pseudo-classes are not supported in selectors. |
 |------------------|
 |  [styling-inherit-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-inherit-01-b.svg)  | yes |  |
 |----------------------|

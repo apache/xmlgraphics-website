@@ -23,7 +23,7 @@ The servlet is automatically built when you build Apache FOP using the supplied 
 The source code for the servlet can be found under {fop-dir}/src/java/org/apache/fop/servlet/FopServlet.java.
 This example servlet should not be used on a public web server connected to the Internet as it does not contain any measures to prevent Denial-of-Service-Attacks. It is provided as an example and as a starting point for your own servlet.
 ## Create your own Servlet <a id="servlet"></a>
-This section assumes you are familiar with [embedding FOP](embedding.html) .
+This section assumes you are familiar with [embedding FOP](embedding.html).
 ### A minimal Servlet <a id="minimal-servlet"></a>
 
 Here is a minimal code snippet to demonstrate the basics:
@@ -91,13 +91,13 @@ A common requirement is to transform an XML source to XSL-FO using an XSL transf
 
 Buffering the generated PDF in a ByteArrayOutputStream is done to avoid potential problems with the Acrobat Reader Plug-in in Microsoft Internet Explorer.
 The `Source` instance used above is simply an example. If you have to read the XML from a string, supply a `new StreamSource(new
-          StringReader(xmlstring))` . Constructing and reparsing an XML string is generally less desirable than using a SAXSource if you generate your XML. You can alternatively supply a DOMSource as well. You may also use dynamically generated XSL if you like.
+          StringReader(xmlstring))`. Constructing and reparsing an XML string is generally less desirable than using a SAXSource if you generate your XML. You can alternatively supply a DOMSource as well. You may also use dynamically generated XSL if you like.
 
 Because you have an explicit `Transformer` object, you can also use it to explicitely set parameters for the transformation run.
 
 ### Custom configuration <a id="cfg"></a>
 
-You can easily set up your own FOUserAgent as demonstrated on the [Embedding page](embedding.html) .
+You can easily set up your own FOUserAgent as demonstrated on the [Embedding page](embedding.html).
 
 ### Improving performance <a id="performance"></a>
 
@@ -112,7 +112,7 @@ Of course, the [performance hints from the Embedding page](embedding.html#perfor
 
 ### Accessing resources in your web application <a id="uriresolver"></a>
 
-Often, you will want to use resources (stylesheets, images etc.) which are bundled with your web application. FOP provides a URIResolver implementation that lets you access files via the Servlet's ServletContext. The class is called `org.apache.fop.servlet.ServletContextURIResolver` .
+Often, you will want to use resources (stylesheets, images etc.) which are bundled with your web application. FOP provides a URIResolver implementation that lets you access files via the Servlet's ServletContext. The class is called `org.apache.fop.servlet.ServletContextURIResolver`.
 
 Here's how to set it up in your servlet. Instantiate a new instance in the servlet's init() method:
 
@@ -162,7 +162,7 @@ Here are some example snippets:
 Some versions of Internet Explorer will not automatically show the PDF or call the servlet multiple times. These are well-known limitations of Internet Explorer and are not a problem of the servlet. However, Internet Explorer can still be used to download the PDF so that it can be viewed later. Here are some suggestions in this context:
 
 
-- Use an URL ending in `.pdf` , like `http://myserver/servlet/stuff.pdf` . Yes, the servlet can be configured to handle this. If the URL has to contain parameters, try to have **both** the base URL as well as the last parameter end in `.pdf` , if necessary append a dummy parameter, like `http://myserver/servlet/stuff.pdf?par1=a&par2=b&d=.pdf` . The effect may depend on IEx version.
+- Use an URL ending in `.pdf`, like `http://myserver/servlet/stuff.pdf`. Yes, the servlet can be configured to handle this. If the URL has to contain parameters, try to have **both** the base URL as well as the last parameter end in `.pdf`, if necessary append a dummy parameter, like `http://myserver/servlet/stuff.pdf?par1=a&par2=b&d=.pdf`. The effect may depend on IEx version.
 
 - Give IEx the opportunity to cache. In particular, ensure the server does not set any headers causing IEx not to cache the content. This may be a real problem if the document is sent over HTTPS, because most IEx installations will by default *not* cache any content retrieved over HTTPS. Setting the `Expires` header entry may help in this case:<br></br> `response.setDateHeader("Expires",
           System.currentTimeMillis() + cacheExpiringDuration *

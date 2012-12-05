@@ -15,7 +15,7 @@ The method for starting the rasterizer depends on the distribution of Batik that
 
 ### Using the binary distribution <a id="using-binary"></a>
 
-If you downloaded the binary distribution of Batik, you should have a file called `batik-1.6.zip` (or similar), and, after expanding that file, a jar file called `batik-rasterizer.jar` . To start the rasterizer, open a console, go to the directory where you expanded the distribution (and where `batik-rasterizer.jar` is located) and simply type the following at the command prompt:
+If you downloaded the binary distribution of Batik, you should have a file called `batik-1.6.zip` (or similar), and, after expanding that file, a jar file called `batik-rasterizer.jar`. To start the rasterizer, open a console, go to the directory where you expanded the distribution (and where `batik-rasterizer.jar` is located) and simply type the following at the command prompt:
 
 java -jar batik-rasterizer.jar FILES
 
@@ -42,7 +42,7 @@ specifies the output directory, or the output file if there is only a single inp
 
  **-m**  *mime-type*
 :
-specifies the output MIME type, which should be one of `image/png` , `image/jpeg` , `image/tiff` or `application/pdf` ,
+specifies the output MIME type, which should be one of `image/png`, `image/jpeg`, `image/tiff` or `application/pdf`,
 
 
  **-w**  *width*
@@ -152,7 +152,7 @@ will generate JPEG images for all the SVG files found in the samples directory.
 
 ### Using the source distribution <a id="usingSource"></a>
 
-If you downloaded the source distribution of Batik, you got a zip or tar file that expanded into a directory called `xml-batik` or <code>batik- *version*</code> . In that directory, you can find build scripts for the platform you are running on. For example, there is a `build.bat` script for users of the Windows platform and there is a `build.sh` script for UNIX users.
+If you downloaded the source distribution of Batik, you got a zip or tar file that expanded into a directory called `xml-batik` or `batik- *version*`. In that directory, you can find build scripts for the platform you are running on. For example, there is a `build.bat` script for users of the Windows platform and there is a `build.sh` script for UNIX users.
 
 To start the rasterizer you should:
 
@@ -193,7 +193,7 @@ The task is able to produce four raster formats: <abbr title="Portable Network G
 
 The first thing to do is to compile rasterizer task classes. Download the source distribution of Batik and see the `README` file in the `contrib/rasterizertask` directory for more instructions. The build procedure works the same way as when building Batik itself.
 
-After building, ensure that the generated `batik-rasterizer.jar` and the classes (or jar file) of the rasterizer task are in your `CLASSPATH` .
+After building, ensure that the generated `batik-rasterizer.jar` and the classes (or jar file) of the rasterizer task are in your `CLASSPATH`.
 
 Next you have to define the task in your Ant project. To do this, add the following line either after the `project` start tag or after the `target` start tag in the target you are using the rasterizer task:
 
@@ -209,24 +209,24 @@ The following table lists the attributes that may be specified on the `rasterize
 
 | Attribute | Description | Required |
 |-----------|-------------|----------|
-| result | Sets the type of the result image. Only one of the following values must be used: `image/png` , `image/jpeg` , `image/tiff` and `application/pdf` . The value must be in lowercase letters. | Yes |
+| result | Sets the type of the result image. Only one of the following values must be used: `image/png`, `image/jpeg`, `image/tiff` and `application/pdf`. The value must be in lowercase letters. | Yes |
 | height | Sets the height of the result image in pixels. The task calculates the height from the SVG file if this parameter has not been set. The rasterizer keeps the aspect ratio of the SVG file even if the both `height` and `width` have been set. | No |
 | width | Sets the width of the result image in pixels. The task calculates the width from the SVG file if this parameter has not been set. The rasterizer keeps the aspect ratio of the SVG file even if the both `height` and `width` have been set. | No |
 | maxheight | Sets the maximum height of the result image in pixels. The image won’t be higher than defined in this parameter, regardless of the size set in the image itself or in other parameters. This is a floating point value. | No |
 | maxwidth | Sets the maximum width of the result image in pixels. The image won’t be wider than defined in this parameter, regardless of the size set in the image itself or in other parameters. This is a floating point value. | No |
 | quality | Sets the quality of the produced image. The value must be greater than 0 but smaller than 1, larger numbers meaning higher quality. The quality value is used only with JPEG images. The default quality value is 0.99. | No |
-| area | Defines the area in the SVG file which will be rasterized. Parts outside this area are discarded and don’t show in the result image. The area attribute value has four integers separated by commas. The first two integers set the x and y coordinates of the upper left corner of the area, respectively. The last two integers set the width and height of the area, respectively. For example, `10, 20, 100, 200` sets the rectangular area from point `10, 10` to point `110, 220` . The specified area is applied to all images if more than one file is rasterized during one task. | No |
+| area | Defines the area in the SVG file which will be rasterized. Parts outside this area are discarded and don’t show in the result image. The area attribute value has four integers separated by commas. The first two integers set the x and y coordinates of the upper left corner of the area, respectively. The last two integers set the width and height of the area, respectively. For example, `10, 20, 100, 200` sets the rectangular area from point `10, 10` to point `110, 220`. The specified area is applied to all images if more than one file is rasterized during one task. | No |
 | bg | Sets the background color of the result image. The `bg` attribute value is either three or four integers separated with commas. The four values are alpha channel, red, green, and blue, respectively. If only three values are given, then the values are red, green, and blue and the alpha channel is automatically set to 255 (opaque). All values have to between 0 and 255. The default value is none which means that background is transparent and not filled with any color. | No |
-| media | CSS media type that is used to select a CSS stylesheet. The selected stylesheet is then used to rasterize the SVG files. Only the visual media group is supported (see the [CSS2 specification](http://www.w3.org/TR/REC-CSS2/) for more information about media groups). The default value is `screen` . | No |
+| media | CSS media type that is used to select a CSS stylesheet. The selected stylesheet is then used to rasterize the SVG files. Only the visual media group is supported (see the [CSS2 specification](http://www.w3.org/TR/REC-CSS2/) for more information about media groups). The default value is `screen`. | No |
 | dpi | Resolution for the result image. The attribute value is used to compute the “pixel to millimeter” ratio used when processing SVG files. The default value is 96. | No |
-| lang | Language which is used select language specific areas from the SVG file during the rasterizing process. The valid values are defined in [RFC3066](http://www.faqs.org/rfcs/rfc3066.html) . The default value is `en` . | No |
+| lang | Language which is used select language specific areas from the SVG file during the rasterizing process. The valid values are defined in [RFC3066](http://www.faqs.org/rfcs/rfc3066.html). The default value is `en`. | No |
 | src | Name of a one input file. Use this parameter to convert just one file whose name and location are known. The `dest` parameter must also be given. | One of the following is required: `src` attribute, `srcdir` attribute or `fileset` element(s). |
 | dest | Name of a one output file. Used this with `src` parameter only. The output directory is created if it doesn’t exist. | Required if `src` is used. |
-| srcdir | Name of the input directory. `srcdir` and `fileset` elements can be combined and `srcdir` can be omitted if there is at least one `fileset` child element. `srcdir` file selection can be controlled with `include` , `exclude` , etc. child elements. Note that without control parameters the task tries to rasterize *all* files in the given directory. | One of the following is required: `src` attribute, `srcdir` attribute or `fileset` element(s). |
+| srcdir | Name of the input directory. `srcdir` and `fileset` elements can be combined and `srcdir` can be omitted if there is at least one `fileset` child element. `srcdir` file selection can be controlled with `include`, `exclude`, etc. child elements. Note that without control parameters the task tries to rasterize *all* files in the given directory. | One of the following is required: `src` attribute, `srcdir` attribute or `fileset` element(s). |
 | destdir | Name of an output directory. Use this with the `srcdir` attribute or `fileset` elements. The task generates the names of the output images by changing the suffix of the input file names to correspond the result image type. A suffix is added if the input file doesn’t have one. Output directories are created if they don’t exist. | Required if `srcdir` attribute or `fileset` elements are used. |
-| classname | Class name of the XML parser used to parse SVG images. The value can be either the complete classname with package information included or the special name `jaxp` , which means any available parser in the `CLASSPATH` that supports JAXP. See the Batik code for the default value. | No |
+| classname | Class name of the XML parser used to parse SVG images. The value can be either the complete classname with package information included or the special name `jaxp`, which means any available parser in the `CLASSPATH` that supports JAXP. See the Batik code for the default value. | No |
 
-You can use `fileset` elements to select input files and directories. See the [Ant](http://ant.apache.org/) documentation to learn how to use [filesets](http://ant.apache.org/manual/CoreTypes/fileset.html) .
+You can use `fileset` elements to select input files and directories. See the [Ant](http://ant.apache.org/) documentation to learn how to use [filesets](http://ant.apache.org/manual/CoreTypes/fileset.html).
 
 ### Examples of using the rasterizer task <a id="taskExamples"></a>
 

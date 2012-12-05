@@ -21,9 +21,9 @@ This page describes the [complex scripts](http://en.wikipedia.org/wiki/Complex_s
 Complex script features are enabled by default. If some application of FOP does not require this support, then it can be disabled in three ways:
 
 
-1.  **Command line:**<br/>The command line option `-nocs` turns off complex script features:<br/>`fop -nocs -fo mydocument.fo -pdf mydocument.pdf`<br/> 
-1.  **Embedding:**<br/>`userAgent.setComplexScriptFeaturesEnabled(false);` 
-1.  **Optional setting in fop.xconf file:**<br/>`<fop version="1.0">`<br/>`<complex-scripts disabled="true"/>`<br/>`...`<br/>`</fop>` 
+1.  **Command line:**<br/>The command line option `-nocs` turns off complex script features:<br/>`fop -nocs -fo mydocument.fo -pdf mydocument.pdf`<br/>
+1.  **Embedding:**<br/>`userAgent.setComplexScriptFeaturesEnabled(false);`
+1.  **Optional setting in fop.xconf file:**<br/>`<fop version="1.0">`<br/>`<complex-scripts disabled="true"/>`<br/>`...`<br/>`</fop>`
 
 When complex scripts features are enabled, additional information related to bidirectional level resolution, the association between characters and glyphs, and glyph position adjustments are added to the internal, parsed representation of the XSL-FO tree and its corresponding formatted area tree. This additional information will somewhat increase the memory requirements for processing documents that use these features.
 A document author need not make explicit use of any complex scripts feature in order for this additional information to be created. For example, if the author makes use of a font that contains OpenType GSUB and/or GPOS tables, then those tables will be automatically used unless complex scripts features are disabled.
@@ -38,7 +38,7 @@ In most circumstances, XSL-FO content does not need to change in order to make u
 
 - The [writing-mode](http://www.w3.org/TR/2006/REC-xsl11-20061205/#writing-mode) property.
 
-- The number to string conversion properties: [format](http://www.w3.org/TR/2006/REC-xsl11-20061205/#format) , [grouping-separator](http://www.w3.org/TR/2006/REC-xsl11-20061205/#grouping-separator) , [grouping-size](http://www.w3.org/TR/2006/REC-xsl11-20061205/#grouping-size) , [letter-value](http://www.w3.org/TR/2006/REC-xsl11-20061205/#letter-value) , and `fox:number-conversion-features` .
+- The number to string conversion properties: [format](http://www.w3.org/TR/2006/REC-xsl11-20061205/#format), [grouping-separator](http://www.w3.org/TR/2006/REC-xsl11-20061205/#grouping-separator), [grouping-size](http://www.w3.org/TR/2006/REC-xsl11-20061205/#grouping-size), [letter-value](http://www.w3.org/TR/2006/REC-xsl11-20061205/#letter-value), and `fox:number-conversion-features`.
 
 - The [fo:bidi-override](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override) element.
 
@@ -55,7 +55,7 @@ The complex scripts related effects of the above enumerated XSL-FO constructs ar
 In order to apply font specific complex script features, it is necessary to know the script that applies to the text undergoing layout processing. This script is determined using the following algorithm:
 
 
-1. If the FO element that governs the text specifies a [http://www.w3.org/TR/2006/REC-xsl11-20061205/#script](http://www.w3.org/TR/2006/REC-xsl11-20061205/#script) property and its value is not the empty string or `"auto"` , then that script is used.
+1. If the FO element that governs the text specifies a [http://www.w3.org/TR/2006/REC-xsl11-20061205/#script](http://www.w3.org/TR/2006/REC-xsl11-20061205/#script) property and its value is not the empty string or `"auto"`, then that script is used.
 
 1. Otherwise, the dominant script of the text is determined automatically by finding the script whose constituent characters appear most frequently in the text.
 
@@ -121,7 +121,7 @@ The following table enumerates a number of non-standard extended script codes re
 
 Certain fonts that support complex script features can make use of language information in order for language specific processing rules to be applied. For example, a font designed for the Arabic script may support typographic variations according to whether the written language is Arabic, Farsi (Persian), Sindhi, Urdu, or another language written with the Arabic script. In order to apply these language specific features, the author may explicitly mark the text with a [http://www.w3.org/TR/2006/REC-xsl11-20061205/#language](http://www.w3.org/TR/2006/REC-xsl11-20061205/#language) property.
 
-When specifying the `language` property, the value of the property must be either an [ISO639-2 3-letter code](http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes) or an [ISO639-1 2-letter code](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) . Comparison of language codes is performed in a case-insensitive manner, so it does not matter what case is used when specifying these codes in an XSL-FO document.
+When specifying the `language` property, the value of the property must be either an [ISO639-2 3-letter code](http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes) or an [ISO639-1 2-letter code](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). Comparison of language codes is performed in a case-insensitive manner, so it does not matter what case is used when specifying these codes in an XSL-FO document.
 
 ### Writing Mode Property <a id="writing_mode_property"></a>
 
@@ -130,40 +130,40 @@ The `writing-mode` property is used to determine the axes and direction of the i
 The `writing-mode` property is inherited, so it can appear on any XSL-FO element type; however, it applies (semantically) only to the following element types:
 
 
--  `fo:page-sequence` 
+-  `fo:page-sequence`
 
--  `fo:simple-page-master` 
+-  `fo:simple-page-master`
 
--  `fo:region-*` 
+-  `fo:region-*`
 
--  `fo:block-container` 
+-  `fo:block-container`
 
--  `fo:inline-container` 
+-  `fo:inline-container`
 
--  `fo:table` 
+-  `fo:table`
 
 If it is not specified on one of these element types, but is specified on an ancestor element, then the value specified on that ancestor element (the inherited value) is used; otherwise, the initial value `lr-tb` is used.
 
 At present, only the following values of the `writing-mode` property are supported:
 
 
--  `lr-tb` 
+-  `lr-tb`
 
--  `rl-tb` 
+-  `rl-tb`
 
--  `lr` 
+-  `lr`
 
--  `rl` 
+-  `rl`
 
 Writing modes that employ a vertical inline progression direction are not yet supported.
 
 ### Bidi Override Element <a id="bidi_override_element"></a>
 
-The [fo:bidi-override](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override) element may be used to override default bidirectional processing behavior, including default embedding levels and default character directionality. In the absence of either this element or use of explicit [Bidi Control Characters](#bidi_controls) , the default behavior prescribed by the [Unicode Bidirectional Algorithm](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override) applies.
+The [fo:bidi-override](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override) element may be used to override default bidirectional processing behavior, including default embedding levels and default character directionality. In the absence of either this element or use of explicit [Bidi Control Characters](#bidi_controls), the default behavior prescribed by the [Unicode Bidirectional Algorithm](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override) applies.
 
 ### Bidi Control Characters <a id="bidi_controls"></a>
 
-In addition to the use of the [Bidi Override Element](#bidi_override_element) , an author may make use of the following explicit Unicode Bidi Control Characters:
+In addition to the use of the [Bidi Override Element](#bidi_override_element), an author may make use of the following explicit Unicode Bidi Control Characters:
 
 
 - U+200E - LEFT-TO-RIGHT MARK (LRM)
@@ -180,7 +180,7 @@ In addition to the use of the [Bidi Override Element](#bidi_override_element) , 
 
 - U+202E - RIGHT-TO-LEFT OVERRIDE (RLO)
 
-If an embedding or override is not terminated (using U+202C PDF) prior to the end of a [delimited text range](http://www.w3.org/TR/2006/REC-xsl11-20061205/#d0e4879) , then it is automatically terminated by FOP.
+If an embedding or override is not terminated (using U+202C PDF) prior to the end of a [delimited text range](http://www.w3.org/TR/2006/REC-xsl11-20061205/#d0e4879), then it is automatically terminated by FOP.
 
 ### Join Control Characters <a id="join_controls"></a>
 
@@ -248,17 +248,17 @@ Complex scripts support in Apache FOP is relatively new, so there are certain li
 
 - Only the PDF output format fully supports complex scripts features at the present time.
 
-- Shaping context does not extend across an element boundary. This limitation prevents the use of `fo:character` , `fo:inline` or `fo:wrapper` in order to colorize individual Arabic letters without affecting shaping behavior across the element boundary.
+- Shaping context does not extend across an element boundary. This limitation prevents the use of `fo:character`, `fo:inline` or `fo:wrapper` in order to colorize individual Arabic letters without affecting shaping behavior across the element boundary.
 
 ## Related Links <a id="links"></a>
 
 In addition to the XSL-FO specification, a number of external resources provide guidance about authoring documents that employ complex scripts and the features described above:
 
 
--  [The Unicode Standard](http://www.unicode.org/) 
+-  [The Unicode Standard](http://www.unicode.org/)
 
--  [Unicode Bidirectional Algorithm](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override) 
+-  [Unicode Bidirectional Algorithm](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override)
 
--  [OpenType Advanced Typographic Extensions](http://www.microsoft.com/typography/otspec/ttochap1.htm) 
+-  [OpenType Advanced Typographic Extensions](http://www.microsoft.com/typography/otspec/ttochap1.htm)
 
--  [Examples of Complex Rendering](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&item_id=CmplxRndExamples) 
+-  [Examples of Complex Rendering](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&item_id=CmplxRndExamples)

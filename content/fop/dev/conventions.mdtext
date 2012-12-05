@@ -14,13 +14,13 @@ Conventions in this section apply to Repository content, regardless of type:
 
 - To reduce the amount of spurious deltas, all text (non-binary) files checked into SVN must have Unix-style line endings (LF only). Many IDEs and editors (even on non-Unix platforms) have settings that can facilitate this convention.
 
-- In order to be able to discern commits from a committer from those where a committer applied a patch from a contributor, the commit message must contain a separate line following this pattern: **"Submitted by: [contributor's name] <[contributor's obfuscated e-mail address]>"** . This also helps doing audits on the repository.
+- In order to be able to discern commits from a committer from those where a committer applied a patch from a contributor, the commit message must contain a separate line following this pattern: **"Submitted by: [contributor's name] <[contributor's obfuscated e-mail address]>"**. This also helps doing audits on the repository.
 
 ## Java <a id="java"></a>
 
 ### Java Style <a id="java-style"></a>
 
-In order to facilitate the human reading of FOP source code, reduce churning in code, and prevent disputes, the FOP developers have agreed on a set of coding conventions. The basis of these coding conventions is documented in the [Apache XML Project Guidelines](http://xml.apache.org/source.html) , which requires that **all Java Language source code in the repository must be written in conformance to Sun's**  [Code Conventions for the Java Programming Language](http://java.sun.com/docs/codeconv/html/CodeConvTOC.doc.html) . In addition, the FOP developers have agreed to other conventions, which are summarized in the following table:
+In order to facilitate the human reading of FOP source code, reduce churning in code, and prevent disputes, the FOP developers have agreed on a set of coding conventions. The basis of these coding conventions is documented in the [Apache XML Project Guidelines](http://xml.apache.org/source.html), which requires that **all Java Language source code in the repository must be written in conformance to Sun's**  [Code Conventions for the Java Programming Language](http://java.sun.com/docs/codeconv/html/CodeConvTOC.doc.html). In addition, the FOP developers have agreed to other conventions, which are summarized in the following table:
 
 | Convention | Rationale | Enforced By |
 |------------|-----------|-------------|
@@ -33,7 +33,7 @@ In order to facilitate the human reading of FOP source code, reduce churning in 
 | No underscores in variable names except for static finals. | Upper/lower case distinctions can be made in all other variable names, eliminating the need for artificial word boundaries. | checkstyle |
 | Opening brace for a block should be on the same line as its control statement (if, while, etc.). | Standardization, general preference. | checkstyle |
 | Write appropriate javadoc entries for all public and protected classes, methods, and variables. | Basic API documentation is needed. | checkstyle |
-| By [ASF policy](http://mail-archives.apache.org/mod_mbox/jakarta-jmeter-dev/200402.mbox/%3C4039F65E.7020406@atg.com%3E) , @author tags are officially discouraged. However it is permissible to indicate the original author(s) of an entire file or package in a comment provided it follows the copyright and license header. | Attribution of subsequent contributions are recorded by the SVN commit history logs, so should not be included. | checkstyle |
+| By [ASF policy](http://mail-archives.apache.org/mod_mbox/jakarta-jmeter-dev/200402.mbox/%3C4039F65E.7020406@atg.com%3E), @author tags are officially discouraged. However it is permissible to indicate the original author(s) of an entire file or package in a comment provided it follows the copyright and license header. | Attribution of subsequent contributions are recorded by the SVN commit history logs, so should not be included. | checkstyle |
 
 For developers that dislike these conventions, one workaround is to develop using their own style, then use a formatting tool like [astyle](http://astyle.sourceforge.net/) (Artistic Style) before committing.
 
@@ -41,7 +41,7 @@ For developers that dislike these conventions, one workaround is to develop usin
 
 The java syntax checker " <a href="http://checkstyle.sourceforge.net">Checkstyle</a> " is used to enforce many of the FOP coding standards. The standards enforced through Checkstyle are documented in its configuration file (xml-fop/checkstyle.cfg). The conventions defined in the configuration file are an integral part of FOP's coding conventions, and should not be changed without common consent. In other words, the configuration file contains additional conventions that are not documented on this page, but are generally accepted as good style within the java community (i.e. they are the default behavior of checkstyle, which the FOP developers have decided to adopt *de facto* ). Any apparent contradiction between the configuration file and this document should be raised on the fop-dev mailing list so that it can be clarified.
 
-To use the "checkstyle" target in FOP's build process, download the source from the <a href="http://checkstyle.sourceforge.net">Checkstyle web site</a> , place checkstyle-all-*.jar in the lib directory and call "build checkstyle". Output (in the build directory) includes checkstyle_report.txt and checkstyle_report.xml. If you copy the file contrib/checkstyle-noframes.xsl from Checkstyle into FOP's root directory, you will also get an HTML report.
+To use the "checkstyle" target in FOP's build process, download the source from the <a href="http://checkstyle.sourceforge.net">Checkstyle web site</a>, place checkstyle-all-*.jar in the lib directory and call "build checkstyle". Output (in the build directory) includes checkstyle_report.txt and checkstyle_report.xml. If you copy the file contrib/checkstyle-noframes.xsl from Checkstyle into FOP's root directory, you will also get an HTML report.
 
 Checkstyle is probably most useful when integrated into your IDE. See the Checkstyle web site for more information about IDE plugins.
 
@@ -75,12 +75,12 @@ The following general principles are a distillation of best practice expectation
 
 - [book on code style] Code Complete by Steve McConnell.
 
-- [code formatting software] <a href="http://jrefactory.sourceforge.net">JRefactory</a> .
+- [code formatting software] <a href="http://jrefactory.sourceforge.net">JRefactory</a>.
 
 ### Related Links <a id="java-links"></a>
 
 
--  <a href="http://xmlgraphics.apache.org/repo.html">Apache XML Graphics Code Repositories</a> 
+-  <a href="http://xmlgraphics.apache.org/repo.html">Apache XML Graphics Code Repositories</a>
 
 -  <a href="http://jakarta.apache.org/site/faqs.html#Coding%20Conventions%20and%20Standards">Jakarta Code Conventions and Standards</a> (see Coding Conventions and Standards section)
 

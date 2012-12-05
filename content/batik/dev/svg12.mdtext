@@ -3,11 +3,11 @@ Title: SVG 1.2 support
 #SVG 1.2 support
 
 
-This page details information atbout Batik’s implementation of features from SVG 1.2, [Tiny](http://www.w3.org/TR/SVGTiny12/) and [Full](http://www.w3.org/TR/SVG12/) . Note that the information on this page is based on the code in the Subversion repository trunk.
+This page details information atbout Batik’s implementation of features from SVG 1.2, [Tiny](http://www.w3.org/TR/SVGTiny12/) and [Full](http://www.w3.org/TR/SVG12/). Note that the information on this page is based on the code in the Subversion repository trunk.
 
 ## DOM Level 3 <a id="dom3"></a>
 
-DOM Level 3 [Core](http://www.w3.org/TR/DOM-Level-3-Core/) , [Events](http://www.w3.org/TR/DOM-Level-3-Events/) and [XPath](http://www.w3.org/TR/DOM-Level-3-XPath/) are all supported. These features are available regardless of whether the document has `version="1.1"` or `version="1.2"` set on the root `svg` element.
+DOM Level 3 [Core](http://www.w3.org/TR/DOM-Level-3-Core/), [Events](http://www.w3.org/TR/DOM-Level-3-Events/) and [XPath](http://www.w3.org/TR/DOM-Level-3-XPath/) are all supported. These features are available regardless of whether the document has `version="1.1"` or `version="1.2"` set on the root `svg` element.
 
 There are a few issues with the DOM Level 3 Core implementation:
 
@@ -18,13 +18,13 @@ There are a few issues with the DOM Level 3 Core implementation:
 
 1. XML Schema information is never used. Batik does not implement XML Schema, so any methods or attributes that would utilise or expose schema information (such as the `schemaTypeInfo` attribute on the `Attr` and `Element` interfaces) do not do so.
 
-1.  `Document.normalizeDocument` ignores the `"entities"` parameter in the document’s `DOMConfiguration` .
+1.  `Document.normalizeDocument` ignores the `"entities"` parameter in the document’s `DOMConfiguration`.
 
 ### Using DOM Level 3 functionality from Java <a id="dom3java"></a>
 
 JREs before 1.5 include the DOM Level 2 interfaces and this can cause problems when trying to use the DOM Level 3 versions of these same interface files ( `org.w3c.dom.*` ). Though the concrete Batik DOM classes implement the DOM Level 3 functionality, you won’t be able to access those methods through the `org.w3c.dom` interfaces on these earlier JREs.
 
-There are two ways to overcome this problem. The first is to install the DOM Level 3 interfaces using the [Endorsed Standards Override Mechanism](http://java.sun.com/j2se/1.4.2/docs/guide/standards/) . Copy the file `lib/xml-apis-ext.jar` into the endorsed standards override directory and the DOM Level 3 interfaces will be visible. You can then write code against them (for example, call `Document.renameNode` directly). However, this will mean that other people cannot run or compile your code unless they have JRE 1.5 or later, or they have also installed the `xml-apis-ext.jar` in the same way.
+There are two ways to overcome this problem. The first is to install the DOM Level 3 interfaces using the [Endorsed Standards Override Mechanism](http://java.sun.com/j2se/1.4.2/docs/guide/standards/). Copy the file `lib/xml-apis-ext.jar` into the endorsed standards override directory and the DOM Level 3 interfaces will be visible. You can then write code against them (for example, call `Document.renameNode` directly). However, this will mean that other people cannot run or compile your code unless they have JRE 1.5 or later, or they have also installed the `xml-apis-ext.jar` in the same way.
 
 The second method, which requires less messing about with the JRE, is to cast your DOM objects to the concrete Batik DOM objects and call your DOM Level 3 methods directly on them. The Batik DOM classes are in the `org.apache.batik.dom` package. The classes named `Abstract*` implement the DOM interfaces, and also contain the DOM Level 3 methods. The advantage of this method is that for your code to compile and run in others’ environments, they need not install any jars with the endorsed standards overrides.
 
@@ -96,22 +96,22 @@ Of course, none of this matters if you are just using the DOM 3 functionality in
 
 ## XML Binding Language for SVG (sXBL) <a id="sxbl"></a>
 
-sXBL is supported in documents with `version="1.2"` . However, the following issues exist:
+sXBL is supported in documents with `version="1.2"`. However, the following issues exist:
 
 
-1. sXBL cannot be used for [SVG resources](http://www.w3.org/TR/2004/WD-SVG12-20041027/binding.html#sXBL-bindings-for-svg) or [visual effects](http://www.w3.org/TR/2004/WD-SVG12-20041027/binding.html#sXBL-bindings-for-visual-effects) .
+1. sXBL cannot be used for [SVG resources](http://www.w3.org/TR/2004/WD-SVG12-20041027/binding.html#sXBL-bindings-for-svg) or [visual effects](http://www.w3.org/TR/2004/WD-SVG12-20041027/binding.html#sXBL-bindings-for-visual-effects).
 
 1. The `traitDef` element is not implemented.
 
 1. The [handling of CSS](http://www.w3.org/TR/sXBL/#shadow0) is probably not quite correct.
 
-Two content selector languages are supported: XPath 1.0 Patterns and the drastically reduced XPath subset. XPath Patterns is the default language. To change the language used to the XPath subset, put an attribute `batik:selectorLanguage="XPathSubset"` on the `xbl:content` element or on the `svg` document element. (The `batik` extension namespace prefix should be declared with `xmlns:batik="http://xml.apache.org/batik/ext"` .)
+Two content selector languages are supported: XPath 1.0 Patterns and the drastically reduced XPath subset. XPath Patterns is the default language. To change the language used to the XPath subset, put an attribute `batik:selectorLanguage="XPathSubset"` on the `xbl:content` element or on the `svg` document element. (The `batik` extension namespace prefix should be declared with `xmlns:batik="http://xml.apache.org/batik/ext"`.)
 
-Note that sXBL is likely to be dropped in favor of [XBL 2.0](http://www.w3.org/TR/xbl2) in [SVG 1.2 Full](http://www.w3.org/TR/SVG12/) .
+Note that sXBL is likely to be dropped in favor of [XBL 2.0](http://www.w3.org/TR/xbl2) in [SVG 1.2 Full](http://www.w3.org/TR/SVG12/).
 
 ## Flowing text and graphics <a id="flowtext"></a>
 
-The `flowRoot` , `flowRegion` , `flowDiv` , `flowPara` , `flowSpan` , `flowRegionBreak` and `flowLine` elements from [SVG 1.2 Full](http://www.w3.org/TR/SVG12/) ’s [Flowing Text and Graphics](http://www.w3.org/TR/2004/WD-SVG12-20041027/flow.html) chapter are supported in documents with `version="1.2"` .
+The `flowRoot`, `flowRegion`, `flowDiv`, `flowPara`, `flowSpan`, `flowRegionBreak` and `flowLine` elements from [SVG 1.2 Full](http://www.w3.org/TR/SVG12/) ’s [Flowing Text and Graphics](http://www.w3.org/TR/2004/WD-SVG12-20041027/flow.html) chapter are supported in documents with `version="1.2"`.
 
 The more recent [SVG 1.2 Tiny](http://www.w3.org/TR/SVGTiny12/) draft specifies a different syntax for (a more restricted version of) flowing text, and the full flowing text syntax is therefore likely to change.
 
@@ -122,14 +122,14 @@ The following other features from SVG 1.2 are supported:
 
 - the [paint server element,](http://www.w3.org/TR/SVGTiny12/painting.html#SolidColorElement)
 
-- the `multiImage` , `subImageRef` and `subImage` elements for [Alternate content based on display resolutions](http://www.w3.org/TR/2004/WD-SVG12-20041027/media.html#multires) ,
+- the `multiImage`, `subImageRef` and `subImage` elements for [Alternate content based on display resolutions](http://www.w3.org/TR/2004/WD-SVG12-20041027/media.html#multires),
 
-- the XML Events [element](http://www.w3.org/TR/SVGTiny12/script.html#HandlerElement) ,
+- the XML Events [element](http://www.w3.org/TR/SVGTiny12/script.html#HandlerElement),
 
-- self-contained [resource documents](http://www.w3.org/TR/2004/WD-SVG12-20041027/nonvisual.html#external-references) ,
+- self-contained [resource documents](http://www.w3.org/TR/2004/WD-SVG12-20041027/nonvisual.html#external-references),
 
 - the mouse [wheel event](http://www.w3.org/TR/2004/WD-SVG12-20041027/dom.html#wheelevent) (which is likely to be superseded by a similar event developed by the W3C WebAPI WG),
 
 - the [ShapeChange and RenderedBBoxChange events](http://www.w3.org/TR/2004/WD-SVG12-20041027/dom.html#shapemod) (though the `boundingBox` attribute of the RenderedBBoxChange event is not used), and
 
-- the `startMouseCapture` and `stopMouseCapture` methods on the [global object](http://www.w3.org/TR/2004/WD-SVG12-20041027/api.html#GlobalObject) .
+- the `startMouseCapture` and `stopMouseCapture` methods on the [global object](http://www.w3.org/TR/2004/WD-SVG12-20041027/api.html#GlobalObject).

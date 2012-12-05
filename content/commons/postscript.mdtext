@@ -13,7 +13,7 @@ Apache&trade; XML Graphics Commons contains various tools for writing and proces
 - Two Graphics2D implementations, one for plain PostScript and one for writing Encapsulated PostScript (EPS).
 
 - A DSC-parser/processor: Parse, post-process and change DSC-compliant PostScript files.
-We don't currently include a PostScript interpreter though we would love to have one. A Java-based PostScript interpreter to keep an eye on is the one from the [FOray project](http://foray.sourceforge.net) .
+We don't currently include a PostScript interpreter though we would love to have one. A Java-based PostScript interpreter to keep an eye on is the one from the [FOray project](http://foray.sourceforge.net).
 # The PostScript generator <a id="generator"></a>
 
 The "PSGenerator" class can help writing PostScript files. It deals with things like escaping, saving/tracking/restoring graphics state, writing DSC comments and tracking of DSC resources.
@@ -48,7 +48,7 @@ A complete example for generating an EPS files can be found in the ["examples" d
 
 ## DSC parser/processor <a id="dsc"></a>
 
-Many PostScript files use special comments to structure a document. This allows manipulation of PostScript files without interpreting them. These special comments are defined in the [Document Structuring Conventions](http://partners.adobe.com/public/developer/en/ps/5001.DSC_Spec.pdf) . The code in Commons is designed to work with DSC 3.0. For details on how DSC is used, please take a look at the DSC specification.
+Many PostScript files use special comments to structure a document. This allows manipulation of PostScript files without interpreting them. These special comments are defined in the [Document Structuring Conventions](http://partners.adobe.com/public/developer/en/ps/5001.DSC_Spec.pdf). The code in Commons is designed to work with DSC 3.0. For details on how DSC is used, please take a look at the DSC specification.
 
 The DSC support in Commons was primarily developed to implement resource optimization features in [Apache FOP](http://xmlgraphics.apache.org/fop/) 's PostScript output support. Resources like images which are used repeatedly in a document should not be written to the PostScript file each time it is used. Instead it is written once at the beginning of the file as a PostScript form. The form is then called whenever the image needs painting.
 

@@ -19,7 +19,7 @@ If no owner password has been supplied but FOP was asked to apply some restricti
 
 A user password, supplied with the `-u` option, will cause the PDF display software to ask the reader for this password in order to view the contents of the document. If no user password was supplied, viewing the content is not restricted.
 
-Further restrictions can be imposed by using the `-noprint` , `-nocopy` , `-noedit` and `-noannotations` options, which disable printing, copying text, editing in Adobe Acrobat and making annotations, respectively.
+Further restrictions can be imposed by using the `-noprint`, `-nocopy`, `-noedit` and `-noannotations` options, which disable printing, copying text, editing in Adobe Acrobat and making annotations, respectively.
 
 ## Usage (embedded) <a id="Usage+%28embedded%29"></a>
 
@@ -85,15 +85,15 @@ Cryptography support must also be present at run time. In particular, a provider
 "Cannot find any provider supporting RC4"
 then you don't have the needed infrastructure.
 
-There are several commercial and a few Open Source packages which provide RC4. A pure Java implementation is produced by [The Legion of the Bouncy Castle](http://www.bouncycastle.org/) . [Mozilla JSS](http://www.mozilla.org/projects/security/pki/jss/) is an interface to a native implementation.
+There are several commercial and a few Open Source packages which provide RC4. A pure Java implementation is produced by [The Legion of the Bouncy Castle](http://www.bouncycastle.org/). [Mozilla JSS](http://www.mozilla.org/projects/security/pki/jss/) is an interface to a native implementation.
 
 ## Installing a crypto provider <a id="install_crypto"></a>
 
 The pure Java implementation from [Bouncy Castle](http://www.bouncycastle.org/) is easy to install.
 
 
-1. Unpack the distribution. Add the jar file to your classpath. A convenient way to use the jar on Linux is to simply drop it into the FOP lib directory, it will be automatically picked up by `fop.sh` .
+1. Unpack the distribution. Add the jar file to your classpath. A convenient way to use the jar on Linux is to simply drop it into the FOP lib directory, it will be automatically picked up by `fop.sh`.
 
-1. Open the `java.security` file and add<br></br> `security.provider.6=org.bouncycastle.jce.provider.BouncyCastleProvider` ,<br></br>preferably at the end of the block defining the other crypto providers. For JDK 1.4 this is detailed on [Sun's web site](http://java.sun.com/j2se/1.4/docs/guide/security/jce/JCERefGuide.html#InstallProvider) .
+1. Open the `java.security` file and add<br></br> `security.provider.6=org.bouncycastle.jce.provider.BouncyCastleProvider`,<br></br>preferably at the end of the block defining the other crypto providers. For JDK 1.4 this is detailed on [Sun's web site](http://java.sun.com/j2se/1.4/docs/guide/security/jce/JCERefGuide.html#InstallProvider).
 
 If you have any experience with Mozilla JSS or any other cryptography provider, please post it to the fop-user list.

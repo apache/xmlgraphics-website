@@ -5,7 +5,7 @@ Title: Apache(tm) FOP Design: FO Tree
 
 ## Introduction <a id="intro"></a>
 
-The FO Tree is an internal hierarchical representation (java objects and properties) of the input XSL-FO document, and is created from the [parsing](parsing.html) of that XSL-FO document. The process of building the FO Tree corresponds to the **Objectify** step in the XSL-FO spec. The FO Tree is an intermediate structure which will later be [converted into the area tree](layout.html) .
+The FO Tree is an internal hierarchical representation (java objects and properties) of the input XSL-FO document, and is created from the [parsing](parsing.html) of that XSL-FO document. The process of building the FO Tree corresponds to the **Objectify** step in the XSL-FO spec. The FO Tree is an intermediate structure which will later be [converted into the area tree](layout.html).
 
 ## Processing <a id="process"></a>
 
@@ -68,11 +68,11 @@ FONode, among other things, ensures that each FO has a parent, and provides the 
 Each xml element is represented by a java object. The classes for these objects are grouped into packages for convenience:
 
 
-- pagination: `org.apache.fop.fo.pagination.*` 
+- pagination: `org.apache.fop.fo.pagination.*`
 
-- flow: `org.apache.fop.fo.flow.*` 
+- flow: `org.apache.fop.fo.flow.*`
 
-- other: `org.apache.fop.fo.*.` 
+- other: `org.apache.fop.fo.*.`
 
 ### Creating FO Objects <a id="create-fo"></a>
 

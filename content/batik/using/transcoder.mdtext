@@ -3,7 +3,7 @@ Title: Transcoder API
 #Transcoder API
 
 
-The goal of the transcoder API (package `org.apache.batik.transcoder` ) is to provide a generic API for transcoding an input to an output. First, this document explains the basic transcoder API that [Transcoder](../javadoc/org/apache/batik/transcoder/Transcoder.html) , [TranscoderInput](../javadoc/org/apache/batik/transcoder/TranscoderInput.html) and [TranscoderOutput](../javadoc/org/apache/batik/transcoder/TranscoderOutput.html) define, and thus all transcoders have in common. Next, it describes how to use the image transcoder API (package `org.apache.batik.transcoder.image` ), which lets you rasterize an SVG document fragment to a raster image such as JPEG, PNG or TIFF.
+The goal of the transcoder API (package `org.apache.batik.transcoder` ) is to provide a generic API for transcoding an input to an output. First, this document explains the basic transcoder API that [Transcoder](../javadoc/org/apache/batik/transcoder/Transcoder.html), [TranscoderInput](../javadoc/org/apache/batik/transcoder/TranscoderInput.html) and [TranscoderOutput](../javadoc/org/apache/batik/transcoder/TranscoderOutput.html) define, and thus all transcoders have in common. Next, it describes how to use the image transcoder API (package `org.apache.batik.transcoder.image` ), which lets you rasterize an SVG document fragment to a raster image such as JPEG, PNG or TIFF.
 
 ## The transcoder API <a id="transcoderAPI"></a>
 
@@ -13,17 +13,17 @@ The `org.apache.batik.transcoder` package defines 5 major classes:
 
 Transcoder
 :
-The [Transcoder](../javadoc/org/apache/batik/transcoder/Transcoder.html) interface defines the interface that all transcoders implement. You can transcode a specific input using a specific output by invoking the `transcode` method. Although there is no assumption on the input and output format, a specific transcoder may or may not support a particular type of input or output. For example, the image transcoders accept an SVG [Document](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html) , a [Reader](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Reader.html) , an [InputStream](http://java.sun.com/j2se/1.5.0/docs/api/java/io/InputStream.html) , or a [URI](http://java.sun.com/j2se/1.5.0/docs/api/java/net/URI.html) as an input but only supports a byte stream for the output.
+The [Transcoder](../javadoc/org/apache/batik/transcoder/Transcoder.html) interface defines the interface that all transcoders implement. You can transcode a specific input using a specific output by invoking the `transcode` method. Although there is no assumption on the input and output format, a specific transcoder may or may not support a particular type of input or output. For example, the image transcoders accept an SVG [Document](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html), a [Reader](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Reader.html), an [InputStream](http://java.sun.com/j2se/1.5.0/docs/api/java/io/InputStream.html), or a [URI](http://java.sun.com/j2se/1.5.0/docs/api/java/net/URI.html) as an input but only supports a byte stream for the output.
 
 
 TranscoderInput
 :
-The [TranscoderInput](../javadoc/org/apache/batik/transcoder/TranscoderInput.html) interface defines the input of a transcoder. There are various ways to create an input and the most common are already part of the API. The default implementation lets you create an input using a `org.w3c.dom.Document` , a `Reader` , an `InputStream` , a `org.xml.sax.XMLReader` , or a `URI` .
+The [TranscoderInput](../javadoc/org/apache/batik/transcoder/TranscoderInput.html) interface defines the input of a transcoder. There are various ways to create an input and the most common are already part of the API. The default implementation lets you create an input using a `org.w3c.dom.Document`, a `Reader`, an `InputStream`, a `org.xml.sax.XMLReader`, or a `URI`.
 
 
 TranscoderOutput
 :
-The [TranscoderOutput](../javadoc/org/apache/batik/transcoder/TranscoderOutput.html) interface defines the output of a transcoder. There are various ways to create an output and the most commons are already part of the API. The default implementation lets you create an output using a [Document](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html) , a [Writer](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Writer.html) , an [OutputStream](http://java.sun.com/j2se/1.5.0/docs/api/java/io/OutputStream.html) , a [XMLFilter](http://java.sun.com/j2se/1.5.0/docs/api/org/xml/sax/XMLFilter.html) , or a [URI](http://java.sun.com/j2se/1.5.0/docs/api/java/net/URI.html) .
+The [TranscoderOutput](../javadoc/org/apache/batik/transcoder/TranscoderOutput.html) interface defines the output of a transcoder. There are various ways to create an output and the most commons are already part of the API. The default implementation lets you create an output using a [Document](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html), a [Writer](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Writer.html), an [OutputStream](http://java.sun.com/j2se/1.5.0/docs/api/java/io/OutputStream.html), a [XMLFilter](http://java.sun.com/j2se/1.5.0/docs/api/org/xml/sax/XMLFilter.html), or a [URI](http://java.sun.com/j2se/1.5.0/docs/api/java/net/URI.html).
 
 
 TranscodingHints
@@ -41,7 +41,7 @@ The `org.apache.batik.transcoder.image` package provides an easy way to transcod
 
 ### Creating an image <a id="createImage"></a>
 
-The following example, using the `JPEGTranscoder` , shows how to transform an SVG document to a JPEG image.
+The following example, using the `JPEGTranscoder`, shows how to transform an SVG document to a JPEG image.
 
     :::java
     import java.io.*;
@@ -79,7 +79,7 @@ The following example, using the `JPEGTranscoder` , shows how to transform an SV
         }
     }
 
-The code creates a `JPEGTranscoder` and sets a transcoding hint. The hint indicates the encoding quality. Then, an input and an output are created. The input is created using the first command line argument, which should be a URI. The output is a byte stream for a file called `out.jpg` . Finally, the `transcode` method is invoked and the byte stream is closed.
+The code creates a `JPEGTranscoder` and sets a transcoding hint. The hint indicates the encoding quality. Then, an input and an output are created. The input is created using the first command line argument, which should be a URI. The output is a byte stream for a file called `out.jpg`. Finally, the `transcode` method is invoked and the byte stream is closed.
 
 Although not shown above, the program might have specified additional hints to indicate a user stylesheet, the preferred language of the document or the background color.
 
@@ -87,7 +87,7 @@ To try this program:
 
 
 1.
-Save the above program as `SaveAsJPEG.java` .
+Save the above program as `SaveAsJPEG.java`.
 
 
 1.
@@ -99,14 +99,14 @@ Choose an SVG file to transcode, and perform the transcoding by running:
 java SaveAsJPEG filename.svg
 
 1.
-Inspect the output file `out.jpg` .
+Inspect the output file `out.jpg`.
 
 
 ### Defining the size of the image <a id="defineSizeOfImage"></a>
 
 By adding the following line of code to the previous example, you will specify the raster image size (in pixels). The transcoding hint `KEY_WIDTH` lets you specify the raster image width. If the raster image height is not provided (using the `KEY_HEIGHT` ), the transcoder will compute the raster image height by keeping the aspect ratio of the SVG document.
 t.addTranscodingHint(JPEGTranscoder.KEY_WIDTH, new Float(100));
-The transcoder will have the same behavior if you specify the `KEY_HEIGHT` without initializing the `KEY_WIDTH` . In all cases (even if both keys are provided), the transcoder will preserve the apsect ratio of the SVG document.
+The transcoder will have the same behavior if you specify the `KEY_HEIGHT` without initializing the `KEY_WIDTH`. In all cases (even if both keys are provided), the transcoder will preserve the apsect ratio of the SVG document.
 
 ### Selecting an area of interest <a id="selectAreaOfIntrest"></a>
 
@@ -167,13 +167,13 @@ The image transcoder lets you specify an area of interest (that is, a part of th
         }
     }
 
-This code splits the same document `anne.svg` into four tiles of the same size. Considering the document and its original size, we can determine four regions. Then we rasterize each region using the `KEY_AOI` key. Note that we also specify the image width and height to be the same as the area of interest width and height (so we keep a 1:1 zoom factor). You can of course use different values for the `KEY_WIDTH` and `KEY_HEIGHT` , that do not match the dimensions of the `KEY_AOI` key. In that case, first the area of interest will determine which part of the SVG document has to be rendered, then that part could be zoomed in or out depending on the specified raster image size.
+This code splits the same document `anne.svg` into four tiles of the same size. Considering the document and its original size, we can determine four regions. Then we rasterize each region using the `KEY_AOI` key. Note that we also specify the image width and height to be the same as the area of interest width and height (so we keep a 1:1 zoom factor). You can of course use different values for the `KEY_WIDTH` and `KEY_HEIGHT`, that do not match the dimensions of the `KEY_AOI` key. In that case, first the area of interest will determine which part of the SVG document has to be rendered, then that part could be zoomed in or out depending on the specified raster image size.
 
 To try this program:
 
 
 1.
-Save the above program as `SaveAsJPEGTiles.java` .
+Save the above program as `SaveAsJPEGTiles.java`.
 
 
 1.
@@ -189,7 +189,7 @@ Run the program by typing:
 java SaveAsJPEGTiles
 
 1.
-Inspect the output files `tileTopRight.jpg` , `tileTopRight.jpg` , `tileBottomRight.jpg` and `tileBottomLeft.jpg` .
+Inspect the output files `tileTopRight.jpg`, `tileTopRight.jpg`, `tileBottomRight.jpg` and `tileBottomLeft.jpg`.
 
 
 ### Other transcoding hints <a id="otherTransHints"></a>
@@ -200,7 +200,7 @@ The `ImageTranscoder` provides additional `TranscodingHints` that let you custom
 
  `ImageTranscoder.KEY_MEDIA`
 :
-This hint lets you choose the CSS medium to use. The author of the SVG document to transcode can control CSS media using the [CSS media rule](http://www.w3.org/TR/REC-CSS2/media.html) . For example:
+This hint lets you choose the CSS medium to use. The author of the SVG document to transcode can control CSS media using the [CSS media rule](http://www.w3.org/TR/REC-CSS2/media.html). For example:
 trans.addTranscodingHint(ImageTranscoder.KEY_MEDIA, "print");
 
  `ImageTranscoder.KEY_ALTERNATE_STYLESHEET`
@@ -318,13 +318,13 @@ Rasterizing the DOM
 :
 See the `save` method.
 
-Similar to the previous examples, you can transcode an SVG document to a raster image by creating a `TranscoderInput` , but passing to it the SVG Document this time.
+Similar to the previous examples, you can transcode an SVG document to a raster image by creating a `TranscoderInput`, but passing to it the SVG Document this time.
 
 To try this example:
 
 
 1.
-Save the code as `DOMRasterizer.java` .
+Save the code as `DOMRasterizer.java`.
 
 
 1.
@@ -336,5 +336,5 @@ Run it, by typingL
 java DOMRasterizer
 
 1.
-Inspect the output file `out.jpg` .
+Inspect the output file `out.jpg`.
 

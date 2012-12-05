@@ -37,7 +37,7 @@ When working with one of these output formats and you're missing a font, just in
 
 ## Custom Fonts <a id="custom"></a>
 
-Support for custom fonts is highly output format dependent (see above table). This section shows how to add Type 1 and TrueType fonts to the PDF, PostScript and Java2D-based renderers. Other renderers (like AFP) support other font formats. Details in this case can be found on the page about [output formats](output.html) .
+Support for custom fonts is highly output format dependent (see above table). This section shows how to add Type 1 and TrueType fonts to the PDF, PostScript and Java2D-based renderers. Other renderers (like AFP) support other font formats. Details in this case can be found on the page about [output formats](output.html).
 
 Prior to FOP version 0.94, it was always necessary to create an XML font metrics file if you wanted to add a custom font. This unconvenient step has been removed and in addition to that, FOP supports auto-registration of fonts, i.e. FOP can find fonts installed in your operating system or can scan user-specified directories for fonts. Font registration via XML font metrics file is still supported and is still necessary if you want to use a TrueType Collection (*.ttc). Direct support for TrueType collections may be added later. Furthermore, the XML font metrics files are still required if you don't want to embed, but only reference a font.
 
@@ -119,7 +119,7 @@ java -cp build\fop.jar;lib\avalon-framework.jar;lib\commons-logging.jar;lib\comm
           msmincho.ttc msminch.xml
 ## Register Fonts with FOP <a id="register"></a>
 
-You must tell FOP how to find and use the font metrics files by registering them in the [FOP Configuration](configuration.html) . Add entries for your custom fonts, regardless of font type, to the configuration file in a manner similar to the following:
+You must tell FOP how to find and use the font metrics files by registering them in the [FOP Configuration](configuration.html). Add entries for your custom fonts, regardless of font type, to the configuration file in a manner similar to the following:
 
     :::xml
     <fonts>

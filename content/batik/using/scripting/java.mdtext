@@ -163,7 +163,7 @@ where `mouseOverListener` implements the [org.w3c.dom.events.EventListener](http
 
 This is called whenever the event occurs with the element it is registered on. It is worth reviewing the DOM Events specification as there are many useful features to this interface that are not immediately obvious.
 
-It is also worth looking at the DOM interfaces defined by the SVG specification as they provide a large number of useful methods, in particular those of [SVGLocatable](../../javadoc/org/w3c/dom/svg/SVGLocatable.html) :
+It is also worth looking at the DOM interfaces defined by the SVG specification as they provide a large number of useful methods, in particular those of [SVGLocatable](../../javadoc/org/w3c/dom/svg/SVGLocatable.html):
 
     :::java
     // Returns Bounding box of SVG Element.
@@ -185,7 +185,7 @@ It is also worth looking at the DOM interfaces defined by the SVG specification 
 
 Batik implements the Java bindings for SVG, and thus allows Java code to be referenced from `script` elements. This feature is available to any application of Batik that uses the bridge module (for example the Swing component and the transcoders).
 
-In order to use this extension, the `type` attribute of a `script` element must be set to `application/java-archive` . In addition, the `xlink:href` attribute must be the URI of a jar file that contains the code to run.
+In order to use this extension, the `type` attribute of a `script` element must be set to `application/java-archive`. In addition, the `xlink:href` attribute must be the URI of a jar file that contains the code to run.
 
 The manifest of this jar file must contains an entry of the form:
 

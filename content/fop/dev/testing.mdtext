@@ -8,9 +8,9 @@ Title: Apache(tm) FOP Development: Testing
 Apache&trade; projects use an automated build tool called "gump" to create nightly builds from the SVN repository. Gump sends "nag" messages if the build fails. This can be considered a sort of basic test of the build process. To view the most recent logs of the gump builds:
 
 
--  [Gump build for the Trunk](http://gump.cocoondev.org/xml-fop.html) 
+-  [Gump build for the Trunk](http://gump.cocoondev.org/xml-fop.html)
 
--  [Gump build for the Maintenance Branch](http://gump.cocoondev.org/xml-fop-maintenance.html) 
+-  [Gump build for the Maintenance Branch](http://gump.cocoondev.org/xml-fop-maintenance.html)
 
 ## Basic/API Testing <a id="basic"></a>
 
@@ -18,7 +18,7 @@ There is a group of basic API tests that are included in the build process. For 
 
 ## Layout Engine Testing <a id="layoutengine"></a>
 
-The [http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/test/layoutengine/](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/test/layoutengine/) directory in the repository contains a test suite for checking the functionality of Apache&trade; FOP's layout engine. For information on how to create test cases for the layout engine, please visit the [Wiki page](http://wiki.apache.org/xmlgraphics-fop/HowToCreateLayoutEngineTests) .
+The [http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/test/layoutengine/](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/test/layoutengine/) directory in the repository contains a test suite for checking the functionality of Apache&trade; FOP's layout engine. For information on how to create test cases for the layout engine, please visit the [Wiki page](http://wiki.apache.org/xmlgraphics-fop/HowToCreateLayoutEngineTests).
 
 ## Functional Testing <a id="functional"></a>
 <warning>The "functional" testing section on this page is currently inoperative.</warning>
@@ -32,7 +32,7 @@ To setup the testing the developer must place a reference fop.jar in the "<cvs_r
 
 ### W3C TestSuite <a id="W3C+TestSuite"></a>
 
-The testing is set up so that you can download the testsuite from <a href="http://www.w3.org/Style/XSL/TestSuite/">http://www.w3.org/Style/XSL/TestSuite/</a> , unzip the file into the base directory of FOP. Then you can uncomment the lines in the build.xml file in the test target and itwill run through all the tests in the testsuite distribution.
+The testing is set up so that you can download the testsuite from <a href="http://www.w3.org/Style/XSL/TestSuite/">http://www.w3.org/Style/XSL/TestSuite/</a>, unzip the file into the base directory of FOP. Then you can uncomment the lines in the build.xml file in the test target and itwill run through all the tests in the testsuite distribution.
 
 ### Writing a Test <a id="Writing+a+Test"></a>
 
@@ -62,4 +62,4 @@ For FOP the testing is done by rendering all the testing documents using the XML
 
 ### SVG Testing <a id="SVG+Testing"></a>
 
-The testing of SVG is not part of this testing system. SVG is tested for its rendering accuracy by using the transcoding mechanism via [Apache Batik](http://xmlgraphics.apache.org/batik/) . So that the only part that needs testing is how the SVG image is embedded inside the flow of the fo document.
+The testing of SVG is not part of this testing system. SVG is tested for its rendering accuracy by using the transcoding mechanism via [Apache Batik](http://xmlgraphics.apache.org/batik/). So that the only part that needs testing is how the SVG image is embedded inside the flow of the fo document.

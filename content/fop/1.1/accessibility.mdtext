@@ -14,7 +14,7 @@ There are 3 ways to enable accessibility:
 
 
 1.  **Command line:** The command line option -a turns on accessibility:<br/>`fop -a -fo mydocument.fo -pdf mydocument.pdf`<br/>
-1.  **Embedding:**<br/>`userAgent.setAccessibility(true);` <br/> 
+1.  **Embedding:**<br/>`userAgent.setAccessibility(true);` <br/>
 1.  **Optional setting in fop.xconf file:**<br/>`<fop version="1.0">`<br/>`<accessibility>true</accessibility>`<br/>`...`<br/>`</fop>`
 
 When accessibility is enabled, additional information relating to the logical structure of the document is added to the PDF. That information allows the PDF viewer (or a text-to-speech application) to retrieve the natural reading order of the document.
@@ -60,7 +60,7 @@ Accessibility support in Apache FOP is relatively new, so there are certain limi
 
 - It's currently not possible to specify the expanded form of an abbreviation or acronym.
 
-- SVG graphics (or images in general) are treated as a single figure. Text contained in SVGs is not accessible. It's only possible to work with `fox:alt-text` .
+- SVG graphics (or images in general) are treated as a single figure. Text contained in SVGs is not accessible. It's only possible to work with `fox:alt-text`.
 
 - The side regions (region-before, region-after etc.) are currently not specially identified. Screen readers may read their content at page changes.
 
@@ -69,14 +69,14 @@ Accessibility support in Apache FOP is relatively new, so there are certain limi
 Many resources providing guidance about creating accessible documents can be found on the web. Here are a few links, along with additional resources around the topic:
 
 
--  [US Government - Website on Section 508](http://www.section508.gov/) 
+-  [US Government - Website on Section 508](http://www.section508.gov/)
 
--  [Wikipedia on Accessibility in general](http://en.wikipedia.org/wiki/Accessibility) 
+-  [Wikipedia on Accessibility in general](http://en.wikipedia.org/wiki/Accessibility)
 
--  [Wikipedia on Accessibility in PDF](http://en.wikipedia.org/wiki/Portable_Document_Format#Accessibility) 
+-  [Wikipedia on Accessibility in PDF](http://en.wikipedia.org/wiki/Portable_Document_Format#Accessibility)
 
 -  [PDF Reference 1.4](http://partners.adobe.com/public/developer/en/pdf/PDFReference.pdf) (look up chapters 9.7 "Tagged PDF" and 9.8 "Accessibility Support")
 
--  [PDF/A support in Apache FOP](pdfa.html) 
+-  [PDF/A support in Apache FOP](pdfa.html)
 
--  [Developer-oriented details on the accessibility features (on the Wiki)](http://wiki.apache.org/xmlgraphics-fop/PDF_Accessibility) 
+-  [Developer-oriented details on the accessibility features (on the Wiki)](http://wiki.apache.org/xmlgraphics-fop/PDF_Accessibility)

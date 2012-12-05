@@ -5,7 +5,7 @@ Title: Apache(tm) XML Graphics Commons: Image Loader Framework
 
 ## Overview <a id="overview"></a>
 
-Apache&trade; XML Graphics Commons contains a unified framework for loading and processing images (bitmap and vector). The package name is `org.apache.xmlgraphics.image.loader` . Key features:
+Apache&trade; XML Graphics Commons contains a unified framework for loading and processing images (bitmap and vector). The package name is `org.apache.xmlgraphics.image.loader`. Key features:
 
 
 - Unified basic API for all supported image types.
@@ -37,9 +37,9 @@ Apache&trade; XML Graphics Commons contains a unified framework for loading and 
 
 ### Setting up the manager <a id="manager-setup"></a>
 
-Before we can start to work with the package we need to set up the `ImageManager` . It provides convenience methods to load and convert images and holds the image cache.
+Before we can start to work with the package we need to set up the `ImageManager`. It provides convenience methods to load and convert images and holds the image cache.
 
-The `ImageManager` needs an `ImageContext` . This interface provides the `ImageManager` with important context and configuration data. Currently this is only the source resolution. The `ImageManager` and `ImageContext` are intended to be shared within an application.
+The `ImageManager` needs an `ImageContext`. This interface provides the `ImageManager` with important context and configuration data. Currently this is only the source resolution. The `ImageManager` and `ImageContext` are intended to be shared within an application.
 
     :::java
     import org.apache.xmlgraphics.image.loader.ImageContext;
@@ -55,7 +55,7 @@ The `ImageManager` needs an `ImageContext` . This interface provides the `ImageM
 
 In order to load an image, it needs to be "preloaded" first, i.e. the image content type is detected and the intrinsic size of the image is determined. The result of this process is an `ImageInfo` instance which contains the URI, MIME type and intrinsic size. In most cases, this is done without loading the whole image (see SPI section below for information on exceptions to this rule).
 
-Preloading is normally done through the `ImageManager` 's `getImageInfo()` method. For this operation an `ImageSessionContext` needs to be provided. It is responsible for supplying JAXP `Source` objects, URI resolution and providing other information needed for the image operations. In simple cases you can simply use `DefaultImageSessionContext` , but often you will want to write your own implementation of `ImageSessionContext` . In that case, it's recommended to subclass `AbstractImageSessionContext` which lets you avoid rewriting a lot of code for providing `Source` objects.
+Preloading is normally done through the `ImageManager` 's `getImageInfo()` method. For this operation an `ImageSessionContext` needs to be provided. It is responsible for supplying JAXP `Source` objects, URI resolution and providing other information needed for the image operations. In simple cases you can simply use `DefaultImageSessionContext`, but often you will want to write your own implementation of `ImageSessionContext`. In that case, it's recommended to subclass `AbstractImageSessionContext` which lets you avoid rewriting a lot of code for providing `Source` objects.
 
     :::java
     import org.apache.xmlgraphics.image.loader.ImageInfo;
@@ -70,7 +70,7 @@ Preloading is normally done through the `ImageManager` 's `getImageInfo()` metho
 
 ## Loading an image <a id="loading"></a>
 
-Once the image is "preloaded", it can be fully loaded in the form/flavor that is needed by the consuming application. The required flavor is indicated through the `ImageFlavor` class. If you want the image as a bitmap image in memory, you could request an `ImageFlavor.RENDERED_IMAGE` . Again, the `ImageSessionContext` will be needed.
+Once the image is "preloaded", it can be fully loaded in the form/flavor that is needed by the consuming application. The required flavor is indicated through the `ImageFlavor` class. If you want the image as a bitmap image in memory, you could request an `ImageFlavor.RENDERED_IMAGE`. Again, the `ImageSessionContext` will be needed.
 
     :::java
     import org.apache.xmlgraphics.image.loader.Image;
@@ -84,11 +84,11 @@ Once the image is "preloaded", it can be fully loaded in the form/flavor that is
       RenderedImage ri = imageRend.getRenderedImage();
       //...and do anything with the RenderedImage
 
-In this example above, we simply acquire the image as a RenderedImage instance. If the original image was a vector graphic image (SVG, WMF etc.), it's automatically converted to a bitmap image. Note: The resolution of the created image is controlled by the target resolution returned by the `ImageSessionContext` .
+In this example above, we simply acquire the image as a RenderedImage instance. If the original image was a vector graphic image (SVG, WMF etc.), it's automatically converted to a bitmap image. Note: The resolution of the created image is controlled by the target resolution returned by the `ImageSessionContext`.
 
 Of course, the framework can only provide images in the formats, it has image loaders or image converters for. An example: It is possible to load EPS images, but they can only be provided in raw form. In order to provide it as a bitmap image, a PostScript interpreter would be needed to interpret the PostScript code. This interpreter would be integrated using an `ImageConverter` implementation (see SPI section below). If the requested form of the image cannot be provided you will get an `ImageException` on which you'll have to react as needed.
 
-In [Apache FOP](http://xmlgraphics.apache.org/fop/) , each renderer supports a different set of image flavors that can be embedded in the target format. For example: The PDF renderer can deal with Java2D image, bitmaps, XML, native JPEG and CCITT images. The PCL renderer, however, can only consume bitmap images. So, if you can accept more than one flavor, the package allows you to specify all of them in an ordered list (the first in the list is the preferred format). The package will then try to return the best representation possible. Here's a code example:
+In [Apache FOP](http://xmlgraphics.apache.org/fop/), each renderer supports a different set of image flavors that can be embedded in the target format. For example: The PDF renderer can deal with Java2D image, bitmaps, XML, native JPEG and CCITT images. The PCL renderer, however, can only consume bitmap images. So, if you can accept more than one flavor, the package allows you to specify all of them in an ordered list (the first in the list is the preferred format). The package will then try to return the best representation possible. Here's a code example:
 
     :::java
     import org.apache.xmlgraphics.image.loader.Image;
@@ -112,22 +112,22 @@ In [Apache FOP](http://xmlgraphics.apache.org/fop/) , each renderer supports a d
         throw new IllegalStateException("Unexpected flavor");
     }
 
-  While each `BufferedImage` is also a `RenderedImage` , it can be more efficient to also specify `ImageFlavor.BUFFERED_IMAGE` in the flavor array.
+  While each `BufferedImage` is also a `RenderedImage`, it can be more efficient to also specify `ImageFlavor.BUFFERED_IMAGE` in the flavor array.
 # Tips & Tricks <a id="tipsntricks"></a>
 
 If you are loading bitmap images and you get an error like `"Cannot load image (no suitable loader/converter combination available) for
-        myimage.tif (image/tiff)` , you maybe be missing the necessary ImageIO codec to decode the image. A number of well-written codecs can be found in [JAI Image I/O Tools Project](https://jai-imageio.dev.java.net/) . Just download the distribution and add the JAR to the classpath. ImageIO will automatically pick up the new codecs and they will subsequently be available to the image framework.
+        myimage.tif (image/tiff)`, you maybe be missing the necessary ImageIO codec to decode the image. A number of well-written codecs can be found in [JAI Image I/O Tools Project](https://jai-imageio.dev.java.net/). Just download the distribution and add the JAR to the classpath. ImageIO will automatically pick up the new codecs and they will subsequently be available to the image framework.
 
 ## Service Provider Interface (SPI, Plug-ins) <a id="spi"></a>
 
 The whole image framework is designed to be highly extensible. There are various extension points where new functionality can be added. The three main SPI interfaces are:
 
 
--  `ImagePreloader` : detects the content type and preloads an image
+-  `ImagePreloader`: detects the content type and preloads an image
 
--  `ImageLoader` and `ImageLoaderFactory` : loads images
+-  `ImageLoader` and `ImageLoaderFactory`: loads images
 
--  `ImageConverter` : converts images from one representation into another
+-  `ImageConverter`: converts images from one representation into another
 
 If you plan to write an implementation of one of the above interfaces, please also take a look at the existing implementations for reference.
 
@@ -140,14 +140,14 @@ The first task is identifying whether the implementation supports the given imag
 However, for some formats (like MathML or WMF), loading the whole image at preloading time is hard to avoid since the image's size can only be determined that way. In such a case, the `ImagePreloader` implementations shall pass the loaded document to the respective `ImageLoader` through the custom objects that can be attached to the `ImageInfo` object. If the preloader loads the whole document, it shall close the given `Source` object (calling `ImageUtil.closeQuietly(Source)` ).
 
 The priority the implementation reports is used to sort all registered implementations. This is to fine-tune the inner workings and to optimize performance since some formats are usually used more frequently than others.
-Normally, if you implement an `ImagePreloader` you will also need to implement the respective `ImageLoader/ImageLoaderFactory` , or vice versa.
+Normally, if you implement an `ImagePreloader` you will also need to implement the respective `ImageLoader/ImageLoaderFactory`, or vice versa.
 ## ImageLoader and ImageLoaderFactory <a id="ImageLoader"></a>
 
 The factory interface has been created to allow checking if some library that an implementation depends on is really in the classpath so it can report back that the `ImageLoader` is not funtional. The factory also reports what kind of image formats it supports and which image flavors it can return. There can be a complex relationship between the two. It is recommmended, however, to write smaller implementations rather than big, almighty ones.
 
 The usage penalty is used when constructing image conversion pipelines. There can be multiple ways to provide an image in one of the supported flavors and this value helps to make the best decision.
 
-While the factory basically just provides information and creates new `ImageLoader` instances, the image loaders are doing the actual leg work of decoding the images. The image flavor returned by the loader must match the flavor that is returned by `getTargetFlavor()` .
+While the factory basically just provides information and creates new `ImageLoader` instances, the image loaders are doing the actual leg work of decoding the images. The image flavor returned by the loader must match the flavor that is returned by `getTargetFlavor()`.
 
 ### ImageConverter <a id="ImageConverter"></a>
 

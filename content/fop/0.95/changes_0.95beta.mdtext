@@ -3,7 +3,7 @@ Title: History of Changes 0.95beta
 #History of Changes 0.95beta
 
 
- [changes_0.95beta.rss](changes_0.95beta.rss) 
+ [changes_0.95beta.rss](changes_0.95beta.rss)
 
 ## Introduction and explanation of symbols <a id="introduction"></a>
 
@@ -23,19 +23,19 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![add](/images/add.jpg)Added very basic parsing for the xml:lang shorthand. Committed by AD.
 
-- ![add](/images/add.jpg)Added support for SVGZ. Committed by JM. Thanks to Max Berger. See Issue [43597](http://issues.apache.org/bugzilla/show_bug.cgi?id=43597) .
+- ![add](/images/add.jpg)Added support for SVGZ. Committed by JM. Thanks to Max Berger. See Issue [43597](http://issues.apache.org/bugzilla/show_bug.cgi?id=43597).
 
-- ![fix](/images/fix.jpg)Added correct percentage resolution for arguments to the proportional-column-width() function. Committed by AD. See Issue [41631](http://issues.apache.org/bugzilla/show_bug.cgi?id=41631) .
+- ![fix](/images/fix.jpg)Added correct percentage resolution for arguments to the proportional-column-width() function. Committed by AD. See Issue [41631](http://issues.apache.org/bugzilla/show_bug.cgi?id=41631).
 
-- ![fix](/images/fix.jpg)Fixed a bug when the rgb-icc() function was used either before the fo:declarations, or in documents without a fo:declarations node. In such cases, the sRGB fallback is now used to avoid an ugly NullPointerException. Committed by AD. See Issue [43705](http://issues.apache.org/bugzilla/show_bug.cgi?id=43705) .
+- ![fix](/images/fix.jpg)Fixed a bug when the rgb-icc() function was used either before the fo:declarations, or in documents without a fo:declarations node. In such cases, the sRGB fallback is now used to avoid an ugly NullPointerException. Committed by AD. See Issue [43705](http://issues.apache.org/bugzilla/show_bug.cgi?id=43705).
 
-- ![fix](/images/fix.jpg)Fixed a bug when using relative font-size (smaller/larger) in combination with percentages. Committed by AD. See Issue [44343](http://issues.apache.org/bugzilla/show_bug.cgi?id=44343) .
+- ![fix](/images/fix.jpg)Fixed a bug when using relative font-size (smaller/larger) in combination with percentages. Committed by AD. See Issue [44343](http://issues.apache.org/bugzilla/show_bug.cgi?id=44343).
 
-- ![fix](/images/fix.jpg)Fixed a memory-leak in XMLWhiteSpaceHandler. Committed by AD. Thanks to Stefan Ziel. See Issue [44286](http://issues.apache.org/bugzilla/show_bug.cgi?id=44286) .
+- ![fix](/images/fix.jpg)Fixed a memory-leak in XMLWhiteSpaceHandler. Committed by AD. Thanks to Stefan Ziel. See Issue [44286](http://issues.apache.org/bugzilla/show_bug.cgi?id=44286).
 
 - ![fix](/images/fix.jpg)Bugfix for URI resolution: Make StreamSources without system identifier work again. Committed by JM.
 
-- ![fix](/images/fix.jpg)Avoid a NullPointerException in AreaTreeHandler.endDocument(). Committed by JM. Thanks to David Delbecq. See Issue [43910](http://issues.apache.org/bugzilla/show_bug.cgi?id=43910) .
+- ![fix](/images/fix.jpg)Avoid a NullPointerException in AreaTreeHandler.endDocument(). Committed by JM. Thanks to David Delbecq. See Issue [43910](http://issues.apache.org/bugzilla/show_bug.cgi?id=43910).
 
 ### Changes to the Bundled Extensions <a id="Extensions_0.95beta"></a>
 
@@ -49,21 +49,21 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![add](/images/add.jpg)Added support for unusual font encodings (like for Symbol or Cyrillic fonts) of Type 1 fonts in PDF and PostScript output. Committed by JM.
 
-- ![add](/images/add.jpg)Add Font support in jar files. Committed by AC. Thanks to Max Berger. See Issue [42982](http://issues.apache.org/bugzilla/show_bug.cgi?id=42982) .
+- ![add](/images/add.jpg)Add Font support in jar files. Committed by AC. Thanks to Max Berger. See Issue [42982](http://issues.apache.org/bugzilla/show_bug.cgi?id=42982).
 
-- ![fix](/images/fix.jpg)Improved the font auto-detection so fonts accessed using the font-family name are selected with higher accuracy. Committed by JM. Thanks to Justus Piater. See Issue [44451](http://issues.apache.org/bugzilla/show_bug.cgi?id=44451) .
+- ![fix](/images/fix.jpg)Improved the font auto-detection so fonts accessed using the font-family name are selected with higher accuracy. Committed by JM. Thanks to Justus Piater. See Issue [44451](http://issues.apache.org/bugzilla/show_bug.cgi?id=44451).
 
 - ![fix](/images/fix.jpg)Bugfix for date formatting with negative time zones in the PDF's Info object. This affected PDF/A compliance. Committed by JM.
 
 - ![fix](/images/fix.jpg)Bugfix for handling of optional tables in subset TrueType fonts. This bug caused errors in various PDF viewers. Committed by JM.
 
-- ![fix](/images/fix.jpg)Bugfix: Use Font.getName() (logical font name) instead of Font.getFontName() (localized) when registering fonts from AWT. Committed by JM. Thanks to David Churavy. See Issue [43835](http://issues.apache.org/bugzilla/show_bug.cgi?id=43835) .
+- ![fix](/images/fix.jpg)Bugfix: Use Font.getName() (logical font name) instead of Font.getFontName() (localized) when registering fonts from AWT. Committed by JM. Thanks to David Churavy. See Issue [43835](http://issues.apache.org/bugzilla/show_bug.cgi?id=43835).
 
 - ![fix](/images/fix.jpg)Made the way TrueType fonts are embedded in PDF compliant to the specification so viewers correctly identify subset fonts. Committed by JM.
 
 - ![fix](/images/fix.jpg)Fixed font-autodetection so fonts with uppercase extensions are detected, too. Committed by JM.
 
-- ![fix](/images/fix.jpg)Fix to avoid NullPointerException when parsing ExpertEncoded and ExpertSubsetEncoded Type 1 fonts. Committed by AC. See Issue [43143](http://issues.apache.org/bugzilla/show_bug.cgi?id=43143) .
+- ![fix](/images/fix.jpg)Fix to avoid NullPointerException when parsing ExpertEncoded and ExpertSubsetEncoded Type 1 fonts. Committed by AC. See Issue [43143](http://issues.apache.org/bugzilla/show_bug.cgi?id=43143).
 
 - ![update](/images/update.jpg)Improved font auto-detection and handling of AWT-supplied fonts in order to achieve better results when using multiple output formats. Whenever possible, the font names appearing in the operating system can also be used in XSL-FO. Committed by JM.
 
@@ -83,13 +83,13 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![add](/images/add.jpg)Added full support for breaks inside the cells of a table. Committed by VH.
 
-- ![add](/images/add.jpg)Added support for conditional borders in tables, for both the separate and the collapsing border model. Committed by VH. See Issue [43934](http://issues.apache.org/bugzilla/show_bug.cgi?id=43934) .
+- ![add](/images/add.jpg)Added support for conditional borders in tables, for both the separate and the collapsing border model. Committed by VH. See Issue [43934](http://issues.apache.org/bugzilla/show_bug.cgi?id=43934).
 
 - ![add](/images/add.jpg)Added minimal support for the .minimum/.maximum components of block/inline-progression-dimension on fo:external-graphic and fo:instream-foreign-object. Committed by JM.
 
 - ![add](/images/add.jpg)Added support for scale-down-to-fit and scale-up-to-fit (introduced in XSL 1.1). Committed by JM.
 
-- ![add](/images/add.jpg)Added methods for fo:page-number-citation(-last) in FOEventHandler. Committed by JM. Thanks to V. Schappert. See Issue [43605](http://issues.apache.org/bugzilla/show_bug.cgi?id=43605) .
+- ![add](/images/add.jpg)Added methods for fo:page-number-citation(-last) in FOEventHandler. Committed by JM. Thanks to V. Schappert. See Issue [43605](http://issues.apache.org/bugzilla/show_bug.cgi?id=43605).
 
 - ![add](/images/add.jpg)Step towards performance: the collapsing-border resolution algorithm no longer triggers the retrieving of the whole table, when possible. Committed by VH.
 
@@ -97,11 +97,11 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![add](/images/add.jpg)Added support for fo:markers in fo:inline and fo:basic-link. Committed by AD.
 
-- ![add](/images/add.jpg)Added support for ids on empty fo:inlines. Committed by AD. See Issue [42748](http://issues.apache.org/bugzilla/show_bug.cgi?id=42748) .
+- ![add](/images/add.jpg)Added support for ids on empty fo:inlines. Committed by AD. See Issue [42748](http://issues.apache.org/bugzilla/show_bug.cgi?id=42748).
 
-- ![fix](/images/fix.jpg)Bugfix: The before border of a block is no longer swallowed if its first child issues a break-before. Committed by JM. See Issue [44412](http://issues.apache.org/bugzilla/show_bug.cgi?id=44412) .
+- ![fix](/images/fix.jpg)Bugfix: The before border of a block is no longer swallowed if its first child issues a break-before. Committed by JM. See Issue [44412](http://issues.apache.org/bugzilla/show_bug.cgi?id=44412).
 
-- ![fix](/images/fix.jpg)Bugfix: When there was a forced break after a block with (conditional) borders the border-after wasn't painted. Committed by JM. See Issue [44412](http://issues.apache.org/bugzilla/show_bug.cgi?id=44412) .
+- ![fix](/images/fix.jpg)Bugfix: When there was a forced break after a block with (conditional) borders the border-after wasn't painted. Committed by JM. See Issue [44412](http://issues.apache.org/bugzilla/show_bug.cgi?id=44412).
 
 - ![fix](/images/fix.jpg)Bugfix: a forced break inside a cell was ignored when occurring before the minimum height set on the enclosing row was set. Committed by VH.
 
@@ -111,41 +111,41 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![fix](/images/fix.jpg)Improved conformance: even if a table-cell spans several rows its background must correspond to the first row spanned. Committed by VH.
 
-- ![fix](/images/fix.jpg)Moved to the FO tree stage the check for break-before/after on table-row while spanning in progress. Committed by VH. See Issue [44321](http://issues.apache.org/bugzilla/show_bug.cgi?id=44321) .
+- ![fix](/images/fix.jpg)Moved to the FO tree stage the check for break-before/after on table-row while spanning in progress. Committed by VH. See Issue [44321](http://issues.apache.org/bugzilla/show_bug.cgi?id=44321).
 
-- ![fix](/images/fix.jpg)Fixed the resolution of borders when header/footer is omitted at page breaks. Committed by VH. See Issue [44289](http://issues.apache.org/bugzilla/show_bug.cgi?id=44289) .
+- ![fix](/images/fix.jpg)Fixed the resolution of borders when header/footer is omitted at page breaks. Committed by VH. See Issue [44289](http://issues.apache.org/bugzilla/show_bug.cgi?id=44289).
 
-- ![fix](/images/fix.jpg)Fixed a possible IndexOutOfBoundsException that could happen with certain constellations when footnotes are used. Committed by JM. See Issue [44160](http://issues.apache.org/bugzilla/show_bug.cgi?id=44160) .
+- ![fix](/images/fix.jpg)Fixed a possible IndexOutOfBoundsException that could happen with certain constellations when footnotes are used. Committed by JM. See Issue [44160](http://issues.apache.org/bugzilla/show_bug.cgi?id=44160).
 
 - ![fix](/images/fix.jpg)Compliance fix: for absolutely positioned block-containers, "top" wasn't interpreted correctly. Committed by JM.
 
-- ![fix](/images/fix.jpg)Bugfix: content of a row with zero height overriding the previous row Committed by VH. See Issue [43633](http://issues.apache.org/bugzilla/show_bug.cgi?id=43633) .
+- ![fix](/images/fix.jpg)Bugfix: content of a row with zero height overriding the previous row Committed by VH. See Issue [43633](http://issues.apache.org/bugzilla/show_bug.cgi?id=43633).
 
-- ![fix](/images/fix.jpg)Bugfix for border-after painting and element list generation when a forced break is involved. Committed by JM. See Issue [43917](http://issues.apache.org/bugzilla/show_bug.cgi?id=43917) .
+- ![fix](/images/fix.jpg)Bugfix for border-after painting and element list generation when a forced break is involved. Committed by JM. See Issue [43917](http://issues.apache.org/bugzilla/show_bug.cgi?id=43917).
 
-- ![fix](/images/fix.jpg)Bugfix: no empty page is generated anymore if there's no content after a break-after. Committed by JM. See Issue [40230](http://issues.apache.org/bugzilla/show_bug.cgi?id=40230) .
+- ![fix](/images/fix.jpg)Bugfix: no empty page is generated anymore if there's no content after a break-after. Committed by JM. See Issue [40230](http://issues.apache.org/bugzilla/show_bug.cgi?id=40230).
 
-- ![fix](/images/fix.jpg)Restored proper handling of fo:table-cell having no children, which is allowed in relaxed validation mode. Committed by VH. See Issue [43803](http://issues.apache.org/bugzilla/show_bug.cgi?id=43803) .
+- ![fix](/images/fix.jpg)Restored proper handling of fo:table-cell having no children, which is allowed in relaxed validation mode. Committed by VH. See Issue [43803](http://issues.apache.org/bugzilla/show_bug.cgi?id=43803).
 
 - ![fix](/images/fix.jpg)Memory Leak fixed in the Property Cache. Fixed by Jeremias Maerki. Reported and Tested By Chris Bowditch. Committed by JM.
 
-- ![fix](/images/fix.jpg)Bugfix in tables: wrong element generation by the merging algorithm when glues must be produced to cope with conditional spaces. The corresponding length was added twice: one in the glue itself and one in the following box. Committed by VH. See Issue [43712](http://issues.apache.org/bugzilla/show_bug.cgi?id=43712) .
+- ![fix](/images/fix.jpg)Bugfix in tables: wrong element generation by the merging algorithm when glues must be produced to cope with conditional spaces. The corresponding length was added twice: one in the glue itself and one in the following box. Committed by VH. See Issue [43712](http://issues.apache.org/bugzilla/show_bug.cgi?id=43712).
 
-- ![fix](/images/fix.jpg)Bugfix: breaks generated by the merging algorithm for a table-row containing empty cells had always a penalty of 900. Committed by VH. See Issue [43766](http://issues.apache.org/bugzilla/show_bug.cgi?id=43766) .
+- ![fix](/images/fix.jpg)Bugfix: breaks generated by the merging algorithm for a table-row containing empty cells had always a penalty of 900. Committed by VH. See Issue [43766](http://issues.apache.org/bugzilla/show_bug.cgi?id=43766).
 
 - ![fix](/images/fix.jpg)In case of missing cells the border-end of the table was applied to an inner cell, instead of the (empty) cell in the last column. Committed by VH.
 
 - ![fix](/images/fix.jpg)Fixed the resolution of borders with table-columns (border-before/after was wrongly applied to every cell of the column). Committed by VH.
 
-- ![fix](/images/fix.jpg)Fixed the resolution of border-end on cells spanning several rows. Committed by VH. See Issue [42768](http://issues.apache.org/bugzilla/show_bug.cgi?id=42768) .
+- ![fix](/images/fix.jpg)Fixed the resolution of border-end on cells spanning several rows. Committed by VH. See Issue [42768](http://issues.apache.org/bugzilla/show_bug.cgi?id=42768).
 
 - ![fix](/images/fix.jpg)Bugfix for NPE with empty table-row (regression from 0.93). Committed by JM.
 
-- ![fix](/images/fix.jpg)Fixed swallowing PCDATA in text-node children of retrieved markers. Committed by AD. See Issue [42705](http://issues.apache.org/bugzilla/show_bug.cgi?id=42705) .
+- ![fix](/images/fix.jpg)Fixed swallowing PCDATA in text-node children of retrieved markers. Committed by AD. See Issue [42705](http://issues.apache.org/bugzilla/show_bug.cgi?id=42705).
 
-- ![fix](/images/fix.jpg)Fixed erroneous white-space removal in retrieved markers. Committed by AD. See Issue [42703](http://issues.apache.org/bugzilla/show_bug.cgi?id=42703) .
+- ![fix](/images/fix.jpg)Fixed erroneous white-space removal in retrieved markers. Committed by AD. See Issue [42703](http://issues.apache.org/bugzilla/show_bug.cgi?id=42703).
 
-- ![fix](/images/fix.jpg)Fixed erroneous usage of inherited color-values in SVG. Committed by AD. Thanks to ckohrn.at.tng.de. See Issue [43274](http://issues.apache.org/bugzilla/show_bug.cgi?id=43274) .
+- ![fix](/images/fix.jpg)Fixed erroneous usage of inherited color-values in SVG. Committed by AD. Thanks to ckohrn.at.tng.de. See Issue [43274](http://issues.apache.org/bugzilla/show_bug.cgi?id=43274).
 
 - ![update](/images/update.jpg)Facilitate the implementation for font-selection-strategy:<br></br>• Changed FontInfo.fontLookup to always return an array of FontTriplet.<br></br>• Changed CommonFont.getFontState to return an array of FontTriplet.<br></br>• Initial modifications to the related LMs: initialized with the font corresponding to the first of the triplets.<br></br>Committed by AD.
 
@@ -162,13 +162,13 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![add](/images/add.jpg)Added support for PDF page labels. Committed by JM.
 
-- ![add](/images/add.jpg)Added support for custom fonts in Java2DRenderer and derived renderers. Committed by JM. Thanks to Patrick Jaromin. See Issue [44176](http://issues.apache.org/bugzilla/show_bug.cgi?id=44176) .
+- ![add](/images/add.jpg)Added support for custom fonts in Java2DRenderer and derived renderers. Committed by JM. Thanks to Patrick Jaromin. See Issue [44176](http://issues.apache.org/bugzilla/show_bug.cgi?id=44176).
 
 - ![add](/images/add.jpg)Added generic structures to the PDF library in order to support PDF file in fo:external-graphic later. Committed by JM.
 
 - ![add](/images/add.jpg)Added a configuration setting to the PCL renderer to disable PJL commands. Committed by JM.
 
-- ![add](/images/add.jpg)Added a configuration setting for the renderer/device resolution to the AFP renderer. Committed by JM. Thanks to Adrian Cumiskey. See Issue [43041](http://issues.apache.org/bugzilla/show_bug.cgi?id=43041) .
+- ![add](/images/add.jpg)Added a configuration setting for the renderer/device resolution to the AFP renderer. Committed by JM. Thanks to Adrian Cumiskey. See Issue [43041](http://issues.apache.org/bugzilla/show_bug.cgi?id=43041).
 
 - ![fix](/images/fix.jpg)Slight improvement for thin lines in Java2D/AWT output. Committed by JM. Thanks to Gordon Cooke.
 
@@ -176,19 +176,19 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![fix](/images/fix.jpg)Fixed generation of named destinations so it works when the PDF document is encrypted. Committed by JM.
 
-- ![fix](/images/fix.jpg)Bugfix: allow multiple bookmarks to point at the same destination. Committed by JM. See Issue [37993](http://issues.apache.org/bugzilla/show_bug.cgi?id=37993) .
+- ![fix](/images/fix.jpg)Bugfix: allow multiple bookmarks to point at the same destination. Committed by JM. See Issue [37993](http://issues.apache.org/bugzilla/show_bug.cgi?id=37993).
 
 - ![fix](/images/fix.jpg)Fixed regression: transparent-page-background was not recognized for PNG output. Committed by JM.
 
-- ![fix](/images/fix.jpg)Postscript extension cleanup. Committed by AC. Thanks to Andrejus Chaliapinas. See Issue [43042](http://issues.apache.org/bugzilla/show_bug.cgi?id=43042) .
+- ![fix](/images/fix.jpg)Postscript extension cleanup. Committed by AC. Thanks to Andrejus Chaliapinas. See Issue [43042](http://issues.apache.org/bugzilla/show_bug.cgi?id=43042).
 
-- ![fix](/images/fix.jpg)Fix to avoid ClassCastException where multiple ps:ps-comments are declared within fo:declarations. Committed by AC. See Issue [43587](http://issues.apache.org/bugzilla/show_bug.cgi?id=43587) .
+- ![fix](/images/fix.jpg)Fix to avoid ClassCastException where multiple ps:ps-comments are declared within fo:declarations. Committed by AC. See Issue [43587](http://issues.apache.org/bugzilla/show_bug.cgi?id=43587).
 
-- ![fix](/images/fix.jpg)Fixes missing TLE value attribute when using AreaTree input with the AFP renderer. Committed by AC. See Issue [43439](http://issues.apache.org/bugzilla/show_bug.cgi?id=43439) .
+- ![fix](/images/fix.jpg)Fixes missing TLE value attribute when using AreaTree input with the AFP renderer. Committed by AC. See Issue [43439](http://issues.apache.org/bugzilla/show_bug.cgi?id=43439).
 
-- ![fix](/images/fix.jpg)Fix to avoid a ClassCastException in renderer configuration. Committed by JM. Thanks to Bruno Feurer. See Issue [43464](http://issues.apache.org/bugzilla/show_bug.cgi?id=43464) .
+- ![fix](/images/fix.jpg)Fix to avoid a ClassCastException in renderer configuration. Committed by JM. Thanks to Bruno Feurer. See Issue [43464](http://issues.apache.org/bugzilla/show_bug.cgi?id=43464).
 
-- ![fix](/images/fix.jpg)Fixed the restoration of the TLE values from the intermediate format for the AFP extension elements. Committed by JM. Thanks to Adrian Cumiskey. See Issue [43439](http://issues.apache.org/bugzilla/show_bug.cgi?id=43439) .
+- ![fix](/images/fix.jpg)Fixed the restoration of the TLE values from the intermediate format for the AFP extension elements. Committed by JM. Thanks to Adrian Cumiskey. See Issue [43439](http://issues.apache.org/bugzilla/show_bug.cgi?id=43439).
 
 - ![update](/images/update.jpg)PDF Transcoder (SVG) text painting has been completely rewritten. Except for some special cases (with filters for example), all text (including flow text) is now painted using PDF text operators. Committed by JM.
 

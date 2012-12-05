@@ -19,7 +19,7 @@ There is generally no need to setup a classpath. All libraries needed to compile
 
 ### JAVA_HOME <a id="env-java-home"></a>
 
-The build script uses [Apache Ant](http://ant.apache.org/) , a popular Java-based build tool, which usually requires that the environment variable JAVA_HOME point to your local JDK root directory. This is true even if you use JDK 1.4 or above, which normally does not need this setting.
+The build script uses [Apache Ant](http://ant.apache.org/), a popular Java-based build tool, which usually requires that the environment variable JAVA_HOME point to your local JDK root directory. This is true even if you use JDK 1.4 or above, which normally does not need this setting.
 
 ### Apache Ant <a id="env-ant"></a>
 
@@ -34,11 +34,11 @@ ant -projecthelp
 The most useful targets are:
 
 
--  **package** : Generates the JAR files (default). This is the normal build that produces a jar file usable for running FOP.
+-  **package**: Generates the JAR files (default). This is the normal build that produces a jar file usable for running FOP.
 
--  **clean** : Cleans the build directory. This is useful for making sure that any build errors are cleaned up before starting a new build. It should not ordinarily be needed, but may be helpful if you are having problems with the build process itself.
+-  **clean**: Cleans the build directory. This is useful for making sure that any build errors are cleaned up before starting a new build. It should not ordinarily be needed, but may be helpful if you are having problems with the build process itself.
 
--  **javadocs** : Creates the FOP API documentation.A minimum JDK version of 1.4.2 is required for generating the javadocs.
+-  **javadocs**: Creates the FOP API documentation.A minimum JDK version of 1.4.2 is required for generating the javadocs.
 
 To run the build:
 ant [target ...]

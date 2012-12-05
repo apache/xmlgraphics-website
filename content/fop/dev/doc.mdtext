@@ -31,7 +31,7 @@ Other approaches were considered, but all seemed to have significantly higher co
 
 ### Background <a id="web-background"></a>
 
-The FOP web site and documentation are generated using [Apache Forrest](http://forrest.apache.org) .
+The FOP web site and documentation are generated using [Apache Forrest](http://forrest.apache.org).
 
 The following table summarizes the flow of data to the FOP website in chronological order:
 
@@ -45,11 +45,11 @@ Server-side ForrestBot is currently not available for website publishing. We use
 ### ForrestBot "publish" Step-by-Step <a id="web-forrestbot-publish"></a>
 
 We're using ForrestBot for build and deploy the FOP website. ForrestBot comes with Apache Forrest 0.8. The root directory of your FOP checkout contains the file "publish.xml" which is an Ant build file that manages the build and the deployment of the FOP website. Please look into this file for further instructions to set up ForrestBot on your machine. Basically, we're simply running ForrestBot manually by typing "ant -f publish.xml" once we're happy with our changes to the site. Step-by-step instructions for the deployment process again:
-Please make sure you use Forrest from the Trunk (revision 632959 or later) for the time being. You will need to download it directly from SVN: [http://svn.apache.org/repos/asf/forrest/trunk](http://svn.apache.org/repos/asf/forrest/trunk) 
+Please make sure you use Forrest from the Trunk (revision 632959 or later) for the time being. You will need to download it directly from SVN: [http://svn.apache.org/repos/asf/forrest/trunk](http://svn.apache.org/repos/asf/forrest/trunk)
 
 - Modify the sources of the website and check locally with Forrest (run "forrest run" or just "forrest").
 
-- Once you're satisfied, run "ant -f publish.xml" to do a clean build of the website. If the build runs without problems, the website will be uploaded as a whole using SVN to the [website staging directory in SVN](https://svn.apache.org/repos/asf/xmlgraphics/site/deploy/fop/) .
+- Once you're satisfied, run "ant -f publish.xml" to do a clean build of the website. If the build runs without problems, the website will be uploaded as a whole using SVN to the [website staging directory in SVN](https://svn.apache.org/repos/asf/xmlgraphics/site/deploy/fop/).
 
 - Then log into people.apache.org using SSH, go to the /www/xmlgraphics.apache.org directory and run "svn up".
 
@@ -77,7 +77,7 @@ You can use "forrest run" to start a local web server. That improves development
 
 ### Updating Distribution Files <a id="distribution"></a>
 
-The Apache distribution system mirrors distributions around the world. Since it uses [Apache httpd](http://httpd.apache.org/) Module [mod_autoindex](http://httpd.apache.org/docs/2.2/mod/mod_autoindex.html#headername) you also need to manually update the HEADER.html & READER.html files on `people.apache.org` in `/www/www.apache.org/dist/xmlgraphics/fop/` .
+The Apache distribution system mirrors distributions around the world. Since it uses [Apache httpd](http://httpd.apache.org/) Module [mod_autoindex](http://httpd.apache.org/docs/2.2/mod/mod_autoindex.html#headername) you also need to manually update the HEADER.html & READER.html files on `people.apache.org` in `/www/www.apache.org/dist/xmlgraphics/fop/`.
 
 Please be careful when doing stuff like that.
 

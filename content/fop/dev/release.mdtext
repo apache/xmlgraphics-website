@@ -20,7 +20,7 @@ The checklist below is based on a combination of input from from Christian Geise
 
 - Commit any outstanding changes
 
-- Create a branch called `branches/fop-v_vv` 
+- Create a branch called `branches/fop-v_vv`
 
 - Edit release notes ( `README` and `status.xml` in the root).
 
@@ -30,7 +30,7 @@ The checklist below is based on a combination of input from from Christian Geise
 
 - Check and update the copyright year in NOTICE and build.xml.
 
-- Update the file `doap.rdf` , and the files `index.xml` , `site.xml` , `download.xml` , `fo.xml` , `maillist.xml` , and `quickstartguide.xml` in directory `xdocs` for the new version.
+- Update the file `doap.rdf`, and the files `index.xml`, `site.xml`, `download.xml`, `fo.xml`, `maillist.xml`, and `quickstartguide.xml` in directory `xdocs` for the new version.
 
 - Update the version numbers in the release column on the compliance page ( `compliance.xml` ); update the compliance in the release column to the current state (development column).
 
@@ -38,9 +38,9 @@ The checklist below is based on a combination of input from from Christian Geise
 
 - Copy trunk documentation directory to a new directory with the new version number, and update the `.htaccess` file for redirections.
 
-- Copy `test/fotree/disabled-testcases.xml` and `test/layoutengine/disabled-testcases.xml` to the new version directory `<version>/fotree/disabled-testcases.xml` and `<version>/layoutengine/disabled-testcases.xml` . Copy `known-issues.xml` to the new version directory. Copy `knownissues-overview.xml` from the current to the new version directory, and update the `xi:include` links in it.
+- Copy `test/fotree/disabled-testcases.xml` and `test/layoutengine/disabled-testcases.xml` to the new version directory `<version>/fotree/disabled-testcases.xml` and `<version>/layoutengine/disabled-testcases.xml`. Copy `known-issues.xml` to the new version directory. Copy `knownissues-overview.xml` from the current to the new version directory, and update the `xi:include` links in it.
 
-- Update the tab names and directories in `tabs.xml` 
+- Update the tab names and directories in `tabs.xml`
 
 - Delete the previous version directory.
 
@@ -48,35 +48,35 @@ The checklist below is based on a combination of input from from Christian Geise
 
 - Update `compiling.xml` in the new version directory: change the introduction for trunk to that for a release.
 
-- Build the dist files ( `build[.sh] dist` ) and upload them to your web directory on `people.apache.org` 
+- Build the dist files ( `build[.sh] dist` ) and upload them to your web directory on `people.apache.org`
 
 - Ask on `fop-dev` ML to check the branch and the generated dist files for errors.
 
-- Tag the source tree with the release ID. For example, if the release is 1.0: `svn copy https://svn.apache.org/repos/asf/xmlgraphics/fop/branches/fop-1_0 https://svn.apache.org/repos/asf/xmlgraphics/fop/tags/fop-1_0` 
+- Tag the source tree with the release ID. For example, if the release is 1.0: `svn copy https://svn.apache.org/repos/asf/xmlgraphics/fop/branches/fop-1_0 https://svn.apache.org/repos/asf/xmlgraphics/fop/tags/fop-1_0`
 
-- Make a fresh checkout with the just created tag: `svn co https://svn.apache.org/repos/asf/xmlgraphics/fop/tags/fop-1_0` 
+- Make a fresh checkout with the just created tag: `svn co https://svn.apache.org/repos/asf/xmlgraphics/fop/tags/fop-1_0`
 
-- Copy the hyphenation patterns jar file `fop-hyph.jar` to `lib` (e.g. from `http://sourceforge.net/projects/offo` 
+- Copy the hyphenation patterns jar file `fop-hyph.jar` to `lib` (e.g. from `http://sourceforge.net/projects/offo`
 
 - Alternatively, create a `build-local.properties` file that points to the above libraries.
 
-- Run `build[.sh] dist` . Do this using Sun JDK 1.5 or later. A Forrest installation is needed.
+- Run `build[.sh] dist`. Do this using Sun JDK 1.5 or later. A Forrest installation is needed.
 
 - Create signatures. Don't forget to upload your KEY: `gpg -a -b --force-v3-sigs fop-1.0-src.tar.gz` etc.
 
-- Upload the dist and signature files to your web directory on people.apache.org (An account on minotaur is needed): `scp fop-1.0*.tar.gz* chrisg@people.apache.org:public_html/` 
+- Upload the dist and signature files to your web directory on people.apache.org (An account on minotaur is needed): `scp fop-1.0*.tar.gz* chrisg@people.apache.org:public_html/`
 
-- Check permissions: `chmod 664 ... ; chgrp xmlgraphics ...` 
+- Check permissions: `chmod 664 ... ; chgrp xmlgraphics ...`
 
 - Add MD5 sums: `md5 fop-1.0-src.tar.gz > fop-1.0-src.tar.gz.md5` etc.
 
 - Make a test download.
 
-- Start a vote for the release on `general@xmlgraphics.apache.org` . The message should point to the release files and list the MD5 sums ( `cat *.md5` ). The vote should remain open for 72hrs.
+- Start a vote for the release on `general@xmlgraphics.apache.org`. The message should point to the release files and list the MD5 sums ( `cat *.md5` ). The vote should remain open for 72hrs.
 
-- When the release is accepted, copy the release files, their md5 sum files and the signature files to `/www/www.apache.org/dist/xmlgraphics/fop/` in the subdirectories `source` and `binaries` . Create links to all files in the `fop` directory. Remove the links to the files of the previous version.
+- When the release is accepted, copy the release files, their md5 sum files and the signature files to `/www/www.apache.org/dist/xmlgraphics/fop/` in the subdirectories `source` and `binaries`. Create links to all files in the `fop` directory. Remove the links to the files of the previous version.
 
-- Update `HEADER.html` and `README.html` in `people.apache.org:/www/www.apache.org/dist/xmlgraphics/fop/` .
+- Update `HEADER.html` and `README.html` in `people.apache.org:/www/www.apache.org/dist/xmlgraphics/fop/`.
 
 - Wait 24 hours (for the mirrors to catch up).
 
@@ -86,7 +86,7 @@ The checklist below is based on a combination of input from from Christian Geise
 
 - Post announcements on `fop-dev` and `fop-user` and other related mailing lists.
 
-- Ask an FOP bugzilla admin to add a bugzilla entry for the new release id, or create an issue at `https://issues.apache.org/jira/browse/INFRA` .
+- Ask an FOP bugzilla admin to add a bugzilla entry for the new release id, or create an issue at `https://issues.apache.org/jira/browse/INFRA`.
 
 - Deploy the maven bundle.
 
@@ -95,20 +95,20 @@ The checklist below is based on a combination of input from from Christian Geise
 The following is a sample of some other project release checklists, which might be consulted for ideas:
 
 
--  <a href="http://svn.apache.org/repos/asf/xmlgraphics/batik/trunk/MAINTAIN">Apache Batik</a> 
+-  <a href="http://svn.apache.org/repos/asf/xmlgraphics/batik/trunk/MAINTAIN">Apache Batik</a>
 
--  <a href="http://svn.apache.org/repos/asf/ant/core/trunk/ReleaseInstructions">Apache Ant</a> 
+-  <a href="http://svn.apache.org/repos/asf/ant/core/trunk/ReleaseInstructions">Apache Ant</a>
 
--  <a href="http://jakarta.apache.org/cactus/participating/release_checklist.html">Apache Cactus</a> 
+-  <a href="http://jakarta.apache.org/cactus/participating/release_checklist.html">Apache Cactus</a>
 
 
 
 Following are links with information about mirroring:
 
 
--  <a href="http://www.apache.org/dev/mirrors.html">Apache Mirroring</a> 
+-  <a href="http://www.apache.org/dev/mirrors.html">Apache Mirroring</a>
 
-- Stefan Bodewig's <a href="http://people.apache.org/~bodewig/mirror.html">Making your Downloads Mirrorable</a> 
+- Stefan Bodewig's <a href="http://people.apache.org/~bodewig/mirror.html">Making your Downloads Mirrorable</a>
 
 ## Announcing the release <a id="announcements"></a>
 

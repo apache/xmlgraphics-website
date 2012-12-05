@@ -14,7 +14,7 @@ After the Apache&trade; FOP 0.94 release, the image handling subsystem has been 
 
 - A plug-in mechanism offers a possibility to add support for new formats without changing the FOP's source code.
 
-The actual [image loading framework](http://xmlgraphics.apache.org/commons/image-loader.html) no longer resides in Apache FOP, but was instead placed in [XML Graphics Commons](http://xmlgraphics.apache.org/commons/) .
+The actual [image loading framework](http://xmlgraphics.apache.org/commons/image-loader.html) no longer resides in Apache FOP, but was instead placed in [XML Graphics Commons](http://xmlgraphics.apache.org/commons/).
 
 ## Overview of Graphics Support <a id="support-overview"></a>
 
@@ -70,13 +70,13 @@ Legend:
 
 ### FOP Native <a id="fop-native"></a>
 
-FOP has no native image plug-ins for the image loading framework of its own but currently hosts the Batik-dependent SVG and WMF plug-ins until they can be moved to [Apache Batik](http://xmlgraphics.apache.org/batik/) .
+FOP has no native image plug-ins for the image loading framework of its own but currently hosts the Batik-dependent SVG and WMF plug-ins until they can be moved to [Apache Batik](http://xmlgraphics.apache.org/batik/).
 
 ### Apache Batik <a id="batik"></a>
 
  [Apache Batik](http://xmlgraphics.apache.org/batik/) will later receive the SVG and WMF plug-ins for the image loading framework that are currently hosted inside FOP.
 
-Current FOP distributions include a distribution of the [Apache Batik](http://xmlgraphics.apache.org/batik/) . Because Batik's API changes frequently, it is highly recommended that you use the version that ships with FOP, at least when running FOP.
+Current FOP distributions include a distribution of the [Apache Batik](http://xmlgraphics.apache.org/batik/). Because Batik's API changes frequently, it is highly recommended that you use the version that ships with FOP, at least when running FOP.
 <warning>Batik must be run in a graphical environment.</warning>
 Batik must be run in a graphical environment. It uses AWT classes for rendering SVG, which in turn require an X server on Unixish systems. If you run a server without X, or if you can't connect to the X server due to security restrictions or policies (a so-called "headless" environment), SVG rendering will fail.
 
@@ -87,7 +87,7 @@ Here are some workarounds:
 
 - Install an X server which provides an in-memory framebuffer without actually using a screen device or any display hardware. One example is Xvfb.
 
-- Install a toolkit which emulates AWT without the need for an underlying X server. One example is the [PJA toolkit](http://www.eteks.com/pja/en) , which is free and comes with detailed installation instructions.
+- Install a toolkit which emulates AWT without the need for an underlying X server. One example is the [PJA toolkit](http://www.eteks.com/pja/en), which is free and comes with detailed installation instructions.
 
 ### Image I/O <a id="imageio"></a>
 
@@ -125,13 +125,13 @@ PNG images are supported through an Image&nbsp;I/O codec. Transparency is suppor
 
 #### Introduction<a id="svg-intro"></a>
 
-FOP uses [Apache Batik](#batik) for SVG support. This format can be handled as an `fo:instream-foreign-object` or in a separate file referenced with `fo:external-graphic` .
+FOP uses [Apache Batik](#batik) for SVG support. This format can be handled as an `fo:instream-foreign-object` or in a separate file referenced with `fo:external-graphic`.
 Batik's SVG Rasterizer utility may also be used to convert standalone SVG documents into PDF. For more information please see the [SVG Rasterizer documentation](http://xmlgraphics.apache.org/batik/svgrasterizer.html) on the Batik site.
 #### Placing SVG Graphics into PDF<a id="svg-pdf-graphics"></a>
 
 The SVG is rendered into PDF by using PDF commands to draw and fill lines and curves. This means that the graphical objects created with this remain as vector graphics. The same applies to PostScript output. For other output formats the SVG graphic may be converted to a bitmap image.
 
-There are a number of SVG things that cannot be converted directly into PDF. Parts of the graphic such as effects, patterns and images are inserted into the PDF as a raster graphic. The resolution of these raster images can be controlled through the "target resolution" setting in the [configuration](configuration.html) .
+There are a number of SVG things that cannot be converted directly into PDF. Parts of the graphic such as effects, patterns and images are inserted into the PDF as a raster graphic. The resolution of these raster images can be controlled through the "target resolution" setting in the [configuration](configuration.html).
 
 Currently transparency is limited in PDF so many SVG images that contain effects or graphics with transparent areas may not be displayed correctly.
 
@@ -145,7 +145,7 @@ Note that because SVG text can be rendered as either text or a vector graphic, y
 
 #### Scaling<a id="svg-scaling"></a>
 
-Currently, SVG images are rendered with the dimensions specified *in the SVG file* , within the viewport specified in the fo:external-graphic element. For everything to work properly, the two should be equal. The SVG standard leaves this issue as an implementation detail. Additional scaling options are available through XSL-FO means.
+Currently, SVG images are rendered with the dimensions specified *in the SVG file*, within the viewport specified in the fo:external-graphic element. For everything to work properly, the two should be equal. The SVG standard leaves this issue as an implementation detail. Additional scaling options are available through XSL-FO means.
 
 If you use pixels to specify the size of an SVG graphic the "source resolution" setting in the [configuration](configuration.html) will be used to determine the size of a pixel. The use of pixels to specify sizes is discouraged as they may be interpreted differently in different environments.
 
@@ -168,7 +168,7 @@ There may be some limitation concerning images in the CMYK color space.
 
 ### WMF <a id="wmf"></a>
 
-Windows Metafiles (WMF) are supported through classes in [Apache Batik](http://xmlgraphics.apache.org/batik/) . At the moment, support for this format is experimental and may not always work as expected.
+Windows Metafiles (WMF) are supported through classes in [Apache Batik](http://xmlgraphics.apache.org/batik/). At the moment, support for this format is experimental and may not always work as expected.
 
 ## Graphics Resolution <a id="resolution"></a>
 
@@ -188,4 +188,4 @@ FOP caches images between runs. There is one cache per FopFactory instance. The 
 
 The image cache has been improved considerably in the redesigned code. Therefore, resetting the image cache should be a thing of the past. If you still experience OutOfMemoryErrors, please notify us.
 
-If all else fails, the image cache can be cleared like this: `fopFactory.getImageManager().getCache().clearCache();` 
+If all else fails, the image cache can be cleared like this: `fopFactory.getImageManager().getCache().clearCache();`

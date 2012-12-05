@@ -15,15 +15,15 @@ The following software must be installed:
 
 - Apache&trade; FOP. The [FOP distribution](../download.html) includes all libraries that you will need to run a basic FOP installation. These can be found in the [fop-root]/lib directory. These libraries include the following:
 
-    -  [Apache XML Graphics Commons](http://xmlgraphics.apache.org/commons/) , an shared library for Batik and FOP.
+    -  [Apache XML Graphics Commons](http://xmlgraphics.apache.org/commons/), an shared library for Batik and FOP.
 
-    -  [Apache Batik](http://xmlgraphics.apache.org/batik/) , an SVG library.
+    -  [Apache Batik](http://xmlgraphics.apache.org/batik/), an SVG library.
 
-    -  [Apache Commons Logging](http://commons.apache.org/logging/) , a logger abstraction kit.
+    -  [Apache Commons Logging](http://commons.apache.org/logging/), a logger abstraction kit.
 
-    -  [Apache Commons IO](http://commons.apache.org/io/) , a library with I/O utilities.
+    -  [Apache Commons IO](http://commons.apache.org/io/), a library with I/O utilities.
 
-    -  [Apache Excalibur/Avalon Framework](http://excalibur.apache.org/framework/) , for XML configuration handling.
+    -  [Apache Excalibur/Avalon Framework](http://excalibur.apache.org/framework/), for XML configuration handling.
 
 
 The following software is optional, depending on your needs:
@@ -52,7 +52,7 @@ Some Mac OSX users have experienced filename truncation problems using Stuffit t
 
 ### Using the fop script or batch file <a id="fop-script"></a>
 
-The usual and recommended practice for starting FOP from the command line is to run the batch file fop.bat (Windows) or the shell script fop (Unix/Linux). These scripts require that the environment variable JAVA_HOME be set to a path pointing to the appropriate Java installation on your system. Macintosh OSX includes a Java environment as part of its distribution. We are told by Mac OSX users that the path to use in this case is `/Library/Java/Home` . **Caveat:** We suspect that, as Apple releases new Java environments and as FOP upgrades the minimum Java requirements, the two will inevitably not match on some systems. Please see [Java on Mac OSX FAQ](http://developer.apple.com/java/faq) for information as it becomes available.
+The usual and recommended practice for starting FOP from the command line is to run the batch file fop.bat (Windows) or the shell script fop (Unix/Linux). These scripts require that the environment variable JAVA_HOME be set to a path pointing to the appropriate Java installation on your system. Macintosh OSX includes a Java environment as part of its distribution. We are told by Mac OSX users that the path to use in this case is `/Library/Java/Home`. **Caveat:** We suspect that, as Apple releases new Java environments and as FOP upgrades the minimum Java requirements, the two will inevitably not match on some systems. Please see [Java on Mac OSX FAQ](http://developer.apple.com/java/faq) for information as it becomes available.
 
     USAGE
     Fop [options] [-fo|-xml] infile [-xsl file] [-awt|-pdf|-mif|-rtf|-tiff|-png|-pcl|-ps|-txt|-at [mime]|-print] <outfile>
@@ -127,38 +127,38 @@ The usual and recommended practice for starting FOP from the command line is to 
       Fop foo.fo -print or Fop -print foo.fo
       Fop foo.fo -awt
 
-PDF encryption is only available if FOP was compiled with encryption support **and** if compatible encryption support is available at run time. Currently, only the JCE is supported. Check the [Details](pdfencryption.html) .
+PDF encryption is only available if FOP was compiled with encryption support **and** if compatible encryption support is available at run time. Currently, only the JCE is supported. Check the [Details](pdfencryption.html).
 
 ### Writing your own script <a id="your-own-script"></a>
 
-FOP's entry point for your own scripts is the class `org.apache.fop.cli.Main` . The general pattern for the command line is: `java -classpath <CLASSPATH>
-        org.apache.fop.cli.Main <arguments>` . The arguments consist of the options and infile and outfile specifications as shown above for the standard scripts. You may wish to review the standard scripts to make sure that you get your environment properly configured.
+FOP's entry point for your own scripts is the class `org.apache.fop.cli.Main`. The general pattern for the command line is: `java -classpath <CLASSPATH>
+        org.apache.fop.cli.Main <arguments>`. The arguments consist of the options and infile and outfile specifications as shown above for the standard scripts. You may wish to review the standard scripts to make sure that you get your environment properly configured.
 
 ### Running with java's -jar option <a id="jar-option"></a>
 
 As an alternative to the start scripts you can run `java
-        -jar path/to/build/fop.jar <arguments>` , relying on FOP to build the classpath for running FOP dynamically, see [below](#dynamical-classpath) . If you use hyphenation, you must put `fop-hyph.jar` in the `lib` directory.
+        -jar path/to/build/fop.jar <arguments>`, relying on FOP to build the classpath for running FOP dynamically, see [below](#dynamical-classpath). If you use hyphenation, you must put `fop-hyph.jar` in the `lib` directory.
 
 You can also run `java -jar path/to/fop.jar
-      <arguments>` , relying on the `Class-Path` entry in the manifest file. This works if you put `fop.jar` and all jar files from the `lib` directory in a single directory. If you use hyphenation, you must also put `fop-hyph.jar` in that directory.
+      <arguments>`, relying on the `Class-Path` entry in the manifest file. This works if you put `fop.jar` and all jar files from the `lib` directory in a single directory. If you use hyphenation, you must also put `fop-hyph.jar` in that directory.
 
 In both cases the arguments consist of the options and infile and outfile specifications as shown above for the standard scripts.
 
 ### FOP's dynamical classpath construction <a id="dynamical-classpath"></a>
 
-If FOP is started without a proper classpath, it tries to add its dependencies dynamically. If the system property `fop.home` contains the name of a directory, then FOP uses that directory as the base directory for its search. Otherwise the current working directory is the base directory. If the base directory is called `build` , then its parent directory becomes the base directory.
+If FOP is started without a proper classpath, it tries to add its dependencies dynamically. If the system property `fop.home` contains the name of a directory, then FOP uses that directory as the base directory for its search. Otherwise the current working directory is the base directory. If the base directory is called `build`, then its parent directory becomes the base directory.
 
 FOP expects to find `fop.jar` in the `build` subdirectory of the base directory, and adds it to the classpath. Subsequently FOP adds all `jar` files in the lib directory to the classpath. The lib directory is either the `lib` subdirectory of the base directory, or, if that does not exist, the base directory itself.
 
-If the system property `fop.optional.lib` contains the name of a directory, then all `jar` files in that directory are also added to the classpath. See the methods `getJARList` and `checkDependencies` in `org.apache.fop.cli.Main` .
+If the system property `fop.optional.lib` contains the name of a directory, then all `jar` files in that directory are also added to the classpath. See the methods `getJARList` and `checkDependencies` in `org.apache.fop.cli.Main`.
 
 ## Using Xalan to Check XSL-FO Input <a id="check-input"></a>
 
-FOP sessions that use -xml and -xsl input instead of -fo input are actually controlling two distinct conversions: Tranforming XML to XSL-FO, then formatting the XSL-FO to PDF (or another FOP output format). Although FOP controls both of these processes, the first is included merely as a convenience and for performance reasons. Only the second is part of FOP's core processing. If a user has a problem running FOP, it is important to determine which of these two processes is causing the problem. If the problem is in the first process, the user's stylesheet is likely the cause. The FOP development team does not have resources to help with stylesheet issues, although we have included links to some useful [Specifications](../resources.html#specs) and [Books/Articles](../resources.html#articles) . If the problem is in the second process, FOP may have a bug or an unimplemented feature that does require attention from the FOP development team.
+FOP sessions that use -xml and -xsl input instead of -fo input are actually controlling two distinct conversions: Tranforming XML to XSL-FO, then formatting the XSL-FO to PDF (or another FOP output format). Although FOP controls both of these processes, the first is included merely as a convenience and for performance reasons. Only the second is part of FOP's core processing. If a user has a problem running FOP, it is important to determine which of these two processes is causing the problem. If the problem is in the first process, the user's stylesheet is likely the cause. The FOP development team does not have resources to help with stylesheet issues, although we have included links to some useful [Specifications](../resources.html#specs) and [Books/Articles](../resources.html#articles). If the problem is in the second process, FOP may have a bug or an unimplemented feature that does require attention from the FOP development team.
 The user is always responsible to provide correct XSL-FO code to FOP.
 In the case of using -xml and -xsl input, although the user is responsible for the XSL-FO code that is FOP's input, it is not visible to the user. To make the intermediate FO file visible, the FOP distribution includes the "-foout" option which causes FOP to run only the first (transformation) step, and write the results to a file. (See also the Xalan command-line below)
 When asking for help on the FOP mailing lists, *never* attach XML and XSL to illustrate the issue. Always run the XSLT step (-foout) and send the resulting XSL-FO file instead. Of course, be sure that the XSL-FO file is correct before sending it.
-The -foout option works the same way as if you would call the [Xalan command-line](http://xml.apache.org/xalan-j/commandline.html) :
+The -foout option works the same way as if you would call the [Xalan command-line](http://xml.apache.org/xalan-j/commandline.html):
 
  `java org.apache.xalan.xslt.Process -IN xmlfile -XSL file -OUT outfile`
 
@@ -181,4 +181,4 @@ If you are running out of memory when using FOP, here are some ideas that may he
 
 ## Problems <a id="problems"></a>
 
-If you have problems running FOP, please see the ["How to get Help" page](../gethelp.html) .
+If you have problems running FOP, please see the ["How to get Help" page](../gethelp.html).

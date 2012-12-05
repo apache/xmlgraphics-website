@@ -7,9 +7,9 @@ The [Document Object Model](http://www.w3.org/dom/) (DOM) is an API for XML docu
 
 ## Getting started <a id="gettingStarted"></a>
 
-The DOM API defines an interface called [DOMImplementation](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/DOMImplementation.html) , which represents the bootstrap of any DOM implementation. The role of this class is to bootstrap a particular implementation of the DOM by providing a method to create a [Document](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html) . Then, the concrete `Document` represents an XML document and also acts like a factory for the various DOM objects such as [Element](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Element.html) , [Attr](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Attr.html) and [Text](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Text.html) .
+The DOM API defines an interface called [DOMImplementation](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/DOMImplementation.html), which represents the bootstrap of any DOM implementation. The role of this class is to bootstrap a particular implementation of the DOM by providing a method to create a [Document](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html). Then, the concrete `Document` represents an XML document and also acts like a factory for the various DOM objects such as [Element](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Element.html), [Attr](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Attr.html) and [Text](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Text.html).
 
-How to get an instance of the `DOMImplementation` interface depends on the DOM implementation you are using. In Batik, the DOM implementation is located in the package `org.apache.batik.dom.svg` and the class is named [SVGDOMImplementation](http://xmlgraphics.apache.org/batik/javadoc/org/apache/batik/dom/svg/SVGDOMImplementation.html) . The following example shows how to get a concrete `DOMImplementation` object.
+How to get an instance of the `DOMImplementation` interface depends on the DOM implementation you are using. In Batik, the DOM implementation is located in the package `org.apache.batik.dom.svg` and the class is named [SVGDOMImplementation](http://xmlgraphics.apache.org/batik/javadoc/org/apache/batik/dom/svg/SVGDOMImplementation.html). The following example shows how to get a concrete `DOMImplementation` object.
 
     :::java
     import org.w3c.dom.DOMImplementation;
@@ -17,11 +17,11 @@ How to get an instance of the `DOMImplementation` interface depends on the DOM i
 
     DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
 
-Once you have an instance of a `DOMImplementation` , you are not relying on Batik-specific code any more and ready to use the DOM API.
+Once you have an instance of a `DOMImplementation`, you are not relying on Batik-specific code any more and ready to use the DOM API.
 
 ## Creating a Document <a id="creating"></a>
 
-Using the `DOMImplementation` , you are now able to create a `Document` . The following example illustrates how to create an SVG document. Note that the Batik’s DOM implementation can be used to represent either an SVG document fragment or any kind of XML document. Note that by choosing the namespace URI and the local name of the root element of SVG, we are creating an SVG document.
+Using the `DOMImplementation`, you are now able to create a `Document`. The following example illustrates how to create an SVG document. Note that the Batik’s DOM implementation can be used to represent either an SVG document fragment or any kind of XML document. Note that by choosing the namespace URI and the local name of the root element of SVG, we are creating an SVG document.
 
     :::java
     import org.apache.batik.dom.svg.SVGDOMImplementation;
@@ -33,7 +33,7 @@ Using the `DOMImplementation` , you are now able to create a `Document` . The fo
     DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
     Document doc = impl.createDocument(svgNS, "svg", null);
 
-As we have created an SVG `Document` , we can cast this document to an [SVGDocument](../javadoc/org/w3c/dom/svg/SVGDocument.html) (defined in the `org.w3c.dom.svg` package) if needed.
+As we have created an SVG `Document`, we can cast this document to an [SVGDocument](../javadoc/org/w3c/dom/svg/SVGDocument.html) (defined in the `org.w3c.dom.svg` package) if needed.
 
 ## Building an SVG Document <a id="buildsvgdoc"></a>
 
@@ -77,7 +77,7 @@ The example given constructs a document equivalent to parsing the following SVG 
 
 # Creating a Document from an SVG file <a id="createdocfromsvgfile"></a>
 
-With Batik, you can also create an SVG DOM tree from a URI, an [InputStream](http://java.sun.com/j2se/1.5.0/docs/api/java/io/InputStream.html) , or a [Reader](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Reader.html) , using the [SAXSVGDocumentFactory](../javadoc/org/apache/batik/dom/util/SAXDocumentFactory.html) . The following example illustrates how to create an SVG document from a URI using the `SAXSVGDocumentFactory` class.
+With Batik, you can also create an SVG DOM tree from a URI, an [InputStream](http://java.sun.com/j2se/1.5.0/docs/api/java/io/InputStream.html), or a [Reader](http://java.sun.com/j2se/1.5.0/docs/api/java/io/Reader.html), using the [SAXSVGDocumentFactory](../javadoc/org/apache/batik/dom/util/SAXDocumentFactory.html). The following example illustrates how to create an SVG document from a URI using the `SAXSVGDocumentFactory` class.
 
     :::java
     import java.io.IOException;
@@ -96,7 +96,7 @@ With Batik, you can also create an SVG DOM tree from a URI, an [InputStream](htt
         // ...
     }
 
-As we have created an SVG `Document` , we can cast this document to an `SVGDocument` (defined in the `org.w3c.dom.svg` package) if needed.
+As we have created an SVG `Document`, we can cast this document to an `SVGDocument` (defined in the `org.w3c.dom.svg` package) if needed.
 
 ## Rendering an SVG Document <a id="rendering"></a>
 
@@ -106,8 +106,8 @@ Batik provides several ways to use an SVG DOM tree. Two modules can be immediate
 
 JSVGCanvas
 :
-The [JSVGCanvas](../javadoc/org/apache/batik/swing/JSVGCanvas.html) is a Swing component that can display SVG document. A SVG document can be specified using a URI or an SVG DOM tree (using the [setSVGDocument](../javadoc/org/apache/batik/swing/JSVGCanvas.html#setSVGDocument(Document)) method). For futher information about the `JSVGCanvas` , see the [Swing components module documentation](../using/swing.html) .
+The [JSVGCanvas](../javadoc/org/apache/batik/swing/JSVGCanvas.html) is a Swing component that can display SVG document. A SVG document can be specified using a URI or an SVG DOM tree (using the [setSVGDocument](../javadoc/org/apache/batik/swing/JSVGCanvas.html#setSVGDocument(Document)) method). For futher information about the `JSVGCanvas`, see the [Swing components module documentation](../using/swing.html).
 
 
 ImageTranscoder
-:    The [ImageTranscoder](../javadoc/org/apache/batik/transcoder/image/ImageTranscoder.html) is a transcoder that can take a URI, an `InputStream` or an SVG DOM tree and produces a raster image (such JPEG, PNG or TIFF). By creating a [TranscoderInput](../javadoc/org/apache/batik/transcoder/TranscoderInput.html) object with the SVG DOM tree, you will be able to transform your SVG content to a raster image. For futher information, see the [transcoder module documentation](../using/transcoder.html) .
+:    The [ImageTranscoder](../javadoc/org/apache/batik/transcoder/image/ImageTranscoder.html) is a transcoder that can take a URI, an `InputStream` or an SVG DOM tree and produces a raster image (such JPEG, PNG or TIFF). By creating a [TranscoderInput](../javadoc/org/apache/batik/transcoder/TranscoderInput.html) object with the SVG DOM tree, you will be able to transform your SVG content to a raster image. For futher information, see the [transcoder module documentation](../using/transcoder.html).

@@ -24,13 +24,13 @@ where:
 
 
 
- **-font-size**  *font-size* 
-:    
+ **-font-size**  *font-size*
+:
 specifies the font size to use in windows and menus, and
 
 
- *[URIs]* 
-:    
+ *[URIs]*
+:
 specifies the URIs for the SVG documents the browser should open when it starts.
 
 For example:
@@ -52,7 +52,7 @@ To start the browser you should:
 
 - Open a command line window and change to the `xml-batik` or <code>batik- *version*</code> directory where the Batik distribution was expanded
 
-- 
+-
 For Windows, type the following at the command prompt:
 build squiggle
 and for Unix and Mac OS X:
@@ -79,15 +79,15 @@ The following image shows the result of starting the browser, from the binary or
 The browser has several features to view and browse SVG documents:
 
 
--  [Opening a local SVG file](#localFile) 
+-  [Opening a local SVG file](#localFile)
 
--  [Opening an SVG file from the web](#urlFile) 
+-  [Opening an SVG file from the web](#urlFile)
 
--  [Using the location text field to view an SVG file](#locationBar) 
+-  [Using the location text field to view an SVG file](#locationBar)
 
--  [Browsing SVG files](#browsing) 
+-  [Browsing SVG files](#browsing)
 
--  [Viewing multiple SVG files](#viewingMultiple) 
+-  [Viewing multiple SVG files](#viewingMultiple)
 
 ### Opening a local SVG file <a id="localFile"></a>
 
@@ -106,24 +106,24 @@ When you know the URL of the document you want to view, you can enter it directl
 
 ## Browsing SVG files <a id="browsing"></a>
 
-As with HTML content, it is common to navigate back and forth between SVG files (remember that SVG files contain hyperlinks, just like HTML does) and, as described later in this document, it is possible to [zoom](#zoomInOut) into SVG documents, [pan](#panning) and [rotate](#rotating) .
+As with HTML content, it is common to navigate back and forth between SVG files (remember that SVG files contain hyperlinks, just like HTML does) and, as described later in this document, it is possible to [zoom](#zoomInOut) into SVG documents, [pan](#panning) and [rotate](#rotating).
 <div class="figure"> ![Screnshot of Squiggle showing the 'Go' menu](images/svgviewerBrowsing.png "") </div>
 Squiggle offers multiple features to help you browse SVG files:
 
 
 
 Navigating between files
-:    
+:
 The **Go→Back** menu item (or the **Ctrl-left arrow** keyboard accelerator) and the **Go→Forward** menu item (or the **Ctrl-right arrow** keyboard accelerator) let you move to the previous and next visited SVG documents.
 
 
 History
-:    
+:
 The **Go** menu also contains a list of previously viewed SVG documents, which gives you a way to randomly access any document you have already visited.
 
 
 Navigating between views
-:    
+:
 The **View→Previous Transform** menu item ( **Ctrl-K** ) and the **View→Next Transform** menu item ( **Ctrl-L** ) let you go to the previous or next view of the document. This is useful when, for example, you [pan](#panning) or [rotate](#rotating) the document and want to go back to the previous view you had of the document (i.e., before you panned or rotated it).
 
 ### Viewing multiple SVG files <a id="viewingMultiple"></a>
@@ -142,7 +142,7 @@ The **File→Export As** menu item offers the option to export the currently dis
 
 ## Inspecting the SVG source <a id="inspecting"></a>
 
-The browser offers two ways to inspect the source of an SVG document: [viewing the plain source](#viewingSource) or [viewing the document tree](#viewingTree) . Both are explained below.
+The browser offers two ways to inspect the source of an SVG document: [viewing the plain source](#viewingSource) or [viewing the document tree](#viewingTree). Both are explained below.
 
 ### Viewing the source <a id="viewingSource"></a>
 
@@ -163,7 +163,7 @@ This dialog contains several types of options, which can be selected with the le
 
 
 General panel
-:    
+:
 This panel lets you choose some optional behavior:
 
 
@@ -187,12 +187,12 @@ Use a validating XML parser
 :    When on, the XML parser used to load documents will be in validating mode. This means that the document will be validated against the DTD when it is loaded, and external DTD subsets will be fetched.
 
 Security panel
-:    
+:
 This panel has options relating to the script and resource access in documents.
 
 
 Language panel
-:    
+:
 This is the panel shown in the above figure. That panel lets you select your languages. The user language can be used in SVG documents to choose between alternate contents. For example, open the `samples/moonPhases.svg` example. Then, change the user language to French and [reload](#reloading) the document ( **Ctrl-R** ). You will see that the text is now displayed in French. You can do the same with Japanese and the text will be shown in Japanese.
 
 
@@ -200,7 +200,7 @@ Stylesheet panel
 :    This panel lets you specify a user stylesheet which can override some of the default settings in viewed SVG documents. This might be useful if you want, for example, to override the font size used in text elements.
 
 Network panel
-:    
+:
 This panel lets you configure the proxy server to use if you are working from behind a firewall.
 
 ## Navigating SVG documents: zooming, panning, rotating, transform and thumbnail <a id="zooming"></a>
@@ -208,15 +208,15 @@ This panel lets you configure the proxy server to use if you are working from be
 The Batik browser offers multiple way to navigate SVG documents:
 
 
--  [Zooming in and out](#zoomInOut) 
+-  [Zooming in and out](#zoomInOut)
 
--  [Panning](#panning) 
+-  [Panning](#panning)
 
--  [Rotating](#rotating) 
+-  [Rotating](#rotating)
 
--  [Arbitrary transforms](#transform) 
+-  [Arbitrary transforms](#transform)
 
--  [Thumbnail](#thumbnail) 
+-  [Thumbnail](#thumbnail)
 
 ### Zooming in and out <a id="zoomInOut"></a>
 
@@ -250,7 +250,7 @@ It is sometimes useful to be able to rotate a document (maps for example). You c
 
 ### Using the Transform dialog <a id="transform"></a>
 
-While the mouse and keyboard interactions give interactive way to navigate an SVG document, it is sometimes desirable to be able to define precisely the amount of [zoom](#zoomInOut) , [pan](#panning) or [rotation](#rotating) desired. The Transform dialog, available through the **View→Transform** menu ( **Ctrl-E** ) offers that feature.
+While the mouse and keyboard interactions give interactive way to navigate an SVG document, it is sometimes desirable to be able to define precisely the amount of [zoom](#zoomInOut), [pan](#panning) or [rotation](#rotating) desired. The Transform dialog, available through the **View→Transform** menu ( **Ctrl-E** ) offers that feature.
 
 ### Thumbnail <a id="thumbnail"></a>
 

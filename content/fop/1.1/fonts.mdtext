@@ -41,7 +41,7 @@ When FOP does not have a specific font at its disposal (because it's not install
 
 ## Missing Glyphs <a id="missing-glyphs"></a>
 
-Every font contains a particular set of [glyphs](http://en.wikipedia.org/wiki/Glyph) . If no glyph can be found for a given character, FOP will issue a warning and use the glpyh for "#" (if available) instead. Before it does that, it consults a (currently hard-coded) registry of glyph substitution groups (see Glyphs.java in Apache XML Graphics Commons). This registry can supply alternative glyphs in some cases (like using space when a no-break space is requested). But there's no guarantee that the result will be as expected (for example, in the case of hyphens and similar glyphs). A better way is to use a font that has all the necessary glyphs. This glyph substitution is only a last resort.
+Every font contains a particular set of [glyphs](http://en.wikipedia.org/wiki/Glyph). If no glyph can be found for a given character, FOP will issue a warning and use the glpyh for "#" (if available) instead. Before it does that, it consults a (currently hard-coded) registry of glyph substitution groups (see Glyphs.java in Apache XML Graphics Commons). This registry can supply alternative glyphs in some cases (like using space when a no-break space is requested). But there's no guarantee that the result will be as expected (for example, in the case of hyphens and similar glyphs). A better way is to use a font that has all the necessary glyphs. This glyph substitution is only a last resort.
 
 ## Java2D/AWT/Operating System Fonts <a id="awt"></a>
 
@@ -51,7 +51,7 @@ When working with one of these output formats and you're missing a font, just in
 
 ## Custom Fonts <a id="custom"></a>
 
-Support for custom fonts is highly output format dependent (see above table). This section shows how to add Type 1 and TrueType fonts to the PDF, PostScript and Java2D-based renderers. Other renderers (like AFP) support other font formats. Details in this case can be found on the page about [output formats](output.html) .
+Support for custom fonts is highly output format dependent (see above table). This section shows how to add Type 1 and TrueType fonts to the PDF, PostScript and Java2D-based renderers. Other renderers (like AFP) support other font formats. Details in this case can be found on the page about [output formats](output.html).
 
 In earlier FOP versions, it was always necessary to create an XML font metrics file if you wanted to add a custom font. This unconvenient step has been removed and in addition to that, FOP supports auto-registration of fonts, i.e. FOP can find fonts installed in your operating system or can scan user-specified directories for fonts. Font registration via XML font metrics file is still supported and may still be necessary for some very special cases as fallback variant while we stabilize font auto-detection.
 
@@ -86,7 +86,7 @@ Review the documentation for [FOP Configuration](configuration.html) for instruc
 
 ### Register Fonts with FOP <a id="register"></a>
 
-You must tell FOP how to find and use the font files by registering them in the [FOP Configuration](configuration.html) . Add entries for your custom fonts, regardless of font type, to the configuration file in a manner similar to the following:
+You must tell FOP how to find and use the font files by registering them in the [FOP Configuration](configuration.html). Add entries for your custom fonts, regardless of font type, to the configuration file in a manner similar to the following:
 
     :::xml
     <renderers>
@@ -233,7 +233,7 @@ There are two different ways how you can specify that a font should be reference
        </fonts>
     </fop>
 
-At the moment, you can only match fonts against their font-family. It is possible to use regular expressions as is shown in the second example above ("DejaVu.*"). The syntax for the regular expressions used here are the one used by the [package](http://java.sun.com/j2se/1.4/docs/api/java/util/regex/package-summary.html) . So, in the above snippet "Helvetica" and all variants of the "DejaVu" font family are referenced. If you want to reference all fonts, just specify `font-family=".*"` .
+At the moment, you can only match fonts against their font-family. It is possible to use regular expressions as is shown in the second example above ("DejaVu.*"). The syntax for the regular expressions used here are the one used by the [package](http://java.sun.com/j2se/1.4/docs/api/java/util/regex/package-summary.html). So, in the above snippet "Helvetica" and all variants of the "DejaVu" font family are referenced. If you want to reference all fonts, just specify `font-family=".*"`.
 
 The `referenced-fonts` element can be placed either inside the general `fonts` element (right under the root) or in the `fonts` element under the renderer configuration. In the first case, matches apply to all renderers. In the second case, matches only apply to the renderer where the element was specified. Both cases can be used at the same time.
 
@@ -296,4 +296,4 @@ Character-by-Character is NOT yet supported!
 
 ## Font List Command-Line Tool <a id="font-list"></a>
 
-FOP contains a small command-line tool that lets you generate a list of all configured fonts. Its class name is: `org.apache.fop.tools.fontlist.FontListMain` . Run it with the "-?" parameter to get help for the various options.
+FOP contains a small command-line tool that lets you generate a list of all configured fonts. Its class name is: `org.apache.fop.tools.fontlist.FontListMain`. Run it with the "-?" parameter to get help for the various options.

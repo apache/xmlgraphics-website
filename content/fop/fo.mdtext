@@ -13,9 +13,9 @@ Apache&trade; FOP uses XSL-FO as input. It is the responsibility of the user to 
 
 When entering special (non-ASCII) characters in XML, the general rule is to use the applicable Unicode character instead of trying to use a character entity as you would with HTML. Remember that HTML is an SGML document type. SGML has a limited character set, which requires it to use character entities to represent special characters. One of the improvements of XML over SGML (and thus HTML) is native support for Unicode. Basic XML has only a handful of character entities, primarily because it doesn't really need more.
 
-Entities such as `&uuml;` (u with an umlaut), which work in HTML, will be flagged as undefined entities unless you define them yourself in your DTD. Use the corresponding Unicode character instead. A list of predefined HTML entities and their Unicode codepoints can be found at [Character entity references in HTML 4](http://www.w3.org/TR/html4/sgml/entities.html) .
+Entities such as `&uuml;` (u with an umlaut), which work in HTML, will be flagged as undefined entities unless you define them yourself in your DTD. Use the corresponding Unicode character instead. A list of predefined HTML entities and their Unicode codepoints can be found at [Character entity references in HTML 4](http://www.w3.org/TR/html4/sgml/entities.html).
 
-One common example is `&nbsp;` , used to obtain a non-breaking space in HTML. In XML, use &#160; instead.
+One common example is `&nbsp;`, used to obtain a non-breaking space in HTML. In XML, use &#160; instead.
 
 For other non-ASCII characters, such as the Euro symbol, checkbox, etc., see the [Unicode Reference By Name](http://www.unicode.org/charts/charindex.html) document that is found at the [Unicode Consortium](http://www.unicode.org) site.
 
@@ -134,7 +134,7 @@ To right-align a table, you can use the same approach as above for centering tab
 
 ### Recto/Verso Static Content Differences <a id="fo-oddeven"></a>
 
-One frequent request is that static content be different between recto pages (right-side or odd-numbered pages typically) and verso pages(left-side or even-numbered pages typically). For example, you may wish to place the page number on the "outer" side of each page. There are examples in the FO distribution and in the [XSL FAQ FO section](http://www.dpawson.co.uk/xsl/sect3/index.html) .
+One frequent request is that static content be different between recto pages (right-side or odd-numbered pages typically) and verso pages(left-side or even-numbered pages typically). For example, you may wish to place the page number on the "outer" side of each page. There are examples in the FO distribution and in the [XSL FAQ FO section](http://www.dpawson.co.uk/xsl/sect3/index.html).
 
 First, define a page master with alternating pages masters for odd and even pages. Then specify appropriate regions in these page masters, giving them different names. Use these names to put different static content in these regions. Here is a self-contained demonstration:
 
@@ -274,13 +274,13 @@ To write "This page is intentionally left blank" (or something similar) on an in
 
 ### Preformatting Content <a id="fo-preformat"></a>
 
-Sometimes it is desirable to retain linebreaks and hard spaces, and to get preformatted text to pass through without being changed. The XSL-FO specification provides some properties for this: [white-space-collapse](http://www.w3.org/TR/xsl11/#white-space-collapse) and [linefeed-treatment](http://www.w3.org/TR/2001/REC-xsl-20011015/slice7.html#white-space-collapse) . In FOP, use white-space-collapse="false" on an enclosing block.
+Sometimes it is desirable to retain linebreaks and hard spaces, and to get preformatted text to pass through without being changed. The XSL-FO specification provides some properties for this: [white-space-collapse](http://www.w3.org/TR/xsl11/#white-space-collapse) and [linefeed-treatment](http://www.w3.org/TR/2001/REC-xsl-20011015/slice7.html#white-space-collapse). In FOP, use white-space-collapse="false" on an enclosing block.
 
 ### Total Document Pages <a id="fo-total-pages"></a>
 
 It is frequently desirable to know the total number of pages in a document and to use that number within the document. For example, you might wish to show the page number on the first page as being "page 1 of 12".
 
-To accomplish this in **XSL 1.0** , place an empty block with an id at the end of the flow:
+To accomplish this in **XSL 1.0**, place an empty block with an id at the end of the flow:
 
     :::xml
     <fo:flow ...>
@@ -295,7 +295,7 @@ Get the number of the last page as follows:
 
 This does not work in certain situations: multiple page sequences, an initial page number other than 1, or forcing a certain page count, thereby producing blank pages at the end.
 
-In **XSL 1.1** , you get another option to do this: make sure an "id" is set on the page-sequence and reference it using fo:page-number-citation-last. First, the page-sequence:
+In **XSL 1.1**, you get another option to do this: make sure an "id" is set on the page-sequence and reference it using fo:page-number-citation-last. First, the page-sequence:
 
     :::xml
     <fo:page-sequence id="seq1" ...
@@ -306,7 +306,7 @@ After that, reference the last page the page-sequence generates:
     :::xml
     <fo:page-number-citation-last ref-id="seq1"/>
 
-<warning>There is no reliable way to get the real total page count with FO mechanisms. You can only get *page numbers* .</warning>
+<warning>There is no reliable way to get the real total page count with FO mechanisms. You can only get *page numbers*.</warning>
 
 The FOP library provides a method to get the total page count after an FO document has been rendered. One possibility is to implement your own wrapper to do a dummy rendering, inquire the total page count and then perform the real rendering, passing the total page count to the XSLT processor to splice it into the generated FO. For example:
 
@@ -376,7 +376,7 @@ Assuming you wish to keep the regions separate, if you have a header region with
 It is frequently desirable to draw lines in a document, as separators, side bars or folding marks. There are several possibilities:
 
 
-- Horizontal lines can be drawn using [fo:leader](http://www.w3.org/TR/xsl11/#fo_leader) .
+- Horizontal lines can be drawn using [fo:leader](http://www.w3.org/TR/xsl11/#fo_leader).
 
 - Use a solid border on a suitable fo:block. This will work for horizontal and vertical lines only.
 
@@ -384,7 +384,7 @@ It is frequently desirable to draw lines in a document, as separators, side bars
 
 ### Validating XSL-FO <a id="fo-validate"></a>
 
- [RenderX](http://www.renderx.com) has provided an [Unofficial DTD for FO Documents](http://www.renderx.com/Tests/validator/fo.dtd.html) , which may be helpful in validating general FO issues.
+ [RenderX](http://www.renderx.com) has provided an [Unofficial DTD for FO Documents](http://www.renderx.com/Tests/validator/fo.dtd.html), which may be helpful in validating general FO issues.
 
 FOP also maintains an [Unofficial FOP Schema](http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/src/foschema/fop.xsd?view=co) in the FOP Subversion Repository. This document can be used either to validate against the FO standard, or against the actual FOP implementation. See the notes near the beginning of the document for instructions on how to use it.
 

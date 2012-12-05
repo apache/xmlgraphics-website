@@ -15,11 +15,11 @@ The method for starting the pretty-printer depends on the distribution of Batik 
 
 ### Using the binary distribution <a id="using-binary"></a>
 
-If you downloaded the binary distribution of Batik, you should have a file called `batik-1.6.zip` (or similar), and, after expanding that file, a jar file called `batik-svgpp.jar` . To start the pretty printer, open a console, change to the directory where you expanded the distribution (and where `batik-svgpp.jar` is located) and simply type the following at the command prompt:
+If you downloaded the binary distribution of Batik, you should have a file called `batik-1.6.zip` (or similar), and, after expanding that file, a jar file called `batik-svgpp.jar`. To start the pretty printer, open a console, change to the directory where you expanded the distribution (and where `batik-svgpp.jar` is located) and simply type the following at the command prompt:
 java -jar batik-svgpp.jar [OPTIONS] FILES
 For example, if you type:
 
- `java -jar batik-svgpp.jar samples/batikFX.svg` 
+ `java -jar batik-svgpp.jar samples/batikFX.svg`
 
 you will see the indented document written to standard output.
 
@@ -27,43 +27,43 @@ For the options:
 
 
 
- **-newline cr**  *|*  **cr-lf**  *|*  **lf** 
-:    
+ **-newline cr**  *|*  **cr-lf**  *|*  **lf**
+:
 specifies the newline character(s) generated in the printed document, the default being `lf` (Unix-style newlines),
 
 
- **-tab-width**  *number* 
-:    
+ **-tab-width**  *number*
+:
 specifies the tabulation width, the default being 4,
 
 
- **-doc-width**  *number* 
-:    
+ **-doc-width**  *number*
+:
 specifies the maximum number of columns for the whole document, the default being 80,
 
 
- **-no-format** 
-:    
+ **-no-format**
+:
 specifies that the current indentation should be preserved, useful for performing doctype or newline substitutions,
 
 
- **-xml-decl**  *string* 
-:    
+ **-xml-decl**  *string*
+:
 specifies the XML declaration,
 
 
- **-doctype change**  *|*  **remove** 
-:    
+ **-doctype change**  *|*  **remove**
+:
 specifies whether the doctype should be changed or removed,
 
 
- **-publid-id**  *string* 
-:    
+ **-publid-id**  *string*
+:
 specifies the public ID to in the doctype declaration, when `-doctype change` is specified, and
 
 
- **-system-id**  *string* 
-:    
+ **-system-id**  *string*
+:
 specifies the system ID to in the doctype declaration, when `-doctype change` is specified.
 
 For example:
@@ -80,15 +80,15 @@ If you downloaded the source distribution of Batik, you will have a zip or tar f
 To start the pretty printer you should:
 
 
-- 
+-
 Make sure that your `JAVA_HOME` environment variable is set to your JDK installation directory.
 
 
-- 
+-
 Open a command line window and go to the `xml-batik` or<code>batik- *version* </code>directory where the Batik distribution was expanded.
 
 
-- 
+-
 For windows, type the following at the command prompt:
 build svgpp
 and for Unix:

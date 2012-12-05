@@ -3,11 +3,11 @@ Title: SVG Generator: SVGGraphics2D
 #SVG Generator: SVGGraphics2D
 
 <div class="figure"> ![Flow diagram illustrating that Java programs can have their graphics converted to SVG and then viewed in any SVG viewer](images/svggen.jpg "") </div>
-As SVG is emerging as a promising graphics format for a wide range of domains and applications, bridging it with Java becomes important. This page explains how Batik’s [SVGGraphics2D](../javadoc/org/apache/batik/svggen/SVGGraphics2D.html) , referred to as the SVG Generator, makes this possible.
+As SVG is emerging as a promising graphics format for a wide range of domains and applications, bridging it with Java becomes important. This page explains how Batik’s [SVGGraphics2D](../javadoc/org/apache/batik/svggen/SVGGraphics2D.html), referred to as the SVG Generator, makes this possible.
 
 ## The SVGGraphics2D class <a id="whatIsIt"></a>
 
-On the Java platform, all rendering goes through the [Graphics2D](http://java.sun.com/j2se/1.5.0/docs/api/java/awt/Graphics2D.html) abstract class, which offers methods such as `drawRect` , `fillRect` , and `drawString` . There are specialized implementations of this abstract class for each type of output, such as a screen or a printer. `SVGGraphics2D` is a new implementation of that interface that generates SVG content instead of drawing to a screen or a printer.
+On the Java platform, all rendering goes through the [Graphics2D](http://java.sun.com/j2se/1.5.0/docs/api/java/awt/Graphics2D.html) abstract class, which offers methods such as `drawRect`, `fillRect`, and `drawString`. There are specialized implementations of this abstract class for each type of output, such as a screen or a printer. `SVGGraphics2D` is a new implementation of that interface that generates SVG content instead of drawing to a screen or a printer.
 
  `SVGGraphics2D` has the following features:
 
@@ -19,9 +19,9 @@ On the Java platform, all rendering goes through the [Graphics2D](http://java.su
 - it offers the user the ability to use the DOM API to manipulate the generated document.
 
 <div class="figure"> ![Diagram illustrating how the SVGGraphics2D inherits from Graphics2D, and uses Document to generate a DOM tree](images/svggenHighLevelArchi.jpg "") </div>
-The above figure shows how the generator works with the DOM API. The W3C has defined an API for representing XML content with a Java object. That API allows programmers to manipulate, create, and/or modify XML content in memory. The DOM API contains interfaces such as [Document](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html) , [Element](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Element.html) , and [Attr](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Attr.html) , which model the Java programming language equivalent of XML documents, elements and attributes.
+The above figure shows how the generator works with the DOM API. The W3C has defined an API for representing XML content with a Java object. That API allows programmers to manipulate, create, and/or modify XML content in memory. The DOM API contains interfaces such as [Document](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html), [Element](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Element.html), and [Attr](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Attr.html), which model the Java programming language equivalent of XML documents, elements and attributes.
 
-The generator manages a tree of DOM objects that represent the SVG content corresponding to the rendering calls made on the `SVGGraphics2D` instance. In other words, every time a program invokes a rendering method, such as `fillRect` , on a `SVGGraphics2D` instance, a new DOM object, representing the SVG equivalent, is appended to the DOM tree. For example, a `rect` element will be appended after the `fillRect` method has been invoked).
+The generator manages a tree of DOM objects that represent the SVG content corresponding to the rendering calls made on the `SVGGraphics2D` instance. In other words, every time a program invokes a rendering method, such as `fillRect`, on a `SVGGraphics2D` instance, a new DOM object, representing the SVG equivalent, is appended to the DOM tree. For example, a `rect` element will be appended after the `fillRect` method has been invoked).
 
 The programmer, using this generator, can then access the DOM tree to further manipulate it or can directly write the content to an output stream, as we see in the following section.
 
@@ -102,7 +102,7 @@ We can see that generating SVG content from our `TestSVGGen` instance is a three
     test.paint(svgGenerator);
 
 1.
-Stream out the SVG content. The SVG generator can stream its content into any `java.io.Writer` . In our example, we stream the content to the standard output stream:
+Stream out the SVG content. The SVG generator can stream its content into any `java.io.Writer`. In our example, we stream the content to the standard output stream:
 
     :::java
     // Finally, stream out SVG to the standard output using
@@ -111,7 +111,7 @@ Stream out the SVG content. The SVG generator can stream its content into any `j
     Writer out = new OutputStreamWriter(System.out, "UTF-8");
     svgGenerator.stream(out, useCSS);
 
-SVG has [two ways to specify styling properties](http://www.w3.org/TR/SVG11/styling.html#AlternativesForStyling) , such as the fill color: presentation attributes (one XML attribute per property) or the CSS `style` attribute (any number of properties in one CSS inline stylesheet). The `useCss` parameter allows the user to control that option.
+SVG has [two ways to specify styling properties](http://www.w3.org/TR/SVG11/styling.html#AlternativesForStyling), such as the fill color: presentation attributes (one XML attribute per property) or the CSS `style` attribute (any number of properties in one CSS inline stylesheet). The `useCss` parameter allows the user to control that option.
 
 ## SVG Generator customization <a id="custom"></a>
 
@@ -151,7 +151,7 @@ In order to have a self-contained SVG file that doesn't have to use system fonts
 
 Every time you call one of the `drawImage` methods provided by the `Graphics2D` interface, a default representation of your image is created in a location and put in a default file. For instance, a base64 encoding is created and embedded in the SVG file by default. Alternatively, you can choose to have your images written to separate files in a predefined directory, in one of the two raster formats required by the SVG specification: JPEG or PNG.
 
-You can change the default behavior by explicitly providing the image handler to be used by the SVG generator. Once again, you use the `SVGGeneratorContext` for this. In the example below, all images are converted to PNG format and written to directory `res/images` .
+You can change the default behavior by explicitly providing the image handler to be used by the SVG generator. Once again, you use the `SVGGeneratorContext` for this. In the example below, all images are converted to PNG format and written to directory `res/images`.
 
     :::java
     DOMImplementation impl =
@@ -244,7 +244,7 @@ Your needs in matter of styling may be different from the two provided options (
       }
     }
 
-Then you can create and use an `SVGGraphics2D` with a correctly configured `SVGGeneratorContext` .
+Then you can create and use an `SVGGraphics2D` with a correctly configured `SVGGeneratorContext`.
 
     :::java
     // Configure the SVGGraphics2D for a given Document myFactory.
@@ -269,9 +269,9 @@ Then you can create and use an `SVGGraphics2D` with a correctly configured `SVGG
 
 ## Extending Paint object to SVG element translation <a id="Extending+Paint+object+to+SVG+element+translation"></a>
 
-The `SVGGraphics2D` is able to generate SVG elements for generic Java 2D objects, but you sometimes have your own classes such as implementations of the Java 2D [Paint](http://java.sun.com/j2se/1.4.2/docs/api/java/awt/Paint.html) interface. In this case, you will need to write an [ExtensionHandler](../javadoc/org/apache/batik/svggen/ExtensionHandler.html) that you will set on your `SVGGeneratorContext` .
+The `SVGGraphics2D` is able to generate SVG elements for generic Java 2D objects, but you sometimes have your own classes such as implementations of the Java 2D [Paint](http://java.sun.com/j2se/1.4.2/docs/api/java/awt/Paint.html) interface. In this case, you will need to write an [ExtensionHandler](../javadoc/org/apache/batik/svggen/ExtensionHandler.html) that you will set on your `SVGGeneratorContext`.
 
-In the following example we define the first draft of an `ExtensionHandler` allowing to translate a Batik implementation of the `Paint` interface named [LinearGradientPaint](../javadoc/org/apache/batik/ext/awt/LinearGradientPaint.html) .
+In the following example we define the first draft of an `ExtensionHandler` allowing to translate a Batik implementation of the `Paint` interface named [LinearGradientPaint](../javadoc/org/apache/batik/ext/awt/LinearGradientPaint.html).
 
     :::java
     class MyExtensionHandler extends DefaultExtensionHandler {

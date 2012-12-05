@@ -5,7 +5,7 @@ Title: Apache(tm) FOP: PDF/A (ISO 19005)
 
 ## Overview <a id="overview"></a>
 
-PDF/A is a standard which turns PDF into an "electronic document file format for long-term preservation". PDF/A-1 is the first part of the standard and is documented in [ISO 19005-1:2005(E)](http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=38920&ICS1=37&ICS2=100&ICS3=99) . Work on PDF/A-2 is in progress at [AIIM](http://www.aiim.org/standards.asp?ID=25013) .
+PDF/A is a standard which turns PDF into an "electronic document file format for long-term preservation". PDF/A-1 is the first part of the standard and is documented in [ISO 19005-1:2005(E)](http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=38920&ICS1=37&ICS2=100&ICS3=99). Work on PDF/A-2 is in progress at [AIIM](http://www.aiim.org/standards.asp?ID=25013).
 
 Design documentation on PDF/A can be found on FOP's Wiki on the [PDFA1ConformanceNotes](http://wiki.apache.org/xmlgraphics-fop/PDFA1ConformanceNotes) page.
 
@@ -15,7 +15,7 @@ Design documentation on PDF/A can be found on FOP's Wiki on the [PDFA1Conformanc
 
 Tests have been performed against jHove and Adobe Acrobat 7.0.7 (Preflight function). FOP does not validate completely against Apago's PDF Appraiser. Reasons unknown due to lack of a full license to get a detailed error protocol.
 
- **PDF/A-1a** is based on PDF-A-1b and adds accessibility features (such as Tagged PDF). This format is available within the limitation described on the [Accessibility page](accessibility.html) .
+ **PDF/A-1a** is based on PDF-A-1b and adds accessibility features (such as Tagged PDF). This format is available within the limitation described on the [Accessibility page](accessibility.html).
 
 ## Usage (command line) <a id="command-line"></a>
 
@@ -61,8 +61,8 @@ The PDF profiles "PDF/X-3:2003" and "PDF/A-1b" (or "PDF/A-1a") are compatible an
 
 There has been some confusion about the namespace for the PDF/A indicator in the XMP metadata. At least three variants have been seen in the wild:
 
-| http://www.aiim.org/pdfa/ns/id.html |  **obsolete** , from an early draft of ISO-19005-1, used by Adobe Acrobat 7.x |
-| http://www.aiim.org/pdfa/ns/id |  **obsolete** , found in the original ISO 19005-1:2005 document |
-| http://www.aiim.org/pdfa/ns/id/ |  **correct** , found in the technical corrigendum 1 of ISO 19005-1:2005 |
+| http://www.aiim.org/pdfa/ns/id.html |  **obsolete**, from an early draft of ISO-19005-1, used by Adobe Acrobat 7.x |
+| http://www.aiim.org/pdfa/ns/id |  **obsolete**, found in the original ISO 19005-1:2005 document |
+| http://www.aiim.org/pdfa/ns/id/ |  **correct**, found in the technical corrigendum 1 of ISO 19005-1:2005 |
 
 If you get an error validating a PDF/A file in Adobe Acrobat 7.x it doesn't mean that FOP did something wrong. It's Acrobat that is at fault. This is fixed in Adobe Acrobat 8.x which uses the correct namespace as described in the technical corrigendum 1.
