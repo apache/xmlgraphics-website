@@ -24,7 +24,7 @@ Elements from [foreign namespaces](parsing.html#namespaces) that are recognized 
 
 For unrecognized namespaces, a dummy object or a generic DOM is created.
 
-While the tree building is mainly about creating the FO Tree, some FO Tree events trigger processes in other parts of FOP. The end of a page-sequence element triggers the layout process for that page-sequence (see discussion of [Recycling](#recycle) ). Also, the end of the XML document tells the renderer that it can finalize the output document.
+While the tree building is mainly about creating the FO Tree, some FO Tree events trigger processes in other parts of FOP. The end of a page-sequence element triggers the layout process for that page-sequence (see discussion of [Recycling](#recycle)). Also, the end of the XML document tells the renderer that it can finalize the output document.
 
 ## Recycling FO Tree Memory <a id="recycle"></a>
 

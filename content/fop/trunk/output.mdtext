@@ -96,7 +96,7 @@ Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note t
                 System.out.println("Processed page " + i);
             }
             document.close();
-        } catch( Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -788,7 +788,7 @@ The default value for the `"color-mode"` setting is `"rgba"` which is equivalent
 
 -  `gray`: gray (8bit)
 
--  `bi-level` (or `binary` ): bi-level (1bit)
+-  `bi-level` (or `binary`): bi-level (1bit)
 
 Please note that there is currently no dithering or error diffusion available for bi-level bitmap output.
 

@@ -167,13 +167,16 @@ It is also worth looking at the DOM interfaces defined by the SVG specification 
 
     :::java
     // Returns Bounding box of SVG Element.
-    public SVGRect   getBBox (  );
+    public SVGRect   getBBox();
     // Returns the transformation matrix to the screen.
-    public SVGMatrix getScreenCTM (  );
+    public SVGMatrix getScreenCTM();
     // Returns the transformation matrix to the given element.
-    public SVGMatrix getTransformToElement ( SVGElement element )
+    public SVGMatrix getTransformToElement(SVGElement element)
                     throws SVGException;
-    In particular, `getScreenCTM` is very useful for taking the `clientX` and `clientY` attributes of the DOM [UIEvent](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/events/UIEvent.html) and mapping them to the coordinate system of an element in the SVG document:
+
+In particular, `getScreenCTM` is very useful for taking the `clientX` and `clientY` attributes of the DOM [UIEvent](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/events/UIEvent.html) and mapping them to the coordinate system of an element in the SVG document:
+
+    :::java
     SVGMatrix mat  = elem.getScreenCTM();
     SVGMatrix imat = mat.inverse();
     SVGPoint  cPt  = document.getRootElement().createSVGPoint();

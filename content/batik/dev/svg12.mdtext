@@ -22,7 +22,7 @@ There are a few issues with the DOM Level 3 Core implementation:
 
 ### Using DOM Level 3 functionality from Java <a id="dom3java"></a>
 
-JREs before 1.5 include the DOM Level 2 interfaces and this can cause problems when trying to use the DOM Level 3 versions of these same interface files ( `org.w3c.dom.*` ). Though the concrete Batik DOM classes implement the DOM Level 3 functionality, you won’t be able to access those methods through the `org.w3c.dom` interfaces on these earlier JREs.
+JREs before 1.5 include the DOM Level 2 interfaces and this can cause problems when trying to use the DOM Level 3 versions of these same interface files (`org.w3c.dom.*`). Though the concrete Batik DOM classes implement the DOM Level 3 functionality, you won’t be able to access those methods through the `org.w3c.dom` interfaces on these earlier JREs.
 
 There are two ways to overcome this problem. The first is to install the DOM Level 3 interfaces using the [Endorsed Standards Override Mechanism](http://java.sun.com/j2se/1.4.2/docs/guide/standards/). Copy the file `lib/xml-apis-ext.jar` into the endorsed standards override directory and the DOM Level 3 interfaces will be visible. You can then write code against them (for example, call `Document.renameNode` directly). However, this will mean that other people cannot run or compile your code unless they have JRE 1.5 or later, or they have also installed the `xml-apis-ext.jar` in the same way.
 
@@ -90,7 +90,7 @@ For cases where the DOM Level 3 versions of these interfaces contain constants t
         }
     }
 
-Note that using these org.apache.batik.dom interfaces is only needed for the DOM Level 3 Core and Events interfaces. There were no earlier versions of the DOM XPath interfaces to conflict with, so these can be used directly ( `org.w3c.dom.xpath` ).
+Note that using these org.apache.batik.dom interfaces is only needed for the DOM Level 3 Core and Events interfaces. There were no earlier versions of the DOM XPath interfaces to conflict with, so these can be used directly (`org.w3c.dom.xpath`).
 
 Of course, none of this matters if you are just using the DOM 3 functionality in ECMAScript, as the matter of interfaces is hidden from the scripting environment.
 

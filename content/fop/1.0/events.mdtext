@@ -67,7 +67,7 @@ It is possible to gather all events for a whole processing run so they can be ev
 
 ### Adding an EventListener <a id="add-listener"></a>
 
-To register the event listener with FOP, get the `EventBroadcaster` which is associated with the user agent ( `FOUserAgent` ) and add it there:
+To register the event listener with FOP, get the `EventBroadcaster` which is associated with the user agent (`FOUserAgent`) and add it there:
 
     :::java
     FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
@@ -136,7 +136,7 @@ The basics are very simple. Just instantiate an `Event` object and fill it with 
     EventBroadcaster broadcaster = [get it from somewhere];
     broadcaster.broadcastEvent(ev);
 
-The `Event.paramsBuilder()` is a [fluent interface](http://en.wikipedia.org/wiki/Fluent_interface) to help with the build-up of the parameters. You could just as well instantiate a `Map` ( `Map<String, Object>` ) and fill it with values.
+The `Event.paramsBuilder()` is a [fluent interface](http://en.wikipedia.org/wiki/Fluent_interface) to help with the build-up of the parameters. You could just as well instantiate a `Map` (`Map<String, Object>`) and fill it with values.
 
 ### The EventProducer interface <a id="event-producer"></a>
 
@@ -177,7 +177,7 @@ To produce the same event as in the first example above, you'd use the following
 
 ### The event model <a id="event-model"></a>
 
-Inside an invocation handler for a dynamic proxy, there's no information about the names of each parameter. The JVM doesn't provide it. The only thing you know is the interface and method name. In order to properly fill the `Event` 's parameter map we need to know the parameter names. These are retrieved from an event object model. This is found in the `org.apache.fop.events.model` package. The data for the object model is retrieved from an XML representation of the event model that is loaded as a resource. The XML representation is generated using an Ant task at build time ( `ant resourcegen` ). The Ant task (found in `src/codegen/java/org/apache/fop/tools/EventProducerCollectorTask.java` ) scans FOP's sources for descendants of the `EventProducer` interface and uses [QDox](http://qdox.codehaus.org/) to parse these interfaces.
+Inside an invocation handler for a dynamic proxy, there's no information about the names of each parameter. The JVM doesn't provide it. The only thing you know is the interface and method name. In order to properly fill the `Event` 's parameter map we need to know the parameter names. These are retrieved from an event object model. This is found in the `org.apache.fop.events.model` package. The data for the object model is retrieved from an XML representation of the event model that is loaded as a resource. The XML representation is generated using an Ant task at build time (`ant resourcegen`). The Ant task (found in `src/codegen/java/org/apache/fop/tools/EventProducerCollectorTask.java`) scans FOP's sources for descendants of the `EventProducer` interface and uses [QDox](http://qdox.codehaus.org/) to parse these interfaces.
 
 The event model XML files are generated during build by the Ant task mentioned above when running the "resourcegen" task. So just run `"ant resourcegen"` if you receive a `MissingResourceException` at runtime indicating that `"event-model.xml"` is missing.
 
@@ -233,11 +233,11 @@ The XML format used by the `EventFormatter` is the same as [Apache Cocoon's](htt
       </message>
     </catalogue>
 
-The example (extracted from the RTF handler's event producer) has message templates for two event methods. The class used to do variable replacement in the templates is `org.apache.fop.util.text.AdvancedMessageFormat` which is more powerful than the `MessageFormat` classes provided by the Java class library ( `java.util.text` package).
+The example (extracted from the RTF handler's event producer) has message templates for two event methods. The class used to do variable replacement in the templates is `org.apache.fop.util.text.AdvancedMessageFormat` which is more powerful than the `MessageFormat` classes provided by the Java class library (`java.util.text` package).
 
 "locator" is a template that is reused by the other message templates by referencing it through "{{locator}}". This is some kind of include command.
 
-Normal event parameters are accessed by name inside single curly braces, for example: "{node}". For objects, this format just uses the `toString()` method to turn the object into a string, unless there is an `ObjectFormatter` registered for that type (there's an example for `org.xml.sax.Locator` ).
+Normal event parameters are accessed by name inside single curly braces, for example: "{node}". For objects, this format just uses the `toString()` method to turn the object into a string, unless there is an `ObjectFormatter` registered for that type (there's an example for `org.xml.sax.Locator`).
 
 The single curly braces pattern supports additional features. For example, it is possible to do this: "{start,if,start,end}". "if" here is a special field modifier that evaluates "start" as a boolean and if that is true returns the text right after the second comma ("start"). Otherwise it returns the text after the third comma ("end"). The "equals" modifier is similar to "if" but it takes as an additional (comma-separated) parameter right after the "equals" modifier, a string that is compared to the value of the variable. An example: {severity,equals,EventSeverity:FATAL,,some text} (this adds "some text" if the severity is not FATAL).
 

@@ -11,7 +11,7 @@ If you are using script, please make sure you have reviewed the [Script Security
 
 The Java platform offers a lot of options for running applications securely. Running an application securely requires that it runs in a so-called security sand-box which controls all the access the application makes to restricted resources (such as the file system).
 
-The concept of Java security is an application-wide concept. As such, it has to be applied at the application level (and not at the framework level). In the Batik distribution, the sample applications (such as the [Squiggle Browser](../../tools/browser.html) and the [SVG rasterizer](../../tools/rasterizer.html) ) apply security (or disable it) but the framework does not apply it: it is security-aware (meaning that it is able to handle security exceptions).
+The concept of Java security is an application-wide concept. As such, it has to be applied at the application level (and not at the framework level). In the Batik distribution, the sample applications (such as the [Squiggle Browser](../../tools/browser.html) and the [SVG rasterizer](../../tools/rasterizer.html)) apply security (or disable it) but the framework does not apply it: it is security-aware (meaning that it is able to handle security exceptions).
 
 ### Enforcing security in a Batik application <a id="enforcing"></a>
 
@@ -53,12 +53,12 @@ In the Batik toolkit, this flexibility is provided by the [org.apache.batik.brid
 The following `UserAgent` methods are provided for that purpose:
 
 
--  `getScriptSecurity(scriptType, scriptURL, docURL)` should return the [ScriptSecurity](../../javadoc/org/apache/batik/bridge/ScriptSecurity.html) strategy for a script of type `scriptType` (e.g., `text/ecmascript` ) coming from `scriptURL`, when referenced from the document whose URL is `docURL`.
+-  `getScriptSecurity(scriptType, scriptURL, docURL)` should return the [ScriptSecurity](../../javadoc/org/apache/batik/bridge/ScriptSecurity.html) strategy for a script of type `scriptType` (e.g., `text/ecmascript`) coming from `scriptURL`, when referenced from the document whose URL is `docURL`.
 
 -  `getExternalResourceSecurity(resourceURL, docURL)` should return the [ExternalResourceSecurity](../../javadoc/org/apache/batik/bridge/ExternalResourceSecurity.html) strategry for a resource coming from `resourceURL` referenced from the document at URL `docURL`.
 
-The `ScriptSecurity` and `ExternalResourceSecurity` interfaces have methods ( `checkLoadScript` and `checkLoadExternalResource` respectively) which should throw a [SecurityException](http://java.sun.com/j2se/1.5.0/docs/api/java/lang/SecurityException.html) if accessing the script or resource is considered a security violation.
-The `UserAgent` interface has two additional methods ( `checkLoadScript` and `checkLoadExternalResource` which are meant to provide a short hand for getting a security strategy object and calling the `checkLoad` * method on that object. This is how the [org.apache.batik.bridge.UserAgentAdapter](../../javadoc/org/apache/batik/bridge/UserAgentAdapter.html) class implements this method.
+The `ScriptSecurity` and `ExternalResourceSecurity` interfaces have methods (`checkLoadScript` and `checkLoadExternalResource` respectively) which should throw a [SecurityException](http://java.sun.com/j2se/1.5.0/docs/api/java/lang/SecurityException.html) if accessing the script or resource is considered a security violation.
+The `UserAgent` interface has two additional methods (`checkLoadScript` and `checkLoadExternalResource`) which are meant to provide a short hand for getting a security strategy object and calling the `checkLoad` * method on that object. This is how the [org.apache.batik.bridge.UserAgentAdapter](../../javadoc/org/apache/batik/bridge/UserAgentAdapter.html) class implements this method.
 Batik provides the following set of `ScriptSecurity` implementations:
 
 
@@ -75,7 +75,7 @@ The script resource will only be loaded if it is embeded in the SVG document ref
 
 DefaultScriptSecurity
 :
-The script resource will only be loaded if it is embeded in the SVG document (see the description of `EmbededScriptSecurity` ) or if it is coming from the same location as the document referencing the script. If the document comes from a network server, then any script coming from that server will be allowed. If the document comes from the file system, then only scripts under the same directory root as the SVG document will be allowed.
+The script resource will only be loaded if it is embeded in the SVG document (see the description of `EmbededScriptSecurity`) or if it is coming from the same location as the document referencing the script. If the document comes from a network server, then any script coming from that server will be allowed. If the document comes from the file system, then only scripts under the same directory root as the SVG document will be allowed.
 
 
 RelaxedScriptSecurity

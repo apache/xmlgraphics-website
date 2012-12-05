@@ -137,7 +137,7 @@ Throughout the SPI, you'll find a `Map` parameter (hints) in the most important 
 
 The first task is identifying whether the implementation supports the given image. If the image is loaded using an ImageInputStream it is important to always reset the stream position to the beginning of the file at the end of the `preloadImage()` method, because all registered preloaders are check in turn until one implementation signals that it supports the format. In that case, it has to extract only the minimal information from the image necessary to identify the image's intrinsic size. For most formats, this is doable without loading the whole image into memory.
 
-However, for some formats (like MathML or WMF), loading the whole image at preloading time is hard to avoid since the image's size can only be determined that way. In such a case, the `ImagePreloader` implementations shall pass the loaded document to the respective `ImageLoader` through the custom objects that can be attached to the `ImageInfo` object. If the preloader loads the whole document, it shall close the given `Source` object (calling `ImageUtil.closeQuietly(Source)` ).
+However, for some formats (like MathML or WMF), loading the whole image at preloading time is hard to avoid since the image's size can only be determined that way. In such a case, the `ImagePreloader` implementations shall pass the loaded document to the respective `ImageLoader` through the custom objects that can be attached to the `ImageInfo` object. If the preloader loads the whole document, it shall close the given `Source` object (calling `ImageUtil.closeQuietly(Source)`).
 
 The priority the implementation reports is used to sort all registered implementations. This is to fine-tune the inner workings and to optimize performance since some formats are usually used more frequently than others.
 Normally, if you implement an `ImagePreloader` you will also need to implement the respective `ImageLoader/ImageLoaderFactory`, or vice versa.
@@ -161,11 +161,11 @@ Each ImageConverter comes with a usage penalty which is used when constructing c
 
 By default, the Source object being used during the pre-loading stage is re-used when the image is fully loaded later (assuming an ImageSessionContext is used that descends from AbstractImageSessionContext). That means that a stream is only opened once and the image loading framework tries to re-wind the stream when it has to re-read portions of the stream when loading the complete image.
 
-In some situations, this behavior may be undesired. Therefore, it can be disabled through a system property ( `org.apache.xmlgraphics.image.loader.impl.AbstractImageSessionContext.no-source-reuse` ). Set it to "true" and that feature will be disabled.
+In some situations, this behavior may be undesired. Therefore, it can be disabled through a system property (`org.apache.xmlgraphics.image.loader.impl.AbstractImageSessionContext.no-source-reuse`). Set it to "true" and that feature will be disabled.
 
 ### Adjusting plug-in penalties <a id="plugin-penalties"></a>
 
-Every image loader plug-in has a hard-coded usage penalty that influences which solution is chosen if there are multiple possibilities to load an image. Sometimes, though, these penalties need to be tweaked. The `ImageImplRegistry` (reachable through `ImageManager.getRegistry()` ) supports storing additional penalty values. An example:
+Every image loader plug-in has a hard-coded usage penalty that influences which solution is chosen if there are multiple possibilities to load an image. Sometimes, though, these penalties need to be tweaked. The `ImageImplRegistry` (reachable through `ImageManager.getRegistry()`) supports storing additional penalty values. An example:
 ImageImplRegistry registry = imageManager.getRegistry();
 registry.setAdditionalPenalty(
     "org.apache.xmlgraphics.image.loader.impl.ImageLoaderRawCCITTFax",

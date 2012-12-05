@@ -37,7 +37,7 @@ As we have created an SVG `Document`, we can cast this document to an [SVGDocume
 
 ## Building an SVG Document <a id="buildsvgdoc"></a>
 
-Finally, using the `Document` object, we are now able to construct SVG content. Note that the document created before supports both generic XML and SVG. Though the DOM implementation of Batik is an SVG DOM implementation, the SVG-specific methods that rely on the document having been rendered (particularly geometry related methods, such as [SVGLocatable.getBBox](../javadoc/org/w3c/dom/svg/SVGLocatable.html#getBBox()) ) cannot be used at this point.
+Finally, using the `Document` object, we are now able to construct SVG content. Note that the document created before supports both generic XML and SVG. Though the DOM implementation of Batik is an SVG DOM implementation, the SVG-specific methods that rely on the document having been rendered (particularly geometry related methods, such as [SVGLocatable.getBBox](../javadoc/org/w3c/dom/svg/SVGLocatable.html#getBBox())) cannot be used at this point.
 
 The document can be built using DOM Level 2 Core methods. The following example shows how to create a red rectangle located at (10, 20), with a size of (100, 50) placed in a (400, 450) SVG canvas:
 

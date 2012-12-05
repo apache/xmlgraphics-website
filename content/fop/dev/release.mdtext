@@ -22,17 +22,17 @@ The checklist below is based on a combination of input from from Christian Geise
 
 - Create a branch called `branches/fop-v_vv`
 
-- Edit release notes ( `README` and `status.xml` in the root).
+- Edit release notes (`README` and `status.xml` in the root).
 
 - Add the release to `news-data.xml` ; remove links to release notes of older versions from this file.
 
-- Update the FAQ ( `faq.xml` ) to the new release, e.g., update the answer for "When is the next release planned?".
+- Update the FAQ (`faq.xml`) to the new release, e.g., update the answer for "When is the next release planned?".
 
 - Check and update the copyright year in NOTICE and build.xml.
 
 - Update the file `doap.rdf`, and the files `index.xml`, `site.xml`, `download.xml`, `fo.xml`, `maillist.xml`, and `quickstartguide.xml` in directory `xdocs` for the new version.
 
-- Update the version numbers in the release column on the compliance page ( `compliance.xml` ); update the compliance in the release column to the current state (development column).
+- Update the version numbers in the release column on the compliance page (`compliance.xml`); update the compliance in the release column to the current state (development column).
 
 - Update version number in `build.xml` (not to be merged back into trunk).
 
@@ -48,7 +48,7 @@ The checklist below is based on a combination of input from from Christian Geise
 
 - Update `compiling.xml` in the new version directory: change the introduction for trunk to that for a release.
 
-- Build the dist files ( `build[.sh] dist` ) and upload them to your web directory on `people.apache.org`
+- Build the dist files (`build[.sh] dist`) and upload them to your web directory on `people.apache.org`
 
 - Ask on `fop-dev` ML to check the branch and the generated dist files for errors.
 
@@ -72,7 +72,7 @@ The checklist below is based on a combination of input from from Christian Geise
 
 - Make a test download.
 
-- Start a vote for the release on `general@xmlgraphics.apache.org`. The message should point to the release files and list the MD5 sums ( `cat *.md5` ). The vote should remain open for 72hrs.
+- Start a vote for the release on `general@xmlgraphics.apache.org`. The message should point to the release files and list the MD5 sums (`cat *.md5`). The vote should remain open for 72hrs.
 
 - When the release is accepted, copy the release files, their md5 sum files and the signature files to `/www/www.apache.org/dist/xmlgraphics/fop/` in the subdirectories `source` and `binaries`. Create links to all files in the `fop` directory. Remove the links to the files of the previous version.
 

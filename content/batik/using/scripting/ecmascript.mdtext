@@ -24,7 +24,7 @@ The first one is in the `script` element, where you can place any code, includin
 
 You can also attach script to respond to user or document events using attributes on SVG elements. As shown in the previous example, the scripting language must be set on the `script` element. However, for event handling the default language type `text/ecmascript` is assumed. If you want to change it you can use the `contentScriptType` attribute on the `svg` element.
 
-The event attribute can contain any script code to execute when the event reaches the element (as described by the [DOM event flow](http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-flow) ) in either the bubbling or at-target phases. The following example will change the `rect` to be filled in blue when it is clicked.
+The event attribute can contain any script code to execute when the event reaches the element (as described by the [DOM event flow](http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-flow)) in either the bubbling or at-target phases. The following example will change the `rect` to be filled in blue when it is clicked.
 
     :::xml
     <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">

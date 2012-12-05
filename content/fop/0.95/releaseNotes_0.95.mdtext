@@ -16,7 +16,7 @@ Please note that with this release, we've dropped support for Java 1.3. FOP will
 
 There have been a few changes in tables that make FOP both more strict and more compliant to the Recommendation:
 
-- XSL-FO 1.1 explicitly states that a row-spanning fo:table-cell element is not allowed to span further than its enclosing fo:table-header/footer/body element (see bottom of [section 6.7.3](http://www.w3.org/TR/xsl11/#fo_table) ). From now on FOP will give a validation error if a document contains such an erroneous cell.
+- XSL-FO 1.1 explicitly states that a row-spanning fo:table-cell element is not allowed to span further than its enclosing fo:table-header/footer/body element (see bottom of [section 6.7.3](http://www.w3.org/TR/xsl11/#fo_table)). From now on FOP will give a validation error if a document contains such an erroneous cell.
 
 -
 If an fo:table element contains explicit fo:table-column children, then those elements set the total number of columns in the table. This means that a validation error will now occur if a row contains more cells than available columns. This change allows to improve performance, since the rendering of the table may start as soon as the table-column elements have been parsed.

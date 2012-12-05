@@ -37,13 +37,13 @@ The language and country codes must match the XSL-FO input, which follows [ISO 6
 
 1. There are basically three ways to make the FOP-compatible hyphenation pattern file(s) accessible to FOP:
 
-- Download the precompiled JAR from [OFFO](http://offo.sourceforge.net/hyphenation/index.html) and place it either in the `{fop-dir}/lib` directory, or in a directory of your choice (and append the full path to the JAR to the environment variable `FOP_HYPHENATION_PATH` ).
+- Download the precompiled JAR from [OFFO](http://offo.sourceforge.net/hyphenation/index.html) and place it either in the `{fop-dir}/lib` directory, or in a directory of your choice (and append the full path to the JAR to the environment variable `FOP_HYPHENATION_PATH`).
 
 - Download the desired FOP-compatible hyphenation pattern file(s) from [OFFO](http://offo.sourceforge.net/hyphenation/index.html), and/or take your self created hyphenation pattern file(s),
 
     - place them in the directory `{fop-dir}/hyph`,
 
-    - or place them in a directory of your choice and set the Ant variable `user.hyph.dir` to point to that directory (in `build-local.properties` ),
+    - or place them in a directory of your choice and set the Ant variable `user.hyph.dir` to point to that directory (in `build-local.properties`),
 and run Ant with build target `jar-hyphenation`. This will create a JAR containing the compiled patterns in `{fop-dir}/build` that will be added to the classpath on the next run. (When FOP is built from scratch, and there are pattern source file(s) present in the directory pointed to by the `user.hyph.dir` variable, this JAR will automatically be created from the supplied pattern(s)).
 
 - Put the pattern source file(s) into a directory of your choice and configure FOP to look for custom patterns in this directory, by setting the [<hyphenation-base>](configuration.html) configuration option.
@@ -78,7 +78,7 @@ This element is unused and not even read. It should be considered a documentatio
     - numeric characters represent a scoring system for indicating the acceptability of a hyphen in this location. Odd numbers represent an acceptable location for a hyphen, with higher values overriding lower inhibiting values. Even numbers indicate an unacceptable location, with higher values overriding lower values indicating an acceptable position. A value of zero (inhibiting) is implied when there is no number present. Generally patterns are constructed so that valuse greater than 4 are rare. Due to a bug currently patterns with values of 8 and greater don't have an effect, so don't wonder.
 Here are some examples from the English patterns file:
 
-    - Knuth ( *The TeXBook*, Appendix H) uses the example **hach4**, which indicates that it is extremely undesirable to place a hyphen after the substring "hach", for example in the word "toothach-es".
+    - Knuth (*The TeXBook*, Appendix H) uses the example **hach4**, which indicates that it is extremely undesirable to place a hyphen after the substring "hach", for example in the word "toothach-es".
 
     -  **.leg5e** indicates that "leg-e", when it occurs at the beginning of a word, is a very good place to place a hyphen, if one is needed. Words like "leg-end" and "leg-er-de-main" fit this pattern.
 Note that the algorithm that uses this data searches for each of the word's substrings in the patterns, and chooses the *highest* value found for letter combination.

@@ -46,7 +46,7 @@ Then create FOP tasks within your Ant build file, using the FOP task parameters 
 | relativebase | For fileset usage only. A value of `true` specifies using the location of each .fo file as the base directory for resolving relative file references located within that .fo file. A value of `false` specifies using the value of basedir for all files within the fileset, or just the current working directory if basedir is not specified. | No, default is `false`. |
 | userconfig | User configuration file (same as the FOP "-c" command line option). | No |
 | messagelevel | Logging level<br></br>Possible values: `error`, `warn`, `info`, `verbose`, `debug`. **Currently doesn't work in FOP Trunk!!!**  | No, defaults to `verbose`  |
-| logFiles | Controls whether the names of the files that are processed are logged ( `true` ) or not ( `false` ). **Currently doesn't work in FOP Trunk!!!**  | No, default is `true`  |
+| logFiles | Controls whether the names of the files that are processed are logged (`true`) or not (`false`). **Currently doesn't work in FOP Trunk!!!**  | No, default is `true`  |
 | throwexceptions | Controls whether or not an exception is thrown if an error occurs during rendering. | Default is `true`  |
 
 <br/>

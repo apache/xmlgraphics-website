@@ -56,7 +56,7 @@ The distribution comes with a number of examples:
 
 Included with these examples is `org.apache.batik.extension.svg.BatikDomExtension`, which is the required instance of `DomExtension` used to register the elements with the `ExtensibleSVGDOMImplementation`.
 
-If your new element requires new “presentation attributes” (XML attributes that can be modified through CSS, or, depending on your viewpoint, the other way around—CSS properties that can be specified using XML attributes), you will also need to extend the CSS engine. This can be done by registering a custom CSS value factory. Both of the color examples do this (see `BatikDomExtension` ).
+If your new element requires new “presentation attributes” (XML attributes that can be modified through CSS, or, depending on your viewpoint, the other way around—CSS properties that can be specified using XML attributes), you will also need to extend the CSS engine. This can be done by registering a custom CSS value factory. Both of the color examples do this (see `BatikDomExtension`).
 
 ### Writing a Batik bridge extension <a id="bridgeExtension"></a>
 
@@ -64,7 +64,7 @@ Before you write a bridge extension it may be useful to understand what role the
 
 The key class for managing this link is the [BridgeContext](../javadoc/org/apache/batik/bridge/BridgeContext.html). This class maintains an association between a element name with namespace and a particular bridge instance that will handle it. The work of constructing the proper entity or entities in the GVT tree is then deferred to the [Bridge](../javadoc/org/apache/batik/bridge/Bridge.html) registered for a particular element. If no bridge is regiestered nothing is done.
 
-New associations can be added by implementors of the [BridgeExtension](../javadoc/org/apache/batik/bridge/BridgeExtension.html) Service Provider Interface. This interface has a number of methods that provide information about the particular extension being registered (including contact information, and the list of implemented extensions). It also has a `registerTags` method which is responsible for registering the bridge instances with a `BridgeContext`. All the built-in bridges are bundled together with a `BridgeExtension` (the [org.apache.batik.bridge.SVGBridgeExtension](../javadoc/org/apache/batik/bridge/SVGBridgeExtension.html) class), as are the example extensions ( [org.apache.batik.extension.svg](../javadoc/org/apache/batik/extension/svg/BatikBridgeExtension.html) ), so these are both good places to start.
+New associations can be added by implementors of the [BridgeExtension](../javadoc/org/apache/batik/bridge/BridgeExtension.html) Service Provider Interface. This interface has a number of methods that provide information about the particular extension being registered (including contact information, and the list of implemented extensions). It also has a `registerTags` method which is responsible for registering the bridge instances with a `BridgeContext`. All the built-in bridges are bundled together with a `BridgeExtension` (the [org.apache.batik.bridge.SVGBridgeExtension](../javadoc/org/apache/batik/bridge/SVGBridgeExtension.html) class), as are the example extensions ([org.apache.batik.extension.svg](../javadoc/org/apache/batik/extension/svg/BatikBridgeExtension.html)), so these are both good places to start.
 
 The `Bridge` interface itself is very simple. It only includes methods to get the namespace and local name of the element the bridge is responsible for. This interface is then extended for each of the major concepts present in SVG:
 
@@ -213,7 +213,7 @@ MagicNumberRegistryEntry
 
 RedRable
 :
- [RedRable](../javadoc/org/apache/batik/ext/awt/image/renderable/RedRable.html) takes any `java.awt.image.RenderedImage` and wraps it into a `Filter` (Batik’s subinterface of `RenderableImage` ). This is very useful for *single resolution* file formats.
+ [RedRable](../javadoc/org/apache/batik/ext/awt/image/renderable/RedRable.html) takes any `java.awt.image.RenderedImage` and wraps it into a `Filter` (Batik’s subinterface of `RenderableImage`). This is very useful for *single resolution* file formats.
 
 
 DeferRable
@@ -228,7 +228,7 @@ AbstractRable
 
 AbstractRed
 :
- [AbstractRed](../javadoc/org/apache/batik/ext/awt/image/rendered/AbstractRed.html) is an abstract base class that makes it relatively easy to implement the [CacheableRed](../javadoc/org/apache/batik/ext/awt/image/rendered/CacheableRed.html) interface (Batik's subclass of `RenderedImage` ).
+ [AbstractRed](../javadoc/org/apache/batik/ext/awt/image/rendered/AbstractRed.html) is an abstract base class that makes it relatively easy to implement the [CacheableRed](../javadoc/org/apache/batik/ext/awt/image/rendered/CacheableRed.html) interface (Batik's subclass of `RenderedImage`).
 
 ## New URL protocols <a id="urlProtocols"></a>
 
@@ -236,7 +236,7 @@ For a variety of reasons (not the least of which is the heavy use of the `data:`
 
  `ParsedURL` offers a few advantages over the JDK’s `URL` class. First, it is designed to make minimal use of exceptions, so it is possible to use it to parse a malformed URL and get “the good parts”. Second, it is extensible, so support for new URL protocols can be added, even those that change the normal parsing rules for URLs (such as our friend the `data:` protocol). Third, it can automatically check a when a stream can be opened for common compression types and decode them for you (this behavior can also be bypassed if needed).
 
-The service class is [org.apache.batik.util.ParsedURLProtocolHandler](../javadoc/org/apache/batik/util/ParsedURLProtocolHandler.html). This interface consists of three methods: one returns the protocol to be handled, one is for parsing an absolute URL string and one is for parsing relative URL strings. Both the parsing methods return an object of type [ParsedURLData](../javadoc/org/apache/batik/util/ParsedURLData.html) (the instance may of course be a subclass of `ParsedURLData` ).
+The service class is [org.apache.batik.util.ParsedURLProtocolHandler](../javadoc/org/apache/batik/util/ParsedURLProtocolHandler.html). This interface consists of three methods: one returns the protocol to be handled, one is for parsing an absolute URL string and one is for parsing relative URL strings. Both the parsing methods return an object of type [ParsedURLData](../javadoc/org/apache/batik/util/ParsedURLData.html) (the instance may of course be a subclass of `ParsedURLData`).
 
 The `ParsedURLData` class holds all the data and implements all the stream handling commands for the `ParsedURL` class. This allows `ParsedURLProtocolHandler` s to return custom subclasses for particular protocols.
 

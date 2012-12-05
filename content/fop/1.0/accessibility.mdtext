@@ -27,7 +27,7 @@ Apache FOP cannot automatically generate accessible PDFs. Some of the work can o
 
 - Table cells must have a table row as their parent.
 
-- Images must have an alternate text: use the `fox:alt-text` extension attribute (in the [fox namespace](extensions.html#fox-namespace) ) on `fo:external-graphic` and `fo:instream-foreign-object` to specify a short text describing the image.
+- Images must have an alternate text: use the `fox:alt-text` extension attribute (in the [fox namespace](extensions.html#fox-namespace)) on `fo:external-graphic` and `fo:instream-foreign-object` to specify a short text describing the image.
 
 - Ensure that the order of `fo:block-container` elements in a page corresponds to the reading order.
 

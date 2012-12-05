@@ -3,7 +3,7 @@ Title: Transcoder API
 #Transcoder API
 
 
-The goal of the transcoder API (package `org.apache.batik.transcoder` ) is to provide a generic API for transcoding an input to an output. First, this document explains the basic transcoder API that [Transcoder](../javadoc/org/apache/batik/transcoder/Transcoder.html), [TranscoderInput](../javadoc/org/apache/batik/transcoder/TranscoderInput.html) and [TranscoderOutput](../javadoc/org/apache/batik/transcoder/TranscoderOutput.html) define, and thus all transcoders have in common. Next, it describes how to use the image transcoder API (package `org.apache.batik.transcoder.image` ), which lets you rasterize an SVG document fragment to a raster image such as JPEG, PNG or TIFF.
+The goal of the transcoder API (package `org.apache.batik.transcoder`) is to provide a generic API for transcoding an input to an output. First, this document explains the basic transcoder API that [Transcoder](../javadoc/org/apache/batik/transcoder/Transcoder.html), [TranscoderInput](../javadoc/org/apache/batik/transcoder/TranscoderInput.html) and [TranscoderOutput](../javadoc/org/apache/batik/transcoder/TranscoderOutput.html) define, and thus all transcoders have in common. Next, it describes how to use the image transcoder API (package `org.apache.batik.transcoder.image`), which lets you rasterize an SVG document fragment to a raster image such as JPEG, PNG or TIFF.
 
 ## The transcoder API <a id="transcoderAPI"></a>
 
@@ -104,7 +104,7 @@ Inspect the output file `out.jpg`.
 
 ### Defining the size of the image <a id="defineSizeOfImage"></a>
 
-By adding the following line of code to the previous example, you will specify the raster image size (in pixels). The transcoding hint `KEY_WIDTH` lets you specify the raster image width. If the raster image height is not provided (using the `KEY_HEIGHT` ), the transcoder will compute the raster image height by keeping the aspect ratio of the SVG document.
+By adding the following line of code to the previous example, you will specify the raster image size (in pixels). The transcoding hint `KEY_WIDTH` lets you specify the raster image width. If the raster image height is not provided (using the `KEY_HEIGHT`), the transcoder will compute the raster image height by keeping the aspect ratio of the SVG document.
 t.addTranscodingHint(JPEGTranscoder.KEY_WIDTH, new Float(100));
 The transcoder will have the same behavior if you specify the `KEY_HEIGHT` without initializing the `KEY_WIDTH`. In all cases (even if both keys are provided), the transcoder will preserve the apsect ratio of the SVG document.
 
