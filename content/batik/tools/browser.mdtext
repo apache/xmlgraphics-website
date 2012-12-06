@@ -5,15 +5,15 @@ Title: Squiggle, the SVG Browser
 
 This page describes the main features of Squiggle, the SVG browser that comes with Batik.
 
-## Downloading the browser <a id="downloading"></a>
+## Downloading the browser {#downloading}
 
 Refer to the [download page](../download.cgi) to find out how to download Batik. Refer to the [installation page](../install.html) for instructions on how to install the Batik download on your system.
 
-## Starting the browser <a id="starting"></a>
+## Starting the browser {#starting}
 
 The method for starting the browser depends on the distribution of Batik that you chose to download. The following describes how to start the browser for each distribution (binary and source).
 
-### Starting the browser for the binary distribution <a id="starting-binary"></a>
+### Starting the browser for the binary distribution {#starting-binary}
 
 If you downloaded the [binary distribution](../install.html#distributions) of Batik, you should have a file called `batik-1.6.zip` (or similar), which, when expanded, created a `batik-squiggle.jar` file. To start the browser, type the following on the command line:
 cd installation-directory
@@ -41,7 +41,7 @@ starts the browser with the `batikLogo.svg` file open and uses a small widget te
 
 If you are using Mac OS X, and you have generated the Squiggle application bundle, you can use its icon to start the browser. This is the preferred way to start the browser under Mac OS X, as it ensures better integration with the operating system (a nicer looking menu and dock icon).
 
-### Starting the browser for the source distribution <a id="starting-source"></a>
+### Starting the browser for the source distribution {#starting-source}
 
 If you downloaded the [source distribution](../install.html#distributions) of Batik, you should have a zip file called `batik-src-1.6.zip` (or similar) that expanded into a directory called `xml-batik` or `batik-`*`version`*. In that directory, you can find build scripts for the platform you are running on. For example, there is a `build.bat` script for users of the Windows platform and there is a `build.sh` script for UNIX users.
 
@@ -68,13 +68,13 @@ Refer to [“Starting the browser for the binary distribution”](#starting-bina
 
 Note that the number of files that can be opened on Windows from the command line is limited because batch files take at most 9 parameters.
 
-### Squiggle screenshot <a id="screenshot"></a>
+### Squiggle screenshot {#screenshot}
 
 The following image shows the result of starting the browser, from the binary or source distribution, with the `-font-size 10
             samples/batikFX.svg` options.
 <div class="figure"> ![Screenshot of Squiggle showing the batikFX.svg sample](images/svgviewerDefaultRegular.png "") </div>
 
-# Viewing SVG documents <a id="viewing"></a>
+# Viewing SVG documents {#viewing}
 
 The browser has several features to view and browse SVG documents:
 
@@ -89,22 +89,22 @@ The browser has several features to view and browse SVG documents:
 
 -  [Viewing multiple SVG files](#viewingMultiple)
 
-### Opening a local SVG file <a id="localFile"></a>
+### Opening a local SVG file {#localFile}
 
 In situations where you want to open SVG files locally on the machine where you are running Squiggle, you can use **File→Open File** menu item to open that file, or use the **Ctrl-F** key accelerator. Doing so brings up a file chooser that lets you select the file you want to view.
 <div class="figure"> ![Screenshot of Squiggle showing the 'File→Open' menu and file chooser](images/svgviewerFileOpen.png "") </div>
 
-## Opening an SVG file from the web <a id="urlFile"></a>
+## Opening an SVG file from the web {#urlFile}
 
 There are many situations where the SVG content you want to view is not local to the machine where Squiggle is running. In that case, you can use the **File→Open Location** menu item, or use the **Ctrl-A** key accelerator to open that page. Doing so brings up a dialog box where you can type in the URL for the file you want to view.
 <div class="figure"> ![Screenshot of Squiggle showing the 'File→Open Location' menu and window](images/svgviewerOpenPage.png "") </div>
 
-## Using the location bar text field to view an SVG file <a id="locationBar"></a>
+## Using the location bar text field to view an SVG file {#locationBar}
 
 When you know the URL of the document you want to view, you can enter it directly in the location bar text field at the top of Squiggle, the same way you can enter a URL in an HTML browser.
 <div class="figure"> ![Screenshot of Squiggle showing the location bar](images/svgviewerLocationBar.png "") </div>
 
-## Browsing SVG files <a id="browsing"></a>
+## Browsing SVG files {#browsing}
 
 As with HTML content, it is common to navigate back and forth between SVG files (remember that SVG files contain hyperlinks, just like HTML does) and, as described later in this document, it is possible to [zoom](#zoomInOut) into SVG documents, [pan](#panning) and [rotate](#rotating).
 <div class="figure"> ![Screnshot of Squiggle showing the 'Go' menu](images/svgviewerBrowsing.png "") </div>
@@ -126,35 +126,35 @@ Navigating between views
 :
 The **View→Previous Transform** menu item (**Ctrl-K**) and the **View→Next Transform** menu item (**Ctrl-L**) let you go to the previous or next view of the document. This is useful when, for example, you [pan](#panning) or [rotate](#rotating) the document and want to go back to the previous view you had of the document (i.e., before you panned or rotated it).
 
-### Viewing multiple SVG files <a id="viewingMultiple"></a>
+### Viewing multiple SVG files {#viewingMultiple}
 <div class="figure"> ![Screenshot of Squiggle with two windows open](images/svgviewerMultipleFiles.png "") </div>
 Squiggle can display multiple files simultaneously in different windows. To view a new file in a separate window, simply select the **File→New Window** menu item or use the **Ctrl-N** keyboard accelerator.
 
-### Reloading an SVG document <a id="reloading"></a>
+### Reloading an SVG document {#reloading}
 
 When working on an SVG document, you may want the browser to reprocess a document that you have modified. The **File→Reload Document** menu item or the **Ctrl-R** keyboard accelerator will cause the document to be reprocessed by the browser.
 
-## Exporting and printing SVG documents <a id="exportAndPrint"></a>
+## Exporting and printing SVG documents {#exportAndPrint}
 
 The **File→Print** menu item or **Ctrl-P** will print the currently displayed SVG document.
 
 The **File→Export As** menu item offers the option to export the currently displayed SVG document to various raster formats. Currently, the browser supports the <abbr title="Portable Network Graphics">PNG</abbr>, <abbr title="Joint Photographic Expert Group">JPEG</abbr> and <abbr title="Tagged Image File Format">TIFF</abbr> formats.
 
-## Inspecting the SVG source <a id="inspecting"></a>
+## Inspecting the SVG source {#inspecting}
 
 The browser offers two ways to inspect the source of an SVG document: [viewing the plain source](#viewingSource) or [viewing the document tree](#viewingTree). Both are explained below.
 
-### Viewing the source <a id="viewingSource"></a>
+### Viewing the source {#viewingSource}
 
 <div class="figure"> ![Screenshot of Squiggle showing the 'View→View Source' menu item and the source window](images/svgviewerViewSource.png "") </div>
 When the browser displays an SVG file, you can select the **View→View Source...** menu item or use the **Ctrl-U** keyboard accelerator to view the source code.
 
-### Viewing the document tree <a id="viewingTree"></a>
+### Viewing the document tree {#viewingTree}
 
 <div class="figure"> ![Screenshot of Squiggle showing the 'View→DOM Viewer...' menu item and the DOM viewer window](images/svgviewerViewTree.png "") </div>
 When the browser displays an SVG file, you can select the **View→DOM Viewer...** menu item or use the **Ctrl-D** keyboard accelerator to open a window that shows the SVG document in the form of a tree. The window lets you navigate the tree, select individual elements, such as a path elements, and view the attributes and CSS values that apply to these elements. While the View Source window shows the SVG source as it was when it was loaded, the DOM Viewer window reflects the current state of the document, including any modifications that have occurred due to script.
 
-## Configuring Squiggle <a id="configuring"></a>
+## Configuring Squiggle {#configuring}
 
 The **Edit→Preferences** menu item or **Ctrl-G** brings up the dialog box shown in the following figure.
 <div class="figure"> ![Screenshot of Squiggle with the Preferences window open](images/svgviewerPreferences.png "") </div>
@@ -203,7 +203,7 @@ Network panel
 :
 This panel lets you configure the proxy server to use if you are working from behind a firewall.
 
-## Navigating SVG documents: zooming, panning, rotating, transform and thumbnail <a id="zooming"></a>
+## Navigating SVG documents: zooming, panning, rotating, transform and thumbnail {#zooming}
 
 The Batik browser offers multiple way to navigate SVG documents:
 
@@ -218,7 +218,7 @@ The Batik browser offers multiple way to navigate SVG documents:
 
 -  [Thumbnail](#thumbnail)
 
-### Zooming in and out <a id="zoomInOut"></a>
+### Zooming in and out {#zoomInOut}
 
 There are several methods to zoom in or out an SVG document:
 
@@ -234,7 +234,7 @@ There are several methods to zoom in or out an SVG document:
 - If the mouse is over the document in the display area, you can press the **Shift key** then **click the right mouse button and drag** it. This is called the *real time* zoom and can be used both for zooming in and out.
 <div class="figure"> ![Screenshot of Squiggle showing the Zoom In and Zoom Out menu items and tool bar buttons](images/svgviewerZoomin.png "") </div><div class="figure"> ![Screenshot of Squiggle zooming to an area of interest](images/svgviewerAOI.png "") </div>
 
-## Panning a document <a id="panning"></a>
+## Panning a document {#panning}
 
 Some documents are too big to fit into the browser, especially when you [zoom](#zoomInOut) in with a large zoom factor. In these circumstances, it is useful to be able to move around the document and pan to view different parts of the documents. Again, there are multiple ways to do this:
 
@@ -244,15 +244,15 @@ Some documents are too big to fit into the browser, especially when you [zoom](#
 - If you have the [thumbnail](#thumbnail) open, you can select the marker showing the current area of interest and move it to the desired location.
 <div class="figure"> ![Screenshot of Squiggle illustrating the panning gesture](images/svgviewerPan.png "") </div>
 
-## Rotating a document <a id="rotating"></a>
+## Rotating a document {#rotating}
 
 It is sometimes useful to be able to rotate a document (maps for example). You can do this in the Batik browser by first pressing the **Ctrl key** and then **clicking and dragging the right mouse button** to a new location. The browser will dynamically rotate the image as you move your cursor. When you are satisfied with that angle, you can release the mouse button and the document will be displayed with that new angle.
 
-### Using the Transform dialog <a id="transform"></a>
+### Using the Transform dialog {#transform}
 
 While the mouse and keyboard interactions give interactive way to navigate an SVG document, it is sometimes desirable to be able to define precisely the amount of [zoom](#zoomInOut), [pan](#panning) or [rotation](#rotating) desired. The Transform dialog, available through the **View→Transform** menu (**Ctrl-E**) offers that feature.
 
-### Thumbnail <a id="thumbnail"></a>
+### Thumbnail {#thumbnail}
 
 Panning in the document window can be difficult after you have zoomed into a document because you cannot see the whole document. Panning on large documents (or with a large zoom factor) is made easy by the thumbnail that you can bring up through the **View→Thumbnail** menu item or the **Ctrl-Y** keyboard accelerator. The thumbnail shows a rectangular marker that represents the “Area of Interest”, i.e., the region currently displayed in the window (the visible portion of the document). You can **drag out a rectangular marker with the left mouse button pushed down** to select a new area of interest which will then be shown in the main window.
 <div class="figure"> ![Screenshot of Squiggle showing the Thumbnail window](images/svgviewerThumbnail.png "") </div>

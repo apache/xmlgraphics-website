@@ -5,13 +5,13 @@ Title: History of Changes 1.1
 
  [changes_1.1.rss](changes_1.1.rss)
 
-## Introduction and explanation of symbols <a id="introduction"></a>
+## Introduction and explanation of symbols {#introduction}
 
 Changes are sorted by "type" and then chronologically with the most recent at the top. These symbols denote the various action types:![add](/images/add.jpg) =add,![fix](/images/fix.jpg) =fix,![remove](/images/remove.jpg) =remove,![update](/images/update.jpg) =update
 
-## Version 1.1 (20 October 2012) <a id="version_1.1"></a>
+## Version 1.1 (20 October 2012) {#version_1.1}
 
-### Changes to the Code Base <a id="Code_1.1"></a>
+### Changes to the Code Base {#Code_1.1}
 
 
 - ![add](/images/add.jpg) Added support for the role property on fo:page-sequence, fo:flow and fo:static-content. This allows to change the mapping of those FOs to PDF structure types when enabling accessibility. Committed by VH.
@@ -132,7 +132,7 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![update](/images/update.jpg) Add run target for embedded examples. Add increased JVM memory heap flag for example8 in case font cache is rebuilt. Committed by GA. See Issue [51617](http://issues.apache.org/bugzilla/show_bug.cgi?id=51617).
 
-### Changes to the User Configuration <a id="Config_1.1"></a>
+### Changes to the User Configuration {#Config_1.1}
 
 
 - ![add](/images/add.jpg) Added configuration option to set the version of the output PDF document. Committed by VH. Thanks to Mehdi Houshmand. See Issue [51385](http://issues.apache.org/bugzilla/show_bug.cgi?id=51385).
@@ -143,14 +143,14 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![fix](/images/fix.jpg) Fix for relative URIs in the configuration file (base, font-base, hyphenation-base) are evaluated relative to the base URI of the configuration file. Committed by SP.
 
-### Changes to Documentation <a id="Docs_1.1"></a>
+### Changes to Documentation {#Docs_1.1}
 
 
 - ![fix](/images/fix.jpg) Fix renderer mime type for PCL output; should be application/x-pcl. Committed by GA. See Issue [53247](http://issues.apache.org/bugzilla/show_bug.cgi?id=53247).
 
 - ![update](/images/update.jpg) Update FAQ and New Bug documentation. Committed by GA.
 
-### Changes to the Font Subsystem <a id="Fonts_1.1"></a>
+### Changes to the Font Subsystem {#Fonts_1.1}
 
 
 - ![add](/images/add.jpg) Add support for OpenType advanced typographic tables (GDEF, GSUB, GPOS). Committed by GA.
@@ -183,7 +183,7 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![update](/images/update.jpg) Removing experimental feature that violates XSL-FO and Unicode semantics by misinterpreting Basic Latin code points. Users must use private use codepoints to access font specific character mappings that have no assigned Unicode code point. See bug 50492. Committed by GA.
 
-### Changes to the Image Support <a id="Images_1.1"></a>
+### Changes to the Image Support {#Images_1.1}
 
 
 - ![fix](/images/fix.jpg) Fix incorrect SVG line dash pattern with PDF output format. Committed by GA. Thanks to Luis Bernardo. See Issue [53431](http://issues.apache.org/bugzilla/show_bug.cgi?id=53431).
@@ -196,7 +196,7 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![update](/images/update.jpg) Fix newly introduced findbugs warnings. Committed by GA. Thanks to Luis Bernardo. See Issue [40676](http://issues.apache.org/bugzilla/show_bug.cgi?id=40676).
 
-### Changes to the Layout Engine <a id="Layout_1.1"></a>
+### Changes to the Layout Engine {#Layout_1.1}
 
 
 - ![add](/images/add.jpg) Add support for complex scripts, including: full bidi support, support for advanced typographic tables, advanced support for number conversion. Committed by GA. See Issue [32789](http://issues.apache.org/bugzilla/show_bug.cgi?id=32789), [49008](http://issues.apache.org/bugzilla/show_bug.cgi?id=49008), [49687](http://issues.apache.org/bugzilla/show_bug.cgi?id=49687).
@@ -237,7 +237,7 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![fix](/images/fix.jpg) Fixed retrieval of available BPD for cases spanning columns and multiple pages with differing page masters. Committed by JM. See Issue [49885](http://issues.apache.org/bugzilla/show_bug.cgi?id=49885).
 
-### Changes to Renderers (Output Formats) <a id="Renderers_1.1"></a>
+### Changes to Renderers (Output Formats) {#Renderers_1.1}
 
 
 - ![add](/images/add.jpg) Added possibility to embed TrueType fonts in PostScript. Committed by VH. See Issue [52338](http://issues.apache.org/bugzilla/show_bug.cgi?id=52338).
@@ -326,14 +326,14 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![remove](/images/remove.jpg) Removed old Renderer implementations for those output formats that have a version based on the new DocumentHandler architecture available (AFP, PCL, PDF, PS). Committed by VH.
 
-### Changes to unit tests or other test code <a id="Test_1.1"></a>
+### Changes to unit tests or other test code {#Test_1.1}
 
 
 - ![fix](/images/fix.jpg) Fix errors and warnings in example files. Add build.xml for documentation examples. Committed by GA.
 
 - ![update](/images/update.jpg) Add test for basic-link with padding. Committed by GA. Thanks to Matthias Reischenbacher. See Issue [50196](http://issues.apache.org/bugzilla/show_bug.cgi?id=50196).
 
-### Contributors to this release <a id="contributors_1.1"></a>
+### Contributors to this release {#contributors_1.1}
 
 We thank the following people for their contributions to this release.
 

@@ -3,13 +3,13 @@ Title: Apache(tm) FOP Design: Startup, Environment, Control
 #Apache&trade; FOP Design: Startup, Environment, Control
 
 
-## Introduction <a id="intro"></a>
+## Introduction {#intro}
 
 Startup is the process of getting Apache&trade; FOP bootstrapped and creating basic objects. Environment includes acquiring user options, instantiating any frameworks, setting up logging, etc. Control includes the basic logic for tieing the various subsystems together properly.
 
-## Status <a id="status"></a>
+## Status {#status}
 
-### To Do <a id="status-todo"></a>
+### To Do {#status-todo}
 
 
 - avalon integration - logging, configuration, component management, caching, uri resolver
@@ -23,9 +23,9 @@ Startup is the process of getting Apache&trade; FOP bootstrapped and creating ba
 
 - better commandline handling
 
-### Work In Progress <a id="status-wip"></a>
+### Work In Progress {#status-wip}
 
-### Completed <a id="status-complete"></a>
+### Completed {#status-complete}
 
 
 -  **better image handling** - redone so it can use a cache and synchronizes properly only on the current image while loading

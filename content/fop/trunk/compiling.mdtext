@@ -3,29 +3,29 @@ Title: Apache(tm) FOP: Building from Source Code
 #Apache&trade; FOP: Building from Source Code
 
 
-## Do You Need To Build? <a id="build-needed"></a>
+## Do You Need To Build? {#build-needed}
 
 Apache&trade; FOP snapshots are either pre-compiled binary or source. If you are using a binary snapshot, it is already built and there is no need to build it again. If you got the source code from a repository snapshot or via Subversion you will need to build FOP. See the [Download Instructions](../download.html) for information about where to obtain binary or repository snapshots, and whether a binary or source snapshot is best for your needs.
 
-## Set Up Your Environment <a id="env"></a>
+## Set Up Your Environment {#env}
 
-### JDK <a id="env-jdk"></a>
+### JDK {#env-jdk}
 
 Building FOP requires a minimum Java Development Kit (JDK/SDK) of 1.4 (A Java Runtime Environment is not sufficient).
 
-### CLASSPATH <a id="env-classpath"></a>
+### CLASSPATH {#env-classpath}
 
 There is generally no need to setup a classpath. All libraries needed to compile FOP are included in the source distribution and are referenced by the build script. You will only need to adjust the classpath if you build FOP in some other way. See the build script build.xml for details.
 
-### JAVA_HOME <a id="env-java-home"></a>
+### JAVA_HOME {#env-java-home}
 
 The build script uses [Apache Ant](http://ant.apache.org/), a popular Java-based build tool, which usually requires that the environment variable JAVA_HOME point to your local JDK root directory. This is true even if you use JDK 1.4 or above, which normally does not need this setting.
 
-### Apache Ant <a id="env-ant"></a>
+### Apache Ant {#env-ant}
 
  [Apache Ant](http://ant.apache.org/) (Version 1.7 or later) must be installed in order to build FOP. Following best practices we don't include Ant with FOP anymore. You can find the [instructions to install Ant in the Ant manual](http://ant.apache.org/manual/) on the web.
 
-## Run the Build Script <a id="build-script"></a>
+## Run the Build Script {#build-script}
 
 Change to the FOP root directory and build FOP by executing the build script (build.xml) using the "ant" command.
 The "ant" command is only available on your system if you've properly [installed Apache Ant](http://ant.apache.org/manual/) and added Ant's location to the PATH environment variable.
@@ -48,7 +48,7 @@ OR
 ant all
 To clean the build directory first:
 ant clean allIf you want to shorten the build time you can just call the "package" target which doesn't perform any automated tests during the build.
-## Troubleshooting <a id="problems"></a>
+## Troubleshooting {#problems}
 
 If you have problems building FOP, please try the following:
 

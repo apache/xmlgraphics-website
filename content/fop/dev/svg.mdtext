@@ -5,7 +5,7 @@ Title: Apache(tm) FOP Development: SVG Issues
 
 See also [SVG User Documentation](../trunk/graphics.html#svg) for more information.
 
-## Examples <a id="Examples"></a>
+## Examples {#Examples}
 
 These examples illustrate a number of issues relating to conversion to PDF:
 
@@ -24,11 +24,11 @@ You will need Acrobat 5.0 to see transparency.
 |--|---------|------------|
 | embedding svg |  [embedding.fo](fo/embedding.fo)  |  [embedding.fo.pdf](fo/embedding.fo.pdf)  |
 
-## Developer Notes <a id="Developer+Notes"></a>
+## Developer Notes {#Developer+Notes}
 
 For most output formats in FOP the SVG is simply drawn into an image with Batik. For PDF there are a set of classes to handle drawing the [GVT (Graphic Vector Toolkit)](http://xml.apache.org/batik/architecture.html) into PDF markup.
 
-### Classes <a id="Classes"></a>
+### Classes {#Classes}
 
 These are the relevant classes, found in the package org.apache.fop.svg:
 
@@ -39,6 +39,6 @@ These are the relevant classes, found in the package org.apache.fop.svg:
 
 -  *PDFTranscoder* <br></br>used by Batik to transcode an svg document into a standalone pdf, via PDFDocumentGraphics2D.
 
-### Ideas <a id="Ideas"></a>
+### Ideas {#Ideas}
 
 Batik can convert ttf to svg font. This svg font could be converted into a pdf stroked font (type 3 font).

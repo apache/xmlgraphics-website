@@ -27,19 +27,19 @@ If more flexibility is needed, then the fo:table-column elements may be just omi
 
 The image libraries Jimi and JAI are no longer needed (and used) for image loading. Instead we rely completely on the Image I/O API that has been introduced with Java 1.4. If you still need support for bitmap image formats that do not work out-of-the-box, we recommend adding [JAI Image I/O Tools](http://jai-imageio.dev.java.net/) (an Image I/O compatible image codec package) to the classpath. JAI is still required for building the FOP distribution but it is optional for normal builds and at run-time.
 This final 0.95 release also includes all of the [changes made for Apache FOP 0.95beta](changes_0.95beta.html).</section></notes>
-# Major Changes in Version 0.95 <a id="version_0.95"></a>
+# Major Changes in Version 0.95 {#version_0.95}
 This is not a complete list of changes, just some of the more important ones. A full list of changes in this release [is available](changes_0.95.html).
-## Changes to the Code Base <a id="Changes+to+the+Code+Base"></a>
+## Changes to the Code Base {#Changes+to+the+Code+Base}
 
 
 - ![fix](/images/fix.jpg)Fixed potential multi-threading problem concerning the use of DecimalFormat. Committed by JM. See Issue [44887](http://issues.apache.org/bugzilla/show_bug.cgi?id=44887).
 
-### Changes to the Layout Engine <a id="Changes+to+the+Layout+Engine"></a>
+### Changes to the Layout Engine {#Changes+to+the+Layout+Engine}
 
 
 - ![fix](/images/fix.jpg)Various bugfixes for table layout. Committed by VH. See Issue [44621](http://issues.apache.org/bugzilla/show_bug.cgi?id=44621).
 
-### Changes to Renderers (Output Formats) <a id="Changes+to+Renderers+%28Output+Formats%29"></a>
+### Changes to Renderers (Output Formats) {#Changes+to+Renderers+%28Output+Formats%29}
 
 
 - ![fix](/images/fix.jpg)Fixed positioning of absolutely positioned block-containers in multi-column documents. Committed by JM.

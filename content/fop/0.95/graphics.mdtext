@@ -3,7 +3,7 @@ Title: Apache(tm) FOP: Graphics Formats
 #Apache&trade; FOP: Graphics Formats
 
 
-## Introduction <a id="introduction"></a>
+## Introduction {#introduction}
 
 After the Apache&trade; FOP 0.94 release, the image handling subsystem has been rewritten in order to improve the range of supported images and image subtypes, to lower the overall memory consumption when handling images, to produce smaller output files and to increase the performance in certain areas. Of course, this causes a few changes most of which the user will probably not notice. The most important changes are:
 
@@ -16,7 +16,7 @@ After the Apache&trade; FOP 0.94 release, the image handling subsystem has been 
 
 The actual [image loading framework](http://xmlgraphics.apache.org/commons/image-loader.html) no longer resides in Apache FOP, but was instead placed in [XML Graphics Commons](http://xmlgraphics.apache.org/commons/).
 
-## Overview of Graphics Support <a id="support-overview"></a>
+## Overview of Graphics Support {#support-overview}
 
 The table below summarizes the *theoretical* support for graphical formats within FOP. In other words, within the constraints of the limitations listed here, these formats *should* work. However, many of them have not been tested, and there may be limitations that have not yet been discovered or documented. The packages needed to support some formats are not included in the FOP distribution and must be installed separately. Follow the links in the "Support Through" columns for more details.
 
@@ -39,7 +39,7 @@ Legend:
 
 - [1]: Requires the presence of [JAI Image I/O Tools](http://jai-imageio.dev.java.net/) (or an equivalent Image I/O compatible codec) in the classpath. JAI Image I/O Tools also adds support for JPEG 2000, WBMP, RAW and PNM. Other Image I/O codecs may provide support for additional formats.
  [JAI Image I/O Tools](http://jai-imageio.dev.java.net/) is not the same as the [JAI library](http://java.sun.com/javase/technologies/desktop/media/jai/) ! The former simply exposes JAI's codecs using the Image&nbsp;I/O API but does not include all the image manipulation functionality.
-### Map of supported image formats by output format <a id="format-map"></a>
+### Map of supported image formats by output format {#format-map}
 
 Not all image formats are supported for all output formats! For example, while you can use EPS (Encapsulated PostScript) files when you generate PostScript output, this format will not be supported by any other output format. Here's an overview of which image formats are supported by which output format:
 
@@ -62,17 +62,17 @@ Legend:
 
 - [2]: Supported without the need to decode the image, but only for certain subtypes.
 
-## Graphics Packages <a id="packages"></a>
+## Graphics Packages {#packages}
 
-### XML Graphics Commons Native <a id="native"></a>
+### XML Graphics Commons Native {#native}
 
  [XML Graphics Commons](http://xmlgraphics.apache.org/commons/) supports a number of graphic file formats natively as basic functionality: all bitmap formats for which there are Image I/O codecs available (JPEG, PNG, GIF, TIFF, etc.), EPS and EMF.
 
-### FOP Native <a id="fop-native"></a>
+### FOP Native {#fop-native}
 
 FOP has no native image plug-ins for the image loading framework of its own but currently hosts the Batik-dependent SVG and WMF plug-ins until they can be moved to [Apache Batik](http://xmlgraphics.apache.org/batik/).
 
-### Apache Batik <a id="batik"></a>
+### Apache Batik {#batik}
 
  [Apache Batik](http://xmlgraphics.apache.org/batik/) will later receive the SVG and WMF plug-ins for the image loading framework that are currently hosted inside FOP.
 
@@ -89,45 +89,45 @@ Here are some workarounds:
 
 - Install a toolkit which emulates AWT without the need for an underlying X server. One example is the [PJA toolkit](http://www.eteks.com/pja/en), which is free and comes with detailed installation instructions.
 
-### Image I/O <a id="imageio"></a>
+### Image I/O {#imageio}
 
 The image loading framework in [XML Graphics Commons](http://xmlgraphics.apache.org/commons/) provides a wrapper to load images through the [JDK's Image I/O API](http://java.sun.com/j2se/1.4.2/docs/guide/imageio/index.html) (JSR 015). Image I/O allows to dynamically add additional image codecs. An example of such an add-on library are the [JAI Image I/O Tools](http://java.sun.com/products/java-media/jai/) available from Sun.
 
-## Details on image formats <a id="image-formats"></a>
+## Details on image formats {#image-formats}
 
-### BMP <a id="bmp"></a>
+### BMP {#bmp}
 
 BMP images are supported through an Image I/O codec. There may be limitations of the codec which are outside the control of Apache FOP.
 
-### EMF <a id="emf"></a>
+### EMF {#emf}
 
 Windows Enhanced Metafiles (EMF) are only supported in RTF output where they are embedded without decoding.
 
-### EPS <a id="eps"></a>
+### EPS {#eps}
 
 Apache FOP allows to use EPS files when generating PostScript output only.
 
 Other output targets can't be supported at the moment because FOP lacks a PostScript interpreter. Furthermore, FOP is currently not able to parse the preview bitmaps sometimes contained in EPS files.
 
-### GIF <a id="gif"></a>
+### GIF {#gif}
 
 GIF images are supported through an Image&nbsp;I/O codec. Transparency is supported but not guaranteed to work with every output format.
 
-### JPEG <a id="jpeg"></a>
+### JPEG {#jpeg}
 
 FOP native support (i.e. the handling of undecoded images) of JPEG does not include all variants, especially those containing unusual color lookup tables and color profiles. If you have trouble with a JPEG image in FOP, try opening it with an image processing program (such as Photoshop or Gimp) and then saving it. Specifying 24-bit color output may also help. For the PDF and PostScript renderers most JPEG images can be passed through without decompression. User reports indicate that grayscale, RGB, and CMYK color spaces are all rendered properly. However, for other output formats, the JPEG images have to be decompressed. Tests have shown that there are some limitation in some Image&nbsp;I/O codecs concerning images in the CMYK color space. Work-arounds are in place but may not always work as expected.
 
-### PNG <a id="png"></a>
+### PNG {#png}
 
 PNG images are supported through an Image&nbsp;I/O codec. Transparency is supported but not guaranteed to work with every output format.
 
-### SVG <a id="svg"></a>
+### SVG {#svg}
 
-#### Introduction<a id="svg-intro"></a>
+#### Introduction {#svg-intro}
 
 FOP uses [Apache Batik](#batik) for SVG support. This format can be handled as an `fo:instream-foreign-object` or in a separate file referenced with `fo:external-graphic`.
 Batik's SVG Rasterizer utility may also be used to convert standalone SVG documents into PDF. For more information please see the [SVG Rasterizer documentation](http://xmlgraphics.apache.org/batik/svgrasterizer.html) on the Batik site.
-#### Placing SVG Graphics into PDF<a id="svg-pdf-graphics"></a>
+#### Placing SVG Graphics into PDF {#svg-pdf-graphics}
 
 The SVG is rendered into PDF by using PDF commands to draw and fill lines and curves. This means that the graphical objects created with this remain as vector graphics. The same applies to PostScript output. For other output formats the SVG graphic may be converted to a bitmap image.
 
@@ -135,7 +135,7 @@ There are a number of SVG things that cannot be converted directly into PDF. Par
 
 Currently transparency is limited in PDF so many SVG images that contain effects or graphics with transparent areas may not be displayed correctly.
 
-#### Placing SVG Text into PDF and PostScript<a id="svg-pdf-text"></a>
+#### Placing SVG Text into PDF and PostScript {#svg-pdf-text}
 
 If possible, Batik will use normal PDF or PostScript text when inserting text. It does this by checking if the text can be drawn normally and the font is supported. This example svg [text.svg](../dev/svg/text.svg) /text.pdfshows how various types and effects with text are handled. Note that tspan and outlined text are not yet implemented.
 
@@ -143,13 +143,13 @@ Otherwise, text is converted and drawn as a set of shapes by Batik, using the st
 
 Note that because SVG text can be rendered as either text or a vector graphic, you may need to consider settings in your viewer for both. The Acrobat viewer has both "smooth line art" and "smooth text" settings that may need to be set for SVG images to be displayed nicely on your screen (see Edit / Preferences / Display). This setting will not affect the printing of your document, which should be OK in any case, but will only affect the quality of the screen display.
 
-#### Scaling<a id="svg-scaling"></a>
+#### Scaling {#svg-scaling}
 
 Currently, SVG images are rendered with the dimensions specified *in the SVG file*, within the viewport specified in the fo:external-graphic element. For everything to work properly, the two should be equal. The SVG standard leaves this issue as an implementation detail. Additional scaling options are available through XSL-FO means.
 
 If you use pixels to specify the size of an SVG graphic the "source resolution" setting in the [configuration](configuration.html) will be used to determine the size of a pixel. The use of pixels to specify sizes is discouraged as they may be interpreted differently in different environments.
 
-#### Known Problems<a id="svg-problems"></a>
+#### Known Problems {#svg-problems}
 
 
 - Soft mask transparency is combined with white so that it looks better on PDF 1.3 viewers but this causes the soft mask to be slightly lighter or darker on PDF 1.4 viewers.
@@ -160,17 +160,17 @@ If you use pixels to specify the size of an SVG graphic the "source resolution" 
 
 - Uniform transparency for images and other SVG elements that are converted into a raster graphic are not drawn properly in PDF. The image is opaque.
 
-### TIFF <a id="tiff"></a>
+### TIFF {#tiff}
 
 FOP can embed TIFF images without decompression into PDF, PostScript and AFP if they have either CCITT T.4, CCITT T.6, or JPEG compression. Otherwise, a TIFF-capable Image&nbsp;I/O codec is necessary for decoding the image.
 
 There may be some limitation concerning images in the CMYK color space.
 
-### WMF <a id="wmf"></a>
+### WMF {#wmf}
 
 Windows Metafiles (WMF) are supported through classes in [Apache Batik](http://xmlgraphics.apache.org/batik/). At the moment, support for this format is experimental and may not always work as expected.
 
-## Graphics Resolution <a id="resolution"></a>
+## Graphics Resolution {#resolution}
 
 Some bitmapped image file formats store a dots-per-inch (dpi) or other resolution values. FOP tries to use this resolution information whenever possible to determine the image's intrinsic size. This size is used during the layout process when it is not superseded by an explicit size on fo:external-graphic (content-width and content-height properties).
 
@@ -178,11 +178,11 @@ Please note that not all images contain resolution information. If it's not avai
 
 Bitmap images are generally embedded into the output format at their original resolution (as is). No resampling of the image is performed. Explicit resampling is on our wishlist, but hasn't been implemented, yet. Bitmaps included in SVG graphics may be resampled to the resolution specified in the "target resolution" setting in the [configuration](configuration.html) if SVG filters are applied. This can be used as a work-around to resample images in FO documents.
 
-## Page selection for multi-page formats <a id="page-selection"></a>
+## Page selection for multi-page formats {#page-selection}
 
 Some image formats such as TIFF support multiple pages/sub-images per file. You can select a particular page using a special URI fragment in the form: <uri>#page=<nr> (for example: `http://localhost/images/myimage.tiff#page=3`)
 
-## Image caching <a id="caching"></a>
+## Image caching {#caching}
 
 FOP caches images between runs. There is one cache per FopFactory instance. The URI is used as a key to identify images which means that when a particular URI appears again, the image is taken from the cache. If you have a servlet that generates a different image each time it is called with the same URI you need to use a constantly changing dummy parameter on the URI to avoid caching.
 

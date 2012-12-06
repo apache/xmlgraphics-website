@@ -3,7 +3,7 @@ Title: Apache(tm) FOP: Events/Processing Feedback
 #Apache&trade; FOP: Events/Processing Feedback
 
 
-## Introduction <a id="introduction"></a>
+## Introduction {#introduction}
 
 In versions until 0.20.5, Apache&trade; FOP used [Avalon-style Logging](http://excalibur.apache.org/framework/index.html) where it was possible to supply a logger per processing run. During the redesign the logging infrastructure was switched over to [Commons Logging](http://commons.apache.org/logging/) which is (like Log4J or java.util.logging) a "static" logging framework (the logger is accessed through static variables). This made it very difficult in a multi-threaded system to retrieve information for a single processing run.
 
@@ -11,7 +11,7 @@ With FOP's event subsystem, we'd like to close this gap again and even go furthe
 
 On this page, we won't discuss logging as such. We will show how the event subsystem can be used for various tasks. We'll first look at the event subsystem from the consumer side. Finally, the production of events inside FOP will be discussed (this is mostly interesting for FOP developers only).
 
-## The consumer side <a id="consumer"></a>
+## The consumer side {#consumer}
 
 The event subsystem is located in the `org.apache.fop.events` package and its base is the `Event` class. An instance is created for each event and is sent to a set of `EventListener` instances by the `EventBroadcaster`. An `Event` contains:
 
@@ -28,7 +28,7 @@ The `EventFormatter` class can be used to translate the events into human-readab
 
 A full example of what is shown here can be found in the `examples/embedding/java/embedding/events` directory in the FOP distribution. The example can also be accessed [via the web](http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/examples/embedding/java/embedding/events/).
 
-### Writing an EventListener <a id="write-listener"></a>
+### Writing an EventListener {#write-listener}
 
 The following code sample shows a very simple EventListener. It basically just sends all events to System.out (stdout) or System.err (stderr) depending on the event severity.
 
@@ -65,7 +65,7 @@ The code above also shows how you can turn an event into a human-readable, local
 
 It is possible to gather all events for a whole processing run so they can be evaluated afterwards. However, care should be taken about memory consumption since the events provide references to objects inside FOP which may themselves have references to other objects. So holding on to these objects may mean that whole object trees cannot be released!
 
-### Adding an EventListener <a id="add-listener"></a>
+### Adding an EventListener {#add-listener}
 
 To register the event listener with FOP, get the `EventBroadcaster` which is associated with the user agent (`FOUserAgent`) and add it there:
 
@@ -75,7 +75,7 @@ To register the event listener with FOP, get the `EventBroadcaster` which is ass
 
 Please note that this is done separately for each processing run, i.e. for each new user agent.
 
-### An additional listener example <a id="listener-example1"></a>
+### An additional listener example {#listener-example1}
 
 Here's an additional example of an event listener:
 
@@ -119,11 +119,11 @@ You can also customize the exception to throw (you can may throw a RuntimeExcept
 
 This throws a `RuntimeException` with the `FileNotFoundException` as the cause. Further processing effectively stops in FOP. You can catch the exception in your code and react as you see necessary.
 
-## The producer side (for FOP developers) <a id="producer"></a>
+## The producer side (for FOP developers) {#producer}
 
 This section is primarily for FOP and FOP plug-in developers. It describes how to use the event subsystem for producing events.
 The event package has been designed in order to be theoretically useful for use cases outside FOP. If you think this is interesting independently from FOP, please talk to [us](mailto:fop-dev@xmlgraphics.apache.org).
-### Producing and sending an event <a id="basic-event-production"></a>
+### Producing and sending an event {#basic-event-production}
 
 The basics are very simple. Just instantiate an `Event` object and fill it with the necessary parameters. Then pass it to the `EventBroadcaster` which distributes the events to the interested listeneners. Here's a code example:
 
@@ -138,7 +138,7 @@ The basics are very simple. Just instantiate an `Event` object and fill it with 
 
 The `Event.paramsBuilder()` is a [fluent interface](http://en.wikipedia.org/wiki/Fluent_interface) to help with the build-up of the parameters. You could just as well instantiate a `Map` (`Map<String, Object>`) and fill it with values.
 
-### The EventProducer interface <a id="event-producer"></a>
+### The EventProducer interface {#event-producer}
 
 To simplify event production, the event subsystem provides the `EventProducer` interface. You can create interfaces which extend `EventProducer`. These interfaces will contain one method per event to be generated. By contract, each event method must have as its first parameter a parameter named "source" (Type Object) which indicates the object that generated the event. After that come an arbitrary number of parameters of any type as needed by the event.
 
@@ -176,7 +176,7 @@ To produce the same event as in the first example above, you'd use the following
     TestEventProducer producer = TestEventProducer.Provider.get(broadcaster);
     producer.complain(this, "I'm tired", 23);
 
-### The event model <a id="event-model"></a>
+### The event model {#event-model}
 
 Inside an invocation handler for a dynamic proxy, there's no information about the names of each parameter. The JVM doesn't provide it. The only thing you know is the interface and method name. In order to properly fill the `Event` 's parameter map we need to know the parameter names. These are retrieved from an event object model. This is found in the `org.apache.fop.events.model` package. The data for the object model is retrieved from an XML representation of the event model that is loaded as a resource. The XML representation is generated using an Ant task at build time (`ant resourcegen`). The Ant task (found in `src/codegen/java/org/apache/fop/tools/EventProducerCollectorTask.java`) scans FOP's sources for descendants of the `EventProducer` interface and uses [QDox](http://qdox.codehaus.org/) to parse these interfaces.
 
@@ -188,7 +188,7 @@ There's one more information that is extracted from the event producer informati
 
 For a given application, there can be multiple event models active at the same time. In FOP, each renderer is considered to be a plug-in and provides its own specific event model. The individual event models are provided through an `EventModelFactory`. This interface is implemented for each event model and registered through the service provider mechanism (see the [plug-ins section](#plug-ins) for details).
 
-### Event severity <a id="event-severity"></a>
+### Event severity {#event-severity}
 
 Four different levels of severity for events has been defined:
 
@@ -203,7 +203,7 @@ Four different levels of severity for events has been defined:
 
 Event listeners can choose to ignore certain events based on their event severity. Please note that you may recieve an event "twice" in a specific case: if there is a fatal error an event is generated and sent to the listeners. After that an exception is thrown with the same information and processing stops. If the fatal event is shown to the user and the following exception is equally presented to the user it may appear that the event is duplicated. Of course, the same information is just published through two different channels.
 
-### Plug-ins to the event subsystem <a id="plug-ins"></a>
+### Plug-ins to the event subsystem {#plug-ins}
 
 The event subsystem is extensible. There are a number of extension points:
 
@@ -214,7 +214,7 @@ The event subsystem is extensible. There are a number of extension points:
 
 The names in bold above are used as filenames for the service provider files that are placed in the `META-INF/services` directory. That way, they are automatically detected. This is a mechanism defined by the [JAR file specification](http://java.sun.com/j2se/1.4.2/docs/guide/jar/jar.html#Service%20Provider).
 
-### Localization (L10n) <a id="l10n"></a>
+### Localization (L10n) {#l10n}
 
 One goal of the event subsystem was to have localized (translated) event messages. The `EventFormatter` class can be used to convert an event to a human-readable message. Each `EventProducer` can provide its own XML-based translation file. If there is none, a central translation file is used, called "EventFormatter.xml" (found in the same directory as the `EventFormatter` class).
 

@@ -5,7 +5,7 @@ Title: Apache(tm) FOP Development: Developer Tools
 
 This page documents items that may be helpful to other developers, especially to those who are new to Apache&trade; FOP. Exhaustive treatment of these topics is better suited to other fora, but the information presented here is intended to deal with FOP-specific issues related to these tools, especially "gotchas", and to help developers get jump-started.
 
-## Developer Checklist <a id="checklist"></a>
+## Developer Checklist {#checklist}
 
 Here is a (probably not comprehensive) list of tools you will need to be a successful FOP developer:
 
@@ -20,19 +20,19 @@ Here is a (probably not comprehensive) list of tools you will need to be a succe
 
 - JUnit (see [Basic Testing](testing.html#basic)).
 
-## General Developer Information <a id="general"></a>
+## General Developer Information {#general}
 
 See [the Apache Contributors Tech Guide](http://www.apache.org/dev/contributors.html) for useful information and links for Apache developers, including help with tools and procedures.
 
-## Subversion (SVN) <a id="svn"></a>
+## Subversion (SVN) {#svn}
 
-### General <a id="svn_general"></a>
+### General {#svn_general}
 
 Visit [Apache XML Graphics Code Repositories](http://xmlgraphics.apache.org/repo.html) for useful information.
 
 You will need a SVN client to be able to gain access to the FOP repository. For general SVN information, visit [Subversion Home](http://subversion.tigris.org). A comprehensive list of clients for all operating systems and many IDEs can be found at [the Subversion Links page](http://subversion.tigris.org/project_links.html). For Microsoft Windows we recommend [TortoiseSVN](http://tortoisesvn.tigris.org). The command-line client that comes with Subversion is also very easy to use.
 
-### Step-by-step instruction for downloading FOP using the SVN command-line client <a id="svn_download"></a>
+### Step-by-step instruction for downloading FOP using the SVN command-line client {#svn_download}
 
 On the command-line (Windows or Unix), simply run:
 
@@ -40,7 +40,7 @@ On the command-line (Windows or Unix), simply run:
 
 This will download the FOP trunk into the directory "fop-trunk".
 
-### Step-by-step instructions for downloading FOP using TortoiseSVN (on Windows) <a id="tortoisesvn_download"></a>
+### Step-by-step instructions for downloading FOP using TortoiseSVN (on Windows) {#tortoisesvn_download}
 
 
 - Create a new, empty directory in a place of your choice.
@@ -51,7 +51,7 @@ This will download the FOP trunk into the directory "fop-trunk".
 
 - Click "OK" and the download should begin.
 
-### Creating Patches <a id="patches"></a>
+### Creating Patches {#patches}
 
 
 -  `cd` to a directory that contains all of the changes that you wish to include in the patch. To comprehend the entire distribution, `cd` to the top directory where you checked out the sources.
@@ -62,7 +62,7 @@ This will download the FOP trunk into the directory "fop-trunk".
 
 - If you are running TortoiseSVN, you can select "Create Patch..." in the TortoiseSVN context menu.
 
-### Documentation <a id="svn-doc"></a>
+### Documentation {#svn-doc}
 
 
 - [online resource] <a href="http://subversion.tigris.org">The Subversion Home Page</a>.
@@ -71,7 +71,7 @@ This will download the FOP trunk into the directory "fop-trunk".
 
 - [online resource] <a href="http://subversion.tigris.org/project_links.html">Comprehensive list of links to documentation and Subversion clients and plugins.</a>
 
-## Integrated Development Environments (IDEs) <a id="ide"></a>
+## Integrated Development Environments (IDEs) {#ide}
 
 An IDE is not required, but will generally be found to be helpful, especially for serious debugging and refactoring.
 
