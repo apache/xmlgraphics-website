@@ -159,9 +159,14 @@ p.quote {
       font-family: monospace;
 }
 /* for batik satus tables and fop compliance table */
-.yes     { background-color: #99FF99; text-align: center; }
-.no      { background-color: #FF9999; text-align: center; }
-.partial { background-color: #FFFFCC; text-align: center; }
+.yes      { background-color: #99FF99; text-align: center; }
+.no       { background-color: #FF9999; text-align: center; }
+.partial  { background-color: #FFFFCC; text-align: center; }
+.na       { text-align: center; }
+.basic,
+.extended,
+.complete { text-align: center; }
+.category { font-size: 1.2em }
 .tableSectionHeader { font-weight: bold; }
 .tableSubSectionHeader { font-style: italic; padding-left: 2em !important; }
 .ForrestTable td.basic      { text-align: center; }
