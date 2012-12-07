@@ -7,17 +7,17 @@ Title: Apache(tm) FOP Design: Layout Managers
 
 As explained in [Layout](layout.html), the hierarchy of Layout Managers is responsible for building and placing areas. Each Layout Manager is responsible for creating and filling areas of a particular type, either inline or block. This document explains one potential algorithm for this process. It is based on the the generation of *break possibilities* (BP for short). The Layout Managers (LM for short), will generate one or more BP and choose the best one. The BP is then used to generate the corresponding areas.
 
-## Anatomy of a Break Possibility {#Anatomy+of+a+Break+Possibility}
+## Anatomy of a Break Possibility {#Anatomy-of-a-Break-Possibility}
 
 A break possibility is represented by the BreakPoss class. A BreakPoss contains size information in the stacking direction and in the non-stacking direction (at least for inline areas, it must have both). Flags indicating various conditions (ISFIRST, ISLAST, CAN_BREAK_AFTER, FORCE_BREAK_AFTER, ANCHORS etc). A BreakPoss contains a reference to the top-level LayoutManager which generated it.
 
 A BreakPoss contains an object implementing the BreakPoss.Position interface. This object is specific to the layout manager which created the BreakPoss. It should indicate where the break occurs and allow the LM to create an area corresponding to the BP. A higher level LM Position must somehow reference or wrap the Position returned by its child LM in its BreakPoss object. The layout manager modifies the flags and dimension information in the BP to reflect its own requirements. For example an inline FO layout manager might add space-start, space-end, border and padding values to the stacking or non-stacking dimensions. It might also modify the flags based its on keep properties.
 
-## Turning Break Possibilities into Areas {#Turning+Break+Possibilities+into+Areas}
+## Turning Break Possibilities into Areas {#Turning-Break-Possibilities-into-Areas}
 
 Once break possibilities have been generated, the galley-level layout manager selects the best one and passes it back to the LayoutManager which generated it to create the area. A LayoutManager is responsible for storing enough information in its Position objects to be able to create the corresponding areas.
 
-## A walk-through {#A+walk-through}
+## A walk-through {#A-walk-through}
 
 Layout Managers are created from the top down. First the page sequence creates a PageLM and a FlowLM. The PageLM will manage finding the right page model (with help from the PageSequenceMaster) and managing the balancing act between before-floats, footnotes and the normal text flow. The FlowLM will manage the normal content in the main flow. We can think of it as a *galley* manager.
 
@@ -47,11 +47,11 @@ The FlowLM sees if the returned stacking dimension will still fit in its availab
 
 If the returned BP has any new before-float or footnote anchors in it (ANCHOR flag in the BP), the FlowLM will also return to the PageLM. The PageLM must then try to find space to place the floats, possibly asking the FlowLM for help if the body contains multiple columns.
 
-## Some issues {#Some+issues}
+## Some issues {#Some-issues}
 
 Following are a few remarks on specific issues.
 
-### Where Line Layout Managers are created {#Where+Line+Layout+Managers+are+created}
+### Where Line Layout Managers are created {#Where-Line-Layout-Managers-are-created}
 
 If the first child FO in a block FO is an inline-level FO such as text, the block LM creates an intermediate level LineLM to layout the sequence of inline content into Lines. Note that the whole sequence of inline FOs is managed by a single instance of LineLM. The LineLM becomes the parent to the various inline-level LM created by each individual inline FO. Since an fo:block can have both block and inline content, its LM may create a sequence of intermixed BlockLM and LineLM.
 

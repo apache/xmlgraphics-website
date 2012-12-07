@@ -229,7 +229,7 @@ The default value for the "renderer-resolution" is 240 dpi.
 
 By default if there is no configuration definition for "resource-group-file", external resources will be placed in a file called resources.afp.
 
-## When it does not work {#When+it+does+not+work}
+## When it does not work {#When-it-does-not-work}
 
 FOP searches the configuration file for the information it expects, at the position it expects. When that information is not present, FOP will not complain, it will just continue. When there is other information in the file, FOP will not complain, it will just ignore it. That means that when your configuration information is in the file but in a different XML element, or in a different XML path, than FOP expects, it will be silently ignored.
 

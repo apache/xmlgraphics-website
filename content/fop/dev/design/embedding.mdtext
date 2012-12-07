@@ -12,7 +12,7 @@ Common places where FOP is embedded is in a report production application of a s
 
 ## Settings {#Settings}
 
-### User Agent {#User+Agent}
+### User Agent {#User-Agent}
 
 Possible meanings for a user agent:
 
@@ -36,14 +36,14 @@ The user agent is responsible for supplying user or context specific information
 
 - Logging setup (LogKit, Log4J, JDK14Logging)
 
-### XML input {#XML+input}
+### XML input {#XML-input}
 
 
 - various ways to supply FOP with the xsl:fo file, fo, xml+xsl
 
 - sax handler
 
-### general options {#general+options}
+### general options {#general-options}
 
 
 - base url
@@ -52,7 +52,7 @@ The user agent is responsible for supplying user or context specific information
 
 - which implementation of a particular LayoutManager to use
 
-### Rendering Options {#Rendering+Options}
+### Rendering Options {#Rendering-Options}
 
 
 - embedding fonts
@@ -70,7 +70,7 @@ for the PS renderer (eventually):
 
 - binary/ascii switch
 
-### Render Results {#Render+Results}
+### Render Results {#Render-Results}
 
 Generate Output statistics from FOP:
 
@@ -83,7 +83,7 @@ Generate Output statistics from FOP:
 
 - recoverable errors such as overflow
 
-### Setting Up {#Setting+Up}
+### Setting Up {#Setting-Up}
 
 The Driver handles the XML input. The user agent information is through the FOUserAgent. Handle logging through the user agent. Options could also be handled through the user agent, using mime type selection for renderer options.
 

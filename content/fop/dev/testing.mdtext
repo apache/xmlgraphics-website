@@ -22,7 +22,7 @@ The [http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/test/layoutengine/]
 
 ## Functional Testing {#functional}
 <warning>The "functional" testing section on this page is currently inoperative.</warning>
-## Running and Using Tests {#Running+and+Using+Tests}
+## Running and Using Tests {#Running-and-Using-Tests}
 
 Testing is an important part of getting FOP to operate correctly and conform to the necessary standards.
 
@@ -30,11 +30,11 @@ A testing system has been set up that works with as a build target when developi
 
 To setup the testing the developer must place a reference fop.jar in the "<cvs_repository>/test/reference/" directory. This jar will be dynamically loaded to create the reference output.
 
-### W3C TestSuite {#W3C+TestSuite}
+### W3C TestSuite {#W3C-TestSuite}
 
 The testing is set up so that you can download the testsuite from [http://www.w3.org/Style/XSL/TestSuite/](http://www.w3.org/Style/XSL/TestSuite/), unzip the file into the base directory of FOP. Then you can uncomment the lines in the build.xml file in the test target and itwill run through all the tests in the testsuite distribution.
 
-### Writing a Test {#Writing+a+Test}
+### Writing a Test {#Writing-a-Test}
 
 A test belongs to one of a few catagories. A basic test should excercise one element in a number of situations such as changing a property. This should have at least one normal value, one border value and one invalid value. If the property can be of different types then this should also be included.
 
@@ -44,11 +44,11 @@ A system test is one that tests the abitlity of FOP to handle a number of differ
 
 A test can consist of a complete fo document or a part of the document such as some elements that will be placed into the flow of a standard document.
 
-### Submitting a Test {#Submitting+a+Test}
+### Submitting a Test {#Submitting-a-Test}
 
 If you have a test which you think would be useful you should supply the test and a diff to the appropriate test suite xml file. Make sure that the test works as would be expected against the current build.
 
-### How Testing Works {#How+Testing+Works}
+### How Testing Works {#How-Testing-Works}
 
 The tests are stored in the "<svn_repository>/test" directory.
 
@@ -60,6 +60,6 @@ The testing is done by reading a test suite xml file, which corresponds to the s
 
 For FOP the testing is done by rendering all the testing documents using the XML renderer. The XML files are then compared to see if there are any differences.
 
-### SVG Testing {#SVG+Testing}
+### SVG Testing {#SVG-Testing}
 
 The testing of SVG is not part of this testing system. SVG is tested for its rendering accuracy by using the transcoding mechanism via [Apache Batik](http://xmlgraphics.apache.org/batik/). So that the only part that needs testing is how the SVG image is embedded inside the flow of the fo document.

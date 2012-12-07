@@ -3,24 +3,24 @@ Title: Apache(tm) FOP: Known Issues
 #Apache&trade; FOP: Known Issues
 
 
-## Known issues {#Known+issues}
+## Known issues {#Known-issues}
 
 This page lists currently known issues in the current release.
 
 For additional information on known issues in Apache&trade; FOP, please have a look at the following pages, too:
 
 
--  [the bug list in Bugzilla](../bugs.html) 
+-  [the bug list in Bugzilla](../bugs.html)
 
--  [the task list in the Wiki](http://wiki.apache.org/xmlgraphics-fop/FOPProjectTasks) 
+-  [the task list in the Wiki](http://wiki.apache.org/xmlgraphics-fop/FOPProjectTasks)
 
 Apache&trade; FOP has an extensive automated testing infrastructure. Parts of this infrastructure are several sets of test cases. When a test case is listed in disabled-testcases.xml it is disabled in the JUnit tests during the normal build process. This indicates a problem in the current codebase. When a bug is fixed or a missing feature is added the entry for the relevant test case(s) are removed.
 
-### FO Tree {#FO+Tree}
+### FO Tree {#FO-Tree}
 
 This section lists disabled test cases in the test suite for the FO tree tests, at the time of the release.
 
- **demo-test-failure.fo** (demo test failure):<br></br> *TODO: Add missing description in disabled-testcases.xml!* 
+ **demo-test-failure.fo** (demo test failure):<br></br> *TODO: Add missing description in disabled-testcases.xml!*
 
 
 
@@ -28,7 +28,7 @@ This section lists disabled test cases in the test suite for the FO tree tests, 
 
 
 
-### Layout Engine {#Layout+Engine}
+### Layout Engine {#Layout-Engine}
 
 This section lists disabled test cases in the test suite for the layout engine tests, at the time of the release.
 
@@ -104,7 +104,7 @@ This section lists disabled test cases in the test suite for the layout engine t
 
 
 
- **inline_word-spacing_text-align_justify.xml** (inline word-spacing text-align justify):<br></br> *TODO: Add missing description in disabled-testcases.xml!* 
+ **inline_word-spacing_text-align_justify.xml** (inline word-spacing text-align justify):<br></br> *TODO: Add missing description in disabled-testcases.xml!*
 
 
 
@@ -112,7 +112,7 @@ This section lists disabled test cases in the test suite for the layout engine t
 
 
 
- **leader_leader-pattern_use-content_bug.xml** (leader-pattern="use-content": Problem with line height):<br></br>Line height is not correctly calculated for use-content leaders whose height is larger than the rest of the line.<br></br>See also: [http://www.nabble.com/leaders-with-leader-pattern%3D%22use-content%22-t546244.html](http://www.nabble.com/leaders-with-leader-pattern%3D%22use-content%22-t546244.html) 
+ **leader_leader-pattern_use-content_bug.xml** (leader-pattern="use-content": Problem with line height):<br></br>Line height is not correctly calculated for use-content leaders whose height is larger than the rest of the line.<br></br>See also: [http://www.nabble.com/leaders-with-leader-pattern%3D%22use-content%22-t546244.html](http://www.nabble.com/leaders-with-leader-pattern%3D%22use-content%22-t546244.html)
 
 
 
@@ -168,7 +168,7 @@ This section lists disabled test cases in the test suite for the layout engine t
 
 
 
-### Other known issues {#Other+known+issues}
+### Other known issues {#Other-known-issues}
 
 This section lists other known issues.
 

@@ -18,7 +18,7 @@ The input FO document is sent to the FO tree builder via SAX events. Fragments o
 
 - Control is passed to *apps.Driver.render()*. This class fires up a SAX parser, the events from which indirectly control the remaining processing, including building the FO Tree, building the Area Tree, rendering, output and logging.
 
-## Formatting Object Tree {#Formatting+Object+Tree}
+## Formatting Object Tree {#Formatting-Object-Tree}
 
 | Trunk | Maintenance |
 |-------|-------------|
@@ -32,7 +32,7 @@ The input FO document is sent to the FO tree builder via SAX events. Fragments o
 
 There are layout managers for each type of layout decision. They take an FO Tree as input and build a laid-out Area Tree from it. The layout process involves finding out where line breaks and page breaks should be made, then creating the areas on the page. Static areas can then be added for any static regions. As pages are completed, they are added to the Area Tree.
 
-## Area Tree {#Area+Tree}
+## Area Tree {#Area-Tree}
 
 The area tree is a data structure designed to hold the page areas. These pages are then filled with the page regions and various areas. The area tree is used primarily as a minimal structure that can be rendered by the renderers.
 

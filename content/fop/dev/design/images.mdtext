@@ -31,7 +31,7 @@ If images are to be used commonly then we cannot dispose of data in the FopImage
 
 The cache uses an image loader so that it can synchronize the image loading on an image by image basis. Finding and adding an image loader to the cache is also synchronized to prevent thread problems.
 
-## Invalid Images {#Invalid+Images}
+## Invalid Images {#Invalid-Images}
 
 If an image cannot be loaded for some reason, for example the url is invalid or the image data is corrupt or an unknown type. Then it should only attempt to load the image once. All other attempts to get the image should return null so that it can be easily handled.<br></br>This will prevent any extra processing or waiting.
 

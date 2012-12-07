@@ -200,7 +200,7 @@ StreamRegistryEntry
 :
 A [StreamRegistryEntry](../javadoc/org/apache/batik/ext/awt/image/spi/StreamRegistryEntry.html) works with a markable [InputStream](http://java.sun.com/j2se/1.5.0/docs/api/java/io/InputStream.html). This is the preferred form of registry entry as it generally avoids opening a potentially expensive connection multiple times, instead it opens the stream once and relies on mark and reset to allow entries to check the stream.
 
-### Helper classes {#Helper+classes}
+### Helper classes {#Helper-classes}
 
 There exists quite a number of classes to assist in implementing a `RegistryEntry`. It is strongly recommended that you review these classes and make use of them where appropriate. They will likely save you time and improve the integration with Batik.
 
