@@ -1,5 +1,27 @@
 Title: FOP FAQ
 
+[currentFop_config_general]:           1.1/configuration.html#general-elements
+[currentFop_embedding_configExt]:      1.1/embedding.html#config-external
+[currentFop_embedding_configInt]:      1.1/embedding.html#config-internal
+[currentFop_embedding_multithreading]: 1.1/embedding.html#multithreading
+[currentFop_fonts]:                    1.1/fonts.html
+[currentFop_graphics]:                 1.1/graphics.html
+[currentFop_graphics_batik]:           1.1/graphics.html#batik
+[currentFop_graphics_resol]:           1.1/graphics.html#resolution
+[currentFop_graphics_svgPdfText]:      1.1/graphics.html#svg-pdf-text
+[currentFop_graphics_svgScaling]:      1.1/graphics.html#svg-scaling
+[currentFop_hyphenation_support]:      1.1/hyphenation.html#support
+[currentFop_metadata]:                 1.1/metadata.html
+[currentFop_output_generalFonts]:      1.1/output.html#general-fonts
+[currentFop_output_pdfFonts]:          1.1/output.html#pdf-fonts
+[currentFop_output_pdfPostProcess]:    1.1/output.html#pdf-postprocess
+[currentFop_output_pdfWatermark]:      1.1/output.html#pdf-watermark
+[currentFop_pdfencryption]:            1.1/pdfencryption.html
+[currentFop_running_memory]:           1.1/running.html#memory
+[currentFop_servlets_engine]:          1.1/servlets.html#servlet-engine
+[currentFop_servlets_ie]:              1.1/servlets.html#ie
+[currentFop_servlets_xslt]:            1.1/servlets.html#xslt
+
 #FOP FAQ
 
 ## 1. Apache&trade; FOP: General questions  {#part-general}
@@ -61,7 +83,8 @@ The short answer is "Don't ask." For more details, see [Understand FOP's Limitat
 
 ### 1.9. When is the next released planned? {#next-release}
 
-When it's ready and the committers have enough time to go through the time-consuming process of creating a release. We released version 1.0 on 21 July 2010, and will release version 1.1 when we accumulated enough additions and bug fixes. If you want to speed up the process, consider [contributing](dev/index.html#involved) to FOP.
+Generally speaking, definite dates for future release of FOP are not published (or known for that matter).
+It's planned when it's ready and the committers have enough time to go through the time-consuming process of creating a release. We released version 1.1 on 20 October 2012. If you want to speed up the process, consider [contributing](dev/index.html#involved) to FOP.
 
 ### 1.10. Why did you redesign FOP? {#redesign}
 
@@ -101,7 +124,7 @@ If you are running FOP from the command line:
 
 - If this doesn't help, check whether still all the jar files mentioned in the classpath in the `fop.bat` file are in their respective places.
 
-If you run FOP embedded in your servlet, web application or other Java application, check the classpath of the application. Check the also the information pertaining to [servlet engines](1.0/servlets.html#servlet-engine) for further hints.
+If you run FOP embedded in your servlet, web application or other Java application, check the classpath of the application. Check the also the information pertaining to [servlet engines][currentFop_servlets_engine] for further hints.
 
 If you downloaded the source distribution, or a snapshop from the repository, remember you have to build the FOP jars first.
 
@@ -113,7 +136,7 @@ Incompatible versions of Batik may also cause this problem. Use the version of B
 
 ### 2.4. I get an OutOfMemoryException. {#OutOfMemoryException}
 
-See [FOP Memory](1.0/running.html#memory).
+See [FOP Memory][currentFop_running_memory].
 
 ### 2.5. I get a MalformedURLException. {#MalformedURL}
 What you probably think of as "file names" are usually URLs, in particular the `src` attribute of fo:external-graphic.
@@ -157,7 +180,7 @@ Did you get: “Failed to read font metrics file C:\foo\arial.xml: File "C:\foo\
 
 If you used a relative URL, make sure your application has the working directory you expect. Currently FOP does not use the baseDir for resolving relative URLs pointing to font metric files.
 
-Try also setting the [font-base configuration](1.0/configuration.html#general-elements).
+Try also setting the [font-base configuration][currentFop_config_general].
 
 ### 2.12. I get a SAXException: Mismatch: page-sequence vs. root (or similar). {#saxexception-mismatch}
 
@@ -194,7 +217,7 @@ The work-around is to set an explicit `ErrorListener` on the `Transformer`. The 
 
 This message is a warning that FOP failed to read from the Font cache. Which means any Font auto detection or Font directories will be re-scanned. So this failure doesn't break anything.
 
-To avoid the warning you can simply delete the old Font Cache file, which lives in ${base}\conf\font.cache (see [font-base configuration](1.0/configuration.html#general-elements)).
+To avoid the warning you can simply delete the old Font Cache file, which lives in ${base}\conf\font.cache (see [font-base configuration][currentFop_config_general]).
 
 ## 3. Problems with FOP output  {#part-output}
 
@@ -232,7 +255,7 @@ Most commonly, the external file is not being found by FOP. Check the following:
 Other possibilities:
 
 
-- The image format is not supported or not supported completely. See [FOP Graphics Formats](1.0/graphics.html) for a list of supported formats and related issues.
+- The image format is not supported or not supported completely. See [FOP Graphics Formats][currentFop_graphics] for a list of supported formats and related issues.
 
 - The graphic may be too large to fit into the intended space.
 
@@ -240,11 +263,11 @@ Other possibilities:
 
 ### 3.4. My graphical images do not work properly. {#png-fails}
 
-See [FOP Graphics Formats](1.0/graphics.html) for a list of supported graphics formats and related issues.
+See [FOP Graphics Formats][currentFop_graphics] for a list of supported graphics formats and related issues.
 
 ### 3.5. Why is my graphic rendered at a different resolution than it was created? {#graphic-resolution}
 
-See [Graphics Resolution](1.0/graphics.html#resolution).
+See [Graphics Resolution][currentFop_graphics_resol].
 
 ### 3.6. Keep-with-next, keep-with-previous, keep-together don't work. {#keep-with}
 
@@ -315,7 +338,7 @@ The most recent FOP releases should have this problem fixed. Check whether you c
 
 Make sure you have set the language and optionally the country attributes for an appropriate XSL-FO element (fo:page-sequence, fo:block or fo:character):
 <fo:page-sequence language="fi">
-See [Hyphenation Support](1.0/hyphenation.html#support) for details and instructions on using hyphenation with FOP.
+See [Hyphenation Support][currentFop_hyphenation_support] for details and instructions on using hyphenation with FOP.
 
 Explicitly enable hyphenation for an appropriate XSL-FO element (fo:block, fo:character):
 <fo:block hyphenate="true">
@@ -325,21 +348,21 @@ No, although you might easily think so. The problem has to do with property inhe
 
 ### 3.15. Why is the output of Java2D/AWT-based renderers different than, for example, PDF or PS? {#pdf-ps-java2d-differences}
 
-If you render the same document once to a PNG or TIFF and once into a PDF, the output may not be the same, i.e. line breaks are different or lines may have different heights. The reason for this: The Java2D-based renderers use the font subsystem of Java2D/AWT. The PDF and PS renderers use FOP's own font subsystem which provides much better font metrics than Java2D. These can lead to different layout decisions when the same document is rendered with different renderers. An alternative approach to fix this problem might be available but it hasn't been tested, yet. See also the [notes on fonts in the various output formats](1.0/output.html#general-fonts).
+If you render the same document once to a PNG or TIFF and once into a PDF, the output may not be the same, i.e. line breaks are different or lines may have different heights. The reason for this: The Java2D-based renderers use the font subsystem of Java2D/AWT. The PDF and PS renderers use FOP's own font subsystem which provides much better font metrics than Java2D. These can lead to different layout decisions when the same document is rendered with different renderers. An alternative approach to fix this problem might be available but it hasn't been tested, yet. See also the [notes on fonts in the various output formats][currentFop_output_generalFonts].
 
 ## 4. Embedding FOP. Using FOP in a servlet.  {#part-embedding}
 
 ### 4.1. How do I use FOP in a servlet? {#servlet}
 
-See [Using FOP in a Servlet](1.0/servlets.html).
+See [Using FOP in a Servlet][currentFop_servlets].
 
 ### 4.2. How do I use FOP in a servlet with an XSLT transformation? {#servlet-with-xslt}
 
-See [Using FOP in a Servlet with XSLT Transformation](1.0/servlets.html#xslt).
+See [Using FOP in a Servlet with XSLT Transformation][currentFop_servlets_xslt].
 
 ### 4.3. How do I pass parameters to the XSLT transformation? {#servlet-xslt-params}
 
-See [Using FOP in a Servlet with XSLT Transformation](1.0/servlets.html#xslt).
+See [Using FOP in a Servlet with XSLT Transformation][currentFop_servlets_xslt].
 
 ### 4.4. How do I use my own fonts when running FOP from a servlet? {#servlet-nonstd-fonts}
 
@@ -347,29 +370,29 @@ Declare the fonts in the `userconfig.xml` file as usual. See [loading the user c
 
 ### 4.5. How do I set the baseDir property in a servlet environment? {#servlet-baseDir}
 
-See [Setting the Configuration Programmatically](1.0/embedding.html#config-internal).
+See [Setting the Configuration Programmatically][currentFop_embedding_configInt].
 
 ### 4.6. How do I use a user configuration file from a servlet? {#usercfg}
 
-See [Using a Configuration File in an Embedded App](1.0/embedding.html#config-external).
+See [Using a Configuration File in an Embedded App][currentFop_embedding_configExt].
 
 ### 4.7. I keep getting NoClassDefFound and other exceptions. How do I get FOP working for various servlet engines? {#servlet-NoClassDefFound}
 
-See [Servlet Engines](1.0/servlets.html#servlet-engine).
+See [Servlet Engines][currentFop_servlets_engine].
 
 ### 4.8. Can FOP be used in multithreaded environments? {#multithreaded}
 
-See [Multithreading FOP](1.0/embedding.html#multithreading).
+See [Multithreading FOP][currentFop_embedding_multithreading].
 
 ## 5. SVG specific questions  {#part-svg}
 
 ### 5.1. The rendering of SVG text in my PDF is of poor quality. Can I control this? {#svg-text}
 
-See [Placing SVG Text into PDF](1.0/graphics.html#svg-pdf-text).
+See [Placing SVG Text into PDF][currentFop_graphics_svgPdfText].
 
 ### 5.2. How do I use FOP with SVG on headless servers? {#svg-headless}
 
-See [FOP: Graphics (Batik)](1.0/graphics.html#batik).
+See [FOP: Graphics (Batik)][currentFop_graphics_batik].
 
 ### 5.3. FOP does not exit if a SVG is included. {#svghangs}
 
@@ -396,7 +419,7 @@ See also [MalformedURLException](#MalformedURL)
 
 ### 5.5. Why is my SVG rendered at a size different from that specified in my fo:external-graphic element? {#svg-scaling}
 
-See [SVG Scaling](1.0/graphics.html#svg-scaling).
+See [SVG Scaling][currentFop_graphics_svgScaling].
 
 ### 5.6. FOP fails with something like "The attribute "width" of the element <rect> is required". What's wrong? {#svg-attribute-required}
 
@@ -410,15 +433,15 @@ Work-around: Use the latest version of Apache Xalan-J. Note that starting with J
 
 ### 6.1. How do I embed fonts in PDF? {#pdf-embed-font}
 
-See the [Fonts](1.0/fonts.html) page for information about embedding fonts.
+See the [Fonts][currentFop_fonts] page for information about embedding fonts.
 
 ### 6.2. Some characters are not displayed, or displayed incorrectly, or displayed as “#”. {#pdf-characters}
 
 This usually means the selected font doesn't have a glyph for the character.
 
-The standard text fonts supplied with Acrobat Reader have mostly glyphs for characters from the ISO Latin 1 character set. For a variety of reasons, even those are not completely guaranteed to work, for example you can't use the fi ligature from the standard serif font. Check the [overview](1.0/output.html#pdf-fonts) for the default PDF fonts.
+The standard text fonts supplied with Acrobat Reader have mostly glyphs for characters from the ISO Latin 1 character set. For a variety of reasons, even those are not completely guaranteed to work, for example you can't use the fi ligature from the standard serif font. Check the [overview][currentFop_output_pdfFonts] for the default PDF fonts.
 
-If you use your own fonts, the font must have a glyph for the desired character. Furthermore the font must be available on the machine where the PDF is viewed or it must have been embedded in the PDF file. See [embedding fonts](1.0/fonts.html).
+If you use your own fonts, the font must have a glyph for the desired character. Furthermore the font must be available on the machine where the PDF is viewed or it must have been embedded in the PDF file. See [embedding fonts][currentFop_fonts].
 
 For most symbols, it is better to select the symbol font explicitely, for example in order to get the symbol for the mathematical empty set, write:
 <fo:inline font-family="Symbol">&#x2205;</fo:inline>
@@ -426,19 +449,19 @@ The "#" shows up if the selected font does not define a glyph for the required c
 <fo:inline font-family="Helvetica">&#x2205;</fo:inline>
 ### 6.3. What tools are available for post-processing my PDF document? {#pdf-postprocess}
 
-See [PDF Post-processing](1.0/output.html#pdf-postprocess).
+See [PDF Post-processing][currentFop_output_pdfPostProcess].
 
 ### 6.4. How do I add security features (encryption, disable printing) to my PDF document? {#pdf-security}
 
-See [PDF Encryption](1.0/pdfencryption.html). See also [PDF Post-processing](1.0/output.html#pdf-postprocess).
+See [PDF Encryption][currentFop_pdfencryption]. See also [PDF Post-processing][currentFop_output_pdfPostProcess].
 
 ### 6.5. How do I add document properties (title, author, etc.) to my PDF document? {#pdf-doc-properties}
 
-See [Metadata](1.0/metadata.html).
+See [Metadata][currentFop_metadata].
 
 ### 6.6. How do I add watermarks to my PDF document? {#pdf-watermark}
 
-See [PDF Watermarks](1.0/output.html#pdf-watermark).
+See [PDF Watermarks][currentFop_output_pdfWatermark].
 
 ### 6.7. The PDF is printed contorted! {#pdf-print-contortion}
 
@@ -466,7 +489,7 @@ Unfortunately, it is not possible to control the above settings from within the 
 
 ### 7.1. The FOP servlet is called multiple times! {#iex-servlet-multiple}
 
-This is a problem of Internet Explorer requesting the content several times. Please see the [notes on Internet Explorer](1.0/servlets.html#ie) for more information.
+This is a problem of Internet Explorer requesting the content several times. Please see the [notes on Internet Explorer][currentFop_servlets_ie] for more information.
 
 ### 7.2. How do I print PDF directly from the browser? {#iex-pdf-print-from-browser}
 
