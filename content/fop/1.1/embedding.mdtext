@@ -116,12 +116,14 @@ Once the Fop instance is set up, call `getDefaultHandler()` to obtain a SAX Defa
 
 If you want to process XSL-FO generated from XML using XSLT we recommend again using standard JAXP to do the XSLT part and piping the generated SAX events directly through to FOP. The only thing you'd change to do that on the basic usage pattern above is to set up the Transformer differently:
 
-  //without XSLT:
-  //Transformer transformer = factory.newTransformer(); // identity transformer
+    :::java
+    //without XSLT:
+    //Transformer transformer = factory.newTransformer(); // identity transformer
 
-  //with XSLT:
-  Source xslt = new StreamSource(new File("mystylesheet.xsl"));
-  Transformer transformer = factory.newTransformer(xslt);
+    //with XSLT:
+    Source xslt = new StreamSource(new File("mystylesheet.xsl"));
+    Transformer transformer = factory.newTransformer(xslt);
+
 ## Input Sources {#input}
 
 The input XSL-FO document is always received by FOP as a SAX stream (see the [Parsing Design Document](../dev/design/parsing.html) for the rationale).
@@ -155,41 +157,41 @@ The FopFactory holds configuration data and references to objects which are reus
 
 You can set all sorts of things on the FopFactory:
 
+- The **font base URL** to use when resolving relative URLs for fonts. Example:
 
--
-The **font base URL** to use when resolving relative URLs for fonts. Example:
+        :::java
+        fopFactory.getFontManager().setFontBaseURL("file:///C:/Temp/fonts");
 
-    `fopFactory.getFontManager().setFontBaseURL("file:///C:/Temp/fonts");`
+- The **hyphenation base URL** to use when resolving relative URLs for hyphenation patterns. Example:
 
--
-The **hyphenation base URL** to use when resolving relative URLs for hyphenation patterns. Example:
-
-    `fopFactory.setHyphenBaseURL("file:///C:/Temp/hyph");`
+        :::java
+        fopFactory.setHyphenBaseURL("file:///C:/Temp/hyph");
 
 -
 Disable **strict validation**. When disabled FOP is less strict about the rules established by the XSL-FO specification. Example:
 
-    `fopFactory.setStrictValidation(false);`
+        :::java
+        fopFactory.setStrictValidation(false);
 
--
-Enable an **alternative set of rules for text indents** that tries to mimic the behaviour of many commercial FO implementations, that chose to break the specification in this respect. The default of this option is 'false', which causes Apache FOP to behave exactly as described in the specification. To enable the alternative behaviour, call:
+- Enable an **alternative set of rules for text indents** that tries to mimic the behaviour of many commercial FO implementations, that chose to break the specification in this respect. The default of this option is 'false', which causes Apache FOP to behave exactly as described in the specification. To enable the alternative behaviour, call:
 
-    `fopFactory.setBreakIndentInheritanceOnReferenceAreaBoundary(true);`
+        :::java
+        fopFactory.setBreakIndentInheritanceOnReferenceAreaBoundary(true);
 
--
-Set the **source resolution** for the document. This is used internally to determine the pixel size for SVG images and bitmap images without resolution information. Default: 72 dpi. Example:
+- Set the **source resolution** for the document. This is used internally to determine the pixel size for SVG images and bitmap images without resolution information. Default: 72 dpi. Example:
 
-    `fopFactory.setSourceResolution(96); // =96dpi (dots/pixels per Inch)`
+        :::java
+        fopFactory.setSourceResolution(96); // =96dpi (dots/pixels per Inch)
 
--
-Manually add an **ElementMapping instance**. If you want to supply a special FOP extension you can give the instance to the FOUserAgent. Normally, the FOP extensions can be automatically detected (see the documentation on extension for more info). Example:
+- Manually add an **ElementMapping instance**. If you want to supply a special FOP extension you can give the instance to the FOUserAgent. Normally, the FOP extensions can be automatically detected (see the documentation on extension for more info). Example:
 
-    `fopFactory.addElementMapping(myElementMapping);// myElementMapping is a org.apache.fop.fo.ElementMapping`
+        :::java
+        fopFactory.addElementMapping(myElementMapping); // myElementMapping is a org.apache.fop.fo.ElementMapping
 
--
-Set a **URIResolver** for custom URI resolution. By supplying a JAXP URIResolver you can add custom URI resolution functionality to FOP. For example, you can use [Apache XML Commons Resolver](http://xml.apache.org/commons/components/resolver/) to make use of XCatalogs. Example:
+- Set a **URIResolver** for custom URI resolution. By supplying a JAXP URIResolver you can add custom URI resolution functionality to FOP. For example, you can use [Apache XML Commons Resolver](http://xml.apache.org/commons/components/resolver/) to make use of XCatalogs. Example:
 
-    `fopFactory.setURIResolver(myResolver);// myResolver is a javax.xml.transform.URIResolver`
+        :::java
+        fopFactory.setURIResolver(myResolver); // myResolver is a javax.xml.transform.URIResolver
 
 Both the FopFactory and the FOUserAgent have a method to set a URIResolver. The URIResolver on the FopFactory is primarily used to resolve URIs on factory-level (hyphenation patterns, for example) and it is always used if no other URIResolver (for example on the FOUserAgent) resolved the URI first.
 
@@ -197,11 +199,13 @@ Both the FopFactory and the FOUserAgent have a method to set a URIResolver. The 
 
 The user agent is the entity that allows you to interact with a single rendering run, i.e. the processing of a single document. If you wish to customize the user agent's behaviour, the first step is to create your own instance of FOUserAgent using the appropriate factory method on FopFactory and pass that to the factory method that will create a new Fop instance:
 
-  FopFactory fopFactory = FopFactory.newInstance(); // Reuse the FopFactory if possible!
-  // do the following for each new rendering run
-  FOUserAgent userAgent = fopFactory.newFOUserAgent();
-  // customize userAgent
-  Fop fop = fopFactory.newFop(MimeConstants.MIME_POSTSCRIPT, userAgent, out);
+    :::java
+    FopFactory fopFactory = FopFactory.newInstance(); // Reuse the FopFactory if possible!
+    // do the following for each new rendering run
+    FOUserAgent userAgent = fopFactory.newFOUserAgent();
+    // customize userAgent
+    Fop fop = fopFactory.newFop(MimeConstants.MIME_POSTSCRIPT, userAgent, out);
+
 You can do all sorts of things on the user agent:
 
 
@@ -321,7 +325,10 @@ There are several options to consider:
 
 - Whenever possible, try to use SAX to couple the individual components involved (parser, XSL transformer, SQL datasource etc.).
 
-- Depending on the target OutputStream (in case of a FileOutputStream, but not for a ByteArrayOutputStream, for example) it may improve performance considerably if you buffer the OutputStream using a BufferedOutputStream: `out = new java.io.BufferedOutputStream(out);`
+- Depending on the target OutputStream (in case of a FileOutputStream, but not for a ByteArrayOutputStream, for example) it may improve performance considerably if you buffer the OutputStream using a BufferedOutputStream:
+
+        :::java
+        out = new java.io.BufferedOutputStream(out);
 
     Make sure you properly close the OutputStream when FOP is finished.
 
