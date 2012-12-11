@@ -111,7 +111,7 @@ The following is a summary of FOP's current support for the standard XSL-FO obje
 | [§6.13.4](http://www.w3.org/TR/xsl/#fo_wrapper) | wrapper {#fo-object-wrapper} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | Only works as expected with inline-level content. |
 | [§6.13.5](http://www.w3.org/TR/xsl/#fo_marker) | marker {#fo-object-marker} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§6.13.6](http://www.w3.org/TR/xsl/#fo_retrieve-marker) | retrieve-marker {#fo-object-retrieve-marker} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} |   |
-| [§6.13.7](http://www.w3.org/TR/xsl/#fo_retrieve-table-marker) | retrieve-table-marker {#fo-object-retrieve-table-marker} | Extended{.extended} | no{.no} | no{.no} | no{.no} |   |
+| [§6.13.7](http://www.w3.org/TR/xsl/#fo_retrieve-table-marker) | retrieve-table-marker {#fo-object-retrieve-table-marker} | Extended{.extended} | no{.no} | no{.no} | partial{.partial} | [FOP dev] initial support: marker element needs to be an element that does not change the BPD of the containing cell. |
 
 ## XSL-FO Property Support Table (§7) {#fo-property-section}
 
@@ -381,7 +381,7 @@ The following is a summary of FOP's current support for the standard XSL-FO prop
 | [§7.29.4](http://www.w3.org/TR/xsl/#text-altitude) | text-altitude {#fo-property-text-altitude} | Extended{.extended} | no{.no} | no{.no} | no{.no} |   |
 | [§7.29.5](http://www.w3.org/TR/xsl/#text-depth) | text-depth {#fo-property-text-depth} | Extended{.extended} | no{.no} | no{.no} | no{.no} |   |
 | [§7.29.6](http://www.w3.org/TR/xsl/#unicode-bidi) | unicode-bidi {#fo-property-unicode-bidi} | Extended{.extended} | no{.no} | no{.no} | no{.no} |   |
-| [§7.29.7](http://www.w3.org/TR/xsl/#writing-mode) | writing-mode {#fo-property-writing-mode} | Basic{.basic} | no{.no} | yes{.yes} | yes{.yes} | [1.1 and later] only horizontal left-to-right and right-to-left modes |
+| [§7.29.7](http://www.w3.org/TR/xsl/#writing-mode) | writing-mode {#fo-property-writing-mode} | Basic{.basic} | no{.no} | partial{.partial} | partial{.partial} | [1.1 and later] only horizontal left-to-right and right-to-left modes |
 | [§7.30](http://www.w3.org/TR/xsl/#d0e32871) {.category} | Miscellaneous Properties {.category} | {#fo-property-misc-section} |
 | [§7.30.1](http://www.w3.org/TR/xsl/#change-bar-class) | change-bar-class {#fo-property-change-bar-class} | Extended{.extended} | no{.no} | no{.no} | no{.no} |   |
 | [§7.30.2](http://www.w3.org/TR/xsl/#change-bar-color) | change-bar-color {#fo-property-change-bar-color} | Extended{.extended} | no{.no} | no{.no} | no{.no} |   |
