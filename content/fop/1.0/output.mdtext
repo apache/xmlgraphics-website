@@ -16,17 +16,19 @@ Theoretically, there's some potential to make the output of the PDF/PS renderers
 With a work-around, it is possible to match the PDF/PS output in a Java2D-based renderer pretty closely. The clue is to use the [intermediate format](intermediate.html). The trick is to layout the document using FOP's own font subsystem but then render the document using Java2D. Here are the necessary steps (using the command-line):
 
 
-1. Produce an IF file: `fop -fo myfile.fo -at application/pdf myfile.at.xml` <br></br>Specifying "application/pdf" for the "-at" parameter causes FOP to use FOP's own font subsystem (which is used by the PDF renderer). Note that no PDF file is created in this step.
+1. Produce an IF file: `fop -fo myfile.fo -at application/pdf myfile.at.xml`
+
+    Specifying "application/pdf" for the "-at" parameter causes FOP to use FOP's own font subsystem (which is used by the PDF renderer). Note that no PDF file is created in this step.
 
 1. Render to a PDF file: `fop -atin myfile.at.xml -pdf myfile.pdf`
 
 1. Render to a Java2D-based renderer:
 
--  `fop -atin myfile.at.xml -print`
+    -  `fop -atin myfile.at.xml -print`
 
--  `fop -atin myfile.at.xml -awt`
+    -  `fop -atin myfile.at.xml -awt`
 
--  `fop -atin myfile.at.xml -tiff myfile.tiff`
+    -  `fop -atin myfile.at.xml -tiff myfile.tiff`
 
 
 ### Output to a Printer or Other Device {#general-direct-output}

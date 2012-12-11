@@ -279,7 +279,9 @@ There are several options to consider:
 
 - Whenever possible, try to use SAX to couple the individual components involved (parser, XSL transformer, SQL datasource etc.).
 
-- Depending on the target OutputStream (in case of a FileOutputStream, but not for a ByteArrayOutputStream, for example) it may improve performance considerably if you buffer the OutputStream using a BufferedOutputStream: `out = new java.io.BufferedOutputStream(out);` <br></br>Make sure you properly close the OutputStream when FOP is finished.
+- Depending on the target OutputStream (in case of a FileOutputStream, but not for a ByteArrayOutputStream, for example) it may improve performance considerably if you buffer the OutputStream using a BufferedOutputStream: `out = new java.io.BufferedOutputStream(out);`
+
+    Make sure you properly close the OutputStream when FOP is finished.
 
 - Cache the stylesheet. If you use the same stylesheet multiple times you can set up a JAXP `Templates` object and reuse it each time you do the XSL transformation. (More information can be found [here](http://www.javaworld.com/javaworld/jw-05-2003/jw-0502-xsl.html).)
 

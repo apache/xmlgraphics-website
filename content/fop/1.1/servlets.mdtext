@@ -163,9 +163,11 @@ Some versions of Internet Explorer will not automatically show the PDF or call t
 
 - Use an URL ending in `.pdf`, like `http://myserver/servlet/stuff.pdf`. Yes, the servlet can be configured to handle this. If the URL has to contain parameters, try to have **both** the base URL as well as the last parameter end in `.pdf`, if necessary append a dummy parameter, like `http://myserver/servlet/stuff.pdf?par1=a&par2=b&d=.pdf`. The effect may depend on IEx version.
 
-- Give IEx the opportunity to cache. In particular, ensure the server does not set any headers causing IEx not to cache the content. This may be a real problem if the document is sent over HTTPS, because most IEx installations will by default *not* cache any content retrieved over HTTPS. Setting the `Expires` header entry may help in this case:<br></br> `response.setDateHeader("Expires",
-          System.currentTimeMillis() + cacheExpiringDuration *
-          1000);` <br></br>Consult your server manual and the relevant RFCs for further details on HTTP headers and caching.
+- Give IEx the opportunity to cache. In particular, ensure the server does not set any headers causing IEx not to cache the content. This may be a real problem if the document is sent over HTTPS, because most IEx installations will by default *not* cache any content retrieved over HTTPS. Setting the `Expires` header entry may help in this case:
+
+    `response.setDateHeader("Expires", System.currentTimeMillis() + cacheExpiringDuration * 1000);`
+
+    Consult your server manual and the relevant RFCs for further details on HTTP headers and caching.
 
 - Cache in the server. It may help to include a parameter in the URL which has a timestamp as the value min order to decide whether a request is repeated. IEx is reported to retrieve a document up to three times, but never more often.
 

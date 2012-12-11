@@ -20,151 +20,155 @@ Apache&trade; FOP has an extensive automated testing infrastructure. Parts of th
 
 This section lists currently disabled test cases in the test suite for the FO tree tests. The data for this section comes from [test/fotree/disabled-testcases.xml](http://svn.apache.org/repos/asf/xmlgraphics/fop/trunk/test/fotree/disabled-testcases.xml).
 
- **demo-test-failure.fo** (demo test failure):<br></br> *TODO: Add missing description in disabled-testcases.xml!*
+**demo-test-failure.fo** (demo test failure):
 
+*TODO: Add missing description in disabled-testcases.xml!*
 
+**from-table-column_marker.fo** (Markers and core function evaluation):
 
- **from-table-column_marker.fo** (Markers and core function evaluation):<br></br>The code currently evaluates this function according to the column in which the marker appears in the source document, rather than the column it is retrieved in.
-
-
+The code currently evaluates this function according to the column in which the marker appears in the source document, rather than the column it is retrieved in.
 
 ### Layout Engine {#Layout-Engine}
 
 This section lists currently disabled test cases in the test suite for the layout engine tests. The data for this section comes from [test/layoutengine/disabled-testcases.xml](http://svn.apache.org/repos/asf/xmlgraphics/fop/trunk/test/layoutengine/disabled-testcases.xml).
 
- **block-container_space-before_space-after_3.xml** (Auto-height block-containers produce fences):<br></br>Block-containers with no height currently don't create a fence for spaces as they should (they behave like a normal block).
+**block-container_space-before_space-after_3.xml** (Auto-height block-containers produce fences):
 
+Block-containers with no height currently don't create a fence for spaces as they should (they behave like a normal block).
 
+**block_font-stretch.xml** (font-stretch NYI):
 
- **block_font-stretch.xml** (font-stretch NYI):<br></br>Font-stretch is not implemented, yet.
+Font-stretch is not implemented, yet.
 
+**block_linefeed-treatment.xml** (linefeed-treatment):
 
+Preserved linefeeds in a fo:character are not handled correctly.
 
- **block_linefeed-treatment.xml** (linefeed-treatment):<br></br>Preserved linefeeds in a fo:character are not handled correctly.
+**block_white-space-treatment_3.xml** (white-space-treatment):
 
+White space handling incorrectly stops at fo:inline boundaries when it comes to formatter generated line breaks.
 
+**block_space-before_space-after_8.xml** (Empty blocks produce fences):
 
- **block_white-space-treatment_3.xml** (white-space-treatment):<br></br>White space handling incorrectly stops at fo:inline boundaries when it comes to formatter generated line breaks.
+An empty block currently produces a fence for stacking constraints which it shouldn't.
 
+**block_white-space_nbsp_2.xml** (block white-space nbsp 2):
 
+The nbsp given as an fo:character is not adjustable and therefore the justification does not work in this case.
 
- **block_space-before_space-after_8.xml** (Empty blocks produce fences):<br></br>An empty block currently produces a fence for stacking constraints which it shouldn't.
+**block_word-spacing.xml** (block word-spacing):
 
+Word-spacing may not work as expected.
 
+**block_word-spacing_text-align_justify.xml** (block word-spacing text-align justify):
 
- **block_white-space_nbsp_2.xml** (block white-space nbsp 2):<br></br>The nbsp given as an fo:character is not adjustable and therefore the justification does not work in this case.
+Word-spacing may not work as expected.
 
+**external-graphic_oversized.xml** (external-graphic don't shrink):
 
+Images currently don't shrink so they fit on a page when they are too big and shrinking is allowed to happen (min/opt/max).
 
- **block_word-spacing.xml** (block word-spacing):<br></br>Word-spacing may not work as expected.
+**external-graphic_src_uri.xml** (Test case with HTTP URL):
 
+Doesn't work behind a proxy which requires authorization.
 
+**footnote_space-resolution.xml** (Space Resolution in foot note area):
 
- **block_word-spacing_text-align_justify.xml** (block word-spacing text-align justify):<br></br>Word-spacing may not work as expected.
+Space resolution does not work between footnote regions.
 
+**inline_block_nested_3.xml** (NPE for table inside an inline):
 
+Placing a table as a child of an fo:inline produces a NullPointerException.
 
- **external-graphic_oversized.xml** (external-graphic don't shrink):<br></br>Images currently don't shrink so they fit on a page when they are too big and shrinking is allowed to happen (min/opt/max).
+**inline-container_block_nested.xml** (inline-container is not implemented, yet.):
 
+inline-container is not implemented, yet. Content of an inline-container will get swallowed. The test case contains no checks.
 
+**inline-container_border_padding.xml** (inline-container is not implemented, yet.):
 
- **external-graphic_src_uri.xml** (Test case with HTTP URL):<br></br>Doesn't work behind a proxy which requires authorization.
+inline-container is not implemented, yet. Content of an inline-container will get swallowed.
 
+**inline_letter-spacing.xml** (inline letter-spacing):
 
+Letter-spacing may not work as expected within fo:inline.
 
- **footnote_space-resolution.xml** (Space Resolution in foot note area):<br></br>Space resolution does not work between footnote regions.
+**inline_word-spacing.xml** (inline word-spacing):
 
+Word-spacing may not work as expected within fo:inline.
 
+**inline_word-spacing_text-align_justify.xml** (inline word-spacing text-align justify):
 
- **inline_block_nested_3.xml** (NPE for table inside an inline):<br></br>Placing a table as a child of an fo:inline produces a NullPointerException.
+ *TODO: Add missing description in disabled-testcases.xml!*
 
+**leader-alignment.xml** (leader-alignment NYI):
 
+Leader-alignment is not yet implemented.
 
- **inline-container_block_nested.xml** (inline-container is not implemented, yet.):<br></br>inline-container is not implemented, yet. Content of an inline-container will get swallowed. The test case contains no checks.
+**leader_leader-pattern_use-content_bug.xml** (leader-pattern="use-content": Problem with line height):
 
+Line height is not correctly calculated for use-content leaders whose height is larger than the rest of the line.
 
+See also: [http://www.nabble.com/leaders-with-leader-pattern%3D%22use-content%22-t546244.html](http://www.nabble.com/leaders-with-leader-pattern%3D%22use-content%22-t546244.html)
 
- **inline-container_border_padding.xml** (inline-container is not implemented, yet.):<br></br>inline-container is not implemented, yet. Content of an inline-container will get swallowed.
+**page-breaking_4.xml** (Page breaking doesn't deal with IPD changes):
 
+Page breaking currently doesn't support changing available IPD between pages of a single page-sequence. Element list generation has to be reset to redetermine line breaks in this case.
 
+**page-breaking_6.xml** (Overflow handing is incomplete):
 
- **inline_letter-spacing.xml** (inline letter-spacing):<br></br>Letter-spacing may not work as expected within fo:inline.
+Line breaking is not 100% correct when there's too little space. Overflows are not detected and warned.
 
+**page-height_indefinite_simple.xml** (Indefinite page height handling is imcomplete):
 
+A RuntimeException is thrown for a page of indefinite height. Lots of warnings.
 
- **inline_word-spacing.xml** (inline word-spacing):<br></br>Word-spacing may not work as expected within fo:inline.
+**page-number-citation_background-image.xml** (page-number-citation: Problem with background-image):
 
+Background-images on page-number-citations are not placed correctly.
 
+**page-number-citation_complex_1.xml** (IDs are not working on all FO elements):
 
- **inline_word-spacing_text-align_justify.xml** (inline word-spacing text-align justify):<br></br> *TODO: Add missing description in disabled-testcases.xml!*
+The "id" attributes are not properly handled for all block-level FO elements.
 
+**page-number-citation_complex_2.xml** (IDs are not working on all FO elements):
 
+The "id" attributes are not properly handled for all inline-level FO elements.
 
- **leader-alignment.xml** (leader-alignment NYI):<br></br>Leader-alignment is not yet implemented.
+**region-body_column-count_footnote.xml** (Footnotes in multi-column documents):
 
+Footnotes may overlap with text of the region-body in multi-column documents.
 
+**region-body_column-count_balance_4col.xml** (Column Balancing problems):
 
- **leader_leader-pattern_use-content_bug.xml** (leader-pattern="use-content": Problem with line height):<br></br>Line height is not correctly calculated for use-content leaders whose height is larger than the rest of the line.<br></br>See also: [http://www.nabble.com/leaders-with-leader-pattern%3D%22use-content%22-t546244.html](http://www.nabble.com/leaders-with-leader-pattern%3D%22use-content%22-t546244.html)
+Situation in a 4-column document where the column balancing doesn't work and even causes some content to disappear.
 
+**region-body_column-count_bug36356.xml** (Column Balancing problems):
 
+Column balancing doesn't work as expected.
 
- **page-breaking_4.xml** (Page breaking doesn't deal with IPD changes):<br></br>Page breaking currently doesn't support changing available IPD between pages of a single page-sequence. Element list generation has to be reset to redetermine line breaks in this case.
+**table-cell_empty_area_with_marker.xml** (table-cell empty area with marker.xml):
 
+A table-cell producing an empty area does currently not add any markers to a page. See TODO entry in AreaAdditionUtil.
 
+**table_border-width_conditionality.xml** (Border conditionality on table):
 
- **page-breaking_6.xml** (Overflow handing is incomplete):<br></br>Line breaking is not 100% correct when there's too little space. Overflows are not detected and warned.
+The code should be ok, but the test case uses shorthands and therefore is probably not expressing the indended outcome according to the spec. The test case should be revisited.
 
+**block_shy_linebreaking_hyph.xml** (Soft hyphen with normal hyphenation enabled):
 
+A soft hyphen should be a preferred as break compared to a normal hyphenation point but is not.
 
- **page-height_indefinite_simple.xml** (Indefinite page height handling is imcomplete):<br></br>A RuntimeException is thrown for a page of indefinite height. Lots of warnings.
+**keep_within-page_multi-column_overflow.xml** (Page-keep not respected in multi-column layout):
 
+The block should cause overflow in the last column on the page, rather than be broken.
 
+**block-container_reference-orientation_bug36391.xml** (Block Container Reference Orientation Bug):
 
- **page-number-citation_background-image.xml** (page-number-citation: Problem with background-image):<br></br>Background-images on page-number-citations are not placed correctly.
+An assert is failing
 
+**simple-page-master_writing-mode_rl_region-body_writing-mode-lr.xml** (Writing mode problems):
 
-
- **page-number-citation_complex_1.xml** (IDs are not working on all FO elements):<br></br>The "id" attributes are not properly handled for all block-level FO elements.
-
-
-
- **page-number-citation_complex_2.xml** (IDs are not working on all FO elements):<br></br>The "id" attributes are not properly handled for all inline-level FO elements.
-
-
-
- **region-body_column-count_footnote.xml** (Footnotes in multi-column documents):<br></br>Footnotes may overlap with text of the region-body in multi-column documents.
-
-
-
- **region-body_column-count_balance_4col.xml** (Column Balancing problems):<br></br>Situation in a 4-column document where the column balancing doesn't work and even causes some content to disappear.
-
-
-
- **region-body_column-count_bug36356.xml** (Column Balancing problems):<br></br>Column balancing doesn't work as expected.
-
-
-
- **table-cell_empty_area_with_marker.xml** (table-cell empty area with marker.xml):<br></br>A table-cell producing an empty area does currently not add any markers to a page. See TODO entry in AreaAdditionUtil.
-
-
-
- **table_border-width_conditionality.xml** (Border conditionality on table):<br></br>The code should be ok, but the test case uses shorthands and therefore is probably not expressing the indended outcome according to the spec. The test case should be revisited.
-
-
-
- **block_shy_linebreaking_hyph.xml** (Soft hyphen with normal hyphenation enabled):<br></br>A soft hyphen should be a preferred as break compared to a normal hyphenation point but is not.
-
-
-
- **keep_within-page_multi-column_overflow.xml** (Page-keep not respected in multi-column layout):<br></br>The block should cause overflow in the last column on the page, rather than be broken.
-
-
-
- **block-container_reference-orientation_bug36391.xml** (Block Container Reference Orientation Bug):<br></br>An assert is failing
-
-
-
- **simple-page-master_writing-mode_rl_region-body_writing-mode-lr.xml** (Writing mode problems):<br></br>Test erroneously depends upon incorrect implementation of writing-mode trait derivation on fo:region-*.
+Test erroneously depends upon incorrect implementation of writing-mode trait derivation on fo:region-*.
 
 
 

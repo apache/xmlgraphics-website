@@ -52,7 +52,11 @@ If you have a test which you think would be useful you should supply the test an
 
 The tests are stored in the "<svn_repository>/test" directory.
 
-You can run the tests by specifying the build target "test" ie:<br></br> `ant.sh test` (Unix)<br></br> `ant test` (Windows)<br></br>
+You can run the tests by specifying the build target "test" ie:
+
+`ant.sh test` (Unix)
+
+`ant test` (Windows)
 
 This will then compare the current code in the local src directory to a specified release of FOP. Any differences between the current code and the output from the reference version will be reported. If the test previously passed then the test run will have failed.
 

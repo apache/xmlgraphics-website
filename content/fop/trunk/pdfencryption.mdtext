@@ -129,6 +129,10 @@ The pure Java implementation from [Bouncy Castle](http://www.bouncycastle.org/) 
 
 1. Unpack the distribution. Add the jar file to your classpath. A convenient way to use the jar on Linux is to simply drop it into the FOP lib directory, it will be automatically picked up by `fop.sh`.
 
-1. Open the `java.security` file and add<br></br> `security.provider.6=org.bouncycastle.jce.provider.BouncyCastleProvider`,<br></br>preferably at the end of the block defining the other crypto providers. For JDK 1.4 this is detailed on [Sun's web site](http://java.sun.com/j2se/1.4/docs/guide/security/jce/JCERefGuide.html#InstallProvider).
+1. Open the `java.security` file and add
+
+`security.provider.6=org.bouncycastle.jce.provider.BouncyCastleProvider`,
+
+preferably at the end of the block defining the other crypto providers. For JDK 1.4 this is detailed on [Sun's web site](http://java.sun.com/j2se/1.4/docs/guide/security/jce/JCERefGuide.html#InstallProvider).
 
 If you have any experience with Mozilla JSS or any other cryptography provider, please post it to the fop-user list.

@@ -5,7 +5,9 @@ Title: Apache(tm) FOP Design: Images
 
 ## Introduction {#intro}
 
-Images may only be needed to be loaded when the image is rendered to the output or to find the dimensions.<br></br>An image url may be invalid, this can be costly to find out so we need to keep a list of invalid image urls.
+Images may only be needed to be loaded when the image is rendered to the output or to find the dimensions.
+
+An image url may be invalid, this can be costly to find out so we need to keep a list of invalid image urls.
 
 We have a number of different caching schemes that are possible.
 
@@ -33,7 +35,9 @@ The cache uses an image loader so that it can synchronize the image loading on a
 
 ## Invalid Images {#Invalid-Images}
 
-If an image cannot be loaded for some reason, for example the url is invalid or the image data is corrupt or an unknown type. Then it should only attempt to load the image once. All other attempts to get the image should return null so that it can be easily handled.<br></br>This will prevent any extra processing or waiting.
+If an image cannot be loaded for some reason, for example the url is invalid or the image data is corrupt or an unknown type. Then it should only attempt to load the image once. All other attempts to get the image should return null so that it can be easily handled.
+
+This will prevent any extra processing or waiting.
 
 ## Reading {#Reading}
 

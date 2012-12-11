@@ -100,7 +100,10 @@ The PropertyList extends HashMap and its basic function is to associate Property
 
 The PropertyList itself provides various ways of looking up Property values to handle such issues as inheritance and corresponding properties.
 
-The main logic is:<br></br>If the property is a writing-mode relative property (using start, end, before or after in its name), the corresponding absolute property value is returned if it's explicitly set on this FO.<br></br>Otherwise, the writing-mode relative value is returned if it's explicitly set. If the property is inherited, the process repeats using the PropertyList of the FO's parent object. (This is easy because each PropertyList points to the PropertyList of the nearest ancestor FO.) If the property isn't inherited or no value is found at any level, the initial value is returned.
+The main logic is:
+If the property is a writing-mode relative property (using start, end, before or after in its name), the corresponding absolute property value is returned if it's explicitly set on this FO.
+
+Otherwise, the writing-mode relative value is returned if it's explicitly set. If the property is inherited, the process repeats using the PropertyList of the FO's parent object. (This is easy because each PropertyList points to the PropertyList of the nearest ancestor FO.) If the property isn't inherited or no value is found at any level, the initial value is returned.
 
 ## Implementing Standard Properties {#property-spec}
 

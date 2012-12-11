@@ -250,9 +250,13 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 We thank the following people for their contributions to this release.
 
-This is a list of all people who participated as committers:<br></br>Adrian Cumiskey (AC), Andreas Delmelle (AD), Chris Bowditch (CB), Glenn Adams (GA), Jeremias Märki (JM), Mehdi Houshmand (MH), Peter Hancock (PH), (PH,VH), Simon Pepping (SP), Vincent Hennebert (VH).
+This is a list of all people who participated as committers:
 
-This is a list of other contributors:<br></br>Adrian Buza, Alberto Simões, Alexandros Papadakis, Alexios Giotis, Alexis Giotis, Andrejus Chaliapinas, Armin Haaf, Carsten Pfeiffer, Georg Datterl, Glenn Adams, JM, Mehdi Houshmand, Joshua Marquart, Julien Aymé, Luis Bernardo, Martin Koegler, Matthias Reischenbacher, Max Aster, Maximilian Aster, Mehdi Houshmand, Melanie Drake, mkoegler.AT.auto.tuwien.ac.at, Pascal Sancho, Patrick Jaromin, Paul Huemer, Peter Hancock, Sergey Vladimirov, Simon Pepping, VH and PH.
+Adrian Cumiskey (AC), Andreas Delmelle (AD), Chris Bowditch (CB), Glenn Adams (GA), Jeremias Märki (JM), Mehdi Houshmand (MH), Peter Hancock (PH), (PH,VH), Simon Pepping (SP), Vincent Hennebert (VH).
+
+This is a list of other contributors:
+
+Adrian Buza, Alberto Simões, Alexandros Papadakis, Alexios Giotis, Alexis Giotis, Andrejus Chaliapinas, Armin Haaf, Carsten Pfeiffer, Georg Datterl, Glenn Adams, JM, Mehdi Houshmand, Joshua Marquart, Julien Aymé, Luis Bernardo, Martin Koegler, Matthias Reischenbacher, Max Aster, Maximilian Aster, Mehdi Houshmand, Melanie Drake, mkoegler.AT.auto.tuwien.ac.at, Pascal Sancho, Patrick Jaromin, Paul Huemer, Peter Hancock, Sergey Vladimirov, Simon Pepping, VH and PH.
 
 ## Version 1.0 (21 July 2010) {#version_1.0}
 
@@ -563,9 +567,13 @@ Committed by AD.
 
 We thank the following people for their contributions to this release.
 
-This is a list of all people who participated as committers:<br></br>Adrian Cumiskey (AC), Andreas Delmelle (AD), Chris Bowditch (CB), Jeremias Märki (JM), (JM,VH), Luca Furini (LF), Max Berger (MB), Simon Pepping (SP), Vincent Hennebert (VH).
+This is a list of all people who participated as committers:
 
-This is a list of other contributors:<br></br>Alexander Stamenov, Alok Singh, Antti Karanta, Bharat Attaluri, Carsten Siedentop, D.W. Harks, Dario Laera, Emil Maskovsky, Francois Fernandes, Georg Datterl, Harald G. Henne, J. Frantzius, Jason Harrop, Jonathan Levinson, Jost Klopfstein, Martin Edge, Maxim Wirt, Nicolas Peninguy, Pavel Kysilka, Peter Coppens, Peter Hancock, Richard Wheeldon, rogov.AT.devexperts.com, Thomas Stieler, Tow Browder, Venkat Reddy, Yegor Kozlov.
+Adrian Cumiskey (AC), Andreas Delmelle (AD), Chris Bowditch (CB), Jeremias Märki (JM), (JM,VH), Luca Furini (LF), Max Berger (MB), Simon Pepping (SP), Vincent Hennebert (VH).
+
+This is a list of other contributors:
+
+Alexander Stamenov, Alok Singh, Antti Karanta, Bharat Attaluri, Carsten Siedentop, D.W. Harks, Dario Laera, Emil Maskovsky, Francois Fernandes, Georg Datterl, Harald G. Henne, J. Frantzius, Jason Harrop, Jonathan Levinson, Jost Klopfstein, Martin Edge, Maxim Wirt, Nicolas Peninguy, Pavel Kysilka, Peter Coppens, Peter Hancock, Richard Wheeldon, rogov.AT.devexperts.com, Thomas Stieler, Tow Browder, Venkat Reddy, Yegor Kozlov.
 
 ## Version 0.95 (05 August 2008) {#version_0.95}
 
@@ -629,9 +637,13 @@ This is a list of other contributors:<br></br>Alexander Stamenov, Alok Singh, An
 
 We thank the following people for their contributions to this release.
 
-This is a list of all people who participated as committers:<br></br>Andreas Delmelle (AD), Jeremias Märki (JM), Vincent Hennebert (VH).
+This is a list of all people who participated as committers:
 
-This is a list of other contributors:<br></br>Maximilian Aster.
+Andreas Delmelle (AD), Jeremias Märki (JM), Vincent Hennebert (VH).
+
+This is a list of other contributors:
+
+Maximilian Aster.
 
 ## Version 0.95beta (26 March 2008) {#version_0.95beta}
 
@@ -771,9 +783,21 @@ This is a list of other contributors:<br></br>Maximilian Aster.
 
 - ![fix" src="images/fix.jpg)Fixed erroneous usage of inherited color-values in SVG. Committed by AD. Thanks to ckohrn.at.tng.de. See Issue [43274](http://issues.apache.org/bugzilla/show_bug.cgi?id=43274).
 
-- ![update" src="images/update.jpg)Facilitate the implementation for font-selection-strategy:<br></br>• Changed FontInfo.fontLookup to always return an array of FontTriplet.<br></br>• Changed CommonFont.getFontState to return an array of FontTriplet.<br></br>• Initial modifications to the related LMs: initialized with the font corresponding to the first of the triplets.<br></br>Committed by AD.
+- ![update" src="images/update.jpg)Facilitate the implementation for font-selection-strategy:
 
-- ![update" src="images/update.jpg)PropertyCache phase 2:<br></br>• improvement of the PropertyCache itself should now guarantee acceptable performance of the static caches in multi-session environments, which is a possible problem with synchronizedMap.<br></br>• changed CommonFont to use the cache: added CachedCommonFont to contain the properties that are always cacheable CommonFont itself is only cached if the remaining properties are absolutes.<br></br>• changed CommonHyphenation, KeepProperty, ColorProperty and FontFamilyProperty to use the cache.<br></br>Committed by AD.
+    - Changed FontInfo.fontLookup to always return an array of FontTriplet.
+    - Changed CommonFont.getFontState to return an array of FontTriplet.
+    - Initial modifications to the related LMs: initialized with the font corresponding to the first of the triplets.
+
+    Committed by AD.
+
+- ![update" src="images/update.jpg)PropertyCache phase 2:
+
+    - improvement of the PropertyCache itself should now guarantee acceptable performance of the static caches in multi-session environments, which is a possible problem with synchronizedMap.
+    - changed CommonFont to use the cache: added CachedCommonFont to contain the properties that are always cacheable CommonFont itself is only cached if the remaining properties are absolutes.
+    - changed CommonHyphenation, KeepProperty, ColorProperty and FontFamilyProperty to use the cache.
+
+    Committed by AD.
 
 ### Changes to Renderers (Output Formats) {#Renderers_0.95beta}
 
@@ -820,9 +844,13 @@ This is a list of other contributors:<br></br>Maximilian Aster.
 
 We thank the following people for their contributions to this release.
 
-This is a list of all people who participated as committers:<br></br>Adrian Cumiskey (AC), Andreas Delmelle (AD), Jeremias Märki (JM), Max Berger (MB), Vincent Hennebert (VH).
+This is a list of all people who participated as committers:
 
-This is a list of other contributors:<br></br>Adrian Cumiskey, Andrejus Chaliapinas, Bruno Feurer, ckohrn.at.tng.de, David Churavy, David Delbecq, Gordon Cooke, Justus Piater, Max Berger, Patrick Jaromin, Stefan Ziel, V. Schappert.
+Adrian Cumiskey (AC), Andreas Delmelle (AD), Jeremias Märki (JM), Max Berger (MB), Vincent Hennebert (VH).
+
+This is a list of other contributors:
+
+Adrian Cumiskey, Andrejus Chaliapinas, Bruno Feurer, ckohrn.at.tng.de, David Churavy, David Delbecq, Gordon Cooke, Justus Piater, Max Berger, Patrick Jaromin, Stefan Ziel, V. Schappert.
 
 ## Version 0.94 (24th August 2007) {#version_0.94}
 
@@ -913,9 +941,13 @@ This is a list of other contributors:<br></br>Adrian Cumiskey, Andrejus Chaliapi
 
 We thank the following people for their contributions to this release.
 
-This is a list of all people who participated as committers:<br></br>Andreas Delmelle (AD), Jay Bryant (JB), Jeremias Märki (JM), Luca Furini (LF), Manuel Mall (MM), Simon Pepping (SP), Vincent Hennebert (VH), (VH, JM).
+This is a list of all people who participated as committers:
 
-This is a list of other contributors:<br></br>Adrian Cumiskey, Erwin Tratar, Hussein Shafie, Martin Kögler, Max Berger, Paul Vinkenoog, Richard Wheeldon.
+Andreas Delmelle (AD), Jay Bryant (JB), Jeremias Märki (JM), Luca Furini (LF), Manuel Mall (MM), Simon Pepping (SP), Vincent Hennebert (VH), (VH, JM).
+
+This is a list of other contributors:
+
+Adrian Cumiskey, Erwin Tratar, Hussein Shafie, Martin Kögler, Max Berger, Paul Vinkenoog, Richard Wheeldon.
 
 ## Version 0.93 (9 January 2007) {#version_0.93}
 
@@ -1044,9 +1076,13 @@ This is a list of other contributors:<br></br>Adrian Cumiskey, Erwin Tratar, Hus
 
 We thank the following people for their contributions to this release.
 
-This is a list of all people who participated as committers:<br></br>Andreas Delmelle (AD), Bertrand Delacrétaz (BD), Jeremias Märki (JM), Manuel Mall (MM), Simon Pepping (SP).
+This is a list of all people who participated as committers:
 
-This is a list of other contributors:<br></br>Adam Strzelecki, Victor Mote, Dominic Brügger, Gary Reed, Gerhard Oettl, Gilles Beaugeais, Igor Istomin, Jeroen Meijer, Julien Aymé, Max Berger, Oliver Hernàndez Valls, Peter Coppens, Pierre-Henri Kraus, Richard Wheeldon.
+Andreas Delmelle (AD), Bertrand Delacrétaz (BD), Jeremias Märki (JM), Manuel Mall (MM), Simon Pepping (SP).
+
+This is a list of other contributors:
+
+Adam Strzelecki, Victor Mote, Dominic Brügger, Gary Reed, Gerhard Oettl, Gilles Beaugeais, Igor Istomin, Jeroen Meijer, Julien Aymé, Max Berger, Oliver Hernàndez Valls, Peter Coppens, Pierre-Henri Kraus, Richard Wheeldon.
 
 ## Version 0.92beta (18 Apr 2006) {#version_0.92beta}
 
@@ -1159,9 +1195,13 @@ This is a list of other contributors:<br></br>Adam Strzelecki, Victor Mote, Domi
 
 We thank the following people for their contributions to this release.
 
-This is a list of all people who participated as committers:<br></br>Andreas Delmelle (AD), Jeremias Märki (JM), Luca Furini (LF), Manuel Mall (MM), Simon Pepping (SP).
+This is a list of all people who participated as committers:
 
-This is a list of other contributors:<br></br>Gerhard Oettl, Gerhard Oettl (gerhard.oettl.at.oesoft.at), Jirí Mareš, Max Berger, Richard Wheeldon.
+Andreas Delmelle (AD), Jeremias Märki (JM), Luca Furini (LF), Manuel Mall (MM), Simon Pepping (SP).
+
+This is a list of other contributors:
+
+Gerhard Oettl, Gerhard Oettl (gerhard.oettl.at.oesoft.at), Jirí Mareš, Max Berger, Richard Wheeldon.
 
 ## Version 0.91beta (23 Dec 2005) {#version_0.91beta}
 
@@ -1244,9 +1284,13 @@ This is a list of other contributors:<br></br>Gerhard Oettl, Gerhard Oettl (gerh
 
 We thank the following people for their contributions to this release.
 
-This is a list of all people who participated as committers:<br></br>Jeremias Märki (JM), (LF, MM), Manuel Mall (MM).
+This is a list of all people who participated as committers:
 
-This is a list of other contributors:<br></br>Tom Craddock.
+Jeremias Märki (JM), (LF, MM), Manuel Mall (MM).
+
+This is a list of other contributors:
+
+Tom Craddock.
 
 ## Version 0.90alpha1 (22 Nov 2005) {#version_0.90alpha1}
 
@@ -1259,7 +1303,9 @@ This is a list of other contributors:<br></br>Tom Craddock.
 
 We thank the following people for their contributions to this release.
 
-This is a list of all people who participated as committers:<br></br>the FOP committers (all).
+This is a list of all people who participated as committers:
+
+the FOP committers (all).
 
 ## Version 0.20.5 (18 July 2003) {#version_0.20.5}
 
@@ -1272,7 +1318,9 @@ This is a list of all people who participated as committers:<br></br>the FOP com
 
 We thank the following people for their contributions to this release.
 
-This is a list of all people who participated as committers:<br></br>the FOP committers (all).
+This is a list of all people who participated as committers:
+
+the FOP committers (all).
 
 ## All Committers {#all-committers}
 

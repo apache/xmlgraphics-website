@@ -147,9 +147,20 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![fix](/images/fix.jpg)Fixed erroneous usage of inherited color-values in SVG. Committed by AD. Thanks to ckohrn.at.tng.de. See Issue [43274](http://issues.apache.org/bugzilla/show_bug.cgi?id=43274).
 
-- ![update](/images/update.jpg)Facilitate the implementation for font-selection-strategy:<br></br>• Changed FontInfo.fontLookup to always return an array of FontTriplet.<br></br>• Changed CommonFont.getFontState to return an array of FontTriplet.<br></br>• Initial modifications to the related LMs: initialized with the font corresponding to the first of the triplets.<br></br>Committed by AD.
+- ![update](/images/update.jpg)Facilitate the implementation for font-selection-strategy:
 
-- ![update](/images/update.jpg)PropertyCache phase 2:<br></br>• improvement of the PropertyCache itself should now guarantee acceptable performance of the static caches in multi-session environments, which is a possible problem with synchronizedMap.<br></br>• changed CommonFont to use the cache: added CachedCommonFont to contain the properties that are always cacheable CommonFont itself is only cached if the remaining properties are absolutes.<br></br>• changed CommonHyphenation, KeepProperty, ColorProperty and FontFamilyProperty to use the cache.<br></br>Committed by AD.
+    - Changed FontInfo.fontLookup to always return an array of FontTriplet.
+    - Changed CommonFont.getFontState to return an array of FontTriplet.
+    - Initial modifications to the related LMs: initialized with the font corresponding to the first of the triplets.
+
+    Committed by AD.
+
+- ![update](/images/update.jpg)PropertyCache phase 2:
+    - improvement of the PropertyCache itself should now guarantee acceptable performance of the static caches in multi-session environments, which is a possible problem with synchronizedMap.
+    - changed CommonFont to use the cache: added CachedCommonFont to contain the properties that are always cacheable CommonFont itself is only cached if the remaining properties are absolutes.
+    - changed CommonHyphenation, KeepProperty, ColorProperty and FontFamilyProperty to use the cache.
+
+    Committed by AD.
 
 ### Changes to Renderers (Output Formats) {#Renderers_0.95beta}
 
@@ -196,6 +207,10 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 We thank the following people for their contributions to this release.
 
-This is a list of all people who participated as committers:<br></br>Adrian Cumiskey (AC), Andreas Delmelle (AD), Jeremias Märki (JM), Max Berger (MB), Vincent Hennebert (VH).
+This is a list of all people who participated as committers:
 
-This is a list of other contributors:<br></br>Adrian Cumiskey, Andrejus Chaliapinas, Bruno Feurer, ckohrn.at.tng.de, David Churavy, David Delbecq, Gordon Cooke, Justus Piater, Max Berger, Patrick Jaromin, Stefan Ziel, V. Schappert.
+Adrian Cumiskey (AC), Andreas Delmelle (AD), Jeremias Märki (JM), Max Berger (MB), Vincent Hennebert (VH).
+
+This is a list of other contributors:
+
+Adrian Cumiskey, Andrejus Chaliapinas, Bruno Feurer, ckohrn.at.tng.de, David Churavy, David Delbecq, Gordon Cooke, Justus Piater, Max Berger, Patrick Jaromin, Stefan Ziel, V. Schappert.
