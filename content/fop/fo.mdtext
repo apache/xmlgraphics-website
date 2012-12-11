@@ -15,19 +15,21 @@ When entering special (non-ASCII) characters in XML, the general rule is to use 
 
 Entities such as `&uuml;` (u with an umlaut), which work in HTML, will be flagged as undefined entities unless you define them yourself in your DTD. Use the corresponding Unicode character instead. A list of predefined HTML entities and their Unicode codepoints can be found at [Character entity references in HTML 4](http://www.w3.org/TR/html4/sgml/entities.html).
 
-One common example is `&nbsp;`, used to obtain a non-breaking space in HTML. In XML, use &#160; instead.
+One common example is `&nbsp;`, used to obtain a non-breaking space in HTML. In XML, use `&#160;` or `&#xa0;` instead.
 
 For other non-ASCII characters, such as the Euro symbol, checkbox, etc., see the [Unicode Reference By Name](http://www.unicode.org/charts/charindex.html) document that is found at the [Unicode Consortium](http://www.unicode.org) site.
 
 After finding the correct Unicode codepoint to represent the character, use [XML Character References](http://www.w3.org/TR/2000/REC-xml-20001006#sec-references) to put the character into your source XML, XSLT or FO. See the non-breaking-space comments above for an example of the syntax using decimal notation. The following hexadecimal example will result in a Euro sign:
-&#x20AC;
+
+`&#x20AC;`
+
 Getting your XML correctly encoded is only part of the job. If you want the character to display or print correctly (and you probably do), then the selected font must contain the necessary glyph. Because of differences between font encoding methods, and limitations in some font technologies, this can be a troublesome issue, especially for symbol characters. The FOP example file [Base-14 Font Character Mapping](fo/fonts.fo.pdf) is a very useful resource in sorting these issues out for the Base-14 fonts. For other fonts, use font editing sofware or operating system utilities (such as the Character Map in most Windows platforms) to determine what characters the font supports.
 
 An alternative to encoding the character and making it available through a font is to use an embedded graphic to represent the character: GIF, PNG, SVG, etc.
 
 ### Entity Characters {#xml-entity-chars}
 
-The handful of basic XML character entities that do exist are the ampersand, apostrophe, less-than, greater-than, and single-quote characters. These are needed to distinguish markup tags from content, and to distinguish character entities from content. To avoid parser complaints about illegal characters and entities in your input, ensure that ampersands in text and attributes are written as &amp;, "<" is written as &lt;, and ">" as &gt;. It is not necessary everywhere, but it is wise to do so anyway, just to be sure.
+The handful of basic XML character entities that do exist are the ampersand, apostrophe, less-than, greater-than, and single-quote characters. These are needed to distinguish markup tags from content, and to distinguish character entities from content. To avoid parser complaints about illegal characters and entities in your input, ensure that ampersands in text and attributes are written as `&amp;`, "<" is written as `&lt;`, and ">" as `&gt;`. It is not necessary everywhere, but it is wise to do so anyway, just to be sure.
 
 Most XML parsers will provide a line number and sometimes a column number for offending characters.
 
