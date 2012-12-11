@@ -166,7 +166,7 @@ Some versions of Internet Explorer will not automatically show the PDF or call t
 - Give IEx the opportunity to cache. In particular, ensure the server does not set any headers causing IEx not to cache the content. This may be a real problem if the document is sent over HTTPS, because most IEx installations will by default *not* cache any content retrieved over HTTPS. Setting the `Expires` header entry may help in this case:
 
         :::java
-        `response.setDateHeader("Expires", System.currentTimeMillis() + cacheExpiringDuration * 1000);`
+        response.setDateHeader("Expires", System.currentTimeMillis() + cacheExpiringDuration * 1000);
 
     Consult your server manual and the relevant RFCs for further details on HTTP headers and caching.
 

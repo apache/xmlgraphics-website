@@ -291,7 +291,7 @@ There are several options to consider:
 - Depending on the target OutputStream (in case of a FileOutputStream, but not for a ByteArrayOutputStream, for example) it may improve performance considerably if you buffer the OutputStream using a BufferedOutputStream:
 
         :::java
-        `out = new java.io.BufferedOutputStream(out);`
+        out = new java.io.BufferedOutputStream(out);
 
     Make sure you properly close the OutputStream when FOP is finished.
 
