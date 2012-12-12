@@ -35,9 +35,12 @@ Use the fox:destination element to define "named destinations" inside a PDF docu
     <fo:block id="table-of-contents">Table of Contents</fo:block>
 
 <warning>It is possible that in some future release of FOP, *all* elements with "id" attributes will generate named-destinations, which will eliminate the need for fox:destination.</warning>
+
 ### Table Continuation Label {#table-continue-label}
 
-This extension element hasn't been reimplemented for the redesigned code, yet.
+In old versions of Apache FOP, there was a `fox:continued-label` element which was used to insert a message when a table went over several pages.
+This extension element will not be reimplemented for the redesigned code.
+The redesigned code makes use of the [`fo:retrieve-table-marker`](http://www.w3.org/TR/xsl11/#fo_retrieve-table-marker) element defined in the [W3C XSL 1.1](http://www.w3.org/TR/xsl11/) standard.
 
 ### Row Scope for Header Table Cells
 
