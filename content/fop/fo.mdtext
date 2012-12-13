@@ -1,5 +1,7 @@
 Title: Apache(tm) FOP: XSL-FO Input
 
+[fopLatest_config]: 1.1/configuration.html
+
 #Apache&trade; FOP: XSL-FO Input
 <subtitle>Basic Help for Using XML, XSLT, and XSL-FO</subtitle>
 
@@ -408,7 +410,7 @@ Pages in landscape format can easily be produced by exchanging the page-height a
 
 Resources needed by an XSL-FO file that are external to it (graphics, for example), are defined in the XSL-FO standard as being of type "uri-specification". This is defined in the standard at [Section 5.11 Property Datatypes](http://www.w3.org/TR/xsl11/#datatype), which includes a link to the URI standard itself. Refer to the XSL-FO and URI standards themselves for more detailed instructions.
 
-URIs may be either absolute or relative to a base URI. (See [FOP: Configuration](1.0/configuration.html) for information on setting the base URI for a FOP session). Here is an example referencing an external-graphic that is relative to the base URI:
+URIs may be either absolute or relative to a base URI. (See [FOP: Configuration][fopLatest_config] for information on setting the base URI for a FOP session). Here is an example referencing an external-graphic that is relative to the base URI:
 
     :::xml
     <fo:external-graphic src="url('images/logo.jpg')"/>

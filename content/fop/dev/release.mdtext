@@ -56,6 +56,8 @@ The checklist below is based on a combination of input from from Christian Geise
 
 - Make a fresh checkout with the just created tag: `svn co https://svn.apache.org/repos/asf/xmlgraphics/fop/tags/fop-1_0`
 
+- Copy the `jai_core.jar` and `jai_codec.jar` to `lib`.
+
 - Copy the hyphenation patterns jar file `fop-hyph.jar` to `lib` (e.g. from `http://sourceforge.net/projects/offo`
 
 - Alternatively, create a `build-local.properties` file that points to the above libraries.

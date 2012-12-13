@@ -634,7 +634,8 @@ The tag-logical-element extension element allows to injects TLEs into the AFP ou
         xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
       <fo:layout-master-set>
         <fo:simple-page-master master-name="simple">
-          <afp:tag-logical-element name="The TLE Name" value="The TLE Value" />
+          <afp:tag-logical-element name="The TLE Name" value="The TLE Value"
+              encoding="500"/>
           <fo:region-body/>
         </fo:simple-page-master>
       </fo:layout-master-set>
@@ -644,7 +645,7 @@ The tag-logical-element extension element allows to injects TLEs into the AFP ou
         <fo:flow flow-name="xsl-region-body">
           [..]
 
-The tag-logical-element extension element can appear within a simple-page-master (page level) or it can appear as child of page-sequence (page group level). Multiple tag-logical-element extension elements within a simple-page-master or page-sequence are allowed. The name and value attributes are mandatory.
+The tag-logical-element extension element can appear within a simple-page-master (page level) or it can appear as child of page-sequence (page group level). Multiple tag-logical-element extension elements within a simple-page-master or page-sequence are allowed. The name and value attributes are mandatory. The `encoding` attribute specifying a CCSID encoding is optional.
 
 #### No Operation (NOP) Extension {#afp-no-operation}
 
@@ -821,11 +822,14 @@ In addition to the above values the TIFF renderer configuration allows some addi
     <renderer mime="image/tiff">
       <transparent-page-background>true</transparent-page-background>
       <compression>CCITT T.6</compression>
+      <single-strip>true</single-strip>
+      <endianness>default</endianness>
       <fonts><!-- described elsewhere --></fonts>
     </renderer>
 
-The default value for the "compression" setting is "PackBits" which which is a widely supported RLE compression scheme for TIFF. The set of compression names to be used here matches the set that the Image I/O API uses. Note that not all compression schemes may be available during runtime. This depends on the actual codecs being available. Here is a list of possible values:
+The default value for the "`compression"` setting is `"PackBits"` which which is a widely supported RLE compression scheme for TIFF. The set of compression names to be used here matches the set that the Image I/O API uses. Note that not all compression schemes may be available during runtime. This depends on the actual codecs being available. Here is a list of possible values:
 
+The default value for `"endianness"` is `"default"`, which results in the default endianness for the output format being generated. Note that not all image formats allow specifying the endianness.
 
 -  `NONE` (no compression)
 
@@ -844,7 +848,11 @@ The default value for the "compression" setting is "PackBits" which which is a w
 -  `CCITT T.6` (Fax Group 4)
 
 This setting may override any setting made using the `"color-mode"`. For example, if `"CCITT T.6"` is selected, the color mode is automatically forced to `"bi-level"` because this compression format only supports bi-level images.
-If you want to use CCITT compression, please make sure you've got [Java Advanced Imaging Image I/O Tools](http://java.sun.com/products/java-media/jai/current.html) in your classpath. The Sun JRE doesn't come with a TIFF codec built in, so it has to be added separately. The internal TIFF codec from XML Graphics Commons only supports PackBits, Deflate and JPEG compression for writing.
+
+<note>If you want to use CCITT compression, please make sure you've got [Java Advanced Imaging Image I/O Tools](http://java.sun.com/products/java-media/jai/current.html) in your classpath. The Sun JRE doesn't come with a TIFF codec built in, so it has to be added separately. The internal TIFF codec from XML Graphics Commons only supports PackBits, Deflate and JPEG compression for writing.</note>
+
+The default value for the `"single-strip"` is `"false"` resulting in the RowsPerStrip Tiff Tag equal to the number of rows. If set to `"true"` RowsPerStrip is set to 1.
+
 ### Runtime Rendering Options {#bitmap-rendering-options}
 
 The IF-based bitmap output implementations support a rendering option with the key "target-bitmap-size" (value: java.awt.Dimension) that allows to force the pages to be proportionally fit into a bitmap of a given size. This can be used to produce thumbnails or little preview images of the individual pages. An example:
