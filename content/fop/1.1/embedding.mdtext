@@ -167,8 +167,7 @@ You can set all sorts of things on the FopFactory:
         :::java
         fopFactory.setHyphenBaseURL("file:///C:/Temp/hyph");
 
--
-Disable **strict validation**. When disabled FOP is less strict about the rules established by the XSL-FO specification. Example:
+- Disable **strict validation**. When disabled FOP is less strict about the rules established by the XSL-FO specification. Example:
 
         :::java
         fopFactory.setStrictValidation(false);
