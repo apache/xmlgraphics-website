@@ -11,7 +11,7 @@ Apache&trade; FOP snapshots are either pre-compiled binary or source. If you are
 
 ### JDK {#env-jdk}
 
-Building FOP requires a minimum Java Development Kit (JDK/SDK) of 1.4 (A Java Runtime Environment is not sufficient).
+Building FOP requires a minimum Java Development Kit (JDK/SDK) of 1.5 (A Java Runtime Environment is not sufficient).
 
 ### CLASSPATH {#env-classpath}
 
@@ -19,7 +19,7 @@ There is generally no need to setup a classpath. All libraries needed to compile
 
 ### JAVA_HOME {#env-java-home}
 
-The build script uses [Apache Ant](http://ant.apache.org/), a popular Java-based build tool, which usually requires that the environment variable JAVA_HOME point to your local JDK root directory. This is true even if you use JDK 1.4 or above, which normally does not need this setting.
+The build script uses [Apache Ant](http://ant.apache.org/), a popular Java-based build tool, which usually requires that the environment variable JAVA_HOME point to your local JDK root directory. This is true even if you use JDK 1.5 or above, which normally does not need this setting.
 
 ### Apache Ant {#env-ant}
 
@@ -38,7 +38,7 @@ The most useful targets are:
 
 -  **clean**: Cleans the build directory. This is useful for making sure that any build errors are cleaned up before starting a new build. It should not ordinarily be needed, but may be helpful if you are having problems with the build process itself.
 
--  **javadocs**: Creates the FOP API documentation.A minimum JDK version of 1.4.2 is required for generating the javadocs.
+-  **javadocs**: Creates the FOP API documentation.
 
 To run the build:
 ant [target ...]

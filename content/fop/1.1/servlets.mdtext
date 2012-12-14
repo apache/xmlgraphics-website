@@ -138,6 +138,7 @@ Further down, you can use the URIResolver for various things:
 
 Here are some example snippets:
 
+    :::java
     //Setting up the JAXP TransformerFactory
     this.transFactory = TransformerFactory.newInstance();
     this.transFactory.setURIResolver(this.uriResolver);

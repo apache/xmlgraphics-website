@@ -1,7 +1,6 @@
 Title: Apache(tm) FOP Output Formats
 
 #Apache&trade; FOP Output Formats
-<authors><person email="keiron@aftexsw.com" name="Keiron Liddle"></person><person email="" name="Art Welch"></person></authors>
 
 Apache&trade; FOP supports multiple output formats by using a different renderer for each format. The renderers do not all have the same set of capabilities, sometimes because of the output format itself, sometimes because some renderers get more development attention than others.
 
@@ -61,7 +60,9 @@ Note that FOP does not currently support PDF/A-1a. Support for [Tagged PDF](acce
 
 ### Fonts {#pdf-fonts}
 
-PDF has a set of fonts that are always available to all PDF viewers; to quote from the PDF Specification: *"PDF prescribes a set of 14 standard fonts that can be used without prior definition. These include four faces each of three Latin text typefaces (Courier, Helvetica, and Times), as well as two symbolic fonts (Symbol and ITC Zapf Dingbats). These fonts, or suitable substitute fonts with the same metrics, are guaranteed to be available in all PDF viewer applications."*
+PDF has a set of fonts that are always available to all PDF viewers; to quote from the PDF Specification:
+
+*"PDF prescribes a set of 14 standard fonts that can be used without prior definition. These include four faces each of three Latin text typefaces (Courier, Helvetica, and Times), as well as two symbolic fonts (Symbol and ITC Zapf Dingbats). These fonts, or suitable substitute fonts with the same metrics, are guaranteed to be available in all PDF viewer applications."*
 
 ### Post-processing {#pdf-postprocess}
 
@@ -169,6 +170,7 @@ The PostScript renderer configuration currently allows the following settings:
       <dsc-compliant>true</dsc-compliant>
       <rendering>quality</rendering>
     </renderer>
+
 The default value for the "auto-rotate-landscape" setting is "false". Setting it to "true" will automatically rotate landscape pages and will mark them as landscape.
 
 The default value for the "language-level" setting is "3". This setting specifies the PostScript language level which should be used by FOP. Set this to "2" only if you don't have a Level 3 capable interpreter.
@@ -337,6 +339,7 @@ The AFP Renderer requires special configuration particularly related to fonts. A
       <!-- AFP Renderer -->
       ...
     </renderer>
+
 There are 4 font configuration variants supported:
 
 
@@ -575,6 +578,7 @@ By default the AFP Renderer will place all data resource objects such as images 
     <resource-group-file>external_resources.afp</resource-group-file>
 
 Be careful when using this option not to overwrite existing resource files from previous rendering runs.
+
 #### Resource Level Defaults {#afp-resource-level-defaults}
 
 By default, bitmap image objects (or page segments derived from them) are put in the print-file-level resource group and GOCA graphics are inlined for compatibility with the AFP Workbench tool.
@@ -827,8 +831,7 @@ In addition to the above values the TIFF renderer configuration allows some addi
       <fonts><!-- described elsewhere --></fonts>
     </renderer>
 
-The default value for the "compression" setting is "PackBits" which which is a widely supported RLE compression scheme for TIFF. The set of compression names to be used here matches the set that the Image I/O API uses. Note that not all compression schemes may be available during runtime. This depends on the actual codecs being available. Here is a list of possible values:
-
+The default value for the `"compression"` setting is `"PackBits"` which which is a widely supported RLE compression scheme for TIFF. The set of compression names to be used here matches the set that the Image I/O API uses. Note that not all compression schemes may be available during runtime. This depends on the actual codecs being available. Here is a list of possible values:
 
 -  `NONE` (no compression)
 
@@ -847,7 +850,9 @@ The default value for the "compression" setting is "PackBits" which which is a w
 -  `CCITT T.6` (Fax Group 4)
 
 This setting may override any setting made using the `"color-mode"`. For example, if `"CCITT T.6"` is selected, the color mode is automatically forced to `"bi-level"` because this compression format only supports bi-level images.
-If you want to use CCITT compression, please make sure you've got [Java Advanced Imaging Image I/O Tools](http://java.sun.com/products/java-media/jai/current.html) in your classpath. The Sun JRE doesn't come with a TIFF codec built in, so it has to be added separately. The internal TIFF codec from XML Graphics Commons only supports PackBits, Deflate and JPEG compression for writing.
+
+<note>If you want to use CCITT compression, please make sure you've got [Java Advanced Imaging Image I/O Tools](http://java.sun.com/products/java-media/jai/current.html) in your classpath. The Sun JRE doesn't come with a TIFF codec built in, so it has to be added separately. The internal TIFF codec from XML Graphics Commons only supports PackBits, Deflate and JPEG compression for writing.</note>
+
 ### Runtime Rendering Options {#bitmap-rendering-options}
 
 The IF-based bitmap output implementations support a rendering option with the key "target-bitmap-size" (value: java.awt.Dimension) that allows to force the pages to be proportionally fit into a bitmap of a given size. This can be used to produce thumbnails or little preview images of the individual pages. An example:

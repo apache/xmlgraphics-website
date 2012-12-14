@@ -4,7 +4,9 @@ Title: Apache(tm) FOP: PDF/X (ISO 15930)
 <authors><person email="jeremias@apache.org" name="Jeremias Märki"></person></authors>
 
 ## Overview {#overview}
+
 <warning>Support for PDF/X is available beginning with version 0.93. This feature is new and may not be 100% complete, yet. Feedback is welcome.</warning>
+
 PDF/X is a standard which faciliates prepress digital data exchange using PDF. Currently, only PDF/X-3:2003 is implemented out of the many different flavours of PDF/X profiles. PDF/X-3:2003 is documented in [ISO 15930-6:2003(E)](http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=39940&ICS1=37&ICS2=100&ICS3=99). More info on PDF/X can be found on the [PDF/X info site](http://www.pdfx.info/).
 
 ## Implementation Status {#status}
@@ -23,10 +25,12 @@ To activate PDF/X-3:2003 from the command-line, specify "-pdfprofile PDF/X-3:200
 
 When FOP is embedded in another Java application you can set a special option on the renderer options in the user agent to activate the PDF/A-1b profile. Here's an example:
 
-FOUserAgent userAgent = fopFactory.newFOUserAgent();
-userAgent.getRendererOptions().put("pdf-x-mode", "PDF/X-3:2003");
-Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent);
-[..]
+    :::java
+    FOUserAgent userAgent = fopFactory.newFOUserAgent();
+    userAgent.getRendererOptions().put("pdf-x-mode", "PDF/X-3:2003");
+    Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent);
+    [..]
+
 If one of the validation rules of PDF/X is violated, an PDFConformanceException (descendant of RuntimeException) is thrown.
 
 ## PDF/X in Action {#rules}

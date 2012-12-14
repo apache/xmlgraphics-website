@@ -131,17 +131,35 @@ The input XSL-FO document is always received by FOP as a SAX stream (see the [Pa
 However, you may not always have your input document available as a SAX stream. But with JAXP it's easy to convert different input sources to a SAX stream so you can pipe it into FOP. That sounds more difficult than it is. You simply have to set up the right Source instance as input for the JAXP transformation. A few examples:
 
 
--  **URL:**  `Source src = new StreamSource("http://localhost:8080/testfile.xml");`
+-  **URL:**
 
--  **File:**  `Source src = new StreamSource(new File("C:/Temp/myinputfile.xml"));`
+        :::java
+        Source src = new StreamSource("http://localhost:8080/testfile.xml");
 
--  **String:**  `Source src = new StreamSource(new StringReader(myString)); // myString is a String`
+-  **File:**
 
--  **InputStream:**  `Source src = new StreamSource(new MyInputStream(something));`
+        :::java
+        Source src = new StreamSource(new File("C:/Temp/myinputfile.xml"));
 
--  **Byte Array:**  `Source src = new StreamSource(new ByteArrayInputStream(myBuffer)); // myBuffer is a byte[] here`
+-  **String:**
 
--  **DOM:**  `Source src = new DOMSource(myDocument); // myDocument is a Document or a Node`
+        :::java
+        Source src = new StreamSource(new StringReader(myString)); // myString is a String
+
+-  **InputStream:**
+
+        :::java
+        Source src = new StreamSource(new MyInputStream(something));
+
+-  **Byte Array:**
+
+        :::java
+        Source src = new StreamSource(new ByteArrayInputStream(myBuffer)); // myBuffer is a byte[] here
+
+-  **DOM:**
+
+        :::java
+        Source src = new DOMSource(myDocument); // myDocument is a Document or a Node
 
 -  **Java Objects:** Please have a look at the [Embedding examples](#examples) which contain an example for this.
 
@@ -207,7 +225,6 @@ The user agent is the entity that allows you to interact with a single rendering
 
 You can do all sorts of things on the user agent:
 
-
 - The **base URL** to use when resolving relative URLs. Example:
 
         :::java
@@ -251,7 +268,7 @@ You can do all sorts of things on the user agent:
 - Set **your own Document Handler**. This feature can be used for several purposes, the most likey usage of which would probably be binding a MIME type when the output is Intermediate Format (see [Document Handlers](#documenthandlers)). This also allows advanced users to create their own implementation of the document handler.
 
         :::java
-        userAgent.setDocumentHandlerOverride(documentHandler) // documentHandler is an instance of org.apache.fop.render.intermediate.IFDocumentHandler
+        userAgent.setDocumentHandlerOverride(documentHandler); // documentHandler is an instance of org.apache.fop.render.intermediate.IFDocumentHandler
 
 - Set **your own FOEventHandler instance**. If you want to supply your own FOEventHandler or configure an FOEventHandler subclass in a special way you can give the instance to the FOUserAgent. Normally, the FOEventHandler instance is created by FOP. Example:
 
@@ -321,7 +338,6 @@ To get the number of pages that were rendered by FOP you can call `Fop.getResult
 ## Improving performance {#performance}
 
 There are several options to consider:
-
 
 - Whenever possible, try to use SAX to couple the individual components involved (parser, XSL transformer, SQL datasource etc.).
 

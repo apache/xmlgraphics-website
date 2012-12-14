@@ -83,6 +83,7 @@ If you want FOP to use custom fonts, you need to tell it where to find them. Thi
     </renderers>
 
 Review the documentation for [FOP Configuration](configuration.html) for instructions on making the FOP configuration available to FOP when it runs. Otherwise, FOP has no way of finding your custom font information. It is currently not possible to easily configure fonts from Java code.
+
 ## Advanced font configuration {#advanced}
 
 The instructions found above should be sufficient for most users. Below are some additional instructions in case the basic font configuration doesn't lead to the desired results.
@@ -92,24 +93,30 @@ The instructions found above should be sufficient for most users. Below are some
 FOP includes PFMReader, which reads the PFM file that normally comes with a Type 1 font, and generates an appropriate font metrics file for it. To use it, run the class org.apache.fop.fonts.apps.PFMReader:
 
 Windows:
-java -cp build\fop.jar;lib\avalon-framework.jar;lib\commons-logging.jar;lib\commons-io.jar
+
+    java -cp build\fop.jar;lib\avalon-framework.jar;lib\commons-logging.jar;lib\commons-io.jar
           org.apache.fop.fonts.apps.PFMReader [options] pfm-file xml-file
+
 Unix:
-java -cp build/fop.jar:lib/avalon-framework.jar:lib/commons-logging.jar:lib/commons-io.jar
+
+    java -cp build/fop.jar:lib/avalon-framework.jar:lib/commons-logging.jar:lib/commons-io.jar
           org.apache.fop.fonts.apps.PFMReader [options] pfm-file xml-file
+
 PFMReader [options]:
 
-
 -  **-fn <fontname>** By default, FOP uses the fontname from the .pfm file when embedding the font. Use the "-fn" option to override this name with one you have chosen. This may be useful in some cases to ensure that applications using the output document (Acrobat Reader for example) use the embedded font instead of a local font with the same name.
+
 The classpath in the above example has been simplified for readability. You will have to adjust the classpath to the names of the actual JAR files in the lib directory. xml-apis.jar, xercesImpl.jar, xalan.jar and serializer.jar are not necessary for JDK version 1.4 or later.The tool will construct some values (FontBBox, StemV and ItalicAngle) based on assumptions and calculations which are only an approximation to the real values. FontBBox and Italic Angle can be found in the human-readable part of the PFB file or in the AFM file. The PFMReader tool does not yet interpret PFB or AFM files, so if you want to be correct, you may have to adjust the values in the XML file manually. The constructed values however appear to have no visible influence.
-## TrueType Font Metrics {#truetype-metrics}
+
+### TrueType Font Metrics {#truetype-metrics}
 
 FOP includes TTFReader, which reads the TTF file and generates an appropriate font metrics file for it. Use it in a similar manner to PFMReader. For example, to create such a metrics file in Windows from the TrueType font at c:\myfonts\cmr10.ttf:
-java -cp build\fop.jar;lib\avalon-framework.jar;lib\commons-logging.jar;lib\commons-io.jar
+
+    java -cp build\fop.jar;lib\avalon-framework.jar;lib\commons-logging.jar;lib\commons-io.jar
           org.apache.fop.fonts.apps.TTFReader [options]
           C:\myfonts\cmr10.ttf ttfcm.xml
-TTFReader [options]:
 
+TTFReader [options]:
 
 -  **-d <DEBUG | INFO >** Sets the debug level (default is INFO).
 
@@ -123,17 +130,21 @@ TTFReader [options]:
 |-------|---------|-----------|
 | Usable Character Set | Limited to WinAnsi character set, which is roughly equivalent to iso-8889-1. | Limited only by the characters in the font itself. |
 | Embedding the Font | Optional. | Mandatory. Not embedding the font produces invalid PDF documents. |
+
 <warning>You may experience failures with certain TrueType fonts, especially if they don't contain the so-called Unicode "cmap" table. TTFReader can currently not deal with font like this.</warning>
-## TrueType Collections {#truetype-collections-metrics}
+
+### TrueType Collections {#truetype-collections-metrics}
 
 TrueType collections (.ttc files) contain more than one font. To create metrics files for these fonts, you must specify which font in the collection should be generated, by using the "-ttcname" option with the TTFReader.
 
 To get a list of the fonts in a collection, just start the TTFReader as if it were a normal TrueType file (without the -ttcname option). It will display all of the font names and exit with an Exception.
 
 Here is an example of generating a metrics file for a .ttc file:
-java -cp build\fop.jar;lib\avalon-framework.jar;lib\commons-logging.jar;lib\commons-io.jar
+
+    java -cp build\fop.jar;lib\avalon-framework.jar;lib\commons-logging.jar;lib\commons-io.jar
           org.apache.fop.fonts.apps.TTFReader -ttcname "MS Mincho"
           msmincho.ttc msminch.xml
+
 Alternatively, the individual sub-fonts of a TrueType Collections can be selected using the "sub-font" attribute on the "font" element. That means that generating an XML font metrics file for TrueType collections is not necessary anymore. Example:
 
     :::xml
@@ -141,7 +152,7 @@ Alternatively, the individual sub-fonts of a TrueType Collections can be selecte
       <font-triplet name="GulimChe" style="normal" weight="normal"/>
     </font>
 
-## Register Fonts with FOP {#register}
+### Register Fonts with FOP {#register}
 
 You must tell FOP how to find and use the font metrics files by registering them in the [FOP Configuration](configuration.html). Add entries for your custom fonts, regardless of font type, to the configuration file in a manner similar to the following:
 
@@ -204,7 +215,8 @@ You must tell FOP how to find and use the font metrics files by registering them
 When the "auto-detect" flag is set in the configuration, FOP will automatically search for fonts in the default paths for your operating system.
 
 FOP will also auto-detect fonts which are available in the classpath, if they are described as "application/x-font" in the MANIFEST.MF file. For example, if your .jar file contains font/myfont.ttf:
-Manifest-Version: 1.0
+
+    Manifest-Version: 1.0
 
           Name: font/myfont.ttf
           Content-Type: application/x-font
@@ -215,7 +227,6 @@ This feature allows you to create JAR files containing fonts. The JAR files can 
 By default, all fonts are embedded if an output format supports font embedding. In some cases, however, it is preferred that some fonts are only referenced. When working with referenced fonts it is important to be in control of the target environment where the produced document is consumed, i.e. the necessary fonts have to be installed there.
 
 There are two different ways how you can specify that a font should be referenced:
-
 
 1. When using the old-style "font" element to configure a single font, font referencing is controlled by the embed-url attribute. If you don't specify the embed-url attribute the font will not be embedded, but will only be referenced.
 
@@ -252,7 +263,6 @@ Various notes related to embedded fonts:
 
 When a `<substitutions/>` section is defined in the configuration, FOP will re-map any font-family references found in your FO input to a given substitution font.
 
-
 - If a `<substitution/>` is declared, it is mandatory that both a <from/> and <to/> child element is declared with a font-family attribute.
 
 - Both font-weight and font-style are optional attributes, if they are provided then a value of 'normal' is assumed.
@@ -280,7 +290,6 @@ For example you could make all FO font-family references to 'Arial' with weights
 There are two font selection strategies: character-by-character or auto. The default is auto.
 
 Auto selected the first font from the list which is able to display the most characters in a given word. This means (assume font A has characters for abclmn, font B for lnmxyz, fontlist is A,B):
-
 
 - aaa lll xxx would be displayed in fonts A A B
 

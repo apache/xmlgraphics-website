@@ -1,7 +1,6 @@
 Title: Apache(tm) FOP Output Formats
 
 #Apache&trade; FOP Output Formats
-<authors><person email="keiron@aftexsw.com" name="Keiron Liddle"></person><person email="" name="Art Welch"></person></authors>
 
 Apache&trade; FOP supports multiple output formats by using a different renderer for each format. The renderers do not all have the same set of capabilities, sometimes because of the output format itself, sometimes because some renderers get more development attention than others.
 
@@ -40,11 +39,18 @@ With a work-around, it is possible to match the PDF/PS output in a Java2D-based 
 The most obvious way to print your document is to use the FOP [print renderer](#print), which uses the Java2D API (AWT). However, you can also send output from the Postscript renderer directly to a Postscript device, or output from the PCL renderer directly to a PCL device.
 
 Here are Windows command-line examples for Postscript and PCL:
-fop ... -ps \\computername\printerfop ... -pcl \\computername\printer
+
+`fop ... -ps \\computername\printer`
+
+`fop ... -pcl \\computername\printer`
+
 Here is some Java code to accomplish the task in UNIX:
-proc = Runtime.getRuntime().exec("lp -d" + print_queue + " -o -dp -");
-out = proc.getOutputStream();
-Set the output MIME type to "application/x-pcl" (MimeConstants.MIME_PCL) and it happily sends the PCL to the UNIX printer queue.
+
+    :::java
+    proc = Runtime.getRuntime().exec("lp -d" + print_queue + " -o -dp -");
+    out = proc.getOutputStream();
+
+Set the output MIME type to "`application/x-pcl`" (`MimeConstants.MIME_PCL`) and it happily sends the PCL to the UNIX printer queue.
 
 ## PDF {#pdf}
 
@@ -54,7 +60,9 @@ Note that FOP does not currently support PDF/A-1a. Support for [Tagged PDF](acce
 
 ### Fonts {#pdf-fonts}
 
-PDF has a set of fonts that are always available to all PDF viewers; to quote from the PDF Specification: *"PDF prescribes a set of 14 standard fonts that can be used without prior definition. These include four faces each of three Latin text typefaces (Courier, Helvetica, and Times), as well as two symbolic fonts (Symbol and ITC Zapf Dingbats). These fonts, or suitable substitute fonts with the same metrics, are guaranteed to be available in all PDF viewer applications."*
+PDF has a set of fonts that are always available to all PDF viewers; to quote from the PDF Specification:
+
+*"PDF prescribes a set of 14 standard fonts that can be used without prior definition. These include four faces each of three Latin text typefaces (Courier, Helvetica, and Times), as well as two symbolic fonts (Symbol and ITC Zapf Dingbats). These fonts, or suitable substitute fonts with the same metrics, are guaranteed to be available in all PDF viewer applications."*
 
 ### Post-processing {#pdf-postprocess}
 
@@ -502,7 +510,9 @@ By default, bitmap image objects (or page segments derived from them) are put in
 
 It is possible to override these defaults, either per image (see the [afp:resource-level](#afp-foreign-attributes-resource) extension attribute below) or by specifying different defaults in the configuration:
 
-<default-resource-levels goca="print-file" bitmap="inline"/>
+    :::xml
+    <default-resource-levels goca="print-file" bitmap="inline"/>
+
 "goca" refers to GOCA graphics and "bitmap" refers to IOCA images. The possible values for the attributes are "inline" and "print-file". In the future, additional possibilities may be added.
 
 ### Extensions {#afp-extensions}
@@ -744,8 +754,7 @@ In addition to the above values the TIFF renderer configuration allows some addi
       <fonts><!-- described elsewhere --></fonts>
     </renderer>
 
-The default value for the "compression" setting is "PackBits" which which is a widely supported RLE compression scheme for TIFF. The set of compression names to be used here matches the set that the Image I/O API uses. Note that not all compression schemes may be available during runtime. This depends on the actual codecs being available. Here is a list of possible values:
-
+The default value for the `"compression"` setting is `"PackBits"` which which is a widely supported RLE compression scheme for TIFF. The set of compression names to be used here matches the set that the Image I/O API uses. Note that not all compression schemes may be available during runtime. This depends on the actual codecs being available. Here is a list of possible values:
 
 -  `NONE` (no compression)
 
@@ -764,13 +773,14 @@ The default value for the "compression" setting is "PackBits" which which is a w
 - `CCITT T.6` (Fax Group 4)
 
 This setting may override any setting made using the `"color-mode"`. For example, if `"CCITT T.6"` is selected, the color mode is automatically forced to `"bi-level"` because this compression format only supports bi-level images.
-If you want to use CCITT compression, please make sure you've got [Java Advanced Imaging Image I/O Tools](http://java.sun.com/products/java-media/jai/current.html) in your classpath. The Sun JRE doesn't come with a TIFF codec built in, so it has to be added separately. The internal TIFF codec from XML Graphics Commons only supports PackBits, Deflate and JPEG compression for writing.
+
+<note>If you want to use CCITT compression, please make sure you've got [Java Advanced Imaging Image I/O Tools](http://java.sun.com/products/java-media/jai/current.html) in your classpath. The Sun JRE doesn't come with a TIFF codec built in, so it has to be added separately. The internal TIFF codec from XML Graphics Commons only supports PackBits, Deflate and JPEG compression for writing.</note>
 
 ### Runtime Rendering Options {#bitmap-rendering-options}
 
 The IF-based bitmap output implementations support a rendering option with the key "target-bitmap-size" (value: java.awt.Dimension) that allows to force the pages to be proportionally fit into a bitmap of a given size. This can be used to produce thumbnails or little preview images of the individual pages. An example:
 
-    :::xml
+    :::java
     userAgent.getRenderingOptions().put(
         "target-bitmap-size", new Dimension(320, 200));
 

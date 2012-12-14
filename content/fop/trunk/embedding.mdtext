@@ -175,7 +175,6 @@ The FopFactory holds configuration data and references to objects which are reus
 
 You can set all sorts of things on the FopFactory:
 
-
 - The **font base URL** to use when resolving relative URLs for fonts. Example:
 
         :::java
@@ -269,7 +268,7 @@ You can do all sorts of things on the user agent:
 - Set **your own Document Handler**. This feature can be used for several purposes, the most likey usage of which would probably be binding a MIME type when the output is Intermediate Format (see [Document Handlers](#documenthandlers)). This also allows advanced users to create their own implementation of the document handler.
 
         :::java
-        userAgent.setDocumentHandlerOverride(documentHandler) // documentHandler is an instance of org.apache.fop.render.intermediate.IFDocumentHandler
+        userAgent.setDocumentHandlerOverride(documentHandler); // documentHandler is an instance of org.apache.fop.render.intermediate.IFDocumentHandler
 
 - Set **your own FOEventHandler instance**. If you want to supply your own FOEventHandler or configure an FOEventHandler subclass in a special way you can give the instance to the FOUserAgent. Normally, the FOEventHandler instance is created by FOP. Example:
 

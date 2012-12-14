@@ -96,6 +96,22 @@ The second penalty element sets an "infinite" penalty for the TIFF loader using 
 
 Negative penalties are possible to promote a plug-in but a negative penalty sum will be treated as zero penalty in most cases. For more details on the image loading framework, please consult the documentation there.
 
+The ImageLoaderPNG and ImageLoaderRawPNG have a hard-coded penalty of 1000 and as such the ImageLoaderImageIO image loader will be selected by default when loading PNGs unless the latter is disabled by awarding a INFINITE penalty to it, or one of the former two is promoted by awarding a strong negative penalty (say, -10000) to it.
+
+    :::xml
+    <fop version="1.0">
+      [..]
+      <image-loading>
+        <penalty value="-10000"
+            class="org.apache.xmlgraphics.image.loader.impl.ImageLoaderRawPNG"/>
+        <penalty value="INFINITE"
+            class="org.apache.xmlgraphics.image.loader.impl.ImageLoaderPNG"/>
+        <penalty value="INFINITE"
+            class="org.apache.xmlgraphics.image.loader.impl.imageio.ImageLoaderImageIO"/>
+      </image-loading>
+      <renderers....
+    </fop>
+
 ## Renderer configuration {#renderers}
 
 Each Renderer has its own configuration section which is identified by the MIME type the Renderer is written for, ex. "application/pdf" for the PDF Renderer.
@@ -188,7 +204,7 @@ By default FOP produces PDF files of version 1.4, but this can be changed in ord
 
     :::xml
     <renderer mime="application/pdf">
-
+      <version>1.5</version>
       <!-- Versions 1.4, 1.5, 1.6 and 1.7 are accepted, all other values are invalid -->
     </renderer>
 
@@ -219,7 +235,7 @@ Non-standard fonts for the PCL renderer are made available through the Java2D su
 Additionally, there are certain settings that control how the renderer handles various elements.
 
     :::xml
-    <renderer mime="application/vnd.hp-PCL">
+    <renderer mime="application/x-pcl">
       <rendering>quality</rendering>
       <text-rendering>bitmap</text-rendering>
     </renderer>
@@ -238,6 +254,7 @@ Additionally, there are certain settings that control how the renderer handles v
     <renderer mime="application/x-afp">
       <images mode="b+w" bits-per-pixel="8" native="true"/>
       <renderer-resolution>240</renderer-resolution>
+      <line-width-correction>2.5</line-width-correction>
 
       <!-- a default external resource group file -->
       <resource-group-file>resources.afp</resource-group-file>
@@ -246,6 +263,8 @@ Additionally, there are certain settings that control how the renderer handles v
 The default value for the images "mode" setting is "b+w" (black and white). When the images "mode" setting is "b+w" a "bits-per-pixel" setting can be provided to aid the grayscale conversion process. With this setting all images referenced in your source document are converted to an IOCA FS45 grayscale bitmap image form. When the setting is "color" all images are converted to an IOCA FS45 color bitmap image form. When "native" setting is "true", all images encountered (TIFF, GIF, JPEG and Encapsulated Postscript etc.) will be embedded directly in the datastream in their native form using a MO:DCA Object Container.
 
 The default value for the "renderer-resolution" is 240 dpi.
+
+The default line width is device dependent and may need to be fine tuned so that the output matches the expected result. The default correction value is 2.5.
 
 By default if there is no configuration definition for "resource-group-file", external resources will be placed in a file called resources.afp.
 

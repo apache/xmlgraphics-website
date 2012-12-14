@@ -5,7 +5,7 @@ Title: Apache(tm) FOP: Configuration
 
 ## Configuration File Basics {#general}
 
-The FOP configuration file is an XML file containing a variety of settings that are useful for controlling FOP's behavior, and for helping it find resources that you wish it to use.
+The Apache&trade; FOP configuration file is an XML file containing a variety of settings that are useful for controlling FOP's behavior, and for helping it find resources that you wish it to use.
 
 The easiest way to get started using a FOP configuration file is to copy the sample found at `{fop-dir}/conf/fop.xconf` to a location of your choice, and then to edit it according to your needs. It contains templates for the various configuration options, most of which are commented out. Remove the comments and change the settings for entries that you wish to use. Be sure to follow any instructions, including comments which specify the value range. Also, since the configuration file is XML, be sure to keep it well-formed.
 
@@ -35,7 +35,7 @@ See [Setting the Configuration Programmatically](embedding.html#config-internal)
 | default-page-settings | n/a | Specifies the default width and height of a page if "auto" is specified for either or both values. Use "height" and "width" attributes on the default-page-settings element to specify the two values. | "height" 11 inches, "width" 8.26 inches |
 | prefer-renderer | boolean (true, false) | By default, FOP prefers the newer output implementations based on the `IFDocumentHandler` interface. If no such implementation can be found for a given MIME type, it looks for an implementation of the `Renderer` interface. If necessary, you can invert the lookup order to prefer the Renderer variant over the IFDocumentHandler variant by setting this value to true. | false |
 | use-cache | boolean (true, false) | All fonts information that has been gathered as a result of "directory" or "auto-detect" font configurations will be cached for future rendering runs. This setting should improve performance on systems where fonts have been configured using the "directory" or "auto-detect" tag mechanisms. By default this option is switched on. | true |
-| cache-file | String | This options specifies the file/directory path of the fop cache file. This option can also be specified on the command-line using the -cache option. This file is currently only used to cache font triplet information for future reference. | ${base}/conf/fop.cache |
+| cache-file | String | This option specifies the file/directory path of the fop cache file. This option can also be specified on the command-line using the -cache option. This file is currently only used to cache font triplet information for future reference. | ${base}/conf/fop.cache |
 | renderers | (see text below) | Contains the configuration for each renderer. See below. | N/A |
 
 This is an excerpt from the example configuration file coming with FOP:

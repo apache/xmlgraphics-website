@@ -13,9 +13,22 @@ Accessibility features are available only for the PDF output format and there ar
 There are 3 ways to enable accessibility:
 
 
-1.  **Command line:** The command line option -a turns on accessibility:<br/>`fop -a -fo mydocument.fo -pdf mydocument.pdf`<br/>
-1.  **Embedding:**<br/>`userAgent.setAccessibility(true);` <br/>
-1.  **Optional setting in fop.xconf file:**<br/>`<fop version="1.0">`<br/>`<accessibility>true</accessibility>`<br/>`...`<br/>`</fop>`
+1.  **Command line:** The command line option `-a` turns on accessibility:
+
+        fop -a -fo mydocument.fo -pdf mydocument.pdf
+
+1.  **Embedding:**
+
+        :::java
+        userAgent.setAccessibility(true);
+
+1.  **Optional setting in fop.xconf file:**
+
+        :::xml
+        <fop version="1.0">
+          <accessibility>true</accessibility>
+          ...
+        </fop>
 
 When accessibility is enabled, additional information relating to the logical structure of the document is added to the PDF. That information allows the PDF viewer (or a text-to-speech application) to retrieve the natural reading order of the document.
 The processing of the logical structure is memory-hungry. You may need to adjust the Java heap size in order to process larger files.

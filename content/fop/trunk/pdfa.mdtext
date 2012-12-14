@@ -27,9 +27,11 @@ PDF/A-1a is enabled by specifying "-pdfprofile PDF/A-1a".
 
 When FOP is embedded in another Java application you can set a special option on the renderer options in the user agent to activate the PDF/A-1b profile. Here's an example:
 
-userAgent.getRendererOptions().put("pdf-a-mode", "PDF/A-1b");
-Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent);
-[..]
+    :::java
+    userAgent.getRendererOptions().put("pdf-a-mode", "PDF/A-1b");
+    Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent);
+    [..]
+
 If one of the validation rules of PDF/A is violated, an PDFConformanceException (descendant of RuntimeException) is thrown.
 
 For PDF/A-1a, just use the string "PDF/A-1a" instead of "PDF/A-1b".
@@ -37,7 +39,6 @@ For PDF/A-1a, just use the string "PDF/A-1a" instead of "PDF/A-1b".
 ## PDF/A in Action {#rules}
 
 There are a number of things that must be looked after if you activate a PDF/A profile. If you receive a PDFConformanceException, have a look at the following list (not necessarily comprehensive):
-
 
 - Make sure all (!) fonts are embedded. If you use base 14 fonts (like Helvetica) you need to obtain a license for them and embed them like any other font.
 
@@ -52,7 +53,9 @@ There are a number of things that must be looked after if you activate a PDF/A p
 - PDF is forced to version 1.4 if PDF/A-1 is activated.
 
 - No filter must be specified explicitely for metadata objects. Metadata must be embedded in clear text so non-PDF-aware applications can extract the XMP metadata.
+
 There are additional requirements if you want to enabled PDF/A-1a (Tagged PDF). This is particularly the specification of the natural language and alternative descriptions for images. Please refer to the [Accessibility page](accessibility.html) for details.
+
 ## PDF profile compatibility {#profile-compatibility}
 
 The PDF profiles "PDF/X-3:2003" and "PDF/A-1b" (or "PDF/A-1a") are compatible and can both be activated at the same time.
