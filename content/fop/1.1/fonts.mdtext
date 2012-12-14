@@ -229,15 +229,15 @@ There are two different ways how you can specify that a font should be reference
 
 1. For automatically configured fonts there's a different mechanism to specify which fonts should be referenced rather than embedded. This is done in the "referenced-fonts" element in the configuration. Here's an example:
 
-    :::xml
-    <fop version="1.0">
-      <fonts>
-        <referenced-fonts>
-          <match font-family="Helvetica"/>
-          <match font-family="DejaVu.*"/>
-        </referenced-fonts>
-      </fonts>
-    </fop>
+        :::xml
+        <fop version="1.0">
+          <fonts>
+            <referenced-fonts>
+              <match font-family="Helvetica"/>
+              <match font-family="DejaVu.*"/>
+            </referenced-fonts>
+          </fonts>
+        </fop>
 
 At the moment, you can only match fonts against their font-family. It is possible to use regular expressions as is shown in the second example above ("DejaVu.*"). The syntax for the regular expressions used here are the one used by the [package](http://java.sun.com/j2se/1.4/docs/api/java/util/regex/package-summary.html). So, in the above snippet "Helvetica" and all variants of the "DejaVu" font family are referenced. If you want to reference all fonts, just specify `font-family=".*"`.
 
