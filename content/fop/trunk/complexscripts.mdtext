@@ -20,13 +20,29 @@ This page describes the [complex scripts](http://en.wikipedia.org/wiki/Complex_s
 
 Complex script features are enabled by default. If some application of FOP does not require this support, then it can be disabled in three ways:
 
+1.  **Command line:**
 
-1.  **Command line:**<br/>The command line option `-nocs` turns off complex script features:<br/>`fop -nocs -fo mydocument.fo -pdf mydocument.pdf`<br/>
-1.  **Embedding:**<br/>`userAgent.setComplexScriptFeaturesEnabled(false);`
-1.  **Optional setting in fop.xconf file:**<br/>`<fop version="1.0">`<br/>`<complex-scripts disabled="true"/>`<br/>`...`<br/>`</fop>`
+    The command line option `-nocs` turns off complex script features:
+
+        fop -nocs -fo mydocument.fo -pdf mydocument.pdf
+
+1.  **Embedding:**
+
+        :::java
+        userAgent.setComplexScriptFeaturesEnabled(false);
+
+1.  **Optional setting in fop.xconf file:**
+
+        :::xml
+        <fop version="1.0">
+          <complex-scripts disabled="true"/>
+          ...
+        </fop>`
 
 When complex scripts features are enabled, additional information related to bidirectional level resolution, the association between characters and glyphs, and glyph position adjustments are added to the internal, parsed representation of the XSL-FO tree and its corresponding formatted area tree. This additional information will somewhat increase the memory requirements for processing documents that use these features.
-A document author need not make explicit use of any complex scripts feature in order for this additional information to be created. For example, if the author makes use of a font that contains OpenType GSUB and/or GPOS tables, then those tables will be automatically used unless complex scripts features are disabled.
+
+<note>A document author need not make explicit use of any complex scripts feature in order for this additional information to be created. For example, if the author makes use of a font that contains OpenType GSUB and/or GPOS tables, then those tables will be automatically used unless complex scripts features are disabled.</note>
+
 ## Changes to your XSL-FO input files {#source}
 
 In most circumstances, XSL-FO content does not need to change in order to make use of complex scripts features; however, in certain contexts, fully automatic processing is not sufficient. In these cases, an author may make use of the following XSL-FO constructs:
@@ -116,7 +132,10 @@ The following table enumerates a number of non-standard extended script codes re
 |  `tml2`  | Tamil | OpenType Indic Version 2 (May 2008 and following) behavior. |
 |  `tel2`  | Telugu | OpenType Indic Version 2 (May 2008 and following) behavior. |
 
-<warning>Explicit use of one of the above extended script codes is not portable, and should be limited to use with FOP only.</warning>When performing automatic script determination, FOP selects the OpenType Indic Version 2 script codes by default. If the author requires Version 1 behavior, then an explicit, non-extension script code should be specified in a governing `script` property.
+<warning>Explicit use of one of the above extended script codes is not portable, and should be limited to use with FOP only.</warning>
+
+<note>When performing automatic script determination, FOP selects the OpenType Indic Version 2 script codes by default. If the author requires Version 1 behavior, then an explicit, non-extension script code should be specified in a governing `script` property.</note>
+
 ### Language Property {#language_property}
 
 Certain fonts that support complex script features can make use of language information in order for language specific processing rules to be applied. For example, a font designed for the Arabic script may support typographic variations according to whether the written language is Arabic, Farsi (Persian), Sindhi, Urdu, or another language written with the Arabic script. In order to apply these language specific features, the author may explicitly mark the text with a [http://www.w3.org/TR/2006/REC-xsl11-20061205/#language](http://www.w3.org/TR/2006/REC-xsl11-20061205/#language) property.

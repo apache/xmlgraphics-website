@@ -74,45 +74,45 @@ Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note t
 
     :::java
     public static void main(String args[]) {
-      try {
-        ByteArrayOutputStream fopout = new ByteArrayOutputStream();
-        FileOutputStream outfile = new FileOutputStream(args[2]);
-        FopFactory fopFactory = FopFactory.newInstance();
-        Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, fopout);
+        try {
+            ByteArrayOutputStream fopout = new ByteArrayOutputStream();
+            FileOutputStream outfile = new FileOutputStream(args[2]);
+            FopFactory fopFactory = FopFactory.newInstance();
+            Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, fopout);
 
-        Transformer transformer = TransformerFactory.newInstance().newTransformer(
-            new StreamSource(new File(args[1])));
-        transformer.transform(new StreamSource(new File(args[0])),
-            new SAXResult(fop.getDefaultHandler()));
-        PdfReader reader = new PdfReader(fopout.toByteArray());
-        int n = reader.getNumberOfPages();
-        Document document = new Document(reader.getPageSizeWithRotation(1));
-        PdfWriter writer = PdfWriter.getInstance(document, outfile);
-        writer.setEncryption(PdfWriter.STRENGTH40BITS, "pdf", null,
-          PdfWriter.AllowCopy);
-        document.open();
-        PdfContentByte cb = writer.getDirectContent();
-        PdfImportedPage page;
-        int rotation;
-        int i = 0;
-        while (i < n) {
-          i++;
-          document.setPageSize(reader.getPageSizeWithRotation(i));
-          document.newPage();
-          page = writer.getImportedPage(reader, i);
-          rotation = reader.getPageRotation(i);
-          if (rotation == 90 || rotation == 270) {
-            cb.addTemplate(page, 0, -1f, 1f, 0, 0,
-            reader.getPageSizeWithRotation(i).height());
-          } else {
-            cb.addTemplate(page, 1f, 0, 0, 1f, 0, 0);
-          }
-          System.out.println("Processed page " + i);
+            Transformer transformer = TransformerFactory.newInstance().newTransformer(
+                new StreamSource(new File(args[1])));
+            transformer.transform(new StreamSource(new File(args[0])),
+                new SAXResult(fop.getDefaultHandler()));
+            PdfReader reader = new PdfReader(fopout.toByteArray());
+            int n = reader.getNumberOfPages();
+            Document document = new Document(reader.getPageSizeWithRotation(1));
+            PdfWriter writer = PdfWriter.getInstance(document, outfile);
+            writer.setEncryption(PdfWriter.STRENGTH40BITS, "pdf", null,
+                PdfWriter.AllowCopy);
+            document.open();
+            PdfContentByte cb = writer.getDirectContent();
+            PdfImportedPage page;
+            int rotation;
+            int i = 0;
+            while (i < n) {
+                i++;
+                document.setPageSize(reader.getPageSizeWithRotation(i));
+                document.newPage();
+                page = writer.getImportedPage(reader, i);
+                rotation = reader.getPageRotation(i);
+                if (rotation == 90 || rotation == 270) {
+                    cb.addTemplate(page, 0, -1f, 1f, 0, 0,
+                    reader.getPageSizeWithRotation(i).height());
+                } else {
+                    cb.addTemplate(page, 1f, 0, 0, 1f, 0, 0);
+                }
+                System.out.println("Processed page " + i);
+            }
+            document.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        document.close();
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
     }
 
 Check the iText tutorial and documentation for setting access flags, password, encryption strength and other parameters.
@@ -325,9 +325,9 @@ A typical raster font configuration looks like:
 
     :::xml
     <!-- This is an example of mapping actual IBM raster fonts / code pages to a FOP font -->
-      <font>
-      <!-- The afp-font element defines the IBM code page, the matching Java encoding and the
-           base URI for the font -->
+    <font>
+    <!-- The afp-font element defines the IBM code page, the matching Java encoding and the
+         base URI for the font -->
       <afp-font type="raster" codepage="T1V10500" encoding="Cp500" base-uri="fonts/ibm/">
         <!-- For a raster font a separate element for each font size is required providing
              the font size and the corresponding IBM Character set name -->
@@ -355,23 +355,25 @@ An outline font configuration is simpler as the individual font size entries are
 
     :::xml
     <font>
-        <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH200  "
-           base-uri="file:/fonts/ibm" />
-        <font-triplet name="sans-serif" style="normal" weight="normal"/>
-        <font-triplet name="Helvetica" style="normal" weight="normal"/>
-        <font-triplet name="any" style="normal" weight="normal"/>
+      <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH200  "
+          base-uri="file:/fonts/ibm" />
+      <font-triplet name="sans-serif" style="normal" weight="normal"/>
+      <font-triplet name="Helvetica" style="normal" weight="normal"/>
+      <font-triplet name="any" style="normal" weight="normal"/>
     </font>
 
 If "base-uri" is missing or a relative URI, the fonts are resolved relative to the font base URI specified in the configuration (or on the FopFactory).
-Previously, the location of the font files was given by the "path" attribute. This is still supported for the time being, but you should move to using the more flexible "base-uri" attribute so you can profit from the power of URI resolvers.
+
+<note>Previously, the location of the font files was given by the "path" attribute. This is still supported for the time being, but you should move to using the more flexible "base-uri" attribute so you can profit from the power of URI resolvers.</note>
+
 A CID-keyed font (Type 0, double-byte outline font) configuration is much the same as an outline font. However, the characterset definition is now required within the afp-font element.
 
     :::xml
     <font>
-        <afp-font type="CIDKeyed" characterset="CZJHMNU"
+      <afp-font type="CIDKeyed" characterset="CZJHMNU"
            codepage="T1120000" encoding="UnicodeBigUnmarked"
            base-uri="file:/fonts/ibm" />
-        <font-triplet name="J-Heisei Mincho" style="normal" weight="normal" />
+      <font-triplet name="J-Heisei Mincho" style="normal" weight="normal" />
     </font>
 
 Note that the value of the encoding attribute in the example is the double-byte encoding 'UnicodeBigUnmarked' (UTF-16BE).
@@ -383,41 +385,41 @@ Experimentation has shown that the font metrics for the FOP built-in Base14 font
          font metrics for the Adobe Base14 fonts -->
     <!-- sans-serif fonts based on Helvetica -->
     <font>
-        <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH200  "
+      <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH200  "
           base14-font="Helvetica" />
-        <font-triplet name="sans-serif" style="normal" weight="normal"/>
-        <font-triplet name="Helvetica" style="normal" weight="normal"/>
-        <font-triplet name="any" style="normal" weight="normal"/>
+      <font-triplet name="sans-serif" style="normal" weight="normal"/>
+      <font-triplet name="Helvetica" style="normal" weight="normal"/>
+      <font-triplet name="any" style="normal" weight="normal"/>
     </font>
     <font>
-        <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH300  "
+      <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH300  "
           base14-font="HelveticaOblique" />
-        <font-triplet name="sans-serif" style="italic" weight="normal"/>
-        <font-triplet name="Helvetica" style="italic" weight="normal"/>
-        <font-triplet name="any" style="italic" weight="normal"/>
+      <font-triplet name="sans-serif" style="italic" weight="normal"/>
+      <font-triplet name="Helvetica" style="italic" weight="normal"/>
+      <font-triplet name="any" style="italic" weight="normal"/>
     </font>
     <font>
-        <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH400  "
+      <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH400  "
           base14-font="HelveticaBold" />
-        <font-triplet name="sans-serif" style="normal" weight="bold"/>
-        <font-triplet name="Helvetica" style="normal" weight="bold"/>
-        <font-triplet name="any" style="normal" weight="bold"/>
+      <font-triplet name="sans-serif" style="normal" weight="bold"/>
+      <font-triplet name="Helvetica" style="normal" weight="bold"/>
+      <font-triplet name="any" style="normal" weight="bold"/>
     </font>
     <font>
-        <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH500  "
+      <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH500  "
           base14-font="HelveticaBoldOblique" />
-        <font-triplet name="sans-serif" style="italic" weight="bold"/>
-        <font-triplet name="Helvetica" style="italic" weight="bold"/>
-        <font-triplet name="any" style="italic" weight="bold"/>
+      <font-triplet name="sans-serif" style="italic" weight="bold"/>
+      <font-triplet name="Helvetica" style="italic" weight="bold"/>
+      <font-triplet name="any" style="italic" weight="bold"/>
     </font>
 
     <!-- serif fonts based on Times Roman -->
     <font>
-        <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZN200  "
+      <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZN200  "
           base14-font="TimesRoman" />
-        <font-triplet name="serif" style="normal" weight="normal"/>
-        <font-triplet name="Times" style="normal" weight="normal"/>
-        <font-triplet name="Times-Roman" style="normal" weight="normal"/>
+      <font-triplet name="serif" style="normal" weight="normal"/>
+      <font-triplet name="Times" style="normal" weight="normal"/>
+      <font-triplet name="Times-Roman" style="normal" weight="normal"/>
     </font>
 
     <!-- The following are examples of defining raster fonts based on FOP built-in
@@ -502,7 +504,7 @@ By default the AFP Renderer will place all data resource objects such as images 
     :::xml
     <resource-group-file>external_resources.afp</resource-group-file>
 
-Be careful when using this option not to overwrite existing resource files from previous rendering runs.
+<note>Be careful when using this option not to overwrite existing resource files from previous rendering runs.</note>
 
 #### Resource Level Defaults {#afp-resource-level-defaults}
 
@@ -543,7 +545,7 @@ The include-page-segment extension element allows to define resource substitutio
 
     :::xml
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
-     xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
+        xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
       <fo:layout-master-set>
         <fo:simple-page-master master-name="simple">
           <afp:include-page-segment name="S1ISLOGO" src="../../resources/images/bgimg300dpi.jpg" />
@@ -561,7 +563,7 @@ The tag-logical-element extension element allows to injects TLEs into the AFP ou
 
     :::xml
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
-     xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
+        xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
       <fo:layout-master-set>
         <fo:simple-page-master master-name="simple">
           <afp:tag-logical-element name="The TLE Name" value="The TLE Value" />
@@ -582,7 +584,7 @@ The no-operation extension provides the ability to carry up to 32K of comments o
 
     :::xml
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
-     xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
+        xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
       <fo:layout-master-set>
         <fo:simple-page-master master-name="simple">
           <afp:no-operation name="My NOP">insert up to 32k of character data here!</afp:no-operation>
@@ -597,7 +599,7 @@ The invoke-medium-map extension allows to generate IMM fields (Invoke Medium Map
 
     :::xml
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
-     xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
+        xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
       [..]
       <fo:page-sequence master-reference="normal">
         <afp:invoke-medium-map name="MYMAP"/>
@@ -612,14 +614,16 @@ Apache FOP supports embedding an external form map resource in the generated AFP
 
     :::xml
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
-         xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
+        xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
       [..]
       <fo:declarations>
         <afp:include-form-map name="F1SAMP1" src="file:f1samp1.fde"/>
       </fo:declarations>
 
 The `afp:include-form-map` is to be placed as a direct child of `fo:declarations`. The `name` is an AFP resource name (max. 8 characters) and the `src` attribute is the URI identifying the external form map resource. When such a form map is embedded, you can use the `afp:invoke-medium-map` extension (described above) to invoke any medium map included in the form map.
-Apache FOP doesn't support a way to define a form map or medium map using XML means inside an XSL-FO document. You will have to build the form map with some third-party tool.
+
+<note>Apache FOP doesn't support a way to define a form map or medium map using XML means inside an XSL-FO document. You will have to build the form map with some third-party tool.</note>
+
 ### Foreign Attributes {#afp-foreign-attributes}
 
 #### Resource {#afp-foreign-attributes-resource}
@@ -628,7 +632,7 @@ The resource foreign attributes provides the ability to name and control where d
 
     :::xml
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
-     xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
+        xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
      ...
      <fo:block>
       <fo:external-graphic width="2.0cm" content-width="2.0cm" height="1.8cm" content-height="1.8cm"
@@ -657,7 +661,9 @@ The resource-level attribute where the resource object will reside in the AFP ou
 JFOR, an open source XSL-FO to RTF converter has been integrated into Apache FOP. This will create an RTF (rich text format) document that will attempt to contain as much information from the XSL-FO document as possible. It should be noted that is not possible (due to RTF's limitations) to map all XSL-FO features to RTF. For complex documents, the RTF output will never reach the feature level from PDF, for example. Thus, using RTF output is only recommended for simple documents such as letters.
 
 The RTF output follows Microsoft's RTF specifications and produces best results on Microsoft Word.
-RTF output is currently unmaintained and lacks many features compared to other output formats. Using other editable formats like Open Document Format, instead of producing XSL-FO then RTF through FOP, might give better results.
+
+<note>RTF output is currently unmaintained and lacks many features compared to other output formats. Using other editable formats like Open Document Format, instead of producing XSL-FO then RTF through FOP, might give better results.</note>
+
 These are some known restrictions compared to other supported output formats (not a complete list):
 
 

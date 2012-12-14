@@ -7,7 +7,9 @@ Title: Apache(tm) FOP Development: Managing Documentation
 ## General Information {#general}
 
 All raw documentation content is managed in the Apache&trade; FOP SVN repository. Updates should be committed to the repository, then the repository files are used to generate usable output. The remaining discussions on this page assume that the SVN repository is the starting place for processing. The path to the documentation is src/documentation/content/xdocs.
-All documentation is maintained on the trunk.
+
+<note>All documentation is maintained on the trunk.</note>
+
 Basic documents are stored in XML files, and use DTDs provided by Apache Forrest.
 
 ## Design Principles {#design}
@@ -40,12 +42,14 @@ The following table summarizes the flow of data to the FOP website in chronologi
 | Developer commits code to FOP repository. | FOP repository (SVN) | Raw XML and other content |  [in SVN](http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/src/documentation/content/xdocs/)  |
 | Developer builds and uploads documentation using ForrestBot. | /www/xmlgraphics.apache.org/fop on people.apache.org | sync-ready | n/a |
 | Cron job runs rsync to synchronize the website with the real web server (runs every few hours). | Infrastructure knows. :-) | web-ready |  [FOP Web Site](http://xmlgraphics.apache.org/fop)  |
-Server-side ForrestBot is currently not available for website publishing. We use it locally and with manual invocation.
+
+<note>Server-side ForrestBot is currently not available for website publishing. We use it locally and with manual invocation.</note>
 
 ### ForrestBot "publish" Step-by-Step {#web-forrestbot-publish}
 
 We're using ForrestBot for build and deploy the FOP website. ForrestBot comes with Apache Forrest 0.8. The root directory of your FOP checkout contains the file "publish.xml" which is an Ant build file that manages the build and the deployment of the FOP website. Please look into this file for further instructions to set up ForrestBot on your machine. Basically, we're simply running ForrestBot manually by typing "ant -f publish.xml" once we're happy with our changes to the site. Step-by-step instructions for the deployment process again:
-Please make sure you use Forrest from the Trunk (revision 632959 or later) for the time being. You will need to download it directly from SVN: [http://svn.apache.org/repos/asf/forrest/trunk](http://svn.apache.org/repos/asf/forrest/trunk)
+
+<note>Please make sure you use Forrest from the Trunk (revision 632959 or later) for the time being. You will need to download it directly from SVN: [http://svn.apache.org/repos/asf/forrest/trunk](http://svn.apache.org/repos/asf/forrest/trunk).</note>
 
 - Modify the sources of the website and check locally with Forrest (run "forrest run" or just "forrest").
 
@@ -61,7 +65,6 @@ The reason for putting the generated website in the SVN repository: The infrastr
 
 To use a local Forrest (during website development, not for deployment):
 
-
 -  [download](http://forrest.apache.org/mirrors.cgi#closest) latest the Forrest release (currently Forrest 0.8)
 
 - set environment variable FORREST_HOME=~/apache-forrest-0.8 where ~ is the directory where Forrest is installed (see [http://forrest.apache.org/docs/your-project.html](http://forrest.apache.org/docs/your-project.html) for details)
@@ -73,7 +76,8 @@ To use a local Forrest (during website development, not for deployment):
 - update your local FOP checkout (svn update)
 
 - run forrest(.bat), which will build the web-site documents in xml-fop/build/site.
-You can use "forrest run" to start a local web server. That improves development speed as you can simply refresh in the browser after a change.
+
+<note>You can use "forrest run" to start a local web server. That improves development speed as you can simply refresh in the browser after a change.</note>
 
 ### Updating Distribution Files {#distribution}
 
@@ -84,4 +88,5 @@ Please be careful when doing stuff like that.
 ### Deleting Documentation Files {#delete}
 
 ForrestBot simply uploads the whole generated site. It doesn't delete obsolete files. You can do that manually in the /www/xmlgraphics.apache.org/fop folder on cvs.apache.org. Be careful when doing stuff like that.
-Please make sure you always have **group rw permissions on all files** under the /www directory!
+
+<note>Please make sure you always have **group rw permissions on all files** under the /www directory!</note>

@@ -39,7 +39,7 @@ Document-level metadata can be specified in the `fo:declarations` element. XMP s
     <fo:page-sequence ...
     [..]
 
-`fo:declarations`  **must** be declared after `fo:layout-master-set` and before the first `page-sequence`.
+<note>`fo:declarations` **must** be declared after `fo:layout-master-set` and before the first `page-sequence`.</note>
 
 ## Implementation in Apache FOP {#xmp-impl-in-fop}
 
@@ -61,7 +61,10 @@ The mapping between the Info and the Metadata object used by Apache FOP comes fr
 | Producer | text string | pdf:Producer | Text | Internal |
 | CreationDate | date | xmp:CreationDate | Date | Internal |
 | ModDate | date | xmp:ModifyDate | Date | Internal |
-"Internal" in the Category column means that the user should not set this value. It is set by the application.The "Subject" used to be mapped to `dc:subject` in the initial publication of PDF/A-1 (ISO 19005-1). In the [Technical Corrigendum 1](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=45613) this was changed to map to `dc:description["x-default"]`.
+
+<note>"Internal" in the Category column means that the user should not set this value. It is set by the application.</note>
+
+<note>The "Subject" used to be mapped to `dc:subject` in the initial publication of PDF/A-1 (ISO 19005-1). In the [Technical Corrigendum 1](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=45613) this was changed to map to `dc:description["x-default"]`.</note>
 
 ### Namespaces {#namespaces}
 

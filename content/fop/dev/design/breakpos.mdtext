@@ -30,9 +30,13 @@ The break possibilities are generated from the bottom up. All inline content mus
 Variable size content is taken into account from the bottom up. Each LM returns a range of sizes in the stacking direction, based on property values. For text, this comes from variable word-space values or letter-space values. For other inline objects, it may include variable space-start and space-end values (after calculation of the entire sequence of space specifiers at a particular break possibility.)
 
 The main constraint for laying out lines is the available inline-progression-dimension (IPD) for the line area to be created. This depends on the IPD of the reference area ancestor, on the indents of the containing fo:block, and on any side-floats which may be intruding on this line.
-See below [Getting the Reference IPD](#getRefIPD) for discussion of how the reference area IPD is transmitted to the Line LM.
+
+<note>See below [Getting the Reference IPD](#getRefIPD) for discussion of how the reference area IPD is transmitted to the Line LM.</note>
+
 For now, let's assume that only the LineLM knows about the IPD available to it. Therefore only it can make a decision about which BP is the best one; the lower level inline layout managers can only return potential break points.
-There are certainly optimizations to this model which can be examined later.
+
+<note>There are certainly optimizations to this model which can be examined later.</note>
+
 So the Line LM will ask its child LM(s) for break possibilities until it gets back a BP whose stacking dimension *could* fill the line. This means that the BP.stackdim.max >= LineIPD.min. It can look for further BP, perhaps one whose stackdim.opt is closer to the LineIPD.opt. If it isn't happy with the choice of break possibilities, it can go past the end of the line to the next one, and then try to find a hyphenation point between the last one which fits and the first one which doesn't. If no possibility is found whose min/max values enclose the available IPD, some constraint will be violated (and reported in the log.) The actual strategy is up to the Line LM and should be able to be easily replaced without changing the architecture (Strategy pattern).
 
 The definition of a good break possibility depends on the properties at the block and inline level which govern things such as wrapping behavior and justification mode. For example, if lines are not to be wrapped, only an explicit linefeed can serve as a BP. If lines are wrapped but not justified then there is no requirement to completely fill the IPD on each line, but a sophisticated layout manager will try to achieve "aesthetic rag".

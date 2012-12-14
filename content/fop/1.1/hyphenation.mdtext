@@ -10,7 +10,8 @@ Title: Apache(tm) FOP: Hyphenation
 Apache&trade; FOP uses Liang's hyphenation algorithm, well known from TeX. It needs language specific pattern and other data for operation.
 
 Because of [licensing issues](#license-issues) (and for convenience), all hyphenation patterns for FOP are made available through the [Objects For Formatting Objects](http://offo.sourceforge.net/hyphenation/index.html) project.
-If you have made improvements to an existing Apache&trade; FOP hyphenation pattern, or if you have created one from scratch, please consider contributing these to OFFO so that they can benefit other FOP users as well. Please inquire on the [FOP User mailing list](../maillist.html#fop-user).
+
+<note>If you have made improvements to an existing Apache&trade; FOP hyphenation pattern, or if you have created one from scratch, please consider contributing these to OFFO so that they can benefit other FOP users as well. Please inquire on the [FOP User mailing list](../maillist.html#fop-user).</note>
 
 ### License Issues {#license-issues}
 
@@ -36,6 +37,7 @@ To install a custom hyphenation pattern for use with FOP:
 -  `en_US.xml` would be the file name for American English hyphenation patterns.
 
 -  `it.xml` would be the file name for Italian hyphenation patterns.
+
 The language and country codes must match the XSL-FO input, which follows [ISO 639](http://www.ics.uci.edu/pub/ietf/http/related/iso639.txt) (languages) and [ISO 3166](http://www.ics.uci.edu/pub/ietf/http/related/iso3166.txt) (countries). NOTE: The ISO 639/ISO 3166 convention is that language names are written in lower case, while country codes are written in upper case. FOP does not check whether the language and country specified in the FO source are actually from the current standard, but it relies on it being two letter strings in a few places. So you can make up your own codes for custom hyphenation patterns, but they should be two letter strings too (patches for proper handling extensions are welcome)
 
 1. There are basically three ways to make the FOP-compatible hyphenation pattern file(s) accessible to FOP:

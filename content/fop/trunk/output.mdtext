@@ -89,7 +89,7 @@ Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note t
             Document document = new Document(reader.getPageSizeWithRotation(1));
             PdfWriter writer = PdfWriter.getInstance(document, outfile);
             writer.setEncryption(PdfWriter.STRENGTH40BITS, "pdf", null,
-              PdfWriter.AllowCopy);
+                PdfWriter.AllowCopy);
             document.open();
             PdfContentByte cb = writer.getDirectContent();
             PdfImportedPage page;
@@ -356,8 +356,8 @@ A typical raster font configuration looks like:
     :::xml
     <!-- This is an example of mapping actual IBM raster fonts / code pages to a FOP font -->
     <font>
-      <!-- The afp-font element defines the IBM code page, the matching Java encoding and the
-           base URI for the font -->
+    <!-- The afp-font element defines the IBM code page, the matching Java encoding and the
+         base URI for the font -->
       <afp-font type="raster" codepage="T1V10500" encoding="Cp500" base-uri="fonts/ibm/">
         <!-- For a raster font a separate element for each font size is required providing
              the font size and the corresponding IBM Character set name -->
@@ -386,22 +386,24 @@ An outline font configuration is simpler as the individual font size entries are
     :::xml
     <font>
       <afp-font type="outline" codepage="T1V10500" encoding="Cp500" characterset="CZH200  "
-          base-uri="file:/fonts/ibm" />
+           base-uri="file:/fonts/ibm" />
       <font-triplet name="sans-serif" style="normal" weight="normal"/>
       <font-triplet name="Helvetica" style="normal" weight="normal"/>
       <font-triplet name="any" style="normal" weight="normal"/>
     </font>
 
 If "base-uri" is missing or a relative URI, the fonts are resolved relative to the font base URI specified in the configuration (or on the FopFactory).
-Previously, the location of the font files was given by the "path" attribute. This is still supported for the time being, but you should move to using the more flexible "base-uri" attribute so you can profit from the power of URI resolvers.
+
+<note>Previously, the location of the font files was given by the "path" attribute. This is still supported for the time being, but you should move to using the more flexible "base-uri" attribute so you can profit from the power of URI resolvers.</note>
+
 A CID-keyed font (Type 0, double-byte outline font) configuration is much the same as an outline font. However, the characterset definition is now required within the afp-font element.
 
     :::xml
     <font>
-        <afp-font type="CIDKeyed" characterset="CZJHMNU"
+      <afp-font type="CIDKeyed" characterset="CZJHMNU"
            codepage="T1120000" encoding="UnicodeBigUnmarked"
            base-uri="file:/fonts/ibm" />
-        <font-triplet name="J-Heisei Mincho" style="normal" weight="normal" />
+      <font-triplet name="J-Heisei Mincho" style="normal" weight="normal" />
     </font>
 
 Note that the value of the encoding attribute in the example is the double-byte encoding 'UnicodeBigUnmarked' (UTF-16BE).
@@ -572,7 +574,7 @@ By default the AFP Renderer will place all data resource objects such as images 
     :::xml
     <resource-group-file>external_resources.afp</resource-group-file>
 
-Be careful when using this option not to overwrite existing resource files from previous rendering runs.
+<note>Be careful when using this option not to overwrite existing resource files from previous rendering runs.</note>
 
 #### Resource Level Defaults {#afp-resource-level-defaults}
 
@@ -692,7 +694,9 @@ Apache FOP supports embedding an external form map resource in the generated AFP
       </fo:declarations>
 
 The `afp:include-form-map` is to be placed as a direct child of `fo:declarations`. The `name` is an AFP resource name (max. 8 characters) and the `src` attribute is the URI identifying the external form map resource. When such a form map is embedded, you can use the `afp:invoke-medium-map` extension (described above) to invoke any medium map included in the form map.
-Apache FOP doesn't support a way to define a form map or medium map using XML means inside an XSL-FO document. You will have to build the form map with some third-party tool.
+
+<note>Apache FOP doesn't support a way to define a form map or medium map using XML means inside an XSL-FO document. You will have to build the form map with some third-party tool.</note>
+
 ### Foreign Attributes {#afp-foreign-attributes}
 
 #### Resource {#afp-foreign-attributes-resource}
@@ -730,7 +734,9 @@ The resource-level attribute where the resource object will reside in the AFP ou
 JFOR, an open source XSL-FO to RTF converter has been integrated into Apache FOP. This will create an RTF (rich text format) document that will attempt to contain as much information from the XSL-FO document as possible. It should be noted that is not possible (due to RTF's limitations) to map all XSL-FO features to RTF. For complex documents, the RTF output will never reach the feature level from PDF, for example. Thus, using RTF output is only recommended for simple documents such as letters.
 
 The RTF output follows Microsoft's RTF specifications and produces best results on Microsoft Word.
-RTF output is currently unmaintained and lacks many features compared to other output formats. Using other editable formats like Open Document Format, instead of producing XSL-FO then RTF through FOP, might give better results.
+
+<note>RTF output is currently unmaintained and lacks many features compared to other output formats. Using other editable formats like Open Document Format, instead of producing XSL-FO then RTF through FOP, might give better results.</note>
+
 These are some known restrictions compared to other supported output formats (not a complete list):
 
 

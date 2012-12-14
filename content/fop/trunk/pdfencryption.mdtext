@@ -32,7 +32,6 @@ Further restrictions can be imposed by using the following command-line options:
 |  `-noassembledoc`  | disable assembling documents |
 |  `-noprinthq`  | disable high quality printing |
 
-
 ## Usage (embedded) {#embedded}
 
 When FOP is embedded in another Java application you need to set an options map on the renderer. These are the supported options:
@@ -50,7 +49,9 @@ When FOP is embedded in another Java application you need to set an options map 
 | allowAccessContent | Allows/disallows text and graphics extraction for accessibility purposes | "TRUE" or "FALSE" | "TRUE" |
 | allowAssembleDocument | Allows/disallows assembling document | "TRUE" or "FALSE" | "TRUE" |
 | allowPrintHq | Allows/disallows high quality printing | "TRUE" or "FALSE" | "TRUE" |
-Encryption is enabled as soon as one of these options is set.
+
+<note>Encryption is enabled as soon as one of these options is set.</note>
+
 An example to enable PDF encryption in Java code:
 
     :::java

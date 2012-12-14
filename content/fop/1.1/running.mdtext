@@ -175,9 +175,13 @@ If the system property `fop.optional.lib` contains the name of a directory, then
 ## Using Xalan to Check XSL-FO Input {#check-input}
 
 FOP sessions that use -xml and -xsl input instead of -fo input are actually controlling two distinct conversions: Tranforming XML to XSL-FO, then formatting the XSL-FO to PDF (or another FOP output format). Although FOP controls both of these processes, the first is included merely as a convenience and for performance reasons. Only the second is part of FOP's core processing. If a user has a problem running FOP, it is important to determine which of these two processes is causing the problem. If the problem is in the first process, the user's stylesheet is likely the cause. The FOP development team does not have resources to help with stylesheet issues, although we have included links to some useful [Specifications](../resources.html#specs) and [Books/Articles](../resources.html#articles). If the problem is in the second process, FOP may have a bug or an unimplemented feature that does require attention from the FOP development team.
-The user is always responsible to provide correct XSL-FO code to FOP.
+
+<note>The user is always responsible to provide correct XSL-FO code to FOP.</note>
+
 In the case of using -xml and -xsl input, although the user is responsible for the XSL-FO code that is FOP's input, it is not visible to the user. To make the intermediate FO file visible, the FOP distribution includes the "-foout" option which causes FOP to run only the first (transformation) step, and write the results to a file. (See also the Xalan command-line below)
-When asking for help on the FOP mailing lists, *never* attach XML and XSL to illustrate the issue. Always run the XSLT step (-foout) and send the resulting XSL-FO file instead. Of course, be sure that the XSL-FO file is correct before sending it.
+
+<note>When asking for help on the FOP mailing lists, *never* attach XML and XSL to illustrate the issue. Always run the XSLT step (-foout) and send the resulting XSL-FO file instead. Of course, be sure that the XSL-FO file is correct before sending it.</note>
+
 The -foout option works the same way as if you would call the [Xalan command-line](http://xml.apache.org/xalan-j/commandline.html):
 
  `java org.apache.xalan.xslt.Process -IN xmlfile -XSL file -OUT outfile`

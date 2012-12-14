@@ -30,26 +30,41 @@ The build script uses [Apache Ant](http://ant.apache.org/), a popular Java-based
 ## Run the Build Script {#build-script}
 
 Change to the FOP root directory and build FOP by executing the build script (build.xml) using the "ant" command.
-The "ant" command is only available on your system if you've properly [installed Apache Ant](http://ant.apache.org/manual/) and added Ant's location to the PATH environment variable.
-The file build.xml in the FOP root directory is the blueprint that Ant uses for the build. It contains information for numerous build targets, many of which are building blocks to more useful target, and others which are primarily used by the FOP developers. You may benefit from looking through this file to learn more about the various build targets. To obtain a complete list of useful build targets:
-ant -projecthelp
-The most useful targets are:
 
+<note>The "ant" command is only available on your system if you've properly [installed Apache Ant](http://ant.apache.org/manual/) and added Ant's location to the PATH environment variable.</note>
+
+The file build.xml in the FOP root directory is the blueprint that Ant uses for the build. It contains information for numerous build targets, many of which are building blocks to more useful target, and others which are primarily used by the FOP developers. You may benefit from looking through this file to learn more about the various build targets. To obtain a complete list of useful build targets:
+
+    ant -projecthelp
+
+The most useful targets are:
 
 -  **package**: Generates the JAR files (default). This is the normal build that produces a jar file usable for running FOP.
 
 -  **clean**: Cleans the build directory. This is useful for making sure that any build errors are cleaned up before starting a new build. It should not ordinarily be needed, but may be helpful if you are having problems with the build process itself.
 
--  **javadocs**: Creates the FOP API documentation.A minimum JDK version of 1.4.2 is required for generating the javadocs.
+-  **javadocs**: Creates the FOP API documentation.
+
+<note>A minimum JDK version of 1.4.2 is required for generating the javadocs.</note>
 
 To run the build:
-ant [target ...]
+
+    ant [target ...]
+
 For example to do a normal build for the "all" target (which is the default):
-ant
+
+    ant
+
 OR
-ant all
+
+    ant all
+
 To clean the build directory first:
-ant clean allIf you want to shorten the build time you can just call the "package" target which doesn't perform any automated tests during the build.
+
+    ant clean all
+
+<note>If you want to shorten the build time you can just call the "package" target which doesn't perform any automated tests during the build.</note>
+
 ## Troubleshooting {#problems}
 
 If you have problems building FOP, please try the following:

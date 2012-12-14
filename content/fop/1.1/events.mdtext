@@ -122,7 +122,9 @@ This throws a `RuntimeException` with the `FileNotFoundException` as the cause. 
 ## The producer side (for FOP developers) {#producer}
 
 This section is primarily for FOP and FOP plug-in developers. It describes how to use the event subsystem for producing events.
-The event package has been designed in order to be theoretically useful for use cases outside FOP. If you think this is interesting independently from FOP, please talk to [us](mailto:fop-dev@xmlgraphics.apache.org).
+
+<note>The event package has been designed in order to be theoretically useful for use cases outside FOP. If you think this is interesting independently from FOP, please talk to [us](mailto:fop-dev@xmlgraphics.apache.org).</note>
+
 ### Producing and sending an event {#basic-event-production}
 
 The basics are very simple. Just instantiate an `Event` object and fill it with the necessary parameters. Then pass it to the `EventBroadcaster` which distributes the events to the interested listeneners. Here's a code example:

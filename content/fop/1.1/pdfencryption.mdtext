@@ -32,7 +32,6 @@ Further restrictions can be imposed by using the following command-line options:
 |  `-noassembledoc`  | disable assembling documents |
 |  `-noprinthq`  | disable high quality printing |
 
-
 ## Usage (embedded) {#embedded}
 
 When FOP is embedded in another Java application you need to set an options map on the renderer. These are the supported options:
@@ -50,7 +49,9 @@ When FOP is embedded in another Java application you need to set an options map 
 | allowAccessContent | Allows/disallows text and graphics extraction for accessibility purposes | "TRUE" or "FALSE" | "TRUE" |
 | allowAssembleDocument | Allows/disallows assembling document | "TRUE" or "FALSE" | "TRUE" |
 | allowPrintHq | Allows/disallows high quality printing | "TRUE" or "FALSE" | "TRUE" |
-Encryption is enabled as soon as one of these options is set.
+
+<note>Encryption is enabled as soon as one of these options is set.</note>
+
 An example to enable PDF encryption in Java code:
 
     :::java
@@ -130,8 +131,8 @@ The pure Java implementation from [Bouncy Castle](http://www.bouncycastle.org/) 
 
 1. Open the `java.security` file and add
 
-     `security.provider.6=org.bouncycastle.jce.provider.BouncyCastleProvider`,
+    `security.provider.6=org.bouncycastle.jce.provider.BouncyCastleProvider`,
 
-     preferably at the end of the block defining the other crypto providers. For JDK 1.4 this is detailed on [Sun's web site](http://java.sun.com/j2se/1.4/docs/guide/security/jce/JCERefGuide.html#InstallProvider).
+    preferably at the end of the block defining the other crypto providers. For JDK 1.4 this is detailed on [Sun's web site](http://java.sun.com/j2se/1.4/docs/guide/security/jce/JCERefGuide.html#InstallProvider).
 
 If you have any experience with Mozilla JSS or any other cryptography provider, please post it to the fop-user list.
