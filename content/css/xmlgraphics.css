@@ -236,13 +236,14 @@ version {
 #items ul a:hover { color: #000 }
 
 note, warning {
-    margin: 1em 3em;
+    margin: 1em 0;
     border: solid 1px;
     display: block;
     font-size: 90%;
     line-height: 120%;
     padding: 5px 10px;
     color: black;
+    border-radius: 8px;
 }
 note {
     border-color: #006699;
@@ -258,6 +259,7 @@ note:before, warning:before {
     padding: 5px 10px;
     margin: -5px -10px 10px;
     color: white;
+    border-radius: 7px 7px 0 0;
 }
 note:before {
     content: "Note";
@@ -272,6 +274,7 @@ warning:before {
     background-color: #ccc;/* this will be overwritten by http://www.apache.org/css/code.css */
     border-radius: 10px;
     padding: 0 0.5em;
+    margin: 0 1em;
 }
 .codehilite pre {
     white-space: pre-wrap;
