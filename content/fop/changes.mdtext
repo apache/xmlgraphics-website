@@ -11,20 +11,18 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 ## Version FOP Trunk (TBD) {#version_FOP Trunk}
 
-### Changes to the Code Base {#Code_FOP Trunk}
+## Version 1.1 (20 October 2012) {#version_1.1}
+
+### Changes to the Code Base {#Code_1.1}
 
 
 - ![add](/images/add.jpg) A global setting to wrap F11 images in page segments. Committed by PH. See Issue [49893](http://issues.apache.org/bugzilla/show_bug.cgi?id=49893).
 
-- ![add](/images/add.jpg) Added support for PDF Object Streams. When accessibility is enabled and PDF version 1.5 selected, the structure tree will be stored in object streams in order to reduce the size of the final PDF. Committed by PH,VH.
+- ![add](/images/add.jpg) Added support for PDF Object Streams. When accessibility is enabled and PDF version 1.5 selected, the structure tree will be stored in object streams in order to reduce the size of the final PDF. Committed by VH. Thanks to Peter Hancock.
 
-- ![add](/images/add.jpg) Added configuration option to set the version of the output PDF document. Committed by VH. Thanks to Mehdi Houshmand. See Issue [51385](http://issues.apache.org/bugzilla/show_bug.cgi?id=51385).
+- ![add](/images/add.jpg) Improved support for empty flow-name mapping. Committed by PH. See Issue [50391](http://issues.apache.org/bugzilla/show_bug.cgi?id=50391).
 
-- ![add](/images/add.jpg) Improved support for empty flow-name mapping (see bugzilla#50391). Committed by PH.
-
-- ![add](/images/add.jpg) Add support for complex scripts, including: full bidi support, support for advanced typographic tables, advanced support for number conversion. Committed by GA. See Issue [32789](http://issues.apache.org/bugzilla/show_bug.cgi?id=32789), [49008](http://issues.apache.org/bugzilla/show_bug.cgi?id=49008), [49687](http://issues.apache.org/bugzilla/show_bug.cgi?id=49687).
-
-- ![add](/images/add.jpg) Improvements of the Accessibility feature Committed by PH. Thanks to VH and PH.
+- ![add](/images/add.jpg) Improvements of the Accessibility features. Committed by PH. Thanks to Vincent Hennebert.
 
 - ![add](/images/add.jpg) Suppress unnecessary "font not found warnings" when generating AFP with raster fonts Committed by CB. Thanks to Luis Bernardo. See Issue [52416](http://issues.apache.org/bugzilla/show_bug.cgi?id=52416).
 
@@ -40,25 +38,22 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![add](/images/add.jpg) Added to build file JUnit target that uses a regex to run all of the test cases. This reduces the risk that some of them are omitted when building FOP. Committed by VH. Thanks to Mehdi Houshmand. See Issue [52136](http://issues.apache.org/bugzilla/show_bug.cgi?id=52136).
 
-- ![add](/images/add.jpg) Allow JPEG images to be embedded in an AFP document as is, without being decoded and encoded. Committed by PH. Thanks to JM, Mehdi Houshmand. See Issue [52089](http://issues.apache.org/bugzilla/show_bug.cgi?id=52089).
+- ![add](/images/add.jpg) Allow JPEG images to be embedded in an AFP document as is, without being decoded and encoded. Committed by PH. Thanks to Mehdi Houshmand. See Issue [52089](http://issues.apache.org/bugzilla/show_bug.cgi?id=52089).
 
 - ![add](/images/add.jpg) Simplification of the build: Reduced code duplication and layout engine tests. Committed by PH. Thanks to Mehdi Houshmand. See Issue [52010](http://issues.apache.org/bugzilla/show_bug.cgi?id=52010).
 
-- ![add](/images/add.jpg) Bugfix for when the last simple-page-master referenced in a page-sequence-master is not chosen when force-page-count=odd. Committed by PH. Thanks to Mehdi Houshmand. See Issue [51962](http://issues.apache.org/bugzilla/show_bug.cgi?id=51962).
+- ![add](/images/add.jpg) Fix for when the last simple-page-master referenced in a page-sequence-master is not chosen when force-page-count=odd. Committed by PH. Thanks to Mehdi Houshmand. See Issue [51962](http://issues.apache.org/bugzilla/show_bug.cgi?id=51962).
 
 - ![add](/images/add.jpg) Upgraded all tests to JUnit 4. Committed by VH. Thanks to Mehdi Houshmand. See Issue [51928](http://issues.apache.org/bugzilla/show_bug.cgi?id=51928).
 
 - ![add](/images/add.jpg) Added support for resolution of relative URIs against a specified xml:base during property refinement. Committed by AD. See Issue [48334](http://issues.apache.org/bugzilla/show_bug.cgi?id=48334).
 
-- ![fix](/images/fix.jpg) Update to use of checkstyle-5.5 as default configuration. Remove checkstyle-4.0 configuration. Also, import environment build properties before local properties, so that latter can refer to former.' Committed by GA. See Issue [53083](http://issues.apache.org/bugzilla/show_bug.cgi?id=53083).
+
+- ![fix](/images/fix.jpg) Update to use of checkstyle-5.5 as default configuration. Remove checkstyle-4.0 configuration. Also, import environment build properties before local properties, so that latter can refer to former. Committed by GA. See Issue [53083](http://issues.apache.org/bugzilla/show_bug.cgi?id=53083).
 
 - ![fix](/images/fix.jpg) Prevent NPE on use of unsupported collapse-with-precedence; fall back to collapse. Fix checkstyle errors from prior commit. Committed by GA. Thanks to Pascal Sancho. See Issue [52572](http://issues.apache.org/bugzilla/show_bug.cgi?id=52572).
 
-- ![fix](/images/fix.jpg) Ensure square image is appropriately scaled. Committed by GA. Thanks to Luis Bernardo. See Issue [52514](http://issues.apache.org/bugzilla/show_bug.cgi?id=52514).
-
 - ![fix](/images/fix.jpg) Invoke JVM in headless mode from FOP command scripts and JS shell to prevent stealing focus from GUI applications. Committed by GA. See Issue [50062](http://issues.apache.org/bugzilla/show_bug.cgi?id=50062).
-
-- ![fix](/images/fix.jpg) Take leading derived space before/after into account when computing rows for TXT renderer. Committed by GA. See Issue [52114](http://issues.apache.org/bugzilla/show_bug.cgi?id=52114).
 
 - ![fix](/images/fix.jpg) Support list-block in marker, thus preventing NPE. Committed by GA. See Issue [52763](http://issues.apache.org/bugzilla/show_bug.cgi?id=52763).
 
@@ -100,7 +95,7 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![fix](/images/fix.jpg) Fixed deadlock in PropertyCache. Committed by VH. Thanks to Alexios Giotis. See Issue [46962](http://issues.apache.org/bugzilla/show_bug.cgi?id=46962).
 
-- ![fix](/images/fix.jpg) Fixed bug that caused a configured and installed SVG font to stroked, also added an event indicating when fonts are stroked. Committed by MH. Thanks to Luis Bernardo. See Issue [52849](http://issues.apache.org/bugzilla/show_bug.cgi?id=52849).
+- ![fix](/images/fix.jpg) Fixed bug that caused a configured and installed SVG font to be stroked, also added an event indicating when fonts are stroked. Committed by MH. Thanks to Luis Bernardo. See Issue [52849](http://issues.apache.org/bugzilla/show_bug.cgi?id=52849).
 
 - ![fix](/images/fix.jpg) Fix of a bug introduced when merging ImproveAccessibility. Committed by PH.
 
@@ -108,24 +103,26 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![fix](/images/fix.jpg) Fixed regression introduced by Bugzilla 50593: bookmarks pointing to a non-existing internal destination should just trigger a warning. Committed by AD. See Issue [50593](http://issues.apache.org/bugzilla/show_bug.cgi?id=50593).
 
-- ![fix](/images/fix.jpg) Bugfix: fix issue in RenderPagesModel.checkPreparedPages() where the same page-sequence is potentially started multiple times. Committed by AD. Thanks to mkoegler.AT.auto.tuwien.ac.at. See Issue [50635](http://issues.apache.org/bugzilla/show_bug.cgi?id=50635).
+- ![fix](/images/fix.jpg) Fix for issue in RenderPagesModel.checkPreparedPages() where the same page-sequence is potentially started multiple times. Committed by AD. Thanks to Martin Koegler. See Issue [50635](http://issues.apache.org/bugzilla/show_bug.cgi?id=50635).
 
-- ![fix](/images/fix.jpg) Bugfix: fix performance issue when adding pages, if the total number of pages is significantly large. Committed by AD. Thanks to mkoegler.AT.auto.tuwien.ac.at. See Issue [50636](http://issues.apache.org/bugzilla/show_bug.cgi?id=50636).
+- ![fix](/images/fix.jpg) Fix for performance issue when adding pages, if the total number of pages is significantly large. Committed by AD. Thanks to Martin Koegler. See Issue [50636](http://issues.apache.org/bugzilla/show_bug.cgi?id=50636).
 
-- ![fix](/images/fix.jpg) Bugfix: fix performance issue when adding nodes, if the number of children is significantly large. Committed by AD. Thanks to mkoegler.AT.auto.tuwien.ac.at. See Issue [50626](http://issues.apache.org/bugzilla/show_bug.cgi?id=50626).
+- ![fix](/images/fix.jpg) Fix for performance issue when adding nodes, if the number of children is significantly large. Committed by AD. Thanks to Martin Koegler. See Issue [50626](http://issues.apache.org/bugzilla/show_bug.cgi?id=50626).
 
-- ![fix](/images/fix.jpg) Bugfix: avoid ArrayIndexOutOfBoundsException for codepoints without a linebreak class Committed by AD. See Issue [50471](http://issues.apache.org/bugzilla/show_bug.cgi?id=50471).
+- ![fix](/images/fix.jpg) Fix for avoid ArrayIndexOutOfBoundsException for codepoints without a linebreak class Committed by AD. See Issue [50471](http://issues.apache.org/bugzilla/show_bug.cgi?id=50471).
 
 - ![fix](/images/fix.jpg) Replaced magic numbers with constants from UnitConv and GraphicsConstants. Committed by VH. Thanks to Joshua Marquart. See Issue [49695](http://issues.apache.org/bugzilla/show_bug.cgi?id=49695).
 
 - ![update](/images/update.jpg) Add run target for embedded examples. Add increased JVM memory heap flag for example8 in case font cache is rebuilt. Committed by GA. See Issue [51617](http://issues.apache.org/bugzilla/show_bug.cgi?id=51617).
 
-### Changes to the User Configuration {#Config_FOP Trunk}
+### Changes to the User Configuration {#Config_1.1}
 
 
-- ![fix](/images/fix.jpg) Bugfix: relative URIs in the configuration file (base, font-base, hyphenation-base) are evaluated relative to the base URI of the configuration file. Committed by SP.
+- ![add](/images/add.jpg) Added configuration option to set the version of the output PDF document. Committed by VH. Thanks to Mehdi Houshmand. See Issue [51385](http://issues.apache.org/bugzilla/show_bug.cgi?id=51385).
 
-### Changes to the Font Subsystem {#Fonts_FOP Trunk}
+- ![fix](/images/fix.jpg) Fix for relative URIs in the configuration file (base, font-base, hyphenation-base) are evaluated relative to the base URI of the configuration file. Committed by SP.
+
+### Changes to the Font Subsystem {#Fonts_1.1}
 
 
 - ![add](/images/add.jpg) Add support for OpenType advanced typographic tables (GDEF, GSUB, GPOS). Committed by GA.
@@ -152,24 +149,28 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![fix](/images/fix.jpg) Reinstated support for being able to specify a font cache filepath in the fop user configuration. Committed by AC.
 
-### Changes to the Layout Engine {#Layout_FOP Trunk}
+### Changes to the Layout Engine {#Layout_1.1}
 
+
+- ![add](/images/add.jpg) Add support for complex scripts, including: full bidi support, support for advanced typographic tables, advanced support for number conversion. Committed by GA. See Issue [32789](http://issues.apache.org/bugzilla/show_bug.cgi?id=32789), [49008](http://issues.apache.org/bugzilla/show_bug.cgi?id=49008), [49687](http://issues.apache.org/bugzilla/show_bug.cgi?id=49687).
+
+- ![fix](/images/fix.jpg) Ensure square image is appropriately scaled. Committed by GA. Thanks to Luis Bernardo. See Issue [52514](http://issues.apache.org/bugzilla/show_bug.cgi?id=52514).
 
 - ![fix](/images/fix.jpg) Bugzilla 50965: Fixed a regression in BlockContainerLayoutManager where margins were no longer reset after forced breaks. Committed by AD. Thanks to Martin Koegler. See Issue [50965](http://issues.apache.org/bugzilla/show_bug.cgi?id=50965).
 
 - ![fix](/images/fix.jpg) Implemented non-standard behavior for basic-link areas, such that they take into account the heights of their descendants areas. Committed by VH.
 
-- ![fix](/images/fix.jpg) Bugfix: keep-together does not apply to fo:table-cell. Committed by VH.
+- ![fix](/images/fix.jpg) Fix for keep-together does not apply to fo:table-cell. Committed by VH.
 
-- ![fix](/images/fix.jpg) Bugfix: keep-together on a table containing row-spanning cells was not honored. Committed by VH.
+- ![fix](/images/fix.jpg) Fix for keep-together on a table containing row-spanning cells that was not honored. Committed by VH.
 
-- ![fix](/images/fix.jpg) Bugzilla #50196: padding-start ignored when table-header/footer is repeated. Committed by VH. Thanks to Matthias Reischenbacher. See Issue [50196](http://issues.apache.org/bugzilla/show_bug.cgi?id=50196).
+- ![fix](/images/fix.jpg) Fix for padding-start ignored when table-header/footer is repeated. Committed by VH. Thanks to Matthias Reischenbacher. See Issue [50196](http://issues.apache.org/bugzilla/show_bug.cgi?id=50196).
 
-- ![fix](/images/fix.jpg) Bugfix: correct behavior of keep-together.within-line in case there are nested inlines Committed by AD. See Issue [49848](http://issues.apache.org/bugzilla/show_bug.cgi?id=49848).
+- ![fix](/images/fix.jpg) Fix for correct behavior of keep-together.within-line in case there are nested inlines Committed by AD. See Issue [49848](http://issues.apache.org/bugzilla/show_bug.cgi?id=49848).
 
-- ![fix](/images/fix.jpg) Bugfix: avoid ClassCastException when using fox:widow-content-limit Committed by AD. See Issue [48380](http://issues.apache.org/bugzilla/show_bug.cgi?id=48380).
+- ![fix](/images/fix.jpg) Fix for avoid ClassCastException when using fox:widow-content-limit Committed by AD. See Issue [48380](http://issues.apache.org/bugzilla/show_bug.cgi?id=48380).
 
-- ![fix](/images/fix.jpg) Bugfix: content after forced break in block-container is not rendered. Committed by VH. See Issue [50089](http://issues.apache.org/bugzilla/show_bug.cgi?id=50089).
+- ![fix](/images/fix.jpg) Fix for content after forced break in block-container is not rendered. Committed by VH. See Issue [50089](http://issues.apache.org/bugzilla/show_bug.cgi?id=50089).
 
 - ![fix](/images/fix.jpg) Fixed adjustment of inline parent area for justified text containing a forward page reference. Committed by JM. See Issue [42034](http://issues.apache.org/bugzilla/show_bug.cgi?id=42034).
 
@@ -177,12 +178,12 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![fix](/images/fix.jpg) Fixed retrieval of available BPD for cases spanning columns and multiple pages with differing page masters. Committed by JM. See Issue [49885](http://issues.apache.org/bugzilla/show_bug.cgi?id=49885).
 
-### Changes to Renderers (Output Formats) {#Renderers_FOP Trunk}
+### Changes to Renderers (Output Formats) {#Renderers_1.1}
 
 
 - ![add](/images/add.jpg) Various bugfixes to make PDFDocumentGraphics2D operational again. Committed by JM.
 
-- ![add](/images/add.jpg) Added support for 128bit encryption in PDF output. Based on work by Michael Rubin. Committed by VH.
+- ![add](/images/add.jpg) Added support for 128bit encryption in PDF output. Committed by VH. Thanks to Michael Rubin.
 
 - ![add](/images/add.jpg) Added an IFDocumentHandler filter for triggering rendering events. Created an Event that captures an end page event with the page number. Committed by PH.
 
@@ -200,11 +201,13 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![add](/images/add.jpg) Allow afp:no-operation to also appear under fo:page-sequence and fo:declarations. Committed by JM.
 
-- ![add](/images/add.jpg) Added some support for break-before/-after for RTF output. Committed by JM. Thanks to Maximilian Aster. See Issue [42600](http://issues.apache.org/bugzilla/show_bug.cgi?id=42600).
+- ![add](/images/add.jpg) Added some support for break-before/-after for RTF output. Committed by JM. Thanks to Max Aster. See Issue [42600](http://issues.apache.org/bugzilla/show_bug.cgi?id=42600).
 
 - ![add](/images/add.jpg) Added ability to embed an external AFP page segment resource file (AFP output only). Committed by JM. Thanks to Peter Hancock. See Issue [49379](http://issues.apache.org/bugzilla/show_bug.cgi?id=49379).
 
 - ![add](/images/add.jpg) Added support for PDF File Attachments (Embedded Files). Committed by JM. Thanks to Andrejus Chaliapinas. See Issue [44460](http://issues.apache.org/bugzilla/show_bug.cgi?id=44460).
+
+- ![fix](/images/fix.jpg) Take leading derived space before/after into account when computing rows for TXT renderer. Committed by GA. See Issue [52114](http://issues.apache.org/bugzilla/show_bug.cgi?id=52114).
 
 - ![fix](/images/fix.jpg) Improved fix of a bug relating to PCL painter thread safetly. Previous fix in rev 895012 worked by synchronizing methods of a static instance of Java2DFontMetrics. This fix uses a unique instance for per thread. Committed by PH. See Issue [48062](http://issues.apache.org/bugzilla/show_bug.cgi?id=48062).
 
@@ -214,7 +217,7 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![fix](/images/fix.jpg) Fixed a multi-threading bug for SVG images included through svg:image inside SVG documents. Committed by JM.
 
-- ![fix](/images/fix.jpg) Bugfix: alternative text not working in tagged PDF for TIFF images. Committed by VH.
+- ![fix](/images/fix.jpg) Fix for alternative text not working in tagged PDF for TIFF images. Committed by VH.
 
 - ![fix](/images/fix.jpg) Fixed io exception in MODCAParser caused by the improper use of mark() and reset() on the MODCA data input stream. Added unit test. Committed by PH. See Issue [50909](http://issues.apache.org/bugzilla/show_bug.cgi?id=50909).
 
@@ -242,7 +245,7 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![fix](/images/fix.jpg) Fix to preserve the order of AFP TLEs and NOPs as given in the XSL-FO document. Committed by JM. Thanks to Mehdi Houshmand. See Issue [50705](http://issues.apache.org/bugzilla/show_bug.cgi?id=50705).
 
-- ![fix](/images/fix.jpg) Fixed a multi-threading issue when rendering SVG. Committed by JM. Thanks to Alexis Giotis. See Issue [46360](http://issues.apache.org/bugzilla/show_bug.cgi?id=46360).
+- ![fix](/images/fix.jpg) Fixed a multi-threading issue when rendering SVG. Committed by JM. Thanks to Alexios Giotis. See Issue [46360](http://issues.apache.org/bugzilla/show_bug.cgi?id=46360).
 
 - ![remove](/images/remove.jpg) Removed old Renderer implementations for those output formats that have a version based on the new DocumentHandler architecture available (AFP, PCL, PDF, PS). Committed by VH.
 
