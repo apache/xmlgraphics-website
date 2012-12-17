@@ -173,7 +173,7 @@ h1, h3 {
     float: left;
     padding-top: 15px;
 }
-li p, li .codehilite {
+li p {
     padding-left: 0;
 }
 p {
@@ -273,6 +273,9 @@ warning:before {
     background-color: #cc0000;
 }
 
+li .codehilite {
+    margin-left: 0;
+}
 .codehilite {
     background-color: #ccc;/* this will be overwritten by http://www.apache.org/css/code.css */
     border-radius: 10px;
