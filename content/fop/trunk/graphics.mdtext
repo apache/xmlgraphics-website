@@ -120,7 +120,7 @@ FOP native support (i.e. the handling of undecoded images) of JPEG does not incl
 
 ### PNG {#png}
 
-PNG images are supported through an Image&nbsp;I/O codec. Transparency is supported but not guaranteed to work with every output format.
+PNG images are supported both through an Image&nbsp;I/O codec (ImageLoaderImageIO) and through native support. FOP native support is possible with PDF and PS output, and can be enabled either through an internal codec (ImageLoaderPNG) or by directly handling undecoded images (ImageLoaderRawPNG). More information is available in the [wiki page](http://wiki.apache.org/xmlgraphics-fop/HowTo/ImageLoaderRawPNG). Transparency is supported but not guaranteed to work with every output format.
 
 ### SVG {#svg}
 
