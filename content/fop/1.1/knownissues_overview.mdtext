@@ -7,7 +7,7 @@ Title: Apache(tm) FOP: Known Issues
 
 This page lists currently known issues in the current release.
 
-<note>For additional information on known issues in Apache&trade; FOP, please have a look at the following pages, too:<br/> &bullet; [the bug list in Bugzilla](../bugs.html)<br/> &bullet; [the task list in the Wiki](http://wiki.apache.org/xmlgraphics-fop/FOPProjectTasks)</note>
+<note>For additional information on known issues in Apache&trade; FOP, please have a look at the following pages, too:<br/> &bullet; [the bug list in Jira](../bugs.html)<br/> &bullet; [the task list in the Wiki](http://wiki.apache.org/xmlgraphics-fop/FOPProjectTasks)</note>
 
 Apache&trade; FOP has an extensive automated testing infrastructure. Parts of this infrastructure are several sets of test cases. When a test case is listed in disabled-testcases.xml it is disabled in the JUnit tests during the normal build process. This indicates a problem in the current codebase. When a bug is fixed or a missing feature is added the entry for the relevant test case(s) are removed.
 
@@ -167,12 +167,12 @@ Test erroneously depends upon incorrect implementation of writing-mode trait der
 
 ### Other known issues {#Other-known-issues}
 
-This section lists some other issues that post-date the release of FOP 1.0. For known issues that pre-date FOP 1.0, see [older bugs that remain open](http://issues.apache.org/bugzilla/buglist.cgi?chfieldto=2010-07-20&chfield=%5BBug%20creation%5D&query_format=advanced&chfieldfrom=2001-01-01&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_status=NEEDINFO&product=Fop). For all open issues that post-date FOP 1.0, see [newer bugs that remain open](http://issues.apache.org/bugzilla/buglist.cgi?chfieldto=Now&chfield=%5BBug%20creation%5D&query_format=advanced&chfieldfrom=2010-07-20&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_status=NEEDINFO&product=Fop).
+This section lists some other issues that post-date the release of FOP 1.0. For known issues that pre-date FOP 1.0, see [older bugs that remain open](https://issues.apache.org/jira/issues/?jql=project %3D FOP AND status in (Open%2C "In Progress"%2C Reopened) AND created < 2010-07-20 ORDER BY reporter ASC%2C key ASC%2C priority DESC). For all open issues that post-date FOP 1.0, see [newer bugs that remain open](https://issues.apache.org/jira/issues/?jql=project %3D FOP AND status in (Open%2C "In Progress"%2C Reopened) AND created >%3D 2010-07-20 ORDER BY reporter ASC%2C key ASC%2C priority DESC).
 
 
-- Support for Unicode characters outside of the Base Multilingual Plane (BMP), i.e., characters whose code points are greater than 65535, is not yet implemented. See [bug 51843](http://issues.apache.org/bugzilla/show_bug.cgi?id=51843).
+- Support for Unicode characters outside of the Base Multilingual Plane (BMP), i.e., characters whose code points are greater than 65535, is not yet implemented. See issue [FOP-1969](https://issues.apache.org/jira/browse/FOP-1969).
 
-- The writing-mode property does not produce the expected behavior when specified on `fo:simple-page-master` or `fo:region-*` elements. See [bug 53276](http://issues.apache.org/bugzilla/show_bug.cgi?id=53276).
+- The writing-mode property does not produce the expected behavior when specified on `fo:simple-page-master` or `fo:region-*` elements. See issue [FOP-2067](https://issues.apache.org/jira/browse/FOP-2067).
 
 - Support for Devanagari and other Indic scripts is not yet complete.
 

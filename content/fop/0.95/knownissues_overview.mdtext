@@ -10,7 +10,7 @@ This page lists currently known issues in the current release.
 For additional information on known issues in Apache&trade; FOP, please have a look at the following pages, too:
 
 
--  [the bug list in Bugzilla](../bugs.html)
+-  [the bug list in Jira](../bugs.html)
 
 -  [the task list in the Wiki](http://wiki.apache.org/xmlgraphics-fop/FOPProjectTasks)
 
@@ -85,13 +85,13 @@ Space resolution does not work between footnote regions.
 
 Element lists for lists are created by combining the element lists from list-item-label and list-item-body. The footnotes contained in the KnuthBlockBoxes are not propagated to the combined element list.
 
-See also: [http://issues.apache.org/bugzilla/show_bug.cgi?id=37579](http://issues.apache.org/bugzilla/show_bug.cgi?id=37579)
+See also: [FOP-1099](https://issues.apache.org/jira/browse/FOP-1099)
 
 **footnote_in_table.xml** (Footnotes swallowed in tables):
 
 Element lists for tables are created by combining the element lists from the individual table-cells. The footnotes contained in the KnuthBlockBoxes are not propagated to the combined element list.
 
-See also: [http://issues.apache.org/bugzilla/show_bug.cgi?id=37579](http://issues.apache.org/bugzilla/show_bug.cgi?id=37579)
+See also: [FOP-1099](https://issues.apache.org/jira/browse/FOP-1099)
 
 **inline_block_nested_3.xml** (NPE for table inside an inline):
 
@@ -204,7 +204,7 @@ This section lists other known issues.
 
 - Space resolution does not work between footnote regions.
 
-- There's a problem involving nested block-containers and reference-orientation 180/-180 (Bugzilla #36391)
+- There's a problem involving nested block-containers and reference-orientation 180/-180 ([FOP-1036](https://issues.apache.org/jira/browse/FOP-1036))
 
 - block-containers with no height currently don't create a fence for spaces as they should (they behave like a normal block).
 
@@ -222,4 +222,4 @@ This section lists other known issues.
 
 - Not all FO elements can be referenced by their "id", most notably: table-body, table-header, table-footer and table-row.
 
-- Column balancing in multi-column documents may not work as expected (Bugzilla #36356)
+- Column balancing in multi-column documents may not work as expected ([FOP-1034](https://issues.apache.org/jira/browse/FOP-1034))

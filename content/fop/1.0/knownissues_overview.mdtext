@@ -7,7 +7,7 @@ Title: Apache(tm) FOP: Known Issues
 
 This page lists currently known issues in the current release.
 
-<note>For additional information on known issues in Apache&trade; FOP, please have a look at the following pages, too:<br/> &bullet; [the bug list in Bugzilla](../bugs.html)<br/> &bullet; [the task list in the Wiki](http://wiki.apache.org/xmlgraphics-fop/FOPProjectTasks)</note>
+<note>For additional information on known issues in Apache&trade; FOP, please have a look at the following pages, too:<br/> &bullet; [the bug list in Jira](../bugs.html)<br/> &bullet; [the task list in the Wiki](http://wiki.apache.org/xmlgraphics-fop/FOPProjectTasks)</note>
 
 Apache&trade; FOP has an extensive automated testing infrastructure. Parts of this infrastructure are several sets of test cases. When a test case is listed in disabled-testcases.xml it is disabled in the JUnit tests during the normal build process. This indicates a problem in the current codebase. When a bug is fixed or a missing feature is added the entry for the relevant test case(s) are removed.
 
@@ -180,7 +180,7 @@ This section lists other known issues.
 
 - Space resolution does not work between footnote regions.
 
-- There's a problem involving nested block-containers and reference-orientation 180/-180 (Bugzilla #36391)
+- There's a problem involving nested block-containers and reference-orientation 180/-180 (see issue [FOP-1036](https://issues.apache.org/jira/browse/FOP-1036))
 
 - block-containers with no height currently don't create a fence for spaces as they should (they behave like a normal block).
 
@@ -208,4 +208,4 @@ This section lists other known issues.
 
 - Border and padding conditionality are not supported on table-cells, yet.
 
-- Column balancing in multi-column documents may not work as expected (Bugzilla #36356)
+- Column balancing in multi-column documents may not work as expected ([FOP-1034](https://issues.apache.org/jira/browse/FOP-1034))
