@@ -24,29 +24,9 @@ The checklist below is based on a combination of input from from Christian Geise
 
 - Edit release notes (`README` and `status.xml` in the root).
 
-- Add the release to `news-data.xml` ; remove links to release notes of older versions from this file.
-
-- Update the FAQ (`faq.xml`) to the new release, e.g., update the answer for "When is the next release planned?".
-
 - Check and update the copyright year in NOTICE and build.xml.
 
-- Update the file `doap.rdf`, and the files `index.xml`, `site.xml`, `download.xml`, `fo.xml`, `maillist.xml`, and `quickstartguide.xml` in directory `xdocs` for the new version.
-
-- Update the version numbers in the release column on the compliance page (`compliance.xml`); update the compliance in the release column to the current state (development column).
-
 - Update version number in `build.xml` (not to be merged back into trunk).
-
-- Copy trunk documentation directory to a new directory with the new version number, and update the `.htaccess` file for redirections.
-
-- Copy `test/fotree/disabled-testcases.xml` and `test/layoutengine/disabled-testcases.xml` to the new version directory `<version>/fotree/disabled-testcases.xml` and `<version>/layoutengine/disabled-testcases.xml`. Copy `known-issues.xml` to the new version directory. Copy `knownissues-overview.xml` from the current to the new version directory, and update the `xi:include` links in it.
-
-- Update the tab names and directories in `tabs.xml`
-
-- Delete the previous version directory.
-
-- Update `index.xml` in the new version directory.
-
-- Update `compiling.xml` in the new version directory: change the introduction for trunk to that for a release.
 
 - Build the dist files (`build[.sh] dist`) and upload them to your web directory on `people.apache.org`
 
@@ -84,7 +64,28 @@ The checklist below is based on a combination of input from from Christian Geise
 
 - Merge the changes of the subversion release branch back into trunk (not the version number in the build file) and delete the branch.
 
-- Deploy the updated documentation to the FOP website.
+- In CMS doc, copy trunk directory to a new directory with the new version number.
+
+- In CMS doc, copy following files to the new version directory:
+    - `known-issues.mdtext` as `knownissues-overview.mdtext`
+
+- In CMS doc, update all markdown linkIds to the new release (elementids are of the form `[linkId]: fop_version/path_to_page_XXX"` at the beginning of the files):
+    - `faq.mdtext`
+    - `fo.mdtext`
+    - `index.mdtext`
+    - `maillist.mdtext`
+    - `quickstartguide.mdtext`
+
+- In CMS doc, update the following files to the new release
+    - `fop-sidenav.mdtext`
+    - `download.mdtext`
+    - `compliance.mdtext` (version number in new release column)
+
+- In CMS doc, in the new version directory, update the following files:
+    - `index.mdtext`
+    - `compiling.mdtext` (change the introduction for trunk to that for a release).
+
+- Publish the updated documentation to the FOP website.
 
 - Post announcements on `fop-dev` and `fop-user` and other related mailing lists.
 
