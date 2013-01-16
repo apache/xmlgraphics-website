@@ -1,6 +1,6 @@
-Title: Apache(tm) FOP Development: Release Mechanics
+Title: Apache(tm) FOP Development: Release Process
 
-#Apache&trade; FOP Development: Release Mechanics
+#Apache&trade; FOP Development: Release Process
 
 
 ## Introduction {#intro}
@@ -9,8 +9,7 @@ This page documents the process of creating a Apache&trade; FOP release. FOP rel
 
 The checklist below is based on a combination of input from from Christian Geisert and Simon Pepping.
 
-## Checklist {#checklist}
-
+## 1. Define the new release {#define}
 
 - Determine which open bugs must be solved before a release can take place (release critical bugs). Make this bug depend on each release critical bug and write a short argument why the bug is release critical.
 
@@ -19,6 +18,8 @@ The checklist below is based on a combination of input from from Christian Geise
 - Determine whether further testing is required.
 
 - Commit any outstanding changes
+
+## 2. Prepare the new release {#prepare}
 
 - Create a branch called `branches/fop-v_vv`
 
@@ -46,6 +47,8 @@ The checklist below is based on a combination of input from from Christian Geise
 
 - Create signatures. Don't forget to upload your KEY: `gpg -a -b --force-v3-sigs fop-1.0-src.tar.gz` etc.
 
+## 3. Publish the new release {#publish}
+
 - Upload the dist and signature files to your web directory on people.apache.org (An account on minotaur is needed): `scp fop-1.0*.tar.gz* chrisg@people.apache.org:public_html/`
 
 - Check permissions: `chmod 664 ... ; chgrp xmlgraphics ...`
@@ -53,6 +56,8 @@ The checklist below is based on a combination of input from from Christian Geise
 - Add MD5 sums: `md5 fop-1.0-src.tar.gz > fop-1.0-src.tar.gz.md5` etc.
 
 - Make a test download.
+
+## 4. Vote for the new release {#vote}
 
 - Start a vote for the release on `general@xmlgraphics.apache.org`. The message should point to the release files and list the MD5 sums (`cat *.md5`). The vote should remain open for 72hrs.
 
@@ -62,7 +67,13 @@ The checklist below is based on a combination of input from from Christian Geise
 
 - Wait 24 hours (for the mirrors to catch up).
 
+## 5. Update material {#update}
+
+### 5.1 Subversion {#svn}
+
 - Merge the changes of the subversion release branch back into trunk (not the version number in the build file) and delete the branch.
+
+### 5.2 Jira {#jira}
 
 - Ask an FOP Jira admin to
     - rename trunk entry into the new release name,
@@ -72,39 +83,58 @@ The checklist below is based on a combination of input from from Christian Geise
 
     - create an issue at [Jira-INFRA](https://issues.apache.org/jira/browse/INFRA).
 
-- In CMS doc, copy trunk directory to a new release directory with the new version number.
+### 5.3 CMS {#cms}
 
-- In CMS doc, copy following files to the new release directory:
+- Copy trunk directory to a new release directory with the new version number.
+
+- Copy following files to the new release directory:
     - `known-issues.mdtext` as `knownissues-overview.mdtext`
 
-- In CMS doc, update all markdown linkIds to the new release (elementids are of the form `[linkId]: fop_version/path_to_page_XXX"` at the beginning of the files):
+- Update all markdown linkIds to the new release (elementids are of the form `[linkId]: fop_version/path_to_page_XXX"` at the beginning of the files):
     - `faq.mdtext`
     - `fo.mdtext`
     - `index.mdtext`
     - `maillist.mdtext`
     - `quickstartguide.mdtext`
 
-- In CMS doc, update the following files to the new release
+- Update the following files to the new release
     - `fop-sidenav.mdtext`
     - `download.mdtext`
     - `compliance.mdtext` (version number in new release column)
     - `changes.mdtext`
 
-- In CMS doc, in the new release directory, update the following files:
+- In the new release directory, update the following files:
     - `index.mdtext`
     - `compiling.mdtext` (change the introduction for trunk to that for a release).
     - `changes_x.x.mdtext`
 
 - Publish the updated documentation to the FOP website.
 
-- Post announcements on `fop-dev` and `fop-user` and other related mailing lists.
+### 5.3 Maven {#maven}
 
 - Deploy the maven bundle.
 
-## Resources {#other-checklists}
+## 6 Announce the new release {#announce}
+
+Post announcements on following suggested lists:
+
+- fop-dev@xmlgraphics.apache.org
+- fop-users@xmlgraphics.apache.org
+- general@xmlgraphics.apache.org
+- general@xml.apache.org
+- announce@apache.org (from your apache.org address)
+- xsl-list@lists.mulberrytech.com (subscriber-only)
+- xsl-fo@yahoogroups.com (subscriber-only)
+- www-xsl-fo@w3.org
+- docbook-apps@lists.oasis-open.org (subscriber-only)
+- dita-users@yahoogroups.com (subscriber-only) (http://dita-ot.sourceforge.net/)
+- http://xslfo-zone.com/news/index.jsp
+- http://www.w3.org/Style/XSL/
+- http://freshmeat.net/projects/fop/
+
+## Resources {#resources}
 
 The following is a sample of some other project release checklists, which might be consulted for ideas:
-
 
 -  [Apache Batik](http://svn.apache.org/repos/asf/xmlgraphics/batik/trunk/MAINTAIN)
 
@@ -112,42 +142,9 @@ The following is a sample of some other project release checklists, which might 
 
 -  [Apache Cactus](http://jakarta.apache.org/cactus/participating/release_checklist.html)
 
-
-
 Following are links with information about mirroring:
-
 
 -  [Apache Mirroring](http://www.apache.org/dev/mirrors.html)
 
 - Stefan Bodewig's [Making your Downloads Mirrorable](http://people.apache.org/~bodewig/mirror.html)
 
-## Announcing the release {#announcements}
-
-Here's a suggested list of places where to announce new FOP releases:
-
-
-- fop-dev@xmlgraphics.apache.org
-
-- fop-users@xmlgraphics.apache.org
-
-- general@xmlgraphics.apache.org
-
-- general@xml.apache.org
-
-- announce@apache.org (from your apache.org address)
-
-- xsl-list@lists.mulberrytech.com (subscriber-only)
-
-- xsl-fo@yahoogroups.com (subscriber-only)
-
-- www-xsl-fo@w3.org
-
-- docbook-apps@lists.oasis-open.org (subscriber-only)
-
-- dita-users@yahoogroups.com (subscriber-only) (http://dita-ot.sourceforge.net/)
-
-- http://xslfo-zone.com/news/index.jsp
-
-- http://www.w3.org/Style/XSL/
-
-- http://freshmeat.net/projects/fop/
