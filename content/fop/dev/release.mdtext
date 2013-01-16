@@ -64,9 +64,17 @@ The checklist below is based on a combination of input from from Christian Geise
 
 - Merge the changes of the subversion release branch back into trunk (not the version number in the build file) and delete the branch.
 
-- In CMS doc, copy trunk directory to a new directory with the new version number.
+- Ask an FOP Jira admin to
+    - rename trunk entry into the new release name,
+    - and create a new trunk entry
 
-- In CMS doc, copy following files to the new version directory:
+    or
+
+    - create an issue at [Jira-INFRA](https://issues.apache.org/jira/browse/INFRA).
+
+- In CMS doc, copy trunk directory to a new release directory with the new version number.
+
+- In CMS doc, copy following files to the new release directory:
     - `known-issues.mdtext` as `knownissues-overview.mdtext`
 
 - In CMS doc, update all markdown linkIds to the new release (elementids are of the form `[linkId]: fop_version/path_to_page_XXX"` at the beginning of the files):
@@ -80,22 +88,16 @@ The checklist below is based on a combination of input from from Christian Geise
     - `fop-sidenav.mdtext`
     - `download.mdtext`
     - `compliance.mdtext` (version number in new release column)
+    - `changes.mdtext`
 
-- In CMS doc, in the new version directory, update the following files:
+- In CMS doc, in the new release directory, update the following files:
     - `index.mdtext`
     - `compiling.mdtext` (change the introduction for trunk to that for a release).
+    - `changes_x.x.mdtext`
 
 - Publish the updated documentation to the FOP website.
 
 - Post announcements on `fop-dev` and `fop-user` and other related mailing lists.
-
-- Ask an FOP Jira admin to
-    - rename trunk entry into the new release name,
-    - and create a new trunk entry entry for the new release id
-
-    or
-
-    - create an issue at [Jira-INFRA](https://issues.apache.org/jira/browse/INFRA).
 
 - Deploy the maven bundle.
 
