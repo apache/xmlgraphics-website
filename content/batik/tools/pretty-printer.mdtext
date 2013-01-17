@@ -16,10 +16,12 @@ The method for starting the pretty-printer depends on the distribution of Batik 
 ### Using the binary distribution {#using-binary}
 
 If you downloaded the binary distribution of Batik, you should have a file called `batik-1.6.zip` (or similar), and, after expanding that file, a jar file called `batik-svgpp.jar`. To start the pretty printer, open a console, change to the directory where you expanded the distribution (and where `batik-svgpp.jar` is located) and simply type the following at the command prompt:
-java -jar batik-svgpp.jar [OPTIONS] FILES
+
+    java -jar batik-svgpp.jar [OPTIONS] FILES
+
 For example, if you type:
 
- `java -jar batik-svgpp.jar samples/batikFX.svg`
+    java -jar batik-svgpp.jar samples/batikFX.svg
 
 you will see the indented document written to standard output.
 

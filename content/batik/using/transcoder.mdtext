@@ -86,26 +86,26 @@ Although not shown above, the program might have specified additional hints to i
 To try this program:
 
 
-1.
-Save the above program as `SaveAsJPEG.java`.
+1. Save the above program as `SaveAsJPEG.java`.
 
 
-1.
-Compile the program.
+1. Compile the program.
 
 
-1.
-Choose an SVG file to transcode, and perform the transcoding by running:
-java SaveAsJPEG filename.svg
+1. Choose an SVG file to transcode, and perform the transcoding by running:
 
-1.
-Inspect the output file `out.jpg`.
+        java SaveAsJPEG filename.svg
+
+1. Inspect the output file `out.jpg`.
 
 
 ### Defining the size of the image {#defineSizeOfImage}
 
 By adding the following line of code to the previous example, you will specify the raster image size (in pixels). The transcoding hint `KEY_WIDTH` lets you specify the raster image width. If the raster image height is not provided (using the `KEY_HEIGHT`), the transcoder will compute the raster image height by keeping the aspect ratio of the SVG document.
-t.addTranscodingHint(JPEGTranscoder.KEY_WIDTH, new Float(100));
+
+    :::java
+    t.addTranscodingHint(JPEGTranscoder.KEY_WIDTH, new Float(100));
+
 The transcoder will have the same behavior if you specify the `KEY_HEIGHT` without initializing the `KEY_WIDTH`. In all cases (even if both keys are provided), the transcoder will preserve the apsect ratio of the SVG document.
 
 ### Selecting an area of interest {#selectAreaOfIntrest}
@@ -172,24 +172,17 @@ This code splits the same document `anne.svg` into four tiles of the same size. 
 To try this program:
 
 
-1.
-Save the above program as `SaveAsJPEGTiles.java`.
+1. Save the above program as `SaveAsJPEGTiles.java`.
 
+1. Compile the program.
 
-1.
-Compile the program.
+1. Copy the `samples/anne.svg` document from the Batik distribution into the current directory.
 
+1. Run the program by typing:
 
-1.
-Copy the `samples/anne.svg` document from the Batik distribution into the current directory.
+        java SaveAsJPEGTiles
 
-
-1.
-Run the program by typing:
-java SaveAsJPEGTiles
-
-1.
-Inspect the output files `tileTopRight.jpg`, `tileTopRight.jpg`, `tileBottomRight.jpg` and `tileBottomLeft.jpg`.
+1. Inspect the output files `tileTopRight.jpg`, `tileTopRight.jpg`, `tileBottomRight.jpg` and `tileBottomLeft.jpg`.
 
 
 ### Other transcoding hints {#otherTransHints}
@@ -205,28 +198,40 @@ trans.addTranscodingHint(ImageTranscoder.KEY_MEDIA, "print");
 
  `ImageTranscoder.KEY_ALTERNATE_STYLESHEET`
 :
-This hint lets you choose an alternate stylesheet the author of the SVG document to transcode might have provided using the [xml-stylesheet](http://www.w3.org/TR/xml-stylesheet/) processing instruction. For exxample:
-trans.addTranscodingHint(ImageTranscoder.KEY_ALTERNATE_STYLESHEET,
-                         alternateStylesheetName);
+This hint lets you choose an alternate stylesheet the author of the SVG document to transcode might have provided using the [xml-stylesheet](http://www.w3.org/TR/xml-stylesheet/) processing instruction. For example:
+
+    :::java
+    trans.addTranscodingHint(ImageTranscoder.KEY_ALTERNATE_STYLESHEET,
+                             alternateStylesheetName);
 
  `ImageTranscoder.KEY_USER_STYLESHEET_URI`
 :
 This hint lets you use a user stylesheet. A user stylesheet can override some styles of the SVG document to transcode. For example:
-trans.addTranscodingHint(ImageTranscoder.KEY_USER_STYLESHEET_URI, "http://...");
+
+    :::java
+    trans.addTranscodingHint(ImageTranscoder.KEY_USER_STYLESHEET_URI, "http://...");
 
  `ImageTranscoder.KEY_PIXEL_TO_MM`
 :
 This hint lets you use the pixel to millimeter conversion factor. This factor is used to determine how units are converted into pixels. For example:
-// 96dpi
-trans.addTranscodingHint(ImageTranscoder.KEY_PIXEL_TO_MM, new Float(0.2645833f));
+
+    :::java
+    // 96dpi
+    trans.addTranscodingHint(ImageTranscoder.KEY_PIXEL_TO_MM, new Float(0.2645833f));
+
 or
-// 72pi
-trans.addTranscodingHint(ImageTranscoder.KEY_PIXEL_TO_MM, new Float(0.3528f));
+
+    :::java
+    // 72pi
+    trans.addTranscodingHint(ImageTranscoder.KEY_PIXEL_TO_MM, new Float(0.3528f));
 
  `ImageTranscoder.KEY_BACKGROUND_COLOR`
 :
 This hint lets you choose a background color. For example:
-trans.addTranscodingHint(ImageTranscoder.KEY_BACKGROUND_COLOR, Color.white);
+
+    :::java
+    trans.addTranscodingHint(ImageTranscoder.KEY_BACKGROUND_COLOR, Color.white);
+
 ## Generating an image from an SVG DOM tree {#genImagefromSVGDOM}
 
 The following code creates and saves an SVG DOM tree to a raster image.
@@ -323,18 +328,13 @@ Similar to the previous examples, you can transcode an SVG document to a raster 
 To try this example:
 
 
-1.
-Save the code as `DOMRasterizer.java`.
+1. Save the code as `DOMRasterizer.java`.
 
+1. Compile the program.
 
-1.
-Compile the program.
+1. Run it, by typingL
 
+        java DOMRasterizer
 
-1.
-Run it, by typingL
-java DOMRasterizer
-
-1.
-Inspect the output file `out.jpg`.
+1. Inspect the output file `out.jpg`.
 

@@ -8,14 +8,18 @@ The TrueType Font to SVG (`ttf2svg`) application lets you convert a range of cha
 ## Running the font converter {#running}
 
 If you are using the Batik binary distribution, type the following at the command line:
-java -jar batik-ttf2svg.jar OPTIONS
+
+    java -jar batik-ttf2svg.jar OPTIONS
+
 If you are using the Batik source distribution, type the following at the command line:
-build ttf2svg OPTIONS
+
+    build ttf2svg OPTIONS
+
 In both cases, the options are the same:
-ttf-path[-lrange-begin] [-hrange-end] [-autorange] [-ascii] [-idid] [-ooutput-path] [-testcard]
+
+    ttf-path[-lrange-begin] [-hrange-end] [-autorange] [-ascii] [-idid] [-ooutput-path] [-testcard]
+
 where:
-
-
 
  *ttf-path*
 :
@@ -52,7 +56,9 @@ specifies the pathname of the output SVG document containing the generated SVG f
 specifies that a sequence of SVG `text` elements should be appended to the output SVG file to test the characters in the SVG font, providing an easy way to validate that generated SVG font visually.
 
 For example:
-java -jar batik-ttf2svg.jar /usr/home/myFont.ttf -l 48 -h 57 -id MySVGFont -o mySVGFont.svg -testcard
+
+    java -jar batik-ttf2svg.jar /usr/home/myFont.ttf -l 48 -h 57 -id MySVGFont -o mySVGFont.svg -testcard
+
 will convert characters 48 to 57, i.e., `'0'` to `'9'`, in the `myFont.ttf` file into their SVG equivalent in the `mySVGFont.svg` file, appending a test card so that the font can be visualized.
 
 

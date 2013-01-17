@@ -16,13 +16,15 @@ The method for starting the browser depends on the distribution of Batik that yo
 ### Starting the browser for the binary distribution {#starting-binary}
 
 If you downloaded the [binary distribution](../install.html#distributions) of Batik, you should have a file called `batik-1.6.zip` (or similar), which, when expanded, created a `batik-squiggle.jar` file. To start the browser, type the following on the command line:
-cd installation-directory
-java -jar batik-squiggle.jar
+
+    cd installation-directory
+    java -jar batik-squiggle.jar
+
 You can pass options on the command line:
-java -jar batik-squiggle.jar [-font-sizefont-size] [URIs]
+
+    java -jar batik-squiggle.jar [-font-sizefont-size] [URIs]
+
 where:
-
-
 
  **-font-size**  *font-size*
 :
@@ -34,9 +36,13 @@ specifies the font size to use in windows and menus, and
 specifies the URIs for the SVG documents the browser should open when it starts.
 
 For example:
-java -jar batik-squiggle.jar -font-size 10
+
+    java -jar batik-squiggle.jar -font-size 10
+
 starts the browser with a small widget text font size, and:
-java -jar batik-squiggle.jar -font-size 10 samples/batikLogo.svg
+
+    java -jar batik-squiggle.jar -font-size 10 samples/batikLogo.svg
+
 starts the browser with the `batikLogo.svg` file open and uses a small widget text font size.
 
 If you are using Mac OS X, and you have generated the Squiggle application bundle, you can use its icon to start the browser. This is the preferred way to start the browser under Mac OS X, as it ensures better integration with the operating system (a nicer looking menu and dock icon).
@@ -54,24 +60,32 @@ To start the browser you should:
 
 -
 For Windows, type the following at the command prompt:
-build squiggle
+
+    build squiggle
+
 and for Unix and Mac OS X:
-./build.sh squiggle
+
+    ./build.sh squiggle
+
 This will start the browser.
 
 
 You can pass options to the browser as follows, for Windows:
-build squiggle [-font-sizefont-size] [URIs]
+
+    build squiggle [-font-sizefont-size] [URIs]
+
 and for Unix:
-./build.sh squiggle [-font-sizefont-size] [URIs]
+
+    ./build.sh squiggle [-font-sizefont-size] [URIs]
+
 Refer to [“Starting the browser for the binary distribution”](#starting-binary) for an explanation of these options.
 
 Note that the number of files that can be opened on Windows from the command line is limited because batch files take at most 9 parameters.
 
 ### Squiggle screenshot {#screenshot}
 
-The following image shows the result of starting the browser, from the binary or source distribution, with the `-font-size 10
-            samples/batikFX.svg` options.
+The following image shows the result of starting the browser, from the binary or source distribution, with the `-font-size 10 samples/batikFX.svg` options.
+
 <div class="figure"> ![Screenshot of Squiggle showing the batikFX.svg sample](images/svgviewerDefaultRegular.png "") </div>
 
 # Viewing SVG documents {#viewing}

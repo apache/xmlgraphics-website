@@ -82,34 +82,33 @@ We can see that generating SVG content from our `TestSVGGen` instance is a three
 
 1. Create an instance of `org.w3c.dom.Document` that the generator will use to build its XML content, and create an SVG generator using the `Document` instance.
 
-    :::java
-    // Get a DOMImplementation.
-    DOMImplementation domImpl =
-        GenericDOMImplementation.getDOMImplementation();
+        :::java
+        // Get a DOMImplementation.
+        DOMImplementation domImpl =
+            GenericDOMImplementation.getDOMImplementation();
 
-    // Create an instance of org.w3c.dom.Document.
-    String svgNS = "http://www.w3.org/2000/svg";
-    Document document = domImpl.createDocument(svgNS, "svg", null);
+        // Create an instance of org.w3c.dom.Document.
+        String svgNS = "http://www.w3.org/2000/svg";
+        Document document = domImpl.createDocument(svgNS, "svg", null);
 
-    // Create an instance of the SVG Generator.
-    SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
+        // Create an instance of the SVG Generator.
+        SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
 
 1. Invoke the rendering code on our SVG generator. In our example, we invoke `TestSVGGen` ‘s `paint` method:
 
-    :::java
-    // Ask the test to render into the SVG Graphics2D implementation.
-    TestSVGGen test = new TestSVGGen();
-    test.paint(svgGenerator);
+        :::java
+        // Ask the test to render into the SVG Graphics2D implementation.
+        TestSVGGen test = new TestSVGGen();
+        test.paint(svgGenerator);
 
-1.
-Stream out the SVG content. The SVG generator can stream its content into any `java.io.Writer`. In our example, we stream the content to the standard output stream:
+1. Stream out the SVG content. The SVG generator can stream its content into any `java.io.Writer`. In our example, we stream the content to the standard output stream:
 
-    :::java
-    // Finally, stream out SVG to the standard output using
-    // UTF-8 encoding.
-    boolean useCSS = true; // we want to use CSS style attributes
-    Writer out = new OutputStreamWriter(System.out, "UTF-8");
-    svgGenerator.stream(out, useCSS);
+        :::java
+        // Finally, stream out SVG to the standard output using
+        // UTF-8 encoding.
+        boolean useCSS = true; // we want to use CSS style attributes
+        Writer out = new OutputStreamWriter(System.out, "UTF-8");
+        svgGenerator.stream(out, useCSS);
 
 SVG has [two ways to specify styling properties](http://www.w3.org/TR/SVG11/styling.html#AlternativesForStyling), such as the fill color: presentation attributes (one XML attribute per property) or the CSS `style` attribute (any number of properties in one CSS inline stylesheet). The `useCss` parameter allows the user to control that option.
 

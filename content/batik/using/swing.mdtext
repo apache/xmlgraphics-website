@@ -121,7 +121,8 @@ If you try this example, do not forget to set your `CLASSPATH` so that it contai
         }
     }
 
-<div class="figure"> ![Screenshot of the example SVGApplication program](images/svgapplication.png "") </div>
+![Screenshot of the example SVGApplication program](images/svgapplication.png "")
+
 # Handling events {#eventhandling}
 
 Each time you set a URI or an SVG DOM tree to be displayed in a `JSVGCanvas` (using the `setURI` or `setSVGDocument` method), the specified document is first parsed (in case of a URI), built, rendered and optionally updated. The proper way to be notified of these different phases is to implement a listener and attach it to the component. There are five types of listener:

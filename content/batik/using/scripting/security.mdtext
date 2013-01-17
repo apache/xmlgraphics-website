@@ -31,13 +31,17 @@ The Squiggle browser lets the user decide whether or not scripts should be run s
 - The policy defined as described above is enforced unless the `java.security.policy` system property is defined. In that case, the policy defined by the system property takes precedence and the policy file generated from the Squiggle preferences is ignored.
 
  **Important note:** The default policy files assume that the applications use the Xerces parser and give appropriate permissions to its `lib/xerces-2_5_0.jar` jar file. If you are using a different XML parser, you need to modify the policy files to grant the propser permissions to your XML parser instead of Xerces. You will have to replace:
-grant codeBase "${app.dev.base}/lib/xerces_2_5_0.jar" {
-  permission java.security.AllPermission;
-};
+
+    grant codeBase "${app.dev.base}/lib/xerces_2_5_0.jar" {
+      permission java.security.AllPermission;
+    };
+
 with:
-grant codeBase "${app.dev.base}/lib/myXMLParser.jar" {
-  permission java.security.AllPermission;
-};
+
+    grant codeBase "${app.dev.base}/lib/myXMLParser.jar" {
+      permission java.security.AllPermission;
+    };
+
 in the `resources/org/apache/batik/apps/svgbrowser/resources/svgbrowser.policy` file (for the source distribution) and do the same in `resources/org/apache/batik/apps/svgbrowser/resources/svgbrowser.bin.policy` (for the binary distribution which will then need to be rebuilt with the `build dist-zip` command.
 
 Alternatively, you can write your own policy file and specify its URL through the `java.security.policy` system property (which you can specify through the `-Djava.security.policy=`  *url* command line option).

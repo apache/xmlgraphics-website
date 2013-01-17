@@ -181,11 +181,11 @@ For example:
 
 There is a rule in Batik's `build.xml` file to run a test suite defined in an XML file as the one above. At the command line, type the following, for Windows:
 
-build runtestsuite path/to/my/newly/created/testSuite.xml
+    build runtestsuite path/to/my/newly/created/testSuite.xml
 
 and for Unix:
 
-build.sh runtestsuite path/to/my/newly/created/testSuite.xml
+    build.sh runtestsuite path/to/my/newly/created/testSuite.xml
 
 In addition, the `regard` rule runs a specific set of tests by default, so that you do not need to pass any *testRun* file argument.
 
@@ -201,19 +201,19 @@ The following describes how to use the regard tool and some of the most importan
 
 The regard tool lets you run either all the tests or any specific test you want in the test suite. To run all the tests in the regard test suite, type the following at the command line, for Windows:
 
-build regard
+    build regard
 
 and for Unix:
 
-build.sh regard
+    build.sh regard
 
 To run a specific test in the test suite, type the qualified test ID or any substring of that ID:
 
-build.sh regard id-list
+    build.sh regard id-list
 
 For example:
 
-build.sh regard unitTesting.ts batikFX.svg
+    build.sh regard unitTesting.ts batikFX.svg
 
 will run all the tests with an ID containing `unitTesting.ts` (i.e., all the test selection unit testing, see `test-resources/org/apache/batik/gvt/unitTesting.xml`) and the accuracy rendering test on `batikFX.svg` (because it is the only test with `batikFX.svg` in its ID).
 
