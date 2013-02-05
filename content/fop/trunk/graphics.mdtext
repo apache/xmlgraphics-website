@@ -189,7 +189,7 @@ Bitmap images are generally embedded into the output format at their original re
 
 ## Page selection for multi-page formats {#page-selection}
 
-Some image formats such as TIFF support multiple pages/sub-images per file. You can select a particular page using a special URI fragment in the form: <uri>#page=<nr> (for example: `http://localhost/images/myimage.tiff#page=3`)
+Some image formats such as TIFF support multiple pages/sub-images per file. You can select a particular page using a special URI fragment in the form: <uri>#page=<nr> (for example: `http://localhost/images/myimage.tiff#page=3`). This feature is only available if the ImageLoaderImageIO is the chosen image loader (this may require disabling or downgrading, by awarding it a penalty, the ImageLoaderRawCCITTFax image loader).
 
 ## Image caching {#caching}
 
