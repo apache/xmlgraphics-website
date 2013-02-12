@@ -51,7 +51,7 @@ When working with one of these output formats and you're missing a font, just in
 
 ## Custom Fonts {#custom}
 
-Support for custom fonts is highly output format dependent (see above table). This section shows how to add Type 1 and TrueType fonts to the PDF, PostScript and Java2D-based renderers. Other renderers (like AFP) support other font formats. Details in this case can be found on the page about [output formats](output.html). FOP does not support yet OpenType fonts yet, although that is in the roadmap for the next release. 
+Support for custom fonts is highly output format dependent (see above table). This section shows how to add Type 1 and TrueType fonts to the PDF, PostScript and Java2D-based renderers. Other renderers (like AFP) support other font formats. Details in this case can be found on the page about [output formats](output.html). FOP does not support OpenType fonts yet, although that is in the roadmap for the next release. 
 
 In earlier FOP versions, it was always necessary to create an XML font metrics file if you wanted to add a custom font. This unconvenient step has been removed and in addition to that, FOP supports auto-registration of fonts, i.e. FOP can find fonts installed in your operating system or can scan user-specified directories for fonts. Font registration via XML font metrics has been deprecated and is not recommended although it is still supported by the current code.
 
