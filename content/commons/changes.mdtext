@@ -47,6 +47,82 @@ This is a list of other contributors:
 
 Brian Carlson, Florian Barbera Vila Bollain, Glenn Adams, JM and Mehdi Houshmand, Joshua Marquart, Sebastian Bazley.
 
+## Version 1.5 (20 October 2012) {#version_1.5}
+### Changes to the Code Base {#Code_1.5}
+There is no significative change since Release Version 1.5-RC1.
+
+### Contributors to this release {#contributors_1.5}
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:
+
+Glenn Adams (GA), Max Berger (MB), Chris Bowditch (CB), Adrian Cumiskey (AC), Christian Geisert (CG), Peter Hancock (PH), Vincent Hennebert (VH), Clay Leeds (CL), Jeremias Märki (JM), Cameron McCormack (CM), Simon Pepping (SP).
+
+This is a list of other contributors:
+
+Brian Carlson, Florian Barbera, Glenn Adams, Joshua Marquart, Julien Aymé, Luis Bernardo, Matthias Reischenbacher, Mehdi Houshmand, Robert Meyer, Sebastian Bazley, Vila Bollain.
+
+
+## Version 1.5-RC1 (2 July 2012) {#version_1.5rc1}
+### Changes to the Code Base {#Code_1.5rc1}
+- ![fix](/images/fix.jpg)Add two PNG image loaders, one using internal XGC PNG code, the other using an externally supplied IDAT chunk (for raw decoding). Committed by GA. Thanks to Luis Bernardo, Matthias Reischenbacher. See Issue [53408](http://issues.apache.org/bugzilla/show_bug.cgi?id=53408).
+
+- ![update](/images/update.jpg)Fix corner cases involving long/double conversion and rounding error in double division when rounding 5E-N for certain N. Committed by GA. Thanks to Julien Aymé. See Issue [53327](http://issues.apache.org/bugzilla/show_bug.cgi?id=53327).
+
+- ![update](/images/update.jpg)Fix determination of use of precise vs fast formatting in order to fix regression with value 5.22534294505995E-4, decimals: 17, precision: 17. Committed by GA. Thanks to Julien Aymé. See Issue [53327](http://issues.apache.org/bugzilla/show_bug.cgi?id=53327).
+
+- ![fix](/images/fix.jpg)Upgrade to checkstyle-5.5 and ensure no warnings. Committed by GA. See Issue [53352](http://issues.apache.org/bugzilla/show_bug.cgi?id=53352).
+
+- ![fix](/images/fix.jpg)Improve performance for certain kinds of PNG images. Committed by GA. Thanks to Luis Bernardo. See Issue [51149](http://issues.apache.org/bugzilla/show_bug.cgi?id=51149).
+
+- ![fix](/images/fix.jpg)Fix handling of values less than 1E-300. Committed by GA. Thanks to Julien Aymé. See Issue [53327](http://issues.apache.org/bugzilla/show_bug.cgi?id=53327).
+
+- ![update](/images/update.jpg)Fix handling of NaN, {+,-}Infinity, and other edge cases in double format utility. Committed by GA. Thanks to Julien Aymé. See Issue [43940](http://issues.apache.org/bugzilla/show_bug.cgi?id=43940).
+
+- ![fix](/images/fix.jpg)Unify date formatting between FOP and XGC as well as tidying the date format code. Committed by GA. Thanks to Robert Meyer. See Issue [53184](http://issues.apache.org/bugzilla/show_bug.cgi?id=53184).
+
+- ![fix](/images/fix.jpg)Fix for XGC when rendering PostScript using SVG being drawn upside down when using a custom affine transform. Committed by GA. Thanks to Robert Meyer. See Issue [53177](http://issues.apache.org/bugzilla/show_bug.cgi?id=53177).
+
+- ![update](/images/update.jpg)Use new double format utility. Committed by GA. Thanks to Julien Aymé. See Issue [43940](http://issues.apache.org/bugzilla/show_bug.cgi?id=43940).
+
+- ![add](/images/add.jpg)Add double format utility to improve thread safety and performance. Committed by GA. Thanks to Julien Aymé. See Issue [43940](http://issues.apache.org/bugzilla/show_bug.cgi?id=43940).
+
+- ![fix](/images/fix.jpg)Support rdf:resource attributes in XMP. Committed by GA. Thanks to Brian Carlson. See Issue [50497](http://issues.apache.org/bugzilla/show_bug.cgi?id=50497).
+
+- ![fix](/images/fix.jpg)Should never use Error to report runtime errors. Committed by GA. Thanks to Sebastian Bazley. See Issue [47174](http://issues.apache.org/bugzilla/show_bug.cgi?id=47174).
+
+- ![fix](/images/fix.jpg)Ensure that throwables have meaningful messages. Committed by GA. Thanks to Sebastian Bazley. See Issue [47175](http://issues.apache.org/bugzilla/show_bug.cgi?id=47175).
+
+- ![update](/images/update.jpg)Minor build improvements to eliminate warning and parameterize junit formatting.
+
+    Eliminate (5) deprecation warnings. Committed by GA.
+
+- ![fix](/images/fix.jpg)Support for T.4 Group 3 1D encoding. Committed by PH. Thanks to Mehdi Houshmand. See Issue [51911](http://issues.apache.org/bugzilla/show_bug.cgi?id=51911).
+
+- ![fix](/images/fix.jpg)Fixed a bug formatting ISO 8601 dates with negative two-digit time zones. Committed by JM. Thanks to Florian Barbera, Vila Bollain. See Issue [51039](http://issues.apache.org/bugzilla/show_bug.cgi?id=51039).
+
+- ![remove](/images/remove.jpg)Removed dependency on com.sun classes to achieve compatibility with Apache Harmony,OpenJDK and possibly other JVMs. Committed by JM.
+
+- ![remove](/images/remove.jpg)Removal of the deprecated `TextHandler.drawString(String, float, float)` method. Committed by JM.
+
+- ![update](/images/update.jpg)Various code style fixes Committed by JM. Thanks to Glenn Adams. See Issue [49703](http://issues.apache.org/bugzilla/show_bug.cgi?id=49703).
+
+- ![fix](/images/fix.jpg)Allow to override priority when registering an ImageWriter on the ImageWriterRegistry. Committed by JM. Thanks to Joshua Marquart. See Issue [49696](http://issues.apache.org/bugzilla/show_bug.cgi?id=49696).
+
+- ![fix](/images/fix.jpg)Fix for TIFFs which report zero as their resolution. This resulted in an exception. Committed by JM.
+
+### Contributors to this release {#contributors_1.5rc1}
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:
+
+Glenn Adams (GA), Max Berger (MB), Chris Bowditch (CB), Adrian Cumiskey (AC), Christian Geisert (CG), Peter Hancock (PH), Vincent Hennebert (VH), Clay Leeds (CL), Jeremias Märki (JM), Cameron McCormack (CM), Simon Pepping (SP).
+
+This is a list of other contributors:
+
+Brian Carlson, Florian Barbera, Glenn Adams, Joshua Marquart, Julien Aymé, Luis Bernardo, Matthias Reischenbacher, Mehdi Houshmand, Robert Meyer, Sebastian Bazley, Vila Bollain.
+
+
 ## Version 1.4 (7 July 2010) {#version_1.4}
 
 ### Changes to the Code Base {#Code_1.4}
