@@ -13,7 +13,11 @@ Apache&trade; XML Graphics Commons contains various tools for writing and proces
 - Two Graphics2D implementations, one for plain PostScript and one for writing Encapsulated PostScript (EPS).
 
 - A DSC-parser/processor: Parse, post-process and change DSC-compliant PostScript files.
-We don't currently include a PostScript interpreter though we would love to have one. A Java-based PostScript interpreter to keep an eye on is the one from the [FOray project](http://foray.sourceforge.net).
+
+> **NOTE**
+
+> We don't currently include a PostScript interpreter though we would love to have one. A Java-based PostScript interpreter to keep an eye on is the one from the [FOray project](http://foray.sourceforge.net).
+
 # The PostScript generator {#generator}
 
 The "PSGenerator" class can help writing PostScript files. It deals with things like escaping, saving/tracking/restoring graphics state, writing DSC comments and tracking of DSC resources.
@@ -68,4 +72,7 @@ But the DSC parser could potentially be used for other purposes. The most obviou
 The DSC parser (DSCParser) was designed as a pull parser, i.e. you fetch new events from the parser inspecting them and acting on them as they are found. If you prefer to work with a push parser, you can pass the DSCParser a DSCHandler implementation and the parser will send you all the events.
 
 The best example to understand how to use the DSC parser is the PageExtractor class that implements the page extraction functionality mentioned above.
-The DSC parser is not considered feature-complete. The basic infrastructure is there but, for example, not all DSC comments are available as concrete Java classes. If you need to extend the DSC parser for your own use cases, please send us your patches.
+
+> **NOTE:**
+
+> The DSC parser is not considered feature-complete. The basic infrastructure is there but, for example, not all DSC comments are available as concrete Java classes. If you need to extend the DSC parser for your own use cases, please send us your patches.
