@@ -50,7 +50,10 @@ The `ImageManager` needs an `ImageContext`. This interface provides the `ImageMa
 
     ImageManager imageManager = new ImageManager(new DefaultImageContext());
 
-  In this example, `DefaultImageContext` is used. You may need to write your own implementation of `ImageContext` for your use case.
+> **NOTE:**
+
+> In this example, `DefaultImageContext` is used. You may need to write your own implementation of `ImageContext` for your use case.
+
 ## Preloading an image {#preloading}
 
 In order to load an image, it needs to be "preloaded" first, i.e. the image content type is detected and the intrinsic size of the image is determined. The result of this process is an `ImageInfo` instance which contains the URI, MIME type and intrinsic size. In most cases, this is done without loading the whole image (see SPI section below for information on exceptions to this rule).
@@ -112,7 +115,10 @@ In [Apache FOP](http://xmlgraphics.apache.org/fop/), each renderer supports a di
         throw new IllegalStateException("Unexpected flavor");
     }
 
-  While each `BufferedImage` is also a `RenderedImage`, it can be more efficient to also specify `ImageFlavor.BUFFERED_IMAGE` in the flavor array.
+> **NOTE:**
+
+>  While each `BufferedImage` is also a `RenderedImage`, it can be more efficient to also specify `ImageFlavor.BUFFERED_IMAGE` in the flavor array.
+
 # Tips & Tricks {#tipsntricks}
 
 If you are loading bitmap images and you get an error like `"Cannot load image (no suitable loader/converter combination available) for
@@ -140,7 +146,11 @@ The first task is identifying whether the implementation supports the given imag
 However, for some formats (like MathML or WMF), loading the whole image at preloading time is hard to avoid since the image's size can only be determined that way. In such a case, the `ImagePreloader` implementations shall pass the loaded document to the respective `ImageLoader` through the custom objects that can be attached to the `ImageInfo` object. If the preloader loads the whole document, it shall close the given `Source` object (calling `ImageUtil.closeQuietly(Source)`).
 
 The priority the implementation reports is used to sort all registered implementations. This is to fine-tune the inner workings and to optimize performance since some formats are usually used more frequently than others.
-Normally, if you implement an `ImagePreloader` you will also need to implement the respective `ImageLoader/ImageLoaderFactory`, or vice versa.
+
+> **NOTE:**
+
+> Normally, if you implement an `ImagePreloader` you will also need to implement the respective `ImageLoader/ImageLoaderFactory`, or vice versa.
+
 ## ImageLoader and ImageLoaderFactory {#ImageLoader}
 
 The factory interface has been created to allow checking if some library that an implementation depends on is really in the classpath so it can report back that the `ImageLoader` is not funtional. The factory also reports what kind of image formats it supports and which image flavors it can return. There can be a complex relationship between the two. It is recommmended, however, to write smaller implementations rather than big, almighty ones.
