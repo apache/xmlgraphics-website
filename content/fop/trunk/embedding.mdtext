@@ -177,14 +177,14 @@ The FopFactory holds configuration data and references to objects which are reus
 
 The FopFactoryBuilder is used to construct a FopFactory object. This builder can be used to set configuration values which will determine the behaviour of the FopFactory object. To create the FopFactoryBuilder the following line can be used as a precursor for the following examples:
 
-        :::java
-        FopFactoryBuilder builder = new FopFactoryBuilder(baseURI);
+    :::java
+    FopFactoryBuilder builder = new FopFactoryBuilder(baseURI);
 
-A **URIResolver** for custom URI resolution can be set against the FopFactoryBuilder. By supplying a JAXP URIResolver you can add custom URI resolution functionality to FOP. For example:
+Set a **URIResolver** for custom URI resolution. By supplying a JAXP URIResolver you can add custom URI resolution functionality to FOP. For example:
 
-        :::java
-        // myResourceResolver is a org.apache.xmlgraphics.io.ResourceResolver
-        FopFactoryBuilder builder = new FopFactoryBuilder(baseURI, myResourceResolver);
+    :::java
+    // myResourceResolver is a org.apache.xmlgraphics.io.ResourceResolver
+    FopFactoryBuilder builder = new FopFactoryBuilder(baseURI, myResourceResolver);
 
 - Disable **strict validation**. When disabled FOP is less strict about the rules established by the XSL-FO specification. Example:
 
@@ -203,8 +203,8 @@ A **URIResolver** for custom URI resolution can be set against the FopFactoryBui
 
 The following example shows how a FopFactory is created using the settings specified:
 
-        :::java
-        FopFactory fopFactory = builder.build();
+    :::java
+    FopFactory fopFactory = builder.build();
 
 Finally, there are several options which can be set on the FopFactory itself including the following example:
 
