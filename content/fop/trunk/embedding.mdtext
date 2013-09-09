@@ -43,9 +43,9 @@ Here is the basic pattern to render an XSL-FO file to PDF:
 
     /*..*/
 
-    // Step 1: Construct a FopFactory
+    // Step 1: Construct a FopFactory by specifying a reference to the configuration file
     // (reuse if you plan to render multiple documents!)
-    FopFactory fopFactory = FopFactory.newInstance();
+    FopFactory fopFactory = FopFactory.newInstance(new File("C:/Temp/fop.xconf"));
 
     // Step 2: Set up output stream.
     // Note: Using BufferedOutputStream for performance reasons (helpful with FileOutputStreams).
@@ -77,7 +77,7 @@ Here is the basic pattern to render an XSL-FO file to PDF:
 Let's discuss these 5 steps in detail:
 
 
--  **Step 1:** You create a new FopFactory instance. The FopFactory instance holds references to configuration information and cached data. It's important to reuse this instance if you plan to render multiple documents during a JVM's lifetime.
+-  **Step 1:** You create a new FopFactory instance. The FopFactory is created and holds references to configuration information and cached data. It's important to reuse this instance if you plan to render multiple documents during a JVM's lifetime.
 
 -  **Step 2:** You set up an OutputStream that the generated document will be written to. It's a good idea to buffer the OutputStream as demonstrated to improve performance.
 
@@ -175,44 +175,43 @@ Apache FOP provides two levels on which you can customize FOP's behaviour: the F
 
 The FopFactory holds configuration data and references to objects which are reusable over multiple rendering runs. It's important to instantiate it only once (except in special environments) and reuse it every time to create new FOUserAgent and Fop instances.
 
-You can set all sorts of things on the FopFactory:
-
-- The **font base URL** to use when resolving relative URLs for fonts. Example:
+The FopFactoryBuilder is used to construct a FopFactory object. This builder can be used to set configuration values which will determine the behaviour of the FopFactory object. To create the FopFactoryBuilder the following line can be used as a precursor for the following examples:
 
         :::java
-        fopFactory.getFontManager().setFontBaseURL("file:///C:/Temp/fonts");
+        FopFactoryBuilder builder = new FopFactoryBuilder(baseURI);
 
-- The **hyphenation base URL** to use when resolving relative URLs for hyphenation patterns. Example:
+A **URIResolver** for custom URI resolution can be set against the FopFactoryBuilder. By supplying a JAXP URIResolver you can add custom URI resolution functionality to FOP. For example:
 
         :::java
-        fopFactory.setHyphenBaseURL("file:///C:/Temp/hyph");
+        // myResourceResolver is a org.apache.xmlgraphics.io.ResourceResolver
+        FopFactoryBuilder builder = new FopFactoryBuilder(baseURI, myResourceResolver);
 
 - Disable **strict validation**. When disabled FOP is less strict about the rules established by the XSL-FO specification. Example:
 
         :::java
-        fopFactory.setStrictValidation(false);
+        builder.setStrictFOValidation(false);
 
 - Enable an **alternative set of rules for text indents** that tries to mimic the behaviour of many commercial FO implementations, that chose to break the specification in this respect. The default of this option is 'false', which causes Apache FOP to behave exactly as described in the specification. To enable the alternative behaviour, call:
 
         :::java
-        fopFactory.setBreakIndentInheritanceOnReferenceAreaBoundary(true);
+        builder.setBreakIndentInheritanceOnReferenceAreaBoundary(true);
 
 - Set the **source resolution** for the document. This is used internally to determine the pixel size for SVG images and bitmap images without resolution information. Default: 72 dpi. Example:
 
         :::java
-        fopFactory.setSourceResolution(96); // =96dpi (dots/pixels per Inch)
+        builder.setSourceResolution(96); // =96dpi (dots/pixels per Inch)
+
+The following example shows how a FopFactory is created using the settings specified:
+
+        :::java
+        FopFactory fopFactory = builder.build();
+
+Finally, there are several options which can be set on the FopFactory itself including the following example:
 
 - Manually add an **ElementMapping instance**. If you want to supply a special FOP extension you can give the instance to the FOUserAgent. Normally, the FOP extensions can be automatically detected (see the documentation on extension for more info). Example:
 
         :::java
         fopFactory.addElementMapping(myElementMapping); // myElementMapping is a org.apache.fop.fo.ElementMapping
-
-- Set a **URIResolver** for custom URI resolution. By supplying a JAXP URIResolver you can add custom URI resolution functionality to FOP. For example, you can use [Apache XML Commons Resolver](http://xml.apache.org/commons/components/resolver/) to make use of XCatalogs. Example:
-
-        :::java
-        fopFactory.setURIResolver(myResolver); // myResolver is a javax.xml.transform.URIResolver
-
-    <note>Both the FopFactory and the FOUserAgent have a method to set a URIResolver. The URIResolver on the FopFactory is primarily used to resolve URIs on factory-level (hyphenation patterns, for example) and it is always used if no other URIResolver (for example on the FOUserAgent) resolved the URI first.</note>
 
 ### Customizing the User Agent {#user-agent}
 
@@ -226,11 +225,6 @@ The user agent is the entity that allows you to interact with a single rendering
     Fop fop = fopFactory.newFop(MimeConstants.MIME_POSTSCRIPT, userAgent, out);
 
 You can do all sorts of things on the user agent:
-
-- The **base URL** to use when resolving relative URLs. Example:
-
-        :::java
-        userAgent.setBaseURL("file:///C:/Temp/");
 
 - Set the **producer** of the document. This is metadata information that can be used for certain output formats such as PDF. The default producer is "Apache FOP". Example:
 
@@ -277,13 +271,6 @@ You can do all sorts of things on the user agent:
         :::java
         userAgent.setFOEventHandlerOverride(myFOEventHandler); // myFOEventHandler is an org.apache.fop.fo.FOEventHandler
 
-- Set a **URIResolver** for custom URI resolution. By supplying a JAXP URIResolver you can add custom URI resolution functionality to FOP. For example, you can use [Apache XML Commons Resolver](http://xml.apache.org/commons/components/resolver/) to make use of XCatalogs. Example:
-
-        :::java
-        userAgent.setURIResolver(myResolver); // myResolver is a javax.xml.transform.URIResolver
-
-    <note>Both the FopFactory and the FOUserAgent have a method to set a URIResolver. The URIResolver on the FOUserAgent is used for resolving URIs which are document-related. If it's not set or cannot resolve a URI, the URIResolver from the FopFactory is used.</note>
-
 <note>You should not reuse an FOUserAgent instance between FOP rendering runs although you can. Especially in multi-threaded environment, this is a bad idea.</note>
 
 ## Using a Configuration File {#config-external}
@@ -298,11 +285,7 @@ Instead of setting the parameters manually in code as shown above you can also s
 
     DefaultConfigurationBuilder cfgBuilder = new DefaultConfigurationBuilder();
     Configuration cfg = cfgBuilder.buildFromFile(new File("C:/Temp/mycfg.xml"));
-    fopFactory.setUserConfig(cfg);
-
-    /* ..or.. */
-
-    fopFactory.setUserConfig(new File("C:/Temp/mycfg.xml"));
+    fopFactoryBuilder = new FopFactoryBuilder(baseURI).setConfiguration(cfg);
 
 The layout of the configuration file is described on the [Configuration page](configuration.html).
 
@@ -313,8 +296,7 @@ The document handlers are classes that inherit from `org.apache.fop.render.inter
     :::java
     IFDocumentHandler targetHandler = userAgent.getRendererFactory().createDocumentHandler(userAgent, MimeConstants.MIME_PDF);
 
-    IFSerializer ifSerializer = new IFSerializer();  //Create the IFSerializer to write the intermediate format
-    ifSerializer.setContext(new IFContext(userAgent));
+    IFSerializer ifSerializer = new IFSerializer(new IFContext(userAgent));  //Create the IFSerializer to write the intermediate format
     ifSerializer.mimicDocumentHandler(targetHandler);   //Tell the IFSerializer to mimic the target format
 
     userAgent.setDocumentHandlerOverride(ifSerializer);  //Make sure the prepared document handler is used
