@@ -146,12 +146,6 @@ When there's no support to paint text using native text operations, text is conv
 
 Note that because SVG text can be rendered as either text or a vector graphic, you may need to consider settings in your viewer for both. The Acrobat viewer has both "smooth line art" and "smooth text" settings that may need to be set for SVG images to be displayed nicely on your screen (see Edit / Preferences / Display). This setting will not affect the printing of your document, which should be OK in any case, but will only affect the quality of the screen display.
 
-#### Font selection notes {#svg-font-selection}
-
-Apache Batik uses the AWT/Java2D subsystem as font source while FOP has its own font subsystem. Great care has been taken that font selection does the best possible choices. But it must be noted when creating PDF or PostScript that a font used in SVG graphics needs to be registered with the operating system as well as in FOP's configuration. By using FOP's font auto-detection, you simply have to install the font in the operating system and not care about anything else. This is less of an issue if you create formats like TIFFs, PNGs or PCL because in these cases SVG graphics are usually rendered to bitmaps which means that on both sides (Batik and FOP), AWT/Java2D is used as the single font source.
-
-Whenever an SVG is converted into a PDF or PostScript file, the font that has been used inside Batik has to be mapped to a font used by the actual output format. Features like font substitution in FOP may need to be taken into account but can also be an advantage when working around font mapping issues. Like for XSL-FO content, you'll get a warning if a particular font could not be found and had to be substituted, or if a particular glyph is missing in a font.
-
 #### Scaling {#svg-scaling}
 
 Currently, SVG images are rendered with the dimensions specified *in the SVG file*, within the viewport specified in the fo:external-graphic element. For everything to work properly, the two should be equal. The SVG standard leaves this issue as an implementation detail. Additional scaling options are available through XSL-FO means.
