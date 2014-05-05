@@ -83,8 +83,8 @@ The following is a summary of FOP's current support for the standard XSL-FO obje
 | [§6.8.5](http://www.w3.org/TR/xsl/#fo_list-item-label) | list-item-label {#fo-object-list-item-label} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§6.9](http://www.w3.org/TR/xsl/#d0e12855) {.category} | Link and Multi Formatting Objects {.category} | {#fo-object-link-section} |
 | [§6.9.2](http://www.w3.org/TR/xsl/#fo_basic-link) | basic-link {#fo-object-basic-link} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | both internal and external supported |
-| [§6.9.3](http://www.w3.org/TR/xsl/#fo_multi-switch) | multi-switch {#fo-object-multi-switch} | Extended{.extended} | no{.no} | no{.no} | no{.no} |   |
-| [§6.9.4](http://www.w3.org/TR/xsl/#fo_multi-case) | multi-case {#fo-object-multi-case} | Basic{.basic} | no{.no} | no{.no} | no{.no} |   |
+| [§6.9.3](http://www.w3.org/TR/xsl/#fo_multi-switch) | multi-switch {#fo-object-multi-switch} | Extended{.extended} | no{.no} | no{.no} | partial{.partial} | [FOP dev] initial support: used with fox:auto-toggle extension |
+| [§6.9.4](http://www.w3.org/TR/xsl/#fo_multi-case) | multi-case {#fo-object-multi-case} | Basic{.basic} | no{.no} | no{.no} | partial{.partial} | [FOP dev] initial support: space attributes not currently supported; dynamic content inside a table cell does not work |
 | [§6.9.5](http://www.w3.org/TR/xsl/#fo_multi-toggle) | multi-toggle {#fo-object-multi-toggle} | Extended{.extended} | no{.no} | no{.no} | no{.no} |   |
 | [§6.9.6](http://www.w3.org/TR/xsl/#fo_multi-properties) | multi-properties {#fo-object-multi-properties} | Extended{.extended} | no{.no} | no{.no} | no{.no} |   |
 | [§6.9.7](http://www.w3.org/TR/xsl/#fo_multi-property-set) | multi-property-set {#fo-object-multi-property-set} | Extended{.extended} | no{.no} | no{.no} | no{.no} |   |
