@@ -210,3 +210,18 @@ Applies to: fo:simple-page-master
 The crop box controls how Acrobat displays the page (CropBox in PDF) or how the Java2DRenderer sizes the output media. The PDF specification defines that the CropBox defaults to the MediaBox. This extension follows that definition. To simplify usage and cover most use cases, the three supported enumeration values "trim-box", "bleed-box" and "media-box" set the CropBox to one of those three other boxes.
 
 If requested in the future, we could offer to specify the CropBox in absolute coordinates rather than just by referencing another box.
+
+### Background Images {#backgroundimages}
+
+Background images can be resized on the fly using these two extensions:
+
+#### fox:background-image-width {#backgroundImageWidth}
+
+Value: <length>
+
+#### fox:background-image-height {#backgroundImageHeight}
+
+Value: <length>
+
+These extensions apply to the elements where background-image applies.
+
