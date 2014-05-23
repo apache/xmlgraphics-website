@@ -51,7 +51,7 @@ When working with one of these output formats and you're missing a font, just in
 
 ## Custom Fonts {#custom}
 
-Support for custom fonts is highly output format dependent (see above table). This section shows how to add Type 1 and TrueType fonts (TTF) to the PDF, PostScript and Java2D-based renderers. Other renderers (like AFP) support other font formats. Details in this case can be found on the page about [output formats](output.html). FOP does not support OpenType fonts (OTF) yet, although that is in the roadmap for the next release. 
+Support for custom fonts is highly output format dependent (see above table). This section shows how to add Type 1, TrueType (TTF) and OpenType (OTF) fonts to the PDF, PostScript and Java2D-based renderers. Other renderers (like AFP) support other font formats. Details in this case can be found on the page about [output formats](output.html).
 
 In earlier FOP versions, it was always necessary to create an XML font metrics file if you wanted to add a custom font. This unconvenient step has been removed and in addition to that, FOP supports auto-registration of fonts, i.e. FOP can find fonts installed in your operating system or can scan user-specified directories for fonts. Font registration via XML font metrics has been deprecated and is not recommended although it is still supported by the current code.
 
@@ -99,7 +99,7 @@ You must tell FOP how to find and use the font files by registering them in the 
 
 - The "embed-url" attribute is used to specify the font file. Relative URLs are resolved relative to the font-base property (or base) if available. See [FOP: Configuration](configuration.html) for more information. 
 
-- The "embedding-mode" attribute is optional and can take two values: subset (the default) and full. If not specified the font is subset embedded for TTF or full embedded for Type 1, unless it is explicitly referenced (see below). Subset embedding for Type 1 fonts is not supported.
+- The "embedding-mode" attribute is optional and can take two values: subset (the default) and full. If not specified the font is subset embedded for TTF and OTF or full embedded for Type 1, unless it is explicitly referenced (see below).
 
 - The font "kerning" attribute is optional. Default is "true".
 
@@ -185,7 +185,7 @@ Some notes related to embedded fonts:
 
 - When embedding PostScript fonts, the entire font is always embedded.
 
-- When embedding TrueType fonts (ttf) or TrueType Collections (ttc), a subset of the original font, containing only the glyphs used, is embedded in the output document. That's the default, but if you specify encoding-mode="single-byte" (see above), the complete font is embedded.
+- When embedding TrueType (ttf) or TrueType Collections (ttc), a subset of the original font, containing only the glyphs used, is embedded in the output document. That's the default, but if you specify encoding-mode="single-byte" (see above), the complete font is embedded.
 
 ### Font Substitution {#font_substitution}
 
