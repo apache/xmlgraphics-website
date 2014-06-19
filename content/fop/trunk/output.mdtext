@@ -153,6 +153,22 @@ It is also possible to reference an embedded file from an `fo:basic-link`. Use t
 
 Note: Not all PDF Viewers (including some Acrobat Versions) will open the embedded file when clicking on the link. In that case, the user will have to open he attachment via the separate list of file attachments.
 
+#### Custom Document Properties
+
+In Adobe Reader (and possibly other PDF viewers), in the Document Properties window, there is a tab that shows custom properties that have been set on the document:
+![PDF Custom Document Properties](images/pdf-custom-document-properties.png)
+
+Such properties can be set in the FO document using the `pdf:info` extension element as a child of `fo:declarations`:
+
+    :::xml
+    <fo:declarations>
+      <pdf:info xmlns:pdf="http://xmlgraphics.apache.org/fop/extensions/pdf">
+        <pdf:name key="MyCustomProperty">MyPropertyValue</pdf:name>
+      </pdf:info>
+    </fo:declarations>
+
+Each custom property must be specified using the `pdf:name` element. Remember that the property name must be different to the reserved keywords, which are Title, Author, Subject, Keywords, Creator, Producer, CreationDate, ModDate and Trapped.
+
 ## PostScript {#ps}
 
 The PostScript renderer has been brought up to a similar quality as the PDF renderer, but may still be missing certain features. Currently, the PostScript renderer generates PostScript Level 3 with most DSC comments. Actually, the only Level 3 features used are the FlateDecode and DCTDecode filter (the latter is used for 1:1 embedding of JPEG images), everything else is Level 2.
