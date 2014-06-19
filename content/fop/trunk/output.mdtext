@@ -155,10 +155,13 @@ Note: Not all PDF Viewers (including some Acrobat Versions) will open the embedd
 
 #### Custom Document Properties
 
-In Adobe Reader (and possibly other PDF viewers), in the Document Properties window, there is a tab that shows custom properties that have been set on the document:
+In Adobe Reader (and possibly other PDF viewers), in the Document Properties window,
+there is a tab that shows custom properties that have been set on the document:  
 ![PDF Custom Document Properties](images/pdf-custom-document-properties.png)
 
-Such properties can be set in the FO document using the `pdf:info` extension element as a child of `fo:declarations`:
+Such properties are stored in the PDF in the form of additional key/value pairs in the
+*Document Information Dictionary* (the Info dictionary). They can be set in the
+FO document using the `pdf:info` extension element as a child of `fo:declarations`:
 
     :::xml
     <fo:declarations>
