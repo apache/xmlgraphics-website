@@ -132,6 +132,8 @@ Alternatively, you can set each value separately in the Map provided by FOUserAg
 
 1. encrypt-metadata: Boolean or "true"/"false"
 
+The password length is restricted to a maximum of 32 bytes if the encryption-length is 128 or less, and to a maximum of 127 bytes if the encryption-length is 256 (longer passwords will be truncated to the maximum allowed).
+
 ## Environment {#Environment}
 
 The PDF encryption implemented in FOP does not need external libraries to perform encryption. A recent JDK (1.5+) is sufficient. However, encryption using keys with 256 bits requires the installation of the JCE Unlimited Strength Jurisdiction Policy files from Oracle.
