@@ -1,5 +1,11 @@
 package path;
 
+my %variables = (
+    fop_current_version => "1.1",
+    fop_current_version_release_date => "20 October 2012",
+);
+
+
 # taken from django's url.py
 
 our @patterns = (
@@ -15,6 +21,8 @@ our @patterns = (
          sidenav => "fop-sidenav.mdtext",
          footer => "bottom.html",
        template => "single_narrative.html",
+       preprocess => 1,
+       %variables,
     } ],
 
 	[qr!\.mdtext$!, single_narrative => {
