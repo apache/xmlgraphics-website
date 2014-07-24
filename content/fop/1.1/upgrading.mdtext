@@ -2,7 +2,7 @@ Title: Upgrading from an Earlier Version of Apache&trade; FOP
 
 #Upgrading from an Earlier Version of Apache&trade; FOP
 
-## Upgrading from Version 1.0 {#fop-1.0}
+## Upgrading from Version 1.0 { #fop-1.0}
 
 You should encounter very few issues in upgrading from FOP 1.0, except as noted in the following:
 
@@ -26,7 +26,7 @@ You should encounter very few issues in upgrading from FOP 1.0, except as noted 
 
 - Because complex script features are now enabled by default, it is possible that different font specific data will be used for kerning than was previously used. This may be the case if a font supports a traditional TrueType `kern` table and also supports the advanced typographic `kern` feature with a `GPOS` table. In FOP 1.0, the former is used for kerning, while in FOP 1.1 with complex script features enabled, the latter is used. If it is desired to explicitly use the `kern` table (rather than the `GPOS` table) in such a case, then the `-nocs` command line option may be used when invoking FOP in order to disable complex script features.
 
-## Upgrading from Pre-1.0 Versions {#pre-1.0}
+## Upgrading from Pre-1.0 Versions { #pre-1.0}
 
 If you're planning to upgrade to the latest Apache&trade; FOP version from a pre-1.0 version, there are a few very important things to consider:
 

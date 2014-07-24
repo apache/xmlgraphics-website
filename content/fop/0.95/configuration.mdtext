@@ -3,13 +3,13 @@ Title: Apache(tm) FOP: Configuration
 #Apache&trade; FOP: Configuration
 
 
-## Configuration File Basics {#general}
+## Configuration File Basics { #general}
 
 The FOP configuration file is an XML file containing a variety of settings that are useful for controlling FOP's behavior, and for helping it find resources that you wish it to use.
 
 The easiest way to get started using a FOP configuration file is to copy the sample found at `{fop-dir}/conf/fop.xconf` to a location of your choice, and then to edit it according to your needs. It contains templates for the various configuration options, most of which are commented out. Remove the comments and change the settings for entries that you wish to use. Be sure to follow any instructions, including comments which specify the value range. Also, since the configuration file is XML, be sure to keep it well-formed.
 
-### Making Configuration Available to FOP {#general-available}
+### Making Configuration Available to FOP { #general-available}
 
 After creating your configuration file, you must tell FOP how to find it:
 
@@ -20,7 +20,7 @@ After creating your configuration file, you must tell FOP how to find it:
 
 See [Setting the Configuration Programmatically](embedding.html#config-internal) for instructions on how to do so in an embedded environment.
 
-## Summary of the General Configuration Options {#general-elements}
+## Summary of the General Configuration Options { #general-elements}
 
 | Element | Data Type (for the value) | Description | Default Value |
 |---------|---------------------------|-------------|---------------|
@@ -66,7 +66,7 @@ This is an excerpt from the example configuration file coming with FOP:
       <!-- etc. etc..... -->
     </fop>
 
-## Renderer configuration {#renderers}
+## Renderer configuration { #renderers}
 
 Each Renderer has its own configuration section which is identified by the MIME type the Renderer is written for, ex. "application/pdf" for the PDF Renderer.
 
@@ -96,7 +96,7 @@ The configuration for the PDF Renderer could look like this:
 
 The details on the font configuration can be found on the separate [Fonts](fonts.html) page. Note especially the section entitled [Register Fonts with FOP](fonts.html#register).
 
-### Special Settings for the PDF Renderer {#pdf-renderer}
+### Special Settings for the PDF Renderer { #pdf-renderer}
 
 The configuration element for the PDF renderer contains two elements. One is for the font configuration (please follow the link above) and one is for the "filter list". The filter list controls how the individual objects in a PDF file are encoded. By default, all objects get "flate" encoded (i.e. simply compressed with the same algorithm that is also used in ZIP files). Most users don't need to change that setting. For debugging purposes, it may be desired not to compress the internal objects at all so the generated PDF commands can be read. In that case, you can simply use the following filter list. The second filter list (type="image") ensures that all images still get compressed but also ASCII-85 encoded so the produced PDF file is still easily readable in a text editor.
 
@@ -135,7 +135,7 @@ Some people don't have high requirements on color fidelity but instead want the 
       <fonts....
       </renderer>
 
-### Special Settings for the PostScript Renderer {#ps-renderer}
+### Special Settings for the PostScript Renderer { #ps-renderer}
 
 Besides the normal font configuration (the same "fonts" element as for the PDF renderer) the PostScript renderer has an additional setting to force landscape pages to be rotated to fit on a page inserted into the printer in portrait mode. Set the value to "true" to activate this feature. The default is "false". Example:
 
@@ -155,7 +155,7 @@ Besides the normal font configuration (the same "fonts" element as for the PDF r
       </fonts>
     </renderer>
 
-### Special Settings for the PCL Renderer {#pcl-renderer}
+### Special Settings for the PCL Renderer { #pcl-renderer}
 
 Non-standard fonts for the PCL renderer are made available through the Java2D subsystem which means that you don't have to do any custom font configuration in this case but you have to use the font names offered by Java.
 
@@ -171,7 +171,7 @@ The default value for the "rendering" setting is "speed" which causes borders to
 
 The default value for the "text-rendering" setting is "auto" which paints the base fonts using PCL fonts. Non-base fonts are painted as bitmaps through Java2D. If the mix of painting methods results in unwelcome output, you can set this to "bitmap" which causes all text to be rendered as bitmaps.
 
-## When it does not work {#When-it-does-not-work}
+## When it does not work { #When-it-does-not-work}
 
 FOP searches the configuration file for the information it expects, at the position it expects. When that information is not present, FOP will not complain, it will just continue. When there is other information in the file, FOP will not complain, it will just ignore it. That means that when your configuration information is in the file but in a different XML element, or in a different XML path, than FOP expects, it will be silently ignored.
 

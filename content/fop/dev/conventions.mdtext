@@ -5,7 +5,7 @@ Title: Apache(tm) FOP Development: Coding Conventions
 
 Acknowledgement: Some content in this guide was adapted from other Apache&trade; projects such as Avalon, Cactus, Turbine and Velocity.
 
-## Subversion Repository {#svn}
+## Subversion Repository { #svn}
 
 Conventions in this section apply to Repository content, regardless of type:
 
@@ -16,9 +16,9 @@ Conventions in this section apply to Repository content, regardless of type:
 
 - In order to be able to discern commits from a committer from those where a committer applied a patch from a contributor, the commit message must contain a separate line following this pattern: **"Submitted by: [contributor's name] <[contributor's obfuscated e-mail address]>"**. This also helps doing audits on the repository.
 
-## Java {#java}
+## Java { #java}
 
-### Java Style {#java-style}
+### Java Style { #java-style}
 
 In order to facilitate the human reading of FOP source code, reduce churning in code, and prevent disputes, the FOP developers have agreed on a set of coding conventions. The basis of these coding conventions is documented in the [Apache XML Project Guidelines](http://xml.apache.org/source.html), which requires that **all Java Language source code in the repository must be written in conformance to Sun's**  [Code Conventions for the Java Programming Language](http://java.sun.com/docs/codeconv/html/CodeConvTOC.doc.html). In addition, the FOP developers have agreed to other conventions, which are summarized in the following table:
 
@@ -37,7 +37,7 @@ In order to facilitate the human reading of FOP source code, reduce churning in 
 
 For developers that dislike these conventions, one workaround is to develop using their own style, then use a formatting tool like [astyle](http://astyle.sourceforge.net/) (Artistic Style) before committing.
 
-### Checkstyle {#java-checkstyle}
+### Checkstyle { #java-checkstyle}
 
 The java syntax checker " [Checkstyle](http://checkstyle.sourceforge.net) " is used to enforce many of the FOP coding standards. The standards enforced through Checkstyle are documented in its configuration file (xml-fop/checkstyle.cfg). The conventions defined in the configuration file are an integral part of FOP's coding conventions, and should not be changed without common consent. In other words, the configuration file contains additional conventions that are not documented on this page, but are generally accepted as good style within the java community (i.e. they are the default behavior of checkstyle, which the FOP developers have decided to adopt *de facto*). Any apparent contradiction between the configuration file and this document should be raised on the fop-dev mailing list so that it can be clarified.
 
@@ -45,7 +45,7 @@ To use the "checkstyle" target in FOP's build process, download the source from 
 
 Checkstyle is probably most useful when integrated into your IDE. See the Checkstyle web site for more information about IDE plugins.
 
-### Java Best Practices {#java-best-practices}
+### Java Best Practices { #java-best-practices}
 
 The following general principles are a distillation of best practice expectations on the FOP project.
 
@@ -70,21 +70,21 @@ The following general principles are a distillation of best practice expectation
 
 - Try to avoid catching Throwable or Exception and catch specific exceptions instead.
 
-### Resources {#java-resources}
+### Resources { #java-resources}
 
 
 - [book on code style] Code Complete by Steve McConnell.
 
 - [code formatting software] [JRefactory](http://jrefactory.sourceforge.net).
 
-### Related Links {#java-links}
+### Related Links { #java-links}
 
 
 -  [Apache XML Graphics Code Repositories](http://xmlgraphics.apache.org/repo.html)
 
 -  [Jakarta Code Conventions and Standards](http://jakarta.apache.org/site/faqs.html#Coding%20Conventions%20and%20Standards) (see Coding Conventions and Standards section)
 
-## XML {#xml}
+## XML { #xml}
 
 | Convention | Rationale | Enforced By |
 |------------|-----------|-------------|

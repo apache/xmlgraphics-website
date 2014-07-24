@@ -5,15 +5,15 @@ Title: SVG Rasterizer
 
 This page describes the features of the SVG Rasterizer utility that comes with the Batik distribution. The SVG Rasterizer is a utility that can convert SVG files to a raster format. The tool can convert individual files or sets of files, making it easy to convert entire directories of SVG files. The provided formats are <abbr title="Joint Photography Expert Group">JPEG</abbr>, <abbr title="Portable Network Graphics">PNG</abbr> and <abbr title="Tagged Image File Format">TIFF</abbr>, however the design allows new formats to be added easily. In addition, the rasterizer can (despite its name) transcode to <abbr title="Portable Document Format">PDF</abbr>.
 
-## Downloading the rasterizer {#downloading}
+## Downloading the rasterizer { #downloading}
 
 Refer to the [install page](../install.html) and the [download area](/batik/download.html) to find out what to download and how to install it. Remember that you can get either the source or binary distribution.
 
-## Rasterizing one or several SVG files {#using}
+## Rasterizing one or several SVG files { #using}
 
 The method for starting the rasterizer depends on the distribution of Batik that you chose to download. The following describes how to start the viewer for each distribution.
 
-### Using the binary distribution {#using-binary}
+### Using the binary distribution { #using-binary}
 
 If you downloaded the binary distribution of Batik, you should have a file called `batik-1.6.zip` (or similar), and, after expanding that file, a jar file called `batik-rasterizer.jar`. To start the rasterizer, open a console, go to the directory where you expanded the distribution (and where `batik-rasterizer.jar` is located) and simply type the following at the command prompt:
 
@@ -152,7 +152,7 @@ For example:
 
 will generate JPEG images for all the SVG files found in the samples directory.
 
-### Using the source distribution {#usingSource}
+### Using the source distribution { #usingSource}
 
 If you downloaded the source distribution of Batik, you got a zip or tar file that expanded into a directory called `xml-batik` or `batik-`*`version`*. In that directory, you can find build scripts for the platform you are running on. For example, there is a `build.bat` script for users of the Windows platform and there is a `build.sh` script for UNIX users.
 
@@ -185,13 +185,13 @@ and for Unix:
 
 Refer to [“Using the binary distribution”](#using-binary) for an explanation of the options.
 
-## Rasterizer Ant task {#task}
+## Rasterizer Ant task { #task}
 
 The Rasterizer task is an [Ant](http://ant.apache.org/) version of the rasterizer utility. It fulfills the same basic purpose as the utility but has a different syntax and a slightly different set of features.
 
 The task is able to produce four raster formats: <abbr title="Portable Network Graphics">PNG</abbr>, <abbr title="Joint Photographic Expert Group">JPEG</abbr>, <abbr title="Tagged Image File Format">TIFF</abbr> and <abbr title="Portable Document Format">PDF</abbr>.
 
-### Using the rasterizer task {#initTask}
+### Using the rasterizer task { #initTask}
 
 The first thing to do is to compile rasterizer task classes. Download the source distribution of Batik and see the `README` file in the `contrib/rasterizertask` directory for more instructions. The build procedure works the same way as when building Batik itself.
 
@@ -205,7 +205,7 @@ Next you have to define the task in your Ant project. To do this, add the follow
 
 Now you can use the rasterizer task in your project. See the [parameters section](#taskParameters) for an explanation of the available parameters or the [examples section](#taskExamples) to see few usage examples.
 
-### Parameters of the Ant task {#taskParameters}
+### Parameters of the Ant task { #taskParameters}
 
 The following table lists the attributes that may be specified on the `rasterize` task element.
 
@@ -230,7 +230,7 @@ The following table lists the attributes that may be specified on the `rasterize
 
 You can use `fileset` elements to select input files and directories. See the [Ant](http://ant.apache.org/) documentation to learn how to use [filesets](http://ant.apache.org/manual/CoreTypes/fileset.html).
 
-### Examples of using the rasterizer task {#taskExamples}
+### Examples of using the rasterizer task { #taskExamples}
 
 The following example is the complete Ant project that converts an SVG image (called `input.svg`) to a PNG image (called `output.png`):
 

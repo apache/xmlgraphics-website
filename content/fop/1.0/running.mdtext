@@ -3,7 +3,7 @@ Title: Running Apache&trade; FOP
 #Running Apache&trade; FOP
 
 
-## System Requirements {#require}
+## System Requirements { #require}
 
 The following software must be installed:
 
@@ -38,19 +38,19 @@ In addition, the following system requirements apply:
 
 - If you will be using FOP to process SVG, you must do so in a graphical environment. See [FOP: Graphics (Batik)](graphics.html#batik) for details.
 
-## Installation {#install}
+## Installation { #install}
 
-### Instructions {#install-instruct}
+### Instructions { #install-instruct}
 
 Basic FOP installation consists of first unzipping the `.gz` file that is the distribution medium, then unarchiving the resulting `.tar` file in a directory/folder that is convenient on your system. Please consult your operating system documentation or Zip application software documentation for instructions specific to your site.
 
-### Problems {#install-problems}
+### Problems { #install-problems}
 
 Some Mac OSX users have experienced filename truncation problems using Stuffit to unzip and unarchive their distribution media. This is a legacy of older Mac operating systems, which had a 31-character pathname limit. Several Mac OSX users have recommended that Mac OSX users use the shell command `tar -xzf` instead.
 
-## Starting FOP as a Standalone Application {#standalone-start}
+## Starting FOP as a Standalone Application { #standalone-start}
 
-### Using the fop script or batch file {#fop-script}
+### Using the fop script or batch file { #fop-script}
 
 The usual and recommended practice for starting FOP from the command line is to run the batch file fop.bat (Windows) or the shell script fop (Unix/Linux). These scripts require that the environment variable JAVA_HOME be set to a path pointing to the appropriate Java installation on your system. Macintosh OSX includes a Java environment as part of its distribution. We are told by Mac OSX users that the path to use in this case is `/Library/Java/Home`. **Caveat:** We suspect that, as Apple releases new Java environments and as FOP upgrades the minimum Java requirements, the two will inevitably not match on some systems. Please see [Java on Mac OSX FAQ](http://developer.apple.com/java/faq) for information as it becomes available.
 
@@ -140,12 +140,12 @@ The usual and recommended practice for starting FOP from the command line is to 
 
 PDF encryption is only available if FOP was compiled with encryption support **and** if compatible encryption support is available at run time. Currently, only the JCE is supported. Check the [Details](pdfencryption.html).
 
-### Writing your own script {#your-own-script}
+### Writing your own script { #your-own-script}
 
 FOP's entry point for your own scripts is the class `org.apache.fop.cli.Main`. The general pattern for the command line is: `java -classpath <CLASSPATH>
         org.apache.fop.cli.Main <arguments>`. The arguments consist of the options and infile and outfile specifications as shown above for the standard scripts. You may wish to review the standard scripts to make sure that you get your environment properly configured.
 
-### Running with java's -jar option {#jar-option}
+### Running with java's -jar option { #jar-option}
 
 As an alternative to the start scripts you can run `java
         -jar path/to/build/fop.jar <arguments>`, relying on FOP to build the classpath for running FOP dynamically, see [below](#dynamical-classpath). If you use hyphenation, you must put `fop-hyph.jar` in the `lib` directory.
@@ -155,7 +155,7 @@ You can also run `java -jar path/to/fop.jar
 
 In both cases the arguments consist of the options and infile and outfile specifications as shown above for the standard scripts.
 
-### FOP's dynamical classpath construction {#dynamical-classpath}
+### FOP's dynamical classpath construction { #dynamical-classpath}
 
 If FOP is started without a proper classpath, it tries to add its dependencies dynamically. If the system property `fop.home` contains the name of a directory, then FOP uses that directory as the base directory for its search. Otherwise the current working directory is the base directory. If the base directory is called `build`, then its parent directory becomes the base directory.
 
@@ -163,7 +163,7 @@ FOP expects to find `fop.jar` in the `build` subdirectory of the base directory,
 
 If the system property `fop.optional.lib` contains the name of a directory, then all `jar` files in that directory are also added to the classpath. See the methods `getJARList` and `checkDependencies` in `org.apache.fop.cli.Main`.
 
-## Using Xalan to Check XSL-FO Input {#check-input}
+## Using Xalan to Check XSL-FO Input { #check-input}
 
 FOP sessions that use -xml and -xsl input instead of -fo input are actually controlling two distinct conversions: Tranforming XML to XSL-FO, then formatting the XSL-FO to PDF (or another FOP output format). Although FOP controls both of these processes, the first is included merely as a convenience and for performance reasons. Only the second is part of FOP's core processing. If a user has a problem running FOP, it is important to determine which of these two processes is causing the problem. If the problem is in the first process, the user's stylesheet is likely the cause. The FOP development team does not have resources to help with stylesheet issues, although we have included links to some useful [Specifications](../resources.html#specs) and [Books/Articles](../resources.html#articles). If the problem is in the second process, FOP may have a bug or an unimplemented feature that does require attention from the FOP development team.
 
@@ -179,7 +179,7 @@ The -foout option works the same way as if you would call the [Xalan command-lin
 
 Note that there are some subtle differences between the FOP and Xalan command-lines.
 
-## Memory Usage {#memory}
+## Memory Usage { #memory}
 
 FOP can consume quite a bit of memory, even though this has been continually improved. This is partly inherent to the formatting process and partly caused by implementation choices. All FO processors currently on the market have memory problems with certain layouts.
 
@@ -194,6 +194,6 @@ If you are running out of memory when using FOP, here are some ideas that may he
 
 - Use multiple page sequences. FOP starts rendering after the end of a page sequence is encountered. While the actual rendering is done page-by-page, some additional memory is freed after the page sequence has been rendered. This can be substantial if the page sequence contains lots of FO elements.
 
-## Problems {#problems}
+## Problems { #problems}
 
 If you have problems running FOP, please see the ["How to get Help" page](../gethelp.html).

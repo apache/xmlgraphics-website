@@ -5,17 +5,17 @@ Title: History of Changes
 
  [changes.rss](changes.rss)
 
-## Introduction and explanation of symbols {#introduction}
+## Introduction and explanation of symbols { #introduction}
 
 Until FOP 1.1, Changes are sorted by "type" and then chronologically with the most recent at the top. These symbols denote the various action types:![add](/images/add.jpg)=add,![fix](/images/fix.jpg)=fix,![remove](/images/remove.jpg)=remove,![update](/images/update.jpg)=update
 
-## Version FOP Trunk {#version_FOP Trunk}
+## Version FOP Trunk { #version_FOP Trunk}
 
 See [Change list in Jira](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20resolution%20%3D%20Fixed%20AND%20fixVersion%20%3D%20trunk%20ORDER%20BY%20updated%20DESC%2C%20created%20DESC%2C%20priority%20DESC).
 
-## Version 1.1 (20 October 2012) {#version_1.1}
+## Version 1.1 (20 October 2012) { #version_1.1}
 
-### Changes to the Code Base {#Code_1.1}
+### Changes to the Code Base { #Code_1.1}
 
 - ![add](/images/add.jpg) Added support for the role property on fo:page-sequence, fo:flow and fo:static-content. This allows to change the mapping of those FOs to PDF structure types when enabling accessibility. Committed by VH.
 
@@ -135,7 +135,7 @@ See [Change list in Jira](https://issues.apache.org/jira/issues/?jql=project%20%
 
 - ![update](/images/update.jpg) Add run target for embedded examples. Add increased JVM memory heap flag for example8 in case font cache is rebuilt. Committed by GA. See issue [FOP-1955](https://issues.apache.org/jira/browse/FOP-1955).
 
-### Changes to the User Configuration {#Config_1.1}
+### Changes to the User Configuration { #Config_1.1}
 
 
 - ![add](/images/add.jpg) Added configuration option to set the version of the output PDF document. Committed by VH. Thanks to Mehdi Houshmand. See issue [FOP-1945](https://issues.apache.org/jira/browse/FOP-1945).
@@ -146,14 +146,14 @@ See [Change list in Jira](https://issues.apache.org/jira/issues/?jql=project%20%
 
 - ![fix](/images/fix.jpg) Fix for relative URIs in the configuration file (base, font-base, hyphenation-base) are evaluated relative to the base URI of the configuration file. Committed by SP.
 
-### Changes to Documentation {#Docs_1.1}
+### Changes to Documentation { #Docs_1.1}
 
 
 - ![fix](/images/fix.jpg) Fix renderer mime type for PCL output; should be application/x-pcl. Committed by GA. See issue [FOP-2064](https://issues.apache.org/jira/browse/FOP-2064).
 
 - ![update](/images/update.jpg) Update FAQ and New Bug documentation. Committed by GA.
 
-### Changes to the Font Subsystem {#Fonts_1.1}
+### Changes to the Font Subsystem { #Fonts_1.1}
 
 
 - ![add](/images/add.jpg) Add support for OpenType advanced typographic tables (GDEF, GSUB, GPOS). Committed by GA.
@@ -186,7 +186,7 @@ See [Change list in Jira](https://issues.apache.org/jira/issues/?jql=project%20%
 
 - ![update](/images/update.jpg) Removing experimental feature that violates XSL-FO and Unicode semantics by misinterpreting Basic Latin code points. Users must use private use codepoints to access font specific character mappings that have no assigned Unicode code point. See bug 50492. Committed by GA.
 
-### Changes to the Image Support {#Images_1.1}
+### Changes to the Image Support { #Images_1.1}
 
 
 - ![fix](/images/fix.jpg) Fix incorrect SVG line dash pattern with PDF output format. Committed by GA. Thanks to Luis Bernardo. See issue [FOP-2079](https://issues.apache.org/jira/browse/FOP-2079).
@@ -199,7 +199,7 @@ See [Change list in Jira](https://issues.apache.org/jira/issues/?jql=project%20%
 
 - ![update](/images/update.jpg) Fix newly introduced findbugs warnings. Committed by GA. Thanks to Luis Bernardo. See issue [FOP-1256](https://issues.apache.org/jira/browse/FOP-1256).
 
-### Changes to the Layout Engine {#Layout_1.1}
+### Changes to the Layout Engine { #Layout_1.1}
 
 
 - ![add](/images/add.jpg) Add support for complex scripts, including: full bidi support, support for advanced typographic tables, advanced support for number conversion. Committed by GA. See issues [FOP-959](https://issues.apache.org/jira/browse/FOP-959), [FOP-1790](https://issues.apache.org/jira/browse/FOP-1790), [FOP-1827](https://issues.apache.org/jira/browse/FOP-1827).
@@ -240,7 +240,7 @@ See [Change list in Jira](https://issues.apache.org/jira/issues/?jql=project%20%
 
 - ![fix](/images/fix.jpg) Fixed retrieval of available BPD for cases spanning columns and multiple pages with differing page masters. Committed by JM. See issue [FOP-1853](https://issues.apache.org/jira/browse/FOP-1853).
 
-### Changes to Renderers (Output Formats) {#Renderers_1.1}
+### Changes to Renderers (Output Formats) { #Renderers_1.1}
 
 
 - ![add](/images/add.jpg) Added possibility to embed TrueType fonts in PostScript. Committed by VH. See issue [FOP-2004](https://issues.apache.org/jira/browse/FOP-2004).
@@ -329,14 +329,14 @@ See [Change list in Jira](https://issues.apache.org/jira/issues/?jql=project%20%
 
 - ![remove](/images/remove.jpg) Removed old Renderer implementations for those output formats that have a version based on the new DocumentHandler architecture available (AFP, PCL, PDF, PS). Committed by VH.
 
-### Changes to unit tests or other test code {#Test_1.1}
+### Changes to unit tests or other test code { #Test_1.1}
 
 
 - ![fix](/images/fix.jpg) Fix errors and warnings in example files. Add build.xml for documentation examples. Committed by GA.
 
 - ![update](/images/update.jpg) Add test for basic-link with padding. Committed by GA. Thanks to Matthias Reischenbacher. See issue [FOP-1864](https://issues.apache.org/jira/browse/FOP-1864).
 
-### Contributors to this release {#contributors_1.1}
+### Contributors to this release { #contributors_1.1}
 
 We thank the following people for their contributions to this release.
 
@@ -348,14 +348,14 @@ This is a list of other contributors:
 
 Adrian Buza, Alberto Simões, Alexandros Papadakis, Alexios Giotis, Andrejus Chaliapinas, Armin Haaf, Benjamin Riefenstahl, Carsten Pfeiffer, Dieter von Holten, Georg Datterl, Glenn Adams, Joshua Marquart, Julien Aymé, Luis Bernardo, Martin Koegler, Matthias Reischenbacher, Max Aster, Mehdi Houshmand, Melanie Drake, Michael Rubin, Ognjen Blagojevic, Pascal Sancho, Patrick Jaromin, Paul Huemer, Peter Hancock, Robert Meyer, Sergey Vladimirov, Simon Pepping, Tassos Charoulis, Vincent Hennebert.
 
-## Version 1.0 (21 July 2010) {#version_1.0}
+## Version 1.0 (21 July 2010) { #version_1.0}
 
-### Changes to the End-User API {#API_1.0}
+### Changes to the End-User API { #API_1.0}
 
 
 - ![add](/images/add.jpg) Added a command-line option '-catalog' to use a catalog resolver for the XML and XSLT files Committed by SP.
 
-### Changes to the Code Base {#Code_1.0}
+### Changes to the Code Base { #Code_1.0}
 
 
 - ![add](/images/add.jpg) Added support for xmlfile and xsltfile parameters in FOP's Ant Task. Committed by AC.
@@ -402,12 +402,12 @@ Adrian Buza, Alberto Simões, Alexandros Papadakis, Alexios Giotis, Andrejus Cha
 
 - ![update](/images/update.jpg) Changed FONode.addCharacters() parameter to closer match the signature of the standard SAX characters() event (reduces confusion and computations). *!! Implementors of extensions that subclass FONode directly, and offer an implementation for addCharacters() should take care to make similar modifications in their code !!* Committed by AD.
 
-### Changes to the Bundled Extensions {#Extensions_1.0}
+### Changes to the Bundled Extensions { #Extensions_1.0}
 
 
 - ![add](/images/add.jpg) Added support for the #CMYK pseudo-profile supported by some commercial XSL implementations on the rgb-icc() function. Committed by JM.
 
-### Changes to the Font Subsystem {#Fonts_1.0}
+### Changes to the Font Subsystem { #Fonts_1.0}
 
 
 - ![add](/images/add.jpg) Added support for TrueType fonts with symbol character maps (like "Wingdings" and "Symbol"). Character for these fonts are usually found in the 0xF020 to 0xF0FF range (a Unicode private use area). Committed by JM.
@@ -444,7 +444,7 @@ Adrian Buza, Alberto Simões, Alexandros Papadakis, Alexios Giotis, Andrejus Cha
 
 - ![fix](/images/fix.jpg) Fix for PFMReader after bug #43089 changed the behavior of PFMFile. Fixes baseline problems when Type 1 fonts are used in conjunction with XML font metric files. Committed by JM. Thanks to J. Frantzius. See issue [FOP-1570](https://issues.apache.org/jira/browse/FOP-1570).
 
-### Changes to the Image Support {#Images_1.0}
+### Changes to the Image Support { #Images_1.0}
 
 
 - ![add](/images/add.jpg) Added customization ability for the image loading framework from FOP's configuration file. Committed by JM.
@@ -453,7 +453,7 @@ Adrian Buza, Alberto Simões, Alexandros Papadakis, Alexios Giotis, Andrejus Cha
 
 - ![fix](/images/fix.jpg) Bugfix: use the effective color profile supplied by the ImageEncodingHelper, instead of the original one. Committed by JM.
 
-### Changes to the Layout Engine {#Layout_1.0}
+### Changes to the Layout Engine { #Layout_1.0}
 
 
 - ![add](/images/add.jpg) Implement internal character classes if the hyphenation pattern file does not contain them Committed by SP.
@@ -518,7 +518,7 @@ Adrian Buza, Alberto Simões, Alexandros Papadakis, Alexios Giotis, Andrejus Cha
 
 - ![fix](/images/fix.jpg) Activated min-height/max-height and min-width/max-width properties. Committed by AD. See issue [FOP-1428](https://issues.apache.org/jira/browse/FOP-1428).
 
-### Changes to Renderers (Output Formats) {#Renderers_1.0}
+### Changes to Renderers (Output Formats) { #Renderers_1.0}
 
 
 - ![add](/images/add.jpg) AFP Output: Added enhanced dithering functionality for images that are converted to bi-level images. Committed by JM.
@@ -655,7 +655,7 @@ Adrian Buza, Alberto Simões, Alexandros Papadakis, Alexios Giotis, Andrejus Cha
 
 - ![update](/images/update.jpg) When a JPEG image is embedded, an optionally embedded color profile is filtered out as it's already embedded separately in the PDF file. Committed by JM.
 
-### Contributors to this release {#contributors_1.0}
+### Contributors to this release { #contributors_1.0}
 
 We thank the following people for their contributions to this release.
 
@@ -667,33 +667,33 @@ This is a list of other contributors:
 
 Alexander Stamenov, Alok Singh, Antti Karanta, Bharat Attaluri, Carsten Siedentop, D.W. Harks, Dario Laera, Emil Maskovsky, Francois Fernandes, Georg Datterl, Harald G. Henne, J. Frantzius, Jason Harrop, Jonathan Levinson, Jost Klopfstein, Martin Edge, Maxim Wirt, Nicolas Peninguy, Pavel Kysilka, Peter Coppens, Peter Hancock, Richard Wheeldon, rogov.AT.devexperts.com, Thomas Stieler, Tow Browder, Venkat Reddy, Yegor Kozlov.
 
-## Version 0.95 (05 August 2008) {#version_0.95}
+## Version 0.95 (05 August 2008) { #version_0.95}
 
-### Changes to the End-User API {#API_0.95}
+### Changes to the End-User API { #API_0.95}
 
 
 - ![fix](/images/fix.jpg) Fixed the -imagein command-line option. Committed by JM.
 
-### Changes to the Code Base {#Code_0.95}
+### Changes to the Code Base { #Code_0.95}
 
 
 - ![fix](/images/fix.jpg) Fixed potential multi-threading problem concerning the use of DecimalFormat. Committed by JM. See issue [XGC-13](https://issues.apache.org/jira/browse/XGC-13).
 
-### Changes to the Font Subsystem {#Fonts_0.95}
+### Changes to the Font Subsystem { #Fonts_0.95}
 
 
 - ![fix](/images/fix.jpg) Fixed text extraction problem with ZapfDingbats and Symbol font in PDF output. Committed by JM.
 
 - ![fix](/images/fix.jpg) Fixed NullPointerException when loading a TrueType font using XML font metric files. Committed by JM.
 
-### Changes to the Image Support {#Images_0.95}
+### Changes to the Image Support { #Images_0.95}
 
 
 - ![fix](/images/fix.jpg) Fixed two bugs concerning resolution handling with SVG images and their conversion to bitmaps for RTF output. Committed by JM.
 
 - ![fix](/images/fix.jpg) Fixed a performance problem concerning image serialization. Committed by JM.
 
-### Changes to the Layout Engine {#Layout_0.95}
+### Changes to the Layout Engine { #Layout_0.95}
 
 
 - ![fix](/images/fix.jpg) Fixed NullPointerException when page-number-citations are used inside a marker. Committed by AD. See issue [FOP-1549](https://issues.apache.org/jira/browse/FOP-1549).
@@ -702,7 +702,7 @@ Alexander Stamenov, Alok Singh, Antti Karanta, Bharat Attaluri, Carsten Siedento
 
 - ![fix](/images/fix.jpg) Various bugfixes for table layout. Committed by VH. See issue [FOP-1509](https://issues.apache.org/jira/browse/FOP-1509).
 
-### Changes to Renderers (Output Formats) {#Renderers_0.95}
+### Changes to Renderers (Output Formats) { #Renderers_0.95}
 
 
 - ![add](/images/add.jpg) Added support for fo:leader for RTF output (no full support!). Fixes problems with empty leaders being used to force empty lines among other issues. Committed by JM. Thanks to Maximilian Aster. See issue [FOP-1452](https://issues.apache.org/jira/browse/FOP-1452).
@@ -725,7 +725,7 @@ Alexander Stamenov, Alok Singh, Antti Karanta, Bharat Attaluri, Carsten Siedento
 
 - ![fix](/images/fix.jpg) Fixed regression causing bad positioning of block-containers if used as descendant of a table-cell. Committed by JM.
 
-### Contributors to this release {#contributors_0.95}
+### Contributors to this release { #contributors_0.95}
 
 We thank the following people for their contributions to this release.
 
@@ -737,14 +737,14 @@ This is a list of other contributors:
 
 Maximilian Aster.
 
-## Version 0.95beta (26 March 2008) {#version_0.95beta}
+## Version 0.95beta (26 March 2008) { #version_0.95beta}
 
-### Changes to the End-User API {#API_0.95beta}
+### Changes to the End-User API { #API_0.95beta}
 
 
 - ![remove](/images/remove.jpg) Removed deprecated methods in the "apps" package that were left-overs from the API discussions. Committed by JM.
 
-### Changes to the Code Base {#Code_0.95beta}
+### Changes to the Code Base { #Code_0.95beta}
 
 
 - ![add](/images/add.jpg) Turned on XInclude processing for the main source given on the command line. Committed by MB.
@@ -765,14 +765,14 @@ Maximilian Aster.
 
 - ![fix](/images/fix.jpg) Avoid a NullPointerException in AreaTreeHandler.endDocument(). Committed by JM. Thanks to David Delbecq. See issue [FOP-1456](https://issues.apache.org/jira/browse/FOP-1456).
 
-### Changes to the Bundled Extensions {#Extensions_0.95beta}
+### Changes to the Bundled Extensions { #Extensions_0.95beta}
 
 
 - ![add](/images/add.jpg) New extension attribute fox:transform on fo:block-container allows free-form transformation (rotation, scaling etc.) of absolute and fixed block-containers. Supported only for PDF, PS and Java2D-based renderers. Committed by JM.
 
 - ![add](/images/add.jpg) Added new extension element: fox:external-document. It allows to add whole documents such as multi-page TIFF images to be inserted as peers to a page-sequence. Each image will make up an entire page. See the documentation for details. Committed by JM.
 
-### Changes to the Font Subsystem {#Fonts_0.95beta}
+### Changes to the Font Subsystem { #Fonts_0.95beta}
 
 
 - ![add](/images/add.jpg) Added support for unusual font encodings (like for Symbol or Cyrillic fonts) of Type 1 fonts in PDF and PostScript output. Committed by JM.
@@ -795,12 +795,12 @@ Maximilian Aster.
 
 - ![update](/images/update.jpg) Improved font auto-detection and handling of AWT-supplied fonts in order to achieve better results when using multiple output formats. Whenever possible, the font names appearing in the operating system can also be used in XSL-FO. Committed by JM.
 
-### Changes to the Image Support {#Images_0.95beta}
+### Changes to the Image Support { #Images_0.95beta}
 
 
 - ![fix](/images/fix.jpg) A new image loading framework has been introduced to fix various problems with external graphics and improve performance. Committed by JM.
 
-### Changes to the Layout Engine {#Layout_0.95beta}
+### Changes to the Layout Engine { #Layout_0.95beta}
 
 
 - ![add](/images/add.jpg) Added support for background on fo:table-column and fo:table-header/footer/body elements. Committed by VH.
@@ -891,7 +891,7 @@ Maximilian Aster.
 
     Committed by AD.
 
-### Changes to Renderers (Output Formats) {#Renderers_0.95beta}
+### Changes to Renderers (Output Formats) { #Renderers_0.95beta}
 
 
 - ![add](/images/add.jpg) Added an option to disable the default sRGB profile in PDF output for those who don't care about color fidelity, but care about PDF file size. Committed by JM.
@@ -932,7 +932,7 @@ Maximilian Aster.
 
 - ![update](/images/update.jpg) PDF Transcoder (SVG) text painting has been completely rewritten. Except for some special cases (with filters for example), all text (including flow text) is now painted using PDF text operators. Committed by JM.
 
-### Contributors to this release {#contributors_0.95beta}
+### Contributors to this release { #contributors_0.95beta}
 
 We thank the following people for their contributions to this release.
 
@@ -944,9 +944,9 @@ This is a list of other contributors:
 
 Adrian Cumiskey, Andrejus Chaliapinas, Bruno Feurer, ckohrn.at.tng.de, David Churavy, David Delbecq, Gordon Cooke, Justus Piater, Max Berger, Patrick Jaromin, Stefan Ziel, V. Schappert.
 
-## Version 0.94 (24th August 2007) {#version_0.94}
+## Version 0.94 (24th August 2007) { #version_0.94}
 
-### Changes to the Code Base {#Code_0.94}
+### Changes to the Code Base { #Code_0.94}
 
 
 - ![add](/images/add.jpg) Support for keep-together.within-line="always". Committed by MM.
@@ -1029,7 +1029,7 @@ Adrian Cumiskey, Andrejus Chaliapinas, Bruno Feurer, ckohrn.at.tng.de, David Chu
 
 - ![update](/images/update.jpg) Use source resolution setting for bitmap images which don't provide their own resolution. Committed by JM. Thanks to Hussein Shafie. See issue [FOP-1362](https://issues.apache.org/jira/browse/FOP-1362).
 
-### Contributors to this release {#contributors_0.94}
+### Contributors to this release { #contributors_0.94}
 
 We thank the following people for their contributions to this release.
 
@@ -1041,9 +1041,9 @@ This is a list of other contributors:
 
 Adrian Cumiskey, Erwin Tratar, Hussein Shafie, Martin Kögler, Max Berger, Paul Vinkenoog, Richard Wheeldon.
 
-## Version 0.93 (9 January 2007) {#version_0.93}
+## Version 0.93 (9 January 2007) { #version_0.93}
 
-### Changes to the Code Base {#Code_0.93}
+### Changes to the Code Base { #Code_0.93}
 
 
 - ![add](/images/add.jpg) Added support for the use of Open Type fonts Committed by BD.
@@ -1164,7 +1164,7 @@ Adrian Cumiskey, Erwin Tratar, Hussein Shafie, Martin Kögler, Max Berger, Paul 
 
 - ![update](/images/update.jpg) Content in block-containers makes better use of shrink to fit content vertically into the available area. This can be used indirectly to justify content vertically in a block-container. Committed by JM.
 
-### Contributors to this release {#contributors_0.93}
+### Contributors to this release { #contributors_0.93}
 
 We thank the following people for their contributions to this release.
 
@@ -1176,9 +1176,9 @@ This is a list of other contributors:
 
 Adam Strzelecki, Victor Mote, Dominic Brügger, Gary Reed, Gerhard Oettl, Gilles Beaugeais, Igor Istomin, Jeroen Meijer, Julien Aymé, Max Berger, Oliver Hernàndez Valls, Peter Coppens, Pierre-Henri Kraus, Richard Wheeldon.
 
-## Version 0.92beta (18 Apr 2006) {#version_0.92beta}
+## Version 0.92beta (18 Apr 2006) { #version_0.92beta}
 
-### Changes to the Code Base {#Code_0.92beta}
+### Changes to the Code Base { #Code_0.92beta}
 
 
 - ![add](/images/add.jpg) Initial support for page-position="last" added. Committed by JM.
@@ -1283,7 +1283,7 @@ Adam Strzelecki, Victor Mote, Dominic Brügger, Gary Reed, Gerhard Oettl, Gilles
 
 - ![update](/images/update.jpg) Revision of refinement white-space handling. Committed by AD.
 
-### Contributors to this release {#contributors_0.92beta}
+### Contributors to this release { #contributors_0.92beta}
 
 We thank the following people for their contributions to this release.
 
@@ -1295,9 +1295,9 @@ This is a list of other contributors:
 
 Gerhard Oettl, Gerhard Oettl (gerhard.oettl.at.oesoft.at), Jirí Mareš, Max Berger, Richard Wheeldon.
 
-## Version 0.91beta (23 Dec 2005) {#version_0.91beta}
+## Version 0.91beta (23 Dec 2005) { #version_0.91beta}
 
-### Changes to the Code Base {#Code_0.91beta}
+### Changes to the Code Base { #Code_0.91beta}
 
 
 - ![add](/images/add.jpg) Added checks that warn about tables and block-containers that are wider than the available content area. Committed by JM.
@@ -1372,7 +1372,7 @@ Gerhard Oettl, Gerhard Oettl (gerhard.oettl.at.oesoft.at), Jirí Mareš, Max Ber
 
 - ![update](/images/update.jpg) Improvements on leader painting in PDF output. Committed by JM.
 
-### Contributors to this release {#contributors_0.91beta}
+### Contributors to this release { #contributors_0.91beta}
 
 We thank the following people for their contributions to this release.
 
@@ -1384,14 +1384,14 @@ This is a list of other contributors:
 
 Tom Craddock.
 
-## Version 0.90alpha1 (22 Nov 2005) {#version_0.90alpha1}
+## Version 0.90alpha1 (22 Nov 2005) { #version_0.90alpha1}
 
-### Changes to the Code Base {#Code_0.90alpha1}
+### Changes to the Code Base { #Code_0.90alpha1}
 
 
 - ![update](/images/update.jpg)  **Complete redesign of the FOP codebase** in the period between Dec 2001 and Nov 2005. There are just too many changes to list here. If you like to know details, run `"svn log --verbose http://svn.apache.org/repos/asf/xmlgraphics/fop/trunk/"`. Committed by all.
 
-### Contributors to this release {#contributors_0.90alpha1}
+### Contributors to this release { #contributors_0.90alpha1}
 
 We thank the following people for their contributions to this release.
 
@@ -1399,14 +1399,14 @@ This is a list of all people who participated as committers:
 
 the FOP committers (all).
 
-## Version 0.20.5 (18 July 2003) {#version_0.20.5}
+## Version 0.20.5 (18 July 2003) { #version_0.20.5}
 
-### Changes to the Code Base {#Code_0.20.5}
+### Changes to the Code Base { #Code_0.20.5}
 
 
 - ![update](/images/update.jpg) For the change log for the maintenance branch (where FOP 0.20.5 came from), please see the "CHANGES" file in the distribution, or [the CHANGES file in the SVN repository](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/branches/fop-0_20_2-maintain/CHANGES?view=markup). Committed by all.
 
-### Contributors to this release {#contributors_0.20.5}
+### Contributors to this release { #contributors_0.20.5}
 
 We thank the following people for their contributions to this release.
 
@@ -1414,7 +1414,7 @@ This is a list of all people who participated as committers:
 
 the FOP committers (all).
 
-## All Committers {#all-committers}
+## All Committers { #all-committers}
 
 This is a list of all people who have ever participated as committers on this project.
 

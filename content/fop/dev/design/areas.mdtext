@@ -3,7 +3,7 @@ Title: Apache(tm) FOP Design: Area Tree
 #Apache&trade; FOP Design: Area Tree
 <authors><person email="keiron@aftexsw.com" name="Keiron Liddle"></person></authors>
 
-## Introduction {#intro}
+## Introduction { #intro}
 
 The Area Tree is an internal representation of the result document, representing pages and their contents. To make the concepts clearer and easier to understand, the code to implement the area tree matches the areas defined in the XSL-FO specification.
 
@@ -11,11 +11,11 @@ The area tree is created by the layout managers once the layout is decided for a
 
 The Area Tree consists of a set of pages, which the actual implemenation places in a set of page sequences.
 
-## Structure {#structure}
+## Structure { #structure}
 
 The area tree is a root element that has a list of page-viewport-areas. Each page viewport has a page-reference-area which holds the contents of the page. To handle the processing better FOP does not maintain a list at the root level but lets the area tree model handle each page as it is added.
 
-## Page {#page}
+## Page { #page}
 
 A page consists of a page+viewport pair.
 
@@ -29,7 +29,7 @@ For the body area there are more subdivisions for before floats, footnotes and t
 
 Since the layout is done inside a page, the page is created from the pagemaster with all the appropriate areas. The layout manager then uses the page to add areas into the normal flow reference areas and floats and footnotes. After adding the areas for the body region then the other regions can be done layed out and added.
 
-## Block Areas {#block}
+## Block Areas { #block}
 
 Block level areas contain either other blocks or line areas (which is a special block area).
 
@@ -37,13 +37,13 @@ A block is either positoned or stacked with other block areas.
 
 Block areas are created and/or returned by all top level elements in the flow. The spacing between block areas is handled by an empty block area. A block area is stacked with other block areas in a particular direction, it has a size and it contains line areas made from a group of inline areas and/or block areas.
 
-## Line Areas {#line-area}
+## Line Areas { #line-area}
 
 A line areas is simply a collection of inline areas that are stacked in the inline progression direction. A line area has a height and a start position. The line area is rendered by handling each inline area.
 
 A line area gets a set of inline areas added until complete then it is justified and vertically alignedi when adding the areas. If the line area contains unresolved areas then there will be a line resolver that retains the justification information until all areas in the line are resolved.
 
-## Inline Areas {#inline}
+## Inline Areas { #inline}
 
 There are a few different types of inline areas. All inline areas have a height and width.
 
@@ -55,11 +55,11 @@ The image and instream foreign object areas are placed inside a viewport. The le
 
 Once a LineArea is filled with inline areas then the inline areas need to be aligned and adjusted to fill the line properly.
 
-## Repeated Areas {#repeated-area}
+## Repeated Areas { #repeated-area}
 
 There are cases where the same subtree could be repeated in the area tree. These areas will be returned by the same layout managers. So it is possible to put a flag on the created areas so that the subtree data can be cached in the output. Examples of this are: static areas, table header/footer, svg.
 
-## Traits {#traits}
+## Traits { #traits}
 
 A trait is information associated with an area. This could be information such as text colour or is-first.
 
@@ -67,25 +67,25 @@ Traits provide information about an area. The traits are derived from properties
 
 A dominant trait on a block area is set, for example font colour, so that every line area with the same dominant value can derive it. The text inline areas then get the font colour set on the inline area or from the line area or from the block area.
 
-## Classes {#classes}
+## Classes { #classes}
 
 The following class structure will be used to represent the area tree.
 
-### Page Area Classes {#classes-page}
+### Page Area Classes { #classes-page}
 
 The page area classes hold the top level layout of a page. The areas are created by the page master and should be ready to have flow areas added.
 
-### Block Area Classes {#classes-block}
+### Block Area Classes { #classes-block}
 
 The block areas hold other block areas and/or line areas. The child areas are stacked in a particular direction.
 
 Areas for tables, lists and block container have their child block areas stacked in different ways. These areas a placed with an absolute positioning. The absolute positioning is where the blocks are placed with an offset from the parent reference area.
 
-### Inline Area Classes {#classes-inline}
+### Inline Area Classes { #classes-inline}
 
 The inline areas are used to make up a line area. An inline area typically has a height, width and some content. The inline area is offset from the baseline of the current line area. The content of the inline area can be other inline areas or a simple atomic object.
 
-## Forward References {#forward-references}
+## Forward References { #forward-references}
 
 The Area Tree maintains a set of mappings from the reference to pages.
 
@@ -93,7 +93,7 @@ The PageViewPort holds the list of forward references that need resolving so tha
 
 To layout a page any areas that cannot be resolved need to reserve space. Once the inline area is resolved then the complete line should be adjusted to accomodate any change in space used by the area.
 
-## Caching {#caching}
+## Caching { #caching}
 
 We may need to cache pages due to forward references or when keeping all pages.
 
@@ -101,13 +101,13 @@ This is done by serializing the Page. The PageViewport is retained to be used as
 
 The PageViewport retains information about id areas for easy access.
 
-## Extensions {#extensions}
+## Extensions { #extensions}
 
 The Area Tree holds the Output Document extensions. This is information such as pdf bookmarks or other output document specific information that is not handled by XSL:FO.
 
 It is also possible to create custom areas that extend a normal area. The actual data that is rendered could be set in a different way or depend on resolving a forward reference.
 
-## Area Tree Handlers {#handlers}
+## Area Tree Handlers { #handlers}
 
 To handle different situations the handler for the Area Tree handles each page as it is added.
 
@@ -115,13 +115,13 @@ The RenderPagesModel sends the page directly to the renderer if the page is read
 
 The Area Tree retains the concept of page sequences (this is not in the area tree in the spec) so that this information can be passed to the renderer. This is useful for setting the title and organising the groups of page sequences.
 
-## Status {#status}
+## Status { #status}
 
-### To Do {#status-todo}
+### To Do { #status-todo}
 
-### Work in Progress {#status-wip}
+### Work in Progress { #status-wip}
 
-### Completed {#status-complete}
+### Completed { #status-complete}
 
 
 - new area tree model

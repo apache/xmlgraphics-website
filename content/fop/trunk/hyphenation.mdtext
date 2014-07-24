@@ -3,9 +3,9 @@ Title: Apache(tm) FOP: Hyphenation
 #Apache&trade; FOP: Hyphenation
 
 
-## Hyphenation Support {#support}
+## Hyphenation Support { #support}
 
-### Introduction {#intro}
+### Introduction { #intro}
 
 Apache&trade; FOP uses Liang's hyphenation algorithm, well known from TeX. It needs language specific pattern and other data for operation.
 
@@ -13,7 +13,7 @@ Because of [licensing issues](#license-issues) (and for convenience), all hyphen
 
 <note>If you have made improvements to an existing Apache&trade; FOP hyphenation pattern, or if you have created one from scratch, please consider contributing these to OFFO so that they can benefit other FOP users as well. Please inquire on the [FOP User mailing list](../maillist.html#fop-user).</note>
 
-### License Issues {#license-issues}
+### License Issues { #license-issues}
 
 Many of the hyphenation files distributed with TeX and its offspring are licenced under the [LaTeX Project Public License (LPPL)](http://www.latex-project.org/lppl.html), which prevents them from being distributed with Apache software. The LPPL puts restrictions on file names in redistributed derived works which we feel can't guarantee. Some hyphenation pattern files have other or additional restrictions, for example against use for commercial purposes.
 
@@ -21,11 +21,11 @@ Although Apache FOP cannot redistribute hyphenation pattern files that do not co
 
 <warning>The user is responsible to settle license issues for hyphenation pattern files that are obtained from non-Apache sources.</warning>
 
-### Sources of Custom Hyphenation Pattern Files {#sources}
+### Sources of Custom Hyphenation Pattern Files { #sources}
 
 The most important source of hyphenation pattern files is the [CTAN TeX Archive](http://www.ctan.org/tex-archive/language/hyphenation/).
 
-### Installing Custom Hyphenation Patterns {#install}
+### Installing Custom Hyphenation Patterns { #install}
 
 To install a custom hyphenation pattern for use with FOP:
 
@@ -55,7 +55,7 @@ and run Ant with build target `jar-hyphenation`. This will create a JAR containi
 
 <warning>Either of these three options will ensure hyphenation is working when using FOP from the command-line. If FOP is being embedded, remember to add the location(s) of the hyphenation JAR(s) to the CLASSPATH (option 1 and 2) or to set the [<hyphenation-dir>](configuration.html#hyphenation-dir) configuration option programmatically (option 3).</warning>
 
-## Hyphenation Patterns {#patterns}
+## Hyphenation Patterns { #patterns}
 
 If you would like to build your own hyphenation pattern files, or modify existing ones, this section will help you understand how to do so. Even when creating a pattern file from scratch, it may be beneficial to start with an existing file and modify it. See [OFFO's Hyphenation page](http://offo.sourceforge.net/hyphenation/index.html) for examples. Here is a brief explanation of the contents of FOP's hyphenation patterns:
 <warning>The remaining content of this section should be considered "draft" quality. It was drafted from theoretical literature, and has not been tested against actual FOP behavior. It may contain errors or omissions. Do not rely on these instructions without testing everything stated here. If you use these instructions, please provide feedback on the [FOP User mailing list](../maillist.html#fop-user), either confirming their accuracy, or raising specific problems that we can address.</warning>

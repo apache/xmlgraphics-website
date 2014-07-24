@@ -5,13 +5,13 @@ Title: History of Changes 1.1
 
  [changes_1.1.rss](changes_1.1.rss)
 
-## Introduction and explanation of symbols {#introduction}
+## Introduction and explanation of symbols { #introduction}
 
 Changes are sorted by "type" and then chronologically with the most recent at the top. These symbols denote the various action types:![add](/images/add.jpg)=add,![fix](/images/fix.jpg)=fix,![remove](/images/remove.jpg)=remove,![update](/images/update.jpg)=update
 
-## Version 1.1 (20 October 2012) {#version_1.1}
+## Version 1.1 (20 October 2012) { #version_1.1}
 
-### Changes to the Code Base {#Code_1.1}
+### Changes to the Code Base { #Code_1.1}
 
 - ![add](/images/add.jpg) Added support for the role property on fo:page-sequence, fo:flow and fo:static-content. This allows to change the mapping of those FOs to PDF structure types when enabling accessibility. Committed by VH.
 
@@ -131,7 +131,7 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![update](/images/update.jpg) Add run target for embedded examples. Add increased JVM memory heap flag for example8 in case font cache is rebuilt. Committed by GA. See issue [FOP-1955](https://issues.apache.org/jira/browse/FOP-1955).
 
-### Changes to the User Configuration {#Config_1.1}
+### Changes to the User Configuration { #Config_1.1}
 
 
 - ![add](/images/add.jpg) Added configuration option to set the version of the output PDF document. Committed by VH. Thanks to Mehdi Houshmand. See issue [FOP-1945](https://issues.apache.org/jira/browse/FOP-1945).
@@ -142,14 +142,14 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![fix](/images/fix.jpg) Fix for relative URIs in the configuration file (base, font-base, hyphenation-base) are evaluated relative to the base URI of the configuration file. Committed by SP.
 
-### Changes to Documentation {#Docs_1.1}
+### Changes to Documentation { #Docs_1.1}
 
 
 - ![fix](/images/fix.jpg) Fix renderer mime type for PCL output; should be application/x-pcl. Committed by GA. See issue [FOP-2064](https://issues.apache.org/jira/browse/FOP-2064).
 
 - ![update](/images/update.jpg) Update FAQ and New Bug documentation. Committed by GA.
 
-### Changes to the Font Subsystem {#Fonts_1.1}
+### Changes to the Font Subsystem { #Fonts_1.1}
 
 
 - ![add](/images/add.jpg) Add support for OpenType advanced typographic tables (GDEF, GSUB, GPOS). Committed by GA.
@@ -182,7 +182,7 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![update](/images/update.jpg) Removing experimental feature that violates XSL-FO and Unicode semantics by misinterpreting Basic Latin code points. Users must use private use codepoints to access font specific character mappings that have no assigned Unicode code point. See bug 50492. Committed by GA.
 
-### Changes to the Image Support {#Images_1.1}
+### Changes to the Image Support { #Images_1.1}
 
 
 - ![fix](/images/fix.jpg) Fix incorrect SVG line dash pattern with PDF output format. Committed by GA. Thanks to Luis Bernardo. See issue [FOP-2079](https://issues.apache.org/jira/browse/FOP-2079).
@@ -195,7 +195,7 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![update](/images/update.jpg) Fix newly introduced findbugs warnings. Committed by GA. Thanks to Luis Bernardo. See issue [FOP-1256](https://issues.apache.org/jira/browse/FOP-1256).
 
-### Changes to the Layout Engine {#Layout_1.1}
+### Changes to the Layout Engine { #Layout_1.1}
 
 
 - ![add](/images/add.jpg) Add support for complex scripts, including: full bidi support, support for advanced typographic tables, advanced support for number conversion. Committed by GA. See issues [FOP-959](https://issues.apache.org/jira/browse/FOP-959), [FOP-1790](https://issues.apache.org/jira/browse/FOP-1790), [FOP-1827](https://issues.apache.org/jira/browse/FOP-1827).
@@ -236,7 +236,7 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![fix](/images/fix.jpg) Fixed retrieval of available BPD for cases spanning columns and multiple pages with differing page masters. Committed by JM. See issue [FOP-1853](https://issues.apache.org/jira/browse/FOP-1853).
 
-### Changes to Renderers (Output Formats) {#Renderers_1.1}
+### Changes to Renderers (Output Formats) { #Renderers_1.1}
 
 
 - ![add](/images/add.jpg) Added possibility to embed TrueType fonts in PostScript. Committed by VH. See issue [FOP-2004](https://issues.apache.org/jira/browse/FOP-2004).
@@ -325,14 +325,14 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![remove](/images/remove.jpg) Removed old Renderer implementations for those output formats that have a version based on the new DocumentHandler architecture available (AFP, PCL, PDF, PS). Committed by VH.
 
-### Changes to unit tests or other test code {#Test_1.1}
+### Changes to unit tests or other test code { #Test_1.1}
 
 
 - ![fix](/images/fix.jpg) Fix errors and warnings in example files. Add build.xml for documentation examples. Committed by GA.
 
 - ![update](/images/update.jpg) Add test for basic-link with padding. Committed by GA. Thanks to Matthias Reischenbacher. See issue [FOP-1864](https://issues.apache.org/jira/browse/FOP-1864).
 
-### Contributors to this release {#contributors_1.1}
+### Contributors to this release { #contributors_1.1}
 
 We thank the following people for their contributions to this release.
 

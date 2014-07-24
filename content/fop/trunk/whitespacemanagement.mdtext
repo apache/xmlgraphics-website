@@ -18,11 +18,11 @@ Notice:    Licensed to the Apache Software Foundation (ASF) under one
 
 #Apache&trade; FOP: Whitespace Management
 
-## Overview {#overview}
+## Overview { #overview}
 
 This page describes an extension for FOP’s page breaking algorithm that enables the handling of dynamic content. Dynamic content has multiple variants, only one of which will be inserted in the document. Variant selection is done in a First Come First Served manner and the first variant that fits within the remaining space in the current page is chosen. If no appropriate variant is found, the dynamic content will be skipped without affecting the rest of the document layout.
 
-## Example {#example}
+## Example { #example}
 
 Here is an example of dynamic content with two variants:
 
@@ -36,7 +36,7 @@ Here is an example of dynamic content with two variants:
 		</fo:multi-case>
 	</fo:multi-switch>
 
-## Limitations {#limitations}
+## Limitations { #limitations}
 
 * Space attributes (space-before, space-after) are not currently supported. This is primarily due to how space resolution is done in FOP, which requires the whole FO content to be known before doing page breaking.
 

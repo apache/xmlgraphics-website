@@ -3,13 +3,13 @@ Title: Apache(tm) FOP: PDF/A (ISO 19005)
 #Apache&trade; FOP: PDF/A (ISO 19005)
 <authors><person email="jeremias@apache.org" name="Jeremias Märki"></person></authors>
 
-## Overview {#overview}
+## Overview { #overview}
 
 PDF/A is a standard which turns PDF into an "electronic document file format for long-term preservation". PDF/A-1 is the first part of the standard and is documented in [ISO 19005-1:2005(E)](http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=38920&ICS1=37&ICS2=100&ICS3=99). Work on PDF/A-2 is in progress at [AIIM](http://www.aiim.org/standards.asp?ID=25013).
 
 Design documentation on PDF/A can be found on FOP's Wiki on the [PDFAConformanceNotes](http://wiki.apache.org/xmlgraphics-fop/PDFAConformanceNotes) page.
 
-## Implementation Status {#status}
+## Implementation Status { #status}
 
  **PDF/A-1b** is implemented to the degree that FOP supports the creation of the elements described in ISO 19005-1.
 
@@ -17,11 +17,11 @@ Tests have been performed against jHove and Adobe Acrobat 7.0.7 (Preflight funct
 
  **PDF/A-1a** is not implemented, yet. This is mostly because of the requirement for tagged PDF which is not available in FOP, yet.
 
-## Usage (command line) {#command-line}
+## Usage (command line) { #command-line}
 
 To activate PDF/A-1b from the command-line, specify "-pdfprofile PDF/A-1b" as a parameter. If there is a violation of one of the validation rules for PDF/A, an error message is presented and the processing stops.
 
-## Usage (embedded) {#embedded}
+## Usage (embedded) { #embedded}
 
 When FOP is embedded in another Java application you can set a special option on the renderer options in the user agent to activate the PDF/A-1b profile. Here's an example:
 
@@ -30,7 +30,7 @@ Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent);
 [..]
 If one of the validation rules of PDF/A is violated, an PDFConformanceException (descendant of RuntimeException) is thrown.
 
-## PDF/A in Action {#rules}
+## PDF/A in Action { #rules}
 
 There are a number of things that must be looked after if you activate a PDF/A profile. If you receive a PDFConformanceException, have a look at the following list (not necessarily comprehensive):
 
@@ -49,11 +49,11 @@ There are a number of things that must be looked after if you activate a PDF/A p
 
 - No filter must be specified explicitely for metadata objects. Metadata must be embedded in clear text so non-PDF-aware applications can extract the XMP metadata.
 
-## PDF profile compatibility {#profile-compatibility}
+## PDF profile compatibility { #profile-compatibility}
 
 The PDF profiles "PDF/X-3:2003" and "PDF/A-1b" are compatible and can both be activated at the same time.
 
-## Interoperability {#interoperability}
+## Interoperability { #interoperability}
 
 There has been some confusion about the namespace for the PDF/A indicator in the XMP metadata. At least three variants have been seen in the wild:
 

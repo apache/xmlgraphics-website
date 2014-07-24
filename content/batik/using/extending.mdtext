@@ -7,7 +7,7 @@ This page provides an overview of the built in extension mechanisms of Batik. As
 
 In general, extensions are added through the Service Provider Interface mechanism as described in the [jar file documentation](http://java.sun.com/j2se/1.4/docs/guide/jar/jar.html#Service Provider). This allows for the extension of Batik simply by adding a new jar file(s) to the class path, and thus no modification of the Batik source is required!
 If you feel that the Batik team has overlooked an important area for extension please let your feelings be known on the mailing lists.
-# Custom XML elements {#customXMLTags}
+# Custom XML elements { #customXMLTags}
 
 First one must ask what it means to support custom XML elements? There are three basic options Batik considers:
 
@@ -33,7 +33,7 @@ Probably the most common reason to develop custom elements is to add new renderi
 
 In most cases it will also be necessary to write a DOM extension to make the element behave like other SVG elements (most notably for support of styling).
 
-### Writing a Batik DOM extension {#domExtension}
+### Writing a Batik DOM extension { #domExtension}
 
 The ability to extend the elements used in the SVG DOM tree allows users to provide implementations for nodes that can be used in place of Batik’s default implementation of a node. This may be done for a variety of reasons, but is most commonly done to extend the behavior of standard node calls (such as to include styling in attribute lookup), or to implement the DOM interface for an element.
 
@@ -58,7 +58,7 @@ Included with these examples is `org.apache.batik.extension.svg.BatikDomExtensio
 
 If your new element requires new “presentation attributes” (XML attributes that can be modified through CSS, or, depending on your viewpoint, the other way around—CSS properties that can be specified using XML attributes), you will also need to extend the CSS engine. This can be done by registering a custom CSS value factory. Both of the color examples do this (see `BatikDomExtension`).
 
-### Writing a Batik bridge extension {#bridgeExtension}
+### Writing a Batik bridge extension { #bridgeExtension}
 
 Before you write a bridge extension it may be useful to understand what role the bridge package plays in Batik. The bridge package is responsible for creating and maintaining elements in the Graphics Vector Toolkit (GVT) tree based on the corresponding element in the SVG DOM. This is done because, for a variety of reasons, the SVG DOM is not well suited for rendering, thus the GVT tree is used for all rendering and transcoding operations.
 
@@ -128,7 +128,7 @@ Extension writers are free to work with any of the above bridges, however the th
 
 In some simple cases it is possible to provide only an extension to the bridge and achieve your desired effect, however in most cases you will find that for your element to behave like a normal SVG element (for example, to support styling) you will need to provide a DOM extension as well.
 
-#### GraphicsNodeBridge ## {#graphicsNodeBridge}
+#### GraphicsNodeBridge ## { #graphicsNodeBridge}
 
 The graphics node bridge is oriented around constructing a new [GraphicsNode](../javadoc/org/apache/batik/gvt/GraphicsNode.html) in the GVT tree. The `GraphicsNode` is the basic object that makes up the GVT tree. Each `GraphicsNode` has a `paint` method that is responsible for painting the object (including considering clipping, masking, filtering, and opacity for the node).
 
@@ -149,7 +149,7 @@ This is very similar to `SVGShapeElementBridge`, except that it also handles the
 
 If you decide that you need to implement a new subclass of `GraphicsNode` it is strongly suggested that you extend [AbstractGraphicsNode](../javadoc/org/apache/batik/gvt/AbstractGraphicsNode.html), as this class does much of the work to behave like other rendered elements in SVG (like clipping, filtering and masking). In this case you implement the `primitivePaint` method instead of the `paint` method.
 
-#### FilterPrimitiveBridge ## {#filterPrimitiveBridge}
+#### FilterPrimitiveBridge ## { #filterPrimitiveBridge}
 
 The [FilterPrimitiveBridge](../javadoc/org/apache/batik/bridge/FilterPrimitiveBridge.html) is concerned with the construction of individual elements of the filter chain. Unlike graphics nodes, which generally just draw new objects on top of the destination, filters take existing image data and modify it to apply effects.
 
@@ -167,7 +167,7 @@ Generally the bulk of the work in writing a filter extension is the writing of t
 
 The `org.apache.batik.ext.awt.image.rendered` and `org.apache.batik.ext.awt.image.renderable` packages contain quite a number of fairly general examples covering most common cases, please refer to them for more detail.
 
-#### PaintBridge ## {#paintBridge}
+#### PaintBridge ## { #paintBridge}
 
 The [PaintBridge](../javadoc/org/apache/batik/bridge/PaintBridge.html) constructs an instance of `java.awt.Paint` to be used to fill or stroke shapes/text (part of the paint server architecture of SVG).
 
@@ -179,13 +179,13 @@ For paints you are mostly on your own, because unlike the other cases there aren
 
 The existing gradient paint implementations are in the `org.apache.batik.ext.awt`, and the pattern implementation is in `org.apache.batik.gvt` since it requires access to GVT internals.
 
-## New image file formats {#imageTagFormats}
+## New image file formats { #imageTagFormats}
 
 When Batik encounters an `image` element and it determines the element does not reference an SVG file, it defers the loading of the referenced image to [org.apache.batik.ext.awt.image.spi.ImageTagRegistry](../javadoc/org/apache/batik/ext/awt/image/spi/ImageTagRegistry.html). This class maintains a list of [RegistryEntry](../javadoc/org/apache/batik/ext/awt/image/spi/RegistryEntry.html) s, generally one for each format.
 
 Since the formats supported natively by Batik are also implemented through this mechanism. The [JPEGRegistryEntry](../javadoc/org/apache/batik/ext/awt/image/codec/jpeg/JPEGRegistryEntry.html) and [PNGRegistryEntry](../javadoc/org/apache/batik/ext/awt/image/codec/png/PNGRegistryEntry.html) classes should be used as good references for extensions.
 
-### RegistryEntry {#RegistryEntry}
+### RegistryEntry { #RegistryEntry}
 
 There are currently two flavors of `RegistryEntry`:
 
@@ -200,7 +200,7 @@ StreamRegistryEntry
 :
 A [StreamRegistryEntry](../javadoc/org/apache/batik/ext/awt/image/spi/StreamRegistryEntry.html) works with a markable [InputStream](http://java.sun.com/j2se/1.5.0/docs/api/java/io/InputStream.html). This is the preferred form of registry entry as it generally avoids opening a potentially expensive connection multiple times, instead it opens the stream once and relies on mark and reset to allow entries to check the stream.
 
-### Helper classes {#Helper-classes}
+### Helper classes { #Helper-classes}
 
 There exists quite a number of classes to assist in implementing a `RegistryEntry`. It is strongly recommended that you review these classes and make use of them where appropriate. They will likely save you time and improve the integration with Batik.
 
@@ -230,7 +230,7 @@ AbstractRed
 :
  [AbstractRed](../javadoc/org/apache/batik/ext/awt/image/rendered/AbstractRed.html) is an abstract base class that makes it relatively easy to implement the [CacheableRed](../javadoc/org/apache/batik/ext/awt/image/rendered/CacheableRed.html) interface (Batik's subclass of `RenderedImage`).
 
-## New URL protocols {#urlProtocols}
+## New URL protocols { #urlProtocols}
 
 For a variety of reasons (not the least of which is the heavy use of the `data:` URL protocol in SVG), several parts of Batik use a [ParsedURL](../javadoc/org/apache/batik/util/ParsedURL.html) instead of the JDK’s [java.net.URL](http://java.sun.com/j2se/1.5.0/docs/api/java/net/URL.html) class.
 
@@ -240,7 +240,7 @@ The service class is [org.apache.batik.util.ParsedURLProtocolHandler](../javadoc
 
 The `ParsedURLData` class holds all the data and implements all the stream handling commands for the `ParsedURL` class. This allows `ParsedURLProtocolHandler` s to return custom subclasses for particular protocols.
 
-## Additional script interpreters {#interpreters}
+## Additional script interpreters { #interpreters}
 
 While conforming SVG browsers need support only ECMAScript as a scripting language, Batik can support any scripting language given the right glue to connect it to the rest of the system.
 
