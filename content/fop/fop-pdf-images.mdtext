@@ -31,6 +31,15 @@ and
     :::xml
     <fox:external-document src="my-doc.pdf"/>
 
+## Reduce file size
+
+If you input many pdfs together the output pdf has duplicate fonts. Set this flag to merge fonts.
+
+    :::xml
+    <renderer mime="application/pdf">      
+      <merge-fonts>true</merge-fonts>
+    </renderer>
+
 ## Download { #download}
 
 Snapshot development source and binary packages are available [here](https://dist.apache.org/repos/dist/dev/xmlgraphics/). If using
