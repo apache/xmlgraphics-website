@@ -3,6 +3,7 @@ package path;
 my %variables = (
     fop_current_version => "1.1",
     fop_current_version_release_date => "20 October 2012",
+    fop_minimal_java_requirement => "1.6",
 );
 
 
@@ -13,23 +14,27 @@ our @patterns = (
          header => "batik-top.html",
          sidenav => "batik-sidenav.mdtext",
          footer => "bottom.html",
-       template => "single_narrative.html",
+         template => "single_narrative.html",
+         preprocess => 1,
+         %variables,
     } ],
 
 	[ qr!^/fop/.*\.mdtext$!, single_narrative => {
          header => "fop-top.html",
          sidenav => "fop-sidenav.mdtext",
          footer => "bottom.html",
-       template => "single_narrative.html",
-       preprocess => 1,
-       %variables,
+         template => "single_narrative.html",
+         preprocess => 1,
+         %variables,
     } ],
 
 	[qr!\.mdtext$!, single_narrative => {
         header => "xgc-top.html",
         sidenav => "xgc-sidenav.mdtext",
         footer => "bottom.html",
-		template => "single_narrative.html"
+        template => "single_narrative.html",
+        preprocess => 1,
+        %variables,
 	} ],
 
 	[qr!/sitemap\.html$!, sitemap => {
