@@ -51,7 +51,7 @@ FOP is distributed with [Cocoon](http://cocoon.apache.org/) as a PDF serializer 
 
 [XML Graphics Commons](http://xmlgraphics.apache.org/commons) is used with FOP to provide graphics functions that are common to a number of Apache projects.
 
- [Batik](http://xmlgraphics.apache.org/batik) is used with FOP to [transcode an SVG image](http://xmlgraphics.apache.org/batik/svgrasterizer.html) into a PDF document.
+ [Batik](http://xmlgraphics.apache.org/batik) is used with FOP to [transcode an SVG image](http://xmlgraphics.apache.org/batik/tools/svgrasterizer.html) into a PDF document.
 
 FOP also makes use of the following Apache projects:
 
@@ -86,22 +86,7 @@ The short answer is "Don't ask." For more details, see [Understand FOP's Limitat
 
 Version 1.1 of FOP was released on 20 October 2012. Work on a new Version 1.2 of Apache FOP is underway at this time, with no fixed date set for its release. If you want to speed up the process, consider [contributing](dev/index.html#involved) to FOP.
 
-### 1.10. Why did you redesign FOP? { #redesign}
-
-The code redesign of FOP was necessary in order to be able to adress following issues:
-
-
-- Keeps and Breaks
-
-- XSL-FO Compliance in general
-
-- Process Files of Arbitrary Size
-
-- Minimize Memory Use
-
-- Table Layout
-
-### 1.11. How can I contribute? { #contribute}
+### 1.10. How can I contribute? { #contribute}
 
 There are numerous ways that you can help. They are outlined in the [Developer's Introduction](dev/index.html) page.
 
