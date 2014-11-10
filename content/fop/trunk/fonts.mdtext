@@ -19,6 +19,8 @@ The following table summarizes the font capabilities of the various Apache&trade
 | TXT | yes (used for layout but not for output) | no | yes (used for layout but not for output) | no |
 | XML | yes | no | yes | n/a |
 
+Note that Java2D based renderers (Java2D, AWT, Print, TIFF, PNG) support both system (AWT/OS) and custom fonts.
+
 ## Base-14 Fonts { #Base-14-Fonts}
 
 The Adobe PostScript and PDF Specification specify a set of 14 fonts that must be available to every PostScript interpreter and PDF reader: Helvetica (normal, bold, italic, bold italic), Times (normal, bold, italic, bold italic), Courier (normal, bold, italic, bold italic), Symbol and ZapfDingbats.
@@ -43,11 +45,11 @@ When FOP does not have a specific font at its disposal (because it's not install
 
 Every font contains a particular set of [glyphs](http://en.wikipedia.org/wiki/Glyph). If no glyph can be found for a given character, FOP will issue a warning and use the glpyh for "#" (if available) instead. Before it does that, it consults a (currently hard-coded) registry of glyph substitution groups (see Glyphs.java in Apache XML Graphics Commons). This registry can supply alternative glyphs in some cases (like using space when a no-break space is requested). But there's no guarantee that the result will be as expected (for example, in the case of hyphens and similar glyphs). A better way is to use a font that has all the necessary glyphs. This glyph substitution is only a last resort.
 
-## Java2D/AWT/Operating System Fonts { #awt}
+## System Fonts { #awt}
 
-The Java2D family of renderers (Java2D, AWT, Print, TIFF, PNG), use the Java AWT subsystem for font metric information. Through operating system registration, the AWT subsystem knows what fonts are available on the system, and the font metrics for each one.
+Support for system fonts relies on the Java AWT subsystem for font metric information. Through operating system registration, the AWT subsystem knows what fonts are available on the system, and the font metrics for each one.
 
-When working with one of these output formats and you're missing a font, just install it in your operating system and they should be available for these renderers. Please note that this is not true for other output formats such as PDF or PostScript.
+When working with renderers that supports system fonts (see above table) and you're missing a font, you can just install it in your operating system and it should be available for these renderers. Please note that this is not true for output formats, such as PDF or PostScript, that only support custom fonts.
 
 ## Custom Fonts { #custom}
 
