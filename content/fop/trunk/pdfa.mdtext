@@ -17,6 +17,30 @@ Tests have been performed against jHove and Adobe Acrobat 7.0.7 (Preflight funct
 
  **PDF/A-1a** is based on PDF-A-1b and adds accessibility features (such as Tagged PDF). This format is available within the limitation described on the [Accessibility page](accessibility.html).
 
+
+## Modes { #modes}
+
+- PDF/A-1a
+- PDF/A-1b
+- PDF/A-2a
+- PDF/A-2b
+- PDF/A-2u
+
+## Usage (fop.xconf) { #fop-xconf}
+
+Add section to pdf renderer with pdfa mode and pdf version.
+
+    :::xml
+    <fop version="1.0">
+      <accessibility>true</accessibility>
+      <renderers>
+        <renderer mime="application/pdf">
+          <pdf-a-mode>PDF/A-1a</pdf-a-mode>
+          <version>1.4</version>
+        </renderer>
+      </renderers>
+    </fop>
+
 ## Usage (command line) { #command-line}
 
 To activate PDF/A-1b from the command-line, specify "-pdfprofile PDF/A-1b" as a parameter. If there is a violation of one of the validation rules for PDF/A, an error message is presented and the processing stops.
