@@ -276,6 +276,16 @@ To write "This page is intentionally left blank" (or something similar) on an in
       </fo:page-sequence>
     </fo:root>
 
+### Floats {#floats}
+
+Floats (fo:float) are supported with some limitations:
+
+- the "clear" fo:float attribute is ignored; only the float attribute (left or right) is used
+- overlapping of floats in the Y is not handled (even in the case there would not be overlap in the X direction)
+- floats that extend beyond the body region are not properly handled and will overflow past the edge of the region
+- if a float extends to bottom of the body region and there are footnotes in the page the float may overlap with the footnote region
+- floats next to a table are not supported unless the start and end of the table happens in between the start and end of the float
+
 ### Preformatting Content { #fo-preformat}
 
 Sometimes it is desirable to retain linebreaks and hard spaces, and to get preformatted text to pass through without being changed. The XSL-FO specification provides some properties for this: [white-space-collapse](http://www.w3.org/TR/xsl11/#white-space-collapse) and [linefeed-treatment](http://www.w3.org/TR/2001/REC-xsl-20011015/slice7.html#white-space-collapse). In FOP, use white-space-collapse="false" on an enclosing block.
