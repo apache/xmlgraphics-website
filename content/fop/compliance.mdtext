@@ -102,7 +102,7 @@ The following is a summary of FOP's current support for the standard XSL-FO obje
 | [§6.11.2](http://www.w3.org/TR/xsl11/#fo_bookmark) | bookmark { #fo-object-bookmark} | Extended{.extended} | partial{.partial} | partial{.partial} | partial{.partial} | external-destination is not yet supported. |
 | [§6.11.3](http://www.w3.org/TR/xsl11/#fo_bookmark-title) | bookmark-title { #fo-object-bookmark-title} | Extended{.extended} | partial{.partial} | partial{.partial} | partial{.partial} | color, font-style and font-weight are not supported, yet. |
 | [§6.12](http://www.w3.org/TR/xsl/#d0e14340) {.category} | Out-of-line Formatting Objects {.category} | { #fo-object-outofline-section} |
-| [§6.12.2](http://www.w3.org/TR/xsl/#fo_float) | float { #fo-object-float} | Extended{.extended} | no{.no} | no{.no} | no{.no} |   |
+| [§6.12.2](http://www.w3.org/TR/xsl/#fo_float) | float { #fo-object-float} | Extended{.extended} | no{.no} | no{.no} | partial{.partial} | [See restrictions](http://xmlgraphics.apache.org/fop/fo.html#floats) |
 | [§6.12.3](http://www.w3.org/TR/xsl/#fo_footnote) | footnote { #fo-object-footnote} | Extended{.extended} | partial{.partial} | partial{.partial} | partial{.partial} | Restrictions with multi-column documents. |
 | [§6.12.4](http://www.w3.org/TR/xsl/#fo_footnote-body) | footnote-body { #fo-object-footnote-body} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§6.13](http://www.w3.org/TR/xsl/#d0e14653) {.category} | Other Formatting Objects {.category} | { #fo-object-other-section} |
