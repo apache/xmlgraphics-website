@@ -40,6 +40,14 @@ If you input many pdfs together the output pdf has duplicate fonts. Set this fla
       <merge-fonts>true</merge-fonts>
     </renderer>
 
+## Known Issues with postscript output
+
+ - If fonts are not embedded in source PDF:
+   - If OTF font type is needed text may be missing if Adobe Reader fonts are not found
+   - Text may be rendered wrong or poorly if wrong font is selected as replacement   
+ - Transparency, layers and opacity may not render correctly
+ - Gradients in text may be different from the source PDF
+
 ## Download { #download}
 
 Snapshot development source and binary packages are available [here](https://dist.apache.org/repos/dist/dev/xmlgraphics/). If using
