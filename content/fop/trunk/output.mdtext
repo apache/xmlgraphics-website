@@ -743,7 +743,12 @@ The resource foreign attributes provides the ability to name and control where d
 
 The resource-level attribute where the resource object will reside in the AFP output datastream. The possible values for this are "inline", "print-file" and "external". When "external" is used a resource-group-file attribute must also be specified. Please refer to the [Resource Level Defaults](#afp-resource-level-defaults) above to see what is used if the resource-level attribute is not specified.
 
+#### OCA Color { #afp-oca-color}
 
+OCA is used in AFP to set text foreground color and it is still useful in old AFP printers that have a limited support for color or don't support other color spaces (RGB, CMYK, etc...).
+
+    :::xml
+    <fo:block color="oca(red)">Red</fo:block>
 
 ## RTF { #rtf}
 
