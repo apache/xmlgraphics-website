@@ -21,6 +21,36 @@ Tests have been performed against Adobe Acrobat 7.0.7 (Preflight function). Note
 
 To activate PDF/X-3:2003 from the command-line, specify "-pdfprofile PDF/X-3:2003" as a parameter. If there is a violation of one of the validation rules for PDF/X, an error message is presented and the processing stops.
 
+## Usage (fop.xconf) { #fop-xconf}
+
+    :::xml
+    <renderers>
+     <renderer mime="application/pdf">
+      <pdf-x-mode>PDF/X-3:2003</pdf-x-mode>
+      <output-profile>USSheetfedCoated.icc</output-profile>
+      <fonts>
+        <font kerning="yes" embed-url="Arial.ttf">
+          <font-triplet name="Arial" style="normal" weight="normal"/>
+        </font>
+      </fonts>
+     </renderer>
+    </renderers>
+
+Add document title to fo:
+
+    :::xml
+    <fo:declarations>
+     <x:xmpmeta xmlns:x="adobe:ns:meta/">
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+        <rdf:Description rdf:about="" xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <dc:title>Document title</dc:title>
+          <dc:creator>Document author</dc:creator>
+          <dc:description>Document subject</dc:description>
+        </rdf:Description>
+      </rdf:RDF>
+     </x:xmpmeta>
+    </fo:declarations>
+
 ## Usage (embedded) { #embedded}
 
 When FOP is embedded in another Java application you can set a special option on the renderer options in the user agent to activate the PDF/A-1b profile. Here's an example:
