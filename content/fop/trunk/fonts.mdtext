@@ -61,9 +61,9 @@ More information about fonts can be found at [Adobe Font Technical Notes](http:/
 
 ### OpenType Advanced Font Features
 
-OpenType fonts support advanced layout features such as ligatures, small caps, swashes, alternates, old style figures and more. Please see [Advanced Typographic Extensions - OpenType Layout](http://www.microsoft.com/typography/otspec/TTOCHAP1.htm). These features are currently missing within FOP due to the implementation opting to favor for a greater number of formats. 
+OpenType fonts support advanced layout features such as ligatures, small caps, swashes, alternates, old style figures and more. Please see [Advanced Typographic Extensions - OpenType Layout](http://www.microsoft.com/typography/otspec/TTOCHAP1.htm). These features are currently missing within FOP due to the implementation opting to favor a greater number of formats. 
 
-OpenType as a font format is only supported with PDF 1.6 onwards and is not supported in Postscript at all. While FOP may support embedding OpenType in the future, the current method extracts the Compact Font Format (CFF) data, optionally subsets and embeds the result as a Type1C font allowing it to be used by both Postscript and older PDF versions.
+While FOP may support embedding OpenType with advanced features in the future, the current method extracts the Compact Font Format (CFF) data containing among other things the character definitions, optionally subsets and embeds the result as a Type1C font. This allows the font to be used by both Postscript and older PDF versions while losing the features mentioned above. This is because embedding Open-Type in it's original state is only supported by PDF 1.6 and above.
 
 ## Bulk Font Configuration { #bulk}
 
