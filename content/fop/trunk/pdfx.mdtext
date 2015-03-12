@@ -7,11 +7,11 @@ Title: Apache(tm) FOP: PDF/X (ISO 15930)
 
 <warning>Support for PDF/X is available beginning with version 0.93. This feature is new and may not be 100% complete, yet. Feedback is welcome.</warning>
 
-PDF/X is a standard which faciliates prepress digital data exchange using PDF. Currently, only PDF/X-3:2003 is implemented out of the many different flavours of PDF/X profiles. PDF/X-3:2003 is documented in [ISO 15930-6:2003(E)](http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=39940&ICS1=37&ICS2=100&ICS3=99). More info on PDF/X can be found on the [PDF/X info site](http://www.pdfx.info/).
+PDF/X is a standard which faciliates prepress digital data exchange using PDF. Currently, PDF/X-3:2003 and PDF/X-4 are implemented out of the many different flavours of PDF/X profiles. PDF/X-3:2003 is documented in [ISO 15930-6:2003(E)](http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=39940&ICS1=37&ICS2=100&ICS3=99). More info on PDF/X can be found on the [PDF/X info site](http://www.pdfx.info/).
 
 ## Implementation Status { #status}
 
- **PDF/X-3:2003** is implemented to the degree that FOP supports the creation of the elements described in ISO 15930-6.
+ **PDF/X-3:2003** and **PDF/X-4** are implemented to the degree that FOP supports the creation of the elements described in ISO 15930-6.
 
 An important restriction of the current implementation is that all normal RGB colors specified in XSL-FO and SVG are left unchanged in the sRGB color space (XSL-FO and SVG both use sRGB as their default color space). There's no conversion to a CMYK color space. Although sRGB is a calibrated color space, its color space has a different size than a CMYK color space which makes the conversion a lossy conversion and can lead to unwanted results. Although the use of the calibrated sRGB has been promoted for years, print shops usually prefer to convert an sRGB PDF to CMYK prior to production. Until there's full CMYK support in FOP you will have to work closely with your print service provider to make sure you get the intended result.
 
