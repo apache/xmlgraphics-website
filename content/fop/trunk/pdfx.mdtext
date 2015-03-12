@@ -90,9 +90,9 @@ The PDF profiles "PDF/X-3:2003" and "PDF/A-1b" are compatible and can both be ac
 Professional printers can use PDFVT to control things like what printer tray is used.
 Image XObjects have UUID added to enable caching in printer.
 
-Add metadata for each page master based on how the printer has been configured.
-
 ## Usage (fo) { #fo}
+
+Add metadata for each page master based on how the printer has been configured.
 
     :::xml
     <fo:simple-page-master master-name="simple" page-height="27.9cm" page-width="21.6cm">
@@ -104,9 +104,9 @@ Add metadata for each page master based on how the printer has been configured.
       </pdf:vt>          
     </fo:simple-page-master>
 
-Enable PDF/VT-1 and PDF/X-4 in fop.xconf:
-
 ## Usage (fop.xconf) { #fop-xconf}
+
+Enable PDF/VT-1 and PDF/X-4 in fop.xconf:
 
     :::xml
     <renderer mime="application/pdf">
