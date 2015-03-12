@@ -92,3 +92,21 @@ Property sets (Namespaces) not listed here are simply passed through to the fina
 -  [Adobe XMP Specification](http://partners.adobe.com/public/developer/en/xmp/sdk/XMPspecification.pdf)
 
 -  [http://dublincore.org/](http://dublincore.org/)
+
+#PDF Page Piece
+
+Allows indexing of PDF files for tools such as IBM Content Manager OnDemand
+
+## Usage (fo) { #fo}
+
+Add metadata for each page master based on how the software has been configured.
+
+    :::xml
+    <fo:simple-page-master master-name="simple" page-height="27.9cm" page-width="21.6cm">
+      <fo:region-body />
+       <pdf:pagepiece>
+        <pdf:dictionary key="IBM-ODIndexes/Private">
+            <pdf:string key="Cname">BUD</pdf:string>        
+        </pdf:dictionary> 
+      </pdf:pagepiece>        
+    </fo:simple-page-master>
