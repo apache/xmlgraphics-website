@@ -1,49 +1,30 @@
-Title: Apache(tm) Batik: Downloading A Distribution
+Title: Download Apache&trade; Batik
 
-#Apache&trade; Batik: Downloading A Distribution
-
-## Apache&trade; Batik: Downloading A Distribution
-### Binary or Source? { #dist-type}
-
-Most Apache&trade; Batik users will want to download the latest binary distribution, which is ready to run "out of the box." However, a source distribution will be preferable if you fall into one of the following categories:
+#Download Apache&trade; Batik
 
 
-- You wish to modify Batik.
+## Download a Release { #release}
 
-- You wish to use a version more recent than the latest release. For example, if you have read on the user mailing list that a bug has been fixed or a feature added that you are eager to try, you might download a source distribution from the SVN repository so that you don't have to wait for the next release.
+Source ("-src") and binary ("-bin") distributions can be downloaded from a [Apache&trade; Batik Distribution Mirror](http://www.apache.org/dyn/closer.cgi/xmlgraphics/batik).
 
-- You wish to build a local copy of the API documentation (javadocs).
+It is essential to verify the integrity of the downloaded files. See [Verifying ASF Releases](http://www.apache.org/info/verification.html) for more information on why and how.
 
-### Binary Download { #binary}
+Here are the links to each package’s signature and checksum files. Signatures can be verified by using our [KEYS](http://www.apache.org/dist/xmlgraphics/batik/KEYS) file.
 
-Binary distributions include "-bin" in their names, and can be downloaded from a [Batik Distribution mirror](http://www.apache.org/dyn/closer.cgi/xmlgraphics/batik).
+|     |     |     |     |
+|-----|-----|-----|-----|
+| batik-1.8-bin.tar.gz | [PGP](http://www.apache.org/dist/xmlgraphics/batik/binaries/batik-1.8-bin.tar.gz.asc) | [MD5](http://www.apache.org/dist/xmlgraphics/batik/binaries/batik-1.8-bin.tar.gz.md5) | [SHA1](http://www.apache.org/dist/xmlgraphics/batik/binaries/batik-1.8-bin.tar.gz.sha1) |
+| batik-1.8-bin.zip | [PGP](http://www.apache.org/dist/xmlgraphics/batik/binaries/batik-1.8-bin.zip.asc) | [MD5](http://www.apache.org/dist/xmlgraphics/batik/binaries/batik-1.8-bin.zip.md5) | [SHA1](http://www.apache.org/dist/xmlgraphics/batik/binaries/batik-1.8-bin.zip.sha1) |
+| batik-1.8-src.tar.gz | [PGP](http://www.apache.org/dist/xmlgraphics/batik/source/batik-1.8-src.tar.gz.asc) | [MD5](http://www.apache.org/dist/xmlgraphics/batik/source/batik-1.8-src.tar.gz.md5) | [SHA1](http://www.apache.org/dist/xmlgraphics/batik/source/batik-1.8-src.tar.gz.sha1) |
+| batik-1.8-src.zip | [PGP](http://www.apache.org/dist/xmlgraphics/batik/source/batik-1.8-src.zip.asc) | [MD5](http://www.apache.org/dist/xmlgraphics/batik/source/batik-1.8-src.zip.md5) | [SHA1](http://www.apache.org/dist/xmlgraphics/batik/source/batik-1.8-src.zip.sha1) |
 
-### Source Download { #source}
+## Download from Subversion { #svn}
 
-There are several ways to obtain a source distribution. Please note that they are listed from least current to most current:
+The latest source code is available directly from the Subversion repository:
 
+|Trunk||
+|---|---|
+|**Repository URL**|[http://svn.apache.org/repos/asf/xmlgraphics/batik/trunk/](http://svn.apache.org/repos/asf/xmlgraphics/batik/trunk/)|
+|**Web view**|[http://svn.apache.org/viewvc/xmlgraphics/batik/trunk/](http://svn.apache.org/viewvc/xmlgraphics/batik/trunk/)|
 
-- Download a released version from a [Batik Distribution mirror](http://www.apache.org/dyn/closer.cgi/xmlgraphics/batik). Source distributions include "-src" in their names.
-
-- Download directly from the SVN repository. Anyone can do this using the [Anonymous SVN Server](http://xmlgraphics.apache.org/repo.html). By default, the code in SVN is up-to-the-minute, the same code that the developers are modifying.
-
-
-
-#### Latest Stable Release ###
-*Repository URL* ~ [http://svn.apache.org/repos/asf/xmlgraphics/batik/](http://svn.apache.org/repos/asf/xmlgraphics/batik/)
-
-*Web View* ~ [http://svn.apache.org/viewvc/xmlgraphics/batik/](http://svn.apache.org/viewvc/xmlgraphics/batik/)
-
-*Repository URL* ~ TRUNK: [http://svn.apache.org/repos/asf/xmlgraphics/batik/trunk/](http://svn.apache.org/repos/asf/xmlgraphics/batik/trunk/)
-
-*European Mirror* [http://svn.eu.apache.org/repos/asf/xmlgraphics/batik/trunk/](http://svn.eu.apache.org/repos/asf/xmlgraphics/batik/trunk/)
-
-*Web View* ~ TRUNK: [http://svn.apache.org/viewvc/xmlgraphics/batik/trunk/](http://svn.apache.org/viewvc/xmlgraphics/batik/trunk/)
-
-*European Mirror* [http://svn.eu.apache.org/viewvc/xmlgraphics/batik/trunk/](http://svn.eu.apache.org/viewvc/xmlgraphics/batik/trunk/)
-
-With any source distribution, you will need to build FOP from the source files. For details please see the "Build" page on the documentation tab for the version you've downloaded.
-
-### Archive Download { #archives}
-
-Batik Archive distributions are linked from the upper portion of the Apache Batik Download Mirror Page and can be downloaded from the Batik Archives [binaries](http://archive.apache.org/dist/xmlgraphics/batik/) links.
+<note>Committers need to replace " `http` " with " `https` " and then log in so they can gain write access!</note>
