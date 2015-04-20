@@ -93,6 +93,21 @@ Property sets (Namespaces) not listed here are simply passed through to the fina
 
 -  [http://dublincore.org/](http://dublincore.org/)
 
+#PDF custom properties
+
+It is possible to add custom key/value pairs in the Info dictionary of a PDF document. Those custom properties will appear in the ‘Custom’ tab of Adobe Reader’s ‘Document Properties’ window.
+
+A pdf:info element can be added as a child of fo:declarations and contain the custom properties. For example:
+
+    :::xml
+    <fo:declarations>
+      <pdf:info xmlns:pdf="http://xmlgraphics.apache.org/fop/extensions/pdf">
+        <pdf:name key="MyProperty">MyValue</pdf:name>
+        <pdf:name key="MyOtherProperty">MyOtherValue</pdf:name>
+      </pdf:info>
+    </fo:declarations>
+
+
 #PDF Page Piece
 
 Allows indexing of PDF files for tools such as IBM Content Manager OnDemand
