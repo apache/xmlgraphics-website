@@ -8,10 +8,59 @@ Title: History of Changes
 
 Changes are sorted by "type" and then chronologically with the most recent at the top. These symbols denote the various action types: ![add](/images/add.jpg)=add, ![fix](/images/fix.jpg)=fix, ![remove](/images/remove.jpg)=remove, ![update](/images/update.jpg)=update
 
-## Version Trunk (n/a) { #version_Trunk}
+## Version 2.0 (1 Octomber 2014) { #version_2.0}
 
-### Changes to the Code Base { #Code_Trunk}
+### Changes to the Code Base { #Code_2.0}
 
+- ![fix](/images/fix.jpg)Reduce PDF to PS filesize. Committed by SS.
+
+- ![fix](/images/fix.jpg)PDF-A preflight warnings. Committed by SS.
+
+- ![fix](/images/fix.jpg)DSCParser always throws DSCException %%EOF not found when checkEOF is false. Committed by VH. Patch by Teon Metselaar, applied with minor changes + a test case.
+
+- ![fix](/images/fix.jpg)Weird border color inheritance (hashCode collisions). Committed by LB. Thanks to AG.
+
+- ![fix](/images/fix.jpg)Image written as having 72 DPI instead of its intrinstic resolution. Committed by LB.
+
+- ![fix](/images/fix.jpg)Javadocs fails on Java 8. Committed by SS.
+
+- ![fix](/images/fix.jpg)JPEG is squashed. Committed by SS.
+
+- ![fix](/images/fix.jpg)64bit image missing in pdf. Committed by LB. Thanks to SS.
+
+- ![fix](/images/fix.jpg)FOP-1801: conversion B&W GIF=>PDF creates PDF with colorspace RGB if FOP0.95 and Gray if FOP0.20.5;. Committed by LB. Thanks to Thanasis Giannimaras.
+
+- ![fix](/images/fix.jpg)Incorrect rendering of GIF images. Committed by LB. Thanks to Thanasis Giannimaras.
+
+- ![update](/images/fix.jpg) CMYK TIFF is rendered using RGB colourspace in Postscript output. Committed by LB. Thanks to SS.
+
+- ![add](/images/add.jpg)Add support for APP1 (Exif) segment in JPEG images. Committed by LB.
+
+- ![add](/images/add.jpg)Add support for svg gradients when generating PostScript. Committed by LB. Thanks to RM.
+
+- ![fix](/images/fix.jpg)SVN line clipping not correct when outputting to Postscript. Committed by RM.
+
+- ![update](/images/update.jpg)Make JPEGFile more resilient against potentially malformed JPEGs. Committed by JM.
+
+- ![add](/images/fix.jpg)Added new subroutine to support OTF CFF in PostScript. Committed by LB. Thanks to RM.
+
+- ![fix](/images/fix.jpg)1 bit TIFF error. Committed by LB. Thanks to SS.
+
+- ![fix](/images/fix.jpg)JBIG2 PDF not shown in PS. Committed by LB. Thanks to SS.
+
+- ![add](/images/add.jpg) provide a way to close the resources associated to an image without fully loading it. Committed by VH.
+
+- ![update](/images/fix.jpg)Use event producer when Colour Profile in PNG Image is bad. Committed by LB. Thanks to SS. 
+
+- ![update](/images/fix.jpg)Change to XGC to support the changes in FOP for image scaling. Scaling by resolution is removed to avoid duplicate scaling. Committed by LB. Thanks to RM.
+
+- ![fix](/images/fix.jpg)Fixes gradient fill opacity incorrectly inherits stroke opacity of previous svg element. Committed by LB. 
+
+- ![add](/images/fix.jpg)Little endian support for tiff images. Commited by LB. Thanks to JM and RM. See Issue 
+[54195] (https://issues.apache.org/bugzilla/show_bug.cgi?id=54196)
+
+- ![fix](/images/fix.jpg)support for sRGB and iCCP chunks. Committed by LB. See Issue
+[53408]
 
 - ![fix](/images/fix.jpg)Support rdf:resource attributes in XMP. Committed by GA. Thanks to Brian Carlson. See Issue [50497](http://issues.apache.org/bugzilla/show_bug.cgi?id=50497).
 
@@ -35,17 +84,17 @@ Changes are sorted by "type" and then chronologically with the most recent at th
 
 - ![update](/images/update.jpg)Various code style fixes Committed by JM. Thanks to Glenn Adams. See Issue [49703](http://issues.apache.org/bugzilla/show_bug.cgi?id=49703).
 
-### Contributors to this release { #contributors_Trunk}
+### Contributors to this release { #contributors_2.0}
 
 We thank the following people for their contributions to this release.
 
 This is a list of all people who participated as committers:
 
-Glenn Adams (GA), Jeremias Märki (JM), (PH).
+Glenn Adams (GA), Luis Bernado(LB), Alexios Giotis (AG), Peter Hancock(PH), Vincent Hennebert (VH),  Jeremias Märki (JM). Robert Meyer(RM), Simon Steiner (SS)   
 
 This is a list of other contributors:
 
-Brian Carlson, Florian Barbera Vila Bollain, Glenn Adams, JM and Mehdi Houshmand, Joshua Marquart, Sebastian Bazley.
+Brian Carlson, Florian Barbera Vila Bollain, Glenn Adams, JM and Mehdi Houshmand, Joshua Marquart, Sebastian Bazley, Thanasis Giannimaras.
 
 ## Version 1.5 (20 October 2012) { #version_1.5}
 ### Changes to the Code Base { #Code_1.5}
