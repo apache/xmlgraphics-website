@@ -13,6 +13,340 @@ Until FOP 1.1, Changes are sorted by "type" and then chronologically with the mo
 
 See [Change list in Jira](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20resolution%20%3D%20Fixed%20AND%20fixVersion%20%3D%20trunk%20ORDER%20BY%20updated%20DESC%2C%20created%20DESC%2C%20priority%20DESC).
 
+ - FOP-2456: PDF VT and Page Piece support
+
+ - FOP-2448: PDF to PS deduplication of images
+
+ - FOP-2447: Text cut off for changing IPD for page starting with a table
+
+ - FOP-2446: OTF subset error
+
+ - FOP-2445: PDF Linearization
+
+ - FOP-2443: Repeated Table headers and footers with markers are not being treated as artifacts
+
+ - FOP-2442: Specifying the expansion of an abbreviation
+
+ - FOP-2433: Support CMYK TIFFs in AFP through IOCA FS45
+
+ - FOP-2432: OTF font NPE
+
+ - FOP-2424: Allow for type1 afm/pfm files to be in a different path than the pfb file
+
+ - FOP-2422: fix erroneous use of mapped char with fixed width space chars
+
+ - FOP-2420: ensure word area's bidi level is initialized when word is mapped to empty string, e.g., when controls are elided
+
+ - FOP-2417: Exception caused by letter space handling in Chinese sentence
+
+ - FOP-2416: add support for Arabic Joiners (ZWJ/ZWNJ) - preliminary
+
+ - FOP-2415: prevent NPE when Indic script syllabizer is not available
+
+ - FOP-2412: Reduce PDF to PS filesize
+
+ - FOP-2411: PDF to PDF Link not working
+
+ - FOP-2410: fix fo:page-number in bidi context
+
+ - FOP-2410: add test for bug fix
+
+ - FOP-2406: Error when image next to pdf
+
+ - FOP-2398: Image written as having 72 DPI instead of its intrinstic resolution
+
+ - FOP-2395: PDF encryption does not work when PDF version is set in FOP config; change suggested by Seifeddine Dridi.
+
+ - FOP-2394: Removed non-standard layout extensions
+
+ - FOP-2393: only the gradient's transform should be used. Other transforms will have already been applied to the user space.
+
+ - FOP-2391: preliminary (but incomplete) support for complex script text nodes in svg foreign object
+
+ - FOP-2389: PDFEncryption: error when Password length>32
+
+ - FOP-2385: Add ability to specify custom properties in the Document Information Dictionary
+
+ - FOP-2372: New extension to resize background images
+
+ - FOP-2367: Support for color space OCA; patch submitted by Seifeddine Dridi
+
+ - FOP-2363: Better error message when PDF/A enabled and SVG contains bitmap with transparency
+
+ - FOP-2357: When an SVG image has transparency and a PDF profile is used that disallows it, ignore it and issue a warning rather than throw an error
+
+ - FOP-2354: Subset support for Type 1 fonts
+
+ - FOP-2353: PDF-A preflight warnings
+
+ - FOP-2348: PDF File Attachment Extension is broken
+
+ - FOP-2346: UnsupportedOperationException when handling an SVG containing a font-face
+
+ - FOP-2345: SVG to AFP text spacing wrong
+
+ - FOP-2341: Infinite loop when smaller used with a zero length font-size
+
+ - FOP-2340: 64bit image missing in pdf; patch submitted by Simon Steiner
+
+ - FOP-2339: GIF to PS transparency is black; patch by Simon Steiner
+
+ - FOP-2337: Remove xobj type=form
+
+ - FOP-2336: OOM for tiff output
+
+ - FOP-2326: CMYK TIFF is rendered using RGB colourspace in Postscript output; patch submitted by Simon Steiner (xgc jar updated)
+
+ - FOP-2323: NPE caused by missing local subroutine index in private dictonary of OTF font
+
+ - FOP-2322: Type1 Font with Custom Encoding not visible in Postscript output; Patch submitted by Simon Steiner
+
+ - FOP-2321: Latest fop snapshot crashes when processing rindolf-spec.fo
+
+ - FOP-2317: crash when issuing warning for invalid property value
+
+ - FOP-2315: Incorrect example for leaders
+
+ - FOP-2314: Caching xmlParserClassName in org.apache.fop.svg.SimpleSVGUserAgent; patch submitted by Gonzalo Vasquez
+
+ - FOP-2313: add support for svg gradients when generating PostScript; most code authored by Robert Meyer with a small contribution by Athanasios Giannimaras.
+
+ - FOP-2312: font-base configuration setting not working as expected
+
+ - FOP-2311: revert changes from FOP-1069 that regresses shorthand property handling.
+
+ - FOP-2310: Fix misplaced table cell border in WM RTL context.
+
+ - FOP-2308: text-transform="capitalize" assumes input text is lowercase
+
+ - FOP-2307: Weird border color inheritance (hashCode collisions) -- patch submitted by Alexios Giotis.
+
+ - FOP-2306: use the URI of the source FO document rather than the config file as a default base URI
+
+ - FOP-2305: Poor resolution of PCL output in trunk vs. 1.1; fixed regression
+
+ - FOP-2303: fix negative text indent in bidi context
+
+ - FOP-2301: Enable support for PDF sub-page transitions.
+
+ - FOP-2299: Non Unicode named glyphs not loaded for Type1 fonts
+
+ - FOP-2298: Enable support for PDF Transitions by defining low-level mechanism to augment /Catalog and /Page dictionaries.
+
+ - FOP-2296: SVG fill pattern not visible with encryption; patch submitted by Simon Steiner
+
+ - FOP-2293: extension to the layout engine for managing white space at the bottom of a page
+
+ - FOP-2287: support Tamil script (preliminary)
+
+ - FOP-2281: factory is not initialized when -cache is used in org.apache.fop.cli.Main; patch submitted by Thanasis Giannimaras.
+
+ - FOP-2275: Quadratic Bezier curves not properly rendered
+
+ - FOP-2273: Stroke miter limit is not clamped when writing PDFs; patch submitted by Max Gilead
+
+ - FOP-2271: XSL Infinite loop; patch submitted by Simon Steiner.
+
+ - FOP-2265: Enable xlint cast; patch submitted by Simon Steiner
+
+ - FOP-2263: PDFDocumentGraphics2D.closePage() should not nullify currentStream; change suggested by Max Gilead
+
+ - FOP-2260: Smart quotes broken in RTF if at start of text
+
+ - FOP-2259: 1 bit TIFF error; patch submitted by Simon Steiner
+
+ - FOP-2258: fix erroneous mirroring
+
+ - FOP-2252: OpenType CFF support for FOP; patch submitted by Robert Meyer
+
+ - FOP-2250: Arabic characters are not connected on PCL; partial implementation.
+
+ - FOP-2249: elide formatting controls - preliminary
+
+ - FOP-2248: add support for AES 256 PDF encryption
+
+ - FOP-2246: Exception java.lang.IllegalArgumentException: min (1650) > opt (0); changes to avoid exception and default to "reasonable" values if no invalid value was explicitly provided.
+
+ - FOP-2245: height attribute on external-graphic with percentage value behaves incorrectly
+
+ - FOP-2244: Encrypted image colorspace fails; patch submitted by Simon Steiner
+
+ - FOP-2238: updated xgc jar (revision 1477369)
+
+ - FOP-2226: Image resources are not closed when rendering into the Intermediate Format
+
+ - FOP-2224: NPE for SVG text in AFP; patch submitted by Simon Steiner 
+
+ - FOP-2223: Lines do not span to the end in rounded border cells in AFP; patch submitted by Simon Steiner.
+
+ - FOP-2221: Make overflow messages easier to read and fix wrong/ missing messages; patch submitted by Simon Steiner.
+
+ - FOP-2217; Image scaling change was adversely affecting other image types 
+
+ - FOP-2216: PDF forms are offset; patch submitted by Simon Steiner
+
+ - FOP-2215; Thin dashed border look like dots
+
+ - FOP-2214; forgot to commit status.xml 
+
+ - FOP-2213: use kern table when no GPOS kern lookups are present
+
+ - FOP-2211: fixed in previous
+
+ - FOP-2206: Add support for CS placement and escapement data in PS renderer.
+
+ - FOP-2203: Fix xml syntax in XSD
+
+ - FOP-2197: missing GlyphTester class in transcoder archives
+
+ - FOP-2195: use sparse arrays for position adjustments
+
+ - FOP-2194: optimize lazy font load invocation for hot methods
+
+ - FOP-2192: fix checkstyle and findbugs warnings
+
+ - FOP-2191: cache matched lookups, assembled lookup spec uses; reduce glyph processing state allocation
+
+ - FOP-2188: optimize string allocation in pdf output processing
+
+ - FOP-2187: Generating pdf works awt & png crashes when overflow hidden
+
+ - FOP-2186: optimize inefficient glyph processing state update operations
+
+ - FOP-2184: optimize inefficient position adjustment array allocation in non-CS path.
+
+ - FOP-2183: Use event producer when Colour Profile in PNG Image is bad; patch submitted by Simon Steiner
+
+ - FOP-2181: Add a test case for the recent fix made in FOP-2174 and XGC-76 regarding source resolution scaling with SVG and images; patch submitted by Robert Meyer
+
+ - FOP-2180: TTFReader outputs bounding box information for glyphs.
+
+ - FOP-2179: Fix checkstyle and findbugs warnings.
+
+ - FOP-2178: Fix incomplete kerning when complex script features are enabled.
+
+ - FOP-2177: If a right aligned image exceeds a table cells bounds, it will overflow in the wrong direction; patch submitted by Robert Meyer
+
+ - FOP-2174: When using SVG drawings, if no content-width and content-height is specified, 72 will be used instead of the source-resolution option
+
+ - FOP-2173: Invalid Postscript created with SVG and custom fonts
+
+ - FOP-2171: Missing Glyph in Postscript using DejaVuSans. Submitted by Simon Steiner.
+
+ - FOP-2160: Fix NPE when rl writing mode is used in certain contexts.
+
+ - FOP-2157: Deadlock in CompareUtil class; patch by Jacopo Cappellato based on original proposal by Morten Knudsen.
+
+ - FOP-2148: make page-position="only" work
+
+ - FOP-2107: org.apache.batik.bridge.BridgeException: Unable to make sense of URL for connection; patch suggested by Matthias Reischenbacher and Robert Meyer comments.
+
+ - FOP-2106: Footnote put on earlier page than the one that contains the footnote call
+
+ - FOP-2104: RTF renderer barfs when fo:table-row is missing inside fo-table-header
+
+ - FOP-2094: preliminary support for mapping OTF script tags from @script property
+
+ - FOP-2093: preliminary support for mapping OTF language tags from @language property
+
+ - FOP-2060: adjoining blocks with break-before="page" break-after="page" cause extra empty page
+
+ - FOP-2044: Hyphenation of Uppercase Words, Combined with Underlines; patch submitted by Robert Meyer
+
+ - FOP-1976; committed change suggested by Matthias Reischenbacher
+
+ - FOP-1872: External document is clipped when rotated; patch submitted by Thanasis Giannimaras.
+
+ - FOP-1840: column balancing algorithm; applied patch 12550540 submitted by Robert Meyer.
+
+ - FOP-1801: conversion B&W GIF=>PDF creates PDF with colorspace RGB if FOP0.95 and Gray if FOP0.20.5; patch submitted by Thanasis Giannimaras following suggestion by Jeremias Maerki
+
+ - FOP-1749: Fix offset of footnote when it has a margin-top
+
+ - FOP-1342: Incorrect rendering of GIF images; patch to xgc submitted by Thanasis Giannimaras.
+
+ - FOP-1099: when table headers/footers are repeated at page breaks, also repeat the footnotes they may contain
+
+ - FOP-1099: process footnotes coming from table headers or footers
+
+ - FOP-1069: Warn instead or error on invalid property values.
+
+ - FOP-1069: No error message on illegal/unknown values on a property
+
+ - Bugzilla 37114: Implementation of changes necessary to warn of invalid property values.
+
+ - Bugzilla #54196: configure big / little endian support for TIFF images; patch 29628 applied; submitted by Robert Meyer
+
+ - Bugzilla #54169: Split the parent tree (the number tree corresponding to the ParentTree entry in the structure tree root) to avoid reaching the internal limits of Acrobat Pro, that would otherwise split it at the wrong place when saving the document.
+
+ - Bugzilla #54167: Disable the overflow recovery mechanism when the flow IPD changes
+
+ - Bugzilla #54120: Prevented NPEs when FOP asks Batik for AWT fonts for AFP output
+
+ - Bugzilla #54081: properly tag hyphenated words in PDF output when accessibility is enabled
+
+ - Bugzilla #54075: Fixed a regression
+
+ - Bugzilla #54041: Added support for Rounded Corners. 
+
+ - Bugzilla #54038: Added PDF/A-2 output option
+
+ - Bugzilla #54037: Issue a warning when accessibility is enabled for PDF output and language information is missing
+
+ - Bugzilla #54024: rewrote generation of /PageLabels dictionary
+
+ - Bugzilla #53980: PDF accessibility: Store language information coming from fo:block or fo:character in the structure tree.
+
+ - Bugzilla #53942: fo:flow not rendered with -awt; patch 29465 submitted by Robert Meyer
+
+ - Bugzilla #53924: Support for retrieve-table-markers, submitted by Luis Bernardo.
+
+ - Bugzilla #53902: Added possibility to define 'header' table columns (the same way as fo:table-header allows to define header rows).
+
+ - Bugzilla #53887: A revert of r1325624 as the java.awt.headless JVM argument should be enabled by the user
+
+ - Bugzilla #53868: Full font embedding in PDF
+
+ - Bugzilla #53865: Add Rows per Strip configuration for Tiff renderer
+
+ - Bugzilla #53827: When an fo:block has a non-zero value for its text-indent property and is broken over two pages of different widths, then the first line on the second page is missing one word and appears indented.
+
+ - Bugzilla #53790: Prevented the TIFF configurator from overriding the Bitmap configurator unless CCITT compression is enabled.
+
+ - Bugzilla #53778: When PDF accessibility is enabled, the contents for the different regions must appear in the proper order in the structure tree.
+
+ - Bugzilla #53751: Slightly restructured the way the FontCache creates a cache-file
+
+ - Bugzilla #53688: Wrong page number reported when a column overflows the region-body in a multi-column document
+
+ - Bugzilla #53685 - AFP charactersets are cached using more unique keys
+
+ - Bugzilla #53639: When PDF accessibility is enabled, the Scope attribute must be present in the structure tree for table header elements.
+
+ - Bugzilla #53630: make it clear that the PDFConformanceException is due to accessibility not being enabled
+
+ - Bugzilla #53600: Added an event if a glyph and its metric information does not exist in the character set
+
+ - Bugzilla #53598: avoid IllegalArgumentException by setting the breakClass field in BreakElement to a legal default value
+
+ - Bugzilla #53596: When PDF accessibility is enabled, the structure tree must contain information about the number of columns or rows spanned by a table cell.
+
+ - Bugzilla #53563: Removed a method call that could cause a java.awt.HeadlessException in PCLGraphics2D (brought it inline with PDF/PS/AFP-Graphics2D classes)
+
+ - Bugzilla #53502: MODCA end structured field now more conformant with the spec by allowing 0xFFFF match (match any). Submitted by Robert Meyer
+
+ - Bugzilla #48955: Allow AFP font codepage names to be less than 8 chars
+
+ - Bugzilla #48954: Support for character encoding of TLEs in AFP output. Submitted by PH.
+
+ - Bugzilla #48063: patches 28912 and 29015; fixes infinite loop in footnotes code
+
+ - Bugzilla #45822: Changed the dashed borders to appear more like dashes and less like dotted-borders
+
+ - Bugzilla #45715: Restored support for break-before on fo:table.
+
+ - Bugzilla #40676: patch 29132 with changes, support for sRGB and iCCP chunks
+
 ## Version 1.1 (20 October 2012) { #version_1.1}
 
 ### Changes to the Code Base { #Code_1.1}
