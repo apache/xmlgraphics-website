@@ -1,0 +1,62 @@
+Title: Upgrading from an Earlier Version of Apache&trade; FOP
+
+#Upgrading from an Earlier Version of Apache&trade; FOP
+
+## Upgrading from Version 1.0 { #fop-1.0}
+
+You should encounter very few issues in upgrading from FOP 1.0, except as noted in the following:
+
+- The intermediate format (IF) output format has underwent minor modification as follows:
+
+    - In order to track changes to the IF format, a `version` attribute has been added to the root `document` element. Since no version information was provided previously, the initial value of this attribute is `2.0`. Future backward compatible changes will update the minor version number, while future non-backward compatible changes will update the major version number.
+
+    - On the `text` element, a new alternate representation is used for adjustments to glyph positions as expressed by a `dp` attribute instead of the `dx` attribute. For further information, see [complex script patch - intermediate format changes](http://mail-archives.apache.org/mod_mbox/xmlgraphics-fop-dev/201202.mbox/%3cCACQ=j+evStXx=7hW=CHVNKCrZHUso9FHZCSk_5EoENOHcGpGOg@mail.gmail.com%3e).
+
+    - On the `border-rect` element, the attributes { `before`, `after`, `start`, `end` } have been renamed to { `top`, `bottom`, `left`, `right` }, respectively. For further information, see [complex script patch - intermediate format changes](http://mail-archives.apache.org/mod_mbox/xmlgraphics-fop-dev/201202.mbox/%3cCACQ=j+evStXx=7hW=CHVNKCrZHUso9FHZCSk_5EoENOHcGpGOg@mail.gmail.com%3e).
+
+- The `IFPainter` interface (of package `org.apache.fop.render.intermediate`), specifically the `drawText` and `drawBorderRect` method signatures, have been modified to express the semantics of the above changes to the IF output format.
+
+- The area tree (AT) output format has underwent minor modification as follows:
+
+    - In order to track changes to the AT format, a `version` attribute has been added to the root `areaTree` element. Since no version information was provided previously, the initial value of this attribute is `2.0`. Future backward compatible changes will update the minor version number, while future non-backward compatible changes will update the major version number.
+
+    - An optional `level` attribute has been added to a number of element types to express resolved bidirectional level.
+
+    - An optional `reversed` attribute has been added to the `word` element type to express that the glyphs that correspond to the character content of the element should be reversed (in order) in the inline progression dimension when rendering.
+
+- Because complex script features are now enabled by default, it is possible that different font specific data will be used for kerning than was previously used. This may be the case if a font supports a traditional TrueType `kern` table and also supports the advanced typographic `kern` feature with a `GPOS` table. In FOP 1.0, the former is used for kerning, while in FOP 1.1 with complex script features enabled, the latter is used. If it is desired to explicitly use the `kern` table (rather than the `GPOS` table) in such a case, then the `-nocs` command line option may be used when invoking FOP in order to disable complex script features.
+
+## Upgrading from Pre-1.0 Versions { #pre-1.0}
+
+If you're planning to upgrade to the latest Apache&trade; FOP version from a pre-1.0 version, there are a few very important things to consider:
+
+- The API of FOP has changed considerably and is not backwards-compatible with versions 0.20.5 and 0.91beta. Version 0.92 introduced the **new stable API**.
+
+- Since version 0.92 some deprecated methods which were part of the old API have been removed. If you upgrade from 0.91 beta, you will need to adjust your Java code. Similarly if you upgrade from 0.92 and use deprecated methods.
+
+- If you are using a configuration file for version 0.20.5, you have to rebuild it in the new format. The format of the configuration files has changed since version 0.20.5. See conf/fop.xconf for an example configuration file. A XML Schema file can be found under src/foschema/fop-configuration.xsd.
+
+- Beginning with version 0.94 you can skip the generation of font metric files and remove the "font-metrics" attribute in the font configuration. In the unlikely case that due to a bug you still need to use font metrics files you will need to regenerate the font metrics file if yours are from a FOP version before 0.93.
+
+- The new code is much more strict about the interpretation of the XSL-FO specification. Things that worked fine in version 0.20.5 might start to produce warnings or even errors now. FOP 0.20.5 contains many bugs which have been corrected in the new code.
+
+    <note>While FOP 0.20.5 allowed you to have empty `fo:table-cell` elements, the new code will complain about that (unless relaxed validation is enabled) because the specification demands at least one block-level element (`(%block;)+`, see [XSL-FO 1.1, 6.7.10](http://www.w3.org/TR/xsl/#fo_table-cell)) inside an `fo:table-cell` element.</note>
+
+- Extensions and Renderers written for version 0.20.5 will not work with the new code! The new FOP extension for [Barcode4J](http://barcode4j.sourceforge.net) is available since January 2007.
+
+- The SVG Renderer and the MIF Handler have not yet been resurrected! They are currently non-functional and hope for someone to step up and reimplement them.
+
+When you use your existing FO files or XML/XSL files which work fine with FOP version 0.20.5 against this FOP version some things may not work as expected. The following list will hopefully help you to identify and correct those problems.
+
+
+- Check the [Compliance page](../compliance.html) for the feature causing trouble. It may contain the necessary information to understand and resolve the problem.
+
+- Not all 0.20.5 output formats are supported. PDF and Postscript should be fully supported. See [Output Targets](output.html) for a more complete description.
+
+- As stated above, empty table cells `<fo:table-cell></fo:table-cell>` are not allowed by the specification. The same applies to empty `fo:static-content` and `fo:block-container` elements, for example.
+
+- Version 0.20.5 is not XSL-FO compliant with respect to sizing images (`external-graphic`) or `instream-foreign-object` objects. If images or SVGs are sized differently in your outputs with the new FOP version check [FOP-1073](https://issues.apache.org/jira/browse/FOP-1073) as it contains some hints on what to do. The file [http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/fo/basic/images.fo?view=markup](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/fo/basic/images.fo?view=markup) has a number of good examples that show the correct behaviour.
+
+- The `fox:outline` extension is not implemented in the current version: it has been superseded by the bookmark elements from XSL-FO 1.1.
+
+- The `fox:continued-label` extension is not implemented in this version anymore. It has been superseded by the `fo:retrieve-table-marker` element from XSL-FO 1.1.
