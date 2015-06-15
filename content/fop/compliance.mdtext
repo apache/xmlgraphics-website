@@ -57,7 +57,7 @@ The following is a summary of FOP's current support for the standard XSL-FO obje
 | [§6.6.4](http://www.w3.org/TR/xsl/#fo_initial-property-set) | initial-property-set { #fo-object-initial-property-set} | Extended{.extended} | no{.no} | no{.no} | no{.no} | no{.no} |   |
 | [§6.6.5](http://www.w3.org/TR/xsl/#fo_external-graphic) | external-graphic { #fo-object-external-graphic} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§6.6.6](http://www.w3.org/TR/xsl/#fo_instream-foreign-object) | instream-foreign-object { #fo-object-instream-foreign-object} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} | Built-in support for SVG only, additional namespaces through optional extensions. |
-| [§6.6.7](http://www.w3.org/TR/xsl/#fo_inline) | inline { #fo-object-inline} | Basic{.basic} | yes{.yes} | yes{.yes} | | yes{.yes} yes{.yes} |   |
+| [§6.6.7](http://www.w3.org/TR/xsl/#fo_inline) | inline { #fo-object-inline} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§6.6.8](http://www.w3.org/TR/xsl/#fo_inline-container) | inline-container { #fo-object-inline-container} | Extended{.extended} | no{.no} | no{.no} | no{.no} | partial{.partial} | partial{.partial} | [FOP 2.0] initial support: not all properties are implemented. See [FOP-1524](https://issues.apache.org/jira/browse/FOP-1524) |
 | [§6.6.9](http://www.w3.org/TR/xsl/#fo_leader) | leader { #fo-object-leader} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§6.6.10](http://www.w3.org/TR/xsl/#fo_page-number) | page-number { #fo-object-page-number} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
@@ -118,7 +118,7 @@ The following is a summary of FOP's current support for the standard XSL-FO obje
 The following is a summary of FOP's current support for the standard XSL-FO properties.
 
 | Citation | Property Name | XSL-FO Conformance Level | FOP 1.0 | FOP 1.1 | FOP 2.0 | FOP dev | Comments |
-|----|----|----|----|----|----|----|
+|----|----|----|----|----|----|----|----|
 | [§7.5](http://www.w3.org/TR/xsl/#common-accessibility-properties) {.category} | Common Accessibility Properties {.category} | { #fo-property-commonaccess-section} |
 | [§7.5.1](http://www.w3.org/TR/xsl/#source-document) | source-document { #fo-property-source-document} | Basic{.basic} | no{.no} | no{.no} | no{.no} | no{.no} |   |
 | [§7.5.2](http://www.w3.org/TR/xsl/#role) | role { #fo-property-role} | Basic{.basic} | no{.no} | no{.no} | no{.no} | no{.no} |   |
@@ -136,23 +136,23 @@ The following is a summary of FOP's current support for the standard XSL-FO prop
 | [§7.7.5](http://www.w3.org/TR/xsl/#pause-after) | pause-after { #fo-property-pause-after} | Basic{.basic} | na{.na} | na{.na} | na{.na} | na{.na} |   |
 | [§7.7.6](http://www.w3.org/TR/xsl/#pause-before) | pause-before { #fo-property-pause-before} | Basic{.basic} | na{.na} | na{.na} | na{.na} | na{.na} |   |
 | [§7.7.7](http://www.w3.org/TR/xsl/#pitch) | pitch { #fo-property-pitch} | Basic{.basic} | na{.na} | na{.na} | na{.na} | na{.na} |   |
-| [§7.7.8](http://www.w3.org/TR/xsl/#pitch-range) | pitch-range { #fo-property-pitch-range} | Basic{.basic} | na{.na} | na{.na} | na{.na} |   |
+| [§7.7.8](http://www.w3.org/TR/xsl/#pitch-range) | pitch-range { #fo-property-pitch-range} | Basic{.basic} | na{.na} | na{.na} | na{.na} | na{.na} |   |
 | [§7.7.9](http://www.w3.org/TR/xsl/#play-during) | play-during { #fo-property-play-during} | Basic{.basic} | na{.na} | na{.na} | na{.na} | na{.na} |   |
-| [§7.7.10](http://www.w3.org/TR/xsl/#richness) | richness { #fo-property-richness} | Basic{.basic} | na{.na} | na{.na} | na{.na} |   |
+| [§7.7.10](http://www.w3.org/TR/xsl/#richness) | richness { #fo-property-richness} | Basic{.basic} | na{.na} | na{.na} | na{.na} | na{.na} |   |
 | [§7.7.11](http://www.w3.org/TR/xsl/#speak) | speak { #fo-property-speak} | Basic{.basic} | na{.na} | na{.na} | na{.na} | na{.na} |   |
 | [§7.7.12](http://www.w3.org/TR/xsl/#speak-header) | speak-header { #fo-property-speak-header} | Basic{.basic} | na{.na} | na{.na} | na{.na} | na{.na} |   |
 | [§7.7.13](http://www.w3.org/TR/xsl/#speak-numeral) | speak-numeral { #fo-property-speak-numeral} | Basic{.basic} | na{.na} | na{.na} | na{.na} | na{.na} |   |
-| [§7.7.14](http://www.w3.org/TR/xsl/#speak-punctuation) | speak-punctuation { #fo-property-speak-punctuation} | Basic{.basic} | na{.na} | na{.na} | na{.na} |   |
+| [§7.7.14](http://www.w3.org/TR/xsl/#speak-punctuation) | speak-punctuation { #fo-property-speak-punctuation} | Basic{.basic} | na{.na} | na{.na} | na{.na} | na{.na} |   |
 | [§7.7.15](http://www.w3.org/TR/xsl/#speech-rate) | speech-rate { #fo-property-speech-rate} | Basic{.basic} | na{.na} | na{.na} | na{.na} | na{.na} |   |
 | [§7.7.16](http://www.w3.org/TR/xsl/#stress) | stress { #fo-property-stress} | Basic{.basic} | na{.na} | na{.na} | na{.na} | na{.na} |   |
 | [§7.7.17](http://www.w3.org/TR/xsl/#voice-family) | voice-family { #fo-property-voice-family} | Basic{.basic} | na{.na} | na{.na} | na{.na} | na{.na} |   |
 | [§7.7.18](http://www.w3.org/TR/xsl/#volume) | volume { #fo-property-volume} | Basic{.basic} | na{.na} | na{.na} | na{.na} | na{.na} |   |
 | [§7.8](http://www.w3.org/TR/xsl/#common-border-padding-and-background-properties) {.category} | Common Border, Padding, and Background Properties {.category} | { #fo-property-commonenv-section} |
-| [§7.8.1](http://www.w3.org/TR/xsl/#background-attachment) | background-attachment { #fo-property-background-attachment} | Extended{.extended} | no{.no} | no{.no} | no{.no} | | no{.no} |   |
+| [§7.8.1](http://www.w3.org/TR/xsl/#background-attachment) | background-attachment { #fo-property-background-attachment} | Extended{.extended} | no{.no} | no{.no} | no{.no} | no{.no} |   |
 | [§7.8.2](http://www.w3.org/TR/xsl/#background-color) | background-color { #fo-property-background-color} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.8.3](http://www.w3.org/TR/xsl/#background-image) | background-image { #fo-property-background-image} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.8.4](http://www.w3.org/TR/xsl/#background-repeat) | background-repeat { #fo-property-background-repeat} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
-| [§7.8.5](http://www.w3.org/TR/xsl/#background-position-horizontal) | background-position-horizontal { #fo-property-background-position-horizontal} | Extended{.extended} | partial{.partial} | partial{.partial} | partial{.partial} | Ignored when background-repeat set to "repeat" or "repeat-x" |
+| [§7.8.5](http://www.w3.org/TR/xsl/#background-position-horizontal) | background-position-horizontal { #fo-property-background-position-horizontal} | Extended{.extended} | partial{.partial} | partial{.partial} | partial{.partial} | partial{.partial} | Ignored when background-repeat set to "repeat" or "repeat-x" |
 | [§7.8.6](http://www.w3.org/TR/xsl/#background-position-vertical) | background-position-vertical { #fo-property-background-position-vertical} | Extended{.extended} | partial{.partial} | partial{.partial} | partial{.partial} | partial{.partial} | Ignored when background-repeat set to "repeat" or "repeat-y" |
 | [§7.8.7](http://www.w3.org/TR/xsl/#border-before-color) | border-before-color { #fo-property-border-before-color} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.8.8](http://www.w3.org/TR/xsl/#border-before-style) | border-before-style { #fo-property-border-before-style} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
@@ -199,15 +199,15 @@ The following is a summary of FOP's current support for the standard XSL-FO prop
 | [§7.10.1](http://www.w3.org/TR/xsl/#country) | country { #fo-property-country} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} | For PDF output: Only 2-letter codes from ISO 3166 are supported properly to identify the natural language! |
 | [§7.10.2](http://www.w3.org/TR/xsl/#language) | language { #fo-property-language} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} | For PDF output: Only 2-letter codes from ISO 639 are supported properly to identify the natural language! Also used with complex scripts features. |
 | [§7.10.3](http://www.w3.org/TR/xsl/#script) | script { #fo-property-script} | Extended{.extended} | no{.no} | yes{.yes} | yes{.yes} | yes{.yes} | Used with complex scripts features to override default script heuristics. |
-| [§7.10.4](http://www.w3.org/TR/xsl/#hyphenate) | hyphenate { #fo-property-hyphenate} | Extended{.extended} | yes{.yes} | yes{.yes} | | yes{.yes} yes{.yes} |   |
+| [§7.10.4](http://www.w3.org/TR/xsl/#hyphenate) | hyphenate { #fo-property-hyphenate} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.10.5](http://www.w3.org/TR/xsl/#hyphenation-character) | hyphenation-character { #fo-property-hyphenation-character} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
-| [§7.10.6](http://www.w3.org/TR/xsl/#hyphenation-push-character-count) | hyphenation-push-character-count { #fo-property-hyphenation-push-character-count} | Extended{.extended} | yes{.yes} | yes{.yes} | | yes{.yes} yes{.yes} |   |
-| [§7.10.7](http://www.w3.org/TR/xsl/#hyphenation-remain-character-count) | hyphenation-remain-character-count { #fo-property-hyphenation-remain-character-count} | Extended{.extended} | yes{.yes} | yes{.yes} | | yes{.yes} yes{.yes} |   |
+| [§7.10.6](http://www.w3.org/TR/xsl/#hyphenation-push-character-count) | hyphenation-push-character-count { #fo-property-hyphenation-push-character-count} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
+| [§7.10.7](http://www.w3.org/TR/xsl/#hyphenation-remain-character-count) | hyphenation-remain-character-count { #fo-property-hyphenation-remain-character-count} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.11](http://www.w3.org/TR/xsl/#common-margin-properties-block) {.category} | Common Margin Properties - Block {.category} | { #fo-property-commonmarginblock-section} |
-| [§7.11.1](http://www.w3.org/TR/xsl/#margin-top) | margin-top { #fo-property-margin-top} | Basic{.basic} | yes{.yes} | yes{.yes} | | yes{.yes} yes{.yes} |   |
-| [§7.11.2](http://www.w3.org/TR/xsl/#margin-bottom) | margin-bottom { #fo-property-margin-bottom} | Basic{.basic} | yes{.yes} | yes{.yes} | | yes{.yes} yes{.yes} |   |
-| [§7.11.3](http://www.w3.org/TR/xsl/#margin-left) | margin-left { #fo-property-margin-left} | Basic{.basic} | yes{.yes} | yes{.yes} | | yes{.yes} yes{.yes} |   |
-| [§7.11.4](http://www.w3.org/TR/xsl/#margin-right) | margin-right { #fo-property-margin-right} | Basic{.basic} | yes{.yes} | yes{.yes} | | yes{.yes} yes{.yes} |   |
+| [§7.11.1](http://www.w3.org/TR/xsl/#margin-top) | margin-top { #fo-property-margin-top} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
+| [§7.11.2](http://www.w3.org/TR/xsl/#margin-bottom) | margin-bottom { #fo-property-margin-bottom} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
+| [§7.11.3](http://www.w3.org/TR/xsl/#margin-left) | margin-left { #fo-property-margin-left} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
+| [§7.11.4](http://www.w3.org/TR/xsl/#margin-right) | margin-right { #fo-property-margin-right} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.11.5](http://www.w3.org/TR/xsl/#space-before) | space-before { #fo-property-space-before} | Basic{.basic} | partial{.partial} | partial{.partial} | partial{.partial} | partial{.partial} | Space adjustment may not fully work everywhere, yet. |
 | [§7.11.6](http://www.w3.org/TR/xsl/#space-after) | space-after { #fo-property-space-after} | Basic{.basic} | partial{.partial} | partial{.partial} | partial{.partial} | partial{.partial} | Space adjustment may not fully work everywhere, yet. |
 | [§7.11.7](http://www.w3.org/TR/xsl/#start-indent) | start-indent { #fo-property-start-indent} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
@@ -218,7 +218,7 @@ The following is a summary of FOP's current support for the standard XSL-FO prop
 | [§7.12.3](http://www.w3.org/TR/xsl/#d0e21791) | margin-left { #fo-property-margin-left-inline} | Basic{.basic} | no{.no} | no{.no} | no{.no} | no{.no} |   |
 | [§7.12.4](http://www.w3.org/TR/xsl/#d0e21799) | margin-right { #fo-property-margin-right-inline} | Basic{.basic} | no{.no} | no{.no} | no{.no} | no{.no} |   |
 | [§7.12.5](http://www.w3.org/TR/xsl/#space-end) | space-end { #fo-property-space-end} | Basic{.basic} | no{.no} | no{.no} | no{.no} | no{.no} |   |
-| [§7.12.6](http://www.w3.org/TR/xsl/#space-start) | space-start { #fo-property-space-start} | Basic{.basic} | no{.no} | no{.no} | | no{.no} no{.no} |   |
+| [§7.12.6](http://www.w3.org/TR/xsl/#space-start) | space-start { #fo-property-space-start} | Basic{.basic} | no{.no} | no{.no} | no{.no} | no{.no} |   |
 | [§7.13](http://www.w3.org/TR/xsl/#common-relative-position-properties) {.category} | Common Relative Position Properties {.category} | { #fo-property-commonrelpos-section} |
 | [§7.13.1](http://www.w3.org/TR/xsl/#d0e21934) | top { #fo-property-top-relative} | Extended{.extended} | no{.no} | no{.no} | no{.no} | no{.no} |   |
 | [§7.13.2](http://www.w3.org/TR/xsl/#d0e21942) | right { #fo-property-right-relative} | Extended{.extended} | no{.no} | no{.no} | no{.no} | no{.no} |   |
@@ -251,11 +251,11 @@ The following is a summary of FOP's current support for the standard XSL-FO prop
 | [§7.16.1](http://www.w3.org/TR/xsl/#hyphenation-keep) | hyphenation-keep { #fo-property-hyphenation-keep} | Extended{.extended} | no{.no} | no{.no} | no{.no} | no{.no} |   |
 | [§7.16.2](http://www.w3.org/TR/xsl/#hyphenation-ladder-count) | hyphenation-ladder-count { #fo-property-hyphenation-ladder-count} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.16.3](http://www.w3.org/TR/xsl/#last-line-end-indent) | last-line-end-indent { #fo-property-last-line-end-indent} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
-| [§7.16.4](http://www.w3.org/TR/xsl/#line-height) | line-height { #fo-property-line-height} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} |   |
+| [§7.16.4](http://www.w3.org/TR/xsl/#line-height) | line-height { #fo-property-line-height} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.16.5](http://www.w3.org/TR/xsl/#line-height-shift-adjustment) | line-height-shift-adjustment { #fo-property-line-height-shift-adjustment} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.16.6](http://www.w3.org/TR/xsl/#line-stacking-strategy) | line-stacking-strategy { #fo-property-line-stacking-strategy} | Basic{.basic} | partial{.partial} | partial{.partial} | partial{.partial} | partial{.partial} | value "line-height" not supported |
 | [§7.16.7](http://www.w3.org/TR/xsl/#linefeed-treatment) | linefeed-treatment { #fo-property-linefeed-treatment} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
-| [§7.16.8](http://www.w3.org/TR/xsl/#white-space-treatment) | white-space-treatment { #fo-property-white-space-treatment} | Extended{.extended} | partial{.partial} | partial{.partial} | partial{.partial} | inline elements may interfere with correct handling of this property in some cases |
+| [§7.16.8](http://www.w3.org/TR/xsl/#white-space-treatment) | white-space-treatment { #fo-property-white-space-treatment} | Extended{.extended} | partial{.partial} | partial{.partial} | partial{.partial} | partial{.partial} | inline elements may interfere with correct handling of this property in some cases |
 | [§7.16.9](http://www.w3.org/TR/xsl/#text-align) | text-align { #fo-property-text-align} | Basic{.basic} | partial{.partial} | partial{.partial} | partial{.partial} | partial{.partial} | Only start, end, center and justify are supported |
 | [§7.16.10](http://www.w3.org/TR/xsl/#text-align-last) | text-align-last { #fo-property-text-align-last} | Extended{.extended} | partial{.partial} | partial{.partial} | partial{.partial} | partial{.partial} | Only start, end, center and justify are supported |
 | [§7.16.11](http://www.w3.org/TR/xsl/#text-indent) | text-indent { #fo-property-text-indent} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
@@ -307,7 +307,7 @@ The following is a summary of FOP's current support for the standard XSL-FO prop
 | [§7.23.6](http://www.w3.org/TR/xsl/#external-destination) | external-destination { #fo-property-external-destination} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.23.7](http://www.w3.org/TR/xsl/#indicate-destination) | indicate-destination { #fo-property-indicate-destination} | Extended{.extended} | no{.no} | no{.no} | no{.no} | no{.no} |   |
 | [§7.23.8](http://www.w3.org/TR/xsl/#internal-destination) | internal-destination { #fo-property-internal-destination} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
-| [§7.23.9](http://www.w3.org/TR/xsl/#show-destination) | show-destination { #fo-property-show-destination} | Extended{.extended} | partial{.partial} | partial{.partial} | partial{.partial} | [1.0 and later] only has effect in PDF output, for external PDF destinations (links pointing to destinations in <em>another</em> PDF), and only works reliably when the PDF is viewed in a standalone PDF viewer. <p>Adobe's browser plugin, for example, ignores the <code>/NewWindow</code> flag.</p> |
+| [§7.23.9](http://www.w3.org/TR/xsl/#show-destination) | show-destination { #fo-property-show-destination} | Extended{.extended} | partial{.partial} | partial{.partial} | partial{.partial} | partial{.partial} | [1.0 and later] only has effect in PDF output, for external PDF destinations (links pointing to destinations in <em>another</em> PDF), and only works reliably when the PDF is viewed in a standalone PDF viewer. <p>Adobe's browser plugin, for example, ignores the <code>/NewWindow</code> flag.</p> |
 | [§7.23.10](http://www.w3.org/TR/xsl/#starting-state) | starting-state { #fo-property-starting-state} | Extended{.extended} | partial{.partial} | partial{.partial} | partial{.partial} | partial{.partial} | support for starting-state on fo:bookmark |
 | [§7.23.11](http://www.w3.org/TR/xsl/#switch-to) | switch-to { #fo-property-switch-to} | Extended{.extended} | no{.no} | no{.no} | no{.no} | no{.no} |   |
 | [§7.23.12](http://www.w3.org/TR/xsl/#target-presentation-context) | target-presentation-context { #fo-property-target-presentation-context} | Extended{.extended} | no{.no} | no{.no} | no{.no} | no{.no} |   |
@@ -323,7 +323,7 @@ The following is a summary of FOP's current support for the standard XSL-FO prop
 | [§7.24.7](http://www.w3.org/TR/xsl/#ref-index-key) | ref-index-key { #fo-property-ref-index-key} | Extended{.extended} | no{.no} | no{.no} | no{.no} | no{.no} |   |
 | [§7.25](http://www.w3.org/TR/xsl/#d0e28896) {.category} | Properties for Markers {.category} | { #fo-property-markers-section} |
 | [§7.25.1](http://www.w3.org/TR/xsl/#marker-class-name) | marker-class-name { #fo-property-marker-class-name} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
-| [§7.25.2](http://www.w3.org/TR/xsl/#retrieve-boundary-within-table) | retrieve-boundary-within-table { #fo-property-retrieve-boundary-within-table} | Extended{.extended} | no{.no} | no{.no} | no{.no} |   |
+| [§7.25.2](http://www.w3.org/TR/xsl/#retrieve-boundary-within-table) | retrieve-boundary-within-table { #fo-property-retrieve-boundary-within-table} | Extended{.extended} | no{.no} | no{.no} | no{.no} | no{.no} |   |
 | [§7.25.3](http://www.w3.org/TR/xsl/#retrieve-class-name) | retrieve-class-name { #fo-property-retrieve-class-name} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.53.4](http://www.w3.org/TR/xsl/#retrieve-position) | retrieve-position { #fo-property-retrieve-position} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.25.5](http://www.w3.org/TR/xsl/#retrieve-boundary) | retrieve-boundary { #fo-property-retrieve-boundary} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
@@ -343,7 +343,7 @@ The following is a summary of FOP's current support for the standard XSL-FO prop
 | [§7.27.7](http://www.w3.org/TR/xsl/#initial-page-number) | initial-page-number { #fo-property-initial-page-number} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.27.8](http://www.w3.org/TR/xsl/#master-name) | master-name { #fo-property-master-name} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.27.9](http://www.w3.org/TR/xsl/#master-reference) | master-reference { #fo-property-master-reference} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
-| [§7.27.10](http://www.w3.org/TR/xsl/#maximum-repeats) | maximum-repeats { #fo-property-maximum-repeats} | Extended{.extended} | yes{.yes} | yes{.yes} | | yes{.yes} yes{.yes} |   |
+| [§7.27.10](http://www.w3.org/TR/xsl/#maximum-repeats) | maximum-repeats { #fo-property-maximum-repeats} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.27.11](http://www.w3.org/TR/xsl/#media-usage) | media-usage { #fo-property-media-usage} | Extended{.extended} | no{.no} | no{.no} | no{.no} | no{.no} |   |
 | [§7.27.12](http://www.w3.org/TR/xsl/#odd-or-even) | odd-or-even { #fo-property-odd-or-even} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.27.13](http://www.w3.org/TR/xsl/#page-height) | page-height { #fo-property-page-height} | Basic{.basic} | partial{.partial} | partial{.partial} | partial{.partial} | partial{.partial} | value "indefinite" not yet supported |
@@ -357,7 +357,7 @@ The following is a summary of FOP's current support for the standard XSL-FO prop
 | [§7.27.21](http://www.w3.org/TR/xsl/#region-name-reference) | region-name-reference { #fo-property-region-name-reference} | Extended{.extended} | no{.no} | no{.no} | no{.no} | no{.no} |   |
 | [§7.28](http://www.w3.org/TR/xsl/#d0e30798) {.category} | Table Properties {.category} | { #fo-property-table-section} |
 | [§7.28.1](http://www.w3.org/TR/xsl/#border-after-precedence) | border-after-precedence { #fo-property-border-after-precedence} | Basic{.basic} | no{.no} | no{.no} | no{.no} | no{.no} |   |
-| [§7.28.2](http://www.w3.org/TR/xsl/#border-before-precedence) | border-before-precedence { #fo-property-border-before-precedence} | Basic{.basic} | no{.no} | no{.no} | | no{.no} no{.no} |   |
+| [§7.28.2](http://www.w3.org/TR/xsl/#border-before-precedence) | border-before-precedence { #fo-property-border-before-precedence} | Basic{.basic} | no{.no} | no{.no} | no{.no} | no{.no} |   |
 | [§7.28.3](http://www.w3.org/TR/xsl/#border-collapse) | border-collapse { #fo-property-border-collapse} | Extended{.extended} | partial{.partial} | partial{.partial} | partial{.partial} | partial{.partial} | value "collapse-with-precedence" not yet supported |
 | [§7.28.4](http://www.w3.org/TR/xsl/#border-end-precedence) | border-end-precedence { #fo-property-border-end-precedence} | Basic{.basic} | no{.no} | no{.no} | no{.no} | no{.no} |   |
 | [§7.28.5](http://www.w3.org/TR/xsl/#border-separation) | border-separation { #fo-property-border-separation} | Extended{.extended} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
@@ -404,7 +404,7 @@ The following is a summary of FOP's current support for the standard XSL-FO prop
 | [§7.31](http://www.w3.org/TR/xsl/#d0e33965) {.category} | Shorthand Properties {.category} | { #fo-property-shorthand-section} |
 | [§7.31.1](http://www.w3.org/TR/xsl/#background) | background { #fo-property-background} | Complete{.complete} | no{.no} | no{.no} | no{.no} | no{.no} |   |
 | [§7.31.2](http://www.w3.org/TR/xsl/#background-position) | background-position { #fo-property-background-position} | Complete{.complete} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
-| [§7.31.3](http://www.w3.org/TR/xsl/#border) | border { #fo-property-border} | Complete{.complete} | yes{.yes} | yes{.yes} | yes{.yes} |   |
+| [§7.31.3](http://www.w3.org/TR/xsl/#border) | border { #fo-property-border} | Complete{.complete} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.31.4](http://www.w3.org/TR/xsl/#border-bottom) | border-bottom { #fo-property-border-bottom} | Complete{.complete} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.31.5](http://www.w3.org/TR/xsl/#border-color) | border-color { #fo-property-border-color} | Complete{.complete} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§7.31.6](http://www.w3.org/TR/xsl/#border-left) | border-left { #fo-property-border-left} | Complete{.complete} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
@@ -432,7 +432,7 @@ The following is a summary of FOP's current support for the standard XSL-FO prop
 The following is a summary of FOP's current support for the XSL-FO Core Function Library.
 
 | Citation | Function Name | XSL-FO Conformance Level | FOP 1.0 | FOP 1.1 | FOP 2.0 | FOP dev | Comments |
-|----|----|----|----|----|----|----|
+|----|----|----|----|----|----|----|----|
 | [§5.10.1](http://www.w3.org/TR/xsl/#d0e5860) {.category} | Number Functions {.category} | { #fo-function-number-section} |
 | [§5.10.1](http://www.w3.org/TR/xsl/#d0e5860) | floor { #fo-function-floor} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
 | [§5.10.1](http://www.w3.org/TR/xsl/#d0e5860) | ceiling { #fo-function-ceiling} | Basic{.basic} | yes{.yes} | yes{.yes} | yes{.yes} | yes{.yes} |   |
