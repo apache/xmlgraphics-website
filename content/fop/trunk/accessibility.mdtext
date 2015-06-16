@@ -182,6 +182,41 @@ Accessibility support in Apache FOP is relatively new, so there are certain limi
 
 - The side regions (region-before, region-after etc.) are currently not specially identified. Screen readers may read their content at page changes.
 
+## PDF/UA (ISO 14289)
+
+PDF/UA (PDF/Universal Accessibility), the standard for accessible PDF technology.
+
+## Usage (fo) { #fo}
+
+Define document title in fo:
+
+    :::xml
+    <fo:declarations>
+      <x:xmpmeta xmlns:x="adobe:ns:meta/">
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="" xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <dc:title>Document title</dc:title>
+            <dc:creator>Document author</dc:creator>
+            <dc:description>Document subject</dc:description>
+          </rdf:Description>
+        </rdf:RDF>
+      </x:xmpmeta>
+    </fo:declarations>
+
+## Usage (fop.xconf) { #fop-xconf}
+
+Enable PDF/UA-1 in fop.xconf:
+
+    :::xml
+    <fop version="1.0">
+      <accessibility>true</accessibility>
+      <renderers>
+        <renderer mime="application/pdf">
+          <pdf-ua-mode>PDF/UA-1</pdf-ua-mode>  
+        </renderer>
+      </renderers>
+    </fop>
+
 ## Related Links { #links}
 
 Many resources providing guidance about creating accessible documents can be found on the web. Here are a few links, along with additional resources around the topic:
