@@ -27,7 +27,7 @@ This page describes an extension for FOP’s page breaking algorithm that enable
 Here is an example of dynamic content with two variants:
 
     :::xml
-    <fo:multi-switch fox:auto-toggle="best-fit">
+    <fo:multi-switch fox:auto-toggle="select-first-fitting" xmlns:fox="http://xmlgraphics.apache.org/fop/extensions">
 		<fo:multi-case>
 		    <fo:block>First variant</fo:block>
 		</fo:multi-case>
