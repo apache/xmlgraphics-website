@@ -77,7 +77,7 @@ An example to enable PDF encryption in Java code:
     [..]
 
     FOUserAgent userAgent = fopFactory.newFOUserAgent();
-    useragent.getRendererOptions().put("encryption-params", new PDFEncryptionParams(
+    userAgent.getRendererOptions().put("encryption-params", new PDFEncryptionParams(
         null, "password", false, false, true, true, true));
     Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent);
     [..]
