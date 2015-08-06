@@ -349,7 +349,7 @@ This list is most likely badly incomplete.
 
 - Clipping of text and graphics is not supported.
 
-- Only IBM outline and raster fonts and to a limited extend the original fonts built into FOP are supported. Support for TrueType fonts may be added later.
+- TrueType, IBM outline, raster fonts and to a limited extend the original fonts built into FOP are supported.
 
 ### Deployment in older environments { #afp-compatibility}
 
@@ -367,8 +367,9 @@ The AFP Renderer requires special configuration particularly related to fonts. A
       ...
     </renderer>
 
-There are 4 font configuration variants supported:
+There are 5 font configuration variants supported:
 
+1. TrueType fonts
 
 1. IBM Raster fonts
 
@@ -377,6 +378,14 @@ There are 4 font configuration variants supported:
 1. IBM CID-keyed (Type 0) fonts
 
 1. FOP built-in Base14 fonts
+
+TrueType font configuration looks like:
+
+    :::xml
+    <font kerning="yes" embed-url="fonts/Uvb_____.TTF" name="Univers">
+        <font-triplet name="Univers" style="normal" weight="normal"/>
+        <font-triplet name="any" style="normal" weight="normal"/>
+    </font>
 
 A typical raster font configuration looks like:
 
