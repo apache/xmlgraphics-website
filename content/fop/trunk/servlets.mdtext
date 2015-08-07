@@ -150,10 +150,21 @@ Here are some example snippets:
     this.transFactory.setURIResolver(this.uriResolver);
 
     [..]
+    
+     ResourceResolver resolver = new ResourceResolver() {
+            public OutputStream getOutputStream(URI uri) throws IOException {
+                URL url = getServletContext().getResource(uri.toASCIIString());
+                return url.openConnection().getOutputStream();
+            }
 
+            public Resource getResource(URI uri) throws IOException {
+                return new Resource(getServletContext().getResourceAsStream(uri.toASCIIString()));
+            }
+        };
+    
     //Setting up the FOP factory
-    this.fopFactory = FopFactory.newInstance(new File(".").toURI());
-    this.fopFactory.setURIResolver(this.uriResolver);
+    FopFactoryBuilder builder = new FopFactoryBuilder(new File(".").toURI(), resolver);
+    fopFactory = builder.build();
 
     [..]
 
