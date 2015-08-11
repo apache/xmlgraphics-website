@@ -1,6 +1,57 @@
 Title: Upgrading from an Earlier Version of Apache&trade; FOP
 
+Title: Upgrading from an Earlier Version of Apache&trade; FOP
+
 #Upgrading from an Earlier Version of Apache&trade; FOP
+
+## Upgrading from Version 1.1
+
+When upgrading from 1.x or earlier version of fop there are some significant changes that the user must be aware of:
+
+FOUriResolver and FOPFactoryConfigurator classes have been removed
+
+In their place, the following classes have been added: 
+
+- InternalResourceResolver
+- ResourceResolverFactory  
+- FopConfParser  (parses the configuration file and returns a FOPFactoryBuilder instance) 
+- FOPFactoryBuilder (a builder class that can be used for setting Configuration) 
+
+Instead of manually editing the FOPFactory you can use the above classes: 
+
+    :::xml
+    File xconf = new File("fop.xconf"); 
+    FopConfParser parser = new FopConfParser(xconf); //parsing configuration  
+    FopFactoryBuilder builder = parser.getFopFactoryBuilder(); //building the factory with the user options
+    FOPFactory fopFactory = builder.build();
+    Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, foUserAgent, out);
+ 
+or equally reading from an xml file
+
+    :::xml
+    DefaultConfigurationBuilder cfgBuilder = new DefaultConfigurationBuilder();
+    Configuration cfg = cfgBuilder.buildFromFile(new File("mycfg.xml"));
+    fopFactoryBuilder = new FopFactoryBuilder(baseURI).setConfiguration(cfg);
+      
+The above can be used instead of fopFactory.setUserConfig(cfg) which is not available anymore. 
+
+Another important change is the way fops resolves URI.
+Class FOURIResolver has been replaced with InternalResourceResolver (holds a reference to both the ResourceResolver needed for resource acquisition and the base URI from which to resolve URI's).
+ResourceResolverFactory (a factory class for Resource resolver).
+
+Use of custom resource resolvers is now available through the use of FopFactoryBuilder.
+
+    :::xml
+    FopFactoryBuilder builder = new FopFactoryBuilder(new File(".").toURI(), resolver);
+
+resolver is an object of org.apache.xmlgraphics.io.ResourceResolver.
+
+Instead of fopFactory.setURIResolver(uriResolver);  where uriResolver is an object of URIResolver.
+
+More information on how to configure Apache FOP programmatically and customizing the User Agent can be found in [embedding](embedding.html)
+
+Moreover more information on providing org.apache.xmlgraphics.io.ResourceResolver for custom URI resolution can be found in [servlets](servlets.html)
+
 
 ## Upgrading from Version 1.0 { #fop-1.0}
 
