@@ -77,7 +77,7 @@ Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note t
         try {
             ByteArrayOutputStream fopout = new ByteArrayOutputStream();
             FileOutputStream outfile = new FileOutputStream(args[2]);
-            FopFactory fopFactory = FopFactory.newInstance();
+            FopFactory fopFactory = FopFactory.newInstance(new File(".").toURI());
             Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, fopout);
 
             Transformer transformer = TransformerFactory.newInstance().newTransformer(

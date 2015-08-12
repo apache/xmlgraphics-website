@@ -55,7 +55,7 @@ The second step is to reparse the file using the **AreaTreeParser** which is fou
 The basic pattern to parse the area tree XML format looks like this:
 
     :::java
-    FopFactory fopFactory = FopFactory.newInstance();
+    FopFactory fopFactory = FopFactory.newInstance(new File(".").toURI());
 
     // Setup output
     OutputStream out = new java.io.FileOutputStream(pdffile);
@@ -116,7 +116,7 @@ The second step is to reparse the file using the **IFParser** which is found in 
 The basic pattern to parse the intermediate format looks like this:
 
     :::java
-    FopFactory fopFactory = FopFactory.newInstance();
+    FopFactory fopFactory = FopFactory.newInstance(new File(".").toURI());
 
     // Setup output
     OutputStream out = new java.io.FileOutputStream(pdffile);

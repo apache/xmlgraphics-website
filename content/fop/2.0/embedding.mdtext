@@ -218,7 +218,7 @@ Finally, there are several options which can be set on the FopFactory itself inc
 The user agent is the entity that allows you to interact with a single rendering run, i.e. the processing of a single document. If you wish to customize the user agent's behaviour, the first step is to create your own instance of FOUserAgent using the appropriate factory method on FopFactory and pass that to the factory method that will create a new Fop instance:
 
     :::java
-    FopFactory fopFactory = FopFactory.newInstance(); // Reuse the FopFactory if possible!
+    FopFactory fopFactory = FopFactory.newInstance(new File(".").toURI()); // Reuse the FopFactory if possible!
     // do the following for each new rendering run
     FOUserAgent userAgent = fopFactory.newFOUserAgent();
     // customize userAgent
