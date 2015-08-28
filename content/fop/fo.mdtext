@@ -398,7 +398,10 @@ It is frequently desirable to draw lines in a document, as separators, side bars
 
 ### Validating XSL-FO { #fo-validate}
 
- [RenderX](http://www.renderx.com) has provided an [Unofficial DTD for FO Documents](http://www.renderx.com/Tests/validator/fo.dtd.html), which may be helpful in validating general FO issues.
+Here are a couple of methods for validating XSL-FO:
+
+  * [RenderX](http://www.renderx.com) has provided an [Unofficial DTD for FO Documents](http://www.renderx.com/Tests/validator/fo.dtd.html), which may be helpful in validating general FO issues.
+  * [AntennaHouse](http://www.antennahouse.com) has provided a tool called [focheck](https://github.com/AntennaHouse/focheck) for XSL-FO validation using RELAX NG and Schematron 
 
 FOP also maintains an [Unofficial FOP Schema](http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/src/foschema/fop.xsd?view=co) in the FOP Subversion Repository. This document can be used either to validate against the FO standard, or against the actual FOP implementation. See the notes near the beginning of the document for instructions on how to use it.
 
