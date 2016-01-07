@@ -1,0 +1,127 @@
+#History of Changes 2.1
+
+## Version 2.1 (xx xx 2016) { #version_2.1}
+
+See [Change list in Jira](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20resolution%20%3D%20Fixed%20AND%20fixVersion%20%3D%20trunk%20ORDER%20BY%20updated%20DESC%2C%20created%20DESC%2C%20priority%20DESC).
+ 
+ - FOP-2157: Deadlock in CompareUtil class; fixed typo spotted by Jens Schreiber
+
+ - FOP-2320: "insufficient data for an image" error: jai_imageio dependency regression
+
+ - FOP-2335: Content is missing after IPD change
+
+ - FOP-2356: default JAVA_HOME is not compatible with Oracle's JDK on Mac OS X
+
+ - FOP-2436: Merging of Tagged (Accessible) PDF
+
+ - FOP-2455: Fix unnecessary duplication of AFP resource objects as suggested by sdridi@iptech-group.com.
+
+ - FOP-2461: NullPointerException in ListItemLayoutManager since Temp_BasicSideFloat Merge
+
+ - FOP-2465: Fix links to/from 'last' page
+
+ - FOP-2473: SVG text using filters not shown
+
+ - FOP-2474: AFP Logical element tag incorrect character encoding
+
+ - FOP-2475: Tagged PDF footnote separator incorrect order
+
+ - FOP-2476: Tagged pdf: Tags are showing in the wrong order in the acrobat's pro order panel
+
+ - FOP-2482: Read out loud not working with 256 bit encryption and accessibility
+
+ - FOP-2485: Update xercesImpl to 2.9.1
+
+ - FOP-2486: Soft font support for TrueType fonts in PCL
+
+ - FOP-2487: replace cached pages if span condition doesn't match
+
+ - FOP-2488: Support PDF/UA
+
+ - FOP-2489: An SVG file using markers is not rendered by FOP 2.0
+
+ - FOP-2490: Embedded SVG 1.2 not supported by FOP 2.0; fix submitted by Hussein Shafie.
+
+ - FOP-2491: Adobe Reader error with OTF subset PDF
+
+ - FOP-2494: Unable to use Ubuntu Mono Font
+
+ - FOP-2498: Fix "last" page master usage with force-page-count=end-on-even/-odd
+
+ - FOP-2499: PDF/UA warnings for nested elements
+
+ - FOP-2504: Truetype support for AFP
+
+ - FOP-2505: SVG -> PDF throws java.lang.OutOfMemoryError: Java heap space
+
+ - FOP-2507: PDFVT and Page Piece exception using IF
+
+ - FOP-2508: TTF bullet missing when OTF used
+
+ - FOP-2509: Add support for PDF/A-3
+
+ - FOP-2510: Flow name infinite Loop
+
+ - FOP-2512: fix issue with transparent PNGs with indexed color model
+
+ - FOP-2530: fix performance regression in MultiByteFont.findGlyphIndex as suggested by dvineshkumar@gmail.com
+
+ - FOP-2537: Support CMYK JPEG in AFP
+
+ - FOP-2538: PDF to PDF OOM
+
+ - FOP-2543: Update avalon-framework to 4.3.1
+
+ - FOP-2546: ArrayIndexOutOfBoundsException merging fonts
+
+ - FOP-2547: Update Xalan to 2.7.2 for CVE-2014-0107
+
+ - FOP-2548: Support Barcode4J page number
+
+ - FOP-2552: TrueType in AFP adding extra slash to end of font uri
+
+ - FOP-2553: Support PDF shading to PS
+
+ - FOP-2560: PDF to PDF corrupt after reuse of FopFactory
+
+ - XGC-93: fix performancy penalty caused by excessive DeflaterOutputStream.write(byte) calls, thanks to Andre Klemann
+
+ - XGC-97: Add PreloaderRawPNG to handle images ImageIO cant
+
+ - XGC-98: UndeclaredThrowableException while loading images
+
+ - XGC-103: Include ps-setpagedevice when dsc-compliant is false 
+
+### Contributors to this release { #contributors_trunk}
+
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:
+
+- Adrian Cumiskey
+- Andreas Delmelle
+- Chris Bowditch
+- Clay Leeds
+- Glenn Adams
+- Luis Bernardo
+- Luca Furini
+- Mehdi Houshmand
+- Peter Hancock
+- Pascal Sancho
+- Robert Meyer
+- Simon Steiner
+- Vincent Hennebert
+
+This is a list of other contributors:
+
+- Alexey Neyman
+- Alexios Giotis
+- Athanasios Giannimaras
+- Gonzalo Vasquez
+- Jacopo Cappellato
+- Jeremias Maerki
+- Matthias Reischenbacher
+- Max Gilead
+- Morten Knudsen
+- Seifeddine Dridi
+- Stephen Moore
