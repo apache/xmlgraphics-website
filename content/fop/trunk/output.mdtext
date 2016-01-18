@@ -247,7 +247,7 @@ The output created by the PCLRenderer is generic PCL 5, HP GL/2 and PJL. This sh
 
 - Multibyte characters are not supported.
 
-- At the moment, only monochrome output is supported. PCL5c color extensions will only be implemented on demand. Color and grayscale images are converted to monochrome bitmaps (1-bit). Dithering only occurs if the JAI image library is available.
+- Monochrome output is the default, color needs to be enabled in config. PCL5c color extensions will only be implemented on demand. By default color and grayscale images are converted to monochrome bitmaps (1-bit). Dithering only occurs if the JAI image library is available.
 
 - Images are scaled up to the next resolution level supported by PCL (75, 100, 150, 200, 300, 600 dpi). For color and grayscale images an even higher PCL resolution is selected to give the dithering algorithm a chance to improve the bitmap quality.
 
@@ -262,6 +262,7 @@ The PCL renderer configuration currently allows the following settings:
       <rendering>quality</rendering>
       <text-rendering>bitmap</text-rendering>
       <disable-pjl>false</disable-pjl>
+      <images mode="color"/>
     </renderer>
 
 The default value for the "rendering" setting is "speed" which causes borders to be painted as plain rectangles. In this mode, no special borders (dotted, dashed etc.) are available. If you want support for all border modes, set the value to "quality" as indicated above. This will cause the borders to be painted as bitmaps.
@@ -269,6 +270,8 @@ The default value for the "rendering" setting is "speed" which causes borders to
 The default value for the "text-rendering" setting is "auto" which paints the base fonts using PCL fonts. Non-base fonts are painted as bitmaps through Java2D. If the mix of painting methods results in unwelcome output, you can set this to "bitmap" which causes all text to be rendered as bitmaps.
 
 The default value for the "disable-pjl" setting is "false". This means that the PCL renderer usually generates PJL commands before and after the document in order to switch a printer into PCL language. PJL commands can be disabled if you set this value to "true".
+
+The default value for "image" mode is monochrome output, use "mode" equals "color" to enable color output.
 
 You can control the output resolution for the PCL using the "target resolution" setting on the FOUserAgent. The actual value will be rounded up to the next supported PCL resolution. Currently, only 300 and 600 dpi are supported which should be enough for most use cases. Note that this setting directly affects the size of the output file and the print quality.
 
