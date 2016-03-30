@@ -70,6 +70,10 @@ This is an excerpt from the example configuration file coming with FOP:
 
       <!-- Use file name nl_Bel instead of the default nl_BE -->
       <hyphenation-pattern lang="nl" country="BE">nl_Bel</hyphenation-pattern>
+      <!-- or for xml file -->
+      <hyphenation-pattern lang="fr" type="xml">lang/fr.xml</hyphenation-pattern>
+      <!-- or for binary file -->
+      <hyphenation-pattern lang="fr" type="hyp">lang/fr.hyp</hyphenation-pattern>
 
       <!-- etc. etc..... -->
     </fop>
