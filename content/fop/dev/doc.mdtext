@@ -39,7 +39,7 @@ The following table summarizes the flow of data to the FOP website in chronologi
 
 | Process | Output | State | View(s) |
 |---------|--------|-------|---------|
-| Developer commits code to FOP repository. | FOP repository (SVN) | Raw XML and other content |  [in SVN](http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/src/documentation/content/xdocs/)  |
+| Developer commits code to FOP repository. | FOP repository (SVN) | Raw XML and other content |  [in SVN](http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop/src/documentation/content/xdocs/)  |
 | Developer builds and uploads documentation using ForrestBot. | /www/xmlgraphics.apache.org/fop on people.apache.org | sync-ready | n/a |
 | Cron job runs rsync to synchronize the website with the real web server (runs every few hours). | Infrastructure knows. :-) | web-ready |  [FOP Web Site](http://xmlgraphics.apache.org/fop)  |
 

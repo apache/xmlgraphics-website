@@ -156,7 +156,7 @@ This initial example is obviously not very useful. It would be faster to create 
 
 One of the most important use cases for this format is obviously modifying the intermediate format before finally rendering it to the target format. You can easily use XSLT to process the IF file according to your needs.
 
-There is an XML Schema (located under [src/documentation/intermediate-format-ng](http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/src/documentation/intermediate-format-ng/)) that helps you verify that your modified content is correct.
+There is an XML Schema (located under [src/documentation/intermediate-format-ng](http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop/src/documentation/intermediate-format-ng/)) that helps you verify that your modified content is correct.
 
 For certain output formats there's a caveat: Formats like AFP and PCL do not support arbitrary transformations on the IF's "viewport" and "g" elements. Possible are only rotations in 90 degree steps and translations.
 
