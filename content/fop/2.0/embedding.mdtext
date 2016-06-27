@@ -354,19 +354,19 @@ The directory "{fop-dir}/examples/embedding" contains several working examples.
 
 ### ExampleFO2PDF.java { #ExampleFO2PDF}
 
-This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/embedding/java/embedding/ExampleFO2PDF.java?view=markup) demonstrates the basic usage pattern to transform an XSL-FO file to PDF using FOP.
+This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/ExampleFO2PDF.java?view=markup) demonstrates the basic usage pattern to transform an XSL-FO file to PDF using FOP.
 
 ![Example XSL-FO to PDF](images/EmbeddingExampleFO2PDF.png)
 
 ### ExampleXML2FO.java { #ExampleXML2FO}
 
-This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/embedding/java/embedding/ExampleXML2FO.java?view=markup) has nothing to do with FOP. It is there to show you how an XML file can be converted to XSL-FO using XSLT. The JAXP API is used to do the transformation. Make sure you've got a JAXP-compliant XSLT processor in your classpath (ex. [Xalan](http://xml.apache.org/xalan-j)).
+This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/ExampleXML2FO.java?view=markup) has nothing to do with FOP. It is there to show you how an XML file can be converted to XSL-FO using XSLT. The JAXP API is used to do the transformation. Make sure you've got a JAXP-compliant XSLT processor in your classpath (ex. [Xalan](http://xml.apache.org/xalan-j)).
 
 ![Example XML to XSL-FO](images/EmbeddingExampleXML2FO.png)
 
 ### ExampleXML2PDF.java { #ExampleXML2PDF}
 
-This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/embedding/java/embedding/ExampleXML2PDF.java?view=markup) demonstrates how you can convert an arbitrary XML file to PDF using XSLT and XSL-FO/FOP. It is a combination of the first two examples above. The example uses JAXP to transform the XML file to XSL-FO and FOP to transform the XSL-FO to PDF.
+This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/ExampleXML2PDF.java?view=markup) demonstrates how you can convert an arbitrary XML file to PDF using XSLT and XSL-FO/FOP. It is a combination of the first two examples above. The example uses JAXP to transform the XML file to XSL-FO and FOP to transform the XSL-FO to PDF.
 
 ![Example XML to PDF (via XSL-FO)](images/EmbeddingExampleXML2PDF.png)
 
@@ -374,7 +374,7 @@ The output (XSL-FO) from the XSL transformation is piped through to FOP using SA
 
 ### ExampleObj2XML.java { #ExampleObj2XML}
 
-This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/embedding/java/embedding/ExampleObj2XML.java?view=markup) is a preparatory example for the next one. It's an example that shows how an arbitrary Java object can be converted to XML. It's an often needed task to do this. Often people create a DOM tree from a Java object and use that. This is pretty straightforward. The example here, however, shows how to do this using SAX, which will probably be faster and not even more complicated once you know how this works.
+This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/ExampleObj2XML.java?view=markup) is a preparatory example for the next one. It's an example that shows how an arbitrary Java object can be converted to XML. It's an often needed task to do this. Often people create a DOM tree from a Java object and use that. This is pretty straightforward. The example here, however, shows how to do this using SAX, which will probably be faster and not even more complicated once you know how this works.
 
 ![Example Java object to XML](images/EmbeddingExampleObj2XML.png)
 
@@ -386,17 +386,17 @@ Have a look at the source of ExampleObj2XML.java to find out how this is used. F
 
 ### ExampleObj2PDF.java { #ExampleObj2PDF}
 
-This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/embedding/java/embedding/ExampleObj2PDF.java?view=markup) combines the previous and the third to demonstrate how you can transform a Java object to a PDF directly in one smooth run by generating SAX events from the Java object that get fed to an XSL transformation. The result of the transformation is then converted to PDF using FOP as before.
+This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/ExampleObj2PDF.java?view=markup) combines the previous and the third to demonstrate how you can transform a Java object to a PDF directly in one smooth run by generating SAX events from the Java object that get fed to an XSL transformation. The result of the transformation is then converted to PDF using FOP as before.
 
 ![Example Java object to PDF (via XML and XSL-FO)](images/EmbeddingExampleObj2PDF.png)
 
 ### ExampleDOM2PDF.java { #ExampleDOM2PDF}
 
-This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/embedding/java/embedding/ExampleDOM2PDF.java?view=markup) has FOP use a DOMSource instead of a StreamSource in order to use a DOM tree as input for an XSL transformation.
+This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/ExampleDOM2PDF.java?view=markup) has FOP use a DOMSource instead of a StreamSource in order to use a DOM tree as input for an XSL transformation.
 
 ### ExampleSVG2PDF.java (PDF Transcoder example) { #ExampleSVG2PDF}
 
-This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/examples/embedding/java/embedding/ExampleSVG2PDF.java?view=markup) shows the usage of the PDF Transcoder, a sub-application within FOP. It is used to generate a PDF document from an SVG file.
+This [example](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/ExampleSVG2PDF.java?view=markup) shows the usage of the PDF Transcoder, a sub-application within FOP. It is used to generate a PDF document from an SVG file.
 
 ### ExampleConcat.java (IF Concatenation example) { #ExampleConcat}
 
