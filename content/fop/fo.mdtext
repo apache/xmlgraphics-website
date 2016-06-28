@@ -334,7 +334,7 @@ The FOP library provides a method to get the total page count after an FO docume
 
     class rendtest {
 
-        private static FopFactory fopFactory = FopFactory.newInstance();
+        private static FopFactory fopFactory = FopFactory.newInstance(new File(".").toURI());
         private static TransformerFactory tFactory = TransformerFactory.newInstance();
 
         public static void main(String args[]) {
