@@ -113,6 +113,8 @@ You must tell FOP how to find and use the font files by registering them in the 
 
 - The "embed-as-type1" attribute is optional, setting to "true" converts OTF fonts to Type 1 for postscript output.
 
+- The "simulate-style" attribute is optional, setting to "true" generates bold and italic looking glyphs for PDF output.
+
 - When setting the "embed-url" attribute for Type 1 fonts, be sure to specify the PFB (actual font data), not the PFM (font metrics) file. If the PFM (or AFM) file is in a different location (i.e., not in the same directory) then you need to specify an "embed-url-pfm" (or "embed-url-afm") attribute next to the "embed-url" one.
 
 - The attribute "encoding-mode" is optional an may have the following values:
