@@ -53,6 +53,14 @@ When working with renderers that supports system fonts (see above table) and you
 
 ## Custom Fonts { #custom}
 
+| Renderer   | TTF | TTC | Type1 | OTF | AFP Fonts |
+|------------|-----|-----|-------|-----|-----------|
+| PDF        | yes | yes | yes | yes | no |
+| Postscript | yes | yes | yes | yes | no |
+| AFP | yes | no | no | no | yes |
+| PCL | yes | no | no | no | no |
+| TIFF | yes | no | no | no | no |
+
 Support for custom fonts is highly output format dependent (see above table). This section shows how to add Type 1, TrueType (TTF) and OpenType (OTF) fonts to the PDF, PostScript and Java2D-based renderers. Other renderers (like AFP) support other font formats. Details in this case can be found on the page about [output formats](output.html).
 
 In earlier FOP versions, it was always necessary to create an XML font metrics file if you wanted to add a custom font. This inconvenient step has been removed and in addition to that, FOP supports auto-registration of fonts, i.e. FOP can find fonts installed in your operating system or can scan user-specified directories for fonts. Font registration via XML font metrics has been deprecated and is not recommended although it is still supported by the current code.
