@@ -58,8 +58,8 @@ When working with renderers that supports system fonts (see above table) and you
 | PDF        | yes | yes | yes | yes | no |
 | Postscript | yes | yes | yes | yes | no |
 | AFP | yes | no | no | no | yes |
-| PCL | yes | no | no | no | no |
-| TIFF | yes | no | no | no | no |
+| PCL | yes | yes | bitmap | bitmap | no |
+| TIFF | bitmap | bitmap | bitmap | bitmap | no |
 
 Support for custom fonts is highly output format dependent (see above table). This section shows how to add Type 1, TrueType (TTF) and OpenType (OTF) fonts to the PDF, PostScript and Java2D-based renderers. Other renderers (like AFP) support other font formats. Details in this case can be found on the page about [output formats](output.html).
 
