@@ -9,7 +9,7 @@ This page discusses topic all around using Apache&trade; FOP in a servlet enviro
 
 ## Example Servlets in the FOP distribution { #example-servlets}
 
-In the directory {fop-dir}/src/java/org/apache/fop/servlet, you'll find a working example of a FOP-enabled servlet.
+In the directory {fop-dir}/fop-core/src/main/java/org/apache/fop/servlet, you'll find a working example of a FOP-enabled servlet.
 
 The servlet is automatically built when you build Apache FOP using the supplied Ant script. After building the servlet, drop fop.war into the webapps directory of Apache Tomcat (or any other web container). Then, you can use URLs like the following to generate PDF files:
 
@@ -20,7 +20,7 @@ The servlet is automatically built when you build Apache FOP using the supplied 
 
 
 
-The source code for the servlet can be found under {fop-dir}/src/java/org/apache/fop/servlet/FopServlet.java.
+The source code for the servlet can be found under {fop-dir}/fop-core/src/main/java/org/apache/fop/servlet/FopServlet.java.
 
 <note>This example servlet should not be used on a public web server connected to the Internet as it does not contain any measures to prevent Denial-of-Service-Attacks. It is provided as an example and as a starting point for your own servlet.</note>
 
