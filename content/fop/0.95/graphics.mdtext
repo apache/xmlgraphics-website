@@ -126,7 +126,7 @@ PNG images are supported through an Image&nbsp;I/O codec. Transparency is suppor
 #### Introduction { #svg-intro}
 
 FOP uses [Apache Batik](#batik) for SVG support. This format can be handled as an `fo:instream-foreign-object` or in a separate file referenced with `fo:external-graphic`.
-Batik's SVG Rasterizer utility may also be used to convert standalone SVG documents into PDF. For more information please see the [SVG Rasterizer documentation](http://xmlgraphics.apache.org/batik/svgrasterizer.html) on the Batik site.
+Batik's SVG Rasterizer utility may also be used to convert standalone SVG documents into PDF. For more information please see the [SVG Rasterizer documentation](http://xmlgraphics.apache.org/batik/tools/rasterizer.html) on the Batik site.
 #### Placing SVG Graphics into PDF { #svg-pdf-graphics}
 
 The SVG is rendered into PDF by using PDF commands to draw and fill lines and curves. This means that the graphical objects created with this remain as vector graphics. The same applies to PostScript output. For other output formats the SVG graphic may be converted to a bitmap image.
