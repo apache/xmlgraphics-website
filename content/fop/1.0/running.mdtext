@@ -52,7 +52,7 @@ Some Mac OSX users have experienced filename truncation problems using Stuffit t
 
 ### Using the fop script or batch file { #fop-script}
 
-The usual and recommended practice for starting FOP from the command line is to run the batch file fop.bat (Windows) or the shell script fop (Unix/Linux). These scripts require that the environment variable JAVA_HOME be set to a path pointing to the appropriate Java installation on your system. Macintosh OSX includes a Java environment as part of its distribution. We are told by Mac OSX users that the path to use in this case is `/Library/Java/Home`. **Caveat:** We suspect that, as Apple releases new Java environments and as FOP upgrades the minimum Java requirements, the two will inevitably not match on some systems. Please see [Java on Mac OSX FAQ](http://developer.apple.com/java/faq) for information as it becomes available.
+The usual and recommended practice for starting FOP from the command line is to run the batch file fop.bat (Windows) or the shell script fop (Unix/Linux). These scripts require that the environment variable JAVA_HOME be set to a path pointing to the appropriate Java installation on your system. Macintosh OSX includes a Java environment as part of its distribution. We are told by Mac OSX users that the path to use in this case is `/Library/Java/Home`. **Caveat:** We suspect that, as Apple releases new Java environments and as FOP upgrades the minimum Java requirements, the two will inevitably not match on some systems. Please see [Java on Mac OSX FAQ](https://java.com/en/download/faq/java_mac.xml) for information as it becomes available.
 
     USAGE
     Fop [options] [-fo|-xml] infile [-xsl file] [-awt|-pdf|-mif|-rtf|-tiff|-png|-pcl|-ps|-txt|-at [mime]|-print] <outfile>
@@ -186,7 +186,7 @@ FOP can consume quite a bit of memory, even though this has been continually imp
 If you are running out of memory when using FOP, here are some ideas that may help:
 
 
-- Increase memory available to the JVM. See [the -Xmx option](http://java.sun.com/j2se/1.4/docs/tooldocs/solaris/java.html) for more information.<warning>It is usually unwise to increase the memory allocated to the JVM beyond the amount of physical RAM, as this will generally cause significantly slower performance.</warning>
+- Increase memory available to the JVM. See [the -Xmx option](http://docs.oracle.com/javase/1.5.0/docs/tooldocs/solaris/java.html) for more information.<warning>It is usually unwise to increase the memory allocated to the JVM beyond the amount of physical RAM, as this will generally cause significantly slower performance.</warning>
 
 - Avoid forward references. Forward references are references to some later part of a document. Examples include page number citations which refer to pages which follow the citation, tables of contents at the beginning of a document, and page numbering schemes that include the total number of pages in the document (["page N of TOTAL"](../faq.html#pagenum)). Forward references cause all subsequent pages to be held in memory until the reference can be resolved, i.e. until the page with the referenced element is encountered. Forward references may be required by the task, but if you are getting a memory overflow, at least consider the possibility of eliminating them. A table of contents could be replaced by PDF bookmarks instead or moved to the end of the document (reshuffle the paper could after printing).
 

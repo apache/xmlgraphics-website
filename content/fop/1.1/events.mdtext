@@ -180,7 +180,7 @@ To produce the same event as in the first example above, you'd use the following
 
 ### The event model { #event-model}
 
-Inside an invocation handler for a dynamic proxy, there's no information about the names of each parameter. The JVM doesn't provide it. The only thing you know is the interface and method name. In order to properly fill the `Event` 's parameter map we need to know the parameter names. These are retrieved from an event object model. This is found in the `org.apache.fop.events.model` package. The data for the object model is retrieved from an XML representation of the event model that is loaded as a resource. The XML representation is generated using an Ant task at build time (`ant resourcegen`). The Ant task (found in `src/codegen/java/org/apache/fop/tools/EventProducerCollectorTask.java`) scans FOP's sources for descendants of the `EventProducer` interface and uses [QDox](http://qdox.codehaus.org/) to parse these interfaces.
+Inside an invocation handler for a dynamic proxy, there's no information about the names of each parameter. The JVM doesn't provide it. The only thing you know is the interface and method name. In order to properly fill the `Event` 's parameter map we need to know the parameter names. These are retrieved from an event object model. This is found in the `org.apache.fop.events.model` package. The data for the object model is retrieved from an XML representation of the event model that is loaded as a resource. The XML representation is generated using an Ant task at build time (`ant resourcegen`). The Ant task (found in `src/codegen/java/org/apache/fop/tools/EventProducerCollectorTask.java`) scans FOP's sources for descendants of the `EventProducer` interface and uses [QDox](https://github.com/codehaus/qdox) to parse these interfaces.
 
 The event model XML files are generated during build by the Ant task mentioned above when running the "resourcegen" task. So just run `"ant resourcegen"` if you receive a `MissingResourceException` at runtime indicating that `"event-model.xml"` is missing.
 
@@ -214,7 +214,7 @@ The event subsystem is extensible. There are a number of extension points:
 
 -  **`org.apache.fop.events.EventExceptionManager$ExceptionFactory`:** Creates exceptions for events, i.e. turns an event into a specific exception.
 
-The names in bold above are used as filenames for the service provider files that are placed in the `META-INF/services` directory. That way, they are automatically detected. This is a mechanism defined by the [JAR file specification](http://java.sun.com/j2se/1.4.2/docs/guide/jar/jar.html#Service%20Provider).
+The names in bold above are used as filenames for the service provider files that are placed in the `META-INF/services` directory. That way, they are automatically detected. This is a mechanism defined by the [JAR file specification](http://docs.oracle.com/javase/1.5.0/docs/guide/jar/jar.html#Service%20Provider).
 
 ### Localization (L10n) { #l10n}
 

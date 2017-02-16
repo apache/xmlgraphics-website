@@ -113,7 +113,7 @@ Alternatively, you can set each value separately in the Map provided by FOUserAg
 
 ## Environment { #Environment}
 
-In order to use PDF encryption, FOP has to be compiled with cryptography support. Currently, only [JCE](http://java.sun.com/j2se/1.4/docs/guide/security/jce/JCERefGuide.html) is supported. JCE is part of JDK 1.4. For earlier JDKs, it can be installed separately. The build process automatically detects JCE presence and installs PDF encryption support if possible, otherwise a stub is compiled in.
+In order to use PDF encryption, FOP has to be compiled with cryptography support. Currently, only [JCE](https://docs.oracle.com/javase/1.5.0/docs/guide/security/jce/JCERefGuide.html) is supported. JCE is part of JDK 1.4. For earlier JDKs, it can be installed separately. The build process automatically detects JCE presence and installs PDF encryption support if possible, otherwise a stub is compiled in.
 
 Cryptography support must also be present at run time. In particular, a provider for the RC4 cipher is needed. Unfortunately, the sample JCE provider in Sun's JDK 1.4 does **not** provide RC4. If you get a message saying
 "Cannot find any provider supporting RC4"
@@ -133,6 +133,6 @@ The pure Java implementation from [Bouncy Castle](http://www.bouncycastle.org/) 
 
     `security.provider.6=org.bouncycastle.jce.provider.BouncyCastleProvider`,
 
-    preferably at the end of the block defining the other crypto providers. For JDK 1.4 this is detailed on [Sun's web site](http://java.sun.com/j2se/1.4/docs/guide/security/jce/JCERefGuide.html#InstallProvider).
+    preferably at the end of the block defining the other crypto providers. For JDK 1.4 this is detailed on [Sun's web site](https://docs.oracle.com/javase/1.5.0/docs/guide/security/jce/JCERefGuide.html#InstallProvider).
 
 If you have any experience with Mozilla JSS or any other cryptography provider, please post it to the fop-user list.

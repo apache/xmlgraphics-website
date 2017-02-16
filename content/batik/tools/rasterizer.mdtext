@@ -228,7 +228,7 @@ The following table lists the attributes that may be specified on the `rasterize
 | destdir | Name of an output directory. Use this with the `srcdir` attribute or `fileset` elements. The task generates the names of the output images by changing the suffix of the input file names to correspond the result image type. A suffix is added if the input file doesn’t have one. Output directories are created if they don’t exist. | Required if `srcdir` attribute or `fileset` elements are used. |
 | classname | Class name of the XML parser used to parse SVG images. The value can be either the complete classname with package information included or the special name `jaxp`, which means any available parser in the `CLASSPATH` that supports JAXP. See the Batik code for the default value. | No |
 
-You can use `fileset` elements to select input files and directories. See the [Ant](http://ant.apache.org/) documentation to learn how to use [filesets](http://ant.apache.org/manual/CoreTypes/fileset.html).
+You can use `fileset` elements to select input files and directories. See the [Ant](http://ant.apache.org/) documentation to learn how to use [filesets](https://ant.apache.org/manual/Types/fileset.html).
 
 ### Examples of using the rasterizer task { #taskExamples}
 

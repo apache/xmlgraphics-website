@@ -422,7 +422,7 @@ This phenomenon is not a bug in FOP, but rather in the dependent packages: Apach
 
 Bug description: In a namespace-enabled Level 3 DOM, an attribute in the default namespace must be set with `"null"` as the value for the namespace URI. SAX, on the other side, uses an empty string ("") to designate the default namespace. Many packages appear to not properly handle this difference in which case they still use the empty string as the namespace URI parameter for `org.w3c.dom.Element.setAttributeNS()`.
 
-Work-around: Use the latest version of Apache Xalan-J. Note that starting with JDK 1.4 it's not enough to replace Xalan-J on the normal application classpath and you need to override the Xalan-J version bundled with the Sun JVM using the [Endorsed Standards Override Mechanism](http://java.sun.com/j2se/1.4.2/docs/guide/standards/), i.e. you must place Xalan-J in the `"lib/endorsed"` directory of your JRE.
+Work-around: Use the latest version of Apache Xalan-J. Note that starting with JDK 1.4 it's not enough to replace Xalan-J on the normal application classpath and you need to override the Xalan-J version bundled with the Sun JVM using the [Endorsed Standards Override Mechanism](https://docs.oracle.com/javase/6/docs/technotes/guides/standards/), i.e. you must place Xalan-J in the `"lib/endorsed"` directory of your JRE.
 
 ## 6. PDF specific (includes Acrobat peculiarities)  { #part-pdf}
 

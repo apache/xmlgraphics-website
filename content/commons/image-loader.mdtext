@@ -122,7 +122,7 @@ In [Apache FOP](http://xmlgraphics.apache.org/fop/), each renderer supports a di
 # Tips & Tricks { #tipsntricks}
 
 If you are loading bitmap images and you get an error like `"Cannot load image (no suitable loader/converter combination available) for
-        myimage.tif (image/tiff)`, you maybe be missing the necessary ImageIO codec to decode the image. A number of well-written codecs can be found in [JAI Image I/O Tools Project](https://jai-imageio.dev.java.net/). Just download the distribution and add the JAR to the classpath. ImageIO will automatically pick up the new codecs and they will subsequently be available to the image framework.
+        myimage.tif (image/tiff)`, you maybe be missing the necessary ImageIO codec to decode the image. A number of well-written codecs can be found in [JAI Image I/O Tools Project](https://github.com/jai-imageio/jai-imageio-core/releases). Just download the distribution and add the JAR to the classpath. ImageIO will automatically pick up the new codecs and they will subsequently be available to the image framework.
 
 ## Service Provider Interface (SPI, Plug-ins) { #spi}
 
