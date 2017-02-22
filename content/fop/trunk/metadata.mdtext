@@ -108,6 +108,31 @@ A pdf:info element can be added as a child of fo:declarations and contain the cu
     </fo:declarations>
 
 
+There is a specific element for each possible entry type: pdf:array, pdf:boolean, pdf:name, pdf:number, pdf:string.
+For example:
+
+    :::xml
+    <fo:declarations>
+      <pdf:layer id="Contents">
+        <pdf:string key="Name">Contents</pdf:string>
+      </pdf:layer>
+      <pdf:layer id="Connections">
+        <pdf:string key="Name">Connections</pdf:string>
+      </pdf:layer>
+      <pdf:catalog>
+        <pdf:dictionary key="OCProperties">
+          <pdf:array key="OCGs">
+            <pdf:reference refid="Contents"/>
+            <pdf:reference refid="Connections"/>
+          </pdf:array>
+          <pdf:dictionary key="D">
+            <pdf:string key="Name">Default</pdf:string>
+            <pdf:name key="BaseState">OFF</pdf:name>
+          </pdf:dictionary>
+        </pdf:dictionary>
+      </pdf:catalog>
+    </fo:declarations>
+
 #PDF Page Piece
 
 Allows indexing of PDF files for tools such as IBM Content Manager OnDemand
