@@ -48,14 +48,36 @@ If you input many pdfs together the output pdf has duplicate fonts. Set this fla
 - Transparency, layers and opacity may not render correctly
 - Gradients in text may be different from the source PDF
 
-## Download { #download}
+## Binary Download { #binary}
 
-Snapshot development source and binary packages are available [here](https://dist.apache.org/repos/dist/dev/xmlgraphics/). If using
-the binary package, the four jar files should be placed in the *lib* directory of your FOP installation.
+If using the binary package, the four jar files should be placed in the *lib* directory of your FOP installation.
 
-The current source can also be retrieved from the [svn repository](http://svn.apache.org/repos/asf/xmlgraphics/fop-pdf-images/).
+Binary distributions include "-bin" in their names, and can be downloaded from a [FOP-PDF-Images Distribution mirror](http://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images).
+
+## Source Download { #source}
+
+- Download a released version from a [FOP-PDF-Images Distribution mirror](http://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images). Source distributions include "-src" in their names.
+
+### Latest Stable Release
+
+**Repository URL:** [http://svn.apache.org/repos/asf/xmlgraphics/fop-pdf-images/tags/fop-pdf-images-2_2/](http://svn.apache.org/repos/asf/xmlgraphics/fop-pdf-images/tags/fop-pdf-images-2_2/)
+
+**Web view:** [http://svn.apache.org/viewvc/xmlgraphics/fop-pdf-images/tags/fop-pdf-images-2_2/](http://svn.apache.org/viewvc/xmlgraphics/fop-pdf-images/tags/fop-pdf-images-2_2/)
 
 ## Older Releases { #older_releases}
 
 The fop-pdf-images plug-in was donated by Jeremias M&auml;rki to the XMLGraphics project in 2012. Older releases can
 be obtained from his plug-in [page](http://www.jeremias-maerki.ch/development/fop/index.html).
+
+#History of Changes
+
+## Version 2.2 { #version_2.2}
+
+- Move to PDFBox 2
+- Deduplicate PDF streams
+- PDF to PS deduplication of images
+- Remove xobj type=form
+- Merge fonts (off by default)
+- Support PDF shading to PS
+- Merging of Tagged (Accessible) PDF
+
