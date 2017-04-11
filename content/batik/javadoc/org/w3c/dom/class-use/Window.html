@@ -12,13 +12,18 @@ Uses of Interface org.w3c.dom.Window (Apache Batik Javadoc)
 <SCRIPT type="text/javascript">
 function windowTitle()
 {
-    parent.document.title="Uses of Interface org.w3c.dom.Window (Apache Batik Javadoc)";
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="Uses of Interface org.w3c.dom.Window (Apache Batik Javadoc)";
+    }
 }
 </SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
 
 </HEAD>
 
 <BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
 
 
 <!-- ========= START OF TOP NAVBAR ======= -->
@@ -26,7 +31,7 @@ function windowTitle()
 <A HREF="#skip-navbar_top" title="Skip navigation links"></A>
 <TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
 <TR>
-<TD COLSPAN=3 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
 <A NAME="navbar_top_firstrow"><!-- --></A>
 <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
   <TR ALIGN="center" VALIGN="top">
@@ -51,7 +56,7 @@ function windowTitle()
 &nbsp;PREV&nbsp;
 &nbsp;NEXT</FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-  <A HREF="../../../../index.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+  <A HREF="../../../../index.html?org/w3c/dom//class-useWindow.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="Window.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
 &nbsp;<SCRIPT type="text/javascript">
   <!--
@@ -63,6 +68,7 @@ function windowTitle()
 <NOSCRIPT>
   <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
 </NOSCRIPT>
+
 
 </FONT></TD>
 </TR>
@@ -78,8 +84,8 @@ function windowTitle()
 
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
-<TD COLSPAN=2><FONT SIZE="+2">
-Packages that use <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A></FONT></TD>
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+Packages that use <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A></FONT></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD><A HREF="#org.apache.batik.bridge"><B>org.apache.batik.bridge</B></A></TD>
@@ -91,11 +97,6 @@ Packages that use <A HREF="../../../../org/w3c/dom/Window.html" title="interface
 <TD>&nbsp;&nbsp;</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><A HREF="#org.apache.batik.script"><B>org.apache.batik.script</B></A></TD>
-<TD>Provides an API for interpreting scripting language found in
-    SVG files.&nbsp;</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
 <TD><A HREF="#org.w3c.dom"><B>org.w3c.dom</B></A></TD>
 <TD>&nbsp;&nbsp;</TD>
 </TR>
@@ -105,8 +106,8 @@ Packages that use <A HREF="../../../../org/w3c/dom/Window.html" title="interface
 <A NAME="org.apache.batik.bridge"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
-<TD COLSPAN=2><FONT SIZE="+2">
-Uses of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A> in <A HREF="../../../../org/apache/batik/bridge/package-summary.html">org.apache.batik.bridge</A></FONT></TD>
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+Uses of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A> in <A HREF="../../../../org/apache/batik/bridge/package-summary.html">org.apache.batik.bridge</A></FONT></TH>
 </TR>
 </TABLE>
 &nbsp;
@@ -114,7 +115,24 @@ Uses of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3
 
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#CCCCFF" CLASS="TableSubHeadingColor">
-<TD COLSPAN=2>Classes in <A HREF="../../../../org/apache/batik/bridge/package-summary.html">org.apache.batik.bridge</A> that implement <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A></FONT></TD>
+<TH ALIGN="left" COLSPAN="2">Subinterfaces of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A> in <A HREF="../../../../org/apache/batik/bridge/package-summary.html">org.apache.batik.bridge</A></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;interface</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/batik/bridge/Window.html" title="interface in org.apache.batik.bridge">Window</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This interface represents the 'window' object defined in the global
+ environment of a SVG document.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left" COLSPAN="2">Classes in <A HREF="../../../../org/apache/batik/bridge/package-summary.html">org.apache.batik.bridge</A> that implement <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A></FONT></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -138,15 +156,7 @@ Uses of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3
 
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#CCCCFF" CLASS="TableSubHeadingColor">
-<TD COLSPAN=2>Methods in <A HREF="../../../../org/apache/batik/bridge/package-summary.html">org.apache.batik.bridge</A> that return <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A></FONT></TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A></CODE></FONT></TD>
-<TD><CODE><B>ScriptingEnvironment.Window.</B><B><A HREF="../../../../org/apache/batik/bridge/ScriptingEnvironment.Window.html#getParent()">getParent</A></B>()</CODE>
-
-<BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a Window object representing the parent of this Window.</TD>
+<TH ALIGN="left" COLSPAN="2">Methods in <A HREF="../../../../org/apache/batik/bridge/package-summary.html">org.apache.batik.bridge</A> that return <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A></FONT></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -156,14 +166,22 @@ Uses of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the parent Window object.</TD>
 </TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A></CODE></FONT></TD>
+<TD><CODE><B>ScriptingEnvironment.Window.</B><B><A HREF="../../../../org/apache/batik/bridge/ScriptingEnvironment.Window.html#getParent()">getParent</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a Window object representing the parent of this Window.</TD>
+</TR>
 </TABLE>
 &nbsp;
 <P>
 <A NAME="org.apache.batik.bridge.svg12"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
-<TD COLSPAN=2><FONT SIZE="+2">
-Uses of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A> in <A HREF="../../../../org/apache/batik/bridge/svg12/package-summary.html">org.apache.batik.bridge.svg12</A></FONT></TD>
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+Uses of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A> in <A HREF="../../../../org/apache/batik/bridge/svg12/package-summary.html">org.apache.batik.bridge.svg12</A></FONT></TH>
 </TR>
 </TABLE>
 &nbsp;
@@ -171,7 +189,7 @@ Uses of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3
 
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#CCCCFF" CLASS="TableSubHeadingColor">
-<TD COLSPAN=2>Classes in <A HREF="../../../../org/apache/batik/bridge/svg12/package-summary.html">org.apache.batik.bridge.svg12</A> that implement <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A></FONT></TD>
+<TH ALIGN="left" COLSPAN="2">Classes in <A HREF="../../../../org/apache/batik/bridge/svg12/package-summary.html">org.apache.batik.bridge.svg12</A> that implement <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A></FONT></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -184,37 +202,11 @@ Uses of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3
 </TABLE>
 &nbsp;
 <P>
-<A NAME="org.apache.batik.script"><!-- --></A>
-<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
-<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
-<TD COLSPAN=2><FONT SIZE="+2">
-Uses of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A> in <A HREF="../../../../org/apache/batik/script/package-summary.html">org.apache.batik.script</A></FONT></TD>
-</TR>
-</TABLE>
-&nbsp;
-<P>
-
-<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
-<TR BGCOLOR="#CCCCFF" CLASS="TableSubHeadingColor">
-<TD COLSPAN=2>Subinterfaces of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A> in <A HREF="../../../../org/apache/batik/script/package-summary.html">org.apache.batik.script</A></FONT></TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;interface</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../org/apache/batik/script/Window.html" title="interface in org.apache.batik.script">Window</A></B></CODE>
-
-<BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This interface represents the 'window' object defined in the global
- environment of a SVG document.</TD>
-</TR>
-</TABLE>
-&nbsp;
-<P>
 <A NAME="org.w3c.dom"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
-<TD COLSPAN=2><FONT SIZE="+2">
-Uses of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A> in <A HREF="../../../../org/w3c/dom/package-summary.html">org.w3c.dom</A></FONT></TD>
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+Uses of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A> in <A HREF="../../../../org/w3c/dom/package-summary.html">org.w3c.dom</A></FONT></TH>
 </TR>
 </TABLE>
 &nbsp;
@@ -222,7 +214,7 @@ Uses of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3
 
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#CCCCFF" CLASS="TableSubHeadingColor">
-<TD COLSPAN=2>Methods in <A HREF="../../../../org/w3c/dom/package-summary.html">org.w3c.dom</A> that return <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A></FONT></TD>
+<TH ALIGN="left" COLSPAN="2">Methods in <A HREF="../../../../org/w3c/dom/package-summary.html">org.w3c.dom</A> that return <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3c.dom">Window</A></FONT></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -243,7 +235,7 @@ Uses of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3
 <A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
 <TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
 <TR>
-<TD COLSPAN=3 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
 <A NAME="navbar_bottom_firstrow"><!-- --></A>
 <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
   <TR ALIGN="center" VALIGN="top">
@@ -268,7 +260,7 @@ Uses of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3
 &nbsp;PREV&nbsp;
 &nbsp;NEXT</FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-  <A HREF="../../../../index.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+  <A HREF="../../../../index.html?org/w3c/dom//class-useWindow.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="Window.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
 &nbsp;<SCRIPT type="text/javascript">
   <!--
@@ -281,6 +273,7 @@ Uses of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3
   <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
 </NOSCRIPT>
 
+
 </FONT></TD>
 </TR>
 </TABLE>
@@ -288,6 +281,6 @@ Uses of <A HREF="../../../../org/w3c/dom/Window.html" title="interface in org.w3
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
 
 <HR>
-Copyright © 2009 <a href='http://www.apache.org/'>Apache Software Foundation</a>. All Rights Reserved.
+Copyright © 2017 <a href='http://www.apache.org/'>Apache Software Foundation</a>. All Rights Reserved.
 </BODY>
 </HTML>

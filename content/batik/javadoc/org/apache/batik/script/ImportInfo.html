@@ -6,20 +6,24 @@
 ImportInfo (Apache Batik Javadoc)
 </TITLE>
 
-<META NAME="keywords" CONTENT="org.apache.batik.script.ImportInfo class">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../stylesheet.css" TITLE="Style">
 
 <SCRIPT type="text/javascript">
 function windowTitle()
 {
-    parent.document.title="ImportInfo (Apache Batik Javadoc)";
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="ImportInfo (Apache Batik Javadoc)";
+    }
 }
 </SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
 
 </HEAD>
 
 <BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
 
 
 <!-- ========= START OF TOP NAVBAR ======= -->
@@ -27,7 +31,7 @@ function windowTitle()
 <A HREF="#skip-navbar_top" title="Skip navigation links"></A>
 <TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
 <TR>
-<TD COLSPAN=3 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
 <A NAME="navbar_top_firstrow"><!-- --></A>
 <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
   <TR ALIGN="center" VALIGN="top">
@@ -50,9 +54,9 @@ function windowTitle()
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;PREV CLASS&nbsp;
-&nbsp;<A HREF="../../../../org/apache/batik/script/InterpreterPool.html" title="class in org.apache.batik.script"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../org/apache/batik/script/Interpreter.html" title="interface in org.apache.batik.script"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-  <A HREF="../../../../index.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+  <A HREF="../../../../index.html?org/apache/batik/script/ImportInfo.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="ImportInfo.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
 &nbsp;<SCRIPT type="text/javascript">
   <!--
@@ -64,6 +68,7 @@ function windowTitle()
 <NOSCRIPT>
   <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
 </NOSCRIPT>
+
 
 </FONT></TD>
 </TR>
@@ -85,12 +90,13 @@ org.apache.batik.script</FONT>
 <BR>
 Class ImportInfo</H2>
 <PRE>
-<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/Object.html" title="class or interface in java.lang">java.lang.Object</A>
-  <IMG SRC="../../../../resources/inherit.gif" ALT="extended by"><B>org.apache.batik.script.ImportInfo</B>
+<A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</A>
+  <IMG SRC="../../../../resources/inherit.gif" ALT="extended by "><B>org.apache.batik.script.ImportInfo</B>
 </PRE>
 <HR>
 <DL>
-<DT>public class <B>ImportInfo</B><DT>extends <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/Object.html" title="class or interface in java.lang">Object</A></DL>
+<DT><PRE>public class <B>ImportInfo</B><DT>extends <A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></DL>
+</PRE>
 
 <P>
 This class represents a list of Java classes/packages to import
@@ -114,20 +120,17 @@ This class represents a list of Java classes/packages to import
 <HR>
 
 <P>
-<!-- ======== NESTED CLASS SUMMARY ======== -->
-
-
 <!-- =========== FIELD SUMMARY =========== -->
 
 <A NAME="field_summary"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
-<TD COLSPAN=2><FONT SIZE="+2">
-<B>Field Summary</B></FONT></TD>
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Field Summary</B></FONT></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>protected &nbsp;<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/util/Set.html" title="class or interface in java.util">Set</A></CODE></FONT></TD>
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../org/apache/batik/script/ImportInfo.html#classes">classes</A></B></CODE>
 
 <BR>
@@ -135,7 +138,7 @@ This class represents a list of Java classes/packages to import
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>protected &nbsp;<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/util/Set.html" title="class or interface in java.util">Set</A></CODE></FONT></TD>
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../org/apache/batik/script/ImportInfo.html#packages">packages</A></B></CODE>
 
 <BR>
@@ -148,8 +151,8 @@ This class represents a list of Java classes/packages to import
 <A NAME="constructor_summary"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
-<TD COLSPAN=2><FONT SIZE="+2">
-<B>Constructor Summary</B></FONT></TD>
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Constructor Summary</B></FONT></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD><CODE><B><A HREF="../../../../org/apache/batik/script/ImportInfo.html#ImportInfo()">ImportInfo</A></B>()</CODE>
@@ -164,13 +167,13 @@ This class represents a list of Java classes/packages to import
 <A NAME="method_summary"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
-<TD COLSPAN=2><FONT SIZE="+2">
-<B>Method Summary</B></FONT></TD>
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Method Summary</B></FONT></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../org/apache/batik/script/ImportInfo.html#addClass(java.lang.String)">addClass</A></B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;cls)</CODE>
+<TD><CODE><B><A HREF="../../../../org/apache/batik/script/ImportInfo.html#addClass(java.lang.String)">addClass</A></B>(<A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;cls)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add a class to the set of classes to import (must be
@@ -179,7 +182,7 @@ This class represents a list of Java classes/packages to import
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../org/apache/batik/script/ImportInfo.html#addImports(java.net.URL)">addImports</A></B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/net/URL.html" title="class or interface in java.net">URL</A>&nbsp;src)</CODE>
+<TD><CODE><B><A HREF="../../../../org/apache/batik/script/ImportInfo.html#addImports(java.net.URL)">addImports</A></B>(<A HREF="http://docs.oracle.com/javase/6/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</A>&nbsp;src)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add imports read from a URL to this ImportInfo instance.</TD>
@@ -187,7 +190,7 @@ This class represents a list of Java classes/packages to import
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../org/apache/batik/script/ImportInfo.html#addPackage(java.lang.String)">addPackage</A></B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;pkg)</CODE>
+<TD><CODE><B><A HREF="../../../../org/apache/batik/script/ImportInfo.html#addPackage(java.lang.String)">addPackage</A></B>(<A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;pkg)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add a package to the set of packages to import (must be
@@ -195,7 +198,7 @@ This class represents a list of Java classes/packages to import
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/util/Iterator.html" title="class or interface in java.util">Iterator</A></CODE></FONT></TD>
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/6/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../org/apache/batik/script/ImportInfo.html#getClasses()">getClasses</A></B>()</CODE>
 
 <BR>
@@ -211,7 +214,7 @@ This class represents a list of Java classes/packages to import
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/util/Iterator.html" title="class or interface in java.util">Iterator</A></CODE></FONT></TD>
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/6/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../org/apache/batik/script/ImportInfo.html#getPackages()">getPackages</A></B>()</CODE>
 
 <BR>
@@ -220,7 +223,7 @@ This class represents a list of Java classes/packages to import
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;boolean</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../org/apache/batik/script/ImportInfo.html#removeClass(java.lang.String)">removeClass</A></B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;cls)</CODE>
+<TD><CODE><B><A HREF="../../../../org/apache/batik/script/ImportInfo.html#removeClass(java.lang.String)">removeClass</A></B>(<A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;cls)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remove a class from the set of classes to import (must be
@@ -229,7 +232,7 @@ This class represents a list of Java classes/packages to import
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;boolean</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../org/apache/batik/script/ImportInfo.html#removePackage(java.lang.String)">removePackage</A></B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;pkg)</CODE>
+<TD><CODE><B><A HREF="../../../../org/apache/batik/script/ImportInfo.html#removePackage(java.lang.String)">removePackage</A></B>(<A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;pkg)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remove a package from the set of packages to import (must be
@@ -239,10 +242,10 @@ This class represents a list of Java classes/packages to import
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
-<TD><B>Methods inherited from class java.lang.<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/Object.html" title="class or interface in java.lang">Object</A></B></TD>
+<TH ALIGN="left"><B>Methods inherited from class java.lang.<A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></B></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><CODE><A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/Object.html#clone()" title="class or interface in java.lang">clone</A>, <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/Object.html#equals(java.lang.Object)" title="class or interface in java.lang">equals</A>, <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/Object.html#finalize()" title="class or interface in java.lang">finalize</A>, <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/Object.html#getClass()" title="class or interface in java.lang">getClass</A>, <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/Object.html#hashCode()" title="class or interface in java.lang">hashCode</A>, <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/Object.html#notify()" title="class or interface in java.lang">notify</A>, <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/Object.html#notifyAll()" title="class or interface in java.lang">notifyAll</A>, <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/Object.html#toString()" title="class or interface in java.lang">toString</A>, <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/Object.html#wait()" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/Object.html#wait(long)" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/Object.html#wait(long, int)" title="class or interface in java.lang">wait</A></CODE></TD>
+<TD><CODE><A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</A>, <A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</A>, <A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</A>, <A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</A>, <A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</A>, <A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</A>, <A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</A>, <A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</A>, <A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</A>, <A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</A>, <A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</A></CODE></TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -253,15 +256,15 @@ This class represents a list of Java classes/packages to import
 <A NAME="field_detail"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
-<TD COLSPAN=1><FONT SIZE="+2">
-<B>Field Detail</B></FONT></TD>
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Field Detail</B></FONT></TH>
 </TR>
 </TABLE>
 
 <A NAME="classes"><!-- --></A><H3>
 classes</H3>
 <PRE>
-protected <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/util/Set.html" title="class or interface in java.util">Set</A> <B>classes</B></PRE>
+protected <A HREF="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</A> <B>classes</B></PRE>
 <DL>
 <DL>
 </DL>
@@ -271,7 +274,7 @@ protected <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/util/Set.html" tit
 <A NAME="packages"><!-- --></A><H3>
 packages</H3>
 <PRE>
-protected <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/util/Set.html" title="class or interface in java.util">Set</A> <B>packages</B></PRE>
+protected <A HREF="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</A> <B>packages</B></PRE>
 <DL>
 <DL>
 </DL>
@@ -282,8 +285,8 @@ protected <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/util/Set.html" tit
 <A NAME="constructor_detail"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
-<TD COLSPAN=1><FONT SIZE="+2">
-<B>Constructor Detail</B></FONT></TD>
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Constructor Detail</B></FONT></TH>
 </TR>
 </TABLE>
 
@@ -301,8 +304,8 @@ public <B>ImportInfo</B>()</PRE>
 <A NAME="method_detail"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
-<TD COLSPAN=1><FONT SIZE="+2">
-<B>Method Detail</B></FONT></TD>
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Method Detail</B></FONT></TH>
 </TR>
 </TABLE>
 
@@ -325,7 +328,7 @@ public static <A HREF="../../../../org/apache/batik/script/ImportInfo.html" titl
 <A NAME="getClasses()"><!-- --></A><H3>
 getClasses</H3>
 <PRE>
-public <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/util/Iterator.html" title="class or interface in java.util">Iterator</A> <B>getClasses</B>()</PRE>
+public <A HREF="http://docs.oracle.com/javase/6/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</A> <B>getClasses</B>()</PRE>
 <DL>
 <DD>Return an unmodifiable iterator over the list of classes
 <P>
@@ -338,7 +341,7 @@ public <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/util/Iterator.html" t
 <A NAME="getPackages()"><!-- --></A><H3>
 getPackages</H3>
 <PRE>
-public <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/util/Iterator.html" title="class or interface in java.util">Iterator</A> <B>getPackages</B>()</PRE>
+public <A HREF="http://docs.oracle.com/javase/6/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</A> <B>getPackages</B>()</PRE>
 <DL>
 <DD>Return an unmodifiable iterator over the list of packages
 <P>
@@ -351,7 +354,7 @@ public <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/util/Iterator.html" t
 <A NAME="addClass(java.lang.String)"><!-- --></A><H3>
 addClass</H3>
 <PRE>
-public void <B>addClass</B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;cls)</PRE>
+public void <B>addClass</B>(<A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;cls)</PRE>
 <DL>
 <DD>Add a class to the set of classes to import (must be
  a fully qualified classname - "java.lang.System").
@@ -365,7 +368,7 @@ public void <B>addClass</B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/
 <A NAME="addPackage(java.lang.String)"><!-- --></A><H3>
 addPackage</H3>
 <PRE>
-public void <B>addPackage</B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;pkg)</PRE>
+public void <B>addPackage</B>(<A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;pkg)</PRE>
 <DL>
 <DD>Add a package to the set of packages to import (must be
  a fully qualified package - "java.lang").
@@ -379,7 +382,7 @@ public void <B>addPackage</B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/jav
 <A NAME="removeClass(java.lang.String)"><!-- --></A><H3>
 removeClass</H3>
 <PRE>
-public boolean <B>removeClass</B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;cls)</PRE>
+public boolean <B>removeClass</B>(<A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;cls)</PRE>
 <DL>
 <DD>Remove a class from the set of classes to import (must be
  a fully qualified classname - "java.lang.System").
@@ -394,7 +397,7 @@ public boolean <B>removeClass</B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api
 <A NAME="removePackage(java.lang.String)"><!-- --></A><H3>
 removePackage</H3>
 <PRE>
-public boolean <B>removePackage</B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html" title="class or interface in java.lang">String</A>&nbsp;pkg)</PRE>
+public boolean <B>removePackage</B>(<A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;pkg)</PRE>
 <DL>
 <DD>Remove a package from the set of packages to import (must be
  a fully qualified package - "java.lang").
@@ -409,8 +412,8 @@ public boolean <B>removePackage</B>(<A HREF="http://java.sun.com/j2se/1.4/docs/a
 <A NAME="addImports(java.net.URL)"><!-- --></A><H3>
 addImports</H3>
 <PRE>
-public void <B>addImports</B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/java/net/URL.html" title="class or interface in java.net">URL</A>&nbsp;src)
-                throws <A HREF="http://java.sun.com/j2se/1.4/docs/api/java/io/IOException.html" title="class or interface in java.io">IOException</A></PRE>
+public void <B>addImports</B>(<A HREF="http://docs.oracle.com/javase/6/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</A>&nbsp;src)
+                throws <A HREF="http://docs.oracle.com/javase/6/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</A></PRE>
 <DL>
 <DD>Add imports read from a URL to this ImportInfo instance.
  See the class documentation for the expected format of the file.
@@ -418,7 +421,7 @@ public void <B>addImports</B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/jav
 <DD><DL>
 
 <DT><B>Throws:</B>
-<DD><CODE><A HREF="http://java.sun.com/j2se/1.4/docs/api/java/io/IOException.html" title="class or interface in java.io">IOException</A></CODE></DL>
+<DD><CODE><A HREF="http://docs.oracle.com/javase/6/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</A></CODE></DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -430,7 +433,7 @@ public void <B>addImports</B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/jav
 <A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
 <TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
 <TR>
-<TD COLSPAN=3 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
 <A NAME="navbar_bottom_firstrow"><!-- --></A>
 <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
   <TR ALIGN="center" VALIGN="top">
@@ -453,9 +456,9 @@ public void <B>addImports</B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/jav
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;PREV CLASS&nbsp;
-&nbsp;<A HREF="../../../../org/apache/batik/script/InterpreterPool.html" title="class in org.apache.batik.script"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../org/apache/batik/script/Interpreter.html" title="interface in org.apache.batik.script"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-  <A HREF="../../../../index.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+  <A HREF="../../../../index.html?org/apache/batik/script/ImportInfo.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="ImportInfo.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
 &nbsp;<SCRIPT type="text/javascript">
   <!--
@@ -467,6 +470,7 @@ public void <B>addImports</B>(<A HREF="http://java.sun.com/j2se/1.4/docs/api/jav
 <NOSCRIPT>
   <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
 </NOSCRIPT>
+
 
 </FONT></TD>
 </TR>
@@ -481,6 +485,6 @@ DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
 
 <HR>
-Copyright © 2009 <a href='http://www.apache.org/'>Apache Software Foundation</a>. All Rights Reserved.
+Copyright © 2017 <a href='http://www.apache.org/'>Apache Software Foundation</a>. All Rights Reserved.
 </BODY>
 </HTML>
