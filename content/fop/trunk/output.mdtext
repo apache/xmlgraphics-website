@@ -201,6 +201,7 @@ The PostScript renderer configuration currently allows the following settings:
       <safe-set-page-device>false</safe-set-page-device>
       <dsc-compliant>true</dsc-compliant>
       <rendering>quality</rendering>
+      <acrobat-downsample>true</acrobat-downsample>
     </renderer>
 
 The default value for the "auto-rotate-landscape" setting is "false". Setting it to "true" will automatically rotate landscape pages and will mark them as landscape.
@@ -214,6 +215,8 @@ The default value for the "safe-set-page-device" setting is "false". Setting it 
 The default value for the "dsc-compliant" setting is "true". Setting it to "false" will break DSC compliance by minimizing the number of setpagedevice calls in the postscript document output. This feature may be useful when unwanted blank pages are experienced in your postscript output. This problem is caused by the particular postscript implementation issuing unwanted postscript subsystem initgraphics/erasepage calls on each setpagedevice call.
 
 The default value for the "rendering" setting is "quality". Setting it to "size" optimizes rendering for smaller file sizes which can involve minor compromises in rendering quality. For example, solid borders are then painted as plain rectangles instead of the elaborate painting instructions required for mixed-color borders.
+
+The default value for the "acrobat-downsample" setting is "false". Setting it to "true" can involve minor compromises in rendering quality to allow compatibility with Adobe Acrobat.
 
 ### Limitations { #ps-limitations}
 
