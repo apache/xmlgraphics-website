@@ -32,7 +32,7 @@ All `batik` package references are short for `org.apache.batik`.
 
 It is essential that you verify the integrity of the downloaded files using the PGP or SHA512 signatures.
 
-The PGP signatures can be verified using PGP or GPG. First download the [KEYS](http://www.apache.org/dist/xmlgraphics/batik/KEYS) as well as the `asc` signature file for the particular distribution you choose. Make sure you get these files from the [main distribution directory](http://www.apache.org/dist/xmlgraphics/batik/), rather than from a mirror. Then verify the signatures using:
+The PGP signatures can be verified using PGP or GPG. First download the [KEYS](https://www.apache.org/dist/xmlgraphics/batik/KEYS) as well as the `asc` signature file for the particular distribution you choose. Make sure you get these files from the [main distribution directory](https://www.apache.org/dist/xmlgraphics/batik/), rather than from a mirror. Then verify the signatures using:
 
 `pgpk -a KEYS pgpv batik-[bin|src]-1.10.zip.asc`
 
@@ -48,6 +48,6 @@ The PGP signatures can be verified using PGP or GPG. First download the [KEYS](h
 
 `gpg --import KEYS gpg --verify batik-[bin|src]-1.10.zip.asc`
 
-Alternatively, you can verify the SHA512 signature on the files. For steps see [here](http://www.apache.org/info/verification.html).
+Alternatively, you can verify the SHA512 signature on the files. For steps see [here](https://www.apache.org/info/verification.html).
 
 We recommend using PGP signatures as they can provide a much higher level of assurance compared with SHA512.
