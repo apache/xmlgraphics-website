@@ -34,19 +34,19 @@ It is essential that you verify the integrity of the downloaded files using the 
 
 The PGP signatures can be verified using PGP or GPG. First download the [KEYS](https://www.apache.org/dist/xmlgraphics/batik/KEYS) as well as the `asc` signature file for the particular distribution you choose. Make sure you get these files from the [main distribution directory](https://www.apache.org/dist/xmlgraphics/batik/), rather than from a mirror. Then verify the signatures using:
 
-`pgpk -a KEYS pgpv batik-[bin|src]-1.10.zip.asc`
+`pgpk -a KEYS pgpv batik-[bin|src]-1.11.zip.asc`
 
 *or*
 
-`pgp -ka KEYS pgp batik-[bin|src]-1.10.zip.asc`
+`pgp -ka KEYS pgp batik-[bin|src]-1.11.zip.asc`
 
 *or*
 
-`gpg --import KEYS pgp batik-[bin|src]-1.10.zip.asc`
+`gpg --import KEYS pgp batik-[bin|src]-1.11.zip.asc`
 
 *or*
 
-`gpg --import KEYS gpg --verify batik-[bin|src]-1.10.zip.asc`
+`gpg --import KEYS gpg --verify batik-[bin|src]-1.11.zip.asc`
 
 Alternatively, you can verify the SHA512 signature on the files. For steps see [here](https://www.apache.org/info/verification.html).
 
