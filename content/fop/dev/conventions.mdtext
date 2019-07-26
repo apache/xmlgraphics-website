@@ -41,7 +41,7 @@ For developers that dislike these conventions, one workaround is to develop usin
 
 The java syntax checker " [Checkstyle](http://checkstyle.sourceforge.net) " is used to enforce many of the FOP coding standards. The standards enforced through Checkstyle are documented in its configuration file (xml-fop/checkstyle.cfg). The conventions defined in the configuration file are an integral part of FOP's coding conventions, and should not be changed without common consent. In other words, the configuration file contains additional conventions that are not documented on this page, but are generally accepted as good style within the java community (i.e. they are the default behavior of checkstyle, which the FOP developers have decided to adopt *de facto*). Any apparent contradiction between the configuration file and this document should be raised on the fop-dev mailing list so that it can be clarified.
 
-To use the "checkstyle" target in FOP's build process, download the source from the [Checkstyle web site](http://checkstyle.sourceforge.net), place checkstyle-all-*.jar in the lib directory and call "mvn checkstyle:check" (Maven) or "build checkstyle" (Ant). Output (in the build directory) includes checkstyle_report.txt and checkstyle_report.xml. If you copy the file contrib/checkstyle-noframes.xsl from Checkstyle into FOP's root directory, you will also get an HTML report.
+To use the "checkstyle" target in FOP's build process, call "mvn checkstyle:check". If there are checkstyle errors, the build will fail and the error messages will be logged to the console.
 
 Checkstyle is probably most useful when integrated into your IDE. See the Checkstyle web site for more information about IDE plugins.
 
