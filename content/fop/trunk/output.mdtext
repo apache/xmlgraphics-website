@@ -631,6 +631,12 @@ It is possible to override these defaults, either per image (see the [afp:resour
 
 "goca" refers to GOCA graphics and "bitmap" refers to IOCA images. The possible values for the attributes are "inline" and "print-file". In the future, additional possibilities may be added.
 
+To be compatible with Workbench viewer or other legacy tools and also move resources to the resource group, you can use the following settings. GOCA resources will be wrapped with a page segment.
+
+    :::xml
+    <default-resource-levels goca="print-file" bitmap="print-file"/>       
+    <goca pseg="true"/> 
+
 ### Extensions { #afp-extensions}
 
 The AFP Renderer supports some AFP specific extensions which can be embedded into the input fo document. To use the extensions the appropriate namespace must be declared in the fo:root element like this:
