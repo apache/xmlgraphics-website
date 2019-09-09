@@ -40,6 +40,17 @@ If you input many pdfs together the output pdf has duplicate fonts. Set this fla
       <merge-fonts>true</merge-fonts>
     </renderer>
 
+## Improve performance
+
+If you use many of the same pdf's and they have a large content stream, this flag can improve performance.
+The disadvantage will be it can cause higher memory use inside your printer.
+Set this flag in fop.xconf:
+
+    :::xml
+    <renderer mime="application/pdf">      
+      <form-xobject>true</form-xobject>
+    </renderer>
+
 ## Known issues with Postscript output
 
 - If fonts are not embedded in source PDF:
