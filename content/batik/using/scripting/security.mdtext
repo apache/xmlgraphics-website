@@ -30,7 +30,7 @@ The Squiggle browser lets the user decide whether or not scripts should be run s
 
 - The policy defined as described above is enforced unless the `java.security.policy` system property is defined. In that case, the policy defined by the system property takes precedence and the policy file generated from the Squiggle preferences is ignored.
 
- **Important note:** The default policy files assume that the applications use the Xerces parser and give appropriate permissions to its `lib/xerces-2_5_0.jar` jar file. If you are using a different XML parser, you need to modify the policy files to grant the propser permissions to your XML parser instead of Xerces. You will have to replace:
+ **Important note:** The default policy files assume that the applications use the Xerces parser and give appropriate permissions to its `lib/xerces-2_5_0.jar` jar file. If you are using a different XML parser, you need to modify the policy files to grant the proper permissions to your XML parser instead of Xerces. You will have to replace:
 
     grant codeBase "${app.dev.base}/lib/xerces_2_5_0.jar" {
       permission java.security.AllPermission;

@@ -14,7 +14,7 @@ This document describes the Batik test infrastructure whose goals are to:
 
 The intent for the test infrastructure is that it grows along with Batik and keeps monitoring the health of the code base.
 
-While the test suites in the infrastructure will be run every day by build/test machines, they are also intended to help the commiters and developers get confident that their code modifications did not introduce regressions.
+While the test suites in the infrastructure will be run every day by build/test machines, they are also intended to help the committers and developers get confident that their code modifications did not introduce regressions.
 
 ## The test infrastructure { #infrastructure}
 
@@ -219,7 +219,7 @@ will run all the tests with an ID containing `unitTesting.ts` (i.e., all the tes
 
 ### Rendering accuracy tests { #Rendering-accuracy-tests}
 
-There is a `Test` implementation, [SVGRenderingAccuracyTest](../javadoc/org/apache/batik/test/SVGRenderingAccuracyTest.html), which checks that Batik’s rendering of an SVG document stays accurate. It compares reference images with the rendering Batik produces and reports any discrepency.
+There is a `Test` implementation, [SVGRenderingAccuracyTest](../javadoc/org/apache/batik/test/SVGRenderingAccuracyTest.html), which checks that Batik’s rendering of an SVG document stays accurate. It compares reference images with the rendering Batik produces and reports any discrepancy.
 
 An `SVGRenderingAccuracyTest` ’s constructor configuration is made of:
 
@@ -293,7 +293,7 @@ Imagine that you add a cool new test case to the `samples` directory, such as `l
                 value="test-references/samples/tests/variation-candidate/linkingViewBox.png"/>
     </test>
 
-to the `test-resources/org/apache/batik/test/samplesRendering.xml` test suite description, the description of the regard test suite. If you have access to the build machine where the reference images are typically generated, you can check 0n the reference image in `test-references/samples/tests`. Otherwise (and this is OK), you can let the test fail the first time it is run on the build/test machine and that will be a reminder for whoever is responsible for that machine that a valid reference image should be checked in.
+to the `test-resources/org/apache/batik/test/samplesRendering.xml` test suite description, the description of the regard test suite. If you have access to the build machine where the reference images are typically generated, you can check on the reference image in `test-references/samples/tests`. Otherwise (and this is OK), you can let the test fail the first time it is run on the build/test machine and that will be a reminder for whoever is responsible for that machine that a valid reference image should be checked in.
 
 ### Writing a new test { #Writing-a-new-test}
 
