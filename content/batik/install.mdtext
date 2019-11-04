@@ -9,7 +9,7 @@ Batik requires a Java 7 or above compatible runtime environment.
 
 ## Optional components { #optionalComponents}
 
-By default, the Batik source distribution comes with the [Mozilla Rhino](http://www.mozilla.org/rhino/) JavaScript Engine (`js.jar`).
+By default, the Batik source distribution comes with the [Mozilla Rhino](http://www.mozilla.org/rhino/) JavaScript Engine (`rhino*.jar`).
 
 To enable other scripting languages support, you will only need to install the correct jar files in `lib` directory of Batik and recompile your distribution.
 
@@ -18,7 +18,7 @@ To enable other scripting languages support, you will only need to install the c
 
 - For Tcl, you need to download Jacl & TclBlend distribution at [http://dev.scriptics.com/software/java/](http://dev.scriptics.com/software/java/). Then you put the `jacl.jar` and `tcljava.jar` files in the Batik `lib` directory.
 
-Conversely, you can remove the `js.jar` of the Batik `lib` directory to remove JavaScript support and have a smaller distribution.
+Conversely, you can remove the `rhino*.jar` of the Batik `lib` directory to remove JavaScript support and have a smaller distribution.
 
 ## Jar file dependency graph { #dependencyGraph}
 
