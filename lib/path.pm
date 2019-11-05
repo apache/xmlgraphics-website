@@ -1,9 +1,9 @@
 package path;
 
 my %variables = (
-    fop_current_version => "2.3",
-    fop_current_version_release_date => "24 May 2018",
-    fop_minimal_java_requirement => "1.6",
+    fop_current_version => "2.4",
+    fop_current_version_release_date => "5 Nov 2019",
+    fop_minimal_java_requirement => "1.7",
 );
 
 
