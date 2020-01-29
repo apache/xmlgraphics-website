@@ -47,6 +47,13 @@ Apache FOP cannot automatically generate accessible PDFs. Some of the work can o
 
 - Specify the natural language of the document using the language and country properties (or via the `xml:lang` shorthand property).
 
+## Hide empty tags { #hideemptytags}
+
+To remove empty fo:blocks from the structure tree, you can set the keep-empty-tags to false.
+
+    :::xml
+    <accessibility keep-empty-tags="false">true</accessibility>
+
 ## Customized Tagging { #customTags}
 
 The [PDF Reference](#PDFReference) defines a set of standard Structure Types to tag content. For example, ‘P’ is used for identifying paragraphs, ‘H1’ to ‘H6’ for headers, ‘L’ for lists, ‘Div’ for block-level groups of elements, etc. This standard set is aimed at improving interoperability between applications producing or consuming PDF.
