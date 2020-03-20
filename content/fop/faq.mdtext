@@ -339,7 +339,7 @@ Explicitly enable hyphenation for an appropriate XSL-FO element (`fo:block`, `fo
 
 ### 3.14. When I use margins, my content in a nested table or block-containers gets indented twice. Is this a bug? { #indent-inheritance}
 
-No, although you might easily think so. The problem has to do with property inheritance of the start-indent and end-indent properties to which the margin properties are mapped. Apache FOP strictly adheres to the XSL-FO specification here which many other commercial FO implementations don't do to better meet end-user expectations. You can make FOP behave like these if you set `setBreakIndentInheritanceOnReferenceAreaBoundary(true)` on the FOUserAgent. The better way is to reset `start-indent` and `end-indent` to "0pt" on table-body or block-container. For further details, please consult the [Wiki page on Indent Inheritance](http://wiki.apache.org/xmlgraphics-fop/IndentInheritance).
+No, although you might easily think so. The problem has to do with property inheritance of the start-indent and end-indent properties to which the margin properties are mapped. Apache FOP strictly adheres to the XSL-FO specification here which many other commercial FO implementations don't do to better meet end-user expectations. You can make FOP behave like these if you set `setBreakIndentInheritanceOnReferenceAreaBoundary(true)` on the FOUserAgent. The better way is to reset `start-indent` and `end-indent` to "0pt" on table-body or block-container. For further details, please consult the [Wiki page on Indent Inheritance](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/IndentInheritance).
 
 ### 3.15. Why is the output of Java2D/AWT-based renderers different than, for example, PDF or PS? { #pdf-ps-java2d-differences}
 
