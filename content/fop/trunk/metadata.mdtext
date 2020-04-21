@@ -108,6 +108,19 @@ A pdf:info element can be added as a child of fo:declarations and contain the cu
     </fo:declarations>
 
 
+#PDF ViewerPreferences
+
+You can set PDF viewer preferences for example using:
+
+    :::xml
+    <fo:declarations>
+      <pdf:catalog xmlns:pdf="http://xmlgraphics.apache.org/fop/extensions/pdf">
+       <pdf:dictionary key="ViewerPreferences">
+        <pdf:name key="Duplex">DuplexFlipShortEdge</pdf:name>
+       </pdf:dictionary>
+      </pdf:catalog>
+    </fo:declarations>
+
 There is a specific element for each possible entry type: pdf:array, pdf:boolean, pdf:name, pdf:number, pdf:string.
 For example:
 
