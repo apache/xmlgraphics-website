@@ -264,11 +264,14 @@ The PCL renderer configuration currently allows the following settings:
 
     :::xml
     <renderer mime="application/x-pcl">
+      <optimize-resources>false</optimize-resources>
       <rendering>quality</rendering>
       <text-rendering>bitmap</text-rendering>
       <disable-pjl>false</disable-pjl>
       <images mode="color"/>
     </renderer>
+
+The default value for the "optimize-resources" setting is "false". Setting it to "true" will produce the PCL file via a temporary buffer. This will correct font output from IF input but can potentially increase the memory needed in the interpreter to process.
 
 The default value for the "rendering" setting is "speed" which causes borders to be painted as plain rectangles. In this mode, no special borders (dotted, dashed etc.) are available. If you want support for all border modes, set the value to "quality" as indicated above. This will cause the borders to be painted as bitmaps.
 
