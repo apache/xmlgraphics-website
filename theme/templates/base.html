@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/home/simon/site/content/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/home/simon/site/content/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/home/simon/site/content/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+{% if "batik" in output_file %}
+    {% include 'batik-top.html' %}
+{% elif "fop" in output_file %}
+    {% include 'fop-top.html' %}
+{% else %}
+    {% include 'xgc-top.html' %}
+{% endif %}  
+
+      {% block content %}
+      <div id="content" class="grid_16">
+        <div id="items">
+        </div>
+      	
+      </div>
+      {% endblock %}
+      <div class="clear"></div>
+
+      {% include 'bottom.html' %}
+
+  </body>
+</html>

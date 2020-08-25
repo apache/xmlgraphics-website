@@ -1,0 +1,34 @@
+Title: Apache(tm) FOP - a print formatter driven by XSL formatting objects (XSL-FO) and an output independent formatter.
+
+[fopLatest]:       2.5/
+[fopLatest_ouput]: 2.5/output.html
+
+#Apache&trade; FOP
+
+## Introduction { #intro}
+
+Apache&trade; FOP (Formatting Objects Processor) is a print formatter driven by XSL formatting objects (XSL-FO) and an output independent formatter. It is a Java application that reads a formatting object (FO) tree and renders the resulting pages to a specified output. [Output formats][fopLatest_ouput] currently supported include PDF, PS, PCL, AFP, XML (area tree representation), Print, AWT and PNG, and to a lesser extent, RTF and TXT. The primary output target is PDF.
+
+The Apache&trade; FOP project is part of the [Apache&trade;](https://www.apache.org) Software Foundation, which is a wider community of users and developers of open source projects.
+
+![Render Diagram](images/document.jpg)
+
+The latest version of FOP is available at [FOP {{ fop_current_version }}][fopLatest].
+
+Support for each of the standard's objects and properties is detailed in [FOP Compliance](compliance.html). [Download](download.html) options include a precompiled version, source code, and many example files to get you started. [Resources](resources.html) include links to XSL-FO introductions and many other useful references. A checklist for [Getting Help](gethelp.html) will guide you toward maximizing the usefulness of FOP.
+
+FOP is proud to be part of [Apache's XML Graphics project](http://xmlgraphics.apache.org).
+
+## Demonstration { #demo}
+
+![Formatting Diagram](images/layout.jpg)
+
+This image is a demonstration of a real two page document. The XML data on the left is formatted into the two pages on the right. The document contains static areas that appear on every page, an external graphic, a footnote on the first page, and a table that goes across both pages.
+
+FOP uses the standard XSL-FO file format as input, lays the content out into pages, then renders it to the requested output. One great advantage of using XSL-FO as input is that XSL-FO is itself an XML file, which means that it can be conveniently created from a variety of sources. The most common method is to convert semantic XML to XSL-FO, using an XSLT transformation.
+
+## FOP Objectives { #objectives}
+
+The goals of the Apache FOP project are to deliver an XSL-FO to PDF formatter that is compliant to at least the Basic conformance level described in the W3C Recommendation from 05 December 2006, and that complies with the November 2001 Portable Document Format Specification (Version 1.4) from Adobe Systems.
+
+Conformance to the XML 1.0 and 1.1 Recommendations, XSLT 1.0 and 2.0 Recommendations and the XML Namespaces Recommendation is understood. Other relevant documents, such as the XPath and XLink Working Drafts, are referenced as necessary. The FOP Project will attempt to use the latest version of evolving specifications.

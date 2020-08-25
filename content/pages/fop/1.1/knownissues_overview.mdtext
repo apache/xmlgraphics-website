@@ -1,0 +1,187 @@
+Title: Apache(tm) FOP: Known Issues
+
+#Apache&trade; FOP: Known Issues
+
+
+## Known issues { #Known-issues}
+
+This page lists currently known issues in the current release.
+
+<note>For additional information on known issues in Apache&trade; FOP, please have a look at the following pages, too:<br/> &bullet; [the bug list in Jira](../bugs.html)<br/> &bullet; [the task list in the Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FOPProjectTasks)</note>
+
+Apache&trade; FOP has an extensive automated testing infrastructure. Parts of this infrastructure are several sets of test cases. When a test case is listed in disabled-testcases.xml it is disabled in the JUnit tests during the normal build process. This indicates a problem in the current codebase. When a bug is fixed or a missing feature is added the entry for the relevant test case(s) are removed.
+
+### FO Tree { #FO-Tree}
+
+This section lists disabled test cases in the test suite for the FO tree tests, at the time of the release.
+
+**demo-test-failure.fo** (demo test failure):
+
+*TODO: Add missing description in disabled-testcases.xml!*
+
+**from-table-column_marker.fo** (Markers and core function evaluation):
+
+The code currently evaluates this function according to the column in which the marker appears in the source document, rather than the column it is retrieved in.
+
+### Layout Engine { #Layout-Engine}
+
+This section lists disabled test cases in the test suite for the layout engine tests, at the time of the release.
+
+**block-container_space-before_space-after_3.xml** (Auto-height block-containers produce fences):
+
+Block-containers with no height currently don't create a fence for spaces as they should (they behave like a normal block).
+
+**block_font-stretch.xml** (font-stretch NYI):
+
+Font-stretch is not implemented, yet.
+
+**block_linefeed-treatment.xml** (linefeed-treatment):
+
+Preserved linefeeds in a fo:character are not handled correctly.
+
+**block_white-space-treatment_3.xml** (white-space-treatment):
+
+White space handling incorrectly stops at fo:inline boundaries when it comes to formatter generated line breaks.
+
+**block_space-before_space-after_8.xml** (Empty blocks produce fences):
+
+An empty block currently produces a fence for stacking constraints which it shouldn't.
+
+**block_white-space_nbsp_2.xml** (block white-space nbsp 2):
+
+The nbsp given as an fo:character is not adjustable and therefore the justification does not work in this case.
+
+**block_word-spacing.xml** (block word-spacing):
+
+Word-spacing may not work as expected.
+
+**block_word-spacing_text-align_justify.xml** (block word-spacing text-align justify):
+
+Word-spacing may not work as expected.
+
+**external-graphic_oversized.xml** (external-graphic don't shrink):
+
+Images currently don't shrink so they fit on a page when they are too big and shrinking is allowed to happen (min/opt/max).
+
+**external-graphic_src_uri.xml** (Test case with HTTP URL):
+
+Doesn't work behind a proxy which requires authorization.
+
+**footnote_space-resolution.xml** (Space Resolution in foot note area):
+
+Space resolution does not work between footnote regions.
+
+**inline_block_nested_3.xml** (NPE for table inside an inline):
+
+Placing a table as a child of an fo:inline produces a NullPointerException.
+
+**inline-container_block_nested.xml** (inline-container is not implemented, yet.):
+
+inline-container is not implemented, yet. Content of an inline-container will get swallowed. The test case contains no checks.
+
+**inline-container_border_padding.xml** (inline-container is not implemented, yet.):
+
+inline-container is not implemented, yet. Content of an inline-container will get swallowed.
+
+**inline_letter-spacing.xml** (inline letter-spacing):
+
+Letter-spacing may not work as expected within fo:inline.
+
+**inline_word-spacing.xml** (inline word-spacing):
+
+Word-spacing may not work as expected within fo:inline.
+
+**inline_word-spacing_text-align_justify.xml** (inline word-spacing text-align justify):
+
+*TODO: Add missing description in disabled-testcases.xml!*
+
+**leader-alignment.xml** (leader-alignment NYI):
+
+Leader-alignment is not yet implemented.
+
+**leader_leader-pattern_use-content_bug.xml** (leader-pattern="use-content": Problem with line height):
+
+Line height is not correctly calculated for use-content leaders whose height is larger than the rest of the line.
+
+See also: [http://www.nabble.com/leaders-with-leader-pattern%3D%22use-content%22-t546244.html](http://www.nabble.com/leaders-with-leader-pattern%3D%22use-content%22-t546244.html)
+
+**page-breaking_4.xml** (Page breaking doesn't deal with IPD changes):
+
+Page breaking currently doesn't support changing available IPD between pages of a single page-sequence. Element list generation has to be reset to redetermine line breaks in this case.
+
+**page-breaking_6.xml** (Overflow handing is incomplete):
+
+Line breaking is not 100% correct when there's too little space. Overflows are not detected and warned.
+
+**page-height_indefinite_simple.xml** (Indefinite page height handling is imcomplete):
+
+A RuntimeException is thrown for a page of indefinite height. Lots of warnings.
+
+**page-number-citation_background-image.xml** (page-number-citation: Problem with background-image):
+
+Background-images on page-number-citations are not placed correctly.
+
+**page-number-citation_complex_1.xml** (IDs are not working on all FO elements):
+
+The "id" attributes are not properly handled for all block-level FO elements.
+
+**page-number-citation_complex_2.xml** (IDs are not working on all FO elements):
+
+The "id" attributes are not properly handled for all inline-level FO elements.
+
+**region-body_column-count_footnote.xml** (Footnotes in multi-column documents):
+
+Footnotes may overlap with text of the region-body in multi-column documents.
+
+**region-body_column-count_balance_4col.xml** (Column Balancing problems):
+
+Situation in a 4-column document where the column balancing doesn't work and even causes some content to disappear.
+
+**region-body_column-count_bug36356.xml** (Column Balancing problems):
+
+Column balancing doesn't work as expected.
+
+**table-cell_empty_area_with_marker.xml** (table-cell empty area with marker.xml):
+
+A table-cell producing an empty area does currently not add any markers to a page. See TODO entry in AreaAdditionUtil.
+
+**table_border-width_conditionality.xml** (Border conditionality on table):
+
+The code should be ok, but the test case uses shorthands and therefore is probably not expressing the indended outcome according to the spec. The test case should be revisited.
+
+**block_shy_linebreaking_hyph.xml** (Soft hyphen with normal hyphenation enabled):
+
+A soft hyphen should be a preferred as break compared to a normal hyphenation point but is not.
+
+**keep_within-page_multi-column_overflow.xml** (Page-keep not respected in multi-column layout):
+
+The block should cause overflow in the last column on the page, rather than be broken.
+
+**block-container_reference-orientation_bug36391.xml** (Block Container Reference Orientation Bug):
+
+An assert is failing
+
+**simple-page-master_writing-mode_rl_region-body_writing-mode-lr.xml** (Writing mode problems):
+
+Test erroneously depends upon incorrect implementation of writing-mode trait derivation on fo:region-*.
+
+### Other known issues { #Other-known-issues}
+
+This section lists some other issues that post-date the release of FOP 1.0. For known issues that pre-date FOP 1.0, see [older bugs that remain open](https://issues.apache.org/jira/issues/?jql=project %3D FOP AND status in (Open%2C "In Progress"%2C Reopened) AND created < 2010-07-20 ORDER BY reporter ASC%2C key ASC%2C priority DESC). For all open issues that post-date FOP 1.0, see [newer bugs that remain open](https://issues.apache.org/jira/issues/?jql=project %3D FOP AND status in (Open%2C "In Progress"%2C Reopened) AND created >%3D 2010-07-20 ORDER BY reporter ASC%2C key ASC%2C priority DESC).
+
+
+- Support for Unicode characters outside of the Base Multilingual Plane (BMP), i.e., characters whose code points are greater than 65535, is not yet implemented. See issue [FOP-1969](https://issues.apache.org/jira/browse/FOP-1969).
+
+- The writing-mode property does not produce the expected behavior when specified on `fo:simple-page-master` or `fo:region-*` elements. See issue [FOP-2067](https://issues.apache.org/jira/browse/FOP-2067).
+
+- Support for Devanagari and other Indic scripts is not yet complete.
+
+- Use of Unicode U+200C ZERO WIDTH NON-JOINER (ZWNJ) or U+200D ZERO WIDTH JOINER (ZWJ) does not prevent or force contextual substitution, respectively, when used with Arabic script.
+
+- Use of Unicode U+200C ZERO WIDTH NON-JOINER (ZWNJ) or U+200D ZERO WIDTH JOINER (ZWJ) does not affect conjunct formation or other special behavior prescribed when used with Indic scripts.
+
+- Support for automatic line breaking at orthographic syllable segment boundaries in Indic or Southeast Asian scripts is not yet available. In the mean time, use U+200B ZERO WIDTH SPACE (ZWSP).
+
+- Complex script content is presently supported only with AT, IF, and PDF output formats.
+
+- When complex script text encounters an `fo:inline` or `fo:character` boundary, contextual substitution and ligature formation will not occur across the boundary. This prevents, for example, applying a different color to an Arabic Letter within an Arabic word, unless that letter is a non-joining letter (on both sides).

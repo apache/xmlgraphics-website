@@ -1,0 +1,287 @@
+/*
+* Licensed to the Apache Software Foundation (ASF) under one or more
+* contributor license agreements.  See the NOTICE file distributed with
+* this work for additional information regarding copyright ownership.
+* The ASF licenses this file to You under the Apache License, Version 2.0
+* (the "License"); you may not use this file except in compliance with
+* the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+body {
+    color: #333;
+    font-family: Tahoma,Verdana,Geneva,sans-serif;
+    font-size: 11pt;
+    margin: 0;
+    background-color: #efefef;
+    overflow: auto;
+}
+#banner {
+    margin-top: 0;
+    min-width: 850px;
+    padding: 10px;
+}
+#logo {
+    margin-left: 20px;
+    text-align: left;
+}
+#bannertext, #content, #footer {
+    background-color: #fff;
+    color: #333;
+    margin: 0 50px 0 260px;
+    padding: 20px;
+}
+#bannertext {
+    margin-top: 10px;
+    text-align: left;
+}
+.clear {
+    clear: both;
+}
+a {
+    color: #107EC0;
+}
+a:visited {
+    color: #107EC0;
+}
+a:hover {
+    background-color: #E6EBED;
+    color: #107EC0;
+}
+a img {
+    border: medium none;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: black;
+    padding: 10px 0 5px;
+}
+h1, h3 {
+    font-variant: small-caps;
+}
+#content {
+    color: #333333;
+    padding: 0 18px 40px;
+    margin-top: -12px;
+}
+#content h1 {
+    font-size: 1.7em;
+}
+#content h2 {
+    border-bottom: 1px dashed #666666;
+    font-size: 1.2em;
+}
+#content h3, h4, h5, h6 {
+    border-bottom: medium none;
+    font-size: 1em;
+    margin-bottom: 0;
+}
+#content img {
+    vertical-align: middle;
+}
+#navigation, #items {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #F5F8FA;
+    border-color: #C0C0C0 #C0C0C0 #C0C0C0 -moz-use-text-color;
+    border-radius: 10px 10px 10px 0;
+    border-style: solid solid solid none;
+    border-width: 1px medium 1px 1px;
+    color: #000033;
+    font-size: 0.9em;
+    margin: 0 0 20px;
+    padding: 15px 25px 5px 15px;
+    width: 225px;
+}
+#navigation {
+    float: left;
+}
+#items {
+    float: right;
+}
+#navigation img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#navigation > ul > li > h1, #items h2 {
+    border-bottom: 2px dashed #666666;
+}
+#navigation h1 {
+    color: #000000;
+    font-size: 140%;
+    margin-bottom: 0;
+    margin-top: 0.8em;
+    padding: 0;
+}
+#navigation h2 {
+    font-size: 120%;
+    cursor: pointer;
+    background-color: #CCC;
+    padding: 4px 7px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    margin-left: -10px;
+}
+#navigation h3 {
+    font-size: 120%;
+}
+#navigation ul {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+#navigation li {
+    border-bottom: 1px solid #CCCCCC;
+    margin: 0.2em 0;
+    padding: 0;
+}
+#navigation li a {
+    margin: 0;
+    text-decoration: none;
+}
+#navigation li a:hover {
+    background: none repeat scroll 0 0 transparent;
+    color: #193240;
+}
+#navigation ul ul, #navigation ul ul li {
+    margin-left:5px;
+}
+#navigation h1 {
+    margin-left:-5px;
+}
+#footer {
+    border-top: 1px solid #CCCCCC;
+    color: #666666;
+    font-size: 80%;
+    padding: 0 8px;
+    text-align: center;
+}
+.copyright {
+    float: left;
+}
+#asf-logo {
+    float: left;
+    padding-top: 15px;
+}
+li p {
+    padding-left: 0;
+}
+p {
+    padding: 0 15px;
+}
+dd {
+}
+dl {
+}
+dt {
+    display: inline;
+    float: left;
+}
+.section-content > p > version {
+  display: none;
+}
+version {
+    display: none;
+}
+
+/* ToC */
+#items {
+/*
+    float: right;
+    width: 260px;
+    padding-bottom: 10px;
+    margin:0 0 10px 20px;
+    */
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #eee;
+    border-color: #C0C0C0 #C0C0C0 #C0C0C0 -moz-use-text-color;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px medium 1px 1px;
+    color: #000033;
+    float: right;
+    font-size: 0.9em;
+    margin: 10px 20px;
+    padding: 10px;
+    width: 225px;
+}
+#items h3 {
+    margin-top: 0;
+    padding-top: 0;
+}
+#items ul {
+    margin: 0 0 0 15px;
+    padding: 0 0 5px;
+    list-style-type: none;
+}
+#items ul {
+    font-size: 95%;
+}
+#items ul a {
+    font-family: "arial";
+    text-decoration: none;
+    color: #107EC0;
+}
+#items ul a:hover { color: #000 }
+
+note, warning {
+    margin: 1em 0;
+    border: solid 1px;
+    display: block;
+    font-size: 90%;
+    line-height: 120%;
+    padding: 5px 10px;
+    color: black;
+    border-radius: 8px;
+}
+note {
+    border-color: #006699;
+    background-color: #f0f0ff;
+}
+warning {
+    border-color: #990000;
+    background-color: #fff0f0;
+}
+note:before, warning:before {
+    display: block;
+    font-weight: bold;
+    padding: 5px 10px;
+    margin: -5px -10px 10px;
+    color: white;
+    border-radius: 7px 7px 0 0;
+}
+note:before {
+    content: "Note";
+    background-color: #336699;
+}
+warning:before {
+    content: "Warning";
+    background-color: #cc0000;
+}
+
+li .codehilite {
+    margin-left: 0;
+}
+.codehilite {
+    background-color: #ccc;/* this will be overwritten by http://www.apache.org/css/code.css */
+    border-radius: 10px;
+    padding: 0 0.5em;
+    margin: 0 1em;
+}
+.codehilite pre {
+    white-space: pre-wrap;
+}

@@ -1,0 +1,74 @@
+Title: Apache(tm) Batik SVG Toolkit - a Java-based toolkit for applications or applets that want to use images in the Scalable Vector Graphics (SVG)
+
+#Apache&trade; Batik SVG Toolkit
+
+
+## Overview { #overview}
+
+Batik is a Java-based toolkit for applications or applets that want to use images in the [Scalable Vector Graphics (SVG)](http://www.w3.org/TR/SVG11/) format for various purposes, such as display, generation or manipulation.
+
+The project’s ambition is to give developers a set of [core modules](using/architecture.html#coreComponents) that can be used together or individually to support specific SVG solutions. Examples of [modules](using/index.html) are the [SVG Parser](using/parsers.html), the [SVG Generator](using/svg-generator.html) and the [SVG DOM](using/dom-api.html). Another ambition for the Batik project is to make it highly [extensible](using/extending.html) —for example, Batik allows the developer to handle custom SVG elements. Even though the goal of the project is to provide a set of core modules, one of the deliverables is a full fledged [SVG browser](tools/browser.html) implementation which validates the various modules and their inter-operability.
+
+## News { #News}
+
+### 13 May 2020: Version 1.13 Released
+This is mainly a bug fix release
+
+## What Batik can be used for { #uses}
+
+ ![Batik use cases](images/batikUses.jpg "")
+
+With Batik, you can manipulate SVG documents anywhere Java is available. You can also use the various [Batik modules](using/index.html) to [generate](using/svg-generator.html), [manipulate](using/dom-api.html) and [transcode](using/transcoder.html) SVG images in your applications or applets.
+
+Batik makes it easy for Java based applications or applets to deal with SVG content. For example, using Batik’s [SVG generator module](using/svg-generator.html), a Java application or applet can very easily export its graphics into the SVG format. Using Batik’s [SVG viewing component](using/swing.html), an application or applet can very easily integrate SVG viewing and interaction capabilities. Another possibility is to use Batik’s modules to convert SVG to various formats, such as raster images (<abbr title="Joint Photographic Expert Group">JPEG</abbr>,<abbr title="Portable Network Graphics">PNG</abbr>or<abbr title="Tagged Image File Format">TIFF</abbr>) or other vector formats (<abbr title="Encapsulated PostScript">EPS</abbr>or<abbr title="Portable Document Format">PDF</abbr>, the latter two due to the transcoders provided by [Apache FOP](http://xmlgraphics.apache.org/fop/)).
+
+The Batik toolkit includes the following:
+
+ **Modules**
+
+
+- An [SVG DOM implementation](using/dom-api.html)
+
+- A set of [SVG microsyntax parsers](using/parsers.html)
+
+- A [scripting module](using/scripting/ecmascript.html)
+
+- A [generator](using/svg-generator.html) that creates an SVG document from Java2D calls
+
+- A [Swing SVG component](using/swing.html)
+
+- A [transcoder module](using/transcoder.html)
+
+ **Tools and applications**
+
+
+- Squiggle, an [SVG browser](tools/browser.html)
+
+- An [SVG rasterizer](tools/rasterizer.html)
+
+- A [to SVG converter](tools/font-converter.html)
+
+- A [pretty printer](tools/pretty-printer.html) for SVG source files
+
+See [examples of projects and products using Batik](uses.html) for real-life example of how Batik is already integrated in projects and products.
+
+## The SVG specification { #spec}
+
+Scalable Vector Graphics, SVG, is a [W3C](http://www.w3.org/) Recommendation. It defines an XML grammar for rich 2D graphics which includes features such as transparency, arbitrary geometry, filter effects (shadows, lighting effects, etc.), scripting and animation.
+
+The SVG specification states:
+
+This specification defines the features and syntax for Scalable Vector Graphics (SVG). SVG is a language for describing two-dimensional graphics in XML [ [XML10](http://www.w3.org/TR/REC-xml) ]. SVG allows for three types of graphic objects: vector graphic shapes (e.g., paths consisting of straight lines and curves), images and text. Graphical objects can be grouped, styled, transformed and composited into previously rendered objects. The feature set includes nested transformations, clipping paths, alpha masks, filter effects and template objects.
+
+SVG documents can be interactive and dynamic. Animations can be defined and triggered either declaratively (i.e., by embedding SVG animation elements in SVG content) or via scripting.
+
+## Implementation status { #status}
+
+The latest revision of Batik, release 1.13, is a conformant [static SVG implementation](http://www.w3.org/TR/SVG11/conform.html#ConformingSVGViewers) and supports [interactivity](http://www.w3.org/TR/SVG11/interact.html), [linking](http://www.w3.org/TR/SVG11/linking.html) and [scripting](http://www.w3.org/TR/SVG11/script.html) features of the SVG specification. This release supports a nearly complete implementation of declarative [animation](http://www.w3.org/TR/SVG11/animate.html), too.
+
+See the [status](status.html) page for a detailed description of the set of SVG features Batik supports.
+
+## Download Batik { #download}
+
+You can get the Batik distribution, source and binary, from the [download page](download.html).
+All other libraries needed by Batik are included in the distribution. As a consequence the Batik archive is quite big, but after you have downloaded it, you will not need anything else.
