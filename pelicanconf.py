@@ -48,9 +48,8 @@ INDEX_SAVE_AS = 'articlesignore.html'
 
 STATIC_PATHS = []
 for root, _, _ in os.walk(PATH):
-    basepath = root.replace(PATH + os.sep, '')
     for adir in ['css', 'js', 'images', 'fo', 'svg', 'schema', 'stylesets']:
-        STATIC_PATHS.append(os.path.join(basepath, adir))
+        STATIC_PATHS.append(os.path.join(root, adir).replace(PATH + os.sep, ''))
 
 #MARKDOWN = {
 #    'extensions': ['mdx_include']
