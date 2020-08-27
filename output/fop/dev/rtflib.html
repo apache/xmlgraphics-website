@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache&trade; FOP
+  - [FOP Home](/fop/)
+  - [Download](/fop/download.html)
+  - [Quick Start Guide](/fop/quickstartguide.html)
+  - [Compliance](/fop/compliance.html)
+  - [Getting Help](/fop/gethelp.html)
+  - [FAQs](/fop/faq.html)
+  - [FOP Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP)
+  - [Mailing Lists](/fop/maillist.html)
+  - [License](/fop/license.html)
+  - ## Resources
+    - [XSL-FO](/fop/fo.html)
+    - [Examples](/fop/examples.html)
+    - [Bugs](/fop/bugs.html)
+    - [Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FrontPage)
+    - [Other](/fop/resources.html)
+  - ## Project
+    - [News](/fop/news.html)
+    - [Who We Are](/fop/team.html)
+    - [Status](/fop/status.html)
+    - [Known Issues](/fop/knownissues.html)
+    - [Changes](/fop/changes.html)
+  - ## Versions
+      - ## FOP Trunk (dev)
+          - [Overview](/fop/trunk/)
+          - [Upgrading](/fop/trunk/upgrading.html)
+          - ### Using Apache&trade; FOP
+            - [Build](/fop/trunk/compiling.html)
+            - [Configure](/fop/trunk/configuration.html)
+            - [Run](/fop/trunk/running.html)
+            - [Embed](/fop/trunk/embedding.html)
+            - [Servlets](/fop/trunk/servlets.html)
+            - [Ant Task](/fop/trunk/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/trunk/accessibility.html)
+            - [Complex Scripts](/fop/trunk/complexscripts.html)
+            - [Events](/fop/trunk/events.html)
+            - [Extensions](/fop/trunk/extensions.html)
+            - [Fonts](/fop/trunk/fonts.html)
+            - [Graphics](/fop/trunk/graphics.html)
+            - [Hyphenation](/fop/trunk/hyphenation.html)
+            - [Intermediate Format](/fop/trunk/intermediate.html)
+            - [Metadata](/fop/trunk/metadata.html)
+            - [Output Targets](/fop/trunk/output.html)
+            - [PDF/A](/fop/trunk/pdfa.html)
+            - [PDF/X](/fop/trunk/pdfx.html)
+            - [PDF Encryption](/fop/trunk/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/trunk/whitespacemanagement.html)
+      - ## FOP 2.5
+          - [FOP 2.5 Overview](/fop/2.5/)
+          - [Release Notes](/fop/2.5/releaseNotes_2.5.html)
+          - [Changes (2.5)](/fop/2.5/changes_2.5.html)
+          - [Known Issues](/fop/2.5/knownissues_overview.html)
+          - [Upgrading](/fop/2.5/upgrading.html)
+          - ### Using Apache FOP 2.5
+            - [Build](/fop/2.5/compiling.html)
+            - [Configure](/fop/2.5/configuration.html)
+            - [Run](/fop/2.5/running.html)
+            - [Embed](/fop/2.5/embedding.html)
+            - [Servlets](/fop/2.5/servlets.html)
+            - [Ant Task](/fop/2.5/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.5/accessibility.html)
+            - [Complex Scripts](/fop/2.5/complexscripts.html)
+            - [Events](/fop/2.5/events.html)
+            - [Extensions](/fop/2.5/extensions.html)
+            - [Fonts](/fop/2.5/fonts.html)
+            - [Graphics](/fop/2.5/graphics.html)
+            - [Hyphenation](/fop/2.5/hyphenation.html)
+            - [Intermediate Format](/fop/2.5/intermediate.html)
+            - [Metadata](/fop/2.5/metadata.html)
+            - [Output Targets](/fop/2.5/output.html)
+            - [PDF/A](/fop/2.5/pdfa.html)
+            - [PDF/X](/fop/2.5/pdfx.html)
+            - [PDF Encryption](/fop/2.5/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.5/whitespacemanagement.html)     
+      - ## FOP 2.4
+          - [FOP 2.4 Overview](/fop/2.4/)
+          - [Release Notes](/fop/2.4/releaseNotes_2.4.html)
+          - [Changes (2.4)](/fop/2.4/changes_2.4.html)
+          - [Known Issues](/fop/2.4/knownissues_overview.html)
+          - [Upgrading](/fop/2.4/upgrading.html)
+          - ### Using Apache FOP 2.4
+            - [Build](/fop/2.4/compiling.html)
+            - [Configure](/fop/2.4/configuration.html)
+            - [Run](/fop/2.4/running.html)
+            - [Embed](/fop/2.4/embedding.html)
+            - [Servlets](/fop/2.4/servlets.html)
+            - [Ant Task](/fop/2.4/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.4/accessibility.html)
+            - [Complex Scripts](/fop/2.4/complexscripts.html)
+            - [Events](/fop/2.4/events.html)
+            - [Extensions](/fop/2.4/extensions.html)
+            - [Fonts](/fop/2.4/fonts.html)
+            - [Graphics](/fop/2.4/graphics.html)
+            - [Hyphenation](/fop/2.4/hyphenation.html)
+            - [Intermediate Format](/fop/2.4/intermediate.html)
+            - [Metadata](/fop/2.4/metadata.html)
+            - [Output Targets](/fop/2.4/output.html)
+            - [PDF/A](/fop/2.4/pdfa.html)
+            - [PDF/X](/fop/2.4/pdfx.html)
+            - [PDF Encryption](/fop/2.4/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.4/whitespacemanagement.html)             
+      - ## FOP 2.3
+          - [FOP 2.3 Overview](/fop/2.3/)
+          - [Release Notes](/fop/2.3/releaseNotes_2.3.html)
+          - [Changes (2.3)](/fop/2.3/changes_2.3.html)
+          - [Known Issues](/fop/2.3/knownissues_overview.html)
+          - [Upgrading](/fop/2.3/upgrading.html)
+          - ### Using Apache FOP 2.3
+            - [Build](/fop/2.3/compiling.html)
+            - [Configure](/fop/2.3/configuration.html)
+            - [Run](/fop/2.3/running.html)
+            - [Embed](/fop/2.3/embedding.html)
+            - [Servlets](/fop/2.3/servlets.html)
+            - [Ant Task](/fop/2.3/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.3/accessibility.html)
+            - [Complex Scripts](/fop/2.3/complexscripts.html)
+            - [Events](/fop/2.3/events.html)
+            - [Extensions](/fop/2.3/extensions.html)
+            - [Fonts](/fop/2.3/fonts.html)
+            - [Graphics](/fop/2.3/graphics.html)
+            - [Hyphenation](/fop/2.3/hyphenation.html)
+            - [Intermediate Format](/fop/2.3/intermediate.html)
+            - [Metadata](/fop/2.3/metadata.html)
+            - [Output Targets](/fop/2.3/output.html)
+            - [PDF/A](/fop/2.3/pdfa.html)
+            - [PDF/X](/fop/2.3/pdfx.html)
+            - [PDF Encryption](/fop/2.3/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.3/whitespacemanagement.html)            
+      - ## FOP 2.2
+          - [FOP 2.2 Overview](/fop/2.2/)
+          - [Release Notes](/fop/2.2/releaseNotes_2.2.html)
+          - [Changes (2.2)](/fop/2.2/changes_2.2.html)
+          - [Known Issues](/fop/2.2/knownissues_overview.html)
+          - [Upgrading](/fop/2.2/upgrading.html)
+          - ### Using Apache FOP 2.2
+            - [Build](/fop/2.2/compiling.html)
+            - [Configure](/fop/2.2/configuration.html)
+            - [Run](/fop/2.2/running.html)
+            - [Embed](/fop/2.2/embedding.html)
+            - [Servlets](/fop/2.2/servlets.html)
+            - [Ant Task](/fop/2.2/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.2/accessibility.html)
+            - [Complex Scripts](/fop/2.2/complexscripts.html)
+            - [Events](/fop/2.2/events.html)
+            - [Extensions](/fop/2.2/extensions.html)
+            - [Fonts](/fop/2.2/fonts.html)
+            - [Graphics](/fop/2.2/graphics.html)
+            - [Hyphenation](/fop/2.2/hyphenation.html)
+            - [Intermediate Format](/fop/2.2/intermediate.html)
+            - [Metadata](/fop/2.2/metadata.html)
+            - [Output Targets](/fop/2.2/output.html)
+            - [PDF/A](/fop/2.2/pdfa.html)
+            - [PDF/X](/fop/2.2/pdfx.html)
+            - [PDF Encryption](/fop/2.2/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.2/whitespacemanagement.html)
+      - ## FOP 2.1
+          - [FOP 2.1 Overview](/fop/2.1/)
+          - [Release Notes](/fop/2.1/releaseNotes_2.1.html)
+          - [Changes (2.1)](/fop/2.1/changes_2.1.html)
+          - [Known Issues](/fop/2.1/knownissues_overview.html)
+          - [Upgrading](/fop/2.1/upgrading.html)
+          - ### Using Apache FOP 2.1
+            - [Build](/fop/2.1/compiling.html)
+            - [Configure](/fop/2.1/configuration.html)
+            - [Run](/fop/2.1/running.html)
+            - [Embed](/fop/2.1/embedding.html)
+            - [Servlets](/fop/2.1/servlets.html)
+            - [Ant Task](/fop/2.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.1/accessibility.html)
+            - [Complex Scripts](/fop/2.1/complexscripts.html)
+            - [Events](/fop/2.1/events.html)
+            - [Extensions](/fop/2.1/extensions.html)
+            - [Fonts](/fop/2.1/fonts.html)
+            - [Graphics](/fop/2.1/graphics.html)
+            - [Hyphenation](/fop/2.1/hyphenation.html)
+            - [Intermediate Format](/fop/2.1/intermediate.html)
+            - [Metadata](/fop/2.1/metadata.html)
+            - [Output Targets](/fop/2.1/output.html)
+            - [PDF/A](/fop/2.1/pdfa.html)
+            - [PDF/X](/fop/2.1/pdfx.html)
+            - [PDF Encryption](/fop/2.1/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.1/whitespacemanagement.html)
+      - ## FOP 2.0
+          - [FOP 2.0 Overview](/fop/2.0/)
+          - [Release Notes](/fop/2.0/releaseNotes_2.0.html)
+          - [Changes (2.0)](/fop/2.0/changes_2.0.html)
+          - [Known Issues](/fop/2.0/knownissues_overview.html)
+          - [Upgrading](/fop/2.0/upgrading.html)
+          - ### Using Apache FOP 2.0
+            - [Build](/fop/2.0/compiling.html)
+            - [Configure](/fop/2.0/configuration.html)
+            - [Run](/fop/2.0/running.html)
+            - [Embed](/fop/2.0/embedding.html)
+            - [Servlets](/fop/2.0/servlets.html)
+            - [Ant Task](/fop/2.0/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.0/accessibility.html)
+            - [Complex Scripts](/fop/2.0/complexscripts.html)
+            - [Events](/fop/2.0/events.html)
+            - [Extensions](/fop/2.0/extensions.html)
+            - [Fonts](/fop/2.0/fonts.html)
+            - [Graphics](/fop/2.0/graphics.html)
+            - [Hyphenation](/fop/2.0/hyphenation.html)
+            - [Intermediate Format](/fop/2.0/intermediate.html)
+            - [Metadata](/fop/2.0/metadata.html)
+            - [Output Targets](/fop/2.0/output.html)
+            - [PDF/A](/fop/2.0/pdfa.html)
+            - [PDF/X](/fop/2.0/pdfx.html)
+            - [PDF Encryption](/fop/2.0/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.0/whitespacemanagement.html)
+      - ## FOP 1.1
+          - [FOP 1.1 Overview](/fop/1.1/)
+          - [Release Notes](/fop/1.1/releaseNotes_1.1.html)
+          - [Changes (1.1)](/fop/1.1/changes_1.1.html)
+          - [Known Issues](/fop/1.1/knownissues_overview.html)
+          - [Upgrading](/fop/1.1/upgrading.html)
+          - ### Using Apache FOP 1.1
+            - [Build](/fop/1.1/compiling.html)
+            - [Configure](/fop/1.1/configuration.html)
+            - [Run](/fop/1.1/running.html)
+            - [Embed](/fop/1.1/embedding.html)
+            - [Servlets](/fop/1.1/servlets.html)
+            - [Ant Task](/fop/1.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/1.1/accessibility.html)
+            - [Complex Scripts](/fop/1.1/complexscripts.html)
+            - [Events](/fop/1.1/events.html)
+            - [Extensions](/fop/1.1/extensions.html)
+            - [Fonts](/fop/1.1/fonts.html)
+            - [Graphics](/fop/1.1/graphics.html)
+            - [Hyphenation](/fop/1.1/hyphenation.html)
+            - [Intermediate Format](/fop/1.1/intermediate.html)
+            - [Metadata](/fop/1.1/metadata.html)
+            - [Output Targets](/fop/1.1/output.html)
+            - [PDF/A](/fop/1.1/pdfa.html)
+            - [PDF/X](/fop/1.1/pdfx.html)
+            - [PDF Encryption](/fop/1.1/pdfencryption.html)
+      - ## FOP 1.0
+          - [FOP 1.0 Overview](/fop/1.0/)
+          - [Release Notes](/fop/1.0/releaseNotes_1.0.html)
+          - [Changes (1.0)](/fop/1.0/changes_1.0.html)
+          - [Known Issues](/fop/1.0/knownissues_overview.html)
+          - [Upgrading](/fop/1.0/upgrading.html)
+          - ### Using Apache FOP 1.0
+            - [Build](/fop/1.0/compiling.html)
+            - [Configure](/fop/1.0/configuration.html)
+            - [Run](/fop/1.0/running.html)
+            - [Embed](/fop/1.0/embedding.html)
+            - [Servlets](/fop/1.0/servlets.html)
+            - [Ant Task](/fop/1.0/anttask.html)
+          - ### Features
+            - [Output Targets](/fop/1.0/output.html)
+            - [Intermediate Format](/fop/1.0/intermediate.html)
+            - [PDF Encryption](/fop/1.0/pdfencryption.html)
+            - [PDF/A](/fop/1.0/pdfa.html)
+            - [PDF/X](/fop/1.0/pdfx.html)
+            - [Graphics](/fop/1.0/graphics.html)
+            - [Fonts](/fop/1.0/fonts.html)
+            - [Hyphenation](/fop/1.0/hyphenation.html)
+            - [Extensions](/fop/1.0/extensions.html)
+            - [Events](/fop/1.0/events.html)
+            - [Metadata](/fop/1.0/metadata.html)
+            - [Accessibility](/fop/1.0/accessibility.html)
+      - ## FOP Development
+          - [General Info](/fop/dev/)
+          - ## Design
+            - [Design Info](/fop/dev/design/)
+          - ## Core Process
+            - [Startup](/fop/dev/design/startup.html)
+            - [XML Parsing](/fop/dev/design/parsing.html)
+            - [FO Tree](/fop/dev/design/fotree.html)
+            - [Properties](/fop/dev/design/properties.html)
+            - [Layout](/fop/dev/design/layout.html)
+            - [Break Possibility](/fop/dev/design/breakpos.html)
+            - [Area Tree](/fop/dev/design/areas.html)
+            - [Renderers](/fop/dev/design/renderers.html)
+          - ## Miscellaneous
+            - [Images](/fop/dev/design/images.html)
+            - [PDF Library](/fop/dev/design/pdf-library.html)
+            - [SVG](/fop/dev/design/svg.html)
+            - [Embedding](/fop/dev/design/embedding.html)
+            - [Extending](/fop/dev/design/extending.html)
+            - [Optimisations](/fop/dev/design/optimise.html)
+            - [User Agent](/fop/dev/design/useragent.html)
+          - [Unresolved (Wiki)](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FOPProjectPages)
+          - [SVG](/fop/dev/svg.html)
+          - [Extensions](/fop/dev/extensions.html)
+          - ## Develop
+            - [Walk-Thru](/fop/dev/implement.html)
+            - [Patch Queue](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20description%20~%20%22\%22[patch]\%22%22%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+            - [Conventions](/fop/dev/conventions.html)
+          - ## Test
+            - [Testing](/fop/dev/testing.html)
+          - ## Deploy
+            - [Doc Mgmt](/fop/dev/doc.html)
+            - [Release](/fop/dev/release.html)
+            - [Bugs](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20issuetype%20%3D%20Bug%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+          - ## Resources
+            - [FAQs](/fop/dev/faq.html)
+            - [Tools](/fop/dev/tools.html)
+            - [ViewVC](http://svn.apache.org/viewvc/xmlgraphics/fop)
+          - ## SubPackages
+            - [RTFlib](/fop/dev/rtflib.html)
+
+# Apache&trade; XML Graphics
+  - ## Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache Batik](/batik/)
+  - [Apache XML Graphics Commons](/commons/)
+
+### Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+      $('#navigation :header').not('#search-apache-xml-graphics, #apachewzxhzdk3-xml-graphics, #sub-projects').append(' &raquo;');
+    }
+  $('#navigation > ul > li > ul > li ul').hide();
+  $('#project-overview').next().hide();
+  $('#versions').next().show();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+      $("li.highlight").removeClass("highlight");
+      $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
+	  <a href="/fop/"><img src="/images/apache-fop-logo.jpg" alt="The Apache FOP Project" width="120" height="65" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; FOP Project</h2>
+	</div>  
+
+    <h1>Apache(tm) FOP Development: RTFLib (jfor)</h1>
+    
+
+    <h1>Apache&trade; FOP Development: RTFLib (jfor)</h1>
+<h2 id="general">General Information</h2>
+<h3 id="intro">Introduction</h3>
+<p>The RTFLib package is an open-source, <em>independent</em> package suitable for writing RTF files in a java environment. By <em>independent</em> we mean:</p>
+<ul>
+<li>
+<p>Although it is used by Apache&trade; FOP to generate FOP's RTF output, it is not dependent on FOP for any of its functionality.</p>
+</li>
+<li>
+<p>It does not require FOP as a front-end, nor does it even require XSL-FO for input. It essentially exposes an API of relatively high-level RTF construction routines to a host program. This means it can be used anywhere RTF output is required and java is available.</p>
+</li>
+</ul>
+<p>The FOP development team intends to keep the RTFLib package independent so that it can be used for other purposes.</p>
+<h3 id="history">History</h3>
+<p>RTFLib was originally developed by <a href="mailto:bdelacretaz@apache.org">Bertrand Delacrétaz</a> and the <a href="http://www.jfor.org">jfor</a> team. jfor was written under an Apache-style license, and the jfor team contributed the code to the Apache Software Foundation in June, 2003. RTFLib is a subset of the original jfor project, which also includes an XSL-FO parsing mechanism for a complete XSL-FO to RTF solution.</p>
+<h3 id="status">Status</h3>
+<p>Although FOP's implementation of the RTFLib package is very incomplete, the RTFLib package itself is relatively mature. RTFLib is only available in the trunk <a href="index.html#lines">line of FOP development</a>.
+<warning>This documentation is a work in progress. If you see errors or omissions, please report them to the <a href="index.html#mail-fop-dev">fop-dev mailing list</a>.</warning></p>
+<h1 id="userdoc">User Documentation</h1>
+<h3 id="userdoc-overview">Overview</h3>
+<p>Perhaps the easiest way to see how to use RTFLib is by looking at an example. A set of test documents is part of the package, and can be <a href="http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop-core/src/test/java/org/apache/fop/render/rtf/rtflib/testdocs/">viewed online</a>. A quick look at the Abstract <a href="http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop-core/src/test/java/org/apache/fop/render/rtf/rtflib/testdocs/TestDocument.java?rev=HEAD&amp;content-type=text/vnd.viewcvs-markup">TestDocument</a> class, and one of the Concrete subclasses, <a href="http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop-core/src/test/java/org/apache/fop/render/rtf/rtflib/testdocs/SimpleDocument.java?rev=HEAD&amp;content-type=text/vnd.viewcvs-markup">SimpleDocument</a> will provide the basics of how to use the package.</p>
+<p>There are two basic concepts you will need to understand in order to use RTFLib:</p>
+<ul>
+<li>
+<p>Documents are created by filling bigger containers with successively smaller containers, and eventually with content.</p>
+</li>
+<li>
+<p>Attributes may be set for each container or content as it is created</p>
+</li>
+</ul>
+<p>RTFLib handles the process of converting to and writing the RTF content as the document is created. All you need to do is flush the document at the end to make sure that the last pieces get written.</p>
+<h3 id="userdoc-structure">Document Structure</h3>
+<p><warning>This section is very incomplete.</warning>
+The documentation in this section is intended to provide a high-level view of the process of building an RTF document. For more detailed API documentation of the various methods, be sure to consult the Javadocs for RTFLib.</p>
+<p>The following table summarizes the various containers that can be created:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Class.Method where created</th>
+<th>Attribute Set(s)</th>
+<th>Valid children</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Document Area</td>
+<td>RtfFile.startDocumentArea()</td>
+<td>Information Group, Document Formatting</td>
+<td>Section</td>
+</tr>
+<tr>
+<td>Section</td>
+<td>RtfDocumentArea.newSection()</td>
+<td>Section Formatting</td>
+<td>Paragraph, ParagraphKeepTogether, Image, List, Before (Page Heading), After (Page Footer), JforCmd</td>
+</tr>
+<tr>
+<td>Paragraph</td>
+<td>RtfSection.newParagraph()</td>
+<td>Paragraph Formatting, Character Formatting</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>ParagraphKeepTogether</td>
+<td>RtfSection.newParagraphKeepTogether</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Image</td>
+<td>RtfSection.newImage</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>RtfSection.newTable</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>List</td>
+<td>RtfSection.newList</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Before (Page Heading)</td>
+<td>RtfSection.newBefore</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>After (Page Footer)</td>
+<td>RtfSection.newAfter</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>JforCmd</td>
+<td>RtfSection.newJforCmd</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>RtfParagraph.newText()</td>
+<td>Character Formatting</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h3 id="userdoc-attributes">Attributes</h3>
+<p><warning>This section is very incomplete.</warning>
+Attributes can be set for each container and piece of content in the document. The general approach is to build an RtfAttributes object containing the various attributes, then pass that RtfAttributes object to the method that creates the new container or content. See the Javadoc API documentation for RtfAttributes for details on the syntax for creating an RtfAttributes object. The following information lists the various attributes that can be set for each type of container.</p>
+<h4 id="userdoc-attr-ig">Information Group</h4>
+<p>These attributes are set when creating a Document.</p>
+<h4 id="userdoc-attr-df">Document Formatting</h4>
+<p>These attributes are set when creating a Document.</p>
+<h4 id="userdoc-attr-sf">Section Formatting</h4>
+<p>These attributes are set when creating a Section.</p>
+<h4 id="userdoc-attr-pf">Paragraph Formatting</h4>
+<p>These attributes are set when creating a Paragraph.</p>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Attribute Name</th>
+<th>Attribute Value</th>
+<th>RTF Control Word</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Alignment</td>
+<td>.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>-----------</td>
+<td>---</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Align Left</td>
+<td>RtfText.ALIGN_LEFT</td>
+<td>N/A (boolean)</td>
+<td>\ql</td>
+</tr>
+<tr>
+<td>Align Right</td>
+<td>RtfText.ALIGN_RIGHT</td>
+<td>N/A (boolean)</td>
+<td>\qr</td>
+</tr>
+<tr>
+<td>Align Centered</td>
+<td>RtfText.ALIGN_CENTER</td>
+<td>N/A (boolean)</td>
+<td>\qc</td>
+</tr>
+<tr>
+<td>Align Justified</td>
+<td>RtfText.ALIGN_JUSTIFIED</td>
+<td>N/A (boolean)</td>
+<td>\qj</td>
+</tr>
+<tr>
+<td>Align Distributed</td>
+<td>RtfText.ALIGN_DISTRIBUTED</td>
+<td>N/A (boolean)</td>
+<td>\qd</td>
+</tr>
+<tr>
+<td>Kashida justification</td>
+<td>not implemented</td>
+<td>0-20 (integer)</td>
+<td>\qkN</td>
+</tr>
+<tr>
+<td>Thai Distributed justification</td>
+<td>not implemented</td>
+<td>N/A (boolean)</td>
+<td>\qt</td>
+</tr>
+<tr>
+<td>Indentation</td>
+<td>.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>-------------</td>
+<td>---</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Left indent body</td>
+<td>RtfText.LEFT_INDENT_BODY</td>
+<td>(int) "hundredths of a character unit" (?)</td>
+<td>\li</td>
+</tr>
+<tr>
+<td>Left indent first</td>
+<td>RtfText.LEFT_INDENT_FIRST</td>
+<td>(int) "hundredths of a character unit" (?)</td>
+<td>\fi</td>
+</tr>
+<tr>
+<td>Borders</td>
+<td>.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>---------</td>
+<td>---</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Bottom single border</td>
+<td>RtfText.BDR_BOTTOM_SINGLE</td>
+<td>Boolean?</td>
+<td>brdrb\brsp40\brdrs</td>
+</tr>
+<tr>
+<td>Bottom double border</td>
+<td>RtfText.BDR_BOTTOM_DOUBLE</td>
+<td>Boolean?</td>
+<td>brdrb\brsp40\brdrdb</td>
+</tr>
+<tr>
+<td>Bottom embossed border</td>
+<td>RtfText.BDR_BOTTOM_EMBOSS</td>
+<td>Boolean?</td>
+<td>brdrb\brsp40\brdremboss</td>
+</tr>
+<tr>
+<td>bottom dotted border</td>
+<td>RtfText.BDR_BOTTOM_DOTTED</td>
+<td>Boolean?</td>
+<td>brdrb\brsp40\brdrdot</td>
+</tr>
+<tr>
+<td>bottom dashed border</td>
+<td>RtfText.BDR_BOTTOM_DASH</td>
+<td>Boolean?</td>
+<td>brdrb\brsp40\brdrdash</td>
+</tr>
+</tbody>
+</table>
+<h4 id="userdoc-attr-cf">Character Formatting</h4>
+<p>These attributes are set when creating a Paragraph, or Text.</p>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Attribute Name</th>
+<th>Attribute Value</th>
+<th>RTF Control Word</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bold</td>
+<td>RtfText.ATTR_BOLD</td>
+<td>N/A (boolean)</td>
+<td>\b</td>
+</tr>
+<tr>
+<td>Italic</td>
+<td>RtfText.ATTR_ITALIC</td>
+<td>N/A (boolean)</td>
+<td>\i</td>
+</tr>
+<tr>
+<td>Underline</td>
+<td>RtfText.ATTR_UNDERLINE</td>
+<td>N/A (boolean), or (int) 0 to turn underlining off</td>
+<td>\ul</td>
+</tr>
+<tr>
+<td>Font Size</td>
+<td>RtfText.ATTR_FONT_SIZE</td>
+<td>(int) font size in half-points</td>
+<td>\fs</td>
+</tr>
+<tr>
+<td>Font Family</td>
+<td>RtfText.ATTR_FONT_FAMILY</td>
+<td>(int) entry in document font-table</td>
+<td>\f</td>
+</tr>
+<tr>
+<td>Font Color</td>
+<td>RtfText.ATTR_FONT_COLOR</td>
+<td>(int) entry in document color-table</td>
+<td>\cf</td>
+</tr>
+<tr>
+<td>Background Color</td>
+<td>RtfText.ATTR_BACKGROUND_COLOR</td>
+<td>(int) entry in document color-table</td>
+<td>\chcbpat</td>
+</tr>
+</tbody>
+</table>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache&trade; FOP
+  - [FOP Home](/fop/)
+  - [Download](/fop/download.html)
+  - [Quick Start Guide](/fop/quickstartguide.html)
+  - [Compliance](/fop/compliance.html)
+  - [Getting Help](/fop/gethelp.html)
+  - [FAQs](/fop/faq.html)
+  - [FOP Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP)
+  - [Mailing Lists](/fop/maillist.html)
+  - [License](/fop/license.html)
+  - ## Resources
+    - [XSL-FO](/fop/fo.html)
+    - [Examples](/fop/examples.html)
+    - [Bugs](/fop/bugs.html)
+    - [Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FrontPage)
+    - [Other](/fop/resources.html)
+  - ## Project
+    - [News](/fop/news.html)
+    - [Who We Are](/fop/team.html)
+    - [Status](/fop/status.html)
+    - [Known Issues](/fop/knownissues.html)
+    - [Changes](/fop/changes.html)
+  - ## Versions
+      - ## FOP Trunk (dev)
+          - [Overview](/fop/trunk/)
+          - [Upgrading](/fop/trunk/upgrading.html)
+          - ### Using Apache&trade; FOP
+            - [Build](/fop/trunk/compiling.html)
+            - [Configure](/fop/trunk/configuration.html)
+            - [Run](/fop/trunk/running.html)
+            - [Embed](/fop/trunk/embedding.html)
+            - [Servlets](/fop/trunk/servlets.html)
+            - [Ant Task](/fop/trunk/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/trunk/accessibility.html)
+            - [Complex Scripts](/fop/trunk/complexscripts.html)
+            - [Events](/fop/trunk/events.html)
+            - [Extensions](/fop/trunk/extensions.html)
+            - [Fonts](/fop/trunk/fonts.html)
+            - [Graphics](/fop/trunk/graphics.html)
+            - [Hyphenation](/fop/trunk/hyphenation.html)
+            - [Intermediate Format](/fop/trunk/intermediate.html)
+            - [Metadata](/fop/trunk/metadata.html)
+            - [Output Targets](/fop/trunk/output.html)
+            - [PDF/A](/fop/trunk/pdfa.html)
+            - [PDF/X](/fop/trunk/pdfx.html)
+            - [PDF Encryption](/fop/trunk/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/trunk/whitespacemanagement.html)
+      - ## FOP 2.5
+          - [FOP 2.5 Overview](/fop/2.5/)
+          - [Release Notes](/fop/2.5/releaseNotes_2.5.html)
+          - [Changes (2.5)](/fop/2.5/changes_2.5.html)
+          - [Known Issues](/fop/2.5/knownissues_overview.html)
+          - [Upgrading](/fop/2.5/upgrading.html)
+          - ### Using Apache FOP 2.5
+            - [Build](/fop/2.5/compiling.html)
+            - [Configure](/fop/2.5/configuration.html)
+            - [Run](/fop/2.5/running.html)
+            - [Embed](/fop/2.5/embedding.html)
+            - [Servlets](/fop/2.5/servlets.html)
+            - [Ant Task](/fop/2.5/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.5/accessibility.html)
+            - [Complex Scripts](/fop/2.5/complexscripts.html)
+            - [Events](/fop/2.5/events.html)
+            - [Extensions](/fop/2.5/extensions.html)
+            - [Fonts](/fop/2.5/fonts.html)
+            - [Graphics](/fop/2.5/graphics.html)
+            - [Hyphenation](/fop/2.5/hyphenation.html)
+            - [Intermediate Format](/fop/2.5/intermediate.html)
+            - [Metadata](/fop/2.5/metadata.html)
+            - [Output Targets](/fop/2.5/output.html)
+            - [PDF/A](/fop/2.5/pdfa.html)
+            - [PDF/X](/fop/2.5/pdfx.html)
+            - [PDF Encryption](/fop/2.5/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.5/whitespacemanagement.html)     
+      - ## FOP 2.4
+          - [FOP 2.4 Overview](/fop/2.4/)
+          - [Release Notes](/fop/2.4/releaseNotes_2.4.html)
+          - [Changes (2.4)](/fop/2.4/changes_2.4.html)
+          - [Known Issues](/fop/2.4/knownissues_overview.html)
+          - [Upgrading](/fop/2.4/upgrading.html)
+          - ### Using Apache FOP 2.4
+            - [Build](/fop/2.4/compiling.html)
+            - [Configure](/fop/2.4/configuration.html)
+            - [Run](/fop/2.4/running.html)
+            - [Embed](/fop/2.4/embedding.html)
+            - [Servlets](/fop/2.4/servlets.html)
+            - [Ant Task](/fop/2.4/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.4/accessibility.html)
+            - [Complex Scripts](/fop/2.4/complexscripts.html)
+            - [Events](/fop/2.4/events.html)
+            - [Extensions](/fop/2.4/extensions.html)
+            - [Fonts](/fop/2.4/fonts.html)
+            - [Graphics](/fop/2.4/graphics.html)
+            - [Hyphenation](/fop/2.4/hyphenation.html)
+            - [Intermediate Format](/fop/2.4/intermediate.html)
+            - [Metadata](/fop/2.4/metadata.html)
+            - [Output Targets](/fop/2.4/output.html)
+            - [PDF/A](/fop/2.4/pdfa.html)
+            - [PDF/X](/fop/2.4/pdfx.html)
+            - [PDF Encryption](/fop/2.4/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.4/whitespacemanagement.html)             
+      - ## FOP 2.3
+          - [FOP 2.3 Overview](/fop/2.3/)
+          - [Release Notes](/fop/2.3/releaseNotes_2.3.html)
+          - [Changes (2.3)](/fop/2.3/changes_2.3.html)
+          - [Known Issues](/fop/2.3/knownissues_overview.html)
+          - [Upgrading](/fop/2.3/upgrading.html)
+          - ### Using Apache FOP 2.3
+            - [Build](/fop/2.3/compiling.html)
+            - [Configure](/fop/2.3/configuration.html)
+            - [Run](/fop/2.3/running.html)
+            - [Embed](/fop/2.3/embedding.html)
+            - [Servlets](/fop/2.3/servlets.html)
+            - [Ant Task](/fop/2.3/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.3/accessibility.html)
+            - [Complex Scripts](/fop/2.3/complexscripts.html)
+            - [Events](/fop/2.3/events.html)
+            - [Extensions](/fop/2.3/extensions.html)
+            - [Fonts](/fop/2.3/fonts.html)
+            - [Graphics](/fop/2.3/graphics.html)
+            - [Hyphenation](/fop/2.3/hyphenation.html)
+            - [Intermediate Format](/fop/2.3/intermediate.html)
+            - [Metadata](/fop/2.3/metadata.html)
+            - [Output Targets](/fop/2.3/output.html)
+            - [PDF/A](/fop/2.3/pdfa.html)
+            - [PDF/X](/fop/2.3/pdfx.html)
+            - [PDF Encryption](/fop/2.3/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.3/whitespacemanagement.html)            
+      - ## FOP 2.2
+          - [FOP 2.2 Overview](/fop/2.2/)
+          - [Release Notes](/fop/2.2/releaseNotes_2.2.html)
+          - [Changes (2.2)](/fop/2.2/changes_2.2.html)
+          - [Known Issues](/fop/2.2/knownissues_overview.html)
+          - [Upgrading](/fop/2.2/upgrading.html)
+          - ### Using Apache FOP 2.2
+            - [Build](/fop/2.2/compiling.html)
+            - [Configure](/fop/2.2/configuration.html)
+            - [Run](/fop/2.2/running.html)
+            - [Embed](/fop/2.2/embedding.html)
+            - [Servlets](/fop/2.2/servlets.html)
+            - [Ant Task](/fop/2.2/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.2/accessibility.html)
+            - [Complex Scripts](/fop/2.2/complexscripts.html)
+            - [Events](/fop/2.2/events.html)
+            - [Extensions](/fop/2.2/extensions.html)
+            - [Fonts](/fop/2.2/fonts.html)
+            - [Graphics](/fop/2.2/graphics.html)
+            - [Hyphenation](/fop/2.2/hyphenation.html)
+            - [Intermediate Format](/fop/2.2/intermediate.html)
+            - [Metadata](/fop/2.2/metadata.html)
+            - [Output Targets](/fop/2.2/output.html)
+            - [PDF/A](/fop/2.2/pdfa.html)
+            - [PDF/X](/fop/2.2/pdfx.html)
+            - [PDF Encryption](/fop/2.2/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.2/whitespacemanagement.html)
+      - ## FOP 2.1
+          - [FOP 2.1 Overview](/fop/2.1/)
+          - [Release Notes](/fop/2.1/releaseNotes_2.1.html)
+          - [Changes (2.1)](/fop/2.1/changes_2.1.html)
+          - [Known Issues](/fop/2.1/knownissues_overview.html)
+          - [Upgrading](/fop/2.1/upgrading.html)
+          - ### Using Apache FOP 2.1
+            - [Build](/fop/2.1/compiling.html)
+            - [Configure](/fop/2.1/configuration.html)
+            - [Run](/fop/2.1/running.html)
+            - [Embed](/fop/2.1/embedding.html)
+            - [Servlets](/fop/2.1/servlets.html)
+            - [Ant Task](/fop/2.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.1/accessibility.html)
+            - [Complex Scripts](/fop/2.1/complexscripts.html)
+            - [Events](/fop/2.1/events.html)
+            - [Extensions](/fop/2.1/extensions.html)
+            - [Fonts](/fop/2.1/fonts.html)
+            - [Graphics](/fop/2.1/graphics.html)
+            - [Hyphenation](/fop/2.1/hyphenation.html)
+            - [Intermediate Format](/fop/2.1/intermediate.html)
+            - [Metadata](/fop/2.1/metadata.html)
+            - [Output Targets](/fop/2.1/output.html)
+            - [PDF/A](/fop/2.1/pdfa.html)
+            - [PDF/X](/fop/2.1/pdfx.html)
+            - [PDF Encryption](/fop/2.1/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.1/whitespacemanagement.html)
+      - ## FOP 2.0
+          - [FOP 2.0 Overview](/fop/2.0/)
+          - [Release Notes](/fop/2.0/releaseNotes_2.0.html)
+          - [Changes (2.0)](/fop/2.0/changes_2.0.html)
+          - [Known Issues](/fop/2.0/knownissues_overview.html)
+          - [Upgrading](/fop/2.0/upgrading.html)
+          - ### Using Apache FOP 2.0
+            - [Build](/fop/2.0/compiling.html)
+            - [Configure](/fop/2.0/configuration.html)
+            - [Run](/fop/2.0/running.html)
+            - [Embed](/fop/2.0/embedding.html)
+            - [Servlets](/fop/2.0/servlets.html)
+            - [Ant Task](/fop/2.0/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.0/accessibility.html)
+            - [Complex Scripts](/fop/2.0/complexscripts.html)
+            - [Events](/fop/2.0/events.html)
+            - [Extensions](/fop/2.0/extensions.html)
+            - [Fonts](/fop/2.0/fonts.html)
+            - [Graphics](/fop/2.0/graphics.html)
+            - [Hyphenation](/fop/2.0/hyphenation.html)
+            - [Intermediate Format](/fop/2.0/intermediate.html)
+            - [Metadata](/fop/2.0/metadata.html)
+            - [Output Targets](/fop/2.0/output.html)
+            - [PDF/A](/fop/2.0/pdfa.html)
+            - [PDF/X](/fop/2.0/pdfx.html)
+            - [PDF Encryption](/fop/2.0/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.0/whitespacemanagement.html)
+      - ## FOP 1.1
+          - [FOP 1.1 Overview](/fop/1.1/)
+          - [Release Notes](/fop/1.1/releaseNotes_1.1.html)
+          - [Changes (1.1)](/fop/1.1/changes_1.1.html)
+          - [Known Issues](/fop/1.1/knownissues_overview.html)
+          - [Upgrading](/fop/1.1/upgrading.html)
+          - ### Using Apache FOP 1.1
+            - [Build](/fop/1.1/compiling.html)
+            - [Configure](/fop/1.1/configuration.html)
+            - [Run](/fop/1.1/running.html)
+            - [Embed](/fop/1.1/embedding.html)
+            - [Servlets](/fop/1.1/servlets.html)
+            - [Ant Task](/fop/1.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/1.1/accessibility.html)
+            - [Complex Scripts](/fop/1.1/complexscripts.html)
+            - [Events](/fop/1.1/events.html)
+            - [Extensions](/fop/1.1/extensions.html)
+            - [Fonts](/fop/1.1/fonts.html)
+            - [Graphics](/fop/1.1/graphics.html)
+            - [Hyphenation](/fop/1.1/hyphenation.html)
+            - [Intermediate Format](/fop/1.1/intermediate.html)
+            - [Metadata](/fop/1.1/metadata.html)
+            - [Output Targets](/fop/1.1/output.html)
+            - [PDF/A](/fop/1.1/pdfa.html)
+            - [PDF/X](/fop/1.1/pdfx.html)
+            - [PDF Encryption](/fop/1.1/pdfencryption.html)
+      - ## FOP 1.0
+          - [FOP 1.0 Overview](/fop/1.0/)
+          - [Release Notes](/fop/1.0/releaseNotes_1.0.html)
+          - [Changes (1.0)](/fop/1.0/changes_1.0.html)
+          - [Known Issues](/fop/1.0/knownissues_overview.html)
+          - [Upgrading](/fop/1.0/upgrading.html)
+          - ### Using Apache FOP 1.0
+            - [Build](/fop/1.0/compiling.html)
+            - [Configure](/fop/1.0/configuration.html)
+            - [Run](/fop/1.0/running.html)
+            - [Embed](/fop/1.0/embedding.html)
+            - [Servlets](/fop/1.0/servlets.html)
+            - [Ant Task](/fop/1.0/anttask.html)
+          - ### Features
+            - [Output Targets](/fop/1.0/output.html)
+            - [Intermediate Format](/fop/1.0/intermediate.html)
+            - [PDF Encryption](/fop/1.0/pdfencryption.html)
+            - [PDF/A](/fop/1.0/pdfa.html)
+            - [PDF/X](/fop/1.0/pdfx.html)
+            - [Graphics](/fop/1.0/graphics.html)
+            - [Fonts](/fop/1.0/fonts.html)
+            - [Hyphenation](/fop/1.0/hyphenation.html)
+            - [Extensions](/fop/1.0/extensions.html)
+            - [Events](/fop/1.0/events.html)
+            - [Metadata](/fop/1.0/metadata.html)
+            - [Accessibility](/fop/1.0/accessibility.html)
+      - ## FOP Development
+          - [General Info](/fop/dev/)
+          - ## Design
+            - [Design Info](/fop/dev/design/)
+          - ## Core Process
+            - [Startup](/fop/dev/design/startup.html)
+            - [XML Parsing](/fop/dev/design/parsing.html)
+            - [FO Tree](/fop/dev/design/fotree.html)
+            - [Properties](/fop/dev/design/properties.html)
+            - [Layout](/fop/dev/design/layout.html)
+            - [Break Possibility](/fop/dev/design/breakpos.html)
+            - [Area Tree](/fop/dev/design/areas.html)
+            - [Renderers](/fop/dev/design/renderers.html)
+          - ## Miscellaneous
+            - [Images](/fop/dev/design/images.html)
+            - [PDF Library](/fop/dev/design/pdf-library.html)
+            - [SVG](/fop/dev/design/svg.html)
+            - [Embedding](/fop/dev/design/embedding.html)
+            - [Extending](/fop/dev/design/extending.html)
+            - [Optimisations](/fop/dev/design/optimise.html)
+            - [User Agent](/fop/dev/design/useragent.html)
+          - [Unresolved (Wiki)](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FOPProjectPages)
+          - [SVG](/fop/dev/svg.html)
+          - [Extensions](/fop/dev/extensions.html)
+          - ## Develop
+            - [Walk-Thru](/fop/dev/implement.html)
+            - [Patch Queue](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20description%20~%20%22\%22[patch]\%22%22%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+            - [Conventions](/fop/dev/conventions.html)
+          - ## Test
+            - [Testing](/fop/dev/testing.html)
+          - ## Deploy
+            - [Doc Mgmt](/fop/dev/doc.html)
+            - [Release](/fop/dev/release.html)
+            - [Bugs](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20issuetype%20%3D%20Bug%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+          - ## Resources
+            - [FAQs](/fop/dev/faq.html)
+            - [Tools](/fop/dev/tools.html)
+            - [ViewVC](http://svn.apache.org/viewvc/xmlgraphics/fop)
+          - ## SubPackages
+            - [RTFlib](/fop/dev/rtflib.html)
+
+# Apache&trade; XML Graphics
+  - ## Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache Batik](/batik/)
+  - [Apache XML Graphics Commons](/commons/)
+
+### Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+      $('#navigation :header').not('#search-apache-xml-graphics, #apachewzxhzdk3-xml-graphics, #sub-projects').append(' &raquo;');
+    }
+  $('#navigation > ul > li > ul > li ul').hide();
+  $('#project-overview').next().hide();
+  $('#versions').next().show();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+      $("li.highlight").removeClass("highlight");
+      $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
+	  <a href="/fop/"><img src="/images/apache-fop-logo.jpg" alt="The Apache FOP Project" width="120" height="65" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; FOP Project</h2>
+	</div>  
+
+    <h1>Apache(tm) FOP Output Formats</h1>
+    Translations: 
+<a href="/fop/2.0/output.html">en</a>
+<a href="/fop/0.95/output.html">en</a>
+<a href="/fop/2.5/output.html">en</a>
+<a href="/fop/1.1/output.html">en</a>
+<a href="/fop/2.2/output.html">en</a>
+<a href="/fop/2.1/output.html">en</a>
+<a href="/fop/2.3/output.html">en</a>
+<a href="/fop/2.4/output.html">en</a>
+<a href="/fop/1.0/output.html">en</a>
+
+
+    <h1>Apache&trade; FOP Output Formats</h1>
+<p>Apache&trade; FOP supports multiple output formats by using a different renderer for each format. The renderers do not all have the same set of capabilities, sometimes because of the output format itself, sometimes because some renderers get more development attention than others.</p>
+<h2 id="general">General Information</h2>
+<h3 id="general-fonts">Fonts</h3>
+<p>Most FOP renderers use a FOP-specific system for font registration. However, the Java2D/AWT and print renderers use the Java AWT package, which gets its font information from the operating system registration. This can result in several differences, including actually using different fonts, and having different font metrics for the same font. The net effect is that the layout of a given FO document can be quite different between renderers that do not use the same font information.</p>
+<p>Theoretically, there's some potential to make the output of the PDF/PS renderers match the output of the Java2D-based renderers. If FOP used the font metrics from its own font subsystem but still used Java2D for text painting in the Java2D-based renderers, this could probably be achieved. However, this approach hasn't been implemented, yet.</p>
+<p>With a work-around, it is possible to match the PDF/PS output in a Java2D-based renderer pretty closely. The clue is to use the <a href="intermediate.html">intermediate format</a>. The trick is to layout the document using FOP's own font subsystem but then render the document using Java2D. Here are the necessary steps (using the command-line):</p>
+<ol>
+<li>
+<p>Produce an IF file:</p>
+<ul>
+<li><code>fop -fo myfile.fo -at application/pdf myfile.at.xml</code></li>
+</ul>
+<p>Specifying "application/pdf" for the "<code>-at</code>" parameter causes FOP to use FOP's own font subsystem (which is used by the PDF renderer). Note that no PDF file is created in this step.</p>
+</li>
+<li>
+<p>Render to a PDF file:</p>
+<ul>
+<li><code>fop -atin myfile.at.xml -pdf myfile.pdf</code></li>
+</ul>
+</li>
+<li>
+<p>Render to a Java2D-based renderer:</p>
+<ul>
+<li>
+<p><code>fop -atin myfile.at.xml -print</code></p>
+</li>
+<li>
+<p><code>fop -atin myfile.at.xml -awt</code></p>
+</li>
+<li>
+<p><code>fop -atin myfile.at.xml -tiff myfile.tiff</code></p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="general-direct-output">Output to a Printer or Other Device</h3>
+<p>The most obvious way to print your document is to use the FOP <a href="#print">print renderer</a>, which uses the Java2D API (AWT). However, you can also send output from the Postscript renderer directly to a Postscript device, or output from the PCL renderer directly to a PCL device.</p>
+<p>Here are Windows command-line examples for Postscript and PCL:</p>
+<p><code>fop ... -ps \\computername\printer</code></p>
+<p><code>fop ... -pcl \\computername\printer</code></p>
+<p>Here is some Java code to accomplish the task in UNIX:</p>
+<div class="highlight"><pre><span></span><span class="n">proc</span> <span class="o">=</span> <span class="n">Runtime</span><span class="o">.</span><span class="na">getRuntime</span><span class="o">().</span><span class="na">exec</span><span class="o">(</span><span class="s">&quot;lp -d&quot;</span> <span class="o">+</span> <span class="n">print_queue</span> <span class="o">+</span> <span class="s">&quot; -o -dp -&quot;</span><span class="o">);</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">();</span>
+</pre></div>
+
+
+<p>Set the output MIME type to "<code>application/x-pcl</code>" (<code>MimeConstants.MIME_PCL</code>) and it happily sends the PCL to the UNIX printer queue.</p>
+<h2 id="pdf">PDF</h2>
+<p>PDF is the best supported output format. It is also the most accurate with text and layout. This creates a PDF document that is streamed out as each page is rendered. This means that the internal page index information is stored near the end of the document. The PDF version supported is 1.4. PDF versions are forwards/backwards compatible.</p>
+<p>Note that FOP does not currently support PDF/A-1a. Support for <a href="accessibility.html">Tagged PDF</a>, <a href="pdfa.html">PDF/A-1b</a> and <a href="pdfx.html">PDF/X</a> has recently been added, however.</p>
+<h3 id="pdf-fonts">Fonts</h3>
+<p>PDF has a set of fonts that are always available to all PDF viewers; to quote from the PDF Specification:</p>
+<p><em>"PDF prescribes a set of 14 standard fonts that can be used without prior definition. These include four faces each of three Latin text typefaces (Courier, Helvetica, and Times), as well as two symbolic fonts (Symbol and ITC Zapf Dingbats). These fonts, or suitable substitute fonts with the same metrics, are guaranteed to be available in all PDF viewer applications."</em></p>
+<h3 id="pdf-postprocess">Post-processing</h3>
+<p>FOP does not currently support several desirable PDF features: watermarks and signatures. One workaround is to use Adobe Acrobat (the full version, not the Reader) to process the file manually or with scripting that it supports.</p>
+<p>Another popular post-processing tool is <a href="http://itextpdf.com/">iText</a>, which has tools for adding security features, document properties, watermarks, and many other features to PDF files.
+<warning>Caveat: iText may swallow PDF bookmarks. But Jens Stavnstrup tells us in issue <a href="https://issues.apache.org/jira/browse/FOP-1100">FOP-1100</a> that this doesn't happen if you use iText's PDFStamper.</warning>
+Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note that FOP now supports <a href="pdfencryption.html">PDF encryption</a>. However the principles for using iText for other PDF features are similar.)</p>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">ByteArrayOutputStream</span> <span class="n">fopout</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span>
+        <span class="n">FileOutputStream</span> <span class="n">outfile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
+        <span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;.&quot;</span><span class="o">).</span><span class="na">toURI</span><span class="o">());</span>
+        <span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFop</span><span class="o">(</span><span class="n">MimeConstants</span><span class="o">.</span><span class="na">MIME_PDF</span><span class="o">,</span> <span class="n">fopout</span><span class="o">);</span>
+
+        <span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">TransformerFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">().</span><span class="na">newTransformer</span><span class="o">(</span>
+            <span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">])));</span>
+        <span class="n">transformer</span><span class="o">.</span><span class="na">transform</span><span class="o">(</span><span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">])),</span>
+            <span class="k">new</span> <span class="n">SAXResult</span><span class="o">(</span><span class="n">fop</span><span class="o">.</span><span class="na">getDefaultHandler</span><span class="o">()));</span>
+        <span class="n">PdfReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PdfReader</span><span class="o">(</span><span class="n">fopout</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">());</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">getNumberOfPages</span><span class="o">();</span>
+        <span class="n">Document</span> <span class="n">document</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Document</span><span class="o">(</span><span class="n">reader</span><span class="o">.</span><span class="na">getPageSizeWithRotation</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+        <span class="n">PdfWriter</span> <span class="n">writer</span> <span class="o">=</span> <span class="n">PdfWriter</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">document</span><span class="o">,</span> <span class="n">outfile</span><span class="o">);</span>
+        <span class="n">writer</span><span class="o">.</span><span class="na">setEncryption</span><span class="o">(</span><span class="n">PdfWriter</span><span class="o">.</span><span class="na">STRENGTH40BITS</span><span class="o">,</span> <span class="s">&quot;pdf&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span>
+            <span class="n">PdfWriter</span><span class="o">.</span><span class="na">AllowCopy</span><span class="o">);</span>
+        <span class="n">document</span><span class="o">.</span><span class="na">open</span><span class="o">();</span>
+        <span class="n">PdfContentByte</span> <span class="n">cb</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="na">getDirectContent</span><span class="o">();</span>
+        <span class="n">PdfImportedPage</span> <span class="n">page</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">rotation</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">i</span><span class="o">++;</span>
+            <span class="n">document</span><span class="o">.</span><span class="na">setPageSize</span><span class="o">(</span><span class="n">reader</span><span class="o">.</span><span class="na">getPageSizeWithRotation</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+            <span class="n">document</span><span class="o">.</span><span class="na">newPage</span><span class="o">();</span>
+            <span class="n">page</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="na">getImportedPage</span><span class="o">(</span><span class="n">reader</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+            <span class="n">rotation</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">getPageRotation</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">rotation</span> <span class="o">==</span> <span class="mi">90</span> <span class="o">||</span> <span class="n">rotation</span> <span class="o">==</span> <span class="mi">270</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">cb</span><span class="o">.</span><span class="na">addTemplate</span><span class="o">(</span><span class="n">page</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mf">1f</span><span class="o">,</span> <span class="mf">1f</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span>
+                <span class="n">reader</span><span class="o">.</span><span class="na">getPageSizeWithRotation</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">height</span><span class="o">());</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">cb</span><span class="o">.</span><span class="na">addTemplate</span><span class="o">(</span><span class="n">page</span><span class="o">,</span> <span class="mf">1f</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mf">1f</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Processed page &quot;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">document</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>Check the iText tutorial and documentation for setting access flags, password, encryption strength and other parameters.</p>
+<h3 id="pdf-watermark">Watermarks</h3>
+<p>In addition to the <a href="#pdf-postprocess">PDF Post-processing</a> options, consider the following workarounds:</p>
+<ul>
+<li>
+<p>Use a background image for the body region.</p>
+</li>
+<li>
+<p>(submitted by Trevor Campbell) Place an image in a region that overlaps the flowing text. For example, make region-before large enough to contain your image. Then include a block (if necessary, use an absolutely positioned block-container) containing the watermark image in the static-content for the region-before. Note that the image will be drawn on top of the normal content.</p>
+</li>
+</ul>
+<h3 id="pdf-extensions">Extensions</h3>
+<p>The PDF Renderer supports some PDF specific extensions which can be embedded into the input FO document. To use the extensions the appropriate namespace must be declared in the fo:root element like this:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
+         <span class="na">xmlns:pdf=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/pdf&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+
+
+<h4 id="pdf-embedded-file">Embedded Files</h4>
+<p>It is possible to attach/embed arbitrary files into a PDF file. You can give a name and a description of the file. Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:declarations&gt;</span>
+  <span class="nt">&lt;pdf:embedded-file</span> <span class="na">filename=</span><span class="s">&quot;image.jpg&quot;</span> <span class="na">src=</span><span class="s">&quot;url(file:///C:/Temp/myimage.jpg)&quot;</span> <span class="na">description=</span><span class="s">&quot;My image&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;pdf:embedded-file</span> <span class="na">src=</span><span class="s">&quot;url(file:///C:/Temp/MyTextDoc.odt)&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/fo:declarations&gt;</span>
+</pre></div>
+
+
+<p><code>pdf:embedded-file</code> must be a child of <code>fo:declarations</code>. The "src" property is used to reference the file that is to be embedded. This property uses the "uri-specification" datatype from the XSL-FO specification. The "filename" property is optional. If it is missing the filename is automatically set from the URI/IRI of the "src" property. An optional description can also be added to further describe the file attachment.</p>
+<p>It is also possible to reference an embedded file from an <code>fo:basic-link</code>. Use the special "embedded-file:" URI scheme with the filename as single argument after the URI scheme. Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:basic-link</span> <span class="na">external-destination=</span><span class="s">&quot;url(embedded-file:image.jpg)&quot;</span><span class="nt">&gt;</span>Attached Image<span class="nt">&lt;/fo:basic-link&gt;</span>
+</pre></div>
+
+
+<p>Note: Not all PDF Viewers (including some Acrobat Versions) will open the embedded file when clicking on the link. In that case, the user will have to open he attachment via the separate list of file attachments.</p>
+<h4>Custom Document Properties</h4>
+<p>In Adobe Reader (and possibly other PDF viewers), in the Document Properties window,
+there is a tab that shows custom properties that have been set on the document:<br>
+<img alt="PDF Custom Document Properties" src="images/pdf-custom-document-properties.png"></p>
+<p>Such properties are stored in the PDF in the form of additional key/value pairs in the
+<em>Document Information Dictionary</em> (the Info dictionary). They can be set in the
+FO document using the <code>pdf:info</code> extension element as a child of <code>fo:declarations</code>:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:declarations&gt;</span>
+  <span class="nt">&lt;pdf:info</span> <span class="na">xmlns:pdf=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/pdf&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;pdf:name</span> <span class="na">key=</span><span class="s">&quot;MyCustomProperty&quot;</span><span class="nt">&gt;</span>MyPropertyValue<span class="nt">&lt;/pdf:name&gt;</span>
+  <span class="nt">&lt;/pdf:info&gt;</span>
+<span class="nt">&lt;/fo:declarations&gt;</span>
+</pre></div>
+
+
+<p>Each custom property must be specified using the <code>pdf:name</code> element. Remember that the property name must be different to the reserved keywords, which are Title, Author, Subject, Keywords, Creator, Producer, CreationDate, ModDate and Trapped.</p>
+<h4>PDF Linearization</h4>
+<p>Linearization is helpful to allow viewing of a pdf over a slow connection. Needs to be enabled using fop.xconf:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;renderers&gt;</span>
+    <span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;linearization&gt;</span>true<span class="nt">&lt;/linearization&gt;</span>
+    <span class="nt">&lt;/renderer&gt;</span>
+  <span class="nt">&lt;/renderers&gt;</span>
+<span class="nt">&lt;/fop&gt;</span>
+</pre></div>
+
+
+<h2 id="ps">PostScript</h2>
+<p>The PostScript renderer has been brought up to a similar quality as the PDF renderer, but may still be missing certain features. Currently, the PostScript renderer generates PostScript Level 3 with most DSC comments. Actually, the only Level 3 features used are the FlateDecode and DCTDecode filter (the latter is used for 1:1 embedding of JPEG images), everything else is Level 2.</p>
+<h3 id="ps-configuration">Configuration</h3>
+<p>The PostScript renderer configuration currently allows the following settings:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/postscript&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;auto-rotate-landscape&gt;</span>false<span class="nt">&lt;/auto-rotate-landscape&gt;</span>
+  <span class="nt">&lt;language-level&gt;</span>3<span class="nt">&lt;/language-level&gt;</span>
+  <span class="nt">&lt;optimize-resources&gt;</span>false<span class="nt">&lt;/optimize-resources&gt;</span>
+  <span class="nt">&lt;safe-set-page-device&gt;</span>false<span class="nt">&lt;/safe-set-page-device&gt;</span>
+  <span class="nt">&lt;dsc-compliant&gt;</span>true<span class="nt">&lt;/dsc-compliant&gt;</span>
+  <span class="nt">&lt;rendering&gt;</span>quality<span class="nt">&lt;/rendering&gt;</span>
+  <span class="nt">&lt;acrobat-downsample&gt;</span>true<span class="nt">&lt;/acrobat-downsample&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</pre></div>
+
+
+<p>The default value for the "auto-rotate-landscape" setting is "false". Setting it to "true" will automatically rotate landscape pages and will mark them as landscape.</p>
+<p>The default value for the "language-level" setting is "3". This setting specifies the PostScript language level which should be used by FOP. Set this to "2" only if you don't have a Level 3 capable interpreter.</p>
+<p>The default value for the "optimize-resources" setting is "false". Setting it to "true" will produce the PostScript file in two steps. A temporary file will be written first which will then be processed to add only the fonts which were really used and images are added to the stream only once as PostScript forms. This will reduce file size but can potentially increase the memory needed in the interpreter to process.</p>
+<p>The default value for the "safe-set-page-device" setting is "false". Setting it to "true" will cause the renderer to invoke a postscript macro which guards against the possibility of invalid/unsupported postscript key/values being issued to the implementing postscript page device.</p>
+<p>The default value for the "dsc-compliant" setting is "true". Setting it to "false" will break DSC compliance by minimizing the number of setpagedevice calls in the postscript document output. This feature may be useful when unwanted blank pages are experienced in your postscript output. This problem is caused by the particular postscript implementation issuing unwanted postscript subsystem initgraphics/erasepage calls on each setpagedevice call.</p>
+<p>The default value for the "rendering" setting is "quality". Setting it to "size" optimizes rendering for smaller file sizes which can involve minor compromises in rendering quality. For example, solid borders are then painted as plain rectangles instead of the elaborate painting instructions required for mixed-color borders.</p>
+<p>The default value for the "acrobat-downsample" setting is "false". Setting it to "true" can involve minor compromises in rendering quality to allow compatibility with Adobe Acrobat.</p>
+<h3 id="ps-limitations">Limitations</h3>
+<ul>
+<li>
+<p>No image transparency is available.</p>
+</li>
+<li>
+<p>PPD support is still missing.</p>
+</li>
+</ul>
+<h2 id="pcl">PCL</h2>
+<p>This format is for the Hewlett-Packard PCL printers and other printers supporting PCL. It should produce output as close to identical as possible to the printed output of the PDFRenderer within the limitations of the renderer, and output device.</p>
+<p>The output created by the PCLRenderer is generic PCL 5, HP GL/2 and PJL. This should allow any device fully supporting PCL 5 to be able to print the output generated by the PCLRenderer. PJL is used to control the print job and switch to the PCL language. PCL 5 is used for text, raster graphics and rectangular fill graphics. HP GL/2 is used for more complex painting operations. Certain painting operations are done off-screen and rendered to PCL as bitmaps because of limitations in PCL 5.</p>
+<p>Truetype fonts can be embedded, other font formats will be rendered as bitmaps.</p>
+<h3 id="pcl-references">References</h3>
+<ul>
+<li>
+<p><a href="http://en.wikipedia.org/wiki/Printer_Control_Language">WikiPedia entry on PCL</a></p>
+</li>
+<li>
+<p><a href="http://www.hp.com/ctg/Manual/bpl13210.pdf">Technical reference documents on PCL from Hewlett-Packard</a></p>
+</li>
+</ul>
+<h3 id="pcl-limitations">Limitations</h3>
+<ul>
+<li>
+<p>Text or graphics outside the left or top of the printable area are not rendered properly. This is a limitation of PCL, not FOP. In general, things that should print to the left of the printable area are shifted to the right so that they start at the left edge of the printable area.</p>
+</li>
+<li>
+<p>The Helvetica and Times fonts are not well supported among PCL printers so Helvetica is mapped to Arial and Times is mapped to Times New. This is done in the PCLRenderer, no changes are required in the FO's. The metrics and appearance for Helvetica/Arial and Times/Times New are nearly identical, so this has not been a problem so far.</p>
+</li>
+<li>
+<p>For the non-symbol fonts, the ISO 8859-1 symbol set is used (PCL set "0N").</p>
+</li>
+<li>
+<p>All fonts available to the Java2D subsystem are usable. The texts are painted as bitmap much like the Windows PCL drivers do.</p>
+</li>
+<li>
+<p>Multibyte characters are not supported.</p>
+</li>
+<li>
+<p>Monochrome output is the default, color needs to be enabled in config. PCL5c color extensions will only be implemented on demand. By default color and grayscale images are converted to monochrome bitmaps (1-bit). Dithering only occurs if the JAI image library is available.</p>
+</li>
+<li>
+<p>Images are scaled up to the next resolution level supported by PCL (75, 100, 150, 200, 300, 600 dpi). For color and grayscale images an even higher PCL resolution is selected to give the dithering algorithm a chance to improve the bitmap quality.</p>
+</li>
+<li>
+<p>Currently, there's no support for clipping and image transparency, largely because PCL 5 has certain limitations.</p>
+</li>
+</ul>
+<h3 id="pcl-configuration">Configuration</h3>
+<p>The PCL renderer configuration currently allows the following settings:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/x-pcl&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;optimize-resources&gt;</span>false<span class="nt">&lt;/optimize-resources&gt;</span>
+  <span class="nt">&lt;rendering&gt;</span>quality<span class="nt">&lt;/rendering&gt;</span>
+  <span class="nt">&lt;text-rendering&gt;</span>bitmap<span class="nt">&lt;/text-rendering&gt;</span>
+  <span class="nt">&lt;disable-pjl&gt;</span>false<span class="nt">&lt;/disable-pjl&gt;</span>
+  <span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;color&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</pre></div>
+
+
+<p>The default value for the "optimize-resources" setting is "false". Setting it to "true" will produce the PCL file via a temporary buffer. This will correct font output from IF input but can potentially increase the memory needed in the interpreter to process.</p>
+<p>The default value for the "rendering" setting is "speed" which causes borders to be painted as plain rectangles. In this mode, no special borders (dotted, dashed etc.) are available. If you want support for all border modes, set the value to "quality" as indicated above. This will cause the borders to be painted as bitmaps.</p>
+<p>The default value for the "text-rendering" setting is "auto" which paints the base fonts using PCL fonts. Non-base fonts are painted as bitmaps through Java2D. If the mix of painting methods results in unwelcome output, you can set this to "bitmap" which causes all text to be rendered as bitmaps.</p>
+<p>The default value for the "disable-pjl" setting is "false". This means that the PCL renderer usually generates PJL commands before and after the document in order to switch a printer into PCL language. PJL commands can be disabled if you set this value to "true".</p>
+<p>The default value for "image" mode is monochrome output, use "mode" equals "color" to enable color output.</p>
+<p>You can control the output resolution for the PCL using the "target resolution" setting on the FOUserAgent. The actual value will be rounded up to the next supported PCL resolution. Currently, only 300 and 600 dpi are supported which should be enough for most use cases. Note that this setting directly affects the size of the output file and the print quality.</p>
+<h3 id="pcl-extensions">Extensions</h3>
+<p>The PCL Renderer supports some PCL specific extensions which can be embedded into the input FO document. To use the extensions the appropriate namespace must be declared in the fo:root element like this:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
+         <span class="na">xmlns:pcl=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/pcl&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+
+
+<h4 id="pcl-page-source">Page Source (Tray selection)</h4>
+<p>The page-source extension attribute on fo:simple-page-master allows to select the paper tray the sheet for a particular simple-page-master is to be taken from. Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:layout-master-set&gt;</span>
+  <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;simple&quot;</span> <span class="na">pcl:paper-source=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+    ...
+  <span class="nt">&lt;/fo:simple-page-master&gt;</span>
+<span class="nt">&lt;/fo:layout-master-set&gt;</span>
+</pre></div>
+
+
+<p>Note: the tray number is a positive integer and the value depends on the target printer. Not all PCL printers support the same paper trays. Usually, "1" is the default tray, "2" is the manual paper feed, "3" is the manual envelope feed, "4" is the "lower" tray and "7" is "auto-select". Consult the technical reference for your printer for all available values.</p>
+<h4 id="pcl-output-bin">Output Bin</h4>
+<p>The <code>output-bin</code> extension attribute on fo:simple-page-master allows to select the output bin into which the printed output should be fed. Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:layout-master-set&gt;</span>
+  <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;simple&quot;</span> <span class="na">pcl:output-bin=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+    ...
+  <span class="nt">&lt;/fo:simple-page-master&gt;</span>
+<span class="nt">&lt;/fo:layout-master-set&gt;</span>
+</pre></div>
+
+
+<p>Note: the output bin number is a positive integer and the value depends on the target printer. Not all PCL printers support the same output bins. Usually, "1" is the upper output bin, "2" is the lower (rear) output bin. Consult the technical reference for your printer for all available values.</p>
+<h4 id="pcl-duplex-mode">Page Duplex Mode</h4>
+<p>The duplex-mode extension attribute on fo:simple-page-master allows to select the duplex mode to be used for a particular simple-page-master. Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:layout-master-set&gt;</span>
+  <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;simple&quot;</span> <span class="na">pcl:duplex-mode=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+    ...
+  <span class="nt">&lt;/fo:simple-page-master&gt;</span>
+<span class="nt">&lt;/fo:layout-master-set&gt;</span>
+</pre></div>
+
+
+<p>Note: the duplex is a positive integer and the value depends on the target printer. Not all PCL printers support duplexing. Usually, "0" is simplex, "1" is duplex (long-edge binding), "2" is duplex (short-edge binding). Consult the technical reference for your printer for all available values.</p>
+<h2 id="afp">AFP</h2>
+<p>The FOP AFP Renderer deals with creating documents conforming to the IBM AFP document architecture also refered to as MO:DCA (Mixed Object Document Content Architecture).</p>
+<p>The mapping of XSL-FO elements to the major MO:DCA structures is as follows:</p>
+<table>
+<thead>
+<tr>
+<th>XSL-FO element</th>
+<th>MO:DCA-P object</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fo:root</td>
+<td>Document</td>
+</tr>
+<tr>
+<td>fo:page-sequence</td>
+<td>Page Group</td>
+</tr>
+<tr>
+<td>fo:simple-page-master</td>
+<td>Page</td>
+</tr>
+</tbody>
+</table>
+<p>FOP creates exactly one Document per Printfile with an optional Resource Group at the beginning. FOP does not create document indices.</p>
+<h3 id="afp-references">References</h3>
+<ul>
+<li>
+<p><a href="http://en.wikipedia.org/wiki/Advanced_Function_Presentation">AFP (Advanced Function Presentation)</a></p>
+</li>
+<li>
+<p><a href="https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/AFPResources">AFP Resources on the FOP WIKI</a></p>
+</li>
+<li>
+<p><a href="https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/AFPOutput">Technical notes on AFP output in FOP</a></p>
+</li>
+</ul>
+<h3 id="afp-limitations">Limitations</h3>
+<p>This list is most likely badly incomplete.</p>
+<ul>
+<li>
+<p>Clipping of text and graphics is not supported.</p>
+</li>
+<li>
+<p>TrueType, IBM outline, raster fonts and to a limited extend the original fonts built into FOP are supported.</p>
+</li>
+</ul>
+<h3 id="afp-compatibility">Deployment in older environments</h3>
+<p>There are still a big number of older (or limited) MO:DCA/IPDS environments in production out there. AFP has grown in functionality over time and not every environment supports the latest features. We're trying to make AFP output work in as many environments as possible. However, to make AFP output work on older environments it is recommended to set to configuration to 1 bit per pixel (see below on how to do this). In this case, all images are converted to bi-level images using IOCA function set 10 (FS10) and are enclosed in page-segments since some implementation cannot deal with IOCA objects directly. If a higher number of bits per pixel is configured, FOP has to switch to at least FS11 which may not work everywhere.</p>
+<h3 id="afp-configuration">Configuration</h3>
+<h4 id="afp-font-config">Fonts</h4>
+<p>The AFP Renderer requires special configuration particularly related to fonts. AFP Render configuration is done through the normal FOP configuration file. The MIME type for the AFP Renderer is application/x-afp which means the AFP Renderer section in the FOP configuration file looks like:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/x-afp&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- AFP Renderer --&gt;</span>
+  ...
+<span class="nt">&lt;/renderer&gt;</span>
+</pre></div>
+
+
+<p>There are 5 font configuration variants supported:</p>
+<ol>
+<li>
+<p>TrueType fonts</p>
+</li>
+<li>
+<p>IBM Raster fonts</p>
+</li>
+<li>
+<p>IBM Outline fonts</p>
+</li>
+<li>
+<p>IBM CID-keyed (Type 0) fonts</p>
+</li>
+<li>
+<p>FOP built-in Base14 fonts</p>
+</li>
+</ol>
+<p>TrueType font configuration looks like:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;font</span> <span class="na">kerning=</span><span class="s">&quot;yes&quot;</span> <span class="na">embed-url=</span><span class="s">&quot;fonts/Uvb_____.TTF&quot;</span> <span class="na">name=</span><span class="s">&quot;Univers&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Univers&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;any&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/font&gt;</span>
+</pre></div>
+
+
+<p>A typical raster font configuration looks like:</p>
+<div class="highlight"><pre><span></span><span class="c">&lt;!-- This is an example of mapping actual IBM raster fonts / code pages to a FOP font --&gt;</span>
+<span class="nt">&lt;font&gt;</span>
+<span class="c">&lt;!-- The afp-font element defines the IBM code page, the matching Java encoding and the</span>
+<span class="c">     base URI for the font --&gt;</span>
+  <span class="nt">&lt;afp-font</span> <span class="na">type=</span><span class="s">&quot;raster&quot;</span> <span class="na">codepage=</span><span class="s">&quot;T1V10500&quot;</span> <span class="na">encoding=</span><span class="s">&quot;Cp500&quot;</span> <span class="na">base-uri=</span><span class="s">&quot;fonts/ibm/&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- For a raster font a separate element for each font size is required providing</span>
+<span class="c">         the font size and the corresponding IBM Character set name --&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;7&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C0N20070&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;8&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C0N20080&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;10&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C0N20000&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;11&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C0N200A0&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;12&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C0N200B0&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;14&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C0N200D0&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;16&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C0N200F0&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;18&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C0N200H0&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;20&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C0N200J0&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;24&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C0N200N0&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;30&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C0N200T0&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;36&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C0N200Z0&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/afp-font&gt;</span>
+  <span class="c">&lt;!-- These are the usual FOP font triplets as they apply to this font --&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;serif&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Times&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Times-Roman&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;TimesNewRoman&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/font&gt;</span>
+</pre></div>
+
+
+<p>An outline font configuration is simpler as the individual font size entries are not required. However, the characterset definition is now required within the afp-font element.</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;font&gt;</span>
+  <span class="nt">&lt;afp-font</span> <span class="na">type=</span><span class="s">&quot;outline&quot;</span> <span class="na">codepage=</span><span class="s">&quot;T1V10500&quot;</span> <span class="na">encoding=</span><span class="s">&quot;Cp500&quot;</span> <span class="na">characterset=</span><span class="s">&quot;CZH200  &quot;</span>
+       <span class="na">base-uri=</span><span class="s">&quot;file:/fonts/ibm&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;sans-serif&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Helvetica&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;any&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/font&gt;</span>
+</pre></div>
+
+
+<p>If "base-uri" is missing or a relative URI, the fonts are resolved relative to the font base URI specified in the configuration (or on the FopFactory).</p>
+<p><note>Previously, the location of the font files was given by the "path" attribute. This is still supported for the time being, but you should move to using the more flexible "base-uri" attribute so you can profit from the power of URI resolvers.</note></p>
+<p>A CID-keyed font (Type 0, double-byte outline font) configuration is much the same as an outline font. However, the characterset definition is now required within the afp-font element.</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;font&gt;</span>
+  <span class="nt">&lt;afp-font</span> <span class="na">type=</span><span class="s">&quot;CIDKeyed&quot;</span> <span class="na">characterset=</span><span class="s">&quot;CZJHMNU&quot;</span>
+       <span class="na">codepage=</span><span class="s">&quot;T1120000&quot;</span> <span class="na">encoding=</span><span class="s">&quot;UnicodeBigUnmarked&quot;</span>
+       <span class="na">base-uri=</span><span class="s">&quot;file:/fonts/ibm&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;J-Heisei Mincho&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/font&gt;</span>
+</pre></div>
+
+
+<p>Note that the value of the encoding attribute in the example is the double-byte encoding 'UnicodeBigUnmarked' (UTF-16BE).</p>
+<p>Experimentation has shown that the font metrics for the FOP built-in Base14 fonts are actually very similar to some of the IBM outline and raster fonts. In cases were the IBM font files are not available the base-uri attribute in the afp-font element can be replaced by a base14-font attribute giving the name of the matching Base14 font. In this case the AFP Renderer will take the font metrics from the built-in font.</p>
+<div class="highlight"><pre><span></span><span class="c">&lt;!-- The following are examples of defining outline fonts based on FOP built-in</span>
+<span class="c">     font metrics for the Adobe Base14 fonts --&gt;</span>
+<span class="c">&lt;!-- sans-serif fonts based on Helvetica --&gt;</span>
+<span class="nt">&lt;font&gt;</span>
+  <span class="nt">&lt;afp-font</span> <span class="na">type=</span><span class="s">&quot;outline&quot;</span> <span class="na">codepage=</span><span class="s">&quot;T1V10500&quot;</span> <span class="na">encoding=</span><span class="s">&quot;Cp500&quot;</span> <span class="na">characterset=</span><span class="s">&quot;CZH200  &quot;</span>
+      <span class="na">base14-font=</span><span class="s">&quot;Helvetica&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;sans-serif&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Helvetica&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;any&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/font&gt;</span>
+<span class="nt">&lt;font&gt;</span>
+  <span class="nt">&lt;afp-font</span> <span class="na">type=</span><span class="s">&quot;outline&quot;</span> <span class="na">codepage=</span><span class="s">&quot;T1V10500&quot;</span> <span class="na">encoding=</span><span class="s">&quot;Cp500&quot;</span> <span class="na">characterset=</span><span class="s">&quot;CZH300  &quot;</span>
+      <span class="na">base14-font=</span><span class="s">&quot;HelveticaOblique&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;sans-serif&quot;</span> <span class="na">style=</span><span class="s">&quot;italic&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Helvetica&quot;</span> <span class="na">style=</span><span class="s">&quot;italic&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;any&quot;</span> <span class="na">style=</span><span class="s">&quot;italic&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/font&gt;</span>
+<span class="nt">&lt;font&gt;</span>
+  <span class="nt">&lt;afp-font</span> <span class="na">type=</span><span class="s">&quot;outline&quot;</span> <span class="na">codepage=</span><span class="s">&quot;T1V10500&quot;</span> <span class="na">encoding=</span><span class="s">&quot;Cp500&quot;</span> <span class="na">characterset=</span><span class="s">&quot;CZH400  &quot;</span>
+      <span class="na">base14-font=</span><span class="s">&quot;HelveticaBold&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;sans-serif&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Helvetica&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;any&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/font&gt;</span>
+<span class="nt">&lt;font&gt;</span>
+  <span class="nt">&lt;afp-font</span> <span class="na">type=</span><span class="s">&quot;outline&quot;</span> <span class="na">codepage=</span><span class="s">&quot;T1V10500&quot;</span> <span class="na">encoding=</span><span class="s">&quot;Cp500&quot;</span> <span class="na">characterset=</span><span class="s">&quot;CZH500  &quot;</span>
+      <span class="na">base14-font=</span><span class="s">&quot;HelveticaBoldOblique&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;sans-serif&quot;</span> <span class="na">style=</span><span class="s">&quot;italic&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Helvetica&quot;</span> <span class="na">style=</span><span class="s">&quot;italic&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;any&quot;</span> <span class="na">style=</span><span class="s">&quot;italic&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/font&gt;</span>
+
+<span class="c">&lt;!-- serif fonts based on Times Roman --&gt;</span>
+<span class="nt">&lt;font&gt;</span>
+  <span class="nt">&lt;afp-font</span> <span class="na">type=</span><span class="s">&quot;outline&quot;</span> <span class="na">codepage=</span><span class="s">&quot;T1V10500&quot;</span> <span class="na">encoding=</span><span class="s">&quot;Cp500&quot;</span> <span class="na">characterset=</span><span class="s">&quot;CZN200  &quot;</span>
+      <span class="na">base14-font=</span><span class="s">&quot;TimesRoman&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;serif&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Times&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Times-Roman&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/font&gt;</span>
+
+<span class="c">&lt;!-- The following are examples of defining raster fonts based on FOP built-in</span>
+<span class="c">     font metrics for the Adobe Base14 fonts --&gt;</span>
+<span class="c">&lt;!-- monospaced fonts based on Courier --&gt;</span>
+<span class="nt">&lt;font&gt;</span>
+  <span class="nt">&lt;afp-font</span> <span class="na">type=</span><span class="s">&quot;raster&quot;</span> <span class="na">codepage=</span><span class="s">&quot;T1V10500&quot;</span> <span class="na">encoding=</span><span class="s">&quot;Cp500&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;7&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C0420070&quot;</span> <span class="na">base14-font=</span><span class="s">&quot;Courier&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;8&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C0420080&quot;</span> <span class="na">base14-font=</span><span class="s">&quot;Courier&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;10&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C0420000&quot;</span> <span class="na">base14-font=</span><span class="s">&quot;Courier&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;12&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C04200B0&quot;</span> <span class="na">base14-font=</span><span class="s">&quot;Courier&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;14&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C04200D0&quot;</span> <span class="na">base14-font=</span><span class="s">&quot;Courier&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;20&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C04200J0&quot;</span> <span class="na">base14-font=</span><span class="s">&quot;Courier&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/afp-font&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;monospace&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Courier&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/font&gt;</span>
+<span class="nt">&lt;font&gt;</span>
+  <span class="nt">&lt;afp-font</span> <span class="na">type=</span><span class="s">&quot;raster&quot;</span> <span class="na">codepage=</span><span class="s">&quot;T1V10500&quot;</span> <span class="na">encoding=</span><span class="s">&quot;Cp500&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;7&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C0440070&quot;</span> <span class="na">base14-font=</span><span class="s">&quot;CourierBold&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;8&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C0440080&quot;</span> <span class="na">base14-font=</span><span class="s">&quot;CourierBold&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;10&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C0440000&quot;</span> <span class="na">base14-font=</span><span class="s">&quot;CourierBold&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;12&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C04400B0&quot;</span> <span class="na">base14-font=</span><span class="s">&quot;CourierBold&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;14&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C04400D0&quot;</span> <span class="na">base14-font=</span><span class="s">&quot;CourierBold&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;afp-raster-font</span> <span class="na">size=</span><span class="s">&quot;20&quot;</span> <span class="na">characterset=</span><span class="s">&quot;C04400J0&quot;</span> <span class="na">base14-font=</span><span class="s">&quot;CourierBold&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/afp-font&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;monospace&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Courier&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/font&gt;</span>
+</pre></div>
+
+
+<p>By default, all manually configured fonts are embedded, unless they are matched in the <a href="fonts.html#embedding">section of the configuration file</a>. However, the default fonts shown above will not be embedded.</p>
+<p>For double byte EBCDIC encoded character sets, there is an optional tag that must be set to prevent characters from being miscoded. This defaults to "false" if not specified.</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;afp-font</span> <span class="na">type=</span><span class="s">&quot;CIDKeyed&quot;</span> <span class="na">codepage=</span><span class="s">&quot;T10835  &quot;</span> <span class="na">encoding=</span><span class="s">&quot;Cp937&quot;</span> <span class="na">characterset=</span><span class="s">&quot;CZTKAI&quot;</span> <span class="na">ebcdic-dbcs=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<h4 id="afp-renderer-resolution-config">Output Resolution</h4>
+<p>By default the AFP Renderer creates output with a resolution of 240 dpi. This can be overridden by the <renderer-resolution/> configuration element. Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;renderer-resolution&gt;</span>240<span class="nt">&lt;/renderer-resolution&gt;</span>
+</pre></div>
+
+
+<h4 id="afp-image-config">Images</h4>
+<p>By default the AFP Renderer converts all images to 8 bit grey level. This can be overridden by the <images/> configuration element. Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;color&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>This will put images as RGB images into the AFP output stream. The default setting is:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;b+w&quot;</span> <span class="na">bits-per-pixel=</span><span class="s">&quot;8&quot;</span> <span class="na">native=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>Only the values "color" and "b+w" are allowed for the mode attribute.</p>
+<p>The bits-per-pixel attribute is ignored if mode is "color". For "b+w" mode is must be 1, 4, or 8.</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;images</span> <span class="na">native=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>When the native attribute is specified and set to "true", all image resources will be natively injected into the datastream using an object container rather than being converted into an IOCA FS45 image. Support for native image formats (e.g. JPEG, TIFF, GIF) is not always available on printer implementations so by default this configuration option is set to "false".</p>
+<p>Setting <code>cmyk="true"</code> on the <code>images</code> element will enable CMYK colors. This will only have an effect if the color mode is set to "color". Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;color&quot;</span> <span class="na">cmyk=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>When the color mode is set to 1 bit (bi-level), the "dithering-quality" attribute can be used to select the level of quality to use when converting images to bi-level images. Valid values for this attribute are floating point numbers from 0.0 (fastest) to 1.0 (best), or special values: "minimum" (=0.0), "maximum" (1.0), "medium" (0.5, the default). For the higher settings to work as expected, JAI needs to be present in the classpath. If JAI is present, 0.0 results in a minimal darkness-level switching between white and black. 0.5 does bayer-based dithering and 1.0 will use error-diffusion dithering. The higher the value, the higher the quality and the slower the processing of the images.</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;b+w&quot;</span> <span class="na">bits-per-pixel=</span><span class="s">&quot;1&quot;</span> <span class="na">dithering-quality=</span><span class="s">&quot;maximum&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>When the boolean attribute pseg (default false) is set to true, non-inline FS11 and FS45 IOCA images are wrapped in page segment. This option is provided to support printers/print servers that require this MO:DCA structure.</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;b+w&quot;</span> <span class="na">bits-per-pixel=</span><span class="s">&quot;8&quot;</span> <span class="na">pseg=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>Setting the boolean attribute fs45 to true (default false) will force all images to FS45.</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;b+w&quot;</span> <span class="na">bits-per-pixel=</span><span class="s">&quot;8&quot;</span> <span class="na">fs45=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>By default, images are rasterized to a bitmap and the bitmap is included in the AFP doc. However it is possible to encode in a lossless way to maintain maximum quality. But due to lack of support for compression schemes like LZW (patent concerns), bitmap data is currently not compressed resulting in large AFP files. Using the "allow-embedding" attribute on jpeg child element allows the user to pass the JPEG as is in the document. The default is set to "false" since there are compatibility concerns as some AFP printers don't support JPEG decoding. Using the "bitmap-encoding-quality" attribute it is possible to enable lossy compression (JPEG baseline DCT) on bitmap images. The default is "1.0" which means lossless encoding. Setting a value lower than 1.0, JPEG compression is enabled and the setting is used as the quality setting when encoding bitmap data. Note that this setting does not always have an effect. Bi-level (1 bit) bitmaps are not compressed using JPEG. Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;color&quot;</span> <span class="na">cmyk=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;jpeg</span> <span class="na">allow-embedding=</span><span class="s">&quot;false&quot;</span> <span class="na">bitmap-encoding-quality=</span><span class="s">&quot;0.8&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/images&gt;</span>
+</pre></div>
+
+
+<p>IOCA image data placed in the AFP Resource Group (i.e. non-inline images) is wrapped in a Page Segment for single-bit and monochrome images.</p>
+<h4 id="afp-goca-config">GOCA (Vector Graphics)</h4>
+<p>Not all AFP implementations support GOCA. Some also have bugs related to GOCA. Therefore, it is desirable to have some control over the generation of GOCA graphics.</p>
+<p>GOCA is enabled by default. You can disable GOCA entirely in which case the AFP support falls back to generating bitmaps for vector graphics. Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;goca</span> <span class="na">enabled=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>Some AFP implementations have trouble rendering text in GOCA. You can instruct the AFP support to render text as shapes (i.e. use vector graphics to paint text). Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;goca</span> <span class="na">enabled=</span><span class="s">&quot;true&quot;</span> <span class="na">text=</span><span class="s">&quot;shapes&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>If you disable GOCA or let text render as shapes, the size of the generated AFP usually increases considerably.</p>
+<h4 id="afp-shading-config">Shading</h4>
+<p>By default, filled rectangles are painted using their given color using a PTOCA I-axis rule (DIR). But not all environments handle these colors correctly. That's why a setting is supported that paints the rectangles using an ordered dither pattern (bi-level) with an inline IOCA FS10 image that is used together with the "replicate and trim" mapping. The optional "shading" element can be used to control the shading mode. Its default value is "color". To enable the dithered mode, use "dithered". Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;shading&gt;</span>dithered<span class="nt">&lt;/shading&gt;</span>
+</pre></div>
+
+
+<h4 id="afp-resource-group-file">Resource Group File</h4>
+<p>By default the AFP Renderer will place all data resource objects such as images within the document of the main output datastream. An external resource group file where document resources may be specified with the <resource-group-file/> configuration element. Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;resource-group-file&gt;</span>external_resources.afp<span class="nt">&lt;/resource-group-file&gt;</span>
+</pre></div>
+
+
+<p><note>Be careful when using this option not to overwrite existing resource files from previous rendering runs.</note></p>
+<h4 id="afp-resource-level-defaults">Resource Level Defaults</h4>
+<p>By default, bitmap image objects (or page segments derived from them) are put in the print-file-level resource group and GOCA graphics are inlined for compatibility with the AFP Workbench tool.</p>
+<p>It is possible to override these defaults, either per image (see the <a href="#afp-foreign-attributes-resource">afp:resource-level</a> extension attribute below) or by specifying different defaults in the configuration:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;default-resource-levels</span> <span class="na">goca=</span><span class="s">&quot;print-file&quot;</span> <span class="na">bitmap=</span><span class="s">&quot;inline&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>"goca" refers to GOCA graphics and "bitmap" refers to IOCA images. The possible values for the attributes are "inline" and "print-file". In the future, additional possibilities may be added.</p>
+<p>To be compatible with Workbench viewer or other legacy tools and also move resources to the resource group, you can use the following settings. GOCA resources will be wrapped with a page segment.</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;default-resource-levels</span> <span class="na">goca=</span><span class="s">&quot;print-file&quot;</span> <span class="na">bitmap=</span><span class="s">&quot;print-file&quot;</span><span class="nt">/&gt;</span>       
+<span class="nt">&lt;goca</span> <span class="na">pseg=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<h3 id="afp-extensions">Extensions</h3>
+<p>The AFP Renderer supports some AFP specific extensions which can be embedded into the input fo document. To use the extensions the appropriate namespace must be declared in the fo:root element like this:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
+         <span class="na">xmlns:afp=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/afp&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+
+
+<h4 id="afp-page-overlay">Page Overlay (IPO) Extension</h4>
+<p>The include-page-overlay extension element allows to define on a per simple-page-master basis a page overlay resource. Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:layout-master-set&gt;</span>
+  <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;simple&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;afp:include-page-overlay</span> <span class="na">name=</span><span class="s">&quot;O1SAMP1 &quot;</span> <span class="na">x=</span><span class="s">&quot;20mm&quot;</span> <span class="na">y=</span><span class="s">&quot;30mm&quot;</span> <span class="nt">/&gt;</span>
+    ...
+  <span class="nt">&lt;/fo:simple-page-master&gt;</span>
+<span class="nt">&lt;/fo:layout-master-set&gt;</span>
+</pre></div>
+
+
+<p>The mandatory name attribute must refer to an 8 character (space padded) resource name that must be known in the AFP processing environment. Optional x and y attributes can be specified to place the Overlay at an offset from the top left of the page.</p>
+<h4 id="afp-page-segment">Page Segment (IPS) Extension</h4>
+<p>The include-page-segment extension element allows to define resource substitution for fo:external-graphics elements. Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
+    <span class="na">xmlns:afp=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/afp&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fo:layout-master-set&gt;</span>
+    <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;simple&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;afp:include-page-segment</span> <span class="na">name=</span><span class="s">&quot;S1ISLOGO&quot;</span> <span class="na">src=</span><span class="s">&quot;../../resources/images/bgimg300dpi.jpg&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;fo:region-body/&gt;</span>
+    <span class="nt">&lt;/fo:simple-page-master&gt;</span>
+  <span class="nt">&lt;/fo:layout-master-set&gt;</span>
+</pre></div>
+
+
+<p>The include-page-segment extension element can only occur within a simple-page-master. Multiple include-page-segment extension elements within a simple-page-master are allowed. The mandatory name attribute must refer to an 8 character (space padded) resource name that must be known in the AFP processing environment. The value of the mandatory src attribute is compared against the value of the src attribute in fo:external-graphic elements and if it is identical (string matching is used) in the generated AFP the external graphic is replaced by a reference to the given resource.</p>
+<p>The effect here is that whenever FOP encounters the URI specified in the extension, it will effectively generate code to include the page segment with the given name instead of embedding the image referenced by the URI. The URI is still required as the underlying image serves as a provider for the intrinsic size of the image (At the moment, FOP is unable to extract the intrinsic size of the page segment from an AFP resource file). For the image to appear in an AFP viewer or to be printed, the AFP resource must be available on the target device. FOP does not embed the page segment in the generated file. Please also note that page segments cannot be scaled. They are always rendered in their intrinsic size.</p>
+<p>The include-page-segment extension element has the optional attribute <em>resource-file</em>. The value of this is a URI to a resource containing a page segment with the declared name. In this case FOP embeds the page segment into the generated document so that the external resource does not have to be supplied in the print job.</p>
+<h4 id="afp-tag-logical-element">Tag Logical Element (TLE) Extension</h4>
+<p>The tag-logical-element extension element allows to injects TLEs into the AFP output stream. Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
+    <span class="na">xmlns:afp=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/afp&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fo:layout-master-set&gt;</span>
+    <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;simple&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;afp:tag-logical-element</span> <span class="na">name=</span><span class="s">&quot;The TLE Name&quot;</span> <span class="na">value=</span><span class="s">&quot;The TLE Value&quot;</span>
+          <span class="na">encoding=</span><span class="s">&quot;500&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;fo:region-body/&gt;</span>
+    <span class="nt">&lt;/fo:simple-page-master&gt;</span>
+  <span class="nt">&lt;/fo:layout-master-set&gt;</span>
+  [..]
+  <span class="nt">&lt;fo:page-sequence</span> <span class="na">master-reference=</span><span class="s">&quot;simple&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;afp:tag-logical-element</span> <span class="na">name=</span><span class="s">&quot;foo&quot;</span> <span class="na">value=</span><span class="s">&quot;bar&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;fo:flow</span> <span class="na">flow-name=</span><span class="s">&quot;xsl-region-body&quot;</span><span class="nt">&gt;</span>
+      [..]
+</pre></div>
+
+
+<p>The tag-logical-element extension element can appear within a simple-page-master (page level) or it can appear as child of page-sequence (page group level). Multiple tag-logical-element extension elements within a simple-page-master or page-sequence are allowed. The name and value attributes are mandatory. The <code>encoding</code> attribute specifying a CCSID encoding is optional.</p>
+<h4 id="afp-no-operation">No Operation (NOP) Extension</h4>
+<p>The no-operation extension provides the ability to carry up to 32K of comments or any other type of unarchitected data into the AFP output stream. Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
+    <span class="na">xmlns:afp=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/afp&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fo:layout-master-set&gt;</span>
+    <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;simple&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;afp:no-operation</span> <span class="na">name=</span><span class="s">&quot;My NOP&quot;</span><span class="nt">&gt;</span>insert up to 32k of character data here!<span class="nt">&lt;/afp:no-operation&gt;</span>
+    <span class="nt">&lt;/fo:simple-page-master&gt;</span>
+  <span class="nt">&lt;/fo:layout-master-set&gt;</span>
+</pre></div>
+
+
+<p>The no-operation extension element can appear as child of <code>simple-page-master</code> (appears after "Begin Page" BPG), <code>page-sequence</code> (appears after "Begin Named Page Group" BNG and <code>declarations</code> (appears after "Begin Document" BDT). Multiple no-operation extension elements inside the same formatting object are allowed. Each NOP will appear right after the respective "Begin" field indicated above even if it is specified as the last child under its parent. The order inside the parent will be maintained. The "placement" attribute can be used to have the NOP appear before the "End" field of the object rather than after the "Begin" field. Specify <code>placement="before-end"</code> to do that. Please note that, at the moment, this only has an effect for NOPs that are children of the <code>page-sequence</code> formatting object. The "name" attribute is mandatory but will not appear inside the AFP stream.</p>
+<h4 id="afp-invoke-medium-map">Invoke Medium Map (IMM) Extension</h4>
+<p>The invoke-medium-map extension allows to generate IMM fields (Invoke Medium Map) in the generated AFP output. Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
+    <span class="na">xmlns:afp=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/afp&quot;</span><span class="nt">&gt;</span>
+  [..]
+  <span class="nt">&lt;fo:page-sequence</span> <span class="na">master-reference=</span><span class="s">&quot;normal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;afp:invoke-medium-map</span> <span class="na">name=</span><span class="s">&quot;MYMAP&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;fo:flow</span> <span class="na">flow-name=</span><span class="s">&quot;xsl-region-body&quot;</span><span class="nt">&gt;</span>
+      [..]
+</pre></div>
+
+
+<p>The invoke-medium-map element is allowed as child of fo:page-sequence (page group level) or fo:simple-page-master. It is NOT supported on document level (fo:root), yet. FOP also doesn't support specifying medium maps inside XML (using BMM/EMM). It can only reference an existing medium map by name. The medium map has to be constructed through different means and available on the target platform.</p>
+<h4 id="afp-form-maps">Form Maps/Defs</h4>
+<p>Apache FOP supports embedding an external form map resource in the generated AFP output. This is done using the <code>afp:include-form-map</code> extension. An example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
+    <span class="na">xmlns:afp=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/afp&quot;</span><span class="nt">&gt;</span>
+  [..]
+  <span class="nt">&lt;fo:declarations&gt;</span>
+    <span class="nt">&lt;afp:include-form-map</span> <span class="na">name=</span><span class="s">&quot;F1SAMP1&quot;</span> <span class="na">src=</span><span class="s">&quot;file:f1samp1.fde&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/fo:declarations&gt;</span>
+</pre></div>
+
+
+<p>The <code>afp:include-form-map</code> is to be placed as a direct child of <code>fo:declarations</code>. The <code>name</code> is an AFP resource name (max. 8 characters) and the <code>src</code> attribute is the URI identifying the external form map resource. When such a form map is embedded, you can use the <code>afp:invoke-medium-map</code> extension (described above) to invoke any medium map included in the form map.</p>
+<p><note>Apache FOP doesn't support a way to define a form map or medium map using XML means inside an XSL-FO document. You will have to build the form map with some third-party tool.</note></p>
+<h3 id="afp-foreign-attributes">Foreign Attributes</h3>
+<h4 id="afp-foreign-attributes-resource">Resource</h4>
+<p>The resource foreign attributes provides the ability to name and control where data object resources (e.g. images/scalable vector graphics) will reside in the AFP output. The afp foreign attributes are only used in conjuntion with <fo:external-graphic/> and <instream-foreign-object/>. Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
+    <span class="na">xmlns:afp=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/afp&quot;</span><span class="nt">&gt;</span>
+ ...
+ <span class="nt">&lt;fo:block&gt;</span>
+  <span class="nt">&lt;fo:external-graphic</span> <span class="na">width=</span><span class="s">&quot;2.0cm&quot;</span> <span class="na">content-width=</span><span class="s">&quot;2.0cm&quot;</span> <span class="na">height=</span><span class="s">&quot;1.8cm&quot;</span> <span class="na">content-height=</span><span class="s">&quot;1.8cm&quot;</span>
+    <span class="na">src=</span><span class="s">&quot;examples/fo/graphics/xml_feather.gif&quot;</span>
+    <span class="na">afp:resource-name=</span><span class="s">&quot;feather&quot;</span> <span class="na">afp:resource-level=</span><span class="s">&quot;external&quot;</span> <span class="na">afp:resource-group-file=</span><span class="s">&quot;resources.afp&quot;</span><span class="nt">/&gt;</span>
+ <span class="nt">&lt;/fo:block&gt;</span>
+ <span class="nt">&lt;fo:block&gt;</span>
+  <span class="nt">&lt;fo:instream-foreign-object</span> <span class="na">height=</span><span class="s">&quot;758.047pt&quot;</span> <span class="na">content-height=</span><span class="s">&quot;758.047pt&quot;</span> <span class="na">width=</span><span class="s">&quot;576.96pt&quot;</span> <span class="na">content-width=</span><span class="s">&quot;576.96pt&quot;</span>
+  <span class="na">afp:resource-name=</span><span class="s">&quot;circles&quot;</span> <span class="na">afp:resource-level=</span><span class="s">&quot;inline&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;svg</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">width=</span><span class="s">&quot;12cm&quot;</span> <span class="na">height=</span><span class="s">&quot;12cm&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;g</span> <span class="na">style=</span><span class="s">&quot;fill-opacity:0.7; stroke:black; stroke-width:0.1cm;&quot;</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;circle</span> <span class="na">cx=</span><span class="s">&quot;6cm&quot;</span> <span class="na">cy=</span><span class="s">&quot;2cm&quot;</span> <span class="na">r=</span><span class="s">&quot;100&quot;</span> <span class="na">style=</span><span class="s">&quot;fill:red;&quot;</span> <span class="na">transform=</span><span class="s">&quot;translate(0,50)&quot;</span> <span class="nt">/&gt;</span>
+     <span class="nt">&lt;circle</span> <span class="na">cx=</span><span class="s">&quot;6cm&quot;</span> <span class="na">cy=</span><span class="s">&quot;2cm&quot;</span> <span class="na">r=</span><span class="s">&quot;100&quot;</span> <span class="na">style=</span><span class="s">&quot;fill:blue;&quot;</span> <span class="na">transform=</span><span class="s">&quot;translate(70,150)&quot;</span> <span class="nt">/&gt;</span>
+     <span class="nt">&lt;circle</span> <span class="na">cx=</span><span class="s">&quot;6cm&quot;</span> <span class="na">cy=</span><span class="s">&quot;2cm&quot;</span> <span class="na">r=</span><span class="s">&quot;100&quot;</span> <span class="na">style=</span><span class="s">&quot;fill:green;&quot;</span> <span class="na">transform=</span><span class="s">&quot;translate(-70,150)&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/g&gt;</span>
+   <span class="nt">&lt;/svg&gt;</span>
+  <span class="nt">&lt;/fo:instream-foreign-object&gt;</span>
+ <span class="nt">&lt;/fo:block&gt;</span>
+</pre></div>
+
+
+<p>The resource-level attribute where the resource object will reside in the AFP output datastream. The possible values for this are "inline", "print-file" and "external". When "external" is used a resource-group-file attribute must also be specified. Please refer to the <a href="#afp-resource-level-defaults">Resource Level Defaults</a> above to see what is used if the resource-level attribute is not specified.</p>
+<h4 id="afp-oca-color">OCA Color</h4>
+<p>OCA is used in AFP to set text foreground color and it is still useful in old AFP printers that have a limited support for color or don't support other color spaces (RGB, CMYK, etc...).</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:block</span> <span class="na">color=</span><span class="s">&quot;oca(red)&quot;</span><span class="nt">&gt;</span>Red<span class="nt">&lt;/fo:block&gt;</span>
+</pre></div>
+
+
+<h2 id="rtf">RTF</h2>
+<p>JFOR, an open source XSL-FO to RTF converter has been integrated into Apache FOP. This will create an RTF (rich text format) document that will attempt to contain as much information from the XSL-FO document as possible. It should be noted that is not possible (due to RTF's limitations) to map all XSL-FO features to RTF. For complex documents, the RTF output will never reach the feature level from PDF, for example. Thus, using RTF output is only recommended for simple documents such as letters.</p>
+<p>The RTF output follows Microsoft's RTF specifications and produces best results on Microsoft Word.</p>
+<p><note>RTF output is currently unmaintained and lacks many features compared to other output formats. Using other editable formats like Open Document Format, instead of producing XSL-FO then RTF through FOP, might give better results.</note></p>
+<p>These are some known restrictions compared to other supported output formats (not a complete list):</p>
+<ul>
+<li>
+<p>Not supported/implemented:</p>
+<ul>
+<li>
+<p>break-before/after (supported by the RTF library but not tied into the RTFHandler)</p>
+</li>
+<li>
+<p>fo:page-number-citation-last</p>
+</li>
+<li>
+<p>keeps (supported by the RTF library but not tied into the RTFHandler)</p>
+</li>
+<li>
+<p>region-start/end (RTF limitation)</p>
+</li>
+<li>
+<p>multiple columns</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Only a single page-master is supported</p>
+</li>
+<li>
+<p>Not all variations of fo:leader are supported (RTF limitation)</p>
+</li>
+<li>
+<p>percentages are not supported everywhere</p>
+</li>
+</ul>
+<h2 id="xml">XML (Area Tree XML)</h2>
+<p>This is primarily for testing and verification. The XML created is simply a representation of the internal area tree put into XML. We use that to verify the functionality of FOP's layout engine.</p>
+<p>The other use case of the Area Tree XML is as FOP's "intermediate format". More information on that can be found on the page dedicated to the <a href="intermediate.html">Intermediate Format</a>.</p>
+<h2 id="awt">Java2D/AWT</h2>
+<p>The Java2DRenderer provides the basic functionality for all Java2D-based output formats (AWT viewer, direct print, PNG, TIFF).</p>
+<p>The AWT viewer shows a window with the pages displayed inside a Java graphic. It displays one page at a time. The fonts used for the formatting and viewing depend on the fonts available to your JRE.</p>
+<h2 id="print">Print</h2>
+<p>It is possible to directly print the document from the command line. This is done with the same code that renders to the Java2D/AWT renderer.</p>
+<h3 id="print-issues">Known issues</h3>
+<p>If you run into the problem that the printed output is incomplete on Windows: this often happens to users printing to a PCL printer. There seems to be an incompatibility between Java and certain PCL printer drivers on Windows. Since most network-enabled laser printers support PostScript, try switching to the PostScript printer driver for that printer model.</p>
+<h2 id="bitmap">Bitmap (TIFF/PNG)</h2>
+<p>It is possible to directly create bitmap images from the individual pages generated by the layout engine. This is done with the same code that renders to the Java2D/AWT renderer.</p>
+<p>Currently, two output formats are supported: PNG and TIFF. TIFF produces one file with multiple pages, while PNG output produces one file per page. Note: FOP can only produce multiple files (with PNG output) if you can set a <code>java.io.File</code> indicating the primary PNG file using the <code>FOUserAgent.setOutputFile(File)</code> method.</p>
+<p>The quality of the bitmap depends on the target resolution setting on the FOUserAgent and on further settings described below.</p>
+<h3 id="bitmap-configuration">Configuration</h3>
+<p>The TIFF and PNG renderer configuration currently allows the following settings:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;image/png&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;color-mode&gt;</span>rgba<span class="nt">&lt;/color-mode&gt;</span>
+  <span class="nt">&lt;transparent-page-background&gt;</span>true<span class="nt">&lt;/transparent-page-background&gt;</span>
+  <span class="nt">&lt;background-color&gt;</span>white<span class="nt">&lt;/background-color&gt;</span>
+  <span class="nt">&lt;anti-aliasing&gt;</span>true<span class="nt">&lt;/anti-aliasing&gt;</span>
+  <span class="nt">&lt;rendering&gt;</span>quality<span class="nt">&lt;/rendering&gt;</span>
+  <span class="nt">&lt;fonts&gt;</span><span class="c">&lt;!-- described elsewhere --&gt;</span><span class="nt">&lt;/fonts&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</pre></div>
+
+
+<p>The default value for the <code>"color-mode"</code> setting is <code>"rgba"</code> which is equivalent to a 24bit RGB image with an 8bit alpha channel for transparency. Valid values are:</p>
+<ul>
+<li>
+<p><code>rgba</code>: RGB with alpha channel (24bit + 8bit = 32bit)</p>
+</li>
+<li>
+<p><code>rgb</code>: RGB (24bit)</p>
+</li>
+<li>
+<p><code>gray</code>: gray (8bit)</p>
+</li>
+<li>
+<p><code>bi-level</code> (or <code>binary</code>): bi-level (1bit)</p>
+</li>
+</ul>
+<p>Please note that there is currently no dithering or error diffusion available for bi-level bitmap output.</p>
+<p>The default value for the <code>"transparent-page-background"</code> setting is <code>"false"</code> which paints an opaque, white background for the whole image. If you set this to <code>"true"</code>, no such background will be painted and you will get a transparent image if an alpha channel is available in the output format.</p>
+<p>The default value for the <code>"background-color"</code> setting is <code>"white"</code>. The color specifies in which color the page background is painted. It will only be painted if <code>"transparent-page-background"</code> is not set to <code>"true"</code>. All XSL-FO colors (including color functions) can be used.</p>
+<p>The default value for the <code>"anti-aliasing"</code> setting is <code>"true"</code>. You can set this value to <code>"false"</code> to disable anti-aliasing and thus improve rendering speeds a bit at the loss of some image quality.</p>
+<p>The default value for the <code>"rendering"</code> setting is <code>"true"</code>. You can set this value to <code>"false"</code> to improve rendering speeds a bit at the loss of some image quality. If this setting has an actual effect depends on the JVM's Java2D backend.</p>
+<h3 id="tiff-configuration">TIFF-specific Configuration</h3>
+<p>In addition to the above values the TIFF renderer configuration allows some additional settings:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;image/tiff&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;transparent-page-background&gt;</span>true<span class="nt">&lt;/transparent-page-background&gt;</span>
+  <span class="nt">&lt;compression&gt;</span>CCITT T.6<span class="nt">&lt;/compression&gt;</span>
+  <span class="nt">&lt;single-strip&gt;</span>true<span class="nt">&lt;/single-strip&gt;</span>
+  <span class="nt">&lt;endianness&gt;</span>default<span class="nt">&lt;/endianness&gt;</span>
+  <span class="nt">&lt;fonts&gt;</span><span class="c">&lt;!-- described elsewhere --&gt;</span><span class="nt">&lt;/fonts&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</pre></div>
+
+
+<p>The default value for the <code>"compression"</code> setting is <code>"PackBits"</code> which which is a widely supported RLE compression scheme for TIFF. The set of compression names to be used here matches the set that the Image I/O API uses. Note that not all compression schemes may be available during runtime. This depends on the actual codecs being available. Here is a list of possible values:</p>
+<p>The default value for <code>"endianness"</code> is <code>"default"</code>, which results in the default endianness for the output format being generated. Note that not all image formats allow specifying the endianness.</p>
+<ul>
+<li>
+<p><code>NONE</code> (no compression)</p>
+</li>
+<li>
+<p><code>PackBits</code> (RLE, run-length encoding)</p>
+</li>
+<li>
+<p><code>JPEG</code></p>
+</li>
+<li>
+<p><code>Deflate</code></p>
+</li>
+<li>
+<p><code>LZW</code></p>
+</li>
+<li>
+<p><code>ZLib</code></p>
+</li>
+<li>
+<p><code>CCITT T.4</code> (Fax Group 3)</p>
+</li>
+<li>
+<p><code>CCITT T.6</code> (Fax Group 4)</p>
+</li>
+</ul>
+<p>This setting may override any setting made using the <code>"color-mode"</code>. For example, if <code>"CCITT T.6"</code> is selected, the color mode is automatically forced to <code>"bi-level"</code> because this compression format only supports bi-level images.</p>
+<p><note>If you want to use CCITT compression, please make sure you've got <a href="http://java.sun.com/products/java-media/jai/current.html">Java Advanced Imaging Image I/O Tools</a> in your classpath. The Sun JRE doesn't come with a TIFF codec built in, so it has to be added separately. The internal TIFF codec from XML Graphics Commons only supports PackBits, Deflate and JPEG compression for writing.</note></p>
+<p>The default value for the <code>"single-strip"</code> is <code>"false"</code> resulting in the RowsPerStrip Tiff Tag equal to the number of rows. If set to <code>"true"</code> RowsPerStrip is set to 1.</p>
+<h3 id="bitmap-rendering-options">Runtime Rendering Options</h3>
+<p>The IF-based bitmap output implementations support a rendering option with the key "target-bitmap-size" (value: java.awt.Dimension) that allows to force the pages to be proportionally fit into a bitmap of a given size. This can be used to produce thumbnails or little preview images of the individual pages. An example:</p>
+<div class="highlight"><pre><span></span><span class="n">userAgent</span><span class="o">.</span><span class="na">getRenderingOptions</span><span class="o">().</span><span class="na">put</span><span class="o">(</span>
+    <span class="s">&quot;target-bitmap-size&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Dimension</span><span class="o">(</span><span class="mi">320</span><span class="o">,</span> <span class="mi">200</span><span class="o">));</span>
+</pre></div>
+
+
+<h2 id="txt">TXT</h2>
+<p>The text renderer produces plain ASCII text output that attempts to match the output of the PDFRenderer as closely as possible. This was originally developed to accommodate an archive system that could only accept plain text files, and is primarily useful for getting a quick-and-dirty view of the document text. The renderer is very limited, so do not be surprised if it gives unsatisfactory results.</p>
+<p>Because FOP lays the text onto a grid during layout, there are frequently extra or missing spaces between characters and lines, which is generally unsatisfactory. Users have reported that the optimal settings to avoid such spacing problems are:</p>
+<ul>
+<li>
+<p>font-family="Courier"</p>
+</li>
+<li>
+<p>font-size="10pt"</p>
+</li>
+<li>
+<p>line-height="10pt"</p>
+</li>
+</ul>
+<h2 id="sandbox">Output Formats in the Sandbox</h2>
+<p>Due to the state of certain renderers we moved some of them to a "sandbox" area until they are ready for more serious use. The renderers and FOEventHandlers in the sandbox can be found under src/sandbox and are compiled into build/fop-sandbox.jar during the main build. The output formats in the sandbox are marked as such below.</p>
+<h3 id="mif">MIF</h3>
+<p><warning>The MIF handler is in the sandbox and not yet functional in FOP Trunk!!! Please help us ressurrect this feature.</warning>
+This format is the Maker Interchange Format which is used by Adobe Framemaker.</p>
+<h3 id="svg">SVG</h3>
+<p><warning>The SVG renderer is in the sandbox and may not work as expected in FOP Trunk!!! Please help us improve this feature.</warning>
+This format creates an SVG document that has links between the pages. This is primarily for slides and creating svg images of pages. Large documents will create SVG files that are far too large for an SVG viewer to handle. Since FO documents usually have text the SVG document will have a large number of text elements. The font information for the text is obtained from the JVM in the same way as for the AWT viewer. If the SVG is viewed on a system where the fonts are different, such as another platform, then the page may look wrong.</p>
+<h2 id="wishlist">Wish list</h2>
+<p>Apache FOP is easily extensible and allows you to add new output formats to enhance FOP's functionality. There's a number of output formats which are on our wish list. We're looking for volunteers to help us implement them.</p>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/OpenDocument">ODF (Open Document Format)</a>: The standardized successor to OpenOffice's file format.</li>
+</ul>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

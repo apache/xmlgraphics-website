@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache&trade; FOP
+  - [FOP Home](/fop/)
+  - [Download](/fop/download.html)
+  - [Quick Start Guide](/fop/quickstartguide.html)
+  - [Compliance](/fop/compliance.html)
+  - [Getting Help](/fop/gethelp.html)
+  - [FAQs](/fop/faq.html)
+  - [FOP Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP)
+  - [Mailing Lists](/fop/maillist.html)
+  - [License](/fop/license.html)
+  - ## Resources
+    - [XSL-FO](/fop/fo.html)
+    - [Examples](/fop/examples.html)
+    - [Bugs](/fop/bugs.html)
+    - [Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FrontPage)
+    - [Other](/fop/resources.html)
+  - ## Project
+    - [News](/fop/news.html)
+    - [Who We Are](/fop/team.html)
+    - [Status](/fop/status.html)
+    - [Known Issues](/fop/knownissues.html)
+    - [Changes](/fop/changes.html)
+  - ## Versions
+      - ## FOP Trunk (dev)
+          - [Overview](/fop/trunk/)
+          - [Upgrading](/fop/trunk/upgrading.html)
+          - ### Using Apache&trade; FOP
+            - [Build](/fop/trunk/compiling.html)
+            - [Configure](/fop/trunk/configuration.html)
+            - [Run](/fop/trunk/running.html)
+            - [Embed](/fop/trunk/embedding.html)
+            - [Servlets](/fop/trunk/servlets.html)
+            - [Ant Task](/fop/trunk/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/trunk/accessibility.html)
+            - [Complex Scripts](/fop/trunk/complexscripts.html)
+            - [Events](/fop/trunk/events.html)
+            - [Extensions](/fop/trunk/extensions.html)
+            - [Fonts](/fop/trunk/fonts.html)
+            - [Graphics](/fop/trunk/graphics.html)
+            - [Hyphenation](/fop/trunk/hyphenation.html)
+            - [Intermediate Format](/fop/trunk/intermediate.html)
+            - [Metadata](/fop/trunk/metadata.html)
+            - [Output Targets](/fop/trunk/output.html)
+            - [PDF/A](/fop/trunk/pdfa.html)
+            - [PDF/X](/fop/trunk/pdfx.html)
+            - [PDF Encryption](/fop/trunk/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/trunk/whitespacemanagement.html)
+      - ## FOP 2.5
+          - [FOP 2.5 Overview](/fop/2.5/)
+          - [Release Notes](/fop/2.5/releaseNotes_2.5.html)
+          - [Changes (2.5)](/fop/2.5/changes_2.5.html)
+          - [Known Issues](/fop/2.5/knownissues_overview.html)
+          - [Upgrading](/fop/2.5/upgrading.html)
+          - ### Using Apache FOP 2.5
+            - [Build](/fop/2.5/compiling.html)
+            - [Configure](/fop/2.5/configuration.html)
+            - [Run](/fop/2.5/running.html)
+            - [Embed](/fop/2.5/embedding.html)
+            - [Servlets](/fop/2.5/servlets.html)
+            - [Ant Task](/fop/2.5/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.5/accessibility.html)
+            - [Complex Scripts](/fop/2.5/complexscripts.html)
+            - [Events](/fop/2.5/events.html)
+            - [Extensions](/fop/2.5/extensions.html)
+            - [Fonts](/fop/2.5/fonts.html)
+            - [Graphics](/fop/2.5/graphics.html)
+            - [Hyphenation](/fop/2.5/hyphenation.html)
+            - [Intermediate Format](/fop/2.5/intermediate.html)
+            - [Metadata](/fop/2.5/metadata.html)
+            - [Output Targets](/fop/2.5/output.html)
+            - [PDF/A](/fop/2.5/pdfa.html)
+            - [PDF/X](/fop/2.5/pdfx.html)
+            - [PDF Encryption](/fop/2.5/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.5/whitespacemanagement.html)     
+      - ## FOP 2.4
+          - [FOP 2.4 Overview](/fop/2.4/)
+          - [Release Notes](/fop/2.4/releaseNotes_2.4.html)
+          - [Changes (2.4)](/fop/2.4/changes_2.4.html)
+          - [Known Issues](/fop/2.4/knownissues_overview.html)
+          - [Upgrading](/fop/2.4/upgrading.html)
+          - ### Using Apache FOP 2.4
+            - [Build](/fop/2.4/compiling.html)
+            - [Configure](/fop/2.4/configuration.html)
+            - [Run](/fop/2.4/running.html)
+            - [Embed](/fop/2.4/embedding.html)
+            - [Servlets](/fop/2.4/servlets.html)
+            - [Ant Task](/fop/2.4/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.4/accessibility.html)
+            - [Complex Scripts](/fop/2.4/complexscripts.html)
+            - [Events](/fop/2.4/events.html)
+            - [Extensions](/fop/2.4/extensions.html)
+            - [Fonts](/fop/2.4/fonts.html)
+            - [Graphics](/fop/2.4/graphics.html)
+            - [Hyphenation](/fop/2.4/hyphenation.html)
+            - [Intermediate Format](/fop/2.4/intermediate.html)
+            - [Metadata](/fop/2.4/metadata.html)
+            - [Output Targets](/fop/2.4/output.html)
+            - [PDF/A](/fop/2.4/pdfa.html)
+            - [PDF/X](/fop/2.4/pdfx.html)
+            - [PDF Encryption](/fop/2.4/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.4/whitespacemanagement.html)             
+      - ## FOP 2.3
+          - [FOP 2.3 Overview](/fop/2.3/)
+          - [Release Notes](/fop/2.3/releaseNotes_2.3.html)
+          - [Changes (2.3)](/fop/2.3/changes_2.3.html)
+          - [Known Issues](/fop/2.3/knownissues_overview.html)
+          - [Upgrading](/fop/2.3/upgrading.html)
+          - ### Using Apache FOP 2.3
+            - [Build](/fop/2.3/compiling.html)
+            - [Configure](/fop/2.3/configuration.html)
+            - [Run](/fop/2.3/running.html)
+            - [Embed](/fop/2.3/embedding.html)
+            - [Servlets](/fop/2.3/servlets.html)
+            - [Ant Task](/fop/2.3/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.3/accessibility.html)
+            - [Complex Scripts](/fop/2.3/complexscripts.html)
+            - [Events](/fop/2.3/events.html)
+            - [Extensions](/fop/2.3/extensions.html)
+            - [Fonts](/fop/2.3/fonts.html)
+            - [Graphics](/fop/2.3/graphics.html)
+            - [Hyphenation](/fop/2.3/hyphenation.html)
+            - [Intermediate Format](/fop/2.3/intermediate.html)
+            - [Metadata](/fop/2.3/metadata.html)
+            - [Output Targets](/fop/2.3/output.html)
+            - [PDF/A](/fop/2.3/pdfa.html)
+            - [PDF/X](/fop/2.3/pdfx.html)
+            - [PDF Encryption](/fop/2.3/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.3/whitespacemanagement.html)            
+      - ## FOP 2.2
+          - [FOP 2.2 Overview](/fop/2.2/)
+          - [Release Notes](/fop/2.2/releaseNotes_2.2.html)
+          - [Changes (2.2)](/fop/2.2/changes_2.2.html)
+          - [Known Issues](/fop/2.2/knownissues_overview.html)
+          - [Upgrading](/fop/2.2/upgrading.html)
+          - ### Using Apache FOP 2.2
+            - [Build](/fop/2.2/compiling.html)
+            - [Configure](/fop/2.2/configuration.html)
+            - [Run](/fop/2.2/running.html)
+            - [Embed](/fop/2.2/embedding.html)
+            - [Servlets](/fop/2.2/servlets.html)
+            - [Ant Task](/fop/2.2/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.2/accessibility.html)
+            - [Complex Scripts](/fop/2.2/complexscripts.html)
+            - [Events](/fop/2.2/events.html)
+            - [Extensions](/fop/2.2/extensions.html)
+            - [Fonts](/fop/2.2/fonts.html)
+            - [Graphics](/fop/2.2/graphics.html)
+            - [Hyphenation](/fop/2.2/hyphenation.html)
+            - [Intermediate Format](/fop/2.2/intermediate.html)
+            - [Metadata](/fop/2.2/metadata.html)
+            - [Output Targets](/fop/2.2/output.html)
+            - [PDF/A](/fop/2.2/pdfa.html)
+            - [PDF/X](/fop/2.2/pdfx.html)
+            - [PDF Encryption](/fop/2.2/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.2/whitespacemanagement.html)
+      - ## FOP 2.1
+          - [FOP 2.1 Overview](/fop/2.1/)
+          - [Release Notes](/fop/2.1/releaseNotes_2.1.html)
+          - [Changes (2.1)](/fop/2.1/changes_2.1.html)
+          - [Known Issues](/fop/2.1/knownissues_overview.html)
+          - [Upgrading](/fop/2.1/upgrading.html)
+          - ### Using Apache FOP 2.1
+            - [Build](/fop/2.1/compiling.html)
+            - [Configure](/fop/2.1/configuration.html)
+            - [Run](/fop/2.1/running.html)
+            - [Embed](/fop/2.1/embedding.html)
+            - [Servlets](/fop/2.1/servlets.html)
+            - [Ant Task](/fop/2.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.1/accessibility.html)
+            - [Complex Scripts](/fop/2.1/complexscripts.html)
+            - [Events](/fop/2.1/events.html)
+            - [Extensions](/fop/2.1/extensions.html)
+            - [Fonts](/fop/2.1/fonts.html)
+            - [Graphics](/fop/2.1/graphics.html)
+            - [Hyphenation](/fop/2.1/hyphenation.html)
+            - [Intermediate Format](/fop/2.1/intermediate.html)
+            - [Metadata](/fop/2.1/metadata.html)
+            - [Output Targets](/fop/2.1/output.html)
+            - [PDF/A](/fop/2.1/pdfa.html)
+            - [PDF/X](/fop/2.1/pdfx.html)
+            - [PDF Encryption](/fop/2.1/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.1/whitespacemanagement.html)
+      - ## FOP 2.0
+          - [FOP 2.0 Overview](/fop/2.0/)
+          - [Release Notes](/fop/2.0/releaseNotes_2.0.html)
+          - [Changes (2.0)](/fop/2.0/changes_2.0.html)
+          - [Known Issues](/fop/2.0/knownissues_overview.html)
+          - [Upgrading](/fop/2.0/upgrading.html)
+          - ### Using Apache FOP 2.0
+            - [Build](/fop/2.0/compiling.html)
+            - [Configure](/fop/2.0/configuration.html)
+            - [Run](/fop/2.0/running.html)
+            - [Embed](/fop/2.0/embedding.html)
+            - [Servlets](/fop/2.0/servlets.html)
+            - [Ant Task](/fop/2.0/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.0/accessibility.html)
+            - [Complex Scripts](/fop/2.0/complexscripts.html)
+            - [Events](/fop/2.0/events.html)
+            - [Extensions](/fop/2.0/extensions.html)
+            - [Fonts](/fop/2.0/fonts.html)
+            - [Graphics](/fop/2.0/graphics.html)
+            - [Hyphenation](/fop/2.0/hyphenation.html)
+            - [Intermediate Format](/fop/2.0/intermediate.html)
+            - [Metadata](/fop/2.0/metadata.html)
+            - [Output Targets](/fop/2.0/output.html)
+            - [PDF/A](/fop/2.0/pdfa.html)
+            - [PDF/X](/fop/2.0/pdfx.html)
+            - [PDF Encryption](/fop/2.0/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.0/whitespacemanagement.html)
+      - ## FOP 1.1
+          - [FOP 1.1 Overview](/fop/1.1/)
+          - [Release Notes](/fop/1.1/releaseNotes_1.1.html)
+          - [Changes (1.1)](/fop/1.1/changes_1.1.html)
+          - [Known Issues](/fop/1.1/knownissues_overview.html)
+          - [Upgrading](/fop/1.1/upgrading.html)
+          - ### Using Apache FOP 1.1
+            - [Build](/fop/1.1/compiling.html)
+            - [Configure](/fop/1.1/configuration.html)
+            - [Run](/fop/1.1/running.html)
+            - [Embed](/fop/1.1/embedding.html)
+            - [Servlets](/fop/1.1/servlets.html)
+            - [Ant Task](/fop/1.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/1.1/accessibility.html)
+            - [Complex Scripts](/fop/1.1/complexscripts.html)
+            - [Events](/fop/1.1/events.html)
+            - [Extensions](/fop/1.1/extensions.html)
+            - [Fonts](/fop/1.1/fonts.html)
+            - [Graphics](/fop/1.1/graphics.html)
+            - [Hyphenation](/fop/1.1/hyphenation.html)
+            - [Intermediate Format](/fop/1.1/intermediate.html)
+            - [Metadata](/fop/1.1/metadata.html)
+            - [Output Targets](/fop/1.1/output.html)
+            - [PDF/A](/fop/1.1/pdfa.html)
+            - [PDF/X](/fop/1.1/pdfx.html)
+            - [PDF Encryption](/fop/1.1/pdfencryption.html)
+      - ## FOP 1.0
+          - [FOP 1.0 Overview](/fop/1.0/)
+          - [Release Notes](/fop/1.0/releaseNotes_1.0.html)
+          - [Changes (1.0)](/fop/1.0/changes_1.0.html)
+          - [Known Issues](/fop/1.0/knownissues_overview.html)
+          - [Upgrading](/fop/1.0/upgrading.html)
+          - ### Using Apache FOP 1.0
+            - [Build](/fop/1.0/compiling.html)
+            - [Configure](/fop/1.0/configuration.html)
+            - [Run](/fop/1.0/running.html)
+            - [Embed](/fop/1.0/embedding.html)
+            - [Servlets](/fop/1.0/servlets.html)
+            - [Ant Task](/fop/1.0/anttask.html)
+          - ### Features
+            - [Output Targets](/fop/1.0/output.html)
+            - [Intermediate Format](/fop/1.0/intermediate.html)
+            - [PDF Encryption](/fop/1.0/pdfencryption.html)
+            - [PDF/A](/fop/1.0/pdfa.html)
+            - [PDF/X](/fop/1.0/pdfx.html)
+            - [Graphics](/fop/1.0/graphics.html)
+            - [Fonts](/fop/1.0/fonts.html)
+            - [Hyphenation](/fop/1.0/hyphenation.html)
+            - [Extensions](/fop/1.0/extensions.html)
+            - [Events](/fop/1.0/events.html)
+            - [Metadata](/fop/1.0/metadata.html)
+            - [Accessibility](/fop/1.0/accessibility.html)
+      - ## FOP Development
+          - [General Info](/fop/dev/)
+          - ## Design
+            - [Design Info](/fop/dev/design/)
+          - ## Core Process
+            - [Startup](/fop/dev/design/startup.html)
+            - [XML Parsing](/fop/dev/design/parsing.html)
+            - [FO Tree](/fop/dev/design/fotree.html)
+            - [Properties](/fop/dev/design/properties.html)
+            - [Layout](/fop/dev/design/layout.html)
+            - [Break Possibility](/fop/dev/design/breakpos.html)
+            - [Area Tree](/fop/dev/design/areas.html)
+            - [Renderers](/fop/dev/design/renderers.html)
+          - ## Miscellaneous
+            - [Images](/fop/dev/design/images.html)
+            - [PDF Library](/fop/dev/design/pdf-library.html)
+            - [SVG](/fop/dev/design/svg.html)
+            - [Embedding](/fop/dev/design/embedding.html)
+            - [Extending](/fop/dev/design/extending.html)
+            - [Optimisations](/fop/dev/design/optimise.html)
+            - [User Agent](/fop/dev/design/useragent.html)
+          - [Unresolved (Wiki)](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FOPProjectPages)
+          - [SVG](/fop/dev/svg.html)
+          - [Extensions](/fop/dev/extensions.html)
+          - ## Develop
+            - [Walk-Thru](/fop/dev/implement.html)
+            - [Patch Queue](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20description%20~%20%22\%22[patch]\%22%22%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+            - [Conventions](/fop/dev/conventions.html)
+          - ## Test
+            - [Testing](/fop/dev/testing.html)
+          - ## Deploy
+            - [Doc Mgmt](/fop/dev/doc.html)
+            - [Release](/fop/dev/release.html)
+            - [Bugs](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20issuetype%20%3D%20Bug%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+          - ## Resources
+            - [FAQs](/fop/dev/faq.html)
+            - [Tools](/fop/dev/tools.html)
+            - [ViewVC](http://svn.apache.org/viewvc/xmlgraphics/fop)
+          - ## SubPackages
+            - [RTFlib](/fop/dev/rtflib.html)
+
+# Apache&trade; XML Graphics
+  - ## Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache Batik](/batik/)
+  - [Apache XML Graphics Commons](/commons/)
+
+### Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+      $('#navigation :header').not('#search-apache-xml-graphics, #apachewzxhzdk3-xml-graphics, #sub-projects').append(' &raquo;');
+    }
+  $('#navigation > ul > li > ul > li ul').hide();
+  $('#project-overview').next().hide();
+  $('#versions').next().show();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+      $("li.highlight").removeClass("highlight");
+      $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
+	  <a href="/fop/"><img src="/images/apache-fop-logo.jpg" alt="The Apache FOP Project" width="120" height="65" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; FOP Project</h2>
+	</div>  
+
+    <h1>History of Changes 1.1</h1>
+    
+
+    <h1>History of Changes 1.1</h1>
+<p><a href="changes_1.1.rss">changes_1.1.rss</a></p>
+<h2 id="introduction">Introduction and explanation of symbols</h2>
+<p>Changes are sorted by "type" and then chronologically with the most recent at the top. These symbols denote the various action types:<img alt="add" src="/images/add.jpg">=add,<img alt="fix" src="/images/fix.jpg">=fix,<img alt="remove" src="/images/remove.jpg">=remove,<img alt="update" src="/images/update.jpg">=update</p>
+<h2 id="version_1.1">Version 1.1 (20 October 2012)</h2>
+<h3 id="Code_1.1">Changes to the Code Base</h3>
+<ul>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Added support for the role property on fo:page-sequence, fo:flow and fo:static-content. This allows to change the mapping of those FOs to PDF structure types when enabling accessibility. Committed by VH.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> A global setting to wrap F11 images in page segments. Committed by PH. See issue <a href="https://issues.apache.org/jira/browse/FOP-1854">FOP-1854</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Added support for PDF Object Streams. When accessibility is enabled and PDF version 1.5 selected, the structure tree will be stored in object streams in order to reduce the size of the final PDF. Committed by VH. Thanks to Peter Hancock.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Improved support for empty flow-name mapping. Committed by PH. See issue <a href="https://issues.apache.org/jira/browse/FOP-1870">FOP-1870</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Improvements of the Accessibility features. Committed by PH. Thanks to Vincent Hennebert.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Suppress unnecessary "font not found warnings" when generating AFP with raster fonts Committed by CB. Thanks to Luis Bernardo. See issue <a href="https://issues.apache.org/jira/browse/FOP-2010">FOP-2010</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> SVG text in AFP creates miscoded GOCA text Committed by CB. Thanks to Luis Bernardo. See issue <a href="https://issues.apache.org/jira/browse/FOP-1934">FOP-1934</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Add support for different flow-name of fo:region-body in FOP Committed by CB. Thanks to Peter Hancock. See issue <a href="https://issues.apache.org/jira/browse/FOP-1870">FOP-1870</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Tagged PDF performance improvement plus tests Committed by CB. Thanks to Mehdi Houshmand. See issue <a href="https://issues.apache.org/jira/browse/FOP-1958">FOP-1958</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Improved AdobeStandardEncoding support in AFM files for type1 fonts Committed by MH. See issue <a href="https://issues.apache.org/jira/browse/FOP-1995">FOP-1995</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Added ant script to get JaCoCo code coverage. Committed by VH. Thanks to Mehdi Houshmand. See issue <a href="https://issues.apache.org/jira/browse/FOP-1991">FOP-1991</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Added to build file JUnit target that uses a regex to run all of the test cases. This reduces the risk that some of them are omitted when building FOP. Committed by VH. Thanks to Mehdi Houshmand. See issue <a href="https://issues.apache.org/jira/browse/FOP-1986">FOP-1986</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Allow JPEG images to be embedded in an AFP document as is, without being decoded and encoded. Committed by PH. Thanks to Mehdi Houshmand. See issue <a href="https://issues.apache.org/jira/browse/FOP-1984">FOP-1984</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Simplification of the build: Reduced code duplication and layout engine tests. Committed by PH. Thanks to Mehdi Houshmand. See issue <a href="https://issues.apache.org/jira/browse/FOP-1980">FOP-1980</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Fix for when the last simple-page-master referenced in a page-sequence-master is not chosen when force-page-count=odd. Committed by PH. Thanks to Mehdi Houshmand. See issue <a href="https://issues.apache.org/jira/browse/FOP-1976">FOP-1976</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Upgraded all tests to JUnit 4. Committed by VH. Thanks to Mehdi Houshmand. See issue <a href="https://issues.apache.org/jira/browse/FOP-1973">FOP-1973</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Added support for resolution of relative URIs against a specified xml:base during property refinement. Committed by AD. See issue <a href="https://issues.apache.org/jira/browse/FOP-1744">FOP-1744</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix incorrect language and country code key generation in hyphenation tree cache. Committed by GA. Thanks to Dieter von Holten. See issue <a href="https://issues.apache.org/jira/browse/FOP-2082">FOP-2082</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Eliminate javadocs warnings. Committed by GA.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Eliminate incorrect use of object identity which produces excessive property cache collisions. Committed by GA. Thanks to Alexios Giotis. See issue <a href="https://issues.apache.org/jira/browse/FOP-2078">FOP-2078</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Eliminate javadocs warnings. Committed by GA.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Use new double format utility to improve thread safety and performance. Committed by GA. Thanks to Ognjen Blagojevic. See issue <a href="https://issues.apache.org/jira/browse/FOP-1460">FOP-1460</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Convert block container overflow exception to event model, improving overflow property behavior. Committed by GA. Thanks to Luis Bernardo. See issue <a href="https://issues.apache.org/jira/browse/FOP-2045">FOP-2045</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Update to use of checkstyle-5.5 as default configuration. Remove checkstyle-4.0 configuration. Also, import environment build properties before local properties, so that latter can refer to former. Committed by GA. See issue <a href="https://issues.apache.org/jira/browse/FOP-2042">FOP-2042</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Prevent NPE on use of unsupported collapse-with-precedence; fall back to collapse. Fix checkstyle errors from prior commit. Committed by GA. Thanks to Pascal Sancho. See issue <a href="https://issues.apache.org/jira/browse/FOP-2018">FOP-2018</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Invoke JVM in headless mode from FOP command scripts and JS shell to prevent stealing focus from GUI applications. Committed by GA. See issue <a href="https://issues.apache.org/jira/browse/FOP-1858">FOP-1858</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Support list-block in marker, thus preventing NPE. Committed by GA. See issue <a href="https://issues.apache.org/jira/browse/FOP-2027">FOP-2027</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Must use unqualified (local name) when reporting invalid child error. Committed by GA.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Restore lookup on Event message lookup field part. Add locale field to Event to enable locale dependent deferred bundle load during lookup field part substitution. Committed by GA. See issue <a href="https://issues.apache.org/jira/browse/FOP-2040">FOP-2040</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Bug in AFP font metrics that performed integer arithmetic when it should have been double arithemetic. Committed by MH.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Bring clone() in line with the recommendations in Object.clone(). Committed by GA. Thanks to Simon Pepping. See issue <a href="https://issues.apache.org/jira/browse/FOP-1836">FOP-1836</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> How to use native text with EPSDocumentGraphics2D. Committed by GA. Thanks to Luis Bernardo. See issue <a href="https://issues.apache.org/jira/browse/FOP-2032">FOP-2032</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Allow https scheme URI for PDF external action target. Committed by GA. Thanks to Paul Huemer. See issue <a href="https://issues.apache.org/jira/browse/FOP-1954">FOP-1954</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> RTF percentage table column width not calculated from table. Committed by GA. Thanks to Carsten Pfeiffer. See issue <a href="https://issues.apache.org/jira/browse/FOP-1908">FOP-1908</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> RTF generates unexpected lines for blocks in tables. Also fix three findbugs issues. Committed by GA. Thanks to Max Aster. See issue <a href="https://issues.apache.org/jira/browse/FOP-1918">FOP-1918</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> RTF tables do not support percent column-widths. Committed by GA. Thanks to Max Aster. See issue <a href="https://issues.apache.org/jira/browse/FOP-1916">FOP-1916</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Access denied (java.util.PropertyPermission org.apache.fop.fo.properties.use-cache read). Committed by GA. Thanks to Armin Haaf. See issue <a href="https://issues.apache.org/jira/browse/FOP-1873">FOP-1873</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Incorrect message when encountering a block in an inline in a footnote. Committed by GA. Thanks to Adrian Buza. See issue <a href="https://issues.apache.org/jira/browse/FOP-1837">FOP-1837</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Specified rule-thickness applies only when leader-pattern is rule, otherwise should use default thickness. Committed by GA. Thanks to Georg Datterl. See issue <a href="https://issues.apache.org/jira/browse/FOP-1676">FOP-1676</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Eliminate duplicate code. Committed by GA. Thanks to Julien Aymé. See issue <a href="https://issues.apache.org/jira/browse/FOP-1806">FOP-1806</a></p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Correct coding error in AFPResourceLevel#equals. Committed by GA. Thanks to Julien Aymé. See issue <a href="https://issues.apache.org/jira/browse/FOP-1807">FOP-1807</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Throw IFException instead of NPE if navigation target (page reference) doesn't exist. Committed by GA. Thanks to Melanie Drake. See issue <a href="https://issues.apache.org/jira/browse/FOP-1968">FOP-1968</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fixed memory waste in traits map. Committed by GA. Thanks to Sergey Vladimirov. See issue <a href="https://issues.apache.org/jira/browse/FOP-1967">FOP-1967</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fixed small memory waste in rowCells array construction. Committed by GA. Thanks to Sergey Vladimirov. See issue <a href="https://issues.apache.org/jira/browse/FOP-1966">FOP-1966</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fixed incorrect rejection of fo:wrapper inside fo:inline inside fo:footnote-body. Committed by GA. Thanks to Alberto Simões. See issue <a href="https://issues.apache.org/jira/browse/FOP-2036">FOP-2036</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fixed deadlock in PropertyCache. Committed by VH. Thanks to Alexios Giotis. See issue <a href="https://issues.apache.org/jira/browse/FOP-1646">FOP-1646</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fixed bug that caused a configured and installed SVG font to be stroked, also added an event indicating when fonts are stroked. Committed by MH. Thanks to Luis Bernardo. See issue <a href="https://issues.apache.org/jira/browse/FOP-2029">FOP-2029</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix of a bug introduced when merging ImproveAccessibility. Committed by PH.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fixed rendering of special glyphs when using single-byte encoding mode. Committed by VH. Thanks to Luis Bernardo. See issue <a href="https://issues.apache.org/jira/browse/FOP-2023">FOP-2023</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fixed regression introduced by issue <a href="https://issues.apache.org/jira/browse/FOP-1886">FOP-1886</a>: bookmarks pointing to a non-existing internal destination should just trigger a warning. Committed by AD. See issue <a href="https://issues.apache.org/jira/browse/FOP-1886">FOP-1886</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix for issue in RenderPagesModel.checkPreparedPages() where the same page-sequence is potentially started multiple times. Committed by AD. Thanks to Martin Koegler. See issue <a href="https://issues.apache.org/jira/browse/FOP-1889">FOP-1889</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix for performance issue when adding pages, if the total number of pages is significantly large. Committed by AD. Thanks to Martin Koegler. See issue <a href="https://issues.apache.org/jira/browse/FOP-1890">FOP-1890</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix for performance issue when adding nodes, if the number of children is significantly large. Committed by AD. Thanks to Martin Koegler. See issue <a href="https://issues.apache.org/jira/browse/FOP-1888">FOP-1888</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix for avoid ArrayIndexOutOfBoundsException for codepoints without a linebreak class Committed by AD. See issue <a href="https://issues.apache.org/jira/browse/FOP-1874">FOP-1874</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Replaced magic numbers with constants from UnitConv and GraphicsConstants. Committed by VH. Thanks to Joshua Marquart. See issue <a href="https://issues.apache.org/jira/browse/FOP-1828">FOP-1828</a>.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg"> Update xmlgraphics common jar to reflect recent fixes in XGC. Committed by GA. See issue <a href="https://issues.apache.org/jira/browse/FOP-2039">FOP-2039</a>.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg"> Fix handling of NaN, {+,-}Infinity, and other edge cases. Submitted by Julien Aymé. Committed by GA. Thanks to Julien Aymé. See issue <a href="https://issues.apache.org/jira/browse/FOP-1460">FOP-1460</a>.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg"> Improve property function argument parsing, specifically, better separate required, optional, and variable arguments and the handling of optional argument defaults. Regularize property function class names. Committed by GA.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg"> Add run target for embedded examples. Add increased JVM memory heap flag for example8 in case font cache is rebuilt. Committed by GA. See issue <a href="https://issues.apache.org/jira/browse/FOP-1955">FOP-1955</a>.</p>
+</li>
+</ul>
+<h3 id="Config_1.1">Changes to the User Configuration</h3>
+<ul>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Added configuration option to set the version of the output PDF document. Committed by VH. Thanks to Mehdi Houshmand. See issue <a href="https://issues.apache.org/jira/browse/FOP-1945">FOP-1945</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix crash on use of version switch (-v). Committed by GA. Thanks to Luis Bernardo. See issue <a href="https://issues.apache.org/jira/browse/FOP-1988">FOP-1988</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix exception thrown from use of -print option in CLI. Committed by GA. Thanks to Luis Bernardo. See issue <a href="https://issues.apache.org/jira/browse/FOP-2065">FOP-2065</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix for relative URIs in the configuration file (base, font-base, hyphenation-base) are evaluated relative to the base URI of the configuration file. Committed by SP.</p>
+</li>
+</ul>
+<h3 id="Docs_1.1">Changes to Documentation</h3>
+<ul>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix renderer mime type for PCL output; should be application/x-pcl. Committed by GA. See issue <a href="https://issues.apache.org/jira/browse/FOP-2064">FOP-2064</a>.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg"> Update FAQ and New Bug documentation. Committed by GA.</p>
+</li>
+</ul>
+<h3 id="Fonts_1.1">Changes to the Font Subsystem</h3>
+<ul>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Add support for OpenType advanced typographic tables (GDEF, GSUB, GPOS). Committed by GA.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Added support for lookup of alternative glyphs when additional single-byte encodings are used, ex. replacing "Omegagreek" by "Omega" and vice versa. Committed by JM. Thanks to Alexandros Papadakis. See issue <a href="https://issues.apache.org/jira/browse/FOP-1892">FOP-1892</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Added convenience support for the flushing of the Fop font cache file from the command line. Committed by AC.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix performance regression in JDK 1.6 Update 19 due to use of Java Beans API. Fix checkstyle errors. Committed by GA. Thanks to Tassos Charoulis. See issue <a href="https://issues.apache.org/jira/browse/FOP-2057">FOP-2057</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Ensure fonts are not loaded twice (redundantly). Committed by GA. See issue <a href="https://issues.apache.org/jira/browse/FOP-2055">FOP-2055</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Bugfix for color model in IOCA IDE structure parameter for 4- and 8-bit grayscale images. Revision 4. Committed by PH. See issue <a href="https://issues.apache.org/jira/browse/FOP-1767">FOP-1767</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Changes the way PostScript handles Graphics2D images such that if the language is set to level 3, the image is stored as an embedded file which has no length limit. Previously it was stored as an array which has a implementation limit of 65535 elements. Committed by PH. Thanks to Mehdi Houshmand. See issue <a href="https://issues.apache.org/jira/browse/FOP-1962">FOP-1962</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> PDFFactory responsible for asdigning name to a subset font. Committed by PH. Thanks to Mehdi Houshmand. See issue <a href="https://issues.apache.org/jira/browse/FOP-1961">FOP-1961</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Improved support for EBCDIC encoded double byte fonts fo AFP. Committed by PH. Thanks to Mehdi Houshmand. See issue <a href="https://issues.apache.org/jira/browse/FOP-1950">FOP-1950</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Corrected typographical errors in AFPBase12FontCollection. Committed by PH. Thanks to Mehdi Houshmand. See issue <a href="https://issues.apache.org/jira/browse/FOP-1933">FOP-1933</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fixed a bug in TTF subsetting where a composite glyph could get remapped more than once resulting in garbled character. Committed by JM. Thanks to Mehdi Houshmand. See issue <a href="https://issues.apache.org/jira/browse/FOP-1953">FOP-1953</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fixed a number of bugs concerning Type 1 and other single-byte fonts (glyph width mismatches and overlapping characters). Committed by JM. See issue <a href="https://issues.apache.org/jira/browse/FOP-1887">FOP-1887</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Removed invalid entries in ToUnicode table of CID subset fonts. Committed by JM. Thanks to Mehdi Houshmand. See issue <a href="https://issues.apache.org/jira/browse/FOP-1931">FOP-1931</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Reinstated support for being able to specify a font cache filepath in the fop user configuration. Committed by AC.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg"> Removing experimental feature that violates XSL-FO and Unicode semantics by misinterpreting Basic Latin code points. Users must use private use codepoints to access font specific character mappings that have no assigned Unicode code point. See bug 50492. Committed by GA.</p>
+</li>
+</ul>
+<h3 id="Images_1.1">Changes to the Image Support</h3>
+<ul>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix incorrect SVG line dash pattern with PDF output format. Committed by GA. Thanks to Luis Bernardo. See issue <a href="https://issues.apache.org/jira/browse/FOP-2079">FOP-2079</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Support use of ImageLoaderRawPNG decoder in order to prevent re-encoding of PNG images (and unnecssary output file bloat). Committed by GA. Thanks to Luis Bernardo, Matthias Reischenbacher. See issue <a href="https://issues.apache.org/jira/browse/FOP-1256">FOP-1256</a>.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg"> Fix interoperability issue with Adobe reader regarding use of multiple filters. Committed by GA. Thanks to Luis Bernardo. See issue <a href="https://issues.apache.org/jira/browse/FOP-1256">FOP-1256</a>.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg"> Update site documentation about PNG image loading configuration and support. Committed by GA. Thanks to Luis Bernardo. See issue <a href="https://issues.apache.org/jira/browse/FOP-1256">FOP-1256</a>.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg"> Fix newly introduced findbugs warnings. Committed by GA. Thanks to Luis Bernardo. See issue <a href="https://issues.apache.org/jira/browse/FOP-1256">FOP-1256</a>.</p>
+</li>
+</ul>
+<h3 id="Layout_1.1">Changes to the Layout Engine</h3>
+<ul>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Add support for complex scripts, including: full bidi support, support for advanced typographic tables, advanced support for number conversion. Committed by GA. See issues <a href="https://issues.apache.org/jira/browse/FOP-959">FOP-959</a>, <a href="https://issues.apache.org/jira/browse/FOP-1790">FOP-1790</a>, <a href="https://issues.apache.org/jira/browse/FOP-1827">FOP-1827</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Unify date formatting between FOP and XGC as well as tidying the date format code. Committed by GA. Thanks to Robert Meyer. See issue <a href="https://issues.apache.org/jira/browse/FOP-2059">FOP-2059</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix for break before (break-before) not respected on blocks nested in inlines. Committed by GA. Thanks to Luis Bernardo. See issue <a href="https://issues.apache.org/jira/browse/FOP-1567">FOP-1567</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Don't restart layout unless abs(ipd difference) &gt; 1 in order to prevent rounding issues from triggering false restart. Committed by GA. Thanks to Pascal Sancho. See issue <a href="https://issues.apache.org/jira/browse/FOP-1921">FOP-1921</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Ensure that table cell spanning works in right-to-left writing mode. Committed by GA. Thanks to Matthias Reischenbacher. See issue <a href="https://issues.apache.org/jira/browse/FOP-2047">FOP-2047</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Ensure that table footer and header are included in bididirectional resolution. Committed by GA. See issue <a href="https://issues.apache.org/jira/browse/FOP-2043">FOP-2043</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Ensure writing-mode specified on fo:table is used to determine writing mode of table and its descendants. Committed by GA. See issue <a href="https://issues.apache.org/jira/browse/FOP-2046">FOP-2046</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Ensure square image is appropriately scaled. Committed by GA. Thanks to Luis Bernardo. See issue <a href="https://issues.apache.org/jira/browse/FOP-2014">FOP-2014</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Issue <a href="https://issues.apache.org/jira/browse/FOP-1911">FOP-1911</a>: Fixed a regression in BlockContainerLayoutManager where margins were no longer reset after forced breaks. Committed by AD. Thanks to Martin Koegler. See issue <a href="https://issues.apache.org/jira/browse/FOP-1911">FOP-1911</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Implemented non-standard behavior for basic-link areas, such that they take into account the heights of their descendants areas. Committed by VH.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix for keep-together does not apply to fo:table-cell. Committed by VH.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix for keep-together on a table containing row-spanning cells that was not honored. Committed by VH.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix for padding-start ignored when table-header/footer is repeated. Committed by VH. Thanks to Matthias Reischenbacher. See issue <a href="https://issues.apache.org/jira/browse/FOP-1864">FOP-1864</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix for correct behavior of keep-together.within-line in case there are nested inlines Committed by AD. See issue <a href="https://issues.apache.org/jira/browse/FOP-1847">FOP-1847</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix for avoid ClassCastException when using fox:widow-content-limit Committed by AD. See issue <a href="https://issues.apache.org/jira/browse/FOP-1746">FOP-1746</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix for content after forced break in block-container is not rendered. Committed by VH. See issue <a href="https://issues.apache.org/jira/browse/FOP-1859">FOP-1859</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fixed adjustment of inline parent area for justified text containing a forward page reference. Committed by JM. See issue <a href="https://issues.apache.org/jira/browse/FOP-1344">FOP-1344</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fixed behavior when combining hyphenation with preserved linefeeds or whitespace. Committed by AD. See issue <a href="https://issues.apache.org/jira/browse/FOP-1133">FOP-1133</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fixed retrieval of available BPD for cases spanning columns and multiple pages with differing page masters. Committed by JM. See issue <a href="https://issues.apache.org/jira/browse/FOP-1853">FOP-1853</a>.</p>
+</li>
+</ul>
+<h3 id="Renderers_1.1">Changes to Renderers (Output Formats)</h3>
+<ul>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Added possibility to embed TrueType fonts in PostScript. Committed by VH. See issue <a href="https://issues.apache.org/jira/browse/FOP-2004">FOP-2004</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Various bugfixes to make PDFDocumentGraphics2D operational again. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Added support for 128bit encryption in PDF output. Committed by VH. Thanks to Michael Rubin.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Added an IFDocumentHandler filter for triggering rendering events. Created an Event that captures an end page event with the page number. Committed by PH.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Added option to place AFP NOPs right before the end of a named page group (page-sequence), rather than after the start. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Added option for PostScript output to optimize for file size rather than quality. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> AFP GOCA: Added option to disable GOCA and to control text painting inside GOCA graphics. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Added id element to intermediate format to track the origin of content. Committed by VH.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Added support for CIE Lab colors (from XSL-FO 2.0 WD). Committed by JM.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Initial work on spot colors (aka named colors) for PDF output. Committed by JM. Thanks to Patrick Jaromin. See issue <a href="https://issues.apache.org/jira/browse/FOP-1810">FOP-1810</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Allow afp:no-operation to also appear under fo:page-sequence and fo:declarations. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Added some support for break-before/-after for RTF output. Committed by JM. Thanks to Max Aster. See issue <a href="https://issues.apache.org/jira/browse/FOP-1371">FOP-1371</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Added ability to embed an external AFP page segment resource file (AFP output only). Committed by JM. Thanks to Peter Hancock. See issue <a href="https://issues.apache.org/jira/browse/FOP-1809">FOP-1809</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> Added support for PDF File Attachments (Embedded Files). Committed by JM. Thanks to Andrejus Chaliapinas. See issue <a href="https://issues.apache.org/jira/browse/FOP-1498">FOP-1498</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Add version attribute to AT and IF intermediate formats. Also eliminate redundant use of reversed attribute in AT format. Committed by GA. See issues <a href="https://issues.apache.org/jira/browse/FOP-2072">FOP-2072</a>, <a href="https://issues.apache.org/jira/browse/FOP-2073">FOP-2073</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Add extension to place code just before PostScript %PageTrailer. Committed by GA. Thanks to Luis Bernardo. See issue <a href="https://issues.apache.org/jira/browse/FOP-2069">FOP-2069</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix invalid PostScript file being created when font-size is 0. Committed by GA. Thanks to Robert Meyer. See issue <a href="https://issues.apache.org/jira/browse/FOP-2068">FOP-2068</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Stop outputting the Type entry for structure elements in order to create a smaller PDF ouptut when accessibility is enabled. Committed by VH. Thanks to Martin Koegler.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Support fractional line widths in AFP renderer, fixing problem with SVG line drawing. Committed by GA. Thanks to Luis Bernardo. See issue <a href="https://issues.apache.org/jira/browse/FOP-2063">FOP-2063</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix for invalid PDF for certain numerical values in SVG lineargradient. Committed by GA. Thanks to Luis Bernardo. See issue <a href="https://issues.apache.org/jira/browse/FOP-1259">FOP-1259</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix for XGC when rendering PostScript using SVG being drawn upside down when using a custom affine transform. Committed by GA. Thanks to Robert Meyer. See issue <a href="https://issues.apache.org/jira/browse/FOP-1769">FOP-1769</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Don't write final /sect suffix in RTF if section is last section. Committed by GA. Thanks to Benjamin Riefenstahl. See issue <a href="https://issues.apache.org/jira/browse/FOP-1948">FOP-1948</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Take leading derived space before/after into account when computing rows for TXT renderer. Committed by GA. See issue <a href="https://issues.apache.org/jira/browse/FOP-1985">FOP-1985</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Improved fix of a bug relating to PCL painter thread safetly. Previous fix in rev 895012 worked by synchronizing methods of a static instance of Java2DFontMetrics. This fix uses a unique instance for per thread. Committed by PH. See issue <a href="https://issues.apache.org/jira/browse/FOP-1718">FOP-1718</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fixed a bug in AFP where an ArrayOutofBoundsException is throwqn when embedding a Page Segment. Committed by PH.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fixed a bug in AFP where the object area axes of an Include Object was incorrectly set when rotated by 180. Committed by PH.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fixed a multi-threading bug for SVG images included through svg:image inside SVG documents. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix for alternative text not working in tagged PDF for TIFF images. Committed by VH.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fixed io exception in MODCAParser caused by the improper use of mark() and reset() on the MODCA data input stream. Added unit test. Committed by PH. See issue <a href="https://issues.apache.org/jira/browse/FOP-1909">FOP-1909</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fixed mapping of font weights between CSS values and TextAttribute.WEIGHT_*. Committed by JM. Thanks to Glenn Adams. See issue <a href="https://issues.apache.org/jira/browse/FOP-1907">FOP-1907</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> AFP GOCA: fonts were not embedded from within AFPGraphics2D. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> AFP GOCA: Changed the way FOP fonts are selected based on Batik's GVT fonts to match the behaviour of PDF/PS output. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> AFP GOCA: Work-around for InfoPrint's AFP implementation which seems to lose the character set state over Graphics Data (GAD) boundaries. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Bugfix for AFP GOCA segments: they were not properly marked as appended which could lead to graphics state changes in some implementations. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Issue <a href="https://issues.apache.org/jira/browse/FOP-1919">FOP-1919</a>: Bookmarks create useless lines in RTF Committed by CB. Thanks to Max Aster. See issue <a href="https://issues.apache.org/jira/browse/FOP-1919">FOP-1919</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Issue <a href="https://issues.apache.org/jira/browse/FOP-1917">FOP-1917</a>: page-number-citation-last does not work in RTF Committed by CB. Thanks to Max Aster. See issue <a href="https://issues.apache.org/jira/browse/FOP-1917">FOP-1917</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Issue <a href="https://issues.apache.org/jira/browse/FOP-1915">FOP-1915</a>: Fixed a NullPointerException in case a white-space fo:character was removed due to white-space handling. Committed by AD. Thanks to Matthias Reischenbacher. See issue <a href="https://issues.apache.org/jira/browse/FOP-1915">FOP-1915</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Issue <a href="https://issues.apache.org/jira/browse/FOP-1914">FOP-1914</a>: Fixed an issue in PDF output where a link was added to the parent tree instead of the related structure element. Committed by AD. Thanks to Martin Koegler. See issue <a href="https://issues.apache.org/jira/browse/FOP-1914">FOP-1914</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Issue <a href="https://issues.apache.org/jira/browse/FOP-1913">FOP-1913</a>: Fixed an issue where invalid PDF page content was generated due to incorrect ET/EMC sequences. Committed by AD. Thanks to Martin Koegler. See issue <a href="https://issues.apache.org/jira/browse/FOP-1913">FOP-1913</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Increased maximum possible PDF size from 2GB to around 9GB (hard maximum imposed by the PDF specification). Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix to preserve the order of AFP TLEs and NOPs as given in the XSL-FO document. Committed by JM. Thanks to Mehdi Houshmand. See issue <a href="https://issues.apache.org/jira/browse/FOP-1894">FOP-1894</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fixed a multi-threading issue when rendering SVG. Committed by JM. Thanks to Alexios Giotis. See issue <a href="https://issues.apache.org/jira/browse/FOP-1610">FOP-1610</a>.</p>
+</li>
+<li>
+<p><img alt="remove" src="/images/remove.jpg"> Removed old Renderer implementations for those output formats that have a version based on the new DocumentHandler architecture available (AFP, PCL, PDF, PS). Committed by VH.</p>
+</li>
+</ul>
+<h3 id="Test_1.1">Changes to unit tests or other test code</h3>
+<ul>
+<li>
+<p><img alt="fix" src="/images/fix.jpg"> Fix errors and warnings in example files. Add build.xml for documentation examples. Committed by GA.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg"> Add test for basic-link with padding. Committed by GA. Thanks to Matthias Reischenbacher. See issue <a href="https://issues.apache.org/jira/browse/FOP-1864">FOP-1864</a>.</p>
+</li>
+</ul>
+<h3 id="contributors_1.1">Contributors to this release</h3>
+<p>We thank the following people for their contributions to this release.</p>
+<p>This is a list of all people who participated as committers:</p>
+<p>Adrian Cumiskey (AC), Andreas Delmelle (AD), Chris Bowditch (CB), Glenn Adams (GA), Jeremias Märki (JM), Mehdi Houshmand (MH), Peter Hancock (PH), Simon Pepping (SP), Vincent Hennebert (VH).</p>
+<p>This is a list of other contributors:</p>
+<p>Adrian Buza, Alberto Simões, Alexandros Papadakis, Alexios Giotis, Andrejus Chaliapinas, Armin Haaf, Benjamin Riefenstahl, Carsten Pfeiffer, Dieter von Holten, Georg Datterl, Glenn Adams, Joshua Marquart, Julien Aymé, Luis Bernardo, Martin Koegler, Matthias Reischenbacher, Max Aster, Mehdi Houshmand, Melanie Drake, Michael Rubin, Ognjen Blagojevic, Pascal Sancho, Patrick Jaromin, Paul Huemer, Peter Hancock, Robert Meyer, Sergey Vladimirov, Simon Pepping, Tassos Charoulis, Vincent Hennebert.</p>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

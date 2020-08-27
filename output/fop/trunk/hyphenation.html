@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache&trade; FOP
+  - [FOP Home](/fop/)
+  - [Download](/fop/download.html)
+  - [Quick Start Guide](/fop/quickstartguide.html)
+  - [Compliance](/fop/compliance.html)
+  - [Getting Help](/fop/gethelp.html)
+  - [FAQs](/fop/faq.html)
+  - [FOP Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP)
+  - [Mailing Lists](/fop/maillist.html)
+  - [License](/fop/license.html)
+  - ## Resources
+    - [XSL-FO](/fop/fo.html)
+    - [Examples](/fop/examples.html)
+    - [Bugs](/fop/bugs.html)
+    - [Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FrontPage)
+    - [Other](/fop/resources.html)
+  - ## Project
+    - [News](/fop/news.html)
+    - [Who We Are](/fop/team.html)
+    - [Status](/fop/status.html)
+    - [Known Issues](/fop/knownissues.html)
+    - [Changes](/fop/changes.html)
+  - ## Versions
+      - ## FOP Trunk (dev)
+          - [Overview](/fop/trunk/)
+          - [Upgrading](/fop/trunk/upgrading.html)
+          - ### Using Apache&trade; FOP
+            - [Build](/fop/trunk/compiling.html)
+            - [Configure](/fop/trunk/configuration.html)
+            - [Run](/fop/trunk/running.html)
+            - [Embed](/fop/trunk/embedding.html)
+            - [Servlets](/fop/trunk/servlets.html)
+            - [Ant Task](/fop/trunk/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/trunk/accessibility.html)
+            - [Complex Scripts](/fop/trunk/complexscripts.html)
+            - [Events](/fop/trunk/events.html)
+            - [Extensions](/fop/trunk/extensions.html)
+            - [Fonts](/fop/trunk/fonts.html)
+            - [Graphics](/fop/trunk/graphics.html)
+            - [Hyphenation](/fop/trunk/hyphenation.html)
+            - [Intermediate Format](/fop/trunk/intermediate.html)
+            - [Metadata](/fop/trunk/metadata.html)
+            - [Output Targets](/fop/trunk/output.html)
+            - [PDF/A](/fop/trunk/pdfa.html)
+            - [PDF/X](/fop/trunk/pdfx.html)
+            - [PDF Encryption](/fop/trunk/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/trunk/whitespacemanagement.html)
+      - ## FOP 2.5
+          - [FOP 2.5 Overview](/fop/2.5/)
+          - [Release Notes](/fop/2.5/releaseNotes_2.5.html)
+          - [Changes (2.5)](/fop/2.5/changes_2.5.html)
+          - [Known Issues](/fop/2.5/knownissues_overview.html)
+          - [Upgrading](/fop/2.5/upgrading.html)
+          - ### Using Apache FOP 2.5
+            - [Build](/fop/2.5/compiling.html)
+            - [Configure](/fop/2.5/configuration.html)
+            - [Run](/fop/2.5/running.html)
+            - [Embed](/fop/2.5/embedding.html)
+            - [Servlets](/fop/2.5/servlets.html)
+            - [Ant Task](/fop/2.5/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.5/accessibility.html)
+            - [Complex Scripts](/fop/2.5/complexscripts.html)
+            - [Events](/fop/2.5/events.html)
+            - [Extensions](/fop/2.5/extensions.html)
+            - [Fonts](/fop/2.5/fonts.html)
+            - [Graphics](/fop/2.5/graphics.html)
+            - [Hyphenation](/fop/2.5/hyphenation.html)
+            - [Intermediate Format](/fop/2.5/intermediate.html)
+            - [Metadata](/fop/2.5/metadata.html)
+            - [Output Targets](/fop/2.5/output.html)
+            - [PDF/A](/fop/2.5/pdfa.html)
+            - [PDF/X](/fop/2.5/pdfx.html)
+            - [PDF Encryption](/fop/2.5/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.5/whitespacemanagement.html)     
+      - ## FOP 2.4
+          - [FOP 2.4 Overview](/fop/2.4/)
+          - [Release Notes](/fop/2.4/releaseNotes_2.4.html)
+          - [Changes (2.4)](/fop/2.4/changes_2.4.html)
+          - [Known Issues](/fop/2.4/knownissues_overview.html)
+          - [Upgrading](/fop/2.4/upgrading.html)
+          - ### Using Apache FOP 2.4
+            - [Build](/fop/2.4/compiling.html)
+            - [Configure](/fop/2.4/configuration.html)
+            - [Run](/fop/2.4/running.html)
+            - [Embed](/fop/2.4/embedding.html)
+            - [Servlets](/fop/2.4/servlets.html)
+            - [Ant Task](/fop/2.4/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.4/accessibility.html)
+            - [Complex Scripts](/fop/2.4/complexscripts.html)
+            - [Events](/fop/2.4/events.html)
+            - [Extensions](/fop/2.4/extensions.html)
+            - [Fonts](/fop/2.4/fonts.html)
+            - [Graphics](/fop/2.4/graphics.html)
+            - [Hyphenation](/fop/2.4/hyphenation.html)
+            - [Intermediate Format](/fop/2.4/intermediate.html)
+            - [Metadata](/fop/2.4/metadata.html)
+            - [Output Targets](/fop/2.4/output.html)
+            - [PDF/A](/fop/2.4/pdfa.html)
+            - [PDF/X](/fop/2.4/pdfx.html)
+            - [PDF Encryption](/fop/2.4/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.4/whitespacemanagement.html)             
+      - ## FOP 2.3
+          - [FOP 2.3 Overview](/fop/2.3/)
+          - [Release Notes](/fop/2.3/releaseNotes_2.3.html)
+          - [Changes (2.3)](/fop/2.3/changes_2.3.html)
+          - [Known Issues](/fop/2.3/knownissues_overview.html)
+          - [Upgrading](/fop/2.3/upgrading.html)
+          - ### Using Apache FOP 2.3
+            - [Build](/fop/2.3/compiling.html)
+            - [Configure](/fop/2.3/configuration.html)
+            - [Run](/fop/2.3/running.html)
+            - [Embed](/fop/2.3/embedding.html)
+            - [Servlets](/fop/2.3/servlets.html)
+            - [Ant Task](/fop/2.3/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.3/accessibility.html)
+            - [Complex Scripts](/fop/2.3/complexscripts.html)
+            - [Events](/fop/2.3/events.html)
+            - [Extensions](/fop/2.3/extensions.html)
+            - [Fonts](/fop/2.3/fonts.html)
+            - [Graphics](/fop/2.3/graphics.html)
+            - [Hyphenation](/fop/2.3/hyphenation.html)
+            - [Intermediate Format](/fop/2.3/intermediate.html)
+            - [Metadata](/fop/2.3/metadata.html)
+            - [Output Targets](/fop/2.3/output.html)
+            - [PDF/A](/fop/2.3/pdfa.html)
+            - [PDF/X](/fop/2.3/pdfx.html)
+            - [PDF Encryption](/fop/2.3/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.3/whitespacemanagement.html)            
+      - ## FOP 2.2
+          - [FOP 2.2 Overview](/fop/2.2/)
+          - [Release Notes](/fop/2.2/releaseNotes_2.2.html)
+          - [Changes (2.2)](/fop/2.2/changes_2.2.html)
+          - [Known Issues](/fop/2.2/knownissues_overview.html)
+          - [Upgrading](/fop/2.2/upgrading.html)
+          - ### Using Apache FOP 2.2
+            - [Build](/fop/2.2/compiling.html)
+            - [Configure](/fop/2.2/configuration.html)
+            - [Run](/fop/2.2/running.html)
+            - [Embed](/fop/2.2/embedding.html)
+            - [Servlets](/fop/2.2/servlets.html)
+            - [Ant Task](/fop/2.2/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.2/accessibility.html)
+            - [Complex Scripts](/fop/2.2/complexscripts.html)
+            - [Events](/fop/2.2/events.html)
+            - [Extensions](/fop/2.2/extensions.html)
+            - [Fonts](/fop/2.2/fonts.html)
+            - [Graphics](/fop/2.2/graphics.html)
+            - [Hyphenation](/fop/2.2/hyphenation.html)
+            - [Intermediate Format](/fop/2.2/intermediate.html)
+            - [Metadata](/fop/2.2/metadata.html)
+            - [Output Targets](/fop/2.2/output.html)
+            - [PDF/A](/fop/2.2/pdfa.html)
+            - [PDF/X](/fop/2.2/pdfx.html)
+            - [PDF Encryption](/fop/2.2/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.2/whitespacemanagement.html)
+      - ## FOP 2.1
+          - [FOP 2.1 Overview](/fop/2.1/)
+          - [Release Notes](/fop/2.1/releaseNotes_2.1.html)
+          - [Changes (2.1)](/fop/2.1/changes_2.1.html)
+          - [Known Issues](/fop/2.1/knownissues_overview.html)
+          - [Upgrading](/fop/2.1/upgrading.html)
+          - ### Using Apache FOP 2.1
+            - [Build](/fop/2.1/compiling.html)
+            - [Configure](/fop/2.1/configuration.html)
+            - [Run](/fop/2.1/running.html)
+            - [Embed](/fop/2.1/embedding.html)
+            - [Servlets](/fop/2.1/servlets.html)
+            - [Ant Task](/fop/2.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.1/accessibility.html)
+            - [Complex Scripts](/fop/2.1/complexscripts.html)
+            - [Events](/fop/2.1/events.html)
+            - [Extensions](/fop/2.1/extensions.html)
+            - [Fonts](/fop/2.1/fonts.html)
+            - [Graphics](/fop/2.1/graphics.html)
+            - [Hyphenation](/fop/2.1/hyphenation.html)
+            - [Intermediate Format](/fop/2.1/intermediate.html)
+            - [Metadata](/fop/2.1/metadata.html)
+            - [Output Targets](/fop/2.1/output.html)
+            - [PDF/A](/fop/2.1/pdfa.html)
+            - [PDF/X](/fop/2.1/pdfx.html)
+            - [PDF Encryption](/fop/2.1/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.1/whitespacemanagement.html)
+      - ## FOP 2.0
+          - [FOP 2.0 Overview](/fop/2.0/)
+          - [Release Notes](/fop/2.0/releaseNotes_2.0.html)
+          - [Changes (2.0)](/fop/2.0/changes_2.0.html)
+          - [Known Issues](/fop/2.0/knownissues_overview.html)
+          - [Upgrading](/fop/2.0/upgrading.html)
+          - ### Using Apache FOP 2.0
+            - [Build](/fop/2.0/compiling.html)
+            - [Configure](/fop/2.0/configuration.html)
+            - [Run](/fop/2.0/running.html)
+            - [Embed](/fop/2.0/embedding.html)
+            - [Servlets](/fop/2.0/servlets.html)
+            - [Ant Task](/fop/2.0/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.0/accessibility.html)
+            - [Complex Scripts](/fop/2.0/complexscripts.html)
+            - [Events](/fop/2.0/events.html)
+            - [Extensions](/fop/2.0/extensions.html)
+            - [Fonts](/fop/2.0/fonts.html)
+            - [Graphics](/fop/2.0/graphics.html)
+            - [Hyphenation](/fop/2.0/hyphenation.html)
+            - [Intermediate Format](/fop/2.0/intermediate.html)
+            - [Metadata](/fop/2.0/metadata.html)
+            - [Output Targets](/fop/2.0/output.html)
+            - [PDF/A](/fop/2.0/pdfa.html)
+            - [PDF/X](/fop/2.0/pdfx.html)
+            - [PDF Encryption](/fop/2.0/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.0/whitespacemanagement.html)
+      - ## FOP 1.1
+          - [FOP 1.1 Overview](/fop/1.1/)
+          - [Release Notes](/fop/1.1/releaseNotes_1.1.html)
+          - [Changes (1.1)](/fop/1.1/changes_1.1.html)
+          - [Known Issues](/fop/1.1/knownissues_overview.html)
+          - [Upgrading](/fop/1.1/upgrading.html)
+          - ### Using Apache FOP 1.1
+            - [Build](/fop/1.1/compiling.html)
+            - [Configure](/fop/1.1/configuration.html)
+            - [Run](/fop/1.1/running.html)
+            - [Embed](/fop/1.1/embedding.html)
+            - [Servlets](/fop/1.1/servlets.html)
+            - [Ant Task](/fop/1.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/1.1/accessibility.html)
+            - [Complex Scripts](/fop/1.1/complexscripts.html)
+            - [Events](/fop/1.1/events.html)
+            - [Extensions](/fop/1.1/extensions.html)
+            - [Fonts](/fop/1.1/fonts.html)
+            - [Graphics](/fop/1.1/graphics.html)
+            - [Hyphenation](/fop/1.1/hyphenation.html)
+            - [Intermediate Format](/fop/1.1/intermediate.html)
+            - [Metadata](/fop/1.1/metadata.html)
+            - [Output Targets](/fop/1.1/output.html)
+            - [PDF/A](/fop/1.1/pdfa.html)
+            - [PDF/X](/fop/1.1/pdfx.html)
+            - [PDF Encryption](/fop/1.1/pdfencryption.html)
+      - ## FOP 1.0
+          - [FOP 1.0 Overview](/fop/1.0/)
+          - [Release Notes](/fop/1.0/releaseNotes_1.0.html)
+          - [Changes (1.0)](/fop/1.0/changes_1.0.html)
+          - [Known Issues](/fop/1.0/knownissues_overview.html)
+          - [Upgrading](/fop/1.0/upgrading.html)
+          - ### Using Apache FOP 1.0
+            - [Build](/fop/1.0/compiling.html)
+            - [Configure](/fop/1.0/configuration.html)
+            - [Run](/fop/1.0/running.html)
+            - [Embed](/fop/1.0/embedding.html)
+            - [Servlets](/fop/1.0/servlets.html)
+            - [Ant Task](/fop/1.0/anttask.html)
+          - ### Features
+            - [Output Targets](/fop/1.0/output.html)
+            - [Intermediate Format](/fop/1.0/intermediate.html)
+            - [PDF Encryption](/fop/1.0/pdfencryption.html)
+            - [PDF/A](/fop/1.0/pdfa.html)
+            - [PDF/X](/fop/1.0/pdfx.html)
+            - [Graphics](/fop/1.0/graphics.html)
+            - [Fonts](/fop/1.0/fonts.html)
+            - [Hyphenation](/fop/1.0/hyphenation.html)
+            - [Extensions](/fop/1.0/extensions.html)
+            - [Events](/fop/1.0/events.html)
+            - [Metadata](/fop/1.0/metadata.html)
+            - [Accessibility](/fop/1.0/accessibility.html)
+      - ## FOP Development
+          - [General Info](/fop/dev/)
+          - ## Design
+            - [Design Info](/fop/dev/design/)
+          - ## Core Process
+            - [Startup](/fop/dev/design/startup.html)
+            - [XML Parsing](/fop/dev/design/parsing.html)
+            - [FO Tree](/fop/dev/design/fotree.html)
+            - [Properties](/fop/dev/design/properties.html)
+            - [Layout](/fop/dev/design/layout.html)
+            - [Break Possibility](/fop/dev/design/breakpos.html)
+            - [Area Tree](/fop/dev/design/areas.html)
+            - [Renderers](/fop/dev/design/renderers.html)
+          - ## Miscellaneous
+            - [Images](/fop/dev/design/images.html)
+            - [PDF Library](/fop/dev/design/pdf-library.html)
+            - [SVG](/fop/dev/design/svg.html)
+            - [Embedding](/fop/dev/design/embedding.html)
+            - [Extending](/fop/dev/design/extending.html)
+            - [Optimisations](/fop/dev/design/optimise.html)
+            - [User Agent](/fop/dev/design/useragent.html)
+          - [Unresolved (Wiki)](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FOPProjectPages)
+          - [SVG](/fop/dev/svg.html)
+          - [Extensions](/fop/dev/extensions.html)
+          - ## Develop
+            - [Walk-Thru](/fop/dev/implement.html)
+            - [Patch Queue](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20description%20~%20%22\%22[patch]\%22%22%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+            - [Conventions](/fop/dev/conventions.html)
+          - ## Test
+            - [Testing](/fop/dev/testing.html)
+          - ## Deploy
+            - [Doc Mgmt](/fop/dev/doc.html)
+            - [Release](/fop/dev/release.html)
+            - [Bugs](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20issuetype%20%3D%20Bug%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+          - ## Resources
+            - [FAQs](/fop/dev/faq.html)
+            - [Tools](/fop/dev/tools.html)
+            - [ViewVC](http://svn.apache.org/viewvc/xmlgraphics/fop)
+          - ## SubPackages
+            - [RTFlib](/fop/dev/rtflib.html)
+
+# Apache&trade; XML Graphics
+  - ## Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache Batik](/batik/)
+  - [Apache XML Graphics Commons](/commons/)
+
+### Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+      $('#navigation :header').not('#search-apache-xml-graphics, #apachewzxhzdk3-xml-graphics, #sub-projects').append(' &raquo;');
+    }
+  $('#navigation > ul > li > ul > li ul').hide();
+  $('#project-overview').next().hide();
+  $('#versions').next().show();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+      $("li.highlight").removeClass("highlight");
+      $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
+	  <a href="/fop/"><img src="/images/apache-fop-logo.jpg" alt="The Apache FOP Project" width="120" height="65" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; FOP Project</h2>
+	</div>  
+
+    <h1>Apache(tm) FOP: Hyphenation</h1>
+    Translations: 
+<a href="/fop/2.0/hyphenation.html">en</a>
+<a href="/fop/0.95/hyphenation.html">en</a>
+<a href="/fop/2.5/hyphenation.html">en</a>
+<a href="/fop/1.1/hyphenation.html">en</a>
+<a href="/fop/2.2/hyphenation.html">en</a>
+<a href="/fop/2.1/hyphenation.html">en</a>
+<a href="/fop/2.3/hyphenation.html">en</a>
+<a href="/fop/2.4/hyphenation.html">en</a>
+<a href="/fop/1.0/hyphenation.html">en</a>
+
+
+    <h1>Apache&trade; FOP: Hyphenation</h1>
+<h2 id="support">Hyphenation Support</h2>
+<h3 id="intro">Introduction</h3>
+<p>Apache&trade; FOP uses Liang's hyphenation algorithm, well known from TeX. It needs language specific pattern and other data for operation.</p>
+<p>Because of <a href="#license-issues">licensing issues</a> (and for convenience), all hyphenation patterns for FOP are made available through the <a href="http://offo.sourceforge.net">Objects For Formatting Objects</a> project.</p>
+<p><note>If you have made improvements to an existing Apache&trade; FOP hyphenation pattern, or if you have created one from scratch, please consider contributing these to OFFO so that they can benefit other FOP users as well. Please inquire on the <a href="../maillist.html#fop-user">FOP User mailing list</a>.</note></p>
+<h3 id="license-issues">License Issues</h3>
+<p>Many of the hyphenation files distributed with TeX and its offspring are licenced under the <a href="http://www.latex-project.org/lppl">LaTeX Project Public License (LPPL)</a>, which prevents them from being distributed with Apache software. The LPPL puts restrictions on file names in redistributed derived works which we feel can't guarantee. Some hyphenation pattern files have other or additional restrictions, for example against use for commercial purposes.</p>
+<p>Although Apache FOP cannot redistribute hyphenation pattern files that do not conform with its license scheme, that does not necessarily prevent users from using such hyphenation patterns with FOP. However, it does place on the user the responsibility for determining whether the user can rightly use such hyphenation patterns under the hyphenation pattern license.</p>
+<p><warning>The user is responsible to settle license issues for hyphenation pattern files that are obtained from non-Apache sources.</warning></p>
+<h3 id="sources">Sources of Custom Hyphenation Pattern Files</h3>
+<p>The most important source of hyphenation pattern files is the <a href="http://www.ctan.org/tex-archive/language/hyphenation/">CTAN TeX Archive</a>.</p>
+<h3 id="install">Installing Custom Hyphenation Patterns</h3>
+<p>To install a custom hyphenation pattern for use with FOP:</p>
+<ol>
+<li>
+<p>Convert the TeX hyphenation pattern file to the FOP format. The FOP format is an xml file conforming to the DTD found at <code>{fop-dir}/hyph/hyphenation.dtd</code>.</p>
+</li>
+<li>
+<p>Name this new file following this schema: <code>languageCode_countryCode.xml</code>. The country code is optional, and should be used only if needed. For example:</p>
+</li>
+<li>
+<p><code>en_US.xml</code> would be the file name for American English hyphenation patterns.</p>
+</li>
+<li>
+<p><code>it.xml</code> would be the file name for Italian hyphenation patterns.</p>
+</li>
+</ol>
+<p>The language and country codes must match the XSL-FO input, which follows <a href="http://www.ics.uci.edu/pub/ietf/http/related/iso639.txt">ISO 639</a> (languages) and <a href="http://www.ics.uci.edu/pub/ietf/http/related/iso3166.txt">ISO 3166</a> (countries). NOTE: The ISO 639/ISO 3166 convention is that language names are written in lower case, while country codes are written in upper case. FOP does not check whether the language and country specified in the FO source are actually from the current standard, but it relies on it being two letter strings in a few places. So you can make up your own codes for custom hyphenation patterns, but they should be two letter strings too (patches for proper handling extensions are welcome)</p>
+<ol>
+<li>
+<p>There are basically three ways to make the FOP-compatible hyphenation pattern file(s) accessible to FOP:</p>
+</li>
+<li>
+<p>Download the precompiled JAR from <a href="http://offo.sourceforge.net/">OFFO</a> and place it either in the <code>{fop-dir}/lib</code> directory, or in a directory of your choice (and append the full path to the JAR to the environment variable <code>FOP_HYPHENATION_PATH</code>).</p>
+</li>
+<li>
+<p>Download the desired FOP-compatible hyphenation pattern file(s) from <a href="http://offo.sourceforge.net/">OFFO</a>, and/or take your self created hyphenation pattern file(s),</p>
+<ul>
+<li>
+<p>place them in the directory <code>{fop-dir}/hyph</code>,</p>
+</li>
+<li>
+<p>or place them in a directory of your choice and set the Ant variable <code>user.hyph.dir</code> to point to that directory (in <code>build-local.properties</code>),
+and run Ant with build target <code>jar-hyphenation</code>. This will create a JAR containing the compiled patterns in <code>{fop-dir}/build</code> that will be added to the classpath on the next run. (When FOP is built from scratch, and there are pattern source file(s) present in the directory pointed to by the <code>user.hyph.dir</code> variable, this JAR will automatically be created from the supplied pattern(s)).</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Put the pattern source file(s) into a directory of your choice and configure FOP to look for custom patterns in this directory, by setting the <a href="configuration.html"><hyphenation-base></a> configuration option.</p>
+</li>
+</ol>
+<p><warning>Either of these three options will ensure hyphenation is working when using FOP from the command-line. If FOP is being embedded, remember to add the location(s) of the hyphenation JAR(s) to the CLASSPATH (option 1 and 2) or to set the <a href="configuration.html#hyphenation-dir"><hyphenation-dir></a> configuration option programmatically (option 3).</warning></p>
+<h2 id="patterns">Hyphenation Patterns</h2>
+<p>If you would like to build your own hyphenation pattern files, or modify existing ones, this section will help you understand how to do so. Even when creating a pattern file from scratch, it may be beneficial to start with an existing file and modify it. See <a href="http://offo.sourceforge.net">OFFO's Hyphenation page</a> for examples. Here is a brief explanation of the contents of FOP's hyphenation patterns:
+<warning>The remaining content of this section should be considered "draft" quality. It was drafted from theoretical literature, and has not been tested against actual FOP behavior. It may contain errors or omissions. Do not rely on these instructions without testing everything stated here. If you use these instructions, please provide feedback on the <a href="../maillist.html#fop-user">FOP User mailing list</a>, either confirming their accuracy, or raising specific problems that we can address.</warning></p>
+<ul>
+<li>
+<p>The root of the pattern file is the <hyphenation-info> element.</p>
+</li>
+<li>
+<p><hyphen-char>: its attribute "value" contains the character signalling a hyphen in the <exceptions> section. It has nothing to do with the hyphenation character used in FOP, use the XSLFO hyphenation-character property for defining the hyphenation character there. At some points a dash U+002D is hardwired in the code, so you'd better use this too (patches to rectify the situation are welcome). There is no default, if you declare exceptions with hyphenations, you must declare the hyphen-char too.</p>
+</li>
+<li>
+<p><hyphen-min> contains two attributes:</p>
+<ul>
+<li>
+<p>before: the minimum number of characters in a word allowed to exist on a line immediately preceding a hyphenated word-break.</p>
+</li>
+<li>
+<p>after: the minimum number of characters in a word allowed to exist on a line immediately after a hyphenated word-break.
+This element is unused and not even read. It should be considered a documentation for parameters used during pattern generation.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><classes> contains whitespace-separated character sets. The members of each set should be treated as equivalent for purposes of hyphenation, usually upper and lower case of the same character. The first character of the set is the canonical character, the patterns and exceptions should only contain these canonical representation characters (except digits for weight, the period (.) as word delimiter in the patterns and the hyphen char in exceptions, of course).</p>
+</li>
+<li>
+<p><exceptions> contains whitespace-separated words, each of which has either explicit hyphen characters to denote acceptable breakage points, or no hyphen characters, to indicate that this word should never be hyphenated, or contain explicit <hyp> elements for specifying changes of spelling due to hyphenation (like backen -&gt; bak-ken or Stoffarbe -&gt; Stoff-farbe in the old german spelling). Exceptions override the patterns described below. Explicit <hyp> declarations don't work yet (patches welcome). Exceptions are generally a bit brittle, test carefully.</p>
+</li>
+<li>
+<p><patterns> includes whitespace-separated patterns, which are what drive most hyphenation decisions. The characters in these patterns are explained as follows:</p>
+<ul>
+<li>
+<p>non-numeric characters represent characters in a sub-word to be evaluated</p>
+</li>
+<li>
+<p>the period character (.) represents a word boundary, i.e. either the beginning or ending of a word</p>
+</li>
+<li>
+<p>numeric characters represent a scoring system for indicating the acceptability of a hyphen in this location. Odd numbers represent an acceptable location for a hyphen, with higher values overriding lower inhibiting values. Even numbers indicate an unacceptable location, with higher values overriding lower values indicating an acceptable position. A value of zero (inhibiting) is implied when there is no number present. Generally patterns are constructed so that valuse greater than 4 are rare. Due to a bug currently patterns with values of 8 and greater don't have an effect, so don't wonder.
+Here are some examples from the English patterns file:</p>
+</li>
+<li>
+<p>Knuth (<em>The TeXBook</em>, Appendix H) uses the example <strong>hach4</strong>, which indicates that it is extremely undesirable to place a hyphen after the substring "hach", for example in the word "toothach-es".</p>
+</li>
+<li>
+<p><strong>.leg5e</strong> indicates that "leg-e", when it occurs at the beginning of a word, is a very good place to place a hyphen, if one is needed. Words like "leg-end" and "leg-er-de-main" fit this pattern.
+Note that the algorithm that uses this data searches for each of the word's substrings in the patterns, and chooses the <em>highest</em> value found for letter combination.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>If you want to convert a TeX hyphenation pattern file, you have to undo the TeX encoding for non-ASCII text. FOP uses Unicode, and the patterns must be proper Unicode too. You should be aware of the XML encoding issues, preferably use a good Unicode editor.</p>
+<p>Note that FOP does not do Unicode character normalization. If you use combining chars for accents and other character decorations, you must declare character classes for them, and use the same sequence of base character and combining marks in the XSLFO source, otherwise the pattern wouldn't match. Fortunately, Unicode provides precomposed characters for all important cases in common languages, until now nobody run seriously into this issue. Some dead languages and dialects, especially ancient ones, may pose a real problem though.</p>
+<p>If you want to generate your own patterns, an open-source utility called patgen can be used to assist in creating pattern files from dictionaries. It is available in many Unix/Linux distributions and every TeX distribution. Pattern creation for languages like english or german is an art. Read Frank Liang's original paper <a href="http://www.tug.org/docs/liang/">"Word Hy-phen-a-tion by Com-pu-ter"</a> (yes, with hyphens) for details. The original patgen.web source, included in the TeX source distributions, contains valuable comments, unfortunately technical details often obscure the high level issues. Another important source of information is <a href="http://mirrors.ctan.org/systems/knuth/dist/tex/texbook.tex">The TeX Book</a>, appendix H (either read the TeX source, or run it through TeX to typeset it). Secondary articles, for example the works by Petr Sojka, may also give some much needed insight into problems arising in automated hyphenation.</p>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

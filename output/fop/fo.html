@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache&trade; FOP
+  - [FOP Home](/fop/)
+  - [Download](/fop/download.html)
+  - [Quick Start Guide](/fop/quickstartguide.html)
+  - [Compliance](/fop/compliance.html)
+  - [Getting Help](/fop/gethelp.html)
+  - [FAQs](/fop/faq.html)
+  - [FOP Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP)
+  - [Mailing Lists](/fop/maillist.html)
+  - [License](/fop/license.html)
+  - ## Resources
+    - [XSL-FO](/fop/fo.html)
+    - [Examples](/fop/examples.html)
+    - [Bugs](/fop/bugs.html)
+    - [Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FrontPage)
+    - [Other](/fop/resources.html)
+  - ## Project
+    - [News](/fop/news.html)
+    - [Who We Are](/fop/team.html)
+    - [Status](/fop/status.html)
+    - [Known Issues](/fop/knownissues.html)
+    - [Changes](/fop/changes.html)
+  - ## Versions
+      - ## FOP Trunk (dev)
+          - [Overview](/fop/trunk/)
+          - [Upgrading](/fop/trunk/upgrading.html)
+          - ### Using Apache&trade; FOP
+            - [Build](/fop/trunk/compiling.html)
+            - [Configure](/fop/trunk/configuration.html)
+            - [Run](/fop/trunk/running.html)
+            - [Embed](/fop/trunk/embedding.html)
+            - [Servlets](/fop/trunk/servlets.html)
+            - [Ant Task](/fop/trunk/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/trunk/accessibility.html)
+            - [Complex Scripts](/fop/trunk/complexscripts.html)
+            - [Events](/fop/trunk/events.html)
+            - [Extensions](/fop/trunk/extensions.html)
+            - [Fonts](/fop/trunk/fonts.html)
+            - [Graphics](/fop/trunk/graphics.html)
+            - [Hyphenation](/fop/trunk/hyphenation.html)
+            - [Intermediate Format](/fop/trunk/intermediate.html)
+            - [Metadata](/fop/trunk/metadata.html)
+            - [Output Targets](/fop/trunk/output.html)
+            - [PDF/A](/fop/trunk/pdfa.html)
+            - [PDF/X](/fop/trunk/pdfx.html)
+            - [PDF Encryption](/fop/trunk/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/trunk/whitespacemanagement.html)
+      - ## FOP 2.5
+          - [FOP 2.5 Overview](/fop/2.5/)
+          - [Release Notes](/fop/2.5/releaseNotes_2.5.html)
+          - [Changes (2.5)](/fop/2.5/changes_2.5.html)
+          - [Known Issues](/fop/2.5/knownissues_overview.html)
+          - [Upgrading](/fop/2.5/upgrading.html)
+          - ### Using Apache FOP 2.5
+            - [Build](/fop/2.5/compiling.html)
+            - [Configure](/fop/2.5/configuration.html)
+            - [Run](/fop/2.5/running.html)
+            - [Embed](/fop/2.5/embedding.html)
+            - [Servlets](/fop/2.5/servlets.html)
+            - [Ant Task](/fop/2.5/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.5/accessibility.html)
+            - [Complex Scripts](/fop/2.5/complexscripts.html)
+            - [Events](/fop/2.5/events.html)
+            - [Extensions](/fop/2.5/extensions.html)
+            - [Fonts](/fop/2.5/fonts.html)
+            - [Graphics](/fop/2.5/graphics.html)
+            - [Hyphenation](/fop/2.5/hyphenation.html)
+            - [Intermediate Format](/fop/2.5/intermediate.html)
+            - [Metadata](/fop/2.5/metadata.html)
+            - [Output Targets](/fop/2.5/output.html)
+            - [PDF/A](/fop/2.5/pdfa.html)
+            - [PDF/X](/fop/2.5/pdfx.html)
+            - [PDF Encryption](/fop/2.5/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.5/whitespacemanagement.html)     
+      - ## FOP 2.4
+          - [FOP 2.4 Overview](/fop/2.4/)
+          - [Release Notes](/fop/2.4/releaseNotes_2.4.html)
+          - [Changes (2.4)](/fop/2.4/changes_2.4.html)
+          - [Known Issues](/fop/2.4/knownissues_overview.html)
+          - [Upgrading](/fop/2.4/upgrading.html)
+          - ### Using Apache FOP 2.4
+            - [Build](/fop/2.4/compiling.html)
+            - [Configure](/fop/2.4/configuration.html)
+            - [Run](/fop/2.4/running.html)
+            - [Embed](/fop/2.4/embedding.html)
+            - [Servlets](/fop/2.4/servlets.html)
+            - [Ant Task](/fop/2.4/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.4/accessibility.html)
+            - [Complex Scripts](/fop/2.4/complexscripts.html)
+            - [Events](/fop/2.4/events.html)
+            - [Extensions](/fop/2.4/extensions.html)
+            - [Fonts](/fop/2.4/fonts.html)
+            - [Graphics](/fop/2.4/graphics.html)
+            - [Hyphenation](/fop/2.4/hyphenation.html)
+            - [Intermediate Format](/fop/2.4/intermediate.html)
+            - [Metadata](/fop/2.4/metadata.html)
+            - [Output Targets](/fop/2.4/output.html)
+            - [PDF/A](/fop/2.4/pdfa.html)
+            - [PDF/X](/fop/2.4/pdfx.html)
+            - [PDF Encryption](/fop/2.4/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.4/whitespacemanagement.html)             
+      - ## FOP 2.3
+          - [FOP 2.3 Overview](/fop/2.3/)
+          - [Release Notes](/fop/2.3/releaseNotes_2.3.html)
+          - [Changes (2.3)](/fop/2.3/changes_2.3.html)
+          - [Known Issues](/fop/2.3/knownissues_overview.html)
+          - [Upgrading](/fop/2.3/upgrading.html)
+          - ### Using Apache FOP 2.3
+            - [Build](/fop/2.3/compiling.html)
+            - [Configure](/fop/2.3/configuration.html)
+            - [Run](/fop/2.3/running.html)
+            - [Embed](/fop/2.3/embedding.html)
+            - [Servlets](/fop/2.3/servlets.html)
+            - [Ant Task](/fop/2.3/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.3/accessibility.html)
+            - [Complex Scripts](/fop/2.3/complexscripts.html)
+            - [Events](/fop/2.3/events.html)
+            - [Extensions](/fop/2.3/extensions.html)
+            - [Fonts](/fop/2.3/fonts.html)
+            - [Graphics](/fop/2.3/graphics.html)
+            - [Hyphenation](/fop/2.3/hyphenation.html)
+            - [Intermediate Format](/fop/2.3/intermediate.html)
+            - [Metadata](/fop/2.3/metadata.html)
+            - [Output Targets](/fop/2.3/output.html)
+            - [PDF/A](/fop/2.3/pdfa.html)
+            - [PDF/X](/fop/2.3/pdfx.html)
+            - [PDF Encryption](/fop/2.3/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.3/whitespacemanagement.html)            
+      - ## FOP 2.2
+          - [FOP 2.2 Overview](/fop/2.2/)
+          - [Release Notes](/fop/2.2/releaseNotes_2.2.html)
+          - [Changes (2.2)](/fop/2.2/changes_2.2.html)
+          - [Known Issues](/fop/2.2/knownissues_overview.html)
+          - [Upgrading](/fop/2.2/upgrading.html)
+          - ### Using Apache FOP 2.2
+            - [Build](/fop/2.2/compiling.html)
+            - [Configure](/fop/2.2/configuration.html)
+            - [Run](/fop/2.2/running.html)
+            - [Embed](/fop/2.2/embedding.html)
+            - [Servlets](/fop/2.2/servlets.html)
+            - [Ant Task](/fop/2.2/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.2/accessibility.html)
+            - [Complex Scripts](/fop/2.2/complexscripts.html)
+            - [Events](/fop/2.2/events.html)
+            - [Extensions](/fop/2.2/extensions.html)
+            - [Fonts](/fop/2.2/fonts.html)
+            - [Graphics](/fop/2.2/graphics.html)
+            - [Hyphenation](/fop/2.2/hyphenation.html)
+            - [Intermediate Format](/fop/2.2/intermediate.html)
+            - [Metadata](/fop/2.2/metadata.html)
+            - [Output Targets](/fop/2.2/output.html)
+            - [PDF/A](/fop/2.2/pdfa.html)
+            - [PDF/X](/fop/2.2/pdfx.html)
+            - [PDF Encryption](/fop/2.2/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.2/whitespacemanagement.html)
+      - ## FOP 2.1
+          - [FOP 2.1 Overview](/fop/2.1/)
+          - [Release Notes](/fop/2.1/releaseNotes_2.1.html)
+          - [Changes (2.1)](/fop/2.1/changes_2.1.html)
+          - [Known Issues](/fop/2.1/knownissues_overview.html)
+          - [Upgrading](/fop/2.1/upgrading.html)
+          - ### Using Apache FOP 2.1
+            - [Build](/fop/2.1/compiling.html)
+            - [Configure](/fop/2.1/configuration.html)
+            - [Run](/fop/2.1/running.html)
+            - [Embed](/fop/2.1/embedding.html)
+            - [Servlets](/fop/2.1/servlets.html)
+            - [Ant Task](/fop/2.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.1/accessibility.html)
+            - [Complex Scripts](/fop/2.1/complexscripts.html)
+            - [Events](/fop/2.1/events.html)
+            - [Extensions](/fop/2.1/extensions.html)
+            - [Fonts](/fop/2.1/fonts.html)
+            - [Graphics](/fop/2.1/graphics.html)
+            - [Hyphenation](/fop/2.1/hyphenation.html)
+            - [Intermediate Format](/fop/2.1/intermediate.html)
+            - [Metadata](/fop/2.1/metadata.html)
+            - [Output Targets](/fop/2.1/output.html)
+            - [PDF/A](/fop/2.1/pdfa.html)
+            - [PDF/X](/fop/2.1/pdfx.html)
+            - [PDF Encryption](/fop/2.1/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.1/whitespacemanagement.html)
+      - ## FOP 2.0
+          - [FOP 2.0 Overview](/fop/2.0/)
+          - [Release Notes](/fop/2.0/releaseNotes_2.0.html)
+          - [Changes (2.0)](/fop/2.0/changes_2.0.html)
+          - [Known Issues](/fop/2.0/knownissues_overview.html)
+          - [Upgrading](/fop/2.0/upgrading.html)
+          - ### Using Apache FOP 2.0
+            - [Build](/fop/2.0/compiling.html)
+            - [Configure](/fop/2.0/configuration.html)
+            - [Run](/fop/2.0/running.html)
+            - [Embed](/fop/2.0/embedding.html)
+            - [Servlets](/fop/2.0/servlets.html)
+            - [Ant Task](/fop/2.0/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.0/accessibility.html)
+            - [Complex Scripts](/fop/2.0/complexscripts.html)
+            - [Events](/fop/2.0/events.html)
+            - [Extensions](/fop/2.0/extensions.html)
+            - [Fonts](/fop/2.0/fonts.html)
+            - [Graphics](/fop/2.0/graphics.html)
+            - [Hyphenation](/fop/2.0/hyphenation.html)
+            - [Intermediate Format](/fop/2.0/intermediate.html)
+            - [Metadata](/fop/2.0/metadata.html)
+            - [Output Targets](/fop/2.0/output.html)
+            - [PDF/A](/fop/2.0/pdfa.html)
+            - [PDF/X](/fop/2.0/pdfx.html)
+            - [PDF Encryption](/fop/2.0/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.0/whitespacemanagement.html)
+      - ## FOP 1.1
+          - [FOP 1.1 Overview](/fop/1.1/)
+          - [Release Notes](/fop/1.1/releaseNotes_1.1.html)
+          - [Changes (1.1)](/fop/1.1/changes_1.1.html)
+          - [Known Issues](/fop/1.1/knownissues_overview.html)
+          - [Upgrading](/fop/1.1/upgrading.html)
+          - ### Using Apache FOP 1.1
+            - [Build](/fop/1.1/compiling.html)
+            - [Configure](/fop/1.1/configuration.html)
+            - [Run](/fop/1.1/running.html)
+            - [Embed](/fop/1.1/embedding.html)
+            - [Servlets](/fop/1.1/servlets.html)
+            - [Ant Task](/fop/1.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/1.1/accessibility.html)
+            - [Complex Scripts](/fop/1.1/complexscripts.html)
+            - [Events](/fop/1.1/events.html)
+            - [Extensions](/fop/1.1/extensions.html)
+            - [Fonts](/fop/1.1/fonts.html)
+            - [Graphics](/fop/1.1/graphics.html)
+            - [Hyphenation](/fop/1.1/hyphenation.html)
+            - [Intermediate Format](/fop/1.1/intermediate.html)
+            - [Metadata](/fop/1.1/metadata.html)
+            - [Output Targets](/fop/1.1/output.html)
+            - [PDF/A](/fop/1.1/pdfa.html)
+            - [PDF/X](/fop/1.1/pdfx.html)
+            - [PDF Encryption](/fop/1.1/pdfencryption.html)
+      - ## FOP 1.0
+          - [FOP 1.0 Overview](/fop/1.0/)
+          - [Release Notes](/fop/1.0/releaseNotes_1.0.html)
+          - [Changes (1.0)](/fop/1.0/changes_1.0.html)
+          - [Known Issues](/fop/1.0/knownissues_overview.html)
+          - [Upgrading](/fop/1.0/upgrading.html)
+          - ### Using Apache FOP 1.0
+            - [Build](/fop/1.0/compiling.html)
+            - [Configure](/fop/1.0/configuration.html)
+            - [Run](/fop/1.0/running.html)
+            - [Embed](/fop/1.0/embedding.html)
+            - [Servlets](/fop/1.0/servlets.html)
+            - [Ant Task](/fop/1.0/anttask.html)
+          - ### Features
+            - [Output Targets](/fop/1.0/output.html)
+            - [Intermediate Format](/fop/1.0/intermediate.html)
+            - [PDF Encryption](/fop/1.0/pdfencryption.html)
+            - [PDF/A](/fop/1.0/pdfa.html)
+            - [PDF/X](/fop/1.0/pdfx.html)
+            - [Graphics](/fop/1.0/graphics.html)
+            - [Fonts](/fop/1.0/fonts.html)
+            - [Hyphenation](/fop/1.0/hyphenation.html)
+            - [Extensions](/fop/1.0/extensions.html)
+            - [Events](/fop/1.0/events.html)
+            - [Metadata](/fop/1.0/metadata.html)
+            - [Accessibility](/fop/1.0/accessibility.html)
+      - ## FOP Development
+          - [General Info](/fop/dev/)
+          - ## Design
+            - [Design Info](/fop/dev/design/)
+          - ## Core Process
+            - [Startup](/fop/dev/design/startup.html)
+            - [XML Parsing](/fop/dev/design/parsing.html)
+            - [FO Tree](/fop/dev/design/fotree.html)
+            - [Properties](/fop/dev/design/properties.html)
+            - [Layout](/fop/dev/design/layout.html)
+            - [Break Possibility](/fop/dev/design/breakpos.html)
+            - [Area Tree](/fop/dev/design/areas.html)
+            - [Renderers](/fop/dev/design/renderers.html)
+          - ## Miscellaneous
+            - [Images](/fop/dev/design/images.html)
+            - [PDF Library](/fop/dev/design/pdf-library.html)
+            - [SVG](/fop/dev/design/svg.html)
+            - [Embedding](/fop/dev/design/embedding.html)
+            - [Extending](/fop/dev/design/extending.html)
+            - [Optimisations](/fop/dev/design/optimise.html)
+            - [User Agent](/fop/dev/design/useragent.html)
+          - [Unresolved (Wiki)](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FOPProjectPages)
+          - [SVG](/fop/dev/svg.html)
+          - [Extensions](/fop/dev/extensions.html)
+          - ## Develop
+            - [Walk-Thru](/fop/dev/implement.html)
+            - [Patch Queue](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20description%20~%20%22\%22[patch]\%22%22%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+            - [Conventions](/fop/dev/conventions.html)
+          - ## Test
+            - [Testing](/fop/dev/testing.html)
+          - ## Deploy
+            - [Doc Mgmt](/fop/dev/doc.html)
+            - [Release](/fop/dev/release.html)
+            - [Bugs](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20issuetype%20%3D%20Bug%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+          - ## Resources
+            - [FAQs](/fop/dev/faq.html)
+            - [Tools](/fop/dev/tools.html)
+            - [ViewVC](http://svn.apache.org/viewvc/xmlgraphics/fop)
+          - ## SubPackages
+            - [RTFlib](/fop/dev/rtflib.html)
+
+# Apache&trade; XML Graphics
+  - ## Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache Batik](/batik/)
+  - [Apache XML Graphics Commons](/commons/)
+
+### Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+      $('#navigation :header').not('#search-apache-xml-graphics, #apachewzxhzdk3-xml-graphics, #sub-projects').append(' &raquo;');
+    }
+  $('#navigation > ul > li > ul > li ul').hide();
+  $('#project-overview').next().hide();
+  $('#versions').next().show();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+      $("li.highlight").removeClass("highlight");
+      $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
+	  <a href="/fop/"><img src="/images/apache-fop-logo.jpg" alt="The Apache FOP Project" width="120" height="65" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; FOP Project</h2>
+	</div>  
+
+    <h1>Apache(tm) FOP: XSL-FO Input</h1>
+    
+
+    <h1>Apache&trade; FOP: XSL-FO Input</h1>
+<p><subtitle>Basic Help for Using XML, XSLT, and XSL-FO</subtitle></p>
+<h2 id="overview">Overview</h2>
+<p>Apache&trade; FOP uses XSL-FO as input. It is the responsibility of the user to make sure that the XSL-FO submitted to FOP is correct. The tutorial items presented here are not comprehensive, but are of the FAQ variety. Another good FAQ is <a href="http://www.dpawson.co.uk/xsl/">Dave Pawson's XSL FAQ</a>.</p>
+<h2 id="xml">XML Issues</h2>
+<h3 id="xml-special-chars">Special Characters</h3>
+<p>When entering special (non-ASCII) characters in XML, the general rule is to use the applicable Unicode character instead of trying to use a character entity as you would with HTML. Remember that HTML is an SGML document type. SGML has a limited character set, which requires it to use character entities to represent special characters. One of the improvements of XML over SGML (and thus HTML) is native support for Unicode. Basic XML has only a handful of character entities, primarily because it doesn't really need more.</p>
+<p>Entities such as <code>&amp;uuml;</code> (u with an umlaut), which work in HTML, will be flagged as undefined entities unless you define them yourself in your DTD. Use the corresponding Unicode character instead. A list of predefined HTML entities and their Unicode codepoints can be found at <a href="http://www.w3.org/TR/html4/sgml/entities.html">Character entity references in HTML 4</a>.</p>
+<p>One common example is <code>&amp;nbsp;</code>, used to obtain a non-breaking space in HTML. In XML, use <code>&amp;#160;</code> or <code>&amp;#xa0;</code> instead.</p>
+<p>For other non-ASCII characters, such as the Euro symbol, checkbox, etc., see the <a href="http://www.unicode.org/charts/charindex.html">Unicode Reference By Name</a> document that is found at the <a href="http://www.unicode.org">Unicode Consortium</a> site.</p>
+<p>After finding the correct Unicode codepoint to represent the character, use <a href="http://www.w3.org/TR/2000/REC-xml-20001006#sec-references">XML Character References</a> to put the character into your source XML, XSLT or FO. See the non-breaking-space comments above for an example of the syntax using decimal notation. The following hexadecimal example will result in a Euro sign:</p>
+<p><code>&amp;#x20AC;</code></p>
+<p>Getting your XML correctly encoded is only part of the job. If you want the character to display or print correctly (and you probably do), then the selected font must contain the necessary glyph. Because of differences between font encoding methods, and limitations in some font technologies, this can be a troublesome issue, especially for symbol characters. The FOP example file <a href="fo/fonts.fo.pdf">Base-14 Font Character Mapping</a> is a very useful resource in sorting these issues out for the Base-14 fonts. For other fonts, use font editing sofware or operating system utilities (such as the Character Map in most Windows platforms) to determine what characters the font supports.</p>
+<p>An alternative to encoding the character and making it available through a font is to use an embedded graphic to represent the character: GIF, PNG, SVG, etc.</p>
+<h3 id="xml-entity-chars">Entity Characters</h3>
+<p>The handful of basic XML character entities that do exist are the ampersand, apostrophe, less-than, greater-than, and single-quote characters. These are needed to distinguish markup tags from content, and to distinguish character entities from content. To avoid parser complaints about illegal characters and entities in your input, ensure that ampersands in text and attributes are written as <code>&amp;amp;</code>, "&lt;" is written as <code>&amp;lt;</code>, and "&gt;" as <code>&amp;gt;</code>. It is not necessary everywhere, but it is wise to do so anyway, just to be sure.</p>
+<p>Most XML parsers will provide a line number and sometimes a column number for offending characters.</p>
+<p>Review the <a href="http://www.w3.org/XML/">XML Specification</a> or a good tutorial for details of the XML file format.</p>
+<h3 id="xml-encoding">Encoding Issues</h3>
+<p>If the parser complains about illegal bytes or characters in the input, or there are unexpected characters in the output, this is usually the result of a character encoding problem. See the <a href="http://www.dpawson.co.uk/xsl">XSL FAQ</a> for additional information. Many software packages that produce XML, including XSLT processors, use UTF-8 encoding as a default. If you view their output with something not aware of the encoding, like Notepad for Win95/98/ME/NT, funny characters are displayed. A � is a giveaway.</p>
+<h2 id="xslt">XSLT Issues</h2>
+<h3 id="xslt-date">Current Date and Time</h3>
+<p>XSL-FO does not currently have a function for retrieving the current date and time. However, in some cases, XSLT can be used to place the current date and time into the XSL-FO document as it is generated.</p>
+<p>One possibility is to use the <a href="http://exslt.org/date/index.html">exslt date and time extension</a>.</p>
+<p>Another possibility is to use java or javascript (or perhaps some other language). Here is an example, using java, that works with Xalan. First, create the appropriate namespace:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;xsl:stylesheet</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span>
+  <span class="err">...</span>
+  <span class="na">xmlns:java=</span><span class="s">&quot;http://xml.apache.org/xslt/java&quot;</span> <span class="na">exclude-result-prefixes=</span><span class="s">&quot;java&quot;</span>
+  <span class="err">...</span> <span class="nt">&gt;</span>
+<span class="nt">&lt;/xsl:stylesheet&gt;</span>
+</pre></div>
+
+
+<p>Next, use the java language to retrieve and format the current date and time. Here is an example template:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;xsl:template</span> <span class="na">match=</span><span class="s">&quot;TodaysDate&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;xsl:value-of</span> <span class="na">select=</span><span class="s">&quot;java:format(java:java.text.SimpleDateFormat.new</span>
+<span class="s">        (&#39;MMMM d, yyyy, h:mm:ss a (zz)&#39;), java:java.util.Date.new())&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsl:template&gt;</span>
+</pre></div>
+
+
+<h2 id="xsl-fo">XSL-FO Issues</h2>
+<h3 id="fo-center-vertical">Vertical Centering</h3>
+<p>To vertically center an image, table, or other item, use display-align="center". See <a href="compliance.html#fo-property-display-align">display-align Compliance</a> for implementation status. Here is a small, self-contained document centering an image on a page:</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fo:layout-master-set&gt;</span>
+    <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;content&quot;</span>
+        <span class="na">page-width=</span><span class="s">&quot;210mm&quot;</span> <span class="na">page-height=</span><span class="s">&quot;297mm&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:region-body/&gt;</span>
+    <span class="nt">&lt;/fo:simple-page-master&gt;</span>
+  <span class="nt">&lt;/fo:layout-master-set&gt;</span>
+  <span class="nt">&lt;fo:page-sequence</span> <span class="na">master-reference=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;fo:flow</span> <span class="na">flow-name=</span><span class="s">&quot;xsl-region-body&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:table</span> <span class="na">table-layout=</span><span class="s">&quot;fixed&quot;</span> <span class="na">width=</span><span class="s">&quot;100%&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fo:table-column</span> <span class="na">column-width=</span><span class="s">&quot;proportional-column-width(1)&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;fo:table-body&gt;</span>
+          <span class="nt">&lt;fo:table-row</span> <span class="na">height=</span><span class="s">&quot;297mm&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;fo:table-cell</span> <span class="na">display-align=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;fo:block</span> <span class="na">text-align=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;fop.jpg&quot;</span><span class="nt">/&gt;</span>
+              <span class="nt">&lt;/fo:block&gt;</span>
+            <span class="nt">&lt;/fo:table-cell&gt;</span>
+          <span class="nt">&lt;/fo:table-row&gt;</span>
+        <span class="nt">&lt;/fo:table-body&gt;</span>
+      <span class="nt">&lt;/fo:table&gt;</span>
+    <span class="nt">&lt;/fo:flow&gt;</span>
+  <span class="nt">&lt;/fo:page-sequence&gt;</span>
+<span class="nt">&lt;/fo:root&gt;</span>
+</pre></div>
+
+
+<h3 id="fo-center-table-horizon">Horizontal Centering (Tables)</h3>
+<p>To center a table horizontally, one possibility is to add one column on the left and one on the right which pad the table so that the visible part is centered:</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fo:layout-master-set&gt;</span>
+    <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;content&quot;</span>
+      <span class="na">page-width=</span><span class="s">&quot;210mm&quot;</span> <span class="na">page-height=</span><span class="s">&quot;297mm&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:region-body/&gt;</span>
+    <span class="nt">&lt;/fo:simple-page-master&gt;</span>
+  <span class="nt">&lt;/fo:layout-master-set&gt;</span>
+  <span class="nt">&lt;fo:page-sequence</span> <span class="na">master-reference=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;fo:flow</span> <span class="na">flow-name=</span><span class="s">&quot;xsl-region-body&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:table</span> <span class="na">table-layout=</span><span class="s">&quot;fixed&quot;</span> <span class="na">width=</span><span class="s">&quot;100%&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fo:table-column</span> <span class="na">column-width=</span><span class="s">&quot;proportional-column-width(1)&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;fo:table-column</span> <span class="na">column-width=</span><span class="s">&quot;100mm&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;fo:table-column</span> <span class="na">column-width=</span><span class="s">&quot;proportional-column-width(1)&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;fo:table-body&gt;</span>
+          <span class="nt">&lt;fo:table-row&gt;</span>
+            <span class="nt">&lt;fo:table-cell</span> <span class="na">column-number=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;fo:block&gt;</span>foo<span class="nt">&lt;/fo:block&gt;</span>
+            <span class="nt">&lt;/fo:table-cell&gt;</span>
+          <span class="nt">&lt;/fo:table-row&gt;</span>
+        <span class="nt">&lt;/fo:table-body&gt;</span>
+      <span class="nt">&lt;/fo:table&gt;</span>
+    <span class="nt">&lt;/fo:flow&gt;</span>
+  <span class="nt">&lt;/fo:page-sequence&gt;</span>
+<span class="nt">&lt;/fo:root&gt;</span>
+</pre></div>
+
+
+<p>If your table is more complicated, or if defining borders on individual cells becomes too much work, use the code above and nest your table within the middle cell.</p>
+<h3 id="fo-right-align-table-horizon">Right-Aligning (Tables)</h3>
+<p>To right-align a table, you can use the same approach as above for centering tables. Just remove the last table-column element which causes all the left-over space not used by the columns with a fixed column-width to be assigned to the first column which effectively right-aligns the table.</p>
+<h3 id="fo-oddeven">Recto/Verso Static Content Differences</h3>
+<p>One frequent request is that static content be different between recto pages (right-side or odd-numbered pages typically) and verso pages(left-side or even-numbered pages typically). For example, you may wish to place the page number on the "outer" side of each page. There are examples in the FO distribution and in the <a href="http://www.dpawson.co.uk/xsl/sect3/index.html">XSL FAQ FO section</a>.</p>
+<p>First, define a page master with alternating pages masters for odd and even pages. Then specify appropriate regions in these page masters, giving them different names. Use these names to put different static content in these regions. Here is a self-contained demonstration:</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fo:layout-master-set&gt;</span>
+    <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;even&quot;</span>
+      <span class="na">page-height=</span><span class="s">&quot;297mm&quot;</span> <span class="na">page-width=</span><span class="s">&quot;210mm&quot;</span>
+      <span class="na">margin-top=</span><span class="s">&quot;20mm&quot;</span> <span class="na">margin-bottom=</span><span class="s">&quot;20mm&quot;</span>
+      <span class="na">margin-left=</span><span class="s">&quot;25mm&quot;</span> <span class="na">margin-right=</span><span class="s">&quot;25mm&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:region-body</span> <span class="na">margin-bottom=</span><span class="s">&quot;20mm&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;fo:region-after</span> <span class="na">region-name=</span><span class="s">&quot;footer-even&quot;</span> <span class="na">extent=</span><span class="s">&quot;20mm&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/fo:simple-page-master&gt;</span>
+    <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;odd&quot;</span>
+      <span class="na">page-height=</span><span class="s">&quot;297mm&quot;</span> <span class="na">page-width=</span><span class="s">&quot;210mm&quot;</span>
+      <span class="na">margin-top=</span><span class="s">&quot;20mm&quot;</span> <span class="na">margin-bottom=</span><span class="s">&quot;20mm&quot;</span>
+      <span class="na">margin-left=</span><span class="s">&quot;25mm&quot;</span> <span class="na">margin-right=</span><span class="s">&quot;25mm&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:region-body</span> <span class="na">margin-bottom=</span><span class="s">&quot;20mm&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;fo:region-after</span> <span class="na">region-name=</span><span class="s">&quot;footer-odd&quot;</span> <span class="na">extent=</span><span class="s">&quot;20mm&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/fo:simple-page-master&gt;</span>
+    <span class="nt">&lt;fo:page-sequence-master</span> <span class="na">master-name=</span><span class="s">&quot;document&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:repeatable-page-master-alternatives&gt;</span>
+        <span class="nt">&lt;fo:conditional-page-master-reference</span> <span class="na">odd-or-even=</span><span class="s">&quot;even&quot;</span>
+          <span class="na">master-reference=</span><span class="s">&quot;even&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;fo:conditional-page-master-reference</span> <span class="na">odd-or-even=</span><span class="s">&quot;odd&quot;</span>
+          <span class="na">master-reference=</span><span class="s">&quot;odd&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/fo:repeatable-page-master-alternatives&gt;</span>
+    <span class="nt">&lt;/fo:page-sequence-master&gt;</span>
+  <span class="nt">&lt;/fo:layout-master-set&gt;</span>
+  <span class="nt">&lt;fo:page-sequence</span> <span class="na">master-reference=</span><span class="s">&quot;document&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;fo:static-content</span> <span class="na">flow-name=</span><span class="s">&quot;footer-even&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:block</span> <span class="na">text-align=</span><span class="s">&quot;start&quot;</span><span class="nt">&gt;&lt;fo:page-number/&gt;&lt;/fo:block&gt;</span>
+    <span class="nt">&lt;/fo:static-content&gt;</span>
+    <span class="nt">&lt;fo:static-content</span> <span class="na">flow-name=</span><span class="s">&quot;footer-odd&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:block</span> <span class="na">text-align-last=</span><span class="s">&quot;end&quot;</span><span class="nt">&gt;&lt;fo:page-number/&gt;&lt;/fo:block&gt;</span>
+    <span class="nt">&lt;/fo:static-content&gt;</span>
+    <span class="nt">&lt;fo:flow</span> <span class="na">flow-name=</span><span class="s">&quot;xsl-region-body&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:block/&gt;</span>
+      <span class="nt">&lt;fo:block</span> <span class="na">break-before=</span><span class="s">&quot;page&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/fo:flow&gt;</span>
+  <span class="nt">&lt;/fo:page-sequence&gt;</span>
+<span class="nt">&lt;/fo:root&gt;</span>
+</pre></div>
+
+
+<h3 id="fo-first-page">Making the First Page Special</h3>
+<p>To get a special header on the first page, one possibility is to insert it into the flow instead of the static content. Alternatively, use a page master referring to different page masters for the first page and the rest. Here is a code sample:</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fo:layout-master-set&gt;</span>
+    <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;first&quot;</span>
+      <span class="na">page-height=</span><span class="s">&quot;297mm&quot;</span> <span class="na">page-width=</span><span class="s">&quot;210mm&quot;</span>
+      <span class="na">margin-top=</span><span class="s">&quot;20mm&quot;</span> <span class="na">margin-bottom=</span><span class="s">&quot;20mm&quot;</span>
+      <span class="na">margin-left=</span><span class="s">&quot;25mm&quot;</span> <span class="na">margin-right=</span><span class="s">&quot;25mm&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:region-body</span> <span class="na">margin-bottom=</span><span class="s">&quot;20mm&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;fo:region-after</span> <span class="na">region-name=</span><span class="s">&quot;footer-first&quot;</span> <span class="na">extent=</span><span class="s">&quot;20mm&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/fo:simple-page-master&gt;</span>
+    <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;rest&quot;</span>
+      <span class="na">page-height=</span><span class="s">&quot;297mm&quot;</span> <span class="na">page-width=</span><span class="s">&quot;210mm&quot;</span>
+      <span class="na">margin-top=</span><span class="s">&quot;20mm&quot;</span> <span class="na">margin-bottom=</span><span class="s">&quot;20mm&quot;</span>
+      <span class="na">margin-left=</span><span class="s">&quot;25mm&quot;</span> <span class="na">margin-right=</span><span class="s">&quot;25mm&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:region-body</span> <span class="na">margin-bottom=</span><span class="s">&quot;20mm&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;fo:region-after</span> <span class="na">region-name=</span><span class="s">&quot;footer-rest&quot;</span> <span class="na">extent=</span><span class="s">&quot;20mm&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/fo:simple-page-master&gt;</span>
+    <span class="nt">&lt;fo:page-sequence-master</span> <span class="na">master-name=</span><span class="s">&quot;document&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:repeatable-page-master-alternatives&gt;</span>
+        <span class="nt">&lt;fo:conditional-page-master-reference</span> <span class="na">page-position=</span><span class="s">&quot;first&quot;</span>
+          <span class="na">master-reference=</span><span class="s">&quot;first&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;fo:conditional-page-master-reference</span> <span class="na">page-position=</span><span class="s">&quot;rest&quot;</span>
+          <span class="na">master-reference=</span><span class="s">&quot;rest&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/fo:repeatable-page-master-alternatives&gt;</span>
+    <span class="nt">&lt;/fo:page-sequence-master&gt;</span>
+  <span class="nt">&lt;/fo:layout-master-set&gt;</span>
+  <span class="nt">&lt;fo:page-sequence</span> <span class="na">master-reference=</span><span class="s">&quot;document&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;fo:static-content</span> <span class="na">flow-name=</span><span class="s">&quot;footer-first&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:block</span> <span class="na">text-align=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span>First page.<span class="nt">&lt;/fo:block&gt;</span>
+    <span class="nt">&lt;/fo:static-content&gt;</span>
+    <span class="nt">&lt;fo:static-content</span> <span class="na">flow-name=</span><span class="s">&quot;footer-rest&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:block</span> <span class="na">text-align-last=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span>Other page.<span class="nt">&lt;/fo:block&gt;</span>
+    <span class="nt">&lt;/fo:static-content&gt;</span>
+    <span class="nt">&lt;fo:flow</span> <span class="na">flow-name=</span><span class="s">&quot;xsl-region-body&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:block/&gt;</span>
+      <span class="nt">&lt;fo:block</span> <span class="na">break-before=</span><span class="s">&quot;page&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;fo:block</span> <span class="na">break-before=</span><span class="s">&quot;page&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/fo:flow&gt;</span>
+  <span class="nt">&lt;/fo:page-sequence&gt;</span>
+<span class="nt">&lt;/fo:root&gt;</span>
+</pre></div>
+
+
+<h3 id="fo-blank-pages">Blank Pages</h3>
+<p>Sometimes it is desirable to insert blank pages within your output, starting, for example, a new chapter on an odd page or an even page. A blank page can be forced by using <code>break-before="page-even"</code> or similar properties, or by a force-page-count="end-on-odd" on a page sequence.</p>
+<p>To write "This page is intentionally left blank" (or something similar) on an intentionally blank page, first define a conditional page master with a page master specific for blank pages. This allows you to specify static content for blank pages (by definition, a page is blank if no content from a flow is rendered on the page). Omit your normal headers and footers, and use (for example) an extended header to print the "..left blank" statement:</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fo:layout-master-set&gt;</span>
+    <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;normal&quot;</span>
+      <span class="na">page-height=</span><span class="s">&quot;297mm&quot;</span> <span class="na">page-width=</span><span class="s">&quot;210mm&quot;</span>
+      <span class="na">margin-top=</span><span class="s">&quot;20mm&quot;</span> <span class="na">margin-bottom=</span><span class="s">&quot;20mm&quot;</span>
+      <span class="na">margin-left=</span><span class="s">&quot;25mm&quot;</span> <span class="na">margin-right=</span><span class="s">&quot;25mm&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:region-body</span> <span class="na">margin-bottom=</span><span class="s">&quot;20mm&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;fo:region-after</span> <span class="na">region-name=</span><span class="s">&quot;footer-normal&quot;</span> <span class="na">extent=</span><span class="s">&quot;20mm&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/fo:simple-page-master&gt;</span>
+    <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;blank&quot;</span>
+      <span class="na">page-height=</span><span class="s">&quot;297mm&quot;</span> <span class="na">page-width=</span><span class="s">&quot;210mm&quot;</span>
+      <span class="na">margin-top=</span><span class="s">&quot;20mm&quot;</span> <span class="na">margin-bottom=</span><span class="s">&quot;20mm&quot;</span>
+      <span class="na">margin-left=</span><span class="s">&quot;25mm&quot;</span> <span class="na">margin-right=</span><span class="s">&quot;25mm&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:region-body/&gt;</span>
+      <span class="nt">&lt;fo:region-before</span> <span class="na">region-name=</span><span class="s">&quot;header-blank&quot;</span> <span class="na">extent=</span><span class="s">&quot;297mm&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/fo:simple-page-master&gt;</span>
+    <span class="nt">&lt;fo:page-sequence-master</span> <span class="na">master-name=</span><span class="s">&quot;document&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:repeatable-page-master-alternatives&gt;</span>
+        <span class="nt">&lt;fo:conditional-page-master-reference</span> <span class="na">blank-or-not-blank=</span><span class="s">&quot;not-blank&quot;</span>
+          <span class="na">master-reference=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;fo:conditional-page-master-reference</span> <span class="na">blank-or-not-blank=</span><span class="s">&quot;blank&quot;</span>
+          <span class="na">master-reference=</span><span class="s">&quot;blank&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/fo:repeatable-page-master-alternatives&gt;</span>
+    <span class="nt">&lt;/fo:page-sequence-master&gt;</span>
+  <span class="nt">&lt;/fo:layout-master-set&gt;</span>
+  <span class="nt">&lt;fo:page-sequence</span> <span class="na">master-reference=</span><span class="s">&quot;document&quot;</span> <span class="na">force-page-count=</span><span class="s">&quot;end-on-even&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;fo:static-content</span> <span class="na">flow-name=</span><span class="s">&quot;footer-normal&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:block</span> <span class="na">text-align=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span>Normal footer<span class="nt">&lt;/fo:block&gt;</span>
+    <span class="nt">&lt;/fo:static-content&gt;</span>
+    <span class="nt">&lt;fo:static-content</span> <span class="na">flow-name=</span><span class="s">&quot;header-blank&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:block</span> <span class="na">space-before=</span><span class="s">&quot;100mm&quot;</span> <span class="na">text-align-last=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span>
+        Intentionally left blank.<span class="nt">&lt;/fo:block&gt;</span>
+    <span class="nt">&lt;/fo:static-content&gt;</span>
+    <span class="nt">&lt;fo:flow</span> <span class="na">flow-name=</span><span class="s">&quot;xsl-region-body&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:block/&gt;</span>
+    <span class="nt">&lt;/fo:flow&gt;</span>
+  <span class="nt">&lt;/fo:page-sequence&gt;</span>
+<span class="nt">&lt;/fo:root&gt;</span>
+</pre></div>
+
+
+<h3 id="floats">Floats</h3>
+<p>Floats (fo:float) are supported with some limitations:</p>
+<ul>
+<li>the "clear" fo:float attribute is ignored; only the float attribute (left or right) is used</li>
+<li>overlapping of floats in the Y is not handled (even in the case there would not be overlap in the X direction)</li>
+<li>floats that extend beyond the body region are not properly handled and will overflow past the edge of the region</li>
+<li>if a float extends to bottom of the body region and there are footnotes in the page the float may overlap with the footnote region</li>
+<li>floats next to a table are not supported unless the start and end of the table happens in between the start and end of the float</li>
+</ul>
+<h3 id="fo-preformat">Preformatting Content</h3>
+<p>Sometimes it is desirable to retain linebreaks and hard spaces, and to get preformatted text to pass through without being changed. The XSL-FO specification provides some properties for this: <a href="http://www.w3.org/TR/xsl11/#white-space-collapse">white-space-collapse</a> and <a href="http://www.w3.org/TR/2001/REC-xsl-20011015/slice7.html#white-space-collapse">linefeed-treatment</a>. In FOP, use white-space-collapse="false" on an enclosing block.</p>
+<h3 id="fo-total-pages">Total Document Pages</h3>
+<p>It is frequently desirable to know the total number of pages in a document and to use that number within the document. For example, you might wish to show the page number on the first page as being "page 1 of 12".</p>
+<p>To accomplish this in <strong>XSL 1.0</strong>, place an empty block with an id at the end of the flow:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:flow</span> <span class="err">...</span><span class="nt">&gt;</span>
+    ...
+  <span class="nt">&lt;fo:block</span> <span class="na">id=</span><span class="s">&quot;last-page&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/fo:flow&gt;</span>
+</pre></div>
+
+
+<p>Get the number of the last page as follows:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:page-number-citation</span> <span class="na">ref-id=</span><span class="s">&quot;last-page&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>This does not work in certain situations: multiple page sequences, an initial page number other than 1, or forcing a certain page count, thereby producing blank pages at the end.</p>
+<p>In <strong>XSL 1.1</strong>, you get another option to do this: make sure an "id" is set on the page-sequence and reference it using fo:page-number-citation-last. First, the page-sequence:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:page-sequence</span> <span class="na">id=</span><span class="s">&quot;seq1&quot;</span> <span class="err">...</span>
+</pre></div>
+
+
+<p>After that, reference the last page the page-sequence generates:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:page-number-citation-last</span> <span class="na">ref-id=</span><span class="s">&quot;seq1&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p><warning>There is no reliable way to get the real total page count with FO mechanisms. You can only get <em>page numbers</em>.</warning></p>
+<p>The FOP library provides a method to get the total page count after an FO document has been rendered. One possibility is to implement your own wrapper to do a dummy rendering, inquire the total page count and then perform the real rendering, passing the total page count to the XSLT processor to splice it into the generated FO. For example:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.apache.fop.apps.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.xml.sax.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.xml.transform.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.xml.transform.sax.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.xml.transform.stream.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">rendtest</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;.&quot;</span><span class="o">).</span><span class="na">toURI</span><span class="o">());</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">TransformerFactory</span> <span class="n">tFactory</span> <span class="o">=</span> <span class="n">TransformerFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>
+        <span class="n">OutputStream</span> <span class="n">out</span><span class="o">;</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="c1">//Load the stylesheet</span>
+            <span class="n">Templates</span> <span class="n">templates</span> <span class="o">=</span> <span class="n">tFactory</span><span class="o">.</span><span class="na">newTemplates</span><span class="o">(</span>
+                <span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">])));</span>
+
+            <span class="c1">//First run (to /dev/null)</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">commons</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">output</span><span class="o">.</span><span class="na">NullOutputStream</span><span class="o">();</span>
+            <span class="n">FOUserAgent</span> <span class="n">foUserAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFOUserAgent</span><span class="o">();</span>
+            <span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFop</span><span class="o">(</span><span class="n">MimeConstants</span><span class="o">.</span><span class="na">MIME_PDF</span><span class="o">,</span> <span class="n">foUserAgent</span><span class="o">,</span> <span class="n">out</span><span class="o">);</span>
+            <span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">templates</span><span class="o">.</span><span class="na">newTransformer</span><span class="o">();</span>
+            <span class="n">transformer</span><span class="o">.</span><span class="na">setParameter</span><span class="o">(</span><span class="s">&quot;page-count&quot;</span><span class="o">,</span> <span class="s">&quot;#&quot;</span><span class="o">);</span>
+            <span class="n">transformer</span><span class="o">.</span><span class="na">transform</span><span class="o">(</span><span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">])),</span>
+                <span class="k">new</span> <span class="n">SAXResult</span><span class="o">(</span><span class="n">fop</span><span class="o">.</span><span class="na">getDefaultHandler</span><span class="o">()));</span>
+
+            <span class="c1">//Get total page count</span>
+            <span class="n">String</span> <span class="n">pageCount</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">driver</span><span class="o">.</span><span class="na">getResults</span><span class="o">().</span><span class="na">getPageCount</span><span class="o">());</span>
+
+            <span class="c1">//Second run (the real thing)</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">FileOutputStream</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">BufferedOutputStream</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
+            <span class="k">try</span> <span class="o">{</span>
+              <span class="n">foUserAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFOUserAgent</span><span class="o">();</span>
+              <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFop</span><span class="o">(</span><span class="n">MimeConstants</span><span class="o">.</span><span class="na">MIME_PDF</span><span class="o">,</span> <span class="n">foUserAgent</span><span class="o">,</span> <span class="n">out</span><span class="o">);</span>
+              <span class="n">transformer</span> <span class="o">=</span> <span class="n">templates</span><span class="o">.</span><span class="na">newTransformer</span><span class="o">();</span>
+              <span class="n">transformer</span><span class="o">.</span><span class="na">setParameter</span><span class="o">(</span><span class="s">&quot;page-count&quot;</span><span class="o">,</span> <span class="n">pageCount</span><span class="o">);</span>
+              <span class="n">transformer</span><span class="o">.</span><span class="na">transform</span><span class="o">(</span><span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">])),</span>
+                  <span class="k">new</span> <span class="n">SAXResult</span><span class="o">(</span><span class="n">fop</span><span class="o">.</span><span class="na">getDefaultHandler</span><span class="o">()));</span>
+            <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+                <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>Declare and use the parameter "page-count" in your XSLT.</p>
+<p><warning>It is possible to run into a convergence problem with this solution. Replacing the "#" placeholder in the first run with the actual page count in the second run, may change the total number of pages in the document.</warning></p>
+<h3 id="fo-region-align">Aligning Regions</h3>
+<p>Although it may seem counterintuitive, the regions on a page may overlap. Defining a certain body region does not automatically constrain other regions. Instead, this has to be done explicitly. Sometimes for creative reasons it may be desirable to have the regions overlap. Otherwise, you will want to set them up so that the header does not overlap body content or the body extend into the footer.</p>
+<p>Assuming you wish to keep the regions separate, if you have a header region with an extent of 20mm, you should define a margin for the body region of at least 20mm too. Otherwise the header content may overwrite some stuff in the body region. This applies similarly to the extent of the after region and the bottom margin of the body region.</p>
+<h3 id="fo-lines">Drawing Lines</h3>
+<p>It is frequently desirable to draw lines in a document, as separators, side bars or folding marks. There are several possibilities:</p>
+<ul>
+<li>
+<p>Horizontal lines can be drawn using <a href="http://www.w3.org/TR/xsl11/#fo_leader">fo:leader</a>.</p>
+</li>
+<li>
+<p>Use a solid border on a suitable fo:block. This will work for horizontal and vertical lines only.</p>
+</li>
+<li>
+<p>Insert a graphic. GIF, PNG SVG, whatever.</p>
+</li>
+</ul>
+<h3 id="fo-validate">Validating XSL-FO</h3>
+<p>Here are a couple of methods for validating XSL-FO:</p>
+<ul>
+<li><a href="http://www.renderx.com">RenderX</a> has provided an <a href="http://www.renderx.com/Tests/validator/fo.dtd.html">Unofficial DTD for FO Documents</a>, which may be helpful in validating general FO issues.</li>
+<li><a href="http://www.antennahouse.com">AntennaHouse</a> has provided a tool called <a href="https://github.com/AntennaHouse/focheck">focheck</a> for XSL-FO validation using RELAX NG and Schematron </li>
+</ul>
+<p>FOP also maintains an <a href="http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop/src/foschema/fop.xsd?view=co">Unofficial FOP Schema</a> in the FOP Subversion Repository. This document can be used either to validate against the FO standard, or against the actual FOP implementation. See the notes near the beginning of the document for instructions on how to use it.</p>
+<h3 id="landscape">Producing landscape pages</h3>
+<p>Pages in landscape format can easily be produced by exchanging the page-height and page-width values of a simple-page-master element.</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:layout-master-set&gt;</span>
+  <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;A4-portrait&quot;</span> <span class="na">page-height=</span><span class="s">&quot;29.7cm&quot;</span> <span class="na">page-width=</span><span class="s">&quot;21cm&quot;</span> <span class="err">[..]</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;fo:region-body/&gt;</span>
+  <span class="nt">&lt;/fo:simple-page-master&gt;</span>
+  <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;A4-landscape&quot;</span> <span class="na">page-height=</span><span class="s">&quot;21cm&quot;</span> <span class="na">page-width=</span><span class="s">&quot;29.7cm&quot;</span> <span class="err">[..]</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;fo:region-body/&gt;</span>
+  <span class="nt">&lt;/fo:simple-page-master&gt;</span>
+<span class="nt">&lt;/fo:layout-master-set&gt;</span>
+</pre></div>
+
+
+<h3 id="external-resources">External Resources</h3>
+<p>Resources needed by an XSL-FO file that are external to it (graphics, for example), are defined in the XSL-FO standard as being of type "uri-specification". This is defined in the standard at <a href="http://www.w3.org/TR/xsl11/#datatype">Section 5.11 Property Datatypes</a>, which includes a link to the URI standard itself. Refer to the XSL-FO and URI standards themselves for more detailed instructions.</p>
+<p>URIs may be either absolute or relative to a base URI. (See <a href="2.5/configuration.html">FOP: Configuration</a> for information on setting the base URI for a FOP session). Here is an example referencing an external-graphic that is relative to the base URI:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;url(&#39;images/logo.jpg&#39;)&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>Here is an example referencing an external-graphic that is an absolute URI on a local filesystem:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;url(&#39;file:d:///images/logo.jpg&#39;)&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

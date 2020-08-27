@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache Batik
+  - [Overview](/batik/)
+  - [License](/batik/license.html)
+  - [Download](/batik/download.html)
+  - [Notes](/batik/install.html)
+  - [Status](/batik/status.html)
+  - [Demo](/batik/demo-static.html)
+  - [FAQs](/batik/faq.html)
+  - [Batik Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSBATIK)
+  - [Mailing lists](/batik/mailing-lists.html)
+  - [Contributors](/batik/contributors.html)
+  - [Bug database](https://issues.apache.org/jira/issues/?jql=project%20%3D%20BATIK%20AND%20resolution%20%3D%20Unresolved%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20ORDER%20BY%20priority%20DESC)
+  - [Projects using Batik](/batik/uses.html)
+  - ## Batik Tools
+    - [Overview](/batik/tools/)
+    - [Browser](/batik/tools/browser.html)
+    - [Rasterizer](/batik/tools/rasterizer.html)
+    - [Font converter](/batik/tools/font-converter.html)
+    - [Pretty printer](/batik/tools/pretty-printer.html)
+  - ## Using Batik
+    - [Overview](/batik/using/)
+    - [Architecture](/batik/using/architecture.html)
+    - [Javadoc APIs](/batik/javadoc/)
+    - [DOM API](/batik/using/dom-api.html)
+    - [Parsers](/batik/using/parsers.html)
+    - ### Scripting
+      - [Scripting with ECMAScript](/batik/using/scripting/ecmascript.html)
+      - [Scripting with Java](/batik/using/scripting/java.html)
+      - [Scripting with Security](/batik/using/scripting/security.html)
+    - [SVG generator](/batik/using/svg-generator.html)
+    - [Swing components](/batik/using/swing.html)
+    - [Transcoder API](/batik/using/transcoder.html)
+    - [Extending Batik](/batik/using/extending.html)
+  - ## Development
+    - [Overview](/batik/dev/)
+    - [Branches](/batik/dev/branches.html)
+    - [SVG 1.2 support](/batik/dev/svg12.html)
+    - [Test infrastructure](/batik/dev/test.html)
+
+# Apache&trade; XML Graphics
+  - ### Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache FOP](/fop/)
+  - [Apache XML Graphics Commons](/commons/)
+
+## Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').append(' &raquo;');
+    }
+  $('#navigation > ul > li ul').hide();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 100px;">
+	  <a href="/batik/"><img src="/images/apache-batik-logo.png" alt="The Apache FOP Project" width="256" height="96" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; Batik Project</h2>
+	</div>  
+
+    <h1>SVG Font Converter</h1>
+    
+
+    <h1>SVG Font Converter</h1>
+<p>The TrueType Font to SVG (<code>ttf2svg</code>) application lets you convert a range of characters from a TrueType Font into the SVG font format.</p>
+<h2 id="running">Running the font converter</h2>
+<p>If you are using the Batik binary distribution, type the following at the command line:</p>
+<div class="highlight"><pre><span></span>java -jar batik-ttf2svg.jar OPTIONS
+</pre></div>
+
+
+<p>If you are using the Batik source distribution, type the following at the command line:</p>
+<div class="highlight"><pre><span></span>build ttf2svg OPTIONS
+</pre></div>
+
+
+<p>In both cases, the options are the same:</p>
+<div class="highlight"><pre><span></span>ttf-path[-lrange-begin] [-hrange-end] [-autorange] [-ascii] [-idid] [-ooutput-path] [-testcard]
+</pre></div>
+
+
+<p>where:</p>
+<p><em>ttf-path</em>
+:
+specifies the TrueType Font file containing the characters to be converted,</p>
+<p><strong>-l</strong>  <em>range-begin</em>  <strong>-h</strong>  <em>range-end</em>
+:
+specifies the range of characters (by codepoint, in decimal) to be converted,</p>
+<p><strong>-autorange</strong>
+:
+automatically determines the available character range, instead of using the default, ASCII printable characters (ranging from 32 to 126),</p>
+<p><strong>-ascii</strong>
+:
+forces usage of the ASCII character map in the font, instead of the Unicode character map,</p>
+<p><strong>-id</strong>  <em>id</em>
+:
+specifies the value for the <code>id</code> attribute of the generated <code>font</code> element,</p>
+<p><strong>-o</strong>  <em>output-path</em>
+:
+specifies the pathname of the output SVG document containing the generated SVG font, and</p>
+<p><strong>-testcard</strong>
+:
+specifies that a sequence of SVG <code>text</code> elements should be appended to the output SVG file to test the characters in the SVG font, providing an easy way to validate that generated SVG font visually.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span>java -jar batik-ttf2svg.jar /usr/home/myFont.ttf -l 48 -h 57 -id MySVGFont -o mySVGFont.svg -testcard
+</pre></div>
+
+
+<p>will convert characters 48 to 57, i.e., <code>'0'</code> to <code>'9'</code>, in the <code>myFont.ttf</code> file into their SVG equivalent in the <code>mySVGFont.svg</code> file, appending a test card so that the font can be visualized.</p>
+<h1 id="use-cases">Use cases</h1>
+<p>The TrueType Font converter application is helpful to be able to embed font definitions in SVG files. This will ensure that the SVG document will look exactly the same on all platform by not relying on system fonts.</p>
+<p>Note that users of the tool should make sure that they have the right to embed the font before embedding it in an SVG file and should refer to the font license for information. Note that TrueType Font files contain a flag that defines the “embeddability” of a font and there are tools for checking that flag.</p>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

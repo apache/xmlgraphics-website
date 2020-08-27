@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache Batik
+  - [Overview](/batik/)
+  - [License](/batik/license.html)
+  - [Download](/batik/download.html)
+  - [Notes](/batik/install.html)
+  - [Status](/batik/status.html)
+  - [Demo](/batik/demo-static.html)
+  - [FAQs](/batik/faq.html)
+  - [Batik Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSBATIK)
+  - [Mailing lists](/batik/mailing-lists.html)
+  - [Contributors](/batik/contributors.html)
+  - [Bug database](https://issues.apache.org/jira/issues/?jql=project%20%3D%20BATIK%20AND%20resolution%20%3D%20Unresolved%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20ORDER%20BY%20priority%20DESC)
+  - [Projects using Batik](/batik/uses.html)
+  - ## Batik Tools
+    - [Overview](/batik/tools/)
+    - [Browser](/batik/tools/browser.html)
+    - [Rasterizer](/batik/tools/rasterizer.html)
+    - [Font converter](/batik/tools/font-converter.html)
+    - [Pretty printer](/batik/tools/pretty-printer.html)
+  - ## Using Batik
+    - [Overview](/batik/using/)
+    - [Architecture](/batik/using/architecture.html)
+    - [Javadoc APIs](/batik/javadoc/)
+    - [DOM API](/batik/using/dom-api.html)
+    - [Parsers](/batik/using/parsers.html)
+    - ### Scripting
+      - [Scripting with ECMAScript](/batik/using/scripting/ecmascript.html)
+      - [Scripting with Java](/batik/using/scripting/java.html)
+      - [Scripting with Security](/batik/using/scripting/security.html)
+    - [SVG generator](/batik/using/svg-generator.html)
+    - [Swing components](/batik/using/swing.html)
+    - [Transcoder API](/batik/using/transcoder.html)
+    - [Extending Batik](/batik/using/extending.html)
+  - ## Development
+    - [Overview](/batik/dev/)
+    - [Branches](/batik/dev/branches.html)
+    - [SVG 1.2 support](/batik/dev/svg12.html)
+    - [Test infrastructure](/batik/dev/test.html)
+
+# Apache&trade; XML Graphics
+  - ### Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache FOP](/fop/)
+  - [Apache XML Graphics Commons](/commons/)
+
+## Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').append(' &raquo;');
+    }
+  $('#navigation > ul > li ul').hide();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 100px;">
+	  <a href="/batik/"><img src="/images/apache-batik-logo.png" alt="The Apache FOP Project" width="256" height="96" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; Batik Project</h2>
+	</div>  
+
+    <h1>Notes</h1>
+    
+
+    <h1>Notes</h1>
+<h2 id="systemRequirements">System requirements</h2>
+<p>Batik requires a Java 7 or above compatible runtime environment.</p>
+<h2 id="optionalComponents">Optional components</h2>
+<p>By default, the Batik source distribution comes with the <a href="http://www.mozilla.org/rhino/">Mozilla Rhino</a> JavaScript Engine (<code>rhino*.jar</code>).</p>
+<p>To enable other scripting languages support, you will only need to install the correct jar files in <code>lib</code> directory of Batik and recompile your distribution.</p>
+<ul>
+<li>
+<p>For Python, you need to download Jython distribution at <a href="http://www.jython.org/">http://www.jython.org/</a>. Then you put the <code>jython.jar</code> file in the Batik <code>lib</code> directory.</p>
+</li>
+<li>
+<p>For Tcl, you need to download Jacl &amp; TclBlend distribution at <a href="http://dev.scriptics.com/software/java/">http://dev.scriptics.com/software/java/</a>. Then you put the <code>jacl.jar</code> and <code>tcljava.jar</code> files in the Batik <code>lib</code> directory.</p>
+</li>
+</ul>
+<p>Conversely, you can remove the <code>rhino*.jar</code> of the Batik <code>lib</code> directory to remove JavaScript support and have a smaller distribution.</p>
+<h2 id="dependencyGraph">Jar file dependency graph</h2>
+<p>The Batik distribution comes with many jar files. Not all of them are needed in every case (although the provided applications tend to use most of them). The following is a diagram showing the dependencies between the various jar files in the Batik binary distribution.</p>
+<p><img alt="Batik jar file dependency graph" src="images/batik-jars-deps-small.svg" title=""></p>
+<p>All <code>batik</code> package references are short for <code>org.apache.batik</code>.</p>
+<h2 id="verify">Verify releases</h2>
+<p>It is essential that you verify the integrity of the downloaded files using the PGP or SHA512 signatures.</p>
+<p>The PGP signatures can be verified using PGP or GPG. First download the <a href="https://www.apache.org/dist/xmlgraphics/batik/KEYS">KEYS</a> as well as the <code>asc</code> signature file for the particular distribution you choose. Make sure you get these files from the <a href="https://www.apache.org/dist/xmlgraphics/batik/">main distribution directory</a>, rather than from a mirror. Then verify the signatures using:</p>
+<p><code>pgpk -a KEYS pgpv batik-[bin|src]-1.13.zip.asc</code></p>
+<p><em>or</em></p>
+<p><code>pgp -ka KEYS pgp batik-[bin|src]-1.13.zip.asc</code></p>
+<p><em>or</em></p>
+<p><code>gpg --import KEYS pgp batik-[bin|src]-1.13.zip.asc</code></p>
+<p><em>or</em></p>
+<p><code>gpg --import KEYS gpg --verify batik-[bin|src]-1.13.zip.asc</code></p>
+<p>Alternatively, you can verify the SHA512 signature on the files. For steps see <a href="https://www.apache.org/info/verification.html">here</a>.</p>
+<p>We recommend using PGP signatures as they can provide a much higher level of assurance compared with SHA512.</p>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

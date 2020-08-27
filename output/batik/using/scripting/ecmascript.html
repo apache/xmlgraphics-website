@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache Batik
+  - [Overview](/batik/)
+  - [License](/batik/license.html)
+  - [Download](/batik/download.html)
+  - [Notes](/batik/install.html)
+  - [Status](/batik/status.html)
+  - [Demo](/batik/demo-static.html)
+  - [FAQs](/batik/faq.html)
+  - [Batik Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSBATIK)
+  - [Mailing lists](/batik/mailing-lists.html)
+  - [Contributors](/batik/contributors.html)
+  - [Bug database](https://issues.apache.org/jira/issues/?jql=project%20%3D%20BATIK%20AND%20resolution%20%3D%20Unresolved%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20ORDER%20BY%20priority%20DESC)
+  - [Projects using Batik](/batik/uses.html)
+  - ## Batik Tools
+    - [Overview](/batik/tools/)
+    - [Browser](/batik/tools/browser.html)
+    - [Rasterizer](/batik/tools/rasterizer.html)
+    - [Font converter](/batik/tools/font-converter.html)
+    - [Pretty printer](/batik/tools/pretty-printer.html)
+  - ## Using Batik
+    - [Overview](/batik/using/)
+    - [Architecture](/batik/using/architecture.html)
+    - [Javadoc APIs](/batik/javadoc/)
+    - [DOM API](/batik/using/dom-api.html)
+    - [Parsers](/batik/using/parsers.html)
+    - ### Scripting
+      - [Scripting with ECMAScript](/batik/using/scripting/ecmascript.html)
+      - [Scripting with Java](/batik/using/scripting/java.html)
+      - [Scripting with Security](/batik/using/scripting/security.html)
+    - [SVG generator](/batik/using/svg-generator.html)
+    - [Swing components](/batik/using/swing.html)
+    - [Transcoder API](/batik/using/transcoder.html)
+    - [Extending Batik](/batik/using/extending.html)
+  - ## Development
+    - [Overview](/batik/dev/)
+    - [Branches](/batik/dev/branches.html)
+    - [SVG 1.2 support](/batik/dev/svg12.html)
+    - [Test infrastructure](/batik/dev/test.html)
+
+# Apache&trade; XML Graphics
+  - ### Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache FOP](/fop/)
+  - [Apache XML Graphics Commons](/commons/)
+
+## Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').append(' &raquo;');
+    }
+  $('#navigation > ul > li ul').hide();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 100px;">
+	  <a href="/batik/"><img src="/images/apache-batik-logo.png" alt="The Apache FOP Project" width="256" height="96" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; Batik Project</h2>
+	</div>  
+
+    <h1>Scripting with ECMAScript</h1>
+    
+
+    <h1>Scripting with ECMAScript</h1>
+<p>This page is a brief introduction to scripting SVG documents with ECMAScript, and how Batik’s ECMAScript environment can be extended.</p>
+<h2 id="scriptingBasics">Scripting basics</h2>
+<p>As the ECMAScript language (the standardised version of JavaScript) is one of the most popular scripting languages, and as the SVG specification states that an SVG conforming implementation must support it, SVG documents processed by Batik support scripting with ECMAScript using Mozilla’s ECMAScript interpreter, <a href="http://www.mozilla.org/rhino/">Rhino</a>.</p>
+<p>There are two places in an SVG file where you can put scripts.</p>
+<p>The first one is in the <code>script</code> element, where you can place any code, including function definitions, to be executed just before the document <code>SVGLoad</code> event is fired.</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;svg</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">width=</span><span class="s">&quot;100&quot;</span> <span class="na">height=</span><span class="s">&quot;100&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">&quot;text/ecmascript&quot;</span><span class="nt">&gt;</span>
+    // ECMAScript code to be executed
+  <span class="nt">&lt;/script&gt;</span>
+
+  <span class="c">&lt;!-- Remainder of the document... --&gt;</span>
+<span class="nt">&lt;/svg&gt;</span>
+</pre></div>
+
+
+<p>You can also attach script to respond to user or document events using attributes on SVG elements. As shown in the previous example, the scripting language must be set on the <code>script</code> element. However, for event handling the default language type <code>text/ecmascript</code> is assumed. If you want to change it you can use the <code>contentScriptType</code> attribute on the <code>svg</code> element.</p>
+<p>The event attribute can contain any script code to execute when the event reaches the element (as described by the <a href="http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-flow">DOM event flow</a>) in either the bubbling or at-target phases. The following example will change the <code>rect</code> to be filled in blue when it is clicked.</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;svg</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">width=</span><span class="s">&quot;100&quot;</span> <span class="na">height=</span><span class="s">&quot;100&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">y=</span><span class="s">&quot;0&quot;</span> <span class="na">width=</span><span class="s">&quot;10&quot;</span> <span class="na">height=</span><span class="s">&quot;10&quot;</span>
+        <span class="na">onclick=</span><span class="s">&quot;evt.target.setAttribute(&#39;fill&#39;, &#39;blue&#39;)&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/svg&gt;</span>
+</pre></div>
+
+
+<p>Note that inside the event attribute script, there is a variable called <code>evt</code> that is a reference to the <a href="http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-Event">Event</a> object that represents the event that is being handled.</p>
+<p>For more information on using scripting in SVG you can have a look at:</p>
+<ul>
+<li>
+<p>the <a href="http://www.w3.org/TR/SVG11/script.html">scripting chapter of the SVG specification</a>, for advanced information on scripting in SVG, and</p>
+</li>
+<li>
+<p>the <a href="http://www.ecma-international.org/publications/standards/Ecma-262.htm">ECMAScript specification</a>, for advanced information on the ECMAScript language.</p>
+</li>
+</ul>
+<h2 id="rhinoFeatures">Using Rhino features</h2>
+<p>Rhino has a number of features beyond those supported by standard ECMAScript interpreters, and these can be used with Batik. One useful feature is that ECMAScript code can use Java classes and objects, and not just the standard ECMAScript primitive types and host objects exposed by Batik.</p>
+<p>To create an instance of a Java class from ECMAScript, you first need to import the package in which it resides. This is done using the <code>importPackage</code> global function that Rhino provides. For example, to import the <code>javax.swing.JFrame</code> class, you use:</p>
+<p>importPackage(Packages.javax.swing);</p>
+<p>This then exposes a global property for each class in the <code>javax.swing</code> package that you can use to create a new object of this class, similar to a <code>import javax.swing.*;</code> statement in Java. We can use the exposed <code>JFrame</code> property to create a new instance of this class:</p>
+<p>var frame = new JFrame("My test frame");</p>
+<p>Note how an ECMAScript string value is passed as the parameter to <code>JFrame</code> ’s constructor. Rhino will attempt to convert ECMAScript values into appropriate Java primitive types or objects to make underlying constructor or method calls. In this instance, the ECMAScript string value is converted into a <code>java.lang.String</code> object to be passed to the constructor.</p>
+<p>Now that we have a reference to this Java object, we can call any method on it as we usually would from Java code. The following complete example demonstrates this, where clicking the green circle will pop up a frame:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;svg</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">width=</span><span class="s">&quot;100&quot;</span> <span class="na">height=</span><span class="s">&quot;100&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;circle</span> <span class="na">cx=</span><span class="s">&quot;50&quot;</span> <span class="na">cy=</span><span class="s">&quot;50&quot;</span> <span class="na">r=</span><span class="s">&quot;50&quot;</span> <span class="na">fill=</span><span class="s">&quot;green&quot;</span> <span class="na">onclick=</span><span class="s">&quot;showFrame()&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">&quot;text/ecmascript&quot;</span><span class="nt">&gt;</span>
+    importPackage(Packages.javax.swing);
+
+    function showFrame() {
+      var frame = new JFrame(&quot;My test frame&quot;);
+      var label = new JLabel(&quot;Hello from Java objects created in ECMAScript!&quot;);
+      label.setHorizontalAlignment(SwingConstants.CENTER);
+      frame.getContentPane().add(label);
+      frame.setSize(400, 100);
+      frame.setVisible(true);
+      frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    }
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/svg&gt;</span>
+</pre></div>
+
+
+<p>For more information on scripting Java classes from ECMAScript code, see Rhino's <a href="http://www.mozilla.org/rhino/ScriptingJava.html">Scripting Java</a> document.</p>
+<h2 id="customizingRhino">Customizing the Rhino interpreter</h2>
+<p>A useful example of customization of the Rhino interpreter comes from the fact that the ECMAScript specification doesn’t provide any predefined I/O facilities to interact with the console. However, it is very common for ECMAScript compatible languages to provide a function named <code>print</code> to output messages to the console. We will describe here an example of customization of the Batik Rhino interpreter to add such functionality to it.</p>
+<p>You should first subclass the default Batik ECMAScript interpreter to add the functionality to it as below.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.apache.batik.script.rhino.RhinoInterpreter</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.mozilla.javascript.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.mozilla.javascript.Function</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.mozilla.javascript.Scriptable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.mozilla.javascript.ScriptableObject</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.mozilla.javascript.PropertyException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExtendedRhinoInterpreter</span> <span class="kd">extends</span> <span class="n">RhinoInterpreter</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">ExtendedRhinoInterpreter</span><span class="o">(</span><span class="n">URL</span> <span class="n">documentURL</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">documentURL</span><span class="o">);</span>
+
+        <span class="c1">// Array of functions to put in the global object.</span>
+        <span class="kd">final</span> <span class="n">String</span><span class="o">[]</span> <span class="n">names</span> <span class="o">=</span> <span class="o">{</span> <span class="s">&quot;print&quot;</span> <span class="o">}</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="c1">// Add the functions to the global object.</span>
+            <span class="n">getGlobalObject</span><span class="o">().</span><span class="na">defineFunctionProperties</span>
+                <span class="o">(</span><span class="n">names</span><span class="o">,</span> <span class="n">ExtendedRhinoInterpreter</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
+                 <span class="n">ScriptableObject</span><span class="o">.</span><span class="na">DONTENUM</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">PropertyException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">Error</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">(</span><span class="n">Context</span> <span class="n">cx</span><span class="o">,</span> <span class="n">Scriptable</span> <span class="n">thisObj</span><span class="o">,</span>
+                             <span class="n">Object</span><span class="o">[]</span> <span class="n">args</span><span class="o">,</span> <span class="n">Function</span> <span class="n">funObj</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">args</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">&quot; &quot;</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="c1">// Convert the ECMAScript value into a string form.</span>
+            <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">Context</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>Now, you need to tell to Batik to use this interpreter instead of the default one. For that, you must first define a factory to create instances of your interpreter.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.apache.batik.script.Interpreter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.script.rhino.RhinoInterpreterFactory</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExtendedRhinoInterpreterFactory</span> <span class="kd">extends</span> <span class="n">RhinoInterpreterFactory</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="n">Interpreter</span> <span class="nf">createInterpreter</span><span class="o">(</span><span class="n">URL</span> <span class="n">documentURL</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">isSVG12</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">ExtendedRhinoInterpreter</span><span class="o">(</span><span class="n">documentURL</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>Then, you must build an <a href="../../javadoc/org/apache/batik/script/InterpreterPool.html">IntepreterPool</a> that will use this factory, and then set the pool on the <a href="../../javadoc/org/apache/batik/bridge/BridgeContext.html">BridgeContext</a> of your application.</p>
+<div class="highlight"><pre><span></span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">batik</span><span class="o">.</span><span class="na">bridge</span><span class="o">.</span><span class="na">BridgeContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="o">...;</span>
+<span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">batik</span><span class="o">.</span><span class="na">script</span><span class="o">.</span><span class="na">InterpreterPool</span> <span class="n">pool</span> <span class="o">=</span>
+    <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">batik</span><span class="o">.</span><span class="na">script</span><span class="o">.</span><span class="na">InterpreterPool</span><span class="o">();</span>
+<span class="n">InterpreterFactory</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ExtendedRhinoInterpreterFactory</span><span class="o">();</span>
+
+<span class="c1">// Register the interpreter factory for all four MIME types that</span>
+<span class="c1">// Batik normally supports for ECMAScript.</span>
+<span class="n">pool</span><span class="o">.</span><span class="na">putInterpreterFactory</span><span class="o">(</span><span class="s">&quot;text/ecmascript&quot;</span><span class="o">,</span> <span class="n">f</span><span class="o">);</span>
+<span class="n">pool</span><span class="o">.</span><span class="na">putInterpreterFactory</span><span class="o">(</span><span class="s">&quot;text/javascript&quot;</span><span class="o">,</span> <span class="n">f</span><span class="o">);</span>
+<span class="n">pool</span><span class="o">.</span><span class="na">putInterpreterFactory</span><span class="o">(</span><span class="s">&quot;application/ecmascript&quot;</span><span class="o">,</span> <span class="n">f</span><span class="o">);</span>
+<span class="n">pool</span><span class="o">.</span><span class="na">putInterpreterFactory</span><span class="o">(</span><span class="s">&quot;application/javascript&quot;</span><span class="o">,</span> <span class="n">f</span><span class="o">);</span>
+<span class="n">ctx</span><span class="o">.</span><span class="na">setIntepreterPool</span><span class="o">(</span><span class="n">pool</span><span class="o">);</span>
+</pre></div>
+
+
+<p>For example if you are using the Batik SVG browser application you should be able to use the previous piece of code on a subclass of the <a href="../../javadoc/org/apache/batik/swing/JSVGCanvas.html">JSVGCanvas</a> class in the <code>createBridgeContext()</code> method.</p>
+<p>For further information on working with Rhino, consult the <a href="http://www.mozilla.org/rhino/">Rhino website</a>.</p>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

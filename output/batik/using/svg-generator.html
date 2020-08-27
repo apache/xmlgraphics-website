@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache Batik
+  - [Overview](/batik/)
+  - [License](/batik/license.html)
+  - [Download](/batik/download.html)
+  - [Notes](/batik/install.html)
+  - [Status](/batik/status.html)
+  - [Demo](/batik/demo-static.html)
+  - [FAQs](/batik/faq.html)
+  - [Batik Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSBATIK)
+  - [Mailing lists](/batik/mailing-lists.html)
+  - [Contributors](/batik/contributors.html)
+  - [Bug database](https://issues.apache.org/jira/issues/?jql=project%20%3D%20BATIK%20AND%20resolution%20%3D%20Unresolved%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20ORDER%20BY%20priority%20DESC)
+  - [Projects using Batik](/batik/uses.html)
+  - ## Batik Tools
+    - [Overview](/batik/tools/)
+    - [Browser](/batik/tools/browser.html)
+    - [Rasterizer](/batik/tools/rasterizer.html)
+    - [Font converter](/batik/tools/font-converter.html)
+    - [Pretty printer](/batik/tools/pretty-printer.html)
+  - ## Using Batik
+    - [Overview](/batik/using/)
+    - [Architecture](/batik/using/architecture.html)
+    - [Javadoc APIs](/batik/javadoc/)
+    - [DOM API](/batik/using/dom-api.html)
+    - [Parsers](/batik/using/parsers.html)
+    - ### Scripting
+      - [Scripting with ECMAScript](/batik/using/scripting/ecmascript.html)
+      - [Scripting with Java](/batik/using/scripting/java.html)
+      - [Scripting with Security](/batik/using/scripting/security.html)
+    - [SVG generator](/batik/using/svg-generator.html)
+    - [Swing components](/batik/using/swing.html)
+    - [Transcoder API](/batik/using/transcoder.html)
+    - [Extending Batik](/batik/using/extending.html)
+  - ## Development
+    - [Overview](/batik/dev/)
+    - [Branches](/batik/dev/branches.html)
+    - [SVG 1.2 support](/batik/dev/svg12.html)
+    - [Test infrastructure](/batik/dev/test.html)
+
+# Apache&trade; XML Graphics
+  - ### Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache FOP](/fop/)
+  - [Apache XML Graphics Commons](/commons/)
+
+## Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').append(' &raquo;');
+    }
+  $('#navigation > ul > li ul').hide();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 100px;">
+	  <a href="/batik/"><img src="/images/apache-batik-logo.png" alt="The Apache FOP Project" width="256" height="96" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; Batik Project</h2>
+	</div>  
+
+    <h1>SVG Generator: SVGGraphics2D</h1>
+    
+
+    <h1>SVG Generator: SVGGraphics2D</h1>
+<div class="figure"> ![Flow diagram illustrating that Java programs can have their graphics converted to SVG and then viewed in any SVG viewer](images/svggen.jpg "") </div>
+
+<p>As SVG is emerging as a promising graphics format for a wide range of domains and applications, bridging it with Java becomes important. This page explains how Batik’s <a href="../javadoc/org/apache/batik/svggen/SVGGraphics2D.html">SVGGraphics2D</a>, referred to as the SVG Generator, makes this possible.</p>
+<h2 id="whatIsIt">The SVGGraphics2D class</h2>
+<p>On the Java platform, all rendering goes through the <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/awt/Graphics2D.html">Graphics2D</a> abstract class, which offers methods such as <code>drawRect</code>, <code>fillRect</code>, and <code>drawString</code>. There are specialized implementations of this abstract class for each type of output, such as a screen or a printer. <code>SVGGraphics2D</code> is a new implementation of that interface that generates SVG content instead of drawing to a screen or a printer.</p>
+<p><code>SVGGraphics2D</code> has the following features:</p>
+<ul>
+<li>
+<p>it allows applications to export their graphics into SVG format,</p>
+</li>
+<li>
+<p>it does not require any modification of the graphics code to export to SVG, and</p>
+</li>
+<li>
+<p>it offers the user the ability to use the DOM API to manipulate the generated document.</p>
+</li>
+</ul>
+<div class="figure"> ![Diagram illustrating how the SVGGraphics2D inherits from Graphics2D, and uses Document to generate a DOM tree](images/svggenHighLevelArchi.jpg "") </div>
+
+<p>The above figure shows how the generator works with the DOM API. The W3C has defined an API for representing XML content with a Java object. That API allows programmers to manipulate, create, and/or modify XML content in memory. The DOM API contains interfaces such as <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html">Document</a>, <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Element.html">Element</a>, and <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Attr.html">Attr</a>, which model the Java programming language equivalent of XML documents, elements and attributes.</p>
+<p>The generator manages a tree of DOM objects that represent the SVG content corresponding to the rendering calls made on the <code>SVGGraphics2D</code> instance. In other words, every time a program invokes a rendering method, such as <code>fillRect</code>, on a <code>SVGGraphics2D</code> instance, a new DOM object, representing the SVG equivalent, is appended to the DOM tree. For example, a <code>rect</code> element will be appended after the <code>fillRect</code> method has been invoked).</p>
+<p>The programmer, using this generator, can then access the DOM tree to further manipulate it or can directly write the content to an output stream, as we see in the following section.</p>
+<h2 id="howToUse">How to use SVGGraphics2D</h2>
+<p>From the figure in the previous section we can see that in order for an instance of <code>SVGGraphics2D</code> to build the SVG content (the DOM tree), an instance of a <code>Document</code> class is needed. The DOM tree is an in-memory representation of the SVG document, which can be further manipulated by the user using DOM API or be streamed out by a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/Writer.html">Writer</a> object.</p>
+<p>The following example program demonstrates how to generate SVG content from Java graphics.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.awt.Rectangle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Graphics2D</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Color</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.Writer</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.OutputStreamWriter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.batik.svggen.SVGGraphics2D</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.dom.GenericDOMImplementation</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.w3c.dom.Document</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.w3c.dom.DOMImplementation</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestSVGGen</span> <span class="o">{</span>
+
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">paint</span><span class="o">(</span><span class="n">Graphics2D</span> <span class="n">g2d</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">g2d</span><span class="o">.</span><span class="na">setPaint</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">red</span><span class="o">);</span>
+    <span class="n">g2d</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="k">new</span> <span class="n">Rectangle</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">));</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+
+    <span class="c1">// Get a DOMImplementation.</span>
+    <span class="n">DOMImplementation</span> <span class="n">domImpl</span> <span class="o">=</span>
+      <span class="n">GenericDOMImplementation</span><span class="o">.</span><span class="na">getDOMImplementation</span><span class="o">();</span>
+
+    <span class="c1">// Create an instance of org.w3c.dom.Document.</span>
+    <span class="n">String</span> <span class="n">svgNS</span> <span class="o">=</span> <span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="o">;</span>
+    <span class="n">Document</span> <span class="n">document</span> <span class="o">=</span> <span class="n">domImpl</span><span class="o">.</span><span class="na">createDocument</span><span class="o">(</span><span class="n">svgNS</span><span class="o">,</span> <span class="s">&quot;svg&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+    <span class="c1">// Create an instance of the SVG Generator.</span>
+    <span class="n">SVGGraphics2D</span> <span class="n">svgGenerator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGGraphics2D</span><span class="o">(</span><span class="n">document</span><span class="o">);</span>
+
+    <span class="c1">// Ask the test to render into the SVG Graphics2D implementation.</span>
+    <span class="n">TestSVGGen</span> <span class="n">test</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TestSVGGen</span><span class="o">();</span>
+    <span class="n">test</span><span class="o">.</span><span class="na">paint</span><span class="o">(</span><span class="n">svgGenerator</span><span class="o">);</span>
+
+    <span class="c1">// Finally, stream out SVG to the standard output using</span>
+    <span class="c1">// UTF-8 encoding.</span>
+    <span class="kt">boolean</span> <span class="n">useCSS</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span> <span class="c1">// we want to use CSS style attributes</span>
+    <span class="n">Writer</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OutputStreamWriter</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="o">);</span>
+    <span class="n">svgGenerator</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">out</span><span class="o">,</span> <span class="n">useCSS</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>We can see that generating SVG content from our <code>TestSVGGen</code> instance is a three step process:</p>
+<ol>
+<li>
+<p>Create an instance of <code>org.w3c.dom.Document</code> that the generator will use to build its XML content, and create an SVG generator using the <code>Document</code> instance.</p>
+<div class="highlight"><pre><span></span><span class="c1">// Get a DOMImplementation.</span>
+<span class="n">DOMImplementation</span> <span class="n">domImpl</span> <span class="o">=</span>
+    <span class="n">GenericDOMImplementation</span><span class="o">.</span><span class="na">getDOMImplementation</span><span class="o">();</span>
+
+<span class="c1">// Create an instance of org.w3c.dom.Document.</span>
+<span class="n">String</span> <span class="n">svgNS</span> <span class="o">=</span> <span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="o">;</span>
+<span class="n">Document</span> <span class="n">document</span> <span class="o">=</span> <span class="n">domImpl</span><span class="o">.</span><span class="na">createDocument</span><span class="o">(</span><span class="n">svgNS</span><span class="o">,</span> <span class="s">&quot;svg&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+<span class="c1">// Create an instance of the SVG Generator.</span>
+<span class="n">SVGGraphics2D</span> <span class="n">svgGenerator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGGraphics2D</span><span class="o">(</span><span class="n">document</span><span class="o">);</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>Invoke the rendering code on our SVG generator. In our example, we invoke <code>TestSVGGen</code> ‘s <code>paint</code> method:</p>
+<div class="highlight"><pre><span></span><span class="c1">// Ask the test to render into the SVG Graphics2D implementation.</span>
+<span class="n">TestSVGGen</span> <span class="n">test</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TestSVGGen</span><span class="o">();</span>
+<span class="n">test</span><span class="o">.</span><span class="na">paint</span><span class="o">(</span><span class="n">svgGenerator</span><span class="o">);</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>Stream out the SVG content. The SVG generator can stream its content into any <code>java.io.Writer</code>. In our example, we stream the content to the standard output stream:</p>
+<div class="highlight"><pre><span></span><span class="c1">// Finally, stream out SVG to the standard output using</span>
+<span class="c1">// UTF-8 encoding.</span>
+<span class="kt">boolean</span> <span class="n">useCSS</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span> <span class="c1">// we want to use CSS style attributes</span>
+<span class="n">Writer</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OutputStreamWriter</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="o">);</span>
+<span class="n">svgGenerator</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">out</span><span class="o">,</span> <span class="n">useCSS</span><span class="o">);</span>
+</pre></div>
+
+
+</li>
+</ol>
+<p>SVG has <a href="http://www.w3.org/TR/SVG11/styling.html#AlternativesForStyling">two ways to specify styling properties</a>, such as the fill color: presentation attributes (one XML attribute per property) or the CSS <code>style</code> attribute (any number of properties in one CSS inline stylesheet). The <code>useCss</code> parameter allows the user to control that option.</p>
+<h2 id="custom">SVG Generator customization</h2>
+<p>In the previous section, we have just seen that the SVG generation process can be customized to output SVG styling properties as presentation attributes or CSS inline stylesheets. In this section we will talk about some examples of more advanced customizations.</p>
+<p>Instead of creating the <code>SVGGraphics2D</code> just by using the <code>Document</code> that will be used as a factory for creating the SVG elements, we can use the constructor that uses an <a href="../javadoc/org/apache/batik/svggen/SVGGeneratorContext.html">SVGGeneratorContext</a> instance. By providing your own <code>SVGGeneratorContext</code> instance, you will be able to do advanced customization. You will find below several examples of possible customizations.</p>
+<h3 id="Have-your-own-comment-in-the-generated-SVG-file">Have your own comment in the generated SVG file</h3>
+<p>We begin with the simplest possible example. If you integrate the Batik SVG generator in your own Java application, you may want to specialize the comment generated in the XML code.</p>
+<div class="highlight"><pre><span></span><span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span>
+    <span class="n">GenericDOMImplementation</span><span class="o">.</span><span class="na">getDOMImplementation</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">svgNS</span> <span class="o">=</span> <span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="o">;</span>
+<span class="n">Document</span> <span class="n">myFactory</span> <span class="o">=</span> <span class="n">impl</span><span class="o">.</span><span class="na">createDocument</span><span class="o">(</span><span class="n">svgNS</span><span class="o">,</span> <span class="s">&quot;svg&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+<span class="n">SVGGeneratorContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">SVGGeneratorContext</span><span class="o">.</span><span class="na">createDefault</span><span class="o">(</span><span class="n">myFactory</span><span class="o">);</span>
+<span class="n">ctx</span><span class="o">.</span><span class="na">setComment</span><span class="o">(</span><span class="s">&quot;Generated by FooApplication with Batik SVG Generator&quot;</span><span class="o">);</span>
+<span class="n">SVGGraphics2D</span> <span class="n">g2d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGGraphics2D</span><span class="o">(</span><span class="n">ctx</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+</pre></div>
+
+
+<h2 id="Use-embedded-SVG-Fonts-in-the-generated-SVG-file">Use embedded SVG Fonts in the generated SVG file</h2>
+<p>In order to have a self-contained SVG file that doesn't have to use system fonts to be displayed, you can embed the fonts you used for drawing strings in the SVG file through the SVG fonts facility.</p>
+<div class="highlight"><pre><span></span><span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span>
+    <span class="n">GenericDOMImplementation</span><span class="o">.</span><span class="na">getDOMImplementation</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">svgNS</span> <span class="o">=</span> <span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="o">;</span>
+<span class="n">Document</span> <span class="n">myFactory</span> <span class="o">=</span> <span class="n">impl</span><span class="o">.</span><span class="na">createDocument</span><span class="o">(</span><span class="n">svgNS</span><span class="o">,</span> <span class="s">&quot;svg&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+<span class="n">SVGGeneratorContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">SVGGeneratorContext</span><span class="o">.</span><span class="na">createDefault</span><span class="o">(</span><span class="n">myFactory</span><span class="o">);</span>
+<span class="n">ctx</span><span class="o">.</span><span class="na">setEmbeddedFontsOn</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="n">SVGGraphics2D</span> <span class="n">g2d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGGraphics2D</span><span class="o">(</span><span class="n">ctx</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+</pre></div>
+
+
+<h2 id="Customizing-the-way-images-are-stored">Customizing the way images are stored</h2>
+<p>Every time you call one of the <code>drawImage</code> methods provided by the <code>Graphics2D</code> interface, a default representation of your image is created in a location and put in a default file. For instance, a base64 encoding is created and embedded in the SVG file by default. Alternatively, you can choose to have your images written to separate files in a predefined directory, in one of the two raster formats required by the SVG specification: JPEG or PNG.</p>
+<p>You can change the default behavior by explicitly providing the image handler to be used by the SVG generator. Once again, you use the <code>SVGGeneratorContext</code> for this. In the example below, all images are converted to PNG format and written to directory <code>res/images</code>.</p>
+<div class="highlight"><pre><span></span><span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span>
+    <span class="n">GenericDOMImplementation</span><span class="o">.</span><span class="na">getDOMImplementation</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">svgNS</span> <span class="o">=</span> <span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="o">;</span>
+<span class="n">Document</span> <span class="n">myFactory</span> <span class="o">=</span> <span class="n">impl</span><span class="o">.</span><span class="na">createDocument</span><span class="o">(</span><span class="n">svgNS</span><span class="o">,</span> <span class="s">&quot;svg&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+<span class="n">SVGGeneratorContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">SVGGeneratorContext</span><span class="o">.</span><span class="na">createDefault</span><span class="o">(</span><span class="n">myFactory</span><span class="o">);</span>
+<span class="n">GenericImageHandler</span> <span class="n">ihandler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ImageHandlerPNGEncoder</span><span class="o">(</span><span class="s">&quot;res/images&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+<span class="n">ctx</span><span class="o">.</span><span class="na">setImageHandler</span><span class="o">(</span><span class="n">ihandler</span><span class="o">);</span>
+<span class="n">SVGGraphics2D</span> <span class="n">g2d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGGraphics2D</span><span class="o">(</span><span class="n">ctx</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+</pre></div>
+
+
+<p>Using the default image handlers results in a new copy of the image data being written to the SVG file or an external file, for every single <code>drawImage</code> call. If you use the same images over and over again, then this may result in an SVG file containing a lot of redundant data. At the price of a slight performance penalty during initial generation of the SVG DOM tree, you can choose to have your image data reused. For this you use a specialized image handler, as shown below.</p>
+<div class="highlight"><pre><span></span><span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span>
+    <span class="n">GenericDOMImplementation</span><span class="o">.</span><span class="na">getDOMImplementation</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">svgNS</span> <span class="o">=</span> <span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="o">;</span>
+<span class="n">Document</span> <span class="n">myFactory</span> <span class="o">=</span> <span class="n">impl</span><span class="o">.</span><span class="na">createDocument</span><span class="o">(</span><span class="n">svgNS</span><span class="o">,</span> <span class="s">&quot;svg&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+<span class="n">SVGGeneratorContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">SVGGeneratorContext</span><span class="o">.</span><span class="na">createDefault</span><span class="o">(</span><span class="n">myFactory</span><span class="o">);</span>
+
+<span class="c1">// Reuse our embedded base64-encoded image data.</span>
+<span class="n">GenericImageHandler</span> <span class="n">ihandler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CachedImageHandlerBase64Encoder</span><span class="o">();</span>
+<span class="n">ctx</span><span class="o">.</span><span class="na">setGenericImageHandler</span><span class="o">(</span><span class="n">ihandler</span><span class="o">);</span>
+
+<span class="n">SVGGraphics2D</span> <span class="n">g2d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGGraphics2D</span><span class="o">(</span><span class="n">ctx</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+</pre></div>
+
+
+<p>With the caching image handlers, it is even possible to reuse the same copy of your image data across several different SVG documents. Just keep a reference to the image handler, and pass it to the <code>SVGGraphics2D</code> instance used for generating the SVG DOM tree. The following simplified example shows how different SVG trees might be created by separate SVG generators, efficiently storing any common images just once.</p>
+<div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">MySVGGenerator</span> <span class="o">{</span>
+
+  <span class="c1">// The image handler will write all images files to &quot;res/images&quot;.</span>
+  <span class="kd">private</span> <span class="kd">static</span> <span class="n">ImageHandler</span> <span class="n">ihandler</span> <span class="o">=</span>
+    <span class="k">new</span> <span class="n">CachedImageHandlerPNGEncoder</span><span class="o">(</span><span class="s">&quot;res/images&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">generateSVG</span><span class="o">(</span><span class="n">JPanel</span> <span class="n">myCanvas</span><span class="o">,</span> <span class="n">OutputStream</span> <span class="n">outStream</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">DOMImplementation</span> <span class="n">domImpl</span> <span class="o">=</span>
+      <span class="n">GenericDOMImplementation</span><span class="o">.</span><span class="na">getDOMImplementation</span><span class="o">();</span>
+    <span class="n">Document</span> <span class="n">myFactory</span> <span class="o">=</span> <span class="n">domImpl</span><span class="o">.</span><span class="na">createDocument</span><span class="o">(</span><span class="n">svgNS</span><span class="o">,</span> <span class="s">&quot;svg&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+    <span class="n">SVGGeneratorContext</span> <span class="n">ctx</span> <span class="o">=</span>
+      <span class="n">SVGGeneratorContext</span><span class="o">.</span><span class="na">createDefault</span><span class="o">(</span><span class="n">myFactory</span><span class="o">);</span>
+    <span class="n">ctx</span><span class="o">.</span><span class="na">setGenericImageHandler</span><span class="o">(</span><span class="n">ihandler</span><span class="o">);</span>
+
+    <span class="n">SVGGraphics2D</span> <span class="n">svgGenerator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGGraphics2D</span><span class="o">(</span><span class="n">ctx</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+
+    <span class="c1">// Create the SVG DOM tree.</span>
+    <span class="n">myCanvas</span><span class="o">.</span><span class="na">paintComponent</span><span class="o">(</span><span class="n">svgGenerator</span><span class="o">);</span>
+
+    <span class="n">Writer</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OutputStreamWriter</span><span class="o">(</span><span class="n">outStream</span><span class="o">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="o">);</span>
+    <span class="n">svgGenerator</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">out</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<h2 id="Customizing-the-generated-SVG-style">Customizing the generated SVG style</h2>
+<p>Your needs in matter of styling may be different from the two provided options (XML presentation attributes or CSS inline stylesheets). For example, you may want to put the CSS properties in a SVG <code>style</code> element section and reference them through the class attribute. In this case you will need to define a new <a href="../javadoc/org/apache/batik/svggen/StyleHandler.html">StyleHandler</a> as below.</p>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StyleSheetStyleHandler</span> <span class="kd">implements</span> <span class="n">StyleHandler</span> <span class="o">{</span>
+
+  <span class="c1">// The CDATA section that holds the CSS stylesheet.</span>
+  <span class="kd">private</span> <span class="n">CDATASection</span> <span class="n">styleSheet</span><span class="o">;</span>
+
+  <span class="c1">// Build the handler with a reference to the stylesheet section.</span>
+  <span class="kd">public</span> <span class="nf">StyleSheetStyleHandler</span><span class="o">(</span><span class="n">CDATASection</span> <span class="n">styleSheet</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">styleSheet</span> <span class="o">=</span> <span class="n">styleSheet</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setStyle</span><span class="o">(</span><span class="n">Element</span> <span class="n">element</span><span class="o">,</span> <span class="n">Map</span> <span class="n">styleMap</span><span class="o">,</span>
+             <span class="n">SVGGeneratorContext</span> <span class="n">generatorContext</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Iterator</span> <span class="n">iter</span> <span class="o">=</span> <span class="n">styleMap</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+
+    <span class="c1">// Create a new class in the style sheet.</span>
+    <span class="n">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">generatorContext</span><span class="o">.</span><span class="na">getIDGenerator</span><span class="o">().</span><span class="na">generateID</span><span class="o">(</span><span class="s">&quot;C&quot;</span><span class="o">);</span>
+    <span class="n">styleSheet</span><span class="o">.</span><span class="na">appendData</span><span class="o">(</span><span class="s">&quot;.&quot;</span><span class="o">+</span> <span class="n">id</span> <span class="o">+</span><span class="s">&quot; {&quot;</span><span class="o">);</span>
+
+    <span class="c1">// Append each key/value pair.</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">iter</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+      <span class="n">String</span> <span class="n">key</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span> <span class="n">iter</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+      <span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span> <span class="n">styleMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+      <span class="n">styleSheet</span><span class="o">.</span><span class="na">appendData</span><span class="o">(</span><span class="n">key</span> <span class="o">+</span> <span class="s">&quot;:&quot;</span> <span class="o">+</span> <span class="n">value</span> <span class="o">+</span> <span class="s">&quot;;&quot;</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="n">styleSheet</span><span class="o">.</span><span class="na">appendData</span><span class="o">(</span><span class="s">&quot;}\n&quot;</span><span class="o">);</span>
+
+    <span class="c1">// Reference the stylesheet class on the element to be styled.</span>
+    <span class="n">element</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;class&quot;</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>Then you can create and use an <code>SVGGraphics2D</code> with a correctly configured <code>SVGGeneratorContext</code>.</p>
+<div class="highlight"><pre><span></span><span class="c1">// Configure the SVGGraphics2D for a given Document myFactory.</span>
+<span class="n">SVGGeneratorContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">SVGGeneratorContext</span><span class="o">.</span><span class="na">createDefault</span><span class="o">(</span><span class="n">myFactory</span><span class="o">);</span>
+<span class="n">CDATASection</span> <span class="n">styleSheet</span> <span class="o">=</span> <span class="n">myFactory</span><span class="o">.</span><span class="na">createCDATASection</span><span class="o">(</span><span class="s">&quot;&quot;</span><span class="o">);</span>
+<span class="n">ctx</span><span class="o">.</span><span class="na">setStyleHandler</span><span class="o">(</span><span class="k">new</span> <span class="n">StyleSheetStyleHandler</span><span class="o">(</span><span class="n">styleSheet</span><span class="o">));</span>
+<span class="n">SVGGraphics2D</span> <span class="n">g2d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGGraphics2D</span><span class="o">(</span><span class="n">ctx</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+
+<span class="c1">// Use the g2d to draw (e.g., component.paint(g2d)).</span>
+
+<span class="c1">// Add a stylesheet to the definition section.</span>
+<span class="n">SVGSVGElement</span> <span class="n">root</span> <span class="o">=</span> <span class="o">(</span><span class="n">SVGSVGElement</span><span class="o">)</span> <span class="n">g2d</span><span class="o">.</span><span class="na">getRoot</span><span class="o">();</span>
+<span class="n">Element</span> <span class="n">defs</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="na">getElementById</span><span class="o">(</span><span class="n">SVGSyntax</span><span class="o">.</span><span class="na">ID_PREFIX_GENERIC_DEFS</span><span class="o">);</span>
+<span class="n">Element</span> <span class="n">style</span> <span class="o">=</span> <span class="n">myFactory</span><span class="o">.</span><span class="na">createElementNS</span>
+  <span class="o">(</span><span class="n">SVGSyntax</span><span class="o">.</span><span class="na">SVG_NAMESPACE_URI</span><span class="o">,</span> <span class="n">SVGSyntax</span><span class="o">.</span><span class="na">SVG_STYLE_TAG</span><span class="o">);</span>
+<span class="n">style</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">SVGSyntax</span><span class="o">.</span><span class="na">SVG_TYPE_ATTRIBUTE</span><span class="o">,</span> <span class="s">&quot;text/css&quot;</span><span class="o">);</span>
+<span class="n">style</span><span class="o">.</span><span class="na">appendChild</span><span class="o">(</span><span class="n">styleSheet</span><span class="o">);</span>
+<span class="n">defs</span><span class="o">.</span><span class="na">appendChild</span><span class="o">(</span><span class="n">style</span><span class="o">);</span>
+
+<span class="c1">// Dump the root content to a given Writer myWriter.</span>
+<span class="n">g2d</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">root</span><span class="o">,</span> <span class="n">myWriter</span><span class="o">);</span>
+</pre></div>
+
+
+<h2 id="Extending-Paint-object-to-SVG-element-translation">Extending Paint object to SVG element translation</h2>
+<p>The <code>SVGGraphics2D</code> is able to generate SVG elements for generic Java 2D objects, but you sometimes have your own classes such as implementations of the Java 2D <a href="https://docs.oracle.com/javase/7/docs/api/java/awt/Paint.html">Paint</a> interface. In this case, you will need to write an <a href="../javadoc/org/apache/batik/svggen/ExtensionHandler.html">ExtensionHandler</a> that you will set on your <code>SVGGeneratorContext</code>.</p>
+<p>In the following example we define the first draft of an <code>ExtensionHandler</code> allowing to translate a Batik implementation of the <code>Paint</code> interface named <a href="../javadoc/org/apache/batik/ext/awt/LinearGradientPaint.html">LinearGradientPaint</a>.</p>
+<div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">MyExtensionHandler</span> <span class="kd">extends</span> <span class="n">DefaultExtensionHandler</span> <span class="o">{</span>
+
+  <span class="kd">public</span> <span class="n">SVGPaintDescriptor</span> <span class="nf">handlePaint</span><span class="o">(</span><span class="n">Paint</span> <span class="n">paint</span><span class="o">,</span>
+                      <span class="n">SVGGeneratorContext</span> <span class="n">generatorCtx</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">paint</span> <span class="k">instanceof</span> <span class="n">LinearGradientPaint</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">LinearGradientPaint</span> <span class="n">gradient</span> <span class="o">=</span> <span class="o">(</span><span class="n">LinearGradientPaint</span><span class="o">)</span> <span class="n">paint</span><span class="o">;</span>
+
+      <span class="c1">// Create a new SVG &#39;linearGradient&#39; element to represent the</span>
+      <span class="c1">// LinearGradientPaint being used.</span>
+      <span class="n">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">generatorCtx</span><span class="o">.</span><span class="na">getIDGenerator</span><span class="o">().</span><span class="na">generateID</span><span class="o">(</span><span class="s">&quot;gradient&quot;</span><span class="o">);</span>
+      <span class="n">Document</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">generatorCtx</span><span class="o">.</span><span class="na">getDOMFactory</span><span class="o">();</span>
+      <span class="n">Element</span> <span class="n">grad</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="na">createElementNS</span>
+        <span class="o">(</span><span class="n">SVGSyntax</span><span class="o">.</span><span class="na">SVG_NAMESPACE_URI</span><span class="o">,</span>
+         <span class="n">SVGSyntax</span><span class="o">.</span><span class="na">SVG_LINEAR_GRADIENT_TAG</span><span class="o">);</span>
+
+      <span class="c1">// Set the relevant attributes on the &#39;linearGradient&#39; element.</span>
+      <span class="n">grad</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">SVGSyntax</span><span class="o">.</span><span class="na">SVG_ID_ATTRIBUTE</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+      <span class="n">grad</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">SVGSyntax</span><span class="o">.</span><span class="na">SVG_GRADIENT_UNITS_ATTRIBUTE</span><span class="o">,</span>
+                <span class="n">SVGSyntax</span><span class="o">.</span><span class="na">SVG_USER_SPACE_ON_USE_VALUE</span><span class="o">);</span>
+      <span class="n">Point2D</span> <span class="n">pt</span> <span class="o">=</span> <span class="n">gradient</span><span class="o">.</span><span class="na">getStartPoint</span><span class="o">();</span>
+      <span class="n">grad</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;x1&quot;</span><span class="o">,</span> <span class="n">pt</span><span class="o">.</span><span class="na">getX</span><span class="o">());</span>
+      <span class="n">grad</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;y1&quot;</span><span class="o">,</span> <span class="n">pt</span><span class="o">.</span><span class="na">getY</span><span class="o">());</span>
+      <span class="n">pt</span> <span class="o">=</span> <span class="n">gradient</span><span class="o">.</span><span class="na">getEndPoint</span><span class="o">();</span>
+      <span class="n">grad</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;x2&quot;</span><span class="o">,</span> <span class="n">pt</span><span class="o">.</span><span class="na">getX</span><span class="o">());</span>
+      <span class="n">grad</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;y2&quot;</span><span class="o">,</span> <span class="n">pt</span><span class="o">.</span><span class="na">getY</span><span class="o">());</span>
+
+      <span class="k">switch</span> <span class="o">(</span><span class="n">gradient</span><span class="o">.</span><span class="na">getCycleMethod</span><span class="o">())</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="n">MultipleGradientPaint</span><span class="o">.</span><span class="na">REFLECT</span><span class="o">:</span>
+        <span class="n">grad</span><span class="o">.</span><span class="na">setAttributeNS</span>
+          <span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">SVGSyntax</span><span class="o">.</span><span class="na">SVG_SPREAD_METHOD_ATTRIBUTE</span><span class="o">,</span>
+           <span class="n">SVGSyntax</span><span class="o">.</span><span class="na">SVG_REFLECT_VALUE</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+      <span class="k">case</span> <span class="n">MultipleGradientPaint</span><span class="o">.</span><span class="na">REPEAT</span><span class="o">:</span>
+        <span class="n">grad</span><span class="o">.</span><span class="na">setAttributeNS</span>
+          <span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">SVGSyntax</span><span class="o">.</span><span class="na">SVG_SPREAD_METHOD_ATTRIBUTE</span><span class="o">,</span>
+           <span class="n">SVGSyntax</span><span class="o">.</span><span class="na">SVG_REPEAT_VALUE</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+      <span class="c1">// &#39;pad&#39; is the default...</span>
+      <span class="o">}</span>
+
+      <span class="c1">// Here we should write the transform of the gradient</span>
+      <span class="c1">// in the transform attribute...</span>
+
+      <span class="c1">// Here we should write the stops of the gradients as</span>
+      <span class="c1">// children elements...</span>
+
+      <span class="k">return</span> <span class="k">new</span> <span class="n">SVGPaintDescriptor</span>
+        <span class="o">(</span><span class="s">&quot;url(#&quot;</span> <span class="o">+</span> <span class="n">ref</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="o">,</span> <span class="n">SVGSyntax</span><span class="o">.</span><span class="na">SVG_OPAQUE_VALUE</span><span class="o">,</span> <span class="n">grad</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+      <span class="c1">// Let the default mechanism do its job.</span>
+      <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>You should then set it on the <code>SVGGeneratorContext</code> by using the <code>setExtensionHandler</code> method.</p>
+<div class="highlight"><pre><span></span><span class="n">SVGGeneratorContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">SVGGeneratorContext</span><span class="o">.</span><span class="na">createDefault</span><span class="o">(</span><span class="n">myFactory</span><span class="o">);</span>
+<span class="n">ctx</span><span class="o">.</span><span class="na">setExtensionHandler</span><span class="o">(</span><span class="k">new</span> <span class="n">MyExtensionHandler</span><span class="o">());</span>
+<span class="n">SVGGraphics2D</span> <span class="n">g2d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGGraphics2D</span><span class="o">(</span><span class="n">ctx</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+</pre></div>
+
+
+<h1 id="view">How to view the generated SVG document</h1>
+<p>The following code example illustrates how to view the SVG content generated by an <code>SVGGraphics2D</code> object.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.geom.*</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.batik.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.svggen.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SVGDOMImplementation</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.w3c.dom.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.w3c.dom.svg.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ViewGeneratedSVGDemo</span> <span class="o">{</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// Create an SVG document.</span>
+    <span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="o">.</span><span class="na">getDOMImplementation</span><span class="o">();</span>
+    <span class="n">String</span> <span class="n">svgNS</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="o">.</span><span class="na">SVG_NAMESPACE_URI</span><span class="o">;</span>
+    <span class="n">SVGDocument</span> <span class="n">doc</span> <span class="o">=</span> <span class="o">(</span><span class="n">SVGDocument</span><span class="o">)</span> <span class="n">impl</span><span class="o">.</span><span class="na">createDocument</span><span class="o">(</span><span class="n">svgNS</span><span class="o">,</span> <span class="s">&quot;svg&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+    <span class="c1">// Create a converter for this document.</span>
+    <span class="n">SVGGraphics2D</span> <span class="n">g</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGGraphics2D</span><span class="o">(</span><span class="n">doc</span><span class="o">);</span>
+
+    <span class="c1">// Do some drawing.</span>
+    <span class="n">Shape</span> <span class="n">circle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Ellipse2D</span><span class="o">.</span><span class="na">Double</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">50</span><span class="o">);</span>
+    <span class="n">g</span><span class="o">.</span><span class="na">setPaint</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">red</span><span class="o">);</span>
+    <span class="n">g</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">circle</span><span class="o">);</span>
+    <span class="n">g</span><span class="o">.</span><span class="na">translate</span><span class="o">(</span><span class="mi">60</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+    <span class="n">g</span><span class="o">.</span><span class="na">setPaint</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">green</span><span class="o">);</span>
+    <span class="n">g</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">circle</span><span class="o">);</span>
+    <span class="n">g</span><span class="o">.</span><span class="na">translate</span><span class="o">(</span><span class="mi">60</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+    <span class="n">g</span><span class="o">.</span><span class="na">setPaint</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">blue</span><span class="o">);</span>
+    <span class="n">g</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">circle</span><span class="o">);</span>
+    <span class="n">g</span><span class="o">.</span><span class="na">setSVGCanvasSize</span><span class="o">(</span><span class="k">new</span> <span class="n">Dimension</span><span class="o">(</span><span class="mi">180</span><span class="o">,</span> <span class="mi">50</span><span class="o">));</span>
+
+    <span class="c1">// Populate the document root with the generated SVG content.</span>
+    <span class="n">Element</span> <span class="n">root</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="na">getDocumentElement</span><span class="o">();</span>
+    <span class="n">g</span><span class="o">.</span><span class="na">getRoot</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
+
+    <span class="c1">// Display the document.</span>
+    <span class="n">JSVGCanvas</span> <span class="n">canvas</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSVGCanvas</span><span class="o">();</span>
+    <span class="n">JFrame</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JFrame</span><span class="o">();</span>
+    <span class="n">f</span><span class="o">.</span><span class="na">getContentPane</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">canvas</span><span class="o">);</span>
+    <span class="n">canvas</span><span class="o">.</span><span class="na">setSVGDocument</span><span class="o">(</span><span class="n">doc</span><span class="o">);</span>
+    <span class="n">f</span><span class="o">.</span><span class="na">pack</span><span class="o">();</span>
+    <span class="n">f</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

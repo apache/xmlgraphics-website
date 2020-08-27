@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache Batik
+  - [Overview](/batik/)
+  - [License](/batik/license.html)
+  - [Download](/batik/download.html)
+  - [Notes](/batik/install.html)
+  - [Status](/batik/status.html)
+  - [Demo](/batik/demo-static.html)
+  - [FAQs](/batik/faq.html)
+  - [Batik Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSBATIK)
+  - [Mailing lists](/batik/mailing-lists.html)
+  - [Contributors](/batik/contributors.html)
+  - [Bug database](https://issues.apache.org/jira/issues/?jql=project%20%3D%20BATIK%20AND%20resolution%20%3D%20Unresolved%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20ORDER%20BY%20priority%20DESC)
+  - [Projects using Batik](/batik/uses.html)
+  - ## Batik Tools
+    - [Overview](/batik/tools/)
+    - [Browser](/batik/tools/browser.html)
+    - [Rasterizer](/batik/tools/rasterizer.html)
+    - [Font converter](/batik/tools/font-converter.html)
+    - [Pretty printer](/batik/tools/pretty-printer.html)
+  - ## Using Batik
+    - [Overview](/batik/using/)
+    - [Architecture](/batik/using/architecture.html)
+    - [Javadoc APIs](/batik/javadoc/)
+    - [DOM API](/batik/using/dom-api.html)
+    - [Parsers](/batik/using/parsers.html)
+    - ### Scripting
+      - [Scripting with ECMAScript](/batik/using/scripting/ecmascript.html)
+      - [Scripting with Java](/batik/using/scripting/java.html)
+      - [Scripting with Security](/batik/using/scripting/security.html)
+    - [SVG generator](/batik/using/svg-generator.html)
+    - [Swing components](/batik/using/swing.html)
+    - [Transcoder API](/batik/using/transcoder.html)
+    - [Extending Batik](/batik/using/extending.html)
+  - ## Development
+    - [Overview](/batik/dev/)
+    - [Branches](/batik/dev/branches.html)
+    - [SVG 1.2 support](/batik/dev/svg12.html)
+    - [Test infrastructure](/batik/dev/test.html)
+
+# Apache&trade; XML Graphics
+  - ### Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache FOP](/fop/)
+  - [Apache XML Graphics Commons](/commons/)
+
+## Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').append(' &raquo;');
+    }
+  $('#navigation > ul > li ul').hide();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 100px;">
+	  <a href="/batik/"><img src="/images/apache-batik-logo.png" alt="The Apache FOP Project" width="256" height="96" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; Batik Project</h2>
+	</div>  
+
+    <h1>Frequently Asked Questions</h1>
+    
+
+    <h1>Frequently Asked Questions</h1>
+<h2 id="Questions">Questions</h2>
+<h3 id="part-general">1. General questions</h3>
+<h4 id="what-is-batik">1.1. What is Batik?</h4>
+<p>Batik is a Java-based toolkit for applications or applets that want to use images in the <a href="http://www.w3.org/TR/SVG11/">Scalable Vector Graphics (SVG)</a> format for various purposes, such as display, generation or manipulation.</p>
+<h4 id="what-is-svg">1.2. What is SVG?</h4>
+<p><a href="http://www.w3.org/TR/SVG11/">SVG</a> (Scalable Vector Graphics) is an open-standard language for describing two-dimensional (2D) graphics in XML. It is a Recommendation from the <a href="http://www.w3.org/">W3C</a>. SVG lets you describe rich images with features such as gradients, transparency, filter effects and animation.</p>
+<p>SVG has three types of graphic objects: shapes (e.g., paths consisting of straight lines and curves), images and text. Graphical objects can be grouped, styled, transformed and composited (e.g., drawn with transparency). SVG has a large set of static features which includes nested transformations, clipping paths, masking and filter effects.</p>
+<p>In addition, SVG images can be dynamic and interactive. A rich set of event handlers such as for mouse movement and clicks can be assigned to any SVG graphical object. These handlers can invoke scripts, which, in response to an event, can dynamically modify the SVG graphic through the SVG Document Object Model (DOM) API, allowing, for example scripts to change the color or location of graphical elements.</p>
+<p>SVG graphical elements can be animated through scripting. Alternatively, animation sequences can be expressed directly in XML because SVG leverages the <a href="http://www.w3.org/TR/smil-animation">SMIL Animation</a> specification for multimedia, another <a href="http://www.w3.org/">W3C</a> specification.</p>
+<h4 id="what-can-i-do">1.3. What can I do with Batik?</h4>
+<p>Batik contains several <a href="using/architecture.html">core modules</a> which can be used independently or jointly to <strong>generate SVG content</strong> (see the <a href="using/svg-generator.html">SVG Generator</a> and <a href="using/dom-api.html">SVG DOM</a> implementation documentation) <strong>view SVG content</strong> (see the <a href="using/swing.html">JSVGCanvas</a>) or <strong>convert to and from the SVG format</strong> (see the <a href="using/transcoder.html">SVG Transcoder</a> page).</p>
+<p>In addition, Batik contains <a href="using/architecture.html#lowLevelComponents">low level modules</a>, such as an object-oriented Graphic Vector Toolkit (GVT), a set of low level parsers specific to the SVG syntax and a set of <a href="using/extending.html">extensions</a> to the Java 2D API (such as sophisticated fill types and filter effects).</p>
+<p>Finally, Batik comes with <a href="tools/">packaged applications</a> to help developers get familiar with the code and be quickly able to use the various modules: Squiggle, an <a href="tools/browser.html">SVG browser</a> (in the <code>org.apache.batik.apps.svgbrowser</code> package) an <a href="tools/rasterizer.html">SVG rasterizer</a> (in the <code>org.apache.batik.apps.rasterizer</code> package), a <a href="tools/font-converter.html">Font converter</a> (in the <code>org.apache.batik.apps.ttf2svg package</code>) and an <a href="tools/pretty-printer.html">SVG pretty printer</a> (in the <code>org.apache.batik.apps.svgpp package</code>).</p>
+<p>Squiggle, the <a href="tools/browser.html">SVG browser</a> can display SVG documents and lets the user zoom, pan and rotate any SVG document, view the SVG source, link between SVG documents, view a tree representation of the SVG DOM and more. One important component of the SVG viewer is the <code>org.apache.batik.swing.JSVGCanvas</code> component, which can be plugged in to any Java application or applet to provide SVG viewing capability.</p>
+<p>The <a href="tools/rasterizer.html">SVG rasterizer</a> lets the user convert SVG files to raster formats such as JPEG, PNG or TIFF. It contains an extensible mechanism so that arbitrary raster formats can be added. For example, the rasterizer lets you create one SVG file with a special effect (e.g., shadows, gradients, etc.), turn it into a PNG image, then modify the SVG source (e.g., modify a piece of text or a color), and generate another PNG image from it. This way, you can easily generate a series of images sharing a common theme or look and feel to post on a web site. (Note that the rasterizer can also be used on a web server to do this conversion automatically).</p>
+<p>The <a href="tools/font-converter.html">SVG Font Converter</a> lets the user easily create an <a href="http://www.w3.org/TR/SVG11/fonts.html">SVG Font</a> for a set of characters from a TrueType Font file. That SVG Font definition can be embedded in a document using the characters. This allows users to create SVG documents that are self contained and do not rely on system fonts, and guarantees that the SVG file will be displayed exactly as it was authored on all platforms.</p>
+<p>The <a href="tools/pretty-printer.html">SVG Pretty Printer</a> is a convenience tool to pretty print an SVG document, which means that you can reformat any existing SVG document to produce a nicely formatted and highly legible version.</p>
+<p>These applications show that Batik can be used client side (the browser can be used on any client machine) and server side (the rasterizer can be used to serve SVG images to client machines that do not have SVG support).</p>
+<h4 id="why-at-apache">1.4. Why do we have such a project at Apache?</h4>
+<p>The <a href="http://xmlgraphics.apache.org/charter.html">mission of the Apache XML Graphics Project</a> is to promote the use of XML-based graphics by “providing robust, full-featured, commercial-quality, and freely available software packages for the conversion of XML to graphical output and for related components”. Batik as an open source implementation of a key format for today’s and tomorrow’s web fits well in this mission.</p>
+<h4 id="how-does-batik-relate">1.5. How does Batik relate to other Apache projects?</h4>
+<p>Batik is used in <a href="http://cocoon.apache.org/">Cocoon</a> for server side rasterization of SVG images. In addition, the Batik is used in the <a href="http://xmlgraphics.apache.org/fop/">FOP</a> project to convert SVG images to PDF format.</p>
+<h4 id="how-did-it-start">1.6. How did it start?</h4>
+<p>Batik started out because several teams doing SVG related projects decided to join efforts with the idea that the whole will be greater than the sum of the parts. The following companies or institutions are part of the team that contributed and/or created the initial Batik project, during the fall of 2000:</p>
+<ul>
+<li>
+<p><a href="http://www.csiro.au/">CSIRO</a></p>
+</li>
+<li>
+<p><a href="http://www.ilog.com/">ILOG</a></p>
+</li>
+<li>
+<p><a href="http://koala.ilog.fr/">Koala Team</a></p>
+</li>
+<li>
+<p><a href="http://www.kodak.com/">Eastman Kodak Company</a></p>
+</li>
+<li>
+<p><a href="http://www.sun.com/">Sun Microsystems, Inc.</a></p>
+</li>
+</ul>
+<p>In addition, the Batik project is supported by <a href="http://www.ibm.com/">IBM</a>.</p>
+<p>We encourage anyone to participate. As with all ASF projects, all efforts are volunteer-based. We are looking for individuals to work with us on fulfilling our goals for Batik in the spirit of collaborative open-source software development.</p>
+<h4 id="what-is-next">1.7. Where is Batik going? What is next?</h4>
+<p>The SVG implementation is not complete (see the current <a href="status.html">status</a>), and there is more work to do to achieve a fully functional viewer.</p>
+<p>Batik 1.1 supports all static SVG features, linking and a limited support for scripting, and the 1.5 release completed support for scripting and dynamic documents. With Batik 1.6 came many improvements to the implementation of SVG DOM functions, bug fixes, performance improvements, and the beginning of some SVG 1.2 support. Declarative animation and some SVG 1.2 features were introduced in Batik 1.7beta1. The 1.7 release brought mostly bug fixes. Completion of remaining SVG 1.1 functionality and the addition of Further SVG 1.2 functionality should be supported in the 2.0 release.</p>
+<p>The type of applications (e.g., transcoding applications) that can or will be added to Batik depends on contributions and feedback.</p>
+<h4 id="how-can-i-create-svg">1.8. How can I create and author SVG content?</h4>
+<p>Well, you can always use a plain text editor such as vi or xemacs, but there are many graphic authoring packages that can export SVG documents and that will let you author SVG content visually.</p>
+<p>You can get a list of tools exporting SVG from the <a href="http://www.w3.org/Graphics/SVG/SVG-Implementations#edit">SVG implementation</a> section of the SVG Home page on the W3C web site. You can also imagine building a tool on top of Batik: feel free to contribute!</p>
+<p>Authoring is one way of creating SVG content, and graphic authoring packages are useful for that purpose. However, there are many types of graphics which can be generated, such as stock quotes, statistical data, etc. For these types of graphics, there are many ways to generate SVG content. For example, if your data (say stock information) is contained in an XML document, you could use XSLT to transform your XML data into SVG. If your data comes from a database and you retrieve that data in a servlet on a Web server (e.g., using JDBC), you could use the Java binding for the DOM API to generate an SVG document from the database data. You could also use Batik’s SVG generator and use the Java 2D API to generate that graphic.</p>
+<p>The following URLs will be useful to learn more about each of these solutions:</p>
+<ul>
+<li>
+<p><a href="http://xml.apache.org/xalan-j/index.html">Xalan for XSLT</a></p>
+</li>
+<li>
+<p><a href="http://xml.apache.org/xerces-j/index.html">Xerces</a> and <a href="http://java.sun.com/xml/download.html">Crimson</a> for the DOM API</p>
+</li>
+<li>
+<p><a href="using/svg-generator.html">SVG Generator</a></p>
+</li>
+</ul>
+<h4 id="what-other-svg-products-exist">1.9. What other SVG products are out there?</h4>
+<p>There are many companies supporting SVG and you will find a list of available implementations on the <a href="http://www.w3.org/Graphics/SVG/SVG-Implementations">W3C’s SVG implementation page</a>.</p>
+<h4 id="svg-spec">1.10. Where can I find the SVG specification?</h4>
+<p>The <a href="http://www.w3.org/TR/SVG11/">SVG specification</a> is available from the <a href="http://www.w3.org/">W3C web site</a>.</p>
+<h4 id="how-much-does-batik-implement">1.11. How much of SVG does Batik implement?</h4>
+<p>The <a href="status.html">status page</a> shows how much of the SVG specification Batik implements by showing which of the tests in the <a href="status.html#beSuiteStatus">SVG Basic Effectivity test suite</a> Batik successfully passes.</p>
+<h4 id="benefits-of-svg-being-xml">1.12. What are the benefits of SVG being an XML grammar?</h4>
+<p>Being an XML grammar means SVG can leverage work done around XML, and SVG actually leverages other grammars such as <a href="http://www.w3.org/TR/2001/REC-xlink-20010627/">XLink</a>, for linking and <a href="http://www.w3.org/TR/2001/REC-smil-animation-20010904/#AnimationFramework">SMIL</a> for the animation.</p>
+<p>Beyond the use and mix with other XML syntaxes, being an XML grammar lets SVG benefit from the plethora of XML tools that make it so easy to manipulate, generate, search and edit XML files.</p>
+<h4 id="what-is-in-a-name">1.13. Where does the name come from?</h4>
+<p>Batik is a highly evolved art tradition that developed in Java (one of the islands comprising what is now called Indonesia). Batik is generally thought of as the quintessentially Indonesian textile. Motifs of flowers, twining plants, leaves, buds, birds, butterflies, fish, insects and geometric forms are rich in symbolic association and variety; there are about three thousand recorded batik patterns.</p>
+<p>We think that Batik gracefully evokes Java, graphics and high-quality, terms that constitute the core of the toolkit.</p>
+<p><a href="http://www.expat.or.id/info/batik.html">This page</a> shows examples of what Batik textures look like.</p>
+<h3 id="batik-help">2. Getting started with Apache Batik/SVG</h3>
+<h4 id="system-requirements">2.1. What are the system requirements to run Batik?</h4>
+<p>Batik is written in the Java language and requires a version 7 implementation at this time.</p>
+<h4 id="how-to-install">2.2. How do I install Batik?</h4>
+<p>You will need a <a href="http://java.sun.com/">JRE/JDK</a> version 7 or above to run Batik.</p>
+<p>To install Batik you need to <a href="/batik/download.html">download</a> the binary or source distribution and unzip it on your computer.</p>
+<p>You can have a look at the <a href="install.html">installation instructions</a> for more information.</p>
+<h4 id="how-can-i-see-demo">2.3. How can I see a demo?</h4>
+<p>You can see an online demonstration of Squiggle the SVG browser on the <a href="demo.html">demo page</a>. Alternatively, you can <a href="/batik/download.html">download</a> Batik or see <a href="tools/browser.html">screenshots</a> of the Batik SVG viewer, images created from the <a href="tools/rasterizer.html">rasterizer</a> and an <a href="using/svg-generator.html">example</a> of how to use the <code>SVGGraphics2D</code> generator.</p>
+<h4 id="what-scripting-languages-batik-supports">2.4. What scripting languages can I use in my SVG files?</h4>
+<p>A limited support of scripting in SVG files is provided with the current version of Batik (script are executed but dynamic update is not supported).</p>
+<p>Batik can recognize the following scripting languages:</p>
+<ul>
+<li>
+<p>ECMAScript thanks to the <a href="http://www.mozilla.org/rhino/">Mozilla Rhino</a> JavaScript engine included in the distribution,</p>
+</li>
+<li>
+<p>Python for which you need to download the <a href="http://www.jython.org">Jython</a> engine, and</p>
+</li>
+<li>
+<p>Tcl for which you need to download the <a href="http://dev.scriptics.com/software/java/">Jacl</a> engine.</p>
+</li>
+</ul>
+<p>To get more information on how to install optional scripting languages you can have a look at the <a href="install.html">installation instructions</a>.</p>
+<h3 id="batik-error">3. Troubleshooting Apache Batik</h3>
+<h4 id="NoSuchMethodException">3.1. When I try to run Batik it results in a NoSuchMethodException. What is the problem?</h4>
+<p>There is certainly something wrong with your classpath. Clear your <code>CLASSPATH</code> environment variable and be sure to remove all the libraries which use the W3C’s DOM bindings from <code>jre/lib/ext</code> before running any of the Batik’s applications.</p>
+<h4 id="display-does-not-update">3.2. When I change the document in Java it doesn’t update the display, even if I call repaint?</h4>
+<p>There are two common causes for this. The first is that the <a href="javadoc/org/apache/batik/swing/JSVGCanvas.html">JSVGCanvas</a> doesn’t know it’s a dynamic document. Normally Batik detects this by looking for script elements but when you modify the document from Java it can’t tell. So call
+myJSVGCanvas.setDocumentState(JSVGCanvas.ALWAYS_DYNAMIC);
+before loading the document (with <code>setURI</code>, <code>setDocument</code>, <code>setSVGDocument</code>, etc.).</p>
+<p>The second common reason is that the changes aren’t made in the <a href="javadoc/org/apache/batik/bridge/UpdateManager.html">UpdateManager</a> ’s thread. You can run code in the <code>UpdateManager</code> ’s thread with the following:
+UpdateManager um = JSVGCanvas.getUpdateManager();
+um.getUpdateRunnableQueue().invokeLater(Runnable);
+ <strong>NOTE:</strong> The update manager only becomes available after the first rendering completes. You can be notified when this happens by registering a <code>GVTTreeRendererListener</code>.</p>
+<h4 id="must-mouseover-to-change">3.3. When I change the document in Java it only updates if I move the mouse over the canvas?</h4>
+<p>The most common causes for this, is that the changes are not made in the <code>UpdateManager</code> ’s thread. See previous FAQ for example code to run code in the Update Manager’s thread. Moving the mouse works because it delivers the mouse move events in the update thread, and after a runnable completes in the <code>UpdateManager</code> ’s thread it checks if the canvas needs repainting.</p>
+<h4 id="changes-are-not-rendered">3.4. When I create new SVG elements or modify some SVG attributes through the DOM API, from ECMAScript, nothing happens, the changes are not rendered. Why not?</h4>
+<p>A common problem is that script contain the wrong DOM calls to create elements or modify attributes.</p>
+<p>SVG elements need to be created in the SVG namespace. For example, to create a <code>rect</code> element, you should use
+document.createElementNS(svgNS, "rect");
+(where <code>svgNS</code> is equal to <code>"http://www.w3.org/2000/svg"</code>), which appropriately creates the <code>rect</code> element in the SVG namespace. A call to
+document.createElement("rect")
+creates an element with the name <code>rect</code> but which does not belong to the SVG namespace. As such, it is ignored by Batik.</p>
+<p>Most SVG attributes belong to what is called the “per element type partition namespace” (see the <a href="http://www.w3.org/TR/REC-xml-names">Namespaces in XML</a> specification). The appropriate way to set attributes on an SVG element is a call to <code>setAttributeNS</code> with a namespace value of <code>null</code>, for example:
+elt.setAttributeNS(null, "width", "40");
+In the Batik SVG DOM implementation, you can also use a call to <code>setAttribute</code> and you can write
+elt.setAttribute("width", "40")
+However, it is important to know that some implementations make a difference between <code>setAttribute(x, y)</code> and <code>setAttributeNS(null, x, y)</code>, so it is goo practice to use <code>setAttributeNS</code> which is the only guaranteed interoperable way of setting attributes in a namespace aware DOM implementation.</p>
+<p>Finally, for attributes which belong to a specific namespace, like the the <code>href</code> attribute on the <code>image</code> element, you have to use the <code>setAttributeNS</code> method with the XLink namespace. For example, assuming <code>img</code> references an <code>image</code> DOM <code>Element</code>, you can modify the href as follows:
+img.setAttributeNS(xlinkNS, "xlink:href", "myImage.jpg");
+where <code>xlinkNS</code> is equal to <code>"http://www.w3.org/1999/xlink"</code>.</p>
+<p>For more information on common authoring pitfalls, see Jonathan Watt’s <a href="http://jwatt.org/svg/authoring/">SVG Authoring Guidelines</a>.</p>
+<h4 id="null-updatemanager">3.5. When I get the UpdateManager from the canvas sometimes it is null, why?</h4>
+<p>The <code>JSVGCanvas</code> is highly asynchronous so when you call <code>setURI</code>, <code>setDocument</code> or <code>setSVGDocument</code> they return essentially immediately. Behind the scenes, the canvas creates the rendering tree and does a first rendering after dispatching the document <code>SVGLoad</code> event. Only after this first rendering does the <code>UpdateManger</code> become available.</p>
+<h4 id="why-updatemanager">3.6. Why do I have to go through the UpdateManager to run my code? Can’t you just synchronize the DOM?</h4>
+<p>It would be possible to synchronize individual calls to the DOM, however in general this is almost useless for the way DOM works. For example creating a single rectangle element takes approximately 6 individual DOM calls. So higher level synchronization is needed.</p>
+<p>The use of a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.html">Runnable</a> is a common way of accomplishing synchronization for a block of code. This is essentially the approach that Swing takes (all Swing modification should take place in the Swing thread). It was considered to use the Swing event thread, but this would lock the user interface while scripts were working.</p>
+<h4 id="extension-tags-work-with-source-not-binary">3.7. I can use the Batik extension tags with the source distribution but not with the binary distribution. What am I missing?</h4>
+<p>When running from the source distribution you automatically get the service provider entries for the Batik extension elements (such as <code>regularPolygon</code> and <code>star</code>). We chose not to include these by default in the binary distribution for the Batik applications.</p>
+<p>There is a subdirectory called <code>extensions</code> that has jar files that enable the extended elements from Batik.</p>
+<h4 id="red-circles">3.8. Why do I get red circles when I view the samples/extensions files?</h4>
+<p>You are using the binary distribution. This distribution does not include support for our example extensions (they are just examples and other people can do more sophisticated things).</p>
+<p>If you want to view these examples you need to use the extension enabled versions of the applications in the <code>extensions</code> subdirectory.</p>
+<h4 id="dom-modifications-do-not-display">3.9. I am modifying the DOM after displaying it in the JSVGCanvas, but my changes aren’t shown (even if I call repaint).</h4>
+<p>For efficiency, if Batik loads a static document it doesn’t set up any dynamic support. Batik normally decides whether a document is dynamic by checking if it contains any <code>script</code> elements or event handler attributes. However, if your Java application is modifying the DOM directly there may be no script elements. In this case you need to tell Batik to set up dynamic support regardless.</p>
+<p>You can inform the <code>JSVGCanvas</code> that a document should be handled dynamically by calling the <code>setDocumentState</code> method, just before loading the document:</p>
+<div class="highlight"><pre><span></span><span class="n">JSVGCanvas</span> <span class="n">myCanvas</span> <span class="o">=</span> <span class="o">...;</span>
+<span class="n">myCanvas</span><span class="o">.</span><span class="na">setDocumentState</span><span class="o">(</span><span class="n">JSVGCanvas</span><span class="o">.</span><span class="na">ALWAYS_DYNAMIC</span><span class="o">);</span>
+<span class="n">myCanvas</span><span class="o">.</span><span class="na">setURI</span><span class="o">(</span><span class="s">&quot;myFile.svg&quot;</span><span class="o">);</span>
+</pre></div>
+
+
+<h3 id="batik-fails-with-fop-on-org.w3c.xxx">3.10. I am trying to use Batik and FOP together but Batik does not work and fails on the org.w3c.* packages. What is happening?</h3>
+<p>Both FOP and Batik use the <code>org.w3c.</code> * packages. Depending on the version of FOP and Batik, Batik has been using a version of these packages which is more recent than the one in the <code>xml-apis.jar</code> file FOP uses. However, if the <code>xml-apis.jar</code> file that comes with the FOP distribution is loaded before the Batik jar files, then the version coming with FOP takes precedence (i.e., that is the version the Java Virtual Machine loads). Because that version is incompatible with Batik, you encounter this problem.</p>
+<p>The solution is to either repackage the <code>xml-apis.jar</code> file with the classes in the Batik distribution (you will need the Batik source distribution to do that), or you will need to make sure the Batik jars are loaded before FOP’s <code>xml-apis.jar</code>, for example by putting Batik’s jar file before FOP’s in your classpath. If you are copying your jar files to <code>.../jre/lib/ext</code>, you can simply remove the FOP <code>xml-apis.jar</code> file from that directory.</p>
+<h4 id="how-to-checkout-latest-batik-via-svn">3.11. How do I checkout the latest SVN version of Batik?</h4>
+<p>You just have to follow the instructions on the <a href="/batik/download.html">download page</a>.</p>
+<h4 id="mac-os-x-messed-up-svg-files">3.12. I’m using Mac OS X, and some of the SVG files I view are messed up (things appear clipped or out of place). What do I need to do to fix this?</h4>
+<p>As of Mac OS X release 10.1.1 there still appears to be problems in the Apple implementation of the Java 2D APIs. The true source of these problems and/or workarounds have yet to be identified (although the problems appear to be closely tied to a “gstack underflow” error message from the Apple JVM). We are interested in finding the source of these problems and reasonable workarounds, so if you know what causes these errors the Batik team would be very interested in hearing from you (either directly or through the user/developer mailing lists).</p>
+<p>Other things to be aware of on Mac OS X, due to fixes for other problems with Java 2D under Mac OS X, you may find that some filtering operations take significantly more memory than on other platforms. This will be especially true for deeply nested filter trees (where the result of one filtering operation is filtered by another filtering operation).</p>
+<p>Finally a few hints on avoiding problems under Mac OS X. The bugs seems to be triggered by filters, and pure raster SVG documents have not been found to cause problems. The use of the <code>filterRes</code> attribute on the <code>filter</code> element seems especially problematic. The bug isn’t 100% reproducible, so while some content exhibits the problem, if you play with the document enough it will often “fix” itself for a while, then later it will go back to being broken (which indicates that the problem may be some sort of race condition in the JVM).</p>
+<h4 id="mac-os-x-batik-demo-crash">3.13. I cannot run the Batik demo on Mac OS X (10.1.1). The Batik splash screen hangs. What is happening?</h4>
+<p>The Batik <a href="demo.html">demo</a> uses Java Web Start. Java Web Start (under the <code>Applications/Utilities</code> folder), lets you start a Java application from a web browser. You can see the debug traces by enabling the Java console for Java Web Start. If you do, you will see that there is a <code>java.lang.NoSuchMethodError</code> exception thrown.</p>
+<p>This is happening because the Java Web Start jar file (<code>javaws.jar</code> in <code>/Applications/Utilities/Java Web
+            Start/Content/MacOS</code>) contains an older version of the DOM bindings.</p>
+<p>One work around is to manually patch the <code>javaws.jar</code> file to remove the DOM bindings so that they do not take precedence over the Batik ones.</p>
+<h3 id="batik-dev">4. How do I contribute to Batik Development?</h3>
+<h4 id="how-can-i-contribute">4.1. How can I contribute to Apache Batik development?</h4>
+<p>The Batik Project is an open volunteer project in the spirit of the <a href="https://www.apache.org">Apache Software Foundation</a> (ASF). This means that there are many ways to contribute to the project, either with direct participation (coding, documenting, answering questions, proposing ideas, reporting bugs, suggesting bug-fixes, etc.) or by resource donation (publicity, hardware, software, conference presentations, speeches, etc.). Applications that use the Batik modules, such as tools or extensions, are of special interest to the project.</p>
+<p>The process for contributing to Batik is the same as for other Java projects at Apache. A formal description of that process can be found on the <a href="http://jakarta.apache.org/guidelines/index.html">Jakarta</a> web site. You can also view a list of <a href="contributors.html">who has contributed to Batik</a>.</p>
+<p>For direct participation, we suggest that you subscribe to the <a href="mailing-lists.html">Batik mailing lists</a> and to checkout the <a href="http://svn.apache.org/viewcvs.cgi/xmlgraphics/batik/">latest code</a>.</p>
+<h4 id="submit-patches">4.2. How do I submit patches or bug fixes?</h4>
+<p>You can submit bug fixes and patches to the <a href="mailto:batik-dev@xmlgraphics.apache.org">Batik developers</a> mailing list and you can enter bugs in <a href="http://issues.apache.org/bugzilla/buglist.cgi?query_format=specific&amp;bug_status=__open__&amp;product=Batik">Bugzilla</a>.</p>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

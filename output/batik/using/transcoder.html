@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache Batik
+  - [Overview](/batik/)
+  - [License](/batik/license.html)
+  - [Download](/batik/download.html)
+  - [Notes](/batik/install.html)
+  - [Status](/batik/status.html)
+  - [Demo](/batik/demo-static.html)
+  - [FAQs](/batik/faq.html)
+  - [Batik Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSBATIK)
+  - [Mailing lists](/batik/mailing-lists.html)
+  - [Contributors](/batik/contributors.html)
+  - [Bug database](https://issues.apache.org/jira/issues/?jql=project%20%3D%20BATIK%20AND%20resolution%20%3D%20Unresolved%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20ORDER%20BY%20priority%20DESC)
+  - [Projects using Batik](/batik/uses.html)
+  - ## Batik Tools
+    - [Overview](/batik/tools/)
+    - [Browser](/batik/tools/browser.html)
+    - [Rasterizer](/batik/tools/rasterizer.html)
+    - [Font converter](/batik/tools/font-converter.html)
+    - [Pretty printer](/batik/tools/pretty-printer.html)
+  - ## Using Batik
+    - [Overview](/batik/using/)
+    - [Architecture](/batik/using/architecture.html)
+    - [Javadoc APIs](/batik/javadoc/)
+    - [DOM API](/batik/using/dom-api.html)
+    - [Parsers](/batik/using/parsers.html)
+    - ### Scripting
+      - [Scripting with ECMAScript](/batik/using/scripting/ecmascript.html)
+      - [Scripting with Java](/batik/using/scripting/java.html)
+      - [Scripting with Security](/batik/using/scripting/security.html)
+    - [SVG generator](/batik/using/svg-generator.html)
+    - [Swing components](/batik/using/swing.html)
+    - [Transcoder API](/batik/using/transcoder.html)
+    - [Extending Batik](/batik/using/extending.html)
+  - ## Development
+    - [Overview](/batik/dev/)
+    - [Branches](/batik/dev/branches.html)
+    - [SVG 1.2 support](/batik/dev/svg12.html)
+    - [Test infrastructure](/batik/dev/test.html)
+
+# Apache&trade; XML Graphics
+  - ### Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache FOP](/fop/)
+  - [Apache XML Graphics Commons](/commons/)
+
+## Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').append(' &raquo;');
+    }
+  $('#navigation > ul > li ul').hide();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 100px;">
+	  <a href="/batik/"><img src="/images/apache-batik-logo.png" alt="The Apache FOP Project" width="256" height="96" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; Batik Project</h2>
+	</div>  
+
+    <h1>Transcoder API</h1>
+    
+
+    <h1>Transcoder API</h1>
+<p>The goal of the transcoder API (package <code>org.apache.batik.transcoder</code>) is to provide a generic API for transcoding an input to an output. First, this document explains the basic transcoder API that <a href="../javadoc/org/apache/batik/transcoder/Transcoder.html">Transcoder</a>, <a href="../javadoc/org/apache/batik/transcoder/TranscoderInput.html">TranscoderInput</a> and <a href="../javadoc/org/apache/batik/transcoder/TranscoderOutput.html">TranscoderOutput</a> define, and thus all transcoders have in common. Next, it describes how to use the image transcoder API (package <code>org.apache.batik.transcoder.image</code>), which lets you rasterize an SVG document fragment to a raster image such as JPEG, PNG or TIFF.</p>
+<h2 id="transcoderAPI">The transcoder API</h2>
+<p>The <code>org.apache.batik.transcoder</code> package defines 5 major classes:</p>
+<p>Transcoder
+:
+The <a href="../javadoc/org/apache/batik/transcoder/Transcoder.html">Transcoder</a> interface defines the interface that all transcoders implement. You can transcode a specific input using a specific output by invoking the <code>transcode</code> method. Although there is no assumption on the input and output format, a specific transcoder may or may not support a particular type of input or output. For example, the image transcoders accept an SVG <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html">Document</a>, a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/Reader.html">Reader</a>, an <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/InputStream.html">InputStream</a>, or a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/net/URI.html">URI</a> as an input but only supports a byte stream for the output.</p>
+<p>TranscoderInput
+:
+The <a href="../javadoc/org/apache/batik/transcoder/TranscoderInput.html">TranscoderInput</a> interface defines the input of a transcoder. There are various ways to create an input and the most common are already part of the API. The default implementation lets you create an input using a <code>org.w3c.dom.Document</code>, a <code>Reader</code>, an <code>InputStream</code>, a <code>org.xml.sax.XMLReader</code>, or a <code>URI</code>.</p>
+<p>TranscoderOutput
+:
+The <a href="../javadoc/org/apache/batik/transcoder/TranscoderOutput.html">TranscoderOutput</a> interface defines the output of a transcoder. There are various ways to create an output and the most commons are already part of the API. The default implementation lets you create an output using a <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html">Document</a>, a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/Writer.html">Writer</a>, an <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/OutputStream.html">OutputStream</a>, a <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/xml/sax/XMLFilter.html">XMLFilter</a>, or a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/net/URI.html">URI</a>.</p>
+<p>TranscodingHints
+:
+The <a href="../javadoc/org/apache/batik/transcoder/TranscodingHints.html">TranscodingHints</a> class contains different hints that can be used to control the various options or parameters of a transcoder. Each transcoder provides its own set of hints. A hint is specified by (key, value) pair. For example, the <a href="../javadoc/org/apache/batik/transcoder/image/JPEGTranscoder.html">JPEGTranscoder</a> provides a hint to control the encoding quality.</p>
+<p>ErrorHandler
+:
+The <a href="../javadoc/org/apache/batik/transcoder/ErrorHandler.html">ErrorHandler</a> class provides a way to get any errors or warnings that might occur while transcoding. A default implementation is provided but you can, for example, implement your own handler that displays a dialog instead of stack trace.</p>
+<h2 id="howtousetranscoderAPI">How to use the image transcoder API</h2>
+<p>The <code>org.apache.batik.transcoder.image</code> package provides an easy way to transcode an SVG document to a raster image such as JPEG, PNG or TIFF. Additional raster image formats can be added by subclassing the <code>ImageTranscoder</code> class and implementing the <code>writeImage</code> method. Although, in next sections, the examples will use the JPEG transcoder, the PNG transcoder works the same way.</p>
+<h3 id="createImage">Creating an image</h3>
+<p>The following example, using the <code>JPEGTranscoder</code>, shows how to transform an SVG document to a JPEG image.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.batik.transcoder.image.JPEGTranscoder</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.transcoder.TranscoderInput</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.transcoder.TranscoderOutput</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SaveAsJPEG</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+
+        <span class="c1">// Create a JPEG transcoder</span>
+        <span class="n">JPEGTranscoder</span> <span class="n">t</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JPEGTranscoder</span><span class="o">();</span>
+
+        <span class="c1">// Set the transcoding hints.</span>
+        <span class="n">t</span><span class="o">.</span><span class="na">addTranscodingHint</span><span class="o">(</span><span class="n">JPEGTranscoder</span><span class="o">.</span><span class="na">KEY_QUALITY</span><span class="o">,</span>
+                   <span class="k">new</span> <span class="n">Float</span><span class="o">(</span><span class="mf">.8</span><span class="o">));</span>
+
+        <span class="c1">// Create the transcoder input.</span>
+        <span class="n">String</span> <span class="n">svgURI</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]).</span><span class="na">toURL</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+        <span class="n">TranscoderInput</span> <span class="n">input</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TranscoderInput</span><span class="o">(</span><span class="n">svgURI</span><span class="o">);</span>
+
+        <span class="c1">// Create the transcoder output.</span>
+        <span class="n">OutputStream</span> <span class="n">ostream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&quot;out.jpg&quot;</span><span class="o">);</span>
+        <span class="n">TranscoderOutput</span> <span class="n">output</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TranscoderOutput</span><span class="o">(</span><span class="n">ostream</span><span class="o">);</span>
+
+        <span class="c1">// Save the image.</span>
+        <span class="n">t</span><span class="o">.</span><span class="na">transcode</span><span class="o">(</span><span class="n">input</span><span class="o">,</span> <span class="n">output</span><span class="o">);</span>
+
+        <span class="c1">// Flush and close the stream.</span>
+        <span class="n">ostream</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">ostream</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>The code creates a <code>JPEGTranscoder</code> and sets a transcoding hint. The hint indicates the encoding quality. Then, an input and an output are created. The input is created using the first command line argument, which should be a URI. The output is a byte stream for a file called <code>out.jpg</code>. Finally, the <code>transcode</code> method is invoked and the byte stream is closed.</p>
+<p>Although not shown above, the program might have specified additional hints to indicate a user stylesheet, the preferred language of the document or the background color.</p>
+<p>To try this program:</p>
+<ol>
+<li>
+<p>Save the above program as <code>SaveAsJPEG.java</code>.</p>
+</li>
+<li>
+<p>Compile the program.</p>
+</li>
+<li>
+<p>Choose an SVG file to transcode, and perform the transcoding by running:</p>
+<div class="highlight"><pre><span></span>java SaveAsJPEG filename.svg
+</pre></div>
+
+
+</li>
+<li>
+<p>Inspect the output file <code>out.jpg</code>.</p>
+</li>
+</ol>
+<h3 id="defineSizeOfImage">Defining the size of the image</h3>
+<p>By adding the following line of code to the previous example, you will specify the raster image size (in pixels). The transcoding hint <code>KEY_WIDTH</code> lets you specify the raster image width. If the raster image height is not provided (using the <code>KEY_HEIGHT</code>), the transcoder will compute the raster image height by keeping the aspect ratio of the SVG document.</p>
+<div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="na">addTranscodingHint</span><span class="o">(</span><span class="n">JPEGTranscoder</span><span class="o">.</span><span class="na">KEY_WIDTH</span><span class="o">,</span> <span class="k">new</span> <span class="n">Float</span><span class="o">(</span><span class="mi">100</span><span class="o">));</span>
+</pre></div>
+
+
+<p>The transcoder will have the same behavior if you specify the <code>KEY_HEIGHT</code> without initializing the <code>KEY_WIDTH</code>. In all cases (even if both keys are provided), the transcoder will preserve the apsect ratio of the SVG document.</p>
+<h3 id="selectAreaOfIntrest">Selecting an area of interest</h3>
+<p>The image transcoder lets you specify an area of interest (that is, a part of the SVG document). The key <code>KEY_AOI</code> allows you to select the region of the SVG document to render. The value of this key must be a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/awt/Rectangle.html">java.awt.Rectangle</a> specified in pixels, using the coordinate space of the SVG document. The following example shows how you can split an SVG document into 4 tiles.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.batik.transcoder.image.JPEGTranscoder</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.transcoder.TranscoderInput</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.transcoder.TranscoderOutput</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SaveAsJPEGTiles</span> <span class="o">{</span>
+
+    <span class="n">JPEGTranscoder</span> <span class="n">trans</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JPEGTranscoder</span><span class="o">();</span>
+
+    <span class="kd">public</span> <span class="nf">SaveAsJPEGTiles</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">trans</span><span class="o">.</span><span class="na">addTranscodingHint</span><span class="o">(</span><span class="n">JPEGTranscoder</span><span class="o">.</span><span class="na">KEY_QUALITY</span><span class="o">,</span>
+                   <span class="k">new</span> <span class="n">Float</span><span class="o">(</span><span class="mf">.8</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">tile</span><span class="o">(</span><span class="n">String</span> <span class="n">inputFilename</span><span class="o">,</span>
+             <span class="n">String</span> <span class="n">outputFilename</span><span class="o">,</span>
+             <span class="n">Rectangle</span> <span class="n">aoi</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="c1">// Set hints to indicate the dimensions of the output image</span>
+        <span class="c1">// and the input area of interest.</span>
+        <span class="n">trans</span><span class="o">.</span><span class="na">addTranscodingHint</span><span class="o">(</span><span class="n">JPEGTranscoder</span><span class="o">.</span><span class="na">KEY_WIDTH</span><span class="o">,</span>
+                     <span class="k">new</span> <span class="n">Float</span><span class="o">(</span><span class="n">aoi</span><span class="o">.</span><span class="na">width</span><span class="o">));</span><span class="n">trans</span><span class="o">.</span><span class="na">addTranscodingHint</span><span class="o">(</span><span class="n">JPEGTranscoder</span><span class="o">.</span><span class="na">KEY_HEIGHT</span><span class="o">,</span>
+                     <span class="k">new</span> <span class="n">Float</span><span class="o">(</span><span class="n">aoi</span><span class="o">.</span><span class="na">height</span><span class="o">));</span><span class="n">trans</span><span class="o">.</span><span class="na">addTranscodingHint</span><span class="o">(</span><span class="n">JPEGTranscoder</span><span class="o">.</span><span class="na">KEY_AOI</span><span class="o">,</span> <span class="n">aoi</span><span class="o">);</span>
+
+        <span class="c1">// Transcode the file.</span>
+        <span class="n">String</span> <span class="n">svgURI</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">inputFilename</span><span class="o">).</span><span class="na">toURL</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+        <span class="n">TranscoderInput</span> <span class="n">input</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TranscoderInput</span><span class="o">(</span><span class="n">svgURI</span><span class="o">);</span>
+        <span class="n">OutputStream</span> <span class="n">ostream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="n">outputFilename</span><span class="o">);</span>
+        <span class="n">TranscoderOutput</span> <span class="n">output</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TranscoderOutput</span><span class="o">(</span><span class="n">ostream</span><span class="o">);</span>
+        <span class="n">trans</span><span class="o">.</span><span class="na">transcode</span><span class="o">(</span><span class="n">input</span><span class="o">,</span> <span class="n">output</span><span class="o">);</span>
+
+        <span class="c1">// Flush and close the output.</span>
+        <span class="n">ostream</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">ostream</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="c1">// Rasterize the samples/anne.svg document and save it</span>
+        <span class="c1">// as four tiles.</span>
+        <span class="n">SaveAsJPEGTiles</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SaveAsJPEGTiles</span><span class="o">();</span>
+        <span class="n">String</span> <span class="n">in</span> <span class="o">=</span> <span class="s">&quot;samples/anne.svg&quot;</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">documentWidth</span> <span class="o">=</span> <span class="mi">450</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">documentHeight</span> <span class="o">=</span> <span class="mi">500</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">dw2</span> <span class="o">=</span> <span class="n">documentWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">dh2</span> <span class="o">=</span> <span class="n">documentHeight</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">tile</span><span class="o">(</span><span class="n">in</span><span class="o">,</span> <span class="s">&quot;tileTopLeft.jpg&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Rectangle</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">dw2</span><span class="o">,</span> <span class="n">dh2</span><span class="o">));</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">tile</span><span class="o">(</span><span class="n">in</span><span class="o">,</span> <span class="s">&quot;tileTopRight.jpg&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Rectangle</span><span class="o">(</span><span class="n">dw2</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">dw2</span><span class="o">,</span> <span class="n">dh2</span><span class="o">));</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">tile</span><span class="o">(</span><span class="n">in</span><span class="o">,</span> <span class="s">&quot;tileBottomLeft.jpg&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Rectangle</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">dh2</span><span class="o">,</span> <span class="n">dw2</span><span class="o">,</span> <span class="n">dh2</span><span class="o">));</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">tile</span><span class="o">(</span><span class="n">in</span><span class="o">,</span> <span class="s">&quot;tileBottomRight.jpg&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Rectangle</span><span class="o">(</span><span class="n">dw2</span><span class="o">,</span> <span class="n">dh2</span><span class="o">,</span> <span class="n">dw2</span><span class="o">,</span> <span class="n">dh2</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>This code splits the same document <code>anne.svg</code> into four tiles of the same size. Considering the document and its original size, we can determine four regions. Then we rasterize each region using the <code>KEY_AOI</code> key. Note that we also specify the image width and height to be the same as the area of interest width and height (so we keep a 1:1 zoom factor). You can of course use different values for the <code>KEY_WIDTH</code> and <code>KEY_HEIGHT</code>, that do not match the dimensions of the <code>KEY_AOI</code> key. In that case, first the area of interest will determine which part of the SVG document has to be rendered, then that part could be zoomed in or out depending on the specified raster image size.</p>
+<p>To try this program:</p>
+<ol>
+<li>
+<p>Save the above program as <code>SaveAsJPEGTiles.java</code>.</p>
+</li>
+<li>
+<p>Compile the program.</p>
+</li>
+<li>
+<p>Copy the <code>samples/anne.svg</code> document from the Batik distribution into the current directory.</p>
+</li>
+<li>
+<p>Run the program by typing:</p>
+<div class="highlight"><pre><span></span>java SaveAsJPEGTiles
+</pre></div>
+
+
+</li>
+<li>
+<p>Inspect the output files <code>tileTopRight.jpg</code>, <code>tileTopRight.jpg</code>, <code>tileBottomRight.jpg</code> and <code>tileBottomLeft.jpg</code>.</p>
+</li>
+</ol>
+<h3 id="otherTransHints">Other transcoding hints</h3>
+<p>The <code>ImageTranscoder</code> provides additional <code>TranscodingHints</code> that let you customize the generated images.</p>
+<p><code>ImageTranscoder.KEY_MEDIA</code>
+:
+This hint lets you choose the CSS medium to use. The author of the SVG document to transcode can control CSS media using the <a href="http://www.w3.org/TR/REC-CSS2/media.html">CSS media rule</a>. For example:
+trans.addTranscodingHint(ImageTranscoder.KEY_MEDIA, "print");</p>
+<p><code>ImageTranscoder.KEY_ALTERNATE_STYLESHEET</code>
+:
+This hint lets you choose an alternate stylesheet the author of the SVG document to transcode might have provided using the <a href="http://www.w3.org/TR/xml-stylesheet/">xml-stylesheet</a> processing instruction. For example:</p>
+<div class="highlight"><pre><span></span><span class="n">trans</span><span class="o">.</span><span class="na">addTranscodingHint</span><span class="o">(</span><span class="n">ImageTranscoder</span><span class="o">.</span><span class="na">KEY_ALTERNATE_STYLESHEET</span><span class="o">,</span>
+                         <span class="n">alternateStylesheetName</span><span class="o">);</span>
+</pre></div>
+
+
+<p><code>ImageTranscoder.KEY_USER_STYLESHEET_URI</code>
+:
+This hint lets you use a user stylesheet. A user stylesheet can override some styles of the SVG document to transcode. For example:</p>
+<div class="highlight"><pre><span></span><span class="n">trans</span><span class="o">.</span><span class="na">addTranscodingHint</span><span class="o">(</span><span class="n">ImageTranscoder</span><span class="o">.</span><span class="na">KEY_USER_STYLESHEET_URI</span><span class="o">,</span> <span class="s">&quot;http://...&quot;</span><span class="o">);</span>
+</pre></div>
+
+
+<p><code>ImageTranscoder.KEY_PIXEL_TO_MM</code>
+:
+This hint lets you use the pixel to millimeter conversion factor. This factor is used to determine how units are converted into pixels. For example:</p>
+<div class="highlight"><pre><span></span><span class="c1">// 96dpi</span>
+<span class="n">trans</span><span class="o">.</span><span class="na">addTranscodingHint</span><span class="o">(</span><span class="n">ImageTranscoder</span><span class="o">.</span><span class="na">KEY_PIXEL_TO_MM</span><span class="o">,</span> <span class="k">new</span> <span class="n">Float</span><span class="o">(</span><span class="mf">0.2645833f</span><span class="o">));</span>
+</pre></div>
+
+
+<p>or</p>
+<div class="highlight"><pre><span></span><span class="c1">// 72pi</span>
+<span class="n">trans</span><span class="o">.</span><span class="na">addTranscodingHint</span><span class="o">(</span><span class="n">ImageTranscoder</span><span class="o">.</span><span class="na">KEY_PIXEL_TO_MM</span><span class="o">,</span> <span class="k">new</span> <span class="n">Float</span><span class="o">(</span><span class="mf">0.3528f</span><span class="o">));</span>
+</pre></div>
+
+
+<p><code>ImageTranscoder.KEY_BACKGROUND_COLOR</code>
+:
+This hint lets you choose a background color. For example:</p>
+<div class="highlight"><pre><span></span><span class="n">trans</span><span class="o">.</span><span class="na">addTranscodingHint</span><span class="o">(</span><span class="n">ImageTranscoder</span><span class="o">.</span><span class="na">KEY_BACKGROUND_COLOR</span><span class="o">,</span> <span class="n">Color</span><span class="o">.</span><span class="na">white</span><span class="o">);</span>
+</pre></div>
+
+
+<h2 id="genImagefromSVGDOM">Generating an image from an SVG DOM tree</h2>
+<p>The following code creates and saves an SVG DOM tree to a raster image.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.batik.transcoder.image.JPEGTranscoder</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.transcoder.TranscoderInput</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.transcoder.TranscoderOutput</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SVGDOMImplementation</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.w3c.dom.Document</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.w3c.dom.Element</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.w3c.dom.DOMImplementation</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DOMRasterizer</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="n">Document</span> <span class="nf">createDocument</span><span class="o">()</span> <span class="o">{</span>
+
+        <span class="c1">// Create a new document.</span>
+        <span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="o">.</span><span class="na">getDOMImplementation</span><span class="o">();</span>
+        <span class="n">String</span> <span class="n">svgNS</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="o">.</span><span class="na">SVG_NAMESPACE_URI</span><span class="o">;</span>
+        <span class="n">Document</span> <span class="n">document</span> <span class="o">=</span>
+          <span class="n">impl</span><span class="o">.</span><span class="na">createDocument</span><span class="o">(</span><span class="n">svgNS</span><span class="o">,</span> <span class="s">&quot;svg&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+        <span class="n">Element</span> <span class="n">root</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="na">getDocumentElement</span><span class="o">();</span>
+        <span class="n">root</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;width&quot;</span><span class="o">,</span> <span class="s">&quot;450&quot;</span><span class="o">);</span>
+        <span class="n">root</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;height&quot;</span><span class="o">,</span> <span class="s">&quot;500&quot;</span><span class="o">);</span>
+
+        <span class="c1">// Add some content to the document.</span>
+        <span class="n">Element</span> <span class="n">e</span><span class="o">;</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="na">createElementNS</span><span class="o">(</span><span class="n">svgNS</span><span class="o">,</span> <span class="s">&quot;rect&quot;</span><span class="o">);</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;x&quot;</span><span class="o">,</span> <span class="s">&quot;10&quot;</span><span class="o">);</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;y&quot;</span><span class="o">,</span> <span class="s">&quot;10&quot;</span><span class="o">);</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;width&quot;</span><span class="o">,</span> <span class="s">&quot;200&quot;</span><span class="o">);</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;height&quot;</span><span class="o">,</span> <span class="s">&quot;300&quot;</span><span class="o">);</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;style&quot;</span><span class="o">,</span> <span class="s">&quot;fill:red;stroke:black;stroke-width:4&quot;</span><span class="o">);</span>
+        <span class="n">root</span><span class="o">.</span><span class="na">appendChild</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+
+        <span class="n">e</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="na">createElementNS</span><span class="o">(</span><span class="n">svgNS</span><span class="o">,</span> <span class="s">&quot;circle&quot;</span><span class="o">);</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;cx&quot;</span><span class="o">,</span> <span class="s">&quot;225&quot;</span><span class="o">);</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;cy&quot;</span><span class="o">,</span> <span class="s">&quot;250&quot;</span><span class="o">);</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;r&quot;</span><span class="o">,</span> <span class="s">&quot;100&quot;</span><span class="o">);</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;style&quot;</span><span class="o">,</span> <span class="s">&quot;fill:green;fill-opacity:.5&quot;</span><span class="o">);</span>
+        <span class="n">root</span><span class="o">.</span><span class="na">appendChild</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+
+        <span class="k">return</span> <span class="n">document</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">save</span><span class="o">(</span><span class="n">Document</span> <span class="n">document</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+
+        <span class="c1">// Create a JPEGTranscoder and set its quality hint.</span>
+        <span class="n">JPEGTranscoder</span> <span class="n">t</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JPEGTranscoder</span><span class="o">();</span>
+        <span class="n">t</span><span class="o">.</span><span class="na">addTranscodingHint</span><span class="o">(</span><span class="n">JPEGTranscoder</span><span class="o">.</span><span class="na">KEY_QUALITY</span><span class="o">,</span>
+                   <span class="k">new</span> <span class="n">Float</span><span class="o">(</span><span class="mf">.8</span><span class="o">));</span>
+
+        <span class="c1">// Set the transcoder input and output.</span>
+        <span class="n">TranscoderInput</span> <span class="n">input</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TranscoderInput</span><span class="o">(</span><span class="n">document</span><span class="o">);</span>
+        <span class="n">OutputStream</span> <span class="n">ostream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&quot;out.jpg&quot;</span><span class="o">);</span>
+        <span class="n">TranscoderOutput</span> <span class="n">output</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TranscoderOutput</span><span class="o">(</span><span class="n">ostream</span><span class="o">);</span>
+
+        <span class="c1">// Perform the transcoding.</span>
+        <span class="n">t</span><span class="o">.</span><span class="na">transcode</span><span class="o">(</span><span class="n">input</span><span class="o">,</span> <span class="n">output</span><span class="o">);</span>
+        <span class="n">ostream</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">ostream</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="c1">// Runs the example.</span>
+        <span class="n">DOMRasterizer</span> <span class="n">rasterizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DOMRasterizer</span><span class="o">();</span>
+        <span class="n">Document</span> <span class="n">document</span> <span class="o">=</span> <span class="n">rasterizer</span><span class="o">.</span><span class="na">createDocument</span><span class="o">();</span>
+        <span class="n">rasterizer</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">document</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>This code is divided into two distinct parts.</p>
+<p>Creating an SVG DOM tree
+:
+See the <code>createDocument</code> method.</p>
+<p>Three steps are required at this time. The first step is to get the Batik SVG DOM implementation (via the <code>SVGDOMImplementation</code> class). Then, you can create a <code>org.w3c.dom.Document</code> (which also implements the <code>SVGDocument</code> interface) by invoking the <code>createDocument</code> method with the SVG namespace URI and the <code>svg</code> document element name. Finally, you can get the document element and start building your DOM tree.</p>
+<p>Rasterizing the DOM
+:
+See the <code>save</code> method.</p>
+<p>Similar to the previous examples, you can transcode an SVG document to a raster image by creating a <code>TranscoderInput</code>, but passing to it the SVG Document this time.</p>
+<p>To try this example:</p>
+<ol>
+<li>
+<p>Save the code as <code>DOMRasterizer.java</code>.</p>
+</li>
+<li>
+<p>Compile the program.</p>
+</li>
+<li>
+<p>Run it, by typingL</p>
+<div class="highlight"><pre><span></span>java DOMRasterizer
+</pre></div>
+
+
+</li>
+<li>
+<p>Inspect the output file <code>out.jpg</code>.</p>
+</li>
+</ol>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+	<style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
+<p><a href="/"><img alt="Apache XML Graphics Project Logo" src="/images/apache-xml-graphics.gif" title="Apache XML Graphics Project" /></a></p>
+<h1 id="xml-graphics-commons">XML Graphics Commons<a class="headerlink" href="#xml-graphics-commons" title="Permanent link">&para;</a></h1>
+<ul>
+<li><a href="/commons/">Overview</a></li>
+<li><a href="/commons/download.html">Download</a></li>
+<li>
+<h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="/commons/postscript.html">Tools for Adobe PostScript</a></li>
+<li><a href="/commons/image-loader.html">Image Loader Framework</a></li>
+<li><a href="https://cwiki.apache.org/confluence/display/XMLGRAPHICS/XmlGraphicsCommonComponents">XML Graphics Commons Components Wiki</a></li>
+</ul>
+</li>
+<li>
+<h2 id="information">Information<a class="headerlink" href="#information" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="/commons/bugs.html">Bugs</a></li>
+<li><a href="/commons/changes.html">Changes</a></li>
+<li><a href="/repo.html">Code Repositories</a></li>
+<li><a href="/mail.html">Mailing Lists</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="apache-xml-graphics">Apache&trade; XML Graphics<a class="headerlink" href="#apache-xml-graphics" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<h3 id="project-overview">Project Overview<a class="headerlink" href="#project-overview" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="/team.html">Who We Are</a></li>
+<li><a href="/legal.html">Legal Stuff</a></li>
+<li><a href="/charter.html">Project Charter</a></li>
+<li><a href="/mail.html">Mailing Lists</a></li>
+<li><a href="/repo.html">Code Repositories</a></li>
+<li><a href="https://www.apache.org/foundation/sponsorship.html">ASF Sponsorship Program</a></li>
+<li><a href="https://www.apache.org/foundation/thanks.html">ASF Thanks</a></li>
+<li><a href="https://www.apache.org/licenses/">Licenses</a></li>
+<li><a href="/security.html">Apache XML Graphics Security</a></li>
+<li><a href="https://www.apache.org/security/">ASF Security</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="sub-projects">Sub Projects<a class="headerlink" href="#sub-projects" title="Permanent link">&para;</a></h1>
+<ul>
+<li><a href="/batik/">Apache Batik</a></li>
+<li><a href="/fop/">Apache FOP</a></li>
+<li><a href="/commons/">Apache XML Graphics Commons</a></li>
+</ul>
+<h2 id="search-apache-xml-graphics">Search Apache XML Graphics<a class="headerlink" href="#search-apache-xml-graphics" title="Permanent link">&para;</a></h2>
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+<h3 id="apachecon-n-america">ApacheCon N. America<a class="headerlink" href="#apachecon-n-america" title="Permanent link">&para;</a></h3>
+<p><a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br /></p>
+<ul>
+<li><strong><a href="https://www.apachecon.com/">ApacheCon NA</a></strong></li>
+</ul>
+<p>Hope to see you there!</p>
+<h3 id="apachecon-europe">ApacheCon Europe<a class="headerlink" href="#apachecon-europe" title="Permanent link">&para;</a></h3>
+<p><a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br /></p>
+<ul>
+<li><strong><a href="https://www.apachecon.com/">ApacheCon Europe</a></strong></li>
+</ul>
+<p>Hope to see you there!</p>
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').append(' &raquo;');
+    }
+  $('#navigation > ul > li ul').hide();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 60px;">
+	  <a href="/"><img src="/images/apache-xml-graphics.gif" alt="The Apache FOP Project" width="226" height="51" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; XML Graphics Project</h2>
+	</div>  
+
+    <h1>History of Changes</h1>
+    Translations: 
+<a href="/fop/changes.html">en</a>
+
+
+    <h1>History of Changes</h1>
+<p><a href="changes.rss">changes.rss</a></p>
+<h2 id="introduction">Introduction and explanation of symbols</h2>
+<p>Changes are sorted by "type" and then chronologically with the most recent at the top. These symbols denote the various action types: <img alt="add" src="/images/add.jpg">=add, <img alt="fix" src="/images/fix.jpg">=fix, <img alt="remove" src="/images/remove.jpg">=remove, <img alt="update" src="/images/update.jpg">=update</p>
+<h2 id="version_2.4">Version 2.4 (5 Nov 2019)</h2>
+<h3 id="Code_2.4">Changes to the Code Base</h3>
+<ul>
+<li>FOP-2821: 1 bit image fails when using PreloaderRawPNG</li>
+<li>FOP-2856: Support compile on Java 12</li>
+<li>FOP-2873: Update to PDFBox 2.0.16</li>
+<li>XGC-112: TIFF resolution wrong on Java 10</li>
+<li>XGC-116: Don't draw fully transparent alpha on PS</li>
+</ul>
+<h2 id="version_2.3">Version 2.3 (23 May 2018)</h2>
+<h3 id="Code_2.3">Changes to the Code Base</h3>
+<ul>
+<li>FOP-2251: PDF to PostScript not showing transparency</li>
+<li>FOP-2739: Avoid rastering PDF with Smask to image</li>
+<li>FOP-2740: PDF to PostScript tiling pattern error in Acrobat</li>
+<li>FOP-2753: PDF to PostScript allow fop fonts as fallback</li>
+<li>XGC-98: UndeclaredThrowableException while loading images</li>
+<li>XGC-111: Improve error message when language is empty</li>
+</ul>
+<h2 id="version_2.2">Version 2.2 (24 March 2017)</h2>
+<h3 id="Code_2.2">Changes to the Code Base</h3>
+<ul>
+<li><img alt="update" src="/images/update.jpg"> Support for Maven Build Process</li>
+<li><img alt="update" src="/images/update.jpg"> AFP rounded corners not in CMYK</li>
+</ul>
+<h2 id="version_2.1">Version 2.1 (14 January 2016)</h2>
+<h3 id="Code_2.1">Changes to the Code Base</h3>
+<ul>
+<li><img alt="fix" src="/images/fix.jpg"> Fix "insufficient data for an image" error: jai_imageio dependency regression</li>
+<li><img alt="fix" src="/images/fix.jpg"> Fix performancy penalty caused by excessive DeflaterOutputStream.write(byte) calls, thanks to Andre Klemann</li>
+<li><img alt="fix" src="/images/fix.jpg"> Include ps-setpagedevice when dsc-compliant is false</li>
+<li><img alt="fix" src="/images/fix.jpg"> UndeclaredThrowableException while loading images</li>
+<li><img alt="update" src="/images/update.jpg"> Add PreloaderRawPNG to handle images ImageIO cant</li>
+<li><img alt="update" src="/images/update.jpg"> Add support for PDF/A-3</li>
+<li><img alt="update" src="/images/update.jpg"> Support CMYK JPEG in AFP</li>
+<li><img alt="update" src="/images/update.jpg"> Support PDF/UA</li>
+<li><img alt="update" src="/images/update.jpg"> Truetype support for AFP</li>
+</ul>
+<h2 id="version_2.0.1">Version 2.0.1 (3 June 2015)</h2>
+<h3 id="Code_2.0.1">Changes to the Code Base</h3>
+<ul>
+<li><img alt="update" src="/images/update.jpg"> PDF VT support. Committed by SS.</li>
+<li><img alt="update" src="/images/update.jpg"> PDF to PS deduplication of images. Committed by SS.</li>
+</ul>
+<h2 id="version_2.0">Version 2.0 (1 Octomber 2014)</h2>
+<h3 id="Code_2.0">Changes to the Code Base</h3>
+<ul>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Reduce PDF to PS filesize. Committed by SS.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">PDF-A preflight warnings. Committed by SS.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">DSCParser always throws DSCException %%EOF not found when checkEOF is false. Committed by VH. Patch by Teon Metselaar, applied with minor changes + a test case.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Weird border color inheritance (hashCode collisions). Committed by LB. Thanks to AG.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Image written as having 72 DPI instead of its intrinstic resolution. Committed by LB.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Javadocs fails on Java 8. Committed by SS.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">JPEG is squashed. Committed by SS.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">64bit image missing in pdf. Committed by LB. Thanks to SS.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">FOP-1801: conversion B&amp;W GIF=&gt;PDF creates PDF with colorspace RGB if FOP0.95 and Gray if FOP0.20.5;. Committed by LB. Thanks to Thanasis Giannimaras.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Incorrect rendering of GIF images. Committed by LB. Thanks to Thanasis Giannimaras.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/fix.jpg"> CMYK TIFF is rendered using RGB colourspace in Postscript output. Committed by LB. Thanks to SS.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Add support for APP1 (Exif) segment in JPEG images. Committed by LB.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Add support for svg gradients when generating PostScript. Committed by LB. Thanks to RM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">SVN line clipping not correct when outputting to Postscript. Committed by RM.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg">Make JPEGFile more resilient against potentially malformed JPEGs. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/fix.jpg">Added new subroutine to support OTF CFF in PostScript. Committed by LB. Thanks to RM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">1 bit TIFF error. Committed by LB. Thanks to SS.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">JBIG2 PDF not shown in PS. Committed by LB. Thanks to SS.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg"> provide a way to close the resources associated to an image without fully loading it. Committed by VH.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/fix.jpg">Use event producer when Colour Profile in PNG Image is bad. Committed by LB. Thanks to SS. </p>
+</li>
+<li>
+<p><img alt="update" src="/images/fix.jpg">Change to XGC to support the changes in FOP for image scaling. Scaling by resolution is removed to avoid duplicate scaling. Committed by LB. Thanks to RM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Fixes gradient fill opacity incorrectly inherits stroke opacity of previous svg element. Committed by LB. </p>
+</li>
+<li>
+<p><img alt="add" src="/images/fix.jpg">Little endian support for tiff images. Commited by LB. Thanks to JM and RM. See Issue 
+[54195] (https://issues.apache.org/bugzilla/show_bug.cgi?id=54196)</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">support for sRGB and iCCP chunks. Committed by LB. See Issue
+[53408]</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Support rdf:resource attributes in XMP. Committed by GA. Thanks to Brian Carlson. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=50497">50497</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Should never use Error to report runtime errors. Committed by GA. Thanks to Sebastian Bazley. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=47174">47174</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Ensure that throwables have meaningful messages. Committed by GA. Thanks to Sebastian Bazley. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=47175">47175</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Support for T.4 Group 3 1D encoding. Committed by PH. Thanks to JM and Mehdi Houshmand. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=51911">51911</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Fixed a bug formatting ISO 8601 dates with negative two-digit time zones. Committed by JM. Thanks to Florian Barbera Vila Bollain. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=51039">51039</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Allow to override priority when registering an ImageWriter on the ImageWriterRegistry. Committed by JM. Thanks to Joshua Marquart. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=49696">49696</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Fix for TIFFs which report zero as their resolution. This resulted in an exception. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="remove" src="/images/remove.jpg">Removed dependency on com.sun classes to achieve compatibility with Apache Harmony, OpenJDK and possibly other JVMs. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="remove" src="/images/remove.jpg">Removal of the deprecated <code>TextHandler.drawString(String, float, float)</code> method. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg">Minor build improvements to eliminate warning and parameterize junit formatting. Eliminate (5) deprecation warnings. Committed by GA.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg">Various code style fixes Committed by JM. Thanks to Glenn Adams. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=49703">49703</a>.</p>
+</li>
+</ul>
+<h3 id="contributors_2.0">Contributors to this release</h3>
+<p>We thank the following people for their contributions to this release.</p>
+<p>This is a list of all people who participated as committers:</p>
+<p>Glenn Adams (GA), Luis Bernado(LB), Alexios Giotis (AG), Peter Hancock(PH), Vincent Hennebert (VH),  Jeremias Märki (JM). Robert Meyer(RM), Simon Steiner (SS)   </p>
+<p>This is a list of other contributors:</p>
+<p>Brian Carlson, Florian Barbera Vila Bollain, Glenn Adams, JM and Mehdi Houshmand, Joshua Marquart, Sebastian Bazley, Thanasis Giannimaras.</p>
+<h2 id="version_1.5">Version 1.5 (20 October 2012)</h2>
+<h3 id="Code_1.5">Changes to the Code Base</h3>
+<p>There is no significative change since Release Version 1.5-RC1.</p>
+<h3 id="contributors_1.5">Contributors to this release</h3>
+<p>We thank the following people for their contributions to this release.</p>
+<p>This is a list of all people who participated as committers:</p>
+<p>Glenn Adams (GA), Max Berger (MB), Chris Bowditch (CB), Adrian Cumiskey (AC), Christian Geisert (CG), Peter Hancock (PH), Vincent Hennebert (VH), Clay Leeds (CL), Jeremias Märki (JM), Cameron McCormack (CM), Simon Pepping (SP).</p>
+<p>This is a list of other contributors:</p>
+<p>Brian Carlson, Florian Barbera, Glenn Adams, Joshua Marquart, Julien Aymé, Luis Bernardo, Matthias Reischenbacher, Mehdi Houshmand, Robert Meyer, Sebastian Bazley, Vila Bollain.</p>
+<h2 id="version_1.5rc1">Version 1.5-RC1 (2 July 2012)</h2>
+<h3 id="Code_1.5rc1">Changes to the Code Base</h3>
+<ul>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Add two PNG image loaders, one using internal XGC PNG code, the other using an externally supplied IDAT chunk (for raw decoding). Committed by GA. Thanks to Luis Bernardo, Matthias Reischenbacher. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=53408">53408</a>.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg">Fix corner cases involving long/double conversion and rounding error in double division when rounding 5E-N for certain N. Committed by GA. Thanks to Julien Aymé. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=53327">53327</a>.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg">Fix determination of use of precise vs fast formatting in order to fix regression with value 5.22534294505995E-4, decimals: 17, precision: 17. Committed by GA. Thanks to Julien Aymé. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=53327">53327</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Upgrade to checkstyle-5.5 and ensure no warnings. Committed by GA. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=53352">53352</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Improve performance for certain kinds of PNG images. Committed by GA. Thanks to Luis Bernardo. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=51149">51149</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Fix handling of values less than 1E-300. Committed by GA. Thanks to Julien Aymé. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=53327">53327</a>.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg">Fix handling of NaN, {+,-}Infinity, and other edge cases in double format utility. Committed by GA. Thanks to Julien Aymé. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=43940">43940</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Unify date formatting between FOP and XGC as well as tidying the date format code. Committed by GA. Thanks to Robert Meyer. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=53184">53184</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Fix for XGC when rendering PostScript using SVG being drawn upside down when using a custom affine transform. Committed by GA. Thanks to Robert Meyer. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=53177">53177</a>.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg">Use new double format utility. Committed by GA. Thanks to Julien Aymé. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=43940">43940</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Add double format utility to improve thread safety and performance. Committed by GA. Thanks to Julien Aymé. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=43940">43940</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Support rdf:resource attributes in XMP. Committed by GA. Thanks to Brian Carlson. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=50497">50497</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Should never use Error to report runtime errors. Committed by GA. Thanks to Sebastian Bazley. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=47174">47174</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Ensure that throwables have meaningful messages. Committed by GA. Thanks to Sebastian Bazley. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=47175">47175</a>.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg">Minor build improvements to eliminate warning and parameterize junit formatting.</p>
+<p>Eliminate (5) deprecation warnings. Committed by GA.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Support for T.4 Group 3 1D encoding. Committed by PH. Thanks to Mehdi Houshmand. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=51911">51911</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Fixed a bug formatting ISO 8601 dates with negative two-digit time zones. Committed by JM. Thanks to Florian Barbera, Vila Bollain. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=51039">51039</a>.</p>
+</li>
+<li>
+<p><img alt="remove" src="/images/remove.jpg">Removed dependency on com.sun classes to achieve compatibility with Apache Harmony,OpenJDK and possibly other JVMs. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="remove" src="/images/remove.jpg">Removal of the deprecated <code>TextHandler.drawString(String, float, float)</code> method. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg">Various code style fixes Committed by JM. Thanks to Glenn Adams. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=49703">49703</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Allow to override priority when registering an ImageWriter on the ImageWriterRegistry. Committed by JM. Thanks to Joshua Marquart. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=49696">49696</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Fix for TIFFs which report zero as their resolution. This resulted in an exception. Committed by JM.</p>
+</li>
+</ul>
+<h3 id="contributors_1.5rc1">Contributors to this release</h3>
+<p>We thank the following people for their contributions to this release.</p>
+<p>This is a list of all people who participated as committers:</p>
+<p>Glenn Adams (GA), Max Berger (MB), Chris Bowditch (CB), Adrian Cumiskey (AC), Christian Geisert (CG), Peter Hancock (PH), Vincent Hennebert (VH), Clay Leeds (CL), Jeremias Märki (JM), Cameron McCormack (CM), Simon Pepping (SP).</p>
+<p>This is a list of other contributors:</p>
+<p>Brian Carlson, Florian Barbera, Glenn Adams, Joshua Marquart, Julien Aymé, Luis Bernardo, Matthias Reischenbacher, Mehdi Houshmand, Robert Meyer, Sebastian Bazley, Vila Bollain.</p>
+<h2 id="version_1.4">Version 1.4 (7 July 2010)</h2>
+<h3 id="Code_1.4">Changes to the Code Base</h3>
+<ul>
+<li>
+<p><img alt="add" src="/images/add.jpg">Added getter and setter for enabling/disabling comments in PSGenerator. Committed by JM. Thanks to Julien Aymé. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=49250">49250</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Small optimization which only generates code for a clipping area if an element is not fully inside the clipping area. Committed by JM. Thanks to Calixte Denizet. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=49056">49056</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Added option to enable/disable the generation of compact vs. verbose PostScript code. Committed by JM. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=48797">48797</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Added shorthands for many PostScript commands to get more compact PostScript files. Committed by JM. Thanks to Calixte Denizet. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=48797">48797</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Added code for supporting the AdobeStandardCyrillic encoding. Committed by JM. Thanks to Andrey Koltunov. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=48395">48395</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Added interface for Color Conversions. Committed by CB. Thanks to Peter Hancock. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=48237">48237</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Added support for configurable additional penalties for preloader, loader and converter plug-ins in the ImageImplRegistry (in addition to the hard-coded penalties). Committed by JM.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Enabled native encoding of CMYK images for PostScript output. Committed by JM. Thanks to Venkat Reddy. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=48264">48264</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Support loading of ICC Profiles from PNG and JPEG when used through ImageIO. Committed by MB.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Added 60 seconds expiration for invalid URIs in the image cache to recover from temporarily unavailable images. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Added TexturePaint support for PSGraphics2D (PostScript tiling patterns). Committed by JM. Thanks to Jiří Kunhart. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=46583">46583</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">XMP framework: Added support for the structure property shorthand form and for specifying simple property values as attributes on rdf:Description elements. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Added RefinedImageFlavor to the image loading framework for better refinement of image flavors. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Two properties didn't get copied in copy constructor of PSState. Committed by JM. Thanks to Julien Aymé. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=49364">49364</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Bugfix for detecting multi-strip CCITT-encoded TIFFs. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Bugfix: Properly handle file URLs where URL.getHost() is an empty string. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Bugfix: Clip area got lost while cloning GraphicContext. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Switched from linear RGB to sRGB for the fallback color model, in order to avoid trouble with some images (CMYK TIFF, for example). Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Bugfix: reset graphic state when a page is finished in PostScript. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Bugfix: glyph names starting with ‘u’ but not in the ‘official’ glyph list could cause a StringIndexOutOfBoundsException because they were parsed as u1234-like unicode values. Committed by VH.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Bugfix: Streams were not closed in Service class. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Catching IllegalArgumentException in XMPSerializer when the Transformer implementation in use doesn't support the INDENT key. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Added the ability to assign a string value for a key in a postscript dictionary. Committed by AC. Thanks to Jiří Kunhart. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=46292">46292</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Made loading images via Image I/O more robust: A PNG with a zero resolution should fall back to the default resolution. Committed by JM. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=45789">45789</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">JPEGPreloader: Fixed interpretation of JPEG resolution when "dots per centimeter" is specified. Committed by JM. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=45835">45835</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Bugfix: Added missing start/endPrefixMapping() calls when serializing XMP packets. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg">Optimization for PostScript state handling in (E)PSDocumentGraphics2D. Committed by JM. Thanks to Julien Aymé. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=49339">49339</a>.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg">PS output: Using shorthand procedures for rectangles instead of the generic shape processor. Committed by JM. Thanks to Julien Aymé. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=49338">49338</a>.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg">Moved method disableClipping from AbstractPSDocumentGraphics2D to PSGraphics2D. Committed by JM. Thanks to Julien Aymé. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=49337">49337</a>.</p>
+</li>
+</ul>
+<h3 id="contributors_1.4">Contributors to this release</h3>
+<p>We thank the following people for their contributions to this release.</p>
+<p>This is a list of all people who participated as committers:</p>
+<p>Adrian Cumiskey (AC), Chris Bowditch (CB), Jeremias Märki (JM), Max Berger (MB), Vincent Hennebert (VH).</p>
+<p>This is a list of other contributors:</p>
+<p>Andrey Koltunov, Calixte Denizet, Jiří Kunhart, Julien Aymé, Peter Hancock, Venkat Reddy.</p>
+<h2 id="version_1.3.1">Version 1.3.1 (11 June 2008)</h2>
+<h3 id="Code_1.3.1">Changes to the Code Base</h3>
+<ul>
+<li>
+<p><img alt="add" src="/images/add.jpg">Added fallbacks for Type 1 fonts which don't have the normal "one", "two" etc. glyphs, but actually only provide "oneoldstyle", "twooldstyle" etc. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Added an image loader for XML Graphics Commons' internal TIFF codec. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Added image processing hints to ignore an optionally embedded color profile in JPEG images. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Made file URLs with a host (as happens when using UNC paths) work when loading images. Committed by JM. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=44902">44902</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Bugfix for classpath resources: the code doesn't just check the system class loader anymore. Committed by MB.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Bugfix for a potential multi-threading issue concerning the use of the java.text package. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Bugfix for extracting ICC color profiles from JPEG images. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Fixed two cases of unclosed input streams in image loader code. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Bugfix for unhandled NumberFormatException in Glpyhs when a unknown glyph name starting with "u" is found. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Bugfix for ImageEncodingHelper which produced false results if an image's sample model used BGR instead of RGB. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Fixed behaviour for the cases where a corrupt PNG image is encountered. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Bugfix for EOFException when pre-loading very small PNG images (file size &lt; 88 bytes). Committed by JM.</p>
+</li>
+</ul>
+<h3 id="contributors_1.3.1">Contributors to this release</h3>
+<p>We thank the following people for their contributions to this release.</p>
+<p>This is a list of all people who participated as committers:</p>
+<p>Jeremias Märki (JM), Max Berger (MB).</p>
+<h2 id="version_1.3">Version 1.3 (07 Feb 2008)</h2>
+<h3 id="Code_1.3">Changes to the Code Base</h3>
+<ul>
+<li>
+<p><img alt="add" src="/images/add.jpg">Image Loading: Support for passing in SAXSource instance. Committed by JM. Thanks to Adam Strzelecki. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=44466">44466</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">The package org.apache.xmlgraphics.image.loader was added. It contains a general image loading framework for various image formats (bitmap &amp; vector). Committed by JM.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">XMP: Added support for structured properties. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">PostScript: Added classes for "BoundingBox" DSC comments. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Added support for classpath resources (find files in JAR files in the classpath using their MIME type) Committed by JM. Thanks to Max Berger. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=42980">42980</a>.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Application of the patch in Bugzilla 43069: New Macro safe-set-page-device which guards against the possibility of invalid/unsupported postscript key/values being issued to the implementing postscript page device Committed by CB. Thanks to Adrian Cumiskey. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=43069">43069</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Bugfix for ISO 8601 date formatting with negative time zones in the XMP package. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Bugfix for XMP serialization: arrays with only one entry were serialized as simple property which could lead to information loss for merge operations. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">PostScript: Fixed %%EOF checking for nested documents. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">PostScript: Improved robustness of DSC parsing (multi-line comments with no value on the first line don't cause crashes anymore, fallback for unparsable DSC comments). Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Fixed a possible NPE in the TIFF codec (in the TIFFImage constructor). Committed by JM. Thanks to Sergey Orlov. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=43120">43120</a>.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg">Support for Java 1.3 has been dropped. Java 1.4 or later is required now. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="update" src="/images/update.jpg">PostScript: Improved PSImageUtils by introducing the ImageEncoder interface and allowing for streams instead of byte arrays for data transfer which can lower memory consumption. Committed by JM.</p>
+</li>
+</ul>
+<h3 id="contributors_1.3">Contributors to this release</h3>
+<p>We thank the following people for their contributions to this release.</p>
+<p>This is a list of all people who participated as committers:</p>
+<p>Chris Bowditch (CB), Jeremias Märki (JM).</p>
+<p>This is a list of other contributors:</p>
+<p>Adam Strzelecki, Adrian Cumiskey, Max Berger, Sergey Orlov.</p>
+<h2 id="version_1.2">Version 1.2 (21 July 2007)</h2>
+<h3 id="Code_1.2">Changes to the Code Base</h3>
+<ul>
+<li>
+<p><img alt="add" src="/images/add.jpg">Added support for CMYK and GRAY color spaces for PSGenerator (moved there from PSGraphics2D). Committed by JM. Thanks to Adrian Cumiskey. See Issue <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=42507">42507</a>.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Fixed literal text string escaping in PSGenerator. Some characters were not properly escaped. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Fixed the PDF/A namespace according to ISO-19005-1:2005/Cor.1:2007 and deprecated the use of the draft PDF/A namespace used by Adobe Acrobat 7.x. Committed by JM.</p>
+</li>
+</ul>
+<h3 id="contributors_1.2">Contributors to this release</h3>
+<p>We thank the following people for their contributions to this release.</p>
+<p>This is a list of all people who participated as committers:</p>
+<p>Jeremias Märki (JM).</p>
+<p>This is a list of other contributors:</p>
+<p>Adrian Cumiskey.</p>
+<h2 id="version_1.1">Version 1.1 (22 Dec 2006)</h2>
+<h3 id="Code_1.1">Changes to the Code Base</h3>
+<ul>
+<li>
+<p><img alt="add" src="/images/add.jpg">Added the start of an XMP metadata framework. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">ImageWriter abstraction now supports writing multi-page formats like TIFF. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">ImageWriter implementation for TIFF output using Image I/O API. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="add" src="/images/add.jpg">Default implementation for AbstractGraphics2D.drawText(ACI, float, float) so PSGraphics2D supports painting text using the AttributedCharacterIterator. Committed by JM. Thanks to Max Berger.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Various fixes and improvements in the ImageWriter abstraction. Committed by JM.</p>
+</li>
+<li>
+<p><img alt="fix" src="/images/fix.jpg">Bugfix: The generation of the PostScript setdash command was assuming that only integer values can be used but that isn't the case. Committed by JM.</p>
+</li>
+</ul>
+<h3 id="contributors_1.1">Contributors to this release</h3>
+<p>We thank the following people for their contributions to this release.</p>
+<p>This is a list of all people who participated as committers:</p>
+<p>Jeremias Märki (JM).</p>
+<p>This is a list of other contributors:</p>
+<p>Max Berger.</p>
+<h2 id="version_1.0">Version 1.0 (17 Apr 2006)</h2>
+<h3 id="Code_1.0">Changes to the Code Base</h3>
+<ul>
+<li><img alt="add" src="/images/add.jpg">Initial release with several components from Batik and FOP: Image codecs, Image writer abstraction, I/O classes, Java2D helpers, PostScript library with Graphics2D implementation. Committed by JM.</li>
+</ul>
+<h3 id="contributors_1.0">Contributors to this release</h3>
+<p>We thank the following people for their contributions to this release.</p>
+<p>This is a list of all people who participated as committers:</p>
+<p>Jeremias Märki (JM).</p>
+<h2 id="all-committers">All Committers</h2>
+<p>This is a list of all people who have ever participated as committers on this project.</p>
+<ul>
+<li>
+<p>Glenn Adams (GA)</p>
+</li>
+<li>
+<p>Max Berger (MB)</p>
+</li>
+<li>
+<p>Chris Bowditch (CB)</p>
+</li>
+<li>
+<p>Adrian Cumiskey (AC)</p>
+</li>
+<li>
+<p>Christian Geisert (CG)</p>
+</li>
+<li>
+<p>Vincent Hennebert (VH)</p>
+</li>
+<li>
+<p>Clay Leeds (CL)</p>
+</li>
+<li>
+<p>Jeremias Märki (JM)</p>
+</li>
+<li>
+<p>Cameron McCormack (CM)</p>
+</li>
+<li>
+<p>Simon Pepping (SP)</p>
+</li>
+<li>
+<p>Volunteer needed (open)</p>
+</li>
+</ul>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

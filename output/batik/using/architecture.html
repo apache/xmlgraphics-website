@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache Batik
+  - [Overview](/batik/)
+  - [License](/batik/license.html)
+  - [Download](/batik/download.html)
+  - [Notes](/batik/install.html)
+  - [Status](/batik/status.html)
+  - [Demo](/batik/demo-static.html)
+  - [FAQs](/batik/faq.html)
+  - [Batik Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSBATIK)
+  - [Mailing lists](/batik/mailing-lists.html)
+  - [Contributors](/batik/contributors.html)
+  - [Bug database](https://issues.apache.org/jira/issues/?jql=project%20%3D%20BATIK%20AND%20resolution%20%3D%20Unresolved%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20ORDER%20BY%20priority%20DESC)
+  - [Projects using Batik](/batik/uses.html)
+  - ## Batik Tools
+    - [Overview](/batik/tools/)
+    - [Browser](/batik/tools/browser.html)
+    - [Rasterizer](/batik/tools/rasterizer.html)
+    - [Font converter](/batik/tools/font-converter.html)
+    - [Pretty printer](/batik/tools/pretty-printer.html)
+  - ## Using Batik
+    - [Overview](/batik/using/)
+    - [Architecture](/batik/using/architecture.html)
+    - [Javadoc APIs](/batik/javadoc/)
+    - [DOM API](/batik/using/dom-api.html)
+    - [Parsers](/batik/using/parsers.html)
+    - ### Scripting
+      - [Scripting with ECMAScript](/batik/using/scripting/ecmascript.html)
+      - [Scripting with Java](/batik/using/scripting/java.html)
+      - [Scripting with Security](/batik/using/scripting/security.html)
+    - [SVG generator](/batik/using/svg-generator.html)
+    - [Swing components](/batik/using/swing.html)
+    - [Transcoder API](/batik/using/transcoder.html)
+    - [Extending Batik](/batik/using/extending.html)
+  - ## Development
+    - [Overview](/batik/dev/)
+    - [Branches](/batik/dev/branches.html)
+    - [SVG 1.2 support](/batik/dev/svg12.html)
+    - [Test infrastructure](/batik/dev/test.html)
+
+# Apache&trade; XML Graphics
+  - ### Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache FOP](/fop/)
+  - [Apache XML Graphics Commons](/commons/)
+
+## Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').append(' &raquo;');
+    }
+  $('#navigation > ul > li ul').hide();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 100px;">
+	  <a href="/batik/"><img src="/images/apache-batik-logo.png" alt="The Apache FOP Project" width="256" height="96" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; Batik Project</h2>
+	</div>  
+
+    <h1>Architecture overview</h1>
+    
+
+    <h1>Architecture overview</h1>
+<p>This document briefly describes the Batik architecture and the role of each of its modules. For detailed module design, you can refer to the Batik UML diagrams <a href="http://opensource.objectsbydesign.com/batik/index.html">Object by Design</a> or <a href="http://www.yworks.com/products/yDoc/showcase/batik-1.5/">yWorks</a>.</p>
+<p>The Batik modules are of one of three types: application modules, core modules and low level modules. The following figure illustrates these three module types.
+<div class="figure"> <img alt="Batik Architecture" src="images/HighLevelArchitecture.png" title=""> </div>
+ <a href="#applicationComponents">Application modules</a> illustrate how to use the core modules and let users evaluate the Batik software by experimenting with its features.</p>
+<p>The <a href="#coreComponents">Core modules</a> are the heart of Batik and the primary deliverables for the projects. These are the modules developers use to manipulate, generate, create, convert, render and view SVG content.</p>
+<p>Finally, the <a href="#lowLevelComponents">Low level modules</a> are used internally by the core modules to accomplish their work. These modules are not typically used by developers directly.</p>
+<h2 id="applicationComponents">Application modules</h2>
+<p>As mentioned earlier, the application modules illustrate the functionality that Batik offers.</p>
+<p>For example, the <a href="../tools/browser.html">SVG browser</a> is built using several Batik core modules (such as the <code>JSVGCanvas</code> GUI component and the <code>ImageTranscoder</code> s) and illustrates how Batik lets you not only view, zoom, pan and rotate SVG documents, but also search them and convert them to other formats (such as JPEG, TIFF or PNG).</p>
+<p>The <a href="../tools/pretty-printer.html">SVG pretty printer</a> is another example that shows how Batik lets you manipulate and transform SVG content, here for the purposed of tidying up potentially disorganized SVG files.</p>
+<p>The <a href="../tools/font-converter.html">SVG font converter</a> illustrates how Batik can help you embed SVG font definitions in an SVG file by providing an application that converts ranges of characters from a TrueType Font format to the SVG font format.</p>
+<p>Finally, the <a href="../tools/rasterizer.html">SVG rasterizer</a> shows how to leverage the <a href="../using/transcoder.html">transcoder API</a> to convert to and from SVG content.</p>
+<p>Note that even though the application modules are meant to be useful and fun to use, they are not the primary deliverables of the Batik project. Instead, they are illustrations of how the Batik core modules might be used and combined.</p>
+<h2 id="coreComponents">Core modules</h2>
+<p>The Batik core modules are the heart of the Batik architecture. They can be used individually or in combination for various purposes, and the <a href="#applicationComponents">application modules</a> offer some usage examples.</p>
+<ul>
+<li>
+<p>The <a href="../using/svg-generator.html">SVG generator</a> is a module containing <a href="../javadoc/org/apache/batik/svggen/SVGGraphics2D.html"><code>SVGGraphics2D</code></a> class, that lets all Java applications or applets easily convert their graphics to the SVG format, as easily as they draw to a screen or a printer, by leveraging the Java 2D API’s extensible design.</p>
+</li>
+<li>
+<p><a href="../using/dom-api.html">SVG DOM</a> an implementation of the SVG DOM API defined in the SVG recommendation. It lets the programmer manipulate SVG documents in a Java program.</p>
+</li>
+<li>
+<p>The <a href="../using/swing.html">Swing components</a> module includes, primarily, the <a href="../javadoc/org/apache/batik/swing/JSVGCanvas.html"><code>JSVGCanvas</code></a> class, a UI component that can display SVG content and let the user interact with that content (zoom, pan, rotate, select text, etc.).</p>
+</li>
+<li>
+<p>The <strong>Bridge</strong> module is rarely used directly. It is responsible for creating and maintaining an appropriate object corresponding to an SVG element. The bridge converts an SVG document into the internal representation Batik uses for graphics (GVT, the Graphic Vector Toolkit).</p>
+</li>
+<li>
+<p>The <a href="../using/transcoder.html">transcoder</a> is a module that provides a generic API for transcoding an input to an output. This module transcodes an input stream or a document into a particular ouput format, used for converting SVG documents to other types.</p>
+</li>
+</ul>
+<h2 id="lowLevelComponents">Low level modules</h2>
+<p>The low level modules are not expected to be used directly by developers using the Batik API. Rather, they support the operation of the core modules. The low level modules include:</p>
+<ul>
+<li>
+<p>The <strong>Graphic Vector Toolkit</strong> (GVT) module, which represents a view of the DOM tree that is more suitable for for rendering and event handling purposes. This module describes DOM tree in terms of a tree of Java graphics objects.</p>
+</li>
+<li>
+<p>The <strong>Renderer</strong> module is responsible for rendering a GVT tree and any related task. For example, a raster based renderer may perform some caching (the default renderer in Batik does that). However, a renderer could perform any task deemed necessary and does not have to be raster based.</p>
+</li>
+<li>
+<p>The <a href="../using/parsers.html">SVG parser</a> module contains parser classes for complex SVG attributes such as the <code>transform</code> or <code>color</code> attributes. Higher level modules rely on the SVG parser module.</p>
+</li>
+</ul>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

@@ -156,55 +156,106 @@ $(document).ready(function () {
 	  <h2>The Apache&trade; XML Graphics Project</h2>
 	</div>  
 
-    <h1>Apache(tm) XML Graphics Project - for the creation and maintenance of software for the conversion of XML formats to graphical output</h1>
+    <h1>The Apache(tm) XML Graphics Project - Mailing Lists</h1>
     
 
-    <h1>Apache&trade; XML Graphics Project</h1>
-<p>The Apache XML Graphics Project is responsible for software licensed to the Apache Software Foundation intended for the creation &amp; maintenance of:</p>
+    <h1>The Apache&trade; XML Graphics Project - Mailing Lists</h1>
+<h2>Mailing Lists</h2>
+<p>Every volunteer project obtains its strength from the people involved in it. Mailing lists provide a simple and effective communication mechanism.</p>
+<p>You are welcome to join any of these mailing lists (or all of them if you wish). You can choose to lurk, or actively participate. It's up to you. Before you join these lists, you should look over the resources in the Reference Library section. As with any mailing list, you should probably read any FAQ postings or simply read a sampling of postings on the list before posting your first question.</p>
+<h2 id="usage">Usage Notes</h2>
+<p>Archives are generally named after the project they're about (duh!) with a suffix that denotes the subjects covered. Common suffixes are:</p>
 <ul>
-<li>the conversion of XML formats to graphical output</li>
-<li>related software components</li>
+<li>
+<p><code>*-dev</code> Developer list - for technical questions about the product, code patches, bug submissions about advanced functionality, etc.</p>
+</li>
+<li>
+<p><code>*-users</code> Users list - for general usage questions about the product from an end-users perspective</p>
+</li>
+<li>
+<p><code>*-commits</code> commit list - this is a read-only list that sends out email with details of all changes to that project's CVS, SVN or Wiki repository</p>
+</li>
 </ul>
-<h2>Apache&trade; XML Graphics Project - Current Projects</h2>
-<p>The Apache&trade; XML Graphics Project currently consists of the following sub-projects, each focused on a different aspect of XML Graphics:</p>
+<p>The ezmlm mailing list controller accepts commands by sending emails to <code>&lt;listname&gt;-command</code>, generally like the following:</p>
 <ul>
-<li><a href="/batik/">Apache Batik</a> - A toolkit for Scalable Vector Graphics (SVG), based in Java</li>
-<li><a href="/fop/">Apache FOP</a> - A print formatter &amp; renderer for XSL-FO (FO=formatting objects), based in Java</li>
-<li><a href="/commons/">Apache XML Graphics Commons</a> - A library with various components used by Apache Batik and Apache FOP, written in Java</li>
+<li>
+<p><code>*-subscribe</code> Subscribe your current email address to the list</p>
+</li>
+<li>
+<p><code>*-unsubscribe</code> UnSubscribe your <strong>current</strong> email address from the list</p>
+</li>
+<li>
+<p><code>*-help</code> get Help on mailing list commands
+If you want to unsubscribe from the XML Graphics General mailing list you send an empty mail to <code>general-unsubscribe@xmlgraphics.apache.org</code>.</p>
+</li>
 </ul>
-<h1>Apache&trade; Batik: a Java-based SVG toolkit</h1>
-<p>Batik is a Java(tm) technology based toolkit for applications or applets that want to use images in the <a href="http://www.w3.org/TR/SVG/">Scalable Vector Graphics (SVG)</a> format for various purposes, such as viewing, generation or manipulation.</p>
-<p>The project's ambition is to give developers a set of <a href="http://xmlgraphics.apache.org/batik/using/architecture.html#coreComponents">core modules</a> which can be used together or individually to support specific SVG solutions. Here are some examples of <a href="http://xmlgraphics.apache.org/batik/architecture.html">modules</a>.</p>
-<h2>Apache&trade; Batik Modules</h2>
+<h1 id="public_archives">Public Archives</h1>
+<p>Archives of all public mailing lists can be found here:</p>
 <ul>
-<li>the <a href="/batik/architecture.html#lowLevelComponents">SVG Parser</a></li>
-<li>the <a href="/batik/svggen.html">SVG Generator</a></li>
-<li>the <a href="/batik/domapi.html">SVG DOM</a></li>
+<li>
+<p><a href="http://mail-archives.apache.org/mod_mbox/">http://mail-archives.apache.org/mod_mbox/</a> (mod_mbox archives)</p>
+</li>
+<li>
+<p>Some lists are also available from <a href="http://www.mail-archive.com/">The Mail Archive</a>, <a href="http://www.gmane.com/">GMANE</a> and <a href="http://xmlgraphics.markmail.org/">MarkMail</a>.</p>
+</li>
 </ul>
-<p>Another ambition for the Batik project is to make it highly <a href="/batik/extendingBatik.html">extensible</a> (for example, Batik allows the developer to handle custom SVG tags). Even though the goal of the project is to provide a set of core modules, one of the deliverables is a full fledged <a href="http://xmlgraphics.apache.org/batik/tools/browser.html">SVG Browser</a> implementation, which validates the various modules and their inter-operability.</p>
-<p>Find out more about <a href="/batik/">Apache Batik</a>.</p>
-<h1>Apache FOP: a Java-based XSL-FO (Formatting Objects) processor</h1>
-<p>FOP (Formatting Objects Processor) is the world's first print formatter driven by <a href="http://www.w3.org/TR/xsl/">XSL formatting objects</a> (XSL-FO) and the world's first output independent formatter. It is a Java application that reads a formatting object (FO) tree and renders the resulting pages to a specified output. The primary output target is PDF but there are other <a href="/fop/output.html">output formats</a> currently supported.</p>
-<h2>Apache&trade; FOP Output Formats</h2>
+<h2 id="xmlgraphics-general">XML Graphics General Mailing List</h2>
+<p><em>Low Traffic</em>  <a href="mailto:general-subscribe@xmlgraphics.apache.org">Subscribe</a>  <a href="mailto:general-unsubscribe@xmlgraphics.apache.org">Unsubscribe</a></p>
+<p>This list is for issues that span across all xmlgraphics.apache.org projects, whether technical or organizational. Discussions about specific code bases should be redirected to one of the codebase-specific lists below, except for XML Graphics Commons which is discussed here.</p>
+<p><strong>Archives:</strong></p>
 <ul>
-<li>PDF (Portable Document Format)</li>
-<li>PS (Adobe Postscript)</li>
-<li>PCL (Printer Control Language)</li>
-<li>AFP (MO:DCA)</li>
-<li>SVG (Scalable Vector Graphics)</li>
-<li>XML (area tree representation)</li>
-<li>Print</li>
-<li>AWT/Java2D</li>
-<li>MIF</li>
-<li>RTF (Rich Text Format)</li>
-<li>TXT (text)</li>
+<li><a href="http://mail-archives.apache.org/mod_mbox/xmlgraphics-general/">http://mail-archives.apache.org/mod_mbox/xmlgraphics-general/</a> (mod_mbox archives)</li>
 </ul>
-<p>Find out more about <a href="/fop/">Apache FOP</a>.</p>
-<h1>Apache XML Graphics Commons</h1>
-<p>Apache XML Graphics Commons is a library that consists of several reusable components used by Apache Batik and Apache FOP. Many of these components can easily be used separately outside the domains of SVG and XSL-FO. You'll find components such as a PDF library, an RTF library, Graphics2D implementations that let you generate PDF and PostScript files and much more.</p>
-<p>Apache XML Graphics Commons has only just started. It's in the process of being populated with components coming from Apache Batik and Apache FOP. Stay tuned for exciting treasures made available.</p>
-<p>In the Wiki, we have a <a href="https://cwiki.apache.org/confluence/display/XMLGRAPHICS/XmlGraphicsCommonComponents">plan for building Apache XML Graphics Commons</a>. The plan will give you an idea of what you can expect to find here when we're finished migrating components.</p>
-<p>Find out more about <a href="/commons/">Apache XML Graphics Commons</a>. (CMS)</p>
+<h2 id="xmlgraphics-commits">XML Graphics Commits Mailing List</h2>
+<p><em>Low Traffic</em>  <a href="mailto:commits-subscribe@xmlgraphics.apache.org">Subscribe</a>  <a href="mailto:commits-unsubscribe@xmlgraphics.apache.org">Unsubscribe</a></p>
+<p>This is a read-only list that sends out email with details of all commits to the Apache XML Graphics Commons subproject, the Apache XML Graphics project website repository and to its Wiki.</p>
+<p><strong>Archives:</strong></p>
+<ul>
+<li><a href="http://mail-archives.apache.org/mod_mbox/xmlgraphics-commits/">http://mail-archives.apache.org/mod_mbox/xmlgraphics-commits/</a> (mod_mbox archives)</li>
+</ul>
+<h2 id="batik-users">Batik Users Mailing List</h2>
+<p><em>Medium Traffic</em>  <a href="mailto:batik-users-subscribe@xmlgraphics.apache.org">Subscribe</a>  <a href="mailto:batik-users-unsubscribe@xmlgraphics.apache.org">Unsubscribe</a></p>
+<p>This is the list for active users of the Batik project, where issues regarding installation and use of Batik are discussed. Also code changes and new releases are announced on this list.</p>
+<p><strong>Archives:</strong></p>
+<ul>
+<li><a href="http://mail-archives.apache.org/mod_mbox/xmlgraphics-batik-users/">http://mail-archives.apache.org/mod_mbox/xmlgraphics-batik-users/</a> (mod_mbox archives)</li>
+</ul>
+<h2 id="batik-dev">Batik Developers Mailing List</h2>
+<p><em>Medium Traffic</em>  <a href="mailto:batik-dev-subscribe@xmlgraphics.apache.org">Subscribe</a>  <a href="mailto:batik-dev-unsubscribe@xmlgraphics.apache.org">Unsubscribe</a></p>
+<p>This is the list for everyone interested and involved with the active development of Batik.</p>
+<p><strong>Archives:</strong></p>
+<ul>
+<li><a href="http://mail-archives.apache.org/mod_mbox/xmlgraphics-batik-dev/">http://mail-archives.apache.org/mod_mbox/xmlgraphics-batik-dev/</a> (mod_mbox archives)</li>
+</ul>
+<h2 id="batik-commits">Batik Commits Mailing List</h2>
+<p><em>Medium Traffic</em>  <a href="mailto:batik-commits-subscribe@xmlgraphics.apache.org">Subscribe</a>  <a href="mailto:batik-commits-unsubscribe@xmlgraphics.apache.org">Unsubscribe</a></p>
+<p>This is a read-only list that sends out email with details of all commits to the Apache Batik subproject code repository and to its Wiki.</p>
+<p><strong>Archives:</strong></p>
+<ul>
+<li><a href="http://mail-archives.apache.org/mod_mbox/xmlgraphics-batik-commits/">http://mail-archives.apache.org/mod_mbox/xmlgraphics-batik-commits/</a> (mod_mbox archives)</li>
+</ul>
+<h2 id="fop-users">FOP Users Mailing List</h2>
+<p><em>Medium Traffic</em>  <a href="mailto:fop-users-subscribe@xmlgraphics.apache.org">Subscribe</a>  <a href="mailto:fop-users-unsubscribe@xmlgraphics.apache.org">Unsubscribe</a></p>
+<p>This is the list for active users of the FOP project, where issues regarding installation and use of FOP are discussed. Also code changes and new releases are announced on this list.</p>
+<p><strong>Archives:</strong></p>
+<ul>
+<li><a href="http://mail-archives.apache.org/mod_mbox/xmlgraphics-fop-users/">http://mail-archives.apache.org/mod_mbox/xmlgraphics-fop-users/</a> (mod_mbox archives)</li>
+</ul>
+<p>It is usually a good idea to state the FOP &amp; JDK/JRE version and the operating system you are using. Also, if you are attaching large binary files (PDF, JPG, etc.), please consider attaching a minimal, appropriate B&amp;W GIF, JPG or PNG that conveys the necessary information instead. A good alternative is to put the files on a web server.</p>
+<h1 id="fop-dev">FOP Developers Mailing List</h1>
+<p><em>Medium Traffic</em>  <a href="mailto:fop-dev-subscribe@xmlgraphics.apache.org">Subscribe</a>  <a href="mailto:fop-dev-unsubscribe@xmlgraphics.apache.org">Unsubscribe</a></p>
+<p>This is the list for everyone interested and involved with the active development of FOP.</p>
+<p><strong>Archives:</strong></p>
+<ul>
+<li><a href="http://mail-archives.apache.org/mod_mbox/xmlgraphics-fop-dev/">http://mail-archives.apache.org/mod_mbox/xmlgraphics-fop-dev/</a> (mod_mbox archives)</li>
+</ul>
+<h2 id="fop-commits">FOP Commits Mailing List</h2>
+<p><em>Medium Traffic</em>  <a href="mailto:fop-commits-subscribe@xmlgraphics.apache.org">Subscribe</a>  <a href="mailto:fop-commits-unsubscribe@xmlgraphics.apache.org">Unsubscribe</a></p>
+<p>This is a read-only list that sends out email with details of all commits to the Apache FOP subproject code repository and to its Wiki.</p>
+<p><strong>Archives:</strong></p>
+<ul>
+<li><a href="http://mail-archives.apache.org/mod_mbox/xmlgraphics-fop-commits/">http://mail-archives.apache.org/mod_mbox/xmlgraphics-fop-commits/</a> (mod_mbox archives)</li>
+</ul>
 
       <div class="clear"></div>
 

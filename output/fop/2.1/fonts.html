@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache&trade; FOP
+  - [FOP Home](/fop/)
+  - [Download](/fop/download.html)
+  - [Quick Start Guide](/fop/quickstartguide.html)
+  - [Compliance](/fop/compliance.html)
+  - [Getting Help](/fop/gethelp.html)
+  - [FAQs](/fop/faq.html)
+  - [FOP Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP)
+  - [Mailing Lists](/fop/maillist.html)
+  - [License](/fop/license.html)
+  - ## Resources
+    - [XSL-FO](/fop/fo.html)
+    - [Examples](/fop/examples.html)
+    - [Bugs](/fop/bugs.html)
+    - [Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FrontPage)
+    - [Other](/fop/resources.html)
+  - ## Project
+    - [News](/fop/news.html)
+    - [Who We Are](/fop/team.html)
+    - [Status](/fop/status.html)
+    - [Known Issues](/fop/knownissues.html)
+    - [Changes](/fop/changes.html)
+  - ## Versions
+      - ## FOP Trunk (dev)
+          - [Overview](/fop/trunk/)
+          - [Upgrading](/fop/trunk/upgrading.html)
+          - ### Using Apache&trade; FOP
+            - [Build](/fop/trunk/compiling.html)
+            - [Configure](/fop/trunk/configuration.html)
+            - [Run](/fop/trunk/running.html)
+            - [Embed](/fop/trunk/embedding.html)
+            - [Servlets](/fop/trunk/servlets.html)
+            - [Ant Task](/fop/trunk/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/trunk/accessibility.html)
+            - [Complex Scripts](/fop/trunk/complexscripts.html)
+            - [Events](/fop/trunk/events.html)
+            - [Extensions](/fop/trunk/extensions.html)
+            - [Fonts](/fop/trunk/fonts.html)
+            - [Graphics](/fop/trunk/graphics.html)
+            - [Hyphenation](/fop/trunk/hyphenation.html)
+            - [Intermediate Format](/fop/trunk/intermediate.html)
+            - [Metadata](/fop/trunk/metadata.html)
+            - [Output Targets](/fop/trunk/output.html)
+            - [PDF/A](/fop/trunk/pdfa.html)
+            - [PDF/X](/fop/trunk/pdfx.html)
+            - [PDF Encryption](/fop/trunk/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/trunk/whitespacemanagement.html)
+      - ## FOP 2.5
+          - [FOP 2.5 Overview](/fop/2.5/)
+          - [Release Notes](/fop/2.5/releaseNotes_2.5.html)
+          - [Changes (2.5)](/fop/2.5/changes_2.5.html)
+          - [Known Issues](/fop/2.5/knownissues_overview.html)
+          - [Upgrading](/fop/2.5/upgrading.html)
+          - ### Using Apache FOP 2.5
+            - [Build](/fop/2.5/compiling.html)
+            - [Configure](/fop/2.5/configuration.html)
+            - [Run](/fop/2.5/running.html)
+            - [Embed](/fop/2.5/embedding.html)
+            - [Servlets](/fop/2.5/servlets.html)
+            - [Ant Task](/fop/2.5/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.5/accessibility.html)
+            - [Complex Scripts](/fop/2.5/complexscripts.html)
+            - [Events](/fop/2.5/events.html)
+            - [Extensions](/fop/2.5/extensions.html)
+            - [Fonts](/fop/2.5/fonts.html)
+            - [Graphics](/fop/2.5/graphics.html)
+            - [Hyphenation](/fop/2.5/hyphenation.html)
+            - [Intermediate Format](/fop/2.5/intermediate.html)
+            - [Metadata](/fop/2.5/metadata.html)
+            - [Output Targets](/fop/2.5/output.html)
+            - [PDF/A](/fop/2.5/pdfa.html)
+            - [PDF/X](/fop/2.5/pdfx.html)
+            - [PDF Encryption](/fop/2.5/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.5/whitespacemanagement.html)     
+      - ## FOP 2.4
+          - [FOP 2.4 Overview](/fop/2.4/)
+          - [Release Notes](/fop/2.4/releaseNotes_2.4.html)
+          - [Changes (2.4)](/fop/2.4/changes_2.4.html)
+          - [Known Issues](/fop/2.4/knownissues_overview.html)
+          - [Upgrading](/fop/2.4/upgrading.html)
+          - ### Using Apache FOP 2.4
+            - [Build](/fop/2.4/compiling.html)
+            - [Configure](/fop/2.4/configuration.html)
+            - [Run](/fop/2.4/running.html)
+            - [Embed](/fop/2.4/embedding.html)
+            - [Servlets](/fop/2.4/servlets.html)
+            - [Ant Task](/fop/2.4/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.4/accessibility.html)
+            - [Complex Scripts](/fop/2.4/complexscripts.html)
+            - [Events](/fop/2.4/events.html)
+            - [Extensions](/fop/2.4/extensions.html)
+            - [Fonts](/fop/2.4/fonts.html)
+            - [Graphics](/fop/2.4/graphics.html)
+            - [Hyphenation](/fop/2.4/hyphenation.html)
+            - [Intermediate Format](/fop/2.4/intermediate.html)
+            - [Metadata](/fop/2.4/metadata.html)
+            - [Output Targets](/fop/2.4/output.html)
+            - [PDF/A](/fop/2.4/pdfa.html)
+            - [PDF/X](/fop/2.4/pdfx.html)
+            - [PDF Encryption](/fop/2.4/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.4/whitespacemanagement.html)             
+      - ## FOP 2.3
+          - [FOP 2.3 Overview](/fop/2.3/)
+          - [Release Notes](/fop/2.3/releaseNotes_2.3.html)
+          - [Changes (2.3)](/fop/2.3/changes_2.3.html)
+          - [Known Issues](/fop/2.3/knownissues_overview.html)
+          - [Upgrading](/fop/2.3/upgrading.html)
+          - ### Using Apache FOP 2.3
+            - [Build](/fop/2.3/compiling.html)
+            - [Configure](/fop/2.3/configuration.html)
+            - [Run](/fop/2.3/running.html)
+            - [Embed](/fop/2.3/embedding.html)
+            - [Servlets](/fop/2.3/servlets.html)
+            - [Ant Task](/fop/2.3/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.3/accessibility.html)
+            - [Complex Scripts](/fop/2.3/complexscripts.html)
+            - [Events](/fop/2.3/events.html)
+            - [Extensions](/fop/2.3/extensions.html)
+            - [Fonts](/fop/2.3/fonts.html)
+            - [Graphics](/fop/2.3/graphics.html)
+            - [Hyphenation](/fop/2.3/hyphenation.html)
+            - [Intermediate Format](/fop/2.3/intermediate.html)
+            - [Metadata](/fop/2.3/metadata.html)
+            - [Output Targets](/fop/2.3/output.html)
+            - [PDF/A](/fop/2.3/pdfa.html)
+            - [PDF/X](/fop/2.3/pdfx.html)
+            - [PDF Encryption](/fop/2.3/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.3/whitespacemanagement.html)            
+      - ## FOP 2.2
+          - [FOP 2.2 Overview](/fop/2.2/)
+          - [Release Notes](/fop/2.2/releaseNotes_2.2.html)
+          - [Changes (2.2)](/fop/2.2/changes_2.2.html)
+          - [Known Issues](/fop/2.2/knownissues_overview.html)
+          - [Upgrading](/fop/2.2/upgrading.html)
+          - ### Using Apache FOP 2.2
+            - [Build](/fop/2.2/compiling.html)
+            - [Configure](/fop/2.2/configuration.html)
+            - [Run](/fop/2.2/running.html)
+            - [Embed](/fop/2.2/embedding.html)
+            - [Servlets](/fop/2.2/servlets.html)
+            - [Ant Task](/fop/2.2/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.2/accessibility.html)
+            - [Complex Scripts](/fop/2.2/complexscripts.html)
+            - [Events](/fop/2.2/events.html)
+            - [Extensions](/fop/2.2/extensions.html)
+            - [Fonts](/fop/2.2/fonts.html)
+            - [Graphics](/fop/2.2/graphics.html)
+            - [Hyphenation](/fop/2.2/hyphenation.html)
+            - [Intermediate Format](/fop/2.2/intermediate.html)
+            - [Metadata](/fop/2.2/metadata.html)
+            - [Output Targets](/fop/2.2/output.html)
+            - [PDF/A](/fop/2.2/pdfa.html)
+            - [PDF/X](/fop/2.2/pdfx.html)
+            - [PDF Encryption](/fop/2.2/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.2/whitespacemanagement.html)
+      - ## FOP 2.1
+          - [FOP 2.1 Overview](/fop/2.1/)
+          - [Release Notes](/fop/2.1/releaseNotes_2.1.html)
+          - [Changes (2.1)](/fop/2.1/changes_2.1.html)
+          - [Known Issues](/fop/2.1/knownissues_overview.html)
+          - [Upgrading](/fop/2.1/upgrading.html)
+          - ### Using Apache FOP 2.1
+            - [Build](/fop/2.1/compiling.html)
+            - [Configure](/fop/2.1/configuration.html)
+            - [Run](/fop/2.1/running.html)
+            - [Embed](/fop/2.1/embedding.html)
+            - [Servlets](/fop/2.1/servlets.html)
+            - [Ant Task](/fop/2.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.1/accessibility.html)
+            - [Complex Scripts](/fop/2.1/complexscripts.html)
+            - [Events](/fop/2.1/events.html)
+            - [Extensions](/fop/2.1/extensions.html)
+            - [Fonts](/fop/2.1/fonts.html)
+            - [Graphics](/fop/2.1/graphics.html)
+            - [Hyphenation](/fop/2.1/hyphenation.html)
+            - [Intermediate Format](/fop/2.1/intermediate.html)
+            - [Metadata](/fop/2.1/metadata.html)
+            - [Output Targets](/fop/2.1/output.html)
+            - [PDF/A](/fop/2.1/pdfa.html)
+            - [PDF/X](/fop/2.1/pdfx.html)
+            - [PDF Encryption](/fop/2.1/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.1/whitespacemanagement.html)
+      - ## FOP 2.0
+          - [FOP 2.0 Overview](/fop/2.0/)
+          - [Release Notes](/fop/2.0/releaseNotes_2.0.html)
+          - [Changes (2.0)](/fop/2.0/changes_2.0.html)
+          - [Known Issues](/fop/2.0/knownissues_overview.html)
+          - [Upgrading](/fop/2.0/upgrading.html)
+          - ### Using Apache FOP 2.0
+            - [Build](/fop/2.0/compiling.html)
+            - [Configure](/fop/2.0/configuration.html)
+            - [Run](/fop/2.0/running.html)
+            - [Embed](/fop/2.0/embedding.html)
+            - [Servlets](/fop/2.0/servlets.html)
+            - [Ant Task](/fop/2.0/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.0/accessibility.html)
+            - [Complex Scripts](/fop/2.0/complexscripts.html)
+            - [Events](/fop/2.0/events.html)
+            - [Extensions](/fop/2.0/extensions.html)
+            - [Fonts](/fop/2.0/fonts.html)
+            - [Graphics](/fop/2.0/graphics.html)
+            - [Hyphenation](/fop/2.0/hyphenation.html)
+            - [Intermediate Format](/fop/2.0/intermediate.html)
+            - [Metadata](/fop/2.0/metadata.html)
+            - [Output Targets](/fop/2.0/output.html)
+            - [PDF/A](/fop/2.0/pdfa.html)
+            - [PDF/X](/fop/2.0/pdfx.html)
+            - [PDF Encryption](/fop/2.0/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.0/whitespacemanagement.html)
+      - ## FOP 1.1
+          - [FOP 1.1 Overview](/fop/1.1/)
+          - [Release Notes](/fop/1.1/releaseNotes_1.1.html)
+          - [Changes (1.1)](/fop/1.1/changes_1.1.html)
+          - [Known Issues](/fop/1.1/knownissues_overview.html)
+          - [Upgrading](/fop/1.1/upgrading.html)
+          - ### Using Apache FOP 1.1
+            - [Build](/fop/1.1/compiling.html)
+            - [Configure](/fop/1.1/configuration.html)
+            - [Run](/fop/1.1/running.html)
+            - [Embed](/fop/1.1/embedding.html)
+            - [Servlets](/fop/1.1/servlets.html)
+            - [Ant Task](/fop/1.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/1.1/accessibility.html)
+            - [Complex Scripts](/fop/1.1/complexscripts.html)
+            - [Events](/fop/1.1/events.html)
+            - [Extensions](/fop/1.1/extensions.html)
+            - [Fonts](/fop/1.1/fonts.html)
+            - [Graphics](/fop/1.1/graphics.html)
+            - [Hyphenation](/fop/1.1/hyphenation.html)
+            - [Intermediate Format](/fop/1.1/intermediate.html)
+            - [Metadata](/fop/1.1/metadata.html)
+            - [Output Targets](/fop/1.1/output.html)
+            - [PDF/A](/fop/1.1/pdfa.html)
+            - [PDF/X](/fop/1.1/pdfx.html)
+            - [PDF Encryption](/fop/1.1/pdfencryption.html)
+      - ## FOP 1.0
+          - [FOP 1.0 Overview](/fop/1.0/)
+          - [Release Notes](/fop/1.0/releaseNotes_1.0.html)
+          - [Changes (1.0)](/fop/1.0/changes_1.0.html)
+          - [Known Issues](/fop/1.0/knownissues_overview.html)
+          - [Upgrading](/fop/1.0/upgrading.html)
+          - ### Using Apache FOP 1.0
+            - [Build](/fop/1.0/compiling.html)
+            - [Configure](/fop/1.0/configuration.html)
+            - [Run](/fop/1.0/running.html)
+            - [Embed](/fop/1.0/embedding.html)
+            - [Servlets](/fop/1.0/servlets.html)
+            - [Ant Task](/fop/1.0/anttask.html)
+          - ### Features
+            - [Output Targets](/fop/1.0/output.html)
+            - [Intermediate Format](/fop/1.0/intermediate.html)
+            - [PDF Encryption](/fop/1.0/pdfencryption.html)
+            - [PDF/A](/fop/1.0/pdfa.html)
+            - [PDF/X](/fop/1.0/pdfx.html)
+            - [Graphics](/fop/1.0/graphics.html)
+            - [Fonts](/fop/1.0/fonts.html)
+            - [Hyphenation](/fop/1.0/hyphenation.html)
+            - [Extensions](/fop/1.0/extensions.html)
+            - [Events](/fop/1.0/events.html)
+            - [Metadata](/fop/1.0/metadata.html)
+            - [Accessibility](/fop/1.0/accessibility.html)
+      - ## FOP Development
+          - [General Info](/fop/dev/)
+          - ## Design
+            - [Design Info](/fop/dev/design/)
+          - ## Core Process
+            - [Startup](/fop/dev/design/startup.html)
+            - [XML Parsing](/fop/dev/design/parsing.html)
+            - [FO Tree](/fop/dev/design/fotree.html)
+            - [Properties](/fop/dev/design/properties.html)
+            - [Layout](/fop/dev/design/layout.html)
+            - [Break Possibility](/fop/dev/design/breakpos.html)
+            - [Area Tree](/fop/dev/design/areas.html)
+            - [Renderers](/fop/dev/design/renderers.html)
+          - ## Miscellaneous
+            - [Images](/fop/dev/design/images.html)
+            - [PDF Library](/fop/dev/design/pdf-library.html)
+            - [SVG](/fop/dev/design/svg.html)
+            - [Embedding](/fop/dev/design/embedding.html)
+            - [Extending](/fop/dev/design/extending.html)
+            - [Optimisations](/fop/dev/design/optimise.html)
+            - [User Agent](/fop/dev/design/useragent.html)
+          - [Unresolved (Wiki)](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FOPProjectPages)
+          - [SVG](/fop/dev/svg.html)
+          - [Extensions](/fop/dev/extensions.html)
+          - ## Develop
+            - [Walk-Thru](/fop/dev/implement.html)
+            - [Patch Queue](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20description%20~%20%22\%22[patch]\%22%22%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+            - [Conventions](/fop/dev/conventions.html)
+          - ## Test
+            - [Testing](/fop/dev/testing.html)
+          - ## Deploy
+            - [Doc Mgmt](/fop/dev/doc.html)
+            - [Release](/fop/dev/release.html)
+            - [Bugs](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20issuetype%20%3D%20Bug%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+          - ## Resources
+            - [FAQs](/fop/dev/faq.html)
+            - [Tools](/fop/dev/tools.html)
+            - [ViewVC](http://svn.apache.org/viewvc/xmlgraphics/fop)
+          - ## SubPackages
+            - [RTFlib](/fop/dev/rtflib.html)
+
+# Apache&trade; XML Graphics
+  - ## Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache Batik](/batik/)
+  - [Apache XML Graphics Commons](/commons/)
+
+### Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+      $('#navigation :header').not('#search-apache-xml-graphics, #apachewzxhzdk3-xml-graphics, #sub-projects').append(' &raquo;');
+    }
+  $('#navigation > ul > li > ul > li ul').hide();
+  $('#project-overview').next().hide();
+  $('#versions').next().show();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+      $("li.highlight").removeClass("highlight");
+      $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
+	  <a href="/fop/"><img src="/images/apache-fop-logo.jpg" alt="The Apache FOP Project" width="120" height="65" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; FOP Project</h2>
+	</div>  
+
+    <h1>Apache(tm) FOP: Fonts</h1>
+    Translations: 
+<a href="/fop/2.0/fonts.html">en</a>
+<a href="/fop/0.95/fonts.html">en</a>
+<a href="/fop/2.5/fonts.html">en</a>
+<a href="/fop/trunk/fonts.html">en</a>
+<a href="/fop/1.1/fonts.html">en</a>
+<a href="/fop/2.2/fonts.html">en</a>
+<a href="/fop/2.3/fonts.html">en</a>
+<a href="/fop/2.4/fonts.html">en</a>
+<a href="/fop/1.0/fonts.html">en</a>
+
+
+    <h1>Apache&trade; FOP: Fonts</h1>
+<p><authors><person email="" name="Jeremias Märki"></person><person email="" name="Tore Engvig"></person><person email="" name="Adrian Cumiskey"></person><person email="" name="Max Berger"></person></authors></p>
+<h2 id="intro">Summary</h2>
+<p>The following table summarizes the font capabilities of the various Apache&trade; FOP renderers:</p>
+<table>
+<thead>
+<tr>
+<th>Renderer</th>
+<th>Base-14</th>
+<th>AWT/OS</th>
+<th>Custom</th>
+<th>Custom Embedding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PDF</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>PostScript</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>PCL</td>
+<td>yes (modified)</td>
+<td>yes (painted as bitmaps)</td>
+<td>yes (painted as bitmaps)</td>
+<td>no</td>
+</tr>
+<tr>
+<td>AFP</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Java2D/AWT/Bitmap</td>
+<td>if available from OS</td>
+<td>yes</td>
+<td>yes</td>
+<td>n/a (display only)</td>
+</tr>
+<tr>
+<td>Print</td>
+<td>if available from OS</td>
+<td>yes</td>
+<td>yes</td>
+<td>controlled by OS printer driver</td>
+</tr>
+<tr>
+<td>RTF</td>
+<td>n/a (font metrics not needed)</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>TXT</td>
+<td>yes (used for layout but not for output)</td>
+<td>no</td>
+<td>yes (used for layout but not for output)</td>
+<td>no</td>
+</tr>
+<tr>
+<td>XML</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>n/a</td>
+</tr>
+</tbody>
+</table>
+<p>Note that Java2D based renderers (Java2D, AWT, Print, TIFF, PNG) support both system (AWT/OS) and custom fonts.</p>
+<h2 id="Base-14-Fonts">Base-14 Fonts</h2>
+<p>The Adobe PostScript and PDF Specification specify a set of 14 fonts that must be available to every PostScript interpreter and PDF reader: Helvetica (normal, bold, italic, bold italic), Times (normal, bold, italic, bold italic), Courier (normal, bold, italic, bold italic), Symbol and ZapfDingbats.</p>
+<p>The following font family names are hard-coded into FOP for the Base-14 font set:</p>
+<table>
+<thead>
+<tr>
+<th>Base-14 font</th>
+<th>font families</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Helvetica</td>
+<td>Helvetica, sans-serif, SansSerif</td>
+</tr>
+<tr>
+<td>Times</td>
+<td>Times, Times Roman, Times-Roman, serif, any</td>
+</tr>
+<tr>
+<td>Courier</td>
+<td>Courier, monospace, Monospaced</td>
+</tr>
+<tr>
+<td>Symbol</td>
+<td>Symbol</td>
+</tr>
+<tr>
+<td>ZapfDingbats</td>
+<td>ZapfDingbats</td>
+</tr>
+</tbody>
+</table>
+<p>Please note that recent versions of Adobe Acrobat Reader replace "Helvetica" with "Arial" and "Times" with "Times New Roman" internally. GhostScript replaces "Helvetica" with "Nimbus Sans L" and "Times" with "Nimbus Roman No9 L". Other document viewers may do similar font substitutions. If you need to make sure that there are no such substitutions, you need to specify an explicit font and embed it in the target document.</p>
+<h2 id="missing-fonts">Missing Fonts</h2>
+<p>When FOP does not have a specific font at its disposal (because it's not installed in the operating system or set up in FOP's configuration), the font is replaced with "any". "any" is internally mapped to the Base-14 font "Times" (see above).</p>
+<h2 id="missing-glyphs">Missing Glyphs</h2>
+<p>Every font contains a particular set of <a href="http://en.wikipedia.org/wiki/Glyph">glyphs</a>. If no glyph can be found for a given character, FOP will issue a warning and use the glpyh for "#" (if available) instead. Before it does that, it consults a (currently hard-coded) registry of glyph substitution groups (see Glyphs.java in Apache XML Graphics Commons). This registry can supply alternative glyphs in some cases (like using space when a no-break space is requested). But there's no guarantee that the result will be as expected (for example, in the case of hyphens and similar glyphs). A better way is to use a font that has all the necessary glyphs. This glyph substitution is only a last resort.</p>
+<h2 id="awt">System Fonts</h2>
+<p>Support for system fonts relies on the Java AWT subsystem for font metric information. Through operating system registration, the AWT subsystem knows what fonts are available on the system, and the font metrics for each one.</p>
+<p>When working with renderers that supports system fonts (see above table) and you're missing a font, you can just install it in your operating system and it should be available for these renderers. Please note that this is not true for output formats, such as PDF or PostScript, that only support custom fonts.</p>
+<h2 id="custom">Custom Fonts</h2>
+<p>Support for custom fonts is highly output format dependent (see above table). This section shows how to add Type 1, TrueType (TTF) and OpenType (OTF) fonts to the PDF, PostScript and Java2D-based renderers. Other renderers (like AFP) support other font formats. Details in this case can be found on the page about <a href="output.html">output formats</a>.</p>
+<p>In earlier FOP versions, it was always necessary to create an XML font metrics file if you wanted to add a custom font. This inconvenient step has been removed and in addition to that, FOP supports auto-registration of fonts, i.e. FOP can find fonts installed in your operating system or can scan user-specified directories for fonts. Font registration via XML font metrics has been deprecated and is not recommended although it is still supported by the current code.</p>
+<p>More information about fonts can be found at <a href="http://www.adobe.com/devnet/font.html">Adobe Font Technical Notes</a>.</p>
+<h3>OpenType Advanced Font Features</h3>
+<p>OpenType fonts support advanced layout features such as ligatures, small caps, swashes, alternates, old style figures and more. Please see <a href="http://www.microsoft.com/typography/otspec/TTOCHAP1.htm">Advanced Typographic Extensions - OpenType Layout</a>. These features are currently missing within FOP due to the implementation opting to favor a greater number of formats. </p>
+<p>While FOP may support embedding OpenType with advanced features in the future, the current method extracts the Compact Font Format (CFF) data containing among other things the character definitions, optionally subsets and embeds the result as a Type1C font. This allows the font to be used by both Postscript and older PDF versions while losing the features mentioned above. This is because embedding Open-Type in it's original state is only supported by PDF 1.6 and above.</p>
+<h2 id="bulk">Bulk Font Configuration</h2>
+<p>If you want FOP to use custom fonts, you need to tell it where to find them. This is done in the configuration file and once per renderer (because each output format is a little different). For convenience, FOP allows bulk registering of fonts; you can either tell FOP to find your operating system fonts or you can specify directories that it will search for support fonts. These fonts will then automatically be registered.</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;renderers&gt;</span>
+  <span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;fonts&gt;</span>
+        <span class="c">&lt;!-- register all the fonts found in a directory --&gt;</span>
+        <span class="nt">&lt;directory&gt;</span>C:\MyFonts1<span class="nt">&lt;/directory&gt;</span>
+
+        <span class="c">&lt;!-- register all the fonts found in a directory and all of its sub directories (use with care) --&gt;</span>
+        <span class="nt">&lt;directory</span> <span class="na">recursive=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>C:\MyFonts2<span class="nt">&lt;/directory&gt;</span>
+
+        <span class="c">&lt;!-- automatically detect operating system installed fonts --&gt;</span>
+        <span class="nt">&lt;auto-detect/&gt;</span>
+     <span class="nt">&lt;/fonts&gt;</span>
+  <span class="nt">&lt;/renderer&gt;</span>
+<span class="nt">&lt;/renderers&gt;</span>
+</pre></div>
+
+
+<p><note>Review the documentation for <a href="configuration.html">FOP Configuration</a> for instructions on making the FOP configuration available to FOP when it runs. Otherwise, FOP has no way of finding your custom font information. It is currently not possible to easily configure fonts from Java code.</note></p>
+<h3 id="register">Register Fonts with FOP</h3>
+<p>You must tell FOP how to find and use the font files by registering them in the <a href="configuration.html">FOP Configuration</a>. Add entries for your custom fonts, regardless of font type, to the configuration file in a manner similar to the following:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;renderers&gt;</span>
+   <span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;fonts&gt;</span>
+           <span class="nt">&lt;font</span> <span class="na">kerning=</span><span class="s">&quot;yes&quot;</span> <span class="na">embed-url=</span><span class="s">&quot;/System/Library/Fonts/Arial.ttf&quot;</span> <span class="na">embedding-mode=</span><span class="s">&quot;subset&quot;</span><span class="nt">&gt;</span>
+               <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Arial&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+           <span class="nt">&lt;/font&gt;</span>
+           <span class="nt">&lt;font</span> <span class="na">kerning=</span><span class="s">&quot;yes&quot;</span> <span class="na">embed-url=</span><span class="s">&quot;/System/Library/Fonts/AEHO____.PFB&quot;</span><span class="nt">&gt;</span>
+               <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Avenir-HeavyOblique&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
+           <span class="nt">&lt;/font&gt;</span>
+       <span class="nt">&lt;/fonts&gt;</span>
+   <span class="nt">&lt;/renderer&gt;</span>
+<span class="nt">&lt;/renderers&gt;</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>The "embed-url" attribute is used to specify the font file. Relative URLs are resolved relative to the font-base property (or base) if available. See <a href="configuration.html">FOP: Configuration</a> for more information. </p>
+</li>
+<li>
+<p>The "embedding-mode" attribute is optional and can take two values: subset (the default) and full. If not specified the font is subset embedded for TTF and OTF or full embedded for Type 1, unless it is explicitly referenced (see below).</p>
+</li>
+<li>
+<p>The font "kerning" attribute is optional. Default is "true".</p>
+</li>
+<li>
+<p>When setting the "embed-url" attribute for Type 1 fonts, be sure to specify the PFB (actual font data), not the PFM (font metrics) file. If the PFM (or AFM) file is in a different location (i.e., not in the same directory) then you need to specify an "embed-url-pfm" (or "embed-url-afm") attribute next to the "embed-url" one.</p>
+</li>
+<li>
+<p>The attribute "encoding-mode" is optional an may have the following values:</p>
+<ul>
+<li>
+<p>auto: default font encoding mode ("cid" for Truetype, "single-byte" for Type 1)</p>
+</li>
+<li>
+<p>single-byte: use single-byte encodings in the target format (if applicable)</p>
+</li>
+<li>
+<p>cid: encode as CID-keyed font (currently only supported for PDF output with TrueType fonts)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>The fonts "directory" tag can be used to register fonts contained within a single or list of directory paths. The "recursive" attribute can be specified to recursively add fonts from all sub directories.</p>
+</li>
+<li>
+<p>The fonts "auto-detect" tag can be used to automatically register fonts that are found to be installed on the native operating system.</p>
+</li>
+<li>
+<p>Fonts registered with "font" tag configurations override fonts found by means of "directory" tag definitions.</p>
+</li>
+<li>
+<p>Fonts found as a result of a "directory" tag configuration override fonts found as a result of the "auto-detect" tag being specified.</p>
+</li>
+<li>
+<p>If relative URLs are specified, they are evaluated relative to the value of the "font-base" setting. If there is no "font-base" setting, the fonts are evaluated relative to the base directory.</p>
+</li>
+<li>
+<p>If a fop.xconf is not used, or the "embed-url" attribute is missing, the fonts are referenced (and the default Base-14 is used in this case).</p>
+</li>
+</ul>
+<h3 id="truetype-collections-metrics">TrueType Collections</h3>
+<p>TrueType collections (.ttc files) contain more than one font. The individual sub-fonts of a TrueType Collection can be selected using the "sub-font" attribute on the "font" element. Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;font</span> <span class="na">embed-url=</span><span class="s">&quot;gulim.ttc&quot;</span> <span class="na">sub-font=</span><span class="s">&quot;GulimChe&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;GulimChe&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/font&gt;</span>
+</pre></div>
+
+
+<h3 id="autodetect">Auto-Detect and auto-embed feature</h3>
+<p>When the "auto-detect" flag is set in the configuration, FOP will automatically search for fonts in the default paths for your operating system.</p>
+<p>FOP will also auto-detect fonts which are available in the classpath, if they are described as "application/x-font" in the MANIFEST.MF file. For example, if your .jar file contains font/myfont.ttf:</p>
+<div class="highlight"><pre><span></span>Manifest-Version: 1.0
+
+    Name: font/myfont.ttf
+    Content-Type: application/x-font
+</pre></div>
+
+
+<p>This feature allows you to create JAR files containing fonts. The JAR files can be added to fop by providem them in the classpath, e.g. copying them into the lib/ directory.</p>
+<h4 id="font-cache">The font cache</h4>
+<p>Apache FOP maintains a cache file that is used to speed up auto-detection. This file is usually found in the ".fop" directory under the user's home directory. It's called "fop-fonts.cache". When the user's home directory is not writable, the font cache file is put in the directory for temporary files.</p>
+<p>If there was a problem loading a particular font, it is flagged in the cache file so it is not loaded anymore. So, if a font is actually around but is still not found by Apache FOP, it's worth a try to delete the font cache file which forces Apache FOP to reparse all fonts.</p>
+<h3 id="referencing_fonts">Referencing Fonts</h3>
+<p>By default, all fonts are embedded if an output format supports font embedding. In some cases, however, it is preferred that some fonts are only referenced. When working with referenced fonts it is important to be in control of the target environment where the produced document is consumed, i.e. the necessary fonts have to be installed there.</p>
+<p>There are two different ways how you can specify that a font should be referenced:</p>
+<ol>
+<li>
+<p>When explicitly configuring a font, font referencing is controlled by the embed-url attribute. If you don't specify the embed-url attribute the font will not be embedded, but will only be referenced.</p>
+</li>
+<li>
+<p>For automatically configured fonts there's a different mechanism to specify which fonts should be referenced rather than embedded. This is done in the "referenced-fonts" element in the configuration. Here's an example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fonts&gt;</span>
+    <span class="nt">&lt;referenced-fonts&gt;</span>
+      <span class="nt">&lt;match</span> <span class="na">font-family=</span><span class="s">&quot;Helvetica&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;match</span> <span class="na">font-family=</span><span class="s">&quot;DejaVu.*&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/referenced-fonts&gt;</span>
+  <span class="nt">&lt;/fonts&gt;</span>
+<span class="nt">&lt;/fop&gt;</span>
+</pre></div>
+
+
+</li>
+</ol>
+<p>At the moment, you can only match fonts against their font-family. It is possible to use regular expressions as is shown in the second example above ("DejaVu.*"). The syntax for the regular expressions used here are the one used by the <a href="https://docs.oracle.com/javase/7/docs/api/java/util/regex/package-summary.html">package</a>. So, in the above snippet "Helvetica" and all variants of the "DejaVu" font family are referenced. If you want to reference all fonts, just specify <code>font-family=".*"</code>.</p>
+<p>The <code>referenced-fonts</code> element can be placed either inside the general <code>fonts</code> element (right under the root) or in the <code>fonts</code> element under the renderer configuration. In the first case, matches apply to all renderers. In the second case, matches only apply to the renderer where the element was specified. Both cases can be used at the same time.</p>
+<h3 id="embedding_fonts">Embedding Fonts</h3>
+<p>Some notes related to embedded fonts:</p>
+<ul>
+<li>
+<p>When FOP embeds a font in PDF, it adds a prefix to the fontname to ensure that the name will not match the fontname of an installed font. This is helpful with older versions of Acrobat Reader that preferred installed fonts over embedded fonts.</p>
+</li>
+<li>
+<p>When embedding PostScript fonts, the entire font is always embedded.</p>
+</li>
+<li>
+<p>When embedding TrueType (ttf) or TrueType Collections (ttc), a subset of the original font, containing only the glyphs used, is embedded in the output document. That's the default, but if you specify encoding-mode="single-byte" (see above), the complete font is embedded.</p>
+</li>
+</ul>
+<h3 id="font_substitution">Font Substitution</h3>
+<p>When a <code>&lt;substitutions/&gt;</code> section is defined in the configuration, FOP will re-map any font-family references found in your FO input to a given substitution font.</p>
+<ul>
+<li>
+<p>If a <code>&lt;substitution/&gt;</code> is declared, it is mandatory that both a <from/> and <to/> child element is declared with a font-family attribute.</p>
+</li>
+<li>
+<p>Both font-weight and font-style are optional attributes, if they are provided then a value of 'normal' is assumed.</p>
+</li>
+</ul>
+<p>For example you could make all FO font-family references to 'Arial' with weights between 700 and 900 reference the normal 'Arial Black' font.</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fonts&gt;</span>
+    <span class="nt">&lt;substitutions&gt;</span>
+      <span class="nt">&lt;substitution&gt;</span>
+        <span class="nt">&lt;from</span> <span class="na">font-family=</span><span class="s">&quot;Arial&quot;</span> <span class="na">font-weight=</span><span class="s">&quot;700..900&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;to</span> <span class="na">font-family=</span><span class="s">&quot;Arial Black&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/substitution&gt;</span>
+      <span class="nt">&lt;substitution&gt;</span>
+        <span class="nt">&lt;from</span> <span class="na">font-family=</span><span class="s">&quot;FrutigerLight&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;to</span> <span class="na">font-family=</span><span class="s">&quot;Times&quot;</span> <span class="na">font-weight=</span><span class="s">&quot;bold&quot;</span> <span class="na">font-style=</span><span class="s">&quot;italic&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/substitution&gt;</span>
+    <span class="nt">&lt;/substitutions&gt;</span>
+  <span class="nt">&lt;/fonts&gt;</span>
+<span class="nt">&lt;/fop&gt;</span>
+</pre></div>
+
+
+<h2 id="selection">Font Selection Strategies</h2>
+<p>There are two font selection strategies: character-by-character or auto. The default is auto.</p>
+<p>Auto selected the first font from the list which is able to display the most characters in a given word. This means (assume font A has characters for abclmn, font B for lnmxyz, fontlist is A,B):</p>
+<ul>
+<li>
+<p>aaa lll xxx would be displayed in fonts A A B</p>
+</li>
+<li>
+<p>aaaxx would be displayed in font A</p>
+</li>
+<li>
+<p>aaaxxx would be displayed in font A</p>
+</li>
+<li>
+<p>aaaxxxx would be displayed in font B</p>
+</li>
+</ul>
+<p>Character-by-Character is NOT yet supported!</p>
+<h2 id="font-list">Font List Command-Line Tool</h2>
+<p>FOP contains a small command-line tool that lets you generate a list of all configured fonts. Its class name is: <code>org.apache.fop.tools.fontlist.FontListMain</code>. Run it with the "-?" parameter to get help for the various options.</p>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache Batik
+  - [Overview](/batik/)
+  - [License](/batik/license.html)
+  - [Download](/batik/download.html)
+  - [Notes](/batik/install.html)
+  - [Status](/batik/status.html)
+  - [Demo](/batik/demo-static.html)
+  - [FAQs](/batik/faq.html)
+  - [Batik Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSBATIK)
+  - [Mailing lists](/batik/mailing-lists.html)
+  - [Contributors](/batik/contributors.html)
+  - [Bug database](https://issues.apache.org/jira/issues/?jql=project%20%3D%20BATIK%20AND%20resolution%20%3D%20Unresolved%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20ORDER%20BY%20priority%20DESC)
+  - [Projects using Batik](/batik/uses.html)
+  - ## Batik Tools
+    - [Overview](/batik/tools/)
+    - [Browser](/batik/tools/browser.html)
+    - [Rasterizer](/batik/tools/rasterizer.html)
+    - [Font converter](/batik/tools/font-converter.html)
+    - [Pretty printer](/batik/tools/pretty-printer.html)
+  - ## Using Batik
+    - [Overview](/batik/using/)
+    - [Architecture](/batik/using/architecture.html)
+    - [Javadoc APIs](/batik/javadoc/)
+    - [DOM API](/batik/using/dom-api.html)
+    - [Parsers](/batik/using/parsers.html)
+    - ### Scripting
+      - [Scripting with ECMAScript](/batik/using/scripting/ecmascript.html)
+      - [Scripting with Java](/batik/using/scripting/java.html)
+      - [Scripting with Security](/batik/using/scripting/security.html)
+    - [SVG generator](/batik/using/svg-generator.html)
+    - [Swing components](/batik/using/swing.html)
+    - [Transcoder API](/batik/using/transcoder.html)
+    - [Extending Batik](/batik/using/extending.html)
+  - ## Development
+    - [Overview](/batik/dev/)
+    - [Branches](/batik/dev/branches.html)
+    - [SVG 1.2 support](/batik/dev/svg12.html)
+    - [Test infrastructure](/batik/dev/test.html)
+
+# Apache&trade; XML Graphics
+  - ### Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache FOP](/fop/)
+  - [Apache XML Graphics Commons](/commons/)
+
+## Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').append(' &raquo;');
+    }
+  $('#navigation > ul > li ul').hide();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 100px;">
+	  <a href="/batik/"><img src="/images/apache-batik-logo.png" alt="The Apache FOP Project" width="256" height="96" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; Batik Project</h2>
+	</div>  
+
+    <h1>Batik Swing components</h1>
+    
+
+    <h1>Batik Swing components</h1>
+<p>The goal of the Batik Swing component module is to provide a Swing component that can used to display SVG documents. With the <a href="../javadoc/org/apache/batik/swing/JSVGCanvas.html">JSVGCanvas</a> class, you can easily display an SVG document (from a URI or a DOM tree) and allow the user to manipulate it, such as rotating, zooming, panning, selecting text or activating hyperlinks. First this document explains how to create a <code>JSVGCanvas</code> and integrate it in to a Swing application. Then, it descibes some advanced features such as the listener mechanism used to track all events that occurred while displaying or manipulating an SVG document.</p>
+<h2 id="creatingJSVGCanvas">Creating a JSVGCanvas</h2>
+<p>The following example illustrates how to create a <code>JSVGCanvas</code>, which is a Swing component that follows the Swing design rule. This means that the component is not thread safe and all operations on the component or the document it is displaying must be performed as described in <a href="http://java.sun.com/docs/books/tutorial/uiswing/overview/threads.html">the Swing tutorial</a>. The <code>JSVGCanvas</code> is also a <a href="http://java.sun.com/products/javabeans/">JavaBean</a>, so it can be used in visual application builders.
+If you try this example, do not forget to set your <code>CLASSPATH</code> so that it contains the Batik classes and resources, as well as Xerces (<code>lib/xerces_2_5_0.jar</code>) and the XML APIs jars (<code>lib/xml-apis.jar</code> and <code>lib/xml-apis-ext.jar</code>).</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.batik.swing.JSVGCanvas</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.swing.gvt.GVTTreeRendererAdapter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.swing.gvt.GVTTreeRendererEvent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.swing.svg.SVGDocumentLoaderAdapter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.swing.svg.SVGDocumentLoaderEvent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.swing.svg.GVTTreeBuilderAdapter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.swing.svg.GVTTreeBuilderEvent</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SVGApplication</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Create a new JFrame.</span>
+        <span class="n">JFrame</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JFrame</span><span class="o">(</span><span class="s">&quot;Batik&quot;</span><span class="o">);</span>
+        <span class="n">SVGApplication</span> <span class="n">app</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGApplication</span><span class="o">(</span><span class="n">f</span><span class="o">);</span>
+
+        <span class="c1">// Add components to the frame.</span>
+        <span class="n">f</span><span class="o">.</span><span class="na">getContentPane</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">app</span><span class="o">.</span><span class="na">createComponents</span><span class="o">());</span>
+
+        <span class="c1">// Display the frame.</span>
+        <span class="n">f</span><span class="o">.</span><span class="na">addWindowListener</span><span class="o">(</span><span class="k">new</span> <span class="n">WindowAdapter</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">windowClosing</span><span class="o">(</span><span class="n">WindowEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+        <span class="n">f</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">400</span><span class="o">);</span>
+        <span class="n">f</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">// The frame.</span>
+    <span class="kd">protected</span> <span class="n">JFrame</span> <span class="n">frame</span><span class="o">;</span>
+
+    <span class="c1">// The &quot;Load&quot; button, which displays up a file chooser upon clicking.</span>
+    <span class="kd">protected</span> <span class="n">JButton</span> <span class="n">button</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JButton</span><span class="o">(</span><span class="s">&quot;Load...&quot;</span><span class="o">);</span>
+
+    <span class="c1">// The status label.</span>
+    <span class="kd">protected</span> <span class="n">JLabel</span> <span class="n">label</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JLabel</span><span class="o">();</span>
+
+    <span class="c1">// The SVG canvas.</span>
+    <span class="kd">protected</span> <span class="n">JSVGCanvas</span> <span class="n">svgCanvas</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSVGCanvas</span><span class="o">();</span>
+
+    <span class="kd">public</span> <span class="nf">SVGApplication</span><span class="o">(</span><span class="n">JFrame</span> <span class="n">f</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">frame</span> <span class="o">=</span> <span class="n">f</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">JComponent</span> <span class="nf">createComponents</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// Create a panel and add the button, status label and the SVG canvas.</span>
+        <span class="kd">final</span> <span class="n">JPanel</span> <span class="n">panel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JPanel</span><span class="o">(</span><span class="k">new</span> <span class="n">BorderLayout</span><span class="o">());</span>
+
+        <span class="n">JPanel</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JPanel</span><span class="o">(</span><span class="k">new</span> <span class="n">FlowLayout</span><span class="o">(</span><span class="n">FlowLayout</span><span class="o">.</span><span class="na">LEFT</span><span class="o">));</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">button</span><span class="o">);</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">label</span><span class="o">);</span>
+
+        <span class="n">panel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;North&quot;</span><span class="o">,</span> <span class="n">p</span><span class="o">);</span>
+        <span class="n">panel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;Center&quot;</span><span class="o">,</span> <span class="n">svgCanvas</span><span class="o">);</span>
+
+        <span class="c1">// Set the button action.</span>
+        <span class="n">button</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="n">ActionListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="n">ActionEvent</span> <span class="n">ae</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">JFileChooser</span> <span class="n">fc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JFileChooser</span><span class="o">(</span><span class="s">&quot;.&quot;</span><span class="o">);</span>
+                <span class="kt">int</span> <span class="n">choice</span> <span class="o">=</span> <span class="n">fc</span><span class="o">.</span><span class="na">showOpenDialog</span><span class="o">(</span><span class="n">panel</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">choice</span> <span class="o">==</span> <span class="n">JFileChooser</span><span class="o">.</span><span class="na">APPROVE_OPTION</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">File</span> <span class="n">f</span> <span class="o">=</span> <span class="n">fc</span><span class="o">.</span><span class="na">getSelectedFile</span><span class="o">();</span>
+                    <span class="k">try</span> <span class="o">{</span>
+                        <span class="n">svgCanvas</span><span class="o">.</span><span class="na">setURI</span><span class="o">(</span><span class="n">f</span><span class="o">.</span><span class="na">toURL</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+                    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">ex</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="c1">// Set the JSVGCanvas listeners.</span>
+        <span class="n">svgCanvas</span><span class="o">.</span><span class="na">addSVGDocumentLoaderListener</span><span class="o">(</span><span class="k">new</span> <span class="n">SVGDocumentLoaderAdapter</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">documentLoadingStarted</span><span class="o">(</span><span class="n">SVGDocumentLoaderEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">label</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;Document Loading...&quot;</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">documentLoadingCompleted</span><span class="o">(</span><span class="n">SVGDocumentLoaderEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">label</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;Document Loaded.&quot;</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">svgCanvas</span><span class="o">.</span><span class="na">addGVTTreeBuilderListener</span><span class="o">(</span><span class="k">new</span> <span class="n">GVTTreeBuilderAdapter</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">gvtBuildStarted</span><span class="o">(</span><span class="n">GVTTreeBuilderEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">label</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;Build Started...&quot;</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">gvtBuildCompleted</span><span class="o">(</span><span class="n">GVTTreeBuilderEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">label</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;Build Done.&quot;</span><span class="o">);</span>
+                <span class="n">frame</span><span class="o">.</span><span class="na">pack</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">svgCanvas</span><span class="o">.</span><span class="na">addGVTTreeRendererListener</span><span class="o">(</span><span class="k">new</span> <span class="n">GVTTreeRendererAdapter</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">gvtRenderingPrepare</span><span class="o">(</span><span class="n">GVTTreeRendererEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">label</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;Rendering Started...&quot;</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">gvtRenderingCompleted</span><span class="o">(</span><span class="n">GVTTreeRendererEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">label</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;&quot;</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="k">return</span> <span class="n">panel</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p><img alt="Screenshot of the example SVGApplication program" src="images/svgapplication.png" title=""></p>
+<h1 id="eventhandling">Handling events</h1>
+<p>Each time you set a URI or an SVG DOM tree to be displayed in a <code>JSVGCanvas</code> (using the <code>setURI</code> or <code>setSVGDocument</code> method), the specified document is first parsed (in case of a URI), built, rendered and optionally updated. The proper way to be notified of these different phases is to implement a listener and attach it to the component. There are five types of listener:</p>
+<p><code>SVGDocumentLoaderListener</code>
+:
+The <a href="../javadoc/org/apache/batik/swing/svg/SVGDocumentLoaderListener">SVGDocumentLoaderListener</a> provides a set of methods that can be used to track <a href="../javadoc/org/apache/batik/swing/svg/SVGDocumentLoaderEvent">SVGDocumentLoaderEvent</a> events. It describes the loading phase: contructing an SVG DOM tree using an SVG file.</p>
+<p><code>GVTTreeBuilderListener</code>
+:
+The <a href="../javadoc/org/apache/batik/swing/svg/GVTTreeBuilderListener">GVTTreeBuilderListener</a> provides a set of methods that can be used to track <a href="../javadoc/org/apache/batik/swing/svg/GVTTreeBuilderEvent">GVTTreeBuilderEvent</a> events. It describes the building phase: contructing a GVT (Graphics Vector Toolkit) tree using an SVG DOM tree. The GVT tree will then be used to render the document.</p>
+<p><code>SVGLoadEventDispatcherListener</code>
+:
+The <a href="../javadoc/org/apache/batik/swing/svg/SVGLoadEventDispatcherListener">SVGLoadEventDispatcherListener</a> provides a set of methods that can be used to track <a href="../javadoc/org/apache/batik/swing/svg/SVGLoadEventDispatcherEvent">SVGLoadEventDispatcherEvent</a> events. It describes the DOM <code>SVGLoad</code> event dispatch phase.</p>
+<p>This event is triggered only in dynamic documents.</p>
+<p><code>GVTTreeRendererListener</code>
+:
+The <a href="../javadoc/org/apache/batik/swing/gvt/GVTTreeRendererListener.html">GVTTreeRendererListener</a> provides a set of methods that can be used to track <a href="../javadoc/org/apache/batik/swing/gvt/GVTTreeRendererEvent.html">GVTTreeRendererEvent</a> events. It describes the rendering phase: constructing an image using a GVT tree.</p>
+<p>In dynamic documents this event is fired only once for the initial rendering.</p>
+<p><code>UpdateManagerListener</code>
+:
+The <a href="../javadoc/org/apache/batik/bridge/UpdateManagerListener">UpdateManagerListener</a> provides a set of methods that can be used to track <a href="../javadoc/org/apache/batik/bridge/UpdateManagerEvent">UpdateManagerEvent</a> events. It describes the running phase: the update manager is started and then it can be suspended, resumed or stopped, and graphics updates can be tracked.</p>
+<p>This event is triggered only in dynamic documents.</p>
+<p>These listeners give a complete description of the different steps of the five phases (including error states). Adapter classes are available to ease the creation of new listener implementation— <a href="../javadoc/org/apache/batik/swing/svg/SVGDocumentLoaderAdapter.html">SVGDocumentLoaderAdapter</a>, <a href="../javadoc/org/apache/batik/swing/svg/GVTTreeBuilderListenerAdapter.html">GVTTreeBuilderListenerAdapter</a>, <a href="../javadoc/org/apache/batik/swing/svg/SVGLoadEventDispatcherAdapter.html">SVGLoadEventDispatcherAdapter</a>, <a href="../javadoc/org/apache/batik/swing/gvt/GVTTreeRendererAdapter.html">GVTTreeRendererAdapter</a> and <a href="../javadoc/org/apache/batik/bridge/UpdateManagerAdapter.html">UpdateManagerAdapter</a>,</p>
+<p>For static documents, you can assume that the JSVGCanvas has completed its job (parsing, building and rendering) when the <code>gvtRenderingCompleted</code> method call is called, following a <code>setURI</code> or a <code>setSVGDocument</code> method call.</p>
+<p>In the case of dynamic documents, the end of the computation (parsing, building, SVGLoad dispatch, initial rendering and updates) is marked by a call to the <code>updateManagerStopped</code> method.</p>
+<h2 id="interactor">Adding an Interactor</h2>
+<p>The <code>JSVGCanvas</code> provides a set of build-in interactors that let the users manipulate the displayed document, including ones for zooming, panning and rotating. Interactors catch user input to the <code>JSVGCanvas</code> component and translate them into behaviour. If you want to add new behaviors to the <code>JSVGCanvas</code>, you can implement the <a href="../javadoc/org/apache/batik/swing/gvt/Interactor.html">Interactor</a> interface. Then, you can register this new interactor to the component by adding an element to the <code>List</code> returned by the <code>getInteractors()</code> method of the canvas.</p>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache Batik
+  - [Overview](/batik/)
+  - [License](/batik/license.html)
+  - [Download](/batik/download.html)
+  - [Notes](/batik/install.html)
+  - [Status](/batik/status.html)
+  - [Demo](/batik/demo-static.html)
+  - [FAQs](/batik/faq.html)
+  - [Batik Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSBATIK)
+  - [Mailing lists](/batik/mailing-lists.html)
+  - [Contributors](/batik/contributors.html)
+  - [Bug database](https://issues.apache.org/jira/issues/?jql=project%20%3D%20BATIK%20AND%20resolution%20%3D%20Unresolved%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20ORDER%20BY%20priority%20DESC)
+  - [Projects using Batik](/batik/uses.html)
+  - ## Batik Tools
+    - [Overview](/batik/tools/)
+    - [Browser](/batik/tools/browser.html)
+    - [Rasterizer](/batik/tools/rasterizer.html)
+    - [Font converter](/batik/tools/font-converter.html)
+    - [Pretty printer](/batik/tools/pretty-printer.html)
+  - ## Using Batik
+    - [Overview](/batik/using/)
+    - [Architecture](/batik/using/architecture.html)
+    - [Javadoc APIs](/batik/javadoc/)
+    - [DOM API](/batik/using/dom-api.html)
+    - [Parsers](/batik/using/parsers.html)
+    - ### Scripting
+      - [Scripting with ECMAScript](/batik/using/scripting/ecmascript.html)
+      - [Scripting with Java](/batik/using/scripting/java.html)
+      - [Scripting with Security](/batik/using/scripting/security.html)
+    - [SVG generator](/batik/using/svg-generator.html)
+    - [Swing components](/batik/using/swing.html)
+    - [Transcoder API](/batik/using/transcoder.html)
+    - [Extending Batik](/batik/using/extending.html)
+  - ## Development
+    - [Overview](/batik/dev/)
+    - [Branches](/batik/dev/branches.html)
+    - [SVG 1.2 support](/batik/dev/svg12.html)
+    - [Test infrastructure](/batik/dev/test.html)
+
+# Apache&trade; XML Graphics
+  - ### Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache FOP](/fop/)
+  - [Apache XML Graphics Commons](/commons/)
+
+## Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').append(' &raquo;');
+    }
+  $('#navigation > ul > li ul').hide();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 100px;">
+	  <a href="/batik/"><img src="/images/apache-batik-logo.png" alt="The Apache FOP Project" width="256" height="96" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; Batik Project</h2>
+	</div>  
+
+    <h1>SVG DOM API</h1>
+    
+
+    <h1>SVG DOM API</h1>
+<p>The <a href="http://www.w3.org/dom/">Document Object Model</a> (DOM) is an API for XML documents. It defines the logical structure of documents and the way a document is accessed and manipulated. This page shows how to create an SVG document using the DOM API.</p>
+<h2 id="gettingStarted">Getting started</h2>
+<p>The DOM API defines an interface called <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/DOMImplementation.html">DOMImplementation</a>, which represents the bootstrap of any DOM implementation. The role of this class is to bootstrap a particular implementation of the DOM by providing a method to create a <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html">Document</a>. Then, the concrete <code>Document</code> represents an XML document and also acts like a factory for the various DOM objects such as <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Element.html">Element</a>, <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Attr.html">Attr</a> and <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Text.html">Text</a>.</p>
+<p>How to get an instance of the <code>DOMImplementation</code> interface depends on the DOM implementation you are using. In Batik, the DOM implementation is located in the package <code>org.apache.batik.dom.svg</code> and the class is named <a href="http://xmlgraphics.apache.org/batik/javadoc/org/apache/batik/dom/svg/SVGDOMImplementation.html">SVGDOMImplementation</a>. The following example shows how to get a concrete <code>DOMImplementation</code> object.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.w3c.dom.DOMImplementation</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SVGDOMImplementation</span><span class="o">;</span>
+
+<span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="o">.</span><span class="na">getDOMImplementation</span><span class="o">();</span>
+</pre></div>
+
+
+<p>Once you have an instance of a <code>DOMImplementation</code>, you are not relying on Batik-specific code any more and ready to use the DOM API.</p>
+<h2 id="creating">Creating a Document</h2>
+<p>Using the <code>DOMImplementation</code>, you are now able to create a <code>Document</code>. The following example illustrates how to create an SVG document. Note that the Batik’s DOM implementation can be used to represent either an SVG document fragment or any kind of XML document. Note that by choosing the namespace URI and the local name of the root element of SVG, we are creating an SVG document.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SVGDOMImplementation</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.w3c.dom.Document</span><span class="o">;</span>
+
+<span class="c1">// We are using a constant available on the SVGDOMImplementation,</span>
+<span class="c1">// but we could have used &quot;http://www.w3.org/2000/svg&quot;.</span>
+<span class="n">String</span> <span class="n">svgNS</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="o">.</span><span class="na">SVG_NAMESPACE_URI</span><span class="o">;</span>
+<span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="o">.</span><span class="na">getDOMImplementation</span><span class="o">();</span>
+<span class="n">Document</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">impl</span><span class="o">.</span><span class="na">createDocument</span><span class="o">(</span><span class="n">svgNS</span><span class="o">,</span> <span class="s">&quot;svg&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+</pre></div>
+
+
+<p>As we have created an SVG <code>Document</code>, we can cast this document to an <a href="../javadoc/org/w3c/dom/svg/SVGDocument.html">SVGDocument</a> (defined in the <code>org.w3c.dom.svg</code> package) if needed.</p>
+<h2 id="buildsvgdoc">Building an SVG Document</h2>
+<p>Finally, using the <code>Document</code> object, we are now able to construct SVG content. Note that the document created before supports both generic XML and SVG. Though the DOM implementation of Batik is an SVG DOM implementation, the SVG-specific methods that rely on the document having been rendered (particularly geometry related methods, such as <a href="../javadoc/org/w3c/dom/svg/SVGLocatable.html#getBBox()">SVGLocatable.getBBox</a>) cannot be used at this point.</p>
+<p>The document can be built using DOM Level 2 Core methods. The following example shows how to create a red rectangle located at (10, 20), with a size of (100, 50) placed in a (400, 450) SVG canvas:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SVGDOMImplementation</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.w3c.dom.Document</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.w3c.dom.Element</span><span class="o">;</span>
+
+<span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="o">.</span><span class="na">getDOMImplementation</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">svgNS</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="o">.</span><span class="na">SVG_NAMESPACE_URI</span><span class="o">;</span>
+<span class="n">Document</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">impl</span><span class="o">.</span><span class="na">createDocument</span><span class="o">(</span><span class="n">svgNS</span><span class="o">,</span> <span class="s">&quot;svg&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+<span class="c1">// Get the root element (the &#39;svg&#39; element).</span>
+<span class="n">Element</span> <span class="n">svgRoot</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="na">getDocumentElement</span><span class="o">();</span>
+
+<span class="c1">// Set the width and height attributes on the root &#39;svg&#39; element.</span>
+<span class="n">svgRoot</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;width&quot;</span><span class="o">,</span> <span class="s">&quot;400&quot;</span><span class="o">);</span>
+<span class="n">svgRoot</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;height&quot;</span><span class="o">,</span> <span class="s">&quot;450&quot;</span><span class="o">);</span>
+
+<span class="c1">// Create the rectangle.</span>
+<span class="n">Element</span> <span class="n">rectangle</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="na">createElementNS</span><span class="o">(</span><span class="n">svgNS</span><span class="o">,</span> <span class="s">&quot;rect&quot;</span><span class="o">);</span>
+<span class="n">rectangle</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;x&quot;</span><span class="o">,</span> <span class="s">&quot;10&quot;</span><span class="o">);</span>
+<span class="n">rectangle</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;y&quot;</span><span class="o">,</span> <span class="s">&quot;20&quot;</span><span class="o">);</span>
+<span class="n">rectangle</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;width&quot;</span><span class="o">,</span> <span class="s">&quot;100&quot;</span><span class="o">);</span>
+<span class="n">rectangle</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;height&quot;</span><span class="o">,</span> <span class="s">&quot;50&quot;</span><span class="o">);</span>
+<span class="n">rectangle</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;fill&quot;</span><span class="o">,</span> <span class="s">&quot;red&quot;</span><span class="o">);</span>
+
+<span class="c1">// Attach the rectangle to the root &#39;svg&#39; element.</span>
+<span class="n">svgRoot</span><span class="o">.</span><span class="na">appendChild</span><span class="o">(</span><span class="n">rectangle</span><span class="o">);</span>
+</pre></div>
+
+
+<p>The example given constructs a document equivalent to parsing the following SVG file:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;svg</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;450&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;10&quot;</span> <span class="na">y=</span><span class="s">&quot;20&quot;</span> <span class="na">width=</span><span class="s">&quot;100&quot;</span> <span class="na">height=</span><span class="s">&quot;50&quot;</span> <span class="na">fill=</span><span class="s">&quot;red&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/svg&gt;</span>
+</pre></div>
+
+
+<h1 id="createdocfromsvgfile">Creating a Document from an SVG file</h1>
+<p>With Batik, you can also create an SVG DOM tree from a URI, an <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/InputStream.html">InputStream</a>, or a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/Reader.html">Reader</a>, using the <a href="../javadoc/org/apache/batik/dom/util/SAXDocumentFactory.html">SAXSVGDocumentFactory</a>. The following example illustrates how to create an SVG document from a URI using the <code>SAXSVGDocumentFactory</code> class.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SAXSVGDocumentFactory</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.util.XMLResourceDescriptor</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.w3c.dom.Document</span><span class="o">;</span>
+
+<span class="k">try</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">XMLResourceDescriptor</span><span class="o">.</span><span class="na">getXMLParserClassName</span><span class="o">();</span>
+    <span class="n">SAXSVGDocumentFactory</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SAXSVGDocumentFactory</span><span class="o">(</span><span class="n">parser</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">uri</span> <span class="o">=</span> <span class="s">&quot;http://www.example.org/diagram.svg&quot;</span><span class="o">;</span>
+    <span class="n">Document</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="na">createDocument</span><span class="o">(</span><span class="n">uri</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>As we have created an SVG <code>Document</code>, we can cast this document to an <code>SVGDocument</code> (defined in the <code>org.w3c.dom.svg</code> package) if needed.</p>
+<h2 id="rendering">Rendering an SVG Document</h2>
+<p>Batik provides several ways to use an SVG DOM tree. Two modules can be immediately used to render your SVG document.</p>
+<p>JSVGCanvas
+:
+The <a href="../javadoc/org/apache/batik/swing/JSVGCanvas.html">JSVGCanvas</a> is a Swing component that can display SVG document. A SVG document can be specified using a URI or an SVG DOM tree (using the <a href="../javadoc/org/apache/batik/swing/JSVGCanvas.html#setSVGDocument(Document)">setSVGDocument</a> method). For futher information about the <code>JSVGCanvas</code>, see the <a href="../using/swing.html">Swing components module documentation</a>.</p>
+<dl>
+<dt>ImageTranscoder</dt>
+<dd>The <a href="../javadoc/org/apache/batik/transcoder/image/ImageTranscoder.html">ImageTranscoder</a> is a transcoder that can take a URI, an <code>InputStream</code> or an SVG DOM tree and produces a raster image (such JPEG, PNG or TIFF). By creating a <a href="../javadoc/org/apache/batik/transcoder/TranscoderInput.html">TranscoderInput</a> object with the SVG DOM tree, you will be able to transform your SVG content to a raster image. For futher information, see the <a href="../using/transcoder.html">transcoder module documentation</a>.</dd>
+</dl>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

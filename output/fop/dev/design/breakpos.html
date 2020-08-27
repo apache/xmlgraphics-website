@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache&trade; FOP
+  - [FOP Home](/fop/)
+  - [Download](/fop/download.html)
+  - [Quick Start Guide](/fop/quickstartguide.html)
+  - [Compliance](/fop/compliance.html)
+  - [Getting Help](/fop/gethelp.html)
+  - [FAQs](/fop/faq.html)
+  - [FOP Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP)
+  - [Mailing Lists](/fop/maillist.html)
+  - [License](/fop/license.html)
+  - ## Resources
+    - [XSL-FO](/fop/fo.html)
+    - [Examples](/fop/examples.html)
+    - [Bugs](/fop/bugs.html)
+    - [Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FrontPage)
+    - [Other](/fop/resources.html)
+  - ## Project
+    - [News](/fop/news.html)
+    - [Who We Are](/fop/team.html)
+    - [Status](/fop/status.html)
+    - [Known Issues](/fop/knownissues.html)
+    - [Changes](/fop/changes.html)
+  - ## Versions
+      - ## FOP Trunk (dev)
+          - [Overview](/fop/trunk/)
+          - [Upgrading](/fop/trunk/upgrading.html)
+          - ### Using Apache&trade; FOP
+            - [Build](/fop/trunk/compiling.html)
+            - [Configure](/fop/trunk/configuration.html)
+            - [Run](/fop/trunk/running.html)
+            - [Embed](/fop/trunk/embedding.html)
+            - [Servlets](/fop/trunk/servlets.html)
+            - [Ant Task](/fop/trunk/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/trunk/accessibility.html)
+            - [Complex Scripts](/fop/trunk/complexscripts.html)
+            - [Events](/fop/trunk/events.html)
+            - [Extensions](/fop/trunk/extensions.html)
+            - [Fonts](/fop/trunk/fonts.html)
+            - [Graphics](/fop/trunk/graphics.html)
+            - [Hyphenation](/fop/trunk/hyphenation.html)
+            - [Intermediate Format](/fop/trunk/intermediate.html)
+            - [Metadata](/fop/trunk/metadata.html)
+            - [Output Targets](/fop/trunk/output.html)
+            - [PDF/A](/fop/trunk/pdfa.html)
+            - [PDF/X](/fop/trunk/pdfx.html)
+            - [PDF Encryption](/fop/trunk/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/trunk/whitespacemanagement.html)
+      - ## FOP 2.5
+          - [FOP 2.5 Overview](/fop/2.5/)
+          - [Release Notes](/fop/2.5/releaseNotes_2.5.html)
+          - [Changes (2.5)](/fop/2.5/changes_2.5.html)
+          - [Known Issues](/fop/2.5/knownissues_overview.html)
+          - [Upgrading](/fop/2.5/upgrading.html)
+          - ### Using Apache FOP 2.5
+            - [Build](/fop/2.5/compiling.html)
+            - [Configure](/fop/2.5/configuration.html)
+            - [Run](/fop/2.5/running.html)
+            - [Embed](/fop/2.5/embedding.html)
+            - [Servlets](/fop/2.5/servlets.html)
+            - [Ant Task](/fop/2.5/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.5/accessibility.html)
+            - [Complex Scripts](/fop/2.5/complexscripts.html)
+            - [Events](/fop/2.5/events.html)
+            - [Extensions](/fop/2.5/extensions.html)
+            - [Fonts](/fop/2.5/fonts.html)
+            - [Graphics](/fop/2.5/graphics.html)
+            - [Hyphenation](/fop/2.5/hyphenation.html)
+            - [Intermediate Format](/fop/2.5/intermediate.html)
+            - [Metadata](/fop/2.5/metadata.html)
+            - [Output Targets](/fop/2.5/output.html)
+            - [PDF/A](/fop/2.5/pdfa.html)
+            - [PDF/X](/fop/2.5/pdfx.html)
+            - [PDF Encryption](/fop/2.5/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.5/whitespacemanagement.html)     
+      - ## FOP 2.4
+          - [FOP 2.4 Overview](/fop/2.4/)
+          - [Release Notes](/fop/2.4/releaseNotes_2.4.html)
+          - [Changes (2.4)](/fop/2.4/changes_2.4.html)
+          - [Known Issues](/fop/2.4/knownissues_overview.html)
+          - [Upgrading](/fop/2.4/upgrading.html)
+          - ### Using Apache FOP 2.4
+            - [Build](/fop/2.4/compiling.html)
+            - [Configure](/fop/2.4/configuration.html)
+            - [Run](/fop/2.4/running.html)
+            - [Embed](/fop/2.4/embedding.html)
+            - [Servlets](/fop/2.4/servlets.html)
+            - [Ant Task](/fop/2.4/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.4/accessibility.html)
+            - [Complex Scripts](/fop/2.4/complexscripts.html)
+            - [Events](/fop/2.4/events.html)
+            - [Extensions](/fop/2.4/extensions.html)
+            - [Fonts](/fop/2.4/fonts.html)
+            - [Graphics](/fop/2.4/graphics.html)
+            - [Hyphenation](/fop/2.4/hyphenation.html)
+            - [Intermediate Format](/fop/2.4/intermediate.html)
+            - [Metadata](/fop/2.4/metadata.html)
+            - [Output Targets](/fop/2.4/output.html)
+            - [PDF/A](/fop/2.4/pdfa.html)
+            - [PDF/X](/fop/2.4/pdfx.html)
+            - [PDF Encryption](/fop/2.4/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.4/whitespacemanagement.html)             
+      - ## FOP 2.3
+          - [FOP 2.3 Overview](/fop/2.3/)
+          - [Release Notes](/fop/2.3/releaseNotes_2.3.html)
+          - [Changes (2.3)](/fop/2.3/changes_2.3.html)
+          - [Known Issues](/fop/2.3/knownissues_overview.html)
+          - [Upgrading](/fop/2.3/upgrading.html)
+          - ### Using Apache FOP 2.3
+            - [Build](/fop/2.3/compiling.html)
+            - [Configure](/fop/2.3/configuration.html)
+            - [Run](/fop/2.3/running.html)
+            - [Embed](/fop/2.3/embedding.html)
+            - [Servlets](/fop/2.3/servlets.html)
+            - [Ant Task](/fop/2.3/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.3/accessibility.html)
+            - [Complex Scripts](/fop/2.3/complexscripts.html)
+            - [Events](/fop/2.3/events.html)
+            - [Extensions](/fop/2.3/extensions.html)
+            - [Fonts](/fop/2.3/fonts.html)
+            - [Graphics](/fop/2.3/graphics.html)
+            - [Hyphenation](/fop/2.3/hyphenation.html)
+            - [Intermediate Format](/fop/2.3/intermediate.html)
+            - [Metadata](/fop/2.3/metadata.html)
+            - [Output Targets](/fop/2.3/output.html)
+            - [PDF/A](/fop/2.3/pdfa.html)
+            - [PDF/X](/fop/2.3/pdfx.html)
+            - [PDF Encryption](/fop/2.3/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.3/whitespacemanagement.html)            
+      - ## FOP 2.2
+          - [FOP 2.2 Overview](/fop/2.2/)
+          - [Release Notes](/fop/2.2/releaseNotes_2.2.html)
+          - [Changes (2.2)](/fop/2.2/changes_2.2.html)
+          - [Known Issues](/fop/2.2/knownissues_overview.html)
+          - [Upgrading](/fop/2.2/upgrading.html)
+          - ### Using Apache FOP 2.2
+            - [Build](/fop/2.2/compiling.html)
+            - [Configure](/fop/2.2/configuration.html)
+            - [Run](/fop/2.2/running.html)
+            - [Embed](/fop/2.2/embedding.html)
+            - [Servlets](/fop/2.2/servlets.html)
+            - [Ant Task](/fop/2.2/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.2/accessibility.html)
+            - [Complex Scripts](/fop/2.2/complexscripts.html)
+            - [Events](/fop/2.2/events.html)
+            - [Extensions](/fop/2.2/extensions.html)
+            - [Fonts](/fop/2.2/fonts.html)
+            - [Graphics](/fop/2.2/graphics.html)
+            - [Hyphenation](/fop/2.2/hyphenation.html)
+            - [Intermediate Format](/fop/2.2/intermediate.html)
+            - [Metadata](/fop/2.2/metadata.html)
+            - [Output Targets](/fop/2.2/output.html)
+            - [PDF/A](/fop/2.2/pdfa.html)
+            - [PDF/X](/fop/2.2/pdfx.html)
+            - [PDF Encryption](/fop/2.2/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.2/whitespacemanagement.html)
+      - ## FOP 2.1
+          - [FOP 2.1 Overview](/fop/2.1/)
+          - [Release Notes](/fop/2.1/releaseNotes_2.1.html)
+          - [Changes (2.1)](/fop/2.1/changes_2.1.html)
+          - [Known Issues](/fop/2.1/knownissues_overview.html)
+          - [Upgrading](/fop/2.1/upgrading.html)
+          - ### Using Apache FOP 2.1
+            - [Build](/fop/2.1/compiling.html)
+            - [Configure](/fop/2.1/configuration.html)
+            - [Run](/fop/2.1/running.html)
+            - [Embed](/fop/2.1/embedding.html)
+            - [Servlets](/fop/2.1/servlets.html)
+            - [Ant Task](/fop/2.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.1/accessibility.html)
+            - [Complex Scripts](/fop/2.1/complexscripts.html)
+            - [Events](/fop/2.1/events.html)
+            - [Extensions](/fop/2.1/extensions.html)
+            - [Fonts](/fop/2.1/fonts.html)
+            - [Graphics](/fop/2.1/graphics.html)
+            - [Hyphenation](/fop/2.1/hyphenation.html)
+            - [Intermediate Format](/fop/2.1/intermediate.html)
+            - [Metadata](/fop/2.1/metadata.html)
+            - [Output Targets](/fop/2.1/output.html)
+            - [PDF/A](/fop/2.1/pdfa.html)
+            - [PDF/X](/fop/2.1/pdfx.html)
+            - [PDF Encryption](/fop/2.1/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.1/whitespacemanagement.html)
+      - ## FOP 2.0
+          - [FOP 2.0 Overview](/fop/2.0/)
+          - [Release Notes](/fop/2.0/releaseNotes_2.0.html)
+          - [Changes (2.0)](/fop/2.0/changes_2.0.html)
+          - [Known Issues](/fop/2.0/knownissues_overview.html)
+          - [Upgrading](/fop/2.0/upgrading.html)
+          - ### Using Apache FOP 2.0
+            - [Build](/fop/2.0/compiling.html)
+            - [Configure](/fop/2.0/configuration.html)
+            - [Run](/fop/2.0/running.html)
+            - [Embed](/fop/2.0/embedding.html)
+            - [Servlets](/fop/2.0/servlets.html)
+            - [Ant Task](/fop/2.0/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.0/accessibility.html)
+            - [Complex Scripts](/fop/2.0/complexscripts.html)
+            - [Events](/fop/2.0/events.html)
+            - [Extensions](/fop/2.0/extensions.html)
+            - [Fonts](/fop/2.0/fonts.html)
+            - [Graphics](/fop/2.0/graphics.html)
+            - [Hyphenation](/fop/2.0/hyphenation.html)
+            - [Intermediate Format](/fop/2.0/intermediate.html)
+            - [Metadata](/fop/2.0/metadata.html)
+            - [Output Targets](/fop/2.0/output.html)
+            - [PDF/A](/fop/2.0/pdfa.html)
+            - [PDF/X](/fop/2.0/pdfx.html)
+            - [PDF Encryption](/fop/2.0/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.0/whitespacemanagement.html)
+      - ## FOP 1.1
+          - [FOP 1.1 Overview](/fop/1.1/)
+          - [Release Notes](/fop/1.1/releaseNotes_1.1.html)
+          - [Changes (1.1)](/fop/1.1/changes_1.1.html)
+          - [Known Issues](/fop/1.1/knownissues_overview.html)
+          - [Upgrading](/fop/1.1/upgrading.html)
+          - ### Using Apache FOP 1.1
+            - [Build](/fop/1.1/compiling.html)
+            - [Configure](/fop/1.1/configuration.html)
+            - [Run](/fop/1.1/running.html)
+            - [Embed](/fop/1.1/embedding.html)
+            - [Servlets](/fop/1.1/servlets.html)
+            - [Ant Task](/fop/1.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/1.1/accessibility.html)
+            - [Complex Scripts](/fop/1.1/complexscripts.html)
+            - [Events](/fop/1.1/events.html)
+            - [Extensions](/fop/1.1/extensions.html)
+            - [Fonts](/fop/1.1/fonts.html)
+            - [Graphics](/fop/1.1/graphics.html)
+            - [Hyphenation](/fop/1.1/hyphenation.html)
+            - [Intermediate Format](/fop/1.1/intermediate.html)
+            - [Metadata](/fop/1.1/metadata.html)
+            - [Output Targets](/fop/1.1/output.html)
+            - [PDF/A](/fop/1.1/pdfa.html)
+            - [PDF/X](/fop/1.1/pdfx.html)
+            - [PDF Encryption](/fop/1.1/pdfencryption.html)
+      - ## FOP 1.0
+          - [FOP 1.0 Overview](/fop/1.0/)
+          - [Release Notes](/fop/1.0/releaseNotes_1.0.html)
+          - [Changes (1.0)](/fop/1.0/changes_1.0.html)
+          - [Known Issues](/fop/1.0/knownissues_overview.html)
+          - [Upgrading](/fop/1.0/upgrading.html)
+          - ### Using Apache FOP 1.0
+            - [Build](/fop/1.0/compiling.html)
+            - [Configure](/fop/1.0/configuration.html)
+            - [Run](/fop/1.0/running.html)
+            - [Embed](/fop/1.0/embedding.html)
+            - [Servlets](/fop/1.0/servlets.html)
+            - [Ant Task](/fop/1.0/anttask.html)
+          - ### Features
+            - [Output Targets](/fop/1.0/output.html)
+            - [Intermediate Format](/fop/1.0/intermediate.html)
+            - [PDF Encryption](/fop/1.0/pdfencryption.html)
+            - [PDF/A](/fop/1.0/pdfa.html)
+            - [PDF/X](/fop/1.0/pdfx.html)
+            - [Graphics](/fop/1.0/graphics.html)
+            - [Fonts](/fop/1.0/fonts.html)
+            - [Hyphenation](/fop/1.0/hyphenation.html)
+            - [Extensions](/fop/1.0/extensions.html)
+            - [Events](/fop/1.0/events.html)
+            - [Metadata](/fop/1.0/metadata.html)
+            - [Accessibility](/fop/1.0/accessibility.html)
+      - ## FOP Development
+          - [General Info](/fop/dev/)
+          - ## Design
+            - [Design Info](/fop/dev/design/)
+          - ## Core Process
+            - [Startup](/fop/dev/design/startup.html)
+            - [XML Parsing](/fop/dev/design/parsing.html)
+            - [FO Tree](/fop/dev/design/fotree.html)
+            - [Properties](/fop/dev/design/properties.html)
+            - [Layout](/fop/dev/design/layout.html)
+            - [Break Possibility](/fop/dev/design/breakpos.html)
+            - [Area Tree](/fop/dev/design/areas.html)
+            - [Renderers](/fop/dev/design/renderers.html)
+          - ## Miscellaneous
+            - [Images](/fop/dev/design/images.html)
+            - [PDF Library](/fop/dev/design/pdf-library.html)
+            - [SVG](/fop/dev/design/svg.html)
+            - [Embedding](/fop/dev/design/embedding.html)
+            - [Extending](/fop/dev/design/extending.html)
+            - [Optimisations](/fop/dev/design/optimise.html)
+            - [User Agent](/fop/dev/design/useragent.html)
+          - [Unresolved (Wiki)](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FOPProjectPages)
+          - [SVG](/fop/dev/svg.html)
+          - [Extensions](/fop/dev/extensions.html)
+          - ## Develop
+            - [Walk-Thru](/fop/dev/implement.html)
+            - [Patch Queue](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20description%20~%20%22\%22[patch]\%22%22%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+            - [Conventions](/fop/dev/conventions.html)
+          - ## Test
+            - [Testing](/fop/dev/testing.html)
+          - ## Deploy
+            - [Doc Mgmt](/fop/dev/doc.html)
+            - [Release](/fop/dev/release.html)
+            - [Bugs](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20issuetype%20%3D%20Bug%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+          - ## Resources
+            - [FAQs](/fop/dev/faq.html)
+            - [Tools](/fop/dev/tools.html)
+            - [ViewVC](http://svn.apache.org/viewvc/xmlgraphics/fop)
+          - ## SubPackages
+            - [RTFlib](/fop/dev/rtflib.html)
+
+# Apache&trade; XML Graphics
+  - ## Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache Batik](/batik/)
+  - [Apache XML Graphics Commons](/commons/)
+
+### Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+      $('#navigation :header').not('#search-apache-xml-graphics, #apachewzxhzdk3-xml-graphics, #sub-projects').append(' &raquo;');
+    }
+  $('#navigation > ul > li > ul > li ul').hide();
+  $('#project-overview').next().hide();
+  $('#versions').next().show();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+      $("li.highlight").removeClass("highlight");
+      $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
+	  <a href="/fop/"><img src="/images/apache-fop-logo.jpg" alt="The Apache FOP Project" width="120" height="65" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; FOP Project</h2>
+	</div>  
+
+    <h1>Apache(tm) FOP Design: Layout Managers</h1>
+    
+
+    <h1>Apache&trade; FOP Design: Layout Managers</h1>
+<p><subtitle>Break Possibility Proposal</subtitle><authors><person email="klease@club-internet.fr" name="Karen Lease"></person></authors></p>
+<h2 id="intro">Introduction</h2>
+<p>As explained in <a href="layout.html">Layout</a>, the hierarchy of Layout Managers is responsible for building and placing areas. Each Layout Manager is responsible for creating and filling areas of a particular type, either inline or block. This document explains one potential algorithm for this process. It is based on the the generation of <em>break possibilities</em> (BP for short). The Layout Managers (LM for short), will generate one or more BP and choose the best one. The BP is then used to generate the corresponding areas.</p>
+<h2 id="Anatomy-of-a-Break-Possibility">Anatomy of a Break Possibility</h2>
+<p>A break possibility is represented by the BreakPoss class. A BreakPoss contains size information in the stacking direction and in the non-stacking direction (at least for inline areas, it must have both). Flags indicating various conditions (ISFIRST, ISLAST, CAN_BREAK_AFTER, FORCE_BREAK_AFTER, ANCHORS etc). A BreakPoss contains a reference to the top-level LayoutManager which generated it.</p>
+<p>A BreakPoss contains an object implementing the BreakPoss.Position interface. This object is specific to the layout manager which created the BreakPoss. It should indicate where the break occurs and allow the LM to create an area corresponding to the BP. A higher level LM Position must somehow reference or wrap the Position returned by its child LM in its BreakPoss object. The layout manager modifies the flags and dimension information in the BP to reflect its own requirements. For example an inline FO layout manager might add space-start, space-end, border and padding values to the stacking or non-stacking dimensions. It might also modify the flags based its on keep properties.</p>
+<h2 id="Turning-Break-Possibilities-into-Areas">Turning Break Possibilities into Areas</h2>
+<p>Once break possibilities have been generated, the galley-level layout manager selects the best one and passes it back to the LayoutManager which generated it to create the area. A LayoutManager is responsible for storing enough information in its Position objects to be able to create the corresponding areas.</p>
+<h2 id="A-walk-through">A walk-through</h2>
+<p>Layout Managers are created from the top down. First the page sequence creates a PageLM and a FlowLM. The PageLM will manage finding the right page model (with help from the PageSequenceMaster) and managing the balancing act between before-floats, footnotes and the normal text flow. The FlowLM will manage the normal content in the main flow. We can think of it as a <em>galley</em> manager.</p>
+<p>In general, each LM asks its child LMs to return sucessive break possibilities. It passes some information to the child in a flags object and it gets back a break possibility which contains the size in the stacking direction as well as information about such things as anchors, break conditions and span conditions which can change the reference area environment. This process continues down to the lowest level of the layout manager hierarchy which corresponds to atomic inline-level FOs such as characters or graphics.</p>
+<p>Each layout manager will repeatedly call getNextBreakPoss on its current child LM until the child returns a BP with the ISLAST flag set. Then the layout manager moves on to its next child LM (ie, it asks the next child FO to generate a layout manager.) Galley level layout managers which are Line and Flow will return to their parent layout managers either when they have finished their content or when they encounter a a BP which will fill one of their areas.</p>
+<p>The break possibilities are generated from the bottom up. All inline content must first be broken into lines which are then stacked into block areas. This is done by the LineLayoutManager, which creates line areas. The LineLM asks its child LM to generate a break possibility, which represents a place where the line can end. This initially means each potential line-end (primarily spaces or forced linefeeds and a few other potential line-end characters such as hard hyphens.) The text LM returns an object which stores the size in the stacking direction as a MinOptMax triplet and a <em>cost</em>, which is based on how well this break would satisfy the constraints. The Text LM keeps track of its position in the text content and returns the total size of the text area it would create if it were to break at a given point. The returned BP object also contains information about whether the break is forced (linefeed) or whether this is the last area which can be generated by the LM (ISLAST flag). If a textFO ends on a non-break character, the ISLAST flag is set, but the CAN_BREAK_AFTER flag isn't, since we don't know if there is any following text in another inline object for example.</p>
+<p>Variable size content is taken into account from the bottom up. Each LM returns a range of sizes in the stacking direction, based on property values. For text, this comes from variable word-space values or letter-space values. For other inline objects, it may include variable space-start and space-end values (after calculation of the entire sequence of space specifiers at a particular break possibility.)</p>
+<p>The main constraint for laying out lines is the available inline-progression-dimension (IPD) for the line area to be created. This depends on the IPD of the reference area ancestor, on the indents of the containing fo:block, and on any side-floats which may be intruding on this line.</p>
+<p><note>See below <a href="#getRefIPD">Getting the Reference IPD</a> for discussion of how the reference area IPD is transmitted to the Line LM.</note></p>
+<p>For now, let's assume that only the LineLM knows about the IPD available to it. Therefore only it can make a decision about which BP is the best one; the lower level inline layout managers can only return potential break points.</p>
+<p><note>There are certainly optimizations to this model which can be examined later.</note></p>
+<p>So the Line LM will ask its child LM(s) for break possibilities until it gets back a BP whose stacking dimension <em>could</em> fill the line. This means that the BP.stackdim.max &gt;= LineIPD.min. It can look for further BP, perhaps one whose stackdim.opt is closer to the LineIPD.opt. If it isn't happy with the choice of break possibilities, it can go past the end of the line to the next one, and then try to find a hyphenation point between the last one which fits and the first one which doesn't. If no possibility is found whose min/max values enclose the available IPD, some constraint will be violated (and reported in the log.) The actual strategy is up to the Line LM and should be able to be easily replaced without changing the architecture (Strategy pattern).</p>
+<p>The definition of a good break possibility depends on the properties at the block and inline level which govern things such as wrapping behavior and justification mode. For example, if lines are not to be wrapped, only an explicit linefeed can serve as a BP. If lines are wrapped but not justified then there is no requirement to completely fill the IPD on each line, but a sophisticated layout manager will try to achieve "aesthetic rag".</p>
+<p>Note that no areas have actually been created yet. Once the LineLM has found a potential break point for the inline content, it can calculate the total size of the line area which would be created. The size in the IPD is determined by the Line LM based on the chosen BP. The size of the line area in the the block-progression-dimension depends on the size of the text (or other inline content). These values are set by the inline-level LM in their returned BP (in terms of ascender and descender heights with respect to the baseline). The LineLM adds spacing implied by the current line-stacking strategy and line-height property values. It stores a reference to the chosen inline BP and "wraps" that in its own Position object which it stores in the BP it returns to its parent LM (the block layout manager).</p>
+<p>The block LM now has a potential break position after its first line. It assigns that possibility a cost, based on widow, orphan and keep properties. It can also calculate the total size of the block area it would create, were it to end the area after this line. It does this by adding any padding and border (taking into account conditionality). It also calculates space-before and space-after values, or contributes to building up a sequence of such values. With this information, the block LM creates a new BP (or updates the existing one). It stores a Position object in this BP which wraps the returned BP from its child Line LM. It returns the new BP to its parent and so on, back up to the FlowLM.</p>
+<p>Obviously there is more complicated logic involved when dealing with lists and tables. These cases need to be walked through in detail.</p>
+<p>The FlowLM sees if the returned stacking dimension will still fit in its available block-progression-dimension (BPD). It repeatedly calls getNextBreakPoss on its child LMs until it reaches the maximum BPD for the flow reference area or until there is no more content to lay out. If one child LM is finished, it moves on to the next until the last child LM has returned a BP with the ISLAST flag set. If any child LM returns a BP with a FORCE_BREAK_BEFORE or SPAN flag set, the FlowLM will force layout of any pending break possibilities and return to its parent (the PageLM) in order to handle the break or span condition.</p>
+<p>If the returned BP has any new before-float or footnote anchors in it (ANCHOR flag in the BP), the FlowLM will also return to the PageLM. The PageLM must then try to find space to place the floats, possibly asking the FlowLM for help if the body contains multiple columns.</p>
+<h2 id="Some-issues">Some issues</h2>
+<p>Following are a few remarks on specific issues.</p>
+<h3 id="Where-Line-Layout-Managers-are-created">Where Line Layout Managers are created</h3>
+<p>If the first child FO in a block FO is an inline-level FO such as text, the block LM creates an intermediate level LineLM to layout the sequence of inline content into Lines. Note that the whole sequence of inline FOs is managed by a single instance of LineLM. The LineLM becomes the parent to the various inline-level LM created by each individual inline FO. Since an fo:block can have both block and inline content, its LM may create a sequence of intermixed BlockLM and LineLM.</p>
+<h3 id="getRefIPD">Getting the reference IPD</h3>
+<p>When the layout process starts, with the FlowLM asking its first child LM for a break possibility, the IPD isn't known, since we don't know whether the first FO might be spanning, or on which page it might start. (Of course, if all page masters in the sequence have the same region-body IPD and all have only a single column, the IPD will never change and could already be calculated before starting layout.) The FlowLM gets its first child LM and calls its getNextBreakPoss method. That is a child LM for some block-level FO. For now, suppose it's an fo:block. The BlockLM will create its first child LM, which may be another block-level LM in the case of nested blocks or a LineLM as explained above. (Question: do we need a START flag for layout status?)</p>
+<p>We keep calling getNextBreakPoss on lower level layout managers until we get down to the inline level or to a level which cannot have break-before properties, such as a list-item-label. At that point, we assume we are going to have to layout some actual content. But we can't do that yet since we don't know the inline-progression-dimension. So we return a BP object which has 0 size in the stacking dimension, but which has flags set to signal to higher-level layout managers what needs to be done. If it has a break-before property or a span property, it stores these in the BP. If no reference IPD is yet defined, it sets a flag to get that. It then returns to its parent. The parent LM will inspect the BP object returned. In general, it "wraps" it with information about its own needs. If the returned BP is not actually returning any potential areas, the LM can still add information about its own break or span requirements. This return path continues back up to the PageLM. It will then check break and span requirements and create a new page if necessary using the appropriate page-master. At that point, the reference IPD for the main flow is known and is set in the flags object used for the next getNextBreakPoss call to the lower level LM.</p>
+<p>Using this information, the BlockLM parent can now calculate the available IPD for its LineLM child, based on its indents. (If there are any side-floats information about the intrusion must be passed down by the FlowLM to lower level managers.) The LineLM can now generate a series of BreakPoss objects, which it passes back to its parent LM.</p>
+<h3 id="Hyphenation">Hyphenation</h3>
+<p>The LineLM is responsible for initiating hyphenation if it is allowed by the properties and if no satisfactory BP can be found without hyphenating. The hyphenation manager is passed two break possibilities, one whose IPD is less than the desired line area IPD and one whose IPD is greater. These break possibilities might have been generated by different inline-level layout managers (text + a wrapper with a color change for example), though frequently they represent two positions in a single text run. If hyphenation is successful, a new BP is returned. The LineLM may look for several intermediate BP based on the "cost" of the returned possibilities. If no intermediate BP is found, the line will be "short", the white-space stretch will be exceeded, or perhaps the content will be overflowed or clipped, depending on various property settings.</p>
+<h3 id="Optimizing">Optimizing</h3>
+<p>It obviously seems inefficient to go down to the lowest level LM and back up to the FlowLM for every possible line-break decision. It seems like it would be possible to optimize by letting the lower level layout managers run until they had exceeded the current limit in the stacking direction. They would then return control to the "galley" level (LineLM or FlowLM) which would fine-tune the break decision by asking the lower level LM to find a previous BP which would fit. At the inline level, this means hyphenation as described above.</p>
+<p>Another interesting question is at what point pending break possibilities can be turned into areas.The idea is to wait until we are sure we won't have to redo the breaking. This depends on the sophistication of the layout strategy. For example, if a linebreak can be considered final if the line is full and there are no anchors on the line, we could create the LineArea at that point. But if we are willing to change a previous line-end decision to get a better overall composition of a whole group of lines (to prevent multiple hyphens for example), we might wait until the LineLM had finished laying out all its material and then make all the Lines at once.</p>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache&trade; FOP
+  - [FOP Home](/fop/)
+  - [Download](/fop/download.html)
+  - [Quick Start Guide](/fop/quickstartguide.html)
+  - [Compliance](/fop/compliance.html)
+  - [Getting Help](/fop/gethelp.html)
+  - [FAQs](/fop/faq.html)
+  - [FOP Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP)
+  - [Mailing Lists](/fop/maillist.html)
+  - [License](/fop/license.html)
+  - ## Resources
+    - [XSL-FO](/fop/fo.html)
+    - [Examples](/fop/examples.html)
+    - [Bugs](/fop/bugs.html)
+    - [Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FrontPage)
+    - [Other](/fop/resources.html)
+  - ## Project
+    - [News](/fop/news.html)
+    - [Who We Are](/fop/team.html)
+    - [Status](/fop/status.html)
+    - [Known Issues](/fop/knownissues.html)
+    - [Changes](/fop/changes.html)
+  - ## Versions
+      - ## FOP Trunk (dev)
+          - [Overview](/fop/trunk/)
+          - [Upgrading](/fop/trunk/upgrading.html)
+          - ### Using Apache&trade; FOP
+            - [Build](/fop/trunk/compiling.html)
+            - [Configure](/fop/trunk/configuration.html)
+            - [Run](/fop/trunk/running.html)
+            - [Embed](/fop/trunk/embedding.html)
+            - [Servlets](/fop/trunk/servlets.html)
+            - [Ant Task](/fop/trunk/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/trunk/accessibility.html)
+            - [Complex Scripts](/fop/trunk/complexscripts.html)
+            - [Events](/fop/trunk/events.html)
+            - [Extensions](/fop/trunk/extensions.html)
+            - [Fonts](/fop/trunk/fonts.html)
+            - [Graphics](/fop/trunk/graphics.html)
+            - [Hyphenation](/fop/trunk/hyphenation.html)
+            - [Intermediate Format](/fop/trunk/intermediate.html)
+            - [Metadata](/fop/trunk/metadata.html)
+            - [Output Targets](/fop/trunk/output.html)
+            - [PDF/A](/fop/trunk/pdfa.html)
+            - [PDF/X](/fop/trunk/pdfx.html)
+            - [PDF Encryption](/fop/trunk/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/trunk/whitespacemanagement.html)
+      - ## FOP 2.5
+          - [FOP 2.5 Overview](/fop/2.5/)
+          - [Release Notes](/fop/2.5/releaseNotes_2.5.html)
+          - [Changes (2.5)](/fop/2.5/changes_2.5.html)
+          - [Known Issues](/fop/2.5/knownissues_overview.html)
+          - [Upgrading](/fop/2.5/upgrading.html)
+          - ### Using Apache FOP 2.5
+            - [Build](/fop/2.5/compiling.html)
+            - [Configure](/fop/2.5/configuration.html)
+            - [Run](/fop/2.5/running.html)
+            - [Embed](/fop/2.5/embedding.html)
+            - [Servlets](/fop/2.5/servlets.html)
+            - [Ant Task](/fop/2.5/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.5/accessibility.html)
+            - [Complex Scripts](/fop/2.5/complexscripts.html)
+            - [Events](/fop/2.5/events.html)
+            - [Extensions](/fop/2.5/extensions.html)
+            - [Fonts](/fop/2.5/fonts.html)
+            - [Graphics](/fop/2.5/graphics.html)
+            - [Hyphenation](/fop/2.5/hyphenation.html)
+            - [Intermediate Format](/fop/2.5/intermediate.html)
+            - [Metadata](/fop/2.5/metadata.html)
+            - [Output Targets](/fop/2.5/output.html)
+            - [PDF/A](/fop/2.5/pdfa.html)
+            - [PDF/X](/fop/2.5/pdfx.html)
+            - [PDF Encryption](/fop/2.5/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.5/whitespacemanagement.html)     
+      - ## FOP 2.4
+          - [FOP 2.4 Overview](/fop/2.4/)
+          - [Release Notes](/fop/2.4/releaseNotes_2.4.html)
+          - [Changes (2.4)](/fop/2.4/changes_2.4.html)
+          - [Known Issues](/fop/2.4/knownissues_overview.html)
+          - [Upgrading](/fop/2.4/upgrading.html)
+          - ### Using Apache FOP 2.4
+            - [Build](/fop/2.4/compiling.html)
+            - [Configure](/fop/2.4/configuration.html)
+            - [Run](/fop/2.4/running.html)
+            - [Embed](/fop/2.4/embedding.html)
+            - [Servlets](/fop/2.4/servlets.html)
+            - [Ant Task](/fop/2.4/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.4/accessibility.html)
+            - [Complex Scripts](/fop/2.4/complexscripts.html)
+            - [Events](/fop/2.4/events.html)
+            - [Extensions](/fop/2.4/extensions.html)
+            - [Fonts](/fop/2.4/fonts.html)
+            - [Graphics](/fop/2.4/graphics.html)
+            - [Hyphenation](/fop/2.4/hyphenation.html)
+            - [Intermediate Format](/fop/2.4/intermediate.html)
+            - [Metadata](/fop/2.4/metadata.html)
+            - [Output Targets](/fop/2.4/output.html)
+            - [PDF/A](/fop/2.4/pdfa.html)
+            - [PDF/X](/fop/2.4/pdfx.html)
+            - [PDF Encryption](/fop/2.4/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.4/whitespacemanagement.html)             
+      - ## FOP 2.3
+          - [FOP 2.3 Overview](/fop/2.3/)
+          - [Release Notes](/fop/2.3/releaseNotes_2.3.html)
+          - [Changes (2.3)](/fop/2.3/changes_2.3.html)
+          - [Known Issues](/fop/2.3/knownissues_overview.html)
+          - [Upgrading](/fop/2.3/upgrading.html)
+          - ### Using Apache FOP 2.3
+            - [Build](/fop/2.3/compiling.html)
+            - [Configure](/fop/2.3/configuration.html)
+            - [Run](/fop/2.3/running.html)
+            - [Embed](/fop/2.3/embedding.html)
+            - [Servlets](/fop/2.3/servlets.html)
+            - [Ant Task](/fop/2.3/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.3/accessibility.html)
+            - [Complex Scripts](/fop/2.3/complexscripts.html)
+            - [Events](/fop/2.3/events.html)
+            - [Extensions](/fop/2.3/extensions.html)
+            - [Fonts](/fop/2.3/fonts.html)
+            - [Graphics](/fop/2.3/graphics.html)
+            - [Hyphenation](/fop/2.3/hyphenation.html)
+            - [Intermediate Format](/fop/2.3/intermediate.html)
+            - [Metadata](/fop/2.3/metadata.html)
+            - [Output Targets](/fop/2.3/output.html)
+            - [PDF/A](/fop/2.3/pdfa.html)
+            - [PDF/X](/fop/2.3/pdfx.html)
+            - [PDF Encryption](/fop/2.3/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.3/whitespacemanagement.html)            
+      - ## FOP 2.2
+          - [FOP 2.2 Overview](/fop/2.2/)
+          - [Release Notes](/fop/2.2/releaseNotes_2.2.html)
+          - [Changes (2.2)](/fop/2.2/changes_2.2.html)
+          - [Known Issues](/fop/2.2/knownissues_overview.html)
+          - [Upgrading](/fop/2.2/upgrading.html)
+          - ### Using Apache FOP 2.2
+            - [Build](/fop/2.2/compiling.html)
+            - [Configure](/fop/2.2/configuration.html)
+            - [Run](/fop/2.2/running.html)
+            - [Embed](/fop/2.2/embedding.html)
+            - [Servlets](/fop/2.2/servlets.html)
+            - [Ant Task](/fop/2.2/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.2/accessibility.html)
+            - [Complex Scripts](/fop/2.2/complexscripts.html)
+            - [Events](/fop/2.2/events.html)
+            - [Extensions](/fop/2.2/extensions.html)
+            - [Fonts](/fop/2.2/fonts.html)
+            - [Graphics](/fop/2.2/graphics.html)
+            - [Hyphenation](/fop/2.2/hyphenation.html)
+            - [Intermediate Format](/fop/2.2/intermediate.html)
+            - [Metadata](/fop/2.2/metadata.html)
+            - [Output Targets](/fop/2.2/output.html)
+            - [PDF/A](/fop/2.2/pdfa.html)
+            - [PDF/X](/fop/2.2/pdfx.html)
+            - [PDF Encryption](/fop/2.2/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.2/whitespacemanagement.html)
+      - ## FOP 2.1
+          - [FOP 2.1 Overview](/fop/2.1/)
+          - [Release Notes](/fop/2.1/releaseNotes_2.1.html)
+          - [Changes (2.1)](/fop/2.1/changes_2.1.html)
+          - [Known Issues](/fop/2.1/knownissues_overview.html)
+          - [Upgrading](/fop/2.1/upgrading.html)
+          - ### Using Apache FOP 2.1
+            - [Build](/fop/2.1/compiling.html)
+            - [Configure](/fop/2.1/configuration.html)
+            - [Run](/fop/2.1/running.html)
+            - [Embed](/fop/2.1/embedding.html)
+            - [Servlets](/fop/2.1/servlets.html)
+            - [Ant Task](/fop/2.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.1/accessibility.html)
+            - [Complex Scripts](/fop/2.1/complexscripts.html)
+            - [Events](/fop/2.1/events.html)
+            - [Extensions](/fop/2.1/extensions.html)
+            - [Fonts](/fop/2.1/fonts.html)
+            - [Graphics](/fop/2.1/graphics.html)
+            - [Hyphenation](/fop/2.1/hyphenation.html)
+            - [Intermediate Format](/fop/2.1/intermediate.html)
+            - [Metadata](/fop/2.1/metadata.html)
+            - [Output Targets](/fop/2.1/output.html)
+            - [PDF/A](/fop/2.1/pdfa.html)
+            - [PDF/X](/fop/2.1/pdfx.html)
+            - [PDF Encryption](/fop/2.1/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.1/whitespacemanagement.html)
+      - ## FOP 2.0
+          - [FOP 2.0 Overview](/fop/2.0/)
+          - [Release Notes](/fop/2.0/releaseNotes_2.0.html)
+          - [Changes (2.0)](/fop/2.0/changes_2.0.html)
+          - [Known Issues](/fop/2.0/knownissues_overview.html)
+          - [Upgrading](/fop/2.0/upgrading.html)
+          - ### Using Apache FOP 2.0
+            - [Build](/fop/2.0/compiling.html)
+            - [Configure](/fop/2.0/configuration.html)
+            - [Run](/fop/2.0/running.html)
+            - [Embed](/fop/2.0/embedding.html)
+            - [Servlets](/fop/2.0/servlets.html)
+            - [Ant Task](/fop/2.0/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.0/accessibility.html)
+            - [Complex Scripts](/fop/2.0/complexscripts.html)
+            - [Events](/fop/2.0/events.html)
+            - [Extensions](/fop/2.0/extensions.html)
+            - [Fonts](/fop/2.0/fonts.html)
+            - [Graphics](/fop/2.0/graphics.html)
+            - [Hyphenation](/fop/2.0/hyphenation.html)
+            - [Intermediate Format](/fop/2.0/intermediate.html)
+            - [Metadata](/fop/2.0/metadata.html)
+            - [Output Targets](/fop/2.0/output.html)
+            - [PDF/A](/fop/2.0/pdfa.html)
+            - [PDF/X](/fop/2.0/pdfx.html)
+            - [PDF Encryption](/fop/2.0/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.0/whitespacemanagement.html)
+      - ## FOP 1.1
+          - [FOP 1.1 Overview](/fop/1.1/)
+          - [Release Notes](/fop/1.1/releaseNotes_1.1.html)
+          - [Changes (1.1)](/fop/1.1/changes_1.1.html)
+          - [Known Issues](/fop/1.1/knownissues_overview.html)
+          - [Upgrading](/fop/1.1/upgrading.html)
+          - ### Using Apache FOP 1.1
+            - [Build](/fop/1.1/compiling.html)
+            - [Configure](/fop/1.1/configuration.html)
+            - [Run](/fop/1.1/running.html)
+            - [Embed](/fop/1.1/embedding.html)
+            - [Servlets](/fop/1.1/servlets.html)
+            - [Ant Task](/fop/1.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/1.1/accessibility.html)
+            - [Complex Scripts](/fop/1.1/complexscripts.html)
+            - [Events](/fop/1.1/events.html)
+            - [Extensions](/fop/1.1/extensions.html)
+            - [Fonts](/fop/1.1/fonts.html)
+            - [Graphics](/fop/1.1/graphics.html)
+            - [Hyphenation](/fop/1.1/hyphenation.html)
+            - [Intermediate Format](/fop/1.1/intermediate.html)
+            - [Metadata](/fop/1.1/metadata.html)
+            - [Output Targets](/fop/1.1/output.html)
+            - [PDF/A](/fop/1.1/pdfa.html)
+            - [PDF/X](/fop/1.1/pdfx.html)
+            - [PDF Encryption](/fop/1.1/pdfencryption.html)
+      - ## FOP 1.0
+          - [FOP 1.0 Overview](/fop/1.0/)
+          - [Release Notes](/fop/1.0/releaseNotes_1.0.html)
+          - [Changes (1.0)](/fop/1.0/changes_1.0.html)
+          - [Known Issues](/fop/1.0/knownissues_overview.html)
+          - [Upgrading](/fop/1.0/upgrading.html)
+          - ### Using Apache FOP 1.0
+            - [Build](/fop/1.0/compiling.html)
+            - [Configure](/fop/1.0/configuration.html)
+            - [Run](/fop/1.0/running.html)
+            - [Embed](/fop/1.0/embedding.html)
+            - [Servlets](/fop/1.0/servlets.html)
+            - [Ant Task](/fop/1.0/anttask.html)
+          - ### Features
+            - [Output Targets](/fop/1.0/output.html)
+            - [Intermediate Format](/fop/1.0/intermediate.html)
+            - [PDF Encryption](/fop/1.0/pdfencryption.html)
+            - [PDF/A](/fop/1.0/pdfa.html)
+            - [PDF/X](/fop/1.0/pdfx.html)
+            - [Graphics](/fop/1.0/graphics.html)
+            - [Fonts](/fop/1.0/fonts.html)
+            - [Hyphenation](/fop/1.0/hyphenation.html)
+            - [Extensions](/fop/1.0/extensions.html)
+            - [Events](/fop/1.0/events.html)
+            - [Metadata](/fop/1.0/metadata.html)
+            - [Accessibility](/fop/1.0/accessibility.html)
+      - ## FOP Development
+          - [General Info](/fop/dev/)
+          - ## Design
+            - [Design Info](/fop/dev/design/)
+          - ## Core Process
+            - [Startup](/fop/dev/design/startup.html)
+            - [XML Parsing](/fop/dev/design/parsing.html)
+            - [FO Tree](/fop/dev/design/fotree.html)
+            - [Properties](/fop/dev/design/properties.html)
+            - [Layout](/fop/dev/design/layout.html)
+            - [Break Possibility](/fop/dev/design/breakpos.html)
+            - [Area Tree](/fop/dev/design/areas.html)
+            - [Renderers](/fop/dev/design/renderers.html)
+          - ## Miscellaneous
+            - [Images](/fop/dev/design/images.html)
+            - [PDF Library](/fop/dev/design/pdf-library.html)
+            - [SVG](/fop/dev/design/svg.html)
+            - [Embedding](/fop/dev/design/embedding.html)
+            - [Extending](/fop/dev/design/extending.html)
+            - [Optimisations](/fop/dev/design/optimise.html)
+            - [User Agent](/fop/dev/design/useragent.html)
+          - [Unresolved (Wiki)](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FOPProjectPages)
+          - [SVG](/fop/dev/svg.html)
+          - [Extensions](/fop/dev/extensions.html)
+          - ## Develop
+            - [Walk-Thru](/fop/dev/implement.html)
+            - [Patch Queue](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20description%20~%20%22\%22[patch]\%22%22%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+            - [Conventions](/fop/dev/conventions.html)
+          - ## Test
+            - [Testing](/fop/dev/testing.html)
+          - ## Deploy
+            - [Doc Mgmt](/fop/dev/doc.html)
+            - [Release](/fop/dev/release.html)
+            - [Bugs](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20issuetype%20%3D%20Bug%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+          - ## Resources
+            - [FAQs](/fop/dev/faq.html)
+            - [Tools](/fop/dev/tools.html)
+            - [ViewVC](http://svn.apache.org/viewvc/xmlgraphics/fop)
+          - ## SubPackages
+            - [RTFlib](/fop/dev/rtflib.html)
+
+# Apache&trade; XML Graphics
+  - ## Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache Batik](/batik/)
+  - [Apache XML Graphics Commons](/commons/)
+
+### Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+      $('#navigation :header').not('#search-apache-xml-graphics, #apachewzxhzdk3-xml-graphics, #sub-projects').append(' &raquo;');
+    }
+  $('#navigation > ul > li > ul > li ul').hide();
+  $('#project-overview').next().hide();
+  $('#versions').next().show();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+      $("li.highlight").removeClass("highlight");
+      $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
+	  <a href="/fop/"><img src="/images/apache-fop-logo.jpg" alt="The Apache FOP Project" width="120" height="65" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; FOP Project</h2>
+	</div>  
+
+    <h1>FOP FAQ</h1>
+    
+
+    <h1>FOP FAQ</h1>
+<h2 id="part-general">1. Apache&trade; FOP: General questions</h2>
+<h3 id="fop-general">1.1. What is Apache&trade; FOP?</h3>
+<p>FOP is a print formatter for <a href="#xslfo">XSL formatting objects</a>.</p>
+<p>It can be used to render an XML file containing XSL formatting objects into a page layout. The main target is PDF but other rendering targets are supported, such as AWT, PCL, text and direct printing.</p>
+<h3 id="fop-functions">1.2. What can I do with FOP?</h3>
+<p>FOP provides both an application and a library that converts an XSL FO document into paginated output.</p>
+<p>The FOP command line application can be directly used to transform XML into PDF, PostScript, PCL and other formats, there is also an AWT based viewer integrated.</p>
+<p>The library can be used in servlets and other Java applications.</p>
+<h3 id="fop-acronym">1.3. What does "FOP" stand for?</h3>
+<p>FOP is an acronym for <strong>F</strong>ormatting <strong>O</strong>bject <strong>P</strong>rocessor</p>
+<h3 id="fop-other-apache">1.4. How does FOP interact with other Apache Projects?</h3>
+<p>FOP is distributed with <a href="http://cocoon.apache.org/">Cocoon</a> as a PDF serializer for XSL (FO) documents.</p>
+<p><a href="http://xmlgraphics.apache.org/commons">XML Graphics Commons</a> is used with FOP to provide graphics functions that are common to a number of Apache projects.</p>
+<p><a href="http://xmlgraphics.apache.org/batik">Batik</a> is used with FOP to <a href="http://xmlgraphics.apache.org/batik/tools/svgrasterizer.html">transcode an SVG image</a> into a PDF document.</p>
+<p>FOP also makes use of the following Apache projects:</p>
+<ul>
+<li><a href="http://excalibur.apache.org/framework/">Avalon Framework</a></li>
+<li><a href="http://commons.apache.org/io/">Commons IO</a></li>
+<li><a href="http://commons.apache.org/logging/">Commons Logging</a></li>
+<li><a href="http://xalan.apache.org">Xalan-J</a></li>
+</ul>
+<h3 id="xsl-def">1.5. What is XSL?</h3>
+<p>XSL is a W3C standard concerned with publishing XML documents. It consists of two parts: <a href="#XSLT">XSLT</a> and <a href="#xslfo">XSL-FO</a>. The acronym expands to e <strong>X</strong>tensible <strong>S</strong>tylesheet <strong>L</strong>anguage.</p>
+<h3 id="xslfo">1.6. What is XSL-FO?</h3>
+<p>XSLFO (aka XSL-FO) is an XML vocabulary, defined by W3C Recommendation <a href="http://www.w3.org/TR/xsl/">Extensible Stylesheet Language (XSL) Version 1.1</a>, that is used to specify a pagination and other styling for page layout output. The acronym “FO” stands for <strong>F</strong>ormatting <strong>O</strong>bjects. XSLFO can be used in conjunction with <a href="#XSLT">XSLT</a> to convert from any XML format into a paginated layout ready for printing or displaying.</p>
+<p>XSLFO defines a set of elements in XML that describes the way pages are set up. The contents of the pages are filled from flows. There can be static flows that appear on every page (for headers and footers) and the main flow which fills the body of the page.</p>
+<p>Synonyms: XSL FO, XSL (FO), XSL:FO, XSL-FO, Formatting Objects</p>
+<h3 id="XSLT">1.7. What is XSLT?</h3>
+<p>XSLT describes the transformation of arbitrary XML input into other XML (like XSLFO), HTML or plain text. The “T” comes from <strong>T</strong>ransformation. For historical reasons, a transformation is often also called a “style sheet”.</p>
+<p>Synonyms: XSL transformation, XSL:T, XSL style sheet.</p>
+<h3 id="when">1.8. When will feature X be implemented?</h3>
+<p>The short answer is "Don't ask." For more details, see <a href="gethelp.html#limitations">Understand FOP's Limitations</a>.</p>
+<h3 id="next-release">1.9. When is the next released planned?</h3>
+<p>Version 1.1 of FOP was released on 20 October 2012. Work on a new Version 1.2 of Apache FOP is underway at this time, with no fixed date set for its release. If you want to speed up the process, consider <a href="dev/index.html#involved">contributing</a> to FOP.</p>
+<h3 id="contribute">1.10. How can I contribute?</h3>
+<p>There are numerous ways that you can help. They are outlined in the <a href="dev/index.html">Developer's Introduction</a> page.</p>
+<h2 id="part-running">2. Problems running FOP</h2>
+<h3 id="no-page-master">2.1. I get the error: [ERROR]: 'master-reference' for 'fo:page-sequence' matches no 'simple-page-master' or 'page-sequence-master'</h3>
+<p>FOP was changed to be in accordance with the latest standard (see <a href="resources.html#specs-xslfo">XSL standard</a>).The page master for a fo:page-sequence is now referenced by the master-reference attribute. Replace the master-name attributes of your fo:page-sequence elements by master-reference attributes. You have to do this also for fo:single-page-master-reference, fo:repeatable-page-master-reference and fo:conditional-page-master-reference elements in you page master definitions.</p>
+<p>Update your FO documents and style sheets.</p>
+<h3 id="NoClassDefFound">2.2. I get a NoClassDefFound exception.</h3>
+<p>This is typically a problem with your classpath.</p>
+<p>If you are running FOP from the command line:</p>
+<ul>
+<li>
+<p>Use the command file <code>fop.bat</code>, <code>fop.cmd</code> or <code>fop.js</code> on MS Windows, or <code>fop</code> on Unix/Linux from the FOP distribution.</p>
+</li>
+<li>
+<p>If this doesn't help, check whether still all the jar files mentioned in the classpath in the <code>fop.bat</code> file are in their respective places.</p>
+</li>
+</ul>
+<p>If you run FOP embedded in your servlet, web application or other Java application, check the classpath of the application. Check the also the information pertaining to <a href="1.1/servlets.html#servlet-engine">servlet engines</a> for further hints.</p>
+<p>If you downloaded the source distribution, or a snapshop from the repository, remember you have to build the FOP jars first.</p>
+<h3 id="NoSuchMethodException">2.3. I get a NoSuchMethodException or a NoSuchFieldException exception.</h3>
+<p>This is usually caused by an older version of one of the FOP jars or old XML tools in the classpath.</p>
+<p>Incompatible versions of Batik may also cause this problem. Use the version of Batik that comes with FOP. It is not always possible to use a more recent version of Batik.</p>
+<h3 id="OutOfMemoryException">2.4. I get an OutOfMemoryException.</h3>
+<p>See <a href="1.1/running.html#memory">FOP Memory</a>.</p>
+<h3 id="MalformedURL">2.5. I get a MalformedURLException.</h3>
+<p>What you probably think of as "file names" are usually URLs, in particular the <code>src</code> attribute of fo:external-graphic.</p>
+<p>Because usage of URLs is growing, you should make yourself familiar with it. The relevant specification is <a href="http://www.rfc-editor.org/rfc/rfc2396.txt">RFC 2396</a>.</p>
+<p>In a nutshell, the correct syntax for an absolute file URL is <code>file:///some/path/file.ext</code> on Unix and <code>file:///z:/some/path/file.ext</code> on Windows systems. Note the triple slash, and also that only forward slashes are used, even on windows.</p>
+<p>A relative file URL starts with anything but a slash, and doesn't have the <code>file:</code> prefix, for example <code>file.ext</code>, <code>path/file.ext</code> or <code>../file.ext</code>. The string <code>file:path/file.ext</code> is <em>not</em> a relative URL, in fact, it isn't a valid URL at all. A relative URL is subject to a resolving process, which transforms it into an absolute URL.</p>
+<h3 id="NullPointerException">2.6. I get an "[ERROR]: null", or a NullPointerException.</h3>
+<p>This is very likely a bug in FOP. If you encounter this error, please <a href="bugs.html#issues_new">Open a New Bug</a>.</p>
+<h3 id="not-implemented">2.7. FOP returns the message "[ERROR] object|property - 'x' is not implemented yet." When will it be implemented?</h3>
+<p>See FOP's Standards <a href="compliance.html">Compliance</a> page.</p>
+<h3 id="fop-hangs">2.8. FOP hangs. FOP does not exit.</h3>
+<p>The most likely reason is a known problem with the Java run time environment which is triggered by rendering SVGs. Sun's JDK 1.4 and later do not have this problem. See also <a href="#svghangs">FOP does not exit if a SVG is included</a>.</p>
+<p>Another possibility is that FOP went into a non terminating loop. Usually this is indicated by lots of log messages of the form "[INFO]: [NNNN]" which indicate a new page has been started or <a href="#boxoverflow">box overflows</a>. After some time, FOP will crash with an OutOfMemoryException.</p>
+<p>If you called the FOP command line application from some other program, for example from Java using Runtime.exec(), it may hang while trying to write log entries to the output pipe. You have to read the FOP output regularly to empty the pipe buffer. It is best to avoid exec'ing FOP, use the library interface instead.</p>
+<p>If you can reproduce this problem given a specific input and configuration,
+then please <a href="bugs.html#issues_new">Open a New Bug</a>.</p>
+<h3 id="boxoverflow">2.9. FOP runs forever, writing lots of "&gt;" to the log.</h3>
+<p>There is something too large to fit into the intended place, usually a large image, a table whose rows are kept together or a block with a space-before or space-after larger than the page size. Catch the first page showing this phenomenon and check it. If it is not obvious which element causes the trouble, remove stuff until the problem goes away. Decrease the dimensions of the offending element or property, or increase the dimension of the enclosing element or container, or remove keep-with-* properties.</p>
+<h3 id="cannot-find-external-graphics">2.10. FOP cannot find a file for fo:external-graphics.</h3>
+<p>The src attribute of the <code>fo:external-graphics</code> element requires a URI, not a file name. See <a href="fo.html#external-resources">External Resources</a> for more information about specifying URIs.</p>
+<h3 id="fonts-not-found">2.11. FOP does not find my fonts.</h3>
+<p>Did you get: “Failed to read font metrics file C:\foo\arial.xml: File "C:\foo\arial.xml" not found”? The value for the metrics-file attribute in the user config file is actually an URL, not a file name. Use "file:///C:/foo/arial.xml" instead.</p>
+<p>If you used a relative URL, make sure your application has the working directory you expect. Currently FOP does not use the baseDir for resolving relative URLs pointing to font metric files.</p>
+<p>Try also setting the <a href="1.1/configuration.html#general-elements">font-base configuration</a>.</p>
+<h3 id="saxexception-mismatch">2.12. I get a SAXException: Mismatch: page-sequence vs. root (or similar).</h3>
+<p>The full exception usually looks similar to this:</p>
+<p><code>Mismatch: page-sequence (http://www.w3.org/1999/XSL/Format) vs. root (http://www.w3.org/1999/XSL/Format)</code></p>
+<p>This exception is usually a follow-up error after another exception. Sometimes the original exception gets swallowed by Xalan's default <code>ErrorListener</code> (should be fixed in the latest Xalan release).</p>
+<p>The work-around is to set an explicit <code>ErrorListener</code> on the <code>Transformer</code>. The <code>ErrorListener</code> can be as simple as this:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">javax.xml.transform.ErrorListener</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.xml.transform.TransformerException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DefaultErrorListener</span> <span class="kd">implements</span> <span class="n">ErrorListener</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">warning</span><span class="o">(</span><span class="n">TransformerException</span> <span class="n">exc</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">exc</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">error</span><span class="o">(</span><span class="n">TransformerException</span> <span class="n">exc</span><span class="o">)</span>
+            <span class="kd">throws</span> <span class="n">TransformerException</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="n">exc</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">fatalError</span><span class="o">(</span><span class="n">TransformerException</span> <span class="n">exc</span><span class="o">)</span>
+            <span class="kd">throws</span> <span class="n">TransformerException</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="n">exc</span><span class="o">;</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></div>
+
+
+<h3 id="faq-N1026C">2.13. The following message appears after recently upgrading FOP: "I/O exception while reading font cache (org.apache.fop.fonts.EmbedFontInfo; local class incompatible: stream classdesc serialVersionUID = -9075848379822693399, local class serialVersionUID = 8755432068669997367). Discarding font cache file."</h3>
+<p>This message is a warning that FOP failed to read from the Font cache. Which means any Font auto detection or Font directories will be re-scanned. So this failure doesn't break anything.</p>
+<p>To avoid the warning you can simply delete the old Font Cache file, which lives in ${base}\conf\font.cache (see <a href="1.1/configuration.html#general-elements">font-base configuration</a>).</p>
+<h2 id="part-output">3. Problems with FOP output</h2>
+<h3 id="leader-expansion">3.1. Leaders don't work in current FOP. Instead of filling the line, only three dots or a short ruler is output.</h3>
+<p>Leaders still work, in fact they work better than ever before. You'll just have to add <code>text-align="justify"</code> and/or <code>text-align-last="justify"</code> to the block with the leader. Be sure you haven't accidentally overridden the <code>leader-length.maximum="100%"</code> default value.</p>
+<p>Earlier versions of FOP used to expand a leader to fill the rest of the line unconditionally, anything following it, like page numbers in a TOC, was actually shifted beyond the right margin.</p>
+<p>The new implementation uses leader-length.optimum to determine where to break the line, and expands the leader only further if the line should be filled, as indicated by the text-align and text-align-last properties.</p>
+<p>Actually due to the fuzzyness of the specification both the old and the new method are conformant (although adding text after the expanded leader in the old variant never was).</p>
+<p>If you want to have a longer ruler or space in a non-justified line, you have to increase the leader-length.optimum property.</p>
+<h3 id="blank-page-between-page-sequences">3.2. Why does FOP insert a blank page between my page sequences?</h3>
+<p>This is because spec conformance has been improved.</p>
+<p>The <a href="http://www.w3.org/TR/xsl11/#force-page-count">force-page-count property</a> controls how a FO processor pads page sequences in order to get certain page counts or last page numbers. The default is " <code>auto</code> ". With this setting, if the next page sequence begins with an odd page number because you set the initial-page-number, and the current page sequence also ends with an odd page number, the processor inserts a blank page to keep odd and even page numbers alternating (similar for the case the current page sequence ends with an even page number and the next page sequence starts with an even page number).</p>
+<p>If you don't want to have this blank page, use <code>force-page-count="no-force"</code>.</p>
+<h3 id="graphic-not-displayed">3.3. Why is my graphic not rendered?</h3>
+<p>Most commonly, the external file is not being found by FOP. Check the following:</p>
+<ul>
+<li>
+<p>Empty or wrong baseDir setting.</p>
+</li>
+<li>
+<p>Spelling errors in the file name (including using the wrong case).</p>
+</li>
+<li>
+<p>Security Problems (i.e. the image could not be accessed because FOP is not allowed to read the file). This is especially a problem if the external file is retrieved over HTTP. Possible issues include security settings on the server, server configuration, and missing cookies or other authorization information. Any easy way to check this is to cut and paste the source URL from the fo:external-graphic into the Location field of a browser <strong>on the machine where the FOP process will be running</strong>.</p>
+</li>
+</ul>
+<p>Other possibilities:</p>
+<ul>
+<li>
+<p>The image format is not supported or not supported completely. See <a href="1.1/graphics.html">FOP Graphics Formats</a> for a list of supported formats and related issues.</p>
+</li>
+<li>
+<p>The graphic may be too large to fit into the intended space.</p>
+</li>
+<li>
+<p>There may be something (static content) that is obscuring the graphic. (This is very rare).</p>
+</li>
+</ul>
+<h3 id="png-fails">3.4. My graphical images do not work properly.</h3>
+<p>See <a href="1.1/graphics.html">FOP Graphics Formats</a> for a list of supported graphics formats and related issues.</p>
+<h3 id="graphic-resolution">3.5. Why is my graphic rendered at a different resolution than it was created?</h3>
+<p>See <a href="1.1/graphics.html#resolution">Graphics Resolution</a>.</p>
+<h3 id="keep-with">3.6. Keep-with-next, keep-with-previous, keep-together don't work.</h3>
+<p>Current FOP releases have extensive support for these properties. The current release, FOP 1.0, still supports the values "always" and "never" only, no numerical values. There may be a few places where keep-* still don't work, this should be very rare.</p>
+<p>The concept is called “blind table”. The table is used for pure layout reasons and is not obvious in the output.</p>
+<p>An example of an image and the image caption to be kept together:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:table</span> <span class="na">table-layout=</span><span class="s">&quot;fixed&quot;</span> <span class="na">width=</span><span class="s">&quot;100%&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fo:table-column</span> <span class="na">column-width=</span><span class="s">&quot;proportional-column-width(1)&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;fo:table-body&gt;</span>
+    <span class="nt">&lt;fo:table-row</span> <span class="na">keep-with-next=</span><span class="s">&quot;always&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:table-cell&gt;</span>
+        <span class="nt">&lt;fo:block&gt;</span>
+          <span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;foo.jpg&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/fo:block&gt;</span>
+      <span class="nt">&lt;/fo:table-cell&gt;</span>
+    <span class="nt">&lt;/fo:table-row&gt;</span>
+    <span class="nt">&lt;fo:table-row&gt;</span>
+      <span class="nt">&lt;fo:table-cell&gt;</span>
+        <span class="nt">&lt;fo:block&gt;</span>Image Caption<span class="nt">&lt;/fo:block&gt;</span>
+      <span class="nt">&lt;/fo:table-cell&gt;</span>
+    <span class="nt">&lt;/fo:table-row&gt;</span>
+  <span class="nt">&lt;/fo:table-body&gt;</span>
+<span class="nt">&lt;/fo:table&gt;</span>
+</pre></div>
+
+
+<p>Consider upgrading to the latest version which supports keeps.</p>
+<h3 id="table-missing">3.7. My tables are missing, or missing their content.</h3>
+<p>Check for <code>fo:table-body</code> around the rows. Usually FOP will catch this problem.</p>
+<p>Also, the <code>fo:table-with-caption</code> element is not implemented, tables within such an element are dropped too. FOP generates an error message for this problem. Older DocBook style sheets generate <code>fo:table-with-caption</code> elements, so watch out.</p>
+<h3 id="cells-overflow">3.8. Text overflowing table cells and the like is not clipped. Long text flows into adjacent cells/block, obscuring stuff there.</h3>
+<p>Since the <code>overflow</code> property doesn't apply to table-cell, you can wrap the cell content in a block-container and specify <code>overflow="hidden"</code> there. Alternatively, if you have long words overflowing table cells, try to get them hyphenated. Artificial names like product identifications or long numbers usually aren't hyphenated. You can try special processing at XSLT level, like</p>
+<ul>
+<li>
+<p>clip long text,</p>
+</li>
+<li>
+<p>explicit wrapping+clipping,</p>
+</li>
+<li>
+<p>insert zero width spaces (U+200B or &#x200B;) to allow FOP to wrap.</p>
+</li>
+</ul>
+<p>Check the <a href="http://dpawson.co.uk/xsl">XSL FAQ</a> and the <a href="http://www.mulberrytech.com/xsl/xsl-list/">XSL list archive</a> for how to perform these tasks.</p>
+<h3 id="table-cell-wrap">3.9. The contents of table cells don’t wrap</h3>
+<p>You probably have <code>keep-together="always"</code> set on the table cell. See <a href="#keep-together">next question</a>.</p>
+<h3 id="keep-together">3.10. FOP behaves differently from earlier versions when keep-together="always" is set on table cells</h3>
+<p>Support for inline-level keeps has been added in FOP 0.95, and setting <code>keep-together="always"</code> also implicitly sets <code>keep-together.within-line="always"</code>, which forbids FOP to break the text into multiple lines. Set <code>keep-together.within-column="always"</code> on table-cell instead. It’s a good idea not to use the shorthand <code>keep-together="always"</code> at all!</p>
+<h3 id="row-height-constraint">3.11. FOP tells me: "The contents of row 1 are taller than they should be". What does that mean?</h3>
+<p>This is usually caused by setting a "height" on a table-row or table-cell and when the content is higher than the specified height. By setting "height" (a so-called corresponding property) you <a href="http://www.w3.org/TR/xsl11/#d0e4413">implicitely set</a> block-progression-dimension.minimum, block-progression-dimension.optimum and block-progression-dimension.maximum to the same value. You'll get some information about that in the warning message. Look for something like: "MinOptMax[min=opt=max=14000]".</p>
+<p>Assuming you set the height on the table-row to 14pt and your content is 75pt high, a constraint (maximum=14pt) is violated. Normally, you just want to make sure with the "height" property that the row has a minimum height. If that is so, the right solution is to specify block-progression-dimension.minimum="14pt" instead of height="14pt".</p>
+<h3 id="page-number-align">3.12. Page numbers are not properly right aligned.</h3>
+<p>This happens for <code>fo:page-number-citation</code> elements if the citation occurs before FOP formatted the requested page, usually in TOC or index pages. It is caused by the problem that FOP has to guess how much space the yet unknown page number will occupy, and usually the guesses are somewhat off.</p>
+<p>The most recent FOP releases should have this problem fixed. Check whether you can upgrade.</p>
+<h3 id="hyphenation-fails">3.13. Hyphenation does not work.</h3>
+<p>Make sure you have set the language and optionally the country attributes for an appropriate XSL-FO element (fo:page-sequence, fo:block or fo:character):</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:page-sequence</span> <span class="na">language=</span><span class="s">&quot;fi&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+
+
+<p>See <a href="1.1/hyphenation.html#support">Hyphenation Support</a> for details and instructions on using hyphenation with FOP.</p>
+<p>Explicitly enable hyphenation for an appropriate XSL-FO element (<code>fo:block</code>, <code>fo:character</code>):</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:block</span> <span class="na">hyphenate=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+
+
+<h3 id="indent-inheritance">3.14. When I use margins, my content in a nested table or block-containers gets indented twice. Is this a bug?</h3>
+<p>No, although you might easily think so. The problem has to do with property inheritance of the start-indent and end-indent properties to which the margin properties are mapped. Apache FOP strictly adheres to the XSL-FO specification here which many other commercial FO implementations don't do to better meet end-user expectations. You can make FOP behave like these if you set <code>setBreakIndentInheritanceOnReferenceAreaBoundary(true)</code> on the FOUserAgent. The better way is to reset <code>start-indent</code> and <code>end-indent</code> to "0pt" on table-body or block-container. For further details, please consult the <a href="https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/IndentInheritance">Wiki page on Indent Inheritance</a>.</p>
+<h3 id="pdf-ps-java2d-differences">3.15. Why is the output of Java2D/AWT-based renderers different than, for example, PDF or PS?</h3>
+<p>If you render the same document once to a PNG or TIFF and once into a PDF, the output may not be the same, i.e. line breaks are different or lines may have different heights. The reason for this: The Java2D-based renderers use the font subsystem of Java2D/AWT. The PDF and PS renderers use FOP's own font subsystem which provides much better font metrics than Java2D. These can lead to different layout decisions when the same document is rendered with different renderers. An alternative approach to fix this problem might be available but it hasn't been tested, yet. See also the <a href="1.1/output.html#general-fonts">notes on fonts in the various output formats</a>.</p>
+<h2 id="part-embedding">4. Embedding FOP. Using FOP in a servlet.</h2>
+<h3 id="servlet">4.1. How do I use FOP in a servlet?</h3>
+<p>See <a href="1.1/servlets.html#servlet">Using FOP in a Servlet</a>.</p>
+<h3 id="servlet-with-xslt">4.2. How do I use FOP in a servlet with an XSLT transformation?</h3>
+<p>See <a href="1.1/servlets.html#xslt">Using FOP in a Servlet with XSLT Transformation</a>.</p>
+<h3 id="servlet-xslt-params">4.3. How do I pass parameters to the XSLT transformation?</h3>
+<p>See <a href="1.1/servlets.html#xslt">Using FOP in a Servlet with XSLT Transformation</a>.</p>
+<h3 id="servlet-nonstd-fonts">4.4. How do I use my own fonts when running FOP from a servlet?</h3>
+<p>Declare the fonts in the <code>userconfig.xml</code> file as usual. See <a href="#usercfg">loading the user configuration file</a> for further details.</p>
+<h3 id="servlet-baseDir">4.5. How do I set the baseDir property in a servlet environment?</h3>
+<p>See <a href="1.1/embedding.html#config-internal">Setting the Configuration Programmatically</a>.</p>
+<h3 id="usercfg">4.6. How do I use a user configuration file from a servlet?</h3>
+<p>See <a href="1.1/embedding.html#config-external">Using a Configuration File in an Embedded App</a>.</p>
+<h3 id="servlet-NoClassDefFound">4.7. I keep getting NoClassDefFound and other exceptions. How do I get FOP working for various servlet engines?</h3>
+<p>See <a href="1.1/servlets.html#servlet-engine">Servlet Engines</a>.</p>
+<h3 id="multithreaded">4.8. Can FOP be used in multithreaded environments?</h3>
+<p>See <a href="1.1/embedding.html#multithreading">Multithreading FOP</a>.</p>
+<h2 id="part-svg">5. SVG specific questions</h2>
+<h3 id="svg-text">5.1. The rendering of SVG text in my PDF is of poor quality. Can I control this?</h3>
+<p>See <a href="1.1/graphics.html#svg-pdf-text">Placing SVG Text into PDF</a>.</p>
+<h3 id="svg-headless">5.2. How do I use FOP with SVG on headless servers?</h3>
+<p>See <a href="1.1/graphics.html#batik">FOP: Graphics (Batik)</a>.</p>
+<h3 id="svghangs">5.3. FOP does not exit if a SVG is included.</h3>
+<p>Applies to older FOP versions and JDK 1.3 and older. That's because there is an AWT thread hanging around. The solution is to put a System.exit(0) somewhere.</p>
+<h3 id="svg-url">5.4. I have problems with SVG referring to gradients etc. using "uri(#stuff)". I get a MalformedURLException.</h3>
+<p>This is really a "resolving relative URI" problem with some twists. The problem is that the <code>#stuff</code> URL fragment identifier is resolved within the current SVG document. So the reference must be valid within the XML subset and it cannot reference other SVG documents in the same XML file. Some options to try:</p>
+<ul>
+<li>
+<p>Put the SVG into a separate file and use it with fo:external-graphics.</p>
+</li>
+<li>
+<p>Use a separate SVG file which contains only the gradient (and perhaps other SVG stuff you want to reference) and point an absolute URL to it: <code>fill="url(file:///c:/refstuff/grad.svg#PurpleToWhite)"</code>.</p>
+</li>
+<li>
+<p>Same as above but use a relative URL: <code>fill="url(grad.svg#PurpleToWhite)"</code>. This may be easier to deploy.</p>
+</li>
+<li>
+<p>Make sure that the reference is valid in the current SVG document.</p>
+</li>
+</ul>
+<p>In any case, the referenced stuff has to be pointed to by an URL. It doesn't necessarily have to be a file URL, HTTP should also work. Also, expect a performance hit in all cases, because another XML file has to be retrieved and parsed.</p>
+<p>Ultimately, both FOP and especially Batik should be fixed to make your code work as expected, but this will not only take some time but also some effort by a standard committee in order to make the semantics of this kind of references in embedded SVG clearer.</p>
+<p>See also <a href="#MalformedURL">MalformedURLException</a></p>
+<h3 id="svg-scaling">5.5. Why is my SVG rendered at a size different from that specified in my fo:external-graphic element?</h3>
+<p>See <a href="1.1/graphics.html#svg-scaling">SVG Scaling</a>.</p>
+<h3 id="svg-attribute-required">5.6. FOP fails with something like "The attribute "width" of the element <rect> is required". What's wrong?</h3>
+<p>This phenomenon is not a bug in FOP, but rather in the dependent packages: Apache Batik, Apache Xalan-J and SAXON. The bug in Apache Batik will be fixed in the next release. In the latest release of Apache Xalan-J, the bug is already fixed. It only occurs in the Xalan version bundled with Sun's JVM, because Sun uses a rather old version.</p>
+<p>Bug description: In a namespace-enabled Level 3 DOM, an attribute in the default namespace must be set with <code>"null"</code> as the value for the namespace URI. SAX, on the other side, uses an empty string ("") to designate the default namespace. Many packages appear to not properly handle this difference in which case they still use the empty string as the namespace URI parameter for <code>org.w3c.dom.Element.setAttributeNS()</code>.</p>
+<p>Work-around: Use the latest version of Apache Xalan-J. Note that starting with JDK 1.4 it's not enough to replace Xalan-J on the normal application classpath and you need to override the Xalan-J version bundled with the Sun JVM using the <a href="https://docs.oracle.com/javase/6/docs/technotes/guides/standards/">Endorsed Standards Override Mechanism</a>, i.e. you must place Xalan-J in the <code>"lib/endorsed"</code> directory of your JRE.</p>
+<h2 id="part-pdf">6. PDF specific (includes Acrobat peculiarities)</h2>
+<h3 id="pdf-embed-font">6.1. How do I embed fonts in PDF?</h3>
+<p>See the <a href="1.1/fonts.html">Fonts</a> page for information about embedding fonts.</p>
+<h3 id="pdf-characters">6.2. Some characters are not displayed, or displayed incorrectly, or displayed as “#”.</h3>
+<p>This usually means the selected font doesn't have a glyph for the character.</p>
+<p>The standard text fonts supplied with Acrobat Reader have mostly glyphs for characters from the ISO Latin 1 character set. For a variety of reasons, even those are not completely guaranteed to work, for example you can't use the fi ligature from the standard serif font. Check the <a href="1.1/output.html#pdf-fonts">overview</a> for the default PDF fonts.</p>
+<p>If you use your own fonts, the font must have a glyph for the desired character. Furthermore the font must be available on the machine where the PDF is viewed or it must have been embedded in the PDF file. See <a href="1.1/fonts.html">embedding fonts</a>.</p>
+<p>For most symbols, it is better to select the symbol font explicitely, for example in order to get the symbol for the mathematical empty set, write:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:inline</span> <span class="na">font-family=</span><span class="s">&quot;Symbol&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#x2205;</span><span class="nt">&lt;/fo:inline&gt;</span>
+</pre></div>
+
+
+<p>The "<code>#</code>" shows up if the selected font does not define a glyph for the required character, for example if you try:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fo:inline</span> <span class="na">font-family=</span><span class="s">&quot;Helvetica&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#x2205;</span><span class="nt">&lt;/fo:inline&gt;</span>
+</pre></div>
+
+
+<h3 id="pdf-postprocess">6.3. What tools are available for post-processing my PDF document?</h3>
+<p>See <a href="1.1/output.html#pdf-postprocess">PDF Post-processing</a>.</p>
+<h3 id="pdf-security">6.4. How do I add security features (encryption, disable printing) to my PDF document?</h3>
+<p>See <a href="1.1/pdfencryption.html">PDF Encryption</a>. See also <a href="1.1/output.html#pdf-postprocess">PDF Post-processing</a>.</p>
+<h3 id="pdf-doc-properties">6.5. How do I add document properties (title, author, etc.) to my PDF document?</h3>
+<p>See <a href="1.1/metadata.html">Metadata</a>.</p>
+<h3 id="pdf-watermark">6.6. How do I add watermarks to my PDF document?</h3>
+<p>See <a href="1.1/output.html#pdf-watermark">PDF Watermarks</a>.</p>
+<h3 id="pdf-print-contortion">6.7. The PDF is printed contorted!</h3>
+<p>Check the paper size in Acrobat settings and the "fit to page" print setting. Contorted printing is often caused by a mismatched paper format, for example if the setting is "US Letter" but the PDF was made for A4. Sometimes also the printer driver interferes, check its settings too.</p>
+<h3 id="pdf-bookmark-display">6.8. How do I control the Acrobat bookmark display?</h3>
+<p>FOP supports the starting-state property of the XSL 1.1 <a href="http://www.w3.org/TR/xsl11/#fo_bookmark">fo:bookmark</a> element which can be used for this. The color, font-style and font-weight properties on <a href="http://www.w3.org/TR/xsl11/#fo_bookmark-title">fo:bookmark-title</a> are not yet supported, though.</p>
+<h3 id="acrobat-anti-aliasing">6.9. How can I get rid of strange single-pixel lines inside table borders or between table cells in Adobe Acrobat?</h3>
+<p>Since Apache FOP supports the collapsed border model, every border segment consists of two separate shapes. This is due to the fact that each side of the border segment can have a different color. Now, Adobe Acrobat may display thin (1 pixel wide) lines inside the border segment or sometimes even between to adjacent colored rectangles making up the background of a block or table cell. This effect is due to the way Adobe Acrobat does anti-aliasing. Adobe's algorithm seems to cause these artifacts. Other PDF viewers don't have that problem. Or at least we haven't had any reports in that direction.</p>
+<p>First of all, these artifacts do not appear in print since no anti-aliasing is done by Adobe Acrobat in this case (except maybe if you tell Acrobat to print the page as a bitmap in which case Adobe fully composes the page itself). So, if the artifacts appear on screen, it doesn't mean they have to appear in print, too.</p>
+<p>To get rid of the artifacts, you can call up the "Preferences" dialog of Adobe Acrobat and select the tab "Page display". Enabling "Enhance thin lines" may help in some situations. Otherwise, you can disable "Smooth line art". You may have to disable "Use 2D graphics acceleration", too, so you can disable "Smooth line art" in the first place.</p>
+<p>Here an example of how the effect can look like (left: anti-aliasing on, right: anti-aliasing off):</p>
+<p><img alt="Left: anti-aliasing on, Right: off" src="images/acrobat-anti-aliasing-artifacts.png"></p>
+<p>Unfortunately, it is not possible to control the above settings from within the PDF file. The user has to change these settings himself. Improving FOP to avoid this kind of problem would be possible although rather hard to achieve because we'd need to add a considerable amount of code to combine the various line segments. Something like that has been tried already years ago showing that this is a tricky task. Also, the improvement may not justify the amount of effort required.</p>
+<h2 id="part-iex">7. IEx specific stuff</h2>
+<h3 id="iex-servlet-multiple">7.1. The FOP servlet is called multiple times!</h3>
+<p>This is a problem of Internet Explorer requesting the content several times. Please see the <a href="1.1/servlets.html#ie">notes on Internet Explorer</a> for more information.</p>
+<h3 id="iex-pdf-print-from-browser">7.2. How do I print PDF directly from the browser?</h3>
+<p>It depends whether you mean "printing to a printer under control of the server" or "printing on the client's printer".</p>
+<p>For the first problem, look at the print servlet in the FOP examples. You'll have to gather any printer settings in a HTML form and send it to the server.</p>
+<p>For the second task, you can use some client side script to start Acrobat Reader in print mode, or use a Java applet based on the FOP print servlet. This depends heavily on the client installation and should not be relied on except in tightly controlled environments.</p>
+<p>See also <a href="http://marc.theaimsgroup.com/?l=fop-dev&amp;m=101065988325115&amp;w=2">http://marc.theaimsgroup.com/?l=fop-dev&amp;m=101065988325115&amp;w=2</a></p>
+<h2 id="part-input">8. General questions regarding XSLT, XSLFO, and basic XML</h2>
+<h3 id="fo-center">8.1. (FO) How do I vertically center an image or a table (or whatever)?</h3>
+<p>See <a href="fo.html#fo-center-vertical">XSL-FO Vertical Centering</a>.</p>
+<h3 id="fo-center-table-horizon">8.2. (FO) How do I center a table horizontally?</h3>
+<p>See <a href="fo.html#fo-center-table-horizon">XSL-FO Horizontal Centering (Tables)</a>.</p>
+<h3 id="fo-page-outer">8.3. (FO) How to get page numbers printed on the "outer side" of the page (for books, for example)?</h3>
+<p>See <a href="fo.html#fo-oddeven">Recto/Verso Static Content Differences</a>.</p>
+<h3 id="oddeven">8.4. (FO) How do I use different static content for odd and even pages?</h3>
+<p>See <a href="fo.html#fo-oddeven">Recto/Verso Static Content Differences</a>.</p>
+<h3 id="fo-first-page-header">8.5. (FO) How do I get a special header on the first page?</h3>
+<p>See <a href="fo.html#fo-first-page">Making the First Page Special</a>.</p>
+<h3 id="fo-omit-headers">8.6. (FO) How do I omit my headers on a blank page? How do I write "This page is left blank" on an intentionally blank page?</h3>
+<p>See <a href="fo.html#fo-blank-pages">Blank Pages</a>.</p>
+<h3 id="fo-special-symbols">8.7. (FO) How do I print an Euro sign, a checkbox or other some other special symbols?</h3>
+<p>See <a href="fo.html#xml-special-chars">Special Characters</a>.</p>
+<h3 id="fo-preformat">8.8. (FO) How do I keep linebreaks and hard spaces? How do I get preformatted text displayed as expected?</h3>
+<p>See <a href="fo.html#fo-preformat">Preformatting Content</a>.</p>
+<h3 id="fo-total-pages">8.9. (FO) How do I print the total number of pages, for example "page 1 of 12"</h3>
+<p>See <a href="fo.html#fo-total-pages">Total Document Pages</a>.</p>
+<h3 id="fo-region-overlap">8.10. (FO) The header overlaps body content. The body extends into the footer.</h3>
+<p>See <a href="fo.html#fo-region-align">Aligning Regions</a>.</p>
+<h3 id="fo-lines">8.11. (FO) How do I get lines in the document, as separators, side bars or folding marks?</h3>
+<p>See <a href="fo.html#fo-lines">Drawing Lines</a>.</p>
+<h3 id="fo-validate">8.12. (FO) How do I validate my FO document?</h3>
+<p>See <a href="fo.html#fo-validate">Validating XSL-FO</a>.</p>
+<h3 id="xml-non-breaking-space">8.13. (XML) How do I get a non-breaking space in FO? There are complaints about &nbsp;.</h3>
+<p>See <a href="fo.html#xml-special-chars">XML Special Characters</a>.</p>
+<h3 id="xml-undefined-entities">8.14. (XML) How do I enter special characters in XML? There are complaints about undefined entities, such as &uuml;, which work in HTML.</h3>
+<p>See <a href="fo.html#xml-special-chars">XML Special Characters</a>.</p>
+<h3 id="xml-illegal-entities">8.15. (XML) There are complaints about illegal characters and entities in the input.</h3>
+<p>See <a href="fo.html#xml-entity-chars">Using HTML Character Names</a>.</p>
+<h3 id="xml-illegal-chars">8.16. (XML) There are complaints about illegal bytes or characters in the input. There are odd characters in the result.</h3>
+<p>See <a href="fo.html#xml-encoding">XML Encoding Issues</a>.</p>
+<h3 id="xslt-current-date">8.17. (XSLT) How can I use the current date and time in my document?</h3>
+<p>See <a href="fo.html#xslt-date">Current Date and Time</a>.</p>
+<h3 id="xhtml-to-pdf">8.18. Can I use FOP to convert XHTML or HTML files to PDF?</h3>
+<p>You will get better results if you transform your source XML directly into XSLFO. It is tempting to use the XML-&gt;XHTML-&gt;XSLFO approach, because this apparently means there's only one transformation to maintain, but XHTML and publishing grade PDF are dissimilar enough that an "generic" XHTML-&gt;XSLFO(PDF) usually wont cut it, because the XHTML already lacks information from the original XML. It may be worthwhile to go from the source XML to an intermediate custom XML which on one hand is close enough to representation to allow simple transformation to either XHTML or XSLFO for most of the structure, but on the other hand retains enough semantic from the original XML that elements which must be handled differently in the two representations can be handled differently. Setting this up requires experience and most likely extensive prototyping.</p>
+<h3 id="xhtml-to-pdf2">8.19. I know it may be a bad idea to use FOP to convert XHTML or HTML files to PDF, but I want to do it anyway. Are there any tools available to help me?</h3>
+<p>The <a href="resources.html">FOP Resources page</a> has links to a tool called <a href="http://html2fo.sourceforge.net/">html2fo</a> which can be used to make such a transformation. In addition, there are tools on the Antenna House <a href="http://www.antennahouse.com/XSLsample/XSLsample.htm">XSL-FO Tutorial and Sample</a> page.</p>
+<h2 id="dev-help">9. Development-related Questions.</h2>
+<h3 id="doc-mgt">9.1. Where can I learn how the FOP docs and web site are built?</h3>
+<p>See FOP <a href="dev/doc.html">Doc Management</a>. ;-)</p>
+<h2 id="part-help">10. General suggestions. How to solve problems.</h2>
+<h3 id="bugs">10.1. I think I have found a bug in FOP. What should I do?</h3>
+<p>See <a href="bugs.html">the Bugs page</a> for information about bugs already reported and how to report new ones.</p>
+<h3 id="postquestions">10.2. I have questions that are not addressed in this FAQ. Where should I post them?</h3>
+<ul>
+<li>
+<p>If your question is a development-related question, please see the <a href="dev/faq.html">Developer FAQs</a>.</p>
+</li>
+<li>
+<p>If you have a runtime exception or other runtime problem:</p>
+<ul>
+<li>
+<p>Double-check the <a href="#part-running">Runtime FAQs</a>.</p>
+</li>
+<li>
+<p>ClassNotFoundException, NoSuchMethodException and NoSuchFieldException problems are almost always a problem with the local environment. Try to get local help first.</p>
+</li>
+<li>
+<p>Check <a href="bugs.html#issues_existing">Reported Issues</a> to see if this is a known problem.</p>
+</li>
+<li>
+<p>If none of the above apply, post a question to the fop-dev mailing list.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>In the case where something works properly with another formatter, (e.g., AntennaHouse, PassiveTex, etc.) but doesn't work with FOP, please check theRelease Notes, the <a href="compliance.html">FOP Standards Compliance</a> document, and the remaining FAQ in this document. If not found there, look at the list of <a href="bugs.html#issues_existing">Bugs Already Reported</a>. If not found there, please post a question on the fop-user mailing list or <a href="bugs.html#issues_new">Open a New Bug</a>.</p>
+</li>
+<li>
+<p>Question about how to use FOP, how to perform certain tasks with FOP or how to integrate FOP into another application should be posted to fop-user.</p>
+</li>
+<li>
+<p>XSLT specific stuff sould go to the <a href="http://www.mulberrytech.com/xsl/xsl-list/">XSL list</a>. This includes problems with the language and XSLT HOW-TOs.</p>
+</li>
+<li>
+<p>Problems specific to a certain XSLT processor, like Xalan, Saxon or MSXML, should be handled by processor specific lists. This includes problems with deployment, processor specific extensions, suspected bugs and processor specific APIs. Note that JDK 1.4  and later come with an XML parser and an XSLT processor which may be the source of the problem.</p>
+</li>
+<li>
+<p>Problems with servlet containers should be asked on the vendor specific lists for these software packages.</p>
+</li>
+<li>
+<p>More general questions regarding Java, including deployment, Java APIs, classpath issues and property definitions should be redirected to an appropriate Java specific list.</p>
+</li>
+</ul>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

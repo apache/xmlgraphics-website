@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache Batik
+  - [Overview](/batik/)
+  - [License](/batik/license.html)
+  - [Download](/batik/download.html)
+  - [Notes](/batik/install.html)
+  - [Status](/batik/status.html)
+  - [Demo](/batik/demo-static.html)
+  - [FAQs](/batik/faq.html)
+  - [Batik Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSBATIK)
+  - [Mailing lists](/batik/mailing-lists.html)
+  - [Contributors](/batik/contributors.html)
+  - [Bug database](https://issues.apache.org/jira/issues/?jql=project%20%3D%20BATIK%20AND%20resolution%20%3D%20Unresolved%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20ORDER%20BY%20priority%20DESC)
+  - [Projects using Batik](/batik/uses.html)
+  - ## Batik Tools
+    - [Overview](/batik/tools/)
+    - [Browser](/batik/tools/browser.html)
+    - [Rasterizer](/batik/tools/rasterizer.html)
+    - [Font converter](/batik/tools/font-converter.html)
+    - [Pretty printer](/batik/tools/pretty-printer.html)
+  - ## Using Batik
+    - [Overview](/batik/using/)
+    - [Architecture](/batik/using/architecture.html)
+    - [Javadoc APIs](/batik/javadoc/)
+    - [DOM API](/batik/using/dom-api.html)
+    - [Parsers](/batik/using/parsers.html)
+    - ### Scripting
+      - [Scripting with ECMAScript](/batik/using/scripting/ecmascript.html)
+      - [Scripting with Java](/batik/using/scripting/java.html)
+      - [Scripting with Security](/batik/using/scripting/security.html)
+    - [SVG generator](/batik/using/svg-generator.html)
+    - [Swing components](/batik/using/swing.html)
+    - [Transcoder API](/batik/using/transcoder.html)
+    - [Extending Batik](/batik/using/extending.html)
+  - ## Development
+    - [Overview](/batik/dev/)
+    - [Branches](/batik/dev/branches.html)
+    - [SVG 1.2 support](/batik/dev/svg12.html)
+    - [Test infrastructure](/batik/dev/test.html)
+
+# Apache&trade; XML Graphics
+  - ### Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache FOP](/fop/)
+  - [Apache XML Graphics Commons](/commons/)
+
+## Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').append(' &raquo;');
+    }
+  $('#navigation > ul > li ul').hide();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 100px;">
+	  <a href="/batik/"><img src="/images/apache-batik-logo.png" alt="The Apache FOP Project" width="256" height="96" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; Batik Project</h2>
+	</div>  
+
+    <h1>Download Apache(tm) Batik</h1>
+    
+
+    <h1>Download Apache&trade; Batik</h1>
+<h2 id="release">Download a Release</h2>
+<p>Source ("-src") and binary ("-bin") distributions can be downloaded from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/batik">Apache&trade; Batik Distribution Mirror</a>.</p>
+<p>It is essential to verify the integrity of the downloaded files. See <a href="https://www.apache.org/info/verification.html">Verifying ASF Releases</a> for more information on why and how.</p>
+<p>Here are the links to each package’s signature and checksum files. Signatures can be verified by using our <a href="https://www.apache.org/dist/xmlgraphics/batik/KEYS">KEYS</a> file.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/batik/binaries/batik-bin-1.13.tar.gz&amp;action=download">batik-bin-1.13.tar.gz</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.13.tar.gz.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.13.tar.gz.sha512">SHA512</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/batik/binaries/batik-bin-1.13.zip&amp;action=download">batik-bin-1.13.zip</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.13.zip.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.13.zip.sha512">SHA512</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/batik/source/batik-src-1.13.tar.gz&amp;action=download">batik-src-1.13.tar.gz</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.13.tar.gz.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.13.tar.gz.sha512">SHA512</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/batik/source/batik-src-1.13.zip&amp;action=download">batik-src-1.13.zip</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.13.zip.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.13.zip.sha512">SHA512</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/batik/binaries/batik-bin-1.12.tar.gz&amp;action=download">batik-bin-1.12.tar.gz</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.12.tar.gz.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.12.tar.gz.sha512">SHA512</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/batik/binaries/batik-bin-1.12.zip&amp;action=download">batik-bin-1.12.zip</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.12.zip.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.12.zip.sha512">SHA512</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/batik/source/batik-src-1.12.tar.gz&amp;action=download">batik-src-1.12.tar.gz</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.12.tar.gz.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.12.tar.gz.sha512">SHA512</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/batik/source/batik-src-1.12.zip&amp;action=download">batik-src-1.12.zip</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.12.zip.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.12.zip.sha512">SHA512</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/batik/binaries/batik-bin-1.11.tar.gz&amp;action=download">batik-bin-1.11.tar.gz</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.11.tar.gz.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.11.tar.gz.sha512">SHA512</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/batik/binaries/batik-bin-1.11.zip&amp;action=download">batik-bin-1.11.zip</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.11.zip.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.11.zip.sha512">SHA512</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/batik/source/batik-src-1.11.tar.gz&amp;action=download">batik-src-1.11.tar.gz</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.11.tar.gz.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.11.tar.gz.sha512">SHA512</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/batik/source/batik-src-1.11.zip&amp;action=download">batik-src-1.11.zip</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.11.zip.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.11.zip.sha512">SHA512</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/batik/binaries/batik-bin-1.10.tar.gz&amp;action=download">batik-bin-1.10.tar.gz</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.10.tar.gz.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.10.tar.gz.sha512">SHA512</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/batik/binaries/batik-bin-1.10.zip&amp;action=download">batik-bin-1.10.zip</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.10.zip.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.10.zip.sha512">SHA512</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/batik/source/batik-src-1.10.tar.gz&amp;action=download">batik-src-1.10.tar.gz</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.10.tar.gz.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.10.tar.gz.sha512">SHA512</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/batik/source/batik-src-1.10.zip&amp;action=download">batik-src-1.10.zip</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.10.zip.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.10.zip.sha512">SHA512</a></td>
+<td></td>
+</tr>
+<tr>
+<td>batik-bin-1.9.tar.gz</td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.9.tar.gz.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.9.tar.gz.md5">MD5</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.9.tar.gz.sha1">SHA1</a></td>
+</tr>
+<tr>
+<td>batik-bin-1.9.zip</td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.9.zip.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.9.zip.md5">MD5</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.9.zip.sha1">SHA1</a></td>
+</tr>
+<tr>
+<td>batik-src-1.9.tar.gz</td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.9.tar.gz.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.9.tar.gz.md5">MD5</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.9.tar.gz.sha1">SHA1</a></td>
+</tr>
+<tr>
+<td>batik-src-1.9.zip</td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.9.zip.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.9.zip.md5">MD5</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.9.zip.sha1">SHA1</a></td>
+</tr>
+<tr>
+<td>batik-bin-1.8.tar.gz</td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.8.tar.gz.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.8.tar.gz.md5">MD5</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.8.tar.gz.sha1">SHA1</a></td>
+</tr>
+<tr>
+<td>batik-bin-1.8.zip</td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.8.zip.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.8.zip.md5">MD5</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-bin-1.8.zip.sha1">SHA1</a></td>
+</tr>
+<tr>
+<td>batik-src-1.8.tar.gz</td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.8.tar.gz.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.8.tar.gz.md5">MD5</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.8.tar.gz.sha1">SHA1</a></td>
+</tr>
+<tr>
+<td>batik-src-1.8.zip</td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.8.zip.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.8.zip.md5">MD5</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.8.zip.sha1">SHA1</a></td>
+</tr>
+<tr>
+<td>batik-1.7.1.tar.gz</td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-1.7.1.tar.gz.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-1.7.1.tar.gz.md5">MD5</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-1.7.1.tar.gz.sha1">SHA1</a></td>
+</tr>
+<tr>
+<td>batik-1.7.1.zip</td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-1.7.1.zip.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-1.7.1.zip.md5">MD5</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-1.7.1.zip.sha1">SHA1</a></td>
+</tr>
+<tr>
+<td>batik-1.6.1.tar.gz</td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-1.6.1.tar.gz.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-1.6.1.tar.gz.md5">MD5</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-1.6.1.tar.gz.sha1">SHA1</a></td>
+</tr>
+<tr>
+<td>batik-1.6.1.zip</td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-1.6.1.zip.asc">PGP</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-1.6.1.zip.md5">MD5</a></td>
+<td><a href="https://www.apache.org/dist/xmlgraphics/batik/binaries/batik-1.6.1.zip.sha1">SHA1</a></td>
+</tr>
+</tbody>
+</table>
+<p>Note that the only change between versions 1.7.1 and 1.7 and between versions 1.6.1 and 1.6 is the
+security fix for the XXE vulnerability CVE-2015-0250 (see the <a href="http://xmlgraphics.apache.org/security.html">XML Graphics Security</a> page).</p>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

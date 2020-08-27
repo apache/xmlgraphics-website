@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache&trade; FOP
+  - [FOP Home](/fop/)
+  - [Download](/fop/download.html)
+  - [Quick Start Guide](/fop/quickstartguide.html)
+  - [Compliance](/fop/compliance.html)
+  - [Getting Help](/fop/gethelp.html)
+  - [FAQs](/fop/faq.html)
+  - [FOP Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP)
+  - [Mailing Lists](/fop/maillist.html)
+  - [License](/fop/license.html)
+  - ## Resources
+    - [XSL-FO](/fop/fo.html)
+    - [Examples](/fop/examples.html)
+    - [Bugs](/fop/bugs.html)
+    - [Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FrontPage)
+    - [Other](/fop/resources.html)
+  - ## Project
+    - [News](/fop/news.html)
+    - [Who We Are](/fop/team.html)
+    - [Status](/fop/status.html)
+    - [Known Issues](/fop/knownissues.html)
+    - [Changes](/fop/changes.html)
+  - ## Versions
+      - ## FOP Trunk (dev)
+          - [Overview](/fop/trunk/)
+          - [Upgrading](/fop/trunk/upgrading.html)
+          - ### Using Apache&trade; FOP
+            - [Build](/fop/trunk/compiling.html)
+            - [Configure](/fop/trunk/configuration.html)
+            - [Run](/fop/trunk/running.html)
+            - [Embed](/fop/trunk/embedding.html)
+            - [Servlets](/fop/trunk/servlets.html)
+            - [Ant Task](/fop/trunk/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/trunk/accessibility.html)
+            - [Complex Scripts](/fop/trunk/complexscripts.html)
+            - [Events](/fop/trunk/events.html)
+            - [Extensions](/fop/trunk/extensions.html)
+            - [Fonts](/fop/trunk/fonts.html)
+            - [Graphics](/fop/trunk/graphics.html)
+            - [Hyphenation](/fop/trunk/hyphenation.html)
+            - [Intermediate Format](/fop/trunk/intermediate.html)
+            - [Metadata](/fop/trunk/metadata.html)
+            - [Output Targets](/fop/trunk/output.html)
+            - [PDF/A](/fop/trunk/pdfa.html)
+            - [PDF/X](/fop/trunk/pdfx.html)
+            - [PDF Encryption](/fop/trunk/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/trunk/whitespacemanagement.html)
+      - ## FOP 2.5
+          - [FOP 2.5 Overview](/fop/2.5/)
+          - [Release Notes](/fop/2.5/releaseNotes_2.5.html)
+          - [Changes (2.5)](/fop/2.5/changes_2.5.html)
+          - [Known Issues](/fop/2.5/knownissues_overview.html)
+          - [Upgrading](/fop/2.5/upgrading.html)
+          - ### Using Apache FOP 2.5
+            - [Build](/fop/2.5/compiling.html)
+            - [Configure](/fop/2.5/configuration.html)
+            - [Run](/fop/2.5/running.html)
+            - [Embed](/fop/2.5/embedding.html)
+            - [Servlets](/fop/2.5/servlets.html)
+            - [Ant Task](/fop/2.5/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.5/accessibility.html)
+            - [Complex Scripts](/fop/2.5/complexscripts.html)
+            - [Events](/fop/2.5/events.html)
+            - [Extensions](/fop/2.5/extensions.html)
+            - [Fonts](/fop/2.5/fonts.html)
+            - [Graphics](/fop/2.5/graphics.html)
+            - [Hyphenation](/fop/2.5/hyphenation.html)
+            - [Intermediate Format](/fop/2.5/intermediate.html)
+            - [Metadata](/fop/2.5/metadata.html)
+            - [Output Targets](/fop/2.5/output.html)
+            - [PDF/A](/fop/2.5/pdfa.html)
+            - [PDF/X](/fop/2.5/pdfx.html)
+            - [PDF Encryption](/fop/2.5/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.5/whitespacemanagement.html)     
+      - ## FOP 2.4
+          - [FOP 2.4 Overview](/fop/2.4/)
+          - [Release Notes](/fop/2.4/releaseNotes_2.4.html)
+          - [Changes (2.4)](/fop/2.4/changes_2.4.html)
+          - [Known Issues](/fop/2.4/knownissues_overview.html)
+          - [Upgrading](/fop/2.4/upgrading.html)
+          - ### Using Apache FOP 2.4
+            - [Build](/fop/2.4/compiling.html)
+            - [Configure](/fop/2.4/configuration.html)
+            - [Run](/fop/2.4/running.html)
+            - [Embed](/fop/2.4/embedding.html)
+            - [Servlets](/fop/2.4/servlets.html)
+            - [Ant Task](/fop/2.4/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.4/accessibility.html)
+            - [Complex Scripts](/fop/2.4/complexscripts.html)
+            - [Events](/fop/2.4/events.html)
+            - [Extensions](/fop/2.4/extensions.html)
+            - [Fonts](/fop/2.4/fonts.html)
+            - [Graphics](/fop/2.4/graphics.html)
+            - [Hyphenation](/fop/2.4/hyphenation.html)
+            - [Intermediate Format](/fop/2.4/intermediate.html)
+            - [Metadata](/fop/2.4/metadata.html)
+            - [Output Targets](/fop/2.4/output.html)
+            - [PDF/A](/fop/2.4/pdfa.html)
+            - [PDF/X](/fop/2.4/pdfx.html)
+            - [PDF Encryption](/fop/2.4/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.4/whitespacemanagement.html)             
+      - ## FOP 2.3
+          - [FOP 2.3 Overview](/fop/2.3/)
+          - [Release Notes](/fop/2.3/releaseNotes_2.3.html)
+          - [Changes (2.3)](/fop/2.3/changes_2.3.html)
+          - [Known Issues](/fop/2.3/knownissues_overview.html)
+          - [Upgrading](/fop/2.3/upgrading.html)
+          - ### Using Apache FOP 2.3
+            - [Build](/fop/2.3/compiling.html)
+            - [Configure](/fop/2.3/configuration.html)
+            - [Run](/fop/2.3/running.html)
+            - [Embed](/fop/2.3/embedding.html)
+            - [Servlets](/fop/2.3/servlets.html)
+            - [Ant Task](/fop/2.3/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.3/accessibility.html)
+            - [Complex Scripts](/fop/2.3/complexscripts.html)
+            - [Events](/fop/2.3/events.html)
+            - [Extensions](/fop/2.3/extensions.html)
+            - [Fonts](/fop/2.3/fonts.html)
+            - [Graphics](/fop/2.3/graphics.html)
+            - [Hyphenation](/fop/2.3/hyphenation.html)
+            - [Intermediate Format](/fop/2.3/intermediate.html)
+            - [Metadata](/fop/2.3/metadata.html)
+            - [Output Targets](/fop/2.3/output.html)
+            - [PDF/A](/fop/2.3/pdfa.html)
+            - [PDF/X](/fop/2.3/pdfx.html)
+            - [PDF Encryption](/fop/2.3/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.3/whitespacemanagement.html)            
+      - ## FOP 2.2
+          - [FOP 2.2 Overview](/fop/2.2/)
+          - [Release Notes](/fop/2.2/releaseNotes_2.2.html)
+          - [Changes (2.2)](/fop/2.2/changes_2.2.html)
+          - [Known Issues](/fop/2.2/knownissues_overview.html)
+          - [Upgrading](/fop/2.2/upgrading.html)
+          - ### Using Apache FOP 2.2
+            - [Build](/fop/2.2/compiling.html)
+            - [Configure](/fop/2.2/configuration.html)
+            - [Run](/fop/2.2/running.html)
+            - [Embed](/fop/2.2/embedding.html)
+            - [Servlets](/fop/2.2/servlets.html)
+            - [Ant Task](/fop/2.2/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.2/accessibility.html)
+            - [Complex Scripts](/fop/2.2/complexscripts.html)
+            - [Events](/fop/2.2/events.html)
+            - [Extensions](/fop/2.2/extensions.html)
+            - [Fonts](/fop/2.2/fonts.html)
+            - [Graphics](/fop/2.2/graphics.html)
+            - [Hyphenation](/fop/2.2/hyphenation.html)
+            - [Intermediate Format](/fop/2.2/intermediate.html)
+            - [Metadata](/fop/2.2/metadata.html)
+            - [Output Targets](/fop/2.2/output.html)
+            - [PDF/A](/fop/2.2/pdfa.html)
+            - [PDF/X](/fop/2.2/pdfx.html)
+            - [PDF Encryption](/fop/2.2/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.2/whitespacemanagement.html)
+      - ## FOP 2.1
+          - [FOP 2.1 Overview](/fop/2.1/)
+          - [Release Notes](/fop/2.1/releaseNotes_2.1.html)
+          - [Changes (2.1)](/fop/2.1/changes_2.1.html)
+          - [Known Issues](/fop/2.1/knownissues_overview.html)
+          - [Upgrading](/fop/2.1/upgrading.html)
+          - ### Using Apache FOP 2.1
+            - [Build](/fop/2.1/compiling.html)
+            - [Configure](/fop/2.1/configuration.html)
+            - [Run](/fop/2.1/running.html)
+            - [Embed](/fop/2.1/embedding.html)
+            - [Servlets](/fop/2.1/servlets.html)
+            - [Ant Task](/fop/2.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.1/accessibility.html)
+            - [Complex Scripts](/fop/2.1/complexscripts.html)
+            - [Events](/fop/2.1/events.html)
+            - [Extensions](/fop/2.1/extensions.html)
+            - [Fonts](/fop/2.1/fonts.html)
+            - [Graphics](/fop/2.1/graphics.html)
+            - [Hyphenation](/fop/2.1/hyphenation.html)
+            - [Intermediate Format](/fop/2.1/intermediate.html)
+            - [Metadata](/fop/2.1/metadata.html)
+            - [Output Targets](/fop/2.1/output.html)
+            - [PDF/A](/fop/2.1/pdfa.html)
+            - [PDF/X](/fop/2.1/pdfx.html)
+            - [PDF Encryption](/fop/2.1/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.1/whitespacemanagement.html)
+      - ## FOP 2.0
+          - [FOP 2.0 Overview](/fop/2.0/)
+          - [Release Notes](/fop/2.0/releaseNotes_2.0.html)
+          - [Changes (2.0)](/fop/2.0/changes_2.0.html)
+          - [Known Issues](/fop/2.0/knownissues_overview.html)
+          - [Upgrading](/fop/2.0/upgrading.html)
+          - ### Using Apache FOP 2.0
+            - [Build](/fop/2.0/compiling.html)
+            - [Configure](/fop/2.0/configuration.html)
+            - [Run](/fop/2.0/running.html)
+            - [Embed](/fop/2.0/embedding.html)
+            - [Servlets](/fop/2.0/servlets.html)
+            - [Ant Task](/fop/2.0/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.0/accessibility.html)
+            - [Complex Scripts](/fop/2.0/complexscripts.html)
+            - [Events](/fop/2.0/events.html)
+            - [Extensions](/fop/2.0/extensions.html)
+            - [Fonts](/fop/2.0/fonts.html)
+            - [Graphics](/fop/2.0/graphics.html)
+            - [Hyphenation](/fop/2.0/hyphenation.html)
+            - [Intermediate Format](/fop/2.0/intermediate.html)
+            - [Metadata](/fop/2.0/metadata.html)
+            - [Output Targets](/fop/2.0/output.html)
+            - [PDF/A](/fop/2.0/pdfa.html)
+            - [PDF/X](/fop/2.0/pdfx.html)
+            - [PDF Encryption](/fop/2.0/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.0/whitespacemanagement.html)
+      - ## FOP 1.1
+          - [FOP 1.1 Overview](/fop/1.1/)
+          - [Release Notes](/fop/1.1/releaseNotes_1.1.html)
+          - [Changes (1.1)](/fop/1.1/changes_1.1.html)
+          - [Known Issues](/fop/1.1/knownissues_overview.html)
+          - [Upgrading](/fop/1.1/upgrading.html)
+          - ### Using Apache FOP 1.1
+            - [Build](/fop/1.1/compiling.html)
+            - [Configure](/fop/1.1/configuration.html)
+            - [Run](/fop/1.1/running.html)
+            - [Embed](/fop/1.1/embedding.html)
+            - [Servlets](/fop/1.1/servlets.html)
+            - [Ant Task](/fop/1.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/1.1/accessibility.html)
+            - [Complex Scripts](/fop/1.1/complexscripts.html)
+            - [Events](/fop/1.1/events.html)
+            - [Extensions](/fop/1.1/extensions.html)
+            - [Fonts](/fop/1.1/fonts.html)
+            - [Graphics](/fop/1.1/graphics.html)
+            - [Hyphenation](/fop/1.1/hyphenation.html)
+            - [Intermediate Format](/fop/1.1/intermediate.html)
+            - [Metadata](/fop/1.1/metadata.html)
+            - [Output Targets](/fop/1.1/output.html)
+            - [PDF/A](/fop/1.1/pdfa.html)
+            - [PDF/X](/fop/1.1/pdfx.html)
+            - [PDF Encryption](/fop/1.1/pdfencryption.html)
+      - ## FOP 1.0
+          - [FOP 1.0 Overview](/fop/1.0/)
+          - [Release Notes](/fop/1.0/releaseNotes_1.0.html)
+          - [Changes (1.0)](/fop/1.0/changes_1.0.html)
+          - [Known Issues](/fop/1.0/knownissues_overview.html)
+          - [Upgrading](/fop/1.0/upgrading.html)
+          - ### Using Apache FOP 1.0
+            - [Build](/fop/1.0/compiling.html)
+            - [Configure](/fop/1.0/configuration.html)
+            - [Run](/fop/1.0/running.html)
+            - [Embed](/fop/1.0/embedding.html)
+            - [Servlets](/fop/1.0/servlets.html)
+            - [Ant Task](/fop/1.0/anttask.html)
+          - ### Features
+            - [Output Targets](/fop/1.0/output.html)
+            - [Intermediate Format](/fop/1.0/intermediate.html)
+            - [PDF Encryption](/fop/1.0/pdfencryption.html)
+            - [PDF/A](/fop/1.0/pdfa.html)
+            - [PDF/X](/fop/1.0/pdfx.html)
+            - [Graphics](/fop/1.0/graphics.html)
+            - [Fonts](/fop/1.0/fonts.html)
+            - [Hyphenation](/fop/1.0/hyphenation.html)
+            - [Extensions](/fop/1.0/extensions.html)
+            - [Events](/fop/1.0/events.html)
+            - [Metadata](/fop/1.0/metadata.html)
+            - [Accessibility](/fop/1.0/accessibility.html)
+      - ## FOP Development
+          - [General Info](/fop/dev/)
+          - ## Design
+            - [Design Info](/fop/dev/design/)
+          - ## Core Process
+            - [Startup](/fop/dev/design/startup.html)
+            - [XML Parsing](/fop/dev/design/parsing.html)
+            - [FO Tree](/fop/dev/design/fotree.html)
+            - [Properties](/fop/dev/design/properties.html)
+            - [Layout](/fop/dev/design/layout.html)
+            - [Break Possibility](/fop/dev/design/breakpos.html)
+            - [Area Tree](/fop/dev/design/areas.html)
+            - [Renderers](/fop/dev/design/renderers.html)
+          - ## Miscellaneous
+            - [Images](/fop/dev/design/images.html)
+            - [PDF Library](/fop/dev/design/pdf-library.html)
+            - [SVG](/fop/dev/design/svg.html)
+            - [Embedding](/fop/dev/design/embedding.html)
+            - [Extending](/fop/dev/design/extending.html)
+            - [Optimisations](/fop/dev/design/optimise.html)
+            - [User Agent](/fop/dev/design/useragent.html)
+          - [Unresolved (Wiki)](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FOPProjectPages)
+          - [SVG](/fop/dev/svg.html)
+          - [Extensions](/fop/dev/extensions.html)
+          - ## Develop
+            - [Walk-Thru](/fop/dev/implement.html)
+            - [Patch Queue](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20description%20~%20%22\%22[patch]\%22%22%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+            - [Conventions](/fop/dev/conventions.html)
+          - ## Test
+            - [Testing](/fop/dev/testing.html)
+          - ## Deploy
+            - [Doc Mgmt](/fop/dev/doc.html)
+            - [Release](/fop/dev/release.html)
+            - [Bugs](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20issuetype%20%3D%20Bug%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+          - ## Resources
+            - [FAQs](/fop/dev/faq.html)
+            - [Tools](/fop/dev/tools.html)
+            - [ViewVC](http://svn.apache.org/viewvc/xmlgraphics/fop)
+          - ## SubPackages
+            - [RTFlib](/fop/dev/rtflib.html)
+
+# Apache&trade; XML Graphics
+  - ## Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache Batik](/batik/)
+  - [Apache XML Graphics Commons](/commons/)
+
+### Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+      $('#navigation :header').not('#search-apache-xml-graphics, #apachewzxhzdk3-xml-graphics, #sub-projects').append(' &raquo;');
+    }
+  $('#navigation > ul > li > ul > li ul').hide();
+  $('#project-overview').next().hide();
+  $('#versions').next().show();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+      $("li.highlight").removeClass("highlight");
+      $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
+	  <a href="/fop/"><img src="/images/apache-fop-logo.jpg" alt="The Apache FOP Project" width="120" height="65" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; FOP Project</h2>
+	</div>  
+
+    <h1>Apache(tm) FOP: Configuration</h1>
+    Translations: 
+<a href="/fop/2.0/configuration.html">en</a>
+<a href="/fop/0.95/configuration.html">en</a>
+<a href="/fop/2.5/configuration.html">en</a>
+<a href="/fop/trunk/configuration.html">en</a>
+<a href="/fop/2.2/configuration.html">en</a>
+<a href="/fop/2.1/configuration.html">en</a>
+<a href="/fop/2.3/configuration.html">en</a>
+<a href="/fop/2.4/configuration.html">en</a>
+<a href="/fop/1.0/configuration.html">en</a>
+
+
+    <h1>Apache&trade; FOP: Configuration</h1>
+<h2 id="general">Configuration File Basics</h2>
+<p>The Apache&trade; FOP configuration file is an XML file containing a variety of settings that are useful for controlling FOP's behavior, and for helping it find resources that you wish it to use.</p>
+<p>The easiest way to get started using a FOP configuration file is to copy the sample found at <code>{fop-dir}/conf/fop.xconf</code> to a location of your choice, and then to edit it according to your needs. It contains templates for the various configuration options, most of which are commented out. Remove the comments and change the settings for entries that you wish to use. Be sure to follow any instructions, including comments which specify the value range. Also, since the configuration file is XML, be sure to keep it well-formed.</p>
+<h3 id="general-available">Making Configuration Available to FOP</h3>
+<p>After creating your configuration file, you must tell FOP how to find it:</p>
+<ul>
+<li>
+<p>If running FOP from the command-line, see the "-c" command-line option in <a href="running.html">Running FOP</a>.</p>
+</li>
+<li>
+<p>If running FOP as an embedded application, see <a href="embedding.html#config-external">Embedding, Using a Configuration File</a>.</p>
+</li>
+</ul>
+<p>See <a href="embedding.html#config-internal">Setting the Configuration Programmatically</a> for instructions on how to do so in an embedded environment.</p>
+<h2 id="general-elements">Summary of the General Configuration Options</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Data Type (for the value)</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base<sup id="fnref3-1"><a class="footnote-ref" href="#fn-1">1</a></sup></td>
+<td>URL or directory</td>
+<td>Specifies the base URL based on which relative URL will be resolved.</td>
+<td>current directory</td>
+</tr>
+<tr>
+<td>font-base<sup id="fnref2-1"><a class="footnote-ref" href="#fn-1">1</a></sup></td>
+<td>URL or directory</td>
+<td>Specifies the base URL based on which relative font URLs will be resolved.</td>
+<td>base URL/directory (above)</td>
+</tr>
+<tr>
+<td>hyphenation-base<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup></td>
+<td>URL or directory</td>
+<td>Specifies the base URL based on which relative URLs to hyphenation pattern files will be resolved. If not specified, support for user-supplied hyphenation patterns remains disabled.</td>
+<td>disabled</td>
+</tr>
+<tr>
+<td>hyphenation-pattern</td>
+<td>String, attribute lang, attribute country (optional)</td>
+<td>Register a file name for the hyphenation pattern for the mentioned language and country. Language ll and country CC must both consist of two letters.</td>
+<td>ll_CC</td>
+</tr>
+<tr>
+<td>source-resolution</td>
+<td>Integer, dpi</td>
+<td>Resolution in dpi (dots per inch) which is used internally to determine the pixel size for SVG images and bitmap images without resolution information.</td>
+<td>72 dpi</td>
+</tr>
+<tr>
+<td>target-resolution</td>
+<td>Integer, dpi</td>
+<td>Resolution in dpi (dots per inch) used to specify the output resolution for bitmap images generated by bitmap renderers (such as the TIFF renderer) and by bitmaps generated by Apache Batik for filter effects and such.</td>
+<td>72 dpi</td>
+</tr>
+<tr>
+<td>strict-configuration</td>
+<td>Boolean (true, false)</td>
+<td>Setting this option to 'true' will cause FOP to strictly verify the contents of the FOP configuration file to ensure that defined resources (such as fonts and base URLs/directories) are valid and available to FOP. Any errors found will cause FOP to immediately raise an exception.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>strict-validation</td>
+<td>Boolean (true, false)</td>
+<td>Setting this option to 'false' causes FOP to be more forgiving about XSL-FO validity, for example, you're allowed to specify a border on a region-body which is supported by some FO implementations but is non-standard. Note that such a border would currently have no effect in Apache FOP.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>break-indent-inheritance</td>
+<td>Boolean (true, false)</td>
+<td>Setting this option to 'true' causes FOP to use an alternative rule set to determine text indents specified through margins, start-indent and end-indent. Many commercial FO implementations have chosen to break the XSL specification in this aspect. This option tries to mimic their behaviour. Please note that Apache FOP may still not behave exactly like those implementations either because FOP has not fully matched the desired behaviour and because the behaviour among the commercial implementations varies. The default for this option (i.e. false) is to behave exactly like the specification describes.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>complex-scripts</td>
+<td>attribute disabled (optional)</td>
+<td>If present and if an attribute 'disabled' is specified with the value 'false', then complex script features are disabled. The same result can be obtained on an FOP per-invocation basis by specifying a '-nocs' command line option when invoking FOP. When complex script features are disabled, all bidirectional processing and complex character to glyph mapping processing is disabled; in addition, the loading of GDEF, GSUB, and GPOS advanced typographic tables is disabled for OpenType and TrueType fonts. Unless disabled by this mechanism or by use of the '-nocs' command line option, complex script features will be enabled by default.</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>default-page-settings</td>
+<td>n/a</td>
+<td>Specifies the default width and height of a page if "auto" is specified for either or both values. Use "height" and "width" attributes on the default-page-settings element to specify the two values.</td>
+<td>"height" 11 inches, "width" 8.26 inches</td>
+</tr>
+<tr>
+<td>use-cache</td>
+<td>boolean (true, false)</td>
+<td>All fonts information that has been gathered as a result of "directory" or "auto-detect" font configurations will be cached for future rendering runs. This setting should improve performance on systems where fonts have been configured using the "directory" or "auto-detect" tag mechanisms. By default this option is switched on.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>cache-file</td>
+<td>String</td>
+<td>This option specifies the file/directory path of the fop cache file. This file is currently only used to cache font triplet information for future reference.</td>
+<td base>$</td>
+</tr>
+<tr>
+<td>renderers</td>
+<td>(see text below)</td>
+<td>Contains the configuration for each renderer. See below.</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<p>This is an excerpt from the example configuration file coming with FOP:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+
+  <span class="c">&lt;!-- Strict user configuration --&gt;</span>
+  <span class="nt">&lt;strict-configuration&gt;</span>true<span class="nt">&lt;/strict-configuration&gt;</span>
+
+  <span class="c">&lt;!-- Strict FO validation --&gt;</span>
+  <span class="nt">&lt;strict-validation&gt;</span>true<span class="nt">&lt;/strict-validation&gt;</span>
+
+  <span class="c">&lt;!-- Base URL for resolving relative URLs --&gt;</span>
+  <span class="nt">&lt;base&gt;</span>./<span class="nt">&lt;/base&gt;</span>
+
+  <span class="c">&lt;!-- Font Base URL for resolving relative font URLs --&gt;</span>
+  <span class="nt">&lt;font-base&gt;</span>./<span class="nt">&lt;/font-base&gt;</span>
+
+  <span class="c">&lt;!-- Source resolution in dpi (dots/pixels per inch) for determining the size of pixels in SVG and bitmap images, default: 72dpi --&gt;</span>
+  <span class="nt">&lt;source-resolution&gt;</span>72<span class="nt">&lt;/source-resolution&gt;</span>
+  <span class="c">&lt;!-- Target resolution in dpi (dots/pixels per inch) for specifying the target resolution for generated bitmaps, default: 72dpi --&gt;</span>
+  <span class="nt">&lt;target-resolution&gt;</span>72<span class="nt">&lt;/target-resolution&gt;</span>
+
+  <span class="c">&lt;!-- default page-height and page-width, in case</span>
+<span class="c">       value is specified as auto --&gt;</span>
+  <span class="nt">&lt;default-page-settings</span> <span class="na">height=</span><span class="s">&quot;11in&quot;</span> <span class="na">width=</span><span class="s">&quot;8.26in&quot;</span><span class="nt">/&gt;</span>
+
+  <span class="c">&lt;!-- Use file name nl_Bel instead of the default nl_BE --&gt;</span>
+  <span class="nt">&lt;hyphenation-pattern</span> <span class="na">lang=</span><span class="s">&quot;nl&quot;</span> <span class="na">country=</span><span class="s">&quot;BE&quot;</span><span class="nt">&gt;</span>nl_Bel<span class="nt">&lt;/hyphenation-pattern&gt;</span>
+
+  <span class="c">&lt;!-- etc. etc..... --&gt;</span>
+<span class="nt">&lt;/fop&gt;</span>
+</pre></div>
+
+
+<h2 id="image-loading">Image Loading Customization</h2>
+<p>Apache FOP uses the image loading framework from <a href="http://xmlgraphics.apache.org/commons/">Apache XML Graphics Commons</a> to load images using various plug-ins. Every image loader plug-in has a hard-coded usage penalty that influences which solution is chosen if there are multiple possibilities to load an image. Sometimes, though, these penalties need to be tweaked and this can be done in the FOP configuration. An example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+  [..]
+  <span class="nt">&lt;image-loading&gt;</span>
+    <span class="nt">&lt;penalty</span> <span class="na">value=</span><span class="s">&quot;10000&quot;</span>
+      <span class="na">class=</span><span class="s">&quot;org.apache.xmlgraphics.image.loader.impl.ImageLoaderRawCCITTFax&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;penalty</span> <span class="na">value=</span><span class="s">&quot;INFINITE&quot;</span>
+      <span class="na">class=</span><span class="s">&quot;org.apache.xmlgraphics.image.loader.impl.ImageLoaderInternalTIFF&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/image-loading&gt;</span>
+  <span class="nt">&lt;renderers....</span>
+<span class="err">&lt;/fop</span><span class="nt">&gt;</span>
+</pre></div>
+
+
+<p>The first penalty element increases the penalty for the raw CCITT loader. This practically forces the decoding of CCITT compressed TIFF images except if there are no TIFF codecs available.</p>
+<p>The second penalty element sets an "infinite" penalty for the TIFF loader using the internal TIFF codec. This practically disables that plug-in as it will never be chosen as a possible solution.</p>
+<p>Negative penalties are possible to promote a plug-in but a negative penalty sum will be treated as zero penalty in most cases. For more details on the image loading framework, please consult the documentation there.</p>
+<h2 id="renderers">Renderer configuration</h2>
+<p>Each Renderer has its own configuration section which is identified by the MIME type the Renderer is written for, ex. "application/pdf" for the PDF Renderer.</p>
+<p>The configuration for the PDF Renderer could look like this:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;renderers&gt;</span>
+  <span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;filterList&gt;</span>
+      <span class="c">&lt;!-- provides compression using zlib flate (default is on) --&gt;</span>
+      <span class="nt">&lt;value&gt;</span>flate<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/filterList&gt;</span>
+    <span class="nt">&lt;fonts&gt;</span>
+      <span class="nt">&lt;font</span> <span class="na">metrics-url=</span><span class="s">&quot;arial.xml&quot;</span> <span class="na">kerning=</span><span class="s">&quot;yes&quot;</span> <span class="na">embed-url=</span><span class="s">&quot;arial.ttf&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Arial&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;ArialMT&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/font&gt;</span>
+      <span class="nt">&lt;font</span> <span class="na">metrics-url=</span><span class="s">&quot;arialb.xml&quot;</span> <span class="na">kerning=</span><span class="s">&quot;yes&quot;</span> <span class="na">embed-url=</span><span class="s">&quot;arialb.ttf&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Arial&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;ArialMT&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/font&gt;</span>
+    <span class="nt">&lt;/fonts&gt;</span>
+  <span class="nt">&lt;/renderer&gt;</span>
+
+  <span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/postscript&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- etc. etc..... --&gt;</span>
+</pre></div>
+
+
+<p>The details on the font configuration can be found on the separate <a href="fonts.html">Fonts</a> page. Note especially the section entitled <a href="fonts.html#register">Register Fonts with FOP</a>.</p>
+<h3 id="pdf-renderer">Special Settings for the PDF Renderer</h3>
+<p>The configuration element for the PDF renderer contains two elements. One is for the font configuration (please follow the link above) and one is for the "filter list". The filter list controls how the individual objects in a PDF file are encoded. By default, all objects get "flate" encoded (i.e. simply compressed with the same algorithm that is also used in ZIP files). Most users don't need to change that setting. For debugging purposes, it may be desired not to compress the internal objects at all so the generated PDF commands can be read. In that case, you can simply use the following filter list. The second filter list (type="image") ensures that all images still get compressed but also ASCII-85 encoded so the produced PDF file is still easily readable in a text editor.</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;filterList&gt;</span>
+    <span class="nt">&lt;value&gt;</span>null<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/filterList&gt;</span>
+  <span class="nt">&lt;filterList</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;value&gt;</span>flate<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>ascii-85<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/filterList&gt;</span>
+
+  <span class="nt">&lt;fonts....</span>
+<span class="err">&lt;/renderer</span><span class="nt">&gt;</span>
+</pre></div>
+
+
+<p>Another (optional) setting specific to the PDF Renderer is an output color profile, an ICC color profile which indicates the target color space the PDF file is generated for. This setting is mainly used in conjunction with the <a href="pdfx.html">PDF/X</a> feature. An example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;filterList...</span>
+
+  <span class="err">&lt;output-profile</span><span class="nt">&gt;</span>C:\FOP\Color\EuropeISOCoatedFOGRA27.icc<span class="nt">&lt;/output-profile&gt;</span>
+
+  <span class="nt">&lt;fonts....</span>
+<span class="err">&lt;/renderer</span><span class="nt">&gt;</span>
+</pre></div>
+
+
+<p>Some people don't have high requirements on color fidelity but instead want the smallest PDF file sizes possible. In this case it's possible to disable the default sRGB color space which XSL-FO requires. This will cause RGB colors to be generated as device-specific RGB. Please note that this option is unavailable (and will cause an error) if you enable PDF/A or PDF/X functionality or if you specify an output profile. This setting will make the PDF about 4KB smaller. To disable the sRGB color space add the following setting:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;filterList...</span>
+
+  <span class="err">&lt;disable-srgb-colorspace</span><span class="nt">&gt;</span>true<span class="nt">&lt;/disable-srgb-colorspace&gt;</span>
+
+  <span class="nt">&lt;fonts....</span>
+<span class="err">&lt;/renderer</span><span class="nt">&gt;</span>
+</pre></div>
+
+
+<p>FOP supports encryption of PDF output, thanks to Patrick C. Lankswert. This feature is commonly used to prevent unauthorized viewing, printing, editing, copying text from the document and doing annotations. It is also possible to ask the user for a password in order to view the contents. Note that there already exist third party applications which can decrypt an encrypted PDF without effort and allow the aforementioned operations, therefore the degree of protection is limited. For further information about features and restrictions regarding PDF encryption, look at the documentation coming with Adobe Acrobat or the technical documentation on the Adobe web site.</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;encryption-params&gt;</span>
+     <span class="nt">&lt;encryption-length&gt;</span>128<span class="nt">&lt;/encryption-length&gt;</span>
+     <span class="nt">&lt;user-password&gt;</span>testuserpass<span class="nt">&lt;/user-password&gt;</span>
+     <span class="nt">&lt;owner-password&gt;</span>testownerpass<span class="nt">&lt;/owner-password&gt;</span>
+     <span class="nt">&lt;noprint/&gt;</span>
+     <span class="nt">&lt;nocopy/&gt;</span>
+     <span class="nt">&lt;noedit/&gt;</span>
+     <span class="nt">&lt;noannotations/&gt;</span>
+     <span class="nt">&lt;nofillinforms/&gt;</span>
+     <span class="nt">&lt;noaccesscontent/&gt;</span>
+     <span class="nt">&lt;noassembledoc/&gt;</span>
+     <span class="nt">&lt;noprinthq/&gt;</span>
+  <span class="nt">&lt;/encryption-params&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</pre></div>
+
+
+<p>By default FOP produces PDF files of version 1.4, but this can be changed in order to benefit from features that appeared in newer versions of PDF. At the moment, only a few features from PDF 1.5 have been implemented, but the configuration element will accept any value between 1.4 and 1.7. This is the value that will appear in the PDF header, although only features up to 1.5 will actually be used.</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.5<span class="nt">&lt;/version&gt;</span>
+  <span class="c">&lt;!-- Versions 1.4, 1.5, 1.6 and 1.7 are accepted, all other values are invalid --&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</pre></div>
+
+
+<h3 id="ps-renderer">Special Settings for the PostScript Renderer</h3>
+<p>Besides the normal font configuration (the same "fonts" element as for the PDF renderer) the PostScript renderer has an additional setting to force landscape pages to be rotated to fit on a page inserted into the printer in portrait mode. Set the value to "true" to activate this feature. The default is "false". Example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/postscript&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;auto-rotate-landscape&gt;</span>true<span class="nt">&lt;/auto-rotate-landscape&gt;</span>
+
+  <span class="nt">&lt;fonts&gt;</span>
+    <span class="nt">&lt;font</span> <span class="na">metrics-url=</span><span class="s">&quot;arial.xml&quot;</span> <span class="na">kerning=</span><span class="s">&quot;yes&quot;</span> <span class="na">embed-url=</span><span class="s">&quot;arial.ttf&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Arial&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;ArialMT&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/font&gt;</span>
+    <span class="nt">&lt;font</span> <span class="na">metrics-url=</span><span class="s">&quot;arialb.xml&quot;</span> <span class="na">kerning=</span><span class="s">&quot;yes&quot;</span> <span class="na">embed-url=</span><span class="s">&quot;arialb.ttf&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Arial&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;ArialMT&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/font&gt;</span>
+  <span class="nt">&lt;/fonts&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</pre></div>
+
+
+<h3 id="pcl-renderer">Special Settings for the PCL Renderer</h3>
+<p>Non-standard fonts for the PCL renderer are made available through the Java2D subsystem which means that you don't have to do any custom font configuration in this case but you have to use the font names offered by Java.</p>
+<p>Additionally, there are certain settings that control how the renderer handles various elements.</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/x-pcl&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;rendering&gt;</span>quality<span class="nt">&lt;/rendering&gt;</span>
+  <span class="nt">&lt;text-rendering&gt;</span>bitmap<span class="nt">&lt;/text-rendering&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</pre></div>
+
+
+<p>The default value for the "rendering" setting is "speed" which causes borders to be painted as plain rectangles. In this mode, no special borders (dotted, dashed etc.) are available. If you want support for all border modes, set the value to "quality" as indicated above. This will cause the borders to be painted as bitmaps.</p>
+<p>The default value for the "text-rendering" setting is "auto" which paints the base fonts using PCL fonts. Non-base fonts are painted as bitmaps through Java2D. If the mix of painting methods results in unwelcome output, you can set this to "bitmap" which causes all text to be rendered as bitmaps.</p>
+<h3 id="afp-renderer">Special Settings for the AFP Renderer</h3>
+<p>Additionally, there are certain settings that control how the renderer handles various elements.</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/x-afp&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;b+w&quot;</span> <span class="na">bits-per-pixel=</span><span class="s">&quot;8&quot;</span> <span class="na">native=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;renderer-resolution&gt;</span>240<span class="nt">&lt;/renderer-resolution&gt;</span>
+  <span class="nt">&lt;line-width-correction&gt;</span>2.5<span class="nt">&lt;/line-width-correction&gt;</span>
+
+  <span class="c">&lt;!-- a default external resource group file --&gt;</span>
+  <span class="nt">&lt;resource-group-file&gt;</span>resources.afp<span class="nt">&lt;/resource-group-file&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</pre></div>
+
+
+<p>The default value for the images "mode" setting is "b+w" (black and white). When the images "mode" setting is "b+w" a "bits-per-pixel" setting can be provided to aid the grayscale conversion process. With this setting all images referenced in your source document are converted to an IOCA FS45 grayscale bitmap image form. When the setting is "color" all images are converted to an IOCA FS45 color bitmap image form. When "native" setting is "true", all images encountered (TIFF, GIF, JPEG and Encapsulated Postscript etc.) will be embedded directly in the datastream in their native form using a MO:DCA Object Container.</p>
+<p>The default value for the "renderer-resolution" is 240 dpi.</p>
+<p>The default line width is device dependent and may need to be fine tuned so that the output matches the expected result. The default correction value is 2.5.</p>
+<p>By default if there is no configuration definition for "resource-group-file", external resources will be placed in a file called resources.afp.</p>
+<h2 id="When-it-does-not-work">When it does not work</h2>
+<p>FOP searches the configuration file for the information it expects, at the position it expects. When that information is not present, FOP will not complain, it will just continue. When there is other information in the file, FOP will not complain, it will just ignore it. That means that when your configuration information is in the file but in a different XML element, or in a different XML path, than FOP expects, it will be silently ignored.</p>
+<p>Check the following possibilities:</p>
+<ul>
+<li>
+<p>The format of the configuration file has changed considerably between FOP 0.20.5 and FOP 1.0 and its beta versions. Did you convert your file to the new format?</p>
+</li>
+<li>
+<p>The FOP distribution contains a schema for configuration files, at src/foschema/fop-configuration.xsd. Did you validate your configuration file against it? Add the following schema location to the <code>schema</code> element:</p>
+<p>:::xml
+<fop
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation=
+    "http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop/src/foschema/fop-configuration.xsd?view=co"></p>
+</li>
+</ul>
+<p>and run the configuration file through a validating schema parser. Note that the schema cannot detect all errors, and that it is stricter about the order of some elements than FOP itself is.</p>
+<ul>
+<li>Run FOP in debug mode (command line option <code>-d</code>). This makes FOP report which configuration information it finds. Check if FOP finds what you expect.</li>
+</ul>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn-1">
+<p>Relative URIs for those properties are evaluated relative to the base URI of the configuration file. If the configuration is provided programmatically, the base URI can be set with <code>FopFactory.setUserConfigBaseURI</code> ; default is the current working directory.&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2-1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

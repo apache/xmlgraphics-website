@@ -156,55 +156,56 @@ $(document).ready(function () {
 	  <h2>The Apache&trade; XML Graphics Project</h2>
 	</div>  
 
-    <h1>Apache(tm) XML Graphics Project - for the creation and maintenance of software for the conversion of XML formats to graphical output</h1>
-    
+    <h1>The Apache(tm) XML Graphics Project - Community</h1>
+    Translations: 
+<a href="/team.html">en</a>
 
-    <h1>Apache&trade; XML Graphics Project</h1>
-<p>The Apache XML Graphics Project is responsible for software licensed to the Apache Software Foundation intended for the creation &amp; maintenance of:</p>
+
+    <h1>The Apache&trade; XML Graphics Project - Security</h1>
+<h2 id="PublishedVulnerabilities">Published Vulnerabilities</h2>
+<p>The <em>Apache&trade; XML Graphics Project</em> has collected its Security related information for all of its sub-projects to this page.</p>
+<h3 id="BatikSecurity">Apache&trade; Batik Project - Apache Batik Security</h3>
+<p><strong>Fixed in Batik 1.13</strong></p>
+<p>medium: SSRF vulnerability CVE-2019-17566</p>
+<p>Issue Public: 2020-06-15</p>
+<p>Update Released: 2020-05-13 (Batik 1.13)</p>
+<p>Affects: 1.12 and earlier</p>
+<p><strong>Fixed in Batik 1.10</strong></p>
+<p>medium: Deserialization vulnerability CVE-2018-8013</p>
+<p>Issue Public: 2018-05-23</p>
+<p>Update Released: 2018-05-23 (Batik 1.10)</p>
+<p>Affects: 1.9.1 and earlier</p>
+<p><strong>Fixed in Batik 1.9</strong></p>
+<p>medium: XXE vulnerability CVE-2017-5662</p>
+<p>Issue Public: 2017-04-18</p>
+<p>Update Released: 2017-04-10 (Batik 1.9)</p>
+<p>Affects: 1.8 and earlier</p>
+<p><strong>Fixed in Batik 1.8, 1.7.1 and 1.6.1</strong></p>
+<p>medium: XXE vulnerability CVE-2015-0250</p>
+<p>Issue Public: 2012-07-25</p>
+<p>Update Released: 2015-03-17 (Batik 1.8) and 2015-05-10 (Batik 1.7.1 and 1.6.1)</p>
+<p>Affects: 1.7, 1.6 and earlier</p>
+<h3 id="FOPSecurity">Apache&trade; FOP Project - Apache FOP Security</h3>
+<p><strong>Fixed in FOP 2.2</strong></p>
+<p>medium: XXE vulnerability CVE-2017-5661</p>
+<p>Issue Public: 2017-04-18</p>
+<p>Update Released: 2017-04-10 (FOP 2.2)</p>
+<p>Affects: 2.1 and earlier</p>
+<h3 id="XMLGraphicsCommonsSecurity">Apache&trade; XML Graphics Commons Project - Apache XML Graphics Commons Security</h3>
+<p>At the time of the most recent update, the <a href="http://xmlgraphics.apache.org/commons/">Apache  XML Graphics Commons Project</a> has no published vulnerabilities.</p>
+<h2 id="ReportingSecurityProblems">Reporting New Security Problems with the Apache XML Graphics Sub Projects</h2>
+<p>Please report problems to the private security mailing list of the ASF Security Team, before disclosing them in a public forum. See the page of the <a href="https://www.apache.org/security/">ASF Security Team</a> for further information and contact information.</p>
+<p><strong>IMPORTANT</strong></p>
 <ul>
-<li>the conversion of XML formats to graphical output</li>
-<li>related software components</li>
+<li><strong>The ASF Security Team cannot accept regular bug reports or other queries. We ask that you use our <a href="http://xmlgraphics.apache.org/commons/bugs.html">bug reporting page</a> for those.</strong></li>
+<li><strong>All mail sent to the Security Team that does not relate to security problems in Apache software will be ignored.</strong></li>
 </ul>
-<h2>Apache&trade; XML Graphics Project - Current Projects</h2>
-<p>The Apache&trade; XML Graphics Project currently consists of the following sub-projects, each focused on a different aspect of XML Graphics:</p>
+<p><strong>VERY IMPORTANT</strong></p>
 <ul>
-<li><a href="/batik/">Apache Batik</a> - A toolkit for Scalable Vector Graphics (SVG), based in Java</li>
-<li><a href="/fop/">Apache FOP</a> - A print formatter &amp; renderer for XSL-FO (FO=formatting objects), based in Java</li>
-<li><a href="/commons/">Apache XML Graphics Commons</a> - A library with various components used by Apache Batik and Apache FOP, written in Java</li>
+<li><strong>Do not submit security reports regarding vulnerabilities to our bug reporting system. This may inadvertently publicize the security vulnerability. Instead follow the steps on the <a href="https://www.apache.org/security/">ASF Security Page</a>.</strong></li>
 </ul>
-<h1>Apache&trade; Batik: a Java-based SVG toolkit</h1>
-<p>Batik is a Java(tm) technology based toolkit for applications or applets that want to use images in the <a href="http://www.w3.org/TR/SVG/">Scalable Vector Graphics (SVG)</a> format for various purposes, such as viewing, generation or manipulation.</p>
-<p>The project's ambition is to give developers a set of <a href="http://xmlgraphics.apache.org/batik/using/architecture.html#coreComponents">core modules</a> which can be used together or individually to support specific SVG solutions. Here are some examples of <a href="http://xmlgraphics.apache.org/batik/architecture.html">modules</a>.</p>
-<h2>Apache&trade; Batik Modules</h2>
-<ul>
-<li>the <a href="/batik/architecture.html#lowLevelComponents">SVG Parser</a></li>
-<li>the <a href="/batik/svggen.html">SVG Generator</a></li>
-<li>the <a href="/batik/domapi.html">SVG DOM</a></li>
-</ul>
-<p>Another ambition for the Batik project is to make it highly <a href="/batik/extendingBatik.html">extensible</a> (for example, Batik allows the developer to handle custom SVG tags). Even though the goal of the project is to provide a set of core modules, one of the deliverables is a full fledged <a href="http://xmlgraphics.apache.org/batik/tools/browser.html">SVG Browser</a> implementation, which validates the various modules and their inter-operability.</p>
-<p>Find out more about <a href="/batik/">Apache Batik</a>.</p>
-<h1>Apache FOP: a Java-based XSL-FO (Formatting Objects) processor</h1>
-<p>FOP (Formatting Objects Processor) is the world's first print formatter driven by <a href="http://www.w3.org/TR/xsl/">XSL formatting objects</a> (XSL-FO) and the world's first output independent formatter. It is a Java application that reads a formatting object (FO) tree and renders the resulting pages to a specified output. The primary output target is PDF but there are other <a href="/fop/output.html">output formats</a> currently supported.</p>
-<h2>Apache&trade; FOP Output Formats</h2>
-<ul>
-<li>PDF (Portable Document Format)</li>
-<li>PS (Adobe Postscript)</li>
-<li>PCL (Printer Control Language)</li>
-<li>AFP (MO:DCA)</li>
-<li>SVG (Scalable Vector Graphics)</li>
-<li>XML (area tree representation)</li>
-<li>Print</li>
-<li>AWT/Java2D</li>
-<li>MIF</li>
-<li>RTF (Rich Text Format)</li>
-<li>TXT (text)</li>
-</ul>
-<p>Find out more about <a href="/fop/">Apache FOP</a>.</p>
-<h1>Apache XML Graphics Commons</h1>
-<p>Apache XML Graphics Commons is a library that consists of several reusable components used by Apache Batik and Apache FOP. Many of these components can easily be used separately outside the domains of SVG and XSL-FO. You'll find components such as a PDF library, an RTF library, Graphics2D implementations that let you generate PDF and PostScript files and much more.</p>
-<p>Apache XML Graphics Commons has only just started. It's in the process of being populated with components coming from Apache Batik and Apache FOP. Stay tuned for exciting treasures made available.</p>
-<p>In the Wiki, we have a <a href="https://cwiki.apache.org/confluence/display/XMLGRAPHICS/XmlGraphicsCommonComponents">plan for building Apache XML Graphics Commons</a>. The plan will give you an idea of what you can expect to find here when we're finished migrating components.</p>
-<p>Find out more about <a href="/commons/">Apache XML Graphics Commons</a>. (CMS)</p>
+<h2 id="SecurityStandards">Security Standards</h2>
+<p>Apache XML Graphics Project vulnerabilities are labeled with <a href="http://cve.mitre.org/">CVE</a> (Common Vulnerabilities and Exposures) identifiers.</p>
 
       <div class="clear"></div>
 

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache Batik
+  - [Overview](/batik/)
+  - [License](/batik/license.html)
+  - [Download](/batik/download.html)
+  - [Notes](/batik/install.html)
+  - [Status](/batik/status.html)
+  - [Demo](/batik/demo-static.html)
+  - [FAQs](/batik/faq.html)
+  - [Batik Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSBATIK)
+  - [Mailing lists](/batik/mailing-lists.html)
+  - [Contributors](/batik/contributors.html)
+  - [Bug database](https://issues.apache.org/jira/issues/?jql=project%20%3D%20BATIK%20AND%20resolution%20%3D%20Unresolved%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20ORDER%20BY%20priority%20DESC)
+  - [Projects using Batik](/batik/uses.html)
+  - ## Batik Tools
+    - [Overview](/batik/tools/)
+    - [Browser](/batik/tools/browser.html)
+    - [Rasterizer](/batik/tools/rasterizer.html)
+    - [Font converter](/batik/tools/font-converter.html)
+    - [Pretty printer](/batik/tools/pretty-printer.html)
+  - ## Using Batik
+    - [Overview](/batik/using/)
+    - [Architecture](/batik/using/architecture.html)
+    - [Javadoc APIs](/batik/javadoc/)
+    - [DOM API](/batik/using/dom-api.html)
+    - [Parsers](/batik/using/parsers.html)
+    - ### Scripting
+      - [Scripting with ECMAScript](/batik/using/scripting/ecmascript.html)
+      - [Scripting with Java](/batik/using/scripting/java.html)
+      - [Scripting with Security](/batik/using/scripting/security.html)
+    - [SVG generator](/batik/using/svg-generator.html)
+    - [Swing components](/batik/using/swing.html)
+    - [Transcoder API](/batik/using/transcoder.html)
+    - [Extending Batik](/batik/using/extending.html)
+  - ## Development
+    - [Overview](/batik/dev/)
+    - [Branches](/batik/dev/branches.html)
+    - [SVG 1.2 support](/batik/dev/svg12.html)
+    - [Test infrastructure](/batik/dev/test.html)
+
+# Apache&trade; XML Graphics
+  - ### Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache FOP](/fop/)
+  - [Apache XML Graphics Commons](/commons/)
+
+## Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').append(' &raquo;');
+    }
+  $('#navigation > ul > li ul').hide();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 100px;">
+	  <a href="/batik/"><img src="/images/apache-batik-logo.png" alt="The Apache FOP Project" width="256" height="96" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; Batik Project</h2>
+	</div>  
+
+    <h1>Parser module</h1>
+    
+
+    <h1>Parser module</h1>
+<p>SVG has a number of microsyntaxes that are used within attribute values, such as the <code>transform</code> attribute on <code>SVGTransformable</code> elements, and the path data <code>d</code> attribute on <code>path</code> elements. Since these are not trivial to parse, this functionality has been factored out into a separate package that can be used by other SVG-processing applications if needed.</p>
+<h2 id="parsersHandlersAndProducers">Parsers, handlers and producers</h2>
+<p>In the parser module, each microsyntax is supported by a pair of classes: a parser and a handler. The parser is a class that implements the <a href="../javadoc/org/apache/batik/parser/Parser.html">Parser</a> interface, which has methods to parse values from a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/Reader.html">Reader</a> or a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html">String</a>. The handler is an interface specific to the microsyntax that will have its methods called whenever the corresponding element in the input is parsed. For those handler interfaces that have more than one method, adapter classes are provided (named <code>Default</code> *).</p>
+<p>Parsers can also have an error handler associated with them, whose single method <code>error</code> will be called when there is a problem parsing the input. If an error handler is not associated with a parser, a <a href="../javadoc/org/apache/batik/parser/ParseException.html">ParseException</a> will be thrown if an error occurs.</p>
+<p>The microsyntaxes supported by the parser module are:</p>
+<p>Angles
+:
+Implemented by <a href="../javadoc/org/apache/batik/parser/AngleParser.html">AngleParser</a>, handled with <a href="../javadoc/org/apache/batik/parser/AngleHandler.html">AngleHandler</a>. This parser is used for parsing angles formed by a floating point number followed by <code>deg</code>, <code>grad</code> or <code>rad</code>. It is not currently used by the rest of the Batik codebase.</p>
+<p>Clock values
+:
+Implemented by <a href="../javadoc/org/apache/batik/parser/ClockParser.html">ClockParser</a>, handled with <a href="../javadoc/org/apache/batik/parser/ClockHandler.html">ClockHandler</a>. This parser is used for parsing SMIL <a href="http://www.w3.org/TR/smil-animation/#Timing-ClockValueSyntax">clock values</a>.</p>
+<p>Fragment identifiers
+:
+Implemented by <a href="../javadoc/org/apache/batik/parser/FragmentIdentifierParser.html">FragmentIdentifierParser</a>, handled with <a href="../javadoc/org/apache/batik/parser/FragmentIdentifierHandler.html">FragmentIdentifierHandler</a>. This parser is used for parsing the various formats of <a href="http://www.w3.org/TR/SVG11/linking.html#SVGFragmentIdentifiers">fragment identifier</a> that SVG allows.</p>
+<p>Lengths
+:
+Implemented by <a href="../javadoc/org/apache/batik/parser/LengthParser.html">LengthParser</a>, handled with <a href="../javadoc/org/apache/batik/parser/LengthHandler.html">LengthHandler</a>. This parser is used for parsing SVG length values.</p>
+<p>Length lists
+:
+Implemented by <a href="../javadoc/org/apache/batik/parser/LengthListParser.html">LengthListParser</a>, handled with <a href="../javadoc/org/apache/batik/parser/LengthListHandler.html">LengthListHandler</a>. This parser is used for parsing lists of comma or space separated SVG lengths.</p>
+<p>Numbers
+:
+Implemented by <a href="../javadoc/org/apache/batik/parser/NumberListParser.html">NumberListParser</a>, handled with <a href="../javadoc/org/apache/batik/parser/NumberListHandler.html">NumberListHandler</a>. This parser is used for parsing SVG number values.</p>
+<p>Number lists
+:
+Implemented by <a href="../javadoc/org/apache/batik/parser/NumberListParser.html">NumberListParser</a>, handled with <a href="../javadoc/org/apache/batik/parser/NumberListHandler.html">NumberListHandler</a>. This parser is used for parsing lists of comma or space separated SVG numbers.</p>
+<p>Path data
+:
+Implemented by <a href="../javadoc/org/apache/batik/parser/PathParser.html">PathParser</a>, handled with <a href="../javadoc/org/apache/batik/parser/PathHandler.html">PathHandler</a>. This parser is used for parsing SVG path data, as found in <code>path</code> element <code>d</code> attributes.</p>
+<p>Points
+:
+Implemented by <a href="../javadoc/org/apache/batik/parser/PointsParser.html">PointsParser</a>, handled with <a href="../javadoc/org/apache/batik/parser/PointsHandler.html">PointsHandler</a>. This parser is used for parsing point lists, as found in <code>polygon</code> element <code>points</code> attributes.</p>
+<p>Preserve aspect ratio values
+:
+Implemented by <a href="../javadoc/org/apache/batik/parser/PreserveAspectRatioParser.html">PreserveAspectRatioParser</a>, handled with <a href="../javadoc/org/apache/batik/parser/PreserveAspectRatioHandler.html">PreserveAspectRatioHandler</a>. This parser is used for parsing the values found in the <code>preserveAspectRatio</code> attribute of <code>svg</code> elements.</p>
+<p>Transform lists
+:
+Implemented by <a href="../javadoc/org/apache/batik/parser/TransformListParser.html">TransformListParser</a>, handled with <a href="../javadoc/org/apache/batik/parser/TransformListHandler.html">TransformListHandler</a>. This parser is used for parsing transform lists, as found in the <code>transform</code> attribute of any transformable element.</p>
+<p>Some microsyntaxes also have a corresponding producer class, which is an implementation of the handler interface that generates an object while parsing.</p>
+<h2 id="examples">Examples</h2>
+<p>The following example code demonstrates how to use the parser classes to parse a list of points:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.awt.geom.Point2D</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.batik.parser.DefaultPointsHandler</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.parser.ParseException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.parser.PointsHandler</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.parser.PointsParser</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PointsParserExample</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="n">List</span> <span class="nf">extractPoints</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ParseException</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="n">LinkedList</span> <span class="n">points</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">();</span>
+        <span class="n">PointsParser</span> <span class="n">pp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PointsParser</span><span class="o">();</span>
+        <span class="n">PointsHandler</span> <span class="n">ph</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultPointsHandler</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">point</span><span class="o">(</span><span class="kt">float</span> <span class="n">x</span><span class="o">,</span> <span class="kt">float</span> <span class="n">y</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ParseException</span> <span class="o">{</span>
+                <span class="n">Point2D</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point2D</span><span class="o">.</span><span class="na">Float</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">);</span>
+                <span class="n">points</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">p</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+        <span class="n">pp</span><span class="o">.</span><span class="na">setPointsHandler</span><span class="o">(</span><span class="n">ph</span><span class="o">);</span>
+        <span class="n">pp</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">points</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>This example uses the <a href="../javadoc/org/apache/batik/parser/AWTTransformProducer.html">AWTTransformProducer</a> class to generate an <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/awt/geom/AffineTransform.html">AffineTransform</a> object from an SVG transform list:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.awt.geom.AffineTransform</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.batik.parser.AWTTransformProducer</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.parser.ParseException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.parser.TransformListParser</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TransformParserExample</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="n">AffineTransform</span> <span class="nf">parseTransformList</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ParseException</span> <span class="o">{</span>
+        <span class="n">TransformListParser</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TransformListParser</span><span class="o">();</span>
+        <span class="n">AWTTransformProducer</span> <span class="n">tp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AWTTransformProducer</span><span class="o">();</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">setTransformListHandler</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">tp</span><span class="o">.</span><span class="na">getAffineTransform</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

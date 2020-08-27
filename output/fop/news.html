@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache&trade; FOP
+  - [FOP Home](/fop/)
+  - [Download](/fop/download.html)
+  - [Quick Start Guide](/fop/quickstartguide.html)
+  - [Compliance](/fop/compliance.html)
+  - [Getting Help](/fop/gethelp.html)
+  - [FAQs](/fop/faq.html)
+  - [FOP Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP)
+  - [Mailing Lists](/fop/maillist.html)
+  - [License](/fop/license.html)
+  - ## Resources
+    - [XSL-FO](/fop/fo.html)
+    - [Examples](/fop/examples.html)
+    - [Bugs](/fop/bugs.html)
+    - [Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FrontPage)
+    - [Other](/fop/resources.html)
+  - ## Project
+    - [News](/fop/news.html)
+    - [Who We Are](/fop/team.html)
+    - [Status](/fop/status.html)
+    - [Known Issues](/fop/knownissues.html)
+    - [Changes](/fop/changes.html)
+  - ## Versions
+      - ## FOP Trunk (dev)
+          - [Overview](/fop/trunk/)
+          - [Upgrading](/fop/trunk/upgrading.html)
+          - ### Using Apache&trade; FOP
+            - [Build](/fop/trunk/compiling.html)
+            - [Configure](/fop/trunk/configuration.html)
+            - [Run](/fop/trunk/running.html)
+            - [Embed](/fop/trunk/embedding.html)
+            - [Servlets](/fop/trunk/servlets.html)
+            - [Ant Task](/fop/trunk/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/trunk/accessibility.html)
+            - [Complex Scripts](/fop/trunk/complexscripts.html)
+            - [Events](/fop/trunk/events.html)
+            - [Extensions](/fop/trunk/extensions.html)
+            - [Fonts](/fop/trunk/fonts.html)
+            - [Graphics](/fop/trunk/graphics.html)
+            - [Hyphenation](/fop/trunk/hyphenation.html)
+            - [Intermediate Format](/fop/trunk/intermediate.html)
+            - [Metadata](/fop/trunk/metadata.html)
+            - [Output Targets](/fop/trunk/output.html)
+            - [PDF/A](/fop/trunk/pdfa.html)
+            - [PDF/X](/fop/trunk/pdfx.html)
+            - [PDF Encryption](/fop/trunk/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/trunk/whitespacemanagement.html)
+      - ## FOP 2.5
+          - [FOP 2.5 Overview](/fop/2.5/)
+          - [Release Notes](/fop/2.5/releaseNotes_2.5.html)
+          - [Changes (2.5)](/fop/2.5/changes_2.5.html)
+          - [Known Issues](/fop/2.5/knownissues_overview.html)
+          - [Upgrading](/fop/2.5/upgrading.html)
+          - ### Using Apache FOP 2.5
+            - [Build](/fop/2.5/compiling.html)
+            - [Configure](/fop/2.5/configuration.html)
+            - [Run](/fop/2.5/running.html)
+            - [Embed](/fop/2.5/embedding.html)
+            - [Servlets](/fop/2.5/servlets.html)
+            - [Ant Task](/fop/2.5/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.5/accessibility.html)
+            - [Complex Scripts](/fop/2.5/complexscripts.html)
+            - [Events](/fop/2.5/events.html)
+            - [Extensions](/fop/2.5/extensions.html)
+            - [Fonts](/fop/2.5/fonts.html)
+            - [Graphics](/fop/2.5/graphics.html)
+            - [Hyphenation](/fop/2.5/hyphenation.html)
+            - [Intermediate Format](/fop/2.5/intermediate.html)
+            - [Metadata](/fop/2.5/metadata.html)
+            - [Output Targets](/fop/2.5/output.html)
+            - [PDF/A](/fop/2.5/pdfa.html)
+            - [PDF/X](/fop/2.5/pdfx.html)
+            - [PDF Encryption](/fop/2.5/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.5/whitespacemanagement.html)     
+      - ## FOP 2.4
+          - [FOP 2.4 Overview](/fop/2.4/)
+          - [Release Notes](/fop/2.4/releaseNotes_2.4.html)
+          - [Changes (2.4)](/fop/2.4/changes_2.4.html)
+          - [Known Issues](/fop/2.4/knownissues_overview.html)
+          - [Upgrading](/fop/2.4/upgrading.html)
+          - ### Using Apache FOP 2.4
+            - [Build](/fop/2.4/compiling.html)
+            - [Configure](/fop/2.4/configuration.html)
+            - [Run](/fop/2.4/running.html)
+            - [Embed](/fop/2.4/embedding.html)
+            - [Servlets](/fop/2.4/servlets.html)
+            - [Ant Task](/fop/2.4/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.4/accessibility.html)
+            - [Complex Scripts](/fop/2.4/complexscripts.html)
+            - [Events](/fop/2.4/events.html)
+            - [Extensions](/fop/2.4/extensions.html)
+            - [Fonts](/fop/2.4/fonts.html)
+            - [Graphics](/fop/2.4/graphics.html)
+            - [Hyphenation](/fop/2.4/hyphenation.html)
+            - [Intermediate Format](/fop/2.4/intermediate.html)
+            - [Metadata](/fop/2.4/metadata.html)
+            - [Output Targets](/fop/2.4/output.html)
+            - [PDF/A](/fop/2.4/pdfa.html)
+            - [PDF/X](/fop/2.4/pdfx.html)
+            - [PDF Encryption](/fop/2.4/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.4/whitespacemanagement.html)             
+      - ## FOP 2.3
+          - [FOP 2.3 Overview](/fop/2.3/)
+          - [Release Notes](/fop/2.3/releaseNotes_2.3.html)
+          - [Changes (2.3)](/fop/2.3/changes_2.3.html)
+          - [Known Issues](/fop/2.3/knownissues_overview.html)
+          - [Upgrading](/fop/2.3/upgrading.html)
+          - ### Using Apache FOP 2.3
+            - [Build](/fop/2.3/compiling.html)
+            - [Configure](/fop/2.3/configuration.html)
+            - [Run](/fop/2.3/running.html)
+            - [Embed](/fop/2.3/embedding.html)
+            - [Servlets](/fop/2.3/servlets.html)
+            - [Ant Task](/fop/2.3/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.3/accessibility.html)
+            - [Complex Scripts](/fop/2.3/complexscripts.html)
+            - [Events](/fop/2.3/events.html)
+            - [Extensions](/fop/2.3/extensions.html)
+            - [Fonts](/fop/2.3/fonts.html)
+            - [Graphics](/fop/2.3/graphics.html)
+            - [Hyphenation](/fop/2.3/hyphenation.html)
+            - [Intermediate Format](/fop/2.3/intermediate.html)
+            - [Metadata](/fop/2.3/metadata.html)
+            - [Output Targets](/fop/2.3/output.html)
+            - [PDF/A](/fop/2.3/pdfa.html)
+            - [PDF/X](/fop/2.3/pdfx.html)
+            - [PDF Encryption](/fop/2.3/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.3/whitespacemanagement.html)            
+      - ## FOP 2.2
+          - [FOP 2.2 Overview](/fop/2.2/)
+          - [Release Notes](/fop/2.2/releaseNotes_2.2.html)
+          - [Changes (2.2)](/fop/2.2/changes_2.2.html)
+          - [Known Issues](/fop/2.2/knownissues_overview.html)
+          - [Upgrading](/fop/2.2/upgrading.html)
+          - ### Using Apache FOP 2.2
+            - [Build](/fop/2.2/compiling.html)
+            - [Configure](/fop/2.2/configuration.html)
+            - [Run](/fop/2.2/running.html)
+            - [Embed](/fop/2.2/embedding.html)
+            - [Servlets](/fop/2.2/servlets.html)
+            - [Ant Task](/fop/2.2/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.2/accessibility.html)
+            - [Complex Scripts](/fop/2.2/complexscripts.html)
+            - [Events](/fop/2.2/events.html)
+            - [Extensions](/fop/2.2/extensions.html)
+            - [Fonts](/fop/2.2/fonts.html)
+            - [Graphics](/fop/2.2/graphics.html)
+            - [Hyphenation](/fop/2.2/hyphenation.html)
+            - [Intermediate Format](/fop/2.2/intermediate.html)
+            - [Metadata](/fop/2.2/metadata.html)
+            - [Output Targets](/fop/2.2/output.html)
+            - [PDF/A](/fop/2.2/pdfa.html)
+            - [PDF/X](/fop/2.2/pdfx.html)
+            - [PDF Encryption](/fop/2.2/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.2/whitespacemanagement.html)
+      - ## FOP 2.1
+          - [FOP 2.1 Overview](/fop/2.1/)
+          - [Release Notes](/fop/2.1/releaseNotes_2.1.html)
+          - [Changes (2.1)](/fop/2.1/changes_2.1.html)
+          - [Known Issues](/fop/2.1/knownissues_overview.html)
+          - [Upgrading](/fop/2.1/upgrading.html)
+          - ### Using Apache FOP 2.1
+            - [Build](/fop/2.1/compiling.html)
+            - [Configure](/fop/2.1/configuration.html)
+            - [Run](/fop/2.1/running.html)
+            - [Embed](/fop/2.1/embedding.html)
+            - [Servlets](/fop/2.1/servlets.html)
+            - [Ant Task](/fop/2.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.1/accessibility.html)
+            - [Complex Scripts](/fop/2.1/complexscripts.html)
+            - [Events](/fop/2.1/events.html)
+            - [Extensions](/fop/2.1/extensions.html)
+            - [Fonts](/fop/2.1/fonts.html)
+            - [Graphics](/fop/2.1/graphics.html)
+            - [Hyphenation](/fop/2.1/hyphenation.html)
+            - [Intermediate Format](/fop/2.1/intermediate.html)
+            - [Metadata](/fop/2.1/metadata.html)
+            - [Output Targets](/fop/2.1/output.html)
+            - [PDF/A](/fop/2.1/pdfa.html)
+            - [PDF/X](/fop/2.1/pdfx.html)
+            - [PDF Encryption](/fop/2.1/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.1/whitespacemanagement.html)
+      - ## FOP 2.0
+          - [FOP 2.0 Overview](/fop/2.0/)
+          - [Release Notes](/fop/2.0/releaseNotes_2.0.html)
+          - [Changes (2.0)](/fop/2.0/changes_2.0.html)
+          - [Known Issues](/fop/2.0/knownissues_overview.html)
+          - [Upgrading](/fop/2.0/upgrading.html)
+          - ### Using Apache FOP 2.0
+            - [Build](/fop/2.0/compiling.html)
+            - [Configure](/fop/2.0/configuration.html)
+            - [Run](/fop/2.0/running.html)
+            - [Embed](/fop/2.0/embedding.html)
+            - [Servlets](/fop/2.0/servlets.html)
+            - [Ant Task](/fop/2.0/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.0/accessibility.html)
+            - [Complex Scripts](/fop/2.0/complexscripts.html)
+            - [Events](/fop/2.0/events.html)
+            - [Extensions](/fop/2.0/extensions.html)
+            - [Fonts](/fop/2.0/fonts.html)
+            - [Graphics](/fop/2.0/graphics.html)
+            - [Hyphenation](/fop/2.0/hyphenation.html)
+            - [Intermediate Format](/fop/2.0/intermediate.html)
+            - [Metadata](/fop/2.0/metadata.html)
+            - [Output Targets](/fop/2.0/output.html)
+            - [PDF/A](/fop/2.0/pdfa.html)
+            - [PDF/X](/fop/2.0/pdfx.html)
+            - [PDF Encryption](/fop/2.0/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.0/whitespacemanagement.html)
+      - ## FOP 1.1
+          - [FOP 1.1 Overview](/fop/1.1/)
+          - [Release Notes](/fop/1.1/releaseNotes_1.1.html)
+          - [Changes (1.1)](/fop/1.1/changes_1.1.html)
+          - [Known Issues](/fop/1.1/knownissues_overview.html)
+          - [Upgrading](/fop/1.1/upgrading.html)
+          - ### Using Apache FOP 1.1
+            - [Build](/fop/1.1/compiling.html)
+            - [Configure](/fop/1.1/configuration.html)
+            - [Run](/fop/1.1/running.html)
+            - [Embed](/fop/1.1/embedding.html)
+            - [Servlets](/fop/1.1/servlets.html)
+            - [Ant Task](/fop/1.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/1.1/accessibility.html)
+            - [Complex Scripts](/fop/1.1/complexscripts.html)
+            - [Events](/fop/1.1/events.html)
+            - [Extensions](/fop/1.1/extensions.html)
+            - [Fonts](/fop/1.1/fonts.html)
+            - [Graphics](/fop/1.1/graphics.html)
+            - [Hyphenation](/fop/1.1/hyphenation.html)
+            - [Intermediate Format](/fop/1.1/intermediate.html)
+            - [Metadata](/fop/1.1/metadata.html)
+            - [Output Targets](/fop/1.1/output.html)
+            - [PDF/A](/fop/1.1/pdfa.html)
+            - [PDF/X](/fop/1.1/pdfx.html)
+            - [PDF Encryption](/fop/1.1/pdfencryption.html)
+      - ## FOP 1.0
+          - [FOP 1.0 Overview](/fop/1.0/)
+          - [Release Notes](/fop/1.0/releaseNotes_1.0.html)
+          - [Changes (1.0)](/fop/1.0/changes_1.0.html)
+          - [Known Issues](/fop/1.0/knownissues_overview.html)
+          - [Upgrading](/fop/1.0/upgrading.html)
+          - ### Using Apache FOP 1.0
+            - [Build](/fop/1.0/compiling.html)
+            - [Configure](/fop/1.0/configuration.html)
+            - [Run](/fop/1.0/running.html)
+            - [Embed](/fop/1.0/embedding.html)
+            - [Servlets](/fop/1.0/servlets.html)
+            - [Ant Task](/fop/1.0/anttask.html)
+          - ### Features
+            - [Output Targets](/fop/1.0/output.html)
+            - [Intermediate Format](/fop/1.0/intermediate.html)
+            - [PDF Encryption](/fop/1.0/pdfencryption.html)
+            - [PDF/A](/fop/1.0/pdfa.html)
+            - [PDF/X](/fop/1.0/pdfx.html)
+            - [Graphics](/fop/1.0/graphics.html)
+            - [Fonts](/fop/1.0/fonts.html)
+            - [Hyphenation](/fop/1.0/hyphenation.html)
+            - [Extensions](/fop/1.0/extensions.html)
+            - [Events](/fop/1.0/events.html)
+            - [Metadata](/fop/1.0/metadata.html)
+            - [Accessibility](/fop/1.0/accessibility.html)
+      - ## FOP Development
+          - [General Info](/fop/dev/)
+          - ## Design
+            - [Design Info](/fop/dev/design/)
+          - ## Core Process
+            - [Startup](/fop/dev/design/startup.html)
+            - [XML Parsing](/fop/dev/design/parsing.html)
+            - [FO Tree](/fop/dev/design/fotree.html)
+            - [Properties](/fop/dev/design/properties.html)
+            - [Layout](/fop/dev/design/layout.html)
+            - [Break Possibility](/fop/dev/design/breakpos.html)
+            - [Area Tree](/fop/dev/design/areas.html)
+            - [Renderers](/fop/dev/design/renderers.html)
+          - ## Miscellaneous
+            - [Images](/fop/dev/design/images.html)
+            - [PDF Library](/fop/dev/design/pdf-library.html)
+            - [SVG](/fop/dev/design/svg.html)
+            - [Embedding](/fop/dev/design/embedding.html)
+            - [Extending](/fop/dev/design/extending.html)
+            - [Optimisations](/fop/dev/design/optimise.html)
+            - [User Agent](/fop/dev/design/useragent.html)
+          - [Unresolved (Wiki)](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FOPProjectPages)
+          - [SVG](/fop/dev/svg.html)
+          - [Extensions](/fop/dev/extensions.html)
+          - ## Develop
+            - [Walk-Thru](/fop/dev/implement.html)
+            - [Patch Queue](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20description%20~%20%22\%22[patch]\%22%22%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+            - [Conventions](/fop/dev/conventions.html)
+          - ## Test
+            - [Testing](/fop/dev/testing.html)
+          - ## Deploy
+            - [Doc Mgmt](/fop/dev/doc.html)
+            - [Release](/fop/dev/release.html)
+            - [Bugs](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20issuetype%20%3D%20Bug%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+          - ## Resources
+            - [FAQs](/fop/dev/faq.html)
+            - [Tools](/fop/dev/tools.html)
+            - [ViewVC](http://svn.apache.org/viewvc/xmlgraphics/fop)
+          - ## SubPackages
+            - [RTFlib](/fop/dev/rtflib.html)
+
+# Apache&trade; XML Graphics
+  - ## Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache Batik](/batik/)
+  - [Apache XML Graphics Commons](/commons/)
+
+### Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+      $('#navigation :header').not('#search-apache-xml-graphics, #apachewzxhzdk3-xml-graphics, #sub-projects').append(' &raquo;');
+    }
+  $('#navigation > ul > li > ul > li ul').hide();
+  $('#project-overview').next().hide();
+  $('#versions').next().show();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+      $("li.highlight").removeClass("highlight");
+      $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
+	  <a href="/fop/"><img src="/images/apache-fop-logo.jpg" alt="The Apache FOP Project" width="120" height="65" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; FOP Project</h2>
+	</div>  
+
+    <h1>Apache(tm) FOP News</h1>
+    
+
+    <h1>Apache&trade; FOP News</h1>
+<h2 id="news-2020-05-13">13 May 2020: Apache&trade; FOP 2.5 Released</h2>
+<p><item date="2020-05-13" title="Apache&trade; FOP 2.5 Released">
+Apache&trade; FOP 2.5 contains bug fixes and a number of new features. See <a href="2.5/releaseNotes_2.5.html">Release Notes</a> for a list of the most important changes.
+</item></p>
+<h2 id="news-2020-05-13">13 May 2020: Apache&trade; FOP-PDF-Images 2.5 Released</h2>
+<p><item date="2020-05-13" title="Apache&trade; FOP-PDF-Images 2.5 Released">
+Apache&trade; FOP-PDF-Images 2.5 contains bug fixes and a number of new features. See <a href="fop-pdf-images.html">Release Notes</a> for a list of the most important changes.
+</item></p>
+<h2 id="news-2019-11-05">5 Nov 2019: Apache&trade; FOP 2.4 Released</h2>
+<p><item date="2019-11-05" title="Apache&trade; FOP 2.4 Released">
+Apache&trade; FOP 2.4 contains bug fixes and a number of new features. See <a href="2.4/releaseNotes_2.4.html">Release Notes</a> for a list of the most important changes.
+</item></p>
+<h2 id="news-2019-11-05">5 Nov 2019: Apache&trade; FOP-PDF-Images 2.4 Released</h2>
+<p><item date="2019-11-05" title="Apache&trade; FOP-PDF-Images 2.4 Released">
+Apache&trade; FOP-PDF-Images 2.4 contains bug fixes and a number of new features. See <a href="fop-pdf-images.html">Release Notes</a> for a list of the most important changes.
+</item></p>
+<h2 id="news-2018-05-24">24 May 2018: Apache&trade; FOP 2.3 Released</h2>
+<p><item date="2018-05-24" title="Apache&trade; FOP 2.3 Released">
+Apache&trade; FOP 2.3 contains bug fixes and a number of new features. See <a href="2.3/releaseNotes_2.3.html">Release Notes</a> for a list of the most important changes.
+</item></p>
+<h2 id="news-2018-05-24">24 May 2018: Apache&trade; FOP-PDF-Images 2.3 Released</h2>
+<p><item date="2018-05-24" title="Apache&trade; FOP-PDF-Images 2.3 Released">
+Apache&trade; FOP-PDF-Images 2.3 contains bug fixes and a number of new features. See <a href="fop-pdf-images.html">Release Notes</a> for a list of the most important changes.
+</item></p>
+<h2 id="news-2017-04-10">10 Apr 2017: Apache&trade; FOP 2.2 Released</h2>
+<p><item date="2017-04-10" title="Apache&trade; FOP 2.2 Released">
+Apache&trade; FOP 2.2 contains bug fixes and a number of new features. See <a href="2.2/releaseNotes_2.2.html">Release Notes</a> for a list of the most important changes.
+</item></p>
+<h2 id="news-2017-04-10">10 Apr 2017: Apache&trade; FOP-PDF-Images 2.2 Released</h2>
+<p><item date="2017-04-10" title="Apache&trade; FOP-PDF-Images 2.2 Released">
+Apache&trade; FOP-PDF-Images 2.2 contains bug fixes and a number of new features. See <a href="fop-pdf-images.html">Release Notes</a> for a list of the most important changes.
+</item></p>
+<h2 id="news-2016-01-14">14 Jan 2016: Apache&trade; FOP 2.1 Released</h2>
+<p><item date="2016-01-14" title="Apache&trade; FOP 2.1 Released">
+Apache&trade; FOP 2.1 contains bug fixes and a number of new features. See <a href="2.1/releaseNotes_2.1.html">Release Notes</a> for a list of the most important changes.
+</item></p>
+<h2 id="news-2015-06-03">3 Jun 2015: Apache&trade; FOP 2.0 Released</h2>
+<p><item date="2015-06-03" title="Apache&trade; FOP 2.0 Released">
+Apache&trade; FOP 2.0 contains bug fixes and a number of new features. See <a href="2.0/releaseNotes_2.0.html">Release Notes</a> for a list of the most important changes.
+</item></p>
+<h2 id="news-2012-10-20">20 Oct 2012: Apache&trade; FOP 1.1 Released</h2>
+<p><item date="2012-10-20" title="Apache&trade; FOP 1.1 Released">
+Apache&trade; FOP 1.1 contains bug fixes and a number of new features. See <a href="1.1/releaseNotes_1.1.html">Release Notes</a> for a list of the most important changes.
+</item></p>
+<h2 id="news-2012-10-12">12 Oct 2012: New committer</h2>
+<p><item date="2012-10-12" title="New committer">
+Welcome Luis Bernardo!
+</item></p>
+<h2 id="news-2012-07-02">07 Jul 2012: Apache&trade; FOP 1.1-RC1 Available</h2>
+<p><item date="2012-07-02" title="Apache&trade; FOP 1.1-RC1 Available">
+This is a candidate release for an upcoming FOP Version 1.1 (stable) release. release of the new FOP codebase. This release contains bug fixes and new features.
+</item></p>
+<h2 id="news-2012-02-07">07 Feb 2012: PDF-images plugin donated to ASF</h2>
+<p><item date="2012-02-07" title="PDF-images plugin donated to ASF">
+The PDF-images plugin, is donated by Jeremias M&auml;rki to ASF and becomes an XMLGraphics sub-project.
+</item></p>
+<h2 id="news-2012-02-24">24 Feb 2012: New committer</h2>
+<p><item date="2012-02-24" title="New committer">
+Welcome Glenn Adams!
+</item></p>
+<h2 id="news-2011-11-17">17 Nov 2011: New committer</h2>
+<p><item date="2011-11-17" title="New committer">
+Welcome Mehdi Houshmand!
+</item></p>
+<h2 id="news-2011-04-28">28 Apr 2011: New committer</h2>
+<p><item date="2011-04-28" title="New committer">
+Welcome Peter Hancock!
+</item></p>
+<h2 id="news-2010-07-21">21 Jul 2010: Apache&trade; FOP 1.0 Released</h2>
+<p><item date="2010-07-21" title="Apache&trade; FOP 1.0 Released">
+The Apache&trade; FOP team is delighted to present you a production grade release of the new FOP codebase. This release contains many bug fixes and new features. See the <a href="1.0/releaseNotes_1.0.html">Release Notes</a> for a list of the most important changes.
+</item></p>
+<h2 id="news-2009-12-14">14 Dec 2009: New committer</h2>
+<p><item date="2009-12-14" title="New committer">
+Welcome Pascal Sancho!
+</item></p>
+<h2 id="news-2008-08-05">5 Aug 2008: Apache&trade; FOP 0.95 Released</h2>
+<p><item date="2008-08-05" title="Apache&trade; FOP 0.95 Released">
+The Apache&trade; FOP team is delighted to present you a production grade release of the new FOP codebase. This release contains many bug fixes and new features. See the <a href="0.95/releaseNotes_0.95.html">Release Notes</a> for a list of the most important changes.
+</item></p>
+<h2 id="news-2008-03-16">16 Mar 2008: Apache&trade; FOP 0.95beta Released</h2>
+<p><item date="2008-03-16" title="Apache&trade; FOP 0.95beta Released">
+The Apache&trade; FOP team is delighted to present you a beta version of the next production grade release of the new FOP codebase. This release contains many bug fixes and new features. See the <a href="0.95/releaseNotes_0.95beta.html">Release Notes</a> for a list of the most important changes.
+</item></p>
+<h2 id="news-2007-10-30">30 Oct 2007: New committer</h2>
+<p><item date="2007-10-30" title="New committer">
+Welcome Max Berger!
+</item></p>
+<h2 id="news-2007-10-15">15 Oct 2007: New Committer</h2>
+<p><item date="2007-10-15" title="New Committer">
+Welcome Adrian Cumiskey!
+</item></p>
+<h2 id="news-2007-08-24">24 Aug 2007: Apache&trade; FOP 0.94 Released</h2>
+<p><item date="2007-08-24" title="Apache&trade; FOP 0.94 Released">
+The Apache&trade; FOP team is pleased to present you the second production grade release of the new FOP codebase. This release contains many bug fixes and new features. See the Release Notes for a list of the most important changes.
+</item></p>
+<h2 id="news-2007-01-26">26 Jan 2007: New Committer</h2>
+<p><item date="2007-01-26" title="New Committer">
+Welcome Jay Bryant!
+</item></p>
+<h2 id="news-2007-01-09">9 Jan 2007: Apache&trade; FOP 0.93 released</h2>
+<p><item date="2007-01-09" title="Apache&trade; FOP 0.93 released">
+The Apache&trade; FOP team is proud to present to you the first production grade release of the new FOP codebase. This release has the new API first introduced in release 0.92 beta. It contains again many bug fixes and new features.
+</item></p>
+<h2 id="news-2006-10-16">16 Oct 2006: New Committer</h2>
+<p><item date="2006-10-16" title="New Committer">
+Welcome Vincent Hennebert!
+</item></p>
+<h2 id="news-2006-04-18">18 Apr 2006: Apache&trade; FOP 0.92 beta released</h2>
+<p><item date="2006-04-18" title="Apache&trade; FOP 0.92 beta released">
+A second "beta" grade release of the new FOP codebase with a modified and now considered stable API. The release contains many bug fixes as well as new features mainly related to even more extensive support of the XSL-FO specification. This is expected to be the last "beta" release before we go to a 1.0 release!
+</item></p>
+<h2 id="news-2005-12-23">23 Dec 2005: Apache&trade; FOP 0.91 beta released</h2>
+<p><item date="2005-12-23" title="Apache&trade; FOP 0.91 beta released">
+One month after the initial release we're happy present a "beta" grade release of the new FOP codebase. It's mostly a bug fix release but also contains a few new features. Thanks to all those who sent us feedback on the initial release!
+</item></p>
+<h2 id="news-2005-11-22">22 Nov 2005: Apache&trade; FOP 0.90 alpha 1 released</h2>
+<p><item date="2005-11-22" title="Apache&trade; FOP 0.90 alpha 1 released">
+The Apache&trade; FOP team is proud to present to you the largely rewritten codebase which is finally in a state where you can start to use it. It has taken over three years to get this far and over two years without a new release from the FOP project.</p>
+<p>Please see also the <a href="http://mail-archives.apache.org/mod_mbox/xmlgraphics-fop-users/200511.mbox/%3c20051123002157.0EB0.JEREMIAS@apache.org%3e">announcement</a>.
+</item></p>
+<h2 id="news-2005-09-08">8 Sep 2005: New Committer</h2>
+<p><item date="2005-09-08" title="New Committer">
+Welcome Manuel Mall!
+</item></p>
+<h2 id="news-2004-10-20">20 Oct 2004: Creation of the Apache&trade; XML Graphics project</h2>
+<p><item date="2004-10-20" title="Creation of the Apache&trade; XML Graphics project">
+The Apache Board of Directors agreed to the creation of the <a href="http://xmlgraphics.apache.org">Apache&trade; XML Graphics</a> project which will be comprised of Batik and FOP. Both former Apache&trade; XML subprojects are in this way complying with the Board's desire to improve project oversight. Both project teams also see additional benefits of working more closely together.
+</item></p>
+<h2 id="news-2004-10-08">8 Oct 2004: New Committer</h2>
+<p><item date="2004-10-08" title="New Committer">
+Welcome Luca Furini!
+</item></p>
+<h2 id="news-2004-04-24">24 Apr 2004: New Committer</h2>
+<p><item date="2004-04-24" title="New Committer">
+Welcome Simon Pepping!
+</item></p>
+<h2 id="news-2004-03-07">7 Mar 2004: New Committer</h2>
+<p><item date="2004-03-07" title="New Committer">
+Welcome Web Maestro Clay Leeds!
+</item></p>
+<h2 id="news-2004-01-10">10 Jan 2004: New Committers</h2>
+<p><item date="2004-01-10" title="New Committers">
+Welcome Chris Bowditch and Andreas Delmelle!
+</item></p>
+<h2 id="news-2004-01-04">4 Jan 2004: New Committer</h2>
+<p><item date="2004-01-04" title="New Committer">
+Welcome Finn Bock!
+</item></p>
+<h2 id="news-2003-11-29">29 Nov 2003: New Committer</h2>
+<p><item date="2003-11-29" title="New Committer">
+Welcome Peter Herweg!
+</item></p>
+<h2 id="news-2003-07-18">18 Jul 2003: Apache&trade; FOP 0.20.5 released</h2>
+<p><item date="2003-07-18" title="Apache&trade; FOP 0.20.5 released">
+Changes since 0.20.4 include:</p>
+<ul>
+<li>
+<p>Added support for PDF encryption</p>
+</li>
+<li>
+<p>Perfomance tuning</p>
+</li>
+<li>
+<p>Fixed link hotspot positioning</p>
+</li>
+<li>
+<p>Fixed multi-threading issues</p>
+</li>
+<li>
+<p>Added support for CCITT Group 4 encoded TIFF files</p>
+</li>
+<li>
+<p>Dynamic JAI support</p>
+</li>
+<li>
+<p>Added autoselecting portrait/landscape for PCL and PS Renderer</p>
+</li>
+<li>
+<p>Added continued-label extension for tables</p>
+</li>
+<li>
+<p>Improved AWT Font-measuring/rendering</p>
+</li>
+<li>
+<p>Improved marker handling</p>
+</li>
+<li>
+<p>Fixed problem with jpegs with icc profile and acrobat reader 5</p>
+</li>
+<li>
+<p>Added a fontBaseDir property</p>
+</li>
+<li>
+<p>TXTRenderer output encoding</p>
+</li>
+<li>
+<p>border-spacing support</p>
+</li>
+<li>
+<p>and a lot more bugfixes</p>
+</li>
+</ul>
+<p>See also the full text of the <a href="http://mail-archives.apache.org/eyebrowse/ReadMsg?listName=fop-dev@xml.apache.org&amp;msgNo=6067">announcement</a>.
+</item></p>
+<h2 id="news-2003-06-29">29 Jun 2003: New Committer</h2>
+<p><item date="2003-06-29" title="New Committer">
+Welcome Glen Mazza!
+</item></p>
+<h2 id="news-2003-05-23">23 May 2003: Apache&trade; FOP 0.20.5 Release Candidate 3 available</h2>
+<p><item date="2003-05-23" title="Apache&trade; FOP 0.20.5 Release Candidate 3 available">
+See the full text of the <a href="http://mail-archives.apache.org/eyebrowse/ReadMsg?listName=fop-dev@xml.apache.org&amp;msgNo=5429">announcement</a>.
+</item></p>
+<h2 id="news-2003-02-18">18 Feb 2003: Apache&trade; FOP 0.20.5 Release Candidate 2 available</h2>
+<p><item date="2003-02-18" title="Apache&trade; FOP 0.20.5 Release Candidate 2 available">
+See the full text of the <a href="http://mail-archives.apache.org/eyebrowse/ReadMsg?listName=fop-dev@xml.apache.org&amp;msgNo=4509">announcement</a>.
+</item></p>
+<h2 id="news-2003-02-02">2 Feb 2003: New XML PMC</h2>
+<p><item date="2003-02-02" title="New XML PMC">
+Jeremias Maerki and Peter B. West are now representing FOP on the XML PMC.
+</item></p>
+<h2 id="news-2003-01-28">28 Jan 2003: FOP logo contest</h2>
+<p><item date="2003-01-28" title="FOP logo contest">
+We are looking for a new logo. FOP logo contest is started!
+</item></p>
+<h2 id="news-2002-12-23">23 Dec 2002: Official FOP Wiki</h2>
+<p><item date="2002-12-23" title="Official FOP Wiki">
+See <a href="https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FOPProjectPages">FOP project pages</a> at the ApacheWiki.
+</item></p>
+<h2 id="news-2002-12-10">10 Dec 2002: FOP 0.20.5 Release Candidate available</h2>
+<p><item date="2002-12-10" title="FOP 0.20.5 Release Candidate available">
+See the full text of the <a href="http://marc.theaimsgroup.com/?l=fop-user&amp;m=103954279712704&amp;w=2">announcement</a>.
+</item></p>
+<h2 id="news-2002-11-23">23 Nov 2002: EXLSFO project has been created</h2>
+<p><item date="2002-11-23" title="EXLSFO project has been created">
+The EXSLFO project is a community effort to define functional extensions to thet XSL Formatting Objects specification. See the <a href="http://exslfo.sourceforge.net">EXSLFO website</a> for details.
+</item></p>
+<h2 id="news-2002-11-22">22 Nov 2002: New Committer</h2>
+<p><item date="2002-11-22" title="New Committer">
+Welcome Victor Mote!
+</item></p>
+<h2 id="news-2002-11-09">9 Nov 2002: New Committer</h2>
+<p><item date="2002-11-09" title="New Committer">
+Welcome Oleg Tkachenko!
+</item></p>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

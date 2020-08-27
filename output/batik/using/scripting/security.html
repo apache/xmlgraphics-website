@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache Batik
+  - [Overview](/batik/)
+  - [License](/batik/license.html)
+  - [Download](/batik/download.html)
+  - [Notes](/batik/install.html)
+  - [Status](/batik/status.html)
+  - [Demo](/batik/demo-static.html)
+  - [FAQs](/batik/faq.html)
+  - [Batik Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSBATIK)
+  - [Mailing lists](/batik/mailing-lists.html)
+  - [Contributors](/batik/contributors.html)
+  - [Bug database](https://issues.apache.org/jira/issues/?jql=project%20%3D%20BATIK%20AND%20resolution%20%3D%20Unresolved%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20ORDER%20BY%20priority%20DESC)
+  - [Projects using Batik](/batik/uses.html)
+  - ## Batik Tools
+    - [Overview](/batik/tools/)
+    - [Browser](/batik/tools/browser.html)
+    - [Rasterizer](/batik/tools/rasterizer.html)
+    - [Font converter](/batik/tools/font-converter.html)
+    - [Pretty printer](/batik/tools/pretty-printer.html)
+  - ## Using Batik
+    - [Overview](/batik/using/)
+    - [Architecture](/batik/using/architecture.html)
+    - [Javadoc APIs](/batik/javadoc/)
+    - [DOM API](/batik/using/dom-api.html)
+    - [Parsers](/batik/using/parsers.html)
+    - ### Scripting
+      - [Scripting with ECMAScript](/batik/using/scripting/ecmascript.html)
+      - [Scripting with Java](/batik/using/scripting/java.html)
+      - [Scripting with Security](/batik/using/scripting/security.html)
+    - [SVG generator](/batik/using/svg-generator.html)
+    - [Swing components](/batik/using/swing.html)
+    - [Transcoder API](/batik/using/transcoder.html)
+    - [Extending Batik](/batik/using/extending.html)
+  - ## Development
+    - [Overview](/batik/dev/)
+    - [Branches](/batik/dev/branches.html)
+    - [SVG 1.2 support](/batik/dev/svg12.html)
+    - [Test infrastructure](/batik/dev/test.html)
+
+# Apache&trade; XML Graphics
+  - ### Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache FOP](/fop/)
+  - [Apache XML Graphics Commons](/commons/)
+
+## Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').append(' &raquo;');
+    }
+  $('#navigation > ul > li ul').hide();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 100px;">
+	  <a href="/batik/"><img src="/images/apache-batik-logo.png" alt="The Apache FOP Project" width="256" height="96" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; Batik Project</h2>
+	</div>  
+
+    <h1>Script security</h1>
+    
+
+    <h1>Script security</h1>
+<p>With the addition of scripting support in Batik 1.5, security features have also been added to enable users of the Batik toolkit to run scripts in a secure manner.</p>
+<p>If you are using script, please make sure you have reviewed the <a href="../../index.html#SecurityWarning">Script Security Warning</a> with regards to the Batik 1.5 release.</p>
+<h2 id="sandbox">Running scripts securely</h2>
+<p>The Java platform offers a lot of options for running applications securely. Running an application securely requires that it runs in a so-called security sand-box which controls all the access the application makes to restricted resources (such as the file system).</p>
+<p>The concept of Java security is an application-wide concept. As such, it has to be applied at the application level (and not at the framework level). In the Batik distribution, the sample applications (such as the <a href="../../tools/browser.html">Squiggle Browser</a> and the <a href="../../tools/rasterizer.html">SVG rasterizer</a>) apply security (or disable it) but the framework does not apply it: it is security-aware (meaning that it is able to handle security exceptions).</p>
+<h3 id="enforcing">Enforcing security in a Batik application</h3>
+<p>Enforcing security in a Batik application is done by setting a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/SecurityManager.html">java.lang.SecurityManager</a>. This security manager will apply the security settings of the Java platform (as defined by the <em>jre-dir</em>  <code>/lib/security/java.policy</code> and, optionally, by the policy file whose URL is defined in the <code>java.security.policy</code> system property).</p>
+<p>The <a href="../../javadoc/org/apache/batik/util/ApplicationSecurityEnforcer.html">org.apache.batik.util.ApplicationSecurityEnforcer</a> helper class makes it easier for Batik application developers to add security support in their applications. That helper class is used by the sample Batik applications.</p>
+<h3 id="squiggle">Squiggle security</h3>
+<p>The Squiggle browser lets the user decide whether or not scripts should be run securely (see the “Browser Options” in the preference dialog box). When scripts are run securely, Squiggle will enforce the security settings as follows:</p>
+<ul>
+<li>
+<p>The default policy is defined by the policy file found in the distribution: <code>org/apache/batik/apps/svgbrowser/svgbrowser.policy</code>. In the binary distribution, that file would be in the <code>batik-squiggle.jar</code> file. In the source distribution, that file would be in the <code>resources</code> directory. The default policy file gives appropriate permissions to the Batik code, the XML parser and the Rhino scripting engine and very limited permissions to scripts.</p>
+</li>
+<li>
+<p>At startup time, and whenever the preference settings are modified, Squiggle makes a copy of the default policy and appends any additional permissions granted to scripts by the user through the preference settings. This policy file can be found in the <code>[user.home]/.batik</code> directory, and is called <code>__svgbrowser.policy</code>. Note that this file is automatically generated and should not be modified manually (as any edits would be lost).</p>
+</li>
+<li>
+<p>The policy defined as described above is enforced unless the <code>java.security.policy</code> system property is defined. In that case, the policy defined by the system property takes precedence and the policy file generated from the Squiggle preferences is ignored.</p>
+</li>
+</ul>
+<p><strong>Important note:</strong> The default policy files assume that the applications use the Xerces parser and give appropriate permissions to its <code>lib/xerces-2_5_0.jar</code> jar file. If you are using a different XML parser, you need to modify the policy files to grant the proper permissions to your XML parser instead of Xerces. You will have to replace:</p>
+<div class="highlight"><pre><span></span>grant codeBase &quot;<span class="cp">${</span><span class="n">app</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">base</span><span class="cp">}</span>/lib/xerces_2_5_0.jar&quot; {
+  permission java.security.AllPermission;
+};
+</pre></div>
+
+
+<p>with:</p>
+<div class="highlight"><pre><span></span>grant codeBase &quot;<span class="cp">${</span><span class="n">app</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">base</span><span class="cp">}</span>/lib/myXMLParser.jar&quot; {
+  permission java.security.AllPermission;
+};
+</pre></div>
+
+
+<p>in the <code>resources/org/apache/batik/apps/svgbrowser/resources/svgbrowser.policy</code> file (for the source distribution) and do the same in <code>resources/org/apache/batik/apps/svgbrowser/resources/svgbrowser.bin.policy</code> (for the binary distribution which will then need to be rebuilt with the <code>build dist-zip</code> command.</p>
+<p>Alternatively, you can write your own policy file and specify its URL through the <code>java.security.policy</code> system property (which you can specify through the <code>-Djava.security.policy=</code>  <em>url</em> command line option).</p>
+<h2 id="externalResources">Controlling access to external resources</h2>
+<p>SVG makes a very powerful use of external resources in many elements such as <code>image</code>, <code>use</code>, <code>font</code>, <code>script</code> and <code>radialGradient</code>. There are over fifteen SVG elements that may reference external resources that way.</p>
+<p>In some environments, and typically for security reasons, it is important to control the resources referenced by an SVG document and be able to accept or reject these resources.</p>
+<p>In the Batik toolkit, this flexibility is provided by the <a href="../../javadoc/org/apache/batik/bridge/UserAgent.html">org.apache.batik.bridge.UserAgent</a> interface which can define various strategies with regards to external resources. By providing a new implementation of the <code>UserAgent</code> interface, it is possible to apply the desired security strategy for scripts and external resources.</p>
+<p>The following <code>UserAgent</code> methods are provided for that purpose:</p>
+<ul>
+<li>
+<p><code>getScriptSecurity(scriptType, scriptURL, docURL)</code> should return the <a href="../../javadoc/org/apache/batik/bridge/ScriptSecurity.html">ScriptSecurity</a> strategy for a script of type <code>scriptType</code> (e.g., <code>text/ecmascript</code>) coming from <code>scriptURL</code>, when referenced from the document whose URL is <code>docURL</code>.</p>
+</li>
+<li>
+<p><code>getExternalResourceSecurity(resourceURL, docURL)</code> should return the <a href="../../javadoc/org/apache/batik/bridge/ExternalResourceSecurity.html">ExternalResourceSecurity</a> strategry for a resource coming from <code>resourceURL</code> referenced from the document at URL <code>docURL</code>.</p>
+</li>
+</ul>
+<p>The <code>ScriptSecurity</code> and <code>ExternalResourceSecurity</code> interfaces have methods (<code>checkLoadScript</code> and <code>checkLoadExternalResource</code> respectively) which should throw a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/SecurityException.html">SecurityException</a> if accessing the script or resource is considered a security violation.
+The <code>UserAgent</code> interface has two additional methods (<code>checkLoadScript</code> and <code>checkLoadExternalResource</code>) which are meant to provide a short hand for getting a security strategy object and calling the <code>checkLoad</code> * method on that object. This is how the <a href="../../javadoc/org/apache/batik/bridge/UserAgentAdapter.html">org.apache.batik.bridge.UserAgentAdapter</a> class implements this method.
+Batik provides the following set of <code>ScriptSecurity</code> implementations:</p>
+<p>NoLoadScriptSecurity
+:
+The script resource should not be loaded.</p>
+<p>EmbededScriptSecurity
+:
+The script resource will only be loaded if it is embeded in the SVG document referencing it. This means that script attributes (such as <code>onclick</code> on a <code>rect</code> element), inline <code>script</code> elements and <code>script</code> elements using a <code>data:</code> URL as its <code>xlink:href</code> attribute value will be allowed. All other script resources should not be loaded.</p>
+<p>DefaultScriptSecurity
+:
+The script resource will only be loaded if it is embeded in the SVG document (see the description of <code>EmbededScriptSecurity</code>) or if it is coming from the same location as the document referencing the script. If the document comes from a network server, then any script coming from that server will be allowed. If the document comes from the file system, then only scripts under the same directory root as the SVG document will be allowed.</p>
+<p>RelaxedScriptSecurity
+:
+Scripts from any location can be loaded.</p>
+<p>In addition, Batik provides the following set of <code>ExternalResourceSecurity</code> implementations:</p>
+<p>NoLoadExternalResourceSecurity
+:
+No external references are allowed.</p>
+<p>EmbededExternalResourceSecurity
+:
+Only resources embeded into the file are allowed (i.e., references through the <code>data:</code> protocol).</p>
+<p>DefaultExternalResourceSecurity
+:
+Embeded external resources (see above) and resources coming from the same location as the document referencing them are allowed.</p>
+<p>RelaxedExternalResourceSecurity
+:
+Resources from any location can be loaded.</p>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

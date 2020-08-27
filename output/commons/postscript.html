@@ -156,55 +156,79 @@ $(document).ready(function () {
 	  <h2>The Apache&trade; XML Graphics Project</h2>
 	</div>  
 
-    <h1>Apache(tm) XML Graphics Project - for the creation and maintenance of software for the conversion of XML formats to graphical output</h1>
+    <h1>Tools for Adobe PostScript</h1>
     
 
-    <h1>Apache&trade; XML Graphics Project</h1>
-<p>The Apache XML Graphics Project is responsible for software licensed to the Apache Software Foundation intended for the creation &amp; maintenance of:</p>
+    <h1>Tools for Adobe PostScript</h1>
+<h2 id="overview">Overview</h2>
+<p>Apache&trade; XML Graphics Commons contains various tools for writing and processing Adobe PostScript files. This includes:</p>
 <ul>
-<li>the conversion of XML formats to graphical output</li>
-<li>related software components</li>
+<li>
+<p>A PostScript generator class which helps writing PostScript files from scratch.</p>
+</li>
+<li>
+<p>Two Graphics2D implementations, one for plain PostScript and one for writing Encapsulated PostScript (EPS).</p>
+</li>
+<li>
+<p>A DSC-parser/processor: Parse, post-process and change DSC-compliant PostScript files.</p>
+</li>
 </ul>
-<h2>Apache&trade; XML Graphics Project - Current Projects</h2>
-<p>The Apache&trade; XML Graphics Project currently consists of the following sub-projects, each focused on a different aspect of XML Graphics:</p>
+<blockquote>
+<p><strong>NOTE:</strong></p>
+<p>We don't currently include a PostScript interpreter though we would love to have one. A Java-based PostScript interpreter to keep an eye on is the one from the <a href="http://foray.sourceforge.net">FOray project</a>.</p>
+</blockquote>
+<h1 id="generator">The PostScript generator</h1>
+<p>The "PSGenerator" class can help writing PostScript files. It deals with things like escaping, saving/tracking/restoring graphics state, writing DSC comments and tracking of DSC resources.</p>
+<p>You will rarely interact with the PS generator itself, as it is probably more interesting to generate a PostScript file using Java2D which is described in the following section.</p>
+<h2 id="java2d">Java2D: Graphics2D implementation for generating PostScript and EPS</h2>
+<p>We provide two classes (PSDocumentGraphics2D and EPSDocumentGraphics2D) which you can use to generate complete PostScript files using normal Java2D means. The difference between the two classes is that the EPS variant creates a fully compliant Encapsulated PostScript file while the PS variant simply creates a normal DSC-compliant level 2 PostScript file. It depends on your requirement which variant you choose. The PS variant is mostly for printing purposes while the EPS variant is better suited for inclusion in other documents.</p>
+<h3 id="creating-eps">Creating an EPS file</h3>
+<p>Creating an EPS file using the Graphics2D implementation is easy. Instantiate EPSDocumentGraphics2D, set a GraphicContext and set up the output document. Here's an example:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.apache.xmlgraphics.java2d.ps.EPSDocumentGraphics2D</span><span class="o">;</span>
+
+<span class="o">[..]</span>
+
+<span class="n">EPSDocumentGraphics2D</span> <span class="n">g2d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EPSDocumentGraphics2D</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+<span class="n">g2d</span><span class="o">.</span><span class="na">setGraphicContext</span><span class="o">(</span><span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">xmlgraphics</span><span class="o">.</span><span class="na">java2d</span><span class="o">.</span><span class="na">GraphicContext</span><span class="o">());</span>
+
+<span class="c1">//Set up the document size</span>
+<span class="n">g2d</span><span class="o">.</span><span class="na">setupDocument</span><span class="o">(</span><span class="n">out</span><span class="o">,</span> <span class="mi">400</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span> <span class="c1">//400pt x 200pt</span>
+<span class="c1">//out is the OutputStream to write the EPS to</span>
+
+<span class="n">g2d</span><span class="o">.</span><span class="na">drawRect</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">50</span><span class="o">);</span> <span class="c1">//paint a rectangle using normal Java2D calls</span>
+
+<span class="n">g2d</span><span class="o">.</span><span class="na">finish</span><span class="o">();</span> <span class="c1">//Wrap up and finalize the EPS file</span>
+</pre></div>
+
+
+<p>A complete example for generating an EPS files can be found in the <a href="http://svn.apache.org/viewvc/xmlgraphics/commons/trunk/examples/java/java2d/ps/">"examples" directory</a> in the distribution.</p>
+<h2 id="dsc">DSC parser/processor</h2>
+<p>Many PostScript files use special comments to structure a document. This allows manipulation of PostScript files without interpreting them. These special comments are defined in the <a href="http://partners.adobe.com/public/developer/en/ps/5001.DSC_Spec.pdf">Document Structuring Conventions</a>. The code in Commons is designed to work with DSC 3.0. For details on how DSC is used, please take a look at the DSC specification.</p>
+<p>The DSC support in Commons was primarily developed to implement resource optimization features in <a href="http://xmlgraphics.apache.org/fop/">Apache FOP</a> 's PostScript output support. Resources like images which are used repeatedly in a document should not be written to the PostScript file each time it is used. Instead it is written once at the beginning of the file as a PostScript form. The form is then called whenever the image needs painting.</p>
+<p>But the DSC parser could potentially be used for other purposes. The most obvious is extracting a subset of pages from a DSC-compliant file. Assume you want to print only page 45 to 57 of a particular document. There's an example that demonstrates exactly this. Check out the "examples" directory in the distribution. Other potential use cases for the DSC parser are:</p>
 <ul>
-<li><a href="/batik/">Apache Batik</a> - A toolkit for Scalable Vector Graphics (SVG), based in Java</li>
-<li><a href="/fop/">Apache FOP</a> - A print formatter &amp; renderer for XSL-FO (FO=formatting objects), based in Java</li>
-<li><a href="/commons/">Apache XML Graphics Commons</a> - A library with various components used by Apache Batik and Apache FOP, written in Java</li>
+<li>
+<p>Patching PostScript files, for example, adding OMR marks for automatic packaging</p>
+</li>
+<li>
+<p><a href="http://en.wikipedia.org/wiki/Imposition">Imposition</a> (2-up, n-up, rotation, etc.)</p>
+</li>
+<li>
+<p>EPS graphic extraction</p>
+</li>
+<li>
+<p>Inspecting the page count</p>
+</li>
+<li>
+<p>etc. etc.</p>
+</li>
 </ul>
-<h1>Apache&trade; Batik: a Java-based SVG toolkit</h1>
-<p>Batik is a Java(tm) technology based toolkit for applications or applets that want to use images in the <a href="http://www.w3.org/TR/SVG/">Scalable Vector Graphics (SVG)</a> format for various purposes, such as viewing, generation or manipulation.</p>
-<p>The project's ambition is to give developers a set of <a href="http://xmlgraphics.apache.org/batik/using/architecture.html#coreComponents">core modules</a> which can be used together or individually to support specific SVG solutions. Here are some examples of <a href="http://xmlgraphics.apache.org/batik/architecture.html">modules</a>.</p>
-<h2>Apache&trade; Batik Modules</h2>
-<ul>
-<li>the <a href="/batik/architecture.html#lowLevelComponents">SVG Parser</a></li>
-<li>the <a href="/batik/svggen.html">SVG Generator</a></li>
-<li>the <a href="/batik/domapi.html">SVG DOM</a></li>
-</ul>
-<p>Another ambition for the Batik project is to make it highly <a href="/batik/extendingBatik.html">extensible</a> (for example, Batik allows the developer to handle custom SVG tags). Even though the goal of the project is to provide a set of core modules, one of the deliverables is a full fledged <a href="http://xmlgraphics.apache.org/batik/tools/browser.html">SVG Browser</a> implementation, which validates the various modules and their inter-operability.</p>
-<p>Find out more about <a href="/batik/">Apache Batik</a>.</p>
-<h1>Apache FOP: a Java-based XSL-FO (Formatting Objects) processor</h1>
-<p>FOP (Formatting Objects Processor) is the world's first print formatter driven by <a href="http://www.w3.org/TR/xsl/">XSL formatting objects</a> (XSL-FO) and the world's first output independent formatter. It is a Java application that reads a formatting object (FO) tree and renders the resulting pages to a specified output. The primary output target is PDF but there are other <a href="/fop/output.html">output formats</a> currently supported.</p>
-<h2>Apache&trade; FOP Output Formats</h2>
-<ul>
-<li>PDF (Portable Document Format)</li>
-<li>PS (Adobe Postscript)</li>
-<li>PCL (Printer Control Language)</li>
-<li>AFP (MO:DCA)</li>
-<li>SVG (Scalable Vector Graphics)</li>
-<li>XML (area tree representation)</li>
-<li>Print</li>
-<li>AWT/Java2D</li>
-<li>MIF</li>
-<li>RTF (Rich Text Format)</li>
-<li>TXT (text)</li>
-</ul>
-<p>Find out more about <a href="/fop/">Apache FOP</a>.</p>
-<h1>Apache XML Graphics Commons</h1>
-<p>Apache XML Graphics Commons is a library that consists of several reusable components used by Apache Batik and Apache FOP. Many of these components can easily be used separately outside the domains of SVG and XSL-FO. You'll find components such as a PDF library, an RTF library, Graphics2D implementations that let you generate PDF and PostScript files and much more.</p>
-<p>Apache XML Graphics Commons has only just started. It's in the process of being populated with components coming from Apache Batik and Apache FOP. Stay tuned for exciting treasures made available.</p>
-<p>In the Wiki, we have a <a href="https://cwiki.apache.org/confluence/display/XMLGRAPHICS/XmlGraphicsCommonComponents">plan for building Apache XML Graphics Commons</a>. The plan will give you an idea of what you can expect to find here when we're finished migrating components.</p>
-<p>Find out more about <a href="/commons/">Apache XML Graphics Commons</a>. (CMS)</p>
+<p>The DSC parser (DSCParser) was designed as a pull parser, i.e. you fetch new events from the parser inspecting them and acting on them as they are found. If you prefer to work with a push parser, you can pass the DSCParser a DSCHandler implementation and the parser will send you all the events.</p>
+<p>The best example to understand how to use the DSC parser is the PageExtractor class that implements the page extraction functionality mentioned above.</p>
+<blockquote>
+<p><strong>NOTE:</strong></p>
+<p>The DSC parser is not considered feature-complete. The basic infrastructure is there but, for example, not all DSC comments are available as concrete Java classes. If you need to extend the DSC parser for your own use cases, please send us your patches.</p>
+</blockquote>
 
       <div class="clear"></div>
 

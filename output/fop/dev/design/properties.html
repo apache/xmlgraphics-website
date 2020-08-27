@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache&trade; FOP
+  - [FOP Home](/fop/)
+  - [Download](/fop/download.html)
+  - [Quick Start Guide](/fop/quickstartguide.html)
+  - [Compliance](/fop/compliance.html)
+  - [Getting Help](/fop/gethelp.html)
+  - [FAQs](/fop/faq.html)
+  - [FOP Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP)
+  - [Mailing Lists](/fop/maillist.html)
+  - [License](/fop/license.html)
+  - ## Resources
+    - [XSL-FO](/fop/fo.html)
+    - [Examples](/fop/examples.html)
+    - [Bugs](/fop/bugs.html)
+    - [Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FrontPage)
+    - [Other](/fop/resources.html)
+  - ## Project
+    - [News](/fop/news.html)
+    - [Who We Are](/fop/team.html)
+    - [Status](/fop/status.html)
+    - [Known Issues](/fop/knownissues.html)
+    - [Changes](/fop/changes.html)
+  - ## Versions
+      - ## FOP Trunk (dev)
+          - [Overview](/fop/trunk/)
+          - [Upgrading](/fop/trunk/upgrading.html)
+          - ### Using Apache&trade; FOP
+            - [Build](/fop/trunk/compiling.html)
+            - [Configure](/fop/trunk/configuration.html)
+            - [Run](/fop/trunk/running.html)
+            - [Embed](/fop/trunk/embedding.html)
+            - [Servlets](/fop/trunk/servlets.html)
+            - [Ant Task](/fop/trunk/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/trunk/accessibility.html)
+            - [Complex Scripts](/fop/trunk/complexscripts.html)
+            - [Events](/fop/trunk/events.html)
+            - [Extensions](/fop/trunk/extensions.html)
+            - [Fonts](/fop/trunk/fonts.html)
+            - [Graphics](/fop/trunk/graphics.html)
+            - [Hyphenation](/fop/trunk/hyphenation.html)
+            - [Intermediate Format](/fop/trunk/intermediate.html)
+            - [Metadata](/fop/trunk/metadata.html)
+            - [Output Targets](/fop/trunk/output.html)
+            - [PDF/A](/fop/trunk/pdfa.html)
+            - [PDF/X](/fop/trunk/pdfx.html)
+            - [PDF Encryption](/fop/trunk/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/trunk/whitespacemanagement.html)
+      - ## FOP 2.5
+          - [FOP 2.5 Overview](/fop/2.5/)
+          - [Release Notes](/fop/2.5/releaseNotes_2.5.html)
+          - [Changes (2.5)](/fop/2.5/changes_2.5.html)
+          - [Known Issues](/fop/2.5/knownissues_overview.html)
+          - [Upgrading](/fop/2.5/upgrading.html)
+          - ### Using Apache FOP 2.5
+            - [Build](/fop/2.5/compiling.html)
+            - [Configure](/fop/2.5/configuration.html)
+            - [Run](/fop/2.5/running.html)
+            - [Embed](/fop/2.5/embedding.html)
+            - [Servlets](/fop/2.5/servlets.html)
+            - [Ant Task](/fop/2.5/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.5/accessibility.html)
+            - [Complex Scripts](/fop/2.5/complexscripts.html)
+            - [Events](/fop/2.5/events.html)
+            - [Extensions](/fop/2.5/extensions.html)
+            - [Fonts](/fop/2.5/fonts.html)
+            - [Graphics](/fop/2.5/graphics.html)
+            - [Hyphenation](/fop/2.5/hyphenation.html)
+            - [Intermediate Format](/fop/2.5/intermediate.html)
+            - [Metadata](/fop/2.5/metadata.html)
+            - [Output Targets](/fop/2.5/output.html)
+            - [PDF/A](/fop/2.5/pdfa.html)
+            - [PDF/X](/fop/2.5/pdfx.html)
+            - [PDF Encryption](/fop/2.5/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.5/whitespacemanagement.html)     
+      - ## FOP 2.4
+          - [FOP 2.4 Overview](/fop/2.4/)
+          - [Release Notes](/fop/2.4/releaseNotes_2.4.html)
+          - [Changes (2.4)](/fop/2.4/changes_2.4.html)
+          - [Known Issues](/fop/2.4/knownissues_overview.html)
+          - [Upgrading](/fop/2.4/upgrading.html)
+          - ### Using Apache FOP 2.4
+            - [Build](/fop/2.4/compiling.html)
+            - [Configure](/fop/2.4/configuration.html)
+            - [Run](/fop/2.4/running.html)
+            - [Embed](/fop/2.4/embedding.html)
+            - [Servlets](/fop/2.4/servlets.html)
+            - [Ant Task](/fop/2.4/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.4/accessibility.html)
+            - [Complex Scripts](/fop/2.4/complexscripts.html)
+            - [Events](/fop/2.4/events.html)
+            - [Extensions](/fop/2.4/extensions.html)
+            - [Fonts](/fop/2.4/fonts.html)
+            - [Graphics](/fop/2.4/graphics.html)
+            - [Hyphenation](/fop/2.4/hyphenation.html)
+            - [Intermediate Format](/fop/2.4/intermediate.html)
+            - [Metadata](/fop/2.4/metadata.html)
+            - [Output Targets](/fop/2.4/output.html)
+            - [PDF/A](/fop/2.4/pdfa.html)
+            - [PDF/X](/fop/2.4/pdfx.html)
+            - [PDF Encryption](/fop/2.4/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.4/whitespacemanagement.html)             
+      - ## FOP 2.3
+          - [FOP 2.3 Overview](/fop/2.3/)
+          - [Release Notes](/fop/2.3/releaseNotes_2.3.html)
+          - [Changes (2.3)](/fop/2.3/changes_2.3.html)
+          - [Known Issues](/fop/2.3/knownissues_overview.html)
+          - [Upgrading](/fop/2.3/upgrading.html)
+          - ### Using Apache FOP 2.3
+            - [Build](/fop/2.3/compiling.html)
+            - [Configure](/fop/2.3/configuration.html)
+            - [Run](/fop/2.3/running.html)
+            - [Embed](/fop/2.3/embedding.html)
+            - [Servlets](/fop/2.3/servlets.html)
+            - [Ant Task](/fop/2.3/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.3/accessibility.html)
+            - [Complex Scripts](/fop/2.3/complexscripts.html)
+            - [Events](/fop/2.3/events.html)
+            - [Extensions](/fop/2.3/extensions.html)
+            - [Fonts](/fop/2.3/fonts.html)
+            - [Graphics](/fop/2.3/graphics.html)
+            - [Hyphenation](/fop/2.3/hyphenation.html)
+            - [Intermediate Format](/fop/2.3/intermediate.html)
+            - [Metadata](/fop/2.3/metadata.html)
+            - [Output Targets](/fop/2.3/output.html)
+            - [PDF/A](/fop/2.3/pdfa.html)
+            - [PDF/X](/fop/2.3/pdfx.html)
+            - [PDF Encryption](/fop/2.3/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.3/whitespacemanagement.html)            
+      - ## FOP 2.2
+          - [FOP 2.2 Overview](/fop/2.2/)
+          - [Release Notes](/fop/2.2/releaseNotes_2.2.html)
+          - [Changes (2.2)](/fop/2.2/changes_2.2.html)
+          - [Known Issues](/fop/2.2/knownissues_overview.html)
+          - [Upgrading](/fop/2.2/upgrading.html)
+          - ### Using Apache FOP 2.2
+            - [Build](/fop/2.2/compiling.html)
+            - [Configure](/fop/2.2/configuration.html)
+            - [Run](/fop/2.2/running.html)
+            - [Embed](/fop/2.2/embedding.html)
+            - [Servlets](/fop/2.2/servlets.html)
+            - [Ant Task](/fop/2.2/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.2/accessibility.html)
+            - [Complex Scripts](/fop/2.2/complexscripts.html)
+            - [Events](/fop/2.2/events.html)
+            - [Extensions](/fop/2.2/extensions.html)
+            - [Fonts](/fop/2.2/fonts.html)
+            - [Graphics](/fop/2.2/graphics.html)
+            - [Hyphenation](/fop/2.2/hyphenation.html)
+            - [Intermediate Format](/fop/2.2/intermediate.html)
+            - [Metadata](/fop/2.2/metadata.html)
+            - [Output Targets](/fop/2.2/output.html)
+            - [PDF/A](/fop/2.2/pdfa.html)
+            - [PDF/X](/fop/2.2/pdfx.html)
+            - [PDF Encryption](/fop/2.2/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.2/whitespacemanagement.html)
+      - ## FOP 2.1
+          - [FOP 2.1 Overview](/fop/2.1/)
+          - [Release Notes](/fop/2.1/releaseNotes_2.1.html)
+          - [Changes (2.1)](/fop/2.1/changes_2.1.html)
+          - [Known Issues](/fop/2.1/knownissues_overview.html)
+          - [Upgrading](/fop/2.1/upgrading.html)
+          - ### Using Apache FOP 2.1
+            - [Build](/fop/2.1/compiling.html)
+            - [Configure](/fop/2.1/configuration.html)
+            - [Run](/fop/2.1/running.html)
+            - [Embed](/fop/2.1/embedding.html)
+            - [Servlets](/fop/2.1/servlets.html)
+            - [Ant Task](/fop/2.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.1/accessibility.html)
+            - [Complex Scripts](/fop/2.1/complexscripts.html)
+            - [Events](/fop/2.1/events.html)
+            - [Extensions](/fop/2.1/extensions.html)
+            - [Fonts](/fop/2.1/fonts.html)
+            - [Graphics](/fop/2.1/graphics.html)
+            - [Hyphenation](/fop/2.1/hyphenation.html)
+            - [Intermediate Format](/fop/2.1/intermediate.html)
+            - [Metadata](/fop/2.1/metadata.html)
+            - [Output Targets](/fop/2.1/output.html)
+            - [PDF/A](/fop/2.1/pdfa.html)
+            - [PDF/X](/fop/2.1/pdfx.html)
+            - [PDF Encryption](/fop/2.1/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.1/whitespacemanagement.html)
+      - ## FOP 2.0
+          - [FOP 2.0 Overview](/fop/2.0/)
+          - [Release Notes](/fop/2.0/releaseNotes_2.0.html)
+          - [Changes (2.0)](/fop/2.0/changes_2.0.html)
+          - [Known Issues](/fop/2.0/knownissues_overview.html)
+          - [Upgrading](/fop/2.0/upgrading.html)
+          - ### Using Apache FOP 2.0
+            - [Build](/fop/2.0/compiling.html)
+            - [Configure](/fop/2.0/configuration.html)
+            - [Run](/fop/2.0/running.html)
+            - [Embed](/fop/2.0/embedding.html)
+            - [Servlets](/fop/2.0/servlets.html)
+            - [Ant Task](/fop/2.0/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/2.0/accessibility.html)
+            - [Complex Scripts](/fop/2.0/complexscripts.html)
+            - [Events](/fop/2.0/events.html)
+            - [Extensions](/fop/2.0/extensions.html)
+            - [Fonts](/fop/2.0/fonts.html)
+            - [Graphics](/fop/2.0/graphics.html)
+            - [Hyphenation](/fop/2.0/hyphenation.html)
+            - [Intermediate Format](/fop/2.0/intermediate.html)
+            - [Metadata](/fop/2.0/metadata.html)
+            - [Output Targets](/fop/2.0/output.html)
+            - [PDF/A](/fop/2.0/pdfa.html)
+            - [PDF/X](/fop/2.0/pdfx.html)
+            - [PDF Encryption](/fop/2.0/pdfencryption.html)
+            - [PDF Images](/fop/fop-pdf-images.html)
+            - [Whitespace Management](/fop/2.0/whitespacemanagement.html)
+      - ## FOP 1.1
+          - [FOP 1.1 Overview](/fop/1.1/)
+          - [Release Notes](/fop/1.1/releaseNotes_1.1.html)
+          - [Changes (1.1)](/fop/1.1/changes_1.1.html)
+          - [Known Issues](/fop/1.1/knownissues_overview.html)
+          - [Upgrading](/fop/1.1/upgrading.html)
+          - ### Using Apache FOP 1.1
+            - [Build](/fop/1.1/compiling.html)
+            - [Configure](/fop/1.1/configuration.html)
+            - [Run](/fop/1.1/running.html)
+            - [Embed](/fop/1.1/embedding.html)
+            - [Servlets](/fop/1.1/servlets.html)
+            - [Ant Task](/fop/1.1/anttask.html)
+          - ### Features
+            - [Accessibility](/fop/1.1/accessibility.html)
+            - [Complex Scripts](/fop/1.1/complexscripts.html)
+            - [Events](/fop/1.1/events.html)
+            - [Extensions](/fop/1.1/extensions.html)
+            - [Fonts](/fop/1.1/fonts.html)
+            - [Graphics](/fop/1.1/graphics.html)
+            - [Hyphenation](/fop/1.1/hyphenation.html)
+            - [Intermediate Format](/fop/1.1/intermediate.html)
+            - [Metadata](/fop/1.1/metadata.html)
+            - [Output Targets](/fop/1.1/output.html)
+            - [PDF/A](/fop/1.1/pdfa.html)
+            - [PDF/X](/fop/1.1/pdfx.html)
+            - [PDF Encryption](/fop/1.1/pdfencryption.html)
+      - ## FOP 1.0
+          - [FOP 1.0 Overview](/fop/1.0/)
+          - [Release Notes](/fop/1.0/releaseNotes_1.0.html)
+          - [Changes (1.0)](/fop/1.0/changes_1.0.html)
+          - [Known Issues](/fop/1.0/knownissues_overview.html)
+          - [Upgrading](/fop/1.0/upgrading.html)
+          - ### Using Apache FOP 1.0
+            - [Build](/fop/1.0/compiling.html)
+            - [Configure](/fop/1.0/configuration.html)
+            - [Run](/fop/1.0/running.html)
+            - [Embed](/fop/1.0/embedding.html)
+            - [Servlets](/fop/1.0/servlets.html)
+            - [Ant Task](/fop/1.0/anttask.html)
+          - ### Features
+            - [Output Targets](/fop/1.0/output.html)
+            - [Intermediate Format](/fop/1.0/intermediate.html)
+            - [PDF Encryption](/fop/1.0/pdfencryption.html)
+            - [PDF/A](/fop/1.0/pdfa.html)
+            - [PDF/X](/fop/1.0/pdfx.html)
+            - [Graphics](/fop/1.0/graphics.html)
+            - [Fonts](/fop/1.0/fonts.html)
+            - [Hyphenation](/fop/1.0/hyphenation.html)
+            - [Extensions](/fop/1.0/extensions.html)
+            - [Events](/fop/1.0/events.html)
+            - [Metadata](/fop/1.0/metadata.html)
+            - [Accessibility](/fop/1.0/accessibility.html)
+      - ## FOP Development
+          - [General Info](/fop/dev/)
+          - ## Design
+            - [Design Info](/fop/dev/design/)
+          - ## Core Process
+            - [Startup](/fop/dev/design/startup.html)
+            - [XML Parsing](/fop/dev/design/parsing.html)
+            - [FO Tree](/fop/dev/design/fotree.html)
+            - [Properties](/fop/dev/design/properties.html)
+            - [Layout](/fop/dev/design/layout.html)
+            - [Break Possibility](/fop/dev/design/breakpos.html)
+            - [Area Tree](/fop/dev/design/areas.html)
+            - [Renderers](/fop/dev/design/renderers.html)
+          - ## Miscellaneous
+            - [Images](/fop/dev/design/images.html)
+            - [PDF Library](/fop/dev/design/pdf-library.html)
+            - [SVG](/fop/dev/design/svg.html)
+            - [Embedding](/fop/dev/design/embedding.html)
+            - [Extending](/fop/dev/design/extending.html)
+            - [Optimisations](/fop/dev/design/optimise.html)
+            - [User Agent](/fop/dev/design/useragent.html)
+          - [Unresolved (Wiki)](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FOPProjectPages)
+          - [SVG](/fop/dev/svg.html)
+          - [Extensions](/fop/dev/extensions.html)
+          - ## Develop
+            - [Walk-Thru](/fop/dev/implement.html)
+            - [Patch Queue](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20description%20~%20%22\%22[patch]\%22%22%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+            - [Conventions](/fop/dev/conventions.html)
+          - ## Test
+            - [Testing](/fop/dev/testing.html)
+          - ## Deploy
+            - [Doc Mgmt](/fop/dev/doc.html)
+            - [Release](/fop/dev/release.html)
+            - [Bugs](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20issuetype%20%3D%20Bug%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29)
+          - ## Resources
+            - [FAQs](/fop/dev/faq.html)
+            - [Tools](/fop/dev/tools.html)
+            - [ViewVC](http://svn.apache.org/viewvc/xmlgraphics/fop)
+          - ## SubPackages
+            - [RTFlib](/fop/dev/rtflib.html)
+
+# Apache&trade; XML Graphics
+  - ## Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache Batik](/batik/)
+  - [Apache XML Graphics Commons](/commons/)
+
+### Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+      $('#navigation :header').not('#search-apache-xml-graphics, #apachewzxhzdk3-xml-graphics, #sub-projects').append(' &raquo;');
+    }
+  $('#navigation > ul > li > ul > li ul').hide();
+  $('#project-overview').next().hide();
+  $('#versions').next().show();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+      $("li.highlight").removeClass("highlight");
+      $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
+	  <a href="/fop/"><img src="/images/apache-fop-logo.jpg" alt="The Apache FOP Project" width="120" height="65" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; FOP Project</h2>
+	</div>  
+
+    <h1>Apache(tm) FOP Design: Properties</h1>
+    
+
+    <h1>Apache&trade; FOP Design: Properties</h1>
+<p><authors><person email="" name="Karen Lease"></person></authors></p>
+<h2 id="intro">Introduction</h2>
+<p>As the input XSL-FO is being parsed and the FO Tree is being built, the attributes of the FO elements are passed by the parser to the related FO object. The java object that represent the FO object then converts the attributes into properties that are stored in the FO Tree.</p>
+<h2 id="issues">Issues</h2>
+<p>The following are some issues when dealing with properties:</p>
+<ul>
+<li>
+<p>Initial Property Set</p>
+</li>
+<li>
+<p>Inheritance: Some properties can be inherited from parent objects.</p>
+</li>
+<li>
+<p>Adoption: The parentage for some elements can move around. Markers are one example.</p>
+</li>
+<li>
+<p>Multiple Namespaces: The properties for foreign namespaces must be handled.</p>
+</li>
+<li>
+<p>Expressions: XSL-FO expressions can be included in properties.</p>
+</li>
+</ul>
+<h2 id="process-overview">Overview of Processing</h2>
+<p>The general flow of property processing is as follows:</p>
+<ul>
+<li>
+<p>As part of <code>FOTreeBuilder.startElement()</code>, <code>FObj.handleAttrs</code> is passed a list of attributes to be processed for the new FObj.</p>
+</li>
+<li>
+<p>FObj.handleAttrs gets a PropertyListBuilder and asks it to create a Property List from the list of attributes. There is currently only one static PropertyListBuilder, which handles the fo: namespace.</p>
+</li>
+<li>
+<p>FObj.handleAttrs then cross-references the returned PropertyList with the FObj, creates a PropertyManager to facilitate downstream processing of the PropertyList, and handles the special case of the writing-mode property.</p>
+</li>
+</ul>
+<h2 id="plb">PropertyListBuilder</h2>
+<p>Each plb object contains a hash of property names and <em>their</em> respective Makers. It may also contain element-specific property maker hashes; these are based on the <em>local name</em> of the flow object, ie. <em>table-row</em>, not <em>fo:table-row</em>. If an element-specific property mapping exists, it is preferred to the generic mapping.</p>
+<p>The PLB loops through each attribute in the list, finds an appropriate "Maker" for it, then calls the Maker to convert the attribute value into a Property object of the correct type, and stores that Property in the PropertyList.</p>
+<h2 id="datatypes">Property datatypes</h2>
+<p>The property datatypes are defined in the org.apache.fop.datatypes package, except Number and String which are java primitives. The FOP datatypes are:</p>
+<ul>
+<li>
+<p>Number</p>
+</li>
+<li>
+<p>String</p>
+</li>
+<li>
+<p>ColorType</p>
+</li>
+<li>
+<p>Length (has several subclasses)</p>
+</li>
+<li>
+<p>CondLength (compound)</p>
+</li>
+<li>
+<p>LengthRange (compound)</p>
+</li>
+<li>
+<p>Space (compound)</p>
+</li>
+<li>
+<p>Keep (compound)</p>
+</li>
+</ul>
+<p>The <em>org.apache.fop.fo.Property</em> class is the superclass for all Property subclasses. There is a subclass for each kind of property datatype. These are named using the datatype name plus the word Property, resulting in NumberProperty, StringProperty, and so on. There is also a class EnumProperty which uses an <code>int</code> primitive to hold enumerated values. There is no corresponding Enum datatype class.</p>
+<p>The Property class provides a "wrapper" around any possible property value. Code manipulating property values (in layout for example) usually knows what kind (or kinds) of datatypes are acceptable for a given property and will use the appropriate accessor.</p>
+<p>The base Property class defines accessor methods for all FO property datatypes, such as getNumber(), getColorType(), getSpace(), getEnum(), etc. It doesn't define accessors for SVG types, since these are handled separately (at least for now.) In the base Property class, all of these methods return null, except getEnum which returns 0. Individual subclasses return a value of the appropriate type, such as Length or ColorType. A subclass may also choose to return a reasonable value for other accessor types. For example, a SpaceProperty will return the optimum value if asked for a Length.</p>
+<h2 id="makers">Property Makers</h2>
+<p>The Property class contains a nested class called <em>Maker</em>. This is the base class for all other property Makers. It provides basic framework functionality which is overridden by the code generated by properties.xsl from the *properties.xml files. In particular it provides basic expression evaluation, using PropertyParser class in the org.apache.fop.fo.expr package.</p>
+<p>Other Property subclasses such as LengthProperty define their own nested Maker classes (subclasses of Property.Maker). These handle conversion from the Property subclass returned from expression evaluation into the appropriate subclass for the property.</p>
+<p>For each generic or specific property definition in the properties.xml files, a new subclass of one of the Maker classes is created. Note that no new Property subclasses are created, only new PropertyMaker subclasses. Once the property value has been parsed and stored, it has no specific functionality. Only the Maker code is specific. Maker subclasses define such aspects as keyword substitutions, whether the property can be inherited or not, which enumerated values are legal, default values, corresponding properties and specific datatype conversions.</p>
+<p>The PLB finds a "Maker" for the property based on the attribute name and the element name. Most Makers are generic and handle the attribute on any element, but it's possible to set up an element-specific property Maker. The attribute name to Maker mappings are automatically created during the code generation phase by processing the XML property description files.</p>
+<h2 id="attribute-list">Processing the attribute list</h2>
+<p>The PLB first looks to see if the font-size property is specified, since it sets up relative units which can be used in other property specifications. Each attribute is then handled in turn. If the attribute specifies part of a compound property such as space-before.optimum, the PLB looks to see if the attribute list also contains the "base" property (space-before in this case) and processes that first.</p>
+<h2 id="maker-design">How the Property Maker works</h2>
+<p>There is a family of Maker objects for each of the property datatypes, such as Length, Number, Enumerated, Space, etc. But since each Property has specific aspects such as whether it's inherited, its default value, its corresponding properties, etc. there is usually a specific Maker for each Property. All these Maker classes are created during the code generation phase by processing (using XSLT) the XML property description files to create Java classes.</p>
+<p>The Maker first checks for "keyword" values for a property. These are things like "thin, medium, thick" for the border-width property. The datatype is really a Length but it can be specified using these keywords whose actual value is determined by the "User Agent" rather than being specified in the XSL standard. For FOP, these values are currently defined in foproperties.xml. The keyword value is just a string, so it still needs to be parsed as described next.</p>
+<p>The Maker also checks to see if the property is an Enumerated type and then checks whether the value matches one of the specified enumeration values.</p>
+<p>Otherwise the Maker uses the property parser in the fo.expr package to evaluate the attribute value and return a Property object. The parser interprets the expression language and performs numeric operations and function call evaluations.</p>
+<p>If the returned Property value is of the correct type (specificed in foproperties.xml, where else?), the Maker returns it. Otherwise, it may be able to convert the returned type into the correct type.</p>
+<p>Some kinds of property values can't be fully resolved during FO tree building because they depend on layout information. This is the case of length values specified as percentages and of the special proportional-column-width(x) specification for table-column widths. These are stored as special kinds of Length objects which are evaluated during layout. Expressions involving "em" units which are relative to font-size <em>are</em> resolved during the FO tree building however.</p>
+<h2 id="property-list-struct">Structure of the PropertyList</h2>
+<p>The PropertyList extends HashMap and its basic function is to associate Property value objects with Property names. The Property objects are all subclasses of the base Property class. Each one simply contains a reference to one of the property datatype objects. Property provides accessors for all known datatypes and various subclasses override the accessor(s) which are reasonable for the datatype they store.</p>
+<p>The PropertyList itself provides various ways of looking up Property values to handle such issues as inheritance and corresponding properties.</p>
+<p>The main logic is:
+If the property is a writing-mode relative property (using start, end, before or after in its name), the corresponding absolute property value is returned if it's explicitly set on this FO.</p>
+<p>Otherwise, the writing-mode relative value is returned if it's explicitly set. If the property is inherited, the process repeats using the PropertyList of the FO's parent object. (This is easy because each PropertyList points to the PropertyList of the nearest ancestor FO.) If the property isn't inherited or no value is found at any level, the initial value is returned.</p>
+<h2 id="property-spec">Implementing Standard Properties</h2>
+<p>Because the properties defined in the standard are basically static, FOP currently builds the source code for the related Property classes from an XML data file. All properties are specified in src/codegen/foproperties.xml. The related classes are created automatically during the build process by applying an XSLT stylesheet to the foproperties.xml file.</p>
+<h3 id="generic">Generic properties</h3>
+<p>In the properties xml files, one can define generic property definitions which can serve as a basis for individual property definitions. There are currently several generic properties defined in foproperties.xml. An example is GenericColor, which defines basic properties for all ColorType properties. Since the generic specification doesn't include the inherited or default elements, these should be set in each property which is based on GenericColor. Here is an example:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;property</span> <span class="na">type=</span><span class="s">&#39;generic&#39;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;name&gt;</span>background-color<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;use-generic&gt;</span>GenericColor<span class="nt">&lt;/use-generic&gt;</span>
+  <span class="nt">&lt;inherited&gt;</span>false<span class="nt">&lt;/inherited&gt;</span>
+  <span class="nt">&lt;default&gt;</span>transparent<span class="nt">&lt;/default&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</pre></div>
+
+
+<p>A generic property specification can include all of the elements defined for the property element in the DTD, including the description of components for compound properties, and the specification of keyword shorthands.</p>
+<p>Generic property specifications can be based on other generic specifications. An example is GenericCondPadding template which is based on the GenericCondLength definition but which extends it by adding an inherited element and a default value for the length component.</p>
+<p>Generic properties can specify enumerated values, as in the GenericBorderStyle template. This means that the list of values, which is used by 8 properties (the "absolute" and "writing-mode-relative" variants for each BorderStyle property) is only specified one time.</p>
+<p>When a property includes a "use-generic" element and includes no other elements (except the "name" element), then no class is generated for the property. Instead the generated mapping will associate this property directly with an instance of the generic Maker.</p>
+<p>A generic class may also be hand-coded, rather than generated from the properties file. Properties based on such a generic class are indicated by the attribute <code>ispropclass='true'</code> on the <em>use-generic</em> element.</p>
+<p>This is illustrated by the SVG properties, most of which use one of the Property subclasses defined in the <em>org.apache.fop.svg</em> package. Although all of these properties are now declared in svgproperties.xml, no specific classes are generated. Classes are only generated for those SVG properties which are not based on generic classes defined in svg.</p>
+<h3 id="element-specific">Element-specific properties</h3>
+<p>Properties may be defined for all flow objects or only for particular flow objects. A PropertyListBuilder object will always look first for a Property.Maker for the flow object before looking in the general list. These are specified in the <code>element-property-list</code> section of the properties.xml files. The <code>localname</code> element children of this element specify for which flow-object elements the property should be registered.</p>
+<p><em>NOTE</em>: All the properties for an object or set of objects must be specified in a single element-property-list element. If the same localname appears in several element lists, the later set of properties will hide the earlier ones! Use the <em>ref</em> functionality if the same property is to be used in different sets of element-specific mappings.</p>
+<h3 id="reference">Reference properties</h3>
+<p>A property element may have a type attribute with the value <code>ref</code>. The content of the <em>name</em> child element is the name of the referenced property (not its class-name!). This indicates that the property specification has already been given, either in this same specification file or in a different one (indicated by the <code>family</code> attribute). The value of the family attribute is <em>XX</em> where the file <em>XXproperties.xml</em> defines the referenced property. For example, some SVG objects may have properties defined for FO. Rather than defining them again with a new name, the SVG properties simply reference the defined FO properties. The generating mapping for the SVG properties will use the FO Maker classes.</p>
+<h3 id="corresponding">Corresponding properties</h3>
+<p>Some properties have both <em>absolute</em> and <em>writing-mode-relative</em> forms. In general, the absolute forms are equivalent to CSS properties, and the writing-mode-relative forms are based on DSSSL. FO files may use either or both forms. In FOP code, a request for an absolute form will retrieve that value if it was specified on the FO; otherwise the corresponding relative property will be used if it was specified. However, a request for a relative form will only use the specified relative value if the corresponding absolute value was <em>not</em> specified for that FO.</p>
+<p>Corresponding properties are specified in the properties.xml files using the element <code>corresponding</code>, which has at least one <code>propval</code> child and may have a <code>propexpr</code> child, if the corresponding value is calculated based on several other properties, as for <code>start-indent</code>.</p>
+<p><em>NOTE</em>: most current FOP code accesses the absolute variants of these properties, notably for padding, border, height and width attributes. However it does use start-indent and end-indent, rather than the "absolute" margin properties.</p>
+<h2 id="mapping">Mapping</h2>
+<p>The XSL script <code>propmap.xsl</code> is used to generate property mappings based on both foproperties.xml and svgproperties.xml. The mapping classes in the main fop packages simply load these automatically generated mappings. The mapping code still uses the static "maker" function of the generated object to obtain a Maker object. However, for all generated classes, this method returns an instance of the class itself (which is a subclass of Property.Maker) and not an instance of a separate nested Maker class.</p>
+<p>For most SVG properties which use the SVG Property classes directly, the generated mapper code calls the "maker" method of the SVG Property class, which returns an instance of its nested Maker class.</p>
+<p>The property generation also handles element-specific property mappings as specified in the properties XML files.</p>
+<h2 id="enumerated">Enumerated values</h2>
+<p>For any property whose datatype is <code>Enum</code> or which contains possible enumerated values, FOP code may need to access enumeration constants. These are defined in the interfaces whose name is the same as the generated class name for the property, for example <code>BorderBeforeStyle.NONE</code>. These interface classes are generated by the XSL script <code>enumgen.xsl</code>. A separate interface defining the enumeration constants is always generated for every property which uses the constants, even if the constants themselves are defined in a generic class, as in BorderStyle.</p>
+<p>If a subproperty or component of a compound property has enumerated values, the constants are defined in a nested interface whose name is the name of the subproperty (using appropriate capitalization rules). For example, the keep properties may have values of AUTO or FORCE or an integer value. These are defined for each kind of keep property. For example, the keep-together property is a compound property with the components within-line, within-column and within-page. Since each component may have the values AUTO or FORCE, the KeepTogether interface defines three nested interfaces, one for each component, and each defines these two constants. An example of a reference in code to the constant is <code>KeepTogether.WithinPage.AUTO</code>.</p>
+<h2 id="compound">Compound property types</h2>
+<p>Some XSL FO properties are specified by compound datatypes. In the FO file, these are defined by a group of attributes, each having a name of the form <code>property.component</code>, for example <code>space-before.minimum</code>. These are several compound datatypes:</p>
+<ul>
+<li>
+<p>LengthConditional, with components length and conditionality</p>
+</li>
+<li>
+<p>LengthRange, with components minimum, optimum, and maximum</p>
+</li>
+<li>
+<p>Space, with components minimum, optimum, maximum, precedence and conditionality</p>
+</li>
+<li>
+<p>Keep, with components within-line, within-column and within-page</p>
+</li>
+</ul>
+<p>These are described in the properties.xml files using the element <code>compound</code> which has <code>subproperty</code> children. A subproperty element is much like a property element, although it may not have an <code>inherited</code> child element, as only a complete property object may be inherited.</p>
+<p>Specific datatype classes exist for each compound property. Each component of a compound datatype is itself stored as a Property object. Individual components may be accessed either by directly performing a get operation on the name, using the "dot" notation, eg. <code>get("space-before.optimum")</code> ; or by using an accessor on the compound property, eg. <code>get("space-before").getOptimum()</code>. In either case, the result is a Property object, and the actual value may be accessed (in this example) by using the "getLength()" accessor.</p>
+<h2 id="refine">Refinement</h2>
+<p>The <strong>Refinement</strong> step is part of reading and using the properties which may happen immediately or during the layout process. FOP does not currently use a separate Refinement process, but tends to handle refining steps as the FO Tree is built.</p>
+<h2 id="refined-fo-tree">Refined FO Tree</h2>
+<p>The Refined FO Tree is the result of the Refinement process.</p>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>

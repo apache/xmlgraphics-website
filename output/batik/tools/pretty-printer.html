@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+-->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+
+
+	<style>
+	.highlight {color: red;}
+	</style>
+
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# Apache Batik
+  - [Overview](/batik/)
+  - [License](/batik/license.html)
+  - [Download](/batik/download.html)
+  - [Notes](/batik/install.html)
+  - [Status](/batik/status.html)
+  - [Demo](/batik/demo-static.html)
+  - [FAQs](/batik/faq.html)
+  - [Batik Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSBATIK)
+  - [Mailing lists](/batik/mailing-lists.html)
+  - [Contributors](/batik/contributors.html)
+  - [Bug database](https://issues.apache.org/jira/issues/?jql=project%20%3D%20BATIK%20AND%20resolution%20%3D%20Unresolved%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20ORDER%20BY%20priority%20DESC)
+  - [Projects using Batik](/batik/uses.html)
+  - ## Batik Tools
+    - [Overview](/batik/tools/)
+    - [Browser](/batik/tools/browser.html)
+    - [Rasterizer](/batik/tools/rasterizer.html)
+    - [Font converter](/batik/tools/font-converter.html)
+    - [Pretty printer](/batik/tools/pretty-printer.html)
+  - ## Using Batik
+    - [Overview](/batik/using/)
+    - [Architecture](/batik/using/architecture.html)
+    - [Javadoc APIs](/batik/javadoc/)
+    - [DOM API](/batik/using/dom-api.html)
+    - [Parsers](/batik/using/parsers.html)
+    - ### Scripting
+      - [Scripting with ECMAScript](/batik/using/scripting/ecmascript.html)
+      - [Scripting with Java](/batik/using/scripting/java.html)
+      - [Scripting with Security](/batik/using/scripting/security.html)
+    - [SVG generator](/batik/using/svg-generator.html)
+    - [Swing components](/batik/using/swing.html)
+    - [Transcoder API](/batik/using/transcoder.html)
+    - [Extending Batik](/batik/using/extending.html)
+  - ## Development
+    - [Overview](/batik/dev/)
+    - [Branches](/batik/dev/branches.html)
+    - [SVG 1.2 support](/batik/dev/svg12.html)
+    - [Test infrastructure](/batik/dev/test.html)
+
+# Apache&trade; XML Graphics
+  - ### Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache FOP](/fop/)
+  - [Apache XML Graphics Commons](/commons/)
+
+## Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').append(' &raquo;');
+    }
+  $('#navigation > ul > li ul').hide();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 100px;">
+	  <a href="/batik/"><img src="/images/apache-batik-logo.png" alt="The Apache FOP Project" width="256" height="96" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; Batik Project</h2>
+	</div>  
+
+    <h1>SVG Pretty Printer</h1>
+    
+
+    <h1>SVG Pretty Printer</h1>
+<p>This page describes the features of the SVG pretty printer utility that comes with the Batik distribution. The SVG pretty printer is a utility that can format SVG files. The tool formats an SVG document according to the arguments passed on the command line.</p>
+<h2 id="downloading">Downloading the pretty printer</h2>
+<p>Refer to the <a href="../install.html">install page</a> and the <a href="/batik/download.html">download page</a> to find out what to download and how to download it. Remember that you can get either the source or binary distribution.</p>
+<h2 id="using">Pretty printing an SVG file</h2>
+<p>The method for starting the pretty-printer depends on the distribution of Batik that you chose to download. The following describes how to run the pretty printer for each distribution.</p>
+<h3 id="using-binary">Using the binary distribution</h3>
+<p>If you downloaded the binary distribution of Batik, you should have a file called <code>batik-1.6.zip</code> (or similar), and, after expanding that file, a jar file called <code>batik-svgpp.jar</code>. To start the pretty printer, open a console, change to the directory where you expanded the distribution (and where <code>batik-svgpp.jar</code> is located) and simply type the following at the command prompt:</p>
+<div class="highlight"><pre><span></span>java -jar batik-svgpp.jar [OPTIONS] FILES
+</pre></div>
+
+
+<p>For example, if you type:</p>
+<div class="highlight"><pre><span></span>java -jar batik-svgpp.jar samples/batikFX.svg
+</pre></div>
+
+
+<p>you will see the indented document written to standard output.</p>
+<p>For the options:</p>
+<p><strong>-newline cr</strong>  <em>|</em>  <strong>cr-lf</strong>  <em>|</em>  <strong>lf</strong>
+:
+specifies the newline character(s) generated in the printed document, the default being <code>lf</code> (Unix-style newlines),</p>
+<p><strong>-tab-width</strong>  <em>number</em>
+:
+specifies the tabulation width, the default being 4,</p>
+<p><strong>-doc-width</strong>  <em>number</em>
+:
+specifies the maximum number of columns for the whole document, the default being 80,</p>
+<p><strong>-no-format</strong>
+:
+specifies that the current indentation should be preserved, useful for performing doctype or newline substitutions,</p>
+<p><strong>-xml-decl</strong>  <em>string</em>
+:
+specifies the XML declaration,</p>
+<p><strong>-doctype change</strong>  <em>|</em>  <strong>remove</strong>
+:
+specifies whether the doctype should be changed or removed,</p>
+<p><strong>-publid-id</strong>  <em>string</em>
+:
+specifies the public ID to in the doctype declaration, when <code>-doctype change</code> is specified, and</p>
+<p><strong>-system-id</strong>  <em>string</em>
+:
+specifies the system ID to in the doctype declaration, when <code>-doctype change</code> is specified.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span>java -jar batik-svgpp.jar -tab-width 2 -newline cr-lf src.svg dest.svg
+</pre></div>
+
+
+<p>will format <code>src.svg</code> and write it to <code>dest.svg</code> using a tabulation width of 2 and Windows-style newlines, and:</p>
+<div class="highlight"><pre><span></span>java -jar batik-svgpp.jar -no-format -doctype change -public-id &quot;-//W3C//DTD SVG 1.1//EN&quot; \
+     -system-id &quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot; src.svg dest.svg
+</pre></div>
+
+
+<p>will format <code>src.svg</code> and write it to <code>dest.svg</code> unchanged, except for the doctype public and system IDs, which will be replaced by those specified.</p>
+<h3 id="using-source">Using the source distribution</h3>
+<p>If you downloaded the source distribution of Batik, you will have a zip or tar file that expanded into a directory called <code>xml-batik</code> or <code>batik-</code><em><code>version</code></em>. In that directory, you can find build scripts for the platform you are running on. For example, there is a <code>build.bat</code> script for users of the Windows platform and there is a <code>build.sh</code> script for UNIX users.</p>
+<p>To start the pretty printer you should:</p>
+<p>-
+Make sure that your <code>JAVA_HOME</code> environment variable is set to your JDK installation directory.</p>
+<p>-
+Open a command line window and go to the <code>xml-batik</code> or <code>batik-</code><em><code>version</code></em> directory where the Batik distribution was expanded.</p>
+<p>-
+For Windows, type the following at the command prompt:</p>
+<div class="highlight"><pre><span></span>build svgpp
+</pre></div>
+
+
+<p>and for Unix:</p>
+<div class="highlight"><pre><span></span>./build.sh svgpp
+</pre></div>
+
+
+<p>This will print out a help message for the pretty printer.</p>
+<p>You can pass options to the rasterizer as follows, for Windows:</p>
+<div class="highlight"><pre><span></span>build svgpp [OPTIONS] FILES
+</pre></div>
+
+
+<p>and for Unix:</p>
+<div class="highlight"><pre><span></span>./build.sh svgpp [OPTIONS] FILES
+</pre></div>
+
+
+<p>Refer to <a href="#using-binary">“Using the binary distribution”</a> for an explanation of these options.</p>
+
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/asf_logo_url.png" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2016 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>
