@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 from pelican.readers import MarkdownReader
+import os
 
 AUTHOR = u'XMLGRAPHICS'
 SITENAME = u'XMLGRAPHICS'
@@ -44,6 +45,12 @@ MarkdownReader.file_extensions.append('mdtext')
 THEME = 'theme'
 PAGE_PATHS = ['.']
 INDEX_SAVE_AS = 'articlesignore.html'
+
+STATIC_PATHS = []
+for root, _, _ in os.walk(PATH):
+    basepath = root.replace(PATH + os.sep, '')
+    for adir in ['css', 'js', 'images', 'fo', 'svg', 'schema', 'stylesets']:
+        STATIC_PATHS.append(os.path.join(basepath, adir))
 
 #MARKDOWN = {
 #    'extensions': ['mdx_include']
