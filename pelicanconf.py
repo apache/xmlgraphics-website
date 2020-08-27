@@ -42,6 +42,8 @@ PATH_METADATA = '(?P<path_no_ext>.*)\..*'
 ARTICLE_URL = ARTICLE_SAVE_AS = PAGE_URL = PAGE_SAVE_AS = '{path_no_ext}.html'
 MarkdownReader.file_extensions.append('mdtext')
 THEME = 'theme'
+PAGE_PATHS = ['.']
+INDEX_SAVE_AS = 'articlesignore.html'
 
 #MARKDOWN = {
 #    'extensions': ['mdx_include']
