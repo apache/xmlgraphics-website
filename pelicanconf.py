@@ -3,6 +3,8 @@
 from __future__ import unicode_literals
 from pelican.readers import MarkdownReader
 import os
+from markdown import Markdown
+from pelican.utils import pelican_open
 
 AUTHOR = u'XMLGRAPHICS'
 SITENAME = u'XMLGRAPHICS'
@@ -45,6 +47,23 @@ MarkdownReader.file_extensions.append('mdtext')
 THEME = 'theme'
 PAGE_PATHS = ['.']
 INDEX_SAVE_AS = 'articlesignore.html'
+
+fop_current_version = '2.5'
+fop_minimal_java_requirement = '1.7'
+fop_current_version_release_date = '13 May 2020'
+
+def read(self, source_path):
+    self._source_path = source_path
+    self._md = Markdown(**self.settings['MARKDOWN'])
+    with pelican_open(source_path) as text:
+        text = text.replace('{{ fop_current_version }}', fop_current_version).replace('{{ fop_minimal_java_requirement }}', fop_minimal_java_requirement).replace('{{ fop_current_version_release_date }}', fop_current_version_release_date)
+        content = self._md.convert(text)
+    if hasattr(self._md, 'Meta'):
+        metadata = self._parse_metadata(self._md.Meta)
+    else:
+        metadata = {}
+    return content, metadata
+MarkdownReader.read = read    
 
 STATIC_PATHS = []
 for root, _, _ in os.walk(PATH):
