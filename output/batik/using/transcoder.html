@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
-<!--
-    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
--->
     <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
     <link href="/css/profile.css" rel="stylesheet" type="text/css" />
     <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
@@ -36,6 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
+   <title>Transcoder API</title>
   </head>
 
   <body>
@@ -198,9 +194,6 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Transcoder API</h1>
-    
-
     <h1>Transcoder API</h1>
 <p>The goal of the transcoder API (package <code>org.apache.batik.transcoder</code>) is to provide a generic API for transcoding an input to an output. First, this document explains the basic transcoder API that <a href="../javadoc/org/apache/batik/transcoder/Transcoder.html">Transcoder</a>, <a href="../javadoc/org/apache/batik/transcoder/TranscoderInput.html">TranscoderInput</a> and <a href="../javadoc/org/apache/batik/transcoder/TranscoderOutput.html">TranscoderOutput</a> define, and thus all transcoders have in common. Next, it describes how to use the image transcoder API (package <code>org.apache.batik.transcoder.image</code>), which lets you rasterize an SVG document fragment to a raster image such as JPEG, PNG or TIFF.</p>
 <h2 id="transcoderAPI">The transcoder API</h2>
@@ -515,7 +508,6 @@ See the <code>save</code> method.</p>
 <p>Inspect the output file <code>out.jpg</code>.</p>
 </li>
 </ol>
-
         </div>
       </div>
       <div class="clear"></div>

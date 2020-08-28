@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
-<!--
-    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
--->
     <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
     <link href="/css/profile.css" rel="stylesheet" type="text/css" />
     <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
@@ -36,6 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
+   <title>Scripting With Java</title>
   </head>
 
   <body>
@@ -198,9 +194,6 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Scripting With Java</h1>
-    
-
     <h1>Scripting With Java</h1>
 <p>This page explains how to manipulate the DOM tree of an SVG document from a Java program.</p>
 <h2 id="Swing">How to manipulate a document in a JSVGCanvas</h2>
@@ -386,7 +379,6 @@ It is very dangerous to call <code>invokeAndWait</code> from the Swing event thr
 
 <p>where <em>classname</em> must be the name of a class that implements the <a href="../../javadoc/org/w3c/dom/svg/EventListenerInitializer.html">org.w3c.dom.svg.EventListenerInitializer</a> interface. Just before the document <code>SVGLoad</code> event is fired, an instance of this class is created, and this instance has its <code>initializeEventListeners</code> method invoked. Note that there is no way to specify Java handlers in event attributes on SVG elements, so having the <code>initializeEventListeners</code> call <code>addEventListener</code> on a node is the only way to attach a Java listener from within the document.</p>
 <p>The class specified by <code>SVG-Handler-Class</code> can be contained directly in the jar file, but it is also possible for it to be contained in a jar file added to the classpath using the <code>Class-Path</code> entry of the manifest.</p>
-
         </div>
       </div>
       <div class="clear"></div>

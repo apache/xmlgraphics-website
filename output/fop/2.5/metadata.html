@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
-<!--
-    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
--->
     <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
     <link href="/css/profile.css" rel="stylesheet" type="text/css" />
     <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
@@ -36,6 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
+   <title>Apache(tm) FOP: Metadata</title>
   </head>
 
   <body>
@@ -620,19 +616,6 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Apache(tm) FOP: Metadata</h1>
-    Translations: 
-<a href="/fop/2.0/metadata.html">en</a>
-<a href="/fop/0.95/metadata.html">en</a>
-<a href="/fop/trunk/metadata.html">en</a>
-<a href="/fop/1.1/metadata.html">en</a>
-<a href="/fop/2.2/metadata.html">en</a>
-<a href="/fop/2.1/metadata.html">en</a>
-<a href="/fop/2.3/metadata.html">en</a>
-<a href="/fop/2.4/metadata.html">en</a>
-<a href="/fop/1.0/metadata.html">en</a>
-
-
     <h1>Apache&trade; FOP: Metadata</h1>
 <h2 id="overview">Overview</h2>
 <p>Document metadata is an important tool for categorizing and finding documents. Various formats support different kinds of metadata representation and to different levels. One of the more popular and flexible means of representing document or object metadata is <a href="http://www.adobe.com/products/xmp/">XMP (eXtensible Metadata Platform, specified by Adobe)</a>. PDF 1.4 introduced the use of XMP. The XMP specification lists recommendation for embedding XMP metdata in other document and image formats. Given its flexibility it makes sense to make use this approach in the XSL-FO context. Unfortunately, unlike SVG which also refers to XMP, XSL-FO doesn't recommend a preferred way of specifying document and object metadata. Therefore, there's no portable way to represent metadata in XSL-FO documents. Each implementation does it differently.</p>
@@ -853,7 +836,6 @@ For example:</p>
   <span class="nt">&lt;/pdf:pagepiece&gt;</span>        
 <span class="nt">&lt;/fo:simple-page-master&gt;</span>
 </pre></div>
-
         </div>
       </div>
       <div class="clear"></div>

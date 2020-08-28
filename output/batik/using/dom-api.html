@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
-<!--
-    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
--->
     <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
     <link href="/css/profile.css" rel="stylesheet" type="text/css" />
     <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
@@ -36,6 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
+   <title>SVG DOM API</title>
   </head>
 
   <body>
@@ -199,9 +195,6 @@ $(document).ready(function () {
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
     <h1>SVG DOM API</h1>
-    
-
-    <h1>SVG DOM API</h1>
 <p>The <a href="http://www.w3.org/dom/">Document Object Model</a> (DOM) is an API for XML documents. It defines the logical structure of documents and the way a document is accessed and manipulated. This page shows how to create an SVG document using the DOM API.</p>
 <h2 id="gettingStarted">Getting started</h2>
 <p>The DOM API defines an interface called <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/DOMImplementation.html">DOMImplementation</a>, which represents the bootstrap of any DOM implementation. The role of this class is to bootstrap a particular implementation of the DOM by providing a method to create a <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html">Document</a>. Then, the concrete <code>Document</code> represents an XML document and also acts like a factory for the various DOM objects such as <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Element.html">Element</a>, <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Attr.html">Attr</a> and <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Text.html">Text</a>.</p>
@@ -296,7 +289,6 @@ The <a href="../javadoc/org/apache/batik/swing/JSVGCanvas.html">JSVGCanvas</a> i
 <dt>ImageTranscoder</dt>
 <dd>The <a href="../javadoc/org/apache/batik/transcoder/image/ImageTranscoder.html">ImageTranscoder</a> is a transcoder that can take a URI, an <code>InputStream</code> or an SVG DOM tree and produces a raster image (such JPEG, PNG or TIFF). By creating a <a href="../javadoc/org/apache/batik/transcoder/TranscoderInput.html">TranscoderInput</a> object with the SVG DOM tree, you will be able to transform your SVG content to a raster image. For futher information, see the <a href="../using/transcoder.html">transcoder module documentation</a>.</dd>
 </dl>
-
         </div>
       </div>
       <div class="clear"></div>

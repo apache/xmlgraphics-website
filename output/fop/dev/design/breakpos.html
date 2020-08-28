@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
-<!--
-    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
--->
     <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
     <link href="/css/profile.css" rel="stylesheet" type="text/css" />
     <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
@@ -36,6 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
+   <title>Apache(tm) FOP Design: Layout Managers</title>
   </head>
 
   <body>
@@ -620,9 +616,6 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Apache(tm) FOP Design: Layout Managers</h1>
-    
-
     <h1>Apache&trade; FOP Design: Layout Managers</h1>
 <p><subtitle>Break Possibility Proposal</subtitle><authors><person email="klease@club-internet.fr" name="Karen Lease"></person></authors></p>
 <h2 id="intro">Introduction</h2>
@@ -662,7 +655,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h3 id="Optimizing">Optimizing</h3>
 <p>It obviously seems inefficient to go down to the lowest level LM and back up to the FlowLM for every possible line-break decision. It seems like it would be possible to optimize by letting the lower level layout managers run until they had exceeded the current limit in the stacking direction. They would then return control to the "galley" level (LineLM or FlowLM) which would fine-tune the break decision by asking the lower level LM to find a previous BP which would fit. At the inline level, this means hyphenation as described above.</p>
 <p>Another interesting question is at what point pending break possibilities can be turned into areas.The idea is to wait until we are sure we won't have to redo the breaking. This depends on the sophistication of the layout strategy. For example, if a linebreak can be considered final if the line is full and there are no anchors on the line, we could create the LineArea at that point. But if we are willing to change a previous line-end decision to get a better overall composition of a whole group of lines (to prevent multiple hyphens for example), we might wait until the LineLM had finished laying out all its material and then make all the Lines at once.</p>
-
         </div>
       </div>
       <div class="clear"></div>

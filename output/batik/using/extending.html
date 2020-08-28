@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
-<!--
-    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
--->
     <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
     <link href="/css/profile.css" rel="stylesheet" type="text/css" />
     <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
@@ -36,6 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
+   <title>Extending Batik</title>
   </head>
 
   <body>
@@ -199,9 +195,6 @@ $(document).ready(function () {
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
     <h1>Extending Batik</h1>
-    
-
-    <h1>Extending Batik</h1>
 <p>This page provides an overview of the built in extension mechanisms of Batik. As an open source project, people can of course make any extension they feel is interesting, however Batik has been designed with several forms of extension in mind.</p>
 <p>In general, extensions are added through the Service Provider Interface mechanism as described in the <a href="http://docs.oracle.com/javase/1.5.0/docs/guide/jar/jar.html#Service%20Provider">jar file documentation</a>. This allows for the extension of Batik simply by adding a new jar file(s) to the class path, and thus no modification of the Batik source is required!
 If you feel that the Batik team has overlooked an important area for extension please let your feelings be known on the mailing lists.</p>
@@ -344,7 +337,6 @@ A <a href="../javadoc/org/apache/batik/ext/awt/image/spi/StreamRegistryEntry.htm
 <p>While conforming SVG browsers need support only ECMAScript as a scripting language, Batik can support any scripting language given the right glue to connect it to the rest of the system.</p>
 <p>Script interpreters are also handled via the Service Provider Interface, The interface that needs to be implemented to expose a new interpreter to Batik is <a href="../javadoc/org/apache/batik/script/InterpreterFactory.html">InterpreterFactory</a>. This class has two methods: <code>getMimeType</code>, which returns a string that specifies what script type this intepreter handles (specifically, what the <code>type</code> attribute of <code>script</code> elements must be for them to be handled by this intepreter), and <code>createInterpreter</code>, which creates an instance of the <a href="../javadoc/org/apache/batik/script/Interpreter.html">Interpreter</a> interface.</p>
 <p>Batik comes with implementations of <code>Interpreter</code> and <code>IntepreterFactory</code> to support TCL and Python script in SVG documents, if the Jacl and Jython distributions are installed, respectively. See the classes in the <code>org.apache.batik.script.jacl</code> and <code>org.apache.batik.script.jython</code> packages to guidance on how to implement the interpreter interfaces, and the <a href="../install.html">installation notes</a> on what jar files are needed for TCL and Python support.</p>
-
         </div>
       </div>
       <div class="clear"></div>

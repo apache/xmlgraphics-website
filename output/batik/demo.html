@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
-<!--
-    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
--->
     <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
     <link href="/css/profile.css" rel="stylesheet" type="text/css" />
     <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
@@ -36,6 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
+   <title>Batik Demo</title>
   </head>
 
   <body>
@@ -199,9 +195,6 @@ $(document).ready(function () {
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
     <h1>Batik Demo</h1>
-    
-
-    <h1>Batik Demo</h1>
 <p>This page demonstrates the use of Batik’s <a href="using/swing.html">JSVGCanvas</a> swing component in a Java applet.</p>
 <p>| <applet archive="batik-awt-util.jar,                            batik-bridge.jar,                            batik-css.jar,                            batik-dom.jar,                            batik-ext.jar,                            batik-gvt.jar,                            batik-parser.jar,                            batik-svg-dom.jar,                            batik-script.jar,                            batik-swing.jar,                            batik-util.jar,                            batik-xml.jar,                            xml-apis-dom3.jar" code="AppletDemo.class" codebase="demo/" height="300" id="chart" mayscript="mayscript" width="400">[Your browser doesn’t seem to support Java applets, which is required for this demo.]</applet> |
 | Expense | Amount |
@@ -239,7 +232,6 @@ function updateBar(name) {
 }
 </script>
 The applet (<a href="demo/AppletDemo.java">view source</a>) displays the <a href="http://svn.apache.org/repos/asf/xmlgraphics/batik/trunk/samples/barChart.svg">barChart.svg</a> sample from the Batik distribution using a <code>JSVGCanvas</code>. Script in the web page then interacts with the applet, by calling the <code>updateBar</code> method of the applet object when the <strong>Update chart</strong> button is pressed. This method modifies the SVG document being displayed to update the heights of the bars.</p>
-
         </div>
       </div>
       <div class="clear"></div>

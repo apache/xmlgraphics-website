@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
-<!--
-    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
--->
     <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
     <link href="/css/profile.css" rel="stylesheet" type="text/css" />
     <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
@@ -36,6 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
+   <title>Apache(tm) FOP: Events/Processing Feedback</title>
   </head>
 
   <body>
@@ -620,18 +616,6 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Apache(tm) FOP: Events/Processing Feedback</h1>
-    Translations: 
-<a href="/fop/2.0/events.html">en</a>
-<a href="/fop/2.5/events.html">en</a>
-<a href="/fop/trunk/events.html">en</a>
-<a href="/fop/1.1/events.html">en</a>
-<a href="/fop/2.1/events.html">en</a>
-<a href="/fop/2.3/events.html">en</a>
-<a href="/fop/2.4/events.html">en</a>
-<a href="/fop/1.0/events.html">en</a>
-
-
     <h1>Apache&trade; FOP: Events/Processing Feedback</h1>
 <h2 id="introduction">Introduction</h2>
 <p>In versions until 0.20.5, Apache&trade; FOP used <a href="http://excalibur.apache.org/framework/index.html">Avalon-style Logging</a> where it was possible to supply a logger per processing run. During the redesign the logging infrastructure was switched over to <a href="http://commons.apache.org/logging/">Commons Logging</a> which is (like Log4J or java.util.logging) a "static" logging framework (the logger is accessed through static variables). This made it very difficult in a multi-threaded system to retrieve information for a single processing run.</p>
@@ -845,7 +829,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>Additional such modifiers can be added by implementing the <code>AdvancedMessageFormat$Part</code> and <code>AdvancedMessageFormat$PartFactory</code> interfaces.</p>
 <p>Square braces can be used to specify optional template sections. The whole section will be omitted if any of the variables used within are unavailable. Pipe (|) characters can be used to specify alternative sub-templates (see "locator" above for an example).</p>
 <p>Developers can also register a function (in the above example: <code>{ #gatherContextInfo})</code> to do more complex information rendering. These functions are implementations of the <code>AdvancedMessageFormat$Function</code> interface. Please take care that this is done in a locale-independent way as there is no locale information available, yet.</p>
-
         </div>
       </div>
       <div class="clear"></div>

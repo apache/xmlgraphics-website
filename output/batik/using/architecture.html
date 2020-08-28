@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
-<!--
-    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
--->
     <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
     <link href="/css/profile.css" rel="stylesheet" type="text/css" />
     <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
@@ -36,6 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
+   <title>Architecture overview</title>
   </head>
 
   <body>
@@ -199,9 +195,6 @@ $(document).ready(function () {
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
     <h1>Architecture overview</h1>
-    
-
-    <h1>Architecture overview</h1>
 <p>This document briefly describes the Batik architecture and the role of each of its modules. For detailed module design, you can refer to the Batik UML diagrams <a href="http://opensource.objectsbydesign.com/batik/index.html">Object by Design</a> or <a href="http://www.yworks.com/products/yDoc/showcase/batik-1.5/">yWorks</a>.</p>
 <p>The Batik modules are of one of three types: application modules, core modules and low level modules. The following figure illustrates these three module types.
 <div class="figure"> <img alt="Batik Architecture" src="images/HighLevelArchitecture.png" title=""> </div>
@@ -247,7 +240,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>The <a href="../using/parsers.html">SVG parser</a> module contains parser classes for complex SVG attributes such as the <code>transform</code> or <code>color</code> attributes. Higher level modules rely on the SVG parser module.</p>
 </li>
 </ul>
-
         </div>
       </div>
       <div class="clear"></div>

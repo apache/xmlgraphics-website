@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
-<!--
-    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
--->
     <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
     <link href="/css/profile.css" rel="stylesheet" type="text/css" />
     <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
@@ -36,6 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
+   <title>Apache(tm) FOP Development: Testing</title>
   </head>
 
   <body>
@@ -620,9 +616,6 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Apache(tm) FOP Development: Testing</h1>
-    
-
     <h1>Apache&trade; FOP Development: Testing</h1>
 <h2 id="build">"Build" Testing</h2>
 <p>Apache&trade; projects use an automated build tool called "jenkins" to create nightly builds from the SVN repository. Jenkins sends "nag" messages if the build fails. This can be considered a sort of basic test of the build process. To view the most recent logs of the jenkins builds:</p>
@@ -658,7 +651,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>For FOP the testing is done by rendering all the testing documents using the XML renderer. The XML files are then compared to see if there are any differences.</p>
 <h3 id="SVG-Testing">SVG Testing</h3>
 <p>The testing of SVG is not part of this testing system. SVG is tested for its rendering accuracy by using the transcoding mechanism via <a href="http://xmlgraphics.apache.org/batik/">Apache Batik</a>. So that the only part that needs testing is how the SVG image is embedded inside the flow of the fo document.</p>
-
         </div>
       </div>
       <div class="clear"></div>

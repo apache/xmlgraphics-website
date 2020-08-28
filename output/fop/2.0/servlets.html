@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
-<!--
-    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
--->
     <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
     <link href="/css/profile.css" rel="stylesheet" type="text/css" />
     <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
@@ -36,6 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
+   <title>Apache(tm) FOP: Servlets</title>
   </head>
 
   <body>
@@ -620,19 +616,6 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Apache(tm) FOP: Servlets</h1>
-    Translations: 
-<a href="/fop/0.95/servlets.html">en</a>
-<a href="/fop/2.5/servlets.html">en</a>
-<a href="/fop/trunk/servlets.html">en</a>
-<a href="/fop/1.1/servlets.html">en</a>
-<a href="/fop/2.2/servlets.html">en</a>
-<a href="/fop/2.1/servlets.html">en</a>
-<a href="/fop/2.3/servlets.html">en</a>
-<a href="/fop/2.4/servlets.html">en</a>
-<a href="/fop/1.0/servlets.html">en</a>
-
-
     <h1>Apache&trade; FOP: Servlets</h1>
 <p><subtitle>How to use Apache&trade; FOP in a Servlet</subtitle></p>
 <h2 id="overview">Overview</h2>
@@ -816,7 +799,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>Put a copy of a working parser in some directory where WebSphere can access it. For example, if /usr/webapps/yourapp/servlets is the CLASSPATH for your servlets, copy the Xerces jar into it (any other directory would also be fine). Do not add the jar to the servlet CLASSPATH, but add it to the CLASSPATH of the application server which contains your web application. In the WebSphere administration console, click on the "environment" button in the "general" tab. In the "variable name" box, enter "CLASSPATH". In the "value" box, enter the correct path to the parser jar file (/usr/webapps/yourapp/servlets/Xerces.jar in our example here). Press "OK", then apply the change and restart the application server.</p>
 <h2 id="complex-usecases">Handling complex use cases</h2>
 <p>Sometimes the requirements for a servlet get quite sophisticated: SQL data sources, multiple XSL transformations, merging of several datasources etc. In such a case consider using <a href="http://cocoon.apache.org/">Apache Cocoon</a> instead of a custom servlet to accomplish your goal.</p>
-
         </div>
       </div>
       <div class="clear"></div>

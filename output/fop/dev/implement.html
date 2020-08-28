@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
-<!--
-    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
--->
     <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
     <link href="/css/profile.css" rel="stylesheet" type="text/css" />
     <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
@@ -36,6 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
+   <title>Apache(tm) FOP Development: Implementation Overview</title>
   </head>
 
   <body>
@@ -620,9 +616,6 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Apache(tm) FOP Development: Implementation Overview</h1>
-    
-
     <h1>Apache&trade; FOP Development: Implementation Overview</h1>
 <p><subtitle>Following a Document Through Apache&trade; FOP</subtitle><authors><person email="" name="Arved Sandstrom"></person></authors></p>
 <p>The purpose of this document is to tie together the Apache&trade; FOP design (interface) with some of the key points where control is passed within FOP (implementation), so that developers can quickly find the section of code that is relevant to their needs. The process described is for a "typical" command-line document. All classes are in org.apache.fop unless otherwise designated.</p>
@@ -679,7 +672,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h2 id="Rendering">Rendering</h2>
 <p>The renderer receives pages from the area tree and renders those pages. If a renderer supports out of order rendering then it will either render or prepare a page in the correct order. Otherwise the pages are rendered in order. The task of the renderer is to take the pages and output them to the requested type. In the case of the AWTRenderer it needs to be able to view any page.</p>
 <p>When rendering a page it takes the page and renders each page region. The main work for a renderer implementation is to handle the viewports and inline areas. The inline areas need to be drawn on the page in the correct place.</p>
-
         </div>
       </div>
       <div class="clear"></div>

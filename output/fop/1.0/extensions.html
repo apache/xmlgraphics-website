@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
-<!--
-    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
--->
     <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
     <link href="/css/profile.css" rel="stylesheet" type="text/css" />
     <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
@@ -36,6 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
+   <title>Standard Apache&trade; FOP Extensions</title>
   </head>
 
   <body>
@@ -621,19 +617,6 @@ $(document).ready(function () {
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
     <h1>Standard Apache&trade; FOP Extensions</h1>
-    Translations: 
-<a href="/fop/2.0/extensions.html">en</a>
-<a href="/fop/0.95/extensions.html">en</a>
-<a href="/fop/2.5/extensions.html">en</a>
-<a href="/fop/trunk/extensions.html">en</a>
-<a href="/fop/1.1/extensions.html">en</a>
-<a href="/fop/2.2/extensions.html">en</a>
-<a href="/fop/2.1/extensions.html">en</a>
-<a href="/fop/2.3/extensions.html">en</a>
-<a href="/fop/2.4/extensions.html">en</a>
-
-
-    <h1>Standard Apache&trade; FOP Extensions</h1>
 <p>By "extension", we mean any data that can be placed in the input XML document that is not addressed by the XSL-FO standard. By having a mechanism for supporting extensions, Apache&trade; FOP is able to add features that are not covered in the specification.</p>
 <p>The extensions documented here are included with FOP, and are automatically available to you. If you wish to add an extension of your own to FOP, please see the <a href="../dev/extensions.html">Developers' Extension Page</a>.</p>
 <p><note>All extensions require the correct use of an appropriate namespace in your input document.</note></p>
@@ -780,7 +763,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>Applies to: fo:simple-page-master</p>
 <p>The crop box controls how Acrobat displays the page (CropBox in PDF) or how the Java2DRenderer sizes the output media. The PDF specification defines that the CropBox defaults to the MediaBox. This extension follows that definition. To simplify usage and cover most use cases, the three supported enumeration values "trim-box", "bleed-box" and "media-box" set the CropBox to one of those three other boxes.</p>
 <p>If requested in the future, we could offer to specify the CropBox in absolute coordinates rather than just by referencing another box.</p>
-
         </div>
       </div>
       <div class="clear"></div>

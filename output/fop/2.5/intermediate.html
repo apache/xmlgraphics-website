@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
-<!--
-    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
--->
     <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
     <link href="/css/profile.css" rel="stylesheet" type="text/css" />
     <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
@@ -36,6 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
+   <title>Apache(tm) FOP: Intermediate Format</title>
   </head>
 
   <body>
@@ -620,19 +616,6 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Apache(tm) FOP: Intermediate Format</h1>
-    Translations: 
-<a href="/fop/2.0/intermediate.html">en</a>
-<a href="/fop/0.95/intermediate.html">en</a>
-<a href="/fop/trunk/intermediate.html">en</a>
-<a href="/fop/1.1/intermediate.html">en</a>
-<a href="/fop/2.2/intermediate.html">en</a>
-<a href="/fop/2.1/intermediate.html">en</a>
-<a href="/fop/2.3/intermediate.html">en</a>
-<a href="/fop/2.4/intermediate.html">en</a>
-<a href="/fop/1.0/intermediate.html">en</a>
-
-
     <h1>Apache&trade; FOP: Intermediate Format</h1>
 <p><note>Please note that the intermediate formats described here are <strong>advanced features</strong> and can be ignored by most users of Apache&trade; FOP.</note></p>
 <h2 id="introduction">Introduction</h2>
@@ -770,7 +753,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>For certain output formats there's a caveat: Formats like AFP and PCL do not support arbitrary transformations on the IF's "viewport" and "g" elements. Possible are only rotations in 90 degree steps and translations.</p>
 <h3 id="advanced-if">Advanced Use</h3>
 <p>The generation of the intermediate format as well as it parsing process has been designed to allow for maximum flexibility and optimization. So rather than just passing in a StreamResult to IFSerializer's setResult() method, you can also use a SAXResult or a DOMResult. And as you've already seen, the IFParser on the other side allows you to retrieve a ContentHandler instance where you can manually send SAX events to start the parsing process (see <code>getContentHandler()</code>).</p>
-
         </div>
       </div>
       <div class="clear"></div>

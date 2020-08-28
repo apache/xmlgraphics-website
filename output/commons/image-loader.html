@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
-<!--
-    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
--->
     <link rel="stylesheet" type="text/css" media="screen" href="https://www.apache.org/css/code.css">
     <link href="/css/profile.css" rel="stylesheet" type="text/css" />
     <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
@@ -36,6 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
+   <title>Apache(tm) XML Graphics Commons: Image Loader Framework</title>
   </head>
 
   <body>
@@ -170,9 +166,6 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Apache(tm) XML Graphics Commons: Image Loader Framework</h1>
-    
-
     <h1>Apache&trade; XML Graphics Commons: Image Loader Framework</h1>
 <h2 id="overview">Overview</h2>
 <p>Apache&trade; XML Graphics Commons contains a unified framework for loading and processing images (bitmap and vector). The package name is <code>org.apache.xmlgraphics.image.loader</code>. Key features:</p>
@@ -338,7 +331,6 @@ registry.setAdditionalPenalty(
     "org.apache.xmlgraphics.image.loader.impl.ImageLoaderRawCCITTFax",
     Penalty.toPenalty(10000));
 This increases the penalty for the raw CCITT loader significantly so it will only be used if no other solutions exist. You can also set <code>Penalty.INFINITE_PENALTY</code> to disable the plug-in altogether. Negative penalties are possible to promote a plug-in but a negative penalty sum will be treated as zero penalty in most cases.</p>
-
         </div>
       </div>
       <div class="clear"></div>
