@@ -47,6 +47,7 @@ MarkdownReader.file_extensions.append('mdtext')
 THEME = 'theme'
 PAGE_PATHS = ['.']
 INDEX_SAVE_AS = 'articlesignore.html'
+READERS = {'html': None}
 
 fop_current_version = '2.5'
 fop_minimal_java_requirement = '1.7'
@@ -67,7 +68,7 @@ MarkdownReader.read = read
 
 STATIC_PATHS = []
 for root, _, _ in os.walk(PATH):
-    for adir in ['css', 'js', 'images', 'fo', 'svg', 'schema', 'stylesets']:
+    for adir in ['css', 'js', 'images', 'fo', 'svg', 'schema', 'stylesets', 'demo', 'javadoc']:
         STATIC_PATHS.append(os.path.join(root, adir).replace(PATH + os.sep, ''))
 
 #MARKDOWN = {
