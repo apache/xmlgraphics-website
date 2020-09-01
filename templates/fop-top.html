@@ -1,0 +1,11 @@
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+	{% filter markdown %}{% include sidenav %}{% endfilter %}
+	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
+	  <a href="/fop/"><img src="/images/apache-fop-logo.jpg" alt="The Apache FOP Project" width="120" height="65" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; FOP Project</h2>
+	</div><!-- <h1>{% block tagline %}{{ headers.title }}{% endblock %}</h1> -->{% block content %}

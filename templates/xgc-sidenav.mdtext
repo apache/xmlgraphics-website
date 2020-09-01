@@ -1,0 +1,85 @@
+[![Apache XML Graphics Project Logo](/images/apache-xml-graphics.gif "Apache XML Graphics Project")](/)
+
+# XML Graphics Commons
+  - [Overview](/commons/)
+  - [Download](/commons/download.html)
+  - ## Documentation
+    - [Tools for Adobe PostScript](/commons/postscript.html)
+    - [Image Loader Framework](/commons/image-loader.html)
+    - [XML Graphics Commons Components Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICS/XmlGraphicsCommonComponents)
+  - ## Information
+    - [Bugs](/commons/bugs.html)
+    - [Changes](/commons/changes.html)
+    - [Code Repositories](/repo.html)
+    - [Mailing Lists](/mail.html)
+  
+# Apache&trade; XML Graphics
+  - ### Project Overview
+    - [Who We Are](/team.html)
+    - [Legal Stuff](/legal.html)
+    - [Project Charter](/charter.html)
+    - [Mailing Lists](/mail.html)
+    - [Code Repositories](/repo.html)
+    - [ASF Sponsorship Program](https://www.apache.org/foundation/sponsorship.html)
+    - [ASF Thanks](https://www.apache.org/foundation/thanks.html)
+    - [Licenses](https://www.apache.org/licenses/)
+    - [Apache XML Graphics Security](/security.html)
+    - [ASF Security](https://www.apache.org/security/)
+
+# Sub Projects
+  - [Apache Batik](/batik/)
+  - [Apache FOP](/fop/)
+  - [Apache XML Graphics Commons](/commons/)
+
+## Search Apache XML Graphics
+
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+### ApacheCon N. America
+
+<a title="ApacheCon North America" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon North America" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon NA](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+### ApacheCon Europe
+
+<a title="ApacheCon Europe" href="https://www.apachecon.com"><img class="apachecon_logo" alt="ApacheCon Europe" src="https://www.apachecon.com/images/landingpage/apachecon-logo.png" width="200" /></a><br /><br />
+
+  * **[ApacheCon Europe](https://www.apachecon.com/)**
+
+Hope to see you there!
+
+<a title="Apache Software Foundation" href="https://www.apache.org"><img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asf_logo_url.png" width="200" /></a><br /><br />
+
+<a title="Support the Apache Software Foundation" href="https://donate.apache.org/"><img id="asf_support_url" alt="Support the Apache Software Foundation " src="https://blogs.apache.org/foundation/mediaresource/d67ca611-a57c-462d-ac23-95063f81d175" width="200" /></a>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').append(' &raquo;');
+    }
+  $('#navigation > ul > li ul').hide();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>
