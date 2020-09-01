@@ -639,18 +639,18 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>PDF Outline - This is output document extension. If rendering to pdf and this extensionis used then the bookmark information is passed to the pdf document. This information is then set on the document.</p>
 <p>PDF Additions - This can be done with an XML Document extension. A simple xml document is defined that provides the appropriate information. When the document is rendered a handler converts the document into PDF markup.</p>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;my:script-link</span> <span class="na">script=</span><span class="s">&quot;app.execMenuItem(&#39;AcroSrch:Query&#39;);&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;my:script-link</span> <span class="na">script=</span><span class="s">&quot;app.execMenuItem(&#39;AcroSrch:Query&#39;);&quot;</span><span class="nt">&gt;</span>
 Search
 <span class="nt">&lt;/my:script-link&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>to result in a text box referencing the following PDF action:</p>
-<div class="highlight"><pre><span></span><span class="o">&lt;&lt;</span>
-<span class="o">/</span><span class="nt">S</span> <span class="o">/</span><span class="nt">JavaScript</span>
-<span class="o">/</span><span class="nt">JS</span> <span class="o">(</span><span class="nt">app</span><span class="p">.</span><span class="nc">execMenuItem</span><span class="o">(</span><span class="s2">&quot;AcroSrch:Query&quot;</span><span class="o">);)</span>
-<span class="o">&gt;&gt;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">&lt;&lt;</span>
+<span class="err">/S /JavaScript</span>
+<span class="err">/JS (app.execMenuItem(&quot;AcroSrch:Query&quot;);)</span>
+<span class="err">&gt;&gt;</span>
+</code></pre></div>
 
 
 <h2 id="status">Status</h2>

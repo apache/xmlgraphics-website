@@ -641,26 +641,26 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>XSL-FO does not currently have a function for retrieving the current date and time. However, in some cases, XSLT can be used to place the current date and time into the XSL-FO document as it is generated.</p>
 <p>One possibility is to use the <a href="http://exslt.org/date/index.html">exslt date and time extension</a>.</p>
 <p>Another possibility is to use java or javascript (or perhaps some other language). Here is an example, using java, that works with Xalan. First, create the appropriate namespace:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;xsl:stylesheet</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;xsl:stylesheet</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span>
   <span class="err">...</span>
   <span class="na">xmlns:java=</span><span class="s">&quot;http://xml.apache.org/xslt/java&quot;</span> <span class="na">exclude-result-prefixes=</span><span class="s">&quot;java&quot;</span>
   <span class="err">...</span> <span class="nt">&gt;</span>
 <span class="nt">&lt;/xsl:stylesheet&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Next, use the java language to retrieve and format the current date and time. Here is an example template:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;xsl:template</span> <span class="na">match=</span><span class="s">&quot;TodaysDate&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;xsl:template</span> <span class="na">match=</span><span class="s">&quot;TodaysDate&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;xsl:value-of</span> <span class="na">select=</span><span class="s">&quot;java:format(java:java.text.SimpleDateFormat.new</span>
 <span class="s">        (&#39;MMMM d, yyyy, h:mm:ss a (zz)&#39;), java:java.util.Date.new())&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/xsl:template&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h2 id="xsl-fo">XSL-FO Issues</h2>
 <h3 id="fo-center-vertical">Vertical Centering</h3>
 <p>To vertically center an image, table, or other item, use display-align="center". See <a href="compliance.html#fo-property-display-align">display-align Compliance</a> for implementation status. Here is a small, self-contained document centering an image on a page:</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;fo:layout-master-set&gt;</span>
     <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;content&quot;</span>
@@ -685,12 +685,12 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="nt">&lt;/fo:flow&gt;</span>
   <span class="nt">&lt;/fo:page-sequence&gt;</span>
 <span class="nt">&lt;/fo:root&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="fo-center-table-horizon">Horizontal Centering (Tables)</h3>
 <p>To center a table horizontally, one possibility is to add one column on the left and one on the right which pad the table so that the visible part is centered:</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;fo:layout-master-set&gt;</span>
     <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;content&quot;</span>
@@ -715,7 +715,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="nt">&lt;/fo:flow&gt;</span>
   <span class="nt">&lt;/fo:page-sequence&gt;</span>
 <span class="nt">&lt;/fo:root&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>If your table is more complicated, or if defining borders on individual cells becomes too much work, use the code above and nest your table within the middle cell.</p>
@@ -724,7 +724,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h3 id="fo-oddeven">Recto/Verso Static Content Differences</h3>
 <p>One frequent request is that static content be different between recto pages (right-side or odd-numbered pages typically) and verso pages(left-side or even-numbered pages typically). For example, you may wish to place the page number on the "outer" side of each page. There are examples in the FO distribution and in the <a href="http://www.dpawson.co.uk/xsl/sect3/index.html">XSL FAQ FO section</a>.</p>
 <p>First, define a page master with alternating pages masters for odd and even pages. Then specify appropriate regions in these page masters, giving them different names. Use these names to put different static content in these regions. Here is a self-contained demonstration:</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;fo:layout-master-set&gt;</span>
     <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;even&quot;</span>
@@ -763,12 +763,12 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="nt">&lt;/fo:flow&gt;</span>
   <span class="nt">&lt;/fo:page-sequence&gt;</span>
 <span class="nt">&lt;/fo:root&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="fo-first-page">Making the First Page Special</h3>
 <p>To get a special header on the first page, one possibility is to insert it into the flow instead of the static content. Alternatively, use a page master referring to different page masters for the first page and the rest. Here is a code sample:</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;fo:layout-master-set&gt;</span>
     <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;first&quot;</span>
@@ -808,13 +808,13 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="nt">&lt;/fo:flow&gt;</span>
   <span class="nt">&lt;/fo:page-sequence&gt;</span>
 <span class="nt">&lt;/fo:root&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="fo-blank-pages">Blank Pages</h3>
 <p>Sometimes it is desirable to insert blank pages within your output, starting, for example, a new chapter on an odd page or an even page. A blank page can be forced by using <code>break-before="page-even"</code> or similar properties, or by a force-page-count="end-on-odd" on a page sequence.</p>
 <p>To write "This page is intentionally left blank" (or something similar) on an intentionally blank page, first define a conditional page master with a page master specific for blank pages. This allows you to specify static content for blank pages (by definition, a page is blank if no content from a flow is rendered on the page). Omit your normal headers and footers, and use (for example) an extended header to print the "..left blank" statement:</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;fo:layout-master-set&gt;</span>
     <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;normal&quot;</span>
@@ -853,7 +853,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="nt">&lt;/fo:flow&gt;</span>
   <span class="nt">&lt;/fo:page-sequence&gt;</span>
 <span class="nt">&lt;/fo:root&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="floats">Floats</h3>
@@ -870,81 +870,81 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h3 id="fo-total-pages">Total Document Pages</h3>
 <p>It is frequently desirable to know the total number of pages in a document and to use that number within the document. For example, you might wish to show the page number on the first page as being "page 1 of 12".</p>
 <p>To accomplish this in <strong>XSL 1.0</strong>, place an empty block with an id at the end of the flow:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:flow</span> <span class="err">...</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:flow</span> <span class="err">...</span><span class="nt">&gt;</span>
     ...
   <span class="nt">&lt;fo:block</span> <span class="na">id=</span><span class="s">&quot;last-page&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/fo:flow&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Get the number of the last page as follows:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:page-number-citation</span> <span class="na">ref-id=</span><span class="s">&quot;last-page&quot;</span><span class="nt">/&gt;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:page-number-citation</span> <span class="na">ref-id=</span><span class="s">&quot;last-page&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
 
 
 <p>This does not work in certain situations: multiple page sequences, an initial page number other than 1, or forcing a certain page count, thereby producing blank pages at the end.</p>
 <p>In <strong>XSL 1.1</strong>, you get another option to do this: make sure an "id" is set on the page-sequence and reference it using fo:page-number-citation-last. First, the page-sequence:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:page-sequence</span> <span class="na">id=</span><span class="s">&quot;seq1&quot;</span> <span class="err">...</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:page-sequence</span> <span class="na">id=</span><span class="s">&quot;seq1&quot;</span> <span class="err">...</span>
+</code></pre></div>
 
 
 <p>After that, reference the last page the page-sequence generates:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:page-number-citation-last</span> <span class="na">ref-id=</span><span class="s">&quot;seq1&quot;</span><span class="nt">/&gt;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:page-number-citation-last</span> <span class="na">ref-id=</span><span class="s">&quot;seq1&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
 
 
 <p><warning>There is no reliable way to get the real total page count with FO mechanisms. You can only get <em>page numbers</em>.</warning></p>
 <p>The FOP library provides a method to get the total page count after an FO document has been rendered. One possibility is to implement your own wrapper to do a dummy rendering, inquire the total page count and then perform the real rendering, passing the total page count to the XSLT processor to splice it into the generated FO. For example:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.apache.fop.apps.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.xml.sax.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.xml.transform.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.xml.transform.sax.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.xml.transform.stream.*</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.fop.apps.*</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.xml.sax.*</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.*</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.xml.transform.*</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.xml.transform.sax.*</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.xml.transform.stream.*</span><span class="p">;</span>
 
-<span class="kd">class</span> <span class="nc">rendtest</span> <span class="o">{</span>
+<span class="kd">class</span> <span class="nc">rendtest</span> <span class="p">{</span>
 
-    <span class="kd">private</span> <span class="kd">static</span> <span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;.&quot;</span><span class="o">).</span><span class="na">toURI</span><span class="o">());</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="n">TransformerFactory</span> <span class="n">tFactory</span> <span class="o">=</span> <span class="n">TransformerFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">).</span><span class="na">toURI</span><span class="p">());</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">TransformerFactory</span> <span class="n">tFactory</span> <span class="o">=</span> <span class="n">TransformerFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">();</span>
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>
-        <span class="n">OutputStream</span> <span class="n">out</span><span class="o">;</span>
-        <span class="k">try</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">OutputStream</span> <span class="n">out</span><span class="p">;</span>
+        <span class="k">try</span> <span class="p">{</span>
             <span class="c1">//Load the stylesheet</span>
-            <span class="n">Templates</span> <span class="n">templates</span> <span class="o">=</span> <span class="n">tFactory</span><span class="o">.</span><span class="na">newTemplates</span><span class="o">(</span>
-                <span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">])));</span>
+            <span class="n">Templates</span> <span class="n">templates</span> <span class="o">=</span> <span class="n">tFactory</span><span class="p">.</span><span class="na">newTemplates</span><span class="p">(</span>
+                <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">)));</span>
 
             <span class="c1">//First run (to /dev/null)</span>
-            <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">commons</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">output</span><span class="o">.</span><span class="na">NullOutputStream</span><span class="o">();</span>
-            <span class="n">FOUserAgent</span> <span class="n">foUserAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFOUserAgent</span><span class="o">();</span>
-            <span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFop</span><span class="o">(</span><span class="n">MimeConstants</span><span class="o">.</span><span class="na">MIME_PDF</span><span class="o">,</span> <span class="n">foUserAgent</span><span class="o">,</span> <span class="n">out</span><span class="o">);</span>
-            <span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">templates</span><span class="o">.</span><span class="na">newTransformer</span><span class="o">();</span>
-            <span class="n">transformer</span><span class="o">.</span><span class="na">setParameter</span><span class="o">(</span><span class="s">&quot;page-count&quot;</span><span class="o">,</span> <span class="s">&quot;#&quot;</span><span class="o">);</span>
-            <span class="n">transformer</span><span class="o">.</span><span class="na">transform</span><span class="o">(</span><span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">])),</span>
-                <span class="k">new</span> <span class="n">SAXResult</span><span class="o">(</span><span class="n">fop</span><span class="o">.</span><span class="na">getDefaultHandler</span><span class="o">()));</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">org</span><span class="p">.</span><span class="na">apache</span><span class="p">.</span><span class="na">commons</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">output</span><span class="p">.</span><span class="na">NullOutputStream</span><span class="p">();</span>
+            <span class="n">FOUserAgent</span> <span class="n">foUserAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFOUserAgent</span><span class="p">();</span>
+            <span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">,</span> <span class="n">foUserAgent</span><span class="p">,</span> <span class="n">out</span><span class="p">);</span>
+            <span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">templates</span><span class="p">.</span><span class="na">newTransformer</span><span class="p">();</span>
+            <span class="n">transformer</span><span class="p">.</span><span class="na">setParameter</span><span class="p">(</span><span class="s">&quot;page-count&quot;</span><span class="p">,</span> <span class="s">&quot;#&quot;</span><span class="p">);</span>
+            <span class="n">transformer</span><span class="p">.</span><span class="na">transform</span><span class="p">(</span><span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">)),</span>
+                <span class="k">new</span> <span class="n">SAXResult</span><span class="p">(</span><span class="n">fop</span><span class="p">.</span><span class="na">getDefaultHandler</span><span class="p">()));</span>
 
             <span class="c1">//Get total page count</span>
-            <span class="n">String</span> <span class="n">pageCount</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">driver</span><span class="o">.</span><span class="na">getResults</span><span class="o">().</span><span class="na">getPageCount</span><span class="o">());</span>
+            <span class="n">String</span> <span class="n">pageCount</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">driver</span><span class="p">.</span><span class="na">getResults</span><span class="p">().</span><span class="na">getPageCount</span><span class="p">());</span>
 
             <span class="c1">//Second run (the real thing)</span>
-            <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">FileOutputStream</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
-            <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">BufferedOutputStream</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
-            <span class="k">try</span> <span class="o">{</span>
-              <span class="n">foUserAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFOUserAgent</span><span class="o">();</span>
-              <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFop</span><span class="o">(</span><span class="n">MimeConstants</span><span class="o">.</span><span class="na">MIME_PDF</span><span class="o">,</span> <span class="n">foUserAgent</span><span class="o">,</span> <span class="n">out</span><span class="o">);</span>
-              <span class="n">transformer</span> <span class="o">=</span> <span class="n">templates</span><span class="o">.</span><span class="na">newTransformer</span><span class="o">();</span>
-              <span class="n">transformer</span><span class="o">.</span><span class="na">setParameter</span><span class="o">(</span><span class="s">&quot;page-count&quot;</span><span class="o">,</span> <span class="n">pageCount</span><span class="o">);</span>
-              <span class="n">transformer</span><span class="o">.</span><span class="na">transform</span><span class="o">(</span><span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">])),</span>
-                  <span class="k">new</span> <span class="n">SAXResult</span><span class="o">(</span><span class="n">fop</span><span class="o">.</span><span class="na">getDefaultHandler</span><span class="o">()));</span>
-            <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
-                <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-            <span class="o">}</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
+            <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">FileOutputStream</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">BufferedOutputStream</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+            <span class="k">try</span> <span class="p">{</span>
+              <span class="n">foUserAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFOUserAgent</span><span class="p">();</span>
+              <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">,</span> <span class="n">foUserAgent</span><span class="p">,</span> <span class="n">out</span><span class="p">);</span>
+              <span class="n">transformer</span> <span class="o">=</span> <span class="n">templates</span><span class="p">.</span><span class="na">newTransformer</span><span class="p">();</span>
+              <span class="n">transformer</span><span class="p">.</span><span class="na">setParameter</span><span class="p">(</span><span class="s">&quot;page-count&quot;</span><span class="p">,</span> <span class="n">pageCount</span><span class="p">);</span>
+              <span class="n">transformer</span><span class="p">.</span><span class="na">transform</span><span class="p">(</span><span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">)),</span>
+                  <span class="k">new</span> <span class="n">SAXResult</span><span class="p">(</span><span class="n">fop</span><span class="p">.</span><span class="na">getDefaultHandler</span><span class="p">()));</span>
+            <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+                <span class="n">out</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 <p>Declare and use the parameter "page-count" in your XSLT.</p>
@@ -974,7 +974,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>FOP also maintains an <a href="http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop/src/foschema/fop.xsd?view=co">Unofficial FOP Schema</a> in the FOP Subversion Repository. This document can be used either to validate against the FO standard, or against the actual FOP implementation. See the notes near the beginning of the document for instructions on how to use it.</p>
 <h3 id="landscape">Producing landscape pages</h3>
 <p>Pages in landscape format can easily be produced by exchanging the page-height and page-width values of a simple-page-master element.</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:layout-master-set&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:layout-master-set&gt;</span>
   <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;A4-portrait&quot;</span> <span class="na">page-height=</span><span class="s">&quot;29.7cm&quot;</span> <span class="na">page-width=</span><span class="s">&quot;21cm&quot;</span> <span class="err">[..]</span><span class="nt">&gt;</span>
     <span class="nt">&lt;fo:region-body/&gt;</span>
   <span class="nt">&lt;/fo:simple-page-master&gt;</span>
@@ -982,19 +982,19 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="nt">&lt;fo:region-body/&gt;</span>
   <span class="nt">&lt;/fo:simple-page-master&gt;</span>
 <span class="nt">&lt;/fo:layout-master-set&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="external-resources">External Resources</h3>
 <p>Resources needed by an XSL-FO file that are external to it (graphics, for example), are defined in the XSL-FO standard as being of type "uri-specification". This is defined in the standard at <a href="http://www.w3.org/TR/xsl11/#datatype">Section 5.11 Property Datatypes</a>, which includes a link to the URI standard itself. Refer to the XSL-FO and URI standards themselves for more detailed instructions.</p>
 <p>URIs may be either absolute or relative to a base URI. (See <a href="2.5/configuration.html">FOP: Configuration</a> for information on setting the base URI for a FOP session). Here is an example referencing an external-graphic that is relative to the base URI:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;url(&#39;images/logo.jpg&#39;)&quot;</span><span class="nt">/&gt;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;url(&#39;images/logo.jpg&#39;)&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
 
 
 <p>Here is an example referencing an external-graphic that is an absolute URI on a local filesystem:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;url(&#39;file:d:///images/logo.jpg&#39;)&quot;</span><span class="nt">/&gt;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;url(&#39;file:d:///images/logo.jpg&#39;)&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
         </div>
       </div>
       <div class="clear"></div>

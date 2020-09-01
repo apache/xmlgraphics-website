@@ -202,24 +202,24 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>The method for starting the rasterizer depends on the distribution of Batik that you chose to download. The following describes how to start the viewer for each distribution.</p>
 <h3 id="using-binary">Using the binary distribution</h3>
 <p>If you downloaded the binary distribution of Batik, you should have a file called <code>batik-1.6.zip</code> (or similar), and, after expanding that file, a jar file called <code>batik-rasterizer.jar</code>. To start the rasterizer, open a console, go to the directory where you expanded the distribution (and where <code>batik-rasterizer.jar</code> is located) and simply type the following at the command prompt:</p>
-<div class="highlight"><pre><span></span>java -jar batik-rasterizer.jar FILES
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">java -jar batik-rasterizer.jar FILES</span>
+</code></pre></div>
 
 
 <p>For example, if you type:</p>
-<div class="highlight"><pre><span></span>java -jar batik-rasterizer.jar samples/batikFX.svg
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">java -jar batik-rasterizer.jar samples/batikFX.svg</span>
+</code></pre></div>
 
 
 <p>you will see the following printout:</p>
-<div class="highlight"><pre><span></span>Converting file: samples/batikFX.svg to samples/batikFX.png
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">Converting file: samples/batikFX.svg to samples/batikFX.png</span>
+</code></pre></div>
 
 
 <p>Once the conversion is complete, you will find a <code>batikFX.png</code> file in the samples directory.</p>
 <p>You can pass options on the command line:</p>
-<div class="highlight"><pre><span></span>java -jar batik-rasterizer.jar [OPTIONS] FILES
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">java</span><span class="w"> </span><span class="o">-</span><span class="n">jar</span><span class="w"> </span><span class="n">batik</span><span class="o">-</span><span class="n">rasterizer</span><span class="p">.</span><span class="n">jar</span><span class="w"> </span><span class="o">[</span><span class="n">OPTIONS</span><span class="o">]</span><span class="w"> </span><span class="n">FILES</span><span class="w"></span>
+</code></pre></div>
 
 
 <p>where, as options:</p>
@@ -290,8 +290,8 @@ specifies that scripts can be loaded from any location, while by default they ca
 :
 specifies a list of script types (i.e., values for the <code>type</code> attribute on <code>script</code> elements) that should be loaded.</p>
 <p>For example:</p>
-<div class="highlight"><pre><span></span>java -jar batik-rasterizer.jar -d myDir -m image/jpeg samples/*.svg
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">java -jar batik-rasterizer.jar -d myDir -m image/jpeg samples/*.svg</span>
+</code></pre></div>
 
 
 <p>will generate JPEG images for all the SVG files found in the samples directory.</p>
@@ -308,24 +308,24 @@ specifies a list of script types (i.e., values for the <code>type</code> attribu
 </ul>
 <p>-
 For Windows, type the following at the command prompt:</p>
-<div class="highlight"><pre><span></span>build svgrasterizer
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">build svgrasterizer</span>
+</code></pre></div>
 
 
 <p>and for Unix:</p>
-<div class="highlight"><pre><span></span>./build.sh svgrasterizer
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">./build.sh svgrasterizer</span>
+</code></pre></div>
 
 
 <p>This will print out a help message for the rasterizer.</p>
 <p>You can pass options to the rasterizer as follows, for Windows:</p>
-<div class="highlight"><pre><span></span>build svgrasterizer [OPTIONS] FILES
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">build</span><span class="w"> </span><span class="n">svgrasterizer</span><span class="w"> </span><span class="o">[</span><span class="n">OPTIONS</span><span class="o">]</span><span class="w"> </span><span class="n">FILES</span><span class="w"></span>
+</code></pre></div>
 
 
 <p>and for Unix:</p>
-<div class="highlight"><pre><span></span>./build.sh svgrasterizer [OPTIONS] FILES
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="o">/</span><span class="n">build</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">svgrasterizer</span><span class="w"> </span><span class="o">[</span><span class="n">OPTIONS</span><span class="o">]</span><span class="w"> </span><span class="n">FILES</span><span class="w"></span>
+</code></pre></div>
 
 
 <p>Refer to <a href="#using-binary">“Using the binary distribution”</a> for an explanation of the options.</p>
@@ -336,9 +336,9 @@ For Windows, type the following at the command prompt:</p>
 <p>The first thing to do is to compile rasterizer task classes. Download the source distribution of Batik and see the <code>README</code> file in the <code>contrib/rasterizertask</code> directory for more instructions. The build procedure works the same way as when building Batik itself.</p>
 <p>After building, ensure that the generated <code>batik-rasterizer.jar</code> and the classes (or jar file) of the rasterizer task are in your <code>CLASSPATH</code>.</p>
 <p>Next you have to define the task in your Ant project. To do this, add the following line either after the <code>project</code> start tag or after the <code>target</code> start tag in the target you are using the rasterizer task:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;taskdef</span> <span class="na">name=</span><span class="s">&quot;rasterize&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;taskdef</span> <span class="na">name=</span><span class="s">&quot;rasterize&quot;</span>
        <span class="na">classname=</span><span class="s">&quot;org.apache.tools.ant.taskdefs.optional.RasterizerTask&quot;</span><span class="nt">/&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Now you can use the rasterizer task in your project. See the <a href="#taskParameters">parameters section</a> for an explanation of the available parameters or the <a href="#taskExamples">examples section</a> to see few usage examples.</p>
@@ -438,7 +438,7 @@ For Windows, type the following at the command prompt:</p>
 <p>You can use <code>fileset</code> elements to select input files and directories. See the <a href="http://ant.apache.org/">Ant</a> documentation to learn how to use <a href="https://ant.apache.org/manual/Types/fileset.html">filesets</a>.</p>
 <h3 id="taskExamples">Examples of using the rasterizer task</h3>
 <p>The following example is the complete Ant project that converts an SVG image (called <code>input.svg</code>) to a PNG image (called <code>output.png</code>):</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="nt">&lt;project</span> <span class="na">name=</span><span class="s">&quot;RasterizerExample&quot;</span> <span class="na">default=</span><span class="s">&quot;main&quot;</span> <span class="na">basedir=</span><span class="s">&quot;.&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;taskdef</span> <span class="na">name=</span><span class="s">&quot;rasterize&quot;</span>
        <span class="na">classname=</span><span class="s">&quot;org.apache.tools.ant.taskdefs.optional.RasterizerTask&quot;</span><span class="nt">/&gt;</span>
@@ -446,17 +446,17 @@ For Windows, type the following at the command prompt:</p>
         <span class="nt">&lt;rasterize</span> <span class="na">result=</span><span class="s">&quot;image/png&quot;</span> <span class="na">src=</span><span class="s">&quot;input.svg&quot;</span> <span class="na">dest=</span><span class="s">&quot;output.png&quot;</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;/target&gt;</span>
 <span class="nt">&lt;/project&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The next example is just one task in a project. It converts all files with a <code>.svg</code> suffix in the <code>images</code> directory and all files in the <code>images2</code> directory to TIFF images. The resulting image files are placed in the <code>results</code> directory.</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;rasterize</span> <span class="na">result=</span><span class="s">&quot;image/tiff&quot;</span> <span class="na">destdir=</span><span class="s">&quot;results&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;rasterize</span> <span class="na">result=</span><span class="s">&quot;image/tiff&quot;</span> <span class="na">destdir=</span><span class="s">&quot;results&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;images&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;include</span> <span class="na">name=</span><span class="s">&quot;**/*.svg&quot;</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;/fileset&gt;</span>
     <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;images2&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/rasterize&gt;</span>
-</pre></div>
+</code></pre></div>
         </div>
       </div>
       <div class="clear"></div>

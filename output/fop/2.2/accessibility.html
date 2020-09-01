@@ -625,25 +625,25 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <ol>
 <li>
 <p><strong>Command line:</strong> The command line option <code>-a</code> turns on accessibility:</p>
-<div class="highlight"><pre><span></span>fop -a -fo mydocument.fo -pdf mydocument.pdf
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">fop -a -fo mydocument.fo -pdf mydocument.pdf</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p><strong>Embedding:</strong></p>
-<div class="highlight"><pre><span></span><span class="n">userAgent</span><span class="o">.</span><span class="na">setAccessibility</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setAccessibility</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p><strong>Optional setting in fop.xconf file:</strong></p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;accessibility&gt;</span>true<span class="nt">&lt;/accessibility&gt;</span>
   ...
 <span class="nt">&lt;/fop&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 </li>
@@ -670,27 +670,27 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>The <a href="#PDFReference">PDF Reference</a> defines a set of standard Structure Types to tag content. For example, ‘P’ is used for identifying paragraphs, ‘H1’ to ‘H6’ for headers, ‘L’ for lists, ‘Div’ for block-level groups of elements, etc. This standard set is aimed at improving interoperability between applications producing or consuming PDF.</p>
 <p>FOP provides a default mapping of Formatting Objects to elements from that standard set. For example, <code>fo:page-sequence</code> is mapped to ‘Part’, <code>fo:block</code> is mapped to ‘P’, <code>fo:list-block</code> to ‘L’, etc.</p>
 <p>You may want to customize that mapping to improve the accuracy of the tagging or deal with particular FO constructs. For example, you may want to make use of the ‘H1’ to ‘H6’ tags to make the hierarchical structure of the document appear in the PDF. This is achieved by using the <code>role</code> XSL-FO property:</p>
-<div class="highlight"><pre><span></span>...
+<div class="highlight"><pre><span></span><code>...
 <span class="nt">&lt;fo:block</span> <span class="na">role=</span><span class="s">&quot;H1&quot;</span> <span class="na">font-weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">&gt;</span>I. A Level 1 Heading<span class="nt">&lt;/fo:block&gt;</span>
 <span class="nt">&lt;fo:block&gt;</span>This is the first paragraph of the first section...<span class="nt">&lt;/fo:block&gt;</span>
 ...
-</pre></div>
+</code></pre></div>
 
 
 <p>If a non-standard structure type is specified, FOP will issue a warning and fall back to the default tag associated to the Formatting Object.</p>
 <h2>Treating Content as Artifact</h2>
 <p>If your document has content that is not meant to appear in the structure tree, you can wrap it in an <code>fo:wrapper</code> element whose <code>role</code> property has been set to ‘artifact’. For example:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:block&gt;</span>blah... blah...
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:block&gt;</span>blah... blah...
   <span class="nt">&lt;fo:wrapper</span> <span class="na">role=</span><span class="s">&quot;artifact&quot;</span><span class="nt">&gt;</span>Funny graphical thing without logical meaning<span class="nt">&lt;/fo:wrapper&gt;</span>
   blah... blah... <span class="nt">&lt;/fo:block&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>This special value for the <code>role</code> property can also be applied to <code>fo:static-content</code> elements; indeed such elements are often used to contain page header information, that is there purely as a reading aid for sighted people and is meaningless when read out loud by a screen reader.</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:static-content</span> <span class="na">flow-name=</span><span class="s">&quot;xsl-region-before&quot;</span> <span class="na">role=</span><span class="s">&quot;artifact&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:static-content</span> <span class="na">flow-name=</span><span class="s">&quot;xsl-region-before&quot;</span> <span class="na">role=</span><span class="s">&quot;artifact&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;fo:block&gt;</span>Page <span class="nt">&lt;fo:page-number/&gt;&lt;/fo:block&gt;</span>
 <span class="nt">&lt;/fo:static-content&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h2 id="fox:header">Scope of Header Table Cells</h2>
@@ -710,7 +710,7 @@ Inherited: | no |
 Applies to: | <code>fo:table-column</code> |</p>
 <p>If for some reason a cell inside a header column is not meant to be a header cell, the <code>role</code> property can be used to override the default behavior and set the structure type to <code>TD</code>.</p>
 <p>For example, the following table:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:table</span> <span class="na">width=</span><span class="s">&quot;100%&quot;</span> <span class="na">table-layout=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:table</span> <span class="na">width=</span><span class="s">&quot;100%&quot;</span> <span class="na">table-layout=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;fo:table-column</span> <span class="na">xmlns:fox=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions&quot;</span> <span class="na">fox:header=</span><span class="s">&quot;true&quot;</span> <span class="na">column-width=</span><span class="s">&quot;proportional-column-width(1)&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;fo:table-column</span> <span class="na">column-width=</span><span class="s">&quot;proportional-column-width(1)&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;fo:table-column</span> <span class="na">column-width=</span><span class="s">&quot;proportional-column-width(1)&quot;</span><span class="nt">/&gt;</span>
@@ -763,7 +763,7 @@ Applies to: | <code>fo:table-column</code> |</p>
     <span class="nt">&lt;/fo:table-row&gt;</span>
   <span class="nt">&lt;/fo:table-body&gt;</span>
 <span class="nt">&lt;/fo:table&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>will be rendered into this:</p>
@@ -815,7 +815,7 @@ Applies to: | <code>fo:table-column</code> |</p>
 <p>PDF/UA (PDF/Universal Accessibility), the standard for accessible PDF technology.</p>
 <h2 id="fo">Usage (fo)</h2>
 <p>Define document title in fo:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:declarations&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:declarations&gt;</span>
   <span class="nt">&lt;x:xmpmeta</span> <span class="na">xmlns:x=</span><span class="s">&quot;adobe:ns:meta/&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;rdf:RDF</span> <span class="na">xmlns:rdf=</span><span class="s">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span><span class="nt">&gt;</span>
       <span class="nt">&lt;rdf:Description</span> <span class="na">rdf:about=</span><span class="s">&quot;&quot;</span> <span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="nt">&gt;</span>
@@ -826,12 +826,12 @@ Applies to: | <code>fo:table-column</code> |</p>
     <span class="nt">&lt;/rdf:RDF&gt;</span>
   <span class="nt">&lt;/x:xmpmeta&gt;</span>
 <span class="nt">&lt;/fo:declarations&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h2 id="fop-xconf">Usage (fop.xconf)</h2>
 <p>Enable PDF/UA-1 in fop.xconf:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;accessibility&gt;</span>true<span class="nt">&lt;/accessibility&gt;</span>
   <span class="nt">&lt;renderers&gt;</span>
     <span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
@@ -839,7 +839,7 @@ Applies to: | <code>fo:table-column</code> |</p>
     <span class="nt">&lt;/renderer&gt;</span>
   <span class="nt">&lt;/renderers&gt;</span>
 <span class="nt">&lt;/fop&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h2 id="links">Related Links</h2>

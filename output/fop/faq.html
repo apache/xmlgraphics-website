@@ -703,27 +703,27 @@ then please <a href="bugs.html#issues_new">Open a New Bug</a>.</p>
 <p><code>Mismatch: page-sequence (http://www.w3.org/1999/XSL/Format) vs. root (http://www.w3.org/1999/XSL/Format)</code></p>
 <p>This exception is usually a follow-up error after another exception. Sometimes the original exception gets swallowed by Xalan's default <code>ErrorListener</code> (should be fixed in the latest Xalan release).</p>
 <p>The work-around is to set an explicit <code>ErrorListener</code> on the <code>Transformer</code>. The <code>ErrorListener</code> can be as simple as this:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">javax.xml.transform.ErrorListener</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.xml.transform.TransformerException</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">javax.xml.transform.ErrorListener</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.xml.transform.TransformerException</span><span class="p">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DefaultErrorListener</span> <span class="kd">implements</span> <span class="n">ErrorListener</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DefaultErrorListener</span> <span class="kd">implements</span> <span class="n">ErrorListener</span> <span class="p">{</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">warning</span><span class="o">(</span><span class="n">TransformerException</span> <span class="n">exc</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">exc</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">warning</span><span class="p">(</span><span class="n">TransformerException</span> <span class="n">exc</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">exc</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+    <span class="p">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">error</span><span class="o">(</span><span class="n">TransformerException</span> <span class="n">exc</span><span class="o">)</span>
-            <span class="kd">throws</span> <span class="n">TransformerException</span> <span class="o">{</span>
-        <span class="k">throw</span> <span class="n">exc</span><span class="o">;</span>
-    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">error</span><span class="p">(</span><span class="n">TransformerException</span> <span class="n">exc</span><span class="p">)</span>
+            <span class="kd">throws</span> <span class="n">TransformerException</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="n">exc</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">fatalError</span><span class="o">(</span><span class="n">TransformerException</span> <span class="n">exc</span><span class="o">)</span>
-            <span class="kd">throws</span> <span class="n">TransformerException</span> <span class="o">{</span>
-        <span class="k">throw</span> <span class="n">exc</span><span class="o">;</span>
-    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">fatalError</span><span class="p">(</span><span class="n">TransformerException</span> <span class="n">exc</span><span class="p">)</span>
+            <span class="kd">throws</span> <span class="n">TransformerException</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="n">exc</span><span class="p">;</span>
+    <span class="p">}</span>
 
-<span class="o">}</span>
-</pre></div>
+<span class="p">}</span>
+</code></pre></div>
 
 
 <h3 id="faq-N1026C">2.13. The following message appears after recently upgrading FOP: "I/O exception while reading font cache (org.apache.fop.fonts.EmbedFontInfo; local class incompatible: stream classdesc serialVersionUID = -9075848379822693399, local class serialVersionUID = 8755432068669997367). Discarding font cache file."</h3>
@@ -773,7 +773,7 @@ then please <a href="bugs.html#issues_new">Open a New Bug</a>.</p>
 <p>Current FOP releases have extensive support for these properties. The current release, FOP 1.0, still supports the values "always" and "never" only, no numerical values. There may be a few places where keep-* still don't work, this should be very rare.</p>
 <p>The concept is called “blind table”. The table is used for pure layout reasons and is not obvious in the output.</p>
 <p>An example of an image and the image caption to be kept together:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:table</span> <span class="na">table-layout=</span><span class="s">&quot;fixed&quot;</span> <span class="na">width=</span><span class="s">&quot;100%&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:table</span> <span class="na">table-layout=</span><span class="s">&quot;fixed&quot;</span> <span class="na">width=</span><span class="s">&quot;100%&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;fo:table-column</span> <span class="na">column-width=</span><span class="s">&quot;proportional-column-width(1)&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;fo:table-body&gt;</span>
     <span class="nt">&lt;fo:table-row</span> <span class="na">keep-with-next=</span><span class="s">&quot;always&quot;</span><span class="nt">&gt;</span>
@@ -790,7 +790,7 @@ then please <a href="bugs.html#issues_new">Open a New Bug</a>.</p>
     <span class="nt">&lt;/fo:table-row&gt;</span>
   <span class="nt">&lt;/fo:table-body&gt;</span>
 <span class="nt">&lt;/fo:table&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Consider upgrading to the latest version which supports keeps.</p>
@@ -823,14 +823,14 @@ then please <a href="bugs.html#issues_new">Open a New Bug</a>.</p>
 <p>The most recent FOP releases should have this problem fixed. Check whether you can upgrade.</p>
 <h3 id="hyphenation-fails">3.13. Hyphenation does not work.</h3>
 <p>Make sure you have set the language and optionally the country attributes for an appropriate XSL-FO element (fo:page-sequence, fo:block or fo:character):</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:page-sequence</span> <span class="na">language=</span><span class="s">&quot;fi&quot;</span><span class="nt">&gt;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:page-sequence</span> <span class="na">language=</span><span class="s">&quot;fi&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
 
 
 <p>See <a href="1.1/hyphenation.html#support">Hyphenation Support</a> for details and instructions on using hyphenation with FOP.</p>
 <p>Explicitly enable hyphenation for an appropriate XSL-FO element (<code>fo:block</code>, <code>fo:character</code>):</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:block</span> <span class="na">hyphenate=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:block</span> <span class="na">hyphenate=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
 
 
 <h3 id="indent-inheritance">3.14. When I use margins, my content in a nested table or block-containers gets indented twice. Is this a bug?</h3>
@@ -894,13 +894,13 @@ then please <a href="bugs.html#issues_new">Open a New Bug</a>.</p>
 <p>The standard text fonts supplied with Acrobat Reader have mostly glyphs for characters from the ISO Latin 1 character set. For a variety of reasons, even those are not completely guaranteed to work, for example you can't use the fi ligature from the standard serif font. Check the <a href="1.1/output.html#pdf-fonts">overview</a> for the default PDF fonts.</p>
 <p>If you use your own fonts, the font must have a glyph for the desired character. Furthermore the font must be available on the machine where the PDF is viewed or it must have been embedded in the PDF file. See <a href="1.1/fonts.html">embedding fonts</a>.</p>
 <p>For most symbols, it is better to select the symbol font explicitely, for example in order to get the symbol for the mathematical empty set, write:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:inline</span> <span class="na">font-family=</span><span class="s">&quot;Symbol&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#x2205;</span><span class="nt">&lt;/fo:inline&gt;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:inline</span> <span class="na">font-family=</span><span class="s">&quot;Symbol&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#x2205;</span><span class="nt">&lt;/fo:inline&gt;</span>
+</code></pre></div>
 
 
 <p>The "<code>#</code>" shows up if the selected font does not define a glyph for the required character, for example if you try:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:inline</span> <span class="na">font-family=</span><span class="s">&quot;Helvetica&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#x2205;</span><span class="nt">&lt;/fo:inline&gt;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:inline</span> <span class="na">font-family=</span><span class="s">&quot;Helvetica&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#x2205;</span><span class="nt">&lt;/fo:inline&gt;</span>
+</code></pre></div>
 
 
 <h3 id="pdf-postprocess">6.3. What tools are available for post-processing my PDF document?</h3>

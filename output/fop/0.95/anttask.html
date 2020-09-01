@@ -621,7 +621,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h2 id="basics">Description</h2>
 <p>The FOP Ant task will convert XSL-FO documents to PDF, PS, PCL etc. output (see <a href="output.html">Output formats</a> for available formats).</p>
 <p>To call FOP tasks within Ant, first add a FOP task definition to your Ant build file. One method of defining the task is as follows:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;fop.home&quot;</span> <span class="na">value=</span><span class="s">&quot;....path to your FOP HOME directory...&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;fop.home&quot;</span> <span class="na">value=</span><span class="s">&quot;....path to your FOP HOME directory...&quot;</span><span class="nt">/&gt;</span>
 
 <span class="nt">&lt;taskdef</span> <span class="na">name=</span><span class="s">&quot;fop&quot;</span>
          <span class="na">classname=</span><span class="s">&quot;org.apache.fop.tools.anttasks.Fop&quot;</span><span class="nt">&gt;</span>
@@ -635,7 +635,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="nt">&lt;/fileset&gt;</span>
   <span class="nt">&lt;/classpath&gt;</span>
 <span class="nt">&lt;/taskdef&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Then create FOP tasks within your Ant build file, using the FOP task parameters listed below.</p>
@@ -708,16 +708,16 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 | fileset |  <a href="https://ant.apache.org/manual/Types/fileset.html">FileSets</a> are used to specify multiple XSL-FO files to be rendered. | Yes, if no fofile attribute is supplied |</p>
 <h2 id="examples">Examples</h2>
 <p>The following example converts a single XSL-FO file to a PDF document:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;generate-pdf&quot;</span> <span class="na">description=</span><span class="s">&quot;Generates a single PDF file&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;generate-pdf&quot;</span> <span class="na">description=</span><span class="s">&quot;Generates a single PDF file&quot;</span><span class="nt">&gt;</span>
    <span class="nt">&lt;fop</span> <span class="na">format=</span><span class="s">&quot;application/pdf&quot;</span>
         <span class="na">fofile=</span><span class="s">&quot;c:\working\foDirectory\foDocument.fo&quot;</span>
         <span class="na">outfile=</span><span class="s">&quot;c:\working\pdfDirectory\pdfDocument.pdf&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/target&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>This example converts all XSL-FO files within an entire directory to PostScript:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;generate-multiple-ps&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;generate-multiple-ps&quot;</span>
         <span class="na">description=</span><span class="s">&quot;Generates multiple PostScript files&quot;</span><span class="nt">&gt;</span>
    <span class="nt">&lt;fop</span> <span class="na">format=</span><span class="s">&quot;application/postscript&quot;</span>
         <span class="na">outdir=</span><span class="s">&quot;${build.dir}&quot;</span> <span class="na">messagelevel=</span><span class="s">&quot;debug&quot;</span><span class="nt">&gt;</span>
@@ -726,7 +726,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
         <span class="nt">&lt;/fileset&gt;</span>
    <span class="nt">&lt;/fop&gt;</span>
 <span class="nt">&lt;/target&gt;</span>
-</pre></div>
+</code></pre></div>
         </div>
       </div>
       <div class="clear"></div>

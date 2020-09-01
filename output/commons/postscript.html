@@ -191,21 +191,21 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>We provide two classes (PSDocumentGraphics2D and EPSDocumentGraphics2D) which you can use to generate complete PostScript files using normal Java2D means. The difference between the two classes is that the EPS variant creates a fully compliant Encapsulated PostScript file while the PS variant simply creates a normal DSC-compliant level 2 PostScript file. It depends on your requirement which variant you choose. The PS variant is mostly for printing purposes while the EPS variant is better suited for inclusion in other documents.</p>
 <h3 id="creating-eps">Creating an EPS file</h3>
 <p>Creating an EPS file using the Graphics2D implementation is easy. Instantiate EPSDocumentGraphics2D, set a GraphicContext and set up the output document. Here's an example:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.apache.xmlgraphics.java2d.ps.EPSDocumentGraphics2D</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.xmlgraphics.java2d.ps.EPSDocumentGraphics2D</span><span class="p">;</span>
 
-<span class="o">[..]</span>
+<span class="o">[</span><span class="p">..</span><span class="o">]</span>
 
-<span class="n">EPSDocumentGraphics2D</span> <span class="n">g2d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EPSDocumentGraphics2D</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
-<span class="n">g2d</span><span class="o">.</span><span class="na">setGraphicContext</span><span class="o">(</span><span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">xmlgraphics</span><span class="o">.</span><span class="na">java2d</span><span class="o">.</span><span class="na">GraphicContext</span><span class="o">());</span>
+<span class="n">EPSDocumentGraphics2D</span> <span class="n">g2d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EPSDocumentGraphics2D</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="n">g2d</span><span class="p">.</span><span class="na">setGraphicContext</span><span class="p">(</span><span class="k">new</span> <span class="n">org</span><span class="p">.</span><span class="na">apache</span><span class="p">.</span><span class="na">xmlgraphics</span><span class="p">.</span><span class="na">java2d</span><span class="p">.</span><span class="na">GraphicContext</span><span class="p">());</span>
 
 <span class="c1">//Set up the document size</span>
-<span class="n">g2d</span><span class="o">.</span><span class="na">setupDocument</span><span class="o">(</span><span class="n">out</span><span class="o">,</span> <span class="mi">400</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span> <span class="c1">//400pt x 200pt</span>
+<span class="n">g2d</span><span class="p">.</span><span class="na">setupDocument</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span> <span class="c1">//400pt x 200pt</span>
 <span class="c1">//out is the OutputStream to write the EPS to</span>
 
-<span class="n">g2d</span><span class="o">.</span><span class="na">drawRect</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">50</span><span class="o">);</span> <span class="c1">//paint a rectangle using normal Java2D calls</span>
+<span class="n">g2d</span><span class="p">.</span><span class="na">drawRect</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span> <span class="c1">//paint a rectangle using normal Java2D calls</span>
 
-<span class="n">g2d</span><span class="o">.</span><span class="na">finish</span><span class="o">();</span> <span class="c1">//Wrap up and finalize the EPS file</span>
-</pre></div>
+<span class="n">g2d</span><span class="p">.</span><span class="na">finish</span><span class="p">();</span> <span class="c1">//Wrap up and finalize the EPS file</span>
+</code></pre></div>
 
 
 <p>A complete example for generating an EPS files can be found in the <a href="http://svn.apache.org/viewvc/xmlgraphics/commons/trunk/examples/java/java2d/ps/">"examples" directory</a> in the distribution.</p>

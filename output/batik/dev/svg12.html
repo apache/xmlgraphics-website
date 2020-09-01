@@ -218,65 +218,65 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>There are two ways to overcome this problem. The first is to install the DOM Level 3 interfaces using the <a href="https://docs.oracle.com/javase/6/docs/technotes/guides/standards/">Endorsed Standards Override Mechanism</a>. Copy the file <code>lib/xml-apis-ext.jar</code> into the endorsed standards override directory and the DOM Level 3 interfaces will be visible. You can then write code against them (for example, call <code>Document.renameNode</code> directly). However, this will mean that other people cannot run or compile your code unless they have JRE 1.5 or later, or they have also installed the <code>xml-apis-ext.jar</code> in the same way.</p>
 <p>The second method, which requires less messing about with the JRE, is to cast your DOM objects to the concrete Batik DOM objects and call your DOM Level 3 methods directly on them. The Batik DOM classes are in the <code>org.apache.batik.dom</code> package. The classes named <code>Abstract*</code> implement the DOM interfaces, and also contain the DOM Level 3 methods. The advantage of this method is that for your code to compile and run in others’ environments, they need not install any jars with the endorsed standards overrides.</p>
 <p>Here is an example of using the second method to get access to DOM Level 3 specific methods:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.apache.batik.dom.AbstractDocument</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SVGDOMImplementation</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.batik.dom.AbstractDocument</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SVGDOMImplementation</span><span class="p">;</span>
 
-<span class="kn">import</span> <span class="nn">org.w3c.dom.DOMImplementation</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.w3c.dom.Document</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.w3c.dom.Element</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.w3c.dom.DOMImplementation</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.w3c.dom.Document</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.w3c.dom.Element</span><span class="p">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">C</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">f</span><span class="o">()</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">C</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">f</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// Create a new SVG document</span>
-        <span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="o">.</span><span class="na">getDOMImplementation</span><span class="o">();</span>
-        <span class="n">Document</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">impl</span><span class="o">.</span><span class="na">createDocument</span><span class="o">(</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="o">,</span> <span class="s">&quot;svg&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+        <span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="p">.</span><span class="na">getDOMImplementation</span><span class="p">();</span>
+        <span class="n">Document</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">impl</span><span class="p">.</span><span class="na">createDocument</span><span class="p">(</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="p">,</span> <span class="s">&quot;svg&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
 
         <span class="c1">// Create a &#39;g&#39; element and append it to the root &#39;svg&#39; element</span>
-        <span class="n">Element</span> <span class="n">e</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="na">createElementNS</span><span class="o">(</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="o">,</span> <span class="s">&quot;g&quot;</span><span class="o">);</span>
-        <span class="n">doc</span><span class="o">.</span><span class="na">getDocumentElement</span><span class="o">().</span><span class="na">appendChild</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="n">Element</span> <span class="n">e</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="na">createElementNS</span><span class="p">(</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="p">,</span> <span class="s">&quot;g&quot;</span><span class="p">);</span>
+        <span class="n">doc</span><span class="p">.</span><span class="na">getDocumentElement</span><span class="p">().</span><span class="na">appendChild</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
 
         <span class="c1">// Cast the document object to org.apache.batik.dom.AbstractDocument,</span>
         <span class="c1">// so that DOM 3 methods will be guaranteed to be visible</span>
-        <span class="n">AbstractDocument</span> <span class="n">document</span> <span class="o">=</span> <span class="o">(</span><span class="n">AbstractDocument</span><span class="o">)</span> <span class="n">doc</span><span class="o">;</span>
+        <span class="n">AbstractDocument</span> <span class="n">document</span> <span class="o">=</span> <span class="p">(</span><span class="n">AbstractDocument</span><span class="p">)</span> <span class="n">doc</span><span class="p">;</span>
 
         <span class="c1">// Now a DOM 3 method can be used</span>
-        <span class="n">document</span><span class="o">.</span><span class="na">renameNode</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="o">,</span> <span class="s">&quot;text&quot;</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
+        <span class="n">document</span><span class="p">.</span><span class="na">renameNode</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="p">,</span> <span class="s">&quot;text&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 <p>For cases where the DOM Level 3 versions of these interfaces contain constants that you wish to use, the constants have been copied into the Batik DOM classes. For example:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.apache.batik.dom.AbstractNode</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SVGDOMImplementation</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.batik.dom.AbstractNode</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SVGDOMImplementation</span><span class="p">;</span>
 
-<span class="kn">import</span> <span class="nn">org.w3c.dom.DOMImplementation</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.w3c.dom.Document</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.w3c.dom.Element</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.w3c.dom.DOMImplementation</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.w3c.dom.Document</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.w3c.dom.Element</span><span class="p">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">C</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">f</span><span class="o">()</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">C</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">f</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// Create a new SVG document</span>
-        <span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="o">.</span><span class="na">getDOMImplementation</span><span class="o">();</span>
-        <span class="n">Document</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">impl</span><span class="o">.</span><span class="na">createDocument</span><span class="o">(</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="o">,</span> <span class="s">&quot;svg&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+        <span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="p">.</span><span class="na">getDOMImplementation</span><span class="p">();</span>
+        <span class="n">Document</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">impl</span><span class="p">.</span><span class="na">createDocument</span><span class="p">(</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="p">,</span> <span class="s">&quot;svg&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
 
         <span class="c1">// Create a &#39;g&#39; element and append it to the root &#39;svg&#39; element</span>
-        <span class="n">Element</span> <span class="n">svg</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="na">getDocumentElement</span><span class="o">();</span>
-        <span class="n">Element</span> <span class="n">e</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="na">createElementNS</span><span class="o">(</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="o">,</span> <span class="s">&quot;g&quot;</span><span class="o">);</span>
-        <span class="n">svg</span><span class="o">.</span><span class="na">appendChild</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="n">Element</span> <span class="n">svg</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="na">getDocumentElement</span><span class="p">();</span>
+        <span class="n">Element</span> <span class="n">e</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="na">createElementNS</span><span class="p">(</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="p">,</span> <span class="s">&quot;g&quot;</span><span class="p">);</span>
+        <span class="n">svg</span><span class="p">.</span><span class="na">appendChild</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
 
-        <span class="n">AbstractNode</span> <span class="n">n1</span> <span class="o">=</span> <span class="o">(</span><span class="n">AbstractNode</span><span class="o">)</span> <span class="n">svg</span><span class="o">;</span>
-        <span class="n">AbstractNode</span> <span class="n">n2</span> <span class="o">=</span> <span class="o">(</span><span class="n">AbstractNode</span><span class="o">)</span> <span class="n">e</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">position</span> <span class="o">=</span> <span class="n">n1</span><span class="o">.</span><span class="na">compareDocumentPosition</span><span class="o">(</span><span class="n">n2</span><span class="o">);</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">position</span> <span class="o">==</span> <span class="n">AbstractNode</span><span class="o">.</span><span class="na">DOCUMENT_POSITION_PRECEDING</span>
-                      <span class="o">|</span> <span class="n">AbstractNode</span><span class="o">.</span><span class="na">DOCUMENT_POSITION_CONTAINS</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;The svg element contains the g element.&quot;</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Something is wrong!&quot;</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
+        <span class="n">AbstractNode</span> <span class="n">n1</span> <span class="o">=</span> <span class="p">(</span><span class="n">AbstractNode</span><span class="p">)</span> <span class="n">svg</span><span class="p">;</span>
+        <span class="n">AbstractNode</span> <span class="n">n2</span> <span class="o">=</span> <span class="p">(</span><span class="n">AbstractNode</span><span class="p">)</span> <span class="n">e</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">position</span> <span class="o">=</span> <span class="n">n1</span><span class="p">.</span><span class="na">compareDocumentPosition</span><span class="p">(</span><span class="n">n2</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">position</span> <span class="o">==</span> <span class="n">AbstractNode</span><span class="p">.</span><span class="na">DOCUMENT_POSITION_PRECEDING</span>
+                      <span class="o">|</span> <span class="n">AbstractNode</span><span class="p">.</span><span class="na">DOCUMENT_POSITION_CONTAINS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The svg element contains the g element.&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Something is wrong!&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 <p>Note that using these org.apache.batik.dom interfaces is only needed for the DOM Level 3 Core and Events interfaces. There were no earlier versions of the DOM XPath interfaces to conflict with, so these can be used directly (<code>org.w3c.dom.xpath</code>).</p>

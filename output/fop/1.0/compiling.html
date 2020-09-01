@@ -633,8 +633,8 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>Change to the FOP root directory and build FOP by executing the build script (build.xml) using the "ant" command.</p>
 <p><note>The "ant" command is only available on your system if you've properly <a href="http://ant.apache.org/manual/">installed Apache Ant</a> and added Ant's location to the PATH environment variable.</note></p>
 <p>The file build.xml in the FOP root directory is the blueprint that Ant uses for the build. It contains information for numerous build targets, many of which are building blocks to more useful target, and others which are primarily used by the FOP developers. You may benefit from looking through this file to learn more about the various build targets. To obtain a complete list of useful build targets:</p>
-<div class="highlight"><pre><span></span>ant -projecthelp
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">ant -projecthelp</span>
+</code></pre></div>
 
 
 <p>The most useful targets are:</p>
@@ -651,23 +651,23 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </ul>
 <p><note>A minimum JDK version of 1.4.2 is required for generating the javadocs.</note></p>
 <p>To run the build:</p>
-<div class="highlight"><pre><span></span>ant [target ...]
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">ant [target ...]</span>
+</code></pre></div>
 
 
 <p>For example to do a normal build for the "all" target (which is the default):</p>
-<div class="highlight"><pre><span></span>ant
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">ant</span>
+</code></pre></div>
 
 
 <p>OR</p>
-<div class="highlight"><pre><span></span>ant all
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">ant all</span>
+</code></pre></div>
 
 
 <p>To clean the build directory first:</p>
-<div class="highlight"><pre><span></span>ant clean all
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">ant clean all</span>
+</code></pre></div>
 
 
 <p><note>If you want to shorten the build time you can just call the "package" target which doesn't perform any automated tests during the build.</note></p>

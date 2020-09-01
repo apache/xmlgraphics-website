@@ -662,31 +662,31 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>However, there is an important detail to consider: The various Renderers don't all use the same font sources. To be able to create the right area tree for the ultimate output format, you need to create the area tree XML file using the right font setup. This is achieved by telling the XMLRenderer to mimic another renderer. This is done by calling the XMLRenderer's mimicRenderer() method with an instance of the ultimate target renderer as the single parameter. This has a consequence: An area tree XML file rendered with the Java2DRenderer may not look as expected when it was actually generated for the PDF renderer. For renderers that use the same font setup, this restriction does not apply (PDF and PS, for example). Generating the area tree XML format file is the first step.</p>
 <p>The second step is to reparse the file using the <strong>AreaTreeParser</strong> which is found in the org.apache.fop.area package. The pages retrieved from the area tree XML file are added to an AreaTreeModel instance from where they are normally rendered using one of the available Renderer implementations. You can find examples for the area tree XML processing in the <a href="http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/intermediate/">http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/intermediate/</a> directory in the FOP distribution.</p>
 <p>The basic pattern to parse the area tree XML format looks like this:</p>
-<div class="highlight"><pre><span></span><span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
+<div class="highlight"><pre><span></span><code><span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">();</span>
 
 <span class="c1">// Setup output</span>
-<span class="n">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">FileOutputStream</span><span class="o">(</span><span class="n">pdffile</span><span class="o">);</span>
-<span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">BufferedOutputStream</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
-<span class="k">try</span> <span class="o">{</span>
+<span class="n">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">FileOutputStream</span><span class="p">(</span><span class="n">pdffile</span><span class="p">);</span>
+<span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">BufferedOutputStream</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+<span class="k">try</span> <span class="p">{</span>
     <span class="c1">//Setup fonts and user agent</span>
-    <span class="n">FontInfo</span> <span class="n">fontInfo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FontInfo</span><span class="o">();</span>
-    <span class="n">FOUserAgent</span> <span class="n">userAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFOUserAgent</span><span class="o">();</span>
+    <span class="n">FontInfo</span> <span class="n">fontInfo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FontInfo</span><span class="p">();</span>
+    <span class="n">FOUserAgent</span> <span class="n">userAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFOUserAgent</span><span class="p">();</span>
 
     <span class="c1">//Construct the AreaTreeModel that will received the individual pages</span>
-    <span class="n">AreaTreeModel</span> <span class="n">treeModel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RenderPagesModel</span><span class="o">(</span><span class="n">userAgent</span><span class="o">,</span>
-            <span class="n">MimeConstants</span><span class="o">.</span><span class="na">MIME_PDF</span><span class="o">,</span> <span class="n">fontInfo</span><span class="o">,</span> <span class="n">out</span><span class="o">);</span>
+    <span class="n">AreaTreeModel</span> <span class="n">treeModel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RenderPagesModel</span><span class="p">(</span><span class="n">userAgent</span><span class="p">,</span>
+            <span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">,</span> <span class="n">fontInfo</span><span class="p">,</span> <span class="n">out</span><span class="p">);</span>
 
     <span class="c1">//Parse the area tree file into the area tree</span>
-    <span class="n">AreaTreeParser</span> <span class="n">parser</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AreaTreeParser</span><span class="o">();</span>
-    <span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="n">myIFFile</span><span class="o">);</span>
-    <span class="n">parser</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">src</span><span class="o">,</span> <span class="n">treeModel</span><span class="o">,</span> <span class="n">userAgent</span><span class="o">);</span>
+    <span class="n">AreaTreeParser</span> <span class="n">parser</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AreaTreeParser</span><span class="p">();</span>
+    <span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="n">myIFFile</span><span class="p">);</span>
+    <span class="n">parser</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">treeModel</span><span class="p">,</span> <span class="n">userAgent</span><span class="p">);</span>
 
     <span class="c1">//Signal the end of the processing. The renderer can finalize the target document.</span>
-    <span class="n">treeModel</span><span class="o">.</span><span class="na">endDocument</span><span class="o">();</span>
-<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
-    <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-<span class="o">}</span>
-</pre></div>
+    <span class="n">treeModel</span><span class="p">.</span><span class="na">endDocument</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+    <span class="n">out</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 <p>This example simply reads an area tree file and renders it to a PDF file. Please note, that in normal FOP operation you're shielded from having to instantiate the FontInfo object yourself. This is normally a task of the AreaTreeHandler which is not present in this scenario. The same applies to the AreaTreeModel instance, in this case an instance of a subclass called RenderPagesModel. RenderPagesModel is ideal in this case as it has very little overhead processing the individual pages. An important line in the example is the call to <code>endDocument()</code> on the AreaTreeModel. This lets the Renderer know that the processing is now finished.</p>
@@ -712,36 +712,36 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>As with the AT XML, there is an important detail to consider: The various output implementations don't all use the same font sources. To be able to create the right IF for the ultimate output file, you need to create the IF file using the right font setup. This is achieved by telling the IFRenderer (responsible for converting the area tree into calls to the IFDocumentHandler and IFPainter interfaces) to mimic another renderer. This is done by calling the IFSerializer's mimicDocumentHandler() method with an instance of the ultimate target document handler as the single parameter. This has a consequence: An IF file rendered with the Java2DDocumentHandler may not look as expected when it was actually generated for the PDF implementation. For implementations that use the same font setup, this restriction does not apply (PDF and PS, for example). Generating the Intermediate Format file is the first step.</p>
 <p>The second step is to reparse the file using the <strong>IFParser</strong> which is found in the org.apache.fop.render.intermediate package. The IFParser simply takes an IFDocumentHandler instance against which it generates the appropriate calls. The IFParser is implemented as a SAX ContentHandler so you're free to choose the method for post-processing the IF file(s). You can use XSLT or write SAX- or DOM-based code to manipulate the contents. You can find examples for the Intermediate Format processing in the <a href="http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/intermediate/">http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/intermediate/</a> directory in the FOP distribution.</p>
 <p>The basic pattern to parse the intermediate format looks like this:</p>
-<div class="highlight"><pre><span></span><span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
+<div class="highlight"><pre><span></span><code><span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">();</span>
 
 <span class="c1">// Setup output</span>
-<span class="n">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">FileOutputStream</span><span class="o">(</span><span class="n">pdffile</span><span class="o">);</span>
-<span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">BufferedOutputStream</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
-<span class="k">try</span> <span class="o">{</span>
+<span class="n">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">FileOutputStream</span><span class="p">(</span><span class="n">pdffile</span><span class="p">);</span>
+<span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">BufferedOutputStream</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+<span class="k">try</span> <span class="p">{</span>
     <span class="c1">//Setup user agent</span>
-    <span class="n">FOUserAgent</span> <span class="n">userAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFOUserAgent</span><span class="o">();</span>
+    <span class="n">FOUserAgent</span> <span class="n">userAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFOUserAgent</span><span class="p">();</span>
 
     <span class="c1">//Create IFDocumentHandler instance</span>
-    <span class="n">IFDocumentHandler</span> <span class="n">targetHandler</span><span class="o">;</span>
-    <span class="n">String</span> <span class="n">mime</span> <span class="o">=</span> <span class="n">MimeConstants</span><span class="o">.</span><span class="na">MIME_PDF</span><span class="o">;</span>
-    <span class="n">targetHandler</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">getRendererFactory</span><span class="o">().</span><span class="na">createDocumentHandler</span><span class="o">(</span>
-            <span class="n">userAgent</span><span class="o">,</span> <span class="n">mime</span><span class="o">);</span>
+    <span class="n">IFDocumentHandler</span> <span class="n">targetHandler</span><span class="p">;</span>
+    <span class="n">String</span> <span class="n">mime</span> <span class="o">=</span> <span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">;</span>
+    <span class="n">targetHandler</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">getRendererFactory</span><span class="p">().</span><span class="na">createDocumentHandler</span><span class="p">(</span>
+            <span class="n">userAgent</span><span class="p">,</span> <span class="n">mime</span><span class="p">);</span>
 
     <span class="c1">//Setup fonts</span>
-    <span class="n">IFUtil</span><span class="o">.</span><span class="na">setupFonts</span><span class="o">(</span><span class="n">targetHandler</span><span class="o">);</span>
+    <span class="n">IFUtil</span><span class="p">.</span><span class="na">setupFonts</span><span class="p">(</span><span class="n">targetHandler</span><span class="p">);</span>
 
     <span class="c1">//Tell the target handler where to write the PDF to</span>
-    <span class="n">targetHandler</span><span class="o">.</span><span class="na">setResult</span><span class="o">(</span><span class="k">new</span> <span class="n">StreamResult</span><span class="o">(</span><span class="n">pdffile</span><span class="o">));</span>
+    <span class="n">targetHandler</span><span class="p">.</span><span class="na">setResult</span><span class="p">(</span><span class="k">new</span> <span class="n">StreamResult</span><span class="p">(</span><span class="n">pdffile</span><span class="p">));</span>
 
     <span class="c1">//Parse the IF file</span>
-    <span class="n">IFParser</span> <span class="n">parser</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IFParser</span><span class="o">();</span>
-    <span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="n">myIFFile</span><span class="o">);</span>
-    <span class="n">parser</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">src</span><span class="o">,</span> <span class="n">targetHandler</span><span class="o">,</span> <span class="n">userAgent</span><span class="o">);</span>
+    <span class="n">IFParser</span> <span class="n">parser</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IFParser</span><span class="p">();</span>
+    <span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="n">myIFFile</span><span class="p">);</span>
+    <span class="n">parser</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">targetHandler</span><span class="p">,</span> <span class="n">userAgent</span><span class="p">);</span>
 
-<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
-    <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-<span class="o">}</span>
-</pre></div>
+<span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+    <span class="n">out</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 <p>This example simply reads an intermediate file and renders it to a PDF file. Here IFParser.parse() is used, but you can also just get a SAX ContentHandler by using the IFParser.getContentHandler() method.</p>

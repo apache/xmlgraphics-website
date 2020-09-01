@@ -718,7 +718,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </ul>
 <h2 id="basics">Basic font configuration</h2>
 <p>If you want FOP to use custom fonts, you need to tell it where to find them. This is done in the configuration file and once per renderer (because each output format is a little different). In the basic form, you can either tell FOP to find your operating system fonts or you can specify directories that it will search for support fonts. These fonts will then automatically be registered.</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fonts&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fonts&gt;</span>
   <span class="c">&lt;!-- register all the fonts found in a directory --&gt;</span>
   <span class="nt">&lt;directory&gt;</span>C:\MyFonts1<span class="nt">&lt;/directory&gt;</span>
 
@@ -729,7 +729,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   <span class="c">&lt;!-- automatically detect operating system installed fonts --&gt;</span>
   <span class="nt">&lt;auto-detect/&gt;</span>
 <span class="nt">&lt;/fonts&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Review the documentation for <a href="configuration.html">FOP Configuration</a> for instructions on making the FOP configuration available to FOP when it runs. Otherwise, FOP has no way of finding your custom font information. It is currently not possible to easily configure fonts from Java code.</p>
@@ -807,7 +807,7 @@ java -cp build\fop.jar;lib\avalon-framework.jar;lib\commons-logging.jar;lib\comm
           msmincho.ttc msminch.xml</p>
 <h2 id="register">Register Fonts with FOP</h2>
 <p>You must tell FOP how to find and use the font metrics files by registering them in the <a href="configuration.html">FOP Configuration</a>. Add entries for your custom fonts, regardless of font type, to the configuration file in a manner similar to the following:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fonts&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fonts&gt;</span>
   <span class="c">&lt;!-- register a particular font --&gt;</span>
   <span class="nt">&lt;font</span> <span class="na">metrics-url=</span><span class="s">&quot;file:///C:/myfonts/FTL_____.xml&quot;</span> <span class="na">kerning=</span><span class="s">&quot;yes&quot;</span>
       <span class="na">embed-url=</span><span class="s">&quot;file:///C:/myfonts/FTL_____.pfb&quot;</span><span class="nt">&gt;</span>
@@ -824,7 +824,7 @@ java -cp build\fop.jar;lib\avalon-framework.jar;lib\commons-logging.jar;lib\comm
   <span class="c">&lt;!-- automatically detect operating system installed fonts --&gt;</span>
   <span class="nt">&lt;auto-detect/&gt;</span>
 <span class="nt">&lt;/fonts&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <ul>
@@ -866,9 +866,9 @@ java -cp build\fop.jar;lib\avalon-framework.jar;lib\commons-logging.jar;lib\comm
 <p>When the "auto-detect" flag is set in the configuration, FOP will automatically search for fonts in the default paths for your operating system.</p>
 <p>FOP will also auto-detect fonts which are available in the classpath, if they are described as "application/x-font" in the MANIFEST.MF file. For example, if your .jar file contains font/myfont.ttf:
 Manifest-Version: 1.0</p>
-<div class="highlight"><pre><span></span>      Name: font/myfont.ttf
-      Content-Type: application/x-font
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">      Name: font/myfont.ttf</span>
+<span class="err">      Content-Type: application/x-font</span>
+</code></pre></div>
 
 
 <p>This feature allows you to create JAR files containing fonts. The JAR files can be added to fop by providem them in the classpath, e.g. copying them into the lib/ directory.</p>

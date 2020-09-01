@@ -199,84 +199,84 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h2 id="gettingStarted">Getting started</h2>
 <p>The DOM API defines an interface called <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/DOMImplementation.html">DOMImplementation</a>, which represents the bootstrap of any DOM implementation. The role of this class is to bootstrap a particular implementation of the DOM by providing a method to create a <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html">Document</a>. Then, the concrete <code>Document</code> represents an XML document and also acts like a factory for the various DOM objects such as <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Element.html">Element</a>, <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Attr.html">Attr</a> and <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Text.html">Text</a>.</p>
 <p>How to get an instance of the <code>DOMImplementation</code> interface depends on the DOM implementation you are using. In Batik, the DOM implementation is located in the package <code>org.apache.batik.dom.svg</code> and the class is named <a href="http://xmlgraphics.apache.org/batik/javadoc/org/apache/batik/dom/svg/SVGDOMImplementation.html">SVGDOMImplementation</a>. The following example shows how to get a concrete <code>DOMImplementation</code> object.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.w3c.dom.DOMImplementation</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SVGDOMImplementation</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.w3c.dom.DOMImplementation</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SVGDOMImplementation</span><span class="p">;</span>
 
-<span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="o">.</span><span class="na">getDOMImplementation</span><span class="o">();</span>
-</pre></div>
+<span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="p">.</span><span class="na">getDOMImplementation</span><span class="p">();</span>
+</code></pre></div>
 
 
 <p>Once you have an instance of a <code>DOMImplementation</code>, you are not relying on Batik-specific code any more and ready to use the DOM API.</p>
 <h2 id="creating">Creating a Document</h2>
 <p>Using the <code>DOMImplementation</code>, you are now able to create a <code>Document</code>. The following example illustrates how to create an SVG document. Note that the Batik’s DOM implementation can be used to represent either an SVG document fragment or any kind of XML document. Note that by choosing the namespace URI and the local name of the root element of SVG, we are creating an SVG document.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SVGDOMImplementation</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.w3c.dom.Document</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SVGDOMImplementation</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.w3c.dom.Document</span><span class="p">;</span>
 
 <span class="c1">// We are using a constant available on the SVGDOMImplementation,</span>
 <span class="c1">// but we could have used &quot;http://www.w3.org/2000/svg&quot;.</span>
-<span class="n">String</span> <span class="n">svgNS</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="o">.</span><span class="na">SVG_NAMESPACE_URI</span><span class="o">;</span>
-<span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="o">.</span><span class="na">getDOMImplementation</span><span class="o">();</span>
-<span class="n">Document</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">impl</span><span class="o">.</span><span class="na">createDocument</span><span class="o">(</span><span class="n">svgNS</span><span class="o">,</span> <span class="s">&quot;svg&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
-</pre></div>
+<span class="n">String</span> <span class="n">svgNS</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="p">.</span><span class="na">SVG_NAMESPACE_URI</span><span class="p">;</span>
+<span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="p">.</span><span class="na">getDOMImplementation</span><span class="p">();</span>
+<span class="n">Document</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">impl</span><span class="p">.</span><span class="na">createDocument</span><span class="p">(</span><span class="n">svgNS</span><span class="p">,</span> <span class="s">&quot;svg&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+</code></pre></div>
 
 
 <p>As we have created an SVG <code>Document</code>, we can cast this document to an <a href="../javadoc/org/w3c/dom/svg/SVGDocument.html">SVGDocument</a> (defined in the <code>org.w3c.dom.svg</code> package) if needed.</p>
 <h2 id="buildsvgdoc">Building an SVG Document</h2>
 <p>Finally, using the <code>Document</code> object, we are now able to construct SVG content. Note that the document created before supports both generic XML and SVG. Though the DOM implementation of Batik is an SVG DOM implementation, the SVG-specific methods that rely on the document having been rendered (particularly geometry related methods, such as <a href="../javadoc/org/w3c/dom/svg/SVGLocatable.html#getBBox()">SVGLocatable.getBBox</a>) cannot be used at this point.</p>
 <p>The document can be built using DOM Level 2 Core methods. The following example shows how to create a red rectangle located at (10, 20), with a size of (100, 50) placed in a (400, 450) SVG canvas:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SVGDOMImplementation</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.w3c.dom.Document</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.w3c.dom.Element</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SVGDOMImplementation</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.w3c.dom.Document</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.w3c.dom.Element</span><span class="p">;</span>
 
-<span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="o">.</span><span class="na">getDOMImplementation</span><span class="o">();</span>
-<span class="n">String</span> <span class="n">svgNS</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="o">.</span><span class="na">SVG_NAMESPACE_URI</span><span class="o">;</span>
-<span class="n">Document</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">impl</span><span class="o">.</span><span class="na">createDocument</span><span class="o">(</span><span class="n">svgNS</span><span class="o">,</span> <span class="s">&quot;svg&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+<span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="p">.</span><span class="na">getDOMImplementation</span><span class="p">();</span>
+<span class="n">String</span> <span class="n">svgNS</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="p">.</span><span class="na">SVG_NAMESPACE_URI</span><span class="p">;</span>
+<span class="n">Document</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">impl</span><span class="p">.</span><span class="na">createDocument</span><span class="p">(</span><span class="n">svgNS</span><span class="p">,</span> <span class="s">&quot;svg&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
 
 <span class="c1">// Get the root element (the &#39;svg&#39; element).</span>
-<span class="n">Element</span> <span class="n">svgRoot</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="na">getDocumentElement</span><span class="o">();</span>
+<span class="n">Element</span> <span class="n">svgRoot</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="na">getDocumentElement</span><span class="p">();</span>
 
 <span class="c1">// Set the width and height attributes on the root &#39;svg&#39; element.</span>
-<span class="n">svgRoot</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;width&quot;</span><span class="o">,</span> <span class="s">&quot;400&quot;</span><span class="o">);</span>
-<span class="n">svgRoot</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;height&quot;</span><span class="o">,</span> <span class="s">&quot;450&quot;</span><span class="o">);</span>
+<span class="n">svgRoot</span><span class="p">.</span><span class="na">setAttributeNS</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s">&quot;width&quot;</span><span class="p">,</span> <span class="s">&quot;400&quot;</span><span class="p">);</span>
+<span class="n">svgRoot</span><span class="p">.</span><span class="na">setAttributeNS</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s">&quot;height&quot;</span><span class="p">,</span> <span class="s">&quot;450&quot;</span><span class="p">);</span>
 
 <span class="c1">// Create the rectangle.</span>
-<span class="n">Element</span> <span class="n">rectangle</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="na">createElementNS</span><span class="o">(</span><span class="n">svgNS</span><span class="o">,</span> <span class="s">&quot;rect&quot;</span><span class="o">);</span>
-<span class="n">rectangle</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;x&quot;</span><span class="o">,</span> <span class="s">&quot;10&quot;</span><span class="o">);</span>
-<span class="n">rectangle</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;y&quot;</span><span class="o">,</span> <span class="s">&quot;20&quot;</span><span class="o">);</span>
-<span class="n">rectangle</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;width&quot;</span><span class="o">,</span> <span class="s">&quot;100&quot;</span><span class="o">);</span>
-<span class="n">rectangle</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;height&quot;</span><span class="o">,</span> <span class="s">&quot;50&quot;</span><span class="o">);</span>
-<span class="n">rectangle</span><span class="o">.</span><span class="na">setAttributeNS</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&quot;fill&quot;</span><span class="o">,</span> <span class="s">&quot;red&quot;</span><span class="o">);</span>
+<span class="n">Element</span> <span class="n">rectangle</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="na">createElementNS</span><span class="p">(</span><span class="n">svgNS</span><span class="p">,</span> <span class="s">&quot;rect&quot;</span><span class="p">);</span>
+<span class="n">rectangle</span><span class="p">.</span><span class="na">setAttributeNS</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="s">&quot;10&quot;</span><span class="p">);</span>
+<span class="n">rectangle</span><span class="p">.</span><span class="na">setAttributeNS</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="s">&quot;20&quot;</span><span class="p">);</span>
+<span class="n">rectangle</span><span class="p">.</span><span class="na">setAttributeNS</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s">&quot;width&quot;</span><span class="p">,</span> <span class="s">&quot;100&quot;</span><span class="p">);</span>
+<span class="n">rectangle</span><span class="p">.</span><span class="na">setAttributeNS</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s">&quot;height&quot;</span><span class="p">,</span> <span class="s">&quot;50&quot;</span><span class="p">);</span>
+<span class="n">rectangle</span><span class="p">.</span><span class="na">setAttributeNS</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s">&quot;fill&quot;</span><span class="p">,</span> <span class="s">&quot;red&quot;</span><span class="p">);</span>
 
 <span class="c1">// Attach the rectangle to the root &#39;svg&#39; element.</span>
-<span class="n">svgRoot</span><span class="o">.</span><span class="na">appendChild</span><span class="o">(</span><span class="n">rectangle</span><span class="o">);</span>
-</pre></div>
+<span class="n">svgRoot</span><span class="p">.</span><span class="na">appendChild</span><span class="p">(</span><span class="n">rectangle</span><span class="p">);</span>
+</code></pre></div>
 
 
 <p>The example given constructs a document equivalent to parsing the following SVG file:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;svg</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;450&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;svg</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;450&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;10&quot;</span> <span class="na">y=</span><span class="s">&quot;20&quot;</span> <span class="na">width=</span><span class="s">&quot;100&quot;</span> <span class="na">height=</span><span class="s">&quot;50&quot;</span> <span class="na">fill=</span><span class="s">&quot;red&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/svg&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h1 id="createdocfromsvgfile">Creating a Document from an SVG file</h1>
 <p>With Batik, you can also create an SVG DOM tree from a URI, an <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/InputStream.html">InputStream</a>, or a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/Reader.html">Reader</a>, using the <a href="../javadoc/org/apache/batik/dom/util/SAXDocumentFactory.html">SAXSVGDocumentFactory</a>. The following example illustrates how to create an SVG document from a URI using the <code>SAXSVGDocumentFactory</code> class.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
 
-<span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SAXSVGDocumentFactory</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.batik.util.XMLResourceDescriptor</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SAXSVGDocumentFactory</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.util.XMLResourceDescriptor</span><span class="p">;</span>
 
-<span class="kn">import</span> <span class="nn">org.w3c.dom.Document</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.w3c.dom.Document</span><span class="p">;</span>
 
-<span class="k">try</span> <span class="o">{</span>
-    <span class="n">String</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">XMLResourceDescriptor</span><span class="o">.</span><span class="na">getXMLParserClassName</span><span class="o">();</span>
-    <span class="n">SAXSVGDocumentFactory</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SAXSVGDocumentFactory</span><span class="o">(</span><span class="n">parser</span><span class="o">);</span>
-    <span class="n">String</span> <span class="n">uri</span> <span class="o">=</span> <span class="s">&quot;http://www.example.org/diagram.svg&quot;</span><span class="o">;</span>
-    <span class="n">Document</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="na">createDocument</span><span class="o">(</span><span class="n">uri</span><span class="o">);</span>
-<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+<span class="k">try</span> <span class="p">{</span>
+    <span class="n">String</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">XMLResourceDescriptor</span><span class="p">.</span><span class="na">getXMLParserClassName</span><span class="p">();</span>
+    <span class="n">SAXSVGDocumentFactory</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SAXSVGDocumentFactory</span><span class="p">(</span><span class="n">parser</span><span class="p">);</span>
+    <span class="n">String</span> <span class="n">uri</span> <span class="o">=</span> <span class="s">&quot;http://www.example.org/diagram.svg&quot;</span><span class="p">;</span>
+    <span class="n">Document</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="na">createDocument</span><span class="p">(</span><span class="n">uri</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// ...</span>
-<span class="o">}</span>
-</pre></div>
+<span class="p">}</span>
+</code></pre></div>
 
 
 <p>As we have created an SVG <code>Document</code>, we can cast this document to an <code>SVGDocument</code> (defined in the <code>org.w3c.dom.svg</code> package) if needed.</p>

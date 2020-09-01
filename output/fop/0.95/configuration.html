@@ -717,7 +717,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </tbody>
 </table>
 <p>This is an excerpt from the example configuration file coming with FOP:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
 
   <span class="c">&lt;!-- Strict user configuration --&gt;</span>
   <span class="nt">&lt;strict-configuration&gt;</span>true<span class="nt">&lt;/strict-configuration&gt;</span>
@@ -742,13 +742,13 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 
   <span class="c">&lt;!-- etc. etc..... --&gt;</span>
 <span class="nt">&lt;/fop&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h2 id="renderers">Renderer configuration</h2>
 <p>Each Renderer has its own configuration section which is identified by the MIME type the Renderer is written for, ex. "application/pdf" for the PDF Renderer.</p>
 <p>The configuration for the PDF Renderer could look like this:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;renderers&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderers&gt;</span>
   <span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;filterList&gt;</span>
       <span class="c">&lt;!-- provides compression using zlib flate (default is on) --&gt;</span>
@@ -768,13 +768,13 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 
   <span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/postscript&quot;</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- etc. etc..... --&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The details on the font configuration can be found on the separate <a href="fonts.html">Fonts</a> page. Note especially the section entitled <a href="fonts.html#register">Register Fonts with FOP</a>.</p>
 <h3 id="pdf-renderer">Special Settings for the PDF Renderer</h3>
 <p>The configuration element for the PDF renderer contains two elements. One is for the font configuration (please follow the link above) and one is for the "filter list". The filter list controls how the individual objects in a PDF file are encoded. By default, all objects get "flate" encoded (i.e. simply compressed with the same algorithm that is also used in ZIP files). Most users don't need to change that setting. For debugging purposes, it may be desired not to compress the internal objects at all so the generated PDF commands can be read. In that case, you can simply use the following filter list. The second filter list (type="image") ensures that all images still get compressed but also ASCII-85 encoded so the produced PDF file is still easily readable in a text editor.</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;filterList&gt;</span>
     <span class="nt">&lt;value&gt;</span>null<span class="nt">&lt;/value&gt;</span>
   <span class="nt">&lt;/filterList&gt;</span>
@@ -785,34 +785,34 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 
   <span class="nt">&lt;fonts....</span>
 <span class="err">&lt;/renderer</span><span class="nt">&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Another (optional) setting specific to the PDF Renderer is an output color profile, an ICC color profile which indicates the target color space the PDF file is generated for. This setting is mainly used in conjunction with the <a href="pdfx.html">PDF/X</a> feature. An example:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;filterList...</span>
 
   <span class="err">&lt;output-profile</span><span class="nt">&gt;</span>C:\FOP\Color\EuropeISOCoatedFOGRA27.icc<span class="nt">&lt;/output-profile&gt;</span>
 
   <span class="nt">&lt;fonts....</span>
   <span class="err">&lt;/renderer</span><span class="nt">&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Some people don't have high requirements on color fidelity but instead want the smallest PDF file sizes possible. In this case it's possible to disable the default sRGB color space which XSL-FO requires. This will cause RGB colors to be generated as device-specific RGB. Please note that this option is unavailable (and will cause an error) if you enable PDF/A or PDF/X functionality or if you specify an output profile. This setting will make the PDF about 4KB smaller. To disable the sRGB color space add the following setting:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;filterList...</span>
 
   <span class="err">&lt;disable-srgb-colorspace</span><span class="nt">&gt;</span>true<span class="nt">&lt;/disable-srgb-colorspace&gt;</span>
 
   <span class="nt">&lt;fonts....</span>
   <span class="err">&lt;/renderer</span><span class="nt">&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="ps-renderer">Special Settings for the PostScript Renderer</h3>
 <p>Besides the normal font configuration (the same "fonts" element as for the PDF renderer) the PostScript renderer has an additional setting to force landscape pages to be rotated to fit on a page inserted into the printer in portrait mode. Set the value to "true" to activate this feature. The default is "false". Example:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/postscript&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/postscript&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;auto-rotate-landscape&gt;</span>true<span class="nt">&lt;/auto-rotate-landscape&gt;</span>
 
   <span class="nt">&lt;fonts&gt;</span>
@@ -826,17 +826,17 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="nt">&lt;/font&gt;</span>
   <span class="nt">&lt;/fonts&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="pcl-renderer">Special Settings for the PCL Renderer</h3>
 <p>Non-standard fonts for the PCL renderer are made available through the Java2D subsystem which means that you don't have to do any custom font configuration in this case but you have to use the font names offered by Java.</p>
 <p>Additionally, there are certain settings that control how the renderer handles various elements.</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/vnd.hp-PCL&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/vnd.hp-PCL&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;rendering&gt;</span>quality<span class="nt">&lt;/rendering&gt;</span>
   <span class="nt">&lt;text-rendering&gt;</span>bitmap<span class="nt">&lt;/text-rendering&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The default value for the "rendering" setting is "speed" which causes borders to be painted as plain rectangles. In this mode, no special borders (dotted, dashed etc.) are available. If you want support for all border modes, set the value to "quality" as indicated above. This will cause the borders to be painted as bitmaps.</p>

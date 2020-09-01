@@ -625,19 +625,19 @@ All extensions require the correct use of an appropriate namespace in your input
 <h2 id="fo-extensions">FO Extensions</h2>
 <h3 id="fox-namespace">Namespace</h3>
 <p>By convention, FO extensions in FOP use the "fox" namespace prefix. To use any of the FO extensions, add a namespace entry for <code>http://xmlgraphics.apache.org/fop/extensions</code> to the root element:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
            <span class="na">xmlns:fox=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions&quot;</span><span class="nt">&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="bookmarks">PDF Bookmarks</h3>
 <p>In previous versions of Apache FOP there was a <code>fox:outline</code> element which was used to create outlines in PDF files. The redesigned code makes use of the new <a href="http://www.w3.org/TR/xsl11/#fo_bookmark-tree">bookmark feature defined in the latest XSL 1.1 working draft</a>.</p>
 <h3 id="named-destinations">Anchors or Named Destinations</h3>
 <p>Use the fox:destination element to define "named destinations" inside a PDF document. These are useful as fragment identifiers, e.g. "http://server/document.pdf#anchor-name". fox:destination elements can be placed almost anywhere in the fo document, including a child of root, a block-level element, or an inline-level element. For the destination to actually work, it must correspond to an "id" attribute on some fo element within the document. In other words, the "id" attribute actually creates the "view" within the PDF document. The fox:destination simply gives that view an independent name.</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fox:destination</span> <span class="na">internal-destination=</span><span class="s">&quot;table-of-contents&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fox:destination</span> <span class="na">internal-destination=</span><span class="s">&quot;table-of-contents&quot;</span><span class="nt">/&gt;</span>
 ...
 <span class="nt">&lt;fo:block</span> <span class="na">id=</span><span class="s">&quot;table-of-contents&quot;</span><span class="nt">&gt;</span>Table of Contents<span class="nt">&lt;/fo:block&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p><warning>It is possible that in some future release of FOP, <em>all</em> elements with "id" attributes will generate named-destinations, which will eliminate the need for fox:destination.</warning></p>
@@ -649,8 +649,8 @@ All extensions require the correct use of an appropriate namespace in your input
 <p>This feature is incomplete. Support for multi-page documents will be added shortly. At the moment, only single-page images will work. And this will not work with RTF output.</p>
 <p>This is a proprietary extension element which allows to add whole images as pages to an FO document. For example, if you have a scanned document or a fax as multi-page TIFF file, you can append or insert this document using the <code>fox:external-document</code> element. Each page of the external document will create one full page in the target format.</p>
 <p>The <code>fox:external-document</code> element is structurally a peer to <code>fo:page-sequence</code>, so wherever you can put an <code>fo:page-sequence</code> you could also place a <code>fox:external-document</code>. Therefore, the specified contents for <code>fo:root</code> change to:</p>
-<div class="highlight"><pre><span></span>        (layout-master-set, declarations?, bookmark-tree?, (page-sequence|page-sequence-wrapper|fox:external-document|fox:destination)+)
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">        (layout-master-set, declarations?, bookmark-tree?, (page-sequence|page-sequence-wrapper|fox:external-document|fox:destination)+)</span>
+</code></pre></div>
 
 
 <h4 id="Specification">Specification</h4>

@@ -623,7 +623,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>As noted above, there's no officially recommended way to embed metadata in XSL-FO. Apache&trade; FOP supports embedding XMP in XSL-FO. Currently, only support for document-level metadata is implemented. Object-level metadata will be implemented when there's interest.</p>
 <p>Document-level metadata can be specified in the <code>fo:declarations</code> element. XMP specification recommends to use <code>x:xmpmeta</code>, <code>rdf:RDF</code>, and <code>rdf:Description</code> elements as shown in example below. Both <code>x:xmpmeta</code> and <code>rdf:RDF</code> elements are recognized as the top-level element introducing an XMP fragment (as per the XMP specification).</p>
 <h3 id="xmp-example">Example</h3>
-<div class="highlight"><pre><span></span>[..]
+<div class="highlight"><pre><span></span><code>[..]
 <span class="nt">&lt;/fo:layout-master-set&gt;</span>
 <span class="nt">&lt;fo:declarations&gt;</span>
   <span class="nt">&lt;x:xmpmeta</span> <span class="na">xmlns:x=</span><span class="s">&quot;adobe:ns:meta/&quot;</span><span class="nt">&gt;</span>
@@ -645,7 +645,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/fo:declarations&gt;</span>
 <span class="nt">&lt;fo:page-sequence</span> <span class="err">...</span>
 <span class="err">[..]</span>
-</pre></div>
+</code></pre></div>
 
 
 <p><note><code>fo:declarations</code> <strong>must</strong> be declared after <code>fo:layout-master-set</code> and before the first <code>page-sequence</code>.</note></p>

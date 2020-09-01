@@ -641,32 +641,32 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>A full example of what is shown here can be found in the <code>examples/embedding/java/embedding/events</code> directory in the FOP distribution. The example can also be accessed <a href="http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/events/">via the web</a>.</p>
 <h3 id="write-listener">Writing an EventListener</h3>
 <p>The following code sample shows a very simple EventListener. It basically just sends all events to System.out (stdout) or System.err (stderr) depending on the event severity.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.apache.fop.events.Event</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.fop.events.EventFormatter</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.fop.events.EventListener</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.fop.events.model.EventSeverity</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.fop.events.Event</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.fop.events.EventFormatter</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.fop.events.EventListener</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.fop.events.model.EventSeverity</span><span class="p">;</span>
 
 <span class="cm">/** A simple event listener that writes the events to stdout and stderr. */</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SysOutEventListener</span> <span class="kd">implements</span> <span class="n">EventListener</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SysOutEventListener</span> <span class="kd">implements</span> <span class="n">EventListener</span> <span class="p">{</span>
 
     <span class="cm">/** {@inheritDoc} */</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">processEvent</span><span class="o">(</span><span class="n">Event</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">String</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">EventFormatter</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
-        <span class="n">EventSeverity</span> <span class="n">severity</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getSeverity</span><span class="o">();</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">severity</span> <span class="o">==</span> <span class="n">EventSeverity</span><span class="o">.</span><span class="na">INFO</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;[INFO ] &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">severity</span> <span class="o">==</span> <span class="n">EventSeverity</span><span class="o">.</span><span class="na">WARN</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;[WARN ] &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">severity</span> <span class="o">==</span> <span class="n">EventSeverity</span><span class="o">.</span><span class="na">ERROR</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;[ERROR] &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">severity</span> <span class="o">==</span> <span class="n">EventSeverity</span><span class="o">.</span><span class="na">FATAL</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;[FATAL] &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-            <span class="k">assert</span> <span class="kc">false</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">processEvent</span><span class="p">(</span><span class="n">Event</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">EventFormatter</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+        <span class="n">EventSeverity</span> <span class="n">severity</span> <span class="o">=</span> <span class="n">event</span><span class="p">.</span><span class="na">getSeverity</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">severity</span> <span class="o">==</span> <span class="n">EventSeverity</span><span class="p">.</span><span class="na">INFO</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;[INFO ] &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">severity</span> <span class="o">==</span> <span class="n">EventSeverity</span><span class="p">.</span><span class="na">WARN</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;[WARN ] &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">severity</span> <span class="o">==</span> <span class="n">EventSeverity</span><span class="p">.</span><span class="na">ERROR</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;[ERROR] &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">severity</span> <span class="o">==</span> <span class="n">EventSeverity</span><span class="p">.</span><span class="na">FATAL</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;[FATAL] &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">assert</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 <p>You can see that for every event the method <code>processEvent</code> of the <code>EventListener</code> will be called. Inside this method you can do whatever processing you would like including throwing a <code>RuntimeException</code>, if you want to abort the current processing run.</p>
@@ -674,49 +674,49 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>It is possible to gather all events for a whole processing run so they can be evaluated afterwards. However, care should be taken about memory consumption since the events provide references to objects inside FOP which may themselves have references to other objects. So holding on to these objects may mean that whole object trees cannot be released!</p>
 <h3 id="add-listener">Adding an EventListener</h3>
 <p>To register the event listener with FOP, get the <code>EventBroadcaster</code> which is associated with the user agent (<code>FOUserAgent</code>) and add it there:</p>
-<div class="highlight"><pre><span></span><span class="n">FOUserAgent</span> <span class="n">foUserAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFOUserAgent</span><span class="o">();</span>
-<span class="n">foUserAgent</span><span class="o">.</span><span class="na">getEventBroadcaster</span><span class="o">().</span><span class="na">addEventListener</span><span class="o">(</span><span class="k">new</span> <span class="n">SysOutEventListener</span><span class="o">());</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">FOUserAgent</span> <span class="n">foUserAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFOUserAgent</span><span class="p">();</span>
+<span class="n">foUserAgent</span><span class="p">.</span><span class="na">getEventBroadcaster</span><span class="p">().</span><span class="na">addEventListener</span><span class="p">(</span><span class="k">new</span> <span class="n">SysOutEventListener</span><span class="p">());</span>
+</code></pre></div>
 
 
 <p>Please note that this is done separately for each processing run, i.e. for each new user agent.</p>
 <h3 id="listener-example1">An additional listener example</h3>
 <p>Here's an additional example of an event listener:</p>
 <p>By default, FOP continues processing even if an image wasn't found. If you have more strict requirements and want FOP to stop if an image is not available, you can do something like the following in the simplest case:</p>
-<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyEventListener</span> <span class="kd">implements</span> <span class="n">EventListener</span> <span class="o">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyEventListener</span> <span class="kd">implements</span> <span class="n">EventListener</span> <span class="p">{</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">processEvent</span><span class="o">(</span><span class="n">Event</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="s">&quot;org.apache.fop.ResourceEventProducer&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span>
-                <span class="n">event</span><span class="o">.</span><span class="na">getEventGroupID</span><span class="o">()))</span> <span class="o">{</span>
-            <span class="n">event</span><span class="o">.</span><span class="na">setSeverity</span><span class="o">(</span><span class="n">EventSeverity</span><span class="o">.</span><span class="na">FATAL</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">processEvent</span><span class="p">(</span><span class="n">Event</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s">&quot;org.apache.fop.ResourceEventProducer&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span>
+                <span class="n">event</span><span class="p">.</span><span class="na">getEventGroupID</span><span class="p">()))</span> <span class="p">{</span>
+            <span class="n">event</span><span class="p">.</span><span class="na">setSeverity</span><span class="p">(</span><span class="n">EventSeverity</span><span class="p">.</span><span class="na">FATAL</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="c1">//ignore all other events (or do something of your choice)</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 
-<span class="o">}</span>
-</pre></div>
+<span class="p">}</span>
+</code></pre></div>
 
 
 <p>Increasing the event severity to FATAL will signal the event broadcaster to throw an exception and stop further processing. In the above case, all resource-related events will cause FOP to stop processing.</p>
 <p>You can also customize the exception to throw (you can may throw a RuntimeException or subclass yourself) and/or which event to respond to:</p>
-<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyEventListener</span> <span class="kd">implements</span> <span class="n">EventListener</span> <span class="o">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyEventListener</span> <span class="kd">implements</span> <span class="n">EventListener</span> <span class="p">{</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">processEvent</span><span class="o">(</span><span class="n">Event</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="s">&quot;org.apache.fop.ResourceEventProducer.imageNotFound&quot;</span>
-                <span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getEventID</span><span class="o">()))</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">processEvent</span><span class="p">(</span><span class="n">Event</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s">&quot;org.apache.fop.ResourceEventProducer.imageNotFound&quot;</span>
+                <span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">getEventID</span><span class="p">()))</span> <span class="p">{</span>
 
             <span class="c1">//Get the FileNotFoundException that&#39;s part of the event&#39;s parameters</span>
-            <span class="n">FileNotFoundException</span> <span class="n">fnfe</span> <span class="o">=</span> <span class="o">(</span><span class="n">FileNotFoundException</span><span class="o">)</span><span class="n">event</span><span class="o">.</span><span class="na">getParam</span><span class="o">(</span><span class="s">&quot;fnfe&quot;</span><span class="o">);</span>
+            <span class="n">FileNotFoundException</span> <span class="n">fnfe</span> <span class="o">=</span> <span class="p">(</span><span class="n">FileNotFoundException</span><span class="p">)</span><span class="n">event</span><span class="p">.</span><span class="na">getParam</span><span class="p">(</span><span class="s">&quot;fnfe&quot;</span><span class="p">);</span>
 
-            <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">EventFormatter</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">event</span><span class="o">),</span> <span class="n">fnfe</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="p">(</span><span class="n">EventFormatter</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">event</span><span class="p">),</span> <span class="n">fnfe</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="c1">//ignore all other events (or do something of your choice)</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 
-<span class="o">}</span>
-</pre></div>
+<span class="p">}</span>
+</code></pre></div>
 
 
 <p>This throws a <code>RuntimeException</code> with the <code>FileNotFoundException</code> as the cause. Further processing effectively stops in FOP. You can catch the exception in your code and react as you see necessary.</p>
@@ -725,14 +725,14 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p><note>The event package has been designed in order to be theoretically useful for use cases outside FOP. If you think this is interesting independently from FOP, please talk to <a href="mailto:fop-dev@xmlgraphics.apache.org">us</a>.</note></p>
 <h3 id="basic-event-production">Producing and sending an event</h3>
 <p>The basics are very simple. Just instantiate an <code>Event</code> object and fill it with the necessary parameters. Then pass it to the <code>EventBroadcaster</code> which distributes the events to the interested listeneners. Here's a code example:</p>
-<div class="highlight"><pre><span></span><span class="n">Event</span> <span class="n">ev</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Event</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">&quot;complain&quot;</span><span class="o">,</span> <span class="n">EventSeverity</span><span class="o">.</span><span class="na">WARN</span><span class="o">,</span>
-        <span class="n">Event</span><span class="o">.</span><span class="na">paramsBuilder</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">param</span><span class="o">(</span><span class="s">&quot;reason&quot;</span><span class="o">,</span> <span class="s">&quot;I&#39;m tired&quot;</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">param</span><span class="o">(</span><span class="s">&quot;blah&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">(</span><span class="mi">23</span><span class="o">))</span>
-            <span class="o">.</span><span class="na">build</span><span class="o">());</span>
-<span class="n">EventBroadcaster</span> <span class="n">broadcaster</span> <span class="o">=</span> <span class="o">[</span><span class="n">get</span> <span class="n">it</span> <span class="n">from</span> <span class="n">somewhere</span><span class="o">];</span>
-<span class="n">broadcaster</span><span class="o">.</span><span class="na">broadcastEvent</span><span class="o">(</span><span class="n">ev</span><span class="o">);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">Event</span> <span class="n">ev</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Event</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s">&quot;complain&quot;</span><span class="p">,</span> <span class="n">EventSeverity</span><span class="p">.</span><span class="na">WARN</span><span class="p">,</span>
+        <span class="n">Event</span><span class="p">.</span><span class="na">paramsBuilder</span><span class="p">()</span>
+            <span class="p">.</span><span class="na">param</span><span class="p">(</span><span class="s">&quot;reason&quot;</span><span class="p">,</span> <span class="s">&quot;I&#39;m tired&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="na">param</span><span class="p">(</span><span class="s">&quot;blah&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">Integer</span><span class="p">(</span><span class="mi">23</span><span class="p">))</span>
+            <span class="p">.</span><span class="na">build</span><span class="p">());</span>
+<span class="n">EventBroadcaster</span> <span class="n">broadcaster</span> <span class="o">=</span> <span class="o">[</span><span class="n">get</span> <span class="n">it</span> <span class="n">from</span> <span class="n">somewhere</span><span class="o">]</span><span class="p">;</span>
+<span class="n">broadcaster</span><span class="p">.</span><span class="na">broadcastEvent</span><span class="p">(</span><span class="n">ev</span><span class="p">);</span>
+</code></pre></div>
 
 
 <p>The <code>Event.paramsBuilder()</code> is a <a href="http://en.wikipedia.org/wiki/Fluent_interface">fluent interface</a> to help with the build-up of the parameters. You could just as well instantiate a <code>Map</code> (<code>Map&lt;String, Object&gt;</code>) and fill it with values.</p>
@@ -741,14 +741,14 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>The event producer interface does not need to have any implementation. The implementation is produced at runtime by a dynamic proxy created by <code>DefaultEventBroadcaster</code>. The dynamic proxy creates <code>Event</code> instances for each method call against the event producer interface. Each parameter (except "source") is added to the event's parameter map.</p>
 <p>To simplify the code needed to get an instance of the event producer interface it is suggested to create a public inner provider class inside the interface.</p>
 <p>Here's an example of such an event producer interface:</p>
-<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyEventProducer</span> <span class="kd">extends</span> <span class="n">EventProducer</span> <span class="o">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyEventProducer</span> <span class="kd">extends</span> <span class="n">EventProducer</span> <span class="p">{</span>
 
-    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Provider</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Provider</span> <span class="p">{</span>
 
-        <span class="kd">public</span> <span class="kd">static</span> <span class="n">MyEventProducer</span> <span class="nf">get</span><span class="o">(</span><span class="n">EventBroadcaster</span> <span class="n">broadcaster</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="o">(</span><span class="n">MyEventProducer</span><span class="o">)</span><span class="n">broadcaster</span><span class="o">.</span><span class="na">getEventProducerFor</span><span class="o">(</span><span class="n">MyEventProducer</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="n">MyEventProducer</span> <span class="nf">get</span><span class="p">(</span><span class="n">EventBroadcaster</span> <span class="n">broadcaster</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">MyEventProducer</span><span class="p">)</span><span class="n">broadcaster</span><span class="p">.</span><span class="na">getEventProducerFor</span><span class="p">(</span><span class="n">MyEventProducer</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 
     <span class="cm">/**</span>
 <span class="cm">     * Complain about something.</span>
@@ -757,17 +757,17 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="cm">     * @param blah the complaint</span>
 <span class="cm">     * @event.severity WARN</span>
 <span class="cm">     */</span>
-    <span class="kt">void</span> <span class="nf">complain</span><span class="o">(</span><span class="n">Object</span> <span class="n">source</span><span class="o">,</span> <span class="n">String</span> <span class="n">reason</span><span class="o">,</span> <span class="kt">int</span> <span class="n">blah</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">complain</span><span class="p">(</span><span class="n">Object</span> <span class="n">source</span><span class="p">,</span> <span class="n">String</span> <span class="n">reason</span><span class="p">,</span> <span class="kt">int</span> <span class="n">blah</span><span class="p">);</span>
 
-<span class="o">}</span>
-</pre></div>
+<span class="p">}</span>
+</code></pre></div>
 
 
 <p>To produce the same event as in the first example above, you'd use the following code:</p>
-<div class="highlight"><pre><span></span><span class="n">EventBroadcaster</span> <span class="n">broadcaster</span> <span class="o">=</span> <span class="o">[</span><span class="n">get</span> <span class="n">it</span> <span class="n">from</span> <span class="n">somewhere</span><span class="o">];</span>
-<span class="n">TestEventProducer</span> <span class="n">producer</span> <span class="o">=</span> <span class="n">TestEventProducer</span><span class="o">.</span><span class="na">Provider</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">broadcaster</span><span class="o">);</span>
-<span class="n">producer</span><span class="o">.</span><span class="na">complain</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">&quot;I&#39;m tired&quot;</span><span class="o">,</span> <span class="mi">23</span><span class="o">);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">EventBroadcaster</span> <span class="n">broadcaster</span> <span class="o">=</span> <span class="o">[</span><span class="n">get</span> <span class="n">it</span> <span class="n">from</span> <span class="n">somewhere</span><span class="o">]</span><span class="p">;</span>
+<span class="n">TestEventProducer</span> <span class="n">producer</span> <span class="o">=</span> <span class="n">TestEventProducer</span><span class="p">.</span><span class="na">Provider</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">broadcaster</span><span class="p">);</span>
+<span class="n">producer</span><span class="p">.</span><span class="na">complain</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s">&quot;I&#39;m tired&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">);</span>
+</code></pre></div>
 
 
 <h3 id="event-model">The event model</h3>
@@ -807,7 +807,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h3 id="l10n">Localization (L10n)</h3>
 <p>One goal of the event subsystem was to have localized (translated) event messages. The <code>EventFormatter</code> class can be used to convert an event to a human-readable message. Each <code>EventProducer</code> can provide its own XML-based translation file. If there is none, a central translation file is used, called "EventFormatter.xml" (found in the same directory as the <code>EventFormatter</code> class).</p>
 <p>The XML format used by the <code>EventFormatter</code> is the same as <a href="http://cocoon.apache.org/">Apache Cocoon's</a> catalog format. Here's an example:</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;catalogue</span> <span class="na">xml:lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;message</span> <span class="na">key=</span><span class="s">&quot;locator&quot;</span><span class="nt">&gt;</span>
     [ (See position {loc})| (See { #gatherContextInfo})| (No context info available)]
@@ -819,7 +819,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     Ignored deferred event for {node} ({start,if,start,end}).{{locator}}
   <span class="nt">&lt;/message&gt;</span>
 <span class="nt">&lt;/catalogue&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The example (extracted from the RTF handler's event producer) has message templates for two event methods. The class used to do variable replacement in the templates is <code>org.apache.fop.util.text.AdvancedMessageFormat</code> which is more powerful than the <code>MessageFormat</code> classes provided by the Java class library (<code>java.util.text</code> package).</p>

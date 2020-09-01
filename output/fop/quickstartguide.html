@@ -677,14 +677,14 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </li>
 <li>
 <p>Now, take your favorite XML editor and create a small XML file like the following. Replace "Frank" with your own first name to make it a bit more personal and save it as <code>name.xml</code>:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;name&gt;</span>Frank<span class="nt">&lt;/name&gt;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;name&gt;</span>Frank<span class="nt">&lt;/name&gt;</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>To produce a PDF file from this XML file, we need an XSLT stylesheet that converts the XML to XSL-FO. This is the first step in the processing chain. The second step will be done by FOP when it reads the generated XSL-FO document and formats it to a PDF document. You can copy the following minimal XSLT stylesheet, which takes your first name and produces a "Hello World!"-style document (save it as <code>name2fo.xsl</code>):</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;xsl:stylesheet</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span>
       <span class="na">xmlns:xsl=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span>
       <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span><span class="nt">&gt;</span>
@@ -707,7 +707,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="nt">&lt;/fo:root&gt;</span>
   <span class="nt">&lt;/xsl:template&gt;</span>
 <span class="nt">&lt;/xsl:stylesheet&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 </li>

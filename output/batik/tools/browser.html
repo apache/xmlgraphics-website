@@ -202,14 +202,14 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>The method for starting the browser depends on the distribution of Batik that you chose to download. The following describes how to start the browser for each distribution (binary and source).</p>
 <h3 id="starting-binary">Starting the browser for the binary distribution</h3>
 <p>If you downloaded the <a href="../install.html#distributions">binary distribution</a> of Batik, you should have a file called <code>batik-1.6.zip</code> (or similar), which, when expanded, created a <code>batik-squiggle.jar</code> file. To start the browser, type the following on the command line:</p>
-<div class="highlight"><pre><span></span>cd installation-directory
-java -jar batik-squiggle.jar
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">cd installation-directory</span>
+<span class="err">java -jar batik-squiggle.jar</span>
+</code></pre></div>
 
 
 <p>You can pass options on the command line:</p>
-<div class="highlight"><pre><span></span>java -jar batik-squiggle.jar [-font-sizefont-size] [URIs]
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">java</span><span class="w"> </span><span class="o">-</span><span class="n">jar</span><span class="w"> </span><span class="n">batik</span><span class="o">-</span><span class="n">squiggle</span><span class="p">.</span><span class="n">jar</span><span class="w"> </span><span class="o">[</span><span class="n">-font-sizefont-size</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">URIs</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
 
 
 <p>where:</p>
@@ -220,13 +220,13 @@ specifies the font size to use in windows and menus, and</p>
 :
 specifies the URIs for the SVG documents the browser should open when it starts.</p>
 <p>For example:</p>
-<div class="highlight"><pre><span></span>java -jar batik-squiggle.jar -font-size 10
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">java -jar batik-squiggle.jar -font-size 10</span>
+</code></pre></div>
 
 
 <p>starts the browser with a small widget text font size, and:</p>
-<div class="highlight"><pre><span></span>java -jar batik-squiggle.jar -font-size 10 samples/batikLogo.svg
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">java -jar batik-squiggle.jar -font-size 10 samples/batikLogo.svg</span>
+</code></pre></div>
 
 
 <p>starts the browser with the <code>batikLogo.svg</code> file open and uses a small widget text font size.</p>
@@ -244,24 +244,24 @@ specifies the URIs for the SVG documents the browser should open when it starts.
 </ul>
 <p>-
 For Windows, type the following at the command prompt:</p>
-<div class="highlight"><pre><span></span>build squiggle
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">build squiggle</span>
+</code></pre></div>
 
 
 <p>and for Unix and Mac OS X:</p>
-<div class="highlight"><pre><span></span>./build.sh squiggle
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">./build.sh squiggle</span>
+</code></pre></div>
 
 
 <p>This will start the browser.</p>
 <p>You can pass options to the browser as follows, for Windows:</p>
-<div class="highlight"><pre><span></span>build squiggle [-font-sizefont-size] [URIs]
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">build</span><span class="w"> </span><span class="n">squiggle</span><span class="w"> </span><span class="o">[</span><span class="n">-font-sizefont-size</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">URIs</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
 
 
 <p>and for Unix:</p>
-<div class="highlight"><pre><span></span>./build.sh squiggle [-font-sizefont-size] [URIs]
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="o">/</span><span class="n">build</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">squiggle</span><span class="w"> </span><span class="o">[</span><span class="n">-font-sizefont-size</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">URIs</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
 
 
 <p>Refer to <a href="#starting-binary">“Starting the browser for the binary distribution”</a> for an explanation of these options.</p>

@@ -628,19 +628,19 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <li>FOPFactoryBuilder (a builder class that can be used for setting Configuration) </li>
 </ul>
 <p>Instead of configuring the FOPFactory you can use the above classes: </p>
-<div class="highlight"><pre><span></span>File xconf = new File(&quot;fop.xconf&quot;); 
+<div class="highlight"><pre><span></span><code>File xconf = new File(&quot;fop.xconf&quot;); 
 FopConfParser parser = new FopConfParser(xconf); //parsing configuration  
 FopFactoryBuilder builder = parser.getFopFactoryBuilder(); //building the factory with the user options
 FOPFactory fopFactory = builder.build();
 Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, foUserAgent, out);
-</pre></div>
+</code></pre></div>
 
 
 <p>or equally reading from an xml file</p>
-<div class="highlight"><pre><span></span>DefaultConfigurationBuilder cfgBuilder = new DefaultConfigurationBuilder();
+<div class="highlight"><pre><span></span><code>DefaultConfigurationBuilder cfgBuilder = new DefaultConfigurationBuilder();
 Configuration cfg = cfgBuilder.buildFromFile(new File(&quot;mycfg.xml&quot;));
 fopFactoryBuilder = new FopFactoryBuilder(baseURI).setConfiguration(cfg);
-</pre></div>
+</code></pre></div>
 
 
 <p>The above can be used instead of fopFactory.setUserConfig(cfg) which is not available anymore. </p>
@@ -648,8 +648,8 @@ fopFactoryBuilder = new FopFactoryBuilder(baseURI).setConfiguration(cfg);
 Class FOURIResolver has been replaced with InternalResourceResolver (holds a reference to both the ResourceResolver needed for resource acquisition and the base URI from which to resolve URI's).
 ResourceResolverFactory (a factory class for Resource resolver).</p>
 <p>Use of custom resource resolvers is now available through the use of FopFactoryBuilder.</p>
-<div class="highlight"><pre><span></span>FopFactoryBuilder builder = new FopFactoryBuilder(new File(&quot;.&quot;).toURI(), resolver);
-</pre></div>
+<div class="highlight"><pre><span></span><code>FopFactoryBuilder builder = new FopFactoryBuilder(new File(&quot;.&quot;).toURI(), resolver);
+</code></pre></div>
 
 
 <p>resolver is an object of org.apache.xmlgraphics.io.ResourceResolver.</p>

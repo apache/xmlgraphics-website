@@ -637,65 +637,65 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p><note>This section assumes you are familiar with <a href="embedding.html">embedding FOP</a>.</note></p>
 <h3 id="minimal-servlet">A minimal Servlet</h3>
 <p>Here is a minimal code snippet to demonstrate the basics:</p>
-<div class="highlight"><pre><span></span><span class="kd">private</span> <span class="n">TransformerFactory</span> <span class="n">tFactory</span> <span class="o">=</span> <span class="n">TransformerFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span> <span class="n">TransformerFactory</span> <span class="n">tFactory</span> <span class="o">=</span> <span class="n">TransformerFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">();</span>
 
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span>
-                   <span class="n">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServletException</span> <span class="o">{</span>
-    <span class="k">try</span> <span class="o">{</span>
-        <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">&quot;application/pdf&quot;</span><span class="o">);</span>
-        <span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;.&quot;</span><span class="o">).</span><span class="na">toURI</span><span class="o">());</span>
-        <span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFop</span><span class="o">(</span><span class="n">MimeConstants</span><span class="o">.</span><span class="na">MIME_PDF</span><span class="o">,</span> <span class="n">response</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">());</span>
-        <span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">tFactory</span><span class="o">.</span><span class="na">newTransformer</span><span class="o">();</span>
-        <span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="s">&quot;foo.fo&quot;</span><span class="o">);</span>
-        <span class="n">Result</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SAXResult</span><span class="o">(</span><span class="n">fop</span><span class="o">.</span><span class="na">getDefaultHandler</span><span class="o">());</span>
-        <span class="n">transformer</span><span class="o">.</span><span class="na">transform</span><span class="o">(</span><span class="n">src</span><span class="o">,</span> <span class="n">res</span><span class="o">);</span>
-    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">throw</span> <span class="k">new</span> <span class="n">ServletException</span><span class="o">(</span><span class="n">ex</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="p">(</span><span class="n">HttpServletRequest</span> <span class="n">request</span><span class="p">,</span>
+                   <span class="n">HttpServletResponse</span> <span class="n">response</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">ServletException</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="n">response</span><span class="p">.</span><span class="na">setContentType</span><span class="p">(</span><span class="s">&quot;application/pdf&quot;</span><span class="p">);</span>
+        <span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">).</span><span class="na">toURI</span><span class="p">());</span>
+        <span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">,</span> <span class="n">response</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">());</span>
+        <span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">tFactory</span><span class="p">.</span><span class="na">newTransformer</span><span class="p">();</span>
+        <span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="s">&quot;foo.fo&quot;</span><span class="p">);</span>
+        <span class="n">Result</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SAXResult</span><span class="p">(</span><span class="n">fop</span><span class="p">.</span><span class="na">getDefaultHandler</span><span class="p">());</span>
+        <span class="n">transformer</span><span class="p">.</span><span class="na">transform</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="n">ServletException</span><span class="p">(</span><span class="n">ex</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 <p><note>There are numerous problems with the code snippet above. Its purpose is only to demonstrate the basic concepts. See below for details.</note></p>
 <h3 id="xslt">Adding XSL tranformation (XSLT)</h3>
 <p>A common requirement is to transform an XML source to XSL-FO using an XSL transformation. It is recommended to use JAXP for this task. The following snippet shows the basic code:</p>
-<div class="highlight"><pre><span></span><span class="kd">private</span> <span class="n">TransformerFactory</span> <span class="n">tFactory</span> <span class="o">=</span> <span class="n">TransformerFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span> <span class="n">TransformerFactory</span> <span class="n">tFactory</span> <span class="o">=</span> <span class="n">TransformerFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">();</span>
 
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">ServletException</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">ServletException</span> <span class="p">{</span>
     <span class="c1">//Optionally customize the FopFactory and TransformerFactory here</span>
-<span class="o">}</span>
+<span class="p">}</span>
 
-<span class="o">[..]</span>
+<span class="o">[</span><span class="p">..</span><span class="o">]</span>
 
-<span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;.&quot;</span><span class="o">).</span><span class="na">toURI</span><span class="o">());</span>
+<span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">).</span><span class="na">toURI</span><span class="p">());</span>
 
 <span class="c1">//Setup a buffer to obtain the content length</span>
-<span class="n">ByteArrayOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span>
+<span class="n">ByteArrayOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="p">();</span>
 
 <span class="c1">//Setup FOP</span>
-<span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFop</span><span class="o">(</span><span class="n">MimeConstants</span><span class="o">.</span><span class="na">MIME_PDF</span><span class="o">,</span> <span class="n">out</span><span class="o">);</span>
+<span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">,</span> <span class="n">out</span><span class="p">);</span>
 
 <span class="c1">//Setup Transformer</span>
-<span class="n">Source</span> <span class="n">xsltSrc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;foo-xml2fo.xsl&quot;</span><span class="o">));</span>
-<span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">tFactory</span><span class="o">.</span><span class="na">newTransformer</span><span class="o">(</span><span class="n">xsltSrc</span><span class="o">);</span>
+<span class="n">Source</span> <span class="n">xsltSrc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;foo-xml2fo.xsl&quot;</span><span class="p">));</span>
+<span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">tFactory</span><span class="p">.</span><span class="na">newTransformer</span><span class="p">(</span><span class="n">xsltSrc</span><span class="p">);</span>
 
 <span class="c1">//Make sure the XSL transformation&#39;s result is piped through to FOP</span>
-<span class="n">Result</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SAXResult</span><span class="o">(</span><span class="n">fop</span><span class="o">.</span><span class="na">getDefaultHandler</span><span class="o">());</span>
+<span class="n">Result</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SAXResult</span><span class="p">(</span><span class="n">fop</span><span class="p">.</span><span class="na">getDefaultHandler</span><span class="p">());</span>
 
 <span class="c1">//Setup input</span>
-<span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;foo.xml&quot;</span><span class="o">));</span>
+<span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;foo.xml&quot;</span><span class="p">));</span>
 
 <span class="c1">//Start the transformation and rendering process</span>
-<span class="n">transformer</span><span class="o">.</span><span class="na">transform</span><span class="o">(</span><span class="n">src</span><span class="o">,</span> <span class="n">res</span><span class="o">);</span>
+<span class="n">transformer</span><span class="p">.</span><span class="na">transform</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
 
 <span class="c1">//Prepare response</span>
-<span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">&quot;application/pdf&quot;</span><span class="o">);</span>
-<span class="n">response</span><span class="o">.</span><span class="na">setContentLength</span><span class="o">(</span><span class="n">out</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+<span class="n">response</span><span class="p">.</span><span class="na">setContentType</span><span class="p">(</span><span class="s">&quot;application/pdf&quot;</span><span class="p">);</span>
+<span class="n">response</span><span class="p">.</span><span class="na">setContentLength</span><span class="p">(</span><span class="n">out</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
 
 <span class="c1">//Send content to Browser</span>
-<span class="n">response</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">().</span><span class="na">write</span><span class="o">(</span><span class="n">out</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">());</span>
-<span class="n">response</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">().</span><span class="na">flush</span><span class="o">();</span>
-</pre></div>
+<span class="n">response</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">().</span><span class="na">write</span><span class="p">(</span><span class="n">out</span><span class="p">.</span><span class="na">toByteArray</span><span class="p">());</span>
+<span class="n">response</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">().</span><span class="na">flush</span><span class="p">();</span>
+</code></pre></div>
 
 
 <p><note>Buffering the generated PDF in a ByteArrayOutputStream is done to avoid potential problems with the Acrobat Reader Plug-in in Microsoft Internet Explorer.</note></p>
@@ -718,14 +718,14 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h3 id="uriresolver">Accessing resources in your web application</h3>
 <p>Often, you will want to use resources (stylesheets, images etc.) which are bundled with your web application. FOP provides a URIResolver implementation that lets you access files via the Servlet's ServletContext. The class is called <code>org.apache.fop.servlet.ServletContextURIResolver</code>.</p>
 <p>Here's how to set it up in your servlet. Instantiate a new instance in the servlet's init() method:</p>
-<div class="highlight"><pre><span></span><span class="cm">/** URIResolver for use by this servlet */</span>
-<span class="kd">protected</span> <span class="n">URIResolver</span> <span class="n">uriResolver</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="cm">/** URIResolver for use by this servlet */</span>
+<span class="kd">protected</span> <span class="n">URIResolver</span> <span class="n">uriResolver</span><span class="p">;</span>
 
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">ServletException</span> <span class="o">{</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">uriResolver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ServletContextURIResolver</span><span class="o">(</span><span class="n">getServletContext</span><span class="o">());</span>
-    <span class="o">[..]</span>
-<span class="o">}</span>
-</pre></div>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">ServletException</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">uriResolver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ServletContextURIResolver</span><span class="p">(</span><span class="n">getServletContext</span><span class="p">());</span>
+    <span class="o">[</span><span class="p">..</span><span class="o">]</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 <p>The ServletContextURIResolver reacts on URIs beginning with "servlet-context:". If you want to access an image in a subdirectory of your web application, you could, for example, use: "servlet-context:/images/myimage.png". Don't forget the leading slash after the colon!</p>
@@ -742,35 +742,35 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </li>
 </ul>
 <p>Here are some example snippets:</p>
-<div class="highlight"><pre><span></span><span class="c1">//Setting up the JAXP TransformerFactory</span>
-<span class="k">this</span><span class="o">.</span><span class="na">transFactory</span> <span class="o">=</span> <span class="n">TransformerFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
-<span class="k">this</span><span class="o">.</span><span class="na">transFactory</span><span class="o">.</span><span class="na">setURIResolver</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">uriResolver</span><span class="o">);</span>
+<div class="highlight"><pre><span></span><code><span class="c1">//Setting up the JAXP TransformerFactory</span>
+<span class="k">this</span><span class="p">.</span><span class="na">transFactory</span> <span class="o">=</span> <span class="n">TransformerFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">();</span>
+<span class="k">this</span><span class="p">.</span><span class="na">transFactory</span><span class="p">.</span><span class="na">setURIResolver</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">uriResolver</span><span class="p">);</span>
 
-<span class="o">[..]</span>
+<span class="o">[</span><span class="p">..</span><span class="o">]</span>
 
- <span class="n">ResourceResolver</span> <span class="n">resolver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ResourceResolver</span><span class="o">()</span> <span class="o">{</span>
-        <span class="kd">public</span> <span class="n">OutputStream</span> <span class="nf">getOutputStream</span><span class="o">(</span><span class="n">URI</span> <span class="n">uri</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-            <span class="n">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="n">getServletContext</span><span class="o">().</span><span class="na">getResource</span><span class="o">(</span><span class="n">uri</span><span class="o">.</span><span class="na">toASCIIString</span><span class="o">());</span>
-            <span class="k">return</span> <span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">().</span><span class="na">getOutputStream</span><span class="o">();</span>
-        <span class="o">}</span>
+ <span class="n">ResourceResolver</span> <span class="n">resolver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ResourceResolver</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">public</span> <span class="n">OutputStream</span> <span class="nf">getOutputStream</span><span class="p">(</span><span class="n">URI</span> <span class="n">uri</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="p">{</span>
+            <span class="n">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="n">getServletContext</span><span class="p">().</span><span class="na">getResource</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="na">toASCIIString</span><span class="p">());</span>
+            <span class="k">return</span> <span class="n">url</span><span class="p">.</span><span class="na">openConnection</span><span class="p">().</span><span class="na">getOutputStream</span><span class="p">();</span>
+        <span class="p">}</span>
 
-        <span class="kd">public</span> <span class="n">Resource</span> <span class="nf">getResource</span><span class="o">(</span><span class="n">URI</span> <span class="n">uri</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="n">Resource</span><span class="o">(</span><span class="n">getServletContext</span><span class="o">().</span><span class="na">getResourceAsStream</span><span class="o">(</span><span class="n">uri</span><span class="o">.</span><span class="na">toASCIIString</span><span class="o">()));</span>
-        <span class="o">}</span>
-    <span class="o">};</span>
+        <span class="kd">public</span> <span class="n">Resource</span> <span class="nf">getResource</span><span class="p">(</span><span class="n">URI</span> <span class="n">uri</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="n">Resource</span><span class="p">(</span><span class="n">getServletContext</span><span class="p">().</span><span class="na">getResourceAsStream</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="na">toASCIIString</span><span class="p">()));</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
 
 <span class="c1">//Setting up the FOP factory</span>
-<span class="n">FopFactoryBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FopFactoryBuilder</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;.&quot;</span><span class="o">).</span><span class="na">toURI</span><span class="o">(),</span> <span class="n">resolver</span><span class="o">);</span>
-<span class="n">fopFactory</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="n">FopFactoryBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FopFactoryBuilder</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">).</span><span class="na">toURI</span><span class="p">(),</span> <span class="n">resolver</span><span class="p">);</span>
+<span class="n">fopFactory</span> <span class="o">=</span> <span class="n">builder</span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
 
-<span class="o">[..]</span>
+<span class="o">[</span><span class="p">..</span><span class="o">]</span>
 
 <span class="c1">//The stylesheet for the JAXP Transfomer</span>
-<span class="n">Source</span> <span class="n">xsltSrc</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">uriResolver</span><span class="o">.</span><span class="na">resolve</span><span class="o">(</span>
-    <span class="s">&quot;servlet-context:/xslt/mystylesheet.xsl&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
-<span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">transFactory</span><span class="o">.</span><span class="na">newTransformer</span><span class="o">(</span><span class="n">xsltSrc</span><span class="o">);</span>
-<span class="n">transformer</span><span class="o">.</span><span class="na">setURIResolver</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">uriResolver</span><span class="o">);</span>
-</pre></div>
+<span class="n">Source</span> <span class="n">xsltSrc</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">uriResolver</span><span class="p">.</span><span class="na">resolve</span><span class="p">(</span>
+    <span class="s">&quot;servlet-context:/xslt/mystylesheet.xsl&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+<span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">transFactory</span><span class="p">.</span><span class="na">newTransformer</span><span class="p">(</span><span class="n">xsltSrc</span><span class="p">);</span>
+<span class="n">transformer</span><span class="p">.</span><span class="na">setURIResolver</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">uriResolver</span><span class="p">);</span>
+</code></pre></div>
 
 
 <h2 id="ie">Notes on Microsoft Internet Explorer</h2>
@@ -781,8 +781,8 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </li>
 <li>
 <p>Give IEx the opportunity to cache. In particular, ensure the server does not set any headers causing IEx not to cache the content. This may be a real problem if the document is sent over HTTPS, because most IEx installations will by default <em>not</em> cache any content retrieved over HTTPS. Setting the <code>Expires</code> header entry may help in this case:</p>
-<div class="highlight"><pre><span></span><span class="n">response</span><span class="o">.</span><span class="na">setDateHeader</span><span class="o">(</span><span class="s">&quot;Expires&quot;</span><span class="o">,</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">+</span> <span class="n">cacheExpiringDuration</span> <span class="o">*</span> <span class="mi">1000</span><span class="o">);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">response</span><span class="p">.</span><span class="na">setDateHeader</span><span class="p">(</span><span class="s">&quot;Expires&quot;</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">()</span> <span class="o">+</span> <span class="n">cacheExpiringDuration</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
+</code></pre></div>
 
 
 <p>Consult your server manual and the relevant RFCs for further details on HTTP headers and caching.</p>

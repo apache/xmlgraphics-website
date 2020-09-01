@@ -644,43 +644,43 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h2 id="basics">Basic Usage Pattern</h2>
 <p>Apache FOP relies heavily on JAXP. It uses SAX events exclusively to receive the XSL-FO input document. It is therefore a good idea that you know a few things about JAXP (which is a good skill anyway). Let's look at the basic usage pattern for FOP...</p>
 <p>Here is the basic pattern to render an XSL-FO file to PDF:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.apache.fop.apps.FopFactory</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.fop.apps.Fop</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.fop.apps.MimeConstants</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.fop.apps.FopFactory</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.fop.apps.Fop</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.fop.apps.MimeConstants</span><span class="p">;</span>
 
 <span class="cm">/*..*/</span>
 
 <span class="c1">// Step 1: Construct a FopFactory</span>
 <span class="c1">// (reuse if you plan to render multiple documents!)</span>
-<span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
+<span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">();</span>
 
 <span class="c1">// Step 2: Set up output stream.</span>
 <span class="c1">// Note: Using BufferedOutputStream for performance reasons (helpful with FileOutputStreams).</span>
-<span class="n">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedOutputStream</span><span class="o">(</span><span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;C:/Temp/myfile.pdf&quot;</span><span class="o">)));</span>
+<span class="n">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedOutputStream</span><span class="p">(</span><span class="k">new</span> <span class="n">FileOutputStream</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;C:/Temp/myfile.pdf&quot;</span><span class="p">)));</span>
 
-<span class="k">try</span> <span class="o">{</span>
+<span class="k">try</span> <span class="p">{</span>
     <span class="c1">// Step 3: Construct fop with desired output format</span>
-    <span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFop</span><span class="o">(</span><span class="n">MimeConstants</span><span class="o">.</span><span class="na">MIME_PDF</span><span class="o">,</span> <span class="n">out</span><span class="o">);</span>
+    <span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">,</span> <span class="n">out</span><span class="p">);</span>
 
     <span class="c1">// Step 4: Setup JAXP using identity transformer</span>
-    <span class="n">TransformerFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="n">TransformerFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
-    <span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="na">newTransformer</span><span class="o">();</span> <span class="c1">// identity transformer</span>
+    <span class="n">TransformerFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="n">TransformerFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">();</span>
+    <span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">factory</span><span class="p">.</span><span class="na">newTransformer</span><span class="p">();</span> <span class="c1">// identity transformer</span>
 
     <span class="c1">// Step 5: Setup input and output for XSLT transformation</span>
     <span class="c1">// Setup input stream</span>
-    <span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;C:/Temp/myfile.fo&quot;</span><span class="o">));</span>
+    <span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;C:/Temp/myfile.fo&quot;</span><span class="p">));</span>
 
     <span class="c1">// Resulting SAX events (the generated FO) must be piped through to FOP</span>
-    <span class="n">Result</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SAXResult</span><span class="o">(</span><span class="n">fop</span><span class="o">.</span><span class="na">getDefaultHandler</span><span class="o">());</span>
+    <span class="n">Result</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SAXResult</span><span class="p">(</span><span class="n">fop</span><span class="p">.</span><span class="na">getDefaultHandler</span><span class="p">());</span>
 
     <span class="c1">// Step 6: Start XSLT transformation and FOP processing</span>
-    <span class="n">transformer</span><span class="o">.</span><span class="na">transform</span><span class="o">(</span><span class="n">src</span><span class="o">,</span> <span class="n">res</span><span class="o">);</span>
+    <span class="n">transformer</span><span class="p">.</span><span class="na">transform</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
 
-<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+<span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
     <span class="c1">//Clean-up</span>
-    <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-<span class="o">}</span>
-</pre></div>
+    <span class="n">out</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 <p>Let's discuss these 5 steps in detail:</p>
@@ -724,13 +724,13 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>Once the Fop instance is set up, call <code>getDefaultHandler()</code> to obtain a SAX DefaultHandler instance to which you can send the SAX events making up the XSL-FO document you'd like to render. FOP processing starts as soon as the DefaultHandler's <code>startDocument()</code> method is called. Processing stops again when the DefaultHandler's <code>endDocument()</code> method is called. Please refer to the basic usage pattern shown above to render a simple XSL-FO document.</p>
 <h3 id="render-with-xslt">Processing XSL-FO generated from XML+XSLT</h3>
 <p>If you want to process XSL-FO generated from XML using XSLT we recommend again using standard JAXP to do the XSLT part and piping the generated SAX events directly through to FOP. The only thing you'd change to do that on the basic usage pattern above is to set up the Transformer differently:</p>
-<div class="highlight"><pre><span></span><span class="c1">//without XSLT:</span>
+<div class="highlight"><pre><span></span><code><span class="c1">//without XSLT:</span>
 <span class="c1">//Transformer transformer = factory.newTransformer(); // identity transformer</span>
 
 <span class="c1">//with XSLT:</span>
-<span class="n">Source</span> <span class="n">xslt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;mystylesheet.xsl&quot;</span><span class="o">));</span>
-<span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="na">newTransformer</span><span class="o">(</span><span class="n">xslt</span><span class="o">);</span>
-</pre></div>
+<span class="n">Source</span> <span class="n">xslt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;mystylesheet.xsl&quot;</span><span class="p">));</span>
+<span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">factory</span><span class="p">.</span><span class="na">newTransformer</span><span class="p">(</span><span class="n">xslt</span><span class="p">);</span>
+</code></pre></div>
 
 
 <h2 id="input">Input Sources</h2>
@@ -739,43 +739,43 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <ul>
 <li>
 <p><strong>URL:</strong></p>
-<div class="highlight"><pre><span></span><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="s">&quot;http://localhost:8080/testfile.xml&quot;</span><span class="o">);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="s">&quot;http://localhost:8080/testfile.xml&quot;</span><span class="p">);</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p><strong>File:</strong></p>
-<div class="highlight"><pre><span></span><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;C:/Temp/myinputfile.xml&quot;</span><span class="o">));</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;C:/Temp/myinputfile.xml&quot;</span><span class="p">));</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p><strong>String:</strong></p>
-<div class="highlight"><pre><span></span><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="k">new</span> <span class="n">StringReader</span><span class="o">(</span><span class="n">myString</span><span class="o">));</span> <span class="c1">// myString is a String</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">StringReader</span><span class="p">(</span><span class="n">myString</span><span class="p">));</span> <span class="c1">// myString is a String</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p><strong>InputStream:</strong></p>
-<div class="highlight"><pre><span></span><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="k">new</span> <span class="n">MyInputStream</span><span class="o">(</span><span class="n">something</span><span class="o">));</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">MyInputStream</span><span class="p">(</span><span class="n">something</span><span class="p">));</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p><strong>Byte Array:</strong></p>
-<div class="highlight"><pre><span></span><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="k">new</span> <span class="n">ByteArrayInputStream</span><span class="o">(</span><span class="n">myBuffer</span><span class="o">));</span> <span class="c1">// myBuffer is a byte[] here</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">ByteArrayInputStream</span><span class="p">(</span><span class="n">myBuffer</span><span class="p">));</span> <span class="c1">// myBuffer is a byte[] here</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p><strong>DOM:</strong></p>
-<div class="highlight"><pre><span></span><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DOMSource</span><span class="o">(</span><span class="n">myDocument</span><span class="o">);</span> <span class="c1">// myDocument is a Document or a Node</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DOMSource</span><span class="p">(</span><span class="n">myDocument</span><span class="p">);</span> <span class="c1">// myDocument is a Document or a Node</span>
+</code></pre></div>
 
 
 </li>
@@ -792,50 +792,50 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <ul>
 <li>
 <p>The <strong>font base URL</strong> to use when resolving relative URLs for fonts. Example:</p>
-<div class="highlight"><pre><span></span><span class="n">fopFactory</span><span class="o">.</span><span class="na">getFontManager</span><span class="o">().</span><span class="na">setFontBaseURL</span><span class="o">(</span><span class="s">&quot;file:///C:/Temp/fonts&quot;</span><span class="o">);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">fopFactory</span><span class="p">.</span><span class="na">getFontManager</span><span class="p">().</span><span class="na">setFontBaseURL</span><span class="p">(</span><span class="s">&quot;file:///C:/Temp/fonts&quot;</span><span class="p">);</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>The <strong>hyphenation base URL</strong> to use when resolving relative URLs for hyphenation patterns. Example:</p>
-<div class="highlight"><pre><span></span><span class="n">fopFactory</span><span class="o">.</span><span class="na">setHyphenBaseURL</span><span class="o">(</span><span class="s">&quot;file:///C:/Temp/hyph&quot;</span><span class="o">);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">fopFactory</span><span class="p">.</span><span class="na">setHyphenBaseURL</span><span class="p">(</span><span class="s">&quot;file:///C:/Temp/hyph&quot;</span><span class="p">);</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>Disable <strong>strict validation</strong>. When disabled FOP is less strict about the rules established by the XSL-FO specification. Example:</p>
-<div class="highlight"><pre><span></span><span class="n">fopFactory</span><span class="o">.</span><span class="na">setStrictValidation</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">fopFactory</span><span class="p">.</span><span class="na">setStrictValidation</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>Enable an <strong>alternative set of rules for text indents</strong> that tries to mimic the behaviour of many commercial FO implementations, that chose to break the specification in this respect. The default of this option is 'false', which causes Apache FOP to behave exactly as described in the specification. To enable the alternative behaviour, call:</p>
-<div class="highlight"><pre><span></span><span class="n">fopFactory</span><span class="o">.</span><span class="na">setBreakIndentInheritanceOnReferenceAreaBoundary</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">fopFactory</span><span class="p">.</span><span class="na">setBreakIndentInheritanceOnReferenceAreaBoundary</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>Set the <strong>source resolution</strong> for the document. This is used internally to determine the pixel size for SVG images and bitmap images without resolution information. Default: 72 dpi. Example:</p>
-<div class="highlight"><pre><span></span><span class="n">fopFactory</span><span class="o">.</span><span class="na">setSourceResolution</span><span class="o">(</span><span class="mi">96</span><span class="o">);</span> <span class="c1">// =96dpi (dots/pixels per Inch)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">fopFactory</span><span class="p">.</span><span class="na">setSourceResolution</span><span class="p">(</span><span class="mi">96</span><span class="p">);</span> <span class="c1">// =96dpi (dots/pixels per Inch)</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>Manually add an <strong>ElementMapping instance</strong>. If you want to supply a special FOP extension you can give the instance to the FOUserAgent. Normally, the FOP extensions can be automatically detected (see the documentation on extension for more info). Example:</p>
-<div class="highlight"><pre><span></span><span class="n">fopFactory</span><span class="o">.</span><span class="na">addElementMapping</span><span class="o">(</span><span class="n">myElementMapping</span><span class="o">);</span> <span class="c1">// myElementMapping is a org.apache.fop.fo.ElementMapping</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">fopFactory</span><span class="p">.</span><span class="na">addElementMapping</span><span class="p">(</span><span class="n">myElementMapping</span><span class="p">);</span> <span class="c1">// myElementMapping is a org.apache.fop.fo.ElementMapping</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>Set a <strong>URIResolver</strong> for custom URI resolution. By supplying a JAXP URIResolver you can add custom URI resolution functionality to FOP. For example, you can use <a href="http://xml.apache.org/commons/components/resolver/">Apache XML Commons Resolver</a> to make use of XCatalogs. Example:</p>
-<div class="highlight"><pre><span></span><span class="n">fopFactory</span><span class="o">.</span><span class="na">setURIResolver</span><span class="o">(</span><span class="n">myResolver</span><span class="o">);</span> <span class="c1">// myResolver is a javax.xml.transform.URIResolver</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">fopFactory</span><span class="p">.</span><span class="na">setURIResolver</span><span class="p">(</span><span class="n">myResolver</span><span class="p">);</span> <span class="c1">// myResolver is a javax.xml.transform.URIResolver</span>
+</code></pre></div>
 
 
 <p><note>Both the FopFactory and the FOUserAgent have a method to set a URIResolver. The URIResolver on the FopFactory is primarily used to resolve URIs on factory-level (hyphenation patterns, for example) and it is always used if no other URIResolver (for example on the FOUserAgent) resolved the URI first.</note></p>
@@ -843,90 +843,90 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </ul>
 <h3 id="user-agent">Customizing the User Agent</h3>
 <p>The user agent is the entity that allows you to interact with a single rendering run, i.e. the processing of a single document. If you wish to customize the user agent's behaviour, the first step is to create your own instance of FOUserAgent using the appropriate factory method on FopFactory and pass that to the factory method that will create a new Fop instance:</p>
-<div class="highlight"><pre><span></span><span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span> <span class="c1">// Reuse the FopFactory if possible!</span>
+<div class="highlight"><pre><span></span><code><span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">();</span> <span class="c1">// Reuse the FopFactory if possible!</span>
 <span class="c1">// do the following for each new rendering run</span>
-<span class="n">FOUserAgent</span> <span class="n">userAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFOUserAgent</span><span class="o">();</span>
+<span class="n">FOUserAgent</span> <span class="n">userAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFOUserAgent</span><span class="p">();</span>
 <span class="c1">// customize userAgent</span>
-<span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFop</span><span class="o">(</span><span class="n">MimeConstants</span><span class="o">.</span><span class="na">MIME_POSTSCRIPT</span><span class="o">,</span> <span class="n">userAgent</span><span class="o">,</span> <span class="n">out</span><span class="o">);</span>
-</pre></div>
+<span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_POSTSCRIPT</span><span class="p">,</span> <span class="n">userAgent</span><span class="p">,</span> <span class="n">out</span><span class="p">);</span>
+</code></pre></div>
 
 
 <p>You can do all sorts of things on the user agent:</p>
 <ul>
 <li>
 <p>The <strong>base URL</strong> to use when resolving relative URLs. Example:</p>
-<div class="highlight"><pre><span></span><span class="n">userAgent</span><span class="o">.</span><span class="na">setBaseURL</span><span class="o">(</span><span class="s">&quot;file:///C:/Temp/&quot;</span><span class="o">);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setBaseURL</span><span class="p">(</span><span class="s">&quot;file:///C:/Temp/&quot;</span><span class="p">);</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>Set the <strong>producer</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. The default producer is "Apache FOP". Example:</p>
-<div class="highlight"><pre><span></span><span class="n">userAgent</span><span class="o">.</span><span class="na">setProducer</span><span class="o">(</span><span class="s">&quot;MyKillerApplication&quot;</span><span class="o">);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setProducer</span><span class="p">(</span><span class="s">&quot;MyKillerApplication&quot;</span><span class="p">);</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>Set the <strong>creating user</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. Example:</p>
-<div class="highlight"><pre><span></span><span class="n">userAgent</span><span class="o">.</span><span class="na">setCreator</span><span class="o">(</span><span class="s">&quot;John Doe&quot;</span><span class="o">);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setCreator</span><span class="p">(</span><span class="s">&quot;John Doe&quot;</span><span class="p">);</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>Set the <strong>author</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. Example:</p>
-<div class="highlight"><pre><span></span><span class="n">userAgent</span><span class="o">.</span><span class="na">setAuthor</span><span class="o">(</span><span class="s">&quot;John Doe&quot;</span><span class="o">);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setAuthor</span><span class="p">(</span><span class="s">&quot;John Doe&quot;</span><span class="p">);</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>Override the <strong>creation date and time</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. Example:</p>
-<div class="highlight"><pre><span></span><span class="n">userAgent</span><span class="o">.</span><span class="na">setCreationDate</span><span class="o">(</span><span class="k">new</span> <span class="n">Date</span><span class="o">());</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setCreationDate</span><span class="p">(</span><span class="k">new</span> <span class="n">Date</span><span class="p">());</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>Set the <strong>title</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. Example:</p>
-<div class="highlight"><pre><span></span><span class="n">userAgent</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="s">&quot;Invoice No 138716847&quot;</span><span class="o">);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setTitle</span><span class="p">(</span><span class="s">&quot;Invoice No 138716847&quot;</span><span class="p">);</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>Set the <strong>keywords</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. Example:</p>
-<div class="highlight"><pre><span></span><span class="n">userAgent</span><span class="o">.</span><span class="na">setKeywords</span><span class="o">(</span><span class="s">&quot;XML XSL-FO&quot;</span><span class="o">);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setKeywords</span><span class="p">(</span><span class="s">&quot;XML XSL-FO&quot;</span><span class="p">);</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>Set the <strong>target resolution</strong> for the document. This is used to specify the output resolution for bitmap images generated by bitmap renderers (such as the TIFF renderer) and by bitmaps generated by Apache Batik for filter effects and such. Default: 72 dpi. Example:</p>
-<div class="highlight"><pre><span></span><span class="n">userAgent</span><span class="o">.</span><span class="na">setTargetResolution</span><span class="o">(</span><span class="mi">300</span><span class="o">);</span> <span class="c1">// =300dpi (dots/pixels per Inch)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setTargetResolution</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span> <span class="c1">// =300dpi (dots/pixels per Inch)</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>Set <strong>your own Document Handler</strong>. This feature can be used for several purposes, the most likey usage of which would probably be binding a MIME type when the output is Intermediate Format (see <a href="#documenthandlers">Document Handlers</a>). This also allows advanced users to create their own implementation of the document handler.</p>
-<div class="highlight"><pre><span></span><span class="n">userAgent</span><span class="o">.</span><span class="na">setDocumentHandlerOverride</span><span class="o">(</span><span class="n">documentHandler</span><span class="o">);</span> <span class="c1">// documentHandler is an instance of org.apache.fop.render.intermediate.IFDocumentHandler</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setDocumentHandlerOverride</span><span class="p">(</span><span class="n">documentHandler</span><span class="p">);</span> <span class="c1">// documentHandler is an instance of org.apache.fop.render.intermediate.IFDocumentHandler</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>Set <strong>your own FOEventHandler instance</strong>. If you want to supply your own FOEventHandler or configure an FOEventHandler subclass in a special way you can give the instance to the FOUserAgent. Normally, the FOEventHandler instance is created by FOP. Example:</p>
-<div class="highlight"><pre><span></span><span class="n">userAgent</span><span class="o">.</span><span class="na">setFOEventHandlerOverride</span><span class="o">(</span><span class="n">myFOEventHandler</span><span class="o">);</span> <span class="c1">// myFOEventHandler is an org.apache.fop.fo.FOEventHandler</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setFOEventHandlerOverride</span><span class="p">(</span><span class="n">myFOEventHandler</span><span class="p">);</span> <span class="c1">// myFOEventHandler is an org.apache.fop.fo.FOEventHandler</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>Set a <strong>URIResolver</strong> for custom URI resolution. By supplying a JAXP URIResolver you can add custom URI resolution functionality to FOP. For example, you can use <a href="http://xml.apache.org/commons/components/resolver/">Apache XML Commons Resolver</a> to make use of XCatalogs. Example:</p>
-<div class="highlight"><pre><span></span><span class="n">userAgent</span><span class="o">.</span><span class="na">setURIResolver</span><span class="o">(</span><span class="n">myResolver</span><span class="o">);</span> <span class="c1">// myResolver is a javax.xml.transform.URIResolver</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setURIResolver</span><span class="p">(</span><span class="n">myResolver</span><span class="p">);</span> <span class="c1">// myResolver is a javax.xml.transform.URIResolver</span>
+</code></pre></div>
 
 
 <p><note>Both the FopFactory and the FOUserAgent have a method to set a URIResolver. The URIResolver on the FOUserAgent is used for resolving URIs which are document-related. If it's not set or cannot resolve a URI, the URIResolver from the FopFactory is used.</note></p>
@@ -935,32 +935,32 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p><note>You should not reuse an FOUserAgent instance between FOP rendering runs although you can. Especially in multi-threaded environment, this is a bad idea.</note></p>
 <h2 id="config-external">Using a Configuration File</h2>
 <p>Instead of setting the parameters manually in code as shown above you can also set many values from an XML configuration file:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.apache.avalon.framework.configuration.Configuration</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.avalon.framework.configuration.DefaultConfigurationBuilder</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.avalon.framework.configuration.Configuration</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.avalon.framework.configuration.DefaultConfigurationBuilder</span><span class="p">;</span>
 
 <span class="cm">/*..*/</span>
 
-<span class="n">DefaultConfigurationBuilder</span> <span class="n">cfgBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultConfigurationBuilder</span><span class="o">();</span>
-<span class="n">Configuration</span> <span class="n">cfg</span> <span class="o">=</span> <span class="n">cfgBuilder</span><span class="o">.</span><span class="na">buildFromFile</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;C:/Temp/mycfg.xml&quot;</span><span class="o">));</span>
-<span class="n">fopFactory</span><span class="o">.</span><span class="na">setUserConfig</span><span class="o">(</span><span class="n">cfg</span><span class="o">);</span>
+<span class="n">DefaultConfigurationBuilder</span> <span class="n">cfgBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultConfigurationBuilder</span><span class="p">();</span>
+<span class="n">Configuration</span> <span class="n">cfg</span> <span class="o">=</span> <span class="n">cfgBuilder</span><span class="p">.</span><span class="na">buildFromFile</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;C:/Temp/mycfg.xml&quot;</span><span class="p">));</span>
+<span class="n">fopFactory</span><span class="p">.</span><span class="na">setUserConfig</span><span class="p">(</span><span class="n">cfg</span><span class="p">);</span>
 
 <span class="cm">/* ..or.. */</span>
 
-<span class="n">fopFactory</span><span class="o">.</span><span class="na">setUserConfig</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;C:/Temp/mycfg.xml&quot;</span><span class="o">));</span>
-</pre></div>
+<span class="n">fopFactory</span><span class="p">.</span><span class="na">setUserConfig</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;C:/Temp/mycfg.xml&quot;</span><span class="p">));</span>
+</code></pre></div>
 
 
 <p>The layout of the configuration file is described on the <a href="configuration.html">Configuration page</a>.</p>
 <h2 id="documenthandlers">Document Handlers</h2>
 <p>The document handlers are classes that inherit from <code>org.apache.fop.render.intermediate.IFDocumentHandler</code>. This is an interface for which a MIME type specific implementation can be created. This same handler is used either when XSL-FO is used as the input or when Intermediate Format is used. Since IF is output format agnostic, if custom fonts or other configuration information that affect layout (specific to a particular MIME type) are given then FOP needs that contextual information. The document handler provides that context so that when the IF is rendered, it is more visually consistent with FO rendering. The code below shows an example of how a document handler can be used to provide PDF configuration data to the IFSerializer.</p>
-<div class="highlight"><pre><span></span><span class="n">IFDocumentHandler</span> <span class="n">targetHandler</span> <span class="o">=</span> <span class="n">userAgent</span><span class="o">.</span><span class="na">getRendererFactory</span><span class="o">().</span><span class="na">createDocumentHandler</span><span class="o">(</span><span class="n">userAgent</span><span class="o">,</span> <span class="n">MimeConstants</span><span class="o">.</span><span class="na">MIME_PDF</span><span class="o">);</span>
+<div class="highlight"><pre><span></span><code><span class="n">IFDocumentHandler</span> <span class="n">targetHandler</span> <span class="o">=</span> <span class="n">userAgent</span><span class="p">.</span><span class="na">getRendererFactory</span><span class="p">().</span><span class="na">createDocumentHandler</span><span class="p">(</span><span class="n">userAgent</span><span class="p">,</span> <span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">);</span>
 
-<span class="n">IFSerializer</span> <span class="n">ifSerializer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IFSerializer</span><span class="o">();</span>  <span class="c1">//Create the IFSerializer to write the intermediate format</span>
-<span class="n">ifSerializer</span><span class="o">.</span><span class="na">setContext</span><span class="o">(</span><span class="k">new</span> <span class="n">IFContext</span><span class="o">(</span><span class="n">userAgent</span><span class="o">));</span>
-<span class="n">ifSerializer</span><span class="o">.</span><span class="na">mimicDocumentHandler</span><span class="o">(</span><span class="n">targetHandler</span><span class="o">);</span>   <span class="c1">//Tell the IFSerializer to mimic the target format</span>
+<span class="n">IFSerializer</span> <span class="n">ifSerializer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IFSerializer</span><span class="p">();</span>  <span class="c1">//Create the IFSerializer to write the intermediate format</span>
+<span class="n">ifSerializer</span><span class="p">.</span><span class="na">setContext</span><span class="p">(</span><span class="k">new</span> <span class="n">IFContext</span><span class="p">(</span><span class="n">userAgent</span><span class="p">));</span>
+<span class="n">ifSerializer</span><span class="p">.</span><span class="na">mimicDocumentHandler</span><span class="p">(</span><span class="n">targetHandler</span><span class="p">);</span>   <span class="c1">//Tell the IFSerializer to mimic the target format</span>
 
-<span class="n">userAgent</span><span class="o">.</span><span class="na">setDocumentHandlerOverride</span><span class="o">(</span><span class="n">ifSerializer</span><span class="o">);</span>  <span class="c1">//Make sure the prepared document handler is used</span>
-</pre></div>
+<span class="n">userAgent</span><span class="p">.</span><span class="na">setDocumentHandlerOverride</span><span class="p">(</span><span class="n">ifSerializer</span><span class="p">);</span>  <span class="c1">//Make sure the prepared document handler is used</span>
+</code></pre></div>
 
 
 <p>The rest of the code is the same as in <a href="#basics">Basic Usage Patterns</a>.</p>
@@ -981,8 +981,8 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </li>
 <li>
 <p>Depending on the target OutputStream (in case of a FileOutputStream, but not for a ByteArrayOutputStream, for example) it may improve performance considerably if you buffer the OutputStream using a BufferedOutputStream:</p>
-<div class="highlight"><pre><span></span><span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">BufferedOutputStream</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">BufferedOutputStream</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+</code></pre></div>
 
 
 <p>Make sure you properly close the OutputStream when FOP is finished.</p>

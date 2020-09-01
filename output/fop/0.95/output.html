@@ -665,48 +665,48 @@ Set the output MIME type to "application/x-pcl" (MimeConstants.MIME_PCL) and it 
 <p>Another popular post-processing tool is <a href="http://itextpdf.com/">iText</a>, which has tools for adding security features, document properties, watermarks, and many other features to PDF files.
 <warning>Caveat: iText may swallow PDF bookmarks. But <a href="https://issues.apache.org/jira/browse/FOP-1100">Jens Stavnstrup tells us</a> that this doesn't happen if you use iText's PDFStamper.</warning>
 Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note that FOP now supports <a href="pdfencryption.html">PDF encryption</a>. However the principles for using iText for other PDF features are similar.)</p>
-<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>
-  <span class="k">try</span> <span class="o">{</span>
-    <span class="n">ByteArrayOutputStream</span> <span class="n">fopout</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span>
-    <span class="n">FileOutputStream</span> <span class="n">outfile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
-    <span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
-    <span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFop</span><span class="o">(</span><span class="n">MimeConstants</span><span class="o">.</span><span class="na">MIME_PDF</span><span class="o">,</span> <span class="n">fopout</span><span class="o">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="n">ByteArrayOutputStream</span> <span class="n">fopout</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="p">();</span>
+    <span class="n">FileOutputStream</span> <span class="n">outfile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span>
+    <span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">();</span>
+    <span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">,</span> <span class="n">fopout</span><span class="p">);</span>
 
-    <span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">TransformerFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">().</span><span class="na">newTransformer</span><span class="o">(</span>
-        <span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">])));</span>
-    <span class="n">transformer</span><span class="o">.</span><span class="na">transform</span><span class="o">(</span><span class="k">new</span> <span class="n">StreamSource</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">])),</span>
-        <span class="k">new</span> <span class="n">SAXResult</span><span class="o">(</span><span class="n">fop</span><span class="o">.</span><span class="na">getDefaultHandler</span><span class="o">()));</span>
-    <span class="n">PdfReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PdfReader</span><span class="o">(</span><span class="n">fopout</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">());</span>
-    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">getNumberOfPages</span><span class="o">();</span>
-    <span class="n">Document</span> <span class="n">document</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Document</span><span class="o">(</span><span class="n">reader</span><span class="o">.</span><span class="na">getPageSizeWithRotation</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
-    <span class="n">PdfWriter</span> <span class="n">writer</span> <span class="o">=</span> <span class="n">PdfWriter</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">document</span><span class="o">,</span> <span class="n">outfile</span><span class="o">);</span>
-    <span class="n">writer</span><span class="o">.</span><span class="na">setEncryption</span><span class="o">(</span><span class="n">PdfWriter</span><span class="o">.</span><span class="na">STRENGTH40BITS</span><span class="o">,</span> <span class="s">&quot;pdf&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span>
-      <span class="n">PdfWriter</span><span class="o">.</span><span class="na">AllowCopy</span><span class="o">);</span>
-    <span class="n">document</span><span class="o">.</span><span class="na">open</span><span class="o">();</span>
-    <span class="n">PdfContentByte</span> <span class="n">cb</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="na">getDirectContent</span><span class="o">();</span>
-    <span class="n">PdfImportedPage</span> <span class="n">page</span><span class="o">;</span>
-    <span class="kt">int</span> <span class="n">rotation</span><span class="o">;</span>
-    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-    <span class="k">while</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">i</span><span class="o">++;</span>
-      <span class="n">document</span><span class="o">.</span><span class="na">setPageSize</span><span class="o">(</span><span class="n">reader</span><span class="o">.</span><span class="na">getPageSizeWithRotation</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
-      <span class="n">document</span><span class="o">.</span><span class="na">newPage</span><span class="o">();</span>
-      <span class="n">page</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="na">getImportedPage</span><span class="o">(</span><span class="n">reader</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
-      <span class="n">rotation</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">getPageRotation</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-      <span class="k">if</span> <span class="o">(</span><span class="n">rotation</span> <span class="o">==</span> <span class="mi">90</span> <span class="o">||</span> <span class="n">rotation</span> <span class="o">==</span> <span class="mi">270</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">cb</span><span class="o">.</span><span class="na">addTemplate</span><span class="o">(</span><span class="n">page</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mf">1f</span><span class="o">,</span> <span class="mf">1f</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span>
-        <span class="n">reader</span><span class="o">.</span><span class="na">getPageSizeWithRotation</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">height</span><span class="o">());</span>
-      <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-        <span class="n">cb</span><span class="o">.</span><span class="na">addTemplate</span><span class="o">(</span><span class="n">page</span><span class="o">,</span> <span class="mf">1f</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mf">1f</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
-      <span class="o">}</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Processed page &quot;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
-    <span class="o">}</span>
-    <span class="n">document</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-  <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
+    <span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">TransformerFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">().</span><span class="na">newTransformer</span><span class="p">(</span>
+        <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">)));</span>
+    <span class="n">transformer</span><span class="p">.</span><span class="na">transform</span><span class="p">(</span><span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">)),</span>
+        <span class="k">new</span> <span class="n">SAXResult</span><span class="p">(</span><span class="n">fop</span><span class="p">.</span><span class="na">getDefaultHandler</span><span class="p">()));</span>
+    <span class="n">PdfReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PdfReader</span><span class="p">(</span><span class="n">fopout</span><span class="p">.</span><span class="na">toByteArray</span><span class="p">());</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">reader</span><span class="p">.</span><span class="na">getNumberOfPages</span><span class="p">();</span>
+    <span class="n">Document</span> <span class="n">document</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Document</span><span class="p">(</span><span class="n">reader</span><span class="p">.</span><span class="na">getPageSizeWithRotation</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+    <span class="n">PdfWriter</span> <span class="n">writer</span> <span class="o">=</span> <span class="n">PdfWriter</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="n">document</span><span class="p">,</span> <span class="n">outfile</span><span class="p">);</span>
+    <span class="n">writer</span><span class="p">.</span><span class="na">setEncryption</span><span class="p">(</span><span class="n">PdfWriter</span><span class="p">.</span><span class="na">STRENGTH40BITS</span><span class="p">,</span> <span class="s">&quot;pdf&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="n">PdfWriter</span><span class="p">.</span><span class="na">AllowCopy</span><span class="p">);</span>
+    <span class="n">document</span><span class="p">.</span><span class="na">open</span><span class="p">();</span>
+    <span class="n">PdfContentByte</span> <span class="n">cb</span> <span class="o">=</span> <span class="n">writer</span><span class="p">.</span><span class="na">getDirectContent</span><span class="p">();</span>
+    <span class="n">PdfImportedPage</span> <span class="n">page</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">rotation</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+      <span class="n">document</span><span class="p">.</span><span class="na">setPageSize</span><span class="p">(</span><span class="n">reader</span><span class="p">.</span><span class="na">getPageSizeWithRotation</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+      <span class="n">document</span><span class="p">.</span><span class="na">newPage</span><span class="p">();</span>
+      <span class="n">page</span> <span class="o">=</span> <span class="n">writer</span><span class="p">.</span><span class="na">getImportedPage</span><span class="p">(</span><span class="n">reader</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+      <span class="n">rotation</span> <span class="o">=</span> <span class="n">reader</span><span class="p">.</span><span class="na">getPageRotation</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">rotation</span> <span class="o">==</span> <span class="mi">90</span> <span class="o">||</span> <span class="n">rotation</span> <span class="o">==</span> <span class="mi">270</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cb</span><span class="p">.</span><span class="na">addTemplate</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1f</span><span class="p">,</span> <span class="mf">1f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">reader</span><span class="p">.</span><span class="na">getPageSizeWithRotation</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="na">height</span><span class="p">());</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">cb</span><span class="p">.</span><span class="na">addTemplate</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="mf">1f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Processed page &quot;</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">document</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 <p>Check the iText tutorial and documentation for setting access flags, password, encryption strength and other parameters.</p>
@@ -724,14 +724,14 @@ Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note t
 <p>The PostScript renderer has been brought up to a similar quality as the PDF renderer, but may still be missing certain features. It provides good support for most text and layout. Images and SVG are not fully supported, yet. Currently, the PostScript renderer generates PostScript Level 3 with most DSC comments. Actually, the only Level 3 features used are the FlateDecode and DCTDecode filter (the latter is used for 1:1 embedding of JPEG images), everything else is Level 2.</p>
 <h3 id="ps-configuration">Configuration</h3>
 <p>The PostScript renderer configuration currently allows the following settings:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/postscript&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/postscript&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;auto-rotate-landscape&gt;</span>false<span class="nt">&lt;/auto-rotate-landscape&gt;</span>
   <span class="nt">&lt;language-level&gt;</span>3<span class="nt">&lt;/language-level&gt;</span>
   <span class="nt">&lt;optimize-resources&gt;</span>false<span class="nt">&lt;/optimize-resources&gt;</span>
   <span class="nt">&lt;safe-set-page-device&gt;</span>false<span class="nt">&lt;/safe-set-page-device&gt;</span>
   <span class="nt">&lt;dsc-compliant&gt;</span>true<span class="nt">&lt;/dsc-compliant&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The default value for the "auto-rotate-landscape" setting is "false". Setting it to "true" will automatically rotate landscape pages and will mark them as landscape.</p>
@@ -795,12 +795,12 @@ Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note t
 </ul>
 <h3 id="pcl-configuration">Configuration</h3>
 <p>The PCL renderer configuration currently allows the following settings:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/vnd.hp-PCL&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/vnd.hp-PCL&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;rendering&gt;</span>quality<span class="nt">&lt;/rendering&gt;</span>
   <span class="nt">&lt;text-rendering&gt;</span>bitmap<span class="nt">&lt;/text-rendering&gt;</span>
   <span class="nt">&lt;disable-pjl&gt;</span>false<span class="nt">&lt;/disable-pjl&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The default value for the "rendering" setting is "speed" which causes borders to be painted as plain rectangles. In this mode, no special borders (dotted, dashed etc.) are available. If you want support for all border modes, set the value to "quality" as indicated above. This will cause the borders to be painted as bitmaps.</p>
@@ -809,19 +809,19 @@ Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note t
 <p>You can control the output resolution for the PCL using the "target resolution" setting on the FOUserAgent. The actual value will be rounded up to the next supported PCL resolution. Currently, only 300 and 600 dpi are supported which should be enough for most use cases. Note that this setting directly affects the size of the output file and the print quality.</p>
 <h3 id="pcl-extensions">Extensions</h3>
 <p>The PCL Renderer supports some PCL specific extensions which can be embedded into the input FO document. To use the extensions the appropriate namespace must be declared in the fo:root element like this:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
          <span class="na">xmlns:pcl=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/pcl&quot;</span><span class="nt">&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h4 id="pcl-page-source">Page Source (Tray selection)</h4>
 <p>The page-source extension attribute on fo:simple-page-master allows to select the paper tray the sheet for a particular simple-page-master is to be taken from. Example:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:layout-master-set&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:layout-master-set&gt;</span>
   <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;simple&quot;</span> <span class="na">pcl:paper-source=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
     ...
   <span class="nt">&lt;/fo:simple-page-master&gt;</span>
 <span class="nt">&lt;/fo:layout-master-set&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Note: the tray number is a positive integer and the value depends on the target printer. Not all PCL printers support the same paper trays. Usually, "1" is the default tray, "2" is the manual paper feed, "3" is the manual envelope feed, "4" is the "lower" tray and "7" is "auto-select". Consult the technical reference for your printer for all available values.</p>
@@ -850,11 +850,11 @@ The FOP AFP Renderer deals with creating documents conforming to the IBM AFP doc
 <h3 id="afp-configuration">Configuration</h3>
 <h4 id="afp-font-config">Fonts</h4>
 <p>The AFP Renderer requires special configuration particularly related to fonts. AFP Render configuration is done through the normal FOP configuration file. The MIME type for the AFP Renderer is application/x-afp which means the AFP Renderer section in the FOP configuration file looks like:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/x-afp&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/x-afp&quot;</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- AFP Renderer --&gt;</span>
   ...
 <span class="nt">&lt;/renderer&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>There are 3 font configuration variants supported:</p>
@@ -870,7 +870,7 @@ The FOP AFP Renderer deals with creating documents conforming to the IBM AFP doc
 </li>
 </ol>
 <p>A typical raster font configuration looks like:</p>
-<div class="highlight"><pre><span></span><span class="c">&lt;!-- This is an example of mapping actual IBM raster fonts / code pages to a FOP font --&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="c">&lt;!-- This is an example of mapping actual IBM raster fonts / code pages to a FOP font --&gt;</span>
 <span class="nt">&lt;font&gt;</span>
   <span class="c">&lt;!-- The afp-font element defines the IBM code page, the matching Java encoding and the</span>
 <span class="c">       path to the font --&gt;</span>
@@ -896,22 +896,22 @@ The FOP AFP Renderer deals with creating documents conforming to the IBM AFP doc
   <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Times-Roman&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;TimesNewRoman&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/font&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>An outline font configuration is simpler as the individual font size entries are not required. However, the characterset definition is now required within the afp-font element.</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;font&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;font&gt;</span>
   <span class="nt">&lt;afp-font</span> <span class="na">type=</span><span class="s">&quot;outline&quot;</span> <span class="na">codepage=</span><span class="s">&quot;T1V10500&quot;</span> <span class="na">encoding=</span><span class="s">&quot;Cp500&quot;</span> <span class="na">characterset=</span><span class="s">&quot;CZH200  &quot;</span>
      <span class="na">path=</span><span class="s">&quot;fonts/ibm&quot;</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;sans-serif&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Helvetica&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;any&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/font&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Experimentation has shown that the font metrics for the FOP built-in Base14 fonts are actually very similar to some of the IBM outline and raster fonts. In cases were the IBM font files are not available the path attribute in the afp-font element can be replaced by a base14-font attribute giving the name of the matching Base14 font. In this case the AFP Renderer will take the font metrics from the built-in font.</p>
-<div class="highlight"><pre><span></span> :::xml
+<div class="highlight"><pre><span></span><code> :::xml
  <span class="c">&lt;!-- The following are examples of defining outline fonts based on FOP built-in</span>
 <span class="c">       font metrics for the Adobe Base14 fonts --&gt;</span>
   <span class="c">&lt;!-- sans-serif fonts based on Helvetica --&gt;</span>
@@ -980,49 +980,49 @@ The FOP AFP Renderer deals with creating documents conforming to the IBM AFP doc
     <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;monospace&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Courier&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/font&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h4 id="afp-renderer-resolution-config">Output Resolution</h4>
 <p>By default the AFP Renderer creates output with a resolution of 240 dpi. This can be overridden by the <renderer-resolution/> configuration element. Example:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;renderer-resolution&gt;</span>240<span class="nt">&lt;/renderer-resolution&gt;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer-resolution&gt;</span>240<span class="nt">&lt;/renderer-resolution&gt;</span>
+</code></pre></div>
 
 
 <h4 id="afp-image-config">Images</h4>
 <p>By default the AFP Renderer converts all images to 8 bit grey level. This can be overridden by the <images> configuration element. Example:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;color&quot;</span> <span class="nt">/&gt;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;color&quot;</span> <span class="nt">/&gt;</span>
+</code></pre></div>
 
 
 <p>This will put images as RGB images into the AFP output stream. The default setting is:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;b+w&quot;</span> <span class="na">bits-per-pixel=</span><span class="s">&quot;8&quot;</span> <span class="nt">/&gt;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;b+w&quot;</span> <span class="na">bits-per-pixel=</span><span class="s">&quot;8&quot;</span> <span class="nt">/&gt;</span>
+</code></pre></div>
 
 
 <p>Only the values "color" and "b+w" are allowed for the mode attribute. The bits-per-pixel attribute is ignored if mode is "color". For "b+w" mode is must be 1, 4, or 8.</p>
 <h3 id="afp-extensions">Extensions</h3>
 <p>The AFP Renderer supports some AFP specific extensions which can be embedded into the input fo document. To use the extensions the appropriate namespace must be declared in the fo:root element like this:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
          <span class="na">xmlns:afp=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/afp&quot;</span><span class="nt">&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h4 id="afp-page-overlay">Page Overlay Extension</h4>
 <p>The include-page-overlay extension element allows to define on a per simple-page-master basis a page overlay resource. Example:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:layout-master-set&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:layout-master-set&gt;</span>
   <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;simple&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;afp:include-page-overlay</span> <span class="na">name=</span><span class="s">&quot;O1SAMP1 &quot;</span> <span class="nt">/&gt;</span>
     ...
   <span class="nt">&lt;/fo:simple-page-master&gt;</span>
 <span class="nt">&lt;/fo:layout-master-set&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The mandatory name attribute must refer to an 8 character (space padded) resource name that must be known in the AFP processing environment.</p>
 <h4 id="afp-page-segment">Page Segment Extension</h4>
 <p>The include-page-segment extension element allows to define resource substitution for fo:external-graphics elements. Example:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
     <span class="na">xmlns:afp=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/afp&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;fo:layout-master-set&gt;</span>
     <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;simple&quot;</span><span class="nt">&gt;</span>
@@ -1030,13 +1030,13 @@ The FOP AFP Renderer deals with creating documents conforming to the IBM AFP doc
       <span class="nt">&lt;fo:region-body/&gt;</span>
     <span class="nt">&lt;/fo:simple-page-master&gt;</span>
   <span class="nt">&lt;/fo:layout-master-set&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The include-page-segment extension element can only occur within a simple-page-master. Multiple include-page-segment extension elements within a simple-page-master are allowed. The mandatory name attribute must refer to an 8 character (space padded) resource name that must be known in the AFP processing environment. The value of the mandatory src attribute is compared against the value of the src attribute in fo:external-graphic elements and if it is identical (string matching is used) in the generated AFP the external graphic is replaced by a reference to the given resource.</p>
 <h4 id="afp-tag-logical-element">Tag Logical Element Extension</h4>
 <p>The tag-logical-element extension element allows to injects TLEs into the AFP output stream. Example:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
     <span class="na">xmlns:afp=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/afp&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;fo:layout-master-set&gt;</span>
     <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;simple&quot;</span><span class="nt">&gt;</span>
@@ -1044,20 +1044,20 @@ The FOP AFP Renderer deals with creating documents conforming to the IBM AFP doc
       <span class="nt">&lt;fo:region-body/&gt;</span>
     <span class="nt">&lt;/fo:simple-page-master&gt;</span>
   <span class="nt">&lt;/fo:layout-master-set&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The tag-logical-element extension element can only occur within a simple-page-master. Multiple tag-logical-element extension elements within a simple-page-master are allowed. The name and value attributes are mandatory.</p>
 <h4 id="afp-no-operation">No Operation Extension</h4>
 <p>The no-operation extension provides the ability to carry up to 32K of comments or any other type of unarchitected data into the AFP output stream. Example:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
     <span class="na">xmlns:afp=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/afp&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;fo:layout-master-set&gt;</span>
     <span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;simple&quot;</span><span class="nt">&gt;</span>
       <span class="nt">&lt;afp:no-operation</span> <span class="na">name=</span><span class="s">&quot;My NOP&quot;</span><span class="nt">&gt;</span>insert up to 32k of character data here!<span class="nt">&lt;/afp:no-operation&gt;</span>
     <span class="nt">&lt;/fo:simple-page-master&gt;</span>
   <span class="nt">&lt;/fo:layout-master-set&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The no-operation extension element can only occur within a simple-page-master. Multiple no-operation extension elements within a simple-page-master are allowed. The name attribute is mandatory.</p>
@@ -1112,22 +1112,22 @@ These are some known restrictions compared to other supported output formats (no
 <p>Currently, two output formats are supported: PNG and TIFF. TIFF produces one file with multiple pages, while PNG output produces one file per page. The quality of the bitmap depends on the target resolution setting on the FOUserAgent.</p>
 <h3 id="bitmap-configuration">Configuration</h3>
 <p>The TIFF and PNG renderer configuration currently allows the following settings:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;image/png&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;image/png&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;transparent-page-background&gt;</span>true<span class="nt">&lt;/transparent-page-background&gt;</span>
   <span class="nt">&lt;fonts&gt;</span><span class="c">&lt;!-- described elsewhere --&gt;</span><span class="nt">&lt;/fonts&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The default value for the "transparent-page-background" setting is "false" which paints an opaque, white background for the whole image. If you set this to true, no such background will be painted and you will get a transparent image if an alpha channel is available in the output format.</p>
 <h3 id="tiff-configuration">TIFF-specific Configuration</h3>
 <p>In addition to the above values the TIFF renderer configuration allows some additional settings:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;image/tiff&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;image/tiff&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;transparent-page-background&gt;</span>true<span class="nt">&lt;/transparent-page-background&gt;</span>
   <span class="nt">&lt;compression&gt;</span>CCITT T.6<span class="nt">&lt;/compression&gt;</span>
   <span class="nt">&lt;fonts&gt;</span><span class="c">&lt;!-- described elsewhere --&gt;</span><span class="nt">&lt;/fonts&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>The default value for the "compression" setting is "PackBits" which which is a widely supported RLE compression scheme for TIFF. The set of compression names to be used here matches the set that the Image I/O API uses. Note that not all compression schemes may be available during runtime. This depends on the actual codecs being available. Here is a list of possible values:</p>

@@ -199,116 +199,116 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h2 id="creatingJSVGCanvas">Creating a JSVGCanvas</h2>
 <p>The following example illustrates how to create a <code>JSVGCanvas</code>, which is a Swing component that follows the Swing design rule. This means that the component is not thread safe and all operations on the component or the document it is displaying must be performed as described in <a href="http://java.sun.com/docs/books/tutorial/uiswing/overview/threads.html">the Swing tutorial</a>. The <code>JSVGCanvas</code> is also a <a href="http://java.sun.com/products/javabeans/">JavaBean</a>, so it can be used in visual application builders.
 If you try this example, do not forget to set your <code>CLASSPATH</code> so that it contains the Batik classes and resources, as well as Xerces (<code>lib/xerces_2_5_0.jar</code>) and the XML APIs jars (<code>lib/xml-apis.jar</code> and <code>lib/xml-apis-ext.jar</code>).</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.awt.event.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.*</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.*</span><span class="p">;</span>
 
-<span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="p">;</span>
 
-<span class="kn">import</span> <span class="nn">org.apache.batik.swing.JSVGCanvas</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.batik.swing.gvt.GVTTreeRendererAdapter</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.batik.swing.gvt.GVTTreeRendererEvent</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.batik.swing.svg.SVGDocumentLoaderAdapter</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.batik.swing.svg.SVGDocumentLoaderEvent</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.batik.swing.svg.GVTTreeBuilderAdapter</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.batik.swing.svg.GVTTreeBuilderEvent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.swing.JSVGCanvas</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.swing.gvt.GVTTreeRendererAdapter</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.swing.gvt.GVTTreeRendererEvent</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.swing.svg.SVGDocumentLoaderAdapter</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.swing.svg.SVGDocumentLoaderEvent</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.swing.svg.GVTTreeBuilderAdapter</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.swing.svg.GVTTreeBuilderEvent</span><span class="p">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SVGApplication</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SVGApplication</span> <span class="p">{</span>
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Create a new JFrame.</span>
-        <span class="n">JFrame</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JFrame</span><span class="o">(</span><span class="s">&quot;Batik&quot;</span><span class="o">);</span>
-        <span class="n">SVGApplication</span> <span class="n">app</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGApplication</span><span class="o">(</span><span class="n">f</span><span class="o">);</span>
+        <span class="n">JFrame</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JFrame</span><span class="p">(</span><span class="s">&quot;Batik&quot;</span><span class="p">);</span>
+        <span class="n">SVGApplication</span> <span class="n">app</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGApplication</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
 
         <span class="c1">// Add components to the frame.</span>
-        <span class="n">f</span><span class="o">.</span><span class="na">getContentPane</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">app</span><span class="o">.</span><span class="na">createComponents</span><span class="o">());</span>
+        <span class="n">f</span><span class="p">.</span><span class="na">getContentPane</span><span class="p">().</span><span class="na">add</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="na">createComponents</span><span class="p">());</span>
 
         <span class="c1">// Display the frame.</span>
-        <span class="n">f</span><span class="o">.</span><span class="na">addWindowListener</span><span class="o">(</span><span class="k">new</span> <span class="n">WindowAdapter</span><span class="o">()</span> <span class="o">{</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">windowClosing</span><span class="o">(</span><span class="n">WindowEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
-        <span class="n">f</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">400</span><span class="o">);</span>
-        <span class="n">f</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-    <span class="o">}</span>
+        <span class="n">f</span><span class="p">.</span><span class="na">addWindowListener</span><span class="p">(</span><span class="k">new</span> <span class="n">WindowAdapter</span><span class="p">()</span> <span class="p">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">windowClosing</span><span class="p">(</span><span class="n">WindowEvent</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+        <span class="n">f</span><span class="p">.</span><span class="na">setSize</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
+        <span class="n">f</span><span class="p">.</span><span class="na">setVisible</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="p">}</span>
 
     <span class="c1">// The frame.</span>
-    <span class="kd">protected</span> <span class="n">JFrame</span> <span class="n">frame</span><span class="o">;</span>
+    <span class="kd">protected</span> <span class="n">JFrame</span> <span class="n">frame</span><span class="p">;</span>
 
     <span class="c1">// The &quot;Load&quot; button, which displays up a file chooser upon clicking.</span>
-    <span class="kd">protected</span> <span class="n">JButton</span> <span class="n">button</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JButton</span><span class="o">(</span><span class="s">&quot;Load...&quot;</span><span class="o">);</span>
+    <span class="kd">protected</span> <span class="n">JButton</span> <span class="n">button</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JButton</span><span class="p">(</span><span class="s">&quot;Load...&quot;</span><span class="p">);</span>
 
     <span class="c1">// The status label.</span>
-    <span class="kd">protected</span> <span class="n">JLabel</span> <span class="n">label</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JLabel</span><span class="o">();</span>
+    <span class="kd">protected</span> <span class="n">JLabel</span> <span class="n">label</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JLabel</span><span class="p">();</span>
 
     <span class="c1">// The SVG canvas.</span>
-    <span class="kd">protected</span> <span class="n">JSVGCanvas</span> <span class="n">svgCanvas</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSVGCanvas</span><span class="o">();</span>
+    <span class="kd">protected</span> <span class="n">JSVGCanvas</span> <span class="n">svgCanvas</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSVGCanvas</span><span class="p">();</span>
 
-    <span class="kd">public</span> <span class="nf">SVGApplication</span><span class="o">(</span><span class="n">JFrame</span> <span class="n">f</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">frame</span> <span class="o">=</span> <span class="n">f</span><span class="o">;</span>
-    <span class="o">}</span>
+    <span class="kd">public</span> <span class="nf">SVGApplication</span><span class="p">(</span><span class="n">JFrame</span> <span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">frame</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    <span class="kd">public</span> <span class="n">JComponent</span> <span class="nf">createComponents</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">JComponent</span> <span class="nf">createComponents</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// Create a panel and add the button, status label and the SVG canvas.</span>
-        <span class="kd">final</span> <span class="n">JPanel</span> <span class="n">panel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JPanel</span><span class="o">(</span><span class="k">new</span> <span class="n">BorderLayout</span><span class="o">());</span>
+        <span class="kd">final</span> <span class="n">JPanel</span> <span class="n">panel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JPanel</span><span class="p">(</span><span class="k">new</span> <span class="n">BorderLayout</span><span class="p">());</span>
 
-        <span class="n">JPanel</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JPanel</span><span class="o">(</span><span class="k">new</span> <span class="n">FlowLayout</span><span class="o">(</span><span class="n">FlowLayout</span><span class="o">.</span><span class="na">LEFT</span><span class="o">));</span>
-        <span class="n">p</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">button</span><span class="o">);</span>
-        <span class="n">p</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">label</span><span class="o">);</span>
+        <span class="n">JPanel</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JPanel</span><span class="p">(</span><span class="k">new</span> <span class="n">FlowLayout</span><span class="p">(</span><span class="n">FlowLayout</span><span class="p">.</span><span class="na">LEFT</span><span class="p">));</span>
+        <span class="n">p</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">button</span><span class="p">);</span>
+        <span class="n">p</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">label</span><span class="p">);</span>
 
-        <span class="n">panel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;North&quot;</span><span class="o">,</span> <span class="n">p</span><span class="o">);</span>
-        <span class="n">panel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;Center&quot;</span><span class="o">,</span> <span class="n">svgCanvas</span><span class="o">);</span>
+        <span class="n">panel</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;North&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
+        <span class="n">panel</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;Center&quot;</span><span class="p">,</span> <span class="n">svgCanvas</span><span class="p">);</span>
 
         <span class="c1">// Set the button action.</span>
-        <span class="n">button</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="n">ActionListener</span><span class="o">()</span> <span class="o">{</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="n">ActionEvent</span> <span class="n">ae</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">JFileChooser</span> <span class="n">fc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JFileChooser</span><span class="o">(</span><span class="s">&quot;.&quot;</span><span class="o">);</span>
-                <span class="kt">int</span> <span class="n">choice</span> <span class="o">=</span> <span class="n">fc</span><span class="o">.</span><span class="na">showOpenDialog</span><span class="o">(</span><span class="n">panel</span><span class="o">);</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">choice</span> <span class="o">==</span> <span class="n">JFileChooser</span><span class="o">.</span><span class="na">APPROVE_OPTION</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="n">File</span> <span class="n">f</span> <span class="o">=</span> <span class="n">fc</span><span class="o">.</span><span class="na">getSelectedFile</span><span class="o">();</span>
-                    <span class="k">try</span> <span class="o">{</span>
-                        <span class="n">svgCanvas</span><span class="o">.</span><span class="na">setURI</span><span class="o">(</span><span class="n">f</span><span class="o">.</span><span class="na">toURL</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
-                    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
-                        <span class="n">ex</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-                    <span class="o">}</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
+        <span class="n">button</span><span class="p">.</span><span class="na">addActionListener</span><span class="p">(</span><span class="k">new</span> <span class="n">ActionListener</span><span class="p">()</span> <span class="p">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="p">(</span><span class="n">ActionEvent</span> <span class="n">ae</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">JFileChooser</span> <span class="n">fc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JFileChooser</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">);</span>
+                <span class="kt">int</span> <span class="n">choice</span> <span class="o">=</span> <span class="n">fc</span><span class="p">.</span><span class="na">showOpenDialog</span><span class="p">(</span><span class="n">panel</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">choice</span> <span class="o">==</span> <span class="n">JFileChooser</span><span class="p">.</span><span class="na">APPROVE_OPTION</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">File</span> <span class="n">f</span> <span class="o">=</span> <span class="n">fc</span><span class="p">.</span><span class="na">getSelectedFile</span><span class="p">();</span>
+                    <span class="k">try</span> <span class="p">{</span>
+                        <span class="n">svgCanvas</span><span class="p">.</span><span class="na">setURI</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="na">toURL</span><span class="p">().</span><span class="na">toString</span><span class="p">());</span>
+                    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">ex</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
 
         <span class="c1">// Set the JSVGCanvas listeners.</span>
-        <span class="n">svgCanvas</span><span class="o">.</span><span class="na">addSVGDocumentLoaderListener</span><span class="o">(</span><span class="k">new</span> <span class="n">SVGDocumentLoaderAdapter</span><span class="o">()</span> <span class="o">{</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">documentLoadingStarted</span><span class="o">(</span><span class="n">SVGDocumentLoaderEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">label</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;Document Loading...&quot;</span><span class="o">);</span>
-            <span class="o">}</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">documentLoadingCompleted</span><span class="o">(</span><span class="n">SVGDocumentLoaderEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">label</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;Document Loaded.&quot;</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
+        <span class="n">svgCanvas</span><span class="p">.</span><span class="na">addSVGDocumentLoaderListener</span><span class="p">(</span><span class="k">new</span> <span class="n">SVGDocumentLoaderAdapter</span><span class="p">()</span> <span class="p">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">documentLoadingStarted</span><span class="p">(</span><span class="n">SVGDocumentLoaderEvent</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">label</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="s">&quot;Document Loading...&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">documentLoadingCompleted</span><span class="p">(</span><span class="n">SVGDocumentLoaderEvent</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">label</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="s">&quot;Document Loaded.&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
 
-        <span class="n">svgCanvas</span><span class="o">.</span><span class="na">addGVTTreeBuilderListener</span><span class="o">(</span><span class="k">new</span> <span class="n">GVTTreeBuilderAdapter</span><span class="o">()</span> <span class="o">{</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">gvtBuildStarted</span><span class="o">(</span><span class="n">GVTTreeBuilderEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">label</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;Build Started...&quot;</span><span class="o">);</span>
-            <span class="o">}</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">gvtBuildCompleted</span><span class="o">(</span><span class="n">GVTTreeBuilderEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">label</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;Build Done.&quot;</span><span class="o">);</span>
-                <span class="n">frame</span><span class="o">.</span><span class="na">pack</span><span class="o">();</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
+        <span class="n">svgCanvas</span><span class="p">.</span><span class="na">addGVTTreeBuilderListener</span><span class="p">(</span><span class="k">new</span> <span class="n">GVTTreeBuilderAdapter</span><span class="p">()</span> <span class="p">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">gvtBuildStarted</span><span class="p">(</span><span class="n">GVTTreeBuilderEvent</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">label</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="s">&quot;Build Started...&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">gvtBuildCompleted</span><span class="p">(</span><span class="n">GVTTreeBuilderEvent</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">label</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="s">&quot;Build Done.&quot;</span><span class="p">);</span>
+                <span class="n">frame</span><span class="p">.</span><span class="na">pack</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
 
-        <span class="n">svgCanvas</span><span class="o">.</span><span class="na">addGVTTreeRendererListener</span><span class="o">(</span><span class="k">new</span> <span class="n">GVTTreeRendererAdapter</span><span class="o">()</span> <span class="o">{</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">gvtRenderingPrepare</span><span class="o">(</span><span class="n">GVTTreeRendererEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">label</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;Rendering Started...&quot;</span><span class="o">);</span>
-            <span class="o">}</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">gvtRenderingCompleted</span><span class="o">(</span><span class="n">GVTTreeRendererEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">label</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;&quot;</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
+        <span class="n">svgCanvas</span><span class="p">.</span><span class="na">addGVTTreeRendererListener</span><span class="p">(</span><span class="k">new</span> <span class="n">GVTTreeRendererAdapter</span><span class="p">()</span> <span class="p">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">gvtRenderingPrepare</span><span class="p">(</span><span class="n">GVTTreeRendererEvent</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">label</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="s">&quot;Rendering Started...&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">gvtRenderingCompleted</span><span class="p">(</span><span class="n">GVTTreeRendererEvent</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">label</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
 
-        <span class="k">return</span> <span class="n">panel</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
+        <span class="k">return</span> <span class="n">panel</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 <p><img alt="Screenshot of the example SVGApplication program" src="images/svgapplication.png" title=""></p>

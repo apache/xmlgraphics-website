@@ -621,7 +621,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>This page describes an extension for FOP’s page breaking algorithm that enables the handling of dynamic content. Dynamic content has multiple variants, only one of which will be inserted in the document. Variant selection is done in a First Come First Served manner and the first variant that fits within the remaining space in the current page is chosen. If no appropriate variant is found, the dynamic content will be skipped without affecting the rest of the document layout.</p>
 <h2 id="example">Example</h2>
 <p>Here is an example of dynamic content with two variants:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:multi-switch</span> <span class="na">fox:auto-toggle=</span><span class="s">&quot;select-first-fitting&quot;</span> <span class="na">xmlns:fox=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:multi-switch</span> <span class="na">fox:auto-toggle=</span><span class="s">&quot;select-first-fitting&quot;</span> <span class="na">xmlns:fox=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;fo:multi-case&gt;</span>
         <span class="nt">&lt;fo:block&gt;</span>First variant<span class="nt">&lt;/fo:block&gt;</span>
     <span class="nt">&lt;/fo:multi-case&gt;</span>
@@ -629,7 +629,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
         <span class="nt">&lt;fo:block&gt;</span>Second variant<span class="nt">&lt;/fo:block&gt;</span>
     <span class="nt">&lt;/fo:multi-case&gt;</span>
 <span class="nt">&lt;/fo:multi-switch&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h2 id="limitations">Limitations</h2>

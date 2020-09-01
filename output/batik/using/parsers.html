@@ -236,52 +236,52 @@ Implemented by <a href="../javadoc/org/apache/batik/parser/TransformListParser.h
 <p>Some microsyntaxes also have a corresponding producer class, which is an implementation of the handler interface that generates an object while parsing.</p>
 <h2 id="examples">Examples</h2>
 <p>The following example code demonstrates how to use the parser classes to parse a list of points:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.awt.geom.Point2D</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">java.awt.geom.Point2D</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="p">;</span>
 
-<span class="kn">import</span> <span class="nn">org.apache.batik.parser.DefaultPointsHandler</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.batik.parser.ParseException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.batik.parser.PointsHandler</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.batik.parser.PointsParser</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.parser.DefaultPointsHandler</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.parser.ParseException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.parser.PointsHandler</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.parser.PointsParser</span><span class="p">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PointsParserExample</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PointsParserExample</span> <span class="p">{</span>
 
-    <span class="kd">public</span> <span class="n">List</span> <span class="nf">extractPoints</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ParseException</span> <span class="o">{</span>
-        <span class="kd">final</span> <span class="n">LinkedList</span> <span class="n">points</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">();</span>
-        <span class="n">PointsParser</span> <span class="n">pp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PointsParser</span><span class="o">();</span>
-        <span class="n">PointsHandler</span> <span class="n">ph</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultPointsHandler</span><span class="o">()</span> <span class="o">{</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">point</span><span class="o">(</span><span class="kt">float</span> <span class="n">x</span><span class="o">,</span> <span class="kt">float</span> <span class="n">y</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ParseException</span> <span class="o">{</span>
-                <span class="n">Point2D</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point2D</span><span class="o">.</span><span class="na">Float</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">);</span>
-                <span class="n">points</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">p</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">};</span>
-        <span class="n">pp</span><span class="o">.</span><span class="na">setPointsHandler</span><span class="o">(</span><span class="n">ph</span><span class="o">);</span>
-        <span class="n">pp</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
-        <span class="k">return</span> <span class="n">points</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
+    <span class="kd">public</span> <span class="n">List</span> <span class="nf">extractPoints</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">ParseException</span> <span class="p">{</span>
+        <span class="kd">final</span> <span class="n">LinkedList</span> <span class="n">points</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="p">();</span>
+        <span class="n">PointsParser</span> <span class="n">pp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PointsParser</span><span class="p">();</span>
+        <span class="n">PointsHandler</span> <span class="n">ph</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultPointsHandler</span><span class="p">()</span> <span class="p">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">point</span><span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">ParseException</span> <span class="p">{</span>
+                <span class="n">Point2D</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point2D</span><span class="p">.</span><span class="na">Float</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+                <span class="n">points</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+        <span class="n">pp</span><span class="p">.</span><span class="na">setPointsHandler</span><span class="p">(</span><span class="n">ph</span><span class="p">);</span>
+        <span class="n">pp</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">points</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 <p>This example uses the <a href="../javadoc/org/apache/batik/parser/AWTTransformProducer.html">AWTTransformProducer</a> class to generate an <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/awt/geom/AffineTransform.html">AffineTransform</a> object from an SVG transform list:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.awt.geom.AffineTransform</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">java.awt.geom.AffineTransform</span><span class="p">;</span>
 
-<span class="kn">import</span> <span class="nn">org.apache.batik.parser.AWTTransformProducer</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.batik.parser.ParseException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.batik.parser.TransformListParser</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.parser.AWTTransformProducer</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.parser.ParseException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.batik.parser.TransformListParser</span><span class="p">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TransformParserExample</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TransformParserExample</span> <span class="p">{</span>
 
-    <span class="kd">public</span> <span class="n">AffineTransform</span> <span class="nf">parseTransformList</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ParseException</span> <span class="o">{</span>
-        <span class="n">TransformListParser</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TransformListParser</span><span class="o">();</span>
-        <span class="n">AWTTransformProducer</span> <span class="n">tp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AWTTransformProducer</span><span class="o">();</span>
-        <span class="n">p</span><span class="o">.</span><span class="na">setTransformListHandler</span><span class="o">(</span><span class="n">tp</span><span class="o">);</span>
-        <span class="n">p</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
-        <span class="k">return</span> <span class="n">tp</span><span class="o">.</span><span class="na">getAffineTransform</span><span class="o">();</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
+    <span class="kd">public</span> <span class="n">AffineTransform</span> <span class="nf">parseTransformList</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">ParseException</span> <span class="p">{</span>
+        <span class="n">TransformListParser</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TransformListParser</span><span class="p">();</span>
+        <span class="n">AWTTransformProducer</span> <span class="n">tp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AWTTransformProducer</span><span class="p">();</span>
+        <span class="n">p</span><span class="p">.</span><span class="na">setTransformListHandler</span><span class="p">(</span><span class="n">tp</span><span class="p">);</span>
+        <span class="n">p</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">tp</span><span class="p">.</span><span class="na">getAffineTransform</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
         </div>
       </div>
       <div class="clear"></div>

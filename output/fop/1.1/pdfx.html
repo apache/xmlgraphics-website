@@ -629,11 +629,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>To activate PDF/X-3:2003 from the command-line, specify "-pdfprofile PDF/X-3:2003" as a parameter. If there is a violation of one of the validation rules for PDF/X, an error message is presented and the processing stops.</p>
 <h2 id="embedded">Usage (embedded)</h2>
 <p>When FOP is embedded in another Java application you can set a special option on the renderer options in the user agent to activate the PDF/A-1b profile. Here's an example:</p>
-<div class="highlight"><pre><span></span><span class="n">FOUserAgent</span> <span class="n">userAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFOUserAgent</span><span class="o">();</span>
-<span class="n">userAgent</span><span class="o">.</span><span class="na">getRendererOptions</span><span class="o">().</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;pdf-x-mode&quot;</span><span class="o">,</span> <span class="s">&quot;PDF/X-3:2003&quot;</span><span class="o">);</span>
-<span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFop</span><span class="o">(</span><span class="n">MimeConstants</span><span class="o">.</span><span class="na">MIME_PDF</span><span class="o">,</span> <span class="n">userAgent</span><span class="o">);</span>
-<span class="o">[..]</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">FOUserAgent</span> <span class="n">userAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFOUserAgent</span><span class="p">();</span>
+<span class="n">userAgent</span><span class="p">.</span><span class="na">getRendererOptions</span><span class="p">().</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;pdf-x-mode&quot;</span><span class="p">,</span> <span class="s">&quot;PDF/X-3:2003&quot;</span><span class="p">);</span>
+<span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">,</span> <span class="n">userAgent</span><span class="p">);</span>
+<span class="o">[</span><span class="p">..</span><span class="o">]</span>
+</code></pre></div>
 
 
 <p>If one of the validation rules of PDF/X is violated, an PDFConformanceException (descendant of RuntimeException) is thrown.</p>

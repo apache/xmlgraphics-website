@@ -625,25 +625,25 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <ol>
 <li>
 <p><strong>Command line:</strong> The command line option <code>-a</code> turns on accessibility:</p>
-<div class="highlight"><pre><span></span>fop -a -fo mydocument.fo -pdf mydocument.pdf
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">fop -a -fo mydocument.fo -pdf mydocument.pdf</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p><strong>Embedding:</strong></p>
-<div class="highlight"><pre><span></span><span class="n">userAgent</span><span class="o">.</span><span class="na">setAccessibility</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setAccessibility</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p><strong>Optional setting in fop.xconf file:</strong></p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;accessibility&gt;</span>true<span class="nt">&lt;/accessibility&gt;</span>
   ...
 <span class="nt">&lt;/fop&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 </li>
@@ -670,11 +670,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>The <a href="#PDFReference">PDF Reference</a> defines a set of standard Structure Types to tag content. For example, ‘P’ is used for identifying paragraphs, ‘H1’ to ‘H6’ for headers, ‘L’ for lists, ‘Div’ for block-level groups of elements, etc. This standard set is aimed at improving interoperability between applications producing or consuming PDF.</p>
 <p>FOP provides a default mapping of Formatting Objects to elements from that standard set. For example, <code>fo:page-sequence</code> is mapped to ‘Part’, <code>fo:block</code> is mapped to ‘P’, <code>fo:list-block</code> to ‘L’, etc.</p>
 <p>You may want to customize that mapping to improve the accuracy of the tagging or deal with particular FO constructs. For example, you may want to make use of the ‘H1’ to ‘H6’ tags to make the hierarchical structure of the document appear in the PDF. This is achieved by using the <code>role</code> XSL-FO property:</p>
-<div class="highlight"><pre><span></span>...
+<div class="highlight"><pre><span></span><code>...
 <span class="nt">&lt;fo:block</span> <span class="na">role=</span><span class="s">&quot;H1&quot;</span> <span class="na">font-weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">&gt;</span>I. A Level 1 Heading<span class="nt">&lt;/fo:block&gt;</span>
 <span class="nt">&lt;fo:block&gt;</span>This is the first paragraph of the first section...<span class="nt">&lt;/fo:block&gt;</span>
 ...
-</pre></div>
+</code></pre></div>
 
 
 <p>If a non-standard structure type is specified, FOP will issue a warning and fall back to the default tag associated to the Formatting Object.</p>

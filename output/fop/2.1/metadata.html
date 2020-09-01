@@ -623,7 +623,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>As noted above, there's no officially recommended way to embed metadata in XSL-FO. Apache&trade; FOP supports embedding XMP in XSL-FO. Currently, only support for document-level metadata is implemented. Object-level metadata will be implemented when there's interest.</p>
 <p>Document-level metadata can be specified in the <code>fo:declarations</code> element. XMP specification recommends to use <code>x:xmpmeta</code>, <code>rdf:RDF</code>, and <code>rdf:Description</code> elements as shown in example below. Both <code>x:xmpmeta</code> and <code>rdf:RDF</code> elements are recognized as the top-level element introducing an XMP fragment (as per the XMP specification).</p>
 <h3 id="xmp-example">Example</h3>
-<div class="highlight"><pre><span></span>[..]
+<div class="highlight"><pre><span></span><code>[..]
 <span class="nt">&lt;/fo:layout-master-set&gt;</span>
 <span class="nt">&lt;fo:declarations&gt;</span>
   <span class="nt">&lt;x:xmpmeta</span> <span class="na">xmlns:x=</span><span class="s">&quot;adobe:ns:meta/&quot;</span><span class="nt">&gt;</span>
@@ -645,7 +645,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/fo:declarations&gt;</span>
 <span class="nt">&lt;fo:page-sequence</span> <span class="err">...</span>
 <span class="err">[..]</span>
-</pre></div>
+</code></pre></div>
 
 
 <p><note><code>fo:declarations</code> <strong>must</strong> be declared after <code>fo:layout-master-set</code> and before the first <code>page-sequence</code>.</note></p>
@@ -774,20 +774,20 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h1>PDF custom properties</h1>
 <p>It is possible to add custom key/value pairs in the Info dictionary of a PDF document. Those custom properties will appear in the ‘Custom’ tab of Adobe Reader’s ‘Document Properties’ window.</p>
 <p>A pdf:info element can be added as a child of fo:declarations and contain the custom properties. For example:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:declarations&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:declarations&gt;</span>
   <span class="nt">&lt;pdf:info</span> <span class="na">xmlns:pdf=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/pdf&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;pdf:name</span> <span class="na">key=</span><span class="s">&quot;MyProperty&quot;</span><span class="nt">&gt;</span>MyValue<span class="nt">&lt;/pdf:name&gt;</span>
     <span class="nt">&lt;pdf:name</span> <span class="na">key=</span><span class="s">&quot;MyOtherProperty&quot;</span><span class="nt">&gt;</span>MyOtherValue<span class="nt">&lt;/pdf:name&gt;</span>
   <span class="nt">&lt;/pdf:info&gt;</span>
 <span class="nt">&lt;/fo:declarations&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h1>PDF Page Piece</h1>
 <p>Allows indexing of PDF files for tools such as IBM Content Manager OnDemand</p>
 <h2 id="fo">Usage (fo)</h2>
 <p>Add metadata for each page master based on how the software has been configured.</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;simple&quot;</span> <span class="na">page-height=</span><span class="s">&quot;27.9cm&quot;</span> <span class="na">page-width=</span><span class="s">&quot;21.6cm&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;simple&quot;</span> <span class="na">page-height=</span><span class="s">&quot;27.9cm&quot;</span> <span class="na">page-width=</span><span class="s">&quot;21.6cm&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;fo:region-body</span> <span class="nt">/&gt;</span>
    <span class="nt">&lt;pdf:pagepiece&gt;</span>
     <span class="nt">&lt;pdf:dictionary</span> <span class="na">key=</span><span class="s">&quot;IBM-ODIndexes/Private&quot;</span><span class="nt">&gt;</span>
@@ -795,7 +795,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="nt">&lt;/pdf:dictionary&gt;</span> 
   <span class="nt">&lt;/pdf:pagepiece&gt;</span>        
 <span class="nt">&lt;/fo:simple-page-master&gt;</span>
-</pre></div>
+</code></pre></div>
         </div>
       </div>
       <div class="clear"></div>

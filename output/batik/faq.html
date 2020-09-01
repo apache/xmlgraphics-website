@@ -338,10 +338,10 @@ where <code>xlinkNS</code> is equal to <code>"http://www.w3.org/1999/xlink"</cod
 <h4 id="dom-modifications-do-not-display">3.9. I am modifying the DOM after displaying it in the JSVGCanvas, but my changes aren’t shown (even if I call repaint).</h4>
 <p>For efficiency, if Batik loads a static document it doesn’t set up any dynamic support. Batik normally decides whether a document is dynamic by checking if it contains any <code>script</code> elements or event handler attributes. However, if your Java application is modifying the DOM directly there may be no script elements. In this case you need to tell Batik to set up dynamic support regardless.</p>
 <p>You can inform the <code>JSVGCanvas</code> that a document should be handled dynamically by calling the <code>setDocumentState</code> method, just before loading the document:</p>
-<div class="highlight"><pre><span></span><span class="n">JSVGCanvas</span> <span class="n">myCanvas</span> <span class="o">=</span> <span class="o">...;</span>
-<span class="n">myCanvas</span><span class="o">.</span><span class="na">setDocumentState</span><span class="o">(</span><span class="n">JSVGCanvas</span><span class="o">.</span><span class="na">ALWAYS_DYNAMIC</span><span class="o">);</span>
-<span class="n">myCanvas</span><span class="o">.</span><span class="na">setURI</span><span class="o">(</span><span class="s">&quot;myFile.svg&quot;</span><span class="o">);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">JSVGCanvas</span> <span class="n">myCanvas</span> <span class="o">=</span> <span class="p">...;</span>
+<span class="n">myCanvas</span><span class="p">.</span><span class="na">setDocumentState</span><span class="p">(</span><span class="n">JSVGCanvas</span><span class="p">.</span><span class="na">ALWAYS_DYNAMIC</span><span class="p">);</span>
+<span class="n">myCanvas</span><span class="p">.</span><span class="na">setURI</span><span class="p">(</span><span class="s">&quot;myFile.svg&quot;</span><span class="p">);</span>
+</code></pre></div>
 
 
 <h3 id="batik-fails-with-fop-on-org.w3c.xxx">3.10. I am trying to use Batik and FOP together but Batik does not work and fails on the org.w3c.* packages. What is happening?</h3>

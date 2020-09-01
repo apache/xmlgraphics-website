@@ -198,18 +198,18 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>The TrueType Font to SVG (<code>ttf2svg</code>) application lets you convert a range of characters from a TrueType Font into the SVG font format.</p>
 <h2 id="running">Running the font converter</h2>
 <p>If you are using the Batik binary distribution, type the following at the command line:</p>
-<div class="highlight"><pre><span></span>java -jar batik-ttf2svg.jar OPTIONS
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">java -jar batik-ttf2svg.jar OPTIONS</span>
+</code></pre></div>
 
 
 <p>If you are using the Batik source distribution, type the following at the command line:</p>
-<div class="highlight"><pre><span></span>build ttf2svg OPTIONS
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">build ttf2svg OPTIONS</span>
+</code></pre></div>
 
 
 <p>In both cases, the options are the same:</p>
-<div class="highlight"><pre><span></span>ttf-path[-lrange-begin] [-hrange-end] [-autorange] [-ascii] [-idid] [-ooutput-path] [-testcard]
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">ttf-path[-lrange-begin] [-hrange-end] [-autorange] [-ascii] [-idid] [-ooutput-path] [-testcard]</span>
+</code></pre></div>
 
 
 <p>where:</p>
@@ -235,8 +235,8 @@ specifies the pathname of the output SVG document containing the generated SVG f
 :
 specifies that a sequence of SVG <code>text</code> elements should be appended to the output SVG file to test the characters in the SVG font, providing an easy way to validate that generated SVG font visually.</p>
 <p>For example:</p>
-<div class="highlight"><pre><span></span>java -jar batik-ttf2svg.jar /usr/home/myFont.ttf -l 48 -h 57 -id MySVGFont -o mySVGFont.svg -testcard
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">java -jar batik-ttf2svg.jar /usr/home/myFont.ttf -l 48 -h 57 -id MySVGFont -o mySVGFont.svg -testcard</span>
+</code></pre></div>
 
 
 <p>will convert characters 48 to 57, i.e., <code>'0'</code> to <code>'9'</code>, in the <code>myFont.ttf</code> file into their SVG equivalent in the <code>mySVGFont.svg</code> file, appending a test card so that the font can be visualized.</p>
