@@ -1,0 +1,1214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<TITLE>
+org.apache.batik.anim.dom (Apache Batik Javadoc)
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="org.apache.batik.anim.dom (Apache Batik Javadoc)";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-files/index-1.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../../org/apache/batik/anim/package-summary.html"><B>PREV PACKAGE</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../org/apache/batik/anim/timing/package-summary.html"><B>NEXT PACKAGE</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../index.html?org/apache/batik/anim/dom/package-summary.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="package-summary.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<H2>
+Package org.apache.batik.anim.dom
+</H2>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Interface Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/AnimatableElement.html" title="interface in org.apache.batik.anim.dom">AnimatableElement</A></B></TD>
+<TD>An interface for animatable elements to expose their underlying values
+ to the compositing functions in
+ <A HREF="../../../../../org/apache/batik/anim/AbstractAnimation.html" title="class in org.apache.batik.anim"><CODE>AbstractAnimation</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/AnimatedAttributeListener.html" title="interface in org.apache.batik.anim.dom">AnimatedAttributeListener</A></B></TD>
+<TD>An interface to listen for changes on any animatable XML attribute in
+ an <A HREF="../../../../../org/apache/batik/anim/dom/SVGOMDocument.html" title="class in org.apache.batik.anim.dom"><CODE>SVGOMDocument</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/AnimatedLiveAttributeValue.html" title="interface in org.apache.batik.anim.dom">AnimatedLiveAttributeValue</A></B></TD>
+<TD>An interface for <A HREF="../../../../../org/apache/batik/dom/svg/LiveAttributeValue.html" title="interface in org.apache.batik.dom.svg"><CODE>LiveAttributeValue</CODE></A>s that have an animated value
+ component.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/AnimationTarget.html" title="interface in org.apache.batik.anim.dom">AnimationTarget</A></B></TD>
+<TD>An interface for targets of animation to provide context information.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/AnimationTargetListener.html" title="interface in org.apache.batik.anim.dom">AnimationTargetListener</A></B></TD>
+<TD>A listener class for animation targets.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGAnimationTargetContext.html" title="interface in org.apache.batik.anim.dom">SVGAnimationTargetContext</A></B></TD>
+<TD>Context interface for elements that can be the target of animations.</TD>
+</TR>
+</TABLE>
+&nbsp;
+
+<P>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Class Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/AbstractElement.html" title="class in org.apache.batik.anim.dom">AbstractElement</A></B></TD>
+<TD>This class provides a superclass to implement an SVG element, or
+ an element interoperable with the SVG elements.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/AbstractSVGAnimatedLength.html" title="class in org.apache.batik.anim.dom">AbstractSVGAnimatedLength</A></B></TD>
+<TD>This class provides an implementation of the <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimatedLength.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimatedLength</CODE></A> interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/AbstractSVGAnimatedValue.html" title="class in org.apache.batik.anim.dom">AbstractSVGAnimatedValue</A></B></TD>
+<TD>An abstract base class for the <code>SVGAnimated*</code> classes, that
+ implements an <A HREF="../../../../../org/apache/batik/anim/dom/AnimatedAttributeListener.html" title="interface in org.apache.batik.anim.dom"><CODE>AnimatedAttributeListener</CODE></A> list.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/AbstractSVGLength.html" title="class in org.apache.batik.anim.dom">AbstractSVGLength</A></B></TD>
+<TD>Default implementation for SVGLength.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/AbstractSVGLengthList.html" title="class in org.apache.batik.anim.dom">AbstractSVGLengthList</A></B></TD>
+<TD>This class is the implementation of
+ <code>SVGLengthList</code>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/AttributeInitializer.html" title="class in org.apache.batik.anim.dom">AttributeInitializer</A></B></TD>
+<TD>This class is used by elements to initialize and reset their attributes.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/BindableElement.html" title="class in org.apache.batik.anim.dom">BindableElement</A></B></TD>
+<TD>This class implements foreign namespace elements that can be
+ bound with XBL.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SAXSVGDocumentFactory.html" title="class in org.apache.batik.anim.dom">SAXSVGDocumentFactory</A></B></TD>
+<TD>This class contains methods for creating SVGDocument instances
+ from an URI using SAX2.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation</A></B></TD>
+<TD>This class implements the <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/DOMImplementation.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>DOMImplementation</CODE></A> interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.FlowDivElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.FlowDivElementFactory</A></B></TD>
+<TD>To create a 'flowDiv' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.FlowLineElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.FlowLineElementFactory</A></B></TD>
+<TD>To create a 'flowLine' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.FlowParaElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.FlowParaElementFactory</A></B></TD>
+<TD>To create a 'flowPara' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.FlowRegionBreakElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.FlowRegionBreakElementFactory</A></B></TD>
+<TD>To create a 'flowRegionBreak' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.FlowRegionElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.FlowRegionElementFactory</A></B></TD>
+<TD>To create a 'flowRegion' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.FlowRegionExcludeElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.FlowRegionExcludeElementFactory</A></B></TD>
+<TD>To create a 'flowRegion' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.FlowRootElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.FlowRootElementFactory</A></B></TD>
+<TD>To create a 'flowRoot' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.FlowSpanElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.FlowSpanElementFactory</A></B></TD>
+<TD>To create a 'flowSpan' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.HandlerElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.HandlerElementFactory</A></B></TD>
+<TD>To create a 'handler' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.MultiImageElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.MultiImageElementFactory</A></B></TD>
+<TD>To create a 'multiImage' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.SolidColorElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.SolidColorElementFactory</A></B></TD>
+<TD>To create a 'solidColor' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.SubImageElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.SubImageElementFactory</A></B></TD>
+<TD>To create a 'subImage' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.SubImageRefElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.SubImageRefElementFactory</A></B></TD>
+<TD>To create a 'SubImageRef' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.XBLContentElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.XBLContentElementFactory</A></B></TD>
+<TD>To create a 'xbl:content' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.XBLDefinitionElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.XBLDefinitionElementFactory</A></B></TD>
+<TD>To create a 'xbl:definition' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.XBLHandlerGroupElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.XBLHandlerGroupElementFactory</A></B></TD>
+<TD>To create a 'xbl:handlerGroup' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.XBLImportElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.XBLImportElementFactory</A></B></TD>
+<TD>To create a 'xbl:import' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.XBLShadowTreeElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.XBLShadowTreeElementFactory</A></B></TD>
+<TD>To create a 'xbl:shadowTree' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.XBLTemplateElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.XBLTemplateElementFactory</A></B></TD>
+<TD>To create a 'xbl:template' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.XBLXBLElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.XBLXBLElementFactory</A></B></TD>
+<TD>To create a 'xbl:xbl' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVG12OMDocument.html" title="class in org.apache.batik.anim.dom">SVG12OMDocument</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGDocument.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGDocument</CODE></A> and provides support for
+ SVG 1.2 specifics.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDescriptiveElement.html" title="class in org.apache.batik.anim.dom">SVGDescriptiveElement</A></B></TD>
+<TD>This class provides a common superclass for elements which contain
+ descriptive text.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation</A></B></TD>
+<TD>This class implements the <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/DOMImplementation.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>DOMImplementation</CODE></A> interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.AElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.AElementFactory</A></B></TD>
+<TD>To create a 'a' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.AltGlyphDefElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.AltGlyphDefElementFactory</A></B></TD>
+<TD>To create a 'altGlyphDef' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.AltGlyphElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.AltGlyphElementFactory</A></B></TD>
+<TD>To create a 'altGlyph' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.AltGlyphItemElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.AltGlyphItemElementFactory</A></B></TD>
+<TD>To create a 'altGlyphItem' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.AnimateColorElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.AnimateColorElementFactory</A></B></TD>
+<TD>To create a 'animateColor' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.AnimateElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.AnimateElementFactory</A></B></TD>
+<TD>To create a 'animate' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.AnimateMotionElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.AnimateMotionElementFactory</A></B></TD>
+<TD>To create a 'animateMotion' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.AnimateTransformElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.AnimateTransformElementFactory</A></B></TD>
+<TD>To create a 'animateTransform' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.CircleElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.CircleElementFactory</A></B></TD>
+<TD>To create a 'circle' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.ClipPathElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.ClipPathElementFactory</A></B></TD>
+<TD>To create a 'clip-path' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.ColorProfileElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.ColorProfileElementFactory</A></B></TD>
+<TD>To create a 'color-profile' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.CursorElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.CursorElementFactory</A></B></TD>
+<TD>To create a 'cursor' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.DefinitionSrcElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.DefinitionSrcElementFactory</A></B></TD>
+<TD>To create a 'definition-src' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.DefsElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.DefsElementFactory</A></B></TD>
+<TD>To create a 'defs' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.DescElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.DescElementFactory</A></B></TD>
+<TD>To create a 'desc' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.EllipseElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.EllipseElementFactory</A></B></TD>
+<TD>To create an 'ellipse' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeBlendElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeBlendElementFactory</A></B></TD>
+<TD>To create a 'feBlend' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeColorMatrixElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeColorMatrixElementFactory</A></B></TD>
+<TD>To create a 'feColorMatrix' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeComponentTransferElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeComponentTransferElementFactory</A></B></TD>
+<TD>To create a 'feComponentTransfer' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeCompositeElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeCompositeElementFactory</A></B></TD>
+<TD>To create a 'feComposite' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeConvolveMatrixElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeConvolveMatrixElementFactory</A></B></TD>
+<TD>To create a 'feConvolveMatrix' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeDiffuseLightingElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeDiffuseLightingElementFactory</A></B></TD>
+<TD>To create a 'feDiffuseLighting' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeDisplacementMapElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeDisplacementMapElementFactory</A></B></TD>
+<TD>To create a 'feDisplacementMap' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeDistantLightElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeDistantLightElementFactory</A></B></TD>
+<TD>To create a 'feDistantLight' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeFloodElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeFloodElementFactory</A></B></TD>
+<TD>To create a 'feFlood' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeFuncAElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeFuncAElementFactory</A></B></TD>
+<TD>To create a 'feFuncA' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeFuncBElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeFuncBElementFactory</A></B></TD>
+<TD>To create a 'feFuncB' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeFuncGElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeFuncGElementFactory</A></B></TD>
+<TD>To create a 'feFuncG' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeFuncRElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeFuncRElementFactory</A></B></TD>
+<TD>To create a 'feFuncR' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeGaussianBlurElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeGaussianBlurElementFactory</A></B></TD>
+<TD>To create a 'feGaussianBlur' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeImageElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeImageElementFactory</A></B></TD>
+<TD>To create a 'feImage' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeMergeElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeMergeElementFactory</A></B></TD>
+<TD>To create a 'feMerge' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeMergeNodeElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeMergeNodeElementFactory</A></B></TD>
+<TD>To create a 'feMergeNode' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeMorphologyElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeMorphologyElementFactory</A></B></TD>
+<TD>To create a 'feMorphology' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeOffsetElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeOffsetElementFactory</A></B></TD>
+<TD>To create a 'feOffset' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FePointLightElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FePointLightElementFactory</A></B></TD>
+<TD>To create a 'fePointLight' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeSpecularLightingElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeSpecularLightingElementFactory</A></B></TD>
+<TD>To create a 'feSpecularLighting' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeSpotLightElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeSpotLightElementFactory</A></B></TD>
+<TD>To create a 'feSpotLight' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeTileElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeTileElementFactory</A></B></TD>
+<TD>To create a 'feTile' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeTurbulenceElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeTurbulenceElementFactory</A></B></TD>
+<TD>To create a 'feTurbulence' element</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FilterElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FilterElementFactory</A></B></TD>
+<TD>To create a 'filter' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FontElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FontElementFactory</A></B></TD>
+<TD>To create a 'font' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FontFaceElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FontFaceElementFactory</A></B></TD>
+<TD>To create a 'font-face' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FontFaceFormatElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FontFaceFormatElementFactory</A></B></TD>
+<TD>To create a 'font-face-format' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FontFaceNameElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FontFaceNameElementFactory</A></B></TD>
+<TD>To create a 'font-face-name' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FontFaceSrcElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FontFaceSrcElementFactory</A></B></TD>
+<TD>To create a 'font-face-src' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FontFaceUriElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FontFaceUriElementFactory</A></B></TD>
+<TD>To create a 'font-face-uri' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.ForeignObjectElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.ForeignObjectElementFactory</A></B></TD>
+<TD>To create a 'foreignObject' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.GElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.GElementFactory</A></B></TD>
+<TD>To create a 'g' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.GlyphElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.GlyphElementFactory</A></B></TD>
+<TD>To create a 'glyph' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.GlyphRefElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.GlyphRefElementFactory</A></B></TD>
+<TD>To create a 'glyphRef' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.HkernElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.HkernElementFactory</A></B></TD>
+<TD>To create a 'hkern' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.ImageElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.ImageElementFactory</A></B></TD>
+<TD>To create a 'image' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.LinearGradientElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.LinearGradientElementFactory</A></B></TD>
+<TD>To create a 'linearGradient' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.LineElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.LineElementFactory</A></B></TD>
+<TD>To create a 'line' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.MarkerElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.MarkerElementFactory</A></B></TD>
+<TD>To create a 'marker' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.MaskElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.MaskElementFactory</A></B></TD>
+<TD>To create a 'mask' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.MetadataElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.MetadataElementFactory</A></B></TD>
+<TD>To create a 'metadata' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.MissingGlyphElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.MissingGlyphElementFactory</A></B></TD>
+<TD>To create a 'missing-glyph' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.MpathElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.MpathElementFactory</A></B></TD>
+<TD>To create a 'mpath' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.PathElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.PathElementFactory</A></B></TD>
+<TD>To create a 'path' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.PatternElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.PatternElementFactory</A></B></TD>
+<TD>To create a 'pattern' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.PolygonElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.PolygonElementFactory</A></B></TD>
+<TD>To create a 'polygon' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.PolylineElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.PolylineElementFactory</A></B></TD>
+<TD>To create a 'polyline' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.RadialGradientElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.RadialGradientElementFactory</A></B></TD>
+<TD>To create a 'radialGradient' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.RectElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.RectElementFactory</A></B></TD>
+<TD>To create a 'rect' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.ScriptElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.ScriptElementFactory</A></B></TD>
+<TD>To create a 'script' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.SetElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.SetElementFactory</A></B></TD>
+<TD>To create a 'set' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.StopElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.StopElementFactory</A></B></TD>
+<TD>To create a 'stop' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.StyleElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.StyleElementFactory</A></B></TD>
+<TD>To create a 'style' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.SvgElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.SvgElementFactory</A></B></TD>
+<TD>To create an 'svg' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.SwitchElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.SwitchElementFactory</A></B></TD>
+<TD>To create a 'switch' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.SymbolElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.SymbolElementFactory</A></B></TD>
+<TD>To create a 'symbol' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.TextElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.TextElementFactory</A></B></TD>
+<TD>To create a 'text' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.TextPathElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.TextPathElementFactory</A></B></TD>
+<TD>To create a 'textPath' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.TitleElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.TitleElementFactory</A></B></TD>
+<TD>To create a 'title' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.TrefElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.TrefElementFactory</A></B></TD>
+<TD>To create a 'tref' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.TspanElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.TspanElementFactory</A></B></TD>
+<TD>To create a 'tspan' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.UseElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.UseElementFactory</A></B></TD>
+<TD>To create a 'use' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.ViewElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.ViewElementFactory</A></B></TD>
+<TD>To create a 'view' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGDOMImplementation.VkernElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.VkernElementFactory</A></B></TD>
+<TD>To create a 'vkern' element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGGraphicsElement.html" title="class in org.apache.batik.anim.dom">SVGGraphicsElement</A></B></TD>
+<TD>This class provides a common superclass for all graphics elements.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGLocatableSupport.html" title="class in org.apache.batik.anim.dom">SVGLocatableSupport</A></B></TD>
+<TD>This class provides support for the SVGLocatable interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAElement.html" title="class in org.apache.batik.anim.dom">SVGOMAElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAltGlyphDefElement.html" title="class in org.apache.batik.anim.dom">SVGOMAltGlyphDefElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAltGlyphDefElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAltGlyphDefElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAltGlyphElement.html" title="class in org.apache.batik.anim.dom">SVGOMAltGlyphElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAltGlyphElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAltGlyphElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAltGlyphItemElement.html" title="class in org.apache.batik.anim.dom">SVGOMAltGlyphItemElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAltGlyphItemElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAltGlyphItemElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimateColorElement.html" title="class in org.apache.batik.anim.dom">SVGOMAnimateColorElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimateColorElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimateColorElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimatedBoolean.html" title="class in org.apache.batik.anim.dom">SVGOMAnimatedBoolean</A></B></TD>
+<TD>This class implements the <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimatedBoolean.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimatedBoolean</CODE></A> interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimatedEnumeration.html" title="class in org.apache.batik.anim.dom">SVGOMAnimatedEnumeration</A></B></TD>
+<TD>This class provides an implementation of the <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimatedEnumeration.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimatedEnumeration</CODE></A> interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimatedInteger.html" title="class in org.apache.batik.anim.dom">SVGOMAnimatedInteger</A></B></TD>
+<TD>This class implements the <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimatedInteger.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimatedInteger</CODE></A> interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimatedLength.html" title="class in org.apache.batik.anim.dom">SVGOMAnimatedLength</A></B></TD>
+<TD>This class provides an implementation of the <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimatedLength.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimatedLength</CODE></A> interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimatedLengthList.html" title="class in org.apache.batik.anim.dom">SVGOMAnimatedLengthList</A></B></TD>
+<TD>This class is the implementation of the <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimatedLengthList.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimatedLengthList</CODE></A>
+ interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimatedMarkerOrientValue.html" title="class in org.apache.batik.anim.dom">SVGOMAnimatedMarkerOrientValue</A></B></TD>
+<TD>A class that handles an <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimatedAngle.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimatedAngle</CODE></A> and an
+ <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimatedEnumeration.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimatedEnumeration</CODE></A> for the 'marker' element's
+ 'orient' attribute.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimatedNumber.html" title="class in org.apache.batik.anim.dom">SVGOMAnimatedNumber</A></B></TD>
+<TD>This class implements the <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimatedNumber.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimatedNumber</CODE></A> interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimatedNumberList.html" title="class in org.apache.batik.anim.dom">SVGOMAnimatedNumberList</A></B></TD>
+<TD>This class is the implementation of the <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimatedNumberList.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimatedNumberList</CODE></A>
+ interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimatedPathData.html" title="class in org.apache.batik.anim.dom">SVGOMAnimatedPathData</A></B></TD>
+<TD>This class is the implementation of the <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimatedPathData.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimatedPathData</CODE></A>
+ interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimatedPoints.html" title="class in org.apache.batik.anim.dom">SVGOMAnimatedPoints</A></B></TD>
+<TD>This class is the implementation of the SVGAnimatedPoints interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimatedPreserveAspectRatio.html" title="class in org.apache.batik.anim.dom">SVGOMAnimatedPreserveAspectRatio</A></B></TD>
+<TD>This class implements the <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimatedPreserveAspectRatio.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimatedPreserveAspectRatio</CODE></A> interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimatedRect.html" title="class in org.apache.batik.anim.dom">SVGOMAnimatedRect</A></B></TD>
+<TD>Implementation of <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimatedRect.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimatedRect</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimatedString.html" title="class in org.apache.batik.anim.dom">SVGOMAnimatedString</A></B></TD>
+<TD>This class implements the <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimatedString.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimatedString</CODE></A> interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimatedTransformList.html" title="class in org.apache.batik.anim.dom">SVGOMAnimatedTransformList</A></B></TD>
+<TD>This class is the implementation of the SVGAnimatedTransformList interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimateElement.html" title="class in org.apache.batik.anim.dom">SVGOMAnimateElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimateElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimateElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimateMotionElement.html" title="class in org.apache.batik.anim.dom">SVGOMAnimateMotionElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimateMotionElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimateMotionElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimateTransformElement.html" title="class in org.apache.batik.anim.dom">SVGOMAnimateTransformElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimateTransformElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimateTransformElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMAnimationElement.html" title="class in org.apache.batik.anim.dom">SVGOMAnimationElement</A></B></TD>
+<TD>This class provides an implementation of the <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGAnimationElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGAnimationElement</CODE></A> interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMCircleElement.html" title="class in org.apache.batik.anim.dom">SVGOMCircleElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGCircleElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGCircleElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMClipPathElement.html" title="class in org.apache.batik.anim.dom">SVGOMClipPathElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGClipPathElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGClipPathElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMColorProfileElement.html" title="class in org.apache.batik.anim.dom">SVGOMColorProfileElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGColorProfileElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGColorProfileElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMComponentTransferFunctionElement.html" title="class in org.apache.batik.anim.dom">SVGOMComponentTransferFunctionElement</A></B></TD>
+<TD>This class represents the component transfer function elements.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMCursorElement.html" title="class in org.apache.batik.anim.dom">SVGOMCursorElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGCursorElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGCursorElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMDefinitionSrcElement.html" title="class in org.apache.batik.anim.dom">SVGOMDefinitionSrcElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGDefinitionSrcElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGDefinitionSrcElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMDefsElement.html" title="class in org.apache.batik.anim.dom">SVGOMDefsElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGDefsElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGDefsElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMDescElement.html" title="class in org.apache.batik.anim.dom">SVGOMDescElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGDescElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGDescElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMDocument.html" title="class in org.apache.batik.anim.dom">SVGOMDocument</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGDocument.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGDocument</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMElement.html" title="class in org.apache.batik.anim.dom">SVGOMElement</A></B></TD>
+<TD>This class implements the <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGElement</CODE></A> interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMEllipseElement.html" title="class in org.apache.batik.anim.dom">SVGOMEllipseElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGEllipseElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGEllipseElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEBlendElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEBlendElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEBlendElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEBlendElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEColorMatrixElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEColorMatrixElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEColorMatrixElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEColorMatrixElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEComponentTransferElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEComponentTransferElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEComponentTransferElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEComponentTransferElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFECompositeElement.html" title="class in org.apache.batik.anim.dom">SVGOMFECompositeElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFECompositeElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFECompositeElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEConvolveMatrixElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEConvolveMatrixElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEConvolveMatrixElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEConvolveMatrixElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEDiffuseLightingElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEDiffuseLightingElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEDiffuseLightingElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEDiffuseLightingElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEDisplacementMapElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEDisplacementMapElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEDisplacementMapElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEDisplacementMapElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEDistantLightElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEDistantLightElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEDistantLightElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEDistantLightElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEFloodElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEFloodElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEFloodElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEFloodElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEFuncAElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEFuncAElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEFuncAElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEFuncAElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEFuncBElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEFuncBElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEFuncBElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEFuncBElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEFuncGElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEFuncGElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEFuncGElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEFuncGElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEFuncRElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEFuncRElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEFuncRElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEFuncRElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEGaussianBlurElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEGaussianBlurElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEGaussianBlurElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEGaussianBlurElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEImageElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEImageElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEImageElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEImageElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEMergeElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEMergeElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEMergeElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEMergeElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEMergeNodeElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEMergeNodeElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEMergeNodeElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEMergeNodeElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEMorphologyElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEMorphologyElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEMorphologyElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEMorphologyElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEOffsetElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEOffsetElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEOffsetElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEOffsetElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFEPointLightElement.html" title="class in org.apache.batik.anim.dom">SVGOMFEPointLightElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFEPointLightElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFEPointLightElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFESpecularLightingElement.html" title="class in org.apache.batik.anim.dom">SVGOMFESpecularLightingElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFESpecularLightingElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFESpecularLightingElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFESpotLightElement.html" title="class in org.apache.batik.anim.dom">SVGOMFESpotLightElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFESpotLightElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFESpotLightElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFETileElement.html" title="class in org.apache.batik.anim.dom">SVGOMFETileElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFETileElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFETileElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFETurbulenceElement.html" title="class in org.apache.batik.anim.dom">SVGOMFETurbulenceElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFETurbulenceElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFETurbulenceElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFilterElement.html" title="class in org.apache.batik.anim.dom">SVGOMFilterElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFilterElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFilterElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFilterPrimitiveStandardAttributes.html" title="class in org.apache.batik.anim.dom">SVGOMFilterPrimitiveStandardAttributes</A></B></TD>
+<TD>This class represents a SVGElement with support for standard filter
+ attributes.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFlowDivElement.html" title="class in org.apache.batik.anim.dom">SVGOMFlowDivElement</A></B></TD>
+<TD>This class implements the flowDiv element from SVG 1.2</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFlowLineElement.html" title="class in org.apache.batik.anim.dom">SVGOMFlowLineElement</A></B></TD>
+<TD>This class implements a regular polygon extension to SVG</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFlowParaElement.html" title="class in org.apache.batik.anim.dom">SVGOMFlowParaElement</A></B></TD>
+<TD>This class implements a regular polygon extension to SVG</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFlowRegionBreakElement.html" title="class in org.apache.batik.anim.dom">SVGOMFlowRegionBreakElement</A></B></TD>
+<TD>This class implements a regular polygon extension to SVG</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFlowRegionElement.html" title="class in org.apache.batik.anim.dom">SVGOMFlowRegionElement</A></B></TD>
+<TD>This class implements a regular polygon extension to SVG</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFlowRegionExcludeElement.html" title="class in org.apache.batik.anim.dom">SVGOMFlowRegionExcludeElement</A></B></TD>
+<TD>This class implements a regular polygon extension to SVG</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFlowRootElement.html" title="class in org.apache.batik.anim.dom">SVGOMFlowRootElement</A></B></TD>
+<TD>This class implements a regular polygon extension to SVG</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFlowSpanElement.html" title="class in org.apache.batik.anim.dom">SVGOMFlowSpanElement</A></B></TD>
+<TD>This class implements a regular polygon extension to SVG</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFontElement.html" title="class in org.apache.batik.anim.dom">SVGOMFontElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFontElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFontElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFontFaceElement.html" title="class in org.apache.batik.anim.dom">SVGOMFontFaceElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFontFaceElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFontFaceElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFontFaceFormatElement.html" title="class in org.apache.batik.anim.dom">SVGOMFontFaceFormatElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFontFaceFormatElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFontFaceFormatElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFontFaceNameElement.html" title="class in org.apache.batik.anim.dom">SVGOMFontFaceNameElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFontFaceNameElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFontFaceNameElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFontFaceSrcElement.html" title="class in org.apache.batik.anim.dom">SVGOMFontFaceSrcElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFontFaceSrcElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFontFaceSrcElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMFontFaceUriElement.html" title="class in org.apache.batik.anim.dom">SVGOMFontFaceUriElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGFontFaceUriElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGFontFaceUriElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMForeignObjectElement.html" title="class in org.apache.batik.anim.dom">SVGOMForeignObjectElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGForeignObjectElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGForeignObjectElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMGElement.html" title="class in org.apache.batik.anim.dom">SVGOMGElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGGElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGGElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMGlyphElement.html" title="class in org.apache.batik.anim.dom">SVGOMGlyphElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGGlyphElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGGlyphElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMGlyphRefElement.html" title="class in org.apache.batik.anim.dom">SVGOMGlyphRefElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGGlyphRefElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGGlyphRefElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMGradientElement.html" title="class in org.apache.batik.anim.dom">SVGOMGradientElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGGradientElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGGradientElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMHandlerElement.html" title="class in org.apache.batik.anim.dom">SVGOMHandlerElement</A></B></TD>
+<TD>This class implements SVGHandlerElement.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMHKernElement.html" title="class in org.apache.batik.anim.dom">SVGOMHKernElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGHKernElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGHKernElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMImageElement.html" title="class in org.apache.batik.anim.dom">SVGOMImageElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGImageElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGImageElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMLength.html" title="class in org.apache.batik.anim.dom">SVGOMLength</A></B></TD>
+<TD>Default implementation of SVGLength.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMLinearGradientElement.html" title="class in org.apache.batik.anim.dom">SVGOMLinearGradientElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGLinearGradientElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGLinearGradientElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMLineElement.html" title="class in org.apache.batik.anim.dom">SVGOMLineElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGLineElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGLineElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMMarkerElement.html" title="class in org.apache.batik.anim.dom">SVGOMMarkerElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGMarkerElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGMarkerElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMMaskElement.html" title="class in org.apache.batik.anim.dom">SVGOMMaskElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGMaskElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGMaskElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMMetadataElement.html" title="class in org.apache.batik.anim.dom">SVGOMMetadataElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGMetadataElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGMetadataElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMMissingGlyphElement.html" title="class in org.apache.batik.anim.dom">SVGOMMissingGlyphElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGMissingGlyphElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGMissingGlyphElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMMPathElement.html" title="class in org.apache.batik.anim.dom">SVGOMMPathElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGMPathElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGMPathElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMMultiImageElement.html" title="class in org.apache.batik.anim.dom">SVGOMMultiImageElement</A></B></TD>
+<TD>This class implements a multiImage extension to SVG.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMPathElement.html" title="class in org.apache.batik.anim.dom">SVGOMPathElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGPathElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGPathElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMPatternElement.html" title="class in org.apache.batik.anim.dom">SVGOMPatternElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGStopElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGStopElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMPolygonElement.html" title="class in org.apache.batik.anim.dom">SVGOMPolygonElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGPolygonElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGPolygonElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMPolylineElement.html" title="class in org.apache.batik.anim.dom">SVGOMPolylineElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGPolylineElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGPolylineElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMRadialGradientElement.html" title="class in org.apache.batik.anim.dom">SVGOMRadialGradientElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGRadialGradientElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGRadialGradientElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMRectElement.html" title="class in org.apache.batik.anim.dom">SVGOMRectElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGRectElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGRectElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMScriptElement.html" title="class in org.apache.batik.anim.dom">SVGOMScriptElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGScriptElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGScriptElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMSetElement.html" title="class in org.apache.batik.anim.dom">SVGOMSetElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGSetElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGSetElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMSolidColorElement.html" title="class in org.apache.batik.anim.dom">SVGOMSolidColorElement</A></B></TD>
+<TD>This class implements a regular polygon extension to SVG</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMStopElement.html" title="class in org.apache.batik.anim.dom">SVGOMStopElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGStopElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGStopElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMStyleElement.html" title="class in org.apache.batik.anim.dom">SVGOMStyleElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGStyleElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGStyleElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMSubImageElement.html" title="class in org.apache.batik.anim.dom">SVGOMSubImageElement</A></B></TD>
+<TD>This class implements a multiImage extension to SVG.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMSubImageRefElement.html" title="class in org.apache.batik.anim.dom">SVGOMSubImageRefElement</A></B></TD>
+<TD>This class implements a multiImage extension to SVG.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMSVGElement.html" title="class in org.apache.batik.anim.dom">SVGOMSVGElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGSVGElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGSVGElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMSwitchElement.html" title="class in org.apache.batik.anim.dom">SVGOMSwitchElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGSwitchElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGSwitchElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMSymbolElement.html" title="class in org.apache.batik.anim.dom">SVGOMSymbolElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGSymbolElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGSymbolElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMTextContentElement.html" title="class in org.apache.batik.anim.dom">SVGOMTextContentElement</A></B></TD>
+<TD>This class provides a common superclass for all graphics elements.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMTextElement.html" title="class in org.apache.batik.anim.dom">SVGOMTextElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGTextElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGTextElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMTextPathElement.html" title="class in org.apache.batik.anim.dom">SVGOMTextPathElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGTextPathElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGTextPathElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMTextPositioningElement.html" title="class in org.apache.batik.anim.dom">SVGOMTextPositioningElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGTextPositioningElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGTextPositioningElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMTitleElement.html" title="class in org.apache.batik.anim.dom">SVGOMTitleElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGTitleElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGTitleElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMToBeImplementedElement.html" title="class in org.apache.batik.anim.dom">SVGOMToBeImplementedElement</A></B></TD>
+<TD>This is a development only class.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMTRefElement.html" title="class in org.apache.batik.anim.dom">SVGOMTRefElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGTRefElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGTRefElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMTSpanElement.html" title="class in org.apache.batik.anim.dom">SVGOMTSpanElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGTSpanElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGTSpanElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMURIReferenceElement.html" title="class in org.apache.batik.anim.dom">SVGOMURIReferenceElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGURIReference.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGURIReference</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMUseElement.html" title="class in org.apache.batik.anim.dom">SVGOMUseElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGUseElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGUseElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMViewElement.html" title="class in org.apache.batik.anim.dom">SVGOMViewElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGViewElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGViewElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGOMVKernElement.html" title="class in org.apache.batik.anim.dom">SVGOMVKernElement</A></B></TD>
+<TD>This class implements <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGVKernElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGVKernElement</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGPathSupport.html" title="class in org.apache.batik.anim.dom">SVGPathSupport</A></B></TD>
+<TD>The class provides support for the SVGPath interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGPointShapeElement.html" title="class in org.apache.batik.anim.dom">SVGPointShapeElement</A></B></TD>
+<TD>This class provides a common superclass for shape elements that are
+ defined with a 'points' attribute (i.e., polygon and polyline).</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGStylableElement.html" title="class in org.apache.batik.anim.dom">SVGStylableElement</A></B></TD>
+<TD>This class provides a common superclass for elements which implement
+ SVGStylable.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGStyleSheetProcessingInstruction.html" title="class in org.apache.batik.anim.dom">SVGStyleSheetProcessingInstruction</A></B></TD>
+<TD>This class provides an implementation of the 'xml-stylesheet' processing
+ instructions.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGTextContentSupport.html" title="class in org.apache.batik.anim.dom">SVGTextContentSupport</A></B></TD>
+<TD>This class provides support for the SVGTextContentElement interface.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGTextContentSupport.SVGTextPoint.html" title="class in org.apache.batik.anim.dom">SVGTextContentSupport.SVGTextPoint</A></B></TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGURIReferenceGraphicsElement.html" title="class in org.apache.batik.anim.dom">SVGURIReferenceGraphicsElement</A></B></TD>
+<TD>This class provides support for Xlink to a graphics element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/SVGURIReferenceTextPositioningElement.html" title="class in org.apache.batik.anim.dom">SVGURIReferenceTextPositioningElement</A></B></TD>
+<TD>This class implements both <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGTextPositioningElement.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGTextPositioningElement</CODE></A>
+ and <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/svg.SVGURIReference.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>SVGURIReference</CODE></A>..</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/TraitInformation.html" title="class in org.apache.batik.anim.dom">TraitInformation</A></B></TD>
+<TD>Stores information about a specific XML attribute or CSS property.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/XBLEventSupport.html" title="class in org.apache.batik.anim.dom">XBLEventSupport</A></B></TD>
+<TD>An EventSupport class that handles XBL-specific event processing.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/XBLOMContentElement.html" title="class in org.apache.batik.anim.dom">XBLOMContentElement</A></B></TD>
+<TD>This class implements the xbl:content element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/XBLOMDefinitionElement.html" title="class in org.apache.batik.anim.dom">XBLOMDefinitionElement</A></B></TD>
+<TD>This class implements the xbl:definition element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/XBLOMElement.html" title="class in org.apache.batik.anim.dom">XBLOMElement</A></B></TD>
+<TD>Base class for all XBL elements to inherit from.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/XBLOMHandlerGroupElement.html" title="class in org.apache.batik.anim.dom">XBLOMHandlerGroupElement</A></B></TD>
+<TD>This class implements the xbl:handlerGroup element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/XBLOMImportElement.html" title="class in org.apache.batik.anim.dom">XBLOMImportElement</A></B></TD>
+<TD>This class implements the xbl:import element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/XBLOMShadowTreeElement.html" title="class in org.apache.batik.anim.dom">XBLOMShadowTreeElement</A></B></TD>
+<TD>This class implements the xbl:shadowTree element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/XBLOMTemplateElement.html" title="class in org.apache.batik.anim.dom">XBLOMTemplateElement</A></B></TD>
+<TD>This class implements the xbl:template element.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../org/apache/batik/anim/dom/XBLOMXBLElement.html" title="class in org.apache.batik.anim.dom">XBLOMXBLElement</A></B></TD>
+<TD>This class implements the xbl:xbl element.</TD>
+</TR>
+</TABLE>
+&nbsp;
+
+<P>
+<DL>
+</DL>
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-files/index-1.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../../org/apache/batik/anim/package-summary.html"><B>PREV PACKAGE</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../org/apache/batik/anim/timing/package-summary.html"><B>NEXT PACKAGE</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../index.html?org/apache/batik/anim/dom/package-summary.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="package-summary.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright © 2017 <a href='http://www.apache.org/'>Apache Software Foundation</a>. All Rights Reserved.
+</BODY>
+</HTML>
