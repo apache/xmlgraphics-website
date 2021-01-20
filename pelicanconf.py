@@ -49,15 +49,16 @@ PAGE_PATHS = ['.']
 INDEX_SAVE_AS = 'articlesignore.html'
 READERS = {'html': None}
 
-fop_current_version = '2.5'
+fop_current_version = '2.6'
+batik_current_version = '1.14'
 fop_minimal_java_requirement = '1.7'
-fop_current_version_release_date = '13 May 2020'
+fop_current_version_release_date = '20 Jan 2021'
 
 def read(self, source_path):
     self._source_path = source_path
     self._md = Markdown(**self.settings['MARKDOWN'])
     with pelican_open(source_path) as text:
-        text = text.replace('{{ fop_current_version }}', fop_current_version).replace('{{ fop_minimal_java_requirement }}', fop_minimal_java_requirement).replace('{{ fop_current_version_release_date }}', fop_current_version_release_date)
+        text = text.replace('{{ fop_current_version }}', fop_current_version).replace('{{ batik_current_version }}', batik_current_version).replace('{{ fop_minimal_java_requirement }}', fop_minimal_java_requirement).replace('{{ fop_current_version_release_date }}', fop_current_version_release_date)
         content = self._md.convert(text)
     if hasattr(self._md, 'Meta'):
         metadata = self._parse_metadata(self._md.Meta)
