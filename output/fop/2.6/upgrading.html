@@ -678,13 +678,11 @@ FOPFactory fopFactory = builder.build();
 Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, foUserAgent, out);
 </code></pre></div>
 
-
 <p>or equally reading from an xml file</p>
 <div class="highlight"><pre><span></span><code>DefaultConfigurationBuilder cfgBuilder = new DefaultConfigurationBuilder();
 Configuration cfg = cfgBuilder.buildFromFile(new File(&quot;mycfg.xml&quot;));
 fopFactoryBuilder = new FopFactoryBuilder(baseURI).setConfiguration(cfg);
 </code></pre></div>
-
 
 <p>The above can be used instead of fopFactory.setUserConfig(cfg) which is not available anymore. </p>
 <p>Another important change is the way FOP resolves URI.
@@ -693,7 +691,6 @@ ResourceResolverFactory (a factory class for Resource resolver).</p>
 <p>Use of custom resource resolvers is now available through the use of FopFactoryBuilder.</p>
 <div class="highlight"><pre><span></span><code>FopFactoryBuilder builder = new FopFactoryBuilder(new File(&quot;.&quot;).toURI(), resolver);
 </code></pre></div>
-
 
 <p>resolver is an object of org.apache.xmlgraphics.io.ResourceResolver.</p>
 <p>Instead of fopFactory.setURIResolver(uriResolver);  where uriResolver is an object of URIResolver.</p>

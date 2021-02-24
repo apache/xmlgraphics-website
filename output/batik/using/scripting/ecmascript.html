@@ -209,7 +209,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/svg&gt;</span>
 </code></pre></div>
 
-
 <p>You can also attach script to respond to user or document events using attributes on SVG elements. As shown in the previous example, the scripting language must be set on the <code>script</code> element. However, for event handling the default language type <code>text/ecmascript</code> is assumed. If you want to change it you can use the <code>contentScriptType</code> attribute on the <code>svg</code> element.</p>
 <p>The event attribute can contain any script code to execute when the event reaches the element (as described by the <a href="http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-flow">DOM event flow</a>) in either the bubbling or at-target phases. The following example will change the <code>rect</code> to be filled in blue when it is clicked.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;svg</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">width=</span><span class="s">&quot;100&quot;</span> <span class="na">height=</span><span class="s">&quot;100&quot;</span><span class="nt">&gt;</span>
@@ -217,7 +216,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
         <span class="na">onclick=</span><span class="s">&quot;evt.target.setAttribute(&#39;fill&#39;, &#39;blue&#39;)&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/svg&gt;</span>
 </code></pre></div>
-
 
 <p>Note that inside the event attribute script, there is a variable called <code>evt</code> that is a reference to the <a href="http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-Event">Event</a> object that represents the event that is being handled.</p>
 <p>For more information on using scripting in SVG you can have a look at:</p>
@@ -254,7 +252,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   <span class="nt">&lt;/script&gt;</span>
 <span class="nt">&lt;/svg&gt;</span>
 </code></pre></div>
-
 
 <p>For more information on scripting Java classes from ECMAScript code, see Rhino's <a href="http://www.mozilla.org/rhino/ScriptingJava.html">Scripting Java</a> document.</p>
 <h2 id="customizingRhino">Customizing the Rhino interpreter</h2>
@@ -303,7 +300,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>Now, you need to tell to Batik to use this interpreter instead of the default one. For that, you must first define a factory to create instances of your interpreter.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.batik.script.Interpreter</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.batik.script.rhino.RhinoInterpreterFactory</span><span class="p">;</span>
@@ -315,7 +311,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <p>Then, you must build an <a href="../../javadoc/org/apache/batik/script/InterpreterPool.html">IntepreterPool</a> that will use this factory, and then set the pool on the <a href="../../javadoc/org/apache/batik/bridge/BridgeContext.html">BridgeContext</a> of your application.</p>
 <div class="highlight"><pre><span></span><code><span class="n">org</span><span class="p">.</span><span class="na">apache</span><span class="p">.</span><span class="na">batik</span><span class="p">.</span><span class="na">bridge</span><span class="p">.</span><span class="na">BridgeContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="p">...;</span>
@@ -331,7 +326,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">pool</span><span class="p">.</span><span class="na">putInterpreterFactory</span><span class="p">(</span><span class="s">&quot;application/javascript&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">);</span>
 <span class="n">ctx</span><span class="p">.</span><span class="na">setIntepreterPool</span><span class="p">(</span><span class="n">pool</span><span class="p">);</span>
 </code></pre></div>
-
 
 <p>For example if you are using the Batik SVG browser application you should be able to use the previous piece of code on a subclass of the <a href="../../javadoc/org/apache/batik/swing/JSVGCanvas.html">JSVGCanvas</a> class in the <code>createBridgeContext()</code> method.</p>
 <p>For further information on working with Rhino, consult the <a href="http://www.mozilla.org/rhino/">Rhino website</a>.</p>

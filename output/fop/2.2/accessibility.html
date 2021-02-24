@@ -671,13 +671,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <div class="highlight"><pre><span></span><code><span class="err">fop -a -fo mydocument.fo -pdf mydocument.pdf</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p><strong>Embedding:</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setAccessibility</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
 </code></pre></div>
-
 
 </li>
 <li>
@@ -687,7 +685,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   ...
 <span class="nt">&lt;/fop&gt;</span>
 </code></pre></div>
-
 
 </li>
 </ol>
@@ -719,7 +716,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 ...
 </code></pre></div>
 
-
 <p>If a non-standard structure type is specified, FOP will issue a warning and fall back to the default tag associated to the Formatting Object.</p>
 <h2>Treating Content as Artifact</h2>
 <p>If your document has content that is not meant to appear in the structure tree, you can wrap it in an <code>fo:wrapper</code> element whose <code>role</code> property has been set to ‘artifact’. For example:</p>
@@ -728,13 +724,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   blah... blah... <span class="nt">&lt;/fo:block&gt;</span>
 </code></pre></div>
 
-
 <p>This special value for the <code>role</code> property can also be applied to <code>fo:static-content</code> elements; indeed such elements are often used to contain page header information, that is there purely as a reading aid for sighted people and is meaningless when read out loud by a screen reader.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:static-content</span> <span class="na">flow-name=</span><span class="s">&quot;xsl-region-before&quot;</span> <span class="na">role=</span><span class="s">&quot;artifact&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;fo:block&gt;</span>Page <span class="nt">&lt;fo:page-number/&gt;&lt;/fo:block&gt;</span>
 <span class="nt">&lt;/fo:static-content&gt;</span>
 </code></pre></div>
-
 
 <h2 id="fox:header">Scope of Header Table Cells</h2>
 <p>In XSL-FO, tables are inherently defined row by row. The <code>fo:table-header</code> element can be used to define ‘header rows’, in which each cell is a header of the corresponding column (like <code>TH</code> cells in HTML). The cell is said to have a column <em>scope</em>.</p>
@@ -808,7 +802,6 @@ Applies to: | <code>fo:table-column</code> |</p>
 <span class="nt">&lt;/fo:table&gt;</span>
 </code></pre></div>
 
-
 <p>will be rendered into this:</p>
 <table>
 <thead>
@@ -871,7 +864,6 @@ Applies to: | <code>fo:table-column</code> |</p>
 <span class="nt">&lt;/fo:declarations&gt;</span>
 </code></pre></div>
 
-
 <h2 id="fop-xconf">Usage (fop.xconf)</h2>
 <p>Enable PDF/UA-1 in fop.xconf:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
@@ -883,7 +875,6 @@ Applies to: | <code>fo:table-column</code> |</p>
   <span class="nt">&lt;/renderers&gt;</span>
 <span class="nt">&lt;/fop&gt;</span>
 </code></pre></div>
-
 
 <h2 id="links">Related Links</h2>
 <p>Many resources providing guidance about creating accessible documents can be found on the web. Here are a few links, along with additional resources around the topic:</p>

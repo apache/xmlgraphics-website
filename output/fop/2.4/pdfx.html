@@ -684,7 +684,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/renderers&gt;</span>
 </code></pre></div>
 
-
 <p>Add document title to fo:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:declarations&gt;</span>
  <span class="nt">&lt;x:xmpmeta</span> <span class="na">xmlns:x=</span><span class="s">&quot;adobe:ns:meta/&quot;</span><span class="nt">&gt;</span>
@@ -699,7 +698,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/fo:declarations&gt;</span>
 </code></pre></div>
 
-
 <h2 id="embedded">Usage (embedded)</h2>
 <p>When FOP is embedded in another Java application you can set a special option on the renderer options in the user agent to activate the PDF/A-1b profile. Here's an example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">FOUserAgent</span> <span class="n">userAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFOUserAgent</span><span class="p">();</span>
@@ -707,7 +705,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">,</span> <span class="n">userAgent</span><span class="p">);</span>
 <span class="o">[</span><span class="p">..</span><span class="o">]</span>
 </code></pre></div>
-
 
 <p>If one of the validation rules of PDF/X is violated, an PDFConformanceException (descendant of RuntimeException) is thrown.</p>
 <h2 id="rules">PDF/X in Action</h2>
@@ -748,7 +745,6 @@ Image XObjects have UUID added to enable caching in printer.</p>
   <span class="nt">&lt;/pdf:vt&gt;</span>          
 <span class="nt">&lt;/fo:simple-page-master&gt;</span>
 </code></pre></div>
-
 
 <h2 id="fop-xconf">Usage (fop.xconf)</h2>
 <p>Enable PDF/VT-1 and PDF/X-4 in fop.xconf:</p>

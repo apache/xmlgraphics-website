@@ -204,7 +204,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
  | Travel | <input id="TravelBar" type="text" value="10"></input>|
  | Computer | <input id="ComputerBar" type="text" value="60"></input>|</p>
 <p><button onclick="update()">Update chart</button>
- |
+ |</p>
 <script>
 var chart;
 function get(id) {
@@ -226,12 +226,12 @@ function update() {
 function updateBar(name) {
   var input = get(name);
   var value = Number(input.value);
-  if (!isNaN(value) &amp;&amp; value &gt;= 0) {
+  if (!isNaN(value) && value >= 0) {
     chart.updateBar(name, value);
   }
 }
 </script>
-The applet (<a href="demo/AppletDemo.java">view source</a>) displays the <a href="http://svn.apache.org/repos/asf/xmlgraphics/batik/trunk/samples/barChart.svg">barChart.svg</a> sample from the Batik distribution using a <code>JSVGCanvas</code>. Script in the web page then interacts with the applet, by calling the <code>updateBar</code> method of the applet object when the <strong>Update chart</strong> button is pressed. This method modifies the SVG document being displayed to update the heights of the bars.</p>
+<p>The applet (<a href="demo/AppletDemo.java">view source</a>) displays the <a href="http://svn.apache.org/repos/asf/xmlgraphics/batik/trunk/samples/barChart.svg">barChart.svg</a> sample from the Batik distribution using a <code>JSVGCanvas</code>. Script in the web page then interacts with the applet, by calling the <code>updateBar</code> method of the applet object when the <strong>Update chart</strong> button is pressed. This method modifies the SVG document being displayed to update the heights of the bars.</p>
         </div>
       </div>
       <div class="clear"></div>

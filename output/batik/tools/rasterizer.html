@@ -205,22 +205,18 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <div class="highlight"><pre><span></span><code><span class="err">java -jar batik-rasterizer.jar FILES</span>
 </code></pre></div>
 
-
 <p>For example, if you type:</p>
 <div class="highlight"><pre><span></span><code><span class="err">java -jar batik-rasterizer.jar samples/batikFX.svg</span>
 </code></pre></div>
-
 
 <p>you will see the following printout:</p>
 <div class="highlight"><pre><span></span><code><span class="err">Converting file: samples/batikFX.svg to samples/batikFX.png</span>
 </code></pre></div>
 
-
 <p>Once the conversion is complete, you will find a <code>batikFX.png</code> file in the samples directory.</p>
 <p>You can pass options on the command line:</p>
 <div class="highlight"><pre><span></span><code><span class="n">java</span><span class="w"> </span><span class="o">-</span><span class="n">jar</span><span class="w"> </span><span class="n">batik</span><span class="o">-</span><span class="n">rasterizer</span><span class="p">.</span><span class="n">jar</span><span class="w"> </span><span class="o">[</span><span class="n">OPTIONS</span><span class="o">]</span><span class="w"> </span><span class="n">FILES</span><span class="w"></span>
 </code></pre></div>
-
 
 <p>where, as options:</p>
 <p><strong><code>-d</code></strong> <em><code>dir|file</code></em>
@@ -293,7 +289,6 @@ specifies a list of script types (i.e., values for the <code>type</code> attribu
 <div class="highlight"><pre><span></span><code><span class="err">java -jar batik-rasterizer.jar -d myDir -m image/jpeg samples/*.svg</span>
 </code></pre></div>
 
-
 <p>will generate JPEG images for all the SVG files found in the samples directory.</p>
 <h3 id="usingSource">Using the source distribution</h3>
 <p>If you downloaded the source distribution of Batik, you got a zip or tar file that expanded into a directory called <code>xml-batik</code> or <code>batik-</code><em><code>version</code></em>. In that directory, you can find build scripts for the platform you are running on. For example, there is a <code>build.bat</code> script for users of the Windows platform and there is a <code>build.sh</code> script for UNIX users.</p>
@@ -311,22 +306,18 @@ For Windows, type the following at the command prompt:</p>
 <div class="highlight"><pre><span></span><code><span class="err">build svgrasterizer</span>
 </code></pre></div>
 
-
 <p>and for Unix:</p>
 <div class="highlight"><pre><span></span><code><span class="err">./build.sh svgrasterizer</span>
 </code></pre></div>
-
 
 <p>This will print out a help message for the rasterizer.</p>
 <p>You can pass options to the rasterizer as follows, for Windows:</p>
 <div class="highlight"><pre><span></span><code><span class="n">build</span><span class="w"> </span><span class="n">svgrasterizer</span><span class="w"> </span><span class="o">[</span><span class="n">OPTIONS</span><span class="o">]</span><span class="w"> </span><span class="n">FILES</span><span class="w"></span>
 </code></pre></div>
 
-
 <p>and for Unix:</p>
 <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="o">/</span><span class="n">build</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">svgrasterizer</span><span class="w"> </span><span class="o">[</span><span class="n">OPTIONS</span><span class="o">]</span><span class="w"> </span><span class="n">FILES</span><span class="w"></span>
 </code></pre></div>
-
 
 <p>Refer to <a href="#using-binary">“Using the binary distribution”</a> for an explanation of the options.</p>
 <h2 id="task">Rasterizer Ant task</h2>
@@ -339,7 +330,6 @@ For Windows, type the following at the command prompt:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;taskdef</span> <span class="na">name=</span><span class="s">&quot;rasterize&quot;</span>
        <span class="na">classname=</span><span class="s">&quot;org.apache.tools.ant.taskdefs.optional.RasterizerTask&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
-
 
 <p>Now you can use the rasterizer task in your project. See the <a href="#taskParameters">parameters section</a> for an explanation of the available parameters or the <a href="#taskExamples">examples section</a> to see few usage examples.</p>
 <h3 id="taskParameters">Parameters of the Ant task</h3>
@@ -447,7 +437,6 @@ For Windows, type the following at the command prompt:</p>
     <span class="nt">&lt;/target&gt;</span>
 <span class="nt">&lt;/project&gt;</span>
 </code></pre></div>
-
 
 <p>The next example is just one task in a project. It converts all files with a <code>.svg</code> suffix in the <code>images</code> directory and all files in the <code>images2</code> directory to TIFF images. The resulting image files are placed in the <code>results</code> directory.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;rasterize</span> <span class="na">result=</span><span class="s">&quot;image/tiff&quot;</span> <span class="na">destdir=</span><span class="s">&quot;results&quot;</span><span class="nt">&gt;</span>

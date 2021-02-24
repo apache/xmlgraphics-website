@@ -666,11 +666,9 @@ generating PDF files. This means one can write something like:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf#page=1&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 
-
 <p>and</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;fox:external-document</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
-
 
 <h2>Reduce file size</h2>
 <p>If you input many pdfs together the output pdf has duplicate fonts. Set this flag to merge fonts in fop.xconf:</p>
@@ -678,7 +676,6 @@ generating PDF files. This means one can write something like:</p>
   <span class="nt">&lt;merge-fonts&gt;</span>true<span class="nt">&lt;/merge-fonts&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
-
 
 <h2>Improve performance</h2>
 <p>If you use many of the same pdf's and they have a large content stream, this flag can improve performance.
@@ -688,7 +685,6 @@ Set this flag in fop.xconf:</p>
   <span class="nt">&lt;form-xobject&gt;</span>true<span class="nt">&lt;/form-xobject&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
-
 
 <h2>Known issues with Postscript output</h2>
 <ul>

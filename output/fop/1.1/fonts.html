@@ -810,7 +810,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/renderers&gt;</span>
 </code></pre></div>
 
-
 <p><note>Review the documentation for <a href="configuration.html">FOP Configuration</a> for instructions on making the FOP configuration available to FOP when it runs. Otherwise, FOP has no way of finding your custom font information. It is currently not possible to easily configure fonts from Java code.</note></p>
 <h3 id="register">Register Fonts with FOP</h3>
 <p>You must tell FOP how to find and use the font files by registering them in the <a href="configuration.html">FOP Configuration</a>. Add entries for your custom fonts, regardless of font type, to the configuration file in a manner similar to the following:</p>
@@ -827,7 +826,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
    <span class="nt">&lt;/renderer&gt;</span>
 <span class="nt">&lt;/renderers&gt;</span>
 </code></pre></div>
-
 
 <ul>
 <li>
@@ -887,13 +885,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="err">      msmincho.ttc msminch.xml</span>
 </code></pre></div>
 
-
 <p>Alternatively, the individual sub-fonts of a TrueType Collections can be selected using the "sub-font" attribute on the "font" element. That means that generating an XML font metrics file for TrueType collections is not necessary anymore. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;font</span> <span class="na">embed-url=</span><span class="s">&quot;gulim.ttc&quot;</span> <span class="na">sub-font=</span><span class="s">&quot;GulimChe&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;GulimChe&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/font&gt;</span>
 </code></pre></div>
-
 
 <h3 id="autodetect">Auto-Detect and auto-embed feature</h3>
 <p>When the "auto-detect" flag is set in the configuration, FOP will automatically search for fonts in the default paths for your operating system.</p>
@@ -903,7 +899,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="n">Name</span><span class="p">:</span> <span class="n">font</span><span class="o">/</span><span class="n">myfont</span><span class="p">.</span><span class="n">ttf</span>
     <span class="n">Content</span><span class="o">-</span><span class="k">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">font</span>
 </code></pre></div>
-
 
 <p>This feature allows you to create JAR files containing fonts. The JAR files can be added to fop by providing them in the classpath, e.g. copying them into the lib/ directory.</p>
 <h4 id="font-cache">The font cache</h4>
@@ -917,12 +912,10 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="w">      </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">fop</span><span class="p">.</span><span class="n">fonts</span><span class="p">.</span><span class="n">apps</span><span class="p">.</span><span class="n">PFMReader</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="n">pfm</span><span class="o">-</span><span class="k">file</span><span class="w"> </span><span class="nc">xml</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
 </code></pre></div>
 
-
 <p>Unix:</p>
 <div class="highlight"><pre><span></span><code><span class="n">java</span><span class="w"> </span><span class="o">-</span><span class="n">cp</span><span class="w"> </span><span class="n">build</span><span class="o">/</span><span class="n">fop</span><span class="p">.</span><span class="nl">jar</span><span class="p">:</span><span class="n">lib</span><span class="o">/</span><span class="n">avalon</span><span class="o">-</span><span class="n">framework</span><span class="p">.</span><span class="nl">jar</span><span class="p">:</span><span class="n">lib</span><span class="o">/</span><span class="n">commons</span><span class="o">-</span><span class="n">logging</span><span class="p">.</span><span class="nl">jar</span><span class="p">:</span><span class="n">lib</span><span class="o">/</span><span class="n">commons</span><span class="o">-</span><span class="n">io</span><span class="p">.</span><span class="n">jar</span><span class="w"></span>
 <span class="w">      </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">fop</span><span class="p">.</span><span class="n">fonts</span><span class="p">.</span><span class="n">apps</span><span class="p">.</span><span class="n">PFMReader</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="n">pfm</span><span class="o">-</span><span class="k">file</span><span class="w"> </span><span class="nc">xml</span><span class="o">-</span><span class="k">file</span><span class="w"></span>
 </code></pre></div>
-
 
 <p>PFMReader [options]:</p>
 <ul>
@@ -937,7 +930,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="w">      </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">fop</span><span class="p">.</span><span class="n">fonts</span><span class="p">.</span><span class="n">apps</span><span class="p">.</span><span class="n">TTFReader</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"></span>
 <span class="w">      </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="n">myfonts</span><span class="err">\</span><span class="n">cmr10</span><span class="p">.</span><span class="n">ttf</span><span class="w"> </span><span class="n">ttfcm</span><span class="p">.</span><span class="nc">xml</span><span class="w"></span>
 </code></pre></div>
-
 
 <p>TTFReader [options]:</p>
 <ul>
@@ -995,7 +987,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/fop&gt;</span>
 </code></pre></div>
 
-
 </li>
 </ol>
 <p>At the moment, you can only match fonts against their font-family. It is possible to use regular expressions as is shown in the second example above ("DejaVu.*"). The syntax for the regular expressions used here are the one used by the <a href="https://docs.oracle.com/javase/7/docs/api/java/util/regex/package-summary.html">package</a>. So, in the above snippet "Helvetica" and all variants of the "DejaVu" font family are referenced. If you want to reference all fonts, just specify <code>font-family=".*"</code>.</p>
@@ -1044,7 +1035,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   <span class="nt">&lt;/fonts&gt;</span>
 <span class="nt">&lt;/fop&gt;</span>
 </code></pre></div>
-
 
 <h2 id="selection">Font Selection Strategies</h2>
 <p>There are two font selection strategies: character-by-character or auto. The default is auto.</p>

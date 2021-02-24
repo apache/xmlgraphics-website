@@ -196,7 +196,6 @@ $(document).ready(function () {
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
     <h1>SVG Generator: SVGGraphics2D</h1>
 <div class="figure"> ![Flow diagram illustrating that Java programs can have their graphics converted to SVG and then viewed in any SVG viewer](images/svggen.jpg "") </div>
-
 <p>As SVG is emerging as a promising graphics format for a wide range of domains and applications, bridging it with Java becomes important. This page explains how Batik’s <a href="../javadoc/org/apache/batik/svggen/SVGGraphics2D.html">SVGGraphics2D</a>, referred to as the SVG Generator, makes this possible.</p>
 <h2 id="whatIsIt">The SVGGraphics2D class</h2>
 <p>On the Java platform, all rendering goes through the <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/awt/Graphics2D.html">Graphics2D</a> abstract class, which offers methods such as <code>drawRect</code>, <code>fillRect</code>, and <code>drawString</code>. There are specialized implementations of this abstract class for each type of output, such as a screen or a printer. <code>SVGGraphics2D</code> is a new implementation of that interface that generates SVG content instead of drawing to a screen or a printer.</p>
@@ -213,7 +212,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </li>
 </ul>
 <div class="figure"> ![Diagram illustrating how the SVGGraphics2D inherits from Graphics2D, and uses Document to generate a DOM tree](images/svggenHighLevelArchi.jpg "") </div>
-
 <p>The above figure shows how the generator works with the DOM API. The W3C has defined an API for representing XML content with a Java object. That API allows programmers to manipulate, create, and/or modify XML content in memory. The DOM API contains interfaces such as <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html">Document</a>, <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Element.html">Element</a>, and <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Attr.html">Attr</a>, which model the Java programming language equivalent of XML documents, elements and attributes.</p>
 <p>The generator manages a tree of DOM objects that represent the SVG content corresponding to the rendering calls made on the <code>SVGGraphics2D</code> instance. In other words, every time a program invokes a rendering method, such as <code>fillRect</code>, on a <code>SVGGraphics2D</code> instance, a new DOM object, representing the SVG equivalent, is appended to the DOM tree. For example, a <code>rect</code> element will be appended after the <code>fillRect</code> method has been invoked).</p>
 <p>The programmer, using this generator, can then access the DOM tree to further manipulate it or can directly write the content to an output stream, as we see in the following section.</p>
@@ -266,7 +264,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>We can see that generating SVG content from our <code>TestSVGGen</code> instance is a three step process:</p>
 <ol>
 <li>
@@ -283,7 +280,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">SVGGraphics2D</span> <span class="n">svgGenerator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGGraphics2D</span><span class="p">(</span><span class="n">document</span><span class="p">);</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>Invoke the rendering code on our SVG generator. In our example, we invoke <code>TestSVGGen</code> ‘s <code>paint</code> method:</p>
@@ -291,7 +287,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">TestSVGGen</span> <span class="n">test</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TestSVGGen</span><span class="p">();</span>
 <span class="n">test</span><span class="p">.</span><span class="na">paint</span><span class="p">(</span><span class="n">svgGenerator</span><span class="p">);</span>
 </code></pre></div>
-
 
 </li>
 <li>
@@ -302,7 +297,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">Writer</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OutputStreamWriter</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
 <span class="n">svgGenerator</span><span class="p">.</span><span class="na">stream</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">useCSS</span><span class="p">);</span>
 </code></pre></div>
-
 
 </li>
 </ol>
@@ -322,7 +316,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">SVGGraphics2D</span> <span class="n">g2d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGGraphics2D</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
 </code></pre></div>
 
-
 <h2 id="Use-embedded-SVG-Fonts-in-the-generated-SVG-file">Use embedded SVG Fonts in the generated SVG file</h2>
 <p>In order to have a self-contained SVG file that doesn't have to use system fonts to be displayed, you can embed the fonts you used for drawing strings in the SVG file through the SVG fonts facility.</p>
 <div class="highlight"><pre><span></span><code><span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span>
@@ -334,7 +327,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">ctx</span><span class="p">.</span><span class="na">setEmbeddedFontsOn</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
 <span class="n">SVGGraphics2D</span> <span class="n">g2d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGGraphics2D</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
 </code></pre></div>
-
 
 <h2 id="Customizing-the-way-images-are-stored">Customizing the way images are stored</h2>
 <p>Every time you call one of the <code>drawImage</code> methods provided by the <code>Graphics2D</code> interface, a default representation of your image is created in a location and put in a default file. For instance, a base64 encoding is created and embedded in the SVG file by default. Alternatively, you can choose to have your images written to separate files in a predefined directory, in one of the two raster formats required by the SVG specification: JPEG or PNG.</p>
@@ -350,7 +342,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">SVGGraphics2D</span> <span class="n">g2d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGGraphics2D</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
 </code></pre></div>
 
-
 <p>Using the default image handlers results in a new copy of the image data being written to the SVG file or an external file, for every single <code>drawImage</code> call. If you use the same images over and over again, then this may result in an SVG file containing a lot of redundant data. At the price of a slight performance penalty during initial generation of the SVG DOM tree, you can choose to have your image data reused. For this you use a specialized image handler, as shown below.</p>
 <div class="highlight"><pre><span></span><code><span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span>
     <span class="n">GenericDOMImplementation</span><span class="p">.</span><span class="na">getDOMImplementation</span><span class="p">();</span>
@@ -365,7 +356,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 
 <span class="n">SVGGraphics2D</span> <span class="n">g2d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGGraphics2D</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
 </code></pre></div>
-
 
 <p>With the caching image handlers, it is even possible to reuse the same copy of your image data across several different SVG documents. Just keep a reference to the image handler, and pass it to the <code>SVGGraphics2D</code> instance used for generating the SVG DOM tree. The following simplified example shows how different SVG trees might be created by separate SVG generators, efficiently storing any common images just once.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">MySVGGenerator</span> <span class="p">{</span>
@@ -392,7 +382,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <h2 id="Customizing-the-generated-SVG-style">Customizing the generated SVG style</h2>
 <p>Your needs in matter of styling may be different from the two provided options (XML presentation attributes or CSS inline stylesheets). For example, you may want to put the CSS properties in a SVG <code>style</code> element section and reference them through the class attribute. In this case you will need to define a new <a href="../javadoc/org/apache/batik/svggen/StyleHandler.html">StyleHandler</a> as below.</p>
@@ -429,7 +418,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>Then you can create and use an <code>SVGGraphics2D</code> with a correctly configured <code>SVGGeneratorContext</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Configure the SVGGraphics2D for a given Document myFactory.</span>
 <span class="n">SVGGeneratorContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">SVGGeneratorContext</span><span class="p">.</span><span class="na">createDefault</span><span class="p">(</span><span class="n">myFactory</span><span class="p">);</span>
@@ -451,7 +439,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="c1">// Dump the root content to a given Writer myWriter.</span>
 <span class="n">g2d</span><span class="p">.</span><span class="na">stream</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">myWriter</span><span class="p">);</span>
 </code></pre></div>
-
 
 <h2 id="Extending-Paint-object-to-SVG-element-translation">Extending Paint object to SVG element translation</h2>
 <p>The <code>SVGGraphics2D</code> is able to generate SVG elements for generic Java 2D objects, but you sometimes have your own classes such as implementations of the Java 2D <a href="https://docs.oracle.com/javase/7/docs/api/java/awt/Paint.html">Paint</a> interface. In this case, you will need to write an <a href="../javadoc/org/apache/batik/svggen/ExtensionHandler.html">ExtensionHandler</a> that you will set on your <code>SVGGeneratorContext</code>.</p>
@@ -512,13 +499,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>You should then set it on the <code>SVGGeneratorContext</code> by using the <code>setExtensionHandler</code> method.</p>
 <div class="highlight"><pre><span></span><code><span class="n">SVGGeneratorContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">SVGGeneratorContext</span><span class="p">.</span><span class="na">createDefault</span><span class="p">(</span><span class="n">myFactory</span><span class="p">);</span>
 <span class="n">ctx</span><span class="p">.</span><span class="na">setExtensionHandler</span><span class="p">(</span><span class="k">new</span> <span class="n">MyExtensionHandler</span><span class="p">());</span>
 <span class="n">SVGGraphics2D</span> <span class="n">g2d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SVGGraphics2D</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
 </code></pre></div>
-
 
 <h1 id="view">How to view the generated SVG document</h1>
 <p>The following code example illustrates how to view the SVG content generated by an <code>SVGGraphics2D</code> object.</p>

@@ -761,7 +761,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <td>cache-file</td>
 <td>String</td>
 <td>This option specifies the file/directory path of the fop cache file. This file is currently only used to cache font triplet information for future reference.</td>
-<td base>$</td>
+<td>${base}/conf/fop.cache</td>
 </tr>
 <tr>
 <td>renderers</td>
@@ -802,7 +802,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/fop&gt;</span>
 </code></pre></div>
 
-
 <h2 id="image-loading">Image Loading Customization</h2>
 <p>Apache FOP uses the image loading framework from <a href="http://xmlgraphics.apache.org/commons/">Apache XML Graphics Commons</a> to load images using various plug-ins. Every image loader plug-in has a hard-coded usage penalty that influences which solution is chosen if there are multiple possibilities to load an image. Sometimes, though, these penalties need to be tweaked and this can be done in the FOP configuration. An example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
@@ -816,7 +815,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   <span class="nt">&lt;renderers....</span>
 <span class="err">&lt;/fop</span><span class="nt">&gt;</span>
 </code></pre></div>
-
 
 <p>The first penalty element increases the penalty for the raw CCITT loader. This practically forces the decoding of CCITT compressed TIFF images except if there are no TIFF codecs available.</p>
 <p>The second penalty element sets an "infinite" penalty for the TIFF loader using the internal TIFF codec. This practically disables that plug-in as it will never be chosen as a possible solution.</p>
@@ -846,7 +844,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   <span class="c">&lt;!-- etc. etc..... --&gt;</span>
 </code></pre></div>
 
-
 <p>The details on the font configuration can be found on the separate <a href="fonts.html">Fonts</a> page. Note especially the section entitled <a href="fonts.html#register">Register Fonts with FOP</a>.</p>
 <h3 id="pdf-renderer">Special Settings for the PDF Renderer</h3>
 <p>The configuration element for the PDF renderer contains two elements. One is for the font configuration (please follow the link above) and one is for the "filter list". The filter list controls how the individual objects in a PDF file are encoded. By default, all objects get "flate" encoded (i.e. simply compressed with the same algorithm that is also used in ZIP files). Most users don't need to change that setting. For debugging purposes, it may be desired not to compress the internal objects at all so the generated PDF commands can be read. In that case, you can simply use the following filter list. The second filter list (type="image") ensures that all images still get compressed but also ASCII-85 encoded so the produced PDF file is still easily readable in a text editor.</p>
@@ -863,7 +860,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="err">&lt;/renderer</span><span class="nt">&gt;</span>
 </code></pre></div>
 
-
 <p>Another (optional) setting specific to the PDF Renderer is an output color profile, an ICC color profile which indicates the target color space the PDF file is generated for. This setting is mainly used in conjunction with the <a href="pdfx.html">PDF/X</a> feature. An example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;filterList...</span>
@@ -874,7 +870,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="err">&lt;/renderer</span><span class="nt">&gt;</span>
 </code></pre></div>
 
-
 <p>Some people don't have high requirements on color fidelity but instead want the smallest PDF file sizes possible. In this case it's possible to disable the default sRGB color space which XSL-FO requires. This will cause RGB colors to be generated as device-specific RGB. Please note that this option is unavailable (and will cause an error) if you enable PDF/A or PDF/X functionality or if you specify an output profile. This setting will make the PDF about 4KB smaller. To disable the sRGB color space add the following setting:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;filterList...</span>
@@ -884,7 +879,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   <span class="nt">&lt;fonts....</span>
 <span class="err">&lt;/renderer</span><span class="nt">&gt;</span>
 </code></pre></div>
-
 
 <p>FOP supports encryption of PDF output, thanks to Patrick C. Lankswert. This feature is commonly used to prevent unauthorized viewing, printing, editing, copying text from the document and doing annotations. It is also possible to ask the user for a password in order to view the contents. Note that there already exist third party applications which can decrypt an encrypted PDF without effort and allow the aforementioned operations, therefore the degree of protection is limited. For further information about features and restrictions regarding PDF encryption, look at the documentation coming with Adobe Acrobat or the technical documentation on the Adobe web site.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
@@ -904,14 +898,12 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
 
-
 <p>By default FOP produces PDF files of version 1.4, but this can be changed in order to benefit from features that appeared in newer versions of PDF. At the moment, only a few features from PDF 1.5 have been implemented, but the configuration element will accept any value between 1.4 and 1.7. This is the value that will appear in the PDF header, although only features up to 1.5 will actually be used.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;version&gt;</span>1.5<span class="nt">&lt;/version&gt;</span>
   <span class="c">&lt;!-- Versions 1.4, 1.5, 1.6 and 1.7 are accepted, all other values are invalid --&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
-
 
 <h3 id="ps-renderer">Special Settings for the PostScript Renderer</h3>
 <p>Besides the normal font configuration (the same "fonts" element as for the PDF renderer) the PostScript renderer has an additional setting to force landscape pages to be rotated to fit on a page inserted into the printer in portrait mode. Set the value to "true" to activate this feature. The default is "false". Example:</p>
@@ -931,7 +923,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
 
-
 <h3 id="pcl-renderer">Special Settings for the PCL Renderer</h3>
 <p>Non-standard fonts for the PCL renderer are made available through the Java2D subsystem which means that you don't have to do any custom font configuration in this case but you have to use the font names offered by Java.</p>
 <p>Additionally, there are certain settings that control how the renderer handles various elements.</p>
@@ -940,7 +931,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   <span class="nt">&lt;text-rendering&gt;</span>bitmap<span class="nt">&lt;/text-rendering&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
-
 
 <p>The default value for the "rendering" setting is "speed" which causes borders to be painted as plain rectangles. In this mode, no special borders (dotted, dashed etc.) are available. If you want support for all border modes, set the value to "quality" as indicated above. This will cause the borders to be painted as bitmaps.</p>
 <p>The default value for the "text-rendering" setting is "auto" which paints the base fonts using PCL fonts. Non-base fonts are painted as bitmaps through Java2D. If the mix of painting methods results in unwelcome output, you can set this to "bitmap" which causes all text to be rendered as bitmaps.</p>
@@ -955,7 +945,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   <span class="nt">&lt;resource-group-file&gt;</span>resources.afp<span class="nt">&lt;/resource-group-file&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
-
 
 <p>The default value for the images "mode" setting is "b+w" (black and white). When the images "mode" setting is "b+w" a "bits-per-pixel" setting can be provided to aid the grayscale conversion process. With this setting all images referenced in your source document are converted to an IOCA FS45 grayscale bitmap image form. When the setting is "color" all images are converted to an IOCA FS45 color bitmap image form. When "native" setting is "true", all images encountered (TIFF, GIF, JPEG and Encapsulated Postscript etc.) will be embedded directly in the datastream in their native form using a MO:DCA Object Container.</p>
 <p>The default value for the "renderer-resolution" is 240 dpi.</p>

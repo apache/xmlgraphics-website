@@ -706,7 +706,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>Let's discuss these 5 steps in detail:</p>
 <ul>
 <li>
@@ -756,7 +755,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">factory</span><span class="p">.</span><span class="na">newTransformer</span><span class="p">(</span><span class="n">xslt</span><span class="p">);</span>
 </code></pre></div>
 
-
 <h2 id="input">Input Sources</h2>
 <p>The input XSL-FO document is always received by FOP as a SAX stream (see the <a href="../dev/design/parsing.html">Parsing Design Document</a> for the rationale).</p>
 <p>However, you may not always have your input document available as a SAX stream. But with JAXP it's easy to convert different input sources to a SAX stream so you can pipe it into FOP. That sounds more difficult than it is. You simply have to set up the right Source instance as input for the JAXP transformation. A few examples:</p>
@@ -766,13 +764,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <div class="highlight"><pre><span></span><code><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="s">&quot;http://localhost:8080/testfile.xml&quot;</span><span class="p">);</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p><strong>File:</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;C:/Temp/myinputfile.xml&quot;</span><span class="p">));</span>
 </code></pre></div>
-
 
 </li>
 <li>
@@ -780,13 +776,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <div class="highlight"><pre><span></span><code><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">StringReader</span><span class="p">(</span><span class="n">myString</span><span class="p">));</span> <span class="c1">// myString is a String</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p><strong>InputStream:</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">MyInputStream</span><span class="p">(</span><span class="n">something</span><span class="p">));</span>
 </code></pre></div>
-
 
 </li>
 <li>
@@ -794,13 +788,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <div class="highlight"><pre><span></span><code><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">ByteArrayInputStream</span><span class="p">(</span><span class="n">myBuffer</span><span class="p">));</span> <span class="c1">// myBuffer is a byte[] here</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p><strong>DOM:</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DOMSource</span><span class="p">(</span><span class="n">myDocument</span><span class="p">);</span> <span class="c1">// myDocument is a Document or a Node</span>
 </code></pre></div>
-
 
 </li>
 <li>
@@ -819,13 +811,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <div class="highlight"><pre><span></span><code><span class="n">fopFactory</span><span class="p">.</span><span class="na">getFontManager</span><span class="p">().</span><span class="na">setFontBaseURL</span><span class="p">(</span><span class="s">&quot;file:///C:/Temp/fonts&quot;</span><span class="p">);</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>The <strong>hyphenation base URL</strong> to use when resolving relative URLs for hyphenation patterns. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">fopFactory</span><span class="p">.</span><span class="na">setHyphenBaseURL</span><span class="p">(</span><span class="s">&quot;file:///C:/Temp/hyph&quot;</span><span class="p">);</span>
 </code></pre></div>
-
 
 </li>
 <li>
@@ -833,13 +823,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <div class="highlight"><pre><span></span><code><span class="n">fopFactory</span><span class="p">.</span><span class="na">setStrictValidation</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>Enable an <strong>alternative set of rules for text indents</strong> that tries to mimic the behaviour of many commercial FO implementations, that chose to break the specification in this respect. The default of this option is 'false', which causes Apache FOP to behave exactly as described in the specification. To enable the alternative behaviour, call:</p>
 <div class="highlight"><pre><span></span><code><span class="n">fopFactory</span><span class="p">.</span><span class="na">setBreakIndentInheritanceOnReferenceAreaBoundary</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
 </code></pre></div>
-
 
 </li>
 <li>
@@ -847,20 +835,17 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <div class="highlight"><pre><span></span><code><span class="n">fopFactory</span><span class="p">.</span><span class="na">setSourceResolution</span><span class="p">(</span><span class="mi">96</span><span class="p">);</span> <span class="c1">// =96dpi (dots/pixels per Inch)</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>Manually add an <strong>ElementMapping instance</strong>. If you want to supply a special FOP extension you can give the instance to the FOUserAgent. Normally, the FOP extensions can be automatically detected (see the documentation on extension for more info). Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">fopFactory</span><span class="p">.</span><span class="na">addElementMapping</span><span class="p">(</span><span class="n">myElementMapping</span><span class="p">);</span> <span class="c1">// myElementMapping is a org.apache.fop.fo.ElementMapping</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>Set a <strong>URIResolver</strong> for custom URI resolution. By supplying a JAXP URIResolver you can add custom URI resolution functionality to FOP. For example, you can use <a href="http://xml.apache.org/commons/components/resolver/">Apache XML Commons Resolver</a> to make use of XCatalogs. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">fopFactory</span><span class="p">.</span><span class="na">setURIResolver</span><span class="p">(</span><span class="n">myResolver</span><span class="p">);</span> <span class="c1">// myResolver is a javax.xml.transform.URIResolver</span>
 </code></pre></div>
-
 
 <p><note>Both the FopFactory and the FOUserAgent have a method to set a URIResolver. The URIResolver on the FopFactory is primarily used to resolve URIs on factory-level (hyphenation patterns, for example) and it is always used if no other URIResolver (for example on the FOUserAgent) resolved the URI first.</note></p>
 </li>
@@ -874,7 +859,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_POSTSCRIPT</span><span class="p">,</span> <span class="n">userAgent</span><span class="p">,</span> <span class="n">out</span><span class="p">);</span>
 </code></pre></div>
 
-
 <p>You can do all sorts of things on the user agent:</p>
 <ul>
 <li>
@@ -882,13 +866,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setBaseURL</span><span class="p">(</span><span class="s">&quot;file:///C:/Temp/&quot;</span><span class="p">);</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>Set the <strong>producer</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. The default producer is "Apache FOP". Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setProducer</span><span class="p">(</span><span class="s">&quot;MyKillerApplication&quot;</span><span class="p">);</span>
 </code></pre></div>
-
 
 </li>
 <li>
@@ -896,13 +878,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setCreator</span><span class="p">(</span><span class="s">&quot;John Doe&quot;</span><span class="p">);</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>Set the <strong>author</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setAuthor</span><span class="p">(</span><span class="s">&quot;John Doe&quot;</span><span class="p">);</span>
 </code></pre></div>
-
 
 </li>
 <li>
@@ -910,13 +890,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setCreationDate</span><span class="p">(</span><span class="k">new</span> <span class="n">Date</span><span class="p">());</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>Set the <strong>title</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setTitle</span><span class="p">(</span><span class="s">&quot;Invoice No 138716847&quot;</span><span class="p">);</span>
 </code></pre></div>
-
 
 </li>
 <li>
@@ -924,13 +902,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setKeywords</span><span class="p">(</span><span class="s">&quot;XML XSL-FO&quot;</span><span class="p">);</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>Set the <strong>target resolution</strong> for the document. This is used to specify the output resolution for bitmap images generated by bitmap renderers (such as the TIFF renderer) and by bitmaps generated by Apache Batik for filter effects and such. Default: 72 dpi. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setTargetResolution</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span> <span class="c1">// =300dpi (dots/pixels per Inch)</span>
 </code></pre></div>
-
 
 </li>
 <li>
@@ -938,20 +914,17 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setRendererOverride</span><span class="p">(</span><span class="n">myRenderer</span><span class="p">);</span> <span class="c1">// myRenderer is an org.apache.fop.render.Renderer</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>Set <strong>your own FOEventHandler instance</strong>. If you want to supply your own FOEventHandler or configure an FOEventHandler subclass in a special way you can give the instance to the FOUserAgent. Normally, the FOEventHandler instance is created by FOP. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setFOEventHandlerOverride</span><span class="p">(</span><span class="n">myFOEventHandler</span><span class="p">);</span> <span class="c1">// myFOEventHandler is an org.apache.fop.fo.FOEventHandler</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>Set a <strong>URIResolver</strong> for custom URI resolution. By supplying a JAXP URIResolver you can add custom URI resolution functionality to FOP. For example, you can use <a href="http://xml.apache.org/commons/components/resolver/">Apache XML Commons Resolver</a> to make use of XCatalogs. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setURIResolver</span><span class="p">(</span><span class="n">myResolver</span><span class="p">);</span> <span class="c1">// myResolver is a javax.xml.transform.URIResolver</span>
 </code></pre></div>
-
 
 <p><note>Both the FopFactory and the FOUserAgent have a method to set a URIResolver. The URIResolver on the FOUserAgent is used for resolving URIs which are document-related. If it's not set or cannot resolve a URI, the URIResolver from the FopFactory is used.</note></p>
 </li>
@@ -973,7 +946,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">fopFactory</span><span class="p">.</span><span class="na">setUserConfig</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;C:/Temp/mycfg.xml&quot;</span><span class="p">));</span>
 </code></pre></div>
 
-
 <p>The layout of the configuration file is described on the <a href="configuration.html">Configuration page</a>.</p>
 <h2 id="hints">Hints</h2>
 <h3 id="object-reuse">Object reuse</h3>
@@ -994,7 +966,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>Depending on the target OutputStream (in case of a FileOutputStream, but not for a ByteArrayOutputStream, for example) it may improve performance considerably if you buffer the OutputStream using a BufferedOutputStream:</p>
 <div class="highlight"><pre><span></span><code><span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">BufferedOutputStream</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
 </code></pre></div>
-
 
 <p>Make sure you properly close the OutputStream when FOP is finished.</p>
 </li>

@@ -245,7 +245,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>For cases where the DOM Level 3 versions of these interfaces contain constants that you wish to use, the constants have been copied into the Batik DOM classes. For example:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.batik.dom.AbstractNode</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.batik.dom.svg.SVGDOMImplementation</span><span class="p">;</span>
@@ -277,7 +276,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <p>Note that using these org.apache.batik.dom interfaces is only needed for the DOM Level 3 Core and Events interfaces. There were no earlier versions of the DOM XPath interfaces to conflict with, so these can be used directly (<code>org.w3c.dom.xpath</code>).</p>
 <p>Of course, none of this matters if you are just using the DOM 3 functionality in ECMAScript, as the matter of interfaces is hidden from the scripting environment.</p>

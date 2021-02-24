@@ -860,7 +860,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/renderers&gt;</span>
 </code></pre></div>
 
-
 <p><note>Review the documentation for <a href="configuration.html">FOP Configuration</a> for instructions on making the FOP configuration available to FOP when it runs. Otherwise, FOP has no way of finding your custom font information. It is currently not possible to easily configure fonts from Java code.</note></p>
 <h3 id="register">Register Fonts with FOP</h3>
 <p>You must tell FOP how to find and use the font files by registering them in the <a href="configuration.html">FOP Configuration</a>. Add entries for your custom fonts, regardless of font type, to the configuration file in a manner similar to the following:</p>
@@ -877,7 +876,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
    <span class="nt">&lt;/renderer&gt;</span>
 <span class="nt">&lt;/renderers&gt;</span>
 </code></pre></div>
-
 
 <ul>
 <li>
@@ -938,7 +936,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/font&gt;</span>
 </code></pre></div>
 
-
 <h3 id="autodetect">Auto-Detect and auto-embed feature</h3>
 <p>When the "auto-detect" flag is set in the configuration, FOP will automatically search for fonts in the default paths for your operating system.</p>
 <p>FOP will also auto-detect fonts which are available in the classpath, if they are described as "application/x-font" in the MANIFEST.MF file. For example, if your .jar file contains font/myfont.ttf:</p>
@@ -947,7 +944,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="n">Name</span><span class="p">:</span> <span class="n">font</span><span class="o">/</span><span class="n">myfont</span><span class="p">.</span><span class="n">ttf</span>
     <span class="n">Content</span><span class="o">-</span><span class="k">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">font</span>
 </code></pre></div>
-
 
 <p>This feature allows you to create JAR files containing fonts. The JAR files can be added to fop by providem them in the classpath, e.g. copying them into the lib/ directory.</p>
 <h4 id="font-cache">The font cache</h4>
@@ -971,7 +967,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   <span class="nt">&lt;/fonts&gt;</span>
 <span class="nt">&lt;/fop&gt;</span>
 </code></pre></div>
-
 
 </li>
 </ol>
@@ -1016,7 +1011,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   <span class="nt">&lt;/fonts&gt;</span>
 <span class="nt">&lt;/fop&gt;</span>
 </code></pre></div>
-
 
 <h2 id="selection">Font Selection Strategies</h2>
 <p>There are two font selection strategies: character-by-character or auto. The default is auto.</p>

@@ -205,11 +205,9 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <div class="highlight"><pre><span></span><code><span class="n">java</span><span class="w"> </span><span class="o">-</span><span class="n">jar</span><span class="w"> </span><span class="n">batik</span><span class="o">-</span><span class="n">svgpp</span><span class="p">.</span><span class="n">jar</span><span class="w"> </span><span class="o">[</span><span class="n">OPTIONS</span><span class="o">]</span><span class="w"> </span><span class="n">FILES</span><span class="w"></span>
 </code></pre></div>
 
-
 <p>For example, if you type:</p>
 <div class="highlight"><pre><span></span><code><span class="err">java -jar batik-svgpp.jar samples/batikFX.svg</span>
 </code></pre></div>
-
 
 <p>you will see the indented document written to standard output.</p>
 <p>For the options:</p>
@@ -241,12 +239,10 @@ specifies the system ID to in the doctype declaration, when <code>-doctype chang
 <div class="highlight"><pre><span></span><code><span class="err">java -jar batik-svgpp.jar -tab-width 2 -newline cr-lf src.svg dest.svg</span>
 </code></pre></div>
 
-
 <p>will format <code>src.svg</code> and write it to <code>dest.svg</code> using a tabulation width of 2 and Windows-style newlines, and:</p>
 <div class="highlight"><pre><span></span><code><span class="err">java -jar batik-svgpp.jar -no-format -doctype change -public-id &quot;-//W3C//DTD SVG 1.1//EN&quot; \</span>
 <span class="err">     -system-id &quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot; src.svg dest.svg</span>
 </code></pre></div>
-
 
 <p>will format <code>src.svg</code> and write it to <code>dest.svg</code> unchanged, except for the doctype public and system IDs, which will be replaced by those specified.</p>
 <h3 id="using-source">Using the source distribution</h3>
@@ -261,22 +257,18 @@ For Windows, type the following at the command prompt:</p>
 <div class="highlight"><pre><span></span><code><span class="err">build svgpp</span>
 </code></pre></div>
 
-
 <p>and for Unix:</p>
 <div class="highlight"><pre><span></span><code><span class="err">./build.sh svgpp</span>
 </code></pre></div>
-
 
 <p>This will print out a help message for the pretty printer.</p>
 <p>You can pass options to the rasterizer as follows, for Windows:</p>
 <div class="highlight"><pre><span></span><code><span class="n">build</span><span class="w"> </span><span class="n">svgpp</span><span class="w"> </span><span class="o">[</span><span class="n">OPTIONS</span><span class="o">]</span><span class="w"> </span><span class="n">FILES</span><span class="w"></span>
 </code></pre></div>
 
-
 <p>and for Unix:</p>
 <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="o">/</span><span class="n">build</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">svgpp</span><span class="w"> </span><span class="o">[</span><span class="n">OPTIONS</span><span class="o">]</span><span class="w"> </span><span class="n">FILES</span><span class="w"></span>
 </code></pre></div>
-
 
 <p>Refer to <a href="#using-binary">“Using the binary distribution”</a> for an explanation of these options.</p>
         </div>

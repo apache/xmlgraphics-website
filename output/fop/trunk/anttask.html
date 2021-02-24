@@ -680,7 +680,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/taskdef&gt;</span>
 </code></pre></div>
 
-
 <p>Then create FOP tasks within your Ant build file, using the FOP task parameters listed below.</p>
 <h2 id="parameters">Parameters for FOP Ant task</h2>
 <p><caption>Parameters specified as attributes</caption></p>
@@ -773,7 +772,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/target&gt;</span>
 </code></pre></div>
 
-
 <p>This example converts all XSL-FO files within an entire directory to PostScript:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;generate-multiple-ps&quot;</span>
         <span class="na">description=</span><span class="s">&quot;Generates multiple PostScript files&quot;</span><span class="nt">&gt;</span>
@@ -786,7 +784,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/target&gt;</span>
 </code></pre></div>
 
-
 <p>The following example transforms and converts a single XML and XSLT file to an AFP document:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;generate-afp-from-transform&quot;</span> <span class="na">description=</span><span class="s">&quot;Generates a single AFP file from an XSLT stylesheet&quot;</span><span class="nt">&gt;</span>
    <span class="nt">&lt;fop</span> <span class="na">format=</span><span class="s">&quot;application/x-afp&quot;</span>
@@ -795,7 +792,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
         <span class="na">outfile=</span><span class="s">&quot;c:\working\afpDirectory\Document.afp&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/target&gt;</span>
 </code></pre></div>
-
 
 <p>This example transforms and converts all XML files within an entire directory to PostScript:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;generate-multiple-ps-from-transform&quot;</span> <span class="na">description=</span><span class="s">&quot;Generates multiple PostScript files using an XSLT stylesheet&quot;</span><span class="nt">&gt;</span>

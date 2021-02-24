@@ -672,7 +672,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
          <span class="na">xmlns:fox=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions&quot;</span><span class="nt">&gt;</span>
 </code></pre></div>
 
-
 <h3 id="bookmarks">PDF Bookmarks</h3>
 <p>In old versions of Apache FOP there was a <code>fox:outline</code> element which was used to create outlines in PDF files. The redesigned code makes use of the <a href="http://www.w3.org/TR/xsl11/#fo_bookmark-tree">bookmark feature defined in the W3C XSL 1.1 standard</a>.</p>
 <h3 id="named-destinations">Anchors or Named Destinations</h3>
@@ -681,7 +680,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 ...
 <span class="nt">&lt;fo:block</span> <span class="na">id=</span><span class="s">&quot;table-of-contents&quot;</span><span class="nt">&gt;</span>Table of Contents<span class="nt">&lt;/fo:block&gt;</span>
 </code></pre></div>
-
 
 <p><warning>It is possible that in some future release of FOP, <em>all</em> elements with "id" attributes will generate named-destinations, which will eliminate the need for fox:destination.</warning></p>
 <h3 id="table-continue-label">Table Continuation Label</h3>
@@ -698,7 +696,6 @@ The redesigned code makes use of the <a href="http://www.w3.org/TR/xsl11/#fo_ret
 <p>The <code>fox:external-document</code> element is structurally a peer to <code>fo:page-sequence</code>, so wherever you can put an <code>fo:page-sequence</code> you could also place a <code>fox:external-document</code>. Therefore, the specified contents for <code>fo:root</code> change to:</p>
 <div class="highlight"><pre><span></span><code><span class="err">(layout-master-set, declarations?, bookmark-tree?, (page-sequence|page-sequence-wrapper|fox:external-document|fox:destination)+)</span>
 </code></pre></div>
-
 
 <h4 id="Specification">Specification</h4>
 <p>The <code>fox:external-document</code> extension formatting object is used to specify how to create a (sub-)sequence of pages within a document. The content of these pages comes from the individual subimages/pages of an image or paged document (for example: multi-page TIFF in the form of faxes or scanned documents, or PDF files). The formatting object creates the necessary areas to display one image per page.</p>

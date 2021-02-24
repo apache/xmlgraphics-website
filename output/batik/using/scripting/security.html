@@ -222,13 +222,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 };
 </code></pre></div>
 
-
 <p>with:</p>
 <div class="highlight"><pre><span></span><code>grant codeBase &quot;<span class="cp">${</span><span class="n">app</span><span class="o">.</span><span class="n">dev</span><span class="o">.</span><span class="n">base</span><span class="cp">}</span>/lib/myXMLParser.jar&quot; {
   permission java.security.AllPermission;
 };
 </code></pre></div>
-
 
 <p>in the <code>resources/org/apache/batik/apps/svgbrowser/resources/svgbrowser.policy</code> file (for the source distribution) and do the same in <code>resources/org/apache/batik/apps/svgbrowser/resources/svgbrowser.bin.policy</code> (for the binary distribution which will then need to be rebuilt with the <code>build dist-zip</code> command.</p>
 <p>Alternatively, you can write your own policy file and specify its URL through the <code>java.security.policy</code> system property (which you can specify through the <code>-Djava.security.policy=</code>  <em>url</em> command line option).</p>

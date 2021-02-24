@@ -706,7 +706,6 @@ We recently changed FOP's outer API to what we consider the final API. This migh
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>Let's discuss these 5 steps in detail:</p>
 <ul>
 <li>
@@ -746,7 +745,6 @@ By default, <a href="http://commons.apache.org/logging/">Jakarta Commons Logging
 <span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">factory</span><span class="p">.</span><span class="na">newTransformer</span><span class="p">(</span><span class="n">xslt</span><span class="p">);</span>
 </code></pre></div>
 
-
 <h2 id="input">Input Sources</h2>
 <p>The input XSL-FO document is always received by FOP as a SAX stream (see the <a href="../dev/design/parsing.html">Parsing Design Document</a> for the rationale).</p>
 <p>However, you may not always have your input document available as a SAX stream. But with JAXP it's easy to convert different input sources to a SAX stream so you can pipe it into FOP. That sounds more difficult than it is. You simply have to set up the right Source instance as input for the JAXP transformation. A few examples:</p>
@@ -784,42 +782,35 @@ The <strong>font base URL</strong> to use when resolving relative URLs for fonts
 <div class="highlight"><pre><span></span><code><span class="err">`fopFactory.setFontBaseURL(&quot;file:///C:/Temp/fonts&quot;);`</span>
 </code></pre></div>
 
-
 <p>-
 The <strong>hyphenation base URL</strong> to use when resolving relative URLs for hyphenation patterns. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="err">`fopFactory.setHyphenBaseURL(&quot;file:///C:/Temp/hyph&quot;);`</span>
 </code></pre></div>
-
 
 <p>-
 Disable <strong>strict validation</strong>. When disabled FOP is less strict about the rules established by the XSL-FO specification. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="err">`fopFactory.setStrictValidation(false);`</span>
 </code></pre></div>
 
-
 <p>-
 Enable an <strong>alternative set of rules for text indents</strong> that tries to mimic the behaviour of many commercial FO implementations, that chose to break the specification in this respect. The default of this option is 'false', which causes Apache FOP to behave exactly as described in the specification. To enable the alternative behaviour, call:</p>
 <div class="highlight"><pre><span></span><code><span class="err">`fopFactory.setBreakIndentInheritanceOnReferenceAreaBoundary(true);`</span>
 </code></pre></div>
-
 
 <p>-
 Set the <strong>source resolution</strong> for the document. This is used internally to determine the pixel size for SVG images and bitmap images without resolution information. Default: 72 dpi. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="err">`fopFactory.setSourceResolution(96); // =96dpi (dots/pixels per Inch)`</span>
 </code></pre></div>
 
-
 <p>-
 Manually add an <strong>ElementMapping instance</strong>. If you want to supply a special FOP extension you can give the instance to the FOUserAgent. Normally, the FOP extensions can be automatically detected (see the documentation on extension for more info). Example:</p>
 <div class="highlight"><pre><span></span><code><span class="err">`fopFactory.addElementMapping(myElementMapping); // myElementMapping is a org.apache.fop.fo.ElementMapping`</span>
 </code></pre></div>
 
-
 <p>-
 Set a <strong>URIResolver</strong> for custom URI resolution. By supplying a JAXP URIResolver you can add custom URI resolution functionality to FOP. For example, you can use <a href="http://xml.apache.org/commons/components/resolver/">Apache XML Commons Resolver</a> to make use of XCatalogs. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="err">`fopFactory.setURIResolver(myResolver); // myResolver is a javax.xml.transform.URIResolver`</span>
 </code></pre></div>
-
 
 <p>Both the FopFactory and the FOUserAgent have a method to set a URIResolver. The URIResolver on the FopFactory is primarily used to resolve URIs on factory-level (hyphenation patterns, for example) and it is always used if no other URIResolver (for example on the FOUserAgent) resolved the URI first.</p>
 <h3 id="user-agent">Customizing the User Agent</h3>
@@ -831,73 +822,61 @@ Set a <strong>URIResolver</strong> for custom URI resolution. By supplying a JAX
 <span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_POSTSCRIPT</span><span class="p">,</span> <span class="n">userAgent</span><span class="p">,</span> <span class="n">out</span><span class="p">);</span>
 </code></pre></div>
 
-
 <p>You can do all sorts of things on the user agent:</p>
 <p>-
 The <strong>base URL</strong> to use when resolving relative URLs. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="err">`userAgent.setBaseURL(&quot;file:///C:/Temp/&quot;);`</span>
 </code></pre></div>
 
-
 <p>-
 Set the <strong>producer</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. The default producer is "Apache FOP". Example:</p>
 <div class="highlight"><pre><span></span><code><span class="err">`userAgent.setProducer(&quot;MyKillerApplication&quot;);`</span>
 </code></pre></div>
-
 
 <p>-
 Set the <strong>creating user</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="err">`userAgent.setCreator(&quot;John Doe&quot;);`</span>
 </code></pre></div>
 
-
 <p>-
 Set the <strong>author</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="err">`userAgent.setAuthor(&quot;John Doe&quot;);`</span>
 </code></pre></div>
-
 
 <p>-
 Override the <strong>creation date and time</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="err">`userAgent.setCreationDate(new Date());`</span>
 </code></pre></div>
 
-
 <p>-
 Set the <strong>title</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="err">`userAgent.setTitle(&quot;Invoice No 138716847&quot;);`</span>
 </code></pre></div>
-
 
 <p>-
 Set the <strong>keywords</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="err">`userAgent.setKeywords(&quot;XML XSL-FO&quot;);`</span>
 </code></pre></div>
 
-
 <p>-
 Set the <strong>target resolution</strong> for the document. This is used to specify the output resolution for bitmap images generated by bitmap renderers (such as the TIFF renderer) and by bitmaps generated by Apache Batik for filter effects and such. Default: 72 dpi. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="err">`userAgent.setTargetResolution(300); // =300dpi (dots/pixels per Inch)`</span>
 </code></pre></div>
-
 
 <p>-
 Set <strong>your own Renderer instance</strong>. If you want to supply your own renderer or configure a Renderer in a special way you can give the instance to the FOUserAgent. Normally, the Renderer instance is created by FOP. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="err">`userAgent.setRendererOverride(myRenderer); // myRenderer is an org.apache.fop.render.Renderer`</span>
 </code></pre></div>
 
-
 <p>-
 Set <strong>your own FOEventHandler instance</strong>. If you want to supply your own FOEventHandler or configure an FOEventHandler subclass in a special way you can give the instance to the FOUserAgent. Normally, the FOEventHandler instance is created by FOP. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="err">`userAgent.setFOEventHandlerOverride(myFOEventHandler); // myFOEventHandler is an org.apache.fop.fo.FOEventHandler`</span>
 </code></pre></div>
 
-
 <p>-
 Set a <strong>URIResolver</strong> for custom URI resolution. By supplying a JAXP URIResolver you can add custom URI resolution functionality to FOP. For example, you can use <a href="http://xml.apache.org/commons/components/resolver/">Apache XML Commons Resolver</a> to make use of XCatalogs. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="err">`userAgent.setURIResolver(myResolver); // myResolver is a javax.xml.transform.URIResolver`</span>
 </code></pre></div>
-
 
 <p>Both the FopFactory and the FOUserAgent have a method to set a URIResolver. The URIResolver on the FOUserAgent is used for resolving URIs which are document-related. If it's not set or cannot resolve a URI, the URIResolver from the FopFactory is used. You should not reuse an FOUserAgent instance between FOP rendering runs although you can. Especially in multi-threaded environment, this is a bad idea.</p>
 <h2 id="config-external">Using a Configuration File</h2>
@@ -915,7 +894,6 @@ Set a <strong>URIResolver</strong> for custom URI resolution. By supplying a JAX
 
 <span class="n">fopFactory</span><span class="p">.</span><span class="na">setUserConfig</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;C:/Temp/mycfg.xml&quot;</span><span class="p">));</span>
 </code></pre></div>
-
 
 <p>The layout of the configuration file is described on the <a href="configuration.html">Configuration page</a>.</p>
 <h2 id="hints">Hints</h2>

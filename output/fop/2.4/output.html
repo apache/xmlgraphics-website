@@ -705,7 +705,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">out</span> <span class="o">=</span> <span class="n">proc</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">();</span>
 </code></pre></div>
 
-
 <p>Set the output MIME type to "<code>application/x-pcl</code>" (<code>MimeConstants.MIME_PCL</code>) and it happily sends the PCL to the UNIX printer queue.</p>
 <h2 id="pdf">PDF</h2>
 <p>PDF is the best supported output format. It is also the most accurate with text and layout. This creates a PDF document that is streamed out as each page is rendered. This means that the internal page index information is stored near the end of the document. The PDF version supported is 1.4. PDF versions are forwards/backwards compatible.</p>
@@ -761,7 +760,6 @@ Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note t
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>Check the iText tutorial and documentation for setting access flags, password, encryption strength and other parameters.</p>
 <h3 id="pdf-watermark">Watermarks</h3>
 <p>In addition to the <a href="#pdf-postprocess">PDF Post-processing</a> options, consider the following workarounds:</p>
@@ -779,7 +777,6 @@ Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note t
          <span class="na">xmlns:pdf=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/pdf&quot;</span><span class="nt">&gt;</span>
 </code></pre></div>
 
-
 <h4 id="pdf-embedded-file">Embedded Files</h4>
 <p>It is possible to attach/embed arbitrary files into a PDF file. You can give a name and a description of the file. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:declarations&gt;</span>
@@ -788,12 +785,10 @@ Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note t
 <span class="nt">&lt;/fo:declarations&gt;</span>
 </code></pre></div>
 
-
 <p><code>pdf:embedded-file</code> must be a child of <code>fo:declarations</code>. The "src" property is used to reference the file that is to be embedded. This property uses the "uri-specification" datatype from the XSL-FO specification. The "filename" property is optional. If it is missing the filename is automatically set from the URI/IRI of the "src" property. An optional description can also be added to further describe the file attachment.</p>
 <p>It is also possible to reference an embedded file from an <code>fo:basic-link</code>. Use the special "embedded-file:" URI scheme with the filename as single argument after the URI scheme. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:basic-link</span> <span class="na">external-destination=</span><span class="s">&quot;url(embedded-file:image.jpg)&quot;</span><span class="nt">&gt;</span>Attached Image<span class="nt">&lt;/fo:basic-link&gt;</span>
 </code></pre></div>
-
 
 <p>Note: Not all PDF Viewers (including some Acrobat Versions) will open the embedded file when clicking on the link. In that case, the user will have to open he attachment via the separate list of file attachments.</p>
 <h4>Custom Document Properties</h4>
@@ -810,7 +805,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 <span class="nt">&lt;/fo:declarations&gt;</span>
 </code></pre></div>
 
-
 <p>Each custom property must be specified using the <code>pdf:name</code> element. Remember that the property name must be different to the reserved keywords, which are Title, Author, Subject, Keywords, Creator, Producer, CreationDate, ModDate and Trapped.</p>
 <h4>PDF Linearization</h4>
 <p>Linearization is helpful to allow viewing of a pdf over a slow connection. Needs to be enabled using fop.xconf:</p>
@@ -822,7 +816,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
   <span class="nt">&lt;/renderers&gt;</span>
 <span class="nt">&lt;/fop&gt;</span>
 </code></pre></div>
-
 
 <h2 id="ps">PostScript</h2>
 <p>The PostScript renderer has been brought up to a similar quality as the PDF renderer, but may still be missing certain features. Currently, the PostScript renderer generates PostScript Level 3 with most DSC comments. Actually, the only Level 3 features used are the FlateDecode and DCTDecode filter (the latter is used for 1:1 embedding of JPEG images), everything else is Level 2.</p>
@@ -838,7 +831,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
   <span class="nt">&lt;acrobat-downsample&gt;</span>true<span class="nt">&lt;/acrobat-downsample&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
-
 
 <p>The default value for the "auto-rotate-landscape" setting is "false". Setting it to "true" will automatically rotate landscape pages and will mark them as landscape.</p>
 <p>The default value for the "language-level" setting is "3". This setting specifies the PostScript language level which should be used by FOP. Set this to "2" only if you don't have a Level 3 capable interpreter.</p>
@@ -906,7 +898,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
 
-
 <p>The default value for the "rendering" setting is "speed" which causes borders to be painted as plain rectangles. In this mode, no special borders (dotted, dashed etc.) are available. If you want support for all border modes, set the value to "quality" as indicated above. This will cause the borders to be painted as bitmaps.</p>
 <p>The default value for the "text-rendering" setting is "auto" which paints the base fonts using PCL fonts. Non-base fonts are painted as bitmaps through Java2D. If the mix of painting methods results in unwelcome output, you can set this to "bitmap" which causes all text to be rendered as bitmaps.</p>
 <p>The default value for the "disable-pjl" setting is "false". This means that the PCL renderer usually generates PJL commands before and after the document in order to switch a printer into PCL language. PJL commands can be disabled if you set this value to "true".</p>
@@ -918,7 +909,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
          <span class="na">xmlns:pcl=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/pcl&quot;</span><span class="nt">&gt;</span>
 </code></pre></div>
 
-
 <h4 id="pcl-page-source">Page Source (Tray selection)</h4>
 <p>The page-source extension attribute on fo:simple-page-master allows to select the paper tray the sheet for a particular simple-page-master is to be taken from. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:layout-master-set&gt;</span>
@@ -927,7 +917,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
   <span class="nt">&lt;/fo:simple-page-master&gt;</span>
 <span class="nt">&lt;/fo:layout-master-set&gt;</span>
 </code></pre></div>
-
 
 <p>Note: the tray number is a positive integer and the value depends on the target printer. Not all PCL printers support the same paper trays. Usually, "1" is the default tray, "2" is the manual paper feed, "3" is the manual envelope feed, "4" is the "lower" tray and "7" is "auto-select". Consult the technical reference for your printer for all available values.</p>
 <h4 id="pcl-output-bin">Output Bin</h4>
@@ -939,7 +928,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 <span class="nt">&lt;/fo:layout-master-set&gt;</span>
 </code></pre></div>
 
-
 <p>Note: the output bin number is a positive integer and the value depends on the target printer. Not all PCL printers support the same output bins. Usually, "1" is the upper output bin, "2" is the lower (rear) output bin. Consult the technical reference for your printer for all available values.</p>
 <h4 id="pcl-duplex-mode">Page Duplex Mode</h4>
 <p>The duplex-mode extension attribute on fo:simple-page-master allows to select the duplex mode to be used for a particular simple-page-master. Example:</p>
@@ -949,7 +937,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
   <span class="nt">&lt;/fo:simple-page-master&gt;</span>
 <span class="nt">&lt;/fo:layout-master-set&gt;</span>
 </code></pre></div>
-
 
 <p>Note: the duplex is a positive integer and the value depends on the target printer. Not all PCL printers support duplexing. Usually, "0" is simplex, "1" is duplex (long-edge binding), "2" is duplex (short-edge binding). Consult the technical reference for your printer for all available values.</p>
 <h2 id="afp">AFP</h2>
@@ -1011,7 +998,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
 
-
 <p>There are 5 font configuration variants supported:</p>
 <ol>
 <li>
@@ -1036,7 +1022,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
     <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;any&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/font&gt;</span>
 </code></pre></div>
-
 
 <p>A typical raster font configuration looks like:</p>
 <div class="highlight"><pre><span></span><code><span class="c">&lt;!-- This is an example of mapping actual IBM raster fonts / code pages to a FOP font --&gt;</span>
@@ -1067,7 +1052,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 <span class="nt">&lt;/font&gt;</span>
 </code></pre></div>
 
-
 <p>An outline font configuration is simpler as the individual font size entries are not required. However, the characterset definition is now required within the afp-font element.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;font&gt;</span>
   <span class="nt">&lt;afp-font</span> <span class="na">type=</span><span class="s">&quot;outline&quot;</span> <span class="na">codepage=</span><span class="s">&quot;T1V10500&quot;</span> <span class="na">encoding=</span><span class="s">&quot;Cp500&quot;</span> <span class="na">characterset=</span><span class="s">&quot;CZH200  &quot;</span>
@@ -1077,7 +1061,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
   <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;any&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/font&gt;</span>
 </code></pre></div>
-
 
 <p>If "base-uri" is missing or a relative URI, the fonts are resolved relative to the font base URI specified in the configuration (or on the FopFactory).</p>
 <p><note>Previously, the location of the font files was given by the "path" attribute. This is still supported for the time being, but you should move to using the more flexible "base-uri" attribute so you can profit from the power of URI resolvers.</note></p>
@@ -1089,7 +1072,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
   <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;J-Heisei Mincho&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/font&gt;</span>
 </code></pre></div>
-
 
 <p>Note that the value of the encoding attribute in the example is the double-byte encoding 'UnicodeBigUnmarked' (UTF-16BE).</p>
 <p>Experimentation has shown that the font metrics for the FOP built-in Base14 fonts are actually very similar to some of the IBM outline and raster fonts. In cases were the IBM font files are not available the base-uri attribute in the afp-font element can be replaced by a base14-font attribute giving the name of the matching Base14 font. In this case the AFP Renderer will take the font metrics from the built-in font.</p>
@@ -1163,63 +1145,52 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 <span class="nt">&lt;/font&gt;</span>
 </code></pre></div>
 
-
 <p>By default, all manually configured fonts are embedded, unless they are matched in the <a href="fonts.html#embedding">section of the configuration file</a>. However, the default fonts shown above will not be embedded.</p>
 <p>For double byte EBCDIC encoded character sets, there is an optional tag that must be set to prevent characters from being miscoded. This defaults to "false" if not specified.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;afp-font</span> <span class="na">type=</span><span class="s">&quot;CIDKeyed&quot;</span> <span class="na">codepage=</span><span class="s">&quot;T10835  &quot;</span> <span class="na">encoding=</span><span class="s">&quot;Cp937&quot;</span> <span class="na">characterset=</span><span class="s">&quot;CZTKAI&quot;</span> <span class="na">ebcdic-dbcs=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
-
 
 <h4 id="afp-renderer-resolution-config">Output Resolution</h4>
 <p>By default the AFP Renderer creates output with a resolution of 240 dpi. This can be overridden by the <renderer-resolution/> configuration element. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer-resolution&gt;</span>240<span class="nt">&lt;/renderer-resolution&gt;</span>
 </code></pre></div>
 
-
 <h4 id="afp-image-config">Images</h4>
 <p>By default the AFP Renderer converts all images to 8 bit grey level. This can be overridden by the <images/> configuration element. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;color&quot;</span> <span class="nt">/&gt;</span>
 </code></pre></div>
 
-
 <p>This will put images as RGB images into the AFP output stream. The default setting is:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;b+w&quot;</span> <span class="na">bits-per-pixel=</span><span class="s">&quot;8&quot;</span> <span class="na">native=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
-
 
 <p>Only the values "color" and "b+w" are allowed for the mode attribute.</p>
 <p>The bits-per-pixel attribute is ignored if mode is "color". For "b+w" mode is must be 1, 4, or 8.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">native=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 
-
 <p>When the native attribute is specified and set to "true", all image resources will be natively injected into the datastream using an object container rather than being converted into an IOCA FS45 image. Support for native image formats (e.g. JPEG, TIFF, GIF) is not always available on printer implementations so by default this configuration option is set to "false".</p>
 <p>Setting <code>cmyk="true"</code> on the <code>images</code> element will enable CMYK colors. This will only have an effect if the color mode is set to "color". Example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;color&quot;</span> <span class="na">cmyk=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 
-
 <p>When the color mode is set to 1 bit (bi-level), the "dithering-quality" attribute can be used to select the level of quality to use when converting images to bi-level images. Valid values for this attribute are floating point numbers from 0.0 (fastest) to 1.0 (best), or special values: "minimum" (=0.0), "maximum" (1.0), "medium" (0.5, the default). For the higher settings to work as expected, JAI needs to be present in the classpath. If JAI is present, 0.0 results in a minimal darkness-level switching between white and black. 0.5 does bayer-based dithering and 1.0 will use error-diffusion dithering. The higher the value, the higher the quality and the slower the processing of the images.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;b+w&quot;</span> <span class="na">bits-per-pixel=</span><span class="s">&quot;1&quot;</span> <span class="na">dithering-quality=</span><span class="s">&quot;maximum&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
-
 
 <p>When the boolean attribute pseg (default false) is set to true, non-inline FS11 and FS45 IOCA images are wrapped in page segment. This option is provided to support printers/print servers that require this MO:DCA structure.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;b+w&quot;</span> <span class="na">bits-per-pixel=</span><span class="s">&quot;8&quot;</span> <span class="na">pseg=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 
-
 <p>Setting the boolean attribute fs45 to true (default false) will force all images to FS45.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;b+w&quot;</span> <span class="na">bits-per-pixel=</span><span class="s">&quot;8&quot;</span> <span class="na">fs45=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
-
 
 <p>By default, images are rasterized to a bitmap and the bitmap is included in the AFP doc. However it is possible to encode in a lossless way to maintain maximum quality. But due to lack of support for compression schemes like LZW (patent concerns), bitmap data is currently not compressed resulting in large AFP files. Using the "allow-embedding" attribute on jpeg child element allows the user to pass the JPEG as is in the document. The default is set to "false" since there are compatibility concerns as some AFP printers don't support JPEG decoding. Using the "bitmap-encoding-quality" attribute it is possible to enable lossy compression (JPEG baseline DCT) on bitmap images. The default is "1.0" which means lossless encoding. Setting a value lower than 1.0, JPEG compression is enabled and the setting is used as the quality setting when encoding bitmap data. Note that this setting does not always have an effect. Bi-level (1 bit) bitmaps are not compressed using JPEG. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;color&quot;</span> <span class="na">cmyk=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;jpeg</span> <span class="na">allow-embedding=</span><span class="s">&quot;false&quot;</span> <span class="na">bitmap-encoding-quality=</span><span class="s">&quot;0.8&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/images&gt;</span>
 </code></pre></div>
-
 
 <p>IOCA image data placed in the AFP Resource Group (i.e. non-inline images) is wrapped in a Page Segment for single-bit and monochrome images.</p>
 <h4 id="afp-goca-config">GOCA (Vector Graphics)</h4>
@@ -1228,11 +1199,9 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;goca</span> <span class="na">enabled=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 
-
 <p>Some AFP implementations have trouble rendering text in GOCA. You can instruct the AFP support to render text as shapes (i.e. use vector graphics to paint text). Example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;goca</span> <span class="na">enabled=</span><span class="s">&quot;true&quot;</span> <span class="na">text=</span><span class="s">&quot;shapes&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
-
 
 <p>If you disable GOCA or let text render as shapes, the size of the generated AFP usually increases considerably.</p>
 <h4 id="afp-shading-config">Shading</h4>
@@ -1240,12 +1209,10 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;shading&gt;</span>dithered<span class="nt">&lt;/shading&gt;</span>
 </code></pre></div>
 
-
 <h4 id="afp-resource-group-file">Resource Group File</h4>
 <p>By default the AFP Renderer will place all data resource objects such as images within the document of the main output datastream. An external resource group file where document resources may be specified with the <resource-group-file/> configuration element. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;resource-group-file&gt;</span>external_resources.afp<span class="nt">&lt;/resource-group-file&gt;</span>
 </code></pre></div>
-
 
 <p><note>Be careful when using this option not to overwrite existing resource files from previous rendering runs.</note></p>
 <h4 id="afp-resource-level-defaults">Resource Level Defaults</h4>
@@ -1254,20 +1221,17 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;default-resource-levels</span> <span class="na">goca=</span><span class="s">&quot;print-file&quot;</span> <span class="na">bitmap=</span><span class="s">&quot;inline&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 
-
 <p>"goca" refers to GOCA graphics and "bitmap" refers to IOCA images. The possible values for the attributes are "inline" and "print-file". In the future, additional possibilities may be added.</p>
 <p>To be compatible with Workbench viewer or other legacy tools and also move resources to the resource group, you can use the following settings. GOCA resources will be wrapped with a page segment.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;default-resource-levels</span> <span class="na">goca=</span><span class="s">&quot;print-file&quot;</span> <span class="na">bitmap=</span><span class="s">&quot;print-file&quot;</span><span class="nt">/&gt;</span>       
 <span class="nt">&lt;goca</span> <span class="na">pseg=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 
-
 <h3 id="afp-extensions">Extensions</h3>
 <p>The AFP Renderer supports some AFP specific extensions which can be embedded into the input fo document. To use the extensions the appropriate namespace must be declared in the fo:root element like this:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
          <span class="na">xmlns:afp=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/afp&quot;</span><span class="nt">&gt;</span>
 </code></pre></div>
-
 
 <h4 id="afp-page-overlay">Page Overlay (IPO) Extension</h4>
 <p>The include-page-overlay extension element allows to define on a per simple-page-master basis a page overlay resource. Example:</p>
@@ -1278,7 +1242,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
   <span class="nt">&lt;/fo:simple-page-master&gt;</span>
 <span class="nt">&lt;/fo:layout-master-set&gt;</span>
 </code></pre></div>
-
 
 <p>The mandatory name attribute must refer to an 8 character (space padded) resource name that must be known in the AFP processing environment. Optional x and y attributes can be specified to place the Overlay at an offset from the top left of the page.</p>
 <h4 id="afp-page-segment">Page Segment (IPS) Extension</h4>
@@ -1292,7 +1255,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
     <span class="nt">&lt;/fo:simple-page-master&gt;</span>
   <span class="nt">&lt;/fo:layout-master-set&gt;</span>
 </code></pre></div>
-
 
 <p>The include-page-segment extension element can only occur within a simple-page-master. Multiple include-page-segment extension elements within a simple-page-master are allowed. The mandatory name attribute must refer to an 8 character (space padded) resource name that must be known in the AFP processing environment. The value of the mandatory src attribute is compared against the value of the src attribute in fo:external-graphic elements and if it is identical (string matching is used) in the generated AFP the external graphic is replaced by a reference to the given resource.</p>
 <p>The effect here is that whenever FOP encounters the URI specified in the extension, it will effectively generate code to include the page segment with the given name instead of embedding the image referenced by the URI. The URI is still required as the underlying image serves as a provider for the intrinsic size of the image (At the moment, FOP is unable to extract the intrinsic size of the page segment from an AFP resource file). For the image to appear in an AFP viewer or to be printed, the AFP resource must be available on the target device. FOP does not embed the page segment in the generated file. Please also note that page segments cannot be scaled. They are always rendered in their intrinsic size.</p>
@@ -1315,7 +1277,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
       [..]
 </code></pre></div>
 
-
 <p>The tag-logical-element extension element can appear within a simple-page-master (page level) or it can appear as child of page-sequence (page group level). Multiple tag-logical-element extension elements within a simple-page-master or page-sequence are allowed. The name and value attributes are mandatory. The <code>encoding</code> attribute specifying a CCSID encoding is optional.</p>
 <h4 id="afp-no-operation">No Operation (NOP) Extension</h4>
 <p>The no-operation extension provides the ability to carry up to 32K of comments or any other type of unarchitected data into the AFP output stream. Example:</p>
@@ -1327,7 +1288,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
     <span class="nt">&lt;/fo:simple-page-master&gt;</span>
   <span class="nt">&lt;/fo:layout-master-set&gt;</span>
 </code></pre></div>
-
 
 <p>The no-operation extension element can appear as child of <code>simple-page-master</code> (appears after "Begin Page" BPG), <code>page-sequence</code> (appears after "Begin Named Page Group" BNG and <code>declarations</code> (appears after "Begin Document" BDT). Multiple no-operation extension elements inside the same formatting object are allowed. Each NOP will appear right after the respective "Begin" field indicated above even if it is specified as the last child under its parent. The order inside the parent will be maintained. The "placement" attribute can be used to have the NOP appear before the "End" field of the object rather than after the "Begin" field. Specify <code>placement="before-end"</code> to do that. Please note that, at the moment, this only has an effect for NOPs that are children of the <code>page-sequence</code> formatting object. The "name" attribute is mandatory but will not appear inside the AFP stream.</p>
 <h4 id="afp-invoke-medium-map">Invoke Medium Map (IMM) Extension</h4>
@@ -1341,7 +1301,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
       [..]
 </code></pre></div>
 
-
 <p>The invoke-medium-map element is allowed as child of fo:page-sequence (page group level) or fo:simple-page-master. It is NOT supported on document level (fo:root), yet. FOP also doesn't support specifying medium maps inside XML (using BMM/EMM). It can only reference an existing medium map by name. The medium map has to be constructed through different means and available on the target platform.</p>
 <h4 id="afp-form-maps">Form Maps/Defs</h4>
 <p>Apache FOP supports embedding an external form map resource in the generated AFP output. This is done using the <code>afp:include-form-map</code> extension. An example:</p>
@@ -1352,7 +1311,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
     <span class="nt">&lt;afp:include-form-map</span> <span class="na">name=</span><span class="s">&quot;F1SAMP1&quot;</span> <span class="na">src=</span><span class="s">&quot;file:f1samp1.fde&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/fo:declarations&gt;</span>
 </code></pre></div>
-
 
 <p>The <code>afp:include-form-map</code> is to be placed as a direct child of <code>fo:declarations</code>. The <code>name</code> is an AFP resource name (max. 8 characters) and the <code>src</code> attribute is the URI identifying the external form map resource. When such a form map is embedded, you can use the <code>afp:invoke-medium-map</code> extension (described above) to invoke any medium map included in the form map.</p>
 <p><note>Apache FOP doesn't support a way to define a form map or medium map using XML means inside an XSL-FO document. You will have to build the form map with some third-party tool.</note></p>
@@ -1381,13 +1339,11 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
  <span class="nt">&lt;/fo:block&gt;</span>
 </code></pre></div>
 
-
 <p>The resource-level attribute where the resource object will reside in the AFP output datastream. The possible values for this are "inline", "print-file" and "external". When "external" is used a resource-group-file attribute must also be specified. Please refer to the <a href="#afp-resource-level-defaults">Resource Level Defaults</a> above to see what is used if the resource-level attribute is not specified.</p>
 <h4 id="afp-oca-color">OCA Color</h4>
 <p>OCA is used in AFP to set text foreground color and it is still useful in old AFP printers that have a limited support for color or don't support other color spaces (RGB, CMYK, etc...).</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:block</span> <span class="na">color=</span><span class="s">&quot;oca(red)&quot;</span><span class="nt">&gt;</span>Red<span class="nt">&lt;/fo:block&gt;</span>
 </code></pre></div>
-
 
 <h2 id="rtf">RTF</h2>
 <p>JFOR, an open source XSL-FO to RTF converter has been integrated into Apache FOP. This will create an RTF (rich text format) document that will attempt to contain as much information from the XSL-FO document as possible. It should be noted that is not possible (due to RTF's limitations) to map all XSL-FO features to RTF. For complex documents, the RTF output will never reach the feature level from PDF, for example. Thus, using RTF output is only recommended for simple documents such as letters.</p>
@@ -1451,7 +1407,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
 
-
 <p>The default value for the <code>"color-mode"</code> setting is <code>"rgba"</code> which is equivalent to a 24bit RGB image with an 8bit alpha channel for transparency. Valid values are:</p>
 <ul>
 <li>
@@ -1482,7 +1437,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
   <span class="nt">&lt;fonts&gt;</span><span class="c">&lt;!-- described elsewhere --&gt;</span><span class="nt">&lt;/fonts&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
-
 
 <p>The default value for the <code>"compression"</code> setting is <code>"PackBits"</code> which which is a widely supported RLE compression scheme for TIFF. The set of compression names to be used here matches the set that the Image I/O API uses. Note that not all compression schemes may be available during runtime. This depends on the actual codecs being available. Here is a list of possible values:</p>
 <p>The default value for <code>"endianness"</code> is <code>"default"</code>, which results in the default endianness for the output format being generated. Note that not all image formats allow specifying the endianness.</p>
@@ -1520,7 +1474,6 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 <div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">getRenderingOptions</span><span class="p">().</span><span class="na">put</span><span class="p">(</span>
     <span class="s">&quot;target-bitmap-size&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">Dimension</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">200</span><span class="p">));</span>
 </code></pre></div>
-
 
 <h2 id="txt">TXT</h2>
 <p>The text renderer produces plain ASCII text output that attempts to match the output of the PDFRenderer as closely as possible. This was originally developed to accommodate an archive system that could only accept plain text files, and is primarily useful for getting a quick-and-dirty view of the document text. The renderer is very limited, so do not be surprised if it gives unsatisfactory results.</p>

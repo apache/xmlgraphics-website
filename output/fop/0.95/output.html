@@ -751,7 +751,6 @@ Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note t
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>Check the iText tutorial and documentation for setting access flags, password, encryption strength and other parameters.</p>
 <h3 id="pdf-watermark">Watermarks</h3>
 <p>In addition to the <a href="#pdf-postprocess">PDF Post-processing</a> options, consider the following workarounds:</p>
@@ -775,7 +774,6 @@ Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note t
   <span class="nt">&lt;dsc-compliant&gt;</span>true<span class="nt">&lt;/dsc-compliant&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
-
 
 <p>The default value for the "auto-rotate-landscape" setting is "false". Setting it to "true" will automatically rotate landscape pages and will mark them as landscape.</p>
 <p>The default value for the "language-level" setting is "3". This setting specifies the PostScript language level which should be used by FOP. Set this to "2" only if you don't have a Level 3 capable interpreter.</p>
@@ -845,7 +843,6 @@ Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note t
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
 
-
 <p>The default value for the "rendering" setting is "speed" which causes borders to be painted as plain rectangles. In this mode, no special borders (dotted, dashed etc.) are available. If you want support for all border modes, set the value to "quality" as indicated above. This will cause the borders to be painted as bitmaps.</p>
 <p>The default value for the "text-rendering" setting is "auto" which paints the base fonts using PCL fonts. Non-base fonts are painted as bitmaps through Java2D. If the mix of painting methods results in unwelcome output, you can set this to "bitmap" which causes all text to be rendered as bitmaps.</p>
 <p>The default value for the "disable-pjl" setting is "false". This means that the PCL renderer usually generates PJL commands before and after the document in order to switch a printer into PCL language. PJL commands can be disabled if you set this value to "true".</p>
@@ -856,7 +853,6 @@ Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note t
          <span class="na">xmlns:pcl=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/pcl&quot;</span><span class="nt">&gt;</span>
 </code></pre></div>
 
-
 <h4 id="pcl-page-source">Page Source (Tray selection)</h4>
 <p>The page-source extension attribute on fo:simple-page-master allows to select the paper tray the sheet for a particular simple-page-master is to be taken from. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:layout-master-set&gt;</span>
@@ -865,7 +861,6 @@ Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note t
   <span class="nt">&lt;/fo:simple-page-master&gt;</span>
 <span class="nt">&lt;/fo:layout-master-set&gt;</span>
 </code></pre></div>
-
 
 <p>Note: the tray number is a positive integer and the value depends on the target printer. Not all PCL printers support the same paper trays. Usually, "1" is the default tray, "2" is the manual paper feed, "3" is the manual envelope feed, "4" is the "lower" tray and "7" is "auto-select". Consult the technical reference for your printer for all available values.</p>
 <h2 id="afp">AFP</h2>
@@ -898,7 +893,6 @@ The FOP AFP Renderer deals with creating documents conforming to the IBM AFP doc
   ...
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
-
 
 <p>There are 3 font configuration variants supported:</p>
 <ol>
@@ -941,7 +935,6 @@ The FOP AFP Renderer deals with creating documents conforming to the IBM AFP doc
 <span class="nt">&lt;/font&gt;</span>
 </code></pre></div>
 
-
 <p>An outline font configuration is simpler as the individual font size entries are not required. However, the characterset definition is now required within the afp-font element.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;font&gt;</span>
   <span class="nt">&lt;afp-font</span> <span class="na">type=</span><span class="s">&quot;outline&quot;</span> <span class="na">codepage=</span><span class="s">&quot;T1V10500&quot;</span> <span class="na">encoding=</span><span class="s">&quot;Cp500&quot;</span> <span class="na">characterset=</span><span class="s">&quot;CZH200  &quot;</span>
@@ -951,7 +944,6 @@ The FOP AFP Renderer deals with creating documents conforming to the IBM AFP doc
   <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;any&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/font&gt;</span>
 </code></pre></div>
-
 
 <p>Experimentation has shown that the font metrics for the FOP built-in Base14 fonts are actually very similar to some of the IBM outline and raster fonts. In cases were the IBM font files are not available the path attribute in the afp-font element can be replaced by a base14-font attribute giving the name of the matching Base14 font. In this case the AFP Renderer will take the font metrics from the built-in font.</p>
 <div class="highlight"><pre><span></span><code> :::xml
@@ -1025,23 +1017,19 @@ The FOP AFP Renderer deals with creating documents conforming to the IBM AFP doc
   <span class="nt">&lt;/font&gt;</span>
 </code></pre></div>
 
-
 <h4 id="afp-renderer-resolution-config">Output Resolution</h4>
 <p>By default the AFP Renderer creates output with a resolution of 240 dpi. This can be overridden by the <renderer-resolution/> configuration element. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer-resolution&gt;</span>240<span class="nt">&lt;/renderer-resolution&gt;</span>
 </code></pre></div>
-
 
 <h4 id="afp-image-config">Images</h4>
 <p>By default the AFP Renderer converts all images to 8 bit grey level. This can be overridden by the <images> configuration element. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;color&quot;</span> <span class="nt">/&gt;</span>
 </code></pre></div>
 
-
 <p>This will put images as RGB images into the AFP output stream. The default setting is:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;b+w&quot;</span> <span class="na">bits-per-pixel=</span><span class="s">&quot;8&quot;</span> <span class="nt">/&gt;</span>
 </code></pre></div>
-
 
 <p>Only the values "color" and "b+w" are allowed for the mode attribute. The bits-per-pixel attribute is ignored if mode is "color". For "b+w" mode is must be 1, 4, or 8.</p>
 <h3 id="afp-extensions">Extensions</h3>
@@ -1049,7 +1037,6 @@ The FOP AFP Renderer deals with creating documents conforming to the IBM AFP doc
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
          <span class="na">xmlns:afp=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/afp&quot;</span><span class="nt">&gt;</span>
 </code></pre></div>
-
 
 <h4 id="afp-page-overlay">Page Overlay Extension</h4>
 <p>The include-page-overlay extension element allows to define on a per simple-page-master basis a page overlay resource. Example:</p>
@@ -1060,7 +1047,6 @@ The FOP AFP Renderer deals with creating documents conforming to the IBM AFP doc
   <span class="nt">&lt;/fo:simple-page-master&gt;</span>
 <span class="nt">&lt;/fo:layout-master-set&gt;</span>
 </code></pre></div>
-
 
 <p>The mandatory name attribute must refer to an 8 character (space padded) resource name that must be known in the AFP processing environment.</p>
 <h4 id="afp-page-segment">Page Segment Extension</h4>
@@ -1075,7 +1061,6 @@ The FOP AFP Renderer deals with creating documents conforming to the IBM AFP doc
   <span class="nt">&lt;/fo:layout-master-set&gt;</span>
 </code></pre></div>
 
-
 <p>The include-page-segment extension element can only occur within a simple-page-master. Multiple include-page-segment extension elements within a simple-page-master are allowed. The mandatory name attribute must refer to an 8 character (space padded) resource name that must be known in the AFP processing environment. The value of the mandatory src attribute is compared against the value of the src attribute in fo:external-graphic elements and if it is identical (string matching is used) in the generated AFP the external graphic is replaced by a reference to the given resource.</p>
 <h4 id="afp-tag-logical-element">Tag Logical Element Extension</h4>
 <p>The tag-logical-element extension element allows to injects TLEs into the AFP output stream. Example:</p>
@@ -1089,7 +1074,6 @@ The FOP AFP Renderer deals with creating documents conforming to the IBM AFP doc
   <span class="nt">&lt;/fo:layout-master-set&gt;</span>
 </code></pre></div>
 
-
 <p>The tag-logical-element extension element can only occur within a simple-page-master. Multiple tag-logical-element extension elements within a simple-page-master are allowed. The name and value attributes are mandatory.</p>
 <h4 id="afp-no-operation">No Operation Extension</h4>
 <p>The no-operation extension provides the ability to carry up to 32K of comments or any other type of unarchitected data into the AFP output stream. Example:</p>
@@ -1101,7 +1085,6 @@ The FOP AFP Renderer deals with creating documents conforming to the IBM AFP doc
     <span class="nt">&lt;/fo:simple-page-master&gt;</span>
   <span class="nt">&lt;/fo:layout-master-set&gt;</span>
 </code></pre></div>
-
 
 <p>The no-operation extension element can only occur within a simple-page-master. Multiple no-operation extension elements within a simple-page-master are allowed. The name attribute is mandatory.</p>
 <h2 id="rtf">RTF</h2>
@@ -1161,7 +1144,6 @@ These are some known restrictions compared to other supported output formats (no
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
 
-
 <p>The default value for the "transparent-page-background" setting is "false" which paints an opaque, white background for the whole image. If you set this to true, no such background will be painted and you will get a transparent image if an alpha channel is available in the output format.</p>
 <h3 id="tiff-configuration">TIFF-specific Configuration</h3>
 <p>In addition to the above values the TIFF renderer configuration allows some additional settings:</p>
@@ -1171,7 +1153,6 @@ These are some known restrictions compared to other supported output formats (no
   <span class="nt">&lt;fonts&gt;</span><span class="c">&lt;!-- described elsewhere --&gt;</span><span class="nt">&lt;/fonts&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
-
 
 <p>The default value for the "compression" setting is "PackBits" which which is a widely supported RLE compression scheme for TIFF. The set of compression names to be used here matches the set that the Image I/O API uses. Note that not all compression schemes may be available during runtime. This depends on the actual codecs being available. Here is a list of possible values:</p>
 <ul>

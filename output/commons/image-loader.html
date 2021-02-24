@@ -222,7 +222,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">ImageManager</span> <span class="n">imageManager</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ImageManager</span><span class="p">(</span><span class="k">new</span> <span class="n">DefaultImageContext</span><span class="p">());</span>
 </code></pre></div>
 
-
 <blockquote>
 <p><strong>NOTE:</strong></p>
 <p>In this example, <code>DefaultImageContext</code> is used. You may need to write your own implementation of <code>ImageContext</code> for your use case.</p>
@@ -241,7 +240,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">ImageInfo</span> <span class="n">info</span> <span class="o">=</span> <span class="n">imageManager</span><span class="p">.</span><span class="na">getImageInfo</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">sessionContext</span><span class="p">);</span>
 </code></pre></div>
 
-
 <h2 id="loading">Loading an image</h2>
 <p>Once the image is "preloaded", it can be fully loaded in the form/flavor that is needed by the consuming application. The required flavor is indicated through the <code>ImageFlavor</code> class. If you want the image as a bitmap image in memory, you could request an <code>ImageFlavor.RENDERED_IMAGE</code>. Again, the <code>ImageSessionContext</code> will be needed.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.xmlgraphics.image.loader.Image</span><span class="p">;</span>
@@ -255,7 +253,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   <span class="n">RenderedImage</span> <span class="n">ri</span> <span class="o">=</span> <span class="n">imageRend</span><span class="p">.</span><span class="na">getRenderedImage</span><span class="p">();</span>
   <span class="c1">//...and do anything with the RenderedImage</span>
 </code></pre></div>
-
 
 <p>In this example above, we simply acquire the image as a RenderedImage instance. If the original image was a vector graphic image (SVG, WMF etc.), it's automatically converted to a bitmap image. Note: The resolution of the created image is controlled by the target resolution returned by the <code>ImageSessionContext</code>.</p>
 <p>Of course, the framework can only provide images in the formats, it has image loaders or image converters for. An example: It is possible to load EPS images, but they can only be provided in raw form. In order to provide it as a bitmap image, a PostScript interpreter would be needed to interpret the PostScript code. This interpreter would be integrated using an <code>ImageConverter</code> implementation (see SPI section below). If the requested form of the image cannot be provided you will get an <code>ImageException</code> on which you'll have to react as needed.</p>
@@ -281,7 +278,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalStateException</span><span class="p">(</span><span class="s">&quot;Unexpected flavor&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <blockquote>
 <p><strong>NOTE:</strong></p>

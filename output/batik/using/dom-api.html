@@ -205,7 +205,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="p">.</span><span class="na">getDOMImplementation</span><span class="p">();</span>
 </code></pre></div>
 
-
 <p>Once you have an instance of a <code>DOMImplementation</code>, you are not relying on Batik-specific code any more and ready to use the DOM API.</p>
 <h2 id="creating">Creating a Document</h2>
 <p>Using the <code>DOMImplementation</code>, you are now able to create a <code>Document</code>. The following example illustrates how to create an SVG document. Note that the Batik’s DOM implementation can be used to represent either an SVG document fragment or any kind of XML document. Note that by choosing the namespace URI and the local name of the root element of SVG, we are creating an SVG document.</p>
@@ -218,7 +217,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">DOMImplementation</span> <span class="n">impl</span> <span class="o">=</span> <span class="n">SVGDOMImplementation</span><span class="p">.</span><span class="na">getDOMImplementation</span><span class="p">();</span>
 <span class="n">Document</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">impl</span><span class="p">.</span><span class="na">createDocument</span><span class="p">(</span><span class="n">svgNS</span><span class="p">,</span> <span class="s">&quot;svg&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
 </code></pre></div>
-
 
 <p>As we have created an SVG <code>Document</code>, we can cast this document to an <a href="../javadoc/org/w3c/dom/svg/SVGDocument.html">SVGDocument</a> (defined in the <code>org.w3c.dom.svg</code> package) if needed.</p>
 <h2 id="buildsvgdoc">Building an SVG Document</h2>
@@ -251,13 +249,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">svgRoot</span><span class="p">.</span><span class="na">appendChild</span><span class="p">(</span><span class="n">rectangle</span><span class="p">);</span>
 </code></pre></div>
 
-
 <p>The example given constructs a document equivalent to parsing the following SVG file:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;svg</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;450&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;10&quot;</span> <span class="na">y=</span><span class="s">&quot;20&quot;</span> <span class="na">width=</span><span class="s">&quot;100&quot;</span> <span class="na">height=</span><span class="s">&quot;50&quot;</span> <span class="na">fill=</span><span class="s">&quot;red&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/svg&gt;</span>
 </code></pre></div>
-
 
 <h1 id="createdocfromsvgfile">Creating a Document from an SVG file</h1>
 <p>With Batik, you can also create an SVG DOM tree from a URI, an <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/InputStream.html">InputStream</a>, or a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/Reader.html">Reader</a>, using the <a href="../javadoc/org/apache/batik/dom/util/SAXDocumentFactory.html">SAXSVGDocumentFactory</a>. The following example illustrates how to create an SVG document from a URI using the <code>SAXSVGDocumentFactory</code> class.</p>
@@ -277,7 +273,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <p>As we have created an SVG <code>Document</code>, we can cast this document to an <code>SVGDocument</code> (defined in the <code>org.w3c.dom.svg</code> package) if needed.</p>
 <h2 id="rendering">Rendering an SVG Document</h2>

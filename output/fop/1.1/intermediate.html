@@ -731,7 +731,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>This example simply reads an area tree file and renders it to a PDF file. Please note, that in normal FOP operation you're shielded from having to instantiate the FontInfo object yourself. This is normally a task of the AreaTreeHandler which is not present in this scenario. The same applies to the AreaTreeModel instance, in this case an instance of a subclass called RenderPagesModel. RenderPagesModel is ideal in this case as it has very little overhead processing the individual pages. An important line in the example is the call to <code>endDocument()</code> on the AreaTreeModel. This lets the Renderer know that the processing is now finished.</p>
 <p>The area tree XML format can also be used from the <a href="running.html#standalone-start">command-line</a> by using the "-atin" parameter for specifying the area tree XML as input file. You can also specify a "mimic renderer" by inserting a MIME type between "-at" and the output file.</p>
 <h3 id="concat">Concatenating Documents</h3>
@@ -785,7 +784,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="n">out</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <p>This example simply reads an intermediate file and renders it to a PDF file. Here IFParser.parse() is used, but you can also just get a SAX ContentHandler by using the IFParser.getContentHandler() method.</p>
 <h3 id="concat-if">Concatenating Documents</h3>

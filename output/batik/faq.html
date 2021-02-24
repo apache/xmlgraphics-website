@@ -343,7 +343,6 @@ where <code>xlinkNS</code> is equal to <code>"http://www.w3.org/1999/xlink"</cod
 <span class="n">myCanvas</span><span class="p">.</span><span class="na">setURI</span><span class="p">(</span><span class="s">&quot;myFile.svg&quot;</span><span class="p">);</span>
 </code></pre></div>
 
-
 <h3 id="batik-fails-with-fop-on-org.w3c.xxx">3.10. I am trying to use Batik and FOP together but Batik does not work and fails on the org.w3c.* packages. What is happening?</h3>
 <p>Both FOP and Batik use the <code>org.w3c.</code> * packages. Depending on the version of FOP and Batik, Batik has been using a version of these packages which is more recent than the one in the <code>xml-apis.jar</code> file FOP uses. However, if the <code>xml-apis.jar</code> file that comes with the FOP distribution is loaded before the Batik jar files, then the version coming with FOP takes precedence (i.e., that is the version the Java Virtual Machine loads). Because that version is incompatible with Batik, you encounter this problem.</p>
 <p>The solution is to either repackage the <code>xml-apis.jar</code> file with the classes in the Batik distribution (you will need the Batik source distribution to do that), or you will need to make sure the Batik jars are loaded before FOP’s <code>xml-apis.jar</code>, for example by putting Batik’s jar file before FOP’s in your classpath. If you are copying your jar files to <code>.../jre/lib/ext</code>, you can simply remove the FOP <code>xml-apis.jar</code> file from that directory.</p>

@@ -201,16 +201,13 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <div class="highlight"><pre><span></span><code><span class="err">java -jar batik-ttf2svg.jar OPTIONS</span>
 </code></pre></div>
 
-
 <p>If you are using the Batik source distribution, type the following at the command line:</p>
 <div class="highlight"><pre><span></span><code><span class="err">build ttf2svg OPTIONS</span>
 </code></pre></div>
 
-
 <p>In both cases, the options are the same:</p>
 <div class="highlight"><pre><span></span><code><span class="err">ttf-path[-lrange-begin] [-hrange-end] [-autorange] [-ascii] [-idid] [-ooutput-path] [-testcard]</span>
 </code></pre></div>
-
 
 <p>where:</p>
 <p><em>ttf-path</em>
@@ -237,7 +234,6 @@ specifies that a sequence of SVG <code>text</code> elements should be appended t
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code><span class="err">java -jar batik-ttf2svg.jar /usr/home/myFont.ttf -l 48 -h 57 -id MySVGFont -o mySVGFont.svg -testcard</span>
 </code></pre></div>
-
 
 <p>will convert characters 48 to 57, i.e., <code>'0'</code> to <code>'9'</code>, in the <code>myFont.ttf</code> file into their SVG equivalent in the <code>mySVGFont.svg</code> file, appending a test card so that the font can be visualized.</p>
 <h1 id="use-cases">Use cases</h1>

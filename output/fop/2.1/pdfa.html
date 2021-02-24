@@ -697,7 +697,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/fop&gt;</span>
 </code></pre></div>
 
-
 <h2 id="command-line">Usage (command line)</h2>
 <p>To activate PDF/A-1b from the command-line, specify "-pdfprofile PDF/A-1b" as a parameter. If there is a violation of one of the validation rules for PDF/A, an error message is presented and the processing stops.</p>
 <p>PDF/A-1a is enabled by specifying "-pdfprofile PDF/A-1a".</p>
@@ -707,7 +706,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">,</span> <span class="n">userAgent</span><span class="p">);</span>
 <span class="o">[</span><span class="p">..</span><span class="o">]</span>
 </code></pre></div>
-
 
 <p>If one of the validation rules of PDF/A is violated, an PDFConformanceException (descendant of RuntimeException) is thrown.</p>
 <p>For PDF/A-1a, just use the string "PDF/A-1a" instead of "PDF/A-1b".</p>

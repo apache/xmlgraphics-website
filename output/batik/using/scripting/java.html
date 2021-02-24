@@ -310,7 +310,6 @@ You don’t have to worry about graphics updates; after each event listener invo
 <span class="p">}</span>
 </code></pre></div>
 
-
 <h2 id="Threads">Writing thread-safe code</h2>
 <p>The DOM listeners registered on the SVG document are called from the canvas update thread. To avoid race conditions, do not manipulate the DOM tree from another thread.</p>
 <p>The way to switch from an external thread to the canvas update thread is to use the following code:</p>
@@ -331,7 +330,6 @@ You don’t have to worry about graphics updates; after each event listener invo
     <span class="p">});</span>
 </code></pre></div>
 
-
 <p>Like with event listeners, when a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.html">Runnable</a> is invoked from the update thread, the graphics are updated.
 It is very dangerous to call <code>invokeAndWait</code> from the Swing event thread. This is the only thread that can be used to interact with Swing components. In some cases DOM calls may need to query the canvas for information (such as actual Swing component size, etc). If this happens you will get a thread deadlock. You should only make invokeAndWait calls from “third party” threads.</p>
 <h1 id="SVGDOM">Using the SVG DOM</h1>
@@ -341,11 +339,9 @@ It is very dangerous to call <code>invokeAndWait</code> from the Swing event thr
 <span class="p">((</span><span class="n">EventTarget</span><span class="p">)</span> <span class="n">theElem</span><span class="p">).</span><span class="na">addEventListener</span><span class="p">(</span><span class="s">&quot;mouseover&quot;</span><span class="p">,</span> <span class="n">mouseOverListener</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
 </code></pre></div>
 
-
 <p>where <code>mouseOverListener</code> implements the <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/events/EventListener.html">org.w3c.dom.events.EventListener</a> interface. This interface consists of the method:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">handleEvent</span><span class="p">(</span><span class="n">Event</span> <span class="n">evt</span><span class="p">);</span>
 </code></pre></div>
-
 
 <p>This is called whenever the event occurs with the element it is registered on. It is worth reviewing the DOM Events specification as there are many useful features to this interface that are not immediately obvious.</p>
 <p>It is also worth looking at the DOM interfaces defined by the SVG specification as they provide a large number of useful methods, in particular those of <a href="../../javadoc/org/w3c/dom/svg/SVGLocatable.html">SVGLocatable</a>:</p>
@@ -358,7 +354,6 @@ It is very dangerous to call <code>invokeAndWait</code> from the Swing event thr
                 <span class="kd">throws</span> <span class="n">SVGException</span><span class="p">;</span>
 </code></pre></div>
 
-
 <p>In particular, <code>getScreenCTM</code> is very useful for taking the <code>clientX</code> and <code>clientY</code> attributes of the DOM <a href="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/events/UIEvent.html">UIEvent</a> and mapping them to the coordinate system of an element in the SVG document:</p>
 <div class="highlight"><pre><span></span><code><span class="n">SVGMatrix</span> <span class="n">mat</span>  <span class="o">=</span> <span class="n">elem</span><span class="p">.</span><span class="na">getScreenCTM</span><span class="p">();</span>
 <span class="n">SVGMatrix</span> <span class="n">imat</span> <span class="o">=</span> <span class="n">mat</span><span class="p">.</span><span class="na">inverse</span><span class="p">();</span>
@@ -368,14 +363,12 @@ It is very dangerous to call <code>invokeAndWait</code> from the Swing event thr
 <span class="n">cPt</span> <span class="o">=</span> <span class="n">cPt</span><span class="p">.</span><span class="na">matrixTransform</span><span class="p">(</span><span class="n">imat</span><span class="p">);</span>
 </code></pre></div>
 
-
 <h1 id="javaInDocument">Referencing Java code from a document</h1>
 <p>Batik implements the Java bindings for SVG, and thus allows Java code to be referenced from <code>script</code> elements. This feature is available to any application of Batik that uses the bridge module (for example the Swing component and the transcoders).</p>
 <p>In order to use this extension, the <code>type</code> attribute of a <code>script</code> element must be set to <code>application/java-archive</code>. In addition, the <code>xlink:href</code> attribute must be the URI of a jar file that contains the code to run.</p>
 <p>The manifest of this jar file must contains an entry of the form:</p>
 <div class="highlight"><pre><span></span><code><span class="c">SVG-Handler-Class: classname</span>
 </code></pre></div>
-
 
 <p>where <em>classname</em> must be the name of a class that implements the <a href="../../javadoc/org/w3c/dom/svg/EventListenerInitializer.html">org.w3c.dom.svg.EventListenerInitializer</a> interface. Just before the document <code>SVGLoad</code> event is fired, an instance of this class is created, and this instance has its <code>initializeEventListeners</code> method invoked. Note that there is no way to specify Java handlers in event attributes on SVG elements, so having the <code>initializeEventListeners</code> call <code>addEventListener</code> on a node is the only way to attach a Java listener from within the document.</p>
 <p>The class specified by <code>SVG-Handler-Class</code> can be contained directly in the jar file, but it is also possible for it to be contained in a jar file added to the classpath using the <code>Class-Path</code> entry of the manifest.</p>

@@ -253,7 +253,6 @@ The <a href="../javadoc/org/apache/batik/transcoder/ErrorHandler.html">ErrorHand
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>The code creates a <code>JPEGTranscoder</code> and sets a transcoding hint. The hint indicates the encoding quality. Then, an input and an output are created. The input is created using the first command line argument, which should be a URI. The output is a byte stream for a file called <code>out.jpg</code>. Finally, the <code>transcode</code> method is invoked and the byte stream is closed.</p>
 <p>Although not shown above, the program might have specified additional hints to indicate a user stylesheet, the preferred language of the document or the background color.</p>
 <p>To try this program:</p>
@@ -269,7 +268,6 @@ The <a href="../javadoc/org/apache/batik/transcoder/ErrorHandler.html">ErrorHand
 <div class="highlight"><pre><span></span><code><span class="err">java SaveAsJPEG filename.svg</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>Inspect the output file <code>out.jpg</code>.</p>
@@ -279,7 +277,6 @@ The <a href="../javadoc/org/apache/batik/transcoder/ErrorHandler.html">ErrorHand
 <p>By adding the following line of code to the previous example, you will specify the raster image size (in pixels). The transcoding hint <code>KEY_WIDTH</code> lets you specify the raster image width. If the raster image height is not provided (using the <code>KEY_HEIGHT</code>), the transcoder will compute the raster image height by keeping the aspect ratio of the SVG document.</p>
 <div class="highlight"><pre><span></span><code><span class="n">t</span><span class="p">.</span><span class="na">addTranscodingHint</span><span class="p">(</span><span class="n">JPEGTranscoder</span><span class="p">.</span><span class="na">KEY_WIDTH</span><span class="p">,</span> <span class="k">new</span> <span class="n">Float</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
 </code></pre></div>
-
 
 <p>The transcoder will have the same behavior if you specify the <code>KEY_HEIGHT</code> without initializing the <code>KEY_WIDTH</code>. In all cases (even if both keys are provided), the transcoder will preserve the apsect ratio of the SVG document.</p>
 <h3 id="selectAreaOfIntrest">Selecting an area of interest</h3>
@@ -339,7 +336,6 @@ The <a href="../javadoc/org/apache/batik/transcoder/ErrorHandler.html">ErrorHand
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>This code splits the same document <code>anne.svg</code> into four tiles of the same size. Considering the document and its original size, we can determine four regions. Then we rasterize each region using the <code>KEY_AOI</code> key. Note that we also specify the image width and height to be the same as the area of interest width and height (so we keep a 1:1 zoom factor). You can of course use different values for the <code>KEY_WIDTH</code> and <code>KEY_HEIGHT</code>, that do not match the dimensions of the <code>KEY_AOI</code> key. In that case, first the area of interest will determine which part of the SVG document has to be rendered, then that part could be zoomed in or out depending on the specified raster image size.</p>
 <p>To try this program:</p>
 <ol>
@@ -356,7 +352,6 @@ The <a href="../javadoc/org/apache/batik/transcoder/ErrorHandler.html">ErrorHand
 <p>Run the program by typing:</p>
 <div class="highlight"><pre><span></span><code><span class="err">java SaveAsJPEGTiles</span>
 </code></pre></div>
-
 
 </li>
 <li>
@@ -376,13 +371,11 @@ This hint lets you choose an alternate stylesheet the author of the SVG document
                          <span class="n">alternateStylesheetName</span><span class="p">);</span>
 </code></pre></div>
 
-
 <p><code>ImageTranscoder.KEY_USER_STYLESHEET_URI</code>
 :
 This hint lets you use a user stylesheet. A user stylesheet can override some styles of the SVG document to transcode. For example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">trans</span><span class="p">.</span><span class="na">addTranscodingHint</span><span class="p">(</span><span class="n">ImageTranscoder</span><span class="p">.</span><span class="na">KEY_USER_STYLESHEET_URI</span><span class="p">,</span> <span class="s">&quot;http://...&quot;</span><span class="p">);</span>
 </code></pre></div>
-
 
 <p><code>ImageTranscoder.KEY_PIXEL_TO_MM</code>
 :
@@ -391,19 +384,16 @@ This hint lets you use the pixel to millimeter conversion factor. This factor is
 <span class="n">trans</span><span class="p">.</span><span class="na">addTranscodingHint</span><span class="p">(</span><span class="n">ImageTranscoder</span><span class="p">.</span><span class="na">KEY_PIXEL_TO_MM</span><span class="p">,</span> <span class="k">new</span> <span class="n">Float</span><span class="p">(</span><span class="mf">0.2645833f</span><span class="p">));</span>
 </code></pre></div>
 
-
 <p>or</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 72pi</span>
 <span class="n">trans</span><span class="p">.</span><span class="na">addTranscodingHint</span><span class="p">(</span><span class="n">ImageTranscoder</span><span class="p">.</span><span class="na">KEY_PIXEL_TO_MM</span><span class="p">,</span> <span class="k">new</span> <span class="n">Float</span><span class="p">(</span><span class="mf">0.3528f</span><span class="p">));</span>
 </code></pre></div>
-
 
 <p><code>ImageTranscoder.KEY_BACKGROUND_COLOR</code>
 :
 This hint lets you choose a background color. For example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">trans</span><span class="p">.</span><span class="na">addTranscodingHint</span><span class="p">(</span><span class="n">ImageTranscoder</span><span class="p">.</span><span class="na">KEY_BACKGROUND_COLOR</span><span class="p">,</span> <span class="n">Color</span><span class="p">.</span><span class="na">white</span><span class="p">);</span>
 </code></pre></div>
-
 
 <h2 id="genImagefromSVGDOM">Generating an image from an SVG DOM tree</h2>
 <p>The following code creates and saves an SVG DOM tree to a raster image.</p>
@@ -479,7 +469,6 @@ This hint lets you choose a background color. For example:</p>
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>This code is divided into two distinct parts.</p>
 <p>Creating an SVG DOM tree
 :
@@ -501,7 +490,6 @@ See the <code>save</code> method.</p>
 <p>Run it, by typingL</p>
 <div class="highlight"><pre><span></span><code><span class="err">java DOMRasterizer</span>
 </code></pre></div>
-
 
 </li>
 <li>

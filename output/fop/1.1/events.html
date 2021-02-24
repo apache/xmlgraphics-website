@@ -711,7 +711,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>You can see that for every event the method <code>processEvent</code> of the <code>EventListener</code> will be called. Inside this method you can do whatever processing you would like including throwing a <code>RuntimeException</code>, if you want to abort the current processing run.</p>
 <p>The code above also shows how you can turn an event into a human-readable, localized message that can be presented to a user. The <code>EventFormatter</code> class does this for you. It provides additional methods if you'd like to explicitly specify the locale.</p>
 <p>It is possible to gather all events for a whole processing run so they can be evaluated afterwards. However, care should be taken about memory consumption since the events provide references to objects inside FOP which may themselves have references to other objects. So holding on to these objects may mean that whole object trees cannot be released!</p>
@@ -720,7 +719,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <div class="highlight"><pre><span></span><code><span class="n">FOUserAgent</span> <span class="n">foUserAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFOUserAgent</span><span class="p">();</span>
 <span class="n">foUserAgent</span><span class="p">.</span><span class="na">getEventBroadcaster</span><span class="p">().</span><span class="na">addEventListener</span><span class="p">(</span><span class="k">new</span> <span class="n">SysOutEventListener</span><span class="p">());</span>
 </code></pre></div>
-
 
 <p>Please note that this is done separately for each processing run, i.e. for each new user agent.</p>
 <h3 id="listener-example1">An additional listener example</h3>
@@ -739,7 +737,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 
 <span class="p">}</span>
 </code></pre></div>
-
 
 <p>Increasing the event severity to FATAL will signal the event broadcaster to throw an exception and stop further processing. In the above case, all resource-related events will cause FOP to stop processing.</p>
 <p>You can also customize the exception to throw (you can may throw a RuntimeException or subclass yourself) and/or which event to respond to:</p>
@@ -761,7 +758,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>This throws a <code>RuntimeException</code> with the <code>FileNotFoundException</code> as the cause. Further processing effectively stops in FOP. You can catch the exception in your code and react as you see necessary.</p>
 <h2 id="producer">The producer side (for FOP developers)</h2>
 <p>This section is primarily for FOP and FOP plug-in developers. It describes how to use the event subsystem for producing events.</p>
@@ -776,7 +772,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">EventBroadcaster</span> <span class="n">broadcaster</span> <span class="o">=</span> <span class="o">[</span><span class="n">get</span> <span class="n">it</span> <span class="n">from</span> <span class="n">somewhere</span><span class="o">]</span><span class="p">;</span>
 <span class="n">broadcaster</span><span class="p">.</span><span class="na">broadcastEvent</span><span class="p">(</span><span class="n">ev</span><span class="p">);</span>
 </code></pre></div>
-
 
 <p>The <code>Event.paramsBuilder()</code> is a <a href="http://en.wikipedia.org/wiki/Fluent_interface">fluent interface</a> to help with the build-up of the parameters. You could just as well instantiate a <code>Map</code> (<code>Map&lt;String, Object&gt;</code>) and fill it with values.</p>
 <h3 id="event-producer">The EventProducer interface</h3>
@@ -805,13 +800,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="p">}</span>
 </code></pre></div>
 
-
 <p>To produce the same event as in the first example above, you'd use the following code:</p>
 <div class="highlight"><pre><span></span><code><span class="n">EventBroadcaster</span> <span class="n">broadcaster</span> <span class="o">=</span> <span class="o">[</span><span class="n">get</span> <span class="n">it</span> <span class="n">from</span> <span class="n">somewhere</span><span class="o">]</span><span class="p">;</span>
 <span class="n">TestEventProducer</span> <span class="n">producer</span> <span class="o">=</span> <span class="n">TestEventProducer</span><span class="p">.</span><span class="na">Provider</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">broadcaster</span><span class="p">);</span>
 <span class="n">producer</span><span class="p">.</span><span class="na">complain</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s">&quot;I&#39;m tired&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">);</span>
 </code></pre></div>
-
 
 <h3 id="event-model">The event model</h3>
 <p>Inside an invocation handler for a dynamic proxy, there's no information about the names of each parameter. The JVM doesn't provide it. The only thing you know is the interface and method name. In order to properly fill the <code>Event</code> 's parameter map we need to know the parameter names. These are retrieved from an event object model. This is found in the <code>org.apache.fop.events.model</code> package. The data for the object model is retrieved from an XML representation of the event model that is loaded as a resource. The XML representation is generated using an Ant task at build time (<code>ant resourcegen</code>). The Ant task (found in <code>src/codegen/java/org/apache/fop/tools/EventProducerCollectorTask.java</code>) scans FOP's sources for descendants of the <code>EventProducer</code> interface and uses <a href="https://github.com/codehaus/qdox">QDox</a> to parse these interfaces.</p>
@@ -863,7 +856,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   <span class="nt">&lt;/message&gt;</span>
 <span class="nt">&lt;/catalogue&gt;</span>
 </code></pre></div>
-
 
 <p>The example (extracted from the RTF handler's event producer) has message templates for two event methods. The class used to do variable replacement in the templates is <code>org.apache.fop.util.text.AdvancedMessageFormat</code> which is more powerful than the <code>MessageFormat</code> classes provided by the Java class library (<code>java.util.text</code> package).</p>
 <p>"locator" is a template that is reused by the other message templates by referencing it through "{{locator}}". This is some kind of include command.</p>
