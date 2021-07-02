@@ -1028,6 +1028,7 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 <span class="nt">&lt;/font&gt;</span>
 </code></pre></div>
 
+<p>For AFP Typetype you can disable character positioning for each char by adding position-by-char="false" to the font element.    </p>
 <p>A typical raster font configuration looks like:</p>
 <div class="highlight"><pre><span></span><code><span class="c">&lt;!-- This is an example of mapping actual IBM raster fonts / code pages to a FOP font --&gt;</span>
 <span class="nt">&lt;font&gt;</span>
@@ -1319,6 +1320,14 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 
 <p>The <code>afp:include-form-map</code> is to be placed as a direct child of <code>fo:declarations</code>. The <code>name</code> is an AFP resource name (max. 8 characters) and the <code>src</code> attribute is the URI identifying the external form map resource. When such a form map is embedded, you can use the <code>afp:invoke-medium-map</code> extension (described above) to invoke any medium map included in the form map.</p>
 <p><note>Apache FOP doesn't support a way to define a form map or medium map using XML means inside an XSL-FO document. You will have to build the form map with some third-party tool.</note></p>
+<h4 id="afp-page-group">Disable Page Group</h4>
+<p>You can disable the BNG/ENG triplets on a page-sequence by setting afp:page-group="false"</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
+    <span class="na">xmlns:afp=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/afp&quot;</span><span class="nt">&gt;</span>
+  [..]
+  <span class="nt">&lt;fo:page-sequence</span> <span class="na">master-reference=</span><span class="s">&quot;normal&quot;</span> <span class="na">afp:page-group=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
+
 <h3 id="afp-foreign-attributes">Foreign Attributes</h3>
 <h4 id="afp-foreign-attributes-resource">Resource</h4>
 <p>The resource foreign attributes provides the ability to name and control where data object resources (e.g. images/scalable vector graphics) will reside in the AFP output. The afp foreign attributes are only used in conjuntion with <fo:external-graphic/> and <instream-foreign-object/>. Example:</p>
