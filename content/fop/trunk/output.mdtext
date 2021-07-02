@@ -399,6 +399,8 @@ TrueType font configuration looks like:
         <font-triplet name="any" style="normal" weight="normal"/>
     </font>
 
+For AFP Typetype you can disable character positioning for each char by adding position-by-char="false" to the font element.    
+    
 A typical raster font configuration looks like:
 
     :::xml
@@ -750,6 +752,16 @@ Apache FOP supports embedding an external form map resource in the generated AFP
 The `afp:include-form-map` is to be placed as a direct child of `fo:declarations`. The `name` is an AFP resource name (max. 8 characters) and the `src` attribute is the URI identifying the external form map resource. When such a form map is embedded, you can use the `afp:invoke-medium-map` extension (described above) to invoke any medium map included in the form map.
 
 <note>Apache FOP doesn't support a way to define a form map or medium map using XML means inside an XSL-FO document. You will have to build the form map with some third-party tool.</note>
+
+#### Disable Page Group { #afp-page-group}
+
+You can disable the BNG/ENG triplets on a page-sequence by setting afp:page-group="false"
+
+    :::xml
+    <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
+        xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
+      [..]
+      <fo:page-sequence master-reference="normal" afp:page-group="false">
 
 ### Foreign Attributes { #afp-foreign-attributes}
 
