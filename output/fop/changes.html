@@ -126,7 +126,49 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </li>
 
 <li>
-  <h2 id="fop-25">FOP 2.6<a class="headerlink" href="#fop-25" title="Permanent link">&para;</a></h2>
+  <h2 id="fop-27">FOP 2.7<a class="headerlink" href="#fop-27" title="Permanent link">&para;</a></h2>
+  <ul>
+    <li><a href="/fop/2.7/">FOP 2.7 Overview</a></li>
+    <li><a href="/fop/2.7/releaseNotes_2.7.html">Release Notes</a></li>
+    <li><a href="/fop/2.7/changes_2.7.html">Changes (2.7)</a></li>
+    <li><a href="/fop/2.7/knownissues_overview.html">Known Issues</a></li>
+    <li><a href="/fop/2.7/upgrading.html">Upgrading</a></li>
+    <li>
+      <h3 id="using-apache-fop-27">Using Apache FOP 2.7<a class="headerlink" href="#using-apache-fop-27" title="Permanent link">&para;</a></h3>
+      <ul>
+        <li><a href="/fop/2.7/compiling.html">Build</a></li>
+        <li><a href="/fop/2.7/configuration.html">Configure</a></li>
+        <li><a href="/fop/2.7/running.html">Run</a></li>
+        <li><a href="/fop/2.7/embedding.html">Embed</a></li>
+        <li><a href="/fop/2.7/servlets.html">Servlets</a></li>
+        <li><a href="/fop/2.7/anttask.html">Ant Task</a></li>
+      </ul>
+    </li>
+    <li>
+      <h3 id="features_1">Features<a class="headerlink" href="#features_1" title="Permanent link">&para;</a></h3>
+      <ul>
+        <li><a href="/fop/2.7/accessibility.html">Accessibility</a></li>
+        <li><a href="/fop/2.7/complexscripts.html">Complex Scripts</a></li>
+        <li><a href="/fop/2.7/events.html">Events</a></li>
+        <li><a href="/fop/2.7/extensions.html">Extensions</a></li>
+        <li><a href="/fop/2.7/fonts.html">Fonts</a></li>
+        <li><a href="/fop/2.7/graphics.html">Graphics</a></li>
+        <li><a href="/fop/2.7/hyphenation.html">Hyphenation</a></li>
+        <li><a href="/fop/2.7/intermediate.html">Intermediate Format</a></li>
+        <li><a href="/fop/2.7/metadata.html">Metadata</a></li>
+        <li><a href="/fop/2.7/output.html">Output Targets</a></li>
+        <li><a href="/fop/2.7/pdfa.html">PDF/A</a></li>
+        <li><a href="/fop/2.7/pdfx.html">PDF/X</a></li>
+        <li><a href="/fop/2.7/pdfencryption.html">PDF Encryption</a></li>
+        <li><a href="/fop/fop-pdf-images.html">PDF Images</a></li>
+        <li><a href="/fop/2.7/whitespacemanagement.html">Whitespace Management</a>     </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+
+<li>
+  <h2 id="fop-26">FOP 2.6<a class="headerlink" href="#fop-26" title="Permanent link">&para;</a></h2>
   <ul>
     <li><a href="/fop/2.6/">FOP 2.6 Overview</a></li>
     <li><a href="/fop/2.6/releaseNotes_2.6.html">Release Notes</a></li>
@@ -663,6 +705,141 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p><a href="changes.rss">changes.rss</a></p>
 <h2 id="introduction">Introduction and explanation of symbols</h2>
 <p>Until FOP 1.1, Changes are sorted by "type" and then chronologically with the most recent at the top. These symbols denote the various action types:<img alt="add" src="/images/add.jpg">=add,<img alt="fix" src="/images/fix.jpg">=fix,<img alt="remove" src="/images/remove.jpg">=remove,<img alt="update" src="/images/update.jpg">=update</p>
+<h1>History of Changes 2.7</h1>
+<h2 id="version_2.7">Version 2.7 (20 Jan 2022)</h2>
+<p>See <a href="https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20resolution%20%3D%20Fixed%20AND%20fixVersion%20%3D%202.3%20ORDER%20BY%20updated%20DESC%2C%20created%20DESC%2C%20priority%20DESC">Change list in Jira</a>.</p>
+<ul>
+<li>
+<p>FOP-2928: PDFDocumentGraphics2D does not clear content on nextPage()</p>
+</li>
+<li>
+<p>FOP-2943: NPE when inline character is a white space</p>
+</li>
+<li>
+<p>FOP-2973: Cannot use custom schemes starting with "data" in resource resolver</p>
+</li>
+<li>
+<p>FOP-2997: Double byte glyphs not working in SVG font</p>
+</li>
+<li>
+<p>FOP-2999: Rollback after checking next page</p>
+</li>
+<li>
+<p>FOP-3000: Absolute positioning wrong with AFP TTF</p>
+</li>
+<li>
+<p>FOP-3002: Optimise memory usage for data uri</p>
+</li>
+<li>
+<p>FOP-3006: XMP Metadata in created PDF/A-2 documents is not valid</p>
+</li>
+<li>
+<p>FOP-3008: Table with linefeed-treatment may give ClassCastException</p>
+</li>
+<li>
+<p>FOP-3014: ConcurrentModificationException for table cell</p>
+</li>
+<li>
+<p>FOP-3016: Reorder thai marks for zero width</p>
+</li>
+<li>
+<p>FOP-3017: Add option to disable positioning per char</p>
+</li>
+<li>
+<p>FOP-3018: Allow to disable AFP page group</p>
+</li>
+<li>
+<p>FOP-3019: Merge useragent encryption params with fop.xconf</p>
+</li>
+<li>
+<p>FOP-3021: Improve validation of border property</p>
+</li>
+<li>
+<p>FOP-3024: Make sure even number of bytes are output per trn for AFP TTF</p>
+</li>
+<li>
+<p>FOP-3025: Keep table size on changing ipd which has graphics</p>
+</li>
+<li>
+<p>FOP-3026: Fix NPE with empty table header</p>
+</li>
+<li>
+<p>FOP-3027: Sections of text sometimes lost with span=all multiple columns</p>
+</li>
+<li>
+<p>FOP-3028: Set values in fopFactoryBuilder setConfiguration</p>
+</li>
+<li>
+<p>FOP-3030: AFP page overlay was written twice</p>
+</li>
+<li>
+<p>FOP-3031: Add MCF before MDR in AFP</p>
+</li>
+<li>
+<p>FOP-3032: Allow to embed native PDF in AFP</p>
+</li>
+<li>
+<p>FOP-3033: Update PDFBox to 2.0.21</p>
+</li>
+<li>
+<p>FOP-3034: Update PDFBox to 2.0.24</p>
+</li>
+<li>
+<p>FOP-3038: Allow sections which need security permissions to be run when AllPermission denied in caller code</p>
+</li>
+<li>
+<p>FOP-3039: AFP include-page-overlay missing X and Y via IF</p>
+</li>
+<li>
+<p>FOP-3046: Don't use page position only on redo of layout</p>
+</li>
+<li>
+<p>XGC-128: Remove image transparency for PS</p>
+</li>
+</ul>
+<h3 id="contributors_trunk">Contributors to this release</h3>
+<p>We thank the following people for their contributions to this release.</p>
+<p>This is a list of all people who participated as committers:</p>
+<ul>
+<li>Adrian Cumiskey</li>
+<li>Andreas Delmelle</li>
+<li>Chris Bowditch</li>
+<li>Clay Leeds</li>
+<li>Glenn Adams</li>
+<li>Luis Bernardo</li>
+<li>Luca Furini</li>
+<li>Matthias Reischenbacher</li>
+<li>Mehdi Houshmand</li>
+<li>Peter Hancock</li>
+<li>Pascal Sancho</li>
+<li>Robert Meyer</li>
+<li>Simon Steiner</li>
+<li>Vincent Hennebert</li>
+</ul>
+<p>This is a list of other contributors:</p>
+<ul>
+<li>Alexey Neyman</li>
+<li>Alexios Giotis</li>
+<li>Athanasios Giannimaras</li>
+<li>Gonzalo Vasquez</li>
+<li>Jacopo Cappellato</li>
+<li>Jeremias Maerki</li>
+<li>Max Gilead</li>
+<li>Morten Knudsen</li>
+<li>Seifeddine Dridi</li>
+<li>Stephen Moore</li>
+<li>James Burton</li>
+<li>Eric Lim</li>
+<li>Chunlin Yao</li>
+<li>Jerome Robert</li>
+<li>Simone Rondelli</li>
+<li>Stanley Santos de Araújo</li>
+<li>Agneta Walterscheidt</li>
+<li>Vlad Arkhipov</li>
+<li>Björn Kautler</li>
+<li>Jan Tošovský</li>
+<li>J Frank</li>
+</ul>
 <h1>History of Changes 2.6</h1>
 <h2 id="version_2.6">Version 2.6 (20 Jan 2021)</h2>
 <p>See <a href="https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20resolution%20%3D%20Fixed%20AND%20fixVersion%20%3D%202.3%20ORDER%20BY%20updated%20DESC%2C%20created%20DESC%2C%20priority%20DESC">Change list in Jira</a>.</p>
