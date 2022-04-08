@@ -730,7 +730,9 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </li>
 <li>
 <p><strong>Embedding:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setComplexScriptFeaturesEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="n">FopFactoryBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FopConfParser</span><span class="p">(</span><span class="n">fopxconf</span><span class="p">,</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">).</span><span class="na">toURI</span><span class="p">()).</span><span class="na">getFopFactoryBuilder</span><span class="p">();</span>
+<span class="n">builder</span><span class="p">.</span><span class="na">setComplexScriptFeatures</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">builder</span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
 </code></pre></div>
 
 </li>
