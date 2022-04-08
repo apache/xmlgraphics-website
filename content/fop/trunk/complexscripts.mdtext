@@ -29,7 +29,9 @@ Complex script features are enabled by default. If some application of FOP does 
 1.  **Embedding:**
 
         :::java
-        userAgent.setComplexScriptFeaturesEnabled(false);
+        FopFactoryBuilder builder = new FopConfParser(fopxconf, new File(".").toURI()).getFopFactoryBuilder();
+        builder.setComplexScriptFeatures(false);
+        FopFactory fopFactory = builder.build();
 
 1.  **Optional setting in fop.xconf file:**
 
