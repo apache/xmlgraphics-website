@@ -85,6 +85,12 @@ This special value for the `role` property can also be applied to `fo:static-con
       <fo:block>Page <fo:page-number/></fo:block>
     </fo:static-content>
 
+This can be applied to table headers and footers also:
+
+    :::xml
+    <fo:table-header role="artifact">
+    <fo:table-footer role="artifact">
+    
 ## Scope of Header Table Cells { #fox:header}
 
 In XSL-FO, tables are inherently defined row by row. The `fo:table-header` element can be used to define ‘header rows’, in which each cell is a header of the corresponding column (like `TH` cells in HTML). The cell is said to have a column *scope*.
