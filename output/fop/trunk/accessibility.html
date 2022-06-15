@@ -777,6 +777,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/fo:static-content&gt;</span>
 </code></pre></div>
 
+<p>This can be applied to table headers and footers also:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:table-header</span> <span class="na">role=</span><span class="s">&quot;artifact&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;fo:table-footer</span> <span class="na">role=</span><span class="s">&quot;artifact&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
+
 <h2 id="fox:header">Scope of Header Table Cells</h2>
 <p>In XSL-FO, tables are inherently defined row by row. The <code>fo:table-header</code> element can be used to define ‘header rows’, in which each cell is a header of the corresponding column (like <code>TH</code> cells in HTML). The cell is said to have a column <em>scope</em>.</p>
 <p>There is no way, however, to define ‘row headers’: cells that have a row scope. Of course it is possible to style a cell to make it look like a header (for example, by using a bolder font), but that won’t be reflected in the structure of the document.</p>
