@@ -791,12 +791,32 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <li>‘Both’ if the cell also is a descendant of <code>fo:table-header</code>;</li>
 <li>‘Row’ otherwise.</li>
 </ul>
-<p><code>fox:header</code> |
----------|-----------
-Value: | true &#x7C; false |
-Initial: | false |
-Inherited: | no |
-Applies to: | <code>fo:table-column</code> |</p>
+<table>
+<thead>
+<tr>
+<th><code>fox:header</code></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value:</td>
+<td>true &#x7C; false</td>
+</tr>
+<tr>
+<td>Initial:</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Inherited:</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Applies to:</td>
+<td><code>fo:table-column</code></td>
+</tr>
+</tbody>
+</table>
 <p>If for some reason a cell inside a header column is not meant to be a header cell, the <code>role</code> property can be used to override the default behavior and set the structure type to <code>TD</code>.</p>
 <p>For example, the following table:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:table</span> <span class="na">width=</span><span class="s">&quot;100%&quot;</span> <span class="na">table-layout=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
