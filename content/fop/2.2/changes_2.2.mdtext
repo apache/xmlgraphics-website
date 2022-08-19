@@ -1,0 +1,130 @@
+Title: Apache(tm) FOP: History of Changes 2.2
+
+#History of Changes 2.2
+
+## Version 2.2 (10 April 2017) { #version_2.2}
+
+See [Change list in Jira](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20resolution%20%3D%20Fixed%20AND%20fixVersion%20%3D%202.2%20ORDER%20BY%20updated%20DESC%2C%20created%20DESC%2C%20priority%20DESC).
+
+ - FOP-916: Handle external links in encrypted PDF.
+
+ - FOP-1852: Add maven build support.
+
+ - FOP-2025: sRGB Color Space Profile is subject to 3rd party copyright
+
+ - FOP-2309: Support PCL Color thanks to James Burton
+
+ - FOP-2362: Using Saxon to intermediate format throws NullPointerException
+
+ - FOP-2525: Memory leak present when using Truetype Collection (.ttc)
+
+ - FOP-2532: FontCache throws IllegalArgumentException with non file
+
+ - FOP-2544: Incorrect pdf rendering from FO with embedded svg via java embedding
+
+ - FOP-2553: Support PDF shading to PS
+
+ - FOP-2557: Subsetting OTF font leads to PDF errors when viewing / incorrect characters
+
+ - FOP-2562: Update to PDFBox 2
+
+ - FOP-2581: NumberFormatException when page-sequence format can't be parsed as an Integer; fix by Alexios Giotis
+
+ - FOP-2586: Content overflows error not shown with log4j
+
+ - FOP-2593: Shell scripts only point to ant jars
+
+ - FOP-2594: Base14 gensrc files different from mvn to ant
+
+ - FOP-2596: NPE with changing ipd
+
+ - FOP-2597: Allow hyphenation file without extension
+
+ - FOP-2598: ArrayIndexOutOfBoundException while loading TTF font OCRB
+
+ - FOP-2608: Convert OTF to Type 1 in postscript
+
+ - FOP-2614: Image missing on change IPD
+
+ - FOP-2619: PDF not deduplicated to PS
+
+ - FOP-2620: AFP round table border not aligned
+
+ - FOP-2625: Allow Attachments for PDF/A-3
+
+ - FOP-2633: Generate bold/italic versions of fonts for PDF
+
+ - FOP-2637: PTX records are incorrectly chained
+
+ - FOP-2642: Add optimize-resources for IF to PCL
+
+ - FOP-2643: Java 9 warnings
+
+ - FOP-2646: Fixed NPE when an image is marked as an artifact (accessibility/PDF/UA enabled).
+
+ - FOP-2647: Deduplicate PDF content stream
+
+ - FOP-2648: Code cleanup
+
+ - FOP-2656: Update to PDFBox 2.0.3
+
+ - FOP-2658: Compile JAIMonochromeBitmapConverter
+
+ - FOP-2663: AFP tag-logical-element encoding missing from IF xml
+
+ - FOP-2664: Use page-position=only if there is enough space
+
+ - FOP-2668: Dont load DTDs
+
+ - FOP-2674: Update to PDFBox 2.0.4
+
+ - FOP-2676: basic-link external-destination does not work for file URI with spaces
+
+ - FOP-2679: PTX records are incorrectly chained
+
+ - FOP-2680: OTF font needs format 3 FDSelect due to offset size
+
+ - FOP-2686: Error for Type1 font without extension for TIFF output
+
+ - FOP-2693: PDF plugin document cache may return closed document
+
+ - FOP-2697: Adobe Reader error with Adobe Kozuka Mincho font
+ 
+ - XGC-105: AFP rounded corners not in CMYK
+
+### Contributors to this release { #contributors_trunk}
+
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:
+
+- Adrian Cumiskey
+- Andreas Delmelle
+- Chris Bowditch
+- Clay Leeds
+- Glenn Adams
+- Luis Bernardo
+- Luca Furini
+- Matthias Reischenbacher
+- Mehdi Houshmand
+- Peter Hancock
+- Pascal Sancho
+- Robert Meyer
+- Simon Steiner
+- Vincent Hennebert
+
+This is a list of other contributors:
+
+- Alexey Neyman
+- Alexios Giotis
+- Athanasios Giannimaras
+- Gonzalo Vasquez
+- Jacopo Cappellato
+- Jeremias Maerki
+- Max Gilead
+- Morten Knudsen
+- Seifeddine Dridi
+- Stephen Moore
+- James Burton
+- Eric Lim
+- Chunlin Yao

@@ -1,0 +1,44 @@
+Title: Batik Demo
+
+#Batik Demo
+
+
+This page demonstrates the use of Batik’s [JSVGCanvas](using/swing.html) swing component in a Java applet.
+
+| <applet archive="batik-awt-util.jar,                            batik-bridge.jar,                            batik-css.jar,                            batik-dom.jar,                            batik-ext.jar,                            batik-gvt.jar,                            batik-parser.jar,                            batik-svg-dom.jar,                            batik-script.jar,                            batik-swing.jar,                            batik-util.jar,                            batik-xml.jar,                            xml-apis-dom3.jar" code="AppletDemo.class" codebase="demo/" height="300" id="chart" mayscript="mayscript" width="400">[Your browser doesn’t seem to support Java applets, which is required for this demo.]</applet> |
+| Expense | Amount |
+|---------|--------|
+ | Shoe | <input id="ShoeBar" type="text" value="10"></input>|
+ | Car | <input id="CarBar" type="text" value="20"></input>|
+ | Travel | <input id="TravelBar" type="text" value="10"></input>|
+ | Computer | <input id="ComputerBar" type="text" value="60"></input>|
+
+<button onclick="update()">Update chart</button>
+ |
+<script>
+var chart;
+function get(id) {
+  var e = document.getElementById(id);
+  // This loop just gets around the problem of IE returning the 'a'
+  // element looked up by name, rather than the desired element by id.
+  while (e.nodeType != 1 || e.getAttribute("id") != id) {
+    e = e.nextSibling;
+  }
+  return e;
+}
+function update() {
+  chart = get("chart");
+  updateBar("ShoeBar");
+  updateBar("CarBar");
+  updateBar("TravelBar");
+  updateBar("ComputerBar");
+}
+function updateBar(name) {
+  var input = get(name);
+  var value = Number(input.value);
+  if (!isNaN(value) && value >= 0) {
+    chart.updateBar(name, value);
+  }
+}
+</script>
+The applet ([view source](demo/AppletDemo.java)) displays the [barChart.svg](http://svn.apache.org/repos/asf/xmlgraphics/batik/trunk/samples/barChart.svg) sample from the Batik distribution using a `JSVGCanvas`. Script in the web page then interacts with the applet, by calling the `updateBar` method of the applet object when the **Update chart** button is pressed. This method modifies the SVG document being displayed to update the heights of the bars.

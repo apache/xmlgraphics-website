@@ -1,0 +1,64 @@
+Title: Apache(tm) FOP: PDF/A (ISO 19005)
+
+#Apache&trade; FOP: PDF/A (ISO 19005)
+<authors><person email="jeremias@apache.org" name="Jeremias Märki"></person></authors>
+
+## Overview { #overview}
+
+PDF/A is a standard which turns PDF into an "electronic document file format for long-term preservation". PDF/A-1 is the first part of the standard and is documented in [ISO 19005-1:2005(E)](http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=38920&ICS1=37&ICS2=100&ICS3=99). Work on PDF/A-2 is in progress at [AIIM](http://www.aiim.org/standards.asp?ID=25013).
+
+Design documentation on PDF/A can be found on FOP's Wiki on the [PDFAConformanceNotes](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/PDFAConformanceNotes) page.
+
+## Implementation Status { #status}
+
+ **PDF/A-1b** is implemented to the degree that FOP supports the creation of the elements described in ISO 19005-1.
+
+Tests have been performed against jHove and Adobe Acrobat 7.0.7 (Preflight function). FOP does not validate completely against Apago's PDF Appraiser. Reasons unknown due to lack of a full license to get a detailed error protocol.
+
+ **PDF/A-1a** is not implemented, yet. This is mostly because of the requirement for tagged PDF which is not available in FOP, yet.
+
+## Usage (command line) { #command-line}
+
+To activate PDF/A-1b from the command-line, specify "-pdfprofile PDF/A-1b" as a parameter. If there is a violation of one of the validation rules for PDF/A, an error message is presented and the processing stops.
+
+## Usage (embedded) { #embedded}
+
+When FOP is embedded in another Java application you can set a special option on the renderer options in the user agent to activate the PDF/A-1b profile. Here's an example:
+
+userAgent.getRendererOptions().put("pdf-a-mode", "PDF/A-1b");
+Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, userAgent);
+[..]
+If one of the validation rules of PDF/A is violated, an PDFConformanceException (descendant of RuntimeException) is thrown.
+
+## PDF/A in Action { #rules}
+
+There are a number of things that must be looked after if you activate a PDF/A profile. If you receive a PDFConformanceException, have a look at the following list (not necessarily comprehensive):
+
+
+- Make sure all (!) fonts are embedded. If you use base 14 fonts (like Helvetica) you need to obtain a license for them and embed them like any other font.
+
+- Don't use PDF encryption. PDF/A doesn't allow it.
+
+- Don't use CMYK images without an ICC color profile. PDF/A doesn't allow mixing color spaces and FOP currently only properly supports the sRGB color space. Please note that FOP embeds a standard sRGB ICC profile (sRGB IEC61966-2.1) as the primary output intent for the PDF if no other output intent has been specified in the configuration.
+
+- Don't use non-RGB colors in SVG images. Same issue as with CMYK images.
+
+- Don't use EPS graphics with fo:external-graphic. Embedding EPS graphics in PDF is deprecated since PDF 1.4 and prohibited by PDF/A.
+
+- PDF is forced to version 1.4 if PDF/A-1 is activated.
+
+- No filter must be specified explicitely for metadata objects. Metadata must be embedded in clear text so non-PDF-aware applications can extract the XMP metadata.
+
+## PDF profile compatibility { #profile-compatibility}
+
+The PDF profiles "PDF/X-3:2003" and "PDF/A-1b" are compatible and can both be activated at the same time.
+
+## Interoperability { #interoperability}
+
+There has been some confusion about the namespace for the PDF/A indicator in the XMP metadata. At least three variants have been seen in the wild:
+
+| http://www.aiim.org/pdfa/ns/id.html |  **obsolete**, from an early draft of ISO-19005-1, used by Adobe Acrobat 7.x |
+| http://www.aiim.org/pdfa/ns/id |  **obsolete**, found in the original ISO 19005-1:2005 document |
+| http://www.aiim.org/pdfa/ns/id/ |  **correct**, found in the technical corrigendum 1 of ISO 19005-1:2005 |
+
+If you get an error validating a PDF/A file in Adobe Acrobat 7.x it doesn't mean that FOP did something wrong. It's Acrobat that is at fault. This is fixed in Adobe Acrobat 8.x which uses the correct namespace as described in the technical corrigendum 1.

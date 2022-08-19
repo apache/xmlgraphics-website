@@ -1,0 +1,138 @@
+Title:     Apache(th) FOP: PDF Images Plug-In
+Notice:    Licensed to the Apache Software Foundation (ASF) under one
+           or more contributor license agreements.  See the NOTICE file
+           distributed with this work for additional information
+           regarding copyright ownership.  The ASF licenses this file
+           to you under the Apache License, Version 2.0 (the
+           "License"); you may not use this file except in compliance
+           with the License.  You may obtain a copy of the License at
+           .
+             http://www.apache.org/licenses/LICENSE-2.0
+           .
+           Unless required by applicable law or agreed to in writing,
+           software distributed under the License is distributed on an
+           "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+           KIND, either express or implied.  See the License for the
+           specific language governing permissions and limitations
+           under the License.
+
+#Apache&trade; FOP: PDF Images Plug-In
+
+## Overview { #overview}
+
+The *fop-pdf-images* plug-in extends FOP in order to add support for using PDF images in fo:external-graphic elements when
+generating PDF files. This means one can write something like:
+
+    :::xml
+    <fo:external-graphic src="my-doc.pdf#page=1"/>
+
+and
+
+    :::xml
+    <fox:external-document src="my-doc.pdf"/>
+
+## Reduce file size
+
+If you input many pdfs together the output pdf has duplicate fonts. Set this flag to merge fonts in fop.xconf:
+
+    :::xml
+    <renderer mime="application/pdf">      
+      <merge-fonts>true</merge-fonts>
+    </renderer>
+
+## Improve performance
+
+If you use many of the same pdf's and they have a large content stream, this flag can improve performance.
+The disadvantage will be it can cause higher memory use inside your printer.
+Set this flag in fop.xconf:
+
+    :::xml
+    <renderer mime="application/pdf">      
+      <form-xobject>true</form-xobject>
+    </renderer>
+
+## Known issues with Postscript output
+
+- If fonts are not embedded in source PDF:
+    - If OTF font type is needed text may be missing if Adobe Reader fonts are not found
+    - Text may be rendered wrong or poorly if wrong font is selected as replacement   
+- Transparency, layers and opacity may not render correctly
+- Gradients in text may be different from the source PDF
+
+## Binary Download { #binary}
+
+If using the binary package, the four jar files should be placed in the *lib* directory of your FOP installation.
+
+Binary distributions include "-bin" in their names, and can be downloaded from a [FOP-PDF-Images Distribution mirror](https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images).
+
+Here are the links to each package’s signature and checksum files. Signatures can be verified by using our [KEYS](https://www.apache.org/dist/xmlgraphics/fop/KEYS) file.
+
+|     |     |     |     |
+|-----|-----|-----|-----|
+| [fop-pdf-images-2.7-bin.tar.gz](https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.tar.gz&action=download) | [PGP](https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.tar.gz.asc) | [SHA512](https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.tar.gz.sha512) |
+| [fop-pdf-images-2.7-bin.zip](https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.zip&action=download) | [PGP](https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.zip.asc) | [SHA512](https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.zip.sha512) |
+| [fop-pdf-images-2.7-src.tar.gz](https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.tar.gz&action=download) | [PGP](https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.tar.gz.asc) | [SHA512](https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.tar.gz.sha512) |
+| [fop-pdf-images-2.7-src.zip](https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.zip&action=download) | [PGP](https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.zip.asc) | [SHA512](https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.zip.sha512) |
+
+## Source Download { #source}
+
+- Download a released version from a [FOP-PDF-Images Distribution mirror](https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images). Source distributions include "-src" in their names.
+
+## Older Releases { #older_releases}
+
+Archive distributions can be downloaded from the archives [binaries](https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/) & [source](https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/source/) links.
+
+The fop-pdf-images plug-in was donated by Jeremias M&auml;rki to the XMLGraphics project in 2012. Older releases can
+be obtained from his plug-in [page](http://www.jeremias-maerki.ch/development/fop/index.html).
+
+#History of Changes
+
+## Version 2.7 { #version_2.7}
+
+ - FOP-3034: Update PDFBox to 2.0.24
+ - FOP-3032: Allow to embed native PDF in AFP
+ - FOP-3020: Add space to standard position for font merge
+ - FOP-3009: Avoid merging fonts with different number of cmap formats
+ - FOP-3001: Deduplicate streams in arrays
+
+## Version 2.6 { #version_2.6}
+
+ - FOP-2951: Add uniquename to xobj form
+ - FOP-2965: Keep streams with DCT compression
+ - FOP-2971: Update unique name inside patterns
+ - FOP-2974: Handle space in COSName
+ - FOP-2979: Update PDFBox to 2.0.19
+
+## Version 2.5 { #version_2.5}
+
+ - FOP-2904: Handle object for boundingbox
+ - FOP-2922: Syntax error after writing content stream
+ - FOP-2933: PDF to PDF checkbox missing
+
+## Version 2.4 { #version_2.4}
+
+ - FOP-2802: Java 10 PDF/SVG to Image box not shown
+ - FOP-2812: Update PDFBox to 2.0.11
+ - FOP-2836: Update PDFBox to 2.0.13
+ - FOP-2840: Image mask in PDF not rendered to PS
+ - FOP-2841: PDF to PDF with merge-fonts checkbox misaligned
+ - FOP-2856: Support compile on Java 12
+ - FOP-2873: Update to PDFBox 2.0.16
+ - FOP-2879: Add caching to avoid parsing content stream
+ - FOP-2882: Allow PDFFormXObject to improve performance
+
+## Version 2.3 { #version_2.3}
+
+- PDF to PDF deduplicate more types of streams
+- PDF to PS allow fop fonts as fallback
+
+## Version 2.2 { #version_2.2}
+
+- Move to PDFBox 2
+- Deduplicate PDF streams
+- PDF to PS deduplication of images
+- Remove xobj type=form
+- Merge fonts (off by default)
+- Support PDF shading to PS
+- Merging of Tagged (Accessible) PDF
+

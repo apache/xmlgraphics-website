@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Apache™ Batik - Demo</title>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+<!--
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="http://www.apache.org/css/code.css">
+-->
+    <link href="/css/profile.css" rel="stylesheet" type="text/css">
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css">
+
+    <style type="text/css">
+    
+    </style>
+    <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+    </script>
+    
+	<style>
+	.highlight {color: red;}
+	</style>
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+	<p><a href="/"><img alt="Apache XML Graphics Project Logo" src="/images/apache-xml-graphics.gif" title="Apache XML Graphics Project" /></a></p>
+<h1 id="apache-batik">Apache Batik - Demo</h1>
+<ul>
+<li><a href="/batik/">Overview</a></li>
+<li><a href="/batik/license.html">License</a></li>
+<li><a href="/batik/download.html">Download</a></li>
+<li><a href="/batik/install.html">Installation notes</a></li>
+<li><a href="/batik/status.html">Status</a></li>
+<li><a href="/batik/demo-static.html">Demo</a></li>
+<li><a href="/batik/faq.html">FAQs</a></li>
+<li><a href="/batik/mailing-lists.html">Mailing lists</a></li>
+<li><a href="/batik/contributors.html">Contributors</a></li>
+<li><a href="http://issues.apache.org/bugzilla/buglist.cgi?query_format=specific&amp;amp;bug_status=__open__&amp;amp;product=Batik">Bug database</a></li>
+<li><a href="/batik/uses.html">Projects using Batik</a></li>
+<li>
+<h2 id="batik-tools">Batik Tools</h2>
+<ul>
+<li><a href="/batik/tools/">Overview</a></li>
+<li><a href="/batik/tools/browser.html">Browser</a></li>
+<li><a href="/batik/tools/rasterizer.html">Rasterizer</a></li>
+<li><a href="/batik/tools/font-converter.html">Font converter</a></li>
+<li><a href="/batik/tools/pretty-printer.html">Pretty printer</a></li>
+</ul>
+</li>
+<li>
+<h2 id="using-batik">Using Batik</h2>
+<ul>
+<li><a href="/batik/using/">Overview</a></li>
+<li><a href="/batik/using/architecture.html">Architecture</a></li>
+<li><a href="/batik/javadoc/">Javadoc APIs</a></li>
+<li><a href="/batik/using/dom-api.html">DOM API</a></li>
+<li><a href="/batik/using/parsers.html">Parsers</a></li>
+<li>
+<h3 id="scripting">Scripting</h3>
+</li>
+<li><a href="/batik/using/scripting/ecmascript.html">Scripting with ECMAScript</a></li>
+<li><a href="/batik/using/scripting/java.html">Scripting with Java</a></li>
+<li><a href="/batik/using/scripting/security.html">Security</a></li>
+<li><a href="/batik/using/svg-generator.html">SVG generator</a></li>
+<li><a href="/batik/using/swing.html">Swing components</a></li>
+<li><a href="/batik/using/transcoder.html">Transcoder API</a></li>
+<li><a href="/batik/using/extending.html">Extending Batik</a></li>
+</ul>
+</li>
+<li>
+<h2 id="development">Development</h2>
+<ul>
+<li><a href="/batik/dev/">Overview</a></li>
+<li><a href="/batik/dev/branches.html">Branches</a></li>
+<li><a href="/batik/dev/svg12.html">SVG 1.2 support</a></li>
+<li><a href="/batik/dev/test.html">Test infrastructure</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="apachewzxhzdk2-xml-graphics">Apache&trade; XML Graphics</h1>
+<ul>
+<li>
+<h3 id="project-overview">Project Overview</h3>
+<ul>
+<li><a href="/team.html">Who We Are</a></li>
+<li><a href="/legal.html">Legal Stuff</a></li>
+<li><a href="/charter.html">Project Charter</a></li>
+<li><a href="/mail.html">Mailing Lists</a></li>
+<li><a href="/repo.html">Code Repositories</a></li>
+<li><a href="http://www.apache.org/foundation/sponsorship.html">ASF Sponsorship Program</a></li>
+<li><a href="http://www.apache.org/foundation/thanks.html">ASF Thanks</a></li>
+<li><a href="http://www.apache.org/licenses/">Licenses</a></li>
+<li><a href="http://www.apache.org/security/">Security</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="sub-projects">Sub Projects</h1>
+<ul>
+<li><a href="/fop/">Apache FOP</a></li>
+<li><a href="/commons/">Apache XML Graphics Commons</a></li>
+</ul>
+<h2 id="search-apache-xml-graphics">Search Apache XML Graphics</h2>
+<form name="search" id="search" action="https://www.google.com/search" method="get">
+  <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+  <input type="text" name="q" id="query" />
+  <input type="submit" id="submit" value="Search" />
+</form>
+
+<script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+    $('#navigation :header').append(' &raquo;');
+    }
+  $('#navigation > ul > li ul').hide();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+       $("li.highlight").removeClass("highlight");
+       $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>
+	</div>
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 100px;">
+	  <a href="/batik/"><img src="/images/apache-batik-logo.png" alt="The Apache FOP Project" width="256" height="96" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; Batik Project</h2>
+	</div><!-- <h1>Batik SVG Toolkit</h1> -->
+
+<div id="content">
+<h1>Batik Demo</h1>
+    
+<p>
+      This page demonstrates the use of Batik&rsquo;s
+      <a href="using/swing.html">JSVGCanvas</a> swing component in a Java applet.
+    </p>
+
+    
+<a name="layout"></a>
+<table class="ForrestTable" cellspacing="1" cellpadding="4" id="layout">
+      
+<tr>
+        
+<td colspan="1" rowspan="1">
+          <a name="chart"></a><applet archive="batik-awt-util.jar,                            batik-bridge.jar,                            batik-css.jar,                            batik-dom.jar,                            batik-ext.jar,                            batik-gvt.jar,                            batik-parser.jar,                            batik-svg-dom.jar,                            batik-script.jar,                            batik-swing.jar,                            batik-util.jar,                            batik-xml.jar,                            xml-apis-dom3.jar" code="AppletDemo.class" codebase="demo/" height="300" mayscript="mayscript" width="400" id="chart">
+            [Your browser doesn&rsquo;t seem to support Java applets, which is required
+            for this demo.]
+          </applet>
+        </td>
+        <td colspan="1" rowspan="1">
+          <a name="data"></a>
+<table class="ForrestTable" cellspacing="1" cellpadding="4" id="data">
+            
+<tr>
+              
+<th colspan="1" rowspan="1">Expense</th><th colspan="1" rowspan="1">Amount</th>
+            
+</tr>
+            
+<tr>
+              
+<td colspan="1" rowspan="1">Shoe</td>
+              <td colspan="1" rowspan="1"><a name="ShoeBar"></a><input type="text" value="10" id="ShoeBar"></td>
+            
+</tr>
+            
+<tr>
+              
+<td colspan="1" rowspan="1">Car</td>
+              <td colspan="1" rowspan="1"><a name="CarBar"></a><input type="text" value="20" id="CarBar"></td>
+            
+</tr>
+            
+<tr>
+              
+<td colspan="1" rowspan="1">Travel</td>
+              <td colspan="1" rowspan="1"><a name="TravelBar"></a><input type="text" value="10" id="TravelBar"></td>
+            
+</tr>
+            
+<tr>
+              
+<td colspan="1" rowspan="1">Computer</td>
+              <td colspan="1" rowspan="1"><a name="ComputerBar"></a><input type="text" value="60" id="ComputerBar"></td>
+            
+</tr>
+          
+</table>
+          
+<p>
+            
+<button onclick="update()">Update chart</button>
+          
+</p>
+        
+</td>
+      
+</tr>
+    
+</table>
+
+    
+<script>
+      var chart;
+
+      function get(id) {
+        var e = document.getElementById(id);
+        // This loop just gets around the problem of IE returning the 'a'
+        // element looked up by name, rather than the desired element by id.
+        while (e.nodeType != 1 || e.getAttribute("id") != id) {
+          e = e.nextSibling;
+        }
+        return e;
+      }
+
+      function update() {
+        chart = get("chart");
+        updateBar("ShoeBar");
+        updateBar("CarBar");
+        updateBar("TravelBar");
+        updateBar("ComputerBar");
+      }
+
+      function updateBar(name) {
+        var input = get(name);
+        var value = Number(input.value);
+        if (!isNaN(value) && value >= 0) {
+          chart.updateBar(name, value);
+        }
+      }
+    </script>
+
+    
+<p>
+      The applet (<a href="demo/AppletDemo.java">view source</a>) displays
+      the
+      <a class="external" href="http://svn.apache.org/repos/asf/xmlgraphics/batik/trunk/samples/barChart.svg">barChart.svg</a>
+      sample from the Batik distribution using a <span class="codefrag">JSVGCanvas</span>.
+      Script in the web page then interacts with the applet, by calling the
+      <span class="codefrag">updateBar</span> method of the applet object when the
+      <b>Update chart</b> button is pressed.  This method modifies the
+      SVG document being displayed to update the heights of the bars.
+    </p>
+  
+</div>
+<!--+
+    |end content
+    +-->
+<div class="clearboth">&nbsp;</div>
+</div>
+
+<!-- {% include footer %} -->
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-feather-logo" alt="Apache Software Foundation" src="/images/feather-small.gif" width="100" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2012 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache feather logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+
+  </body>
+</html>

@@ -1,0 +1,3302 @@
+Title: Batik implementation status
+
+#Batik implementation status
+
+
+This page details information about Batik’s implementation of the [SVG 1.1](http://www.w3.org/TR/SVG11/) and related specifications. The features of the implementation are annotated with their level of support, which can be at one of three levels:
+
+
+
+Not supported
+:
+If a feature is <span class="no">not</span> supported, this means that Batik performs no useful processing for it. This feature could be silently ignored or an exception might be thrown when trying to use it.
+
+
+Partially supported
+:
+If a feature is <span class="partial">partially</span> supported, this means that Batik performs some processing for it, but there are known bugs with this processing.
+
+
+Fully supported
+:
+If a feature is <span class="yes">fully</span> supported, this means that Batik performs the correct processing for it, as detailed in the relevant specification.
+
+Note that the information on this page is based on the code in the Subversion repository trunk.
+
+## Elements, attributes and properties { #elements}
+
+The table below lists the SVG elements and the attributes and properties on them that are supported by Batik. For an element to be fully supported, its attributes and the properties that apply to it must also be fully supported. If an attribute of the element or a property that applies to the element is only partially supported or is not supported, the element can be at most partially supported. An element is not supported if it is not processed by Batik, even if some of its attributes are supported (such as the core attributes `id` or `xml:base`).
+
+Note that all presentation attributes are supported on all stylable elements. These attributes are not listed in the table. Only those properties that apply to a given element are listed.
+
+|  |  |  |
+|--|--|--|
+| svg:a {.tableSectionHeader} | { #svg:a} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| target | no {.no} | While `target` is not supported, new windows can be opened with `xlink:show="new"`. |
+| transform | yes {.yes} |  |
+| xlink:actuate | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:arcrole | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:href | partial {.partial} | URI references to animation elements will not trigger the animation when the link is activated. |
+| xlink:role | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:show | yes {.yes} |  |
+| xlink:title | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:type | yes {.yes} |  [[1]](#noteXLink)  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip-path | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| display | yes {.yes} |  |
+| enable-background | yes {.yes} |  |
+| filter | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| svg:altGlyph {.tableSectionHeader} | { #svg:altGlyph} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| dx | yes {.yes} |  |
+| dy | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| format | no {.no} |  |
+| glyphRef | no {.no} |  |
+| id | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| rotate | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xlink:actuate | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:arcrole | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:href | yes {.yes} |  |
+| xlink:role | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:show | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:title | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:type | yes {.yes} |  [[1]](#noteXLink)  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| alignment-baseline | no {.no} |  |
+| baseline-shift | yes {.yes} |  |
+| color | yes {.yes} |  |
+| direction | yes {.yes} |  |
+| display | yes {.yes} |  |
+| dominant-baseline | no {.no} |  |
+| fill | yes {.yes} |  |
+| fill-opacity | yes {.yes} |  |
+| fill-rule | yes {.yes} |  |
+| font | yes {.yes} |  |
+| font-family | yes {.yes} |  |
+| font-size | yes {.yes} |  |
+| font-size-adjust | no {.no} |  |
+| font-stretch | no {.no} |  |
+| font-style | yes {.yes} |  |
+| font-variant | no {.no} |  |
+| font-weight | yes {.yes} |  |
+| glyph-orientation-horizontal | yes {.yes} |  |
+| glyph-orientation-vertical | yes {.yes} |  |
+| kerning | yes {.yes} |  |
+| letter-spacing | yes {.yes} |  |
+| stroke | yes {.yes} |  |
+| stroke-dasharray | yes {.yes} |  |
+| stroke-dashoffset | yes {.yes} |  |
+| stroke-linecap | yes {.yes} |  |
+| stroke-linejoin | yes {.yes} |  |
+| stroke-miterlimit | yes {.yes} |  |
+| stroke-opacity | yes {.yes} |  |
+| stroke-width | yes {.yes} |  |
+| text-anchor | yes {.yes} |  |
+| text-decoration | yes {.yes} |  |
+| unicode-bidi | yes {.yes} |  |
+| visibility | yes {.yes} |  |
+| word-spacing | yes {.yes} |  |
+| svg:altGlyphDef {.tableSectionHeader} | { #svg:altGlyphDef} |  |
+| Attributes {.tableSubSectionHeader} |
+| id | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:altGlyphItem {.tableSectionHeader} | { #svg:altGlyphItem} |  |
+| Attributes {.tableSubSectionHeader} |
+| id | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:animate {.tableSectionHeader} | { #svg:animate} |  |
+| Attributes {.tableSubSectionHeader} |
+| accumulate | yes {.yes} |  |
+| additive | yes {.yes} |  |
+| attributeName | yes {.yes} |  |
+| attributeType | yes {.yes} |  |
+| begin | yes {.yes} |  |
+| by | yes {.yes} |  |
+| calcMode | yes {.yes} |  |
+| dur | yes {.yes} |  |
+| end | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| fill | yes {.yes} |  |
+| from | yes {.yes} |  |
+| id | yes {.yes} |  |
+| keySplines | yes {.yes} |  |
+| keyTimes | yes {.yes} |  |
+| max | yes {.yes} |  |
+| min | yes {.yes} |  |
+| onbegin | yes {.yes} |  |
+| onend | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onrepeat | yes {.yes} |  |
+| repeatCount | yes {.yes} |  |
+| repeatDur | yes {.yes} |  |
+| requiredExtensions | no {.no} |  |
+| requiredFeatures | no {.no} |  |
+| restart | yes {.yes} |  |
+| systemLanguage | no {.no} |  |
+| to | yes {.yes} |  |
+| values | yes {.yes} |  |
+| svg:animateColor {.tableSectionHeader} | { #svg:animateColor} |  |
+| Attributes {.tableSubSectionHeader} |
+| accumulate | yes {.yes} |  |
+| additive | yes {.yes} |  |
+| attributeName | yes {.yes} |  |
+| attributeType | yes {.yes} |  |
+| begin | yes {.yes} |  |
+| by | yes {.yes} |  |
+| calcMode | yes {.yes} |  |
+| dur | yes {.yes} |  |
+| end | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| fill | yes {.yes} |  |
+| from | yes {.yes} |  |
+| id | yes {.yes} |  |
+| keySplines | yes {.yes} |  |
+| keyTimes | yes {.yes} |  |
+| max | yes {.yes} |  |
+| min | yes {.yes} |  |
+| onbegin | yes {.yes} |  |
+| onend | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onrepeat | yes {.yes} |  |
+| repeatCount | yes {.yes} |  |
+| repeatDur | yes {.yes} |  |
+| requiredExtensions | no {.no} |  |
+| requiredFeatures | no {.no} |  |
+| restart | yes {.yes} |  |
+| systemLanguage | no {.no} |  |
+| to | yes {.yes} |  |
+| values | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| svg:animateMotion {.tableSectionHeader} | { #svg:animateMotion} |  |
+| Attributes {.tableSubSectionHeader} |
+| accumulate | yes {.yes} |  |
+| additive | yes {.yes} |  |
+| attributeName | yes {.yes} |  |
+| attributeType | yes {.yes} |  |
+| begin | yes {.yes} |  |
+| by | yes {.yes} |  |
+| calcMode | yes {.yes} |  |
+| dur | yes {.yes} |  |
+| end | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| fill | yes {.yes} |  |
+| from | yes {.yes} |  |
+| id | yes {.yes} |  |
+| keyPoints | yes {.yes} |  |
+| keySplines | yes {.yes} |  |
+| keyTimes | yes {.yes} |  |
+| max | yes {.yes} |  |
+| min | yes {.yes} |  |
+| onbegin | yes {.yes} |  |
+| onend | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onrepeat | yes {.yes} |  |
+| origin | yes {.yes} |  |
+| path | yes {.yes} |  |
+| repeatCount | yes {.yes} |  |
+| repeatDur | yes {.yes} |  |
+| requiredExtensions | no {.no} |  |
+| requiredFeatures | no {.no} |  |
+| restart | yes {.yes} |  |
+| rotate | yes {.yes} |  |
+| systemLanguage | no {.no} |  |
+| to | yes {.yes} |  |
+| values | yes {.yes} |  |
+| svg:animateTransform {.tableSectionHeader} | { #svg:animateTransform} |  |
+| Attributes {.tableSubSectionHeader} |
+| accumulate | yes {.yes} |  |
+| additive | yes {.yes} |  |
+| attributeName | yes {.yes} |  |
+| attributeType | yes {.yes} |  |
+| begin | yes {.yes} |  |
+| by | yes {.yes} |  |
+| calcMode | yes {.yes} |  |
+| dur | yes {.yes} |  |
+| end | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| fill | yes {.yes} |  |
+| from | yes {.yes} |  |
+| id | yes {.yes} |  |
+| keySplines | yes {.yes} |  |
+| keyTimes | yes {.yes} |  |
+| max | yes {.yes} |  |
+| min | yes {.yes} |  |
+| onbegin | yes {.yes} |  |
+| onend | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onrepeat | yes {.yes} |  |
+| repeatCount | yes {.yes} |  |
+| repeatDur | yes {.yes} |  |
+| requiredExtensions | no {.no} |  |
+| requiredFeatures | no {.no} |  |
+| restart | yes {.yes} |  |
+| systemLanguage | no {.no} |  |
+| to | yes {.yes} |  |
+| type | yes {.yes} |  |
+| values | yes {.yes} |  |
+| svg:circle {.tableSectionHeader} | { #svg:circle} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| cx | yes {.yes} |  |
+| cy | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| r | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| transform | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip-path | yes {.yes} |  |
+| clip-rule | yes {.yes} |  |
+| color | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| fill | yes {.yes} |  |
+| fill-opacity | yes {.yes} |  |
+| fill-rule | yes {.yes} |  |
+| filter | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| pointer-events | yes {.yes} |  |
+| shape-rendering | yes {.yes} |  |
+| stroke | yes {.yes} |  |
+| stroke-dasharray | yes {.yes} |  |
+| stroke-dashoffset | yes {.yes} |  |
+| stroke-linecap | yes {.yes} |  |
+| stroke-linejoin | yes {.yes} |  |
+| stroke-miterlimit | yes {.yes} |  |
+| stroke-opacity | yes {.yes} |  |
+| stroke-width | yes {.yes} |  |
+| visibility | yes {.yes} |  |
+| svg:clipPath {.tableSectionHeader} | { #svg:clipPath} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| clipPathUnits | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| transform | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip-path | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| enable-background | no {.no} |  |
+| filter | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| svg:color-profile {.tableSectionHeader} | { #svg:color-profile} |  |
+| Attributes {.tableSubSectionHeader} |
+| id | yes {.yes} |  |
+| local | no {.no} |  |
+| name | yes {.yes} |  |
+| rendering-intent | yes {.yes} |  |
+| xlink:actuate | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:arcrole | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:href | yes {.yes} |  |
+| xlink:role | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:show | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:title | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:type | yes {.yes} |  [[1]](#noteXLink)  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:cursor {.tableSectionHeader} | { #svg:cursor} |  |
+| Attributes {.tableSubSectionHeader} |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xlink:actuate | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:arcrole | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:href | yes {.yes} |  |
+| xlink:role | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:show | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:title | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:type | yes {.yes} |  [[1]](#noteXLink)  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:definition-src {.tableSectionHeader} | { #svg:definition-src} |  |
+| Attributes {.tableSubSectionHeader} |
+| id | yes {.yes} |  |
+| xlink:actuate | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:arcrole | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:href | no {.no} |  |
+| xlink:role | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:show | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:title | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:type | yes {.yes} |  [[1]](#noteXLink)  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:defs {.tableSectionHeader} | { #svg:defs} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| transform | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip-path | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| enable-background | no {.no} |  |
+| filter | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| svg:desc {.tableSectionHeader} | { #svg:desc} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| id | yes {.yes} |  |
+| style | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:ellipse {.tableSectionHeader} | { #svg:ellipse} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| cx | yes {.yes} |  |
+| cy | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| rx | yes {.yes} |  |
+| ry | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| transform | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip-path | yes {.yes} |  |
+| clip-rule | yes {.yes} |  |
+| color | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| fill | yes {.yes} |  |
+| fill-opacity | yes {.yes} |  |
+| fill-rule | yes {.yes} |  |
+| filter | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| pointer-events | yes {.yes} |  |
+| shape-rendering | yes {.yes} |  |
+| stroke | yes {.yes} |  |
+| stroke-dasharray | yes {.yes} |  |
+| stroke-dashoffset | yes {.yes} |  |
+| stroke-linecap | yes {.yes} |  |
+| stroke-linejoin | yes {.yes} |  |
+| stroke-miterlimit | yes {.yes} |  |
+| stroke-opacity | yes {.yes} |  |
+| stroke-width | yes {.yes} |  |
+| visibility | yes {.yes} |  |
+| svg:feBlend {.tableSectionHeader} | { #svg:feBlend} |  |
+| Attributes {.tableSubSectionHeader} |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| in | yes {.yes} |  |
+| in2 | yes {.yes} |  |
+| mode | yes {.yes} |  |
+| result | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| color-interpolation-filters | yes {.yes} |  |
+| svg:feColorMatrix {.tableSectionHeader} | { #svg:feColorMatrix} |  |
+| Attributes {.tableSubSectionHeader} |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| in | yes {.yes} |  |
+| result | yes {.yes} |  |
+| type | yes {.yes} |  |
+| values | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| color-interpolation-filters | yes {.yes} |  |
+| svg:feComponentTransfer {.tableSectionHeader} | { #svg:feComponentTransfer} |  |
+| Attributes {.tableSubSectionHeader} |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| in | yes {.yes} |  |
+| result | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| color-interpolation-filters | yes {.yes} |  |
+| svg:feComposite {.tableSectionHeader} | { #svg:feComposite} |  |
+| Attributes {.tableSubSectionHeader} |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| in | yes {.yes} |  |
+| in2 | yes {.yes} |  |
+| k1 | yes {.yes} |  |
+| k2 | yes {.yes} |  |
+| k3 | yes {.yes} |  |
+| k4 | yes {.yes} |  |
+| operator | yes {.yes} |  |
+| result | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| color-interpolation-filters | yes {.yes} |  |
+| svg:feConvolveMatrix {.tableSectionHeader} | { #svg:feConvolveMatrix} |  |
+| Attributes {.tableSubSectionHeader} |
+| bias | yes {.yes} |  |
+| divisor | yes {.yes} |  |
+| edgeMode | yes {.yes} |  |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| in | yes {.yes} |  |
+| kernelMatrix | yes {.yes} |  |
+| kernelUnitLength | yes {.yes} |  |
+| order | yes {.yes} |  |
+| preserveAlpha | yes {.yes} |  |
+| result | yes {.yes} |  |
+| targetX | yes {.yes} |  |
+| targetY | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| color-interpolation-filters | yes {.yes} |  |
+| svg:feDiffuseLighting {.tableSectionHeader} | { #svg:feDiffuseLighting} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| diffuseConstant | yes {.yes} |  |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| in | yes {.yes} |  |
+| kernelUnitLength | no {.no} |  |
+| result | yes {.yes} |  |
+| style | yes {.yes} |  |
+| surfaceScale | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| color | yes {.yes} |  |
+| color-interpolation-filters | yes {.yes} |  |
+| lighting-color | yes {.yes} |  |
+| svg:feDisplacementMap {.tableSectionHeader} | { #svg:feDisplacementMap} |  |
+| Attributes {.tableSubSectionHeader} |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| in | yes {.yes} |  |
+| in2 | yes {.yes} |  |
+| result | yes {.yes} |  |
+| scale | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| xChannelSelector | yes {.yes} |  |
+| y | yes {.yes} |  |
+| yChannelSelector | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| color-interpolation-filters | yes {.yes} |  |
+| svg:feDistantLight {.tableSectionHeader} | { #svg:feDistantLight} |  |
+| Attributes {.tableSubSectionHeader} |
+| azimuth | yes {.yes} |  |
+| elevation | yes {.yes} |  |
+| id | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:feFlood {.tableSectionHeader} | { #svg:feFlood} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| in | yes {.yes} |  |
+| result | yes {.yes} |  |
+| style | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| color | yes {.yes} |  |
+| color-interpolation-filters | yes {.yes} |  |
+| flood-color | yes {.yes} |  |
+| flood-opacity | yes {.yes} |  |
+| svg:feFuncA {.tableSectionHeader} | { #svg:feFuncA} |  |
+| Attributes {.tableSubSectionHeader} |
+| amplitude | yes {.yes} |  |
+| exponent | yes {.yes} |  |
+| id | yes {.yes} |  |
+| intercept | yes {.yes} |  |
+| offset | yes {.yes} |  |
+| slope | yes {.yes} |  |
+| tableValues | yes {.yes} |  |
+| type | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:feFuncB {.tableSectionHeader} | { #svg:feFuncB} |  |
+| Attributes {.tableSubSectionHeader} |
+| amplitude | yes {.yes} |  |
+| exponent | yes {.yes} |  |
+| id | yes {.yes} |  |
+| intercept | yes {.yes} |  |
+| offset | yes {.yes} |  |
+| slope | yes {.yes} |  |
+| tableValues | yes {.yes} |  |
+| type | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:feFuncG {.tableSectionHeader} | { #svg:feFuncG} |  |
+| Attributes {.tableSubSectionHeader} |
+| amplitude | yes {.yes} |  |
+| exponent | yes {.yes} |  |
+| id | yes {.yes} |  |
+| intercept | yes {.yes} |  |
+| offset | yes {.yes} |  |
+| slope | yes {.yes} |  |
+| tableValues | yes {.yes} |  |
+| type | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:feFuncR {.tableSectionHeader} | { #svg:feFuncR} |  |
+| Attributes {.tableSubSectionHeader} |
+| amplitude | yes {.yes} |  |
+| exponent | yes {.yes} |  |
+| id | yes {.yes} |  |
+| intercept | yes {.yes} |  |
+| offset | yes {.yes} |  |
+| slope | yes {.yes} |  |
+| tableValues | yes {.yes} |  |
+| type | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:feGaussianBlur {.tableSectionHeader} | { #svg:feGaussianBlur} |  |
+| Attributes {.tableSubSectionHeader} |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| in | yes {.yes} |  |
+| result | yes {.yes} |  |
+| stdDeviation | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| color-interpolation-filters | yes {.yes} |  |
+| svg:feImage {.tableSectionHeader} | { #svg:feImage} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| preserveAspectRatio | no {.no} |  |
+| result | yes {.yes} |  |
+| style | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xlink:actuate | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:arcrole | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:href | yes {.yes} |  |
+| xlink:role | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:show | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:title | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:type | yes {.yes} |  [[1]](#noteXLink)  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip | no {.no} |  |
+| clip-path | yes {.yes} |  |
+| clip-rule | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-interpolation-filters | yes {.yes} |  |
+| color-profile | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| filter | yes {.yes} |  |
+| image-rendering | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| overflow | yes {.yes} |  |
+| pointer-events | yes {.yes} |  |
+| visibility | yes {.yes} |  |
+| svg:feMerge {.tableSectionHeader} | { #svg:feMerge} |  |
+| Attributes {.tableSubSectionHeader} |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| result | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| color-interpolation-filters | yes {.yes} |  |
+| svg:feMergeNode {.tableSectionHeader} | { #svg:feMergeNode} |  |
+| Attributes {.tableSubSectionHeader} |
+| id | yes {.yes} |  |
+| in | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:feMorphology {.tableSectionHeader} | { #svg:feMorphology} |  |
+| Attributes {.tableSubSectionHeader} |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| in | yes {.yes} |  |
+| operator | yes {.yes} |  |
+| radius | yes {.yes} |  |
+| result | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| color-interpolation-filters | yes {.yes} |  |
+| svg:feOffset {.tableSectionHeader} | { #svg:feOffset} |  |
+| Attributes {.tableSubSectionHeader} |
+| dx | yes {.yes} |  |
+| dy | yes {.yes} |  |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| in | yes {.yes} |  |
+| result | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| color-interpolation-filters | yes {.yes} |  |
+| svg:fePointLight {.tableSectionHeader} | { #svg:fePointLight} |  |
+| Attributes {.tableSubSectionHeader} |
+| id | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| z | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:feSpecularLighting {.tableSectionHeader} | { #svg:feSpecularLighting} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| in | yes {.yes} |  |
+| kernelUnitLength | yes {.yes} |  |
+| result | yes {.yes} |  |
+| specularConstant | yes {.yes} |  |
+| specularExponent | yes {.yes} |  |
+| style | yes {.yes} |  |
+| surfaceScale | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| color | yes {.yes} |  |
+| color-interpolation-filters | yes {.yes} |  |
+| lighting-color | yes {.yes} |  |
+| svg:feSpotLight {.tableSectionHeader} | { #svg:feSpotLight} |  |
+| Attributes {.tableSubSectionHeader} |
+| id | yes {.yes} |  |
+| limitingConeAngle | yes {.yes} |  |
+| pointsAtX | yes {.yes} |  |
+| pointsAtY | yes {.yes} |  |
+| pointsAtZ | yes {.yes} |  |
+| specularExponent | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| z | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:feTile {.tableSectionHeader} | { #svg:feTile} |  |
+| Attributes {.tableSubSectionHeader} |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| in | yes {.yes} |  |
+| result | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| color-interpolation-filters | yes {.yes} |  |
+| svg:feTurbulence {.tableSectionHeader} | { #svg:feTurbulence} |  |
+| Attributes {.tableSubSectionHeader} |
+| baseFrequency | yes {.yes} |  |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| numOctaves | yes {.yes} |  |
+| result | yes {.yes} |  |
+| seed | yes {.yes} |  |
+| stitchTiles | yes {.yes} |  |
+| type | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| color-interpolation-filters | yes {.yes} |  |
+| svg:filter {.tableSectionHeader} | { #svg:filter} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| filterRes | yes {.yes} |  |
+| filterUnits | yes {.yes} |  |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| primitiveUnits | yes {.yes} |  |
+| style | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xlink:actuate | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:arcrole | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:href | yes {.yes} |  |
+| xlink:role | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:show | yes {.yes} |  |
+| xlink:title | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:type | yes {.yes} |  [[1]](#noteXLink)  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:font {.tableSectionHeader} | { #svg:font} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| horiz-adv-x | yes {.yes} |  |
+| horiz-origin-x | yes {.yes} |  |
+| horiz-origin-y | yes {.yes} |  |
+| id | yes {.yes} |  |
+| style | yes {.yes} |  |
+| vert-adv-y | yes {.yes} |  |
+| vert-origin-x | yes {.yes} |  |
+| vert-origin-y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:font-face {.tableSectionHeader} | { #svg:font-face} |  |
+| Attributes {.tableSubSectionHeader} |
+| accent-height | no {.no} |  |
+| alphabetic | no {.no} |  |
+| ascent | yes {.yes} |  |
+| bbox | no {.no} |  |
+| cap-height | no {.no} |  |
+| descent | yes {.yes} |  |
+| font-family | yes {.yes} |  |
+| font-size | no {.no} |  |
+| font-stretch | no {.no} |  |
+| font-style | yes {.yes} |  |
+| font-variant | no {.no} |  |
+| font-weight | yes {.yes} |  |
+| hanging | no {.no} |  |
+| id | yes {.yes} |  |
+| ideographic | no {.no} |  |
+| mathematical | no {.no} |  |
+| overline-position | yes {.yes} |  |
+| overline-thickness | yes {.yes} |  |
+| panose-1 | yes {.yes} |  |
+| slope | yes {.yes} |  |
+| stemh | no {.no} |  |
+| stemv | no {.no} |  |
+| strikethrough-position | yes {.yes} |  |
+| strikethrough-thickness | yes {.yes} |  |
+| underline-position | yes {.yes} |  |
+| underline-thickness | yes {.yes} |  |
+| unicode-range | no {.no} |  |
+| units-per-em | yes {.yes} |  |
+| v-alphabetic | no {.no} |  |
+| v-hanging | no {.no} |  |
+| v-ideographic | no {.no} |  |
+| v-mathematical | no {.no} |  |
+| widths | no {.no} |  |
+| x-height | no {.no} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:font-face-format {.tableSectionHeader} | { #svg:font-face-format} |  |
+| Attributes {.tableSubSectionHeader} |
+| id | yes {.yes} |  |
+| string | no {.no} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:font-face-name {.tableSectionHeader} | { #svg:font-face-name} |  |
+| Attributes {.tableSubSectionHeader} |
+| id | yes {.yes} |  |
+| name | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:font-face-src {.tableSectionHeader} | { #svg:font-face-src} |  |
+| Attributes {.tableSubSectionHeader} |
+| id | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:font-face-uri {.tableSectionHeader} | { #svg:font-face-uri} |  |
+| Attributes {.tableSubSectionHeader} |
+| id | yes {.yes} |  |
+| xlink:actuate | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:arcrole | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:href | yes {.yes} |  |
+| xlink:role | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:show | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:title | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:type | yes {.yes} |  [[1]](#noteXLink)  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:foreignObject {.tableSectionHeader} | { #svg:foreignObject} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | no {.no} |  |
+| height | no {.no} |  |
+| id | yes {.yes} |  |
+| onactivate | no {.no} |  |
+| onclick | no {.no} |  |
+| onfocusin | no {.no} |  |
+| onfocusout | no {.no} |  |
+| onload | no {.no} |  |
+| onmousedown | no {.no} |  |
+| onmousemove | no {.no} |  |
+| onmouseout | no {.no} |  |
+| onmouseover | no {.no} |  |
+| onmouseup | no {.no} |  |
+| requiredExtensions | no {.no} |  |
+| requiredFeatures | no {.no} |  |
+| style | no {.no} |  |
+| systemLanguage | no {.no} |  |
+| transform | no {.no} |  |
+| width | no {.no} |  |
+| x | no {.no} |  |
+| y | no {.no} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip | no {.no} |  |
+| display | no {.no} |  |
+| overflow | no {.no} |  |
+| svg:g {.tableSectionHeader} | { #svg:g} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| transform | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip-path | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| display | yes {.yes} |  |
+| enable-background | yes {.yes} |  |
+| filter | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| svg:glyph {.tableSectionHeader} | { #svg:glyph} |  |
+| Attributes {.tableSubSectionHeader} |
+| arabic-form | yes {.yes} |  |
+| class | yes {.yes} |  |
+| d | yes {.yes} |  |
+| glyph-name | yes {.yes} |  |
+| horiz-adv-x | yes {.yes} |  |
+| id | yes {.yes} |  |
+| lang | yes {.yes} |  |
+| orientation | yes {.yes} |  |
+| style | yes {.yes} |  |
+| unicode | yes {.yes} |  |
+| vert-adv-y | yes {.yes} |  |
+| vert-origin-x | yes {.yes} |  |
+| vert-origin-y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:glyphRef {.tableSectionHeader} | { #svg:glyphRef} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| dx | no {.no} |  |
+| dy | no {.no} |  |
+| font-family | no {.no} |  [[2]](#noteGlyphRef)  |
+| font-size | no {.no} |  [[2]](#noteGlyphRef)  |
+| font-size-adjust | no {.no} |  [[2]](#noteGlyphRef)  |
+| font-stretch | no {.no} |  [[2]](#noteGlyphRef)  |
+| font-style | no {.no} |  [[2]](#noteGlyphRef)  |
+| font-variant | no {.no} |  [[2]](#noteGlyphRef)  |
+| font-weight | no {.no} |  [[2]](#noteGlyphRef)  |
+| format | no {.no} |  |
+| glyphRef | no {.no} |  |
+| id | yes {.yes} |  |
+| style | yes {.yes} |  |
+| x | no {.no} |  |
+| y | no {.no} |  |
+| xlink:actuate | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:arcrole | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:href | yes {.yes} |  |
+| xlink:role | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:show | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:title | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:type | yes {.yes} |  [[1]](#noteXLink)  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:hkern {.tableSectionHeader} | { #svg:hkern} |  |
+| Attributes {.tableSubSectionHeader} |
+| g1 | yes {.yes} |  |
+| g2 | yes {.yes} |  |
+| id | yes {.yes} |  |
+| k | yes {.yes} |  |
+| u1 | yes {.yes} |  |
+| u2 | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:image {.tableSectionHeader} | { #svg:image} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| preserveAspectRatio | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| transform | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xlink:actuate | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:arcrole | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:href | yes {.yes} |  |
+| xlink:role | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:show | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:title | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:type | yes {.yes} |  [[1]](#noteXLink)  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip | no {.no} |  |
+| clip-path | yes {.yes} |  |
+| clip-rule | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-profile | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| filter | yes {.yes} |  |
+| image-rendering | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| overflow | yes {.yes} |  |
+| pointer-events | yes {.yes} |  |
+| visibility | yes {.yes} |  |
+| svg:line {.tableSectionHeader} | { #svg:line} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| transform | yes {.yes} |  |
+| x1 | yes {.yes} |  |
+| x2 | yes {.yes} |  |
+| y1 | yes {.yes} |  |
+| y2 | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip-path | yes {.yes} |  |
+| clip-rule | yes {.yes} |  |
+| color | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| fill | yes {.yes} |  |
+| fill-opacity | yes {.yes} |  |
+| fill-rule | yes {.yes} |  |
+| filter | yes {.yes} |  |
+| marker | yes {.yes} |  |
+| marker-end | yes {.yes} |  |
+| marker-mid | yes {.yes} |  |
+| marker-start | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| pointer-events | yes {.yes} |  |
+| shape-rendering | yes {.yes} |  |
+| stroke | yes {.yes} |  |
+| stroke-dasharray | yes {.yes} |  |
+| stroke-dashoffset | yes {.yes} |  |
+| stroke-linecap | yes {.yes} |  |
+| stroke-linejoin | yes {.yes} |  |
+| stroke-miterlimit | yes {.yes} |  |
+| stroke-opacity | yes {.yes} |  |
+| stroke-width | yes {.yes} |  |
+| visibility | yes {.yes} |  |
+| svg:linearGradient {.tableSectionHeader} | { #svg:linearGradient} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| color | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| gradientTransform | yes {.yes} |  |
+| gradientUnits | yes {.yes} |  |
+| id | yes {.yes} |  |
+| spreadMethod | yes {.yes} |  |
+| stop-color | yes {.yes} |  |
+| stop-opacity | yes {.yes} |  |
+| style | yes {.yes} |  |
+| x1 | yes {.yes} |  |
+| x2 | yes {.yes} |  |
+| y1 | yes {.yes} |  |
+| y2 | yes {.yes} |  |
+| xlink:actuate | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:arcrole | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:href | yes {.yes} |  |
+| xlink:role | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:show | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:title | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:type | yes {.yes} |  [[1]](#noteXLink)  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:marker {.tableSectionHeader} | { #svg:marker} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| markerHeight | yes {.yes} |  |
+| markerUnits | yes {.yes} |  |
+| markerWidth | yes {.yes} |  |
+| orient | yes {.yes} |  |
+| preserveAspectRatio | yes {.yes} |  |
+| refX | yes {.yes} |  |
+| refY | yes {.yes} |  |
+| style | yes {.yes} |  |
+| viewBox | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip-path | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| enable-background | no {.no} |  |
+| filter | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| svg:mask {.tableSectionHeader} | { #svg:mask} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| maskContentUnits | yes {.yes} |  |
+| maskUnits | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip-path | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| enable-background | no {.no} |  |
+| filter | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| svg:metadata {.tableSectionHeader} | { #svg:metadata} |  |
+| Attributes {.tableSubSectionHeader} |
+| id | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:missing-glyph {.tableSectionHeader} | { #svg:missing-glyph} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| d | yes {.yes} |  |
+| horiz-adv-x | yes {.yes} |  |
+| id | yes {.yes} |  |
+| style | yes {.yes} |  |
+| vert-adv-y | yes {.yes} |  |
+| vert-origin-x | yes {.yes} |  |
+| vert-origin-y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:mpath {.tableSectionHeader} | { #svg:mpath} |  |
+| Attributes {.tableSubSectionHeader} |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| xlink:actuate | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:arcrole | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:href | yes {.yes} |  |
+| xlink:role | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:show | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:title | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:type | yes {.yes} |  [[1]](#noteXLink)  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:path {.tableSectionHeader} | { #svg:path} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| d | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| pathLength | no {.no} | Author specified path length is ignored. |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| transform | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip-path | yes {.yes} |  |
+| clip-rule | yes {.yes} |  |
+| color | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| fill | yes {.yes} |  |
+| fill-opacity | yes {.yes} |  |
+| fill-rule | yes {.yes} |  |
+| filter | yes {.yes} |  |
+| marker | yes {.yes} |  |
+| marker-end | yes {.yes} |  |
+| marker-mid | yes {.yes} |  |
+| marker-start | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| pointer-events | yes {.yes} |  |
+| shape-rendering | yes {.yes} |  |
+| stroke | yes {.yes} |  |
+| stroke-dasharray | yes {.yes} |  |
+| stroke-dashoffset | yes {.yes} |  |
+| stroke-linecap | yes {.yes} |  |
+| stroke-linejoin | yes {.yes} |  |
+| stroke-miterlimit | yes {.yes} |  |
+| stroke-opacity | yes {.yes} |  |
+| stroke-width | yes {.yes} |  |
+| visibility | yes {.yes} |  |
+| svg:pattern {.tableSectionHeader} | { #svg:pattern} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| patternContentUnits | yes {.yes} |  |
+| patternTransform | yes {.yes} |  |
+| patternUnits | yes {.yes} |  |
+| preserveAspectRatio | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| viewBox | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xlink:actuate | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:arcrole | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:href | yes {.yes} |  |
+| xlink:role | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:show | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:title | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:type | yes {.yes} |  [[1]](#noteXLink)  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip-path | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| enable-background | no {.no} |  |
+| filter | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| svg:polygon {.tableSectionHeader} | { #svg:polygon} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| points | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| transform | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip-path | yes {.yes} |  |
+| clip-rule | yes {.yes} |  |
+| color | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| fill | yes {.yes} |  |
+| fill-opacity | yes {.yes} |  |
+| fill-rule | yes {.yes} |  |
+| filter | yes {.yes} |  |
+| marker | yes {.yes} |  |
+| marker-end | yes {.yes} |  |
+| marker-mid | yes {.yes} |  |
+| marker-start | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| pointer-events | yes {.yes} |  |
+| shape-rendering | yes {.yes} |  |
+| stroke | yes {.yes} |  |
+| stroke-dasharray | yes {.yes} |  |
+| stroke-dashoffset | yes {.yes} |  |
+| stroke-linecap | yes {.yes} |  |
+| stroke-linejoin | yes {.yes} |  |
+| stroke-miterlimit | yes {.yes} |  |
+| stroke-opacity | yes {.yes} |  |
+| stroke-width | yes {.yes} |  |
+| visibility | yes {.yes} |  |
+| svg:polyline {.tableSectionHeader} | { #svg:polyline} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| points | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| transform | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip-path | yes {.yes} |  |
+| clip-rule | yes {.yes} |  |
+| color | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| fill | yes {.yes} |  |
+| fill-opacity | yes {.yes} |  |
+| fill-rule | yes {.yes} |  |
+| filter | yes {.yes} |  |
+| marker | yes {.yes} |  |
+| marker-end | yes {.yes} |  |
+| marker-mid | yes {.yes} |  |
+| marker-start | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| pointer-events | yes {.yes} |  |
+| shape-rendering | yes {.yes} |  |
+| stroke | yes {.yes} |  |
+| stroke-dasharray | yes {.yes} |  |
+| stroke-dashoffset | yes {.yes} |  |
+| stroke-linecap | yes {.yes} |  |
+| stroke-linejoin | yes {.yes} |  |
+| stroke-miterlimit | yes {.yes} |  |
+| stroke-opacity | yes {.yes} |  |
+| stroke-width | yes {.yes} |  |
+| visibility | yes {.yes} |  |
+| svg:radialGradient {.tableSectionHeader} | { #svg:radialGradient} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| cx | yes {.yes} |  |
+| cy | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| fx | yes {.yes} |  |
+| fy | yes {.yes} |  |
+| gradientTransform | yes {.yes} |  |
+| gradientUnits | yes {.yes} |  |
+| id | yes {.yes} |  |
+| r | yes {.yes} |  |
+| spreadMethod | yes {.yes} |  |
+| style | yes {.yes} |  |
+| xlink:actuate | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:arcrole | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:href | yes {.yes} |  |
+| xlink:role | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:show | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:title | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:type | yes {.yes} |  [[1]](#noteXLink)  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:rect {.tableSectionHeader} | { #svg:rect} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| rx | yes {.yes} |  |
+| ry | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| transform | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip-path | yes {.yes} |  |
+| clip-rule | yes {.yes} |  |
+| color | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| fill | yes {.yes} |  |
+| fill-opacity | yes {.yes} |  |
+| fill-rule | yes {.yes} |  |
+| filter | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| pointer-events | yes {.yes} |  |
+| shape-rendering | yes {.yes} |  |
+| stroke | yes {.yes} |  |
+| stroke-dasharray | yes {.yes} |  |
+| stroke-dashoffset | yes {.yes} |  |
+| stroke-linecap | yes {.yes} |  |
+| stroke-linejoin | yes {.yes} |  |
+| stroke-miterlimit | yes {.yes} |  |
+| stroke-opacity | yes {.yes} |  |
+| stroke-width | yes {.yes} |  |
+| visibility | yes {.yes} |  |
+| svg:script {.tableSectionHeader} | { #svg:script} |  |
+| Attributes {.tableSubSectionHeader} |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| type | yes {.yes} |  |
+| xlink:actuate | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:arcrole | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:href | yes {.yes} |  |
+| xlink:role | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:show | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:title | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:type | yes {.yes} |  [[1]](#noteXLink)  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:set {.tableSectionHeader} | { #svg:set} |  |
+| Attributes {.tableSubSectionHeader} |
+| attributeName | yes {.yes} |  |
+| attributeType | yes {.yes} |  |
+| begin | yes {.yes} |  |
+| dur | yes {.yes} |  |
+| end | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| fill | yes {.yes} |  |
+| from | yes {.yes} |  |
+| id | yes {.yes} |  |
+| max | yes {.yes} |  |
+| min | yes {.yes} |  |
+| onbegin | yes {.yes} |  |
+| onend | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onrepeat | yes {.yes} |  |
+| repeatCount | yes {.yes} |  |
+| repeatDur | yes {.yes} |  |
+| requiredExtensions | no {.no} |  |
+| requiredFeatures | no {.no} |  |
+| restart | yes {.yes} |  |
+| systemLanguage | no {.no} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:stop {.tableSectionHeader} | { #svg:stop} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| id | yes {.yes} |  |
+| offset | yes {.yes} |  |
+| style | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| color | yes {.yes} |  |
+| stop-color | yes {.yes} |  |
+| stop-opacity | yes {.yes} |  |
+| svg:style {.tableSectionHeader} | { #svg:style} |  |
+|  |  | <notes>The `:hover`, `:link`, `:visited`, `:active` and `:focus` pseudo-classes are not supported in selectors.</notes> |
+| Attributes {.tableSubSectionHeader} |
+| id | yes {.yes} |  |
+| media | yes {.yes} |  |
+| title | yes {.yes} |  |
+| type | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:svg {.tableSectionHeader} | { #svg:svg} |  |
+| Attributes {.tableSubSectionHeader} |
+| baseProfile | no {.no} |  |
+| class | yes {.yes} |  |
+| contentScriptType | yes {.yes} |  |
+| contentStyleType | no {.no} |  `text/css` is always the default style type. |
+| externalResourcesRequired | no {.no} |  |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| onabort | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onerror | yes {.yes} | The event listener is added, but the error event is never fired by the implementation. |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| onresize | yes {.yes} |  |
+| onscroll | yes {.yes} |  |
+| onunload | yes {.yes} |  |
+| onzoom | yes {.yes} |  |
+| preserveAspectRatio | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| version | yes {.yes} |  |
+| viewBox | partial {.partial} | Attribute not animatable. |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| zoomAndPan | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip | no {.no} |  |
+| clip-path | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| display | yes {.yes} |  |
+| enable-background | yes {.yes} |  |
+| filter | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| overflow | yes {.yes} |  |
+| svg:switch {.tableSectionHeader} | { #svg:switch} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| transform | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip-path | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| display | yes {.yes} |  |
+| enable-background | no {.no} |  |
+| filter | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| svg:symbol {.tableSectionHeader} | { #svg:symbol} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| preserveAspectRatio | yes {.yes} |  |
+| style | yes {.yes} |  |
+| viewBox | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip | no {.no} |  |
+| clip-path | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| enable-background | no {.no} |  |
+| filter | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| overflow | yes {.yes} |  |
+| svg:text {.tableSectionHeader} | { #svg:text} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| dx | yes {.yes} |  |
+| dy | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| lengthAdjust | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| rotate | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| textLength | yes {.yes} |  |
+| transform | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip-path | yes {.yes} |  |
+| clip-rule | yes {.yes} |  |
+| color | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| direction | yes {.yes} |  |
+| display | yes {.yes} |  |
+| dominant-baseline | no {.no} |  |
+| fill | yes {.yes} |  |
+| fill-opacity | yes {.yes} |  |
+| fill-rule | yes {.yes} |  |
+| filter | yes {.yes} |  |
+| font | yes {.yes} |  |
+| font-family | yes {.yes} |  |
+| font-size | yes {.yes} |  |
+| font-size-adjust | no {.no} |  |
+| font-stretch | no {.no} |  |
+| font-style | yes {.yes} |  |
+| font-variant | no {.no} |  |
+| font-weight | yes {.yes} |  |
+| glyph-orientation-horizontal | yes {.yes} |  |
+| glyph-orientation-vertical | yes {.yes} |  |
+| kerning | yes {.yes} |  |
+| letter-spacing | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| pointer-events | yes {.yes} |  |
+| stroke | yes {.yes} |  |
+| stroke-dasharray | yes {.yes} |  |
+| stroke-dashoffset | yes {.yes} |  |
+| stroke-linecap | yes {.yes} |  |
+| stroke-linejoin | yes {.yes} |  |
+| stroke-miterlimit | yes {.yes} |  |
+| stroke-opacity | yes {.yes} |  |
+| stroke-width | yes {.yes} |  |
+| text-anchor | yes {.yes} |  |
+| text-decoration | yes {.yes} |  |
+| text-rendering | yes {.yes} |  |
+| unicode-bidi | yes {.yes} |  |
+| visibility | yes {.yes} |  |
+| word-spacing | yes {.yes} |  |
+| writing-mode | yes {.yes} |  |
+| svg:textPath {.tableSectionHeader} | { #svg:textPath} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| lengthAdjust | yes {.yes} |  |
+| method | no {.no} |  `align` is always used. |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| spacing | no {.no} |  `exact` is always used. |
+| startOffset | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| textLength | yes {.yes} |  |
+| xlink:actuate | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:arcrole | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:href | yes {.yes} |  |
+| xlink:role | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:show | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:title | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:type | yes {.yes} |  [[1]](#noteXLink)  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| alignment-baseline | no {.no} |  |
+| baseline-shift | yes {.yes} |  |
+| color | yes {.yes} |  |
+| direction | yes {.yes} |  |
+| display | yes {.yes} |  |
+| dominant-baseline | no {.no} |  |
+| fill | yes {.yes} |  |
+| fill-opacity | yes {.yes} |  |
+| fill-rule | yes {.yes} |  |
+| font | yes {.yes} |  |
+| font-family | yes {.yes} |  |
+| font-size | yes {.yes} |  |
+| font-size-adjust | no {.no} |  |
+| font-stretch | no {.no} |  |
+| font-style | yes {.yes} |  |
+| font-variant | no {.no} |  |
+| font-weight | yes {.yes} |  |
+| glyph-orientation-horizontal | yes {.yes} |  |
+| glyph-orientation-vertical | yes {.yes} |  |
+| kerning | yes {.yes} |  |
+| letter-spacing | yes {.yes} |  |
+| stroke | yes {.yes} |  |
+| stroke-dasharray | yes {.yes} |  |
+| stroke-dashoffset | yes {.yes} |  |
+| stroke-linecap | yes {.yes} |  |
+| stroke-linejoin | yes {.yes} |  |
+| stroke-miterlimit | yes {.yes} |  |
+| stroke-opacity | yes {.yes} |  |
+| stroke-width | yes {.yes} |  |
+| text-anchor | yes {.yes} |  |
+| text-decoration | yes {.yes} |  |
+| unicode-bidi | yes {.yes} |  |
+| visibility | yes {.yes} |  |
+| word-spacing | yes {.yes} |  |
+| svg:title {.tableSectionHeader} | { #svg:title} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| id | yes {.yes} |  |
+| style | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:tref {.tableSectionHeader} | { #svg:tref} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| dx | yes {.yes} |  |
+| dy | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| lengthAdjust | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| rotate | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| textLength | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xlink:actuate | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:arcrole | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:href | yes {.yes} |  |
+| xlink:role | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:show | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:title | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:type | yes {.yes} |  [[1]](#noteXLink)  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| alignment-baseline | no {.no} |  |
+| baseline-shift | yes {.yes} |  |
+| color | yes {.yes} |  |
+| direction | yes {.yes} |  |
+| display | yes {.yes} |  |
+| dominant-baseline | no {.no} |  |
+| fill | yes {.yes} |  |
+| fill-opacity | yes {.yes} |  |
+| fill-rule | yes {.yes} |  |
+| font | yes {.yes} |  |
+| font-family | yes {.yes} |  |
+| font-size | yes {.yes} |  |
+| font-size-adjust | no {.no} |  |
+| font-stretch | no {.no} |  |
+| font-style | yes {.yes} |  |
+| font-variant | no {.no} |  |
+| font-weight | yes {.yes} |  |
+| glyph-orientation-horizontal | yes {.yes} |  |
+| glyph-orientation-vertical | yes {.yes} |  |
+| kerning | yes {.yes} |  |
+| letter-spacing | yes {.yes} |  |
+| stroke | yes {.yes} |  |
+| stroke-dasharray | yes {.yes} |  |
+| stroke-dashoffset | yes {.yes} |  |
+| stroke-linecap | yes {.yes} |  |
+| stroke-linejoin | yes {.yes} |  |
+| stroke-miterlimit | yes {.yes} |  |
+| stroke-opacity | yes {.yes} |  |
+| stroke-width | yes {.yes} |  |
+| text-anchor | yes {.yes} |  |
+| text-decoration | yes {.yes} |  |
+| unicode-bidi | yes {.yes} |  |
+| visibility | yes {.yes} |  |
+| word-spacing | yes {.yes} |  |
+| svg:tspan {.tableSectionHeader} | { #svg:tspan} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| dx | yes {.yes} |  |
+| dy | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| lengthAdjust | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| rotate | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| textLength | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| alignment-baseline | no {.no} |  |
+| baseline-shift | yes {.yes} |  |
+| color | yes {.yes} |  |
+| direction | yes {.yes} |  |
+| display | yes {.yes} |  |
+| dominant-baseline | no {.no} |  |
+| fill | yes {.yes} |  |
+| fill-opacity | yes {.yes} |  |
+| fill-rule | yes {.yes} |  |
+| font | yes {.yes} |  |
+| font-family | yes {.yes} |  |
+| font-size | yes {.yes} |  |
+| font-size-adjust | no {.no} |  |
+| font-stretch | no {.no} |  |
+| font-style | yes {.yes} |  |
+| font-variant | no {.no} |  |
+| font-weight | yes {.yes} |  |
+| glyph-orientation-horizontal | yes {.yes} |  |
+| glyph-orientation-vertical | yes {.yes} |  |
+| kerning | yes {.yes} |  |
+| letter-spacing | yes {.yes} |  |
+| stroke | yes {.yes} |  |
+| stroke-dasharray | yes {.yes} |  |
+| stroke-dashoffset | yes {.yes} |  |
+| stroke-linecap | yes {.yes} |  |
+| stroke-linejoin | yes {.yes} |  |
+| stroke-miterlimit | yes {.yes} |  |
+| stroke-opacity | yes {.yes} |  |
+| stroke-width | yes {.yes} |  |
+| text-anchor | yes {.yes} |  |
+| text-decoration | yes {.yes} |  |
+| unicode-bidi | yes {.yes} |  |
+| visibility | yes {.yes} |  |
+| word-spacing | yes {.yes} |  |
+| svg:use {.tableSectionHeader} | { #svg:use} |  |
+| Attributes {.tableSubSectionHeader} |
+| class | yes {.yes} |  |
+| externalResourcesRequired | no {.no} |  |
+| height | yes {.yes} |  |
+| id | yes {.yes} |  |
+| onclick | yes {.yes} |  |
+| onfocusin | yes {.yes} |  |
+| onfocusout | yes {.yes} |  |
+| onload | yes {.yes} |  |
+| onmousedown | yes {.yes} |  |
+| onmousemove | yes {.yes} |  |
+| onmouseout | yes {.yes} |  |
+| onmouseover | yes {.yes} |  |
+| onmouseup | yes {.yes} |  |
+| requiredExtensions | yes {.yes} |  |
+| requiredFeatures | yes {.yes} |  |
+| style | yes {.yes} |  |
+| systemLanguage | yes {.yes} |  |
+| transform | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| xlink:actuate | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:arcrole | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:href | yes {.yes} |  |
+| xlink:role | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:show | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:title | yes {.yes} |  [[1]](#noteXLink)  |
+| xlink:type | yes {.yes} |  [[1]](#noteXLink)  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| Properties {.tableSubSectionHeader} |
+| clip-path | yes {.yes} |  |
+| clip-rule | yes {.yes} |  |
+| color-interpolation | yes {.yes} |  |
+| color-rendering | yes {.yes} |  |
+| cursor | yes {.yes} |  |
+| filter | yes {.yes} |  |
+| mask | yes {.yes} |  |
+| opacity | yes {.yes} |  |
+| pointer-events | yes {.yes} |  |
+| visibility | yes {.yes} |  |
+| svg:view {.tableSectionHeader} | { #svg:view} |  |
+| Attributes {.tableSubSectionHeader} |
+| externalResourcesRequired | no {.no} |  |
+| id | yes {.yes} |  |
+| preserveAspectRatio | yes {.yes} |  |
+| viewBox | yes {.yes} |  |
+| viewTarget | no {.no} | No highlighting is performed. |
+| zoomAndPan | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+| svg:vkern {.tableSectionHeader} | { #svg:vkern} |  |
+| Attributes {.tableSubSectionHeader} |
+| g1 | yes {.yes} |  |
+| g2 | yes {.yes} |  |
+| id | yes {.yes} |  |
+| k | yes {.yes} |  |
+| u1 | yes {.yes} |  |
+| u2 | yes {.yes} |  |
+| xml:base | yes {.yes} |  |
+| xml:lang | yes {.yes} |  |
+| xml:space | yes {.yes} |  |
+
+Notes:
+
+
+1. noteXLink{ #
+Values} for the XLink attributes other than `xlink:href` that are not those required by SVG are ignored. For example, setting `xlink:title="Something"` or `xlink:actuate="other"` has no effect.
+
+
+1. noteGlyphRef{ #
+} `glyphRef` elements can reference glyphs only by URI, not by font properties.
+
+
+## DOM interfaces { #dom}
+
+The table below lists the SVG DOM interfaces that are supported by Batik. For each interface, the name of each IDL attribute and operation introduced on the interface is given, along with its level of support. For cases where the implementation of an attribute or operation introduced in a superinterface may differ depending on which subinterface has inherited it, this is noted next to that attribute or operation. Both the ECMAScript and Java bindings have the same implementation level as specified for the IDL interfaces in the table.
+
+|  |  |  |
+|--|--|--|
+| GetSVGDocument {.tableSectionHeader} | { #GetSVGDocument} |  |
+| Operations {.tableSubSectionHeader} |
+| getSVGDocument | no {.no} | No objects implement this interface. |
+| SVGAElement {.tableSectionHeader} | { #SVGAElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| target | yes {.yes} |  |
+| SVGAltGlyphDefElement {.tableSectionHeader} | { #SVGAltGlyphDefElement} |  |
+| SVGAltGlyphElement {.tableSectionHeader} | { #SVGAltGlyphElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| format | yes {.yes} |  |
+| glyphRef | yes {.yes} |  |
+| SVGAltGlyphItemElement {.tableSectionHeader} | { #SVGAltGlyphItemElement} |  |
+| SVGAngle {.tableSectionHeader} | { #SVGAngle} |  |
+| Attributes {.tableSubSectionHeader} |
+| unitType | yes {.yes} |  |
+| value | yes {.yes} |  |
+| valueAsString | yes {.yes} |  |
+| valueInSpecifiedUnits | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| newValueSpecifiedUnits | yes {.yes} |  |
+| convertToSpecifiedUnits | yes {.yes} |  |
+| SVGAnimateColorElement {.tableSectionHeader} | { #SVGAnimateColorElement} |  |
+| SVGAnimatedAngle {.tableSectionHeader} | { #SVGAnimatedAngle} |  |
+| Attributes {.tableSubSectionHeader} |
+| animVal | yes {.yes} |  |
+| baseVal | yes {.yes} |  |
+| SVGAnimatedBoolean {.tableSectionHeader} | { #SVGAnimatedBoolean} |  |
+| Attributes {.tableSubSectionHeader} |
+| animVal | yes {.yes} |  |
+| baseVal | yes {.yes} |  |
+| SVGAnimatedEnumeration {.tableSectionHeader} | { #SVGAnimatedEnumeration} |  |
+| Attributes {.tableSubSectionHeader} |
+| animVal | yes {.yes} |  |
+| baseVal | yes {.yes} |  |
+| SVGAnimatedInteger {.tableSectionHeader} | { #SVGAnimatedInteger} |  |
+| Attributes {.tableSubSectionHeader} |
+| animVal | yes {.yes} |  |
+| baseVal | yes {.yes} |  |
+| SVGAnimatedLength {.tableSectionHeader} | { #SVGAnimatedLength} |  |
+| Attributes {.tableSubSectionHeader} |
+| animVal | yes {.yes} |  |
+| baseVal | yes {.yes} |  |
+| SVGAnimatedLengthList {.tableSectionHeader} | { #SVGAnimatedLengthList} |  |
+| Attributes {.tableSubSectionHeader} |
+| animVal | yes {.yes} |  |
+| baseVal | yes {.yes} |  |
+| SVGAnimatedNumber {.tableSectionHeader} | { #SVGAnimatedNumber} |  |
+| Attributes {.tableSubSectionHeader} |
+| animVal | yes {.yes} |  |
+| baseVal | yes {.yes} |  |
+| SVGAnimatedNumberList {.tableSectionHeader} | { #SVGAnimatedNumberList} |  |
+| Attributes {.tableSubSectionHeader} |
+| animVal | yes {.yes} |  |
+| baseVal | yes {.yes} |  |
+| SVGAnimatedPathData {.tableSectionHeader} | { #SVGAnimatedPathData} |  |
+| Attributes {.tableSubSectionHeader} |
+| animatedNormalizedPathSegList | no {.no} |  |
+| animatedPathSegList | yes {.yes} |  |
+| normalizedPathSegList | yes {.yes} |  |
+| pathSegList | yes {.yes} |  |
+| SVGAnimatedPoints {.tableSectionHeader} | { #SVGAnimatedPoints} |  |
+| Attributes {.tableSubSectionHeader} |
+| animatedPoints | yes {.yes} |  |
+| points | yes {.yes} |  |
+| SVGAnimatedPreserveAspectRatio {.tableSectionHeader} | { #SVGAnimatedPreserveAspectRatio} |  |
+| Attributes {.tableSubSectionHeader} |
+| animVal | yes {.yes} |  |
+| baseVal | yes {.yes} |  |
+| SVGAnimatedRect {.tableSectionHeader} | { #SVGAnimatedRect} |  |
+| Attributes {.tableSubSectionHeader} |
+| animVal | yes {.yes} |  |
+| baseVal | yes {.yes} |  |
+| SVGAnimatedString {.tableSectionHeader} | { #SVGAnimatedString} |  |
+| Attributes {.tableSubSectionHeader} |
+| animVal | yes {.yes} |  |
+| baseVal | yes {.yes} |  |
+| SVGAnimatedTransformList {.tableSectionHeader} | { #SVGAnimatedTransformList} |  |
+| Attributes {.tableSubSectionHeader} |
+| animVal | yes {.yes} |  |
+| baseVal | yes {.yes} |  |
+| SVGAnimateElement {.tableSectionHeader} | { #SVGAnimateElement} |  |
+| SVGAnimateMotionElement {.tableSectionHeader} | { #SVGAnimateMotionElement} |  |
+| SVGAnimateTransformElement {.tableSectionHeader} | { #SVGAnimateTransformElement} |  |
+| SVGAnimationElement {.tableSectionHeader} | { #SVGAnimationElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| targetElement | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| getStartTime | yes {.yes} |  |
+| getCurrentTime | yes {.yes} |  |
+| getSimpleDuration | yes {.yes} |  |
+| SVGCircleElement {.tableSectionHeader} | { #SVGCircleElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| cx | yes {.yes} |  |
+| cy | yes {.yes} |  |
+| r | yes {.yes} |  |
+| SVGClipPathElement {.tableSectionHeader} | { #SVGClipPathElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| clipPathUnits | yes {.yes} |  |
+| SVGColor {.tableSectionHeader} | { #SVGColor} |  |
+| Attributes {.tableSubSectionHeader} |
+| colorType | yes {.yes} |  |
+| iccColor | yes {.yes} |  |
+| rgbColor | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| setRGBColor | yes {.yes} |  |
+| setRGBColorICCColor | yes {.yes} |  |
+| setColor | yes {.yes} |  |
+| SVGColorProfileElement {.tableSectionHeader} | { #SVGColorProfileElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| local | yes {.yes} |  |
+| name | yes {.yes} |  |
+| renderingIntent | yes {.yes} |  |
+| SVGColorProfileRule {.tableSectionHeader} | { #SVGColorProfileRule} |  |
+| Attributes {.tableSubSectionHeader} |
+| name | no {.no} |  |
+| renderingIntent | no {.no} |  |
+| src | no {.no} |  |
+| SVGComponentTransferFunctionElement {.tableSectionHeader} | { #SVGComponentTransferFunctionElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| amplitude | yes {.yes} |  |
+| exponent | yes {.yes} |  |
+| intercept | yes {.yes} |  |
+| offset | yes {.yes} |  |
+| slope | yes {.yes} |  |
+| tableValues | no {.no} |  |
+| type | yes {.yes} |  |
+| SVGCSSRule {.tableSectionHeader} | { #SVGCSSRule} |  |
+| SVGCursorElement {.tableSectionHeader} | { #SVGCursorElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGDefinitionSrcElement {.tableSectionHeader} | { #SVGDefinitionSrcElement} |  |
+| SVGDefinitionSrcElement {.tableSectionHeader} | { #SVGDefinitionSrcElement} |  |
+| SVGDefsElement {.tableSectionHeader} | { #SVGDefsElement} |  |
+| SVGDescElement {.tableSectionHeader} | { #SVGDescElement} |  |
+| SVGDocument {.tableSectionHeader} | { #SVGDocument} |  |
+| Attributes {.tableSubSectionHeader} |
+| domain | yes {.yes} |  |
+| referrer | yes {.yes} |  |
+| rootElement | yes {.yes} |  |
+| title | yes {.yes} |  |
+| URL | yes {.yes} |  |
+| SVGElement {.tableSectionHeader} | { #SVGElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| id | yes {.yes} |  |
+| ownerSVGElement | yes {.yes} |  |
+| viewportElement | yes {.yes} |  |
+| xmlbase | yes {.yes} |  |
+| SVGElementInstance {.tableSectionHeader} | { #SVGElementInstance} |  |
+| Attributes {.tableSubSectionHeader} |
+| childNodes | no {.no} |  |
+| correspondingElement | no {.no} |  |
+| correspondingUseElement | no {.no} |  |
+| firstChild | no {.no} |  |
+| lastChild | no {.no} |  |
+| nextSibling | no {.no} |  |
+| parentNode | no {.no} |  |
+| previousSibling | no {.no} |  |
+| SVGElementInstanceList {.tableSectionHeader} | { #SVGElementInstanceList} |  |
+| Attributes {.tableSubSectionHeader} |
+| length | no {.no} |  |
+| Operations {.tableSubSectionHeader} |
+| item | no {.no} |  |
+| SVGEllipseElement {.tableSectionHeader} | { #SVGEllipseElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| cx | yes {.yes} |  |
+| cy | yes {.yes} |  |
+| rx | yes {.yes} |  |
+| ry | yes {.yes} |  |
+| SVGEvent {.tableSectionHeader} | { #SVGEvent} |  |
+| SVGExternalResourcesRequired {.tableSectionHeader} | { #SVGExternalResourcesRequired} |  |
+| Attributes {.tableSubSectionHeader} |
+| externalResourcesRequired | yes {.yes} |  |
+| SVGFEBlendElement {.tableSectionHeader} | { #SVGFEBlendElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| in1 | yes {.yes} |  |
+| in2 | yes {.yes} |  |
+| mode | yes {.yes} |  |
+| SVGFEColorMatrixElement {.tableSectionHeader} | { #SVGFEColorMatrixElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| in1 | yes {.yes} |  |
+| type | yes {.yes} |  |
+| values | no {.no} |  |
+| SVGFEComponentTransferElement {.tableSectionHeader} | { #SVGFEComponentTransferElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| in1 | yes {.yes} |  |
+| SVGFECompositeElement {.tableSectionHeader} | { #SVGFECompositeElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| in1 | yes {.yes} |  |
+| in2 | yes {.yes} |  |
+| k1 | yes {.yes} |  |
+| k2 | yes {.yes} |  |
+| k3 | yes {.yes} |  |
+| k4 | yes {.yes} |  |
+| operator | yes {.yes} |  |
+| SVGFEConvolveMatrixElement {.tableSectionHeader} | { #SVGFEConvolveMatrixElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| bias | yes {.yes} |  |
+| divisor | no {.no} |  |
+| edgeMode | yes {.yes} |  |
+| kernelMatrix | no {.no} |  |
+| kernelUnitLengthX | no {.no} |  |
+| kernelUnitLengthY | no {.no} |  |
+| orderX | no {.no} |  |
+| orderY | no {.no} |  |
+| preserveAlpha | yes {.yes} |  |
+| targetX | no {.no} |  |
+| targetY | no {.no} |  |
+| SVGFEDiffuseLightingElement {.tableSectionHeader} | { #SVGFEDiffuseLightingElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| diffuseConstant | yes {.yes} |  |
+| in1 | yes {.yes} |  |
+| kernelUnitLengthX | yes {.yes} |  |
+| kernelUnitLengthY | yes {.yes} |  |
+| surfaceScale | yes {.yes} |  |
+| SVGFEDisplacementMapElement {.tableSectionHeader} | { #SVGFEDisplacementMapElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| in1 | yes {.yes} |  |
+| in2 | yes {.yes} |  |
+| scale | yes {.yes} |  |
+| xChannelSelector | yes {.yes} |  |
+| yChannelSelector | yes {.yes} |  |
+| SVGFEDistantLightElement {.tableSectionHeader} | { #SVGFEDistantLightElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| azimuth | yes {.yes} |  |
+| elevation | yes {.yes} |  |
+| SVGFEFloodElement {.tableSectionHeader} | { #SVGFEFloodElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| in1 | yes {.yes} |  |
+| SVGFEFuncAElement {.tableSectionHeader} | { #SVGFEFuncAElement} |  |
+| SVGFEFuncBElement {.tableSectionHeader} | { #SVGFEFuncBElement} |  |
+| SVGFEFuncGElement {.tableSectionHeader} | { #SVGFEFuncGElement} |  |
+| SVGFEFuncRElement {.tableSectionHeader} | { #SVGFEFuncRElement} |  |
+| SVGFEGaussianBlurElement {.tableSectionHeader} | { #SVGFEGaussianBlurElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| in1 | yes {.yes} |  |
+| stdDeviationX | no {.no} |  |
+| stdDeviationY | no {.no} |  |
+| Operations {.tableSubSectionHeader} |
+| setStdDeviation | yes {.yes} |  |
+| SVGFEImageElement {.tableSectionHeader} | { #SVGFEImageElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| preserveAspectRatio | no {.no} |  |
+| SVGFEMergeElement {.tableSectionHeader} | { #SVGFEMergeElement} |  |
+| SVGFEMergeNodeElement {.tableSectionHeader} | { #SVGFEMergeNodeElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| in1 | yes {.yes} |  |
+| SVGFEMorphologyElement {.tableSectionHeader} | { #SVGFEMorphologyElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| in1 | yes {.yes} |  |
+| operator | yes {.yes} |  |
+| radiusX | no {.no} |  |
+| radiusY | no {.no} |  |
+| SVGFEOffsetElement {.tableSectionHeader} | { #SVGFEOffsetElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| dx | yes {.yes} |  |
+| dy | yes {.yes} |  |
+| in1 | yes {.yes} |  |
+| SVGFEPointLightElement {.tableSectionHeader} | { #SVGFEPointLightElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| z | yes {.yes} |  |
+| SVGFESpecularLightingElement {.tableSectionHeader} | { #SVGFESpecularLightingElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| in1 | yes {.yes} |  |
+| specularConstant | yes {.yes} |  |
+| specularExponent | yes {.yes} |  |
+| surfaceScale | yes {.yes} |  |
+| SVGFESpotLightElement {.tableSectionHeader} | { #SVGFESpotLightElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| limitingConeAngle | yes {.yes} |  |
+| pointsAtX | yes {.yes} |  |
+| pointsAtY | yes {.yes} |  |
+| pointsAtZ | yes {.yes} |  |
+| specularExponent | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| z | yes {.yes} |  |
+| SVGFETileElement {.tableSectionHeader} | { #SVGFETileElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| in1 | yes {.yes} |  |
+| SVGFETurbulenceElement {.tableSectionHeader} | { #SVGFETurbulenceElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| baseFrequencyX | no {.no} |  |
+| baseFrequencyY | no {.no} |  |
+| numOctaves | yes {.yes} |  |
+| seed | yes {.yes} |  |
+| stitchTiles | yes {.yes} |  |
+| type | yes {.yes} |  |
+| SVGFilterElement {.tableSectionHeader} | { #SVGFilterElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| filterResX | no {.no} |  |
+| filterResY | no {.no} |  |
+| filterUnits | yes {.yes} |  |
+| height | yes {.yes} |  |
+| primitiveUnits | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| setFilterRes | no {.no} |  |
+| SVGFilterPrimitiveStandardAttributes {.tableSectionHeader} | { #SVGFilterPrimitiveStandardAttributes} |  |
+| Attributes {.tableSubSectionHeader} |
+| height | yes {.yes} |  |
+| result | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGFitToViewBox {.tableSectionHeader} | { #SVGFitToViewBox} |  |
+| Attributes {.tableSubSectionHeader} |
+| preserveAspectRatio | yes {.yes} |  |
+| viewBox | partial {.partial} | Implemented for `<svg>` elements. |
+| SVGFontElement {.tableSectionHeader} | { #SVGFontElement} |  |
+| SVGFontFaceElement {.tableSectionHeader} | { #SVGFontFaceElement} |  |
+| SVGFontFaceFormatElement {.tableSectionHeader} | { #SVGFontFaceFormatElement} |  |
+| SVGFontFaceNameElement {.tableSectionHeader} | { #SVGFontFaceNameElement} |  |
+| SVGFontFaceSrcElement {.tableSectionHeader} | { #SVGFontFaceSrcElement} |  |
+| SVGFontFaceUriElement {.tableSectionHeader} | { #SVGFontFaceUriElement} |  |
+| SVGForeignObjectElement {.tableSectionHeader} | { #SVGForeignObjectElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| height | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGGElement {.tableSectionHeader} | { #SVGGElement} |  |
+| SVGGlyphElement {.tableSectionHeader} | { #SVGGlyphElement} |  |
+| SVGGlyphRefElement {.tableSectionHeader} | { #SVGGlyphRefElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| dx | yes {.yes} |  |
+| dy | yes {.yes} |  |
+| format | yes {.yes} |  |
+| glyphRef | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGGradientElement {.tableSectionHeader} | { #SVGGradientElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| gradientTransform | yes {.yes} |  |
+| gradientUnits | yes {.yes} |  |
+| spreadMethod | yes {.yes} |  |
+| SVGHKernElement {.tableSectionHeader} | { #SVGHKernElement} |  |
+| SVGICCColor {.tableSectionHeader} | { #SVGICCColor} |  |
+| Attributes {.tableSubSectionHeader} |
+| colorProfile | yes {.yes} |  |
+| colors | yes {.yes} |  |
+| SVGImageElement {.tableSectionHeader} | { #SVGImageElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| height | yes {.yes} |  |
+| preserveAspectRatio | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGLangSpace {.tableSectionHeader} | { #SVGLangSpace} |  |
+| Attributes {.tableSubSectionHeader} |
+| xmllang | yes {.yes} |  |
+| xmlspace | yes {.yes} |  |
+| SVGLength {.tableSectionHeader} | { #SVGLength} |  |
+| Attributes {.tableSubSectionHeader} |
+| unitType | yes {.yes} |  |
+| value | yes {.yes} |  |
+| valueAsString | yes {.yes} |  |
+| valueInSpecifiedUnits | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| newValueSpecifiedUnits | yes {.yes} |  |
+| convertToSpecifiedUnits | yes {.yes} |  |
+| SVGLengthList {.tableSectionHeader} | { #SVGLengthList} |  |
+| Attributes {.tableSubSectionHeader} |
+| numberOfItems | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| clear | yes {.yes} |  |
+| initialize | yes {.yes} |  |
+| getItem | yes {.yes} |  |
+| insertItemBefore | yes {.yes} |  |
+| replaceItem | yes {.yes} |  |
+| removeItem | yes {.yes} |  |
+| appendItem | yes {.yes} |  |
+| SVGLinearGradientElement {.tableSectionHeader} | { #SVGLinearGradientElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| x1 | yes {.yes} |  |
+| x2 | yes {.yes} |  |
+| y1 | yes {.yes} |  |
+| y2 | yes {.yes} |  |
+| SVGLineElement {.tableSectionHeader} | { #SVGLineElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| x1 | yes {.yes} |  |
+| x2 | yes {.yes} |  |
+| y1 | yes {.yes} |  |
+| y2 | yes {.yes} |  |
+| SVGLocatable {.tableSectionHeader} | { #SVGLocatable} |  |
+| Attributes {.tableSubSectionHeader} |
+| farthestViewportElement | yes {.yes} |  |
+| nearestViewportElement | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| getBBox | yes {.yes} |  |
+| getCTM | yes {.yes} |  |
+| getScreenCTM | yes {.yes} |  |
+| getTransformToElement | yes {.yes} |  |
+| SVGMarkerElement {.tableSectionHeader} | { #SVGMarkerElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| markerHeight | yes {.yes} |  |
+| markerUnits | yes {.yes} |  |
+| markerWidth | yes {.yes} |  |
+| orientAngle | yes {.yes} |  |
+| orientType | yes {.yes} |  |
+| refX | yes {.yes} |  |
+| refY | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| setOrientToAuto | yes {.yes} |  |
+| setOrientToAngle | yes {.yes} |  |
+| SVGMaskElement {.tableSectionHeader} | { #SVGMaskElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| height | yes {.yes} |  |
+| maskContentUnits | yes {.yes} |  |
+| maskUnits | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGMatrix {.tableSectionHeader} | { #SVGMatrix} |  |
+| Attributes {.tableSubSectionHeader} |
+| a | yes {.yes} |  |
+| b | yes {.yes} |  |
+| c | yes {.yes} |  |
+| d | yes {.yes} |  |
+| e | yes {.yes} |  |
+| f | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| multiply | yes {.yes} |  |
+| inverse | yes {.yes} |  |
+| translate | yes {.yes} |  |
+| scale | yes {.yes} |  |
+| scaleNonUniform | yes {.yes} |  |
+| rotate | yes {.yes} |  |
+| rotateFromVector | yes {.yes} |  |
+| flipX | yes {.yes} |  |
+| flipY | yes {.yes} |  |
+| skewX | yes {.yes} |  |
+| skewY | yes {.yes} |  |
+| SVGMetadataElement {.tableSectionHeader} | { #SVGMetadataElement} |  |
+| SVGMissingGlyphElement {.tableSectionHeader} | { #SVGMissingGlyphElement} |  |
+| SVGMPathElement {.tableSectionHeader} | { #SVGMPathElement} |  |
+| SVGNumber {.tableSectionHeader} | { #SVGNumber} |  |
+| Attributes {.tableSubSectionHeader} |
+| value | yes {.yes} |  |
+| SVGNumberList {.tableSectionHeader} | { #SVGNumberList} |  |
+| Attributes {.tableSubSectionHeader} |
+| numberOfItems | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| clear | yes {.yes} |  |
+| initialize | yes {.yes} |  |
+| getItem | yes {.yes} |  |
+| insertItemBefore | yes {.yes} |  |
+| replaceItem | yes {.yes} |  |
+| removeItem | yes {.yes} |  |
+| appendItem | yes {.yes} |  |
+| SVGPaint {.tableSectionHeader} | { #SVGPaint} |  |
+| Attributes {.tableSubSectionHeader} |
+| paintType | yes {.yes} |  |
+| uri | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| setUri | yes {.yes} |  |
+| setPaint | yes {.yes} |  |
+| SVGPathElement {.tableSectionHeader} | { #SVGPathElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| pathLength | no {.no} |  |
+| Operations {.tableSubSectionHeader} |
+| getTotalLength | yes {.yes} |  |
+| getPointAtLength | yes {.yes} |  |
+| getPathSegAtLength | yes {.yes} |  |
+| createSVGPathSegClosePath | yes {.yes} |  |
+| createSVGPathSegMovetoAbs | yes {.yes} |  |
+| createSVGPathSegMovetoRel | yes {.yes} |  |
+| createSVGPathSegLinetoAbs | yes {.yes} |  |
+| createSVGPathSegLinetoRel | yes {.yes} |  |
+| createSVGPathSegCurvetoCubicAbs | yes {.yes} |  |
+| createSVGPathSegCurvetoCubicRel | yes {.yes} |  |
+| createSVGPathSegCurvetoQuadraticAbs | yes {.yes} |  |
+| createSVGPathSegCurvetoQuadraticRel | yes {.yes} |  |
+| createSVGPathSegArcAbs | yes {.yes} |  |
+| createSVGPathSegArcRel | yes {.yes} |  |
+| createSVGPathSegLinetoHorizontalAbs | yes {.yes} |  |
+| createSVGPathSegLinetoHorizontalRel | yes {.yes} |  |
+| createSVGPathSegLinetoVerticalAbs | yes {.yes} |  |
+| createSVGPathSegLinetoVerticalRel | yes {.yes} |  |
+| createSVGPathSegCurvetoCubicSmoothAbs | yes {.yes} |  |
+| createSVGPathSegCurvetoCubicSmoothRel | yes {.yes} |  |
+| createSVGPathSegCurvetoQuadraticSmoothAbs | yes {.yes} |  |
+| createSVGPathSegCurvetoQuadraticSmoothRel | yes {.yes} |  |
+| SVGPathSeg {.tableSectionHeader} | { #SVGPathSeg} |  |
+| Attributes {.tableSubSectionHeader} |
+| pathSegType | yes {.yes} |  |
+| pathSegTypeAsLetter | yes {.yes} |  |
+| SVGPathSegArcAbs {.tableSectionHeader} | { #SVGPathSegArcAbs} |  |
+| Attributes {.tableSubSectionHeader} |
+| angle | yes {.yes} |  |
+| largeArcFlag | yes {.yes} |  |
+| r1 | yes {.yes} |  |
+| r2 | yes {.yes} |  |
+| sweepFlag | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGPathSegArcRel {.tableSectionHeader} | { #SVGPathSegArcRel} |  |
+| Attributes {.tableSubSectionHeader} |
+| angle | yes {.yes} |  |
+| largeArcFlag | yes {.yes} |  |
+| r1 | yes {.yes} |  |
+| r2 | yes {.yes} |  |
+| sweepFlag | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGPathSegClosePath {.tableSectionHeader} | { #SVGPathSegClosePath} |  |
+| SVGPathSegCurvetoCubicAbs {.tableSectionHeader} | { #SVGPathSegCurvetoCubicAbs} |  |
+| Attributes {.tableSubSectionHeader} |
+| x | yes {.yes} |  |
+| x1 | yes {.yes} |  |
+| x2 | yes {.yes} |  |
+| y | yes {.yes} |  |
+| y1 | yes {.yes} |  |
+| y2 | yes {.yes} |  |
+| SVGPathSegCurvetoCubicRel {.tableSectionHeader} | { #SVGPathSegCurvetoCubicRel} |  |
+| Attributes {.tableSubSectionHeader} |
+| x | yes {.yes} |  |
+| x1 | yes {.yes} |  |
+| x2 | yes {.yes} |  |
+| y | yes {.yes} |  |
+| y1 | yes {.yes} |  |
+| y2 | yes {.yes} |  |
+| SVGPathSegCurvetoCubicSmoothAbs {.tableSectionHeader} | { #SVGPathSegCurvetoCubicSmoothAbs} |  |
+| Attributes {.tableSubSectionHeader} |
+| x | yes {.yes} |  |
+| x2 | yes {.yes} |  |
+| y | yes {.yes} |  |
+| y2 | yes {.yes} |  |
+| SVGPathSegCurvetoCubicSmoothRel {.tableSectionHeader} | { #SVGPathSegCurvetoCubicSmoothRel} |  |
+| Attributes {.tableSubSectionHeader} |
+| x | yes {.yes} |  |
+| x2 | yes {.yes} |  |
+| y | yes {.yes} |  |
+| y2 | yes {.yes} |  |
+| SVGPathSegCurvetoQuadraticAbs {.tableSectionHeader} | { #SVGPathSegCurvetoQuadraticAbs} |  |
+| Attributes {.tableSubSectionHeader} |
+| x | yes {.yes} |  |
+| x1 | yes {.yes} |  |
+| y | yes {.yes} |  |
+| y1 | yes {.yes} |  |
+| SVGPathSegCurvetoQuadraticRel {.tableSectionHeader} | { #SVGPathSegCurvetoQuadraticRel} |  |
+| Attributes {.tableSubSectionHeader} |
+| x | yes {.yes} |  |
+| x1 | yes {.yes} |  |
+| y | yes {.yes} |  |
+| y1 | yes {.yes} |  |
+| SVGPathSegCurvetoQuadraticSmoothAbs {.tableSectionHeader} | { #SVGPathSegCurvetoQuadraticSmoothAbs} |  |
+| Attributes {.tableSubSectionHeader} |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGPathSegCurvetoQuadraticSmoothRel {.tableSectionHeader} | { #SVGPathSegCurvetoQuadraticSmoothRel} |  |
+| Attributes {.tableSubSectionHeader} |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGPathSegLinetoAbs {.tableSectionHeader} | { #SVGPathSegLinetoAbs} |  |
+| Attributes {.tableSubSectionHeader} |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGPathSegLinetoHorizontalAbs {.tableSectionHeader} | { #SVGPathSegLinetoHorizontalAbs} |  |
+| Attributes {.tableSubSectionHeader} |
+| x | yes {.yes} |  |
+| SVGPathSegLinetoHorizontalRel {.tableSectionHeader} | { #SVGPathSegLinetoHorizontalRel} |  |
+| Attributes {.tableSubSectionHeader} |
+| x | yes {.yes} |  |
+| SVGPathSegLinetoRel {.tableSectionHeader} | { #SVGPathSegLinetoRel} |  |
+| Attributes {.tableSubSectionHeader} |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGPathSegLinetoVerticalAbs {.tableSectionHeader} | { #SVGPathSegLinetoVerticalAbs} |  |
+| Attributes {.tableSubSectionHeader} |
+| y | yes {.yes} |  |
+| SVGPathSegLinetoVerticalRel {.tableSectionHeader} | { #SVGPathSegLinetoVerticalRel} |  |
+| Attributes {.tableSubSectionHeader} |
+| y | yes {.yes} |  |
+| SVGPathSegList {.tableSectionHeader} | { #SVGPathSegList} |  |
+| Attributes {.tableSubSectionHeader} |
+| numberOfItems | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| clear | yes {.yes} |  |
+| initialize | yes {.yes} |  |
+| getItem | yes {.yes} |  |
+| insertItemBefore | yes {.yes} |  |
+| replaceItem | yes {.yes} |  |
+| removeItem | yes {.yes} |  |
+| appendItem | yes {.yes} |  |
+| SVGPathSegMovetoAbs {.tableSectionHeader} | { #SVGPathSegMovetoAbs} |  |
+| Attributes {.tableSubSectionHeader} |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGPathSegMovetoRel {.tableSectionHeader} | { #SVGPathSegMovetoRel} |  |
+| Attributes {.tableSubSectionHeader} |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGPatternElement {.tableSectionHeader} | { #SVGPatternElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| height | yes {.yes} |  |
+| patternContentUnits | yes {.yes} |  |
+| patternTransform | no {.no} |  |
+| patternUnits | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGPoint {.tableSectionHeader} | { #SVGPoint} |  |
+| Attributes {.tableSubSectionHeader} |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| matrixTransform | partial {.partial} | Not implemented for any `SVGPoint` in an `SVGPointList`. |
+| SVGPointList {.tableSectionHeader} | { #SVGPointList} |  |
+| Attributes {.tableSubSectionHeader} |
+| numberOfItems | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| clear | yes {.yes} |  |
+| initialize | yes {.yes} |  |
+| getItem | yes {.yes} |  |
+| insertItemBefore | yes {.yes} |  |
+| replaceItem | yes {.yes} |  |
+| removeItem | yes {.yes} |  |
+| appendItem | yes {.yes} |  |
+| SVGPolygonElement {.tableSectionHeader} | { #SVGPolygonElement} |  |
+| SVGPolylineElement {.tableSectionHeader} | { #SVGPolylineElement} |  |
+| SVGPreserveAspectRatio {.tableSectionHeader} | { #SVGPreserveAspectRatio} |  |
+| Attributes {.tableSubSectionHeader} |
+| align | yes {.yes} |  |
+| meetOrSlice | yes {.yes} |  |
+| SVGRadialGradientElement {.tableSectionHeader} | { #SVGRadialGradientElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| cx | yes {.yes} |  |
+| cy | yes {.yes} |  |
+| fx | yes {.yes} |  |
+| fy | yes {.yes} |  |
+| r | yes {.yes} |  |
+| SVGRect {.tableSectionHeader} | { #SVGRect} |  |
+| Attributes {.tableSubSectionHeader} |
+| height | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGRectElement {.tableSectionHeader} | { #SVGRectElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| height | yes {.yes} |  |
+| rx | yes {.yes} |  |
+| ry | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGRenderingIntent {.tableSectionHeader} | { #SVGRenderingIntent} |  |
+| SVGScriptElement {.tableSectionHeader} | { #SVGScriptElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| type | yes {.yes} |  |
+| SVGSetElement {.tableSectionHeader} | { #SVGSetElement} |  |
+| SVGStopElement {.tableSectionHeader} | { #SVGStopElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| offset | yes {.yes} |  |
+| SVGStringList {.tableSectionHeader} | { #SVGStringList} |  |
+| Attributes {.tableSubSectionHeader} |
+| numberOfItems | no {.no} |  |
+| Operations {.tableSubSectionHeader} |
+| clear | no {.no} |  |
+| initialize | no {.no} |  |
+| getItem | no {.no} |  |
+| insertItemBefore | no {.no} |  |
+| replaceItem | no {.no} |  |
+| removeItem | no {.no} |  |
+| appendItem | no {.no} |  |
+| SVGStylable {.tableSectionHeader} | { #SVGStylable} |  |
+| Attributes {.tableSubSectionHeader} |
+| className | yes {.yes} |  |
+| style | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| getPresentationAttribute | yes {.yes} |  |
+| SVGStyleElement {.tableSectionHeader} | { #SVGStyleElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| media | yes {.yes} |  |
+| title | yes {.yes} |  |
+| type | yes {.yes} |  |
+| xmlspace | yes {.yes} |  |
+| SVGSVGElement {.tableSectionHeader} | { #SVGSVGElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| contentScriptType | yes {.yes} |  |
+| contentStyleType | yes {.yes} |  |
+| currentScale | yes {.yes} |  |
+| currentTranslate | yes {.yes} |  |
+| currentView | no {.no} |  |
+| height | yes {.yes} |  |
+| pixelUnitToMillimeterX | yes {.yes} |  |
+| pixelUnitToMillimeterY | yes {.yes} |  |
+| screenPixelToMillimeterX | yes {.yes} |  |
+| screenPixelToMillimeterY | yes {.yes} |  |
+| useCurrentView | no {.no} |  |
+| viewport | yes {.yes} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| suspendRedraw | yes {.yes} |  |
+| unsuspendRedraw | yes {.yes} |  |
+| unsuspendRedrawAll | yes {.yes} |  |
+| forceRedraw | yes {.yes} |  |
+| pauseAnimations | yes {.yes} |  |
+| unpauseAnimations | yes {.yes} |  |
+| animationsPaused | yes {.yes} |  |
+| getCurrentTime | yes {.yes} |  |
+| setCurrentTime | yes {.yes} |  |
+| getIntersectionList | yes {.yes} |  |
+| getEnclosureList | yes {.yes} |  |
+| checkIntersection | yes {.yes} |  |
+| checkEnclosure | yes {.yes} |  |
+| deselectAll | yes {.yes} |  |
+| createSVGNumber | yes {.yes} |  |
+| createSVGLength | yes {.yes} |  |
+| createSVGAngle | yes {.yes} |  |
+| createSVGPoint | yes {.yes} |  |
+| createSVGMatrix | yes {.yes} |  |
+| createSVGRect | yes {.yes} |  |
+| createSVGTransform | yes {.yes} |  |
+| createSVGTransformFromMatrix | yes {.yes} |  |
+| getElementById | yes {.yes} |  |
+| SVGSwitchElement {.tableSectionHeader} | { #SVGSwitchElement} |  |
+| SVGSymbolElement {.tableSectionHeader} | { #SVGSymbolElement} |  |
+| SVGTests {.tableSectionHeader} | { #SVGTests} |  |
+| Attributes {.tableSubSectionHeader} |
+| requiredExtensions | no {.no} |  |
+| requiredFeatures | no {.no} |  |
+| systemLanguage | no {.no} |  |
+| Operations {.tableSubSectionHeader} |
+| hasExtension | no {.no} |  |
+| SVGTextContentElement {.tableSectionHeader} | { #SVGTextContentElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| lengthAdjust | yes {.yes} |  |
+| textLength | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| getNumberOfChars | yes {.yes} |  |
+| getComputedTextLength | yes {.yes} |  |
+| getSubStringLength | yes {.yes} |  |
+| getStartPositionOfChar | yes {.yes} |  |
+| getEndPositionOfChar | yes {.yes} |  |
+| getExtentOfChar | yes {.yes} |  |
+| getRotationOfChar | yes {.yes} |  |
+| getCharNumAtPosition | yes {.yes} |  |
+| selectSubString | yes {.yes} |  |
+| SVGTextElement {.tableSectionHeader} | { #SVGTextElement} |  |
+| SVGTextPathElement {.tableSectionHeader} | { #SVGTextPathElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| method | yes {.yes} |  |
+| spacing | yes {.yes} |  |
+| startOffset | yes {.yes} |  |
+| SVGTextPositioningElement {.tableSectionHeader} | { #SVGTextPositioningElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| dx | yes {.yes} |  |
+| dy | yes {.yes} |  |
+| rotate | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGTitleElement {.tableSectionHeader} | { #SVGTitleElement} |  |
+| SVGTransform {.tableSectionHeader} | { #SVGTransform} |  |
+| Attributes {.tableSubSectionHeader} |
+| angle | yes {.yes} |  |
+| matrix | yes {.yes} |  |
+| type | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| setMatrix | yes {.yes} |  |
+| setTranslate | yes {.yes} |  |
+| setScale | yes {.yes} |  |
+| setRotate | yes {.yes} |  |
+| setSkewX | yes {.yes} |  |
+| setSkewY | yes {.yes} |  |
+| SVGTransformable {.tableSectionHeader} | { #SVGTransformable} |  |
+| Attributes {.tableSubSectionHeader} |
+| transform | yes {.yes} |  |
+| SVGTransformList {.tableSectionHeader} | { #SVGTransformList} |  |
+| Attributes {.tableSubSectionHeader} |
+| numberOfItems | yes {.yes} |  |
+| Operations {.tableSubSectionHeader} |
+| clear | yes {.yes} |  |
+| initialize | yes {.yes} |  |
+| getItem | yes {.yes} |  |
+| insertItemBefore | yes {.yes} |  |
+| replaceItem | yes {.yes} |  |
+| removeItem | yes {.yes} |  |
+| appendItem | yes {.yes} |  |
+| createSVGTransformFromMatrix | yes {.yes} |  |
+| consolidate | yes {.yes} |  |
+| SVGTRefElement {.tableSectionHeader} | { #SVGTRefElement} |  |
+| SVGTSpanElement {.tableSectionHeader} | { #SVGTSpanElement} |  |
+| SVGUnitTypes {.tableSectionHeader} | { #SVGUnitTypes} |  |
+| SVGURIReference {.tableSectionHeader} | { #SVGURIReference} |  |
+| Attributes {.tableSubSectionHeader} |
+| href | yes {.yes} |  |
+| SVGUseElement {.tableSectionHeader} | { #SVGUseElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| animatedInstanceRoot | no {.no} |  |
+| height | yes {.yes} |  |
+| instanceRoot | no {.no} |  |
+| width | yes {.yes} |  |
+| x | yes {.yes} |  |
+| y | yes {.yes} |  |
+| SVGViewElement {.tableSectionHeader} | { #SVGViewElement} |  |
+| Attributes {.tableSubSectionHeader} |
+| viewTarget | no {.no} |  |
+| SVGViewSpec {.tableSectionHeader} | { #SVGViewSpec} |  |
+| Attributes {.tableSubSectionHeader} |
+| preserveAspectRatioString | no {.no} |  |
+| transform | no {.no} |  |
+| transformString | no {.no} |  |
+| viewBoxString | no {.no} |  |
+| viewTarget | no {.no} |  |
+| viewTargetString | no {.no} |  |
+| SVGVKernElement {.tableSectionHeader} | { #SVGVKernElement} |  |
+| SVGZoomAndPan {.tableSectionHeader} | { #SVGZoomAndPan} |  |
+| Attributes {.tableSubSectionHeader} |
+| zoomAndPan | yes {.yes} |  |
+| SVGZoomEvent {.tableSectionHeader} | { #SVGZoomEvent} |  |
+| Attributes {.tableSubSectionHeader} |
+| newScale | no {.no} |  |
+| newTranslate | no {.no} |  |
+| previousScale | no {.no} |  |
+| previousTranslate | no {.no} |  |
+| zoomRectScreen | no {.no} |  |
+
+## ECMAScript objects { #ecmascript}
+
+In addition to the host objects exposed to ECMAScript that implement the SVG DOM, the following objects are also available.
+<div class="object"><div class="object-header">Global object</div><div class="object-section-header">Properties</div><div class="object-property-header">document</div><div class="object-property-desc">
+The current SVG document.
+</div><div class="object-property-header">event</div><div class="object-property-desc">
+The most recently dispatched event object.
+</div><div class="object-property-header">evt</div><div class="object-property-desc">
+An alias for `event`.
+</div><div class="object-property-header">location</div><div class="object-property-desc">
+Implementation of the [Location](http://www.w3.org/TR/SVGTiny12/svgudom.html#dom__Location) interface. Methods `assign` and `reload` are available.
+This interface is available since version 1.8.</div><div class="object-property-header">window</div><div class="object-property-desc">
+The global object (a self-reference).
+</div><div class="object-section-header">Function properties</div><div class="object-property-header">alert<span class="object-property-func-params">(message)</span></div><div class="object-property-desc">
+Displays an alert dialog with the specified `message`.
+</div><div class="object-property-header">clearInterval<span class="object-property-func-params">(intervalID)</span></div><div class="object-property-desc">
+Cancels an interval that was set by a call to `setInterval`. The `intervalID` must be an object that has been returned by a previous `setInterval` call.
+</div><div class="object-property-header">clearTimeout<span class="object-property-func-params">(timeoutID)</span></div><div class="object-property-desc">
+Cancels a timeout that was set by a call to `setTimeout`. The `timeoutID` must be an object that has been returned by a previous `clearTimeout` call.
+</div><div class="object-property-header">confirm<span class="object-property-func-params">(message)</span></div><div class="object-property-desc">
+Displays a confirmation dialog with the specified `message`. The window has an OK and a Cancel button. The function returns `true` if the user clicks on the OK button, and `false` otherwise.
+</div><div class="object-property-header">getURL<span class="object-property-func-params">(uri, function[, encoding])</span></div><div class="object-property-desc">
+Gets data from the given `uri`. This method returns immediately and the given `function` is called when the data is fully downloaded. The optional `encoding` argument is the encoding to assume the data is in, defaulting to UTF-8. The argument passed to the function is an object with three properties:
+
+
+
+success
+:     `true` if the data is available, `false` otherwise.
+
+contentType
+:    The content type of the data, if it is known by the implementation.
+
+content
+:    A string holding the data.</div><div class="object-property-header">parseXML<span class="object-property-func-params">(text, document)</span></div><div class="object-property-desc">
+Parses and returns a `DocumentFragment` object. `text` is the string that is to be parsed as XML data, and `document` is a `Document` that will be used for creating new DOM objects.
+</div><div class="object-property-header">postURL<span class="object-property-func-params">(uri, content, function[, type, encoding])</span></div><div class="object-property-desc">
+Sends data to the given `uri`. This method returns immediately and the given `function` is called when the data is fully downloaded. The optional `type` argument will specify the `Content-Type` HTTP header to use, defaulting to `text/plain`. The optional `encoding` argument is the encoding to assume the data is in, defaulting to UTF-8. The argument passed to the function is an object with three properties:
+
+
+
+success
+:     `true` if the data is available, `false` otherwise.
+
+contentType
+:    The content type of the data, if it is known by the implementation.
+
+content
+:    A string holding the data.</div><div class="object-property-header">printNode<span class="object-property-func-params">(node)</span></div><div class="object-property-desc">
+Returns a string that is the serialization of the given DOM node.
+</div><div class="object-property-header">prompt<span class="object-property-func-params">(message[, defaultValue])</span></div><div class="object-property-desc">
+Displays an input dialog with the specified `message`. The `defaultValue` parameter specifies the initial contents of the text box in the window. The function returns the string entered by the user, or null if the window was cancelled.
+</div><div class="object-property-header">setInterval<span class="object-property-func-params">(script, interval)</span></div><div class="object-property-desc">
+Evaluates the given `script` repeatedly after the specified amount of time. The value for `script` must be either a string, which is evaluated by `eval` every interval, or an ECMAScript function object, which is called every interval. This method does not stall the script: the evaluation is scheduled and the script continues its execution. The function returns an object that can be passed to the `clearInterval` function.
+</div><div class="object-property-header">setTimeout<span class="object-property-func-params">(script, timeout)</span></div><div class="object-property-desc">
+Evaluates the given `script` after the specified amount of time. The value for `script` must be either a string, which is evaluated by `eval` after the timeout, or an ECMAScript function object, which is called after the timeout. This method does not stall the script: the evaluation is scheduled and the script continues its execution. The function returns an object that can be passed to the `clearInterval` function. The function returns an object that can be passed to the `clearTimeout` function.
+</div></div>
+# SVG 1.1 test suite { #test}
+
+The table below lists the test cases from the December 2006 release of the [SVG 1.1 test suite](http://www.w3.org/Graphics/SVG/Test/) and whether the latest Batik code in the Subversion repository passes each one.
+
+| SVG 1.1 test suite |  |  |
+|--------------------|--|--|
+|  [animate-elem-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-02-t.svg)  | yes {.yes} |  |
+|  [animate-elem-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-03-t.svg)  | yes {.yes} |  |
+|  [animate-elem-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-04-t.svg)  | yes {.yes} |  |
+|  [animate-elem-05-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-05-t.svg)  | yes {.yes} |  |
+|  [animate-elem-06-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-06-t.svg)  | yes {.yes} |  |
+|  [animate-elem-07-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-07-t.svg)  | yes {.yes} |  |
+|  [animate-elem-08-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-08-t.svg)  | yes {.yes} |  |
+|  [animate-elem-09-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-09-t.svg)  | yes {.yes} |  |
+|  [animate-elem-10-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-10-t.svg)  | yes {.yes} |  |
+|  [animate-elem-11-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-11-t.svg)  | yes {.yes} |  |
+|  [animate-elem-12-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-12-t.svg)  | yes {.yes} |  |
+|  [animate-elem-13-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-13-t.svg)  | yes {.yes} |  |
+|  [animate-elem-14-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-14-t.svg)  | yes {.yes} |  |
+|  [animate-elem-15-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-15-t.svg)  | yes {.yes} |  |
+|  [animate-elem-17-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-17-t.svg)  | yes {.yes} |  |
+|  [animate-elem-19-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-19-t.svg)  | yes {.yes} |  |
+|  [animate-elem-20-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-20-t.svg)  | yes {.yes} |  |
+|  [animate-elem-21-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-21-t.svg)  | yes {.yes} |  |
+|  [animate-elem-22-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-22-b.svg)  | yes {.yes} |  |
+|  [animate-elem-23-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-23-t.svg)  | yes {.yes} |  |
+|  [animate-elem-24-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-24-t.svg)  | yes {.yes} |  |
+|  [animate-elem-25-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-25-t.svg)  | yes {.yes} |  |
+|  [animate-elem-26-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-26-t.svg)  | yes {.yes} |  |
+|  [animate-elem-27-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-27-t.svg)  | yes {.yes} |  |
+|  [animate-elem-28-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-28-t.svg)  | yes {.yes} |  |
+|  [animate-elem-29-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-29-b.svg)  | yes {.yes} |  |
+|  [animate-elem-30-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-30-t.svg)  | yes {.yes} |  |
+|  [animate-elem-31-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-31-t.svg)  | yes {.yes} |  |
+|  [animate-elem-32-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-32-t.svg)  | yes {.yes} |  |
+|  [animate-elem-33-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-33-t.svg)  | yes {.yes} |  |
+|  [animate-elem-34-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-34-t.svg)  | yes {.yes} |  |
+|  [animate-elem-36-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-36-t.svg)  | yes {.yes} |  |
+|  [animate-elem-37-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-37-t.svg)  | yes {.yes} |  |
+|  [animate-elem-39-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-39-t.svg)  | yes {.yes} |  |
+|  [animate-elem-40-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-40-t.svg)  | yes {.yes} |  |
+|  [animate-elem-41-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-41-t.svg)  | yes {.yes} |  |
+|  [animate-elem-44-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-44-t.svg)  | yes {.yes} |  |
+|  [animate-elem-46-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-46-t.svg)  | yes {.yes} |  |
+|  [animate-elem-52-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-52-t.svg)  | yes {.yes} |  |
+|  [animate-elem-60-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-60-t.svg)  | yes {.yes} |  |
+|  [animate-elem-61-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-61-t.svg)  | yes {.yes} |  |
+|  [animate-elem-62-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-62-t.svg)  | yes {.yes} |  |
+|  [animate-elem-63-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-63-t.svg)  | yes {.yes} |  |
+|  [animate-elem-64-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-64-t.svg)  | yes {.yes} |  |
+|  [animate-elem-65-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-65-t.svg)  | yes {.yes} |  |
+|  [animate-elem-66-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-66-t.svg)  | yes {.yes} |  |
+|  [animate-elem-67-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-67-t.svg)  | yes {.yes} |  |
+|  [animate-elem-68-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-68-t.svg)  | yes {.yes} |  |
+|  [animate-elem-69-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-69-t.svg)  | yes {.yes} |  |
+|  [animate-elem-70-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-70-t.svg)  | yes {.yes} |  |
+|  [animate-elem-77-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-77-t.svg)  | yes {.yes} |  |
+|  [animate-elem-78-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-78-t.svg)  | yes {.yes} |  |
+|  [animate-elem-80-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-80-t.svg)  | yes {.yes} |  |
+|  [animate-elem-81-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-81-t.svg)  | yes {.yes} |  |
+|  [animate-elem-82-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-82-t.svg)  | yes {.yes} |  |
+|  [animate-elem-83-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-83-t.svg)  | partial {.partial} | Performing interpolating animation of paths between an absolute and a corresponding relative path command (e.g. from `"M0,0 L10,10"` to `"M0,0 l10,20"`) is not supported. |
+|  [animate-elem-84-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-84-t.svg)  | yes {.yes} |  |
+|  [animate-elem-85-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/animate-elem-85-t.svg)  | partial {.partial} | Performing interpolating animation of colors to or from the `currentColor` keyword is not supported. |
+|  [color-prof-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/color-prof-01-f.svg)  | yes {.yes} |  |
+|  [color-prop-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/color-prop-01-b.svg)  | yes {.yes} |  |
+|  [color-prop-02-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/color-prop-02-f.svg)  | yes {.yes} |  |
+|  [color-prop-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/color-prop-03-t.svg)  | yes {.yes} |  |
+|  [coords-coord-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-coord-01-t.svg)  | yes {.yes} |  |
+|  [coords-coord-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-coord-02-t.svg)  | yes {.yes} |  |
+|  [coords-trans-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-trans-01-b.svg)  | yes {.yes} |  |
+|  [coords-trans-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-trans-02-t.svg)  | yes {.yes} |  |
+|  [coords-trans-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-trans-03-t.svg)  | yes {.yes} |  |
+|  [coords-trans-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-trans-04-t.svg)  | yes {.yes} |  |
+|  [coords-trans-05-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-trans-05-t.svg)  | yes {.yes} |  |
+|  [coords-trans-06-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-trans-06-t.svg)  | yes {.yes} |  |
+|  [coords-units-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-units-01-b.svg)  | yes {.yes} |  |
+|  [coords-units-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-units-02-b.svg)  | yes {.yes} |  |
+|  [coords-units-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-units-03-b.svg)  | yes {.yes} |  |
+|  [coords-viewattr-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-viewattr-01-b.svg)  | yes {.yes} |  |
+|  [coords-viewattr-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-viewattr-02-b.svg)  | yes {.yes} |  |
+|  [coords-viewattr-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/coords-viewattr-03-b.svg)  | yes {.yes} |  |
+|  [extend-namespace-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/extend-namespace-01-f.svg)  | yes {.yes} |  |
+|  [filters-blend-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-blend-01-b.svg)  | yes {.yes} |  |
+|  [filters-color-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-color-01-b.svg)  | yes {.yes} |  |
+|  [filters-composite-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-composite-02-b.svg)  | yes {.yes} |  |
+|  [filters-comptran-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-comptran-01-b.svg)  | yes {.yes} |  |
+|  [filters-conv-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-conv-01-f.svg)  | partial {.partial} |  |
+|  [filters-diffuse-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-diffuse-01-f.svg)  | yes {.yes} |  |
+|  [filters-displace-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-displace-01-f.svg)  | yes {.yes} |  |
+|  [filters-example-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-example-01-b.svg)  | yes {.yes} |  |
+|  [filters-felem-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-felem-01-b.svg)  | no {.no} |  |
+|  [filters-gauss-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-gauss-01-b.svg)  | yes {.yes} |  |
+|  [filters-image-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-image-01-b.svg)  | yes {.yes} |  |
+|  [filters-light-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-light-01-f.svg)  | yes {.yes} |  |
+|  [filters-morph-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-morph-01-f.svg)  | yes {.yes} |  |
+|  [filters-offset-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-offset-01-b.svg)  | yes {.yes} |  |
+|  [filters-specular-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-specular-01-f.svg)  | yes {.yes} |  |
+|  [filters-tile-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-tile-01-b.svg)  | yes {.yes} |  |
+|  [filters-turb-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/filters-turb-01-f.svg)  | yes {.yes} |  |
+|  [fonts-desc-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-desc-02-t.svg)  | partial {.partial} | Font glyph selection based on certain properties is not supported. |
+|  [fonts-elem-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-elem-01-t.svg)  | yes {.yes} |  |
+|  [fonts-elem-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-elem-02-t.svg)  | yes {.yes} |  |
+|  [fonts-elem-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-elem-03-b.svg)  | yes {.yes} |  |
+|  [fonts-elem-04-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-elem-04-b.svg)  | yes {.yes} |  |
+|  [fonts-elem-05-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-elem-05-t.svg)  | yes {.yes} |  |
+|  [fonts-elem-06-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-elem-06-t.svg)  | yes {.yes} |  |
+|  [fonts-elem-07-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-elem-07-b.svg)  | yes {.yes} |  |
+|  [fonts-glyph-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-glyph-02-t.svg)  | yes {.yes} |  |
+|  [fonts-glyph-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-glyph-03-t.svg)  | yes {.yes} |  |
+|  [fonts-glyph-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-glyph-04-t.svg)  | yes {.yes} |  |
+|  [fonts-kern-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/fonts-kern-01-t.svg)  | yes {.yes} |  |
+|  [interact-cursor-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/interact-cursor-01-f.svg)  | yes {.yes} |  |
+|  [interact-dom-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/interact-dom-01-b.svg)  | yes {.yes} |  |
+|  [interact-events-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/interact-events-01-b.svg)  | yes {.yes} |  |
+|  [interact-order-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/interact-order-01-b.svg)  | yes {.yes} |  |
+|  [interact-order-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/interact-order-02-b.svg)  | yes {.yes} |  |
+|  [interact-order-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/interact-order-03-b.svg)  | yes {.yes} |  |
+|  [interact-zoom-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/interact-zoom-01-t.svg)  | partial {.partial} | Test is incorrect. |
+|  [linking-a-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/linking-a-01-b.svg)  | yes {.yes} |  |
+|  [linking-a-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/linking-a-02-b.svg)  | yes {.yes} |  |
+|  [linking-a-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/linking-a-03-b.svg)  | yes {.yes} |  |
+|  [linking-a-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/linking-a-04-t.svg)  | yes {.yes} |  |
+|  [linking-a-05-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/linking-a-05-t.svg)  | yes {.yes} |  |
+|  [linking-a-07-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/linking-a-07-t.svg)  | no {.no} | The `target` attribute of the `a` element is ignored. |
+|  [linking-uri-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/linking-uri-01-b.svg)  | yes {.yes} |  |
+|  [linking-uri-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/linking-uri-02-b.svg)  | yes {.yes} |  |
+|  [linking-uri-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/linking-uri-03-t.svg)  | yes {.yes} |  |
+|  [masking-intro-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/masking-intro-01-f.svg)  | yes {.yes} |  |
+|  [masking-mask-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/masking-mask-01-b.svg)  | yes {.yes} |  |
+|  [masking-opacity-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/masking-opacity-01-b.svg)  | yes {.yes} |  |
+|  [masking-path-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/masking-path-01-b.svg)  | yes {.yes} |  |
+|  [masking-path-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/masking-path-02-b.svg)  | yes {.yes} |  |
+|  [masking-path-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/masking-path-03-b.svg)  | yes {.yes} |  |
+|  [masking-path-04-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/masking-path-04-b.svg)  | yes {.yes} |  |
+|  [masking-path-05-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/masking-path-05-f.svg)  | yes {.yes} |  |
+|  [metadata-example-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/metadata-example-01-b.svg)  | yes {.yes} |  |
+|  [painting-fill-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-fill-01-t.svg)  | yes {.yes} |  |
+|  [painting-fill-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-fill-02-t.svg)  | yes {.yes} |  |
+|  [painting-fill-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-fill-03-t.svg)  | yes {.yes} |  |
+|  [painting-fill-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-fill-04-t.svg)  | yes {.yes} |  |
+|  [painting-fill-05-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-fill-05-b.svg)  | yes {.yes} |  |
+|  [painting-marker-01-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-marker-01-f.svg)  | yes {.yes} |  |
+|  [painting-marker-02-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-marker-02-f.svg)  | yes {.yes} |  |
+|  [painting-marker-03-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-marker-03-f.svg)  | yes {.yes} |  |
+|  [painting-render-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-render-01-b.svg)  | yes {.yes} |  |
+|  [painting-stroke-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-stroke-01-t.svg)  | yes {.yes} |  |
+|  [painting-stroke-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-stroke-02-t.svg)  | yes {.yes} |  |
+|  [painting-stroke-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-stroke-03-t.svg)  | yes {.yes} |  |
+|  [painting-stroke-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-stroke-04-t.svg)  | yes {.yes} |  |
+|  [painting-stroke-07-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/painting-stroke-07-t.svg)  | partial {.partial} |  |
+|  [paths-data-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-01-t.svg)  | yes {.yes} |  |
+|  [paths-data-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-02-t.svg)  | yes {.yes} |  |
+|  [paths-data-03-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-03-f.svg)  | yes {.yes} |  |
+|  [paths-data-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-04-t.svg)  | yes {.yes} |  |
+|  [paths-data-05-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-05-t.svg)  | yes {.yes} |  |
+|  [paths-data-06-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-06-t.svg)  | yes {.yes} |  |
+|  [paths-data-07-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-07-t.svg)  | yes {.yes} |  |
+|  [paths-data-08-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-08-t.svg)  | yes {.yes} |  |
+|  [paths-data-09-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-09-t.svg)  | yes {.yes} |  |
+|  [paths-data-10-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-10-t.svg)  | yes {.yes} |  |
+|  [paths-data-12-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-12-t.svg)  | yes {.yes} |  |
+|  [paths-data-13-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-13-t.svg)  | yes {.yes} |  |
+|  [paths-data-14-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-14-t.svg)  | yes {.yes} |  |
+|  [paths-data-15-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/paths-data-15-t.svg)  | yes {.yes} |  |
+|  [pservers-grad-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-01-b.svg)  | yes {.yes} |  |
+|  [pservers-grad-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-02-b.svg)  | yes {.yes} |  |
+|  [pservers-grad-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-03-b.svg)  | yes {.yes} |  |
+|  [pservers-grad-04-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-04-b.svg)  | yes {.yes} |  |
+|  [pservers-grad-05-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-05-b.svg)  | yes {.yes} |  |
+|  [pservers-grad-06-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-06-b.svg)  | yes {.yes} |  |
+|  [pservers-grad-07-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-07-b.svg)  | yes {.yes} |  |
+|  [pservers-grad-08-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-08-b.svg)  | yes {.yes} |  |
+|  [pservers-grad-09-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-09-b.svg)  | yes {.yes} |  |
+|  [pservers-grad-10-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-10-b.svg)  | yes {.yes} |  |
+|  [pservers-grad-11-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-11-b.svg)  | yes {.yes} |  |
+|  [pservers-grad-12-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-12-b.svg)  | yes {.yes} |  |
+|  [pservers-grad-13-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-13-b.svg)  | yes {.yes} |  |
+|  [pservers-grad-14-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-14-b.svg)  | yes {.yes} |  |
+|  [pservers-grad-15-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-15-b.svg)  | yes {.yes} |  |
+|  [pservers-grad-16-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-16-b.svg)  | yes {.yes} |  |
+|  [pservers-grad-17-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-17-b.svg)  | yes {.yes} |  |
+|  [pservers-grad-18-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-18-b.svg)  | yes {.yes} |  |
+|  [pservers-grad-19-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-grad-19-b.svg)  | no {.no} | Animation of gradients do not affect referencing elements. |
+|  [pservers-pattern-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/pservers-pattern-01-b.svg)  | yes {.yes} |  |
+|  [render-elems-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/render-elems-01-t.svg)  | yes {.yes} |  |
+|  [render-elems-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/render-elems-02-t.svg)  | yes {.yes} |  |
+|  [render-elems-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/render-elems-03-t.svg)  | yes {.yes} |  |
+|  [render-elems-06-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/render-elems-06-t.svg)  | yes {.yes} |  |
+|  [render-elems-07-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/render-elems-07-t.svg)  | yes {.yes} |  |
+|  [render-elems-08-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/render-elems-08-t.svg)  | yes {.yes} |  |
+|  [render-groups-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/render-groups-01-b.svg)  | yes {.yes} |  |
+|  [render-groups-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/render-groups-03-t.svg)  | yes {.yes} |  |
+|  [script-handle-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/script-handle-01-b.svg)  | yes {.yes} |  |
+|  [script-handle-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/script-handle-02-b.svg)  | yes {.yes} |  |
+|  [script-handle-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/script-handle-03-b.svg)  | yes {.yes} |  |
+|  [script-handle-04-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/script-handle-04-b.svg)  | yes {.yes} |  |
+|  [shapes-circle-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-circle-01-t.svg)  | yes {.yes} |  |
+|  [shapes-circle-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-circle-02-t.svg)  | yes {.yes} |  |
+|  [shapes-ellipse-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-ellipse-01-t.svg)  | yes {.yes} |  |
+|  [shapes-ellipse-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-ellipse-02-t.svg)  | yes {.yes} |  |
+|  [shapes-intro-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-intro-01-t.svg)  | yes {.yes} |  |
+|  [shapes-line-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-line-01-t.svg)  | yes {.yes} |  |
+|  [shapes-polygon-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-polygon-01-t.svg)  | yes {.yes} |  |
+|  [shapes-polyline-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-polyline-01-t.svg)  | yes {.yes} |  |
+|  [shapes-rect-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-rect-01-t.svg)  | yes {.yes} |  |
+|  [shapes-rect-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/shapes-rect-02-t.svg)  | yes {.yes} |  |
+|  [struct-cond-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-cond-01-t.svg)  | yes {.yes} |  |
+|  [struct-cond-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-cond-02-t.svg)  | yes {.yes} |  |
+|  [struct-cond-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-cond-03-t.svg)  | yes {.yes} |  |
+|  [struct-defs-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-defs-01-t.svg)  | yes {.yes} |  |
+|  [struct-dom-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-dom-01-b.svg)  | yes {.yes} |  |
+|  [struct-dom-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-dom-02-b.svg)  | yes {.yes} |  |
+|  [struct-dom-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-dom-03-b.svg)  | yes {.yes} |  |
+|  [struct-dom-04-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-dom-04-b.svg)  | yes {.yes} |  |
+|  [struct-dom-05-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-dom-05-b.svg)  | yes {.yes} |  |
+|  [struct-dom-06-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-dom-06-b.svg)  | yes {.yes} |  |
+|  [struct-frag-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-frag-01-t.svg)  | yes {.yes} |  |
+|  [struct-frag-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-frag-02-t.svg)  | yes {.yes} |  |
+|  [struct-frag-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-frag-03-t.svg)  | yes {.yes} |  |
+|  [struct-frag-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-frag-04-t.svg)  | yes {.yes} |  |
+|  [struct-frag-05-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-frag-05-t.svg)  | yes {.yes} |  |
+|  [struct-frag-06-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-frag-06-t.svg)  | yes {.yes} |  |
+|  [struct-group-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-group-01-t.svg)  | yes {.yes} |  |
+|  [struct-group-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-group-02-b.svg)  | yes {.yes} |  |
+|  [struct-group-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-group-03-t.svg)  | yes {.yes} |  |
+|  [struct-image-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-01-t.svg)  | yes {.yes} |  |
+|  [struct-image-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-02-b.svg)  | yes {.yes} |  |
+|  [struct-image-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-03-t.svg)  | yes {.yes} |  |
+|  [struct-image-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-04-t.svg)  | yes {.yes} |  |
+|  [struct-image-05-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-05-b.svg)  | yes {.yes} |  |
+|  [struct-image-06-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-06-t.svg)  | yes {.yes} |  |
+|  [struct-image-07-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-07-t.svg)  | yes {.yes} |  |
+|  [struct-image-08-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-08-t.svg)  | yes {.yes} |  |
+|  [struct-image-09-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-09-t.svg)  | yes {.yes} |  |
+|  [struct-image-10-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-image-10-t.svg)  | no {.no} |  |
+|  [struct-symbol-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-symbol-01-b.svg)  | yes {.yes} |  |
+|  [struct-use-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-use-01-t.svg)  | yes {.yes} |  |
+|  [struct-use-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-use-03-t.svg)  | yes {.yes} |  |
+|  [struct-use-05-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/struct-use-05-b.svg)  | yes {.yes} |  |
+|  [styling-css-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-css-01-b.svg)  | yes {.yes} |  |
+|  [styling-css-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-css-02-b.svg)  | yes {.yes} |  |
+|  [styling-css-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-css-03-b.svg)  | yes {.yes} |  |
+|  [styling-css-04-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-css-04-f.svg)  | yes {.yes} |  |
+|  [styling-css-05-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-css-05-b.svg)  | yes {.yes} |  |
+|  [styling-css-06-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-css-06-b.svg)  | no {.no} | The `:hover`, `:link`, `:visited`, `:active` and `:focus` pseudo-classes are not supported in selectors. |
+|  [styling-inherit-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-inherit-01-b.svg)  | yes {.yes} |  |
+|  [styling-pres-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/styling-pres-01-t.svg)  | yes {.yes} |  |
+|  [text-align-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-align-01-b.svg)  | yes {.yes} |  |
+|  [text-align-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-align-02-b.svg)  | yes {.yes} |  |
+|  [text-align-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-align-03-b.svg)  | yes {.yes} |  |
+|  [text-align-04-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-align-04-b.svg)  | yes {.yes} |  |
+|  [text-align-05-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-align-05-b.svg)  | yes {.yes} |  |
+|  [text-align-06-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-align-06-b.svg)  | yes {.yes} |  |
+|  [text-align-08-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-align-08-b.svg)  | no {.no} |  |
+|  [text-altglyph-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-altglyph-01-b.svg)  | yes {.yes} |  |
+|  [text-deco-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-deco-01-b.svg)  | yes {.yes} |  |
+|  [text-fonts-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-fonts-01-t.svg)  | yes {.yes} |  |
+|  [text-fonts-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-fonts-02-t.svg)  | yes {.yes} |  |
+|  [text-fonts-03-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-fonts-03-t.svg)  | yes {.yes} |  |
+|  [text-intro-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-intro-01-t.svg)  | yes {.yes} |  |
+|  [text-intro-02-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-intro-02-b.svg)  | yes {.yes} |  |
+|  [text-intro-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-intro-03-b.svg)  | yes {.yes} |  |
+|  [text-intro-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-intro-04-t.svg)  | yes {.yes} |  |
+|  [text-intro-05-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-intro-05-t.svg)  | yes {.yes} |  |
+|  [text-path-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-path-01-b.svg)  | yes {.yes} |  |
+|  [text-spacing-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-spacing-01-b.svg)  | yes {.yes} |  |
+|  [text-text-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-text-01-b.svg)  | yes {.yes} |  |
+|  [text-text-03-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-text-03-b.svg)  | yes {.yes} |  |
+|  [text-text-04-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-text-04-t.svg)  | yes {.yes} |  |
+|  [text-text-05-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-text-05-t.svg)  | no {.no} |  |
+|  [text-text-06-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-text-06-t.svg)  | yes {.yes} |  |
+|  [text-text-07-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-text-07-t.svg)  | yes {.yes} |  |
+|  [text-text-08-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-text-08-b.svg)  | yes {.yes} |  |
+|  [text-tref-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-tref-01-b.svg)  | yes {.yes} |  |
+|  [text-tselect-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-tselect-01-b.svg)  | yes {.yes} |  |
+|  [text-tselect-02-f](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-tselect-02-f.svg)  | partial {.partial} |  |
+|  [text-tspan-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-tspan-01-b.svg)  | yes {.yes} |  |
+|  [text-ws-01-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-ws-01-t.svg)  | yes {.yes} |  |
+|  [text-ws-02-t](http://www.w3.org/Graphics/SVG/Test/20061213/svg/text-ws-02-t.svg)  | yes {.yes} |  |
+|  [types-basicDOM-01-b](http://www.w3.org/Graphics/SVG/Test/20061213/svg/types-basicDOM-01-b.svg)  | yes {.yes} |  |

@@ -1,0 +1,283 @@
+Title: Apache(tm) FOP: Complex Scripts
+
+#Apache&trade; FOP: Complex Scripts
+
+
+## Overview { #overview}
+
+This page describes the [complex scripts](http://en.wikipedia.org/wiki/Complex_scripts) features of Apache&trade; FOP, which include:
+
+
+- Support for languages written with right-to-left scripts, such as Arabic and Hebrew scripts.
+
+- Support for languages written with South Asian and Southeast Asian scripts, such as Devanagari, Khmer, Tamil, Thai, and others.
+
+- Support for advanced substitution, reordering, and positioning of glyphs according to language and script sensitive rules.
+
+- Support for advanced number to string formatting.
+
+## Disabling complex scripts { #Disabling-complex-scripts}
+
+Complex script features are enabled by default. If some application of FOP does not require this support, then it can be disabled in three ways:
+
+1.  **Command line:**
+
+    The command line option `-nocs` turns off complex script features:
+
+        fop -nocs -fo mydocument.fo -pdf mydocument.pdf
+
+1.  **Embedding:**
+
+        :::java
+        userAgent.setComplexScriptFeaturesEnabled(false);
+
+1.  **Optional setting in fop.xconf file:**
+
+        :::xml
+        <fop version="1.0">
+          <complex-scripts disabled="true"/>
+          ...
+        </fop>`
+
+When complex scripts features are enabled, additional information related to bidirectional level resolution, the association between characters and glyphs, and glyph position adjustments are added to the internal, parsed representation of the XSL-FO tree and its corresponding formatted area tree. This additional information will somewhat increase the memory requirements for processing documents that use these features.
+
+<note>A document author need not make explicit use of any complex scripts feature in order for this additional information to be created. For example, if the author makes use of a font that contains OpenType GSUB and/or GPOS tables, then those tables will be automatically used unless complex scripts features are disabled.</note>
+
+## Changes to your XSL-FO input files { #source}
+
+In most circumstances, XSL-FO content does not need to change in order to make use of complex scripts features; however, in certain contexts, fully automatic processing is not sufficient. In these cases, an author may make use of the following XSL-FO constructs:
+
+
+- The [script](http://www.w3.org/TR/2006/REC-xsl11-20061205/#script) property.
+
+- The [language](http://www.w3.org/TR/2006/REC-xsl11-20061205/#language) property.
+
+- The [writing-mode](http://www.w3.org/TR/2006/REC-xsl11-20061205/#writing-mode) property.
+
+- The number to string conversion properties: [format](http://www.w3.org/TR/2006/REC-xsl11-20061205/#format), [grouping-separator](http://www.w3.org/TR/2006/REC-xsl11-20061205/#grouping-separator), [grouping-size](http://www.w3.org/TR/2006/REC-xsl11-20061205/#grouping-size), [letter-value](http://www.w3.org/TR/2006/REC-xsl11-20061205/#letter-value), and `fox:number-conversion-features`.
+
+- The [fo:bidi-override](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override) element.
+
+- Explicit bidirectional control characters: U+200E LRM, U+200F RLM, U+202A LRE, U+202B RLE, U+202C PDF, U+202D LRO, U+202E RLO.
+
+- Explicit join control characters: U+200C ZWNJ and U+200D ZWJ.
+
+## Authoring Details { #details}
+
+The complex scripts related effects of the above enumerated XSL-FO constructs are more fully described in the following sub-sections.
+
+### Script Property { #script_property}
+
+In order to apply font specific complex script features, it is necessary to know the script that applies to the text undergoing layout processing. This script is determined using the following algorithm:
+
+
+1. If the FO element that governs the text specifies a [http://www.w3.org/TR/2006/REC-xsl11-20061205/#script](http://www.w3.org/TR/2006/REC-xsl11-20061205/#script) property and its value is not the empty string or `"auto"`, then that script is used.
+
+1. Otherwise, the dominant script of the text is determined automatically by finding the script whose constituent characters appear most frequently in the text.
+
+In case the automatic algorithm does not produce the desired results, an author may explicitly specify a `script` property with the desired script. If specified, it must be one of the four-letter script code specified in [ISO 15924 Code List](http://unicode.org/iso15924/iso15924-codes.html) or in the [Extended Script Codes](#extended_script_codes) table. Comparison of script codes is performed in a case-insensitive manner, so it does not matter what case is used when specifying these codes in an XSL-FO document.
+
+#### Standard Script Codes { #standard_script_codes}
+
+The following table enumerates the standard ISO 15924 4-letter codes recognized by FOP.
+
+| Code | Script |
+|------|--------|
+|  `arab`  | Arabic |
+|  `beng`  | Bengali |
+|  `bopo`  | Bopomofo |
+|  `cyrl`  | Cyrillic |
+|  `deva`  | Devanagari |
+|  `ethi`  | Ethiopic |
+|  `geor`  | Georgian |
+|  `grek`  | Greek |
+|  `gujr`  | Gujarati |
+|  `guru`  | Gurmukhi |
+|  `hang`  | Hangul |
+|  `hani`  | Han |
+|  `hebr`  | Hebrew |
+|  `hira`  | Hiragana |
+|  `kana`  | Katakana |
+|  `knda`  | Kannada |
+|  `khmr`  | Khmer |
+|  `laoo`  | Lao |
+|  `latn`  | Latin |
+|  `mlym`  | Malayalam |
+|  `mymr`  | Burmese |
+|  `mong`  | Mongolian |
+|  `orya`  | Oriya |
+|  `sinh`  | Sinhalese |
+|  `taml`  | Tamil |
+|  `telu`  | Telugu |
+|  `thai`  | Thai |
+|  `tibt`  | Tibetan |
+|  `zmth`  | Math |
+|  `zsym`  | Symbol |
+|  `zyyy`  | Undetermined |
+|  `zzzz`  | Uncoded |
+
+#### Extended Script Codes { #extended_script_codes}
+
+The following table enumerates a number of non-standard extended script codes recognized by FOP.
+
+| Code | Script | Comments |
+|------|--------|----------|
+|  `bng2`  | Bengali | OpenType Indic Version 2 (May 2008 and following) behavior. |
+|  `dev2`  | Devanagari | OpenType Indic Version 2 (May 2008 and following) behavior. |
+|  `gur2`  | Gurmukhi | OpenType Indic Version 2 (May 2008 and following) behavior. |
+|  `gjr2`  | Gujarati | OpenType Indic Version 2 (May 2008 and following) behavior. |
+|  `knd2`  | Kannada | OpenType Indic Version 2 (May 2008 and following) behavior. |
+|  `mlm2`  | Malayalam | OpenType Indic Version 2 (May 2008 and following) behavior. |
+|  `ory2`  | Oriya | OpenType Indic Version 2 (May 2008 and following) behavior. |
+|  `tml2`  | Tamil | OpenType Indic Version 2 (May 2008 and following) behavior. |
+|  `tel2`  | Telugu | OpenType Indic Version 2 (May 2008 and following) behavior. |
+
+<warning>Explicit use of one of the above extended script codes is not portable, and should be limited to use with FOP only.</warning>
+
+<note>When performing automatic script determination, FOP selects the OpenType Indic Version 2 script codes by default. If the author requires Version 1 behavior, then an explicit, non-extension script code should be specified in a governing `script` property.</note>
+
+### Language Property { #language_property}
+
+Certain fonts that support complex script features can make use of language information in order for language specific processing rules to be applied. For example, a font designed for the Arabic script may support typographic variations according to whether the written language is Arabic, Farsi (Persian), Sindhi, Urdu, or another language written with the Arabic script. In order to apply these language specific features, the author may explicitly mark the text with a [http://www.w3.org/TR/2006/REC-xsl11-20061205/#language](http://www.w3.org/TR/2006/REC-xsl11-20061205/#language) property.
+
+When specifying the `language` property, the value of the property must be either an [ISO639-2 3-letter code](http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes) or an [ISO639-1 2-letter code](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). Comparison of language codes is performed in a case-insensitive manner, so it does not matter what case is used when specifying these codes in an XSL-FO document.
+
+### Writing Mode Property { #writing_mode_property}
+
+The `writing-mode` property is used to determine the axes and direction of the inline progression direction, the block progression direction, the column progression direction (in tables and flows), the shift direction, region placement, the resolution of writing-mode relative property values (such as start, end, before, after), and the default block (paragraph) bidirectionality level.
+
+The `writing-mode` property is inherited, so it can appear on any XSL-FO element type; however, it applies (semantically) only to the following element types:
+
+
+-  `fo:page-sequence`
+
+-  `fo:simple-page-master`
+
+-  `fo:region-*`
+
+-  `fo:block-container`
+
+-  `fo:inline-container`
+
+-  `fo:table`
+
+If it is not specified on one of these element types, but is specified on an ancestor element, then the value specified on that ancestor element (the inherited value) is used; otherwise, the initial value `lr-tb` is used.
+
+At present, only the following values of the `writing-mode` property are supported:
+
+
+-  `lr-tb`
+
+-  `rl-tb`
+
+-  `lr`
+
+-  `rl`
+
+Writing modes that employ a vertical inline progression direction are not yet supported.
+
+### Bidi Override Element { #bidi_override_element}
+
+The [fo:bidi-override](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override) element may be used to override default bidirectional processing behavior, including default embedding levels and default character directionality. In the absence of either this element or use of explicit [Bidi Control Characters](#bidi_controls), the default behavior prescribed by the [Unicode Bidirectional Algorithm](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override) applies.
+
+### Bidi Control Characters { #bidi_controls}
+
+In addition to the use of the [Bidi Override Element](#bidi_override_element), an author may make use of the following explicit Unicode Bidi Control Characters:
+
+
+- U+200E - LEFT-TO-RIGHT MARK (LRM)
+
+- U+200F - RIGHT-TO-LEFT MARK (RLM)
+
+- U+202A - LEFT-TO-RIGHT EMBEDDING (LRE)
+
+- U+202B - RIGHT-TO-LEFT EMBEDDING (RLE)
+
+- U+202C - POP DIRECTIONAL FORMATTING (PDF)
+
+- U+202D - LEFT-TO-RIGHT OVERRIDE (LRO)
+
+- U+202E - RIGHT-TO-LEFT OVERRIDE (RLO)
+
+If an embedding or override is not terminated (using U+202C PDF) prior to the end of a [delimited text range](http://www.w3.org/TR/2006/REC-xsl11-20061205/#d0e4879), then it is automatically terminated by FOP.
+
+### Join Control Characters { #join_controls}
+
+In order to prevent joining behavior in contexts where joining occurs by default, for example, between U+0628 ARABIC LETTER BEH and U+0646 ARABIC LETTER NOON, an author may used a U+200C ZERO WIDTH NON-JOINER (ZWNJ).
+
+Conversely, in order to force joining behavior in contexts where joining does not occur by default, for example, between U+0628 ARABIC LETTER BEH and U+0020 SPACE, an author may used a U+200D ZERO WIDTH JOINER (ZWJ).
+
+The behavior of ZWNJ and ZWJ is script specific. See [The Unicode Standard, Chapter 8, Middle Eastern Scripts](http://www.unicode.org/versions/Unicode6.1.0/ch08.pdf) for information on the use of these control characters with the Arabic script. See [The Unicode Standard, Chapter 9, South Asian Scripts - I](http://www.unicode.org/versions/Unicode6.1.0/ch09.pdf) for information on the use of these control characters with common Indic scripts.
+
+## Supported Scripts { #supported_scripts}
+
+Support for specific complex scripts is enumerated in the following table. Support for those marked as not being supported is expected to be added in future revisions.
+
+| Script | Support | Tested | Comments |
+|--------|---------|--------|----------|
+|  [Arabic](http://en.wikipedia.org/wiki/Arabic_alphabet)  | full | full |  |
+|  [Bengali](http://en.wikipedia.org/wiki/Bengali_alphabet)  | none | none |  |
+|  [Burmese](http://en.wikipedia.org/wiki/Burmese_alphabet)  | none | none |  |
+|  [Devanagari](http://en.wikipedia.org/wiki/Devanagari_alphabet)  | partial | partial | join controls (ZWJ, ZWNJ) not yet supported |
+|  [Khmer](http://en.wikipedia.org/wiki/Khmer_alphabet)  | none | none |  |
+|  [Gujarati](http://en.wikipedia.org/wiki/Gujarati_alphabet)  | partial | none | pre-alpha |
+|  [Gurmukhi](http://en.wikipedia.org/wiki/Gurmukhī_alphabet)  | partial | none | pre-alpha |
+|  [Hebrew](http://en.wikipedia.org/wiki/Hebrew_alphabet)  | full | partial |  |
+|  [Kannada](http://en.wikipedia.org/wiki/Kannada_alphabet)  | none | none |  |
+|  [Lao](http://en.wikipedia.org/wiki/Lao_alphabet)  | none | none |  |
+|  [Malayalam](http://en.wikipedia.org/wiki/Malayalam_alphabet)  | none | none |  |
+|  [Mongolian](http://en.wikipedia.org/wiki/Mongolian_script)  | none | none |  |
+|  [Oriya](http://en.wikipedia.org/wiki/Oriya_script)  | none | none |  |
+|  [Tamil](http://en.wikipedia.org/wiki/Tamil_alphabet)  | none | none |  |
+|  [Telugu](http://en.wikipedia.org/wiki/Telugu_alphabet)  | none | none |  |
+|  [Tibetan](http://en.wikipedia.org/wiki/Tibetan_alphabet)  | none | none |  |
+|  [Thai](http://en.wikipedia.org/wiki/Thai_alphabet)  | none | none |  |
+
+## Supported Fonts { #supported_fonts}
+
+Support for specific fonts is enumerated in the following sub-sections. If a given font is not listed, then it has not been tested with these complex scripts features.
+
+### Arabic Fonts { #fonts_arabic}
+
+| Font | Version | Glyphs | Comments |
+|------|---------|--------|----------|
+|  [Arial Unicode MS](http://www.microsoft.com/typography/fonts/family.aspx?FID=24)  |  [1.01](http://www.microsoft.com/typography/fonts/font.aspx?FMID=1081)  | 50377 | limited GPOS support |
+|  [Lateef](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=ArabicFonts)  | 1.0 | 1147 | language features for Kurdish (KUR), Sindhi (SND), Urdu (URD) |
+|  [Scheherazade](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=ArabicFonts)  | 1.0 | 1197 | language features for Kurdish (KUR), Sindhi (SND), Urdu (URD) |
+|  [Simplified Arabic](http://www.microsoft.com/typography/fonts/family.aspx?FID=261)  |  [1.01](http://www.microsoft.com/typography/fonts/font.aspx?FMID=867)  |  | contains invalid, out of order coverage table entries |
+|  [Simplified Arabic](http://www.microsoft.com/typography/fonts/font.aspx?FID=261)  |  [5.00](http://www.microsoft.com/typography/fonts/font.aspx?FMID=1645)  | 414 | lacks GPOS support |
+|  [Simplified Arabic](http://www.microsoft.com/typography/fonts/font.aspx?FID=261)  | 5.92 | 473 | includes GPOS for advanced position adjustment |
+|  [Traditional Arabic](http://www.microsoft.com/typography/fonts/family.aspx?FID=264)  |  [1.01](http://www.microsoft.com/typography/fonts/family.aspx?FMID=877)  | 530 | lacks GPOS support |
+|  [Traditional Arabic](http://www.microsoft.com/typography/fonts/font.aspx?FID=264)  |  [5.00](http://www.microsoft.com/typography/fonts/font.aspx?FMID=1658)  | 530 | lacks GPOS support |
+|  [Traditional Arabic](http://www.microsoft.com/typography/fonts/font.aspx?FID=264)  | 5.92 | 589 | includes GPOS for advanced position adjustment |
+
+### Devanagari Fonts { #devanagari_fonts}
+
+| Font | Version | Glyphs | Comments |
+|------|---------|--------|----------|
+|  [Aparajita](http://www.microsoft.com/typography/fonts/family.aspx?FID=370)  |  [1.00](http://www.microsoft.com/typography/fonts/font.aspx?FMID=1700)  | 706 |  |
+|  [Kokila](http://www.microsoft.com/typography/fonts/family.aspx?FID=374)  |  [1.00](http://www.microsoft.com/typography/fonts/font.aspx?FMID=1749)  | 706 |  |
+|  [Mangal](http://www.microsoft.com/typography/fonts/family.aspx?FID=243)  |  [5.01](http://www.microsoft.com/typography/fonts/font.aspx?FMID=1759)  | 885 | designed for use in user interfaces |
+|  [Utsaah](http://www.microsoft.com/typography/fonts/family.aspx?FID=384)  |  [1.00](http://www.microsoft.com/typography/fonts/font.aspx?FMID=1811)  | 706 |  |
+
+## Other Limitations { #limitations}
+
+Complex scripts support in Apache FOP is relatively new, so there are certain limitations. Please help us identify and close any gaps.
+
+
+- Only the PDF output format fully supports complex scripts features at the present time.
+
+- Shaping context does not extend across an element boundary. This limitation prevents the use of `fo:character`, `fo:inline` or `fo:wrapper` in order to colorize individual Arabic letters without affecting shaping behavior across the element boundary.
+
+## Related Links { #links}
+
+In addition to the XSL-FO specification, a number of external resources provide guidance about authoring documents that employ complex scripts and the features described above:
+
+
+-  [The Unicode Standard](http://www.unicode.org/)
+
+-  [Unicode Bidirectional Algorithm](http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override)
+
+-  [OpenType Advanced Typographic Extensions](http://www.microsoft.com/typography/otspec/ttochap1.htm)
+
+-  [Examples of Complex Rendering](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&item_id=CmplxRndExamples)

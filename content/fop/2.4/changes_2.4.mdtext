@@ -1,0 +1,134 @@
+Title: Apache(tm) FOP: History of Changes 2.4
+
+#History of Changes 2.4
+
+## Version 2.4 (5 Nov 2019) { #version_2.4}
+
+See [Change list in Jira](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20resolution%20%3D%20Fixed%20AND%20fixVersion%20%3D%202.3%20ORDER%20BY%20updated%20DESC%2C%20created%20DESC%2C%20priority%20DESC).
+
+ - FOP-1760: Add change bar generation
+
+ - FOP-2514: Empty hyphenation-character leads to "String index out of range: 0"
+
+ - FOP-2624: FO to RTF conversion adds unnecessary \cell after <fo:list-block>...</fo:list-block> when it is nested inside any table cell
+
+ - FOP-2733: Drop dependency on Avalon-Framework
+
+ - FOP-2762: Serialisation issues with accessibility and conserve-memory
+
+ - FOP-2793: Misleading statement in README
+
+ - FOP-2797: Bump version
+
+ - FOP-2798: Margins from blank page incorrectly used in subsequence page
+
+ - FOP-2799: Only reduce penalty if there is a existing break
+
+ - FOP-2800: IF Links point to current page instead of earlier page
+
+ - FOP-2802: Java 10 PDF/SVG to Image box not shown
+
+ - FOP-2805: Bump batik version
+
+ - FOP-2810: Incomplete implementation of the simulate-style flag
+
+ - FOP-2811: PDF larger than 100k pages can have wrong content stream
+
+ - FOP-2812: Update PDFBox to 2.0.11
+
+ - FOP-2815: Avoid calling method not in spring-jcl
+
+ - FOP-2817: AFP should reset color for new segment
+
+ - FOP-2818: PDF color spaces are lost when embedding PDF image
+
+ - FOP-2821: 1 bit image fails when using PreloaderRawPNG
+
+ - FOP-2822: Use correct ipd for table inside float
+
+ - FOP-2823: page-index-relative not added when forwards link used to same location
+
+ - FOP-2827: Add support for Khmer complex script
+
+ - FOP-2836: Update PDFBox to 2.0.13
+
+ - FOP-2847: Support palette-based transparency PNG in PDF
+
+ - FOP-2853: Error for SVG using TTF fallback to AFP
+
+ - FOP-2855: Fix letter spacing of spaces inside white-space=pre text
+
+ - FOP-2856: Support compile on Java 12
+
+ - FOP-2866: Using conserve option causes SerializationException
+
+ - FOP-2867: Hyphenation file is not reloaded after a change
+
+ - FOP-2868: OBJR should be a child of each link
+
+ - FOP-2869: basic-link to embedded file broken with encryption
+
+ - FOP-2871: Render space for accessible pdf
+
+ - FOP-2873: Update to PDFBox 2.0.16
+
+ - FOP-2874: Conserve memory policy fails in multi-threaded environment
+
+ - FOP-2875: add support for non-ascii characters in pdf file attachment names, fix name collisions of attachments
+
+ - FOP-2877: Table row was inside footer
+
+ - FOP-2881: Add option for page segment for GOCA
+
+ - FOP-2882: Allow PDFFormXObject to improve performance
+
+ - FOP-2883: Penalty cause table to flow into footer
+
+ - FOP-2885: Update Xerces to 2.12
+
+ - XGC-112: TIFF resolution wrong on Java 10
+
+ - XGC-116: Don't draw fully transparent alpha on PS
+
+### Contributors to this release { #contributors_trunk}
+
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:
+
+- Adrian Cumiskey
+- Andreas Delmelle
+- Chris Bowditch
+- Clay Leeds
+- Glenn Adams
+- Luis Bernardo
+- Luca Furini
+- Matthias Reischenbacher
+- Mehdi Houshmand
+- Peter Hancock
+- Pascal Sancho
+- Robert Meyer
+- Simon Steiner
+- Vincent Hennebert
+
+This is a list of other contributors:
+
+- Alexey Neyman
+- Alexios Giotis
+- Athanasios Giannimaras
+- Gonzalo Vasquez
+- Jacopo Cappellato
+- Jeremias Maerki
+- Max Gilead
+- Morten Knudsen
+- Seifeddine Dridi
+- Stephen Moore
+- James Burton
+- Eric Lim
+- Chunlin Yao
+- Jerome Robert
+- Simone Rondelli
+- Stanley Santos de Araújo
+- Agneta Walterscheidt
+- Vlad Arkhipov
+- Björn Kautler

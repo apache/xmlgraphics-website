@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<TITLE>
+ExtensibleDOMImplementation.ElementFactory (Apache Batik Javadoc)
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="ExtensibleDOMImplementation.ElementFactory (Apache Batik Javadoc)";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ExtensibleDOMImplementation.ElementFactory.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../index-files/index-1.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../org/apache/batik/dom/ExtensibleDOMImplementation.html" title="class in org.apache.batik.dom"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../org/apache/batik/dom/GenericAttr.html" title="class in org.apache.batik.dom"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../index.html?org/apache/batik/dom/ExtensibleDOMImplementation.ElementFactory.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="ExtensibleDOMImplementation.ElementFactory.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;FIELD&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;FIELD&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<!-- ======== START OF CLASS DATA ======== -->
+<H2>
+<FONT SIZE="-1">
+org.apache.batik.dom</FONT>
+<BR>
+Interface ExtensibleDOMImplementation.ElementFactory</H2>
+<DL>
+<DT><B>All Known Implementing Classes:</B> <DD><A HREF="../../../../org/apache/batik/extension/svg/BatikDomExtension.BatikHistogramNormalizationElementFactory.html" title="class in org.apache.batik.extension.svg">BatikDomExtension.BatikHistogramNormalizationElementFactory</A>, <A HREF="../../../../org/apache/batik/extension/svg/BatikDomExtension.BatikRegularPolygonElementFactory.html" title="class in org.apache.batik.extension.svg">BatikDomExtension.BatikRegularPolygonElementFactory</A>, <A HREF="../../../../org/apache/batik/extension/svg/BatikDomExtension.BatikStarElementFactory.html" title="class in org.apache.batik.extension.svg">BatikDomExtension.BatikStarElementFactory</A>, <A HREF="../../../../org/apache/batik/extension/svg/BatikDomExtension.ColorSwitchElementFactory.html" title="class in org.apache.batik.extension.svg">BatikDomExtension.ColorSwitchElementFactory</A>, <A HREF="../../../../org/apache/batik/extension/svg/BatikDomExtension.FlowDivElementFactory.html" title="class in org.apache.batik.extension.svg">BatikDomExtension.FlowDivElementFactory</A>, <A HREF="../../../../org/apache/batik/extension/svg/BatikDomExtension.FlowLineElementFactory.html" title="class in org.apache.batik.extension.svg">BatikDomExtension.FlowLineElementFactory</A>, <A HREF="../../../../org/apache/batik/extension/svg/BatikDomExtension.FlowParaElementFactory.html" title="class in org.apache.batik.extension.svg">BatikDomExtension.FlowParaElementFactory</A>, <A HREF="../../../../org/apache/batik/extension/svg/BatikDomExtension.FlowRegionBreakElementFactory.html" title="class in org.apache.batik.extension.svg">BatikDomExtension.FlowRegionBreakElementFactory</A>, <A HREF="../../../../org/apache/batik/extension/svg/BatikDomExtension.FlowRegionElementFactory.html" title="class in org.apache.batik.extension.svg">BatikDomExtension.FlowRegionElementFactory</A>, <A HREF="../../../../org/apache/batik/extension/svg/BatikDomExtension.FlowSpanElementFactory.html" title="class in org.apache.batik.extension.svg">BatikDomExtension.FlowSpanElementFactory</A>, <A HREF="../../../../org/apache/batik/extension/svg/BatikDomExtension.FlowTextElementFactory.html" title="class in org.apache.batik.extension.svg">BatikDomExtension.FlowTextElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.FlowDivElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.FlowDivElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.FlowLineElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.FlowLineElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.FlowParaElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.FlowParaElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.FlowRegionBreakElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.FlowRegionBreakElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.FlowRegionElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.FlowRegionElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.FlowRegionExcludeElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.FlowRegionExcludeElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.FlowRootElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.FlowRootElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.FlowSpanElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.FlowSpanElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.HandlerElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.HandlerElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.MultiImageElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.MultiImageElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.SolidColorElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.SolidColorElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.SubImageElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.SubImageElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.SubImageRefElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.SubImageRefElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.XBLContentElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.XBLContentElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.XBLDefinitionElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.XBLDefinitionElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.XBLHandlerGroupElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.XBLHandlerGroupElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.XBLImportElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.XBLImportElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.XBLShadowTreeElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.XBLShadowTreeElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.XBLTemplateElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.XBLTemplateElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVG12DOMImplementation.XBLXBLElementFactory.html" title="class in org.apache.batik.anim.dom">SVG12DOMImplementation.XBLXBLElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.AElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.AElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.AltGlyphDefElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.AltGlyphDefElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.AltGlyphElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.AltGlyphElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.AltGlyphItemElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.AltGlyphItemElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.AnimateColorElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.AnimateColorElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.AnimateElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.AnimateElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.AnimateMotionElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.AnimateMotionElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.AnimateTransformElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.AnimateTransformElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.CircleElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.CircleElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.ClipPathElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.ClipPathElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.ColorProfileElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.ColorProfileElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.CursorElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.CursorElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.DefinitionSrcElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.DefinitionSrcElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.DefsElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.DefsElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.DescElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.DescElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.EllipseElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.EllipseElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeBlendElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeBlendElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeColorMatrixElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeColorMatrixElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeComponentTransferElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeComponentTransferElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeCompositeElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeCompositeElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeConvolveMatrixElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeConvolveMatrixElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeDiffuseLightingElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeDiffuseLightingElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeDisplacementMapElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeDisplacementMapElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeDistantLightElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeDistantLightElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeFloodElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeFloodElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeFuncAElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeFuncAElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeFuncBElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeFuncBElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeFuncGElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeFuncGElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeFuncRElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeFuncRElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeGaussianBlurElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeGaussianBlurElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeImageElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeImageElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeMergeElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeMergeElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeMergeNodeElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeMergeNodeElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeMorphologyElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeMorphologyElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeOffsetElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeOffsetElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FePointLightElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FePointLightElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeSpecularLightingElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeSpecularLightingElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeSpotLightElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeSpotLightElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeTileElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeTileElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FeTurbulenceElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FeTurbulenceElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FilterElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FilterElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FontElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FontElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FontFaceElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FontFaceElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FontFaceFormatElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FontFaceFormatElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FontFaceNameElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FontFaceNameElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FontFaceSrcElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FontFaceSrcElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.FontFaceUriElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.FontFaceUriElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.ForeignObjectElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.ForeignObjectElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.GElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.GElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.GlyphElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.GlyphElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.GlyphRefElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.GlyphRefElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.HkernElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.HkernElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.ImageElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.ImageElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.LinearGradientElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.LinearGradientElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.LineElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.LineElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.MarkerElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.MarkerElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.MaskElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.MaskElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.MetadataElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.MetadataElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.MissingGlyphElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.MissingGlyphElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.MpathElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.MpathElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.PathElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.PathElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.PatternElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.PatternElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.PolygonElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.PolygonElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.PolylineElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.PolylineElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.RadialGradientElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.RadialGradientElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.RectElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.RectElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.ScriptElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.ScriptElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.SetElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.SetElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.StopElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.StopElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.StyleElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.StyleElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.SvgElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.SvgElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.SwitchElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.SwitchElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.SymbolElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.SymbolElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.TextElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.TextElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.TextPathElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.TextPathElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.TitleElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.TitleElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.TrefElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.TrefElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.TspanElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.TspanElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.UseElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.UseElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.ViewElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.ViewElementFactory</A>, <A HREF="../../../../org/apache/batik/anim/dom/SVGDOMImplementation.VkernElementFactory.html" title="class in org.apache.batik.anim.dom">SVGDOMImplementation.VkernElementFactory</A></DD>
+</DL>
+<DL>
+<DT><B>Enclosing class:</B><DD><A HREF="../../../../org/apache/batik/dom/ExtensibleDOMImplementation.html" title="class in org.apache.batik.dom">ExtensibleDOMImplementation</A></DD>
+</DL>
+<HR>
+<DL>
+<DT><PRE>public static interface <B>ExtensibleDOMImplementation.ElementFactory</B></DL>
+</PRE>
+
+<P>
+This interface represents a factory for elements.
+<P>
+
+<P>
+<HR>
+
+<P>
+
+<!-- ========== METHOD SUMMARY =========== -->
+
+<A NAME="method_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/Element.html?is-external=true" title="class or interface in org.w3c.dom">Element</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/batik/dom/ExtensibleDOMImplementation.ElementFactory.html#create(java.lang.String, org.w3c.dom.Document)">create</A></B>(<A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;prefix,
+       <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/Document.html?is-external=true" title="class or interface in org.w3c.dom">Document</A>&nbsp;doc)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates an instance of the associated element type.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<!-- ============ METHOD DETAIL ========== -->
+
+<A NAME="method_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Method Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="create(java.lang.String, org.w3c.dom.Document)"><!-- --></A><H3>
+create</H3>
+<PRE>
+<A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/Element.html?is-external=true" title="class or interface in org.w3c.dom">Element</A> <B>create</B>(<A HREF="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;prefix,
+               <A HREF="http://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/Document.html?is-external=true" title="class or interface in org.w3c.dom">Document</A>&nbsp;doc)</PRE>
+<DL>
+<DD>Creates an instance of the associated element type.
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<!-- ========= END OF CLASS DATA ========= -->
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ExtensibleDOMImplementation.ElementFactory.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../index-files/index-1.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../org/apache/batik/dom/ExtensibleDOMImplementation.html" title="class in org.apache.batik.dom"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../org/apache/batik/dom/GenericAttr.html" title="class in org.apache.batik.dom"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../index.html?org/apache/batik/dom/ExtensibleDOMImplementation.ElementFactory.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="ExtensibleDOMImplementation.ElementFactory.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;FIELD&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;FIELD&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright © 2017 <a href='http://www.apache.org/'>Apache Software Foundation</a>. All Rights Reserved.
+</BODY>
+</HTML>

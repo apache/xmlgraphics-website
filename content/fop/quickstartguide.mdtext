@@ -1,0 +1,99 @@
+Title: Apache(tm) FOP: Quick Start Guide
+
+[currentFop_compile]: 2.7/compiling.html
+[currentFop_config]: 2.7/configuration.html
+[currentFop_running]: 2.7/running.html
+[currentFop_embedding]: 2.7/embedding.html
+[currentFop_servlets]: 2.7/servlets.html
+[currentFop_anttask]: 2.7/anttask.html
+[currentFop_index]: 2.7/index.html
+
+#Apache&trade; FOP: Quick Start Guide
+<subtitle>Everything you need to start using and appreciating Apache&trade; FOP quickly.</subtitle>
+
+## Apache&trade; FOP Essentials { #essentials}
+
+The goal of this **Quick Start Guide** is to help novice users get Apache FOP up and running quickly. Typically, you'll need to:
+
+
+1.  [Download FOP](download.html)
+
+1.  [Build FOP][currentFop_compile] (you can skip this step if you download the binary distribution!)
+
+1.  [Configure FOP][currentFop_config]
+
+1.  [Run FOP][currentFop_running]
+
+Here are some links to help you find out what FOP can do, as well as how and where to get help:
+
+
+-  [Calling FOP from a Java Application][currentFop_embedding]
+
+-  [Using FOP in Servlets][currentFop_servlets]
+
+-  [Using FOP in an 'Ant' Build Script][currentFop_anttask]
+
+-  [XSL-FO Compliance](compliance.html) (what FOP supports and what it doesn't)
+
+-  [FAQs](faq.html)
+
+-  [Getting Help](gethelp.html)
+
+-  [Mailing Lists](maillist.html)
+
+Once you've familiarized yourself with the basics, you can get more detailed information, in the detailed FOP [product documentation][currentFop_index].
+
+## Hello World with FOP { #hello-world}
+
+This section walks you through a "Hello World!" page with Apache FOP. We're assuming you download the binary distribution and that you have a Java Runtime Environment (version {{ fop_minimal_java_requirement }} or later) installed.
+
+
+1. Unpack the downloaded binary distribution to a directory of your choice (for example, `C:\FOP` if you're on Windows). Let's call that directory <fop-home>.
+
+1. Get a command prompt in the `<fop-home>` directory and write:
+
+Windows: `fop -fo examples/fo/basic/readme.fo -awt`
+
+Unix: `./fop -fo examples/fo/basic/readme.fo -awt`
+
+1. If all went well, this should open a window showing you a "readme"-style document. This is just to verify that FOP runs correctly.
+
+1. Now, take your favorite XML editor and create a small XML file like the following. Replace "Frank" with your own first name to make it a bit more personal and save it as `name.xml`:
+
+        :::xml
+        <name>Frank</name>
+
+1. To produce a PDF file from this XML file, we need an XSLT stylesheet that converts the XML to XSL-FO. This is the first step in the processing chain. The second step will be done by FOP when it reads the generated XSL-FO document and formats it to a PDF document. You can copy the following minimal XSLT stylesheet, which takes your first name and produces a "Hello World!"-style document (save it as `name2fo.xsl`):
+
+        :::xml
+        <?xml version="1.0" encoding="utf-8"?>
+        <xsl:stylesheet version="1.0"
+              xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+              xmlns:fo="http://www.w3.org/1999/XSL/Format">
+          <xsl:output method="xml" indent="yes"/>
+          <xsl:template match="/">
+            <fo:root>
+              <fo:layout-master-set>
+                <fo:simple-page-master master-name="A4-portrait"
+                      page-height="29.7cm" page-width="21.0cm" margin="2cm">
+                  <fo:region-body/>
+                </fo:simple-page-master>
+              </fo:layout-master-set>
+              <fo:page-sequence master-reference="A4-portrait">
+                <fo:flow flow-name="xsl-region-body">
+                  <fo:block>
+                    Hello, <xsl:value-of select="name"/>!
+                  </fo:block>
+                </fo:flow>
+              </fo:page-sequence>
+            </fo:root>
+          </xsl:template>
+        </xsl:stylesheet>
+
+1. Finally, let's put the previous two steps together: Go back to the command prompt and enter the following command:
+
+Windows: `fop -xml name.xml -xsl name2fo.xsl -pdf name.pdf`
+
+Unix: `./fop -xml name.xml -xsl name2fo.xsl -pdf name.pdf`
+
+1. You've produced your first PDF with Apache FOP! Please open `name.pdf` in your favorite PDF viewer.

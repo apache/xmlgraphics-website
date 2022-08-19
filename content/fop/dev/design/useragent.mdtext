@@ -1,0 +1,102 @@
+Title: Apache(tm) FOP Design: User Agent
+
+#Apache&trade; FOP Design: User Agent
+<authors><person email="keiron@aftexsw.com" name="Keiron Liddle"></person></authors>
+
+## Introduction { #intro}
+
+Technically the user agent is Apache&trade; FOP in the role of determining the output format and when resolving various attributes. The user agent is represented by a class that is available to others to specify how FOP should behave.
+
+The user agent is used by the formatting process to determine certain user definable values.
+
+It will enable the customisation of values for generating and rendering the document.
+
+The user agent must be available to the layout processor and the renderer. Users can supply their own user agent or use the default one for a particular renderer.
+
+The user agent needs to be made available to the property resolution layout process and the renderer.
+
+Standard Features:
+
+
+- error handling, what to do if fo markup is invalid
+
+- auto overflow value and handling error-if-overflow
+
+- adjusting length values (eg. for borders) to renderable values
+
+- available fonts
+
+- converting cm/in to pt (dpi)
+
+- active state for multi properties
+
+- title, used to identify a set of pages (in a page sequence)
+
+- the width (in inline-progression-dimension) of a character with treat-word-as-space true
+
+- maximum space used by conditional areas from region-reference-area
+
+- if there should be "hot links" to before floats or footnotes
+
+- when to clear side floats if space in inline-progression-dimension is not enough
+
+- placement of left over footnotes on a page with a region-body
+
+- using color property as border colour
+
+- interpretting all border styles (except outset) as solid
+
+- thin, medium and thick values for border width
+
+- initial font-family value
+
+- absolute font sizes (eg, xx-small, x-small etc.)
+
+- relative font sizes (eg. larger, smaller)
+
+- small caps simulation
+
+- font weight mapping
+
+- baseline info for a font if not available
+
+- determining sub/superscript when another baseline is dominant
+
+- scaling method for external-graphic and instream-foreign-object
+
+- the width of a replaced element
+
+- "normal" line height value
+
+- text alignment (stretching the line with letter and word spacing)
+
+- text transform
+
+- initial color
+
+- rendering intent of auto
+
+- dot character for leader
+
+- line breaking with leaders, use optimum length when breaking the line
+
+- page height/width of auto
+
+- left and right caption widths
+
+- glyph orientation vertical of auto
+
+- rendering processor of content-type (mime type)
+
+Interactive Features:
+
+
+- inline and block scroll amount
+
+- dynamic effects, links and property sets
+
+- initial "pause-after", "pause-before" and "voice-family" value
+
+- treating fixed as scroll on background attachement
+
+- media usage of auto

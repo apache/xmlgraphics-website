@@ -1,0 +1,39 @@
+Title: Apache(tm) FOP Status
+
+#Apache&trade; FOP Status
+<subtitle>Current Status of Apache&trade; FOP</subtitle>
+
+## Status { #Status}
+
+Apache&trade; FOP version {{ fop_current_version }} was released on {{ fop_current_version_release_date }}.
+
+## Development Status { #Development-Status}
+
+The FOP code base is gradually evolving, from Version 0.90 released on 22 November 2005, to Version {{ fop_current_version }}, released on {{ fop_current_version_release_date }}. Further releases in the 2.x series and beyond are expected.
+
+FOP releases before version 0.90 were based on a different code base. The last release in that series was version 0.20.5, released on 18 July 2003. This series is no longer maintained.
+
+If you're looking for a long-term road-map we have to disappoint you. This is Open Source and we're mostly volunteers working in their free time. What we have is an idea where we want to go. How fast we get there depends on the available time, on how well our ideas work out while developing and on you! There's a [document in the Wiki](https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/RoadMap) where ideas for new developments may be registered and documented.
+
+### Status of the individual components { #component-status}
+
+Not all the components of FOP currently have the same quality. The following table tries to give you an overview:
+
+| Component | Status |
+|-----------|--------|
+| API | stable |
+| FO Tree | stable |
+| Layout Engine | stable |
+| Area Tree | stable |
+| Intermediate Format Support | stable (could use a speed upgrade) |
+| PDF (Library and Renderer) | stable (SVG: stable) |
+| PostScript | stable (SVG: stable with restrictions) |
+| Java2D, AWT, Bitmap Renderers | stable |
+| Text Renderer | stable |
+| RTF Handler | restricted functionality compared to PDF/PS |
+| PCL Renderer | stable (not much feedback) |
+| AFP Renderer | stable (not much feedback) |
+| SVG Renderer | non-functional in sandbox, help needed |
+| Font Support | stable |
+| Image Support | stable |
+| Hyphenation Subsystem | stable |
