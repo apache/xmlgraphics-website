@@ -728,7 +728,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </ul>
 <h2 id="fop-xconf">Usage (fop.xconf)</h2>
 <p>Add section to pdf renderer with pdfa mode and pdf version.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;accessibility&gt;</span>true<span class="nt">&lt;/accessibility&gt;</span>
   <span class="nt">&lt;renderers&gt;</span>
     <span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
@@ -737,17 +737,19 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="nt">&lt;/renderer&gt;</span>
   <span class="nt">&lt;/renderers&gt;</span>
 <span class="nt">&lt;/fop&gt;</span>
-</code></pre></div>
+</pre></div>
+
 
 <h2 id="command-line">Usage (command line)</h2>
 <p>To activate PDF/A-1b from the command-line, specify "-pdfprofile PDF/A-1b" as a parameter. If there is a violation of one of the validation rules for PDF/A, an error message is presented and the processing stops.</p>
 <p>PDF/A-1a is enabled by specifying "-pdfprofile PDF/A-1a".</p>
 <h2 id="embedded">Usage (embedded)</h2>
 <p>When FOP is embedded in another Java application you can set a special option on the renderer options in the user agent to activate the PDF/A-1b profile. Here's an example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">getRendererOptions</span><span class="p">().</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;pdf-a-mode&quot;</span><span class="p">,</span> <span class="s">&quot;PDF/A-1b&quot;</span><span class="p">);</span>
-<span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">,</span> <span class="n">userAgent</span><span class="p">);</span>
-<span class="o">[</span><span class="p">..</span><span class="o">]</span>
-</code></pre></div>
+<div class="highlight"><pre><span></span><span class="n">userAgent</span><span class="o">.</span><span class="na">getRendererOptions</span><span class="o">().</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;pdf-a-mode&quot;</span><span class="o">,</span> <span class="s">&quot;PDF/A-1b&quot;</span><span class="o">);</span>
+<span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="o">.</span><span class="na">newFop</span><span class="o">(</span><span class="n">MimeConstants</span><span class="o">.</span><span class="na">MIME_PDF</span><span class="o">,</span> <span class="n">userAgent</span><span class="o">);</span>
+<span class="o">[..]</span>
+</pre></div>
+
 
 <p>If one of the validation rules of PDF/A is violated, an PDFConformanceException (descendant of RuntimeException) is thrown.</p>
 <p>For PDF/A-1a, just use the string "PDF/A-1a" instead of "PDF/A-1b".</p>
@@ -755,7 +757,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>There are a number of things that must be looked after if you activate a PDF/A profile. If you receive a PDFConformanceException, have a look at the following list (not necessarily comprehensive):</p>
 <ul>
 <li>
-<p>Make sure all (!) fonts are embedded. If you use base 14 fonts (like Helvetica) you need to obtain a license for them and embed them like any other font.</p>
+<p>All fonts are required to be embedded. You should set the font-family attribute on the fo:root element, so all text is by default mapped to a font defined in your fop.xconf.</p>
 </li>
 <li>
 <p>Don't use PDF encryption. PDF/A doesn't allow it.</p>
@@ -787,7 +789,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>If you get an error validating a PDF/A file in Adobe Acrobat 7.x it doesn't mean that FOP did something wrong. It's Acrobat that is at fault. This is fixed in Adobe Acrobat 8.x which uses the correct namespace as described in the technical corrigendum 1.</p>
 <h2>Metadata example</h2>
 <p>See <a href="metadata.html">this page</a> for more info</p>
-<div class="highlight"><pre><span></span><code>[..]
+<div class="highlight"><pre><span></span>[..]
 <span class="nt">&lt;/fo:layout-master-set&gt;</span>
 <span class="nt">&lt;fo:declarations&gt;</span>
   <span class="nt">&lt;x:xmpmeta</span> <span class="na">xmlns:x=</span><span class="s">&quot;adobe:ns:meta/&quot;</span><span class="nt">&gt;</span>
@@ -800,7 +802,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <span class="nt">&lt;/rdf:RDF&gt;</span>
   <span class="nt">&lt;/x:xmpmeta&gt;</span>
 <span class="nt">&lt;/fo:declarations&gt;</span>
-</code></pre></div>
+</pre></div>
         </div>
       </div>
       <div class="clear"></div>
