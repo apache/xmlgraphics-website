@@ -77,7 +77,7 @@ For PDF/A-1a, just use the string "PDF/A-1a" instead of "PDF/A-1b".
 
 There are a number of things that must be looked after if you activate a PDF/A profile. If you receive a PDFConformanceException, have a look at the following list (not necessarily comprehensive):
 
-- Make sure all (!) fonts are embedded. If you use base 14 fonts (like Helvetica) you need to obtain a license for them and embed them like any other font.
+- All fonts are required to be embedded. You should set the font-family attribute on the fo:root element, so all text is by default mapped to a font defined in your fop.xconf.
 
 - Don't use PDF encryption. PDF/A doesn't allow it.
 
