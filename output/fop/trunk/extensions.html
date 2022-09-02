@@ -823,6 +823,10 @@ The redesigned code makes use of the <a href="http://www.w3.org/TR/xsl11/#fo_ret
 <p><code>rgb-icc(153, 153, 102, #CMYK, 0, 0, 0.2, 0.4)</code></p>
 </li>
 </ul>
+<h4>Transparency</h4>
+<p>You can set a RGB color with transparency #00ffff80, where last two hex digits are transparency value 0 to 255</p>
+<p>Or you can set via, with 4th argument the transparency: fox-rgb-icc(0, 0, 0, 128, #CMYK, 0, 0, 1, 0)
+This method should be used for AFP output</p>
 <h3 id="rounded-corners">Rounded Corners</h3>
 <p>Rounded corners on block areas can be specified with the <code>fox:border-*-*-radius</code> properties. Each corner can be specified with two radii that define a quarter ellipse that defines the shape of the corner of the outer border edge (in accordance with the <a href="http://www.w3.org/TR/css3-background/#the-border-radius">W3 CSS3 Recommendation</a>).
 The property <code>fox:border-BP-IP-radius</code> specifies the radius of the corner connecting border segment <em>BP</em> is one of '<em>before|after</em>' and <em>IP</em> is one of 'start|end<em>', and takes one or two values.  A single value will generate circular corners.  Two values define elliptic corners where the first value defines the radius in the </em>Inline Progression Direction<em>, and the second the radius in the </em>Block Progression Direction*.</p>
