@@ -50,7 +50,7 @@ INDEX_SAVE_AS = 'articlesignore.html'
 READERS = {'html': None}
 
 fop_current_version = '2.7'
-batik_current_version = '1.14'
+batik_current_version = '1.15'
 fop_minimal_java_requirement = '1.7'
 fop_current_version_release_date = '20 Jan 2022'
 
