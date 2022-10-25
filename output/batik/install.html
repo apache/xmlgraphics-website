@@ -216,13 +216,13 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h2 id="verify">Verify releases</h2>
 <p>It is essential that you verify the integrity of the downloaded files using the PGP or SHA512 signatures.</p>
 <p>The PGP signatures can be verified using PGP or GPG. First download the <a href="https://www.apache.org/dist/xmlgraphics/batik/KEYS">KEYS</a> as well as the <code>asc</code> signature file for the particular distribution you choose. Make sure you get these files from the <a href="https://www.apache.org/dist/xmlgraphics/batik/">main distribution directory</a>, rather than from a mirror. Then verify the signatures using:</p>
-<p><code>pgpk -a KEYS pgpv batik-[bin|src]-1.15.zip.asc</code></p>
+<p><code>pgpk -a KEYS pgpv batik-[bin|src]-1.16.zip.asc</code></p>
 <p><em>or</em></p>
-<p><code>pgp -ka KEYS pgp batik-[bin|src]-1.15.zip.asc</code></p>
+<p><code>pgp -ka KEYS pgp batik-[bin|src]-1.16.zip.asc</code></p>
 <p><em>or</em></p>
-<p><code>gpg --import KEYS pgp batik-[bin|src]-1.15.zip.asc</code></p>
+<p><code>gpg --import KEYS pgp batik-[bin|src]-1.16.zip.asc</code></p>
 <p><em>or</em></p>
-<p><code>gpg --import KEYS gpg --verify batik-[bin|src]-1.15.zip.asc</code></p>
+<p><code>gpg --import KEYS gpg --verify batik-[bin|src]-1.16.zip.asc</code></p>
 <p>Alternatively, you can verify the SHA512 signature on the files. For steps see <a href="https://www.apache.org/info/verification.html">here</a>.</p>
 <p>We recommend using PGP signatures as they can provide a much higher level of assurance compared with SHA512.</p>
         </div>
