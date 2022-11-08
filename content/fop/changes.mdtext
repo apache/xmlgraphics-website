@@ -9,6 +9,140 @@ Title: History of Changes
 
 Until FOP 1.1, Changes are sorted by "type" and then chronologically with the most recent at the top. These symbols denote the various action types:![add](/images/add.jpg)=add,![fix](/images/fix.jpg)=fix,![remove](/images/remove.jpg)=remove,![update](/images/update.jpg)=update
 
+Title: Apache(tm) FOP: History of Changes 2.8
+
+#History of Changes 2.8
+
+## Version 2.8 (9 Nov 2022) { #version_2.8}
+
+See [Change list in Jira](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20resolution%20%3D%20Fixed%20AND%20fixVersion%20%3D%202.3%20ORDER%20BY%20updated%20DESC%2C%20created%20DESC%2C%20priority%20DESC).
+
+ - FOP-2839: Links to pdf files with no scheme should open in pdf viewer
+ 
+ - FOP-2860: Add light weight line breaking option
+ 
+ - FOP-2861: Allow resource loading from jar
+ 
+ - FOP-2865: Stroke-opacity is not honored on svg:text while conveting svg to pdf
+ 
+ - FOP-2897: Skip OOM during font OS scanning
+ 
+ - FOP-2910: Remove cidset for PDF/A-2
+ 
+ - FOP-2969: Reorder glyphs with no width
+ 
+ - FOP-2977: Array index out of bounds with glyph position adjustments and surrogate pairs
+ 
+ - FOP-3015: Set text color for simulate-style
+ 
+ - FOP-3023: Simulated bold error in Adobe Reader
+ 
+ - FOP-3048: Resolve links across IF files
+ 
+ - FOP-3049: Align AFP SVG text in the middle
+ 
+ - FOP-3051: Upgrade to Commons IO 2.11
+ 
+ - FOP-3053: Remove Xerces
+ 
+ - FOP-3055: Use a event for a draw image error
+ 
+ - FOP-3057: Allow fallback to non svg glyphs
+ 
+ - FOP-3061: AFP invoke-medium-map missing when using page-group=false
+ 
+ - FOP-3062: AssertionError with SFArabic.ttf
+ 
+ - FOP-3067: README file still refers to bugzilla
+ 
+ - FOP-3068: NPE when reading a invalid TTC file
+ 
+ - FOP-3070: Batik is setting load-external-dtd to false so this example doesnt work
+ 
+ - FOP-3071: Write mediummap before pagegroup
+ 
+ - FOP-3072: Empty link url gives NPE
+ 
+ - FOP-3074: Reorder glyphs based on gpa value
+ 
+ - FOP-3077: Use all rulesets for glyph substitution
+ 
+ - FOP-3078: Fix position of macron glyph
+ 
+ - FOP-3080: Allow removing empty table elements from structure tree
+ 
+ - FOP-3081: Fix change ipd for linefeed-treatment=preserve
+ 
+ - FOP-3082: NPE when using a link in a span with accessibility
+ 
+ - FOP-3085: Remove Xalan
+ 
+ - FOP-3091: Add transparency color support
+ 
+ - FOP-3092: PDF/UA NPE when using external pdf
+ 
+ - FOP-3093: Stop reading ttf if we hit last offset
+ 
+ - FOP-3094: Allow bookmarks before declarations
+ 
+ - FOP-3101: Don't break with hangul syllables
+ 
+ - FOP-3102: Move composite glyphs to the end
+ 
+ - FOP-3103: NPE when using a footnote on redo of layout
+  
+ - FOP-3105: Infinite loop when using page break with changing ipd
+ 
+ - XGC-130: Allow subproperties in XMP
+ 
+ - XGC-132: Fallback to raw png if ImageIO cannot read image 
+
+### Contributors to this release { #contributors_trunk}
+
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:
+
+- Adrian Cumiskey
+- Andreas Delmelle
+- Chris Bowditch
+- Clay Leeds
+- Glenn Adams
+- Luis Bernardo
+- Luca Furini
+- Matthias Reischenbacher
+- Mehdi Houshmand
+- Peter Hancock
+- Pascal Sancho
+- Robert Meyer
+- Simon Steiner
+- Vincent Hennebert
+
+This is a list of other contributors:
+
+- Alexey Neyman
+- Alexios Giotis
+- Athanasios Giannimaras
+- Gonzalo Vasquez
+- Jacopo Cappellato
+- Jeremias Maerki
+- Max Gilead
+- Morten Knudsen
+- Seifeddine Dridi
+- Stephen Moore
+- James Burton
+- Eric Lim
+- Chunlin Yao
+- Jerome Robert
+- Simone Rondelli
+- Stanley Santos de Araújo
+- Agneta Walterscheidt
+- Vlad Arkhipov
+- Björn Kautler
+- Jan Tošovský
+- J Frank
+- Nicholas Moser
+
 #History of Changes 2.7
 
 ## Version 2.7 (20 Jan 2022) { #version_2.7}

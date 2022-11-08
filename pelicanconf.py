@@ -51,7 +51,7 @@ READERS = {'html': None}
 
 fop_current_version = '2.7'
 batik_current_version = '1.16'
-fop_minimal_java_requirement = '1.7'
+fop_minimal_java_requirement = '1.8'
 fop_current_version_release_date = '20 Jan 2022'
 
 def read(self, source_path):
