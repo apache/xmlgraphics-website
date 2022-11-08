@@ -31,7 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
-   <title>Apache(th) FOP: PDF Images Plug-In</title>
+   <title>Apache(tm) FOP: PDF/A (ISO 19005)</title>
   </head>
 
   <body>
@@ -701,148 +701,106 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Apache&trade; FOP: PDF Images Plug-In</h1>
+    <h1>Apache&trade; FOP: PDF/A (ISO 19005)</h1>
+<p><authors><person email="jeremias@apache.org" name="Jeremias Märki"></person></authors></p>
 <h2 id="overview">Overview</h2>
-<p>The <em>fop-pdf-images</em> plug-in extends FOP in order to add support for using PDF images in fo:external-graphic elements when
-generating PDF files. This means one can write something like:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf#page=1&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<p>and</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fox:external-document</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<h2>Reduce file size</h2>
-<p>If you input many pdfs together the output pdf has duplicate fonts. Set this flag to merge fonts in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-fonts&gt;</span>true<span class="nt">&lt;/merge-fonts&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2>Improve performance</h2>
-<p>If you use many of the same pdf's and they have a large content stream, this flag can improve performance.
-The disadvantage will be it can cause higher memory use inside your printer.
-Set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;form-xobject&gt;</span>true<span class="nt">&lt;/form-xobject&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2>Known issues with Postscript output</h2>
+<p>PDF/A is a standard which turns PDF into an "electronic document file format for long-term preservation". PDF/A-1 is the first part of the standard and is documented in <a href="http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=38920&amp;ICS1=37&amp;ICS2=100&amp;ICS3=99">ISO 19005-1:2005(E)</a>. Work on PDF/A-2 is in progress at <a href="http://www.aiim.org/standards.asp?ID=25013">AIIM</a>.</p>
+<p>Design documentation on PDF/A can be found on FOP's Wiki on the <a href="https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/PDFAConformanceNotes">PDFAConformanceNotes</a> page.</p>
+<h2 id="status">Implementation Status</h2>
+<p><strong>PDF/A-1b</strong> is implemented to the degree that FOP supports the creation of the elements described in ISO 19005-1.</p>
+<p>Tests have been performed against jHove and Adobe Acrobat 7.0.7 (Preflight function). FOP does not validate completely against Apago's PDF Appraiser. Reasons unknown due to lack of a full license to get a detailed error protocol.</p>
+<p><strong>PDF/A-1a</strong> is based on PDF-A-1b and adds accessibility features (such as Tagged PDF). This format is available within the limitation described on the <a href="accessibility.html">Accessibility page</a>.</p>
+<p>PDF/A-2 supports new features added with PDF 1.5, 1.6 and 1.7</p>
+<p>PDF/A-3 allows embedding of arbitrary file formats</p>
+<p>PDF/A-1b, PDF/A-2b and PDF/A-3b does not require accessibility to be enabled</p>
+<p>PDF/A-1a, PDF/A-2a and PDF/A-3a require accessibility to be enabled</p>
+<p>PDF/A-2u and PDF/A-3u require unicode to be used and accessibility to be enabled</p>
+<h2 id="modes">Modes</h2>
 <ul>
-<li>If fonts are not embedded in source PDF:<ul>
-<li>If OTF font type is needed text may be missing if Adobe Reader fonts are not found</li>
-<li>Text may be rendered wrong or poorly if wrong font is selected as replacement   </li>
+<li>PDF/A-1a</li>
+<li>PDF/A-1b</li>
+<li>PDF/A-2a</li>
+<li>PDF/A-2b</li>
+<li>PDF/A-2u</li>
+<li>PDF/A-3a</li>
+<li>PDF/A-3b</li>
+<li>PDF/A-3u</li>
 </ul>
+<h2 id="fop-xconf">Usage (fop.xconf)</h2>
+<p>Add section to pdf renderer with pdfa mode and pdf version.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;accessibility&gt;</span>true<span class="nt">&lt;/accessibility&gt;</span>
+  <span class="nt">&lt;renderers&gt;</span>
+    <span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;pdf-a-mode&gt;</span>PDF/A-1a<span class="nt">&lt;/pdf-a-mode&gt;</span>
+      <span class="nt">&lt;version&gt;</span>1.4<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/renderer&gt;</span>
+  <span class="nt">&lt;/renderers&gt;</span>
+<span class="nt">&lt;/fop&gt;</span>
+</code></pre></div>
+
+<h2 id="command-line">Usage (command line)</h2>
+<p>To activate PDF/A-1b from the command-line, specify "-pdfprofile PDF/A-1b" as a parameter. If there is a violation of one of the validation rules for PDF/A, an error message is presented and the processing stops.</p>
+<p>PDF/A-1a is enabled by specifying "-pdfprofile PDF/A-1a".</p>
+<h2 id="embedded">Usage (embedded)</h2>
+<p>When FOP is embedded in another Java application you can set a special option on the renderer options in the user agent to activate the PDF/A-1b profile. Here's an example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">getRendererOptions</span><span class="p">().</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;pdf-a-mode&quot;</span><span class="p">,</span> <span class="s">&quot;PDF/A-1b&quot;</span><span class="p">);</span>
+<span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">,</span> <span class="n">userAgent</span><span class="p">);</span>
+<span class="o">[</span><span class="p">..</span><span class="o">]</span>
+</code></pre></div>
+
+<p>If one of the validation rules of PDF/A is violated, an PDFConformanceException (descendant of RuntimeException) is thrown.</p>
+<p>For PDF/A-1a, just use the string "PDF/A-1a" instead of "PDF/A-1b".</p>
+<h2 id="rules">PDF/A in Action</h2>
+<p>There are a number of things that must be looked after if you activate a PDF/A profile. If you receive a PDFConformanceException, have a look at the following list (not necessarily comprehensive):</p>
+<ul>
+<li>
+<p>All fonts are required to be embedded. You should set the font-family attribute on the fo:root element, so all text is by default mapped to a font defined in your fop.xconf.</p>
 </li>
-<li>Transparency, layers and opacity may not render correctly</li>
-<li>Gradients in text may be different from the source PDF</li>
+<li>
+<p>Don't use PDF encryption. PDF/A doesn't allow it.</p>
+</li>
+<li>
+<p>Don't use CMYK images without an ICC color profile. PDF/A doesn't allow mixing color spaces and FOP currently only properly supports the sRGB color space. Please note that FOP embeds a standard sRGB ICC profile (sRGB IEC61966-2.1) as the primary output intent for the PDF if no other output intent has been specified in the configuration.</p>
+</li>
+<li>
+<p>Don't use non-RGB colors in SVG images. Same issue as with CMYK images.</p>
+</li>
+<li>
+<p>Don't use EPS graphics with fo:external-graphic. Embedding EPS graphics in PDF is deprecated since PDF 1.4 and prohibited by PDF/A.</p>
+</li>
+<li>
+<p>PDF is forced to version 1.4 if PDF/A-1 is activated.</p>
+</li>
+<li>
+<p>No filter must be specified explicitely for metadata objects. Metadata must be embedded in clear text so non-PDF-aware applications can extract the XMP metadata.</p>
+</li>
 </ul>
-<h2 id="binary">Binary Download</h2>
-<p>If using the binary package, the four jar files should be placed in the <em>lib</em> directory of your FOP installation.</p>
-<p>Binary distributions include "-bin" in their names, and can be downloaded from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>.</p>
-<p>Here are the links to each package’s signature and checksum files. Signatures can be verified by using our <a href="https://www.apache.org/dist/xmlgraphics/fop/KEYS">KEYS</a> file.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.tar.gz&amp;action=download">fop-pdf-images-2.7-bin.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.tar.gz.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.zip&amp;action=download">fop-pdf-images-2.7-bin.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.zip.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.tar.gz&amp;action=download">fop-pdf-images-2.7-src.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.tar.gz.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.zip&amp;action=download">fop-pdf-images-2.7-src.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.zip.sha512">SHA512</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="source">Source Download</h2>
-<ul>
-<li>Download a released version from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>. Source distributions include "-src" in their names.</li>
-</ul>
-<h2 id="older_releases">Older Releases</h2>
-<p>Archive distributions can be downloaded from the archives <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/">binaries</a> &amp; <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/source/">source</a> links.</p>
-<p>The fop-pdf-images plug-in was donated by Jeremias M&auml;rki to the XMLGraphics project in 2012. Older releases can
-be obtained from his plug-in <a href="http://www.jeremias-maerki.ch/development/fop/index.html">page</a>.</p>
-<h1>History of Changes</h1>
-<h2 id="version_2.8">Version 2.8</h2>
-<ul>
-<li>FOP-3051: Upgrade to Commons IO 2.11</li>
-<li>FOP-3073: Preserve bytes when cloning string</li>
-<li>FOP-3089: Switch cmap format to support iPhone</li>
-<li>FOP-3102: Move composite glyphs to the end</li>
-</ul>
-<h2 id="version_2.7">Version 2.7</h2>
-<ul>
-<li>FOP-3034: Update PDFBox to 2.0.24</li>
-<li>FOP-3032: Allow to embed native PDF in AFP</li>
-<li>FOP-3020: Add space to standard position for font merge</li>
-<li>FOP-3009: Avoid merging fonts with different number of cmap formats</li>
-<li>FOP-3001: Deduplicate streams in arrays</li>
-</ul>
-<h2 id="version_2.6">Version 2.6</h2>
-<ul>
-<li>FOP-2951: Add uniquename to xobj form</li>
-<li>FOP-2965: Keep streams with DCT compression</li>
-<li>FOP-2971: Update unique name inside patterns</li>
-<li>FOP-2974: Handle space in COSName</li>
-<li>FOP-2979: Update PDFBox to 2.0.19</li>
-</ul>
-<h2 id="version_2.5">Version 2.5</h2>
-<ul>
-<li>FOP-2904: Handle object for boundingbox</li>
-<li>FOP-2922: Syntax error after writing content stream</li>
-<li>FOP-2933: PDF to PDF checkbox missing</li>
-</ul>
-<h2 id="version_2.4">Version 2.4</h2>
-<ul>
-<li>FOP-2802: Java 10 PDF/SVG to Image box not shown</li>
-<li>FOP-2812: Update PDFBox to 2.0.11</li>
-<li>FOP-2836: Update PDFBox to 2.0.13</li>
-<li>FOP-2840: Image mask in PDF not rendered to PS</li>
-<li>FOP-2841: PDF to PDF with merge-fonts checkbox misaligned</li>
-<li>FOP-2856: Support compile on Java 12</li>
-<li>FOP-2873: Update to PDFBox 2.0.16</li>
-<li>FOP-2879: Add caching to avoid parsing content stream</li>
-<li>FOP-2882: Allow PDFFormXObject to improve performance</li>
-</ul>
-<h2 id="version_2.3">Version 2.3</h2>
-<ul>
-<li>PDF to PDF deduplicate more types of streams</li>
-<li>PDF to PS allow fop fonts as fallback</li>
-</ul>
-<h2 id="version_2.2">Version 2.2</h2>
-<ul>
-<li>Move to PDFBox 2</li>
-<li>Deduplicate PDF streams</li>
-<li>PDF to PS deduplication of images</li>
-<li>Remove xobj type=form</li>
-<li>Merge fonts (off by default)</li>
-<li>Support PDF shading to PS</li>
-<li>Merging of Tagged (Accessible) PDF</li>
-</ul>
+<p><note>There are additional requirements if you want to enabled PDF/A-1a (Tagged PDF). This is particularly the specification of the natural language and alternative descriptions for images. Please refer to the <a href="accessibility.html">Accessibility page</a> for details.</note></p>
+<h2 id="profile-compatibility">PDF profile compatibility</h2>
+<p>The PDF profiles "PDF/X-3:2003" and "PDF/A-1b" (or "PDF/A-1a") are compatible and can both be activated at the same time.</p>
+<h2 id="interoperability">Interoperability</h2>
+<p>There has been some confusion about the namespace for the PDF/A indicator in the XMP metadata. At least three variants have been seen in the wild:</p>
+<p>| http://www.aiim.org/pdfa/ns/id.html |  <strong>obsolete</strong>, from an early draft of ISO-19005-1, used by Adobe Acrobat 7.x |
+| http://www.aiim.org/pdfa/ns/id |  <strong>obsolete</strong>, found in the original ISO 19005-1:2005 document |
+| http://www.aiim.org/pdfa/ns/id/ |  <strong>correct</strong>, found in the technical corrigendum 1 of ISO 19005-1:2005 |</p>
+<p>If you get an error validating a PDF/A file in Adobe Acrobat 7.x it doesn't mean that FOP did something wrong. It's Acrobat that is at fault. This is fixed in Adobe Acrobat 8.x which uses the correct namespace as described in the technical corrigendum 1.</p>
+<h2>Metadata example</h2>
+<p>See <a href="metadata.html">this page</a> for more info</p>
+<div class="highlight"><pre><span></span><code>[..]
+<span class="nt">&lt;/fo:layout-master-set&gt;</span>
+<span class="nt">&lt;fo:declarations&gt;</span>
+  <span class="nt">&lt;x:xmpmeta</span> <span class="na">xmlns:x=</span><span class="s">&quot;adobe:ns:meta/&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;rdf:RDF</span> <span class="na">xmlns:rdf=</span><span class="s">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;rdf:Description</span> <span class="na">rdf:about=</span><span class="s">&quot;&quot;</span> <span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;dc:title&gt;&lt;rdf:Alt&gt;&lt;rdf:li</span> <span class="na">xml:lang=</span><span class="s">&quot;x-default&quot;</span><span class="nt">&gt;</span>title<span class="nt">&lt;/rdf:li&gt;&lt;/rdf:Alt&gt;&lt;/dc:title&gt;</span>
+        <span class="nt">&lt;dc:creator&gt;&lt;rdf:Seq&gt;&lt;rdf:li&gt;</span>Document author<span class="nt">&lt;/rdf:li&gt;&lt;/rdf:Seq&gt;&lt;/dc:creator&gt;</span>
+        <span class="nt">&lt;dc:description&gt;&lt;rdf:Alt&gt;&lt;rdf:li</span> <span class="na">xml:lang=</span><span class="s">&quot;x-default&quot;</span><span class="nt">&gt;</span>Document subject<span class="nt">&lt;/rdf:li&gt;&lt;/rdf:Alt&gt;&lt;/dc:description&gt;</span>
+      <span class="nt">&lt;/rdf:Description&gt;</span>
+    <span class="nt">&lt;/rdf:RDF&gt;</span>
+  <span class="nt">&lt;/x:xmpmeta&gt;</span>
+<span class="nt">&lt;/fo:declarations&gt;</span>
+</code></pre></div>
         </div>
       </div>
       <div class="clear"></div>

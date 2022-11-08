@@ -31,7 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
-   <title>Apache(th) FOP: PDF Images Plug-In</title>
+   <title>Apache(tm) FOP: Configuration</title>
   </head>
 
   <body>
@@ -701,148 +701,344 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Apache&trade; FOP: PDF Images Plug-In</h1>
-<h2 id="overview">Overview</h2>
-<p>The <em>fop-pdf-images</em> plug-in extends FOP in order to add support for using PDF images in fo:external-graphic elements when
-generating PDF files. This means one can write something like:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf#page=1&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<p>and</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fox:external-document</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<h2>Reduce file size</h2>
-<p>If you input many pdfs together the output pdf has duplicate fonts. Set this flag to merge fonts in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-fonts&gt;</span>true<span class="nt">&lt;/merge-fonts&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2>Improve performance</h2>
-<p>If you use many of the same pdf's and they have a large content stream, this flag can improve performance.
-The disadvantage will be it can cause higher memory use inside your printer.
-Set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;form-xobject&gt;</span>true<span class="nt">&lt;/form-xobject&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2>Known issues with Postscript output</h2>
+    <h1>Apache&trade; FOP: Configuration</h1>
+<h2 id="general">Configuration File Basics</h2>
+<p>The Apache&trade; FOP configuration file is an XML file containing a variety of settings that are useful for controlling FOP's behavior, and for helping it find resources that you wish it to use.</p>
+<p>The easiest way to get started using a FOP configuration file is to copy the sample found at <code>{fop-dir}/conf/fop.xconf</code> to a location of your choice, and then to edit it according to your needs. It contains templates for the various configuration options, most of which are commented out. Remove the comments and change the settings for entries that you wish to use. Be sure to follow any instructions, including comments which specify the value range. Also, since the configuration file is XML, be sure to keep it well-formed.</p>
+<h3 id="general-available">Making Configuration Available to FOP</h3>
+<p>After creating your configuration file, you must tell FOP how to find it:</p>
 <ul>
-<li>If fonts are not embedded in source PDF:<ul>
-<li>If OTF font type is needed text may be missing if Adobe Reader fonts are not found</li>
-<li>Text may be rendered wrong or poorly if wrong font is selected as replacement   </li>
-</ul>
+<li>
+<p>If running FOP from the command-line, see the "-c" command-line option in <a href="running.html">Running FOP</a>.</p>
 </li>
-<li>Transparency, layers and opacity may not render correctly</li>
-<li>Gradients in text may be different from the source PDF</li>
+<li>
+<p>If running FOP as an embedded application, see <a href="embedding.html#config-external">Embedding, Using a Configuration File</a>.</p>
+</li>
 </ul>
-<h2 id="binary">Binary Download</h2>
-<p>If using the binary package, the four jar files should be placed in the <em>lib</em> directory of your FOP installation.</p>
-<p>Binary distributions include "-bin" in their names, and can be downloaded from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>.</p>
-<p>Here are the links to each package’s signature and checksum files. Signatures can be verified by using our <a href="https://www.apache.org/dist/xmlgraphics/fop/KEYS">KEYS</a> file.</p>
+<p>See <a href="embedding.html#config-internal">Setting the Configuration Programmatically</a> for instructions on how to do so in an embedded environment.</p>
+<h2 id="general-elements">Summary of the General Configuration Options</h2>
 <table>
 <thead>
 <tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
+<th>Element</th>
+<th>Data Type (for the value)</th>
+<th>Description</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.tar.gz&amp;action=download">fop-pdf-images-2.7-bin.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.tar.gz.sha512">SHA512</a></td>
-<td></td>
+<td>base<sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+<td>URL or directory</td>
+<td>Specifies the base URL based on which relative URL will be resolved.</td>
+<td>current directory</td>
 </tr>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.zip&amp;action=download">fop-pdf-images-2.7-bin.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.zip.sha512">SHA512</a></td>
-<td></td>
+<td>font-base<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+<td>URL or directory</td>
+<td>Specifies the base URL based on which relative font URLs will be resolved.</td>
+<td>base URL/directory (above)</td>
 </tr>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.tar.gz&amp;action=download">fop-pdf-images-2.7-src.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.tar.gz.sha512">SHA512</a></td>
-<td></td>
+<td>hyphenation-base<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+<td>URL or directory</td>
+<td>Specifies the base URL based on which relative URLs to hyphenation pattern files will be resolved. If not specified, support for user-supplied hyphenation patterns remains disabled.</td>
+<td>disabled</td>
 </tr>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.zip&amp;action=download">fop-pdf-images-2.7-src.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.zip.sha512">SHA512</a></td>
-<td></td>
+<td>hyphenation-pattern</td>
+<td>String, attribute lang, attribute country (optional)</td>
+<td>Register a file name for the hyphenation pattern for the mentioned language and country. Language ll and country CC must both consist of two letters.</td>
+<td>ll_CC</td>
+</tr>
+<tr>
+<td>source-resolution</td>
+<td>Integer, dpi</td>
+<td>Resolution in dpi (dots per inch) which is used internally to determine the pixel size for SVG images and bitmap images without resolution information.</td>
+<td>72 dpi</td>
+</tr>
+<tr>
+<td>target-resolution</td>
+<td>Integer, dpi</td>
+<td>Resolution in dpi (dots per inch) used to specify the output resolution for bitmap images generated by bitmap renderers (such as the TIFF renderer) and by bitmaps generated by Apache Batik for filter effects and such.</td>
+<td>72 dpi</td>
+</tr>
+<tr>
+<td>strict-configuration</td>
+<td>Boolean (true, false)</td>
+<td>Setting this option to 'true' will cause FOP to strictly verify the contents of the FOP configuration file to ensure that defined resources (such as fonts and base URLs/directories) are valid and available to FOP. Any errors found will cause FOP to immediately raise an exception.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>strict-validation</td>
+<td>Boolean (true, false)</td>
+<td>Setting this option to 'false' causes FOP to be more forgiving about XSL-FO validity, for example, you're allowed to specify a border on a region-body which is supported by some FO implementations but is non-standard. Note that such a border would currently have no effect in Apache FOP.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>break-indent-inheritance</td>
+<td>Boolean (true, false)</td>
+<td>Setting this option to 'true' causes FOP to use an alternative rule set to determine text indents specified through margins, start-indent and end-indent. Many commercial FO implementations have chosen to break the XSL specification in this aspect. This option tries to mimic their behaviour. Please note that Apache FOP may still not behave exactly like those implementations either because FOP has not fully matched the desired behaviour and because the behaviour among the commercial implementations varies. The default for this option (i.e. false) is to behave exactly like the specification describes.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>complex-scripts</td>
+<td>attribute disabled (optional)</td>
+<td>If present and if an attribute 'disabled' is specified with the value 'false', then complex script features are disabled. The same result can be obtained on an FOP per-invocation basis by specifying a '-nocs' command line option when invoking FOP. When complex script features are disabled, all bidirectional processing and complex character to glyph mapping processing is disabled; in addition, the loading of GDEF, GSUB, and GPOS advanced typographic tables is disabled for OpenType and TrueType fonts. Unless disabled by this mechanism or by use of the '-nocs' command line option, complex script features will be enabled by default.</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>default-page-settings</td>
+<td>n/a</td>
+<td>Specifies the default width and height of a page if "auto" is specified for either or both values. Use "height" and "width" attributes on the default-page-settings element to specify the two values.</td>
+<td>"height" 11 inches, "width" 8.26 inches</td>
+</tr>
+<tr>
+<td>use-cache</td>
+<td>boolean (true, false)</td>
+<td>All fonts information that has been gathered as a result of "directory" or "auto-detect" font configurations will be cached for future rendering runs. This setting should improve performance on systems where fonts have been configured using the "directory" or "auto-detect" tag mechanisms. By default this option is switched on.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>cache-file</td>
+<td>String</td>
+<td>This option specifies the file/directory path of the fop cache file. This file is currently only used to cache font triplet information for future reference.</td>
+<td>${base}/conf/fop.cache</td>
+</tr>
+<tr>
+<td>renderers</td>
+<td>(see text below)</td>
+<td>Contains the configuration for each renderer. See below.</td>
+<td>N/A</td>
 </tr>
 </tbody>
 </table>
-<h2 id="source">Source Download</h2>
+<p>This is an excerpt from the example configuration file coming with FOP:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+
+  <span class="c">&lt;!-- Strict user configuration --&gt;</span>
+  <span class="nt">&lt;strict-configuration&gt;</span>true<span class="nt">&lt;/strict-configuration&gt;</span>
+
+  <span class="c">&lt;!-- Strict FO validation --&gt;</span>
+  <span class="nt">&lt;strict-validation&gt;</span>true<span class="nt">&lt;/strict-validation&gt;</span>
+
+  <span class="c">&lt;!-- Base URL for resolving relative URLs --&gt;</span>
+  <span class="nt">&lt;base&gt;</span>./<span class="nt">&lt;/base&gt;</span>
+
+  <span class="c">&lt;!-- Font Base URL for resolving relative font URLs --&gt;</span>
+  <span class="nt">&lt;font-base&gt;</span>./<span class="nt">&lt;/font-base&gt;</span>
+
+  <span class="c">&lt;!-- Source resolution in dpi (dots/pixels per inch) for determining the size of pixels in SVG and bitmap images, default: 72dpi --&gt;</span>
+  <span class="nt">&lt;source-resolution&gt;</span>72<span class="nt">&lt;/source-resolution&gt;</span>
+  <span class="c">&lt;!-- Target resolution in dpi (dots/pixels per inch) for specifying the target resolution for generated bitmaps, default: 72dpi --&gt;</span>
+  <span class="nt">&lt;target-resolution&gt;</span>72<span class="nt">&lt;/target-resolution&gt;</span>
+
+  <span class="c">&lt;!-- default page-height and page-width, in case</span>
+<span class="c">       value is specified as auto --&gt;</span>
+  <span class="nt">&lt;default-page-settings</span> <span class="na">height=</span><span class="s">&quot;11in&quot;</span> <span class="na">width=</span><span class="s">&quot;8.26in&quot;</span><span class="nt">/&gt;</span>
+
+  <span class="c">&lt;!-- Use file name nl_Bel instead of the default nl_BE --&gt;</span>
+  <span class="nt">&lt;hyphenation-pattern</span> <span class="na">lang=</span><span class="s">&quot;nl&quot;</span> <span class="na">country=</span><span class="s">&quot;BE&quot;</span><span class="nt">&gt;</span>nl_Bel<span class="nt">&lt;/hyphenation-pattern&gt;</span>
+  <span class="c">&lt;!-- or for xml file --&gt;</span>
+  <span class="nt">&lt;hyphenation-pattern</span> <span class="na">lang=</span><span class="s">&quot;fr&quot;</span> <span class="na">extension=</span><span class="s">&quot;xml&quot;</span><span class="nt">&gt;</span>lang/fr.xml<span class="nt">&lt;/hyphenation-pattern&gt;</span>
+  <span class="c">&lt;!-- or for binary file --&gt;</span>
+  <span class="nt">&lt;hyphenation-pattern</span> <span class="na">lang=</span><span class="s">&quot;fr&quot;</span> <span class="na">extension=</span><span class="s">&quot;hyp&quot;</span><span class="nt">&gt;</span>lang/fr.hyp<span class="nt">&lt;/hyphenation-pattern&gt;</span>
+
+  <span class="c">&lt;!-- etc. etc..... --&gt;</span>
+<span class="nt">&lt;/fop&gt;</span>
+</code></pre></div>
+
+<h2 id="image-loading">Image Loading Customization</h2>
+<p>Apache FOP uses the image loading framework from <a href="http://xmlgraphics.apache.org/commons/">Apache XML Graphics Commons</a> to load images using various plug-ins. Every image loader plug-in has a hard-coded usage penalty that influences which solution is chosen if there are multiple possibilities to load an image. Sometimes, though, these penalties need to be tweaked and this can be done in the FOP configuration. An example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+  [..]
+  <span class="nt">&lt;image-loading&gt;</span>
+    <span class="nt">&lt;penalty</span> <span class="na">value=</span><span class="s">&quot;10000&quot;</span>
+      <span class="na">class=</span><span class="s">&quot;org.apache.xmlgraphics.image.loader.impl.ImageLoaderRawCCITTFax&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;penalty</span> <span class="na">value=</span><span class="s">&quot;INFINITE&quot;</span>
+      <span class="na">class=</span><span class="s">&quot;org.apache.xmlgraphics.image.loader.impl.ImageLoaderInternalTIFF&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/image-loading&gt;</span>
+  <span class="nt">&lt;renderers....</span>
+<span class="err">&lt;/fop</span><span class="nt">&gt;</span>
+</code></pre></div>
+
+<p>The first penalty element increases the penalty for the raw CCITT loader. This practically forces the decoding of CCITT compressed TIFF images except if there are no TIFF codecs available.</p>
+<p>The second penalty element sets an "infinite" penalty for the TIFF loader using the internal TIFF codec. This practically disables that plug-in as it will never be chosen as a possible solution.</p>
+<p>Negative penalties are possible to promote a plug-in but a negative penalty sum will be treated as zero penalty in most cases. For more details on the image loading framework, please consult the documentation there.</p>
+<p>The ImageLoaderPNG and ImageLoaderRawPNG have a hard-coded penalty of 1000 and as such the ImageLoaderImageIO image loader will be selected by default when loading PNGs unless the latter is disabled by awarding a INFINITE penalty to it, or one of the former two is promoted by awarding a strong negative penalty (say, -10000) to it.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+  [..]
+  <span class="nt">&lt;image-loading&gt;</span>
+    <span class="nt">&lt;penalty</span> <span class="na">value=</span><span class="s">&quot;-10000&quot;</span>
+        <span class="na">class=</span><span class="s">&quot;org.apache.xmlgraphics.image.loader.impl.ImageLoaderRawPNG&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;penalty</span> <span class="na">value=</span><span class="s">&quot;INFINITE&quot;</span>
+        <span class="na">class=</span><span class="s">&quot;org.apache.xmlgraphics.image.loader.impl.ImageLoaderPNG&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;penalty</span> <span class="na">value=</span><span class="s">&quot;INFINITE&quot;</span>
+        <span class="na">class=</span><span class="s">&quot;org.apache.xmlgraphics.image.loader.impl.imageio.ImageLoaderImageIO&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/image-loading&gt;</span>
+  <span class="nt">&lt;renderers....</span>
+<span class="err">&lt;/fop</span><span class="nt">&gt;</span>
+</code></pre></div>
+
+<h2 id="renderers">Renderer configuration</h2>
+<p>Each Renderer has its own configuration section which is identified by the MIME type the Renderer is written for, ex. "application/pdf" for the PDF Renderer.</p>
+<p>The configuration for the PDF Renderer could look like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderers&gt;</span>
+  <span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;filterList&gt;</span>
+      <span class="c">&lt;!-- provides compression using zlib flate (default is on) --&gt;</span>
+      <span class="nt">&lt;value&gt;</span>flate<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/filterList&gt;</span>
+    <span class="nt">&lt;fonts&gt;</span>
+      <span class="nt">&lt;font</span> <span class="na">metrics-url=</span><span class="s">&quot;arial.xml&quot;</span> <span class="na">kerning=</span><span class="s">&quot;yes&quot;</span> <span class="na">embed-url=</span><span class="s">&quot;arial.ttf&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Arial&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;ArialMT&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/font&gt;</span>
+      <span class="nt">&lt;font</span> <span class="na">metrics-url=</span><span class="s">&quot;arialb.xml&quot;</span> <span class="na">kerning=</span><span class="s">&quot;yes&quot;</span> <span class="na">embed-url=</span><span class="s">&quot;arialb.ttf&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Arial&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;ArialMT&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/font&gt;</span>
+    <span class="nt">&lt;/fonts&gt;</span>
+  <span class="nt">&lt;/renderer&gt;</span>
+
+  <span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/postscript&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- etc. etc..... --&gt;</span>
+</code></pre></div>
+
+<p>The details on the font configuration can be found on the separate <a href="fonts.html">Fonts</a> page. Note especially the section entitled <a href="fonts.html#register">Register Fonts with FOP</a>.</p>
+<h3 id="pdf-renderer">Special Settings for the PDF Renderer</h3>
+<p>The configuration element for the PDF renderer contains two elements. One is for the font configuration (please follow the link above) and one is for the "filter list". The filter list controls how the individual objects in a PDF file are encoded. By default, all objects get "flate" encoded (i.e. simply compressed with the same algorithm that is also used in ZIP files). Most users don't need to change that setting. For debugging purposes, it may be desired not to compress the internal objects at all so the generated PDF commands can be read. In that case, you can simply use the following filter list. The second filter list (type="image") ensures that all images still get compressed but also ASCII-85 encoded so the produced PDF file is still easily readable in a text editor.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;filterList&gt;</span>
+    <span class="nt">&lt;value&gt;</span>null<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/filterList&gt;</span>
+  <span class="nt">&lt;filterList</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;value&gt;</span>flate<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>ascii-85<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/filterList&gt;</span>
+
+  <span class="nt">&lt;fonts....</span>
+<span class="err">&lt;/renderer</span><span class="nt">&gt;</span>
+</code></pre></div>
+
+<p>Another (optional) setting specific to the PDF Renderer is an output color profile, an ICC color profile which indicates the target color space the PDF file is generated for. This setting is mainly used in conjunction with the <a href="pdfx.html">PDF/X</a> feature. An example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;filterList...</span>
+
+  <span class="err">&lt;output-profile</span><span class="nt">&gt;</span>C:\FOP\Color\EuropeISOCoatedFOGRA27.icc<span class="nt">&lt;/output-profile&gt;</span>
+
+  <span class="nt">&lt;fonts....</span>
+<span class="err">&lt;/renderer</span><span class="nt">&gt;</span>
+</code></pre></div>
+
+<p>Some people don't have high requirements on color fidelity but instead want the smallest PDF file sizes possible. In this case it's possible to disable the default sRGB color space which XSL-FO requires. This will cause RGB colors to be generated as device-specific RGB. Please note that this option is unavailable (and will cause an error) if you enable PDF/A or PDF/X functionality or if you specify an output profile. This setting will make the PDF about 4KB smaller. To disable the sRGB color space add the following setting:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;filterList...</span>
+
+  <span class="err">&lt;disable-srgb-colorspace</span><span class="nt">&gt;</span>true<span class="nt">&lt;/disable-srgb-colorspace&gt;</span>
+
+  <span class="nt">&lt;fonts....</span>
+<span class="err">&lt;/renderer</span><span class="nt">&gt;</span>
+</code></pre></div>
+
+<p>FOP supports encryption of PDF output, thanks to Patrick C. Lankswert. This feature is commonly used to prevent unauthorized viewing, printing, editing, copying text from the document and doing annotations. It is also possible to ask the user for a password in order to view the contents. Note that there already exist third party applications which can decrypt an encrypted PDF without effort and allow the aforementioned operations, therefore the degree of protection is limited. For further information about features and restrictions regarding PDF encryption, look at the documentation coming with Adobe Acrobat or the technical documentation on the Adobe web site.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;encryption-params&gt;</span>
+     <span class="nt">&lt;encryption-length&gt;</span>128<span class="nt">&lt;/encryption-length&gt;</span>
+     <span class="nt">&lt;user-password&gt;</span>testuserpass<span class="nt">&lt;/user-password&gt;</span>
+     <span class="nt">&lt;owner-password&gt;</span>testownerpass<span class="nt">&lt;/owner-password&gt;</span>
+     <span class="nt">&lt;noprint/&gt;</span>
+     <span class="nt">&lt;nocopy/&gt;</span>
+     <span class="nt">&lt;noedit/&gt;</span>
+     <span class="nt">&lt;noannotations/&gt;</span>
+     <span class="nt">&lt;nofillinforms/&gt;</span>
+     <span class="nt">&lt;noaccesscontent/&gt;</span>
+     <span class="nt">&lt;noassembledoc/&gt;</span>
+     <span class="nt">&lt;noprinthq/&gt;</span>
+  <span class="nt">&lt;/encryption-params&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</code></pre></div>
+
+<p>By default FOP produces PDF files of version 1.4, but this can be changed in order to benefit from features that appeared in newer versions of PDF. At the moment, only a few features from PDF 1.5 have been implemented, but the configuration element will accept any value between 1.4 and 1.7. This is the value that will appear in the PDF header, although only features up to 1.5 will actually be used.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.5<span class="nt">&lt;/version&gt;</span>
+  <span class="c">&lt;!-- Versions 1.4, 1.5, 1.6 and 1.7 are accepted, all other values are invalid --&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</code></pre></div>
+
+<h3 id="ps-renderer">Special Settings for the PostScript Renderer</h3>
+<p>Besides the normal font configuration (the same "fonts" element as for the PDF renderer) the PostScript renderer has an additional setting to force landscape pages to be rotated to fit on a page inserted into the printer in portrait mode. Set the value to "true" to activate this feature. The default is "false". Example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/postscript&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;auto-rotate-landscape&gt;</span>true<span class="nt">&lt;/auto-rotate-landscape&gt;</span>
+
+  <span class="nt">&lt;fonts&gt;</span>
+    <span class="nt">&lt;font</span> <span class="na">metrics-url=</span><span class="s">&quot;arial.xml&quot;</span> <span class="na">kerning=</span><span class="s">&quot;yes&quot;</span> <span class="na">embed-url=</span><span class="s">&quot;arial.ttf&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Arial&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;ArialMT&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/font&gt;</span>
+    <span class="nt">&lt;font</span> <span class="na">metrics-url=</span><span class="s">&quot;arialb.xml&quot;</span> <span class="na">kerning=</span><span class="s">&quot;yes&quot;</span> <span class="na">embed-url=</span><span class="s">&quot;arialb.ttf&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Arial&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;ArialMT&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/font&gt;</span>
+  <span class="nt">&lt;/fonts&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</code></pre></div>
+
+<h3 id="pcl-renderer">Special Settings for the PCL Renderer</h3>
+<p>Non-standard fonts for the PCL renderer are made available through the Java2D subsystem which means that you don't have to do any custom font configuration in this case but you have to use the font names offered by Java.</p>
+<p>Additionally, there are certain settings that control how the renderer handles various elements.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/x-pcl&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;rendering&gt;</span>quality<span class="nt">&lt;/rendering&gt;</span>
+  <span class="nt">&lt;text-rendering&gt;</span>bitmap<span class="nt">&lt;/text-rendering&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</code></pre></div>
+
+<p>The default value for the "rendering" setting is "speed" which causes borders to be painted as plain rectangles. In this mode, no special borders (dotted, dashed etc.) are available. If you want support for all border modes, set the value to "quality" as indicated above. This will cause the borders to be painted as bitmaps.</p>
+<p>The default value for the "text-rendering" setting is "auto" which paints the base fonts using PCL fonts. Non-base fonts are painted as bitmaps through Java2D. If the mix of painting methods results in unwelcome output, you can set this to "bitmap" which causes all text to be rendered as bitmaps.</p>
+<h3 id="afp-renderer">Special Settings for the AFP Renderer</h3>
+<p>Additionally, there are certain settings that control how the renderer handles various elements.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/x-afp&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;b+w&quot;</span> <span class="na">bits-per-pixel=</span><span class="s">&quot;8&quot;</span> <span class="na">native=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;renderer-resolution&gt;</span>240<span class="nt">&lt;/renderer-resolution&gt;</span>
+  <span class="nt">&lt;line-width-correction&gt;</span>2.5<span class="nt">&lt;/line-width-correction&gt;</span>
+
+  <span class="c">&lt;!-- a default external resource group file --&gt;</span>
+  <span class="nt">&lt;resource-group-file&gt;</span>resources.afp<span class="nt">&lt;/resource-group-file&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</code></pre></div>
+
+<p>The default value for the images "mode" setting is "b+w" (black and white). When the images "mode" setting is "b+w" a "bits-per-pixel" setting can be provided to aid the grayscale conversion process. With this setting all images referenced in your source document are converted to an IOCA FS45 grayscale bitmap image form. When the setting is "color" all images are converted to an IOCA FS45 color bitmap image form. When "native" setting is "true", all images encountered (TIFF, GIF, JPEG and Encapsulated Postscript etc.) will be embedded directly in the datastream in their native form using a MO:DCA Object Container.</p>
+<p>The default value for the "renderer-resolution" is 240 dpi.</p>
+<p>The default line width is device dependent and may need to be fine tuned so that the output matches the expected result. The default correction value is 2.5.</p>
+<p>By default if there is no configuration definition for "resource-group-file", external resources will be placed in a file called resources.afp.</p>
+<h2 id="When-it-does-not-work">When it does not work</h2>
+<p>FOP searches the configuration file for the information it expects, at the position it expects. When that information is not present, FOP will not complain, it will just continue. When there is other information in the file, FOP will not complain, it will just ignore it. That means that when your configuration information is in the file but in a different XML element, or in a different XML path, than FOP expects, it will be silently ignored.</p>
+<p>Check the following possibilities:</p>
 <ul>
-<li>Download a released version from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>. Source distributions include "-src" in their names.</li>
+<li>
+<p>The format of the configuration file has changed considerably between FOP 0.20.5 and FOP 1.0 and its beta versions. Did you convert your file to the new format?</p>
+</li>
+<li>
+<p>The FOP distribution contains a schema for configuration files, at src/foschema/fop-configuration.xsd. Did you validate your configuration file against it? Add the following schema location to the <code>schema</code> element:</p>
+<p>:::xml
+<fop
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation=
+    "http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop/src/foschema/fop-configuration.xsd?view=co"></p>
+</li>
 </ul>
-<h2 id="older_releases">Older Releases</h2>
-<p>Archive distributions can be downloaded from the archives <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/">binaries</a> &amp; <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/source/">source</a> links.</p>
-<p>The fop-pdf-images plug-in was donated by Jeremias M&auml;rki to the XMLGraphics project in 2012. Older releases can
-be obtained from his plug-in <a href="http://www.jeremias-maerki.ch/development/fop/index.html">page</a>.</p>
-<h1>History of Changes</h1>
-<h2 id="version_2.8">Version 2.8</h2>
+<p>and run the configuration file through a validating schema parser. Note that the schema cannot detect all errors, and that it is stricter about the order of some elements than FOP itself is.</p>
 <ul>
-<li>FOP-3051: Upgrade to Commons IO 2.11</li>
-<li>FOP-3073: Preserve bytes when cloning string</li>
-<li>FOP-3089: Switch cmap format to support iPhone</li>
-<li>FOP-3102: Move composite glyphs to the end</li>
+<li>Run FOP in debug mode (command line option <code>-d</code>). This makes FOP report which configuration information it finds. Check if FOP finds what you expect.</li>
 </ul>
-<h2 id="version_2.7">Version 2.7</h2>
-<ul>
-<li>FOP-3034: Update PDFBox to 2.0.24</li>
-<li>FOP-3032: Allow to embed native PDF in AFP</li>
-<li>FOP-3020: Add space to standard position for font merge</li>
-<li>FOP-3009: Avoid merging fonts with different number of cmap formats</li>
-<li>FOP-3001: Deduplicate streams in arrays</li>
-</ul>
-<h2 id="version_2.6">Version 2.6</h2>
-<ul>
-<li>FOP-2951: Add uniquename to xobj form</li>
-<li>FOP-2965: Keep streams with DCT compression</li>
-<li>FOP-2971: Update unique name inside patterns</li>
-<li>FOP-2974: Handle space in COSName</li>
-<li>FOP-2979: Update PDFBox to 2.0.19</li>
-</ul>
-<h2 id="version_2.5">Version 2.5</h2>
-<ul>
-<li>FOP-2904: Handle object for boundingbox</li>
-<li>FOP-2922: Syntax error after writing content stream</li>
-<li>FOP-2933: PDF to PDF checkbox missing</li>
-</ul>
-<h2 id="version_2.4">Version 2.4</h2>
-<ul>
-<li>FOP-2802: Java 10 PDF/SVG to Image box not shown</li>
-<li>FOP-2812: Update PDFBox to 2.0.11</li>
-<li>FOP-2836: Update PDFBox to 2.0.13</li>
-<li>FOP-2840: Image mask in PDF not rendered to PS</li>
-<li>FOP-2841: PDF to PDF with merge-fonts checkbox misaligned</li>
-<li>FOP-2856: Support compile on Java 12</li>
-<li>FOP-2873: Update to PDFBox 2.0.16</li>
-<li>FOP-2879: Add caching to avoid parsing content stream</li>
-<li>FOP-2882: Allow PDFFormXObject to improve performance</li>
-</ul>
-<h2 id="version_2.3">Version 2.3</h2>
-<ul>
-<li>PDF to PDF deduplicate more types of streams</li>
-<li>PDF to PS allow fop fonts as fallback</li>
-</ul>
-<h2 id="version_2.2">Version 2.2</h2>
-<ul>
-<li>Move to PDFBox 2</li>
-<li>Deduplicate PDF streams</li>
-<li>PDF to PS deduplication of images</li>
-<li>Remove xobj type=form</li>
-<li>Merge fonts (off by default)</li>
-<li>Support PDF shading to PS</li>
-<li>Merging of Tagged (Accessible) PDF</li>
-</ul>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Relative URIs for those properties are evaluated relative to the base URI of the configuration file. If the configuration is provided programmatically, the base URI can be set with <code>FopFactory.setUserConfigBaseURI</code> ; default is the current working directory.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
         </div>
       </div>
       <div class="clear"></div>

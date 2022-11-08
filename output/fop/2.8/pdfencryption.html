@@ -31,7 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
-   <title>Apache(th) FOP: PDF Images Plug-In</title>
+   <title>Apache(tm) FOP: PDF encryption.</title>
   </head>
 
   <body>
@@ -701,148 +701,248 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Apache&trade; FOP: PDF Images Plug-In</h1>
-<h2 id="overview">Overview</h2>
-<p>The <em>fop-pdf-images</em> plug-in extends FOP in order to add support for using PDF images in fo:external-graphic elements when
-generating PDF files. This means one can write something like:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf#page=1&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<p>and</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fox:external-document</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<h2>Reduce file size</h2>
-<p>If you input many pdfs together the output pdf has duplicate fonts. Set this flag to merge fonts in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-fonts&gt;</span>true<span class="nt">&lt;/merge-fonts&gt;</span>
+    <h1>Apache&trade; FOP: PDF encryption.</h1>
+<p><authors><person email="pietsch@apache.org" name="J.Pietschmann"></person><person email="jeremias@apache.org" name="Jeremias Märki"></person></authors></p>
+<h2 id="Overview">Overview</h2>
+<p>Apache&trade; FOP supports encryption of PDF output, thanks to Patrick C. Lankswert and others. This feature is commonly used to prevent unauthorized viewing, printing, editing, copying text from the document and doing annotations. It is also possible to ask the user for a password in order to view the contents. Note that there already exist third party applications which can decrypt an encrypted PDF without effort and allow the aforementioned operations, therefore the degree of protection is limited.</p>
+<p>For further information about features and restrictions regarding PDF encryption, look at the documentation coming with Adobe Acrobat or the technical documentation on the Adobe web site.</p>
+<h2 id="fopxconf">Usage (fop.xconf)</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;encryption-params&gt;</span>
+        <span class="nt">&lt;user-password&gt;</span>testuserpass<span class="nt">&lt;/user-password&gt;</span>
+        <span class="nt">&lt;owner-password&gt;</span>testownerpass<span class="nt">&lt;/owner-password&gt;</span>
+        <span class="nt">&lt;noprint/&gt;</span>
+        <span class="nt">&lt;nocopy/&gt;</span>
+        <span class="nt">&lt;noedit/&gt;</span>
+        <span class="nt">&lt;noannotations/&gt;</span>
+        <span class="nt">&lt;encryption-length&gt;</span>128<span class="nt">&lt;/encryption-length&gt;</span>
+        <span class="nt">&lt;encrypt-metadata&gt;</span>false<span class="nt">&lt;/encrypt-metadata&gt;</span>
+    <span class="nt">&lt;/encryption-params&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
 
-<h2>Improve performance</h2>
-<p>If you use many of the same pdf's and they have a large content stream, this flag can improve performance.
-The disadvantage will be it can cause higher memory use inside your printer.
-Set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;form-xobject&gt;</span>true<span class="nt">&lt;/form-xobject&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2>Known issues with Postscript output</h2>
-<ul>
-<li>If fonts are not embedded in source PDF:<ul>
-<li>If OTF font type is needed text may be missing if Adobe Reader fonts are not found</li>
-<li>Text may be rendered wrong or poorly if wrong font is selected as replacement   </li>
-</ul>
-</li>
-<li>Transparency, layers and opacity may not render correctly</li>
-<li>Gradients in text may be different from the source PDF</li>
-</ul>
-<h2 id="binary">Binary Download</h2>
-<p>If using the binary package, the four jar files should be placed in the <em>lib</em> directory of your FOP installation.</p>
-<p>Binary distributions include "-bin" in their names, and can be downloaded from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>.</p>
-<p>Here are the links to each package’s signature and checksum files. Signatures can be verified by using our <a href="https://www.apache.org/dist/xmlgraphics/fop/KEYS">KEYS</a> file.</p>
+<h2 id="commandline">Usage (command line)</h2>
+<p>Encryption is enabled by supplying any of the encryption related options.</p>
+<p>An owner password is set with the <code>-o</code> option. This password is actually used as encryption key. Many tools for PDF processing ask for this password to disregard any restriction imposed on the PDF document.</p>
+<p>If no owner password has been supplied but FOP was asked to apply some restrictions, a random password is used. In this case it is obviously impossiible to disregard restrictions in PDF processing tools.</p>
+<p>A user password, supplied with the <code>-u</code> option, will cause the PDF display software to ask the reader for this password in order to view the contents of the document. If no user password was supplied, viewing the content is not restricted.</p>
+<p>Further restrictions can be imposed by using the following command-line options:</p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
+<th>Option</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.tar.gz&amp;action=download">fop-pdf-images-2.7-bin.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.tar.gz.sha512">SHA512</a></td>
-<td></td>
+<td><code>-noprint</code></td>
+<td>disable printing</td>
 </tr>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.zip&amp;action=download">fop-pdf-images-2.7-bin.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.zip.sha512">SHA512</a></td>
-<td></td>
+<td><code>-nocopy</code></td>
+<td>disable copy/paste of content</td>
 </tr>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.tar.gz&amp;action=download">fop-pdf-images-2.7-src.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.tar.gz.sha512">SHA512</a></td>
-<td></td>
+<td><code>-noedit</code></td>
+<td>disable editing in Adobe Acrobat</td>
 </tr>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.zip&amp;action=download">fop-pdf-images-2.7-src.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.zip.sha512">SHA512</a></td>
-<td></td>
+<td><code>-noannotations</code></td>
+<td>disable editing of annotations</td>
+</tr>
+<tr>
+<td><code>-nofillinforms</code></td>
+<td>disable filling in forms</td>
+</tr>
+<tr>
+<td><code>-noaccesscontent</code></td>
+<td>disable text and graphics extraction for accessibility purposes</td>
+</tr>
+<tr>
+<td><code>-noassembledoc</code></td>
+<td>disable assembling documents</td>
+</tr>
+<tr>
+<td><code>-noprinthq</code></td>
+<td>disable high quality printing</td>
 </tr>
 </tbody>
 </table>
-<h2 id="source">Source Download</h2>
-<ul>
-<li>Download a released version from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>. Source distributions include "-src" in their names.</li>
-</ul>
-<h2 id="older_releases">Older Releases</h2>
-<p>Archive distributions can be downloaded from the archives <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/">binaries</a> &amp; <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/source/">source</a> links.</p>
-<p>The fop-pdf-images plug-in was donated by Jeremias M&auml;rki to the XMLGraphics project in 2012. Older releases can
-be obtained from his plug-in <a href="http://www.jeremias-maerki.ch/development/fop/index.html">page</a>.</p>
-<h1>History of Changes</h1>
-<h2 id="version_2.8">Version 2.8</h2>
-<ul>
-<li>FOP-3051: Upgrade to Commons IO 2.11</li>
-<li>FOP-3073: Preserve bytes when cloning string</li>
-<li>FOP-3089: Switch cmap format to support iPhone</li>
-<li>FOP-3102: Move composite glyphs to the end</li>
-</ul>
-<h2 id="version_2.7">Version 2.7</h2>
-<ul>
-<li>FOP-3034: Update PDFBox to 2.0.24</li>
-<li>FOP-3032: Allow to embed native PDF in AFP</li>
-<li>FOP-3020: Add space to standard position for font merge</li>
-<li>FOP-3009: Avoid merging fonts with different number of cmap formats</li>
-<li>FOP-3001: Deduplicate streams in arrays</li>
-</ul>
-<h2 id="version_2.6">Version 2.6</h2>
-<ul>
-<li>FOP-2951: Add uniquename to xobj form</li>
-<li>FOP-2965: Keep streams with DCT compression</li>
-<li>FOP-2971: Update unique name inside patterns</li>
-<li>FOP-2974: Handle space in COSName</li>
-<li>FOP-2979: Update PDFBox to 2.0.19</li>
-</ul>
-<h2 id="version_2.5">Version 2.5</h2>
-<ul>
-<li>FOP-2904: Handle object for boundingbox</li>
-<li>FOP-2922: Syntax error after writing content stream</li>
-<li>FOP-2933: PDF to PDF checkbox missing</li>
-</ul>
-<h2 id="version_2.4">Version 2.4</h2>
-<ul>
-<li>FOP-2802: Java 10 PDF/SVG to Image box not shown</li>
-<li>FOP-2812: Update PDFBox to 2.0.11</li>
-<li>FOP-2836: Update PDFBox to 2.0.13</li>
-<li>FOP-2840: Image mask in PDF not rendered to PS</li>
-<li>FOP-2841: PDF to PDF with merge-fonts checkbox misaligned</li>
-<li>FOP-2856: Support compile on Java 12</li>
-<li>FOP-2873: Update to PDFBox 2.0.16</li>
-<li>FOP-2879: Add caching to avoid parsing content stream</li>
-<li>FOP-2882: Allow PDFFormXObject to improve performance</li>
-</ul>
-<h2 id="version_2.3">Version 2.3</h2>
-<ul>
-<li>PDF to PDF deduplicate more types of streams</li>
-<li>PDF to PS allow fop fonts as fallback</li>
-</ul>
-<h2 id="version_2.2">Version 2.2</h2>
-<ul>
-<li>Move to PDFBox 2</li>
-<li>Deduplicate PDF streams</li>
-<li>PDF to PS deduplication of images</li>
-<li>Remove xobj type=form</li>
-<li>Merge fonts (off by default)</li>
-<li>Support PDF shading to PS</li>
-<li>Merging of Tagged (Accessible) PDF</li>
-</ul>
+<h2 id="embedded">Usage (embedded)</h2>
+<p>When FOP is embedded in another Java application you need to set an options map on the renderer. These are the supported options:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+<th>Values</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>encryption-length</td>
+<td>The encryption length in bit</td>
+<td>Any multiple of 8 between 40 and 128, or 256</td>
+<td>128</td>
+</tr>
+<tr>
+<td>ownerPassword</td>
+<td>The owner password</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>userPassword</td>
+<td>The user password</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>allowPrint</td>
+<td>Allows/disallows printing of the PDF</td>
+<td>"TRUE" or "FALSE"</td>
+<td>"TRUE"</td>
+</tr>
+<tr>
+<td>allowCopyContent</td>
+<td>Allows/disallows copy/paste of content</td>
+<td>"TRUE" or "FALSE"</td>
+<td>"TRUE"</td>
+</tr>
+<tr>
+<td>allowEditContent</td>
+<td>Allows/disallows editing in Adobe Acrobat</td>
+<td>"TRUE" or "FALSE"</td>
+<td>"TRUE"</td>
+</tr>
+<tr>
+<td>allowEditAnnotations</td>
+<td>Allows/disallows editing of annotations</td>
+<td>"TRUE" or "FALSE"</td>
+<td>"TRUE"</td>
+</tr>
+<tr>
+<td>allowFillInForms</td>
+<td>Allows/disallows filling in forms</td>
+<td>"TRUE" or "FALSE"</td>
+<td>"TRUE"</td>
+</tr>
+<tr>
+<td>allowAccessContent</td>
+<td>Allows/disallows text and graphics extraction for accessibility purposes</td>
+<td>"TRUE" or "FALSE"</td>
+<td>"TRUE"</td>
+</tr>
+<tr>
+<td>allowAssembleDocument</td>
+<td>Allows/disallows assembling document</td>
+<td>"TRUE" or "FALSE"</td>
+<td>"TRUE"</td>
+</tr>
+<tr>
+<td>allowPrintHq</td>
+<td>Allows/disallows high quality printing</td>
+<td>"TRUE" or "FALSE"</td>
+<td>"TRUE"</td>
+</tr>
+<tr>
+<td>encrypt-metadata</td>
+<td>Whether to encrypt the Metadata stream</td>
+<td>"TRUE" or "FALSE"</td>
+<td>"TRUE"</td>
+</tr>
+</tbody>
+</table>
+<p><note>Encryption is enabled as soon as one of these options is set.</note></p>
+<p>An example to enable PDF encryption in Java code:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.fop.pdf.PDFEncryptionParams</span><span class="p">;</span>
+
+<span class="o">[</span><span class="p">..</span><span class="o">]</span>
+
+<span class="n">FOUserAgent</span> <span class="n">userAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFOUserAgent</span><span class="p">();</span>
+<span class="n">userAgent</span><span class="p">.</span><span class="na">getRendererOptions</span><span class="p">().</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;encryption-params&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">PDFEncryptionParams</span><span class="p">(</span>
+    <span class="kc">null</span><span class="p">,</span> <span class="s">&quot;password&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">));</span>
+<span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">,</span> <span class="n">userAgent</span><span class="p">);</span>
+<span class="o">[</span><span class="p">..</span><span class="o">]</span>
+</code></pre></div>
+
+<p>The parameters for the constructor of PDFEncryptionParams are:</p>
+<ol>
+<li>
+<p>userPassword: String, may be null</p>
+</li>
+<li>
+<p>ownerPassword: String, may be null</p>
+</li>
+<li>
+<p>allowPrint: true if printing is allowed</p>
+</li>
+<li>
+<p>allowCopyContent: true if copying content is allowed</p>
+</li>
+<li>
+<p>allowEditContent: true if editing content is allowed</p>
+</li>
+<li>
+<p>allowEditAnnotations: true if editing annotations is allowed</p>
+</li>
+<li>
+<p>allowFillInForms: true if filling in forms is allowed.</p>
+</li>
+<li>
+<p>allowAccessContent: true if extracting text and graphics is allowed</p>
+</li>
+<li>
+<p>allowAssembleDocument: true if assembling document is allowed</p>
+</li>
+<li>
+<p>allowPrintHq: true if printing to high quality is allowed</p>
+</li>
+<li>
+<p>encryptMetadata: true if the Metadata stream should be encrypted</p>
+</li>
+</ol>
+<p>Alternatively, you can set each value separately in the Map provided by FOUserAgent.getRendererOptions() by using the following keys:</p>
+<ol>
+<li>
+<p>user-password: String</p>
+</li>
+<li>
+<p>owner-password: String</p>
+</li>
+<li>
+<p>noprint: Boolean or "true"/"false"</p>
+</li>
+<li>
+<p>nocopy: Boolean or "true"/"false"</p>
+</li>
+<li>
+<p>noedit: Boolean or "true"/"false"</p>
+</li>
+<li>
+<p>noannotations: Boolean or "true"/"false"</p>
+</li>
+<li>
+<p>nofillinforms: Boolean or "true"/"false"</p>
+</li>
+<li>
+<p>noaccesscontent: Boolean or "true"/"false"</p>
+</li>
+<li>
+<p>noassembledoc: Boolean or "true"/"false"</p>
+</li>
+<li>
+<p>noprinthq: Boolean or "true"/"false"</p>
+</li>
+<li>
+<p>encrypt-metadata: Boolean or "true"/"false"</p>
+</li>
+</ol>
+<p>The password length is restricted to a maximum of 32 bytes if the encryption-length is 128 or less, and to a maximum of 127 bytes if the encryption-length is 256 (longer passwords will be truncated to the maximum allowed).</p>
+<h2 id="Environment">Environment</h2>
+<p>The PDF encryption implemented in FOP does not need external libraries to perform encryption. A recent JDK (1.5+) is sufficient. However, encryption using keys with 256 bits requires the installation of the JCE Unlimited Strength Jurisdiction Policy files from Oracle.</p>
         </div>
       </div>
       <div class="clear"></div>

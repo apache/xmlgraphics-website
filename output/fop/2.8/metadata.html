@@ -31,7 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
-   <title>Apache(th) FOP: PDF Images Plug-In</title>
+   <title>Apache(tm) FOP: Metadata</title>
   </head>
 
   <body>
@@ -701,148 +701,222 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Apache&trade; FOP: PDF Images Plug-In</h1>
+    <h1>Apache&trade; FOP: Metadata</h1>
 <h2 id="overview">Overview</h2>
-<p>The <em>fop-pdf-images</em> plug-in extends FOP in order to add support for using PDF images in fo:external-graphic elements when
-generating PDF files. This means one can write something like:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf#page=1&quot;</span><span class="nt">/&gt;</span>
+<p>Document metadata is an important tool for categorizing and finding documents. Various formats support different kinds of metadata representation and to different levels. One of the more popular and flexible means of representing document or object metadata is <a href="http://www.adobe.com/products/xmp/">XMP (eXtensible Metadata Platform, specified by Adobe)</a>. PDF 1.4 introduced the use of XMP. The XMP specification lists recommendation for embedding XMP metdata in other document and image formats. Given its flexibility it makes sense to make use this approach in the XSL-FO context. Unfortunately, unlike SVG which also refers to XMP, XSL-FO doesn't recommend a preferred way of specifying document and object metadata. Therefore, there's no portable way to represent metadata in XSL-FO documents. Each implementation does it differently.</p>
+<h2 id="xmp-in-fo">Embedding XMP in an XSL-FO document</h2>
+<p>As noted above, there's no officially recommended way to embed metadata in XSL-FO. Apache&trade; FOP supports embedding XMP in XSL-FO. Currently, only support for document-level metadata is implemented. Object-level metadata will be implemented when there's interest.</p>
+<p>Document-level metadata can be specified in the <code>fo:declarations</code> element. XMP specification recommends to use <code>x:xmpmeta</code>, <code>rdf:RDF</code>, and <code>rdf:Description</code> elements as shown in example below. Both <code>x:xmpmeta</code> and <code>rdf:RDF</code> elements are recognized as the top-level element introducing an XMP fragment (as per the XMP specification).</p>
+<h3 id="xmp-example">Example</h3>
+<div class="highlight"><pre><span></span><code>[..]
+<span class="nt">&lt;/fo:layout-master-set&gt;</span>
+<span class="nt">&lt;fo:declarations&gt;</span>
+  <span class="nt">&lt;x:xmpmeta</span> <span class="na">xmlns:x=</span><span class="s">&quot;adobe:ns:meta/&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;rdf:RDF</span> <span class="na">xmlns:rdf=</span><span class="s">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;rdf:Description</span> <span class="na">rdf:about=</span><span class="s">&quot;&quot;</span>
+          <span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- Dublin Core properties go here --&gt;</span>
+        <span class="nt">&lt;dc:title&gt;</span>Document title<span class="nt">&lt;/dc:title&gt;</span>
+        <span class="nt">&lt;dc:creator&gt;</span>Document author<span class="nt">&lt;/dc:creator&gt;</span>
+        <span class="nt">&lt;dc:description&gt;</span>Document subject<span class="nt">&lt;/dc:description&gt;</span>
+      <span class="nt">&lt;/rdf:Description&gt;</span>
+      <span class="nt">&lt;rdf:Description</span> <span class="na">rdf:about=</span><span class="s">&quot;&quot;</span>
+          <span class="na">xmlns:xmp=</span><span class="s">&quot;http://ns.adobe.com/xap/1.0/&quot;</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- XMP properties go here --&gt;</span>
+        <span class="nt">&lt;xmp:CreatorTool&gt;</span>Tool used to make the PDF<span class="nt">&lt;/xmp:CreatorTool&gt;</span>
+      <span class="nt">&lt;/rdf:Description&gt;</span>
+    <span class="nt">&lt;/rdf:RDF&gt;</span>
+  <span class="nt">&lt;/x:xmpmeta&gt;</span>
+<span class="nt">&lt;/fo:declarations&gt;</span>
+<span class="nt">&lt;fo:page-sequence</span> <span class="err">...</span>
+<span class="err">[..]</span>
 </code></pre></div>
 
-<p>and</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fox:external-document</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<h2>Reduce file size</h2>
-<p>If you input many pdfs together the output pdf has duplicate fonts. Set this flag to merge fonts in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-fonts&gt;</span>true<span class="nt">&lt;/merge-fonts&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2>Improve performance</h2>
-<p>If you use many of the same pdf's and they have a large content stream, this flag can improve performance.
-The disadvantage will be it can cause higher memory use inside your printer.
-Set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;form-xobject&gt;</span>true<span class="nt">&lt;/form-xobject&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2>Known issues with Postscript output</h2>
-<ul>
-<li>If fonts are not embedded in source PDF:<ul>
-<li>If OTF font type is needed text may be missing if Adobe Reader fonts are not found</li>
-<li>Text may be rendered wrong or poorly if wrong font is selected as replacement   </li>
-</ul>
-</li>
-<li>Transparency, layers and opacity may not render correctly</li>
-<li>Gradients in text may be different from the source PDF</li>
-</ul>
-<h2 id="binary">Binary Download</h2>
-<p>If using the binary package, the four jar files should be placed in the <em>lib</em> directory of your FOP installation.</p>
-<p>Binary distributions include "-bin" in their names, and can be downloaded from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>.</p>
-<p>Here are the links to each package’s signature and checksum files. Signatures can be verified by using our <a href="https://www.apache.org/dist/xmlgraphics/fop/KEYS">KEYS</a> file.</p>
+<p><note><code>fo:declarations</code> <strong>must</strong> be declared after <code>fo:layout-master-set</code> and before the first <code>page-sequence</code>.</note></p>
+<h2 id="xmp-impl-in-fop">Implementation in Apache FOP</h2>
+<p>Currently, XMP support is only available for PDF output.</p>
+<p>Originally, you could set some metadata information through FOP's FOUserAgent by using its set*() methods (like setTitle(String) or setAuthor(String). These values are directly used to set value in the PDF Info object. Since PDF 1.4, adding metadata as an XMP document to a PDF is possible. That means that there are now two mechanisms in PDF that hold metadata.</p>
+<p>Apache FOP now synchronizes the Info and the Metadata object in PDF, i.e. when you set the title and the author through the FOUserAgent, the two values will end up in the (old) Info object and in the new Metadata object as XMP content. If instead of FOUserAgent, you embed XMP metadata in the XSL-FO document (as shown above), the XMP metadata will be used as-is in the PDF Metadata object and some values from the XMP metadata will be copied to the Info object to maintain backwards-compatibility for PDF readers that don't support XMP metadata.</p>
+<p>The mapping between the Info and the Metadata object used by Apache FOP comes from the <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=38920">PDF/A-1 specification</a>. For convenience, here's the mapping table:</p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
+<th>Document information dictionary<br/>Entry</th>
+<th>PDF type</th>
+<th>XMP Property</th>
+<th>XMP type</th>
+<th>XMP Category</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.tar.gz&amp;action=download">fop-pdf-images-2.7-bin.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.tar.gz.sha512">SHA512</a></td>
-<td></td>
+<td>Title</td>
+<td>text string</td>
+<td>dc:title</td>
+<td>Text</td>
+<td>External</td>
 </tr>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.zip&amp;action=download">fop-pdf-images-2.7-bin.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.zip.sha512">SHA512</a></td>
-<td></td>
+<td>Author</td>
+<td>text string</td>
+<td>dc:creator</td>
+<td>seq Text</td>
+<td>External</td>
 </tr>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.tar.gz&amp;action=download">fop-pdf-images-2.7-src.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.tar.gz.sha512">SHA512</a></td>
-<td></td>
+<td>Subject</td>
+<td>text string</td>
+<td>dc:description["x-default"]</td>
+<td>Text</td>
+<td>External</td>
 </tr>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.zip&amp;action=download">fop-pdf-images-2.7-src.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.zip.sha512">SHA512</a></td>
-<td></td>
+<td>Keywords</td>
+<td>text string</td>
+<td>pdf:Keywords</td>
+<td>Text</td>
+<td>External</td>
+</tr>
+<tr>
+<td>Creator</td>
+<td>text string</td>
+<td>xmp:CreatorTool</td>
+<td>Text</td>
+<td>External</td>
+</tr>
+<tr>
+<td>Producer</td>
+<td>text string</td>
+<td>pdf:Producer</td>
+<td>Text</td>
+<td>Internal</td>
+</tr>
+<tr>
+<td>CreationDate</td>
+<td>date</td>
+<td>xmp:CreationDate</td>
+<td>Date</td>
+<td>Internal</td>
+</tr>
+<tr>
+<td>ModDate</td>
+<td>date</td>
+<td>xmp:ModifyDate</td>
+<td>Date</td>
+<td>Internal</td>
 </tr>
 </tbody>
 </table>
-<h2 id="source">Source Download</h2>
+<p><note>"Internal" in the Category column means that the user should not set this value. It is set by the application.</note></p>
+<p><note>The "Subject" used to be mapped to <code>dc:subject</code> in the initial publication of PDF/A-1 (ISO 19005-1). In the <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=45613">Technical Corrigendum 1</a> this was changed to map to <code>dc:description["x-default"]</code>.</note></p>
+<h3 id="namespaces">Namespaces</h3>
+<p>Metadata is made of property sets where each property set uses a different namespace URI.</p>
+<p>The following is a listing of namespaces that Apache FOP recognizes and acts upon, mostly to synchronize the XMP metadata with the PDF Info dictionary:</p>
+<table>
+<thead>
+<tr>
+<th>Set/Schema</th>
+<th>Namespace Prefix</th>
+<th>Namespace URI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dublin Core</td>
+<td>dc</td>
+<td>http://purl.org/dc/elements/1.1/</td>
+</tr>
+<tr>
+<td>XMP Basic</td>
+<td>xmp</td>
+<td>http://ns.adobe.com/xap/1.0/</td>
+</tr>
+<tr>
+<td>Adobe PDF Schema</td>
+<td>pdf</td>
+<td>http://ns.adobe.com/pdf/1.3/</td>
+</tr>
+</tbody>
+</table>
+<p>Please refer to the <a href="http://partners.adobe.com/public/developer/en/xmp/sdk/XMPspecification.pdf">XMP Specification</a> for information on other metadata namespaces.</p>
+<p>Property sets (Namespaces) not listed here are simply passed through to the final document (if supported). That is useful if you want to specify a custom metadata schema.</p>
+<h2 id="links">Links</h2>
 <ul>
-<li>Download a released version from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>. Source distributions include "-src" in their names.</li>
+<li>
+<p><a href="http://www.adobe.com/products/xmp/">Adobe's Extensible Metadata Platform (XMP) website</a></p>
+</li>
+<li>
+<p><a href="http://partners.adobe.com/public/developer/en/xmp/sdk/XMPspecification.pdf">Adobe XMP Specification</a></p>
+</li>
+<li>
+<p><a href="http://partners.adobe.com/public/developer/en/xmp/sdk/XMPspecification.pdf">Adobe XMP Specification</a></p>
+</li>
+<li>
+<p><a href="http://dublincore.org/">http://dublincore.org/</a></p>
+</li>
 </ul>
-<h2 id="older_releases">Older Releases</h2>
-<p>Archive distributions can be downloaded from the archives <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/">binaries</a> &amp; <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/source/">source</a> links.</p>
-<p>The fop-pdf-images plug-in was donated by Jeremias M&auml;rki to the XMLGraphics project in 2012. Older releases can
-be obtained from his plug-in <a href="http://www.jeremias-maerki.ch/development/fop/index.html">page</a>.</p>
-<h1>History of Changes</h1>
-<h2 id="version_2.8">Version 2.8</h2>
-<ul>
-<li>FOP-3051: Upgrade to Commons IO 2.11</li>
-<li>FOP-3073: Preserve bytes when cloning string</li>
-<li>FOP-3089: Switch cmap format to support iPhone</li>
-<li>FOP-3102: Move composite glyphs to the end</li>
-</ul>
-<h2 id="version_2.7">Version 2.7</h2>
-<ul>
-<li>FOP-3034: Update PDFBox to 2.0.24</li>
-<li>FOP-3032: Allow to embed native PDF in AFP</li>
-<li>FOP-3020: Add space to standard position for font merge</li>
-<li>FOP-3009: Avoid merging fonts with different number of cmap formats</li>
-<li>FOP-3001: Deduplicate streams in arrays</li>
-</ul>
-<h2 id="version_2.6">Version 2.6</h2>
-<ul>
-<li>FOP-2951: Add uniquename to xobj form</li>
-<li>FOP-2965: Keep streams with DCT compression</li>
-<li>FOP-2971: Update unique name inside patterns</li>
-<li>FOP-2974: Handle space in COSName</li>
-<li>FOP-2979: Update PDFBox to 2.0.19</li>
-</ul>
-<h2 id="version_2.5">Version 2.5</h2>
-<ul>
-<li>FOP-2904: Handle object for boundingbox</li>
-<li>FOP-2922: Syntax error after writing content stream</li>
-<li>FOP-2933: PDF to PDF checkbox missing</li>
-</ul>
-<h2 id="version_2.4">Version 2.4</h2>
-<ul>
-<li>FOP-2802: Java 10 PDF/SVG to Image box not shown</li>
-<li>FOP-2812: Update PDFBox to 2.0.11</li>
-<li>FOP-2836: Update PDFBox to 2.0.13</li>
-<li>FOP-2840: Image mask in PDF not rendered to PS</li>
-<li>FOP-2841: PDF to PDF with merge-fonts checkbox misaligned</li>
-<li>FOP-2856: Support compile on Java 12</li>
-<li>FOP-2873: Update to PDFBox 2.0.16</li>
-<li>FOP-2879: Add caching to avoid parsing content stream</li>
-<li>FOP-2882: Allow PDFFormXObject to improve performance</li>
-</ul>
-<h2 id="version_2.3">Version 2.3</h2>
-<ul>
-<li>PDF to PDF deduplicate more types of streams</li>
-<li>PDF to PS allow fop fonts as fallback</li>
-</ul>
-<h2 id="version_2.2">Version 2.2</h2>
-<ul>
-<li>Move to PDFBox 2</li>
-<li>Deduplicate PDF streams</li>
-<li>PDF to PS deduplication of images</li>
-<li>Remove xobj type=form</li>
-<li>Merge fonts (off by default)</li>
-<li>Support PDF shading to PS</li>
-<li>Merging of Tagged (Accessible) PDF</li>
-</ul>
+<h1>PDF custom properties</h1>
+<p>It is possible to add custom key/value pairs in the Info dictionary of a PDF document. Those custom properties will appear in the ‘Custom’ tab of Adobe Reader’s ‘Document Properties’ window.</p>
+<p>A pdf:info element can be added as a child of fo:declarations and contain the custom properties. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:declarations&gt;</span>
+  <span class="nt">&lt;pdf:info</span> <span class="na">xmlns:pdf=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/pdf&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;pdf:name</span> <span class="na">key=</span><span class="s">&quot;MyProperty&quot;</span><span class="nt">&gt;</span>MyValue<span class="nt">&lt;/pdf:name&gt;</span>
+    <span class="nt">&lt;pdf:name</span> <span class="na">key=</span><span class="s">&quot;MyOtherProperty&quot;</span><span class="nt">&gt;</span>MyOtherValue<span class="nt">&lt;/pdf:name&gt;</span>
+  <span class="nt">&lt;/pdf:info&gt;</span>
+<span class="nt">&lt;/fo:declarations&gt;</span>
+</code></pre></div>
+
+<h1>PDF ViewerPreferences</h1>
+<p>You can set PDF viewer preferences for example using:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:declarations&gt;</span>
+  <span class="nt">&lt;pdf:catalog</span> <span class="na">xmlns:pdf=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/pdf&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;pdf:dictionary</span> <span class="na">key=</span><span class="s">&quot;ViewerPreferences&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;pdf:name</span> <span class="na">key=</span><span class="s">&quot;Duplex&quot;</span><span class="nt">&gt;</span>DuplexFlipShortEdge<span class="nt">&lt;/pdf:name&gt;</span>
+   <span class="nt">&lt;/pdf:dictionary&gt;</span>
+  <span class="nt">&lt;/pdf:catalog&gt;</span>
+<span class="nt">&lt;/fo:declarations&gt;</span>
+</code></pre></div>
+
+<p>There is a specific element for each possible entry type: pdf:array, pdf:boolean, pdf:name, pdf:number, pdf:string.
+For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:declarations&gt;</span>
+  <span class="nt">&lt;pdf:layer</span> <span class="na">id=</span><span class="s">&quot;Contents&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;pdf:string</span> <span class="na">key=</span><span class="s">&quot;Name&quot;</span><span class="nt">&gt;</span>Contents<span class="nt">&lt;/pdf:string&gt;</span>
+  <span class="nt">&lt;/pdf:layer&gt;</span>
+  <span class="nt">&lt;pdf:layer</span> <span class="na">id=</span><span class="s">&quot;Connections&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;pdf:string</span> <span class="na">key=</span><span class="s">&quot;Name&quot;</span><span class="nt">&gt;</span>Connections<span class="nt">&lt;/pdf:string&gt;</span>
+  <span class="nt">&lt;/pdf:layer&gt;</span>
+  <span class="nt">&lt;pdf:catalog&gt;</span>
+    <span class="nt">&lt;pdf:dictionary</span> <span class="na">key=</span><span class="s">&quot;OCProperties&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;pdf:array</span> <span class="na">key=</span><span class="s">&quot;OCGs&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;pdf:reference</span> <span class="na">refid=</span><span class="s">&quot;Contents&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;pdf:reference</span> <span class="na">refid=</span><span class="s">&quot;Connections&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/pdf:array&gt;</span>
+      <span class="nt">&lt;pdf:dictionary</span> <span class="na">key=</span><span class="s">&quot;D&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;pdf:string</span> <span class="na">key=</span><span class="s">&quot;Name&quot;</span><span class="nt">&gt;</span>Default<span class="nt">&lt;/pdf:string&gt;</span>
+        <span class="nt">&lt;pdf:name</span> <span class="na">key=</span><span class="s">&quot;BaseState&quot;</span><span class="nt">&gt;</span>OFF<span class="nt">&lt;/pdf:name&gt;</span>
+      <span class="nt">&lt;/pdf:dictionary&gt;</span>
+    <span class="nt">&lt;/pdf:dictionary&gt;</span>
+  <span class="nt">&lt;/pdf:catalog&gt;</span>
+<span class="nt">&lt;/fo:declarations&gt;</span>
+</code></pre></div>
+
+<p><a href="http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop/test/layoutengine/standard-testcases/pdf-dictionary-extension_1.xml?view=markup">Example 1</a>
+<a href="http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop/test/layoutengine/standard-testcases/pdf-dictionary-extension_2.xml?view=markup">Example 2</a>
+<a href="http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop/test/layoutengine/standard-testcases/pdf-dictionary-extension_3.xml?view=markup">Example 3</a></p>
+<h1>PDF Page Piece</h1>
+<p>Allows indexing of PDF files for tools such as IBM Content Manager OnDemand</p>
+<h2 id="fo">Usage (fo)</h2>
+<p>Add metadata for each page master based on how the software has been configured.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;simple&quot;</span> <span class="na">page-height=</span><span class="s">&quot;27.9cm&quot;</span> <span class="na">page-width=</span><span class="s">&quot;21.6cm&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fo:region-body</span> <span class="nt">/&gt;</span>
+   <span class="nt">&lt;pdf:pagepiece&gt;</span>
+    <span class="nt">&lt;pdf:dictionary</span> <span class="na">key=</span><span class="s">&quot;IBM-ODIndexes/Private&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;pdf:string</span> <span class="na">key=</span><span class="s">&quot;Cname&quot;</span><span class="nt">&gt;</span>BUD<span class="nt">&lt;/pdf:string&gt;</span>        
+    <span class="nt">&lt;/pdf:dictionary&gt;</span> 
+  <span class="nt">&lt;/pdf:pagepiece&gt;</span>        
+<span class="nt">&lt;/fo:simple-page-master&gt;</span>
+</code></pre></div>
         </div>
       </div>
       <div class="clear"></div>

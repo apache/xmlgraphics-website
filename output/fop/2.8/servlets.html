@@ -31,7 +31,7 @@
 	.highlight {color: red;}
 	</style>
 
-   <title>Apache(th) FOP: PDF Images Plug-In</title>
+   <title>Apache(tm) FOP: Servlets</title>
   </head>
 
   <body>
@@ -701,148 +701,184 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Apache&trade; FOP: PDF Images Plug-In</h1>
+    <h1>Apache&trade; FOP: Servlets</h1>
+<p><subtitle>How to use Apache&trade; FOP in a Servlet</subtitle></p>
 <h2 id="overview">Overview</h2>
-<p>The <em>fop-pdf-images</em> plug-in extends FOP in order to add support for using PDF images in fo:external-graphic elements when
-generating PDF files. This means one can write something like:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf#page=1&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<p>and</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fox:external-document</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<h2>Reduce file size</h2>
-<p>If you input many pdfs together the output pdf has duplicate fonts. Set this flag to merge fonts in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-fonts&gt;</span>true<span class="nt">&lt;/merge-fonts&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2>Improve performance</h2>
-<p>If you use many of the same pdf's and they have a large content stream, this flag can improve performance.
-The disadvantage will be it can cause higher memory use inside your printer.
-Set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;form-xobject&gt;</span>true<span class="nt">&lt;/form-xobject&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2>Known issues with Postscript output</h2>
+<p>This page discusses topic all around using Apache&trade; FOP in a servlet environment.</p>
+<h2 id="example-servlets">Example Servlets in the FOP distribution</h2>
+<p>In the directory {fop-dir}/fop-core/src/main/java/org/apache/fop/servlet, you'll find a working example of a FOP-enabled servlet.</p>
+<p>The servlet is automatically built when you build Apache FOP using the supplied Ant script. After building the servlet, drop fop.war into the webapps directory of Apache Tomcat (or any other web container). Then, you can use URLs like the following to generate PDF files:</p>
 <ul>
-<li>If fonts are not embedded in source PDF:<ul>
-<li>If OTF font type is needed text may be missing if Adobe Reader fonts are not found</li>
-<li>Text may be rendered wrong or poorly if wrong font is selected as replacement   </li>
-</ul>
+<li>
+<p>http://localhost:8080/fop/fop?fo=/home/path/to/fofile.fo</p>
 </li>
-<li>Transparency, layers and opacity may not render correctly</li>
-<li>Gradients in text may be different from the source PDF</li>
+<li>
+<p>http://localhost:8080/fop/fop?xml=/home/path/to/xmlfile.xml&amp;xsl=/home/path/to/xslfile.xsl</p>
+</li>
 </ul>
-<h2 id="binary">Binary Download</h2>
-<p>If using the binary package, the four jar files should be placed in the <em>lib</em> directory of your FOP installation.</p>
-<p>Binary distributions include "-bin" in their names, and can be downloaded from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>.</p>
-<p>Here are the links to each package’s signature and checksum files. Signatures can be verified by using our <a href="https://www.apache.org/dist/xmlgraphics/fop/KEYS">KEYS</a> file.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.tar.gz&amp;action=download">fop-pdf-images-2.7-bin.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.tar.gz.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.zip&amp;action=download">fop-pdf-images-2.7-bin.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.7-bin.zip.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.tar.gz&amp;action=download">fop-pdf-images-2.7-src.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.tar.gz.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.zip&amp;action=download">fop-pdf-images-2.7-src.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.7-src.zip.sha512">SHA512</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="source">Source Download</h2>
+<p>The source code for the servlet can be found under {fop-dir}/fop-core/src/main/java/org/apache/fop/servlet/FopServlet.java.</p>
+<p><note>This example servlet should not be used on a public web server connected to the Internet as it does not contain any measures to prevent Denial-of-Service-Attacks. It is provided as an example and as a starting point for your own servlet.</note></p>
+<h2 id="servlet">Create your own Servlet</h2>
+<p><note>This section assumes you are familiar with <a href="embedding.html">embedding FOP</a>.</note></p>
+<h3 id="minimal-servlet">A minimal Servlet</h3>
+<p>Here is a minimal code snippet to demonstrate the basics:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span> <span class="n">TransformerFactory</span> <span class="n">tFactory</span> <span class="o">=</span> <span class="n">TransformerFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">();</span>
+
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="p">(</span><span class="n">HttpServletRequest</span> <span class="n">request</span><span class="p">,</span>
+                   <span class="n">HttpServletResponse</span> <span class="n">response</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">ServletException</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="n">response</span><span class="p">.</span><span class="na">setContentType</span><span class="p">(</span><span class="s">&quot;application/pdf&quot;</span><span class="p">);</span>
+        <span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">).</span><span class="na">toURI</span><span class="p">());</span>
+        <span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">,</span> <span class="n">response</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">());</span>
+        <span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">tFactory</span><span class="p">.</span><span class="na">newTransformer</span><span class="p">();</span>
+        <span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="s">&quot;foo.fo&quot;</span><span class="p">);</span>
+        <span class="n">Result</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SAXResult</span><span class="p">(</span><span class="n">fop</span><span class="p">.</span><span class="na">getDefaultHandler</span><span class="p">());</span>
+        <span class="n">transformer</span><span class="p">.</span><span class="na">transform</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="n">ServletException</span><span class="p">(</span><span class="n">ex</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><note>There are numerous problems with the code snippet above. Its purpose is only to demonstrate the basic concepts. See below for details.</note></p>
+<h3 id="xslt">Adding XSL tranformation (XSLT)</h3>
+<p>A common requirement is to transform an XML source to XSL-FO using an XSL transformation. It is recommended to use JAXP for this task. The following snippet shows the basic code:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span> <span class="n">TransformerFactory</span> <span class="n">tFactory</span> <span class="o">=</span> <span class="n">TransformerFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">();</span>
+
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">ServletException</span> <span class="p">{</span>
+    <span class="c1">//Optionally customize the FopFactory and TransformerFactory here</span>
+<span class="p">}</span>
+
+<span class="o">[</span><span class="p">..</span><span class="o">]</span>
+
+<span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">).</span><span class="na">toURI</span><span class="p">());</span>
+
+<span class="c1">//Setup a buffer to obtain the content length</span>
+<span class="n">ByteArrayOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="p">();</span>
+
+<span class="c1">//Setup FOP</span>
+<span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">,</span> <span class="n">out</span><span class="p">);</span>
+
+<span class="c1">//Setup Transformer</span>
+<span class="n">Source</span> <span class="n">xsltSrc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;foo-xml2fo.xsl&quot;</span><span class="p">));</span>
+<span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">tFactory</span><span class="p">.</span><span class="na">newTransformer</span><span class="p">(</span><span class="n">xsltSrc</span><span class="p">);</span>
+
+<span class="c1">//Make sure the XSL transformation&#39;s result is piped through to FOP</span>
+<span class="n">Result</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SAXResult</span><span class="p">(</span><span class="n">fop</span><span class="p">.</span><span class="na">getDefaultHandler</span><span class="p">());</span>
+
+<span class="c1">//Setup input</span>
+<span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;foo.xml&quot;</span><span class="p">));</span>
+
+<span class="c1">//Start the transformation and rendering process</span>
+<span class="n">transformer</span><span class="p">.</span><span class="na">transform</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+
+<span class="c1">//Prepare response</span>
+<span class="n">response</span><span class="p">.</span><span class="na">setContentType</span><span class="p">(</span><span class="s">&quot;application/pdf&quot;</span><span class="p">);</span>
+<span class="n">response</span><span class="p">.</span><span class="na">setContentLength</span><span class="p">(</span><span class="n">out</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+
+<span class="c1">//Send content to Browser</span>
+<span class="n">response</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">().</span><span class="na">write</span><span class="p">(</span><span class="n">out</span><span class="p">.</span><span class="na">toByteArray</span><span class="p">());</span>
+<span class="n">response</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">().</span><span class="na">flush</span><span class="p">();</span>
+</code></pre></div>
+
+<p><note>Buffering the generated PDF in a ByteArrayOutputStream is done to avoid potential problems with the Acrobat Reader Plug-in in Microsoft Internet Explorer.</note></p>
+<p>The <code>Source</code> instance used above is simply an example. If you have to read the XML from a string, supply a <code>new StreamSource(new
+          StringReader(xmlstring))</code>. Constructing and reparsing an XML string is generally less desirable than using a SAXSource if you generate your XML. You can alternatively supply a DOMSource as well. You may also use dynamically generated XSL if you like.</p>
+<p>Because you have an explicit <code>Transformer</code> object, you can also use it to explicitely set parameters for the transformation run.</p>
+<h3 id="cfg">Custom configuration</h3>
+<p>You can easily set up your own FOUserAgent as demonstrated on the <a href="embedding.html">Embedding page</a>.</p>
+<h3 id="performance">Improving performance</h3>
+<p>There are several options to consider:</p>
 <ul>
-<li>Download a released version from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>. Source distributions include "-src" in their names.</li>
+<li>
+<p>Instead of java.io.ByteArrayOutputStream consider using the ByteArrayOutputStream implementation from the <a href="http://commons.apache.org/io/">Jakarta Commons IO project</a> which allocates less memory. The full class name is: <code>org.apache.commons.io.output.ByteArrayOutputStream</code></p>
+</li>
+<li>
+<p>In certain cases it can help to write the generated PDF to a temporary file so you can quickly reuse the file. This is especially useful, if Internet Explorer calls the servlet multiple times with the same request or if you often generate equal PDFs.</p>
+</li>
 </ul>
-<h2 id="older_releases">Older Releases</h2>
-<p>Archive distributions can be downloaded from the archives <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/">binaries</a> &amp; <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/source/">source</a> links.</p>
-<p>The fop-pdf-images plug-in was donated by Jeremias M&auml;rki to the XMLGraphics project in 2012. Older releases can
-be obtained from his plug-in <a href="http://www.jeremias-maerki.ch/development/fop/index.html">page</a>.</p>
-<h1>History of Changes</h1>
-<h2 id="version_2.8">Version 2.8</h2>
+<p>Of course, the <a href="embedding.html#performance">performance hints from the Embedding page</a> apply here, too.</p>
+<h3 id="uriresolver">Accessing resources in your web application</h3>
+<p>Often, you will want to use resources (stylesheets, images etc.) which are bundled with your web application. FOP provides a URIResolver implementation that lets you access files via the Servlet's ServletContext. The class is called <code>org.apache.fop.servlet.ServletContextURIResolver</code>.</p>
+<p>Here's how to set it up in your servlet. Instantiate a new instance in the servlet's init() method:</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/** URIResolver for use by this servlet */</span>
+<span class="kd">protected</span> <span class="n">URIResolver</span> <span class="n">uriResolver</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">ServletException</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">uriResolver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ServletContextURIResolver</span><span class="p">(</span><span class="n">getServletContext</span><span class="p">());</span>
+    <span class="o">[</span><span class="p">..</span><span class="o">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The ServletContextURIResolver reacts on URIs beginning with "servlet-context:". If you want to access an image in a subdirectory of your web application, you could, for example, use: "servlet-context:/images/myimage.png". Don't forget the leading slash after the colon!</p>
+<p>Further down, you can use the URIResolver for various things:</p>
 <ul>
-<li>FOP-3051: Upgrade to Commons IO 2.11</li>
-<li>FOP-3073: Preserve bytes when cloning string</li>
-<li>FOP-3089: Switch cmap format to support iPhone</li>
-<li>FOP-3102: Move composite glyphs to the end</li>
+<li>
+<p>With the Transformer (JAXP/XSLT) so things like document() functions can resolver "servlet-context:" URIs.</p>
+</li>
+<li>
+<p>With the FopFactory so every resource FOP loads can be loaded using a "servlet-context:" URI.</p>
+</li>
+<li>
+<p>You can the ServletContextURIResolver yourself in your servlet code to access stylesheets or XML files bundled with your web application.</p>
+</li>
 </ul>
-<h2 id="version_2.7">Version 2.7</h2>
+<p>Here are some example snippets:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Setting up the JAXP TransformerFactory</span>
+<span class="k">this</span><span class="p">.</span><span class="na">transFactory</span> <span class="o">=</span> <span class="n">TransformerFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">();</span>
+<span class="k">this</span><span class="p">.</span><span class="na">transFactory</span><span class="p">.</span><span class="na">setURIResolver</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">uriResolver</span><span class="p">);</span>
+
+<span class="o">[</span><span class="p">..</span><span class="o">]</span>
+
+ <span class="n">ResourceResolver</span> <span class="n">resolver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ResourceResolver</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">public</span> <span class="n">OutputStream</span> <span class="nf">getOutputStream</span><span class="p">(</span><span class="n">URI</span> <span class="n">uri</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="p">{</span>
+            <span class="n">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="n">getServletContext</span><span class="p">().</span><span class="na">getResource</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="na">toASCIIString</span><span class="p">());</span>
+            <span class="k">return</span> <span class="n">url</span><span class="p">.</span><span class="na">openConnection</span><span class="p">().</span><span class="na">getOutputStream</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="kd">public</span> <span class="n">Resource</span> <span class="nf">getResource</span><span class="p">(</span><span class="n">URI</span> <span class="n">uri</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="n">Resource</span><span class="p">(</span><span class="n">getServletContext</span><span class="p">().</span><span class="na">getResourceAsStream</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="na">toASCIIString</span><span class="p">()));</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+
+<span class="c1">//Setting up the FOP factory</span>
+<span class="n">FopFactoryBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FopFactoryBuilder</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">).</span><span class="na">toURI</span><span class="p">(),</span> <span class="n">resolver</span><span class="p">);</span>
+<span class="n">fopFactory</span> <span class="o">=</span> <span class="n">builder</span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+
+<span class="o">[</span><span class="p">..</span><span class="o">]</span>
+
+<span class="c1">//The stylesheet for the JAXP Transfomer</span>
+<span class="n">Source</span> <span class="n">xsltSrc</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">uriResolver</span><span class="p">.</span><span class="na">resolve</span><span class="p">(</span>
+    <span class="s">&quot;servlet-context:/xslt/mystylesheet.xsl&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+<span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">transFactory</span><span class="p">.</span><span class="na">newTransformer</span><span class="p">(</span><span class="n">xsltSrc</span><span class="p">);</span>
+<span class="n">transformer</span><span class="p">.</span><span class="na">setURIResolver</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">uriResolver</span><span class="p">);</span>
+</code></pre></div>
+
+<h2 id="ie">Notes on Microsoft Internet Explorer</h2>
+<p>Some versions of Internet Explorer will not automatically show the PDF or call the servlet multiple times. These are well-known limitations of Internet Explorer and are not a problem of the servlet. However, Internet Explorer can still be used to download the PDF so that it can be viewed later. Here are some suggestions in this context:</p>
 <ul>
-<li>FOP-3034: Update PDFBox to 2.0.24</li>
-<li>FOP-3032: Allow to embed native PDF in AFP</li>
-<li>FOP-3020: Add space to standard position for font merge</li>
-<li>FOP-3009: Avoid merging fonts with different number of cmap formats</li>
-<li>FOP-3001: Deduplicate streams in arrays</li>
+<li>
+<p>Use an URL ending in <code>.pdf</code>, like <code>http://myserver/servlet/stuff.pdf</code>. Yes, the servlet can be configured to handle this. If the URL has to contain parameters, try to have <strong>both</strong> the base URL as well as the last parameter end in <code>.pdf</code>, if necessary append a dummy parameter, like <code>http://myserver/servlet/stuff.pdf?par1=a&amp;par2=b&amp;d=.pdf</code>. The effect may depend on IEx version.</p>
+</li>
+<li>
+<p>Give IEx the opportunity to cache. In particular, ensure the server does not set any headers causing IEx not to cache the content. This may be a real problem if the document is sent over HTTPS, because most IEx installations will by default <em>not</em> cache any content retrieved over HTTPS. Setting the <code>Expires</code> header entry may help in this case:</p>
+<div class="highlight"><pre><span></span><code><span class="n">response</span><span class="p">.</span><span class="na">setDateHeader</span><span class="p">(</span><span class="s">&quot;Expires&quot;</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">()</span> <span class="o">+</span> <span class="n">cacheExpiringDuration</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Consult your server manual and the relevant RFCs for further details on HTTP headers and caching.</p>
+</li>
+<li>
+<p>Cache in the server. It may help to include a parameter in the URL which has a timestamp as the value min order to decide whether a request is repeated. IEx is reported to retrieve a document up to three times, but never more often.</p>
+</li>
 </ul>
-<h2 id="version_2.6">Version 2.6</h2>
-<ul>
-<li>FOP-2951: Add uniquename to xobj form</li>
-<li>FOP-2965: Keep streams with DCT compression</li>
-<li>FOP-2971: Update unique name inside patterns</li>
-<li>FOP-2974: Handle space in COSName</li>
-<li>FOP-2979: Update PDFBox to 2.0.19</li>
-</ul>
-<h2 id="version_2.5">Version 2.5</h2>
-<ul>
-<li>FOP-2904: Handle object for boundingbox</li>
-<li>FOP-2922: Syntax error after writing content stream</li>
-<li>FOP-2933: PDF to PDF checkbox missing</li>
-</ul>
-<h2 id="version_2.4">Version 2.4</h2>
-<ul>
-<li>FOP-2802: Java 10 PDF/SVG to Image box not shown</li>
-<li>FOP-2812: Update PDFBox to 2.0.11</li>
-<li>FOP-2836: Update PDFBox to 2.0.13</li>
-<li>FOP-2840: Image mask in PDF not rendered to PS</li>
-<li>FOP-2841: PDF to PDF with merge-fonts checkbox misaligned</li>
-<li>FOP-2856: Support compile on Java 12</li>
-<li>FOP-2873: Update to PDFBox 2.0.16</li>
-<li>FOP-2879: Add caching to avoid parsing content stream</li>
-<li>FOP-2882: Allow PDFFormXObject to improve performance</li>
-</ul>
-<h2 id="version_2.3">Version 2.3</h2>
-<ul>
-<li>PDF to PDF deduplicate more types of streams</li>
-<li>PDF to PS allow fop fonts as fallback</li>
-</ul>
-<h2 id="version_2.2">Version 2.2</h2>
-<ul>
-<li>Move to PDFBox 2</li>
-<li>Deduplicate PDF streams</li>
-<li>PDF to PS deduplication of images</li>
-<li>Remove xobj type=form</li>
-<li>Merge fonts (off by default)</li>
-<li>Support PDF shading to PS</li>
-<li>Merging of Tagged (Accessible) PDF</li>
-</ul>
+<h2 id="servlet-engine">Servlet Engines</h2>
+<p>When using a servlet engine, there are potential CLASSPATH issues, and potential conflicts with existing XML/XSLT libraries. Servlet containers also often use their own classloaders for loading webapps, which can cause bugs and security problems.</p>
+<h3 id="tomcat">Tomcat</h3>
+<p>Check Tomcat's documentation for detailed instructions about installing FOP and Cocoon. There are known bugs that must be addressed, particularly for Tomcat 4.0.3.</p>
+<h3 id="websphere">WebSphere 3.5</h3>
+<p>Put a copy of a working parser in some directory where WebSphere can access it. For example, if /usr/webapps/yourapp/servlets is the CLASSPATH for your servlets, copy the Xerces jar into it (any other directory would also be fine). Do not add the jar to the servlet CLASSPATH, but add it to the CLASSPATH of the application server which contains your web application. In the WebSphere administration console, click on the "environment" button in the "general" tab. In the "variable name" box, enter "CLASSPATH". In the "value" box, enter the correct path to the parser jar file (/usr/webapps/yourapp/servlets/Xerces.jar in our example here). Press "OK", then apply the change and restart the application server.</p>
+<h2 id="complex-usecases">Handling complex use cases</h2>
+<p>Sometimes the requirements for a servlet get quite sophisticated: SQL data sources, multiple XSL transformations, merging of several datasources etc. In such a case consider using <a href="http://cocoon.apache.org/">Apache Cocoon</a> instead of a custom servlet to accomplish your goal.</p>
         </div>
       </div>
       <div class="clear"></div>
