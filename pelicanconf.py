@@ -49,10 +49,10 @@ PAGE_PATHS = ['.']
 INDEX_SAVE_AS = 'articlesignore.html'
 READERS = {'html': None}
 
-fop_current_version = '2.7'
+fop_current_version = '2.8'
 batik_current_version = '1.16'
 fop_minimal_java_requirement = '1.8'
-fop_current_version_release_date = '20 Jan 2022'
+fop_current_version_release_date = '9 Nov 2022'
 
 def read(self, source_path):
     self._source_path = source_path
