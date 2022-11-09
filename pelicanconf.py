@@ -72,6 +72,12 @@ for root, _, _ in os.walk(PATH):
     for adir in ['css', 'js', 'images', 'fo', 'svg', 'schema', 'stylesets', 'demo', 'javadoc']:
         STATIC_PATHS.append(os.path.join(root, adir).replace(PATH + os.sep, ''))
 
-#MARKDOWN = {
-#    'extensions': ['mdx_include']
-#}
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+        'markdown.extensions.toc': {},
+    },
+    'output_format': 'html5',
+}
