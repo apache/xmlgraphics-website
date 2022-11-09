@@ -194,7 +194,7 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Parser module</h1>
+    <h1 id="parser-module">Parser module</h1>
 <p>SVG has a number of microsyntaxes that are used within attribute values, such as the <code>transform</code> attribute on <code>SVGTransformable</code> elements, and the path data <code>d</code> attribute on <code>path</code> elements. Since these are not trivial to parse, this functionality has been factored out into a separate package that can be used by other SVG-processing applications if needed.</p>
 <h2 id="parsersHandlersAndProducers">Parsers, handlers and producers</h2>
 <p>In the parser module, each microsyntax is supported by a pair of classes: a parser and a handler. The parser is a class that implements the <a href="../javadoc/org/apache/batik/parser/Parser.html">Parser</a> interface, which has methods to parse values from a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/Reader.html">Reader</a> or a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html">String</a>. The handler is an interface specific to the microsyntax that will have its methods called whenever the corresponding element in the input is parsed. For those handler interfaces that have more than one method, adapter classes are provided (named <code>Default</code> *).</p>

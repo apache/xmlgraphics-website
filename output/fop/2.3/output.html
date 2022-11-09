@@ -741,7 +741,7 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Apache&trade; FOP Output Formats</h1>
+    <h1 id="apache-fop-output-formats">Apache&trade; FOP Output Formats</h1>
 <p>Apache&trade; FOP supports multiple output formats by using a different renderer for each format. The renderers do not all have the same set of capabilities, sometimes because of the output format itself, sometimes because some renderers get more development attention than others.</p>
 <h2 id="general">General Information</h2>
 <h3 id="general-fonts">Fonts</h3>
@@ -873,7 +873,7 @@ Here is some sample code that uses iText to encrypt a FOP-generated PDF. (Note t
 </code></pre></div>
 
 <p>Note: Not all PDF Viewers (including some Acrobat Versions) will open the embedded file when clicking on the link. In that case, the user will have to open he attachment via the separate list of file attachments.</p>
-<h4>Custom Document Properties</h4>
+<h4 id="custom-document-properties">Custom Document Properties</h4>
 <p>In Adobe Reader (and possibly other PDF viewers), in the Document Properties window,
 there is a tab that shows custom properties that have been set on the document:<br>
 <img alt="PDF Custom Document Properties" src="images/pdf-custom-document-properties.png"></p>
@@ -888,7 +888,7 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 </code></pre></div>
 
 <p>Each custom property must be specified using the <code>pdf:name</code> element. Remember that the property name must be different to the reserved keywords, which are Title, Author, Subject, Keywords, Creator, Producer, CreationDate, ModDate and Trapped.</p>
-<h4>PDF Linearization</h4>
+<h4 id="pdf-linearization">PDF Linearization</h4>
 <p>Linearization is helpful to allow viewing of a pdf over a slow connection. Needs to be enabled using fop.xconf:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;renderers&gt;</span>

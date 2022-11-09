@@ -741,7 +741,7 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Apache&trade; FOP Design: Layout Managers</h1>
+    <h1 id="apache-fop-design-layout-managers">Apache&trade; FOP Design: Layout Managers</h1>
 <p><subtitle>Break Possibility Proposal</subtitle><authors><person email="klease@club-internet.fr" name="Karen Lease"></person></authors></p>
 <h2 id="intro">Introduction</h2>
 <p>As explained in <a href="layout.html">Layout</a>, the hierarchy of Layout Managers is responsible for building and placing areas. Each Layout Manager is responsible for creating and filling areas of a particular type, either inline or block. This document explains one potential algorithm for this process. It is based on the the generation of <em>break possibilities</em> (BP for short). The Layout Managers (LM for short), will generate one or more BP and choose the best one. The BP is then used to generate the corresponding areas.</p>

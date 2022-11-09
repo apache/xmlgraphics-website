@@ -194,7 +194,7 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Batik Swing components</h1>
+    <h1 id="batik-swing-components">Batik Swing components</h1>
 <p>The goal of the Batik Swing component module is to provide a Swing component that can used to display SVG documents. With the <a href="../javadoc/org/apache/batik/swing/JSVGCanvas.html">JSVGCanvas</a> class, you can easily display an SVG document (from a URI or a DOM tree) and allow the user to manipulate it, such as rotating, zooming, panning, selecting text or activating hyperlinks. First this document explains how to create a <code>JSVGCanvas</code> and integrate it in to a Swing application. Then, it descibes some advanced features such as the listener mechanism used to track all events that occurred while displaying or manipulating an SVG document.</p>
 <h2 id="creatingJSVGCanvas">Creating a JSVGCanvas</h2>
 <p>The following example illustrates how to create a <code>JSVGCanvas</code>, which is a Swing component that follows the Swing design rule. This means that the component is not thread safe and all operations on the component or the document it is displaying must be performed as described in <a href="http://java.sun.com/docs/books/tutorial/uiswing/overview/threads.html">the Swing tutorial</a>. The <code>JSVGCanvas</code> is also a <a href="http://java.sun.com/products/javabeans/">JavaBean</a>, so it can be used in visual application builders.

@@ -741,7 +741,7 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1>Standard Apache(tm) FOP Extensions</h1>
+    <h1 id="standard-apachetm-fop-extensions">Standard Apache(tm) FOP Extensions</h1>
 <p>By "extension", we mean any data that can be placed in the input XML document that is not addressed by the XSL-FO standard. By having a mechanism for supporting extensions, Apache&trade; FOP is able to add features that are not covered in the specification.</p>
 <p>The extensions documented here are included with FOP, and are automatically available to you. If you wish to add an extension of your own to FOP, please see the <a href="../dev/extensions.html">Developers' Extension Page</a>.</p>
 <p><note>All extensions require the correct use of an appropriate namespace in your input document.</note></p>
@@ -768,7 +768,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>In old versions of Apache FOP, there was a <code>fox:continued-label</code> element which was used to insert a message when a table went over several pages.
 This extension element will not be reimplemented for the redesigned code.
 The redesigned code makes use of the <a href="http://www.w3.org/TR/xsl11/#fo_retrieve-table-marker"><code>fo:retrieve-table-marker</code></a> element defined in the <a href="http://www.w3.org/TR/xsl11/">W3C XSL 1.1</a> standard.</p>
-<h3>Row Scope for Header Table Cells</h3>
+<h3 id="row-scope-for-header-table-cells">Row Scope for Header Table Cells</h3>
 <p>This feature is described in the <a href="accessibility.html#fox:header">Accessibility</a> section.</p>
 <h3 id="widow-orphan-content-limit">fox:orphan-content-limit and fox:widow-content-limit</h3>
 <p>The two proprietary extension properties, <code>fox:orphan-content-limit</code> and <code>fox:widow-content-limit</code>, are used to improve the layout of list-blocks and tables. If you have a table with many entries, you don't want a single row to be left over on a page. You will want to make sure that at least two or three lines are kept together. The properties take an absolute length which specifies the area at the beginning (<code>fox:widow-content-limit</code>) or at the end (<code>fox:orphan-content-limit</code>) of a table or list-block. The properties are inherited and only have an effect on <code>fo:table</code> and <code>fo:list-block</code>. An example: <code>fox:widow-content-limit="3 * 1.2em"</code> would make sure the you'll have at least three lines (assuming <code>line-height="1.2"</code>) together on a table or list-block.</p>
@@ -863,7 +863,7 @@ The redesigned code makes use of the <a href="http://www.w3.org/TR/xsl11/#fo_ret
 <p><code>rgb-icc(153, 153, 102, #CMYK, 0, 0, 0.2, 0.4)</code></p>
 </li>
 </ul>
-<h4>Transparency</h4>
+<h4 id="transparency">Transparency</h4>
 <p>You can set a RGB color with transparency #00ffff80, where last two hex digits are transparency value 0 to 255</p>
 <p>Or you can set via, with 4th argument the transparency: fox-rgb-icc(0, 0, 0, 128, #CMYK, 0, 0, 1, 0)
 This method should be used for AFP output</p>
@@ -872,7 +872,7 @@ This method should be used for AFP output</p>
 The property <code>fox:border-BP-IP-radius</code> specifies the radius of the corner connecting border segment <em>BP</em> is one of '<em>before|after</em>' and <em>IP</em> is one of 'start|end<em>', and takes one or two values.  A single value will generate circular corners.  Two values define elliptic corners where the first value defines the radius in the </em>Inline Progression Direction<em>, and the second the radius in the </em>Block Progression Direction*.</p>
 <p>The shorthand property <code>fox:border-radius</code> can be used to specify uniform corners and takes 1 or 2 values, as above.</p>
 <p>The example fo <code>examples/fo/advanced/rounded-corners.fo</code> demonstrates some finer points of this extension.</p>
-<h4>Current Limitations</h4>
+<h4 id="current-limitations">Current Limitations</h4>
 <ul>
 <li>
 <p>CSS3-style absolute properties, e.g <code>border-top-left-radius</code>, are not supported</p>
