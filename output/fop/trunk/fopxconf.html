@@ -739,14 +739,14 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <h1 id="apache-fop-config-options">Apache&trade; FOP: Config Options</h1>
 <h3 id="fopconfparser"><a href="configuration.html">FopConfParser</a></h3>
 <ul>
-<li>accessibility element</li>
+<li>accessibility element boolean</li>
 <li>base element</li>
-<li>break-indent-inheritance element</li>
+<li>break-indent-inheritance element boolean</li>
 <li>class attribute</li>
 <li>complex-scripts element</li>
 <li>country attribute</li>
 <li>default-page-settings element</li>
-<li>disabled attribute</li>
+<li>disabled attribute boolean</li>
 <li>extension attribute</li>
 <li>height attribute</li>
 <li>hyp</li>
@@ -757,21 +757,21 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <li>penalty element</li>
 <li>prefer-renderer</li>
 <li>simple-line-breaking</li>
-<li>source-resolution element</li>
-<li>strict-configuration element</li>
-<li>strict-validation element</li>
+<li>source-resolution element float</li>
+<li>strict-configuration element boolean</li>
+<li>strict-validation element boolean</li>
 <li>table-border-overpaint</li>
-<li>target-resolution element</li>
+<li>target-resolution element float</li>
 <li>value attribute</li>
 <li>width attribute</li>
 <li>xml</li>
 </ul>
 <h3 id="defaultfontconfig"><a href="fonts.html#bulk">DefaultFontConfig</a></h3>
 <ul>
-<li>advanced attribute</li>
+<li>advanced attribute boolean</li>
 <li>auto-detect element</li>
 <li>directory element</li>
-<li>embed-as-type1 attribute</li>
+<li>embed-as-type1 attribute boolean</li>
 <li>embed-url attribute</li>
 <li>embed-url-afm attribute</li>
 <li>embed-url-pfm attribute</li>
@@ -781,42 +781,41 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <li>font-family attribute</li>
 <li>font-triplet element</li>
 <li>fonts element</li>
-<li>kerning attribute</li>
+<li>kerning attribute boolean</li>
 <li>match element</li>
 <li>metrics-url attribute</li>
 <li>mime attribute</li>
 <li>name attribute</li>
-<li>recursive attribute</li>
+<li>recursive attribute boolean</li>
 <li>referenced-fonts element</li>
 <li>simulate-style</li>
-<li>simulate-style attribute</li>
 <li>style attribute</li>
 <li>sub-font attribute</li>
-<li>svg attribute</li>
+<li>svg attribute boolean</li>
 <li>weight attribute</li>
 </ul>
 <h3 id="pdfencryptionoption"><a href="pdfencryption.html#embedded">PDFEncryptionOption</a></h3>
 <ul>
-<li>encrypt-metadata</li>
+<li>encrypt-metadata default: true</li>
 <li>encryption-length</li>
 <li>encryption-params</li>
-<li>noaccesscontent</li>
-<li>noannotations</li>
-<li>noassembledoc</li>
-<li>nocopy</li>
-<li>noedit</li>
-<li>nofillinforms</li>
-<li>noprint</li>
+<li>noaccesscontent default: false</li>
+<li>noannotations default: false</li>
+<li>noassembledoc default: false</li>
+<li>nocopy default: false</li>
+<li>noedit default: false</li>
+<li>nofillinforms default: false</li>
+<li>noprint default: false</li>
 <li>noprinthq</li>
 <li>owner-password</li>
 <li>user-password</li>
 </ul>
 <h3 id="pdfrendereroption"><a href="pdfa.html#fop-xconf">PDFRendererOption</a></h3>
 <ul>
-<li>disable-srgb-colorspace</li>
-<li>form-xobject</li>
-<li>linearization</li>
-<li>merge-fonts</li>
+<li>disable-srgb-colorspace default: false</li>
+<li>form-xobject default: false</li>
+<li>linearization default: false</li>
+<li>merge-fonts default: false</li>
 <li>output-profile</li>
 <li>pdf-a-mode</li>
 <li>pdf-ua-mode</li>
@@ -826,33 +825,33 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </ul>
 <h3 id="afprendereroption"><a href="output.html#afp-configuration">AFPRendererOption</a></h3>
 <ul>
-<li>allow-embedding</li>
-<li>bitmap-encoding-quality</li>
+<li>allow-embedding boolean</li>
+<li>bitmap-encoding-quality float</li>
 <li>default-resource-levels</li>
-<li>dithering-quality</li>
-<li>fs45</li>
-<li>goca</li>
+<li>dithering-quality float</li>
+<li>fs45 boolean</li>
+<li>goca boolean</li>
 <li>images</li>
 <li>jpeg</li>
-<li>line-width-correction</li>
+<li>line-width-correction float</li>
 <li>mapping_option</li>
-<li>mode</li>
-<li>native</li>
-<li>pseg</li>
-<li>renderer-resolution</li>
+<li>mode boolean</li>
+<li>native boolean</li>
+<li>pseg boolean</li>
+<li>renderer-resolution integer</li>
 <li>resource-group-file</li>
 <li>shading</li>
-<li>text</li>
+<li>text boolean</li>
 </ul>
 <h3 id="psrendereroption"><a href="output.html#ps-configuration">PSRendererOption</a></h3>
 <ul>
-<li>acrobat-downsample</li>
-<li>auto-rotate-landscape</li>
-<li>dsc-compliant</li>
+<li>acrobat-downsample default: false</li>
+<li>auto-rotate-landscape default: false</li>
+<li>dsc-compliant default: true</li>
 <li>language-level</li>
-<li>optimize-resources</li>
+<li>optimize-resources default: false</li>
 <li>rendering</li>
-<li>safe-set-page-device</li>
+<li>safe-set-page-device default: false</li>
 </ul>
 <h3 id="txtrendererconfig"><a href="output.html#txt">TxtRendererConfig</a></h3>
 <ul>
@@ -860,33 +859,33 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </ul>
 <h3 id="pclrendereroption"><a href="output.html#pcl-configuration">PCLRendererOption</a></h3>
 <ul>
-<li>color</li>
-<li>disable-pjl</li>
-<li>optimize-resources</li>
+<li>color boolean</li>
+<li>disable-pjl boolean</li>
+<li>optimize-resources boolean</li>
 <li>rendering</li>
-<li>text-rendering</li>
+<li>text-rendering boolean</li>
 <li>transparent-page-background</li>
 </ul>
 <h3 id="bitmaprendereroption"><a href="output.html#bitmap-configuration">BitmapRendererOption</a></h3>
 <ul>
-<li>anti-aliasing</li>
+<li>anti-aliasing default: true</li>
 <li>background-color</li>
 <li>bi-level</li>
 <li>binary</li>
 <li>color-mode</li>
 <li>gray</li>
-<li>quality</li>
+<li>quality default: true</li>
 <li>rendering</li>
 <li>rgb</li>
 <li>rgba</li>
 <li>speed</li>
-<li>transparent-page-background</li>
+<li>transparent-page-background default: false</li>
 </ul>
 <h3 id="tiffrendererconfig"><a href="output.html#bitmap-configuration">TIFFRendererConfig</a></h3>
 <ul>
 <li>compression</li>
 <li>endianness</li>
-<li>single-strip</li>
+<li>single-strip boolean</li>
 </ul>
         </div>
       </div>
