@@ -25,7 +25,7 @@
 	});
     </script>
 
-   <title>Apache(tm) FOP: PDF encryption.</title>
+   <title>Apache(tm) FOP: Config Options</title>
   </head>
 
   <body>
@@ -736,151 +736,158 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1 id="apache-fop-pdf-encryption">Apache&trade; FOP: PDF encryption.</h1>
-<p><authors><person email="pietsch@apache.org" name="J.Pietschmann"></person><person email="jeremias@apache.org" name="Jeremias Märki"></person></authors></p>
-<h2 id="Overview">Overview</h2>
-<p>Apache&trade; FOP supports encryption of PDF output, thanks to Patrick C. Lankswert. This feature is commonly used to prevent unauthorized viewing, printing, editing, copying text from the document and doing annotations. It is also possible to ask the user for a password in order to view the contents. Note that there already exist third party applications which can decrypt an encrypted PDF without effort and allow the aforementioned operations, therefore the degree of protection is limited.</p>
-<p>For further information about features and restrictions regarding PDF encryption, look at the documentation coming with Adobe Acrobat or the technical documentation on the Adobe web site.</p>
-<h2 id="Usage-%28command-line%29">Usage (command line)</h2>
-<p>Encryption is enabled by supplying any of the encryption related options.</p>
-<p>An owner password is set with the <code>-o</code> option. This password is actually used as encryption key. Many tools for PDF processing ask for this password to disregard any restriction imposed on the PDF document.</p>
-<p>If no owner password has been supplied but FOP was asked to apply some restrictions, a random password is used. In this case it is obviously impossiible to disregard restrictions in PDF processing tools.</p>
-<p>A user password, supplied with the <code>-u</code> option, will cause the PDF display software to ask the reader for this password in order to view the contents of the document. If no user password was supplied, viewing the content is not restricted.</p>
-<p>Further restrictions can be imposed by using the <code>-noprint</code>, <code>-nocopy</code>, <code>-noedit</code> and <code>-noannotations</code> options, which disable printing, copying text, editing in Adobe Acrobat and making annotations, respectively.</p>
-<h2 id="Usage-%28embedded%29">Usage (embedded)</h2>
-<p>When FOP is embedded in another Java application you need to set an options map on the renderer. These are the supported options:</p>
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Description</th>
-<th>Values</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ownerPassword</td>
-<td>The owner password</td>
-<td>String</td>
-<td></td>
-</tr>
-<tr>
-<td>userPassword</td>
-<td>The user password</td>
-<td>String</td>
-<td></td>
-</tr>
-<tr>
-<td>allowPrint</td>
-<td>Allows/disallows printing of the PDF</td>
-<td>"TRUE" or "FALSE"</td>
-<td>"TRUE"</td>
-</tr>
-<tr>
-<td>allowCopyContent</td>
-<td>Allows/disallows copy/paste of content</td>
-<td>"TRUE" or "FALSE"</td>
-<td>"TRUE"</td>
-</tr>
-<tr>
-<td>allowEditContent</td>
-<td>Allows/disallows editing of content</td>
-<td>"TRUE" or "FALSE"</td>
-<td>"TRUE"</td>
-</tr>
-<tr>
-<td>allowEditAnnotations</td>
-<td>Allows/disallows editing of annotations</td>
-<td>"TRUE" or "FALSE"</td>
-<td>"TRUE"</td>
-</tr>
-<tr>
-<td>Encryption is enabled as soon as one of these options is set.</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>An example to enable PDF encryption in Java code:</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.fop.pdf.PDFEncryptionParams</span><span class="p">;</span>
-
-<span class="o">[</span><span class="p">..</span><span class="o">]</span>
-
-<span class="n">FOUserAgent</span> <span class="n">userAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFOUserAgent</span><span class="p">();</span>
-<span class="n">useragent</span><span class="p">.</span><span class="na">getRendererOptions</span><span class="p">().</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;encryption-params&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">PDFEncryptionParams</span><span class="p">(</span>
-    <span class="kc">null</span><span class="p">,</span> <span class="s">&quot;password&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">));</span>
-<span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">,</span> <span class="n">userAgent</span><span class="p">);</span>
-<span class="o">[</span><span class="p">..</span><span class="o">]</span>
-</code></pre></div>
-
-<p>The parameters for the constructor of PDFEncryptionParams are:</p>
-<ol>
-<li>
-<p>userPassword: String, may be null</p>
-</li>
-<li>
-<p>ownerPassword: String, may be null</p>
-</li>
-<li>
-<p>allowPrint: true if printing is allowed</p>
-</li>
-<li>
-<p>allowCopyContent: true if copying content is allowed</p>
-</li>
-<li>
-<p>allowEditContent: true if editing content is allowed</p>
-</li>
-<li>
-<p>allowEditAnnotations: true if editing annotations is allowed</p>
-</li>
-</ol>
-<p>Alternatively, you can set each value separately in the Map provided by FOUserAgent.getRendererOptions() by using the following keys:</p>
-<ol>
-<li>
-<p>user-password: String</p>
-</li>
-<li>
-<p>owner-password: String</p>
-</li>
-<li>
-<p>noprint: Boolean or "true"/"false"</p>
-</li>
-<li>
-<p>nocopy: Boolean or "true"/"false"</p>
-</li>
-<li>
-<p>noedit: Boolean or "true"/"false"</p>
-</li>
-<li>
-<p>noannotations: Boolean or "true"/"false"</p>
-</li>
-</ol>
-<h2 id="Environment">Environment</h2>
-<p>In order to use PDF encryption, FOP has to be compiled with cryptography support. Currently, only <a href="https://docs.oracle.com/javase/1.5.0/docs/guide/security/jce/JCERefGuide.html">JCE</a> is supported. JCE is part of JDK 1.4. For earlier JDKs, it can be installed separately. The build process automatically detects JCE presence and installs PDF encryption support if possible, otherwise a stub is compiled in.</p>
-<p>Cryptography support must also be present at run time. In particular, a provider for the RC4 cipher is needed. Unfortunately, the sample JCE provider in Sun's JDK 1.4 does <strong>not</strong> provide RC4. If you get a message saying
-"Cannot find any provider supporting RC4"
-then you don't have the needed infrastructure.</p>
-<p>There are several commercial and a few Open Source packages which provide RC4. A pure Java implementation is produced by <a href="http://www.bouncycastle.org/">The Legion of the Bouncy Castle</a>. <a href="http://www.mozilla.org/projects/security/pki/jss/">Mozilla JSS</a> is an interface to a native implementation.</p>
-<h2 id="install_crypto">Installing a crypto provider</h2>
-<p>The pure Java implementation from <a href="http://www.bouncycastle.org/">Bouncy Castle</a> is easy to install.</p>
-<ol>
-<li>
-<p>Unpack the distribution. Add the jar file to your classpath. A convenient way to use the jar on Linux is to simply drop it into the FOP lib directory, it will be automatically picked up by <code>fop.sh</code>.</p>
-</li>
-<li>
-<p>Open the <code>java.security</code> file and add</p>
-<p><code>security.provider.6=org.bouncycastle.jce.provider.BouncyCastleProvider</code>,</p>
-<p>preferably at the end of the block defining the other crypto providers. For JDK 1.4 this is detailed on <a href="https://docs.oracle.com/javase/1.5.0/docs/guide/security/jce/JCERefGuide.html#InstallProvider">Sun's web site</a>.</p>
-</li>
-</ol>
-<p>If you have any experience with Mozilla JSS or any other cryptography provider, please post it to the fop-user list.</p>
+    <h1 id="apache-fop-config-options">Apache&trade; FOP: Config Options</h1>
+<h3 id="fopconfparser"><a href="configuration.html">FopConfParser</a></h3>
+<ul>
+<li>accessibility element</li>
+<li>base element</li>
+<li>break-indent-inheritance element</li>
+<li>class attribute</li>
+<li>complex-scripts element</li>
+<li>country attribute</li>
+<li>default-page-settings element</li>
+<li>disabled attribute</li>
+<li>extension attribute</li>
+<li>height attribute</li>
+<li>hyp</li>
+<li>hyphenation-base element</li>
+<li>hyphenation-pattern element</li>
+<li>image-loading element</li>
+<li>lang attribute</li>
+<li>penalty element</li>
+<li>prefer-renderer</li>
+<li>simple-line-breaking</li>
+<li>source-resolution element</li>
+<li>strict-configuration element</li>
+<li>strict-validation element</li>
+<li>table-border-overpaint</li>
+<li>target-resolution element</li>
+<li>value attribute</li>
+<li>width attribute</li>
+<li>xml</li>
+</ul>
+<h3 id="defaultfontconfig"><a href="fonts.html#bulk">DefaultFontConfig</a></h3>
+<ul>
+<li>advanced attribute</li>
+<li>auto-detect element</li>
+<li>directory element</li>
+<li>embed-as-type1 attribute</li>
+<li>embed-url attribute</li>
+<li>embed-url-afm attribute</li>
+<li>embed-url-pfm attribute</li>
+<li>embedding-mode attribute</li>
+<li>encoding-mode attribute</li>
+<li>font element</li>
+<li>font-family attribute</li>
+<li>font-triplet element</li>
+<li>fonts element</li>
+<li>kerning attribute</li>
+<li>match element</li>
+<li>metrics-url attribute</li>
+<li>mime attribute</li>
+<li>name attribute</li>
+<li>recursive attribute</li>
+<li>referenced-fonts element</li>
+<li>simulate-style</li>
+<li>simulate-style attribute</li>
+<li>style attribute</li>
+<li>sub-font attribute</li>
+<li>svg attribute</li>
+<li>weight attribute</li>
+</ul>
+<h3 id="pdfencryptionoption"><a href="pdfencryption.html#embedded">PDFEncryptionOption</a></h3>
+<ul>
+<li>encrypt-metadata</li>
+<li>encryption-length</li>
+<li>encryption-params</li>
+<li>noaccesscontent</li>
+<li>noannotations</li>
+<li>noassembledoc</li>
+<li>nocopy</li>
+<li>noedit</li>
+<li>nofillinforms</li>
+<li>noprint</li>
+<li>noprinthq</li>
+<li>owner-password</li>
+<li>user-password</li>
+</ul>
+<h3 id="pdfrendereroption"><a href="pdfa.html#fop-xconf">PDFRendererOption</a></h3>
+<ul>
+<li>disable-srgb-colorspace</li>
+<li>form-xobject</li>
+<li>linearization</li>
+<li>merge-fonts</li>
+<li>output-profile</li>
+<li>pdf-a-mode</li>
+<li>pdf-ua-mode</li>
+<li>pdf-vt-mode</li>
+<li>pdf-x-mode</li>
+<li>version</li>
+</ul>
+<h3 id="afprendereroption"><a href="output.html#afp-configuration">AFPRendererOption</a></h3>
+<ul>
+<li>allow-embedding</li>
+<li>bitmap-encoding-quality</li>
+<li>default-resource-levels</li>
+<li>dithering-quality</li>
+<li>fs45</li>
+<li>goca</li>
+<li>images</li>
+<li>jpeg</li>
+<li>line-width-correction</li>
+<li>mapping_option</li>
+<li>mode</li>
+<li>native</li>
+<li>pseg</li>
+<li>renderer-resolution</li>
+<li>resource-group-file</li>
+<li>shading</li>
+<li>text</li>
+</ul>
+<h3 id="psrendereroption"><a href="output.html#ps-configuration">PSRendererOption</a></h3>
+<ul>
+<li>acrobat-downsample</li>
+<li>auto-rotate-landscape</li>
+<li>dsc-compliant</li>
+<li>language-level</li>
+<li>optimize-resources</li>
+<li>rendering</li>
+<li>safe-set-page-device</li>
+</ul>
+<h3 id="txtrendererconfig"><a href="output.html#txt">TxtRendererConfig</a></h3>
+<ul>
+<li>encoding</li>
+</ul>
+<h3 id="pclrendereroption"><a href="output.html#pcl-configuration">PCLRendererOption</a></h3>
+<ul>
+<li>color</li>
+<li>disable-pjl</li>
+<li>optimize-resources</li>
+<li>rendering</li>
+<li>text-rendering</li>
+<li>transparent-page-background</li>
+</ul>
+<h3 id="bitmaprendereroption"><a href="output.html#bitmap-configuration">BitmapRendererOption</a></h3>
+<ul>
+<li>anti-aliasing</li>
+<li>background-color</li>
+<li>bi-level</li>
+<li>binary</li>
+<li>color-mode</li>
+<li>gray</li>
+<li>quality</li>
+<li>rendering</li>
+<li>rgb</li>
+<li>rgba</li>
+<li>speed</li>
+<li>transparent-page-background</li>
+</ul>
+<h3 id="tiffrendererconfig"><a href="output.html#bitmap-configuration">TIFFRendererConfig</a></h3>
+<ul>
+<li>compression</li>
+<li>endianness</li>
+<li>single-strip</li>
+</ul>
         </div>
       </div>
       <div class="clear"></div>
