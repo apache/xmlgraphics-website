@@ -4,14 +4,14 @@ Title: Apache(tm) FOP: Config Options
 
 ### [FopConfParser](configuration.html)
 
-- accessibility element
+- accessibility element boolean
 - base element
-- break-indent-inheritance element
+- break-indent-inheritance element boolean
 - class attribute
 - complex-scripts element
 - country attribute
 - default-page-settings element
-- disabled attribute
+- disabled attribute boolean
 - extension attribute
 - height attribute
 - hyp
@@ -22,21 +22,21 @@ Title: Apache(tm) FOP: Config Options
 - penalty element
 - prefer-renderer
 - simple-line-breaking
-- source-resolution element
-- strict-configuration element
-- strict-validation element
+- source-resolution element float
+- strict-configuration element boolean
+- strict-validation element boolean
 - table-border-overpaint
-- target-resolution element
+- target-resolution element float
 - value attribute
 - width attribute
 - xml
 
 ### [DefaultFontConfig](fonts.html#bulk)
 
-- advanced attribute
+- advanced attribute boolean
 - auto-detect element
 - directory element
-- embed-as-type1 attribute
+- embed-as-type1 attribute boolean
 - embed-url attribute
 - embed-url-afm attribute
 - embed-url-pfm attribute
@@ -46,42 +46,41 @@ Title: Apache(tm) FOP: Config Options
 - font-family attribute
 - font-triplet element
 - fonts element
-- kerning attribute
+- kerning attribute boolean
 - match element
 - metrics-url attribute
 - mime attribute
 - name attribute
-- recursive attribute
+- recursive attribute boolean
 - referenced-fonts element
 - simulate-style
-- simulate-style attribute
 - style attribute
 - sub-font attribute
-- svg attribute
+- svg attribute boolean
 - weight attribute
 
 ### [PDFEncryptionOption](pdfencryption.html#embedded)
 
-- encrypt-metadata
+- encrypt-metadata default: true
 - encryption-length
 - encryption-params
-- noaccesscontent
-- noannotations
-- noassembledoc
-- nocopy
-- noedit
-- nofillinforms
-- noprint
+- noaccesscontent default: false
+- noannotations default: false
+- noassembledoc default: false
+- nocopy default: false
+- noedit default: false
+- nofillinforms default: false
+- noprint default: false
 - noprinthq
 - owner-password
 - user-password
 
 ### [PDFRendererOption](pdfa.html#fop-xconf)
 
-- disable-srgb-colorspace
-- form-xobject
-- linearization
-- merge-fonts
+- disable-srgb-colorspace default: false
+- form-xobject default: false
+- linearization default: false
+- merge-fonts default: false
 - output-profile
 - pdf-a-mode
 - pdf-ua-mode
@@ -91,33 +90,33 @@ Title: Apache(tm) FOP: Config Options
 
 ### [AFPRendererOption](output.html#afp-configuration)
 
-- allow-embedding
-- bitmap-encoding-quality
+- allow-embedding boolean
+- bitmap-encoding-quality float
 - default-resource-levels
-- dithering-quality
-- fs45
-- goca
+- dithering-quality float
+- fs45 boolean
+- goca boolean
 - images
 - jpeg
-- line-width-correction
+- line-width-correction float
 - mapping_option
-- mode
-- native
-- pseg
-- renderer-resolution
+- mode boolean
+- native boolean
+- pseg boolean
+- renderer-resolution integer
 - resource-group-file
 - shading
-- text
+- text boolean
 
 ### [PSRendererOption](output.html#ps-configuration)
 
-- acrobat-downsample
-- auto-rotate-landscape
-- dsc-compliant
+- acrobat-downsample default: false
+- auto-rotate-landscape default: false
+- dsc-compliant default: true
 - language-level
-- optimize-resources
+- optimize-resources default: false
 - rendering
-- safe-set-page-device
+- safe-set-page-device default: false
 
 ### [TxtRendererConfig](output.html#txt)
 
@@ -125,31 +124,31 @@ Title: Apache(tm) FOP: Config Options
 
 ### [PCLRendererOption](output.html#pcl-configuration)
 
-- color
-- disable-pjl
-- optimize-resources
+- color boolean
+- disable-pjl boolean
+- optimize-resources boolean
 - rendering
-- text-rendering
+- text-rendering boolean
 - transparent-page-background
 
 ### [BitmapRendererOption](output.html#bitmap-configuration)
 
-- anti-aliasing
+- anti-aliasing default: true
 - background-color
 - bi-level
 - binary
 - color-mode
 - gray
-- quality
+- quality default: true
 - rendering
 - rgb
 - rgba
 - speed
-- transparent-page-background
+- transparent-page-background default: false
 
 ### [TIFFRendererConfig](output.html#bitmap-configuration)
 
 - compression
 - endianness
-- single-strip
+- single-strip boolean
 
