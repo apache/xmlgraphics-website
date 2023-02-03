@@ -1012,10 +1012,10 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
 
-<p>By default FOP produces PDF files of version 1.4, but this can be changed in order to benefit from features that appeared in newer versions of PDF. At the moment, only a few features from PDF 1.5 have been implemented, but the configuration element will accept any value between 1.4 and 1.7. This is the value that will appear in the PDF header, although only features up to 1.5 will actually be used.</p>
+<p>By default FOP produces PDF files of version 1.4, but this can be changed in order to benefit from features that appeared in newer versions of PDF. At the moment, only a few features from PDF 1.5 have been implemented, but the configuration element will accept any value between 1.4 and 2.0. This is the value that will appear in the PDF header, although only features up to 1.5 will actually be used.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;version&gt;</span>1.5<span class="nt">&lt;/version&gt;</span>
-  <span class="c">&lt;!-- Versions 1.4, 1.5, 1.6 and 1.7 are accepted, all other values are invalid --&gt;</span>
+  <span class="c">&lt;!-- Versions 1.4, 1.5, 1.6, 1.7 and 2.0 are accepted, all other values are invalid --&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
 
