@@ -743,47 +743,36 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h3 id="env-jdk">JDK</h3>
 <p>Building FOP requires a minimum Java Development Kit (JDK/SDK) of 1.8 (A Java Runtime Environment is not sufficient).</p>
 <h3 id="env-classpath">CLASSPATH</h3>
-<p>There is generally no need to setup a classpath. All libraries needed to compile FOP are included in the source distribution and are referenced by the build script. You will only need to adjust the classpath if you build FOP in some other way. See the build script build.xml for details.</p>
+<p>There is generally no need to setup a classpath. All libraries needed to compile FOP are included in the source distribution and are referenced by the build script. You will only need to adjust the classpath if you build FOP in some other way. See the build script pom.xml for details.</p>
 <h3 id="env-java-home">JAVA_HOME</h3>
-<p>The build script uses <a href="http://ant.apache.org/">Apache Ant</a>, a popular Java-based build tool, which usually requires that the environment variable JAVA_HOME point to your local JDK root directory. This is true even if you use JDK 1.5 or above, which normally does not need this setting.</p>
-<h3 id="env-ant">Apache Ant</h3>
-<p><a href="http://ant.apache.org/">Apache Ant</a> (Version 1.7 or later) must be installed in order to build FOP. Following best practices we don't include Ant with FOP anymore. You can find the <a href="http://ant.apache.org/manual/">instructions to install Ant in the Ant manual</a> on the web.</p>
+<p>The build script uses <a href="https://maven.apache.org/">Apache Maven</a>, a popular Java-based build tool, which usually requires that the environment variable JAVA_HOME point to your local JDK root directory. This is true even if you use JDK 1.5 or above, which normally does not need this setting.</p>
+<h3 id="env-maven">Apache Maven</h3>
+<p><a href="https://maven.apache.org/">Apache Maven</a> (Version 3.6 or later) must be installed in order to build FOP. You can find the <a href="https://maven.apache.org/install.html">instructions to install Maven in the Maven manual</a> on the web.</p>
 <h2 id="build-script">Run the Build Script</h2>
-<p>Change to the FOP root directory and build FOP by executing the build script (build.xml) using the "ant" command.</p>
-<p><note>The "ant" command is only available on your system if you've properly <a href="http://ant.apache.org/manual/">installed Apache Ant</a> and added Ant's location to the PATH environment variable.</note></p>
-<p>The file build.xml in the FOP root directory is the blueprint that Ant uses for the build. It contains information for numerous build targets, many of which are building blocks to more useful target, and others which are primarily used by the FOP developers. You may benefit from looking through this file to learn more about the various build targets. To obtain a complete list of useful build targets:</p>
-<div class="highlight"><pre><span></span><code><span class="err">ant -projecthelp</span>
-</code></pre></div>
-
+<p>Change to the FOP root directory and build FOP by executing the build script (pom.xml) using the "mvn" command.</p>
+<p><note>The "mvn" command is only available on your system if you've properly <a href="https://maven.apache.org/install.html">installed Apache Maven</a> and added Maven's location to the PATH environment variable.</note></p>
+<p>The file pom.xml in the FOP root directory is the blueprint that Maven uses for the build.</p>
 <p>The most useful targets are:</p>
 <ul>
 <li>
-<p><strong>package</strong>: Generates the JAR files (default). This is the normal build that produces a jar file usable for running FOP.</p>
+<p><strong>install</strong>: Generates the JAR files (default). This is the normal build that produces a jar file usable for running FOP.</p>
 </li>
 <li>
 <p><strong>clean</strong>: Cleans the build directory. This is useful for making sure that any build errors are cleaned up before starting a new build. It should not ordinarily be needed, but may be helpful if you are having problems with the build process itself.</p>
 </li>
 <li>
-<p><strong>javadocs</strong>: Creates the FOP API documentation.</p>
+<p><strong>javadoc:javadoc</strong>: Creates the FOP API documentation.</p>
 </li>
 </ul>
 <p>To run the build:</p>
-<div class="highlight"><pre><span></span><code><span class="err">ant [target ...]</span>
+<div class="highlight"><pre><span></span><code><span class="err">mvn [target ...]</span>
 </code></pre></div>
 
-<p>For example to do a normal build for the "all" target (which is the default):</p>
-<div class="highlight"><pre><span></span><code><span class="err">ant</span>
+<p>For example to do a normal build for the "install" target (which is the default):</p>
+<div class="highlight"><pre><span></span><code><span class="err">mvn clean install -DskipTests</span>
 </code></pre></div>
 
-<p>OR</p>
-<div class="highlight"><pre><span></span><code><span class="err">ant all</span>
-</code></pre></div>
-
-<p>To clean the build directory first:</p>
-<div class="highlight"><pre><span></span><code><span class="err">ant clean all</span>
-</code></pre></div>
-
-<p><note>If you want to shorten the build time you can just call the "package" target which doesn't perform any automated tests during the build.</note></p>
+<p><note>If you want to shorten the build time you can just add the "-DskipTests" argument which doesn't perform any automated tests during the build.</note></p>
 <h2 id="problems">Troubleshooting</h2>
 <p>If you have problems building FOP, please try the following:</p>
 <ul>
@@ -791,7 +780,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>Run the build with the target of "clean", then rerun the build.</p>
 </li>
 <li>
-<p>Delete the build directory completely, then rerun the build.</p>
+<p>Delete the target directory completely, then rerun the build.</p>
 </li>
 <li>
 <p>Make sure you do not have a non-FOP version of xerces.jar, xalan.jar, batik.jar, or another dependency product somewhere in your CLASSPATH.</p>
