@@ -207,12 +207,12 @@ FOP supports encryption of PDF output, thanks to Patrick C. Lankswert. This feat
       </encryption-params>
     </renderer>
 
-By default FOP produces PDF files of version 1.4, but this can be changed in order to benefit from features that appeared in newer versions of PDF. At the moment, only a few features from PDF 1.5 have been implemented, but the configuration element will accept any value between 1.4 and 1.7. This is the value that will appear in the PDF header, although only features up to 1.5 will actually be used.
+By default FOP produces PDF files of version 1.4, but this can be changed in order to benefit from features that appeared in newer versions of PDF. At the moment, only a few features from PDF 1.5 have been implemented, but the configuration element will accept any value between 1.4 and 2.0. This is the value that will appear in the PDF header, although only features up to 1.5 will actually be used.
 
     :::xml
     <renderer mime="application/pdf">
       <version>1.5</version>
-      <!-- Versions 1.4, 1.5, 1.6 and 1.7 are accepted, all other values are invalid -->
+      <!-- Versions 1.4, 1.5, 1.6, 1.7 and 2.0 are accepted, all other values are invalid -->
     </renderer>
 
 ### Special Settings for the PostScript Renderer { #ps-renderer}
