@@ -56,9 +56,9 @@ This will download the FOP trunk into the directory "xmlgraphics-fop".
 
 -  `cd` to a directory that contains all of the changes that you wish to include in the patch. To comprehend the entire distribution, `cd` to the top directory where you checked out the sources.
 
-- Run: `svn up` to make sure the diff is created against the latest sources.
+- Run: `git pull` to make sure the diff is created against the latest sources.
 
-- Run: `svn diff >mypatch.diff`
+- Run: `git diff >mypatch.diff`
 
     This will write the patch to the file "mypatch.diff".
 

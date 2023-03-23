@@ -232,7 +232,7 @@ Both FOP and Batik use the `org.w3c.` * packages. Depending on the version of FO
 
 The solution is to either repackage the `xml-apis.jar` file with the classes in the Batik distribution (you will need the Batik source distribution to do that), or you will need to make sure the Batik jars are loaded before FOP’s `xml-apis.jar`, for example by putting Batik’s jar file before FOP’s in your classpath. If you are copying your jar files to `.../jre/lib/ext`, you can simply remove the FOP `xml-apis.jar` file from that directory.
 
-#### 3.11. How do I checkout the latest SVN version of Batik? ## { #how-to-checkout-latest-batik-via-svn}
+#### 3.11. How do I checkout the latest Git version of Batik? ## { #how-to-checkout-latest-batik-via-git}
 
 You just have to follow the instructions on the [download page](/batik/download.html).
 
@@ -261,7 +261,7 @@ The Batik Project is an open volunteer project in the spirit of the [Apache Soft
 
 The process for contributing to Batik is the same as for other Java projects at Apache. A formal description of that process can be found on the [Jakarta](http://jakarta.apache.org/guidelines/index.html) web site. You can also view a list of [who has contributed to Batik](contributors.html).
 
-For direct participation, we suggest that you subscribe to the [Batik mailing lists](mailing-lists.html) and to checkout the [latest code](http://svn.apache.org/viewcvs.cgi/xmlgraphics/batik/).
+For direct participation, we suggest that you subscribe to the [Batik mailing lists](mailing-lists.html) and to checkout the [latest code](https://github.com/apache/xmlgraphics-batik).
 
 #### 4.2. How do I submit patches or bug fixes? ## { #submit-patches}
 

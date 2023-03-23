@@ -5,14 +5,14 @@ Title: Apache(tm) FOP Development: Coding Conventions
 
 Acknowledgement: Some content in this guide was adapted from other Apache&trade; projects such as Avalon, Cactus, Turbine and Velocity.
 
-## Subversion Repository { #svn}
+## Git Repository { #git}
 
 Conventions in this section apply to Repository content, regardless of type:
 
 
 - Files checked in must conform to the code conventions for that type of file (java files must conform to java requirements, xml to xml requirements, etc.). If a submitted patch does not conform, it is the responsibility of the committer to bring it into conformance before checking it in. Developers submitting patches are encouraged to follow the code conventions to reduce the work load on the committers.
 
-- To reduce the amount of spurious deltas, all text (non-binary) files checked into SVN must have Unix-style line endings (LF only). Many IDEs and editors (even on non-Unix platforms) have settings that can facilitate this convention.
+- To reduce the amount of spurious deltas, all text (non-binary) files checked into Git must have Unix-style line endings (LF only). Many IDEs and editors (even on non-Unix platforms) have settings that can facilitate this convention.
 
 - In order to be able to discern commits from a committer from those where a committer applied a patch from a contributor, the commit message must contain a separate line following this pattern: **"Submitted by: [contributor's name] <[contributor's obfuscated e-mail address]>"**. This also helps doing audits on the repository.
 
