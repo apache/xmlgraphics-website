@@ -738,14 +738,14 @@ $(document).ready(function () {
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
     <h1 id="apache-fop-development-coding-conventions">Apache&trade; FOP Development: Coding Conventions</h1>
 <p>Acknowledgement: Some content in this guide was adapted from other Apache&trade; projects such as Avalon, Cactus, Turbine and Velocity.</p>
-<h2 id="svn">Subversion Repository</h2>
+<h2 id="git">Git Repository</h2>
 <p>Conventions in this section apply to Repository content, regardless of type:</p>
 <ul>
 <li>
 <p>Files checked in must conform to the code conventions for that type of file (java files must conform to java requirements, xml to xml requirements, etc.). If a submitted patch does not conform, it is the responsibility of the committer to bring it into conformance before checking it in. Developers submitting patches are encouraged to follow the code conventions to reduce the work load on the committers.</p>
 </li>
 <li>
-<p>To reduce the amount of spurious deltas, all text (non-binary) files checked into SVN must have Unix-style line endings (LF only). Many IDEs and editors (even on non-Unix platforms) have settings that can facilitate this convention.</p>
+<p>To reduce the amount of spurious deltas, all text (non-binary) files checked into Git must have Unix-style line endings (LF only). Many IDEs and editors (even on non-Unix platforms) have settings that can facilitate this convention.</p>
 </li>
 <li>
 <p>In order to be able to discern commits from a committer from those where a committer applied a patch from a contributor, the commit message must contain a separate line following this pattern: <strong>"Submitted by: [contributor's name] &lt;[contributor's obfuscated e-mail address]&gt;"</strong>. This also helps doing audits on the repository.</p>
