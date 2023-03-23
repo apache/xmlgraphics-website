@@ -4,42 +4,42 @@ Title: The Apache(tm) XML Graphics Project - Code Repositories
 
 ## Web Access to the Repositories { #web-access}
 
-The Apache&trade; XML Graphics project uses Subversion (SVN) as version control tool.
+The Apache&trade; XML Graphics project uses Git as version control tool.
 
 You can browse the repositories belonging to the XML Graphics project via the web:
 
 
-- Apache&trade; Batik: [http://svn.apache.org/viewvc/xmlgraphics/batik/](http://svn.apache.org/viewvc/xmlgraphics/batik/) (SVN repository)
+- Apache&trade; Batik: [https://github.com/apache/xmlgraphics-batik](https://github.com/apache/xmlgraphics-batik) (Git repository)
 
-- Apache&trade; FOP: [http://svn.apache.org/viewvc/xmlgraphics/fop/](http://svn.apache.org/viewvc/xmlgraphics/fop/) (SVN repository)
+- Apache&trade; FOP: [https://github.com/apache/xmlgraphics-fop](https://github.com/apache/xmlgraphics-fop) (Git repository)
 
-- Apache&trade; XML Graphics Commons: [http://svn.apache.org/viewvc/xmlgraphics/commons/](http://svn.apache.org/viewvc/xmlgraphics/commons/) (SVN repository)
+- Apache&trade; XML Graphics Commons: [https://github.com/apache/xmlgraphics-commons](https://github.com/apache/xmlgraphics-commons) (Git repository)
 
 - Apache&trade; XML Graphics Site: [https://gitbox.apache.org/repos/asf/xmlgraphics-website.git](https://gitbox.apache.org/repos/asf/xmlgraphics-website.git) (Git repository)
 
 ## Access the Source Tree { #Access-the-Source-Tree}
 
-So, you've decided that you need access to the source tree to see the latest and greatest code. There're two different forms of SVN access. The first is `anonymous` and anybody can use it. The second requires that you have a login to the development server. If you don't know what this means, join the mailing list and find out.
+So, you've decided that you need access to the source tree to see the latest and greatest code. There're two different forms of Git access. The first is `anonymous` and anybody can use it. The second requires that you have a login to the development server. If you don't know what this means, join the mailing list and find out.
 
-### Anonymous (read-only) SVN access { #Anonymous-SVN-access}
+### Anonymous (read-only) Git access { #Anonymous-Git-access}
 
-Anyone can checkout source code from our anonymous SVN server. To do so, simply use the following commands (if you are using a GUI SVN client, configure it appropriately):
+Anyone can checkout source code from our anonymous Git server. To do so, simply use the following commands (if you are using a GUI Git client, configure it appropriately):
 
 **Apache Batik**
 
-  - `svn co http://svn.apache.org/repos/asf/xmlgraphics/batik/trunk`
+  - `git clone https://github.com/apache/xmlgraphics-batik.git`
 
 **Apache FOP**
 
-  - `svn co http://svn.apache.org/repos/asf/xmlgraphics/fop/trunk`
+  - `git clone https://github.com/apache/xmlgraphics-fop.git`
 
 **Apache XML Graphics Commons**
 
-  - `svn co http://svn.apache.org/repos/asf/xmlgraphics/commons/trunk`
+  - `git clone https://github.com/apache/xmlgraphics-commons.git`
 
 **Apache XML Graphics website**
 
   - `git clone https://gitbox.apache.org/repos/asf/xmlgraphics-website.git`
 
-You can find additional information for setting up SVN access on the [Version Control FAQ](https://www.apache.org/dev/version-control.html).
+You can find additional information for setting up Git access on the [Version Control FAQ](https://www.apache.org/dev/version-control.html).
 Committers need to replace `http` with `https` and then log in so they can gain write access!
