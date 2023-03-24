@@ -739,8 +739,8 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <h1 id="apache-fop-development-managing-documentation">Apache&trade; FOP Development: Managing Documentation</h1>
 <p><warning>This page is obsolete. Do not follow this to make FOP documentation.</warning></p>
 <h2 id="general">General Information</h2>
-<p>All raw documentation content is managed in the Apache&trade; FOP SVN repository. Updates should be committed to the repository, then the repository files are used to generate usable output. The remaining discussions on this page assume that the SVN repository is the starting place for processing. The path to the documentation is src/documentation/content/xdocs.</p>
-<p><note>All documentation is maintained on the trunk.</note></p>
+<p>All raw documentation content is managed in the Apache&trade; FOP Git repository. Updates should be committed to the repository, then the repository files are used to generate usable output. The remaining discussions on this page assume that the Git repository is the starting place for processing. The path to the documentation is src/documentation/content/xdocs.</p>
+<p><note>All documentation is maintained on the main.</note></p>
 <p>Basic documents are stored in XML files, and use DTDs provided by Apache Forrest.</p>
 <h2 id="design">Design Principles</h2>
 <p>These principles are not written in stone, but reflect the current philosophy, and are documented here primarily to help achieve consistency. These principles should be changed if better or more practical ones are found, but they should probably be discussed and changed by common consent.</p>
@@ -756,88 +756,9 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h3 id="design-when">When</h3>
 <p>The documentation and the product are in a constant state of change, and there is some difficulty in deciding what product state the website content should reflect. The current thinking is that the website should reflect the current state of the repository code branch from which releases are made. Features or other documentation that applies to unreleased code should be marked in such a way within the content that the user can determine whether and how it applies to the version they are using. For example, "Feature xyz is first available in Release n.nn.n".</p>
 <p>Other approaches were considered, but all seemed to have significantly higher costs both to the users and the developers. From the user's standpoint, the choice is either that they potentially have to look multiple places to get the information they need (which was rejected), or they have to filter out an occasional feature that is in code available subsequent to their release (which was accepted).</p>
-<h2 id="web">Website</h2>
-<h3 id="web-background">Background</h3>
-<p>The FOP web site and documentation are generated using <a href="http://forrest.apache.org">Apache Forrest</a>.</p>
-<p>The following table summarizes the flow of data to the FOP website in chronological order:</p>
-<table>
-<thead>
-<tr>
-<th>Process</th>
-<th>Output</th>
-<th>State</th>
-<th>View(s)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Developer commits code to FOP repository.</td>
-<td>FOP repository (SVN)</td>
-<td>Raw XML and other content</td>
-<td><a href="http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop/src/documentation/content/xdocs/">in SVN</a></td>
-</tr>
-<tr>
-<td>Developer builds and uploads documentation using ForrestBot.</td>
-<td>/www/xmlgraphics.apache.org/fop on people.apache.org</td>
-<td>sync-ready</td>
-<td>n/a</td>
-</tr>
-<tr>
-<td>Cron job runs rsync to synchronize the website with the real web server (runs every few hours).</td>
-<td>Infrastructure knows. :-)</td>
-<td>web-ready</td>
-<td><a href="http://xmlgraphics.apache.org/fop">FOP Web Site</a></td>
-</tr>
-</tbody>
-</table>
-<p><note>Server-side ForrestBot is currently not available for website publishing. We use it locally and with manual invocation.</note></p>
-<h3 id="web-forrestbot-publish">ForrestBot "publish" Step-by-Step</h3>
-<p>We're using ForrestBot for build and deploy the FOP website. ForrestBot comes with Apache Forrest 0.8. The root directory of your FOP checkout contains the file "publish.xml" which is an Ant build file that manages the build and the deployment of the FOP website. Please look into this file for further instructions to set up ForrestBot on your machine. Basically, we're simply running ForrestBot manually by typing "ant -f publish.xml" once we're happy with our changes to the site. Step-by-step instructions for the deployment process again:</p>
-<p><note>Please make sure you use Forrest from the Trunk (revision 632959 or later) for the time being. You will need to download it directly from SVN: <a href="http://svn.apache.org/repos/asf/forrest/trunk">http://svn.apache.org/repos/asf/forrest/trunk</a>.</note></p>
-<ul>
-<li>
-<p>Modify the sources of the website and check locally with Forrest (run "forrest run" or just "forrest").</p>
-</li>
-<li>
-<p>Once you're satisfied, run "ant -f publish.xml" to do a clean build of the website. If the build runs without problems, the website will be uploaded as a whole using SVN to the <a href="https://svn.apache.org/repos/asf/xmlgraphics/site/deploy/fop/">website staging directory in SVN</a>.</p>
-</li>
-<li>
-<p>Then log into people.apache.org using SSH, go to the /www/xmlgraphics.apache.org directory and run "svn up".</p>
-</li>
-<li>
-<p>Wait for the next rsync cycle and check your changes in the live site. (Sorry, no manual rsync available ATM)</p>
-</li>
-</ul>
-<p>The reason for putting the generated website in the SVN repository: The infrastructure people want to be able to restore the websites themselves in case of a crash.</p>
-<h3 id="web-local-forrest">Using a Local Forrest</h3>
-<p>To use a local Forrest (during website development, not for deployment):</p>
-<ul>
-<li>
-<p><a href="http://forrest.apache.org/mirrors.cgi#closest">download</a> latest the Forrest release (currently Forrest 0.8)</p>
-</li>
-<li>
-<p>set environment variable FORREST_HOME=~/apache-forrest-0.8 where ~ is the directory where Forrest is installed (see <a href="http://forrest.apache.org/docs/your-project.html">http://forrest.apache.org/docs/your-project.html</a> for details)</p>
-</li>
-<li>
-<p>set environment variable PATH=$PATH:$FORREST_HOME/bin</p>
-</li>
-<li>
-<p>cd to your local FOP checkout</p>
-</li>
-<li>
-<p>update your local FOP checkout (svn update)</p>
-</li>
-<li>
-<p>run forrest(.bat), which will build the web-site documents in xml-fop/build/site.</p>
-</li>
-</ul>
-<p><note>You can use "forrest run" to start a local web server. That improves development speed as you can simply refresh in the browser after a change.</note></p>
 <h3 id="distribution">Updating Distribution Files</h3>
 <p>The Apache distribution system mirrors distributions around the world. Since it uses <a href="http://httpd.apache.org/">Apache httpd</a> Module <a href="http://httpd.apache.org/docs/2.2/mod/mod_autoindex.html#headername">mod_autoindex</a> you also need to manually update the HEADER.html &amp; READER.html files on <code>people.apache.org</code> in <code>/www/www.apache.org/dist/xmlgraphics/fop/</code>.</p>
 <p>Please be careful when doing stuff like that.</p>
-<h3 id="delete">Deleting Documentation Files</h3>
-<p>ForrestBot simply uploads the whole generated site. It doesn't delete obsolete files. You can do that manually in the /www/xmlgraphics.apache.org/fop folder on cvs.apache.org. Be careful when doing stuff like that.</p>
-<p><note>Please make sure you always have <strong>group rw permissions on all files</strong> under the /www directory!</note></p>
         </div>
       </div>
       <div class="clear"></div>

@@ -401,7 +401,7 @@ This is another implementation of the <code>TestReportProcessor</code> interface
 <p>build regard</p>
 <p>Check the newly generated HTML report in the <code>test-reports/html</code> directory: there should no longer be any test failure.</p>
 <h4 id="Daily-usage">Daily usage</h4>
-<p>Once the intial set up has been done, you can use regard by simply updating your SVN copy, including the test-references. If no change occurs, your test will keep passing with your reference images. If a test fails (e.g., if someone checks in a new reference image from a platform different than the one you are using, you will have to check if it is because of system specific reasons or if there is a bigger problem.</p>
+<p>Once the intial set up has been done, you can use regard by simply updating your Git copy, including the test-references. If no change occurs, your test will keep passing with your reference images. If a test fails (e.g., if someone checks in a new reference image from a platform different than the one you are using, you will have to check if it is because of system specific reasons or if there is a bigger problem.</p>
 <h3 id="SVG-generator-tests">SVG generator tests</h3>
 <p>Regard contains over 100 tests for checking regressions on the SVG generator. If you use <code>svggen</code> as an argument to regard, all the SVG generator tests will be run (because <code>regard.xml</code> points to <code>test-resources/org/apache/batik/svggen/regsvggen.xml</code>, which is a test suite description for the SVG generator and that file’s root <code>testSuite</code> element has the “svggen” ID).</p>
 <h2 id="writingNewTests">Writing new tests</h2>

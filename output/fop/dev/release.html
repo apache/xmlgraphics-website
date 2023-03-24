@@ -767,7 +767,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>Check and update the copyright year in NOTICE and build.xml.</p>
 </li>
 <li>
-<p>Update version number in <code>build.xml</code> (not to be merged back into trunk).</p>
+<p>Update version number in <code>build.xml</code> (not to be merged back into main).</p>
 </li>
 <li>
 <p>Build the dist files (<code>build[.sh] dist</code>) and upload them to your web directory on <code>people.apache.org</code></p>
@@ -776,10 +776,10 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>Ask on <code>fop-dev</code> ML to check the branch and the generated dist files for errors.</p>
 </li>
 <li>
-<p>Tag the source tree with the release ID. For example, if the release is 1.0: <code>svn copy https://svn.apache.org/repos/asf/xmlgraphics/fop/branches/fop-1_0 https://svn.apache.org/repos/asf/xmlgraphics/fop/tags/fop-1_0</code></p>
+<p>Tag the source tree with the release ID.</p>
 </li>
 <li>
-<p>Make a fresh checkout with the just created tag: <code>svn co https://svn.apache.org/repos/asf/xmlgraphics/fop/tags/fop-1_0</code></p>
+<p>Make a fresh checkout with the just created tag</p>
 </li>
 <li>
 <p>Copy the <code>jai_core.jar</code> and <code>jai_codec.jar</code> to <code>lib</code>.</p>
@@ -791,7 +791,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>Alternatively, create a <code>build-local.properties</code> file that points to the above libraries.</p>
 </li>
 <li>
-<p>Run <code>build[.sh] dist</code>. Do this using Sun JDK 1.5 or later. A Forrest installation is needed.</p>
+<p>Run <code>build[.sh] dist</code>. Do this using JDK 1.5 or later.</p>
 </li>
 <li>
 <p>Create signatures. Don't forget to upload your KEY: <code>gpg -a -b --force-v3-sigs fop-1.0-src.tar.gz</code> etc.</p>
@@ -804,9 +804,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </li>
 <li>
 <p>Check permissions: <code>chmod 664 ... ; chgrp xmlgraphics ...</code></p>
-</li>
-<li>
-<p>Add MD5 sums: <code>md5 fop-1.0-src.tar.gz &gt; fop-1.0-src.tar.gz.md5</code> etc.</p>
 </li>
 <li>
 <p>Make a test download.</p>
@@ -830,15 +827,15 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h2 id="update">5. Update material</h2>
 <h3 id="git">5.1 Git</h3>
 <ul>
-<li>Merge the changes of the git release branch back into trunk (not the version number in the build file) and delete the branch.</li>
+<li>Merge the changes of the git release branch back into main (not the version number in the build file).</li>
 </ul>
 <h3 id="jira">5.2 Jira</h3>
 <ul>
 <li>
 <p>Ask an FOP Jira admin to</p>
 <ul>
-<li>rename trunk entry into the new release name,</li>
-<li>and create a new trunk entry</li>
+<li>rename main entry into the new release name,</li>
+<li>and create a new main entry</li>
 </ul>
 <p>or</p>
 <ul>
@@ -849,7 +846,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h3 id="cms">5.3 CMS</h3>
 <ul>
 <li>
-<p>Copy trunk directory to a new release directory with the new version number.</p>
+<p>Copy main directory to a new release directory with the new version number.</p>
 </li>
 <li>
 <p>Copy following files to the new release directory:</p>
@@ -880,7 +877,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>In the new release directory, update the following files:</p>
 <ul>
 <li><code>index.mdtext</code></li>
-<li><code>compiling.mdtext</code> (change the introduction for trunk to that for a release).</li>
+<li><code>compiling.mdtext</code> (change the introduction for main to that for a release).</li>
 <li><code>changes_x.x.mdtext</code></li>
 </ul>
 </li>
