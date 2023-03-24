@@ -7,7 +7,7 @@ The purpose of this document is to tie together the Apache&trade; FOP design (in
 
 ## Overview { #Overview}
 
-The input FO document is sent to the FO tree builder via SAX events. Fragments of an FO Tree are built from this process. As each page-sequence element is completed, it is passed to a layout processor, which in turn converts it into an Area Tree. The Area Tree is then given to the Renderer, which converts it into a stream of data containing the output document. The sections below will provide additional details. Where needed differences between the trunk and maintenance branches are shown in tabular format.
+The input FO document is sent to the FO tree builder via SAX events. Fragments of an FO Tree are built from this process. As each page-sequence element is completed, it is passed to a layout processor, which in turn converts it into an Area Tree. The Area Tree is then given to the Renderer, which converts it into a stream of data containing the output document. The sections below will provide additional details. Where needed differences between the main and maintenance branches are shown in tabular format.
 
 ## Startup { #Startup}
 

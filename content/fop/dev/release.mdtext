@@ -27,15 +27,15 @@ The checklist below is based on a combination of input from from Christian Geise
 
 - Check and update the copyright year in NOTICE and build.xml.
 
-- Update version number in `build.xml` (not to be merged back into trunk).
+- Update version number in `build.xml` (not to be merged back into main).
 
 - Build the dist files (`build[.sh] dist`) and upload them to your web directory on `people.apache.org`
 
 - Ask on `fop-dev` ML to check the branch and the generated dist files for errors.
 
-- Tag the source tree with the release ID. For example, if the release is 1.0: `svn copy https://svn.apache.org/repos/asf/xmlgraphics/fop/branches/fop-1_0 https://svn.apache.org/repos/asf/xmlgraphics/fop/tags/fop-1_0`
+- Tag the source tree with the release ID.
 
-- Make a fresh checkout with the just created tag: `svn co https://svn.apache.org/repos/asf/xmlgraphics/fop/tags/fop-1_0`
+- Make a fresh checkout with the just created tag
 
 - Copy the `jai_core.jar` and `jai_codec.jar` to `lib`.
 
@@ -43,7 +43,7 @@ The checklist below is based on a combination of input from from Christian Geise
 
 - Alternatively, create a `build-local.properties` file that points to the above libraries.
 
-- Run `build[.sh] dist`. Do this using Sun JDK 1.5 or later. A Forrest installation is needed.
+- Run `build[.sh] dist`. Do this using JDK 1.5 or later.
 
 - Create signatures. Don't forget to upload your KEY: `gpg -a -b --force-v3-sigs fop-1.0-src.tar.gz` etc.
 
@@ -52,8 +52,6 @@ The checklist below is based on a combination of input from from Christian Geise
 - Upload the dist and signature files to your web directory on people.apache.org (An account on minotaur is needed): `scp fop-1.0*.tar.gz* chrisg@people.apache.org:public_html/`
 
 - Check permissions: `chmod 664 ... ; chgrp xmlgraphics ...`
-
-- Add MD5 sums: `md5 fop-1.0-src.tar.gz > fop-1.0-src.tar.gz.md5` etc.
 
 - Make a test download.
 
@@ -71,13 +69,13 @@ The checklist below is based on a combination of input from from Christian Geise
 
 ### 5.1 Git { #git}
 
-- Merge the changes of the git release branch back into trunk (not the version number in the build file) and delete the branch.
+- Merge the changes of the git release branch back into main (not the version number in the build file).
 
 ### 5.2 Jira { #jira}
 
 - Ask an FOP Jira admin to
-    - rename trunk entry into the new release name,
-    - and create a new trunk entry
+    - rename main entry into the new release name,
+    - and create a new main entry
 
     or
 
@@ -85,7 +83,7 @@ The checklist below is based on a combination of input from from Christian Geise
 
 ### 5.3 CMS { #cms}
 
-- Copy trunk directory to a new release directory with the new version number.
+- Copy main directory to a new release directory with the new version number.
 
 - Copy following files to the new release directory:
     - `known-issues.mdtext` as `knownissues-overview.mdtext`
@@ -105,7 +103,7 @@ The checklist below is based on a combination of input from from Christian Geise
 
 - In the new release directory, update the following files:
     - `index.mdtext`
-    - `compiling.mdtext` (change the introduction for trunk to that for a release).
+    - `compiling.mdtext` (change the introduction for main to that for a release).
     - `changes_x.x.mdtext`
 
 - Publish the updated documentation to the FOP website.

@@ -33,7 +33,7 @@ In order to facilitate the human reading of FOP source code, reduce churning in 
 | No underscores in variable names except for static finals. | Upper/lower case distinctions can be made in all other variable names, eliminating the need for artificial word boundaries. | checkstyle |
 | Opening brace for a block should be on the same line as its control statement (if, while, etc.). | Standardization, general preference. | checkstyle |
 | Write appropriate javadoc entries for all public and protected classes, methods, and variables. | Basic API documentation is needed. | checkstyle |
-| By [ASF policy](http://mail-archives.apache.org/mod_mbox/jakarta-jmeter-dev/200402.mbox/%3C4039F65E.7020406@atg.com%3E), @author tags are officially discouraged. However it is permissible to indicate the original author(s) of an entire file or package in a comment provided it follows the copyright and license header. | Attribution of subsequent contributions are recorded by the SVN commit history logs, so should not be included. | checkstyle |
+| By [ASF policy](http://mail-archives.apache.org/mod_mbox/jakarta-jmeter-dev/200402.mbox/%3C4039F65E.7020406@atg.com%3E), @author tags are officially discouraged. However it is permissible to indicate the original author(s) of an entire file or package in a comment provided it follows the copyright and license header. | Attribution of subsequent contributions are recorded by the Git commit history logs, so should not be included. | checkstyle |
 
 For developers that dislike these conventions, one workaround is to develop using their own style, then use a formatting tool like [astyle](http://astyle.sourceforge.net/) (Artistic Style) before committing.
 
