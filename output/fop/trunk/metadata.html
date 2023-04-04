@@ -952,6 +952,38 @@ For example:</p>
   <span class="nt">&lt;/pdf:pagepiece&gt;</span>        
 <span class="nt">&lt;/fo:simple-page-master&gt;</span>
 </code></pre></div>
+
+<h1 id="pdf-page-metadata">PDF page metadata</h1>
+<p>Allows attaching custom XMP metadata to a specific PDF page object</p>
+<h2 id="fo">Usage (fo)</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:simple-page-master</span> <span class="na">master-name=</span><span class="s">&quot;simple&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fo:region-body/&gt;</span>
+  <span class="nt">&lt;pdf:page</span> <span class="na">page-numbers=</span><span class="s">&quot;*&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;x:xmpmeta</span> <span class="na">xmlns:x=</span><span class="s">&quot;adobe:ns:meta/&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;rdf:RDF</span> <span class="na">xmlns:rdf=</span><span class="s">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span> <span class="na">xmlns:abc=</span><span class="s">&quot;http://www.abc.de/abc/&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;rdf:Description</span> <span class="na">rdf:about=</span><span class="s">&quot;&quot;</span> <span class="na">abc:def=</span><span class="s">&quot;val&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;rdf:Description</span> <span class="na">rdf:about=</span><span class="s">&quot;&quot;</span> <span class="na">xmlns:pdfaExtension=</span><span class="s">&quot;http://www.aiim.org/pdfa/ns/extension/&quot;</span>
+                         <span class="na">xmlns:pdfaSchema=</span><span class="s">&quot;http://www.aiim.org/pdfa/ns/schema#&quot;</span>
+                         <span class="na">xmlns:pdfaProperty=</span><span class="s">&quot;http://www.aiim.org/pdfa/ns/property#&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;pdfaExtension:schemas&gt;</span>
+            <span class="nt">&lt;rdf:Bag&gt;</span>
+              <span class="nt">&lt;rdf:li</span> <span class="na">rdf:parseType=</span><span class="s">&quot;Resource&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;pdfaSchema:property&gt;</span>
+                  <span class="nt">&lt;rdf:Seq&gt;</span>
+                    <span class="nt">&lt;rdf:li</span> <span class="na">rdf:parseType=</span><span class="s">&quot;Resource&quot;</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;pdfaProperty:name&gt;</span>split<span class="nt">&lt;/pdfaProperty:name&gt;</span>
+                    <span class="nt">&lt;/rdf:li&gt;</span>
+                  <span class="nt">&lt;/rdf:Seq&gt;</span>
+                <span class="nt">&lt;/pdfaSchema:property&gt;</span>
+              <span class="nt">&lt;/rdf:li&gt;</span>
+            <span class="nt">&lt;/rdf:Bag&gt;</span>
+          <span class="nt">&lt;/pdfaExtension:schemas&gt;</span>
+        <span class="nt">&lt;/rdf:Description&gt;</span>
+      <span class="nt">&lt;/rdf:RDF&gt;</span>
+    <span class="nt">&lt;/x:xmpmeta&gt;</span>
+  <span class="nt">&lt;/pdf:page&gt;</span>
+<span class="nt">&lt;/fo:simple-page-master&gt;</span>
+</code></pre></div>
         </div>
       </div>
       <div class="clear"></div>
