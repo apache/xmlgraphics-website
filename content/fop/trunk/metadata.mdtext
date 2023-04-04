@@ -167,3 +167,39 @@ Add metadata for each page master based on how the software has been configured.
         </pdf:dictionary> 
       </pdf:pagepiece>        
     </fo:simple-page-master>
+
+#PDF page metadata
+
+Allows attaching custom XMP metadata to a specific PDF page object
+
+## Usage (fo) { #fo}
+
+    :::xml
+    <fo:simple-page-master master-name="simple">
+      <fo:region-body/>
+      <pdf:page page-numbers="*">
+        <x:xmpmeta xmlns:x="adobe:ns:meta/">
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:abc="http://www.abc.de/abc/">
+            <rdf:Description rdf:about="" abc:def="val"/>
+            <rdf:Description rdf:about="" xmlns:pdfaExtension="http://www.aiim.org/pdfa/ns/extension/"
+                             xmlns:pdfaSchema="http://www.aiim.org/pdfa/ns/schema#"
+                             xmlns:pdfaProperty="http://www.aiim.org/pdfa/ns/property#">
+              <pdfaExtension:schemas>
+                <rdf:Bag>
+                  <rdf:li rdf:parseType="Resource">
+                    <pdfaSchema:property>
+                      <rdf:Seq>
+                        <rdf:li rdf:parseType="Resource">
+                          <pdfaProperty:name>split</pdfaProperty:name>
+                        </rdf:li>
+                      </rdf:Seq>
+                    </pdfaSchema:property>
+                  </rdf:li>
+                </rdf:Bag>
+              </pdfaExtension:schemas>
+            </rdf:Description>
+          </rdf:RDF>
+        </x:xmpmeta>
+      </pdf:page>
+    </fo:simple-page-master>
+   
