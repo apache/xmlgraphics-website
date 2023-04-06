@@ -41,6 +41,7 @@ See [Setting the Configuration Programmatically](embedding.html#config-internal)
 | table-border-overpaint | Boolean (true, false) | Setting this option to 'true' will cause FOP to produce table borders without uneven lines | false |
 | simple-line-breaking | Boolean (true, false) | Setting this option to 'true' will cause FOP to use a faster line breaking algorithm | false |
 | renderers | (see text below) | Contains the configuration for each renderer. See below. | N/A |
+| skip-page-position-only-allowed | Boolean (true, false) | Controls output of 'blank' pages. [See below.](#skip-page-position-only-allowed) | true |
 
 [^1]: Relative URIs for those properties are evaluated relative to the base URI of the configuration file. If the configuration is provided programmatically, the base URI can be set with `FopFactory.setUserConfigBaseURI` ; default is the current working directory.
 
@@ -274,6 +275,14 @@ The default value for the "renderer-resolution" is 240 dpi.
 The default line width is device dependent and may need to be fine tuned so that the output matches the expected result. The default correction value is 2.5.
 
 By default if there is no configuration definition for "resource-group-file", external resources will be placed in a file called resources.afp.
+
+## skip-page-position-only-allowed
+
+When set to false, a second page with no content in the body (but other content such as region-after) may be produced when a conditional-page-master-reference with page-position="only" is a master candidate.
+
+Ordinarily (i.e. when this setting not set to false), the processor will consider using conditional-page-master-references with page-position="only" one time only; if it fails to successfully construct the document on the first attempt, these conditional-page-master-references are ignored in further attempts. This default behaviour avoids the output of a 'blank' page - a second page with no content in the body where the processor fails to fit all the content onto a single page. In some cases however, this final page devoid of any body content is required and setting skip-page-position-only-allowed to false will allow this second page with no body content to be output.
+
+A specific example of the use of this flag is where a simple-page-master with page-position="only" specifies a large region-after and the amount of content is such that the processor cannot quite fit the body content and the large region-after onto one page. The processor will then produce a second page and fall back to using alternative simple-page-masters which have smaller region-afters and so the content and smaller region-after will fit on the first page and the second page will have no content in the body. The default behaviour will be to suppress that second page with no body content. But if skip-page-position-only-allowed is set to false the second page will be produced.
 
 ## When it does not work { #When-it-does-not-work}
 
