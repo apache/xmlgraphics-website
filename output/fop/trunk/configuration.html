@@ -864,6 +864,12 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <td>Contains the configuration for each renderer. See below.</td>
 <td>N/A</td>
 </tr>
+<tr>
+<td>skip-page-position-only-allowed</td>
+<td>Boolean (true, false)</td>
+<td>Controls output of 'blank' pages. <a href="#skip-page-position-only-allowed">See below.</a></td>
+<td>true</td>
+</tr>
 </tbody>
 </table>
 <p>This is an excerpt from the example configuration file coming with FOP:</p>
@@ -1064,6 +1070,10 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>The default value for the "renderer-resolution" is 240 dpi.</p>
 <p>The default line width is device dependent and may need to be fine tuned so that the output matches the expected result. The default correction value is 2.5.</p>
 <p>By default if there is no configuration definition for "resource-group-file", external resources will be placed in a file called resources.afp.</p>
+<h2 id="skip-page-position-only-allowed">skip-page-position-only-allowed</h2>
+<p>When set to false, a second page with no content in the body (but other content such as region-after) may be produced when a conditional-page-master-reference with page-position="only" is a master candidate.</p>
+<p>Ordinarily (i.e. when this setting not set to false), the processor will consider using conditional-page-master-references with page-position="only" one time only; if it fails to successfully construct the document on the first attempt, these conditional-page-master-references are ignored in further attempts. This default behaviour avoids the output of a 'blank' page - a second page with no content in the body where the processor fails to fit all the content onto a single page. In some cases however, this final page devoid of any body content is required and setting skip-page-position-only-allowed to false will allow this second page with no body content to be output.</p>
+<p>A specific example of the use of this flag is where a simple-page-master with page-position="only" specifies a large region-after and the amount of content is such that the processor cannot quite fit the body content and the large region-after onto one page. The processor will then produce a second page and fall back to using alternative simple-page-masters which have smaller region-afters and so the content and smaller region-after will fit on the first page and the second page will have no content in the body. The default behaviour will be to suppress that second page with no body content. But if skip-page-position-only-allowed is set to false the second page will be produced.</p>
 <h2 id="When-it-does-not-work">When it does not work</h2>
 <p>FOP searches the configuration file for the information it expects, at the position it expects. When that information is not present, FOP will not complain, it will just continue. When there is other information in the file, FOP will not complain, it will just ignore it. That means that when your configuration information is in the file but in a different XML element, or in a different XML path, than FOP expects, it will be silently ignored.</p>
 <p>Check the following possibilities:</p>
