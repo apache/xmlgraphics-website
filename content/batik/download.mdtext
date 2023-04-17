@@ -26,3 +26,13 @@ Batik archive distributions can be downloaded from the Batik Archives [binaries]
 Note that the only change between versions 1.7.1 and 1.7 and between versions 1.6.1 and 1.6 is the
 security fix for the XXE vulnerability CVE-2015-0250 (see the [XML Graphics Security](http://xmlgraphics.apache.org/security.html) page).
 
+
+## Maven
+
+To use the latest release you'll need to add the following dependency:
+
+<dependency>
+  <groupId>org.apache.xmlgraphics</groupId>
+  <artifactId>batik-all</artifactId>
+  <version>1.16</version>
+</dependency>
