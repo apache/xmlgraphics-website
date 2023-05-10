@@ -4,11 +4,31 @@ Title: Apache(tm) FOP Design: Introduction
 
 <note>The articles in this section pertain mainly to the *redesign* or *main* line of development. The redesign is mainly focusing on parts of the layout process (converting the FO tree into the Area Tree). Therefore other (non-layout) sections in this document are probably largely accurate for the maintenance branch, but should be used with care in that context.</note>
 
+## Topics
+
+- [Areas](areas.html)
+- [Breakpos](breakpos.html)
+- [Embedding](embedding.html)
+- [Extending](extending.html)
+- [Fotree](fotree.html)
+- [Images](images.html)
+- [Layout](layout.html)
+- [Optimise](optimise.html)
+- [Parsing](parsing.html)
+- [Pdf-library](pdf-library.html)
+- [Properties](properties.html)
+- [Renderers](renderers.html)
+- [Startup](startup.html)
+- [Svg](svg.html)
+- [Useragent](useragent.html)
+
 ## The Black Box View { #black-box}
 
 From a user's standpoint, Apache&trade; FOP is a black box that an xml file as input, performs some magic, then creates the desired output:
 
-<caption>Apache&trade; FOP from a User's Standpoint</caption>| Process | Result |
+<caption>Apache&trade; FOP from a User's Standpoint</caption>
+
+| Process | Result |
 |---------|--------|
 | . | XSL-FO document |
 | FOP | Output: PDF, Postscript, Print, etc. |
@@ -37,7 +57,9 @@ Many FOP design decisions revolve around trying to minimize the use of memory. T
 
 With our design goals outlined, we'll now open the Black Box and look at the major processes inside. FOP has adopted the basic structure of the XSL-FO standard itself as a convenient model for the major processes in FOP. The Result in each row is the input for the next.
 
-<caption>FOP's Big Picture Design</caption>| Process | Process Result/Input for Next | Notes |
+<caption>FOP's Big Picture Design</caption>
+
+| Process | Process Result/Input for Next | Notes |
 |---------|-------------------------------|-------|
 | . | XSL-FO document | . |
 |  [Parsing](parsing.html)  |  [FO Tree](fotree.html)  | . |
