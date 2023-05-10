@@ -740,18 +740,68 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>See also <a href="../trunk/graphics.html#svg">SVG User Documentation</a> for more information.</p>
 <h2 id="Examples">Examples</h2>
 <p>These examples illustrate a number of issues relating to conversion to PDF:</p>
-<p><caption>SVG to PDF examples</caption>|  | svg file | png file | pdf result |
-|--|----------|----------|------------|
-| images |  <a href="svg/images.svg">images.svg</a>  |  <a href="svg/images.png">images.png</a>  |  <a href="svg/images.pdf">images.pdf</a>  |
-| svg linking |  <a href="svg/link.svg">link.svg</a>  |  <a href="svg/link.png">link.png</a>  |  <a href="svg/link.pdf">link.pdf</a>  |
-| gradients and patterns |  <a href="svg/paints.svg">paints.svg</a>  |  <a href="svg/paints.png">paints.png</a>  |  <a href="svg/paints.pdf">paints.pdf</a>  |
-| various text and effects on text |  <a href="svg/text.svg">text.svg</a>  |  <a href="svg/text.png">text.png</a>  |  <a href="svg/text.pdf">text.pdf</a>  |
-| transparent objects |  <a href="svg/transparency.svg">transparency.svg</a>  |  <a href="svg/transparency.png">transparency.png</a>  |  <a href="svg/transparency.pdf">transparency.pdf</a>  |</p>
+<p><caption>SVG to PDF examples</caption></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>svg file</th>
+<th>png file</th>
+<th>pdf result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>images</td>
+<td><a href="svg/images.svg">images.svg</a></td>
+<td><a href="svg/images.png">images.png</a></td>
+<td><a href="svg/images.pdf">images.pdf</a></td>
+</tr>
+<tr>
+<td>svg linking</td>
+<td><a href="svg/link.svg">link.svg</a></td>
+<td><a href="svg/link.png">link.png</a></td>
+<td><a href="svg/link.pdf">link.pdf</a></td>
+</tr>
+<tr>
+<td>gradients and patterns</td>
+<td><a href="svg/paints.svg">paints.svg</a></td>
+<td><a href="svg/paints.png">paints.png</a></td>
+<td><a href="svg/paints.pdf">paints.pdf</a></td>
+</tr>
+<tr>
+<td>various text and effects on text</td>
+<td><a href="svg/text.svg">text.svg</a></td>
+<td><a href="svg/text.png">text.png</a></td>
+<td><a href="svg/text.pdf">text.pdf</a></td>
+</tr>
+<tr>
+<td>transparent objects</td>
+<td><a href="svg/transparency.svg">transparency.svg</a></td>
+<td><a href="svg/transparency.png">transparency.png</a></td>
+<td><a href="svg/transparency.pdf">transparency.pdf</a></td>
+</tr>
+</tbody>
+</table>
 <p>As can be seen most of the specific issues are handled.</p>
 <p><note>You will need Acrobat 5.0 to see transparency.</note></p>
-<p><caption>XSL:FO to PDF examples</caption>|  | fo file | pdf result |
-|--|---------|------------|
-| embedding svg |  <a href="fo/embedding.fo">embedding.fo</a>  |  <a href="fo/embedding.fo.pdf">embedding.fo.pdf</a>  |</p>
+<p><caption>XSL:FO to PDF examples</caption></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>fo file</th>
+<th>pdf result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>embedding svg</td>
+<td><a href="fo/embedding.fo">embedding.fo</a></td>
+<td><a href="fo/embedding.fo.pdf">embedding.fo.pdf</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="Developer-Notes">Developer Notes</h2>
 <p>For most output formats in FOP the SVG is simply drawn into an image with Batik. For PDF there are a set of classes to handle drawing the <a href="http://xmlgraphics.apache.org/batik/using/architecture.html">GVT (Graphic Vector Toolkit)</a> into PDF markup.</p>
 <h3 id="Classes">Classes</h3>

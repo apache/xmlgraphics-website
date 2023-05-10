@@ -738,12 +738,45 @@ $(document).ready(function () {
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
     <h1 id="apache-fop-design-introduction">Apache&trade; FOP Design: Introduction</h1>
 <p><note>The articles in this section pertain mainly to the <em>redesign</em> or <em>main</em> line of development. The redesign is mainly focusing on parts of the layout process (converting the FO tree into the Area Tree). Therefore other (non-layout) sections in this document are probably largely accurate for the maintenance branch, but should be used with care in that context.</note></p>
+<h2 id="topics">Topics</h2>
+<ul>
+<li><a href="areas.html">Areas</a></li>
+<li><a href="breakpos.html">Breakpos</a></li>
+<li><a href="embedding.html">Embedding</a></li>
+<li><a href="extending.html">Extending</a></li>
+<li><a href="fotree.html">Fotree</a></li>
+<li><a href="images.html">Images</a></li>
+<li><a href="layout.html">Layout</a></li>
+<li><a href="optimise.html">Optimise</a></li>
+<li><a href="parsing.html">Parsing</a></li>
+<li><a href="pdf-library.html">Pdf-library</a></li>
+<li><a href="properties.html">Properties</a></li>
+<li><a href="renderers.html">Renderers</a></li>
+<li><a href="startup.html">Startup</a></li>
+<li><a href="svg.html">Svg</a></li>
+<li><a href="useragent.html">Useragent</a></li>
+</ul>
 <h2 id="black-box">The Black Box View</h2>
 <p>From a user's standpoint, Apache&trade; FOP is a black box that an xml file as input, performs some magic, then creates the desired output:</p>
-<p><caption>Apache&trade; FOP from a User's Standpoint</caption>| Process | Result |
-|---------|--------|
-| . | XSL-FO document |
-| FOP | Output: PDF, Postscript, Print, etc. |</p>
+<p><caption>Apache&trade; FOP from a User's Standpoint</caption></p>
+<table>
+<thead>
+<tr>
+<th>Process</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>XSL-FO document</td>
+</tr>
+<tr>
+<td>FOP</td>
+<td>Output: PDF, Postscript, Print, etc.</td>
+</tr>
+</tbody>
+</table>
 <p>Although this is simple, it is useful in defining the outer limits of FOP's core processing. There may be other things going on under FOP's control that are not really part of FOP. For example, FOP provides a convenience mechanism that takes semantic XML + an XSLT transformation as input, instead of XSL-FO. This is done outside of FOP's core processing (by Xalan), and it is therefore outside the scope of FOP's design, and outside the scope of the FOP design documents.</p>
 <h2 id="primary-goals">Primary Design Goals</h2>
 <p>A discussion of project design properly begins with a list of the goals of the project. Out of these goals will flow the design issues and details, and eventually, the implementation.</p>
@@ -756,13 +789,43 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>Many FOP design decisions revolve around trying to minimize the use of memory. The primary purpose here is to reduce the amount of data that must be serialized to storage during processing. Since our primary design goals include the ability to process files of arbitrary size, there is no way to avoid the need to serialize. However, many FOP users provide web access to documents that are created in real time. Performance is therefore an important issue in these real-world applications. To the extent that it can be done so without jeopardizing the primary design goals, FOP developers have identified keeping a small memory footprint as being an important secondary goal.</p>
 <h2 id="big-picture">The Big Picture View</h2>
 <p>With our design goals outlined, we'll now open the Black Box and look at the major processes inside. FOP has adopted the basic structure of the XSL-FO standard itself as a convenient model for the major processes in FOP. The Result in each row is the input for the next.</p>
-<p><caption>FOP's Big Picture Design</caption>| Process | Process Result/Input for Next | Notes |
-|---------|-------------------------------|-------|
-| . | XSL-FO document | . |
-|  <a href="parsing.html">Parsing</a>  |  <a href="fotree.html">FO Tree</a>  | . |
-|  <a href="properties.html#refine">Refinement</a>  |  <a href="properties.html#refined-fo-tree">Refined FO Tree</a>  | . |
-|  <a href="layout.html">Layout</a>  |  <a href="areas.html">Area Tree</a>  | Layout and Area Tree are not needed or used for the structural outputs (MIF and RTF), as they are not paginated. |
-|  <a href="renderers.html">Renderer</a>  | Output: PDF, Postscript, Print, etc. | . |</p>
+<p><caption>FOP's Big Picture Design</caption></p>
+<table>
+<thead>
+<tr>
+<th>Process</th>
+<th>Process Result/Input for Next</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>XSL-FO document</td>
+<td>.</td>
+</tr>
+<tr>
+<td><a href="parsing.html">Parsing</a></td>
+<td><a href="fotree.html">FO Tree</a></td>
+<td>.</td>
+</tr>
+<tr>
+<td><a href="properties.html#refine">Refinement</a></td>
+<td><a href="properties.html#refined-fo-tree">Refined FO Tree</a></td>
+<td>.</td>
+</tr>
+<tr>
+<td><a href="layout.html">Layout</a></td>
+<td><a href="areas.html">Area Tree</a></td>
+<td>Layout and Area Tree are not needed or used for the structural outputs (MIF and RTF), as they are not paginated.</td>
+</tr>
+<tr>
+<td><a href="renderers.html">Renderer</a></td>
+<td>Output: PDF, Postscript, Print, etc.</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
 <p>In general, each piece of data will be processed in the same way. However, some information may be used more than once, and some may be used out of order. To reduce memory, one process may start before the previous process is completed.</p>
 <p>For a detailed discussion of the design of any component, follow its link in the table above. Each component outlines the design issues which have already been addressed. These resolution of these design issues is in support of the primary and secondary goals, so they are not necessarily written in stone. However, most of them have been discussed at length among the developers, and are reasonably well settled.</p>
 <h2 id="vocabulary">Vocabulary</h2>
