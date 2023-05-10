@@ -837,9 +837,23 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </tbody>
 </table>
 <p><br/></p>
-<p><caption>Parameters specified as nested elements</caption>| Attribute | Description | Required |
-|-----------|-------------|----------|
-| fileset |  <a href="https://ant.apache.org/manual/Types/fileset.html">FileSets</a> are used to specify multiple XSL-FO files to be rendered. | Yes, if no fofile attribute is supplied |</p>
+<p><caption>Parameters specified as nested elements</caption></p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fileset</td>
+<td><a href="https://ant.apache.org/manual/Types/fileset.html">FileSets</a> are used to specify multiple XSL-FO files to be rendered.</td>
+<td>Yes, if no fofile attribute is supplied</td>
+</tr>
+</tbody>
+</table>
 <h2 id="examples">Examples</h2>
 <p>The following example converts a single XSL-FO file to a PDF document:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;generate-pdf&quot;</span> <span class="na">description=</span><span class="s">&quot;Generates a single PDF file&quot;</span><span class="nt">&gt;</span>
