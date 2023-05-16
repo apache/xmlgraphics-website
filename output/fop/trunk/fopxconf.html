@@ -1510,153 +1510,150 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <h1 id="apache-fop-config-options">Apache&trade; FOP: Config Options</h1>
 <h3 id="fopconfparser"><a href="configuration.html">FopConfParser</a></h3>
 <ul>
-<li>accessibility element boolean</li>
-<li>base element</li>
-<li>break-indent-inheritance element boolean</li>
-<li>class attribute</li>
-<li>complex-scripts element</li>
-<li>country attribute</li>
-<li>default-page-settings element</li>
-<li>disabled attribute boolean</li>
-<li>extension attribute</li>
-<li>height attribute</li>
-<li>hyp</li>
-<li>hyphenation-base element</li>
-<li>hyphenation-pattern element</li>
-<li>image-loading element</li>
-<li>lang attribute</li>
-<li>penalty element</li>
-<li>prefer-renderer</li>
-<li>simple-line-breaking</li>
-<li>source-resolution element float</li>
-<li>strict-configuration element boolean</li>
-<li>strict-validation element boolean</li>
-<li>table-border-overpaint</li>
-<li>target-resolution element float</li>
-<li>value attribute</li>
-<li>width attribute</li>
-<li>xml</li>
+<li>&lt;prefer-renderer&gt;true/false&lt;/prefer-renderer&gt;</li>
+<li>&lt;table-border-overpaint&gt;true/false&lt;/table-border-overpaint&gt;</li>
+<li>&lt;simple-line-breaking&gt;true/false&lt;/simple-line-breaking&gt;</li>
+<li>&lt;skip-page-position-only-allowed&gt;true/false&lt;/skip-page-position-only-allowed&gt;</li>
+<li>&lt;strict-validation&gt;true/false&lt;/strict-validation&gt;</li>
+<li>&lt;strict-configuration&gt;true/false&lt;/strict-configuration&gt;</li>
+<li>&lt;accessibility&gt;true/false&lt;/accessibility&gt;</li>
+<li>&lt;base/&gt;</li>
+<li>&lt;source-resolution&gt;float&lt;/source-resolution&gt;</li>
+<li>&lt;target-resolution&gt;float&lt;/target-resolution&gt;</li>
+<li>&lt;break-indent-inheritance&gt;true/false&lt;/break-indent-inheritance&gt;</li>
+<li>&lt;default-page-settings/&gt;</li>
+<li>height=string</li>
+<li>width=string</li>
+<li>&lt;complex-scripts/&gt;</li>
+<li>disabled=true/false</li>
+<li>&lt;image-loading/&gt;</li>
+<li>&lt;hyphenation-base/&gt;</li>
+<li>&lt;hyphenation-pattern/&gt;</li>
+<li>lang=string</li>
+<li>country=string</li>
+<li>extension=string</li>
+<li>xml=string</li>
+<li>hyp=string</li>
+<li>&lt;penalty/&gt;</li>
+<li>class=string</li>
+<li>value=string</li>
 </ul>
 <h3 id="defaultfontconfig"><a href="fonts.html#bulk">DefaultFontConfig</a></h3>
 <ul>
-<li>advanced attribute boolean</li>
-<li>auto-detect element</li>
-<li>directory element</li>
-<li>embed-as-type1 attribute boolean</li>
-<li>embed-url attribute</li>
-<li>embed-url-afm attribute</li>
-<li>embed-url-pfm attribute</li>
-<li>embedding-mode attribute</li>
-<li>encoding-mode attribute</li>
-<li>font element</li>
-<li>font-family attribute</li>
-<li>font-triplet element</li>
-<li>fonts element</li>
-<li>kerning attribute boolean</li>
-<li>match element</li>
-<li>metrics-url attribute</li>
-<li>mime attribute</li>
-<li>name attribute</li>
-<li>recursive attribute boolean</li>
-<li>referenced-fonts element</li>
-<li>simulate-style</li>
-<li>style attribute</li>
-<li>sub-font attribute</li>
-<li>svg attribute boolean</li>
-<li>weight attribute</li>
-</ul>
-<h3 id="pdfencryptionoption"><a href="pdfencryption.html#embedded">PDFEncryptionOption</a></h3>
-<ul>
-<li>encrypt-metadata default: true</li>
-<li>encryption-length</li>
-<li>encryption-params</li>
-<li>noaccesscontent default: false</li>
-<li>noannotations default: false</li>
-<li>noassembledoc default: false</li>
-<li>nocopy default: false</li>
-<li>noedit default: false</li>
-<li>nofillinforms default: false</li>
-<li>noprint default: false</li>
-<li>noprinthq</li>
-<li>owner-password</li>
-<li>user-password</li>
-</ul>
-<h3 id="pdfrendereroption"><a href="pdfa.html#fop-xconf">PDFRendererOption</a></h3>
-<ul>
-<li>disable-srgb-colorspace default: false</li>
-<li>form-xobject default: false</li>
-<li>linearization default: false</li>
-<li>merge-fonts default: false</li>
-<li>output-profile</li>
-<li>pdf-a-mode</li>
-<li>pdf-ua-mode</li>
-<li>pdf-vt-mode</li>
-<li>pdf-x-mode</li>
-<li>version</li>
+<li>&lt;fonts/&gt;</li>
+<li>&lt;auto-detect/&gt;</li>
+<li>&lt;font/&gt;</li>
+<li>embed-url=string</li>
+<li>metrics-url=string</li>
+<li>embed-url-afm=string</li>
+<li>embed-url-pfm=string</li>
+<li>sub-font=string</li>
+<li>kerning=true/false</li>
+<li>advanced=true/false</li>
+<li>encoding-mode=string</li>
+<li>embedding-mode=string</li>
+<li>simulate-style=true/false</li>
+<li>embed-as-type1=true/false</li>
+<li>svg=true/false</li>
+<li>&lt;font-triplet/&gt;</li>
+<li>mime=string</li>
+<li>&lt;referenced-fonts/&gt;</li>
+<li>&lt;match/&gt;</li>
+<li>font-family=string</li>
+<li>&lt;directory/&gt;</li>
+<li>recursive=true/false</li>
+<li>name=string</li>
+<li>weight=string</li>
+<li>style=string</li>
 </ul>
 <h3 id="afprendereroption"><a href="output.html#afp-configuration">AFPRendererOption</a></h3>
 <ul>
-<li>allow-embedding boolean</li>
-<li>bitmap-encoding-quality float</li>
-<li>default-resource-levels</li>
-<li>dithering-quality float</li>
-<li>fs45 boolean</li>
-<li>goca boolean</li>
-<li>images</li>
-<li>jpeg</li>
-<li>line-width-correction float</li>
-<li>mapping_option</li>
-<li>mode boolean</li>
-<li>native boolean</li>
-<li>pseg boolean</li>
-<li>renderer-resolution integer</li>
-<li>resource-group-file</li>
-<li>shading</li>
-<li>text boolean</li>
-</ul>
-<h3 id="psrendereroption"><a href="output.html#ps-configuration">PSRendererOption</a></h3>
-<ul>
-<li>acrobat-downsample default: false</li>
-<li>auto-rotate-landscape default: false</li>
-<li>dsc-compliant default: true</li>
-<li>language-level</li>
-<li>optimize-resources default: false</li>
-<li>rendering</li>
-<li>safe-set-page-device default: false</li>
+<li>default-resource-levels=string</li>
+<li>images=string</li>
+<li>jpeg=string</li>
+<li>dithering-quality=float</li>
+<li>fs45=true/false</li>
+<li>mapping_option=string</li>
+<li>mode=true/false</li>
+<li>native=true/false</li>
+<li>pseg=true/false</li>
+<li>allow-embedding=true/false</li>
+<li>bitmap-encoding-quality=float</li>
+<li>renderer-resolution=integer</li>
+<li>resource-group-file=string</li>
+<li>shading=string</li>
+<li>line-width-correction=float</li>
+<li>goca=true/false</li>
+<li>text=true/false</li>
 </ul>
 <h3 id="txtrendererconfig"><a href="output.html#txt">TxtRendererConfig</a></h3>
 <ul>
-<li>encoding</li>
-</ul>
-<h3 id="pclrendereroption"><a href="output.html#pcl-configuration">PCLRendererOption</a></h3>
-<ul>
-<li>color boolean</li>
-<li>disable-pjl boolean</li>
-<li>optimize-resources boolean</li>
-<li>rendering</li>
-<li>text-rendering boolean</li>
-<li>transparent-page-background</li>
-</ul>
-<h3 id="bitmaprendereroption"><a href="output.html#bitmap-configuration">BitmapRendererOption</a></h3>
-<ul>
-<li>anti-aliasing default: true</li>
-<li>background-color</li>
-<li>bi-level</li>
-<li>binary</li>
-<li>color-mode</li>
-<li>gray</li>
-<li>quality default: true</li>
-<li>rendering</li>
-<li>rgb</li>
-<li>rgba</li>
-<li>speed</li>
-<li>transparent-page-background default: false</li>
+<li>encoding=string</li>
 </ul>
 <h3 id="tiffrendererconfig"><a href="output.html#bitmap-configuration">TIFFRendererConfig</a></h3>
 <ul>
-<li>compression</li>
-<li>endianness</li>
-<li>single-strip boolean</li>
+<li>compression=string</li>
+<li>single-strip=true/false</li>
+<li>endianness=string</li>
+</ul>
+<h3 id="bitmaprendereroption"><a href="output.html#bitmap-configuration">BitmapRendererOption</a></h3>
+<ul>
+<li>transparent-page-background=default: false</li>
+<li>background-color=string</li>
+<li>anti-aliasing=default: true</li>
+<li>rendering=string</li>
+<li>quality=default: true</li>
+<li>speed=string</li>
+<li>color-mode=string</li>
+<li>rgba=string</li>
+<li>rgb=string</li>
+<li>gray=string</li>
+<li>binary=string</li>
+<li>bi-level=string</li>
+</ul>
+<h3 id="psrendereroption"><a href="output.html#ps-configuration">PSRendererOption</a></h3>
+<ul>
+<li>auto-rotate-landscape=default: false</li>
+<li>language-level=string</li>
+<li>optimize-resources=true/false</li>
+<li>safe-set-page-device=default: false</li>
+<li>dsc-compliant=default: true</li>
+<li>acrobat-downsample=default: false</li>
+</ul>
+<h3 id="pdfencryptionoption"><a href="pdfencryption.html#embedded">PDFEncryptionOption</a></h3>
+<ul>
+<li>encryption-length=string</li>
+<li>noprinthq=string</li>
+<li>noassembledoc=default: false</li>
+<li>noaccesscontent=default: false</li>
+<li>nofillinforms=default: false</li>
+<li>noannotations=default: false</li>
+<li>noprint=default: false</li>
+<li>nocopy=default: false</li>
+<li>noedit=default: false</li>
+<li>user-password=string</li>
+<li>owner-password=string</li>
+<li>encrypt-metadata=default: true</li>
+<li>encryption-params=string</li>
+</ul>
+<h3 id="pdfrendereroption"><a href="pdfa.html#fop-xconf">PDFRendererOption</a></h3>
+<ul>
+<li>pdf-a-mode=string</li>
+<li>pdf-ua-mode=string</li>
+<li>pdf-x-mode=string</li>
+<li>pdf-vt-mode=string</li>
+<li>version=string</li>
+<li>disable-srgb-colorspace=default: false</li>
+<li>merge-fonts=default: false</li>
+<li>linearization=default: false</li>
+<li>form-xobject=default: false</li>
+<li>output-profile=string</li>
+</ul>
+<h3 id="pclrendereroption"><a href="output.html#pcl-configuration">PCLRendererOption</a></h3>
+<ul>
+<li>text-rendering=true/false</li>
+<li>disable-pjl=true/false</li>
+<li>color=true/false</li>
 </ul>
         </div>
       </div>
