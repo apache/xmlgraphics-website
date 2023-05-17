@@ -60,7 +60,7 @@ Title: Apache(tm) FOP: Config Options
     - weight=string
     - style=string
 
-### [AFPRendererOption](output.html#afp-configuration)
+### [AFPRendererConfig](output.html#afp-configuration)
 
 - default-resource-levels=string
 - images=string
@@ -90,7 +90,7 @@ Title: Apache(tm) FOP: Config Options
 - single-strip=true/false
 - endianness=string
 
-### [BitmapRendererOption](output.html#bitmap-configuration)
+### [BitmapRendererConfig](output.html#bitmap-configuration)
 
 - transparent-page-background=default: false
 - background-color=string
@@ -105,16 +105,17 @@ Title: Apache(tm) FOP: Config Options
 - binary=string
 - bi-level=string
 
-### [PSRendererOption](output.html#ps-configuration)
+### [PSRendererConfig](output.html#ps-configuration)
 
 - auto-rotate-landscape=default: false
 - language-level=string
-- optimize-resources=true/false
+- optimize-resources=default: false
 - safe-set-page-device=default: false
 - dsc-compliant=default: true
+- rendering=string
 - acrobat-downsample=default: false
 
-### [PDFEncryptionOption](pdfencryption.html#embedded)
+### [PDFEncryptionConfig](pdfencryption.html#embedded)
 
 - encryption-length=string
 - noprinthq=string
@@ -130,8 +131,9 @@ Title: Apache(tm) FOP: Config Options
 - encrypt-metadata=default: true
 - encryption-params=string
 
-### [PDFRendererOption](pdfa.html#fop-xconf)
+### [PDFRendererConfig](pdfa.html#fop-xconf)
 
+- filterList=string
 - pdf-a-mode=string
 - pdf-ua-mode=string
 - pdf-x-mode=string
@@ -143,9 +145,12 @@ Title: Apache(tm) FOP: Config Options
 - form-xobject=default: false
 - output-profile=string
 
-### [PCLRendererOption](output.html#pcl-configuration)
+### [PCLRendererConfig](output.html#pcl-configuration)
 
+- transparent-page-background=string
+- rendering=string
 - text-rendering=true/false
 - disable-pjl=true/false
+- optimize-resources=true/false
 - color=true/false
 
