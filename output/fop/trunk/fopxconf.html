@@ -1582,7 +1582,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </ul>
 </li>
 </ul>
-<h3 id="afprendereroption"><a href="output.html#afp-configuration">AFPRendererOption</a></h3>
+<h3 id="afprendererconfig"><a href="output.html#afp-configuration">AFPRendererConfig</a></h3>
 <ul>
 <li>default-resource-levels=string</li>
 <li>images=string</li>
@@ -1612,7 +1612,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <li>single-strip=true/false</li>
 <li>endianness=string</li>
 </ul>
-<h3 id="bitmaprendereroption"><a href="output.html#bitmap-configuration">BitmapRendererOption</a></h3>
+<h3 id="bitmaprendererconfig"><a href="output.html#bitmap-configuration">BitmapRendererConfig</a></h3>
 <ul>
 <li>transparent-page-background=default: false</li>
 <li>background-color=string</li>
@@ -1627,16 +1627,17 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <li>binary=string</li>
 <li>bi-level=string</li>
 </ul>
-<h3 id="psrendereroption"><a href="output.html#ps-configuration">PSRendererOption</a></h3>
+<h3 id="psrendererconfig"><a href="output.html#ps-configuration">PSRendererConfig</a></h3>
 <ul>
 <li>auto-rotate-landscape=default: false</li>
 <li>language-level=string</li>
-<li>optimize-resources=true/false</li>
+<li>optimize-resources=default: false</li>
 <li>safe-set-page-device=default: false</li>
 <li>dsc-compliant=default: true</li>
+<li>rendering=string</li>
 <li>acrobat-downsample=default: false</li>
 </ul>
-<h3 id="pdfencryptionoption"><a href="pdfencryption.html#embedded">PDFEncryptionOption</a></h3>
+<h3 id="pdfencryptionconfig"><a href="pdfencryption.html#embedded">PDFEncryptionConfig</a></h3>
 <ul>
 <li>encryption-length=string</li>
 <li>noprinthq=string</li>
@@ -1652,8 +1653,9 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <li>encrypt-metadata=default: true</li>
 <li>encryption-params=string</li>
 </ul>
-<h3 id="pdfrendereroption"><a href="pdfa.html#fop-xconf">PDFRendererOption</a></h3>
+<h3 id="pdfrendererconfig"><a href="pdfa.html#fop-xconf">PDFRendererConfig</a></h3>
 <ul>
+<li>filterList=string</li>
 <li>pdf-a-mode=string</li>
 <li>pdf-ua-mode=string</li>
 <li>pdf-x-mode=string</li>
@@ -1665,10 +1667,13 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <li>form-xobject=default: false</li>
 <li>output-profile=string</li>
 </ul>
-<h3 id="pclrendereroption"><a href="output.html#pcl-configuration">PCLRendererOption</a></h3>
+<h3 id="pclrendererconfig"><a href="output.html#pcl-configuration">PCLRendererConfig</a></h3>
 <ul>
+<li>transparent-page-background=string</li>
+<li>rendering=string</li>
 <li>text-rendering=true/false</li>
 <li>disable-pjl=true/false</li>
+<li>optimize-resources=true/false</li>
 <li>color=true/false</li>
 </ul>
         </div>
