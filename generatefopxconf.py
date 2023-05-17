@@ -40,15 +40,15 @@ for root, _, files in os.walk(args.fop):
         if name.endswith('.java'):
             fn = os.path.join(root, name)
             f = open(fn)
-            
             if name == 'Java2DRendererOption.java':
                 name = 'PCLRendererOption.java'
-            check = name in ['FopConfParser.java', 'DefaultFontConfig.java'] 
+            parser = name in ['FopConfParser.java', 'DefaultFontConfig.java']
+            rendererConfigOption = False
             for l in f:
                 l = l.strip()
                 if 'implements RendererConfigOption' in l:
-                    check = True
-                if check:
+                    rendererConfigOption = True
+                if rendererConfigOption or parser:
                     item = getItem(name, l)
                     if item:
                         if 'getChild' in l:
@@ -81,8 +81,10 @@ for root, _, files in os.walk(args.website + '/content/fop/trunk'):
             #check(fn)
 #check(home + '/xmlgraphics-website/content/fop/fop-pdf-images.mdtext')
 
-print('Title: Apache(tm) FOP: Config Options\n')
-print('#Apache&trade; FOP: Config Options\n')
+f = open(args.website + '/content/fop/trunk/fopxconf.mdtext', 'w')
+
+f.write('Title: Apache(tm) FOP: Config Options\n\n')
+f.write('#Apache&trade; FOP: Config Options\n\n')
 
 links = {
 'FopConfParser':'configuration.html',
@@ -97,28 +99,32 @@ links = {
 'TIFFRendererConfig': 'output.html#bitmap-configuration',
 }
 
-def printtags(tag):
+def printtags(tag, hasParent):
     if tag.element:
         if tag.attrtype != 'string':
-            print('- &lt;' + tag.name + '&gt;' + tag.attrtype + '&lt;/' + tag.name + '&gt;')
+            f.write('- &lt;' + tag.name + '&gt;' + tag.attrtype + '&lt;/' + tag.name + '&gt;\n')
         else:
-            print('- &lt;' + tag.name + '/&gt;')
+            f.write('- &lt;' + tag.name + '/&gt;\n')
     else:
-        print('- ' + tag.name + '=' + tag.attrtype)
+        if hasParent:
+            f.write('    ')
+        f.write('- ' + tag.name + '=' + tag.attrtype + '\n')
     
 seen = []
     
-def printGroup(parent):
+def printGroup(parent, hasParent):
     if parent not in seen:
-        print('### [' + parent + '](' + links[parent] + ')\n')
+        f.write('### [' + parent + '](' + links[parent] + ')\n\n')
         for tag in tags:
             if tag.parent == parent:
-                printtags(tag)
-        print('')
+                printtags(tag, hasParent)
+        f.write('\n')
         seen.append(parent)
 
-printGroup('FopConfParser')
-printGroup('DefaultFontConfig')
+printGroup('FopConfParser', True)
+printGroup('DefaultFontConfig', True)
 for tag in tags:
-    printGroup(tag.parent)
+    printGroup(tag.parent, False)
+    
+f.close()    
     
