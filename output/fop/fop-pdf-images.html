@@ -1534,6 +1534,13 @@ Set this flag in fop.xconf:</p>
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
 
+<h2 id="merge-form-fields">Merge form fields</h2>
+<p>If you want to merge form fields data structure across multiple input pdfs set this flag in fop.xconf:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
+  <span class="nt">&lt;merge-form-fields&gt;</span>true<span class="nt">&lt;/merge-form-fields&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</code></pre></div>
+
 <h2 id="known-issues-with-postscript-output">Known issues with Postscript output</h2>
 <ul>
 <li>If fonts are not embedded in source PDF:<ul>
