@@ -51,6 +51,15 @@ Set this flag in fop.xconf:
       <form-xobject>true</form-xobject>
     </renderer>
 
+## Merge form fields
+
+If you want to merge form fields data structure across multiple input pdfs set this flag in fop.xconf:
+
+    :::xml
+    <renderer mime="application/pdf">      
+      <merge-form-fields>true</merge-form-fields>
+    </renderer>    
+
 ## Known issues with Postscript output
 
 - If fonts are not embedded in source PDF:
