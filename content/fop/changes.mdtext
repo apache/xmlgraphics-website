@@ -9,7 +9,111 @@ Title: History of Changes
 
 Until FOP 1.1, Changes are sorted by "type" and then chronologically with the most recent at the top. These symbols denote the various action types:![add](/images/add.jpg)=add,![fix](/images/fix.jpg)=fix,![remove](/images/remove.jpg)=remove,![update](/images/update.jpg)=update
 
-Title: Apache(tm) FOP: History of Changes 2.8
+#History of Changes 2.9
+
+## Version 2.9 (22 Aug 2023) { #version_2.9}
+
+See [Change list in Jira](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20resolution%20%3D%20Fixed%20AND%20fixVersion%20%3D%202.3%20ORDER%20BY%20updated%20DESC%2C%20created%20DESC%2C%20priority%20DESC).
+ 
+ - FOP-1722: Values in PDF Number Trees must be indirect references
+ 
+ - FOP-2903: Do not delete files on syntax errors using command line
+ 
+ - FOP-2920: Surrogate pair edge-case causes Exception
+ 
+ - FOP-2985: Reset character spacing
+ 
+ - FOP-3042: SVG text containing certain glyphs isn't rendered
+ 
+ - FOP-3088: Remove duplicate classes from maven classpath
+ 
+ - FOP-3090: Allow use of page position only on redo of layout
+ 
+ - FOP-3098: Failure to render multi-block itemBody alongside float
+ 
+ - FOP-3107: Update to PDFBox 2.0.27
+ 
+ - FOP-3110: NPE if link destination is missing with accessibility
+ 
+ - FOP-3111: Make property cache thread safe
+ 
+ - FOP-3114: Font size was rounded to 0 for AFP TTF
+ 
+ - FOP-3115: Cannot process a SVG using mvn jars
+ 
+ - FOP-3116: Remove serializer jar
+ 
+ - FOP-3117: Allow creating a PDF 2.0 document
+ 
+ - FOP-3118: Text missing after page break inside table inline
+ 
+ - FOP-3120: IllegalArgumentException for list in a table
+ 
+ - FOP-3121: Table width may be too wide when layout width changes
+ 
+ - FOP-3125: NPE when using broken link and PDF 1.5
+ 
+ - FOP-3127: Allow XMP at PDF page level
+ 
+ - FOP-3129: Symbol font was not being mapped to unicode
+ 
+ - FOP-3130: Correct font differences table for Chrome
+ 
+ - FOP-3132: Link against Java 8 API
+ 
+ - FOP-3139: Add support for font-selection-strategy=character-by-character
+ 
+ - FOP-3140: Merge form fields in external PDFs
+ 
+ - XGC-133: Fix test for Java 11 
+
+### Contributors to this release { #contributors_trunk}
+
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:
+
+- Adrian Cumiskey
+- Andreas Delmelle
+- Chris Bowditch
+- Clay Leeds
+- Glenn Adams
+- Luis Bernardo
+- Luca Furini
+- Matthias Reischenbacher
+- Mehdi Houshmand
+- Peter Hancock
+- Pascal Sancho
+- Robert Meyer
+- Simon Steiner
+- Vincent Hennebert
+
+This is a list of other contributors:
+
+- Alexey Neyman
+- Alexios Giotis
+- Athanasios Giannimaras
+- Gonzalo Vasquez
+- Jacopo Cappellato
+- Jeremias Maerki
+- Max Gilead
+- Morten Knudsen
+- Seifeddine Dridi
+- Stephen Moore
+- James Burton
+- Eric Lim
+- Chunlin Yao
+- Jerome Robert
+- Simone Rondelli
+- Stanley Santos de Araújo
+- Agneta Walterscheidt
+- Vlad Arkhipov
+- Björn Kautler
+- Jan Tošovský
+- J Frank
+- Nicholas Moser
+- Volker Kunert
+- Dave Roxburgh
 
 #History of Changes 2.8
 
