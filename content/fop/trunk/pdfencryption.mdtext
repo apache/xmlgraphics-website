@@ -1,6 +1,6 @@
-Title: Apache(tm) FOP: PDF encryption.
+Title: Apache(tm) FOP: PDF signing and encryption.
 
-#Apache&trade; FOP: PDF encryption.
+#Apache&trade; FOP: PDF signing and encryption.
 <authors><person email="pietsch@apache.org" name="J.Pietschmann"></person><person email="jeremias@apache.org" name="Jeremias Märki"></person></authors>
 
 ## Overview { #Overview}
@@ -9,7 +9,42 @@ Apache&trade; FOP supports encryption of PDF output, thanks to Patrick C. Lanksw
 
 For further information about features and restrictions regarding PDF encryption, look at the documentation coming with Adobe Acrobat or the technical documentation on the Adobe web site.
 
-## Usage (fop.xconf) { #fopxconf}
+## Signing usage
+
+To sign a PDF you need to generate a pkcs12 file using the openssl command line tool:
+
+    openssl req -new -newkey rsa:4096 -nodes -keyout my.key -out my.csr
+    openssl x509 -req -sha256 -days 365 -in my.csr -signkey my.key -out my.pem
+    cat my.key my.pem > my2.pem
+    openssl pkcs12 -export -in my2.pem -out mykeystore.pkcs12 -name myAlias
+
+Add params to the fop.xconf:
+
+    <renderer mime="application/pdf">
+        <sign-params>
+          <keystore>path/mykeystore.pkcs12</keystore>
+          <name>your name</name>
+          <!-- Below are optional -->
+          <location>London UK</location>
+          <reason>text</reason>
+          <password>pkcs12 password</password>
+        </sign-params>
+    </renderer>
+
+Add these to your classpath or maven pom file:
+    
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcpkix-jdk15to18</artifactId>
+      <version>1.77</version>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcprov-jdk15to18</artifactId>
+      <version>1.77</version>
+    </dependency>
+    
+## Encryption usage (fop.xconf) { #fopxconf}
 
     <renderer mime="application/pdf">
         <encryption-params>
@@ -25,7 +60,7 @@ For further information about features and restrictions regarding PDF encryption
     </renderer>
 
 
-## Usage (command line) { #commandline}
+## Encryption usage (command line) { #commandline}
 
 Encryption is enabled by supplying any of the encryption related options.
 
@@ -48,7 +83,7 @@ Further restrictions can be imposed by using the following command-line options:
 |  `-noassembledoc`  | disable assembling documents |
 |  `-noprinthq`  | disable high quality printing |
 
-## Usage (embedded) { #embedded}
+## Encryption usage (embedded) { #embedded}
 
 When FOP is embedded in another Java application you need to set an options map on the renderer. These are the supported options:
 
