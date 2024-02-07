@@ -25,7 +25,7 @@
 	});
     </script>
 
-   <title>Apache(tm) FOP: PDF encryption.</title>
+   <title>Apache(tm) FOP: PDF signing and encryption.</title>
   </head>
 
   <body>
@@ -1602,12 +1602,46 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1 id="apache-fop-pdf-encryption">Apache&trade; FOP: PDF encryption.</h1>
+    <h1 id="apache-fop-pdf-signing-and-encryption">Apache&trade; FOP: PDF signing and encryption.</h1>
 <p><authors><person email="pietsch@apache.org" name="J.Pietschmann"></person><person email="jeremias@apache.org" name="Jeremias Märki"></person></authors></p>
 <h2 id="Overview">Overview</h2>
 <p>Apache&trade; FOP supports encryption of PDF output, thanks to Patrick C. Lankswert and others. This feature is commonly used to prevent unauthorized viewing, printing, editing, copying text from the document and doing annotations. It is also possible to ask the user for a password in order to view the contents. Note that there already exist third party applications which can decrypt an encrypted PDF without effort and allow the aforementioned operations, therefore the degree of protection is limited.</p>
 <p>For further information about features and restrictions regarding PDF encryption, look at the documentation coming with Adobe Acrobat or the technical documentation on the Adobe web site.</p>
-<h2 id="fopxconf">Usage (fop.xconf)</h2>
+<h2 id="signing-usage">Signing usage</h2>
+<p>To sign a PDF you need to generate a pkcs12 file using the openssl command line tool:</p>
+<div class="highlight"><pre><span></span><code><span class="err">openssl req -new -newkey rsa:4096 -nodes -keyout my.key -out my.csr</span>
+<span class="err">openssl x509 -req -sha256 -days 365 -in my.csr -signkey my.key -out my.pem</span>
+<span class="err">cat my.key my.pem &gt; my2.pem</span>
+<span class="err">openssl pkcs12 -export -in my2.pem -out mykeystore.pkcs12 -name myAlias</span>
+</code></pre></div>
+
+<p>Add params to the fop.xconf:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;sign-params&gt;</span>
+      <span class="nt">&lt;keystore&gt;</span>path/mykeystore.pkcs12<span class="nt">&lt;/keystore&gt;</span>
+      <span class="nt">&lt;name&gt;</span>your name<span class="nt">&lt;/name&gt;</span>
+      <span class="c">&lt;!-- Below are optional --&gt;</span>
+      <span class="nt">&lt;location&gt;</span>London UK<span class="nt">&lt;/location&gt;</span>
+      <span class="nt">&lt;reason&gt;</span>text<span class="nt">&lt;/reason&gt;</span>
+      <span class="nt">&lt;password&gt;</span>pkcs12 password<span class="nt">&lt;/password&gt;</span>
+    <span class="nt">&lt;/sign-params&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</code></pre></div>
+
+<p>Add these to your classpath or maven pom file:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>org.bouncycastle<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>bcpkix-jdk15to18<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.77<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>org.bouncycastle<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>bcprov-jdk15to18<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.77<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+
+<h2 id="fopxconf">Encryption usage (fop.xconf)</h2>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;encryption-params&gt;</span>
         <span class="nt">&lt;user-password&gt;</span>testuserpass<span class="nt">&lt;/user-password&gt;</span>
@@ -1622,7 +1656,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
 
-<h2 id="commandline">Usage (command line)</h2>
+<h2 id="commandline">Encryption usage (command line)</h2>
 <p>Encryption is enabled by supplying any of the encryption related options.</p>
 <p>An owner password is set with the <code>-o</code> option. This password is actually used as encryption key. Many tools for PDF processing ask for this password to disregard any restriction imposed on the PDF document.</p>
 <p>If no owner password has been supplied but FOP was asked to apply some restrictions, a random password is used. In this case it is obviously impossiible to disregard restrictions in PDF processing tools.</p>
@@ -1670,7 +1704,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </tr>
 </tbody>
 </table>
-<h2 id="embedded">Usage (embedded)</h2>
+<h2 id="embedded">Encryption usage (embedded)</h2>
 <p>When FOP is embedded in another Java application you need to set an options map on the renderer. These are the supported options:</p>
 <table>
 <thead>
