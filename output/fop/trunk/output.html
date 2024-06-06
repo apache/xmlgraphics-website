@@ -2165,14 +2165,14 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 
 <p><note>Be careful when using this option not to overwrite existing resource files from previous rendering runs.</note></p>
 <h4 id="afp-resource-level-defaults">Resource Level Defaults</h4>
-<p>By default, bitmap image objects (or page segments derived from them) are put in the print-file-level resource group and GOCA graphics are inlined for compatibility with the AFP Workbench tool.</p>
+<p>By default, bitmap image objects (or page segments derived from them) are put in the print-file-level resource group and GOCA/SVG graphics are inlined for compatibility with the AFP Workbench tool.</p>
 <p>It is possible to override these defaults, either per image (see the <a href="#afp-foreign-attributes-resource">afp:resource-level</a> extension attribute below) or by specifying different defaults in the configuration:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;default-resource-levels</span> <span class="na">goca=</span><span class="s">&quot;print-file&quot;</span> <span class="na">bitmap=</span><span class="s">&quot;inline&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;default-resource-levels</span> <span class="na">goca=</span><span class="s">&quot;print-file&quot;</span> <span class="na">bitmap=</span><span class="s">&quot;inline&quot;</span> <span class="na">svg=</span><span class="s">&quot;print-file&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 
-<p>"goca" refers to GOCA graphics and "bitmap" refers to IOCA images. The possible values for the attributes are "inline" and "print-file". In the future, additional possibilities may be added.</p>
+<p>"goca" refers to GOCA graphics, "bitmap" refers to IOCA images, "svg" refers to SVG images. The possible values for the attributes are "inline" and "print-file". In the future, additional possibilities may be added.</p>
 <p>To be compatible with Workbench viewer or other legacy tools and also move resources to the resource group, you can use the following settings. GOCA resources will be wrapped with a page segment.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;default-resource-levels</span> <span class="na">goca=</span><span class="s">&quot;print-file&quot;</span> <span class="na">bitmap=</span><span class="s">&quot;print-file&quot;</span><span class="nt">/&gt;</span>       
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;default-resource-levels</span> <span class="na">goca=</span><span class="s">&quot;print-file&quot;</span> <span class="na">bitmap=</span><span class="s">&quot;print-file&quot;</span> <span class="na">svg=</span><span class="s">&quot;print-file&quot;</span><span class="nt">/&gt;</span>       
 <span class="nt">&lt;goca</span> <span class="na">pseg=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 
