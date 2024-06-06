@@ -628,19 +628,19 @@ By default the AFP Renderer will place all data resource objects such as images 
 
 #### Resource Level Defaults { #afp-resource-level-defaults}
 
-By default, bitmap image objects (or page segments derived from them) are put in the print-file-level resource group and GOCA graphics are inlined for compatibility with the AFP Workbench tool.
+By default, bitmap image objects (or page segments derived from them) are put in the print-file-level resource group and GOCA/SVG graphics are inlined for compatibility with the AFP Workbench tool.
 
 It is possible to override these defaults, either per image (see the [afp:resource-level](#afp-foreign-attributes-resource) extension attribute below) or by specifying different defaults in the configuration:
 
     :::xml
-    <default-resource-levels goca="print-file" bitmap="inline"/>
+    <default-resource-levels goca="print-file" bitmap="inline" svg="print-file"/>
 
-"goca" refers to GOCA graphics and "bitmap" refers to IOCA images. The possible values for the attributes are "inline" and "print-file". In the future, additional possibilities may be added.
+"goca" refers to GOCA graphics, "bitmap" refers to IOCA images, "svg" refers to SVG images. The possible values for the attributes are "inline" and "print-file". In the future, additional possibilities may be added.
 
 To be compatible with Workbench viewer or other legacy tools and also move resources to the resource group, you can use the following settings. GOCA resources will be wrapped with a page segment.
 
     :::xml
-    <default-resource-levels goca="print-file" bitmap="print-file"/>       
+    <default-resource-levels goca="print-file" bitmap="print-file" svg="print-file"/>       
     <goca pseg="true"/> 
 
 ### Extensions { #afp-extensions}
