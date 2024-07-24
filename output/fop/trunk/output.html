@@ -2110,15 +2110,19 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 </code></pre></div>
 
 <p>This will put images as RGB images into the AFP output stream. The default setting is:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;b+w&quot;</span> <span class="na">bits-per-pixel=</span><span class="s">&quot;8&quot;</span> <span class="na">native=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;b+w&quot;</span> <span class="na">bits-per-pixel=</span><span class="s">&quot;8&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 
 <p>Only the values "color" and "b+w" are allowed for the mode attribute.</p>
 <p>The bits-per-pixel attribute is ignored if mode is "color". For "b+w" mode is must be 1, 4, or 8.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">native=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+<p>To enable transparent areas of a image to be rendered transparent use:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;color&quot;</span> <span class="na">mask-enabled=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 
 <p>When the native attribute is specified and set to "true", all image resources will be natively injected into the datastream using an object container rather than being converted into an IOCA FS45 image. Support for native image formats (e.g. JPEG, TIFF, GIF) is not always available on printer implementations so by default this configuration option is set to "false".</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">native=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+
 <p>Setting <code>cmyk="true"</code> on the <code>images</code> element will enable CMYK colors. This will only have an effect if the color mode is set to "color". Example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;color&quot;</span> <span class="na">cmyk=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
