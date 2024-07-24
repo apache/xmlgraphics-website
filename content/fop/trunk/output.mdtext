@@ -554,16 +554,21 @@ By default the AFP Renderer converts all images to 8 bit grey level. This can be
 This will put images as RGB images into the AFP output stream. The default setting is:
 
     :::xml
-    <images mode="b+w" bits-per-pixel="8" native="true"/>
+    <images mode="b+w" bits-per-pixel="8"/>
 
 Only the values "color" and "b+w" are allowed for the mode attribute.
 
 The bits-per-pixel attribute is ignored if mode is "color". For "b+w" mode is must be 1, 4, or 8.
 
+To enable transparent areas of a image to be rendered transparent use:
+
     :::xml
-    <images native="true"/>
+    <images mode="color" mask-enabled="true"/>
 
 When the native attribute is specified and set to "true", all image resources will be natively injected into the datastream using an object container rather than being converted into an IOCA FS45 image. Support for native image formats (e.g. JPEG, TIFF, GIF) is not always available on printer implementations so by default this configuration option is set to "false".
+
+    :::xml
+    <images native="true"/>
 
 Setting `cmyk="true"` on the `images` element will enable CMYK colors. This will only have an effect if the color mode is set to "color". Example:
 
