@@ -1,0 +1,156 @@
+Title: Apache(tm) FOP: Config Options
+
+#Apache&trade; FOP: Config Options
+
+### [FopConfParser](configuration.html)
+
+- &lt;prefer-renderer&gt;true/false&lt;/prefer-renderer&gt;
+- &lt;table-border-overpaint&gt;true/false&lt;/table-border-overpaint&gt;
+- &lt;simple-line-breaking&gt;true/false&lt;/simple-line-breaking&gt;
+- &lt;skip-page-position-only-allowed&gt;true/false&lt;/skip-page-position-only-allowed&gt;
+- &lt;strict-validation&gt;true/false&lt;/strict-validation&gt;
+- &lt;strict-configuration&gt;true/false&lt;/strict-configuration&gt;
+- &lt;accessibility&gt;true/false&lt;/accessibility&gt;
+- &lt;base/&gt;
+- &lt;source-resolution&gt;float&lt;/source-resolution&gt;
+- &lt;target-resolution&gt;float&lt;/target-resolution&gt;
+- &lt;break-indent-inheritance&gt;true/false&lt;/break-indent-inheritance&gt;
+- &lt;default-page-settings/&gt;
+    - height=string
+    - width=string
+- &lt;complex-scripts/&gt;
+    - disabled=true/false
+- &lt;image-loading/&gt;
+- &lt;hyphenation-base/&gt;
+- &lt;hyphenation-pattern/&gt;
+    - lang=string
+    - country=string
+    - extension=string
+    - xml=string
+    - hyp=string
+- &lt;penalty/&gt;
+    - class=string
+    - value=string
+
+### [DefaultFontConfig](fonts.html#bulk)
+
+- &lt;fonts/&gt;
+- &lt;auto-detect/&gt;
+- &lt;font/&gt;
+    - embed-url=string
+    - metrics-url=string
+    - embed-url-afm=string
+    - embed-url-pfm=string
+    - sub-font=string
+    - kerning=true/false
+    - advanced=true/false
+    - encoding-mode=string
+    - embedding-mode=string
+    - simulate-style=true/false
+    - embed-as-type1=true/false
+    - svg=true/false
+- &lt;font-triplet/&gt;
+    - mime=string
+- &lt;referenced-fonts/&gt;
+- &lt;match/&gt;
+    - font-family=string
+- &lt;directory/&gt;
+    - recursive=true/false
+    - name=string
+    - weight=string
+    - style=string
+
+### [AFPRendererConfig](output.html#afp-configuration)
+
+- default-resource-levels=string
+- images=string
+- jpeg=string
+- dithering-quality=float
+- fs45=true/false
+- mapping_option=string
+- mode=true/false
+- native=true/false
+- pseg=true/false
+- allow-embedding=true/false
+- bitmap-encoding-quality=float
+- renderer-resolution=integer
+- resource-group-file=string
+- shading=string
+- line-width-correction=float
+- goca=true/false
+- text=true/false
+
+### [TxtRendererConfig](output.html#txt)
+
+- encoding=string
+
+### [TIFFRendererConfig](output.html#bitmap-configuration)
+
+- compression=string
+- single-strip=true/false
+- endianness=string
+
+### [BitmapRendererConfig](output.html#bitmap-configuration)
+
+- transparent-page-background=default: false
+- background-color=string
+- anti-aliasing=default: true
+- rendering=string
+- quality=default: true
+- speed=string
+- color-mode=string
+- rgba=string
+- rgb=string
+- gray=string
+- binary=string
+- bi-level=string
+
+### [PSRendererConfig](output.html#ps-configuration)
+
+- auto-rotate-landscape=default: false
+- language-level=string
+- optimize-resources=default: false
+- safe-set-page-device=default: false
+- dsc-compliant=default: true
+- rendering=string
+- acrobat-downsample=default: false
+
+### [PDFEncryptionConfig](pdfencryption.html#embedded)
+
+- encryption-length=string
+- noprinthq=string
+- noassembledoc=default: false
+- noaccesscontent=default: false
+- nofillinforms=default: false
+- noannotations=default: false
+- noprint=default: false
+- nocopy=default: false
+- noedit=default: false
+- user-password=string
+- owner-password=string
+- encrypt-metadata=default: true
+- encryption-params=string
+
+### [PDFRendererConfig](pdfa.html#fop-xconf)
+
+- filterList=string
+- pdf-a-mode=string
+- pdf-ua-mode=string
+- pdf-x-mode=string
+- pdf-vt-mode=string
+- version=string
+- disable-srgb-colorspace=default: false
+- merge-fonts=default: false
+- linearization=default: false
+- form-xobject=default: false
+- output-profile=string
+
+### [PCLRendererConfig](output.html#pcl-configuration)
+
+- transparent-page-background=string
+- rendering=string
+- text-rendering=true/false
+- disable-pjl=true/false
+- optimize-resources=true/false
+- color=true/false
+

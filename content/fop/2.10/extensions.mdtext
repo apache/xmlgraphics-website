@@ -1,0 +1,234 @@
+Title: Standard Apache(tm) FOP Extensions
+
+#Standard Apache(tm) FOP Extensions
+
+
+By "extension", we mean any data that can be placed in the input XML document that is not addressed by the XSL-FO standard. By having a mechanism for supporting extensions, Apache&trade; FOP is able to add features that are not covered in the specification.
+
+The extensions documented here are included with FOP, and are automatically available to you. If you wish to add an extension of your own to FOP, please see the [Developers' Extension Page](../dev/extensions.html).
+
+<note>All extensions require the correct use of an appropriate namespace in your input document.</note>
+
+## SVG { #svg}
+
+Please see the [SVG documentation](graphics.html#svg) for more details.
+
+## FO Extensions { #fo-extensions}
+
+### Namespace { #fox-namespace}
+
+By convention, FO extensions in FOP use the "fox" namespace prefix. To use any of the FO extensions, add a namespace entry for `http://xmlgraphics.apache.org/fop/extensions` to the root element:
+
+    :::xml
+    <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
+             xmlns:fox="http://xmlgraphics.apache.org/fop/extensions">
+
+### PDF Bookmarks { #bookmarks}
+
+In old versions of Apache FOP there was a `fox:outline` element which was used to create outlines in PDF files. The redesigned code makes use of the [bookmark feature defined in the W3C XSL 1.1 standard](http://www.w3.org/TR/xsl11/#fo_bookmark-tree).
+
+### Anchors or Named Destinations { #named-destinations}
+
+Use the fox:destination element to define "named destinations" inside a PDF document. These are useful as fragment identifiers, e.g. "http://server/document.pdf#anchor-name". fox:destination elements can be placed almost anywhere in the fo document, including a child of root, a block-level element, or an inline-level element. For the destination to actually work, it must correspond to an "id" attribute on some fo element within the document. In other words, the "id" attribute actually creates the "view" within the PDF document. The fox:destination simply gives that view an independent name.
+
+    :::xml
+    <fox:destination internal-destination="table-of-contents"/>
+    ...
+    <fo:block id="table-of-contents">Table of Contents</fo:block>
+
+<warning>It is possible that in some future release of FOP, *all* elements with "id" attributes will generate named-destinations, which will eliminate the need for fox:destination.</warning>
+
+### Table Continuation Label { #table-continue-label}
+
+In old versions of Apache FOP, there was a `fox:continued-label` element which was used to insert a message when a table went over several pages.
+This extension element will not be reimplemented for the redesigned code.
+The redesigned code makes use of the [`fo:retrieve-table-marker`](http://www.w3.org/TR/xsl11/#fo_retrieve-table-marker) element defined in the [W3C XSL 1.1](http://www.w3.org/TR/xsl11/) standard.
+
+### Row Scope for Header Table Cells
+
+This feature is described in the [Accessibility](accessibility.html#fox:header) section.
+
+### fox:orphan-content-limit and fox:widow-content-limit { #widow-orphan-content-limit}
+
+The two proprietary extension properties, `fox:orphan-content-limit` and `fox:widow-content-limit`, are used to improve the layout of list-blocks and tables. If you have a table with many entries, you don't want a single row to be left over on a page. You will want to make sure that at least two or three lines are kept together. The properties take an absolute length which specifies the area at the beginning (`fox:widow-content-limit`) or at the end (`fox:orphan-content-limit`) of a table or list-block. The properties are inherited and only have an effect on `fo:table` and `fo:list-block`. An example: `fox:widow-content-limit="3 * 1.2em"` would make sure the you'll have at least three lines (assuming `line-height="1.2"`) together on a table or list-block.
+
+### fox:external-document { #external-document}
+
+<note>This feature is incomplete. Support for multi-page documents will be added shortly. At the moment, only single-page images will work. And this will not work with RTF output.</note>
+
+This is a proprietary extension element which allows to add whole images as pages to an FO document. For example, if you have a scanned document or a fax as multi-page TIFF file, you can append or insert this document using the `fox:external-document` element. Each page of the external document will create one full page in the target format.
+
+The `fox:external-document` element is structurally a peer to `fo:page-sequence`, so wherever you can put an `fo:page-sequence` you could also place a `fox:external-document`. Therefore, the specified contents for `fo:root` change to:
+
+    (layout-master-set, declarations?, bookmark-tree?, (page-sequence|page-sequence-wrapper|fox:external-document|fox:destination)+)
+
+#### Specification { #Specification}
+
+The `fox:external-document` extension formatting object is used to specify how to create a (sub-)sequence of pages within a document. The content of these pages comes from the individual subimages/pages of an image or paged document (for example: multi-page TIFF in the form of faxes or scanned documents, or PDF files). The formatting object creates the necessary areas to display one image per page.
+
+In terms of page numbers, the behaviour is the same as for `fo:page-sequence`. The placement of the image inside the page is similar to that of `fo:external-graphic` or `fo:instream-foreign-object`, i.e. the viewport (and therefore the page size) is defined by either the intrinsic size of the image or by the size properties that apply to this formatting object.
+
+Content: EMPTY
+
+The following properties apply to this formatting object:
+
+
+- (Common Accessibility Properties) (not implemented, yet)
+
+- (Common Aural Properties) (not implemented, yet)
+
+- block-progression-dimension
+
+- content-height
+
+- content-type
+
+- content-width
+
+- display-align
+
+- height
+
+- id
+
+- inline-progression-dimension
+
+- overflow
+
+- pages: <page-set> (see below) (not implemented, yet)
+
+- reference-orientation
+
+- scaling
+
+- scaling-method
+
+- src
+
+- text-align
+
+- width
+
+Datatype "page-set": Value: auto | <integer-range>, Default: "auto" which means all pages/subimages of the document. <integer-range> allows values such as "7" or "1-3"
+
+<note>`fox:external-document` is not suitable for concatenating FO documents.</note>
+
+For this, XInclude is recommended.
+
+### Free-form Transformation for fo:block-container { #transform}
+
+For `fo:block-container` elements whose `absolute-position` set to "absolute" or "fixed" you can use the extension attribute `fox:transform` to apply a free-form transformation to the whole block-container. The content of the `fox:transform` attribute is the same as for [SVG's transform attribute](http://www.w3.org/TR/SVG/coords.html#TransformAttribute). The transformation specified here is performed in addition to other implicit transformations of the block-container (resulting from top, left and other properties) and after them.
+
+Examples: `fox:transform="rotate(45)"` would rotate the block-container by 45 degrees clock-wise around its upper-left corner. `fox:transform="translate(10000,0)"` would move the block-container to the right by 10 points (=10000 millipoints, FOP uses millipoints internally!).
+
+<note>This extension attribute doesn't work for all output formats! It's currently only supported for PDF, PS and Java2D-based renderers.</note>
+
+### Color functions { #color-functions}
+
+XSL-FO supports specifying color using the rgb(), rgb-icc() and system-color() functions. Apache FOP provides additional color functions for special use cases. Please note that using these functions compromises the interoperability of an FO document.
+
+#### cmyk() { #color-function-cmyk}
+
+ `color cmyk(numeric, numeric, numeric, numeric)`
+
+This function will construct a color in device-specific CMYK color space. The numbers must be between 0.0 and 1.0. For output formats that don't support device-specific color space the CMYK value is converted to an sRGB value.
+
+#### #CMYK pseudo-profile { #pseudo-color-profiles}
+
+ `color rgb-icc(numeric, numeric, numeric, #CMYK, numeric, numeric, numeric, numeric)`
+
+The `rgb-icc` function will respond to a pseudo-profile called "#CMYK" which indicates a device-specific CMYK color space. The "#CMYK" profile is implicitely available and doesn't have to be (and cannot be) defined through an `fo:color-profile` element. It is provided for compatibility with certain commercial XSL-FO implementations. Please note that this is not part of the official specification but rather a convention. The following two color specifications are equivalent:
+
+
+-  `cmyk(0%,0%,20%,40%)`
+
+-  `rgb-icc(153, 153, 102, #CMYK, 0, 0, 0.2, 0.4)`
+
+#### Transparency
+
+You can set a RGB color with transparency #00ffff80, where last two hex digits are transparency value 0 to 255
+
+Or you can set via, with 4th argument the transparency: fox-rgb-icc(0, 0, 0, 128, #CMYK, 0, 0, 1, 0)
+This method should be used for AFP output
+
+### Rounded Corners { #rounded-corners}
+
+Rounded corners on block areas can be specified with the `fox:border-*-*-radius` properties. Each corner can be specified with two radii that define a quarter ellipse that defines the shape of the corner of the outer border edge (in accordance with the [W3 CSS3 Recommendation](http://www.w3.org/TR/css3-background/#the-border-radius)).
+The property `fox:border-BP-IP-radius` specifies the radius of the corner connecting border segment *BP* is one of '*before|after*' and *IP* is one of 'start|end*', and takes one or two values.  A single value will generate circular corners.  Two values define elliptic corners where the first value defines the radius in the *Inline Progression Direction*, and the second the radius in the *Block Progression Direction*.
+
+The shorthand property `fox:border-radius` can be used to specify uniform corners and takes 1 or 2 values, as above.
+
+The example fo `examples/fo/advanced/rounded-corners.fo` demonstrates some finer points of this extension.
+
+####Current Limitations###
+-  CSS3-style absolute properties, e.g `border-top-left-radius`, are not supported
+
+-  Rounded corners on tables are not directly supported.  To set rounded corners at the table level the table must have the property `border-collapse` property set to `separate`
+
+
+### Prepress Support { #prepress}
+
+This section defines a number of extensions related to [prepress](http://en.wikipedia.org/wiki/Prepress) support. `fox:scale` defines a general scale factor for the generated pages. `fox:bleed` defines the [bleed area](http://en.wikipedia.org/wiki/Bleed_%28printing%29) for a page. `fox:crop-offset` defines the outer edges of the area in which crop marks, registration marks, color bars and page information are placed. For details, please read on below.
+
+<note>Those extensions have been implemented in the PDF and Java2D renderers only.</note>
+
+#### fox:scale { #scale}
+
+Value: <number>{1,2}
+
+Initial: 1
+
+Applies to: fo:simple-page-master
+
+This property specifies a scale factor along resp. the x and y axes. If only one number is provided it is used for both the x and y scales. A scale factor smaller than 1 shrinks the page. A scale factor greater than 1 enlarges the page.
+
+#### fox:bleed { #bleed}
+
+Value: <length>{1,4}
+
+Initial: 0pt
+
+Applies to: fo:simple-page-master
+
+If there is only one value, it applies to all sides. If there are two values, the top and bottom bleed widths are set to the first value and the right and left bleed widths are set to the second. If there are three values, the top is set to the first value, the left and right are set to the second, and the bottom is set to the third. If there are four values, they apply to the top, right, bottom, and left, respectively. (Corresponds to [the definition of padding](http://www.w3.org/TR/xsl11/#padding)).
+
+This extension indirectly defines the BleedBox and is calculated by expanding the TrimBox by the bleed widths. The lengths must be non-negative.
+
+#### fox:crop-offset { #cropOffset}
+
+Value: <length>{1,4}
+
+Initial: bleed (see below)
+
+Applies to: fo:simple-page-master
+
+Same behaviour as with fox:bleed. The initial value is set to the same values as the fox:bleed property.
+
+This extension indirectly defines the MediaBox and is calculated by expanding the TrimBox by the crop offsets. The lengths must be non-negative.
+
+#### fox:crop-box { #cropBox}
+
+Value: [trim-box | bleed-box | media-box]
+
+Initial: media-box
+
+Applies to: fo:simple-page-master
+
+The crop box controls how Acrobat displays the page (CropBox in PDF) or how the Java2DRenderer sizes the output media. The PDF specification defines that the CropBox defaults to the MediaBox. This extension follows that definition. To simplify usage and cover most use cases, the three supported enumeration values "trim-box", "bleed-box" and "media-box" set the CropBox to one of those three other boxes.
+
+If requested in the future, we could offer to specify the CropBox in absolute coordinates rather than just by referencing another box.
+
+### Background Images { #backgroundimages}
+
+Background images can be resized on the fly using these two extensions:
+
+#### fox:background-image-width { #backgroundImageWidth}
+
+Value: length
+
+#### fox:background-image-height { #backgroundImageHeight}
+
+Value: length
+
+These extensions apply to the elements where background-image applies.
+
