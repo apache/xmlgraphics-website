@@ -1717,76 +1717,55 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h2 id="prepare">2. Prepare the new release</h2>
 <ul>
 <li>
-<p>Create a branch called <code>branches/fop-v_vv</code></p>
+<p>Create a branch called <code>fop-v_vv</code></p>
 </li>
 <li>
-<p>Edit release notes (<code>README</code> and <code>status.xml</code> in the root).</p>
+<p>Edit release notes (<code>README</code> in the root).</p>
 </li>
 <li>
 <p>Check and update the copyright year in NOTICE and build.xml.</p>
 </li>
 <li>
-<p>Update version number in <code>build.xml</code> (not to be merged back into main).</p>
+<p>Update version number in <code>build.xml</code> and all <code>pom.xml</code> (not to be merged back into main).</p>
 </li>
 <li>
-<p>Build the dist files (<code>build[.sh] dist</code>) and upload them to your web directory on <code>people.apache.org</code></p>
+<p>Update dependancy versions in <code>pom.xml</code> to release versions.</p>
+</li>
+<li>
+<p>Commit and push changes</p>
+</li>
+<li>
+<p>Build the dist files (<code>ant -f releasedist.xml release-dist</code>) and upload them to your web directory on <code>github.io</code></p>
+</li>
+<li>
+<p>Compare with last release zips for missing files</p>
 </li>
 <li>
 <p>Ask on <code>fop-dev</code> ML to check the branch and the generated dist files for errors.</p>
 </li>
-<li>
-<p>Tag the source tree with the release ID.</p>
-</li>
-<li>
-<p>Make a fresh checkout with the just created tag</p>
-</li>
-<li>
-<p>Copy the <code>jai_core.jar</code> and <code>jai_codec.jar</code> to <code>lib</code>.</p>
-</li>
-<li>
-<p>Copy the hyphenation patterns jar file <code>fop-hyph.jar</code> to <code>lib</code> (e.g. from <code>http://sourceforge.net/projects/offo</code></p>
-</li>
-<li>
-<p>Alternatively, create a <code>build-local.properties</code> file that points to the above libraries.</p>
-</li>
-<li>
-<p>Run <code>build[.sh] dist</code>. Do this using JDK 1.5 or later.</p>
-</li>
-<li>
-<p>Create signatures. Don't forget to upload your KEY: <code>gpg -a -b --force-v3-sigs fop-1.0-src.tar.gz</code> etc.</p>
-</li>
 </ul>
 <h2 id="publish">3. Publish the new release</h2>
 <ul>
-<li>
-<p>Upload the dist and signature files to your web directory on people.apache.org (An account on minotaur is needed): <code>scp fop-1.0*.tar.gz* chrisg@people.apache.org:public_html/</code></p>
-</li>
-<li>
-<p>Check permissions: <code>chmod 664 ... ; chgrp xmlgraphics ...</code></p>
-</li>
-<li>
-<p>Make a test download.</p>
-</li>
+<li>Upload the dist and signature files to your web directory on github.io</li>
 </ul>
 <h2 id="vote">4. Vote for the new release</h2>
 <ul>
 <li>
-<p>Start a vote for the release on <code>general@xmlgraphics.apache.org</code>. The message should point to the release files and list the MD5 sums (<code>cat *.md5</code>). The vote should remain open for 72hrs.</p>
+<p>Start a vote for the release on <code>general@xmlgraphics.apache.org</code>. The message should point to the release files. The vote should remain open for 7 days.</p>
 </li>
 <li>
-<p>When the release is accepted, copy the release files, their md5 sum files and the signature files to <code>/www/www.apache.org/dist/xmlgraphics/fop/</code> in the subdirectories <code>source</code> and <code>binaries</code>. Create links to all files in the <code>fop</code> directory. Remove the links to the files of the previous version.</p>
-</li>
-<li>
-<p>Update <code>HEADER.html</code> and <code>README.html</code> in <code>people.apache.org:/www/www.apache.org/dist/xmlgraphics/fop/</code>.</p>
-</li>
-<li>
-<p>Wait 24 hours (for the mirrors to catch up).</p>
+<p>When the release is accepted, copy the release files, their checksum files and the signature files to svn repo <code>https://dist.apache.org/repos/dist/release/xmlgraphics/fop/</code> in the subdirectories <code>source</code> and <code>binaries</code>. Remove old release files.</p>
 </li>
 </ul>
 <h2 id="update">5. Update material</h2>
 <h3 id="git">5.1 Git</h3>
 <ul>
-<li>Merge the changes of the git release branch back into main (not the version number in the build file).</li>
+<li>
+<p>Merge the changes of the git release branch back into main (not the version number in the build files).</p>
+</li>
+<li>
+<p>Tag the source tree with the release ID.</p>
+</li>
 </ul>
 <h3 id="jira">5.2 Jira</h3>
 <ul>
@@ -1802,51 +1781,47 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </ul>
 </li>
 </ul>
-<h3 id="cms">5.3 CMS</h3>
+<h3 id="website">5.3 Website</h3>
 <ul>
 <li>
-<p>Copy main directory to a new release directory with the new version number.</p>
+<p>Clone repo https://gitbox.apache.org/repos/asf/xmlgraphics-website.git</p>
 </li>
 <li>
-<p>Copy following files to the new release directory:</p>
-<ul>
-<li><code>known-issues.mdtext</code> as <code>knownissues-overview.mdtext</code></li>
-</ul>
+<p>Copy xmlgraphics-website/content/fop/trunk directory to a new directory with the new version number.</p>
 </li>
 <li>
-<p>Update all markdown linkIds to the new release (elementids are of the form <code>[linkId]: fop_version/path_to_page_XXX"</code> at the beginning of the files):</p>
-<ul>
-<li><code>faq.mdtext</code></li>
-<li><code>fo.mdtext</code></li>
-<li><code>index.mdtext</code></li>
-<li><code>maillist.mdtext</code></li>
-<li><code>quickstartguide.mdtext</code></li>
-</ul>
+<p>Compare last version directory with new version directory, and update as needed.</p>
 </li>
 <li>
-<p>Update the following files to the new release</p>
-<ul>
-<li><code>fop-sidenav.mdtext</code></li>
-<li><code>download.mdtext</code></li>
-<li><code>compliance.mdtext</code> (version number in new release column)</li>
-<li><code>changes.mdtext</code></li>
-</ul>
+<p>Look at old commits to see other changes needed outside this directory.</p>
 </li>
 <li>
-<p>In the new release directory, update the following files:</p>
-<ul>
-<li><code>index.mdtext</code></li>
-<li><code>compiling.mdtext</code> (change the introduction for main to that for a release).</li>
-<li><code>changes_x.x.mdtext</code></li>
-</ul>
-</li>
-<li>
-<p>Publish the updated documentation to the FOP website.</p>
+<p>Commit and push</p>
 </li>
 </ul>
 <h3 id="maven">5.4 Maven</h3>
 <ul>
-<li>Deploy the maven bundle.</li>
+<li>
+<p>Run: mvn clean install javadoc:jar source:jar repository:bundle-create -B -DskipTests</p>
+</li>
+<li>
+<p>Copy the *-bundle.jar files to a new directory</p>
+</li>
+<li>
+<p>Run: python signmvn.py</p>
+</li>
+<li>
+<p>Upload to: https://repository.apache.org/#staging-upload check for errors at https://repository.apache.org/#stagingRepositories</p>
+</li>
+<li>
+<p>Setup staging config in ~/.m2/settings.xml, rename ~/.m2/repository</p>
+</li>
+<li>
+<p>Make a test pom.xml and test pulling artifacts</p>
+</li>
+<li>
+<p>Release artifacts at https://repository.apache.org/#stagingRepositories</p>
+</li>
 </ul>
 <h2 id="announce">6. Announce the new release</h2>
 <p>Post announcements on following suggested lists:</p>
