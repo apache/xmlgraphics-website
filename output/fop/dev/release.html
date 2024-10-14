@@ -1799,20 +1799,80 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>Copy the *-bundle.jar files to a new directory</p>
 </li>
 <li>
-<p>Run: python signmvn.py</p>
+<p>Run this command</p>
 </li>
+</ul>
+<p>python signmvn.py:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="k">def</span> <span class="nf">addasc</span><span class="p">(</span><span class="n">bundle</span><span class="p">,</span> <span class="n">afile</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;jar xf &#39;</span> <span class="o">+</span> <span class="n">bundle</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">afile</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">afile</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;gpg --armor --detach-sign --force-v3-sigs --batch --verbose &#39;</span> <span class="o">+</span> <span class="n">afile</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;jar uf &#39;</span> <span class="o">+</span> <span class="n">bundle</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">afile</span> <span class="o">+</span> <span class="s1">&#39;.asc&#39;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">afile</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">afile</span> <span class="o">+</span> <span class="s1">&#39;.asc&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">bundle</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">bundle</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;bundle.jar&#39;</span><span class="p">):</span>
+        <span class="n">addasc</span><span class="p">(</span><span class="n">bundle</span><span class="p">,</span> <span class="s1">&#39;pom.xml&#39;</span><span class="p">)</span>
+        <span class="n">addasc</span><span class="p">(</span><span class="n">bundle</span><span class="p">,</span> <span class="n">bundle</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-bundle&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+        <span class="n">addasc</span><span class="p">(</span><span class="n">bundle</span><span class="p">,</span> <span class="n">bundle</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-bundle&#39;</span><span class="p">,</span> <span class="s1">&#39;-javadoc&#39;</span><span class="p">))</span>
+        <span class="n">addasc</span><span class="p">(</span><span class="n">bundle</span><span class="p">,</span> <span class="n">bundle</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-bundle&#39;</span><span class="p">,</span> <span class="s1">&#39;-sources&#39;</span><span class="p">))</span>
+        <span class="n">addasc</span><span class="p">(</span><span class="n">bundle</span><span class="p">,</span> <span class="n">bundle</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-bundle&#39;</span><span class="p">,</span> <span class="s1">&#39;-tests&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<ul>
 <li>
 <p>Upload to: https://repository.apache.org/#staging-upload check for errors at https://repository.apache.org/#stagingRepositories</p>
 </li>
 <li>
 <p>Setup staging config in ~/.m2/settings.xml, rename ~/.m2/repository</p>
 </li>
-<li>
-<p>Make a test pom.xml and test pulling artifacts</p>
-</li>
-<li>
-<p>Release artifacts at https://repository.apache.org/#stagingRepositories</p>
-</li>
+</ul>
+<p>settings.xml:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;settings&gt;</span>
+  <span class="nt">&lt;profiles&gt;</span>
+    <span class="nt">&lt;profile&gt;</span>
+      <span class="nt">&lt;id&gt;</span>myprofile<span class="nt">&lt;/id&gt;</span>
+      <span class="nt">&lt;repositories&gt;</span>
+        <span class="nt">&lt;repository&gt;</span>
+          <span class="nt">&lt;id&gt;</span>my-repo2<span class="nt">&lt;/id&gt;</span>
+          <span class="nt">&lt;name&gt;</span>your custom repo<span class="nt">&lt;/name&gt;</span>
+          <span class="nt">&lt;url&gt;</span>https://repository.apache.org/content/repositories/staging<span class="nt">&lt;/url&gt;</span>
+        <span class="nt">&lt;/repository&gt;</span>
+      <span class="nt">&lt;/repositories&gt;</span>
+    <span class="nt">&lt;/profile&gt;</span>
+  <span class="nt">&lt;/profiles&gt;</span>
+  <span class="nt">&lt;activeProfiles&gt;</span>
+    <span class="nt">&lt;activeProfile&gt;</span>myprofile<span class="nt">&lt;/activeProfile&gt;</span>
+  <span class="nt">&lt;/activeProfiles&gt;</span>
+<span class="nt">&lt;/settings&gt;</span>
+</code></pre></div>
+
+<ul>
+<li>Make a test pom.xml and test pulling artifacts</li>
+</ul>
+<p>pom.xml:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>com.mycompany.app<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>my-app<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;packaging&gt;</span>jar<span class="nt">&lt;/packaging&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;name&gt;</span>my-app<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;url&gt;</span>http://maven.apache.org<span class="nt">&lt;/url&gt;</span>
+  <span class="nt">&lt;dependencies&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+      <span class="nt">&lt;groupId&gt;</span>org.apache.xmlgraphics<span class="nt">&lt;/groupId&gt;</span>
+      <span class="nt">&lt;artifactId&gt;</span>fop<span class="nt">&lt;/artifactId&gt;</span>
+      <span class="nt">&lt;version&gt;</span>2.10<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>  
+  <span class="nt">&lt;/dependencies&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</code></pre></div>
+
+<ul>
+<li>Release artifacts at https://repository.apache.org/#stagingRepositories</li>
 </ul>
 <h2 id="announce">6. Announce the new release</h2>
 <p>Post announcements on following suggested lists:</p>
