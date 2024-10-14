@@ -27,7 +27,7 @@ The checklist below is based on a combination of input from from Christian Geise
 
 - Check and update the copyright year in NOTICE and build.xml.
 
-- Update version number in `build.xml` and all `pom.xml` (not to be merged back into main).
+- Update version number in `build.xml`, `releasedist.xml` and all `pom.xml` (not to be merged back into main).
 
 - Update dependancy versions in `pom.xml` to release versions.
 
@@ -36,8 +36,6 @@ The checklist below is based on a combination of input from from Christian Geise
 - Build the dist files (`ant -f releasedist.xml release-dist`) and upload them to your web directory on `github.io`
 
 - Compare with last release zips for missing files
-
-- Ask on `fop-dev` ML to check the branch and the generated dist files for errors.
 
 ## 3. Publish the new release { #publish}
 
@@ -62,10 +60,6 @@ The checklist below is based on a combination of input from from Christian Geise
 - Ask an FOP Jira admin to
     - rename main entry into the new release name,
     - and create a new main entry
-
-    or
-
-    - create an issue at [Jira-INFRA](https://issues.apache.org/jira/browse/INFRA).
 
 ### 5.3 Website { #website}
 
