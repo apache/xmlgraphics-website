@@ -599,6 +599,13 @@ By default, images are rasterized to a bitmap and the bitmap is included in the 
 
 IOCA image data placed in the AFP Resource Group (i.e. non-inline images) is wrapped in a Page Segment for single-bit and monochrome images.
 
+To avoid the compatibility concerns mentioned above, you can set "use-ioca-images" to false. This will store the image inside an object container instead of an IOCA image data. Since most viewers do not have compatibility issues, this tag is set to "true" by default. Example:
+
+    :::xml
+    <images mode="color" cmyk="true">
+      <jpeg allow-embedding="false" bitmap-encoding-quality="0.8" use-ioca-images="false"/>
+    </images>
+
 #### GOCA (Vector Graphics) { #afp-goca-config}
 
 Not all AFP implementations support GOCA. Some also have bugs related to GOCA. Therefore, it is desirable to have some control over the generation of GOCA graphics.
