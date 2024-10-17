@@ -2239,6 +2239,12 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 </code></pre></div>
 
 <p>IOCA image data placed in the AFP Resource Group (i.e. non-inline images) is wrapped in a Page Segment for single-bit and monochrome images.</p>
+<p>To avoid the compatibility concerns mentioned above, you can set "use-ioca-images" to false. This will store the image inside an object container instead of an IOCA image data. Since most viewers do not have compatibility issues, this tag is set to "true" by default. Example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;color&quot;</span> <span class="na">cmyk=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;jpeg</span> <span class="na">allow-embedding=</span><span class="s">&quot;false&quot;</span> <span class="na">bitmap-encoding-quality=</span><span class="s">&quot;0.8&quot;</span> <span class="na">use-ioca-images=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/images&gt;</span>
+</code></pre></div>
+
 <h4 id="afp-goca-config">GOCA (Vector Graphics)</h4>
 <p>Not all AFP implementations support GOCA. Some also have bugs related to GOCA. Therefore, it is desirable to have some control over the generation of GOCA graphics.</p>
 <p>GOCA is enabled by default. You can disable GOCA entirely in which case the AFP support falls back to generating bitmaps for vector graphics. Example:</p>
