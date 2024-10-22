@@ -1959,28 +1959,30 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="err">&lt;/renderer</span><span class="nt">&gt;</span>
 </code></pre></div>
 
-<p>FOP supports encryption of PDF output, thanks to Patrick C. Lankswert. This feature is commonly used to prevent unauthorized viewing, printing, editing, copying text from the document and doing annotations. It is also possible to ask the user for a password in order to view the contents. Note that there already exist third party applications which can decrypt an encrypted PDF without effort and allow the aforementioned operations, therefore the degree of protection is limited. For further information about features and restrictions regarding PDF encryption, look at the documentation coming with Adobe Acrobat or the technical documentation on the Adobe web site.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;encryption-params&gt;</span>
-     <span class="nt">&lt;encryption-length&gt;</span>128<span class="nt">&lt;/encryption-length&gt;</span>
-     <span class="nt">&lt;user-password&gt;</span>testuserpass<span class="nt">&lt;/user-password&gt;</span>
-     <span class="nt">&lt;owner-password&gt;</span>testownerpass<span class="nt">&lt;/owner-password&gt;</span>
-     <span class="nt">&lt;noprint/&gt;</span>
-     <span class="nt">&lt;nocopy/&gt;</span>
-     <span class="nt">&lt;noedit/&gt;</span>
-     <span class="nt">&lt;noannotations/&gt;</span>
-     <span class="nt">&lt;nofillinforms/&gt;</span>
-     <span class="nt">&lt;noaccesscontent/&gt;</span>
-     <span class="nt">&lt;noassembledoc/&gt;</span>
-     <span class="nt">&lt;noprinthq/&gt;</span>
-  <span class="nt">&lt;/encryption-params&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
 <p>By default FOP produces PDF files of version 1.4, but this can be changed in order to benefit from features that appeared in newer versions of PDF. At the moment, only a few features from PDF 1.5 have been implemented, but the configuration element will accept any value between 1.4 and 2.0. This is the value that will appear in the PDF header, although only features up to 1.5 will actually be used.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;version&gt;</span>1.5<span class="nt">&lt;/version&gt;</span>
   <span class="c">&lt;!-- Versions 1.4, 1.5, 1.6, 1.7 and 2.0 are accepted, all other values are invalid --&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</code></pre></div>
+
+<h4 id="pdf-signing-and-encryption">PDF Signing and Encryption</h4>
+<p><a href="pdfencryption.html">Signing and Encryption</a></p>
+<h4 id="pdfx-pdfa-pdfvt">PDF/X PDF/A PDF/VT</h4>
+<p><a href="pdfx.html">PDF/X</a>
+<a href="pdfa.html">PDF/A</a>
+<a href="pdfx.html#pdfvt-iso-16612-2">PDF/VT</a></p>
+<h4 id="pdf-compression">PDF compression</h4>
+<p>Object Streams compress the PDF to reduce file size. Needs to be enabled using fop.xconf:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;use-object-streams&gt;</span>true<span class="nt">&lt;/use-object-streams&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</code></pre></div>
+
+<h4 id="pdf-linearization">PDF Linearization</h4>
+<p>Linearization is helpful to allow viewing of a pdf over a slow connection. Needs to be enabled using fop.xconf:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;linearization&gt;</span>true<span class="nt">&lt;/linearization&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
 
