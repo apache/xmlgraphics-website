@@ -189,31 +189,40 @@ Some people don't have high requirements on color fidelity but instead want the 
       <fonts....
     </renderer>
 
-FOP supports encryption of PDF output, thanks to Patrick C. Lankswert. This feature is commonly used to prevent unauthorized viewing, printing, editing, copying text from the document and doing annotations. It is also possible to ask the user for a password in order to view the contents. Note that there already exist third party applications which can decrypt an encrypted PDF without effort and allow the aforementioned operations, therefore the degree of protection is limited. For further information about features and restrictions regarding PDF encryption, look at the documentation coming with Adobe Acrobat or the technical documentation on the Adobe web site.
-
-    :::xml
-    <renderer mime="application/pdf">
-      <encryption-params>
-         <encryption-length>128</encryption-length>
-         <user-password>testuserpass</user-password>
-         <owner-password>testownerpass</owner-password>
-         <noprint/>
-         <nocopy/>
-         <noedit/>
-         <noannotations/>
-         <nofillinforms/>
-         <noaccesscontent/>
-         <noassembledoc/>
-         <noprinthq/>
-      </encryption-params>
-    </renderer>
-
 By default FOP produces PDF files of version 1.4, but this can be changed in order to benefit from features that appeared in newer versions of PDF. At the moment, only a few features from PDF 1.5 have been implemented, but the configuration element will accept any value between 1.4 and 2.0. This is the value that will appear in the PDF header, although only features up to 1.5 will actually be used.
 
     :::xml
     <renderer mime="application/pdf">
       <version>1.5</version>
       <!-- Versions 1.4, 1.5, 1.6, 1.7 and 2.0 are accepted, all other values are invalid -->
+    </renderer>
+    
+#### PDF Signing and Encryption
+
+[Signing and Encryption](pdfencryption.html)
+
+#### PDF/X PDF/A PDF/VT
+
+[PDF/X](pdfx.html)
+[PDF/A](pdfa.html)
+[PDF/VT](pdfx.html#pdfvt-iso-16612-2)
+
+#### PDF compression
+
+Object Streams compress the PDF to reduce file size. Needs to be enabled using fop.xconf:
+
+    :::xml
+    <renderer mime="application/pdf">
+      <use-object-streams>true</use-object-streams>
+    </renderer>
+    
+#### PDF Linearization
+
+Linearization is helpful to allow viewing of a pdf over a slow connection. Needs to be enabled using fop.xconf:
+
+    :::xml
+    <renderer mime="application/pdf">
+      <linearization>true</linearization>
     </renderer>
 
 ### Special Settings for the PostScript Renderer { #ps-renderer}
