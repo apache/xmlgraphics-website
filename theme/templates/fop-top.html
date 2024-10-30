@@ -4,6 +4,12 @@
 	<div id="navigation">
 	{% include 'fop-sidenav.html' %}
 	</div>
+	
+	{% if 'fop/2.10' not in output_file and ('fop/0' in output_file or 'fop/1' in output_file or 'fop/2' in output_file) %}
+	<div id="outdated-warning" style="padding: .5em; text-align: center; background-color: #FFBABA; color: #6A0E0E;">
+    This document is for an old version of FOP that is no longer supported.
+    </div>
+	{% endif %}  
 
 	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
 	  <a href="/fop/"><img src="/images/apache-fop-logo.jpg" alt="The Apache FOP Project" width="120" height="65" style="float:left; margin-right: 15px;" /></a>
