@@ -1715,6 +1715,12 @@ generating PDF files. This means one can write something like:</p>
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
 
+<p>Object Streams compress the PDF to reduce file size. Needs to be enabled using fop.xconf:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
+  <span class="nt">&lt;use-object-streams&gt;</span>true<span class="nt">&lt;/use-object-streams&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</code></pre></div>
+
 <h2 id="improve-performance">Improve performance</h2>
 <p>If you use many of the same pdf's and they have a large content stream, this flag can improve performance.
 The disadvantage will be it can cause higher memory use inside your printer.
