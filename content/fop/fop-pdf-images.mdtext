@@ -39,6 +39,13 @@ If you input many pdfs together the output pdf has duplicate fonts. Set this fla
     <renderer mime="application/pdf">      
       <merge-fonts>true</merge-fonts>
     </renderer>
+    
+Object Streams compress the PDF to reduce file size. Needs to be enabled using fop.xconf:
+
+    :::xml
+    <renderer mime="application/pdf">      
+      <use-object-streams>true</use-object-streams>
+    </renderer>
 
 ## Improve performance
 
