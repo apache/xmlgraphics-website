@@ -1915,6 +1915,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="nt">&lt;/renderers&gt;</span>
 </code></pre></div>
 
+<h4 id="fonts-element">Fonts element</h4>
+<ul>
+<li>The "lazy-load" attribute can be set on the fonts element, setting to "true" will be used for PNG/TIFF/PCL output to only load fonts used by the FO. Default is "false".</li>
+</ul>
+<h4 id="font-element">Font element</h4>
 <ul>
 <li>
 <p>The "embed-url" attribute is used to specify the font file. Relative URLs are resolved relative to the font-base property (or base) if available. See <a href="configuration.html">FOP: Configuration</a> for more information. </p>
@@ -1948,6 +1953,9 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </li>
 </ul>
 </li>
+</ul>
+<h4 id="inside-fonts-element">Inside fonts element</h4>
+<ul>
 <li>
 <p>The fonts "directory" tag can be used to register fonts contained within a single or list of directory paths. The "recursive" attribute can be specified to recursively add fonts from all sub directories.</p>
 </li>
