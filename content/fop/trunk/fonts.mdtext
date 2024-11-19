@@ -113,6 +113,12 @@ You must tell FOP how to find and use the font files by registering them in the 
        </renderer>
     </renderers>
 
+#### Fonts element
+    
+- The "lazy-load" attribute can be set on the fonts element, setting to "true" will be used for PNG/TIFF/PCL output to only load fonts used by the FO. Default is "false".
+
+#### Font element
+
 - The "embed-url" attribute is used to specify the font file. Relative URLs are resolved relative to the font-base property (or base) if available. See [FOP: Configuration](configuration.html) for more information. 
 
 - The "embedding-mode" attribute is optional and can take two values: subset (the default) and full. If not specified the font is subset embedded for TTF and OTF or full embedded for Type 1, unless it is explicitly referenced (see below).
@@ -133,6 +139,8 @@ You must tell FOP how to find and use the font files by registering them in the 
 
     - cid: encode as CID-keyed font (currently only supported for PDF output with TrueType fonts)
 
+#### Inside fonts element    
+    
 - The fonts "directory" tag can be used to register fonts contained within a single or list of directory paths. The "recursive" attribute can be specified to recursively add fonts from all sub directories.
 
 - The fonts "auto-detect" tag can be used to automatically register fonts that are found to be installed on the native operating system.
