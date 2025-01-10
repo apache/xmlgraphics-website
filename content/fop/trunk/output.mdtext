@@ -556,6 +556,11 @@ When the native attribute is specified and set to "true", all image resources wi
 
     :::xml
     <images native="true"/>
+    
+When the native-pdf attribute is specified and set to "true", PDF resources will be natively injected into the datastream using an object container.
+    
+    :::xml
+    <images native-pdf="true"/>
 
 Setting `cmyk="true"` on the `images` element will enable CMYK colors. This will only have an effect if the color mode is set to "color". Example:
 
