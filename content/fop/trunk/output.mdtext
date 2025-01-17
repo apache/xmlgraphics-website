@@ -766,6 +766,16 @@ You can disable the BNG/ENG triplets on a page-sequence by setting afp:page-grou
         xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
       [..]
       <fo:page-sequence master-reference="normal" afp:page-group="false">
+      
+#### Combine Page Groups { #afp-combine-page-groups}
+
+You can combine the AFP page groups by setting afp:add-to-previous-page-group="true" after your first page-sequence
+
+    :::xml
+    <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
+        xmlns:afp="http://xmlgraphics.apache.org/fop/extensions/afp">
+      [..]
+      <fo:page-sequence master-reference="normal" afp:add-to-previous-page-group="true">      
 
 ### Foreign Attributes { #afp-foreign-attributes}
 
