@@ -2369,6 +2369,14 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
   <span class="nt">&lt;fo:page-sequence</span> <span class="na">master-reference=</span><span class="s">&quot;normal&quot;</span> <span class="na">afp:page-group=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
 </code></pre></div>
 
+<h4 id="afp-combine-page-groups">Combine Page Groups</h4>
+<p>You can combine the AFP page groups by setting afp:add-to-previous-page-group="true" after your first page-sequence</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
+    <span class="na">xmlns:afp=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/afp&quot;</span><span class="nt">&gt;</span>
+  [..]
+  <span class="nt">&lt;fo:page-sequence</span> <span class="na">master-reference=</span><span class="s">&quot;normal&quot;</span> <span class="na">afp:add-to-previous-page-group=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
+
 <h3 id="afp-foreign-attributes">Foreign Attributes</h3>
 <h4 id="afp-foreign-attributes-resource">Resource</h4>
 <p>The resource foreign attributes provides the ability to name and control where data object resources (e.g. images/scalable vector graphics) will reside in the AFP output. The afp foreign attributes are only used in conjuntion with <fo:external-graphic/> and <instream-foreign-object/>. Example:</p>
