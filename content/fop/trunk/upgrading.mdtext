@@ -17,7 +17,7 @@ In their place, the following classes have been added:
 
 Instead of configuring the FOPFactory you can use the above classes: 
 
-    :::xml
+    :::java
     File xconf = new File("fop.xconf"); 
     FopConfParser parser = new FopConfParser(xconf); //parsing configuration  
     FopFactoryBuilder builder = parser.getFopFactoryBuilder(); //building the factory with the user options
@@ -26,7 +26,7 @@ Instead of configuring the FOPFactory you can use the above classes:
  
 or equally reading from an xml file
 
-    :::xml
+    :::java
     DefaultConfigurationBuilder cfgBuilder = new DefaultConfigurationBuilder();
     Configuration cfg = cfgBuilder.buildFromFile(new File("mycfg.xml"));
     fopFactoryBuilder = new FopFactoryBuilder(baseURI).setConfiguration(cfg);
@@ -39,7 +39,7 @@ ResourceResolverFactory (a factory class for Resource resolver).
 
 Use of custom resource resolvers is now available through the use of FopFactoryBuilder.
 
-    :::xml
+    :::java
     FopFactoryBuilder builder = new FopFactoryBuilder(new File(".").toURI(), resolver);
 
 resolver is an object of org.apache.xmlgraphics.io.ResourceResolver.
