@@ -1749,6 +1749,11 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;accessibility</span> <span class="na">keep-empty-tags=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/accessibility&gt;</span>
 </code></pre></div>
 
+<h2 id="staticcontentstructureelementsperpage">Static content structure elements per page</h2>
+<p>A screen reader may repeat page numbers for static content such as footers. So we can enable this option to duplicate these elements per page.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;accessibility</span> <span class="na">static-region-per-page=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/accessibility&gt;</span>
+</code></pre></div>
+
 <h2 id="customTags">Customized Tagging</h2>
 <p>The <a href="#PDFReference">PDF Reference</a> defines a set of standard Structure Types to tag content. For example, ‘P’ is used for identifying paragraphs, ‘H1’ to ‘H6’ for headers, ‘L’ for lists, ‘Div’ for block-level groups of elements, etc. This standard set is aimed at improving interoperability between applications producing or consuming PDF.</p>
 <p>FOP provides a default mapping of Formatting Objects to elements from that standard set. For example, <code>fo:page-sequence</code> is mapped to ‘Part’, <code>fo:block</code> is mapped to ‘P’, <code>fo:list-block</code> to ‘L’, etc.</p>
