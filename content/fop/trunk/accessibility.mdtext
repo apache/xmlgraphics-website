@@ -53,6 +53,13 @@ To remove empty fo:blocks from the structure tree, you can set the keep-empty-ta
 
     :::xml
     <accessibility keep-empty-tags="false">true</accessibility>
+    
+## Static content structure elements per page { #staticcontentstructureelementsperpage}
+
+A screen reader may repeat page numbers for static content such as footers. So we can enable this option to duplicate these elements per page.
+
+    :::xml
+    <accessibility static-region-per-page="true">true</accessibility>
 
 ## Customized Tagging { #customTags}
 
