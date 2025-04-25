@@ -25,7 +25,7 @@
 	});
     </script>
 
-   <title>Apache(th) FOP: PDF Images Plug-In</title>
+   <title>Apache(tm) FOP: Building from Source Code</title>
   </head>
 
   <body>
@@ -1676,6 +1676,9 @@ $(document).ready(function () {
 })
 </script>	</div>
 	
+	<div id="outdated-warning" style="padding: .5em; text-align: center; background-color: #FFBABA; color: #6A0E0E;">
+    This document is for an old version of FOP that is no longer supported. <a href="../2.10/compiling.html">Latest version of this page</a>
+    </div>
   
 
 	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
@@ -1697,192 +1700,58 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1 id="apache-fop-pdf-images-plug-in">Apache&trade; FOP: PDF Images Plug-In</h1>
-<h2 id="overview">Overview</h2>
-<p>The <em>fop-pdf-images</em> plug-in extends FOP in order to add support for using PDF images in fo:external-graphic elements when
-generating PDF files. This means one can write something like:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf#page=1&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<p>and</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fox:external-document</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<h2 id="reduce-file-size">Reduce file size</h2>
-<p>If you input many pdfs together the output pdf has duplicate fonts. Set this flag to merge fonts in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-fonts&gt;</span>true<span class="nt">&lt;/merge-fonts&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<p>Object Streams compress the PDF to reduce file size. Needs to be enabled using fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;use-object-streams&gt;</span>true<span class="nt">&lt;/use-object-streams&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="improve-performance">Improve performance</h2>
-<p>If you use many of the same pdf's and they have a large content stream, this flag can improve performance.
-The disadvantage will be it can cause higher memory use inside your printer.
-Set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;form-xobject&gt;</span>true<span class="nt">&lt;/form-xobject&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="merge-form-fields">Merge form fields</h2>
-<p>If you want to merge form fields data structure across multiple input pdfs set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-form-fields&gt;</span>true<span class="nt">&lt;/merge-form-fields&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="known-issues-with-postscript-output">Known issues with Postscript output</h2>
+    <h1 id="apache-fop-building-from-source-code">Apache&trade; FOP: Building from Source Code</h1>
+<h2 id="build-needed">Do You Need To Build?</h2>
+<p>Apache&trade; FOP snapshots are either pre-compiled binary or source. If you are using a binary snapshot, it is already built and there is no need to build it again. If you got the source code from a repository snapshot or via Git you will need to build FOP. See the <a href="../download.html">Download Instructions</a> for information about where to obtain binary or repository snapshots, and whether a binary or source snapshot is best for your needs.</p>
+<h2 id="env">Set Up Your Environment</h2>
+<h3 id="env-jdk">JDK</h3>
+<p>Building FOP requires a minimum Java Development Kit (JDK/SDK) of 1.8 (A Java Runtime Environment is not sufficient).</p>
+<h3 id="env-classpath">CLASSPATH</h3>
+<p>There is generally no need to setup a classpath. All libraries needed to compile FOP are included in the source distribution and are referenced by the build script. You will only need to adjust the classpath if you build FOP in some other way. See the build script pom.xml for details.</p>
+<h3 id="env-java-home">JAVA_HOME</h3>
+<p>The build script uses <a href="https://maven.apache.org/">Apache Maven</a>, a popular Java-based build tool, which usually requires that the environment variable JAVA_HOME point to your local JDK root directory. This is true even if you use JDK 1.5 or above, which normally does not need this setting.</p>
+<h3 id="env-maven">Apache Maven</h3>
+<p><a href="https://maven.apache.org/">Apache Maven</a> (Version 3.6 or later) must be installed in order to build FOP. You can find the <a href="https://maven.apache.org/install.html">instructions to install Maven in the Maven manual</a> on the web.</p>
+<h2 id="build-script">Run the Build Script</h2>
+<p>Change to the FOP root directory and build FOP by executing the build script (pom.xml) using the "mvn" command.</p>
+<p><note>The "mvn" command is only available on your system if you've properly <a href="https://maven.apache.org/install.html">installed Apache Maven</a> and added Maven's location to the PATH environment variable.</note></p>
+<p>The file pom.xml in the FOP root directory is the blueprint that Maven uses for the build.</p>
+<p>The most useful targets are:</p>
 <ul>
-<li>If fonts are not embedded in source PDF:<ul>
-<li>If OTF font type is needed text may be missing if Adobe Reader fonts are not found</li>
-<li>Text may be rendered wrong or poorly if wrong font is selected as replacement   </li>
-</ul>
+<li>
+<p><strong>install</strong>: Generates the JAR files (default). This is the normal build that produces a jar file usable for running FOP.</p>
 </li>
-<li>Transparency, layers and opacity may not render correctly</li>
-<li>Gradients in text may be different from the source PDF</li>
+<li>
+<p><strong>clean</strong>: Cleans the build directory. This is useful for making sure that any build errors are cleaned up before starting a new build. It should not ordinarily be needed, but may be helpful if you are having problems with the build process itself.</p>
+</li>
+<li>
+<p><strong>javadoc:javadoc</strong>: Creates the FOP API documentation.</p>
+</li>
 </ul>
-<h2 id="binary">Binary Download</h2>
-<p>If using the binary package, the four jar files should be placed in the <em>lib</em> directory of your FOP installation.</p>
-<p>Binary distributions include "-bin" in their names, and can be downloaded from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>.</p>
-<p>Here are the links to each package’s signature and checksum files. Signatures can be verified by using our <a href="https://www.apache.org/dist/xmlgraphics/fop/KEYS">KEYS</a> file.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz&amp;action=download">fop-pdf-images-2.10-bin.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip&amp;action=download">fop-pdf-images-2.10-bin.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz&amp;action=download">fop-pdf-images-2.10-src.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip&amp;action=download">fop-pdf-images-2.10-src.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip.sha512">SHA512</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="source">Source Download</h2>
+<p>To run the build:</p>
+<div class="highlight"><pre><span></span><code><span class="err">mvn [target ...]</span>
+</code></pre></div>
+
+<p>For example to do a normal build for the "install" target (which is the default):</p>
+<div class="highlight"><pre><span></span><code><span class="err">mvn clean install -DskipTests</span>
+</code></pre></div>
+
+<p><note>If you want to shorten the build time you can just add the "-DskipTests" argument which doesn't perform any automated tests during the build.</note></p>
+<h2 id="problems">Troubleshooting</h2>
+<p>If you have problems building FOP, please try the following:</p>
 <ul>
-<li>Download a released version from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>. Source distributions include "-src" in their names.</li>
-</ul>
-<h2 id="older_releases">Older Releases</h2>
-<p>Archive distributions can be downloaded from the archives <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/">binaries</a> &amp; <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/source/">source</a> links.</p>
-<p>The fop-pdf-images plug-in was donated by Jeremias M&auml;rki to the XMLGraphics project in 2012. Older releases can
-be obtained from his plug-in <a href="http://www.jeremias-maerki.ch/development/fop/index.html">page</a>.</p>
-<h1 id="history-of-changes">History of Changes</h1>
-<h2 id="version_trunk">Version trunk</h2>
-<ul>
-<li>FOP-3203: Upgrade to PDFBox 3</li>
-<li>FOP-3210: Correct position when merging pdfs</li>
-<li>FOP-3213: Sort dict hash to find more duplicates</li>
-<li>FOP-3227: Draw softmask without rasterizing page</li>
-<li>FOP-3230: Fix PDF/UA compliance issues when attaching a PDF/UA file</li>
-<li>FOP-3233: Avoid merging fonts without mac cmap</li>
-<li>FOP-3234: Use unique value for glyph index for font merging</li>
-<li>FOP-3235: Correct PS transform for gradients and mask for images</li>
-<li>FOP-3237: Use DPI to set resolution of PDFBox images</li>
-<li>FOP-3240: Use glyph from fonts where is exists for font merge</li>
-</ul>
-<h2 id="version_2.10">Version 2.10</h2>
-<ul>
-<li>FOP-3149: Don't merge fonts when ascent is different</li>
-<li>FOP-3155: Use format 12 for unicode cmap</li>
-<li>FOP-3158: Switch to spotbugs</li>
-<li>FOP-3183: Disable pattern modification using xobjforms</li>
-<li>FOP-3200: Correct end of start code for merging ttf cmap</li>
-</ul>
-<h2 id="version_2.9">Version 2.9</h2>
-<ul>
-<li>FOP-3107: Update to PDFBox 2.0.27</li>
-<li>FOP-3108: Gradient component not displayed correctly after scaling</li>
-<li>FOP-3112: Rotate annotations</li>
-<li>FOP-3123: Modified stream should be used in the cache key</li>
-<li>FOP-3124: Subrs data missing from font merging</li>
-<li>FOP-3136: Softmask dictionary preserved</li>
-<li>FOP-3138: NPE when no fields</li>
-<li>FOP-3140: Merge form fields</li>
-</ul>
-<h2 id="version_2.8">Version 2.8</h2>
-<ul>
-<li>FOP-3051: Upgrade to Commons IO 2.11</li>
-<li>FOP-3073: Preserve bytes when cloning string</li>
-<li>FOP-3089: Switch cmap format to support iPhone</li>
-<li>FOP-3102: Move composite glyphs to the end</li>
-</ul>
-<h2 id="version_2.7">Version 2.7</h2>
-<ul>
-<li>FOP-3034: Update PDFBox to 2.0.24</li>
-<li>FOP-3032: Allow to embed native PDF in AFP</li>
-<li>FOP-3020: Add space to standard position for font merge</li>
-<li>FOP-3009: Avoid merging fonts with different number of cmap formats</li>
-<li>FOP-3001: Deduplicate streams in arrays</li>
-</ul>
-<h2 id="version_2.6">Version 2.6</h2>
-<ul>
-<li>FOP-2951: Add uniquename to xobj form</li>
-<li>FOP-2965: Keep streams with DCT compression</li>
-<li>FOP-2971: Update unique name inside patterns</li>
-<li>FOP-2974: Handle space in COSName</li>
-<li>FOP-2979: Update PDFBox to 2.0.19</li>
-</ul>
-<h2 id="version_2.5">Version 2.5</h2>
-<ul>
-<li>FOP-2904: Handle object for boundingbox</li>
-<li>FOP-2922: Syntax error after writing content stream</li>
-<li>FOP-2933: PDF to PDF checkbox missing</li>
-</ul>
-<h2 id="version_2.4">Version 2.4</h2>
-<ul>
-<li>FOP-2802: Java 10 PDF/SVG to Image box not shown</li>
-<li>FOP-2812: Update PDFBox to 2.0.11</li>
-<li>FOP-2836: Update PDFBox to 2.0.13</li>
-<li>FOP-2840: Image mask in PDF not rendered to PS</li>
-<li>FOP-2841: PDF to PDF with merge-fonts checkbox misaligned</li>
-<li>FOP-2856: Support compile on Java 12</li>
-<li>FOP-2873: Update to PDFBox 2.0.16</li>
-<li>FOP-2879: Add caching to avoid parsing content stream</li>
-<li>FOP-2882: Allow PDFFormXObject to improve performance</li>
-</ul>
-<h2 id="version_2.3">Version 2.3</h2>
-<ul>
-<li>PDF to PDF deduplicate more types of streams</li>
-<li>PDF to PS allow fop fonts as fallback</li>
-</ul>
-<h2 id="version_2.2">Version 2.2</h2>
-<ul>
-<li>Move to PDFBox 2</li>
-<li>Deduplicate PDF streams</li>
-<li>PDF to PS deduplication of images</li>
-<li>Remove xobj type=form</li>
-<li>Merge fonts (off by default)</li>
-<li>Support PDF shading to PS</li>
-<li>Merging of Tagged (Accessible) PDF</li>
+<li>
+<p>Run the build with the target of "clean", then rerun the build.</p>
+</li>
+<li>
+<p>Delete the target directory completely, then rerun the build.</p>
+</li>
+<li>
+<p>Make sure you do not have a non-FOP version of xerces.jar, xalan.jar, batik.jar, or another dependency product somewhere in your CLASSPATH.</p>
+</li>
+<li>
+<p>If the build still fails, see the <a href="../gethelp.html">Getting Help</a> page for further help.</p>
+</li>
 </ul>
         </div>
       </div>

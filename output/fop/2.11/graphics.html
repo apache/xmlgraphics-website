@@ -25,7 +25,7 @@
 	});
     </script>
 
-   <title>Apache(th) FOP: PDF Images Plug-In</title>
+   <title>Apache(tm) FOP: Graphics Formats</title>
   </head>
 
   <body>
@@ -1676,6 +1676,9 @@ $(document).ready(function () {
 })
 </script>	</div>
 	
+	<div id="outdated-warning" style="padding: .5em; text-align: center; background-color: #FFBABA; color: #6A0E0E;">
+    This document is for an old version of FOP that is no longer supported. <a href="../2.10/graphics.html">Latest version of this page</a>
+    </div>
   
 
 	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
@@ -1697,193 +1700,299 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1 id="apache-fop-pdf-images-plug-in">Apache&trade; FOP: PDF Images Plug-In</h1>
-<h2 id="overview">Overview</h2>
-<p>The <em>fop-pdf-images</em> plug-in extends FOP in order to add support for using PDF images in fo:external-graphic elements when
-generating PDF files. This means one can write something like:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf#page=1&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<p>and</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fox:external-document</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<h2 id="reduce-file-size">Reduce file size</h2>
-<p>If you input many pdfs together the output pdf has duplicate fonts. Set this flag to merge fonts in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-fonts&gt;</span>true<span class="nt">&lt;/merge-fonts&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<p>Object Streams compress the PDF to reduce file size. Needs to be enabled using fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;use-object-streams&gt;</span>true<span class="nt">&lt;/use-object-streams&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="improve-performance">Improve performance</h2>
-<p>If you use many of the same pdf's and they have a large content stream, this flag can improve performance.
-The disadvantage will be it can cause higher memory use inside your printer.
-Set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;form-xobject&gt;</span>true<span class="nt">&lt;/form-xobject&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="merge-form-fields">Merge form fields</h2>
-<p>If you want to merge form fields data structure across multiple input pdfs set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-form-fields&gt;</span>true<span class="nt">&lt;/merge-form-fields&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="known-issues-with-postscript-output">Known issues with Postscript output</h2>
+    <h1 id="apache-fop-graphics-formats">Apache&trade; FOP: Graphics Formats</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Some noteworthy features of the image handling subsystem are:</p>
 <ul>
-<li>If fonts are not embedded in source PDF:<ul>
-<li>If OTF font type is needed text may be missing if Adobe Reader fonts are not found</li>
-<li>Text may be rendered wrong or poorly if wrong font is selected as replacement   </li>
-</ul>
+<li>
+<p>The image libraries Jimi and JAI are not supported. Instead, Apache&trade; FOP uses the Image I/O API that was introduced with Java 1.4 for all bitmap codecs.</p>
 </li>
-<li>Transparency, layers and opacity may not render correctly</li>
-<li>Gradients in text may be different from the source PDF</li>
+<li>
+<p>Some bitmap images are not converted to a standardized 24 bit RGB image but are instead handled in their native format.</p>
+</li>
+<li>
+<p>A plug-in mechanism offers a possibility to add support for new formats without changing the FOP's source code.</p>
+</li>
 </ul>
-<h2 id="binary">Binary Download</h2>
-<p>If using the binary package, the four jar files should be placed in the <em>lib</em> directory of your FOP installation.</p>
-<p>Binary distributions include "-bin" in their names, and can be downloaded from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>.</p>
-<p>Here are the links to each package’s signature and checksum files. Signatures can be verified by using our <a href="https://www.apache.org/dist/xmlgraphics/fop/KEYS">KEYS</a> file.</p>
+<p>The actual <a href="http://xmlgraphics.apache.org/commons/image-loader.html">image loading framework</a> does not reside in Apache FOP, but in <a href="http://xmlgraphics.apache.org/commons/">XML Graphics Commons</a>.</p>
+<h2 id="support-overview">Overview of Graphics Support</h2>
+<p>The table below summarizes the <em>theoretical</em> support for graphical formats within FOP. In other words, within the constraints of the limitations listed here, these formats <em>should</em> work. However, many of them have not been tested, and there may be limitations that have not yet been discovered or documented. The packages needed to support some formats are not included in the FOP distribution and must be installed separately. Follow the links in the "Support Through" columns for more details.</p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
+<th>Format</th>
+<th>Type</th>
+<th align="center">Support Through <a href="#native">Apache FOP (native)</a></th>
+<th align="center">Support Through <a href="#batik">Apache Batik</a></th>
+<th align="center">Support Through <a href="#imageio">Image I/O</a></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz&amp;action=download">fop-pdf-images-2.10-bin.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz.sha512">SHA512</a></td>
-<td></td>
+<td><a href="#bmp">BMP</a> (Microsoft Windows Bitmap)</td>
+<td>bitmap</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X [1]</td>
 </tr>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip&amp;action=download">fop-pdf-images-2.10-bin.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip.sha512">SHA512</a></td>
-<td></td>
+<td><a href="#emf">EMF</a> (Windows Enhanced Metafile)</td>
+<td>vector (with embedded bitmaps)</td>
+<td align="center">(X)</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz&amp;action=download">fop-pdf-images-2.10-src.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz.sha512">SHA512</a></td>
-<td></td>
+<td><a href="#eps">EPS</a> (Encapsulated PostScript)</td>
+<td>metafile (both bitmap and vector), most frequently used for vector drawings</td>
+<td align="center">(X)</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip&amp;action=download">fop-pdf-images-2.10-src.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip.sha512">SHA512</a></td>
-<td></td>
+<td><a href="#gif">GIF</a> (Graphics Interchange Format)</td>
+<td>bitmap</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td><a href="#jpeg">JPEG</a> (Joint Photographic Experts Group)</td>
+<td>bitmap</td>
+<td align="center">(X)</td>
+<td align="center"></td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td><a href="#png">PNG</a> (Portable Network Graphic)</td>
+<td>bitmap</td>
+<td align="center">(X)</td>
+<td align="center"></td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td><a href="#svg">SVG</a> (Scalable Vector Graphics)</td>
+<td>vector (with embedded bitmaps)</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td><a href="#tiff">TIFF</a> (Tag Image Format File)</td>
+<td>bitmap</td>
+<td align="center">(X)</td>
+<td align="center"></td>
+<td align="center">X [1]</td>
+</tr>
+<tr>
+<td><a href="#wmf">WMF</a> (Windows Metafile)</td>
+<td>vector (with embedded bitmaps)</td>
+<td align="center"></td>
+<td align="center">(X)</td>
+<td align="center"></td>
 </tr>
 </tbody>
 </table>
-<h2 id="source">Source Download</h2>
+<p>Legend:</p>
 <ul>
-<li>Download a released version from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>. Source distributions include "-src" in their names.</li>
+<li>
+<p>"(X)" means restricted support. Please see the details below.</p>
+</li>
+<li>
+<p>[1]: Requires the presence of <a href="https://github.com/jai-imageio/jai-imageio-core">JAI Image I/O Tools</a> (or an equivalent Image I/O compatible codec) in the classpath. JAI Image I/O Tools also adds support for JPEG 2000, WBMP, RAW and PNM. Other Image I/O codecs may provide support for additional formats.</p>
+</li>
 </ul>
-<h2 id="older_releases">Older Releases</h2>
-<p>Archive distributions can be downloaded from the archives <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/">binaries</a> &amp; <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/source/">source</a> links.</p>
-<p>The fop-pdf-images plug-in was donated by Jeremias M&auml;rki to the XMLGraphics project in 2012. Older releases can
-be obtained from his plug-in <a href="http://www.jeremias-maerki.ch/development/fop/index.html">page</a>.</p>
-<h1 id="history-of-changes">History of Changes</h1>
-<h2 id="version_trunk">Version trunk</h2>
+<p><note><a href="https://github.com/jai-imageio/jai-imageio-core">JAI Image I/O Tools</a> is not the same as the <a href="http://java.sun.com/javase/technologies/desktop/media/jai/">JAI library</a> ! The former simply exposes JAI's codecs using the Image&nbsp;I/O API but does not include all the image manipulation functionality.</note></p>
+<h3 id="format-map">Map of supported image formats by output format</h3>
+<p>Not all image formats are supported for all output formats! For example, while you can use EPS (Encapsulated PostScript) files when you generate PostScript output, this format will not be supported by any other output format. Here's an overview of which image formats are supported by which output format:</p>
+<table>
+<thead>
+<tr>
+<th>Image Format</th>
+<th align="center">PDF</th>
+<th align="center">PostScript</th>
+<th align="center">Java2D, PNG, TIFF, AWT</th>
+<th align="center">PCL</th>
+<th align="center">AFP</th>
+<th align="center">RTF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#bmp">BMP</a> (Microsoft Windows Bitmap)</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td><a href="#emf">EMF</a> (Windows Enhanced Metafile)</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X [1]</td>
+</tr>
+<tr>
+<td><a href="#eps">EPS</a> (Encapsulated PostScript)</td>
+<td align="center"></td>
+<td align="center">X [1]</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td><a href="#gif">GIF</a> (Graphics Interchange Format)</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td><a href="#jpeg">JPEG</a> (Joint Photographic Experts Group)</td>
+<td align="center">X [1]</td>
+<td align="center">X [1]</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X [1]</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td><a href="#png">PNG</a> (Portable Network Graphic)</td>
+<td align="center">X [2]</td>
+<td align="center">X [2]</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td><a href="#svg">SVG</a> (Scalable Vector Graphics)</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td><a href="#tiff">TIFF</a> (Tag Image Format File)</td>
+<td align="center">X [2]</td>
+<td align="center">X [2]</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X [2]</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td><a href="#wmf">WMF</a> (Windows Metafile)</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+</tbody>
+</table>
+<p>Legend:</p>
 <ul>
-<li>FOP-3203: Upgrade to PDFBox 3</li>
-<li>FOP-3210: Correct position when merging pdfs</li>
-<li>FOP-3213: Sort dict hash to find more duplicates</li>
-<li>FOP-3227: Draw softmask without rasterizing page</li>
-<li>FOP-3230: Fix PDF/UA compliance issues when attaching a PDF/UA file</li>
-<li>FOP-3233: Avoid merging fonts without mac cmap</li>
-<li>FOP-3234: Use unique value for glyph index for font merging</li>
-<li>FOP-3235: Correct PS transform for gradients and mask for images</li>
-<li>FOP-3237: Use DPI to set resolution of PDFBox images</li>
-<li>FOP-3240: Use glyph from fonts where is exists for font merge</li>
+<li>
+<p>[1]: Supported without the need to decode the image.</p>
+</li>
+<li>
+<p>[2]: Supported without the need to decode the image, but only for certain subtypes.</p>
+</li>
 </ul>
-<h2 id="version_2.10">Version 2.10</h2>
+<h2 id="packages">Graphics Packages</h2>
+<h3 id="native">XML Graphics Commons Native</h3>
+<p><a href="http://xmlgraphics.apache.org/commons/">XML Graphics Commons</a> supports a number of graphic file formats natively as basic functionality: all bitmap formats for which there are Image I/O codecs available (JPEG, PNG, GIF, TIFF, etc.), EPS and EMF.</p>
+<h3 id="fop-native">FOP Native</h3>
+<p>FOP has no native image plug-ins for the image loading framework of its own but currently hosts the Batik-dependent SVG and WMF plug-ins until they can be moved to <a href="http://xmlgraphics.apache.org/batik/">Apache Batik</a>.</p>
+<h3 id="batik">Apache Batik</h3>
+<p><a href="http://xmlgraphics.apache.org/batik/">Apache Batik</a> will later receive the SVG and WMF plug-ins for the image loading framework that are currently hosted inside FOP.</p>
+<p>Current FOP distributions include a distribution of the <a href="http://xmlgraphics.apache.org/batik/">Apache Batik</a>. Because Batik's API changes frequently, it is highly recommended that you use the version that ships with FOP, at least when running FOP.
+<warning>Batik must be run in a graphical environment.</warning>
+Batik must be run in a graphical environment. It uses AWT classes for rendering SVG, which in turn require an X server on Unixish systems. If you run a server without X, or if you can't connect to the X server due to security restrictions or policies (a so-called "headless" environment), SVG rendering will fail.</p>
+<p>Here are some workarounds:</p>
 <ul>
-<li>FOP-3149: Don't merge fonts when ascent is different</li>
-<li>FOP-3155: Use format 12 for unicode cmap</li>
-<li>FOP-3158: Switch to spotbugs</li>
-<li>FOP-3183: Disable pattern modification using xobjforms</li>
-<li>FOP-3200: Correct end of start code for merging ttf cmap</li>
+<li>
+<p>Start Java with the <code>-Djava.awt.headless=true</code> command line option.</p>
+</li>
+<li>
+<p>Install an X server which provides an in-memory framebuffer without actually using a screen device or any display hardware. One example is Xvfb.</p>
+</li>
+<li>
+<p>Install a toolkit which emulates AWT without the need for an underlying X server. One example is the <a href="http://www.eteks.com/pja/en">PJA toolkit</a>, which is free and comes with detailed installation instructions.</p>
+</li>
 </ul>
-<h2 id="version_2.9">Version 2.9</h2>
+<h3 id="imageio">Image I/O</h3>
+<p>The image loading framework in <a href="http://xmlgraphics.apache.org/commons/">XML Graphics Commons</a> provides a wrapper to load images through the <a href="http://java.sun.com/j2se/1.4.2/docs/guide/imageio/index.html">JDK's Image I/O API</a> (JSR 015). Image I/O allows to dynamically add additional image codecs. An example of such an add-on library are the <a href="http://java.sun.com/products/java-media/jai/">JAI Image I/O Tools</a> available from Sun.</p>
+<h2 id="image-formats">Details on image formats</h2>
+<h3 id="bmp">BMP</h3>
+<p>BMP images are supported through an Image I/O codec. There may be limitations of the codec which are outside the control of Apache FOP.</p>
+<h3 id="emf">EMF</h3>
+<p>Windows Enhanced Metafiles (EMF) are only supported in RTF output where they are embedded without decoding.</p>
+<h3 id="eps">EPS</h3>
+<p>Apache FOP allows to use EPS files when generating PostScript output only.</p>
+<p>Other output targets can't be supported at the moment because FOP lacks a PostScript interpreter. Furthermore, FOP is currently not able to parse the preview bitmaps sometimes contained in EPS files.</p>
+<h3 id="gif">GIF</h3>
+<p>GIF images are supported through an Image&nbsp;I/O codec. Transparency is supported but not guaranteed to work with every output format.</p>
+<h3 id="jpeg">JPEG</h3>
+<p>FOP native support (i.e. the handling of undecoded images) of JPEG does not include all variants, especially those containing unusual color lookup tables and color profiles. If you have trouble with a JPEG image in FOP, try opening it with an image processing program (such as Photoshop or Gimp) and then saving it. Specifying 24-bit color output may also help. For the PDF and PostScript renderers most JPEG images can be passed through without decompression. User reports indicate that grayscale, RGB, and CMYK color spaces are all rendered properly. However, for other output formats, the JPEG images have to be decompressed. Tests have shown that there are some limitation in some Image&nbsp;I/O codecs concerning images in the CMYK color space. Work-arounds are in place but may not always work as expected.</p>
+<h3 id="png">PNG</h3>
+<p>PNG images are supported both through an Image&nbsp;I/O codec (ImageLoaderImageIO) and through native support. FOP native support is possible with PDF and PS output, and can be enabled either through an internal codec (ImageLoaderPNG) or by directly handling undecoded images (ImageLoaderRawPNG). More information is available in the <a href="https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/HowTo/ImageLoaderRawPNG">wiki page</a>. Transparency is supported but not guaranteed to work with every output format.</p>
+<h3 id="svg">SVG</h3>
+<h4 id="svg-intro">Introduction</h4>
+<p>FOP uses <a href="#batik">Apache Batik</a> for SVG support. This format can be handled as an <code>fo:instream-foreign-object</code> or in a separate file referenced with <code>fo:external-graphic</code>.</p>
+<p><note>Batik's SVG Rasterizer utility may also be used to convert standalone SVG documents into PDF. For more information please see the <a href="http://xmlgraphics.apache.org/batik/tools/rasterizer.html">SVG Rasterizer documentation</a> on the Batik site.</note></p>
+<h4 id="svg-pdf-graphics">Placing SVG Graphics into PDF</h4>
+<p>The SVG is rendered into PDF by using PDF commands to draw and fill lines and curves. This means that the graphical objects created with this remain as vector graphics. The same applies to PostScript output. For other output formats the SVG graphic may be converted to a bitmap image.</p>
+<p>There are a number of SVG things that cannot be converted directly into PDF. Parts of the graphic such as effects, patterns and images are inserted into the PDF as a raster graphic. The resolution of these raster images can be controlled through the "target resolution" setting in the <a href="configuration.html">configuration</a>.</p>
+<p>Currently transparency is limited in PDF so some SVG images that contain effects or graphics with transparent areas may not be displayed correctly.</p>
+<h4 id="svg-pdf-text">Placing SVG Text into PDF and PostScript</h4>
+<p>If possible, Batik will use normal PDF or PostScript text when inserting text. It does this by checking if the text can be drawn normally and the font is supported. This example svg <a href="../dev/svg/text.svg">text.svg</a> / <a href="../dev/svg/text.pdf">text.pdf</a> / <a href="../dev/svg/text.png">text.png</a> shows how various types and effects with text are handled. Note that SVG font support is not yet implemented. Furthermore, text handling in PostScript output is inferior to PDF output - more text will be painted as shapes in PS than in PDF.</p>
+<p>When there's no support to paint text using native text operations, text is converted and drawn as a set of shapes by Batik, using the stroking text painter. This means that a typical character will have about 10 curves (each curve consists of at least 20 characters). This can make the output files large and when it is viewed the viewer may not normally draw those fine curves very well (In Adobe Acrobat, turning on "Smooth Line Art" in the preferences will fix this). Copy/paste functionality will not be supported in this case. If the text is inserted into the output file using the inbuilt text commands it will use a single character.</p>
+<p>Note that because SVG text can be rendered as either text or a vector graphic, you may need to consider settings in your viewer for both. The Acrobat viewer has both "smooth line art" and "smooth text" settings that may need to be set for SVG images to be displayed nicely on your screen (see Edit / Preferences / Display). This setting will not affect the printing of your document, which should be OK in any case, but will only affect the quality of the screen display.</p>
+<h4 id="svg-scaling">Scaling</h4>
+<p>Currently, SVG images are rendered with the dimensions specified <em>in the SVG file</em>, within the viewport specified in the fo:external-graphic element. For everything to work properly, the two should be equal. The SVG standard leaves this issue as an implementation detail. Additional scaling options are available through XSL-FO means.</p>
+<p>If you use pixels to specify the size of an SVG graphic the "source resolution" setting in the <a href="configuration.html">configuration</a> will be used to determine the size of a pixel. The use of pixels to specify sizes is discouraged as they may be interpreted differently in different environments.</p>
+<h4 id="svg-problems">Known Problems</h4>
 <ul>
-<li>FOP-3107: Update to PDFBox 2.0.27</li>
-<li>FOP-3108: Gradient component not displayed correctly after scaling</li>
-<li>FOP-3112: Rotate annotations</li>
-<li>FOP-3123: Modified stream should be used in the cache key</li>
-<li>FOP-3124: Subrs data missing from font merging</li>
-<li>FOP-3136: Softmask dictionary preserved</li>
-<li>FOP-3138: NPE when no fields</li>
-<li>FOP-3140: Merge form fields</li>
+<li>
+<p>Soft mask transparency is combined with white so that it looks better on PDF 1.3 viewers but this causes the soft mask to be slightly lighter or darker on PDF 1.4 viewers.</p>
+</li>
+<li>
+<p>There is some problem with a gradient inside a pattern which may cause a PDF error when viewed in Acrobat 5.</p>
+</li>
+<li>
+<p>Text is not always handled correctly, it may select the wrong font especially if characters have multiple fonts in the font list.</p>
+</li>
+<li>
+<p>Uniform transparency for images and other SVG elements that are converted into a raster graphic are not drawn properly in PDF. The image is opaque.</p>
+</li>
 </ul>
-<h2 id="version_2.8">Version 2.8</h2>
-<ul>
-<li>FOP-3051: Upgrade to Commons IO 2.11</li>
-<li>FOP-3073: Preserve bytes when cloning string</li>
-<li>FOP-3089: Switch cmap format to support iPhone</li>
-<li>FOP-3102: Move composite glyphs to the end</li>
-</ul>
-<h2 id="version_2.7">Version 2.7</h2>
-<ul>
-<li>FOP-3034: Update PDFBox to 2.0.24</li>
-<li>FOP-3032: Allow to embed native PDF in AFP</li>
-<li>FOP-3020: Add space to standard position for font merge</li>
-<li>FOP-3009: Avoid merging fonts with different number of cmap formats</li>
-<li>FOP-3001: Deduplicate streams in arrays</li>
-</ul>
-<h2 id="version_2.6">Version 2.6</h2>
-<ul>
-<li>FOP-2951: Add uniquename to xobj form</li>
-<li>FOP-2965: Keep streams with DCT compression</li>
-<li>FOP-2971: Update unique name inside patterns</li>
-<li>FOP-2974: Handle space in COSName</li>
-<li>FOP-2979: Update PDFBox to 2.0.19</li>
-</ul>
-<h2 id="version_2.5">Version 2.5</h2>
-<ul>
-<li>FOP-2904: Handle object for boundingbox</li>
-<li>FOP-2922: Syntax error after writing content stream</li>
-<li>FOP-2933: PDF to PDF checkbox missing</li>
-</ul>
-<h2 id="version_2.4">Version 2.4</h2>
-<ul>
-<li>FOP-2802: Java 10 PDF/SVG to Image box not shown</li>
-<li>FOP-2812: Update PDFBox to 2.0.11</li>
-<li>FOP-2836: Update PDFBox to 2.0.13</li>
-<li>FOP-2840: Image mask in PDF not rendered to PS</li>
-<li>FOP-2841: PDF to PDF with merge-fonts checkbox misaligned</li>
-<li>FOP-2856: Support compile on Java 12</li>
-<li>FOP-2873: Update to PDFBox 2.0.16</li>
-<li>FOP-2879: Add caching to avoid parsing content stream</li>
-<li>FOP-2882: Allow PDFFormXObject to improve performance</li>
-</ul>
-<h2 id="version_2.3">Version 2.3</h2>
-<ul>
-<li>PDF to PDF deduplicate more types of streams</li>
-<li>PDF to PS allow fop fonts as fallback</li>
-</ul>
-<h2 id="version_2.2">Version 2.2</h2>
-<ul>
-<li>Move to PDFBox 2</li>
-<li>Deduplicate PDF streams</li>
-<li>PDF to PS deduplication of images</li>
-<li>Remove xobj type=form</li>
-<li>Merge fonts (off by default)</li>
-<li>Support PDF shading to PS</li>
-<li>Merging of Tagged (Accessible) PDF</li>
-</ul>
+<h3 id="tiff">TIFF</h3>
+<p>FOP can embed TIFF images without decompression into PDF, PostScript and AFP if they have either CCITT T.4, CCITT T.6, or JPEG compression. Otherwise, a TIFF-capable Image&nbsp;I/O codec is necessary for decoding the image.</p>
+<p>There may be some limitation concerning images in the CMYK color space.</p>
+<h3 id="wmf">WMF</h3>
+<p>Windows Metafiles (WMF) are supported through classes in <a href="http://xmlgraphics.apache.org/batik/">Apache Batik</a>. At the moment, support for this format is experimental and may not always work as expected.</p>
+<h2 id="resolution">Graphics Resolution</h2>
+<p>Some bitmapped image file formats store a dots-per-inch (dpi) or other resolution values. FOP tries to use this resolution information whenever possible to determine the image's intrinsic size. This size is used during the layout process when it is not superseded by an explicit size on fo:external-graphic (content-width and content-height properties).</p>
+<p>Please note that not all images contain resolution information. If it's not available the source resolution set on the FopFactory (or through the user configuration XML) is used. The default here is 72 dpi.</p>
+<p>Bitmap images are generally embedded into the output format at their original resolution (as is). No resampling of the image is performed. Explicit resampling is on our wishlist, but hasn't been implemented, yet. Bitmaps included in SVG graphics may be resampled to the resolution specified in the "target resolution" setting in the <a href="configuration.html">configuration</a> if SVG filters are applied. This can be used as a work-around to resample images in FO documents.</p>
+<h2 id="page-selection">Page selection for multi-page formats</h2>
+<p>Some image formats such as TIFF support multiple pages/sub-images per file. You can select a particular page using a special URI fragment in the form: <uri>#page=<nr> (for example: <code>http://localhost/images/myimage.tiff#page=3</code>). This feature is only available if the ImageLoaderImageIO is the chosen image loader (this may require disabling or downgrading, by awarding it a penalty, the ImageLoaderRawCCITTFax image loader).</p>
+<h2 id="caching">Image caching</h2>
+<p>FOP caches images between runs. There is one cache per FopFactory instance. The URI is used as a key to identify images which means that when a particular URI appears again, the image is taken from the cache. If you have a servlet that generates a different image each time it is called with the same URI you need to use a constantly changing dummy parameter on the URI to avoid caching.</p>
+<p>The image cache has been improved considerably in the redesigned code. Therefore, resetting the image cache should be a thing of the past. If you still experience OutOfMemoryErrors, please notify us.</p>
+<p>If all else fails, the image cache can be cleared like this: <code>fopFactory.getImageManager().getCache().clearCache();</code></p>
         </div>
       </div>
       <div class="clear"></div>

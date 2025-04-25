@@ -25,7 +25,7 @@
 	});
     </script>
 
-   <title>Apache(th) FOP: PDF Images Plug-In</title>
+   <title>Running Apache(tm) FOP</title>
   </head>
 
   <body>
@@ -1676,6 +1676,9 @@ $(document).ready(function () {
 })
 </script>	</div>
 	
+	<div id="outdated-warning" style="padding: .5em; text-align: center; background-color: #FFBABA; color: #6A0E0E;">
+    This document is for an old version of FOP that is no longer supported. <a href="../2.10/running.html">Latest version of this page</a>
+    </div>
   
 
 	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
@@ -1697,193 +1700,187 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1 id="apache-fop-pdf-images-plug-in">Apache&trade; FOP: PDF Images Plug-In</h1>
-<h2 id="overview">Overview</h2>
-<p>The <em>fop-pdf-images</em> plug-in extends FOP in order to add support for using PDF images in fo:external-graphic elements when
-generating PDF files. This means one can write something like:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf#page=1&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<p>and</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fox:external-document</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<h2 id="reduce-file-size">Reduce file size</h2>
-<p>If you input many pdfs together the output pdf has duplicate fonts. Set this flag to merge fonts in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-fonts&gt;</span>true<span class="nt">&lt;/merge-fonts&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<p>Object Streams compress the PDF to reduce file size. Needs to be enabled using fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;use-object-streams&gt;</span>true<span class="nt">&lt;/use-object-streams&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="improve-performance">Improve performance</h2>
-<p>If you use many of the same pdf's and they have a large content stream, this flag can improve performance.
-The disadvantage will be it can cause higher memory use inside your printer.
-Set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;form-xobject&gt;</span>true<span class="nt">&lt;/form-xobject&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="merge-form-fields">Merge form fields</h2>
-<p>If you want to merge form fields data structure across multiple input pdfs set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-form-fields&gt;</span>true<span class="nt">&lt;/merge-form-fields&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="known-issues-with-postscript-output">Known issues with Postscript output</h2>
+    <h1 id="running-apache-fop">Running Apache&trade; FOP</h1>
+<h2 id="require">System Requirements</h2>
+<p>The following software must be installed:</p>
 <ul>
-<li>If fonts are not embedded in source PDF:<ul>
-<li>If OTF font type is needed text may be missing if Adobe Reader fonts are not found</li>
-<li>Text may be rendered wrong or poorly if wrong font is selected as replacement   </li>
+<li>
+<p>Java 1.8 or later Runtime Environment.</p>
+</li>
+<li>
+<p>Apache&trade; FOP. The <a href="../download.html">FOP distribution</a> includes all libraries that you will need to run a basic FOP installation. These can be found in the [fop-root]/lib directory. These libraries include the following:</p>
+<ul>
+<li>
+<p><a href="http://xmlgraphics.apache.org/commons/">Apache XML Graphics Commons</a>, an shared library for Batik and FOP.</p>
+</li>
+<li>
+<p><a href="http://xmlgraphics.apache.org/batik/">Apache Batik</a>, an SVG library.</p>
+</li>
+<li>
+<p><a href="http://commons.apache.org/logging/">Apache Commons Logging</a>, a logger abstraction kit.</p>
+</li>
+<li>
+<p><a href="http://commons.apache.org/io/">Apache Commons IO</a>, a library with I/O utilities.</p>
+</li>
 </ul>
 </li>
-<li>Transparency, layers and opacity may not render correctly</li>
-<li>Gradients in text may be different from the source PDF</li>
 </ul>
-<h2 id="binary">Binary Download</h2>
-<p>If using the binary package, the four jar files should be placed in the <em>lib</em> directory of your FOP installation.</p>
-<p>Binary distributions include "-bin" in their names, and can be downloaded from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>.</p>
-<p>Here are the links to each package’s signature and checksum files. Signatures can be verified by using our <a href="https://www.apache.org/dist/xmlgraphics/fop/KEYS">KEYS</a> file.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz&amp;action=download">fop-pdf-images-2.10-bin.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip&amp;action=download">fop-pdf-images-2.10-bin.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz&amp;action=download">fop-pdf-images-2.10-src.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip&amp;action=download">fop-pdf-images-2.10-src.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip.sha512">SHA512</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="source">Source Download</h2>
+<p>The following software is optional, depending on your needs:</p>
 <ul>
-<li>Download a released version from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>. Source distributions include "-src" in their names.</li>
+<li>
+<p>Graphics libraries. Generally, FOP contains direct support for the most important bitmap image formats (including PNG, JPEG and GIF). See <a href="graphics.html">FOP: Graphics Formats</a> for details.</p>
+</li>
+<li>
+<p>PDF encryption. See <a href="pdfencryption.html">FOP: PDF Encryption</a> for details.</p>
+</li>
 </ul>
-<h2 id="older_releases">Older Releases</h2>
-<p>Archive distributions can be downloaded from the archives <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/">binaries</a> &amp; <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/source/">source</a> links.</p>
-<p>The fop-pdf-images plug-in was donated by Jeremias M&auml;rki to the XMLGraphics project in 2012. Older releases can
-be obtained from his plug-in <a href="http://www.jeremias-maerki.ch/development/fop/index.html">page</a>.</p>
-<h1 id="history-of-changes">History of Changes</h1>
-<h2 id="version_trunk">Version trunk</h2>
+<p>In addition, the following system requirements apply:</p>
 <ul>
-<li>FOP-3203: Upgrade to PDFBox 3</li>
-<li>FOP-3210: Correct position when merging pdfs</li>
-<li>FOP-3213: Sort dict hash to find more duplicates</li>
-<li>FOP-3227: Draw softmask without rasterizing page</li>
-<li>FOP-3230: Fix PDF/UA compliance issues when attaching a PDF/UA file</li>
-<li>FOP-3233: Avoid merging fonts without mac cmap</li>
-<li>FOP-3234: Use unique value for glyph index for font merging</li>
-<li>FOP-3235: Correct PS transform for gradients and mask for images</li>
-<li>FOP-3237: Use DPI to set resolution of PDFBox images</li>
-<li>FOP-3240: Use glyph from fonts where is exists for font merge</li>
+<li>If you will be using FOP to process SVG, you must do so in a graphical environment. See <a href="graphics.html#batik">FOP: Graphics (Batik)</a> for details.</li>
 </ul>
-<h2 id="version_2.10">Version 2.10</h2>
+<h2 id="install">Installation</h2>
+<h3 id="install-instruct">Instructions</h3>
+<p>Basic FOP installation consists of first unzipping the <code>.gz</code> file that is the distribution medium, then unarchiving the resulting <code>.tar</code> file in a directory/folder that is convenient on your system. Please consult your operating system documentation or Zip application software documentation for instructions specific to your site.</p>
+<h3 id="install-problems">Problems</h3>
+<p>Some Mac OSX users have experienced filename truncation problems using Stuffit to unzip and unarchive their distribution media. This is a legacy of older Mac operating systems, which had a 31-character pathname limit. Several Mac OSX users have recommended that Mac OSX users use the shell command <code>tar -xzf</code> instead.</p>
+<h2 id="standalone-start">Starting FOP as a Standalone Application</h2>
+<h3 id="fop-script">Using the fop script or batch file</h3>
+<p>The usual and recommended practice for starting FOP from the command line is to run the batch file fop.bat (Windows) or the shell script fop (Unix/Linux). These scripts require that the environment variable JAVA_HOME be set to a path pointing to the appropriate Java installation on your system. Macintosh OSX includes a Java environment as part of its distribution. We are told by Mac OSX users that the path to use in this case is <code>/Library/Java/Home</code>. <strong>Caveat:</strong> We suspect that, as Apple releases new Java environments and as FOP upgrades the minimum Java requirements, the two will inevitably not match on some systems. Please see <a href="https://java.com/en/download/faq/java_mac.xml">Java on Mac OSX FAQ</a> for information as it becomes available.</p>
+<div class="highlight"><pre><span></span><code><span class="k">USAGE</span><span class="w"></span>
+<span class="n">Fop</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">-fo|-xml</span><span class="o">]</span><span class="w"> </span><span class="n">infile</span><span class="w"> </span><span class="o">[</span><span class="n">-xsl file</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">-awt|-pdf|-mif|-rtf|-tiff|-png|-pcl|-ps|-txt|-at [mime</span><span class="o">]|-</span><span class="k">print</span><span class="err">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">outfile</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w"> </span><span class="o">[</span><span class="n">OPTIONS</span><span class="o">]</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">version</span><span class="w">          </span><span class="k">print</span><span class="w"> </span><span class="n">FOP</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">exit</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">d</span><span class="w">                </span><span class="n">debug</span><span class="w"> </span><span class="n">mode</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">x</span><span class="w">                </span><span class="k">dump</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="n">settings</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">q</span><span class="w">                </span><span class="n">quiet</span><span class="w"> </span><span class="n">mode</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="n">cfg</span><span class="p">.</span><span class="nc">xml</span><span class="w">        </span><span class="k">use</span><span class="w"> </span><span class="n">additional</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="n">cfg</span><span class="p">.</span><span class="nc">xml</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">lang</span><span class="w">           </span><span class="n">the</span><span class="w"> </span><span class="k">language</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">information</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">nocs</span><span class="w">             </span><span class="n">disable</span><span class="w"> </span><span class="n">complex</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="n">features</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">r</span><span class="w">                </span><span class="n">relaxed</span><span class="o">/</span><span class="k">less</span><span class="w"> </span><span class="n">strict</span><span class="w"> </span><span class="n">validation</span><span class="w"> </span><span class="p">(</span><span class="k">where</span><span class="w"> </span><span class="n">available</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">dpi</span><span class="w"> </span><span class="n">xxx</span><span class="w">          </span><span class="n">target</span><span class="w"> </span><span class="n">resolution</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">dots</span><span class="w"> </span><span class="n">per</span><span class="w"> </span><span class="n">inch</span><span class="w"> </span><span class="p">(</span><span class="n">dpi</span><span class="p">)</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">xxx</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">number</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">s</span><span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="n">area</span><span class="w"> </span><span class="n">tree</span><span class="w"> </span><span class="nc">XML</span><span class="p">,</span><span class="w"> </span><span class="n">down</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="n">areas</span><span class="w"> </span><span class="k">only</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">v</span><span class="w">                </span><span class="n">run</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">verbose</span><span class="w"> </span><span class="n">mode</span><span class="w"> </span><span class="p">(</span><span class="n">currently</span><span class="w"> </span><span class="n">simply</span><span class="w"> </span><span class="k">print</span><span class="w"> </span><span class="n">FOP</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">continue</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="o">[</span><span class="n">password</span><span class="o">]</span><span class="w">     </span><span class="n">PDF</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">encrypted</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">option</span><span class="w"> </span><span class="n">owner</span><span class="w"> </span><span class="n">password</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="o">[</span><span class="n">password</span><span class="o">]</span><span class="w">     </span><span class="n">PDF</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">encrypted</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">option</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">password</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">noprint</span><span class="w">          </span><span class="n">PDF</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">encrypted</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="n">printing</span><span class="w"> </span><span class="n">permission</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">nocopy</span><span class="w">           </span><span class="n">PDF</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">encrypted</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="n">copy</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="n">permission</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">noedit</span><span class="w">           </span><span class="n">PDF</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">encrypted</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="n">edit</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="n">permission</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">noannotations</span><span class="w">    </span><span class="n">PDF</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">encrypted</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="n">edit</span><span class="w"> </span><span class="n">annotation</span><span class="w"> </span><span class="n">permission</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">nofillinforms</span><span class="w">    </span><span class="n">PDF</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">encrypted</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">forms</span><span class="w"> </span><span class="n">permission</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">noaccesscontent</span><span class="w">  </span><span class="n">PDF</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">encrypted</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="k">extract</span><span class="w"> </span><span class="nc">text</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">graphics</span><span class="w"> </span><span class="n">permission</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">noassembledoc</span><span class="w">    </span><span class="n">PDF</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">encrypted</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="n">assemble</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">document</span><span class="w"> </span><span class="n">permission</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">noprinthq</span><span class="w">        </span><span class="n">PDF</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">encrypted</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="k">print</span><span class="w"> </span><span class="n">high</span><span class="w"> </span><span class="n">quality</span><span class="w"> </span><span class="n">permission</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">a</span><span class="w">                </span><span class="n">enables</span><span class="w"> </span><span class="n">accessibility</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="p">(</span><span class="n">Tagged</span><span class="w"> </span><span class="n">PDF</span><span class="w"> </span><span class="n">etc</span><span class="p">.,</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">off</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">pdfprofile</span><span class="w"> </span><span class="n">prof</span><span class="w">  </span><span class="n">PDF</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">generated</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="n">profile</span><span class="w"></span>
+<span class="w">                    </span><span class="p">(</span><span class="n">Examples</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nl">prof</span><span class="p">:</span><span class="w"> </span><span class="n">PDF</span><span class="o">/</span><span class="n">A</span><span class="o">-</span><span class="mi">1</span><span class="n">b</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">PDF</span><span class="o">/</span><span class="n">X</span><span class="o">-</span><span class="mi">3</span><span class="err">:</span><span class="mi">2003</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">-</span><span class="n">conserve</span><span class="w">         </span><span class="n">enable</span><span class="w"> </span><span class="n">memory</span><span class="o">-</span><span class="n">conservation</span><span class="w"> </span><span class="n">policy</span><span class="w"> </span><span class="p">(</span><span class="n">trades</span><span class="w"> </span><span class="n">memory</span><span class="o">-</span><span class="n">consumption</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">disk</span><span class="w"> </span><span class="n">I</span><span class="o">/</span><span class="n">O</span><span class="p">)</span><span class="w"></span>
+<span class="w">                    </span><span class="p">(</span><span class="nl">Note</span><span class="p">:</span><span class="w"> </span><span class="n">currently</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="n">influences</span><span class="w"> </span><span class="n">whether</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">area</span><span class="w"> </span><span class="n">tree</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">serialized</span><span class="p">.)</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">-</span><span class="n">cache</span><span class="w">            </span><span class="n">specifies</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">file</span><span class="o">/</span><span class="n">directory</span><span class="w"> </span><span class="k">path</span><span class="w"> </span><span class="n">location</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">flush</span><span class="w">            </span><span class="n">flushes</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">current</span><span class="w"> </span><span class="n">font</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="k">file</span><span class="w"></span>
+
+<span class="w"> </span><span class="o">[</span><span class="n">INPUT</span><span class="o">]</span><span class="w"></span>
+<span class="w">  </span><span class="n">infile</span><span class="w">            </span><span class="nl">xsl</span><span class="p">:</span><span class="n">fo</span><span class="w"> </span><span class="k">input</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="p">(</span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">next</span><span class="p">)</span><span class="w"></span>
+<span class="w">                    </span><span class="p">(</span><span class="k">use</span><span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">infile</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">pipe</span><span class="w"> </span><span class="k">input</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">stdin</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">fo</span><span class="w">  </span><span class="n">infile</span><span class="w">       </span><span class="nl">xsl</span><span class="p">:</span><span class="n">fo</span><span class="w"> </span><span class="k">input</span><span class="w"> </span><span class="k">file</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="nc">xml</span><span class="w"> </span><span class="n">infile</span><span class="w">       </span><span class="nc">xml</span><span class="w"> </span><span class="k">input</span><span class="w"> </span><span class="k">file</span><span class="p">,</span><span class="w"> </span><span class="n">must</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="n">together</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="o">-</span><span class="n">xsl</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">atin</span><span class="w"> </span><span class="n">infile</span><span class="w">      </span><span class="n">area</span><span class="w"> </span><span class="n">tree</span><span class="w"> </span><span class="k">input</span><span class="w"> </span><span class="k">file</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">ifin</span><span class="w"> </span><span class="n">infile</span><span class="w">      </span><span class="n">intermediate</span><span class="w"> </span><span class="nf">format</span><span class="w"> </span><span class="k">input</span><span class="w"> </span><span class="k">file</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">imagein</span><span class="w"> </span><span class="n">infile</span><span class="w">   </span><span class="nc">image</span><span class="w"> </span><span class="k">input</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="p">(</span><span class="n">piping</span><span class="w"> </span><span class="n">through</span><span class="w"> </span><span class="n">stdin</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">supported</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">xsl</span><span class="w"> </span><span class="n">stylesheet</span><span class="w">   </span><span class="n">xslt</span><span class="w"> </span><span class="n">stylesheet</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">-</span><span class="n">param</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="o">&lt;</span><span class="k">value</span><span class="o">&gt;</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">xslt</span><span class="w"> </span><span class="n">stylesheet</span><span class="w"></span>
+<span class="w">                    </span><span class="p">(</span><span class="n">repeat</span><span class="w"> </span><span class="s1">&#39;-param name value&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">each</span><span class="w"> </span><span class="k">parameter</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">-</span><span class="k">catalog</span><span class="w">          </span><span class="k">use</span><span class="w"> </span><span class="k">catalog</span><span class="w"> </span><span class="n">resolver</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">input</span><span class="w"> </span><span class="nc">XML</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">XSLT</span><span class="w"> </span><span class="n">files</span><span class="w"></span>
+<span class="w"> </span><span class="o">[</span><span class="n">OUTPUT</span><span class="o">]</span><span class="w"></span>
+<span class="w">  </span><span class="n">outfile</span><span class="w">           </span><span class="k">input</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">rendered</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">PDF</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">outfile</span><span class="w"></span>
+<span class="w">                    </span><span class="p">(</span><span class="k">use</span><span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">outfile</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">pipe</span><span class="w"> </span><span class="k">output</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">stdout</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">pdf</span><span class="w"> </span><span class="n">outfile</span><span class="w">      </span><span class="k">input</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">rendered</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">PDF</span><span class="w"> </span><span class="p">(</span><span class="n">outfile</span><span class="w"> </span><span class="n">req</span><span class="s1">&#39;d)</span>
+<span class="s1">  -pdfa1b outfile   input will be rendered as PDF/A-1b compliant PDF</span>
+<span class="s1">                    (outfile req&#39;</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="ss">&quot;-pdf outfile -pdfprofile PDF/A-1b&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">awt</span><span class="w">              </span><span class="k">input</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">displayed</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">screen</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">rtf</span><span class="w"> </span><span class="n">outfile</span><span class="w">      </span><span class="k">input</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">rendered</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">RTF</span><span class="w"> </span><span class="p">(</span><span class="n">outfile</span><span class="w"> </span><span class="n">req</span><span class="s1">&#39;d)</span>
+<span class="s1">  -pcl outfile      input will be rendered as PCL (outfile req&#39;</span><span class="n">d</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">ps</span><span class="w"> </span><span class="n">outfile</span><span class="w">       </span><span class="k">input</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">rendered</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">PostScript</span><span class="w"> </span><span class="p">(</span><span class="n">outfile</span><span class="w"> </span><span class="n">req</span><span class="s1">&#39;d)</span>
+<span class="s1">  -afp outfile      input will be rendered as AFP (outfile req&#39;</span><span class="n">d</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">tiff</span><span class="w"> </span><span class="n">outfile</span><span class="w">     </span><span class="k">input</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">rendered</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">TIFF</span><span class="w"> </span><span class="p">(</span><span class="n">outfile</span><span class="w"> </span><span class="n">req</span><span class="s1">&#39;d)</span>
+<span class="s1">  -png outfile      input will be rendered as PNG (outfile req&#39;</span><span class="n">d</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">txt</span><span class="w"> </span><span class="n">outfile</span><span class="w">      </span><span class="k">input</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">rendered</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">plain</span><span class="w"> </span><span class="nc">text</span><span class="w"> </span><span class="p">(</span><span class="n">outfile</span><span class="w"> </span><span class="n">req</span><span class="s1">&#39;d)</span>
+<span class="s1">  -at [mime] out    representation of area tree as XML (outfile req&#39;</span><span class="n">d</span><span class="p">)</span><span class="w"></span>
+<span class="w">                    </span><span class="n">specify</span><span class="w"> </span><span class="n">optional</span><span class="w"> </span><span class="n">mime</span><span class="w"> </span><span class="k">output</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">allow</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">AT</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">converted</span><span class="w"></span>
+<span class="w">                    </span><span class="k">to</span><span class="w"> </span><span class="n">final</span><span class="w"> </span><span class="nf">format</span><span class="w"> </span><span class="n">later</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="n">mime</span><span class="o">]</span><span class="w"> </span><span class="k">out</span><span class="w">    </span><span class="n">representation</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">document</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">intermediate</span><span class="w"> </span><span class="nf">format</span><span class="w"> </span><span class="nc">XML</span><span class="w"> </span><span class="p">(</span><span class="n">outfile</span><span class="w"> </span><span class="n">req</span><span class="s1">&#39;d)</span>
+<span class="s1">                    specify optional mime output to allow the IF to be converted</span>
+<span class="s1">                    to final format later</span>
+<span class="s1">  -print            input file will be rendered and sent to the printer</span>
+<span class="s1">                    see options with &quot;-print help&quot;</span>
+<span class="s1">  -out mime outfile input will be rendered using the given MIME type</span>
+<span class="s1">                    (outfile req&#39;</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="nl">Example</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;-out application/pdf D:\out.pdf&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">(</span><span class="nl">Tip</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;-out list&quot;</span><span class="w"> </span><span class="n">prints</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">supported</span><span class="w"> </span><span class="n">MIME</span><span class="w"> </span><span class="n">types</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">svg</span><span class="w"> </span><span class="n">outfile</span><span class="w">      </span><span class="k">input</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">rendered</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">SVG</span><span class="w"> </span><span class="n">slides</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="p">(</span><span class="n">outfile</span><span class="w"> </span><span class="n">req</span><span class="err">&#39;</span><span class="n">d</span><span class="p">)</span><span class="w"></span>
+<span class="w">                    </span><span class="n">Experimental</span><span class="w"> </span><span class="n">feature</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">requires</span><span class="w"> </span><span class="n">additional</span><span class="w"> </span><span class="n">fop</span><span class="o">-</span><span class="n">sandbox</span><span class="p">.</span><span class="n">jar</span><span class="p">.</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">-</span><span class="n">foout</span><span class="w"> </span><span class="n">outfile</span><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">XSL</span><span class="w"> </span><span class="n">transformed</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">intermediate</span><span class="w"></span>
+<span class="w">                    </span><span class="n">XSL</span><span class="o">-</span><span class="n">FO</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">saved</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">no</span><span class="w"> </span><span class="n">rendering</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">performed</span><span class="p">.</span><span class="w"></span>
+<span class="w">                    </span><span class="p">(</span><span class="k">Only</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="o">-</span><span class="nc">xml</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="o">-</span><span class="n">xsl</span><span class="w"> </span><span class="k">parameters</span><span class="p">)</span><span class="w"></span>
+
+
+<span class="w"> </span><span class="o">[</span><span class="n">Examples</span><span class="o">]</span><span class="w"></span>
+<span class="w">  </span><span class="n">fop</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">fo</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">pdf</span><span class="w"></span>
+<span class="w">  </span><span class="n">fop</span><span class="w"> </span><span class="o">-</span><span class="n">fo</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">fo</span><span class="w"> </span><span class="o">-</span><span class="n">pdf</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">pdf</span><span class="w"> </span><span class="p">(</span><span class="n">does</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">line</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">fop</span><span class="w"> </span><span class="o">-</span><span class="nc">xml</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="nc">xml</span><span class="w"> </span><span class="o">-</span><span class="n">xsl</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">xsl</span><span class="w"> </span><span class="o">-</span><span class="n">pdf</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">pdf</span><span class="w"></span>
+<span class="w">  </span><span class="n">fop</span><span class="w"> </span><span class="o">-</span><span class="nc">xml</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="nc">xml</span><span class="w"> </span><span class="o">-</span><span class="n">xsl</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">xsl</span><span class="w"> </span><span class="o">-</span><span class="n">foout</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">fo</span><span class="w"></span>
+<span class="w">  </span><span class="n">fop</span><span class="w"> </span><span class="o">-</span><span class="nc">xml</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">-</span><span class="n">xsl</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">xsl</span><span class="w"> </span><span class="o">-</span><span class="n">pdf</span><span class="w"> </span><span class="o">-</span><span class="w"></span>
+<span class="w">  </span><span class="n">fop</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">fo</span><span class="w"> </span><span class="o">-</span><span class="n">mif</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">mif</span><span class="w"></span>
+<span class="w">  </span><span class="n">fop</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">fo</span><span class="w"> </span><span class="o">-</span><span class="n">rtf</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">rtf</span><span class="w"></span>
+<span class="w">  </span><span class="n">fop</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">fo</span><span class="w"> </span><span class="o">-</span><span class="k">print</span><span class="w"></span>
+<span class="w">  </span><span class="n">fop</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">fo</span><span class="w"> </span><span class="o">-</span><span class="n">awt</span><span class="w"></span>
+</code></pre></div>
+
+<p>PDF encryption is only available if FOP was compiled with encryption support <strong>and</strong> if compatible encryption support is available at run time. Currently, only the JCE is supported. Check the <a href="pdfencryption.html">Details</a>.</p>
+<h3 id="your-own-script">Writing your own script</h3>
+<p>FOP's entry point for your own scripts is the class <code>org.apache.fop.cli.Main</code>. The general pattern for the command line is: <code>java -classpath &lt;CLASSPATH&gt;
+        org.apache.fop.cli.Main &lt;arguments&gt;</code>. The arguments consist of the options and infile and outfile specifications as shown above for the standard scripts. You may wish to review the standard scripts to make sure that you get your environment properly configured.</p>
+<h3 id="jar-option">Running with java's -jar option</h3>
+<p>As an alternative to the start scripts you can run <code>java
+        -jar path/to/build/fop.jar &lt;arguments&gt;</code>, relying on FOP to build the classpath for running FOP dynamically, see <a href="#dynamical-classpath">below</a>. If you use hyphenation, you must put <code>fop-hyph.jar</code> in the <code>lib</code> directory.</p>
+<p>You can also run <code>java -jar path/to/fop.jar
+      &lt;arguments&gt;</code>, relying on the <code>Class-Path</code> entry in the manifest file. This works if you put <code>fop.jar</code> and all jar files from the <code>lib</code> directory in a single directory. If you use hyphenation, you must also put <code>fop-hyph.jar</code> in that directory.</p>
+<p>In both cases the arguments consist of the options and infile and outfile specifications as shown above for the standard scripts.</p>
+<h3 id="dynamical-classpath">FOP's dynamical classpath construction</h3>
+<p>If FOP is started without a proper classpath, it tries to add its dependencies dynamically. If the system property <code>fop.home</code> contains the name of a directory, then FOP uses that directory as the base directory for its search. Otherwise the current working directory is the base directory. If the base directory is called <code>build</code>, then its parent directory becomes the base directory.</p>
+<p>FOP expects to find <code>fop.jar</code> in the <code>build</code> subdirectory of the base directory, and adds it to the classpath. Subsequently FOP adds all <code>jar</code> files in the lib directory to the classpath. The lib directory is either the <code>lib</code> subdirectory of the base directory, or, if that does not exist, the base directory itself.</p>
+<p>If the system property <code>fop.optional.lib</code> contains the name of a directory, then all <code>jar</code> files in that directory are also added to the classpath. See the methods <code>getJARList</code> and <code>checkDependencies</code> in <code>org.apache.fop.cli.Main</code>.</p>
+<h2 id="check-input">Using Xalan to Check XSL-FO Input</h2>
+<p>FOP sessions that use -xml and -xsl input instead of -fo input are actually controlling two distinct conversions: Tranforming XML to XSL-FO, then formatting the XSL-FO to PDF (or another FOP output format). Although FOP controls both of these processes, the first is included merely as a convenience and for performance reasons. Only the second is part of FOP's core processing. If a user has a problem running FOP, it is important to determine which of these two processes is causing the problem. If the problem is in the first process, the user's stylesheet is likely the cause. The FOP development team does not have resources to help with stylesheet issues, although we have included links to some useful <a href="../resources.html#specs">Specifications</a> and <a href="../resources.html#articles">Books/Articles</a>. If the problem is in the second process, FOP may have a bug or an unimplemented feature that does require attention from the FOP development team.</p>
+<p><note>The user is always responsible to provide correct XSL-FO code to FOP.</note></p>
+<p>In the case of using -xml and -xsl input, although the user is responsible for the XSL-FO code that is FOP's input, it is not visible to the user. To make the intermediate FO file visible, the FOP distribution includes the "-foout" option which causes FOP to run only the first (transformation) step, and write the results to a file. (See also the Xalan command-line below)</p>
+<p><note>When asking for help on the FOP mailing lists, <em>never</em> attach XML and XSL to illustrate the issue. Always run the XSLT step (-foout) and send the resulting XSL-FO file instead. Of course, be sure that the XSL-FO file is correct before sending it.</note></p>
+<p>The -foout option works the same way as if you would call the <a href="http://xml.apache.org/xalan-j/commandline.html">Xalan command-line</a>:</p>
+<p><code>java org.apache.xalan.xslt.Process -IN xmlfile -XSL file -OUT outfile</code></p>
+<p>Note that there are some subtle differences between the FOP and Xalan command-lines.</p>
+<h2 id="memory">Memory Usage</h2>
+<p>FOP can consume quite a bit of memory, even though this has been continually improved. This is partly inherent to the formatting process and partly caused by implementation choices. All FO processors currently on the market have memory problems with certain layouts.</p>
+<p>If you are running out of memory when using FOP, here are some ideas that may help:</p>
 <ul>
-<li>FOP-3149: Don't merge fonts when ascent is different</li>
-<li>FOP-3155: Use format 12 for unicode cmap</li>
-<li>FOP-3158: Switch to spotbugs</li>
-<li>FOP-3183: Disable pattern modification using xobjforms</li>
-<li>FOP-3200: Correct end of start code for merging ttf cmap</li>
+<li>
+<p>Increase memory available to the JVM. See <a href="http://docs.oracle.com/javase/1.5.0/docs/tooldocs/solaris/java.html">the -Xmx option</a> for more information.<warning>It is usually unwise to increase the memory allocated to the JVM beyond the amount of physical RAM, as this will generally cause significantly slower performance.</warning></p>
+</li>
+<li>
+<p>Avoid forward references. Forward references are references to some later part of a document. Examples include page number citations which refer to pages which follow the citation, tables of contents at the beginning of a document, and page numbering schemes that include the total number of pages in the document (<a href="../faq.html#pagenum">"page N of TOTAL"</a>). Forward references cause all subsequent pages to be held in memory until the reference can be resolved, i.e. until the page with the referenced element is encountered. Forward references may be required by the task, but if you are getting a memory overflow, at least consider the possibility of eliminating them. A table of contents could be replaced by PDF bookmarks instead or moved to the end of the document (reshuffle the paper could after printing).</p>
+</li>
+<li>
+<p>Avoid large images, especially if they are scaled down. If they need to be scaled, scale them in another application upstream from FOP. For many image formats, memory consumption is driven mainly by the size of the image file itself, not its dimensions (width*height), so increasing the compression rate may help.</p>
+</li>
+<li>
+<p>Use multiple page sequences. FOP starts rendering after the end of a page sequence is encountered. While the actual rendering is done page-by-page, some additional memory is freed after the page sequence has been rendered. This can be substantial if the page sequence contains lots of FO elements.</p>
+</li>
 </ul>
-<h2 id="version_2.9">Version 2.9</h2>
-<ul>
-<li>FOP-3107: Update to PDFBox 2.0.27</li>
-<li>FOP-3108: Gradient component not displayed correctly after scaling</li>
-<li>FOP-3112: Rotate annotations</li>
-<li>FOP-3123: Modified stream should be used in the cache key</li>
-<li>FOP-3124: Subrs data missing from font merging</li>
-<li>FOP-3136: Softmask dictionary preserved</li>
-<li>FOP-3138: NPE when no fields</li>
-<li>FOP-3140: Merge form fields</li>
-</ul>
-<h2 id="version_2.8">Version 2.8</h2>
-<ul>
-<li>FOP-3051: Upgrade to Commons IO 2.11</li>
-<li>FOP-3073: Preserve bytes when cloning string</li>
-<li>FOP-3089: Switch cmap format to support iPhone</li>
-<li>FOP-3102: Move composite glyphs to the end</li>
-</ul>
-<h2 id="version_2.7">Version 2.7</h2>
-<ul>
-<li>FOP-3034: Update PDFBox to 2.0.24</li>
-<li>FOP-3032: Allow to embed native PDF in AFP</li>
-<li>FOP-3020: Add space to standard position for font merge</li>
-<li>FOP-3009: Avoid merging fonts with different number of cmap formats</li>
-<li>FOP-3001: Deduplicate streams in arrays</li>
-</ul>
-<h2 id="version_2.6">Version 2.6</h2>
-<ul>
-<li>FOP-2951: Add uniquename to xobj form</li>
-<li>FOP-2965: Keep streams with DCT compression</li>
-<li>FOP-2971: Update unique name inside patterns</li>
-<li>FOP-2974: Handle space in COSName</li>
-<li>FOP-2979: Update PDFBox to 2.0.19</li>
-</ul>
-<h2 id="version_2.5">Version 2.5</h2>
-<ul>
-<li>FOP-2904: Handle object for boundingbox</li>
-<li>FOP-2922: Syntax error after writing content stream</li>
-<li>FOP-2933: PDF to PDF checkbox missing</li>
-</ul>
-<h2 id="version_2.4">Version 2.4</h2>
-<ul>
-<li>FOP-2802: Java 10 PDF/SVG to Image box not shown</li>
-<li>FOP-2812: Update PDFBox to 2.0.11</li>
-<li>FOP-2836: Update PDFBox to 2.0.13</li>
-<li>FOP-2840: Image mask in PDF not rendered to PS</li>
-<li>FOP-2841: PDF to PDF with merge-fonts checkbox misaligned</li>
-<li>FOP-2856: Support compile on Java 12</li>
-<li>FOP-2873: Update to PDFBox 2.0.16</li>
-<li>FOP-2879: Add caching to avoid parsing content stream</li>
-<li>FOP-2882: Allow PDFFormXObject to improve performance</li>
-</ul>
-<h2 id="version_2.3">Version 2.3</h2>
-<ul>
-<li>PDF to PDF deduplicate more types of streams</li>
-<li>PDF to PS allow fop fonts as fallback</li>
-</ul>
-<h2 id="version_2.2">Version 2.2</h2>
-<ul>
-<li>Move to PDFBox 2</li>
-<li>Deduplicate PDF streams</li>
-<li>PDF to PS deduplication of images</li>
-<li>Remove xobj type=form</li>
-<li>Merge fonts (off by default)</li>
-<li>Support PDF shading to PS</li>
-<li>Merging of Tagged (Accessible) PDF</li>
-</ul>
+<h2 id="problems">Problems</h2>
+<p>If you have problems running FOP, please see the <a href="../gethelp.html">"How to get Help" page</a>.</p>
         </div>
       </div>
       <div class="clear"></div>

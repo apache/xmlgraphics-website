@@ -25,7 +25,7 @@
 	});
     </script>
 
-   <title>Apache(th) FOP: PDF Images Plug-In</title>
+   <title>Apache(tm) FOP: Fonts</title>
   </head>
 
   <body>
@@ -1676,6 +1676,9 @@ $(document).ready(function () {
 })
 </script>	</div>
 	
+	<div id="outdated-warning" style="padding: .5em; text-align: center; background-color: #FFBABA; color: #6A0E0E;">
+    This document is for an old version of FOP that is no longer supported. <a href="../2.10/fonts.html">Latest version of this page</a>
+    </div>
   
 
 	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
@@ -1697,193 +1700,386 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1 id="apache-fop-pdf-images-plug-in">Apache&trade; FOP: PDF Images Plug-In</h1>
-<h2 id="overview">Overview</h2>
-<p>The <em>fop-pdf-images</em> plug-in extends FOP in order to add support for using PDF images in fo:external-graphic elements when
-generating PDF files. This means one can write something like:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf#page=1&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<p>and</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fox:external-document</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<h2 id="reduce-file-size">Reduce file size</h2>
-<p>If you input many pdfs together the output pdf has duplicate fonts. Set this flag to merge fonts in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-fonts&gt;</span>true<span class="nt">&lt;/merge-fonts&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<p>Object Streams compress the PDF to reduce file size. Needs to be enabled using fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;use-object-streams&gt;</span>true<span class="nt">&lt;/use-object-streams&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="improve-performance">Improve performance</h2>
-<p>If you use many of the same pdf's and they have a large content stream, this flag can improve performance.
-The disadvantage will be it can cause higher memory use inside your printer.
-Set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;form-xobject&gt;</span>true<span class="nt">&lt;/form-xobject&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="merge-form-fields">Merge form fields</h2>
-<p>If you want to merge form fields data structure across multiple input pdfs set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-form-fields&gt;</span>true<span class="nt">&lt;/merge-form-fields&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="known-issues-with-postscript-output">Known issues with Postscript output</h2>
-<ul>
-<li>If fonts are not embedded in source PDF:<ul>
-<li>If OTF font type is needed text may be missing if Adobe Reader fonts are not found</li>
-<li>Text may be rendered wrong or poorly if wrong font is selected as replacement   </li>
-</ul>
-</li>
-<li>Transparency, layers and opacity may not render correctly</li>
-<li>Gradients in text may be different from the source PDF</li>
-</ul>
-<h2 id="binary">Binary Download</h2>
-<p>If using the binary package, the four jar files should be placed in the <em>lib</em> directory of your FOP installation.</p>
-<p>Binary distributions include "-bin" in their names, and can be downloaded from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>.</p>
-<p>Here are the links to each package’s signature and checksum files. Signatures can be verified by using our <a href="https://www.apache.org/dist/xmlgraphics/fop/KEYS">KEYS</a> file.</p>
+    <h1 id="apache-fop-fonts">Apache&trade; FOP: Fonts</h1>
+<p><authors><person email="" name="Jeremias Märki"></person><person email="" name="Tore Engvig"></person><person email="" name="Adrian Cumiskey"></person><person email="" name="Max Berger"></person></authors></p>
+<h2 id="intro">Summary</h2>
+<p>The following table summarizes the font capabilities of the various Apache&trade; FOP renderers:</p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
+<th>Renderer</th>
+<th>Base-14</th>
+<th>AWT/OS</th>
+<th>Custom</th>
+<th>Custom Embedding</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz&amp;action=download">fop-pdf-images-2.10-bin.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz.sha512">SHA512</a></td>
-<td></td>
+<td>PDF</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
 </tr>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip&amp;action=download">fop-pdf-images-2.10-bin.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip.sha512">SHA512</a></td>
-<td></td>
+<td>PostScript</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
 </tr>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz&amp;action=download">fop-pdf-images-2.10-src.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz.sha512">SHA512</a></td>
-<td></td>
+<td>PCL</td>
+<td>yes (modified)</td>
+<td>yes (painted as bitmaps)</td>
+<td>yes (painted as bitmaps)</td>
+<td>no</td>
 </tr>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip&amp;action=download">fop-pdf-images-2.10-src.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip.sha512">SHA512</a></td>
-<td></td>
+<td>AFP</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Java2D/AWT/Bitmap</td>
+<td>if available from OS</td>
+<td>yes</td>
+<td>yes</td>
+<td>n/a (display only)</td>
+</tr>
+<tr>
+<td>Print</td>
+<td>if available from OS</td>
+<td>yes</td>
+<td>yes</td>
+<td>controlled by OS printer driver</td>
+</tr>
+<tr>
+<td>RTF</td>
+<td>n/a (font metrics not needed)</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>TXT</td>
+<td>yes (used for layout but not for output)</td>
+<td>no</td>
+<td>yes (used for layout but not for output)</td>
+<td>no</td>
+</tr>
+<tr>
+<td>XML</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>n/a</td>
 </tr>
 </tbody>
 </table>
-<h2 id="source">Source Download</h2>
+<p>Note that Java2D based renderers (Java2D, AWT, Print, TIFF, PNG) support both system (AWT/OS) and custom fonts.</p>
+<h2 id="Base-14-Fonts">Base-14 Fonts</h2>
+<p>The Adobe PostScript and PDF Specification specify a set of 14 fonts that must be available to every PostScript interpreter and PDF reader: Helvetica (normal, bold, italic, bold italic), Times (normal, bold, italic, bold italic), Courier (normal, bold, italic, bold italic), Symbol and ZapfDingbats.</p>
+<p>The following font family names are hard-coded into FOP for the Base-14 font set:</p>
+<table>
+<thead>
+<tr>
+<th>Base-14 font</th>
+<th>font families</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Helvetica</td>
+<td>Helvetica, sans-serif, SansSerif</td>
+</tr>
+<tr>
+<td>Times</td>
+<td>Times, Times Roman, Times-Roman, serif, any</td>
+</tr>
+<tr>
+<td>Courier</td>
+<td>Courier, monospace, Monospaced</td>
+</tr>
+<tr>
+<td>Symbol</td>
+<td>Symbol</td>
+</tr>
+<tr>
+<td>ZapfDingbats</td>
+<td>ZapfDingbats</td>
+</tr>
+</tbody>
+</table>
+<p>Please note that recent versions of Adobe Acrobat Reader replace "Helvetica" with "Arial" and "Times" with "Times New Roman" internally. GhostScript replaces "Helvetica" with "Nimbus Sans L" and "Times" with "Nimbus Roman No9 L". Other document viewers may do similar font substitutions. If you need to make sure that there are no such substitutions, you need to specify an explicit font and embed it in the target document.</p>
+<h2 id="missing-fonts">Missing Fonts</h2>
+<p>When FOP does not have a specific font at its disposal (because it's not installed in the operating system or set up in FOP's configuration), the font is replaced with "any". "any" is internally mapped to the Base-14 font "Times" (see above).</p>
+<h2 id="missing-glyphs">Missing Glyphs</h2>
+<p>Every font contains a particular set of <a href="http://en.wikipedia.org/wiki/Glyph">glyphs</a>. If no glyph can be found for a given character, FOP will issue a warning and use the glpyh for "#" (if available) instead. Before it does that, it consults a (currently hard-coded) registry of glyph substitution groups (see Glyphs.java in Apache XML Graphics Commons). This registry can supply alternative glyphs in some cases (like using space when a no-break space is requested). But there's no guarantee that the result will be as expected (for example, in the case of hyphens and similar glyphs). A better way is to use a font that has all the necessary glyphs. This glyph substitution is only a last resort.</p>
+<h2 id="awt">System Fonts</h2>
+<p>Support for system fonts relies on the Java AWT subsystem for font metric information. Through operating system registration, the AWT subsystem knows what fonts are available on the system, and the font metrics for each one.</p>
+<p>When working with renderers that supports system fonts (see above table) and you're missing a font, you can just install it in your operating system and it should be available for these renderers. Please note that this is not true for output formats, such as PDF or PostScript, that only support custom fonts.</p>
+<h2 id="custom">Custom Fonts</h2>
+<table>
+<thead>
+<tr>
+<th>Renderer</th>
+<th>TTF</th>
+<th>TTC</th>
+<th>Type1</th>
+<th>OTF</th>
+<th>AFP Fonts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PDF</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Postscript</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td>AFP</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>PCL</td>
+<td>yes</td>
+<td>yes</td>
+<td>bitmap</td>
+<td>bitmap</td>
+<td>no</td>
+</tr>
+<tr>
+<td>TIFF</td>
+<td>bitmap</td>
+<td>bitmap</td>
+<td>bitmap</td>
+<td>bitmap</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<p>Support for custom fonts is highly output format dependent (see above table). This section shows how to add Type 1, TrueType (TTF) and OpenType (OTF) fonts to the PDF, PostScript and Java2D-based renderers. Other renderers (like AFP) support other font formats. Details in this case can be found on the page about <a href="output.html">output formats</a>.</p>
+<p>In earlier FOP versions, it was always necessary to create an XML font metrics file if you wanted to add a custom font. This inconvenient step has been removed and in addition to that, FOP supports auto-registration of fonts, i.e. FOP can find fonts installed in your operating system or can scan user-specified directories for fonts. Font registration via XML font metrics has been deprecated and is not recommended although it is still supported by the current code.</p>
+<p>More information about fonts can be found at <a href="http://www.adobe.com/devnet/font.html">Adobe Font Technical Notes</a>.</p>
+<h3 id="opentype-advanced-font-features">OpenType Advanced Font Features</h3>
+<p>OpenType fonts support advanced layout features such as ligatures, small caps, swashes, alternates, old style figures and more. Please see <a href="http://www.microsoft.com/typography/otspec/TTOCHAP1.htm">Advanced Typographic Extensions - OpenType Layout</a>. These features are currently missing within FOP due to the implementation opting to favor a greater number of formats. </p>
+<p>While FOP may support embedding OpenType with advanced features in the future, the current method extracts the Compact Font Format (CFF) data containing among other things the character definitions, optionally subsets and embeds the result as a Type1C font. This allows the font to be used by both Postscript and older PDF versions while losing the features mentioned above. This is because embedding Open-Type in it's original state is only supported by PDF 1.6 and above.</p>
+<h2 id="bulk">Bulk Font Configuration</h2>
+<p>If you want FOP to use custom fonts, you need to tell it where to find them. This is done in the configuration file and once per renderer (because each output format is a little different). For convenience, FOP allows bulk registering of fonts; you can either tell FOP to find your operating system fonts or you can specify directories that it will search for support fonts. These fonts will then automatically be registered.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderers&gt;</span>
+  <span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;fonts&gt;</span>
+        <span class="c">&lt;!-- register all the fonts found in a directory --&gt;</span>
+        <span class="nt">&lt;directory&gt;</span>C:\MyFonts1<span class="nt">&lt;/directory&gt;</span>
+
+        <span class="c">&lt;!-- register all the fonts found in a directory and all of its sub directories (use with care) --&gt;</span>
+        <span class="nt">&lt;directory</span> <span class="na">recursive=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>C:\MyFonts2<span class="nt">&lt;/directory&gt;</span>
+
+        <span class="c">&lt;!-- automatically detect operating system installed fonts --&gt;</span>
+        <span class="nt">&lt;auto-detect/&gt;</span>
+     <span class="nt">&lt;/fonts&gt;</span>
+  <span class="nt">&lt;/renderer&gt;</span>
+<span class="nt">&lt;/renderers&gt;</span>
+</code></pre></div>
+
+<p><note>Review the documentation for <a href="configuration.html">FOP Configuration</a> for instructions on making the FOP configuration available to FOP when it runs. Otherwise, FOP has no way of finding your custom font information. It is currently not possible to easily configure fonts from Java code.</note></p>
+<h3 id="register">Register Fonts with FOP</h3>
+<p>You must tell FOP how to find and use the font files by registering them in the <a href="configuration.html">FOP Configuration</a>. Add entries for your custom fonts, regardless of font type, to the configuration file in a manner similar to the following:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderers&gt;</span>
+   <span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;fonts&gt;</span>
+           <span class="nt">&lt;font</span> <span class="na">kerning=</span><span class="s">&quot;yes&quot;</span> <span class="na">embed-url=</span><span class="s">&quot;/System/Library/Fonts/Arial.ttf&quot;</span> <span class="na">embedding-mode=</span><span class="s">&quot;subset&quot;</span><span class="nt">&gt;</span>
+               <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Arial&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+           <span class="nt">&lt;/font&gt;</span>
+           <span class="nt">&lt;font</span> <span class="na">kerning=</span><span class="s">&quot;yes&quot;</span> <span class="na">embed-url=</span><span class="s">&quot;/System/Library/Fonts/AEHO____.PFB&quot;</span><span class="nt">&gt;</span>
+               <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;Avenir-HeavyOblique&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">/&gt;</span>
+           <span class="nt">&lt;/font&gt;</span>
+       <span class="nt">&lt;/fonts&gt;</span>
+   <span class="nt">&lt;/renderer&gt;</span>
+<span class="nt">&lt;/renderers&gt;</span>
+</code></pre></div>
+
+<h4 id="fonts-element">Fonts element</h4>
 <ul>
-<li>Download a released version from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>. Source distributions include "-src" in their names.</li>
+<li>The "lazy-load" attribute can be set on the fonts element, setting to "true" will be used for PNG/TIFF/PCL output to only load fonts used by the FO. Default is "false".</li>
 </ul>
-<h2 id="older_releases">Older Releases</h2>
-<p>Archive distributions can be downloaded from the archives <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/">binaries</a> &amp; <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/source/">source</a> links.</p>
-<p>The fop-pdf-images plug-in was donated by Jeremias M&auml;rki to the XMLGraphics project in 2012. Older releases can
-be obtained from his plug-in <a href="http://www.jeremias-maerki.ch/development/fop/index.html">page</a>.</p>
-<h1 id="history-of-changes">History of Changes</h1>
-<h2 id="version_trunk">Version trunk</h2>
+<h4 id="font-element">Font element</h4>
 <ul>
-<li>FOP-3203: Upgrade to PDFBox 3</li>
-<li>FOP-3210: Correct position when merging pdfs</li>
-<li>FOP-3213: Sort dict hash to find more duplicates</li>
-<li>FOP-3227: Draw softmask without rasterizing page</li>
-<li>FOP-3230: Fix PDF/UA compliance issues when attaching a PDF/UA file</li>
-<li>FOP-3233: Avoid merging fonts without mac cmap</li>
-<li>FOP-3234: Use unique value for glyph index for font merging</li>
-<li>FOP-3235: Correct PS transform for gradients and mask for images</li>
-<li>FOP-3237: Use DPI to set resolution of PDFBox images</li>
-<li>FOP-3240: Use glyph from fonts where is exists for font merge</li>
-</ul>
-<h2 id="version_2.10">Version 2.10</h2>
+<li>
+<p>The "embed-url" attribute is used to specify the font file. Relative URLs are resolved relative to the font-base property (or base) if available. See <a href="configuration.html">FOP: Configuration</a> for more information. </p>
+</li>
+<li>
+<p>The "embedding-mode" attribute is optional and can take two values: subset (the default) and full. If not specified the font is subset embedded for TTF and OTF or full embedded for Type 1, unless it is explicitly referenced (see below).</p>
+</li>
+<li>
+<p>The font "kerning" attribute is optional. Default is "true".</p>
+</li>
+<li>
+<p>The "embed-as-type1" attribute is optional, setting to "true" converts OTF fonts to Type 1 for postscript output.</p>
+</li>
+<li>
+<p>The "simulate-style" attribute is optional, setting to "true" generates bold and oblique looking glyphs for PDF output.</p>
+</li>
+<li>
+<p>When setting the "embed-url" attribute for Type 1 fonts, be sure to specify the PFB (actual font data), not the PFM (font metrics) file. If the PFM (or AFM) file is in a different location (i.e., not in the same directory) then you need to specify an "embed-url-pfm" (or "embed-url-afm") attribute next to the "embed-url" one.</p>
+</li>
+<li>
+<p>The attribute "encoding-mode" is optional an may have the following values:</p>
 <ul>
-<li>FOP-3149: Don't merge fonts when ascent is different</li>
-<li>FOP-3155: Use format 12 for unicode cmap</li>
-<li>FOP-3158: Switch to spotbugs</li>
-<li>FOP-3183: Disable pattern modification using xobjforms</li>
-<li>FOP-3200: Correct end of start code for merging ttf cmap</li>
+<li>
+<p>auto: default font encoding mode ("cid" for Truetype, "single-byte" for Type 1)</p>
+</li>
+<li>
+<p>single-byte: use single-byte encodings in the target format (if applicable)</p>
+</li>
+<li>
+<p>cid: encode as CID-keyed font (currently only supported for PDF output with TrueType fonts)</p>
+</li>
 </ul>
-<h2 id="version_2.9">Version 2.9</h2>
+</li>
+</ul>
+<h4 id="inside-fonts-element">Inside fonts element</h4>
 <ul>
-<li>FOP-3107: Update to PDFBox 2.0.27</li>
-<li>FOP-3108: Gradient component not displayed correctly after scaling</li>
-<li>FOP-3112: Rotate annotations</li>
-<li>FOP-3123: Modified stream should be used in the cache key</li>
-<li>FOP-3124: Subrs data missing from font merging</li>
-<li>FOP-3136: Softmask dictionary preserved</li>
-<li>FOP-3138: NPE when no fields</li>
-<li>FOP-3140: Merge form fields</li>
+<li>
+<p>The fonts "directory" tag can be used to register fonts contained within a single or list of directory paths. The "recursive" attribute can be specified to recursively add fonts from all sub directories.</p>
+</li>
+<li>
+<p>The fonts "auto-detect" tag can be used to automatically register fonts that are found to be installed on the native operating system.</p>
+</li>
+<li>
+<p>Fonts registered with "font" tag configurations override fonts found by means of "directory" tag definitions.</p>
+</li>
+<li>
+<p>Fonts found as a result of a "directory" tag configuration override fonts found as a result of the "auto-detect" tag being specified.</p>
+</li>
+<li>
+<p>If relative URLs are specified, they are evaluated relative to the value of the "font-base" setting. If there is no "font-base" setting, the fonts are evaluated relative to the base directory.</p>
+</li>
+<li>
+<p>If a fop.xconf is not used, or the "embed-url" attribute is missing, the fonts are referenced (and the default Base-14 is used in this case).</p>
+</li>
 </ul>
-<h2 id="version_2.8">Version 2.8</h2>
+<h3 id="truetype-collections-metrics">TrueType Collections</h3>
+<p>TrueType collections (.ttc files) contain more than one font. The individual sub-fonts of a TrueType Collection can be selected using the "sub-font" attribute on the "font" element. Example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;font</span> <span class="na">embed-url=</span><span class="s">&quot;gulim.ttc&quot;</span> <span class="na">sub-font=</span><span class="s">&quot;GulimChe&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;font-triplet</span> <span class="na">name=</span><span class="s">&quot;GulimChe&quot;</span> <span class="na">style=</span><span class="s">&quot;normal&quot;</span> <span class="na">weight=</span><span class="s">&quot;normal&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/font&gt;</span>
+</code></pre></div>
+
+<h3 id="autodetect">Auto-Detect and auto-embed feature</h3>
+<p>When the "auto-detect" flag is set in the configuration, FOP will automatically search for fonts in the default paths for your operating system.</p>
+<p>FOP will also auto-detect fonts which are available in the classpath, if they are described as "application/x-font" in the MANIFEST.MF file. For example, if your .jar file contains font/myfont.ttf:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Manifest</span><span class="o">-</span><span class="k">Version</span><span class="p">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
+
+    <span class="n">Name</span><span class="p">:</span> <span class="n">font</span><span class="o">/</span><span class="n">myfont</span><span class="p">.</span><span class="n">ttf</span>
+    <span class="n">Content</span><span class="o">-</span><span class="k">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">font</span>
+</code></pre></div>
+
+<p>This feature allows you to create JAR files containing fonts. The JAR files can be added to fop by providem them in the classpath, e.g. copying them into the lib/ directory.</p>
+<h4 id="font-cache">The font cache</h4>
+<p>Apache FOP maintains a cache file that is used to speed up auto-detection. This file is usually found in the ".fop" directory under the user's home directory. It's called "fop-fonts.cache". When the user's home directory is not writable, the font cache file is put in the directory for temporary files.</p>
+<p>If there was a problem loading a particular font, it is flagged in the cache file so it is not loaded anymore. So, if a font is actually around but is still not found by Apache FOP, it's worth a try to delete the font cache file which forces Apache FOP to reparse all fonts.</p>
+<h3 id="referencing_fonts">Referencing Fonts</h3>
+<p>By default, all fonts are embedded if an output format supports font embedding. In some cases, however, it is preferred that some fonts are only referenced. When working with referenced fonts it is important to be in control of the target environment where the produced document is consumed, i.e. the necessary fonts have to be installed there.</p>
+<p>There are two different ways how you can specify that a font should be referenced:</p>
+<ol>
+<li>
+<p>When explicitly configuring a font, font referencing is controlled by the embed-url attribute. If you don't specify the embed-url attribute the font will not be embedded, but will only be referenced.</p>
+</li>
+<li>
+<p>For automatically configured fonts there's a different mechanism to specify which fonts should be referenced rather than embedded. This is done in the "referenced-fonts" element in the configuration. Here's an example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fonts&gt;</span>
+    <span class="nt">&lt;referenced-fonts&gt;</span>
+      <span class="nt">&lt;match</span> <span class="na">font-family=</span><span class="s">&quot;Helvetica&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;match</span> <span class="na">font-family=</span><span class="s">&quot;DejaVu.*&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/referenced-fonts&gt;</span>
+  <span class="nt">&lt;/fonts&gt;</span>
+<span class="nt">&lt;/fop&gt;</span>
+</code></pre></div>
+
+</li>
+</ol>
+<p>At the moment, you can only match fonts against their font-family. It is possible to use regular expressions as is shown in the second example above ("DejaVu.*"). The syntax for the regular expressions used here are the one used by the <a href="https://docs.oracle.com/javase/7/docs/api/java/util/regex/package-summary.html">package</a>. So, in the above snippet "Helvetica" and all variants of the "DejaVu" font family are referenced. If you want to reference all fonts, just specify <code>font-family=".*"</code>.</p>
+<p>The <code>referenced-fonts</code> element can be placed either inside the general <code>fonts</code> element (right under the root) or in the <code>fonts</code> element under the renderer configuration. In the first case, matches apply to all renderers. In the second case, matches only apply to the renderer where the element was specified. Both cases can be used at the same time.</p>
+<h3 id="embedding_fonts">Embedding Fonts</h3>
+<p>Some notes related to embedded fonts:</p>
 <ul>
-<li>FOP-3051: Upgrade to Commons IO 2.11</li>
-<li>FOP-3073: Preserve bytes when cloning string</li>
-<li>FOP-3089: Switch cmap format to support iPhone</li>
-<li>FOP-3102: Move composite glyphs to the end</li>
+<li>
+<p>When FOP embeds a font in PDF, it adds a prefix to the fontname to ensure that the name will not match the fontname of an installed font. This is helpful with older versions of Acrobat Reader that preferred installed fonts over embedded fonts.</p>
+</li>
+<li>
+<p>When embedding PostScript fonts, the entire font is always embedded.</p>
+</li>
+<li>
+<p>When embedding TrueType (ttf) or TrueType Collections (ttc), a subset of the original font, containing only the glyphs used, is embedded in the output document. That's the default, but if you specify encoding-mode="single-byte" (see above), the complete font is embedded.</p>
+</li>
 </ul>
-<h2 id="version_2.7">Version 2.7</h2>
+<h3 id="font_substitution">Font Substitution</h3>
+<p>When a <code>&lt;substitutions/&gt;</code> section is defined in the configuration, FOP will re-map any font-family references found in your FO input to a given substitution font.</p>
 <ul>
-<li>FOP-3034: Update PDFBox to 2.0.24</li>
-<li>FOP-3032: Allow to embed native PDF in AFP</li>
-<li>FOP-3020: Add space to standard position for font merge</li>
-<li>FOP-3009: Avoid merging fonts with different number of cmap formats</li>
-<li>FOP-3001: Deduplicate streams in arrays</li>
+<li>
+<p>If a <code>&lt;substitution/&gt;</code> is declared, it is mandatory that both a <from/> and <to/> child element is declared with a font-family attribute.</p>
+</li>
+<li>
+<p>Both font-weight and font-style are optional attributes, if they are provided then a value of 'normal' is assumed.</p>
+</li>
 </ul>
-<h2 id="version_2.6">Version 2.6</h2>
+<p>For example you could make all FO font-family references to 'Arial' with weights between 700 and 900 reference the normal 'Arial Black' font.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fonts&gt;</span>
+    <span class="nt">&lt;substitutions&gt;</span>
+      <span class="nt">&lt;substitution&gt;</span>
+        <span class="nt">&lt;from</span> <span class="na">font-family=</span><span class="s">&quot;Arial&quot;</span> <span class="na">font-weight=</span><span class="s">&quot;700..900&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;to</span> <span class="na">font-family=</span><span class="s">&quot;Arial Black&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/substitution&gt;</span>
+      <span class="nt">&lt;substitution&gt;</span>
+        <span class="nt">&lt;from</span> <span class="na">font-family=</span><span class="s">&quot;FrutigerLight&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;to</span> <span class="na">font-family=</span><span class="s">&quot;Times&quot;</span> <span class="na">font-weight=</span><span class="s">&quot;bold&quot;</span> <span class="na">font-style=</span><span class="s">&quot;italic&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/substitution&gt;</span>
+    <span class="nt">&lt;/substitutions&gt;</span>
+  <span class="nt">&lt;/fonts&gt;</span>
+<span class="nt">&lt;/fop&gt;</span>
+</code></pre></div>
+
+<h2 id="selection">Font Selection Strategies</h2>
+<p>There are two font selection strategies: character-by-character or auto. The default is auto.</p>
+<p>Auto selected the first font from the list which is able to display the most characters in a given word. This means (assume font A has characters for abclmn, font B for lnmxyz, fontlist is A,B):</p>
 <ul>
-<li>FOP-2951: Add uniquename to xobj form</li>
-<li>FOP-2965: Keep streams with DCT compression</li>
-<li>FOP-2971: Update unique name inside patterns</li>
-<li>FOP-2974: Handle space in COSName</li>
-<li>FOP-2979: Update PDFBox to 2.0.19</li>
+<li>
+<p>aaa lll xxx would be displayed in fonts A A B</p>
+</li>
+<li>
+<p>aaaxx would be displayed in font A</p>
+</li>
+<li>
+<p>aaaxxx would be displayed in font A</p>
+</li>
+<li>
+<p>aaaxxxx would be displayed in font B</p>
+</li>
 </ul>
-<h2 id="version_2.5">Version 2.5</h2>
-<ul>
-<li>FOP-2904: Handle object for boundingbox</li>
-<li>FOP-2922: Syntax error after writing content stream</li>
-<li>FOP-2933: PDF to PDF checkbox missing</li>
-</ul>
-<h2 id="version_2.4">Version 2.4</h2>
-<ul>
-<li>FOP-2802: Java 10 PDF/SVG to Image box not shown</li>
-<li>FOP-2812: Update PDFBox to 2.0.11</li>
-<li>FOP-2836: Update PDFBox to 2.0.13</li>
-<li>FOP-2840: Image mask in PDF not rendered to PS</li>
-<li>FOP-2841: PDF to PDF with merge-fonts checkbox misaligned</li>
-<li>FOP-2856: Support compile on Java 12</li>
-<li>FOP-2873: Update to PDFBox 2.0.16</li>
-<li>FOP-2879: Add caching to avoid parsing content stream</li>
-<li>FOP-2882: Allow PDFFormXObject to improve performance</li>
-</ul>
-<h2 id="version_2.3">Version 2.3</h2>
-<ul>
-<li>PDF to PDF deduplicate more types of streams</li>
-<li>PDF to PS allow fop fonts as fallback</li>
-</ul>
-<h2 id="version_2.2">Version 2.2</h2>
-<ul>
-<li>Move to PDFBox 2</li>
-<li>Deduplicate PDF streams</li>
-<li>PDF to PS deduplication of images</li>
-<li>Remove xobj type=form</li>
-<li>Merge fonts (off by default)</li>
-<li>Support PDF shading to PS</li>
-<li>Merging of Tagged (Accessible) PDF</li>
-</ul>
+<h2 id="font-list">Font List Command-Line Tool</h2>
+<p>FOP contains a small command-line tool that lets you generate a list of all configured fonts. Its class name is: <code>org.apache.fop.tools.fontlist.FontListMain</code>. Run it with the "-?" parameter to get help for the various options.</p>
         </div>
       </div>
       <div class="clear"></div>

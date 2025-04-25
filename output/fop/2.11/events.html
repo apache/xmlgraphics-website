@@ -25,7 +25,7 @@
 	});
     </script>
 
-   <title>Apache(th) FOP: PDF Images Plug-In</title>
+   <title>Apache(tm) FOP: Events/Processing Feedback</title>
   </head>
 
   <body>
@@ -1676,6 +1676,9 @@ $(document).ready(function () {
 })
 </script>	</div>
 	
+	<div id="outdated-warning" style="padding: .5em; text-align: center; background-color: #FFBABA; color: #6A0E0E;">
+    This document is for an old version of FOP that is no longer supported. <a href="../2.10/events.html">Latest version of this page</a>
+    </div>
   
 
 	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
@@ -1697,193 +1700,211 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1 id="apache-fop-pdf-images-plug-in">Apache&trade; FOP: PDF Images Plug-In</h1>
-<h2 id="overview">Overview</h2>
-<p>The <em>fop-pdf-images</em> plug-in extends FOP in order to add support for using PDF images in fo:external-graphic elements when
-generating PDF files. This means one can write something like:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf#page=1&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<p>and</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fox:external-document</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<h2 id="reduce-file-size">Reduce file size</h2>
-<p>If you input many pdfs together the output pdf has duplicate fonts. Set this flag to merge fonts in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-fonts&gt;</span>true<span class="nt">&lt;/merge-fonts&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<p>Object Streams compress the PDF to reduce file size. Needs to be enabled using fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;use-object-streams&gt;</span>true<span class="nt">&lt;/use-object-streams&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="improve-performance">Improve performance</h2>
-<p>If you use many of the same pdf's and they have a large content stream, this flag can improve performance.
-The disadvantage will be it can cause higher memory use inside your printer.
-Set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;form-xobject&gt;</span>true<span class="nt">&lt;/form-xobject&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="merge-form-fields">Merge form fields</h2>
-<p>If you want to merge form fields data structure across multiple input pdfs set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-form-fields&gt;</span>true<span class="nt">&lt;/merge-form-fields&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="known-issues-with-postscript-output">Known issues with Postscript output</h2>
+    <h1 id="apache-fop-eventsprocessing-feedback">Apache&trade; FOP: Events/Processing Feedback</h1>
+<h2 id="introduction">Introduction</h2>
+<p>In versions until 0.20.5, Apache&trade; FOP used <a href="http://excalibur.apache.org/framework/index.html">Avalon-style Logging</a> where it was possible to supply a logger per processing run. During the redesign the logging infrastructure was switched over to <a href="http://commons.apache.org/logging/">Commons Logging</a> which is (like Log4J or java.util.logging) a "static" logging framework (the logger is accessed through static variables). This made it very difficult in a multi-threaded system to retrieve information for a single processing run.</p>
+<p>With FOP's event subsystem, we'd like to close this gap again and even go further. The first point is to realize that we have two kinds of "logging". Firstly, we have the logging infrastructure for the (FOP) developer who needs to be able to enable finer log messages for certain parts of FOP to track down a certain problem. Secondly, we have the user who would like to be informed about missing images, overflowing lines or substituted fonts. These messages (or events) are targeted at less technical people and may ideally be localized (translated). Furthermore, tool and solution builders would like to integrate FOP into their own solutions. For example, an FO editor should be able to point the user to the right place where a particular problem occurred while developing a document template. Finally, some integrators would like to abort processing if a resource (an image or a font) has not been found, while others would simply continue. The event system allows to react on these events.</p>
+<p>On this page, we won't discuss logging as such. We will show how the event subsystem can be used for various tasks. We'll first look at the event subsystem from the consumer side. Finally, the production of events inside FOP will be discussed (this is mostly interesting for FOP developers only).</p>
+<h2 id="consumer">The consumer side</h2>
+<p>The event subsystem is located in the <code>org.apache.fop.events</code> package and its base is the <code>Event</code> class. An instance is created for each event and is sent to a set of <code>EventListener</code> instances by the <code>EventBroadcaster</code>. An <code>Event</code> contains:</p>
 <ul>
-<li>If fonts are not embedded in source PDF:<ul>
-<li>If OTF font type is needed text may be missing if Adobe Reader fonts are not found</li>
-<li>Text may be rendered wrong or poorly if wrong font is selected as replacement   </li>
-</ul>
+<li>
+<p>an event ID,</p>
 </li>
-<li>Transparency, layers and opacity may not render correctly</li>
-<li>Gradients in text may be different from the source PDF</li>
+<li>
+<p>a source object (which generated the event),</p>
+</li>
+<li>
+<p>a severity level (Info, Warning, Error and Fatal Error) and</p>
+</li>
+<li>
+<p>a map of named parameters.</p>
+</li>
 </ul>
-<h2 id="binary">Binary Download</h2>
-<p>If using the binary package, the four jar files should be placed in the <em>lib</em> directory of your FOP installation.</p>
-<p>Binary distributions include "-bin" in their names, and can be downloaded from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>.</p>
-<p>Here are the links to each package’s signature and checksum files. Signatures can be verified by using our <a href="https://www.apache.org/dist/xmlgraphics/fop/KEYS">KEYS</a> file.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz&amp;action=download">fop-pdf-images-2.10-bin.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip&amp;action=download">fop-pdf-images-2.10-bin.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz&amp;action=download">fop-pdf-images-2.10-src.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip&amp;action=download">fop-pdf-images-2.10-src.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip.sha512">SHA512</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="source">Source Download</h2>
+<p>The <code>EventFormatter</code> class can be used to translate the events into human-readable, localized messages.</p>
+<p>A full example of what is shown here can be found in the <code>examples/embedding/java/embedding/events</code> directory in the FOP distribution. The example can also be accessed <a href="http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/events/">via the web</a>.</p>
+<h3 id="write-listener">Writing an EventListener</h3>
+<p>The following code sample shows a very simple EventListener. It basically just sends all events to System.out (stdout) or System.err (stderr) depending on the event severity.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.fop.events.Event</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.fop.events.EventFormatter</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.fop.events.EventListener</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.fop.events.model.EventSeverity</span><span class="p">;</span>
+
+<span class="cm">/** A simple event listener that writes the events to stdout and stderr. */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SysOutEventListener</span> <span class="kd">implements</span> <span class="n">EventListener</span> <span class="p">{</span>
+
+    <span class="cm">/** {@inheritDoc} */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">processEvent</span><span class="p">(</span><span class="n">Event</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">EventFormatter</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+        <span class="n">EventSeverity</span> <span class="n">severity</span> <span class="o">=</span> <span class="n">event</span><span class="p">.</span><span class="na">getSeverity</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">severity</span> <span class="o">==</span> <span class="n">EventSeverity</span><span class="p">.</span><span class="na">INFO</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;[INFO ] &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">severity</span> <span class="o">==</span> <span class="n">EventSeverity</span><span class="p">.</span><span class="na">WARN</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;[WARN ] &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">severity</span> <span class="o">==</span> <span class="n">EventSeverity</span><span class="p">.</span><span class="na">ERROR</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;[ERROR] &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">severity</span> <span class="o">==</span> <span class="n">EventSeverity</span><span class="p">.</span><span class="na">FATAL</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;[FATAL] &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">assert</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>You can see that for every event the method <code>processEvent</code> of the <code>EventListener</code> will be called. Inside this method you can do whatever processing you would like including throwing a <code>RuntimeException</code>, if you want to abort the current processing run.</p>
+<p>The code above also shows how you can turn an event into a human-readable, localized message that can be presented to a user. The <code>EventFormatter</code> class does this for you. It provides additional methods if you'd like to explicitly specify the locale.</p>
+<p>It is possible to gather all events for a whole processing run so they can be evaluated afterwards. However, care should be taken about memory consumption since the events provide references to objects inside FOP which may themselves have references to other objects. So holding on to these objects may mean that whole object trees cannot be released!</p>
+<h3 id="add-listener">Adding an EventListener</h3>
+<p>To register the event listener with FOP, get the <code>EventBroadcaster</code> which is associated with the user agent (<code>FOUserAgent</code>) and add it there:</p>
+<div class="highlight"><pre><span></span><code><span class="n">FOUserAgent</span> <span class="n">foUserAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFOUserAgent</span><span class="p">();</span>
+<span class="n">foUserAgent</span><span class="p">.</span><span class="na">getEventBroadcaster</span><span class="p">().</span><span class="na">addEventListener</span><span class="p">(</span><span class="k">new</span> <span class="n">SysOutEventListener</span><span class="p">());</span>
+</code></pre></div>
+
+<p>Please note that this is done separately for each processing run, i.e. for each new user agent.</p>
+<h3 id="listener-example1">An additional listener example</h3>
+<p>Here's an additional example of an event listener:</p>
+<p>By default, FOP continues processing even if an image wasn't found. If you have more strict requirements and want FOP to stop if an image is not available, you can do something like the following in the simplest case:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyEventListener</span> <span class="kd">implements</span> <span class="n">EventListener</span> <span class="p">{</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">processEvent</span><span class="p">(</span><span class="n">Event</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s">&quot;org.apache.fop.ResourceEventProducer&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span>
+                <span class="n">event</span><span class="p">.</span><span class="na">getEventGroupID</span><span class="p">()))</span> <span class="p">{</span>
+            <span class="n">event</span><span class="p">.</span><span class="na">setSeverity</span><span class="p">(</span><span class="n">EventSeverity</span><span class="p">.</span><span class="na">FATAL</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">//ignore all other events (or do something of your choice)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Increasing the event severity to FATAL will signal the event broadcaster to throw an exception and stop further processing. In the above case, all resource-related events will cause FOP to stop processing.</p>
+<p>You can also customize the exception to throw (you can may throw a RuntimeException or subclass yourself) and/or which event to respond to:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyEventListener</span> <span class="kd">implements</span> <span class="n">EventListener</span> <span class="p">{</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">processEvent</span><span class="p">(</span><span class="n">Event</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s">&quot;org.apache.fop.ResourceEventProducer.imageNotFound&quot;</span>
+                <span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">getEventID</span><span class="p">()))</span> <span class="p">{</span>
+
+            <span class="c1">//Get the FileNotFoundException that&#39;s part of the event&#39;s parameters</span>
+            <span class="n">FileNotFoundException</span> <span class="n">fnfe</span> <span class="o">=</span> <span class="p">(</span><span class="n">FileNotFoundException</span><span class="p">)</span><span class="n">event</span><span class="p">.</span><span class="na">getParam</span><span class="p">(</span><span class="s">&quot;fnfe&quot;</span><span class="p">);</span>
+
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="p">(</span><span class="n">EventFormatter</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">event</span><span class="p">),</span> <span class="n">fnfe</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">//ignore all other events (or do something of your choice)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+
+<p>This throws a <code>RuntimeException</code> with the <code>FileNotFoundException</code> as the cause. Further processing effectively stops in FOP. You can catch the exception in your code and react as you see necessary.</p>
+<h2 id="producer">The producer side (for FOP developers)</h2>
+<p>This section is primarily for FOP and FOP plug-in developers. It describes how to use the event subsystem for producing events.</p>
+<p><note>The event package has been designed in order to be theoretically useful for use cases outside FOP. If you think this is interesting independently from FOP, please talk to <a href="mailto:fop-dev@xmlgraphics.apache.org">us</a>.</note></p>
+<h3 id="basic-event-production">Producing and sending an event</h3>
+<p>The basics are very simple. Just instantiate an <code>Event</code> object and fill it with the necessary parameters. Then pass it to the <code>EventBroadcaster</code> which distributes the events to the interested listeneners. Here's a code example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Event</span> <span class="n">ev</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Event</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s">&quot;complain&quot;</span><span class="p">,</span> <span class="n">EventSeverity</span><span class="p">.</span><span class="na">WARN</span><span class="p">,</span>
+        <span class="n">Event</span><span class="p">.</span><span class="na">paramsBuilder</span><span class="p">()</span>
+            <span class="p">.</span><span class="na">param</span><span class="p">(</span><span class="s">&quot;reason&quot;</span><span class="p">,</span> <span class="s">&quot;I&#39;m tired&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="na">param</span><span class="p">(</span><span class="s">&quot;blah&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">Integer</span><span class="p">(</span><span class="mi">23</span><span class="p">))</span>
+            <span class="p">.</span><span class="na">build</span><span class="p">());</span>
+<span class="n">EventBroadcaster</span> <span class="n">broadcaster</span> <span class="o">=</span> <span class="o">[</span><span class="n">get</span> <span class="n">it</span> <span class="n">from</span> <span class="n">somewhere</span><span class="o">]</span><span class="p">;</span>
+<span class="n">broadcaster</span><span class="p">.</span><span class="na">broadcastEvent</span><span class="p">(</span><span class="n">ev</span><span class="p">);</span>
+</code></pre></div>
+
+<p>The <code>Event.paramsBuilder()</code> is a <a href="http://en.wikipedia.org/wiki/Fluent_interface">fluent interface</a> to help with the build-up of the parameters. You could just as well instantiate a <code>Map</code> (<code>Map&lt;String, Object&gt;</code>) and fill it with values.</p>
+<h3 id="event-producer">The EventProducer interface</h3>
+<p>To simplify event production, the event subsystem provides the <code>EventProducer</code> interface. You can create interfaces which extend <code>EventProducer</code>. These interfaces will contain one method per event to be generated. By contract, each event method must have as its first parameter a parameter named "source" (Type Object) which indicates the object that generated the event. After that come an arbitrary number of parameters of any type as needed by the event.</p>
+<p>The event producer interface does not need to have any implementation. The implementation is produced at runtime by a dynamic proxy created by <code>DefaultEventBroadcaster</code>. The dynamic proxy creates <code>Event</code> instances for each method call against the event producer interface. Each parameter (except "source") is added to the event's parameter map.</p>
+<p>To simplify the code needed to get an instance of the event producer interface it is suggested to create a public inner provider class inside the interface.</p>
+<p>Here's an example of such an event producer interface:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyEventProducer</span> <span class="kd">extends</span> <span class="n">EventProducer</span> <span class="p">{</span>
+
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Provider</span> <span class="p">{</span>
+
+        <span class="kd">public</span> <span class="kd">static</span> <span class="n">MyEventProducer</span> <span class="nf">get</span><span class="p">(</span><span class="n">EventBroadcaster</span> <span class="n">broadcaster</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">MyEventProducer</span><span class="p">)</span><span class="n">broadcaster</span><span class="p">.</span><span class="na">getEventProducerFor</span><span class="p">(</span><span class="n">MyEventProducer</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * Complain about something.</span>
+<span class="cm">     * @param source the event source</span>
+<span class="cm">     * @param reason the reason for the complaint</span>
+<span class="cm">     * @param blah the complaint</span>
+<span class="cm">     * @event.severity WARN</span>
+<span class="cm">     */</span>
+    <span class="kt">void</span> <span class="nf">complain</span><span class="p">(</span><span class="n">Object</span> <span class="n">source</span><span class="p">,</span> <span class="n">String</span> <span class="n">reason</span><span class="p">,</span> <span class="kt">int</span> <span class="n">blah</span><span class="p">);</span>
+
+<span class="p">}</span>
+</code></pre></div>
+
+<p>To produce the same event as in the first example above, you'd use the following code:</p>
+<div class="highlight"><pre><span></span><code><span class="n">EventBroadcaster</span> <span class="n">broadcaster</span> <span class="o">=</span> <span class="o">[</span><span class="n">get</span> <span class="n">it</span> <span class="n">from</span> <span class="n">somewhere</span><span class="o">]</span><span class="p">;</span>
+<span class="n">TestEventProducer</span> <span class="n">producer</span> <span class="o">=</span> <span class="n">TestEventProducer</span><span class="p">.</span><span class="na">Provider</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">broadcaster</span><span class="p">);</span>
+<span class="n">producer</span><span class="p">.</span><span class="na">complain</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s">&quot;I&#39;m tired&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">);</span>
+</code></pre></div>
+
+<h3 id="event-model">The event model</h3>
+<p>Inside an invocation handler for a dynamic proxy, there's no information about the names of each parameter. The JVM doesn't provide it. The only thing you know is the interface and method name. In order to properly fill the <code>Event</code> 's parameter map we need to know the parameter names. These are retrieved from an event object model. This is found in the <code>org.apache.fop.events.model</code> package. The data for the object model is retrieved from an XML representation of the event model that is loaded as a resource. The XML representation is generated using an Ant task at build time (<code>ant resourcegen</code>). The Ant task (found in <code>src/codegen/java/org/apache/fop/tools/EventProducerCollectorTask.java</code>) scans FOP's sources for descendants of the <code>EventProducer</code> interface and uses <a href="https://github.com/codehaus/qdox">QDox</a> to parse these interfaces.</p>
+<p>The event model XML files are generated during build by the Ant task mentioned above when running the "resourcegen" task. So just run <code>"ant resourcegen"</code> if you receive a <code>MissingResourceException</code> at runtime indicating that <code>"event-model.xml"</code> is missing.</p>
+<p>Primarily, the QDox-based collector task records the parameters' names and types. Furthermore, it extracts additional attributes embedded as Javadoc comments from the methods. At the moment, the only such attribute is "@event.severity" which indicates the default event severity (which can be changed by event listeners). The example event producer above shows the Javadocs for an event method.</p>
+<p>There's one more information that is extracted from the event producer information for the event model: an optional primary exception. The first exception in the "throws" declaration of an event method is noted. It is used to throw an exception from the invocation handler if the event has an event severity of "FATAL" when all listeners have been called (listeners can update the event severity). Please note that an implementation of <code>org.apache.fop.events.EventExceptionManager$ExceptionFactory</code> has to be registered for the <code>EventExceptionManager</code> to be able to construct the exception from an event.</p>
+<p>For a given application, there can be multiple event models active at the same time. In FOP, each renderer is considered to be a plug-in and provides its own specific event model. The individual event models are provided through an <code>EventModelFactory</code>. This interface is implemented for each event model and registered through the service provider mechanism (see the <a href="#plug-ins">plug-ins section</a> for details).</p>
+<h3 id="event-severity">Event severity</h3>
+<p>Four different levels of severity for events has been defined:</p>
+<ol>
+<li>
+<p>INFO: informational only</p>
+</li>
+<li>
+<p>WARN: a Warning</p>
+</li>
+<li>
+<p>ERROR: an error condition from which FOP can recover. FOP will continue processing.</p>
+</li>
+<li>
+<p>FATAL: a fatal error which causes an exception in the end and FOP will stop processing.</p>
+</li>
+</ol>
+<p>Event listeners can choose to ignore certain events based on their event severity. Please note that you may recieve an event "twice" in a specific case: if there is a fatal error an event is generated and sent to the listeners. After that an exception is thrown with the same information and processing stops. If the fatal event is shown to the user and the following exception is equally presented to the user it may appear that the event is duplicated. Of course, the same information is just published through two different channels.</p>
+<h3 id="plug-ins">Plug-ins to the event subsystem</h3>
+<p>The event subsystem is extensible. There are a number of extension points:</p>
 <ul>
-<li>Download a released version from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>. Source distributions include "-src" in their names.</li>
+<li>
+<p><strong><code>org.apache.fop.events.model.EventModelFactory</code>:</strong> Provides an event model to the event subsystem.</p>
+</li>
+<li>
+<p><strong><code>org.apache.fop.events.EventExceptionManager$ExceptionFactory</code>:</strong> Creates exceptions for events, i.e. turns an event into a specific exception.</p>
+</li>
 </ul>
-<h2 id="older_releases">Older Releases</h2>
-<p>Archive distributions can be downloaded from the archives <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/">binaries</a> &amp; <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/source/">source</a> links.</p>
-<p>The fop-pdf-images plug-in was donated by Jeremias M&auml;rki to the XMLGraphics project in 2012. Older releases can
-be obtained from his plug-in <a href="http://www.jeremias-maerki.ch/development/fop/index.html">page</a>.</p>
-<h1 id="history-of-changes">History of Changes</h1>
-<h2 id="version_trunk">Version trunk</h2>
-<ul>
-<li>FOP-3203: Upgrade to PDFBox 3</li>
-<li>FOP-3210: Correct position when merging pdfs</li>
-<li>FOP-3213: Sort dict hash to find more duplicates</li>
-<li>FOP-3227: Draw softmask without rasterizing page</li>
-<li>FOP-3230: Fix PDF/UA compliance issues when attaching a PDF/UA file</li>
-<li>FOP-3233: Avoid merging fonts without mac cmap</li>
-<li>FOP-3234: Use unique value for glyph index for font merging</li>
-<li>FOP-3235: Correct PS transform for gradients and mask for images</li>
-<li>FOP-3237: Use DPI to set resolution of PDFBox images</li>
-<li>FOP-3240: Use glyph from fonts where is exists for font merge</li>
-</ul>
-<h2 id="version_2.10">Version 2.10</h2>
-<ul>
-<li>FOP-3149: Don't merge fonts when ascent is different</li>
-<li>FOP-3155: Use format 12 for unicode cmap</li>
-<li>FOP-3158: Switch to spotbugs</li>
-<li>FOP-3183: Disable pattern modification using xobjforms</li>
-<li>FOP-3200: Correct end of start code for merging ttf cmap</li>
-</ul>
-<h2 id="version_2.9">Version 2.9</h2>
-<ul>
-<li>FOP-3107: Update to PDFBox 2.0.27</li>
-<li>FOP-3108: Gradient component not displayed correctly after scaling</li>
-<li>FOP-3112: Rotate annotations</li>
-<li>FOP-3123: Modified stream should be used in the cache key</li>
-<li>FOP-3124: Subrs data missing from font merging</li>
-<li>FOP-3136: Softmask dictionary preserved</li>
-<li>FOP-3138: NPE when no fields</li>
-<li>FOP-3140: Merge form fields</li>
-</ul>
-<h2 id="version_2.8">Version 2.8</h2>
-<ul>
-<li>FOP-3051: Upgrade to Commons IO 2.11</li>
-<li>FOP-3073: Preserve bytes when cloning string</li>
-<li>FOP-3089: Switch cmap format to support iPhone</li>
-<li>FOP-3102: Move composite glyphs to the end</li>
-</ul>
-<h2 id="version_2.7">Version 2.7</h2>
-<ul>
-<li>FOP-3034: Update PDFBox to 2.0.24</li>
-<li>FOP-3032: Allow to embed native PDF in AFP</li>
-<li>FOP-3020: Add space to standard position for font merge</li>
-<li>FOP-3009: Avoid merging fonts with different number of cmap formats</li>
-<li>FOP-3001: Deduplicate streams in arrays</li>
-</ul>
-<h2 id="version_2.6">Version 2.6</h2>
-<ul>
-<li>FOP-2951: Add uniquename to xobj form</li>
-<li>FOP-2965: Keep streams with DCT compression</li>
-<li>FOP-2971: Update unique name inside patterns</li>
-<li>FOP-2974: Handle space in COSName</li>
-<li>FOP-2979: Update PDFBox to 2.0.19</li>
-</ul>
-<h2 id="version_2.5">Version 2.5</h2>
-<ul>
-<li>FOP-2904: Handle object for boundingbox</li>
-<li>FOP-2922: Syntax error after writing content stream</li>
-<li>FOP-2933: PDF to PDF checkbox missing</li>
-</ul>
-<h2 id="version_2.4">Version 2.4</h2>
-<ul>
-<li>FOP-2802: Java 10 PDF/SVG to Image box not shown</li>
-<li>FOP-2812: Update PDFBox to 2.0.11</li>
-<li>FOP-2836: Update PDFBox to 2.0.13</li>
-<li>FOP-2840: Image mask in PDF not rendered to PS</li>
-<li>FOP-2841: PDF to PDF with merge-fonts checkbox misaligned</li>
-<li>FOP-2856: Support compile on Java 12</li>
-<li>FOP-2873: Update to PDFBox 2.0.16</li>
-<li>FOP-2879: Add caching to avoid parsing content stream</li>
-<li>FOP-2882: Allow PDFFormXObject to improve performance</li>
-</ul>
-<h2 id="version_2.3">Version 2.3</h2>
-<ul>
-<li>PDF to PDF deduplicate more types of streams</li>
-<li>PDF to PS allow fop fonts as fallback</li>
-</ul>
-<h2 id="version_2.2">Version 2.2</h2>
-<ul>
-<li>Move to PDFBox 2</li>
-<li>Deduplicate PDF streams</li>
-<li>PDF to PS deduplication of images</li>
-<li>Remove xobj type=form</li>
-<li>Merge fonts (off by default)</li>
-<li>Support PDF shading to PS</li>
-<li>Merging of Tagged (Accessible) PDF</li>
-</ul>
+<p>The names in bold above are used as filenames for the service provider files that are placed in the <code>META-INF/services</code> directory. That way, they are automatically detected. This is a mechanism defined by the <a href="http://docs.oracle.com/javase/1.5.0/docs/guide/jar/jar.html#Service%20Provider">JAR file specification</a>.</p>
+<h3 id="l10n">Localization (L10n)</h3>
+<p>One goal of the event subsystem was to have localized (translated) event messages. The <code>EventFormatter</code> class can be used to convert an event to a human-readable message. Each <code>EventProducer</code> can provide its own XML-based translation file. If there is none, a central translation file is used, called "EventFormatter.xml" (found in the same directory as the <code>EventFormatter</code> class).</p>
+<p>The XML format used by the <code>EventFormatter</code> is the same as <a href="http://cocoon.apache.org/">Apache Cocoon's</a> catalog format. Here's an example:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;catalogue</span> <span class="na">xml:lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;message</span> <span class="na">key=</span><span class="s">&quot;locator&quot;</span><span class="nt">&gt;</span>
+    [ (See position {loc})| (See { #gatherContextInfo})| (No context info available)]
+  <span class="nt">&lt;/message&gt;</span>
+  <span class="nt">&lt;message</span> <span class="na">key=</span><span class="s">&quot;org.apache.fop.render.rtf.RTFEventProducer.explicitTableColumnsRequired&quot;</span><span class="nt">&gt;</span>
+    RTF output requires that all table-columns for a table are defined. Output will be incorrect.{{locator}}
+  <span class="nt">&lt;/message&gt;</span>
+  <span class="nt">&lt;message</span> <span class="na">key=</span><span class="s">&quot;org.apache.fop.render.rtf.RTFEventProducer.ignoredDeferredEvent&quot;</span><span class="nt">&gt;</span>
+    Ignored deferred event for {node} ({start,if,start,end}).{{locator}}
+  <span class="nt">&lt;/message&gt;</span>
+<span class="nt">&lt;/catalogue&gt;</span>
+</code></pre></div>
+
+<p>The example (extracted from the RTF handler's event producer) has message templates for two event methods. The class used to do variable replacement in the templates is <code>org.apache.fop.util.text.AdvancedMessageFormat</code> which is more powerful than the <code>MessageFormat</code> classes provided by the Java class library (<code>java.util.text</code> package).</p>
+<p>"locator" is a template that is reused by the other message templates by referencing it through "{{locator}}". This is some kind of include command.</p>
+<p>Normal event parameters are accessed by name inside single curly braces, for example: "{node}". For objects, this format just uses the <code>toString()</code> method to turn the object into a string, unless there is an <code>ObjectFormatter</code> registered for that type (there's an example for <code>org.xml.sax.Locator</code>).</p>
+<p>The single curly braces pattern supports additional features. For example, it is possible to do this: "{start,if,start,end}". "if" here is a special field modifier that evaluates "start" as a boolean and if that is true returns the text right after the second comma ("start"). Otherwise it returns the text after the third comma ("end"). The "equals" modifier is similar to "if" but it takes as an additional (comma-separated) parameter right after the "equals" modifier, a string that is compared to the value of the variable. An example: {severity,equals,EventSeverity:FATAL,,some text} (this adds "some text" if the severity is not FATAL).</p>
+<p>Additional such modifiers can be added by implementing the <code>AdvancedMessageFormat$Part</code> and <code>AdvancedMessageFormat$PartFactory</code> interfaces.</p>
+<p>Square braces can be used to specify optional template sections. The whole section will be omitted if any of the variables used within are unavailable. Pipe (|) characters can be used to specify alternative sub-templates (see "locator" above for an example).</p>
+<p>Developers can also register a function (in the above example: <code>{ #gatherContextInfo})</code> to do more complex information rendering. These functions are implementations of the <code>AdvancedMessageFormat$Function</code> interface. Please take care that this is done in a locale-independent way as there is no locale information available, yet.</p>
         </div>
       </div>
       <div class="clear"></div>

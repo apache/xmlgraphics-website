@@ -25,7 +25,7 @@
 	});
     </script>
 
-   <title>Apache(th) FOP: PDF Images Plug-In</title>
+   <title>Standard Apache(tm) FOP Extensions</title>
   </head>
 
   <body>
@@ -1676,6 +1676,9 @@ $(document).ready(function () {
 })
 </script>	</div>
 	
+	<div id="outdated-warning" style="padding: .5em; text-align: center; background-color: #FFBABA; color: #6A0E0E;">
+    This document is for an old version of FOP that is no longer supported. <a href="../2.10/extensions.html">Latest version of this page</a>
+    </div>
   
 
 	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
@@ -1697,193 +1700,179 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1 id="apache-fop-pdf-images-plug-in">Apache&trade; FOP: PDF Images Plug-In</h1>
-<h2 id="overview">Overview</h2>
-<p>The <em>fop-pdf-images</em> plug-in extends FOP in order to add support for using PDF images in fo:external-graphic elements when
-generating PDF files. This means one can write something like:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf#page=1&quot;</span><span class="nt">/&gt;</span>
+    <h1 id="standard-apachetm-fop-extensions">Standard Apache(tm) FOP Extensions</h1>
+<p>By "extension", we mean any data that can be placed in the input XML document that is not addressed by the XSL-FO standard. By having a mechanism for supporting extensions, Apache&trade; FOP is able to add features that are not covered in the specification.</p>
+<p>The extensions documented here are included with FOP, and are automatically available to you. If you wish to add an extension of your own to FOP, please see the <a href="../dev/extensions.html">Developers' Extension Page</a>.</p>
+<p><note>All extensions require the correct use of an appropriate namespace in your input document.</note></p>
+<h2 id="svg">SVG</h2>
+<p>Please see the <a href="graphics.html#svg">SVG documentation</a> for more details.</p>
+<h2 id="fo-extensions">FO Extensions</h2>
+<h3 id="fox-namespace">Namespace</h3>
+<p>By convention, FO extensions in FOP use the "fox" namespace prefix. To use any of the FO extensions, add a namespace entry for <code>http://xmlgraphics.apache.org/fop/extensions</code> to the root element:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span>
+         <span class="na">xmlns:fox=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions&quot;</span><span class="nt">&gt;</span>
 </code></pre></div>
 
-<p>and</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fox:external-document</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf&quot;</span><span class="nt">/&gt;</span>
+<h3 id="bookmarks">PDF Bookmarks</h3>
+<p>In old versions of Apache FOP there was a <code>fox:outline</code> element which was used to create outlines in PDF files. The redesigned code makes use of the <a href="http://www.w3.org/TR/xsl11/#fo_bookmark-tree">bookmark feature defined in the W3C XSL 1.1 standard</a>.</p>
+<h3 id="named-destinations">Anchors or Named Destinations</h3>
+<p>Use the fox:destination element to define "named destinations" inside a PDF document. These are useful as fragment identifiers, e.g. "http://server/document.pdf#anchor-name". fox:destination elements can be placed almost anywhere in the fo document, including a child of root, a block-level element, or an inline-level element. For the destination to actually work, it must correspond to an "id" attribute on some fo element within the document. In other words, the "id" attribute actually creates the "view" within the PDF document. The fox:destination simply gives that view an independent name.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fox:destination</span> <span class="na">internal-destination=</span><span class="s">&quot;table-of-contents&quot;</span><span class="nt">/&gt;</span>
+...
+<span class="nt">&lt;fo:block</span> <span class="na">id=</span><span class="s">&quot;table-of-contents&quot;</span><span class="nt">&gt;</span>Table of Contents<span class="nt">&lt;/fo:block&gt;</span>
 </code></pre></div>
 
-<h2 id="reduce-file-size">Reduce file size</h2>
-<p>If you input many pdfs together the output pdf has duplicate fonts. Set this flag to merge fonts in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-fonts&gt;</span>true<span class="nt">&lt;/merge-fonts&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
+<p><warning>It is possible that in some future release of FOP, <em>all</em> elements with "id" attributes will generate named-destinations, which will eliminate the need for fox:destination.</warning></p>
+<h3 id="table-continue-label">Table Continuation Label</h3>
+<p>In old versions of Apache FOP, there was a <code>fox:continued-label</code> element which was used to insert a message when a table went over several pages.
+This extension element will not be reimplemented for the redesigned code.
+The redesigned code makes use of the <a href="http://www.w3.org/TR/xsl11/#fo_retrieve-table-marker"><code>fo:retrieve-table-marker</code></a> element defined in the <a href="http://www.w3.org/TR/xsl11/">W3C XSL 1.1</a> standard.</p>
+<h3 id="row-scope-for-header-table-cells">Row Scope for Header Table Cells</h3>
+<p>This feature is described in the <a href="accessibility.html#fox:header">Accessibility</a> section.</p>
+<h3 id="widow-orphan-content-limit">fox:orphan-content-limit and fox:widow-content-limit</h3>
+<p>The two proprietary extension properties, <code>fox:orphan-content-limit</code> and <code>fox:widow-content-limit</code>, are used to improve the layout of list-blocks and tables. If you have a table with many entries, you don't want a single row to be left over on a page. You will want to make sure that at least two or three lines are kept together. The properties take an absolute length which specifies the area at the beginning (<code>fox:widow-content-limit</code>) or at the end (<code>fox:orphan-content-limit</code>) of a table or list-block. The properties are inherited and only have an effect on <code>fo:table</code> and <code>fo:list-block</code>. An example: <code>fox:widow-content-limit="3 * 1.2em"</code> would make sure the you'll have at least three lines (assuming <code>line-height="1.2"</code>) together on a table or list-block.</p>
+<h3 id="external-document">fox:external-document</h3>
+<p><note>This feature is incomplete. Support for multi-page documents will be added shortly. At the moment, only single-page images will work. And this will not work with RTF output.</note></p>
+<p>This is a proprietary extension element which allows to add whole images as pages to an FO document. For example, if you have a scanned document or a fax as multi-page TIFF file, you can append or insert this document using the <code>fox:external-document</code> element. Each page of the external document will create one full page in the target format.</p>
+<p>The <code>fox:external-document</code> element is structurally a peer to <code>fo:page-sequence</code>, so wherever you can put an <code>fo:page-sequence</code> you could also place a <code>fox:external-document</code>. Therefore, the specified contents for <code>fo:root</code> change to:</p>
+<div class="highlight"><pre><span></span><code><span class="err">(layout-master-set, declarations?, bookmark-tree?, (page-sequence|page-sequence-wrapper|fox:external-document|fox:destination)+)</span>
 </code></pre></div>
 
-<p>Object Streams compress the PDF to reduce file size. Needs to be enabled using fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;use-object-streams&gt;</span>true<span class="nt">&lt;/use-object-streams&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="improve-performance">Improve performance</h2>
-<p>If you use many of the same pdf's and they have a large content stream, this flag can improve performance.
-The disadvantage will be it can cause higher memory use inside your printer.
-Set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;form-xobject&gt;</span>true<span class="nt">&lt;/form-xobject&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="merge-form-fields">Merge form fields</h2>
-<p>If you want to merge form fields data structure across multiple input pdfs set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-form-fields&gt;</span>true<span class="nt">&lt;/merge-form-fields&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="known-issues-with-postscript-output">Known issues with Postscript output</h2>
+<h4 id="Specification">Specification</h4>
+<p>The <code>fox:external-document</code> extension formatting object is used to specify how to create a (sub-)sequence of pages within a document. The content of these pages comes from the individual subimages/pages of an image or paged document (for example: multi-page TIFF in the form of faxes or scanned documents, or PDF files). The formatting object creates the necessary areas to display one image per page.</p>
+<p>In terms of page numbers, the behaviour is the same as for <code>fo:page-sequence</code>. The placement of the image inside the page is similar to that of <code>fo:external-graphic</code> or <code>fo:instream-foreign-object</code>, i.e. the viewport (and therefore the page size) is defined by either the intrinsic size of the image or by the size properties that apply to this formatting object.</p>
+<p>Content: EMPTY</p>
+<p>The following properties apply to this formatting object:</p>
 <ul>
-<li>If fonts are not embedded in source PDF:<ul>
-<li>If OTF font type is needed text may be missing if Adobe Reader fonts are not found</li>
-<li>Text may be rendered wrong or poorly if wrong font is selected as replacement   </li>
-</ul>
+<li>
+<p>(Common Accessibility Properties) (not implemented, yet)</p>
 </li>
-<li>Transparency, layers and opacity may not render correctly</li>
-<li>Gradients in text may be different from the source PDF</li>
+<li>
+<p>(Common Aural Properties) (not implemented, yet)</p>
+</li>
+<li>
+<p>block-progression-dimension</p>
+</li>
+<li>
+<p>content-height</p>
+</li>
+<li>
+<p>content-type</p>
+</li>
+<li>
+<p>content-width</p>
+</li>
+<li>
+<p>display-align</p>
+</li>
+<li>
+<p>height</p>
+</li>
+<li>
+<p>id</p>
+</li>
+<li>
+<p>inline-progression-dimension</p>
+</li>
+<li>
+<p>overflow</p>
+</li>
+<li>
+<p>pages: <page-set> (see below) (not implemented, yet)</p>
+</li>
+<li>
+<p>reference-orientation</p>
+</li>
+<li>
+<p>scaling</p>
+</li>
+<li>
+<p>scaling-method</p>
+</li>
+<li>
+<p>src</p>
+</li>
+<li>
+<p>text-align</p>
+</li>
+<li>
+<p>width</p>
+</li>
 </ul>
-<h2 id="binary">Binary Download</h2>
-<p>If using the binary package, the four jar files should be placed in the <em>lib</em> directory of your FOP installation.</p>
-<p>Binary distributions include "-bin" in their names, and can be downloaded from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>.</p>
-<p>Here are the links to each package’s signature and checksum files. Signatures can be verified by using our <a href="https://www.apache.org/dist/xmlgraphics/fop/KEYS">KEYS</a> file.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz&amp;action=download">fop-pdf-images-2.10-bin.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip&amp;action=download">fop-pdf-images-2.10-bin.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz&amp;action=download">fop-pdf-images-2.10-src.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip&amp;action=download">fop-pdf-images-2.10-src.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip.sha512">SHA512</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="source">Source Download</h2>
+<p>Datatype "page-set": Value: auto | <integer-range>, Default: "auto" which means all pages/subimages of the document. <integer-range> allows values such as "7" or "1-3"</p>
+<p><note><code>fox:external-document</code> is not suitable for concatenating FO documents.</note></p>
+<p>For this, XInclude is recommended.</p>
+<h3 id="transform">Free-form Transformation for fo:block-container</h3>
+<p>For <code>fo:block-container</code> elements whose <code>absolute-position</code> set to "absolute" or "fixed" you can use the extension attribute <code>fox:transform</code> to apply a free-form transformation to the whole block-container. The content of the <code>fox:transform</code> attribute is the same as for <a href="http://www.w3.org/TR/SVG/coords.html#TransformAttribute">SVG's transform attribute</a>. The transformation specified here is performed in addition to other implicit transformations of the block-container (resulting from top, left and other properties) and after them.</p>
+<p>Examples: <code>fox:transform="rotate(45)"</code> would rotate the block-container by 45 degrees clock-wise around its upper-left corner. <code>fox:transform="translate(10000,0)"</code> would move the block-container to the right by 10 points (=10000 millipoints, FOP uses millipoints internally!).</p>
+<p><note>This extension attribute doesn't work for all output formats! It's currently only supported for PDF, PS and Java2D-based renderers.</note></p>
+<h3 id="color-functions">Color functions</h3>
+<p>XSL-FO supports specifying color using the rgb(), rgb-icc() and system-color() functions. Apache FOP provides additional color functions for special use cases. Please note that using these functions compromises the interoperability of an FO document.</p>
+<h4 id="color-function-cmyk">cmyk()</h4>
+<p><code>color cmyk(numeric, numeric, numeric, numeric)</code></p>
+<p>This function will construct a color in device-specific CMYK color space. The numbers must be between 0.0 and 1.0. For output formats that don't support device-specific color space the CMYK value is converted to an sRGB value.</p>
+<h4 id="pseudo-color-profiles">#CMYK pseudo-profile</h4>
+<p><code>color rgb-icc(numeric, numeric, numeric, #CMYK, numeric, numeric, numeric, numeric)</code></p>
+<p>The <code>rgb-icc</code> function will respond to a pseudo-profile called "#CMYK" which indicates a device-specific CMYK color space. The "#CMYK" profile is implicitely available and doesn't have to be (and cannot be) defined through an <code>fo:color-profile</code> element. It is provided for compatibility with certain commercial XSL-FO implementations. Please note that this is not part of the official specification but rather a convention. The following two color specifications are equivalent:</p>
 <ul>
-<li>Download a released version from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>. Source distributions include "-src" in their names.</li>
+<li>
+<p><code>cmyk(0%,0%,20%,40%)</code></p>
+</li>
+<li>
+<p><code>rgb-icc(153, 153, 102, #CMYK, 0, 0, 0.2, 0.4)</code></p>
+</li>
 </ul>
-<h2 id="older_releases">Older Releases</h2>
-<p>Archive distributions can be downloaded from the archives <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/">binaries</a> &amp; <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/source/">source</a> links.</p>
-<p>The fop-pdf-images plug-in was donated by Jeremias M&auml;rki to the XMLGraphics project in 2012. Older releases can
-be obtained from his plug-in <a href="http://www.jeremias-maerki.ch/development/fop/index.html">page</a>.</p>
-<h1 id="history-of-changes">History of Changes</h1>
-<h2 id="version_trunk">Version trunk</h2>
+<h4 id="transparency">Transparency</h4>
+<p>You can set a RGB color with transparency #00ffff80, where last two hex digits are transparency value 0 to 255</p>
+<p>Or you can set via, with 4th argument the transparency: fox-rgb-icc(0, 0, 0, 128, #CMYK, 0, 0, 1, 0)
+This method should be used for AFP output</p>
+<h3 id="rounded-corners">Rounded Corners</h3>
+<p>Rounded corners on block areas can be specified with the <code>fox:border-*-*-radius</code> properties. Each corner can be specified with two radii that define a quarter ellipse that defines the shape of the corner of the outer border edge (in accordance with the <a href="http://www.w3.org/TR/css3-background/#the-border-radius">W3 CSS3 Recommendation</a>).
+The property <code>fox:border-BP-IP-radius</code> specifies the radius of the corner connecting border segment <em>BP</em> is one of '<em>before|after</em>' and <em>IP</em> is one of 'start|end<em>', and takes one or two values.  A single value will generate circular corners.  Two values define elliptic corners where the first value defines the radius in the </em>Inline Progression Direction<em>, and the second the radius in the </em>Block Progression Direction*.</p>
+<p>The shorthand property <code>fox:border-radius</code> can be used to specify uniform corners and takes 1 or 2 values, as above.</p>
+<p>The example fo <code>examples/fo/advanced/rounded-corners.fo</code> demonstrates some finer points of this extension.</p>
+<h4 id="current-limitations">Current Limitations</h4>
 <ul>
-<li>FOP-3203: Upgrade to PDFBox 3</li>
-<li>FOP-3210: Correct position when merging pdfs</li>
-<li>FOP-3213: Sort dict hash to find more duplicates</li>
-<li>FOP-3227: Draw softmask without rasterizing page</li>
-<li>FOP-3230: Fix PDF/UA compliance issues when attaching a PDF/UA file</li>
-<li>FOP-3233: Avoid merging fonts without mac cmap</li>
-<li>FOP-3234: Use unique value for glyph index for font merging</li>
-<li>FOP-3235: Correct PS transform for gradients and mask for images</li>
-<li>FOP-3237: Use DPI to set resolution of PDFBox images</li>
-<li>FOP-3240: Use glyph from fonts where is exists for font merge</li>
+<li>
+<p>CSS3-style absolute properties, e.g <code>border-top-left-radius</code>, are not supported</p>
+</li>
+<li>
+<p>Rounded corners on tables are not directly supported.  To set rounded corners at the table level the table must have the property <code>border-collapse</code> property set to <code>separate</code></p>
+</li>
 </ul>
-<h2 id="version_2.10">Version 2.10</h2>
-<ul>
-<li>FOP-3149: Don't merge fonts when ascent is different</li>
-<li>FOP-3155: Use format 12 for unicode cmap</li>
-<li>FOP-3158: Switch to spotbugs</li>
-<li>FOP-3183: Disable pattern modification using xobjforms</li>
-<li>FOP-3200: Correct end of start code for merging ttf cmap</li>
-</ul>
-<h2 id="version_2.9">Version 2.9</h2>
-<ul>
-<li>FOP-3107: Update to PDFBox 2.0.27</li>
-<li>FOP-3108: Gradient component not displayed correctly after scaling</li>
-<li>FOP-3112: Rotate annotations</li>
-<li>FOP-3123: Modified stream should be used in the cache key</li>
-<li>FOP-3124: Subrs data missing from font merging</li>
-<li>FOP-3136: Softmask dictionary preserved</li>
-<li>FOP-3138: NPE when no fields</li>
-<li>FOP-3140: Merge form fields</li>
-</ul>
-<h2 id="version_2.8">Version 2.8</h2>
-<ul>
-<li>FOP-3051: Upgrade to Commons IO 2.11</li>
-<li>FOP-3073: Preserve bytes when cloning string</li>
-<li>FOP-3089: Switch cmap format to support iPhone</li>
-<li>FOP-3102: Move composite glyphs to the end</li>
-</ul>
-<h2 id="version_2.7">Version 2.7</h2>
-<ul>
-<li>FOP-3034: Update PDFBox to 2.0.24</li>
-<li>FOP-3032: Allow to embed native PDF in AFP</li>
-<li>FOP-3020: Add space to standard position for font merge</li>
-<li>FOP-3009: Avoid merging fonts with different number of cmap formats</li>
-<li>FOP-3001: Deduplicate streams in arrays</li>
-</ul>
-<h2 id="version_2.6">Version 2.6</h2>
-<ul>
-<li>FOP-2951: Add uniquename to xobj form</li>
-<li>FOP-2965: Keep streams with DCT compression</li>
-<li>FOP-2971: Update unique name inside patterns</li>
-<li>FOP-2974: Handle space in COSName</li>
-<li>FOP-2979: Update PDFBox to 2.0.19</li>
-</ul>
-<h2 id="version_2.5">Version 2.5</h2>
-<ul>
-<li>FOP-2904: Handle object for boundingbox</li>
-<li>FOP-2922: Syntax error after writing content stream</li>
-<li>FOP-2933: PDF to PDF checkbox missing</li>
-</ul>
-<h2 id="version_2.4">Version 2.4</h2>
-<ul>
-<li>FOP-2802: Java 10 PDF/SVG to Image box not shown</li>
-<li>FOP-2812: Update PDFBox to 2.0.11</li>
-<li>FOP-2836: Update PDFBox to 2.0.13</li>
-<li>FOP-2840: Image mask in PDF not rendered to PS</li>
-<li>FOP-2841: PDF to PDF with merge-fonts checkbox misaligned</li>
-<li>FOP-2856: Support compile on Java 12</li>
-<li>FOP-2873: Update to PDFBox 2.0.16</li>
-<li>FOP-2879: Add caching to avoid parsing content stream</li>
-<li>FOP-2882: Allow PDFFormXObject to improve performance</li>
-</ul>
-<h2 id="version_2.3">Version 2.3</h2>
-<ul>
-<li>PDF to PDF deduplicate more types of streams</li>
-<li>PDF to PS allow fop fonts as fallback</li>
-</ul>
-<h2 id="version_2.2">Version 2.2</h2>
-<ul>
-<li>Move to PDFBox 2</li>
-<li>Deduplicate PDF streams</li>
-<li>PDF to PS deduplication of images</li>
-<li>Remove xobj type=form</li>
-<li>Merge fonts (off by default)</li>
-<li>Support PDF shading to PS</li>
-<li>Merging of Tagged (Accessible) PDF</li>
-</ul>
+<h3 id="prepress">Prepress Support</h3>
+<p>This section defines a number of extensions related to <a href="http://en.wikipedia.org/wiki/Prepress">prepress</a> support. <code>fox:scale</code> defines a general scale factor for the generated pages. <code>fox:bleed</code> defines the <a href="http://en.wikipedia.org/wiki/Bleed_%28printing%29">bleed area</a> for a page. <code>fox:crop-offset</code> defines the outer edges of the area in which crop marks, registration marks, color bars and page information are placed. For details, please read on below.</p>
+<p><note>Those extensions have been implemented in the PDF and Java2D renderers only.</note></p>
+<h4 id="scale">fox:scale</h4>
+<p>Value: <number>{1,2}</p>
+<p>Initial: 1</p>
+<p>Applies to: fo:simple-page-master</p>
+<p>This property specifies a scale factor along resp. the x and y axes. If only one number is provided it is used for both the x and y scales. A scale factor smaller than 1 shrinks the page. A scale factor greater than 1 enlarges the page.</p>
+<h4 id="bleed">fox:bleed</h4>
+<p>Value: <length>{1,4}</p>
+<p>Initial: 0pt</p>
+<p>Applies to: fo:simple-page-master</p>
+<p>If there is only one value, it applies to all sides. If there are two values, the top and bottom bleed widths are set to the first value and the right and left bleed widths are set to the second. If there are three values, the top is set to the first value, the left and right are set to the second, and the bottom is set to the third. If there are four values, they apply to the top, right, bottom, and left, respectively. (Corresponds to <a href="http://www.w3.org/TR/xsl11/#padding">the definition of padding</a>).</p>
+<p>This extension indirectly defines the BleedBox and is calculated by expanding the TrimBox by the bleed widths. The lengths must be non-negative.</p>
+<h4 id="cropOffset">fox:crop-offset</h4>
+<p>Value: <length>{1,4}</p>
+<p>Initial: bleed (see below)</p>
+<p>Applies to: fo:simple-page-master</p>
+<p>Same behaviour as with fox:bleed. The initial value is set to the same values as the fox:bleed property.</p>
+<p>This extension indirectly defines the MediaBox and is calculated by expanding the TrimBox by the crop offsets. The lengths must be non-negative.</p>
+<h4 id="cropBox">fox:crop-box</h4>
+<p>Value: [trim-box | bleed-box | media-box]</p>
+<p>Initial: media-box</p>
+<p>Applies to: fo:simple-page-master</p>
+<p>The crop box controls how Acrobat displays the page (CropBox in PDF) or how the Java2DRenderer sizes the output media. The PDF specification defines that the CropBox defaults to the MediaBox. This extension follows that definition. To simplify usage and cover most use cases, the three supported enumeration values "trim-box", "bleed-box" and "media-box" set the CropBox to one of those three other boxes.</p>
+<p>If requested in the future, we could offer to specify the CropBox in absolute coordinates rather than just by referencing another box.</p>
+<h3 id="backgroundimages">Background Images</h3>
+<p>Background images can be resized on the fly using these two extensions:</p>
+<h4 id="backgroundImageWidth">fox:background-image-width</h4>
+<p>Value: length</p>
+<h4 id="backgroundImageHeight">fox:background-image-height</h4>
+<p>Value: length</p>
+<p>These extensions apply to the elements where background-image applies.</p>
         </div>
       </div>
       <div class="clear"></div>

@@ -25,7 +25,7 @@
 	});
     </script>
 
-   <title>Apache(th) FOP: PDF Images Plug-In</title>
+   <title>Apache(tm) FOP: Accessibility</title>
   </head>
 
   <body>
@@ -1676,6 +1676,9 @@ $(document).ready(function () {
 })
 </script>	</div>
 	
+	<div id="outdated-warning" style="padding: .5em; text-align: center; background-color: #FFBABA; color: #6A0E0E;">
+    This document is for an old version of FOP that is no longer supported. <a href="../2.10/accessibility.html">Latest version of this page</a>
+    </div>
   
 
 	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
@@ -1697,192 +1700,279 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1 id="apache-fop-pdf-images-plug-in">Apache&trade; FOP: PDF Images Plug-In</h1>
+    <h1 id="apache-fop-accessibility">Apache&trade; FOP: Accessibility</h1>
 <h2 id="overview">Overview</h2>
-<p>The <em>fop-pdf-images</em> plug-in extends FOP in order to add support for using PDF images in fo:external-graphic elements when
-generating PDF files. This means one can write something like:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf#page=1&quot;</span><span class="nt">/&gt;</span>
+<p>This page describes the <a href="http://en.wikipedia.org/wiki/Accessibility">accessibility</a> features of Apache&trade; FOP. <a href="http://www.section508.gov/">Section 508</a> defines accessibility in the context of electronic documents for the USA but other countries have similar requirements.</p>
+<p>Accessibility features are available only for the PDF output format and there are some implementation limitations. Also, certain actions must be undertaken by the content creator to ensure that FOP can create a truly accessible document.</p>
+<h2 id="Enabling-accessibility">Enabling accessibility</h2>
+<p>There are 3 ways to enable accessibility:</p>
+<ol>
+<li>
+<p><strong>Command line:</strong> The command line option <code>-a</code> turns on accessibility:</p>
+<div class="highlight"><pre><span></span><code><span class="err">fop -a -fo mydocument.fo -pdf mydocument.pdf</span>
 </code></pre></div>
 
-<p>and</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fox:external-document</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<h2 id="reduce-file-size">Reduce file size</h2>
-<p>If you input many pdfs together the output pdf has duplicate fonts. Set this flag to merge fonts in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-fonts&gt;</span>true<span class="nt">&lt;/merge-fonts&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<p>Object Streams compress the PDF to reduce file size. Needs to be enabled using fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;use-object-streams&gt;</span>true<span class="nt">&lt;/use-object-streams&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="improve-performance">Improve performance</h2>
-<p>If you use many of the same pdf's and they have a large content stream, this flag can improve performance.
-The disadvantage will be it can cause higher memory use inside your printer.
-Set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;form-xobject&gt;</span>true<span class="nt">&lt;/form-xobject&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="merge-form-fields">Merge form fields</h2>
-<p>If you want to merge form fields data structure across multiple input pdfs set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-form-fields&gt;</span>true<span class="nt">&lt;/merge-form-fields&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="known-issues-with-postscript-output">Known issues with Postscript output</h2>
-<ul>
-<li>If fonts are not embedded in source PDF:<ul>
-<li>If OTF font type is needed text may be missing if Adobe Reader fonts are not found</li>
-<li>Text may be rendered wrong or poorly if wrong font is selected as replacement   </li>
-</ul>
 </li>
-<li>Transparency, layers and opacity may not render correctly</li>
-<li>Gradients in text may be different from the source PDF</li>
+<li>
+<p><strong>Embedding:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setAccessibility</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</code></pre></div>
+
+</li>
+<li>
+<p><strong>Optional setting in fop.xconf file:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;accessibility&gt;</span>true<span class="nt">&lt;/accessibility&gt;</span>
+  ...
+<span class="nt">&lt;/fop&gt;</span>
+</code></pre></div>
+
+</li>
+</ol>
+<p>When accessibility is enabled, additional information relating to the logical structure of the document is added to the PDF. That information allows the PDF viewer (or a text-to-speech application) to retrieve the natural reading order of the document.</p>
+<p><note>The processing of the logical structure is memory-hungry. You may need to adjust the Java heap size in order to process larger files.</note></p>
+<h2 id="source">Changes to your XSL-FO input files</h2>
+<p>Apache FOP cannot automatically generate accessible PDFs. Some of the work can only be performed by the content provider. Following are some changes that may be necessary to your XSL-FO content in order to generate really accessible documents:</p>
+<ul>
+<li>
+<p>Table cells must have a table row as their parent.</p>
+</li>
+<li>
+<p>Images must have an alternate text: use the <code>fox:alt-text</code> extension attribute (in the <a href="extensions.html#fox-namespace">fox namespace</a>) on <code>fo:external-graphic</code> and <code>fo:instream-foreign-object</code> to specify a short text describing the image. The alternate text can also be used on <code>fo:basic-link</code>.</p>
+</li>
+<li>
+<p>Ensure that the order of <code>fo:block-container</code> elements in a page corresponds to the reading order.</p>
+</li>
+<li>
+<p>Specify the natural language of the document using the language and country properties (or via the <code>xml:lang</code> shorthand property).</p>
+</li>
 </ul>
-<h2 id="binary">Binary Download</h2>
-<p>If using the binary package, the four jar files should be placed in the <em>lib</em> directory of your FOP installation.</p>
-<p>Binary distributions include "-bin" in their names, and can be downloaded from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>.</p>
-<p>Here are the links to each package’s signature and checksum files. Signatures can be verified by using our <a href="https://www.apache.org/dist/xmlgraphics/fop/KEYS">KEYS</a> file.</p>
+<h2 id="hideemptytags">Hide empty tags</h2>
+<p>To remove empty fo:blocks from the structure tree, you can set the keep-empty-tags to false.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;accessibility</span> <span class="na">keep-empty-tags=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/accessibility&gt;</span>
+</code></pre></div>
+
+<h2 id="staticcontentstructureelementsperpage">Static content structure elements per page</h2>
+<p>A screen reader may repeat page numbers for static content such as footers. So we can enable this option to duplicate these elements per page.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;accessibility</span> <span class="na">static-region-per-page=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/accessibility&gt;</span>
+</code></pre></div>
+
+<h2 id="customTags">Customized Tagging</h2>
+<p>The <a href="#PDFReference">PDF Reference</a> defines a set of standard Structure Types to tag content. For example, ‘P’ is used for identifying paragraphs, ‘H1’ to ‘H6’ for headers, ‘L’ for lists, ‘Div’ for block-level groups of elements, etc. This standard set is aimed at improving interoperability between applications producing or consuming PDF.</p>
+<p>FOP provides a default mapping of Formatting Objects to elements from that standard set. For example, <code>fo:page-sequence</code> is mapped to ‘Part’, <code>fo:block</code> is mapped to ‘P’, <code>fo:list-block</code> to ‘L’, etc.</p>
+<p>You may want to customize that mapping to improve the accuracy of the tagging or deal with particular FO constructs. For example, you may want to make use of the ‘H1’ to ‘H6’ tags to make the hierarchical structure of the document appear in the PDF. This is achieved by using the <code>role</code> XSL-FO property:</p>
+<div class="highlight"><pre><span></span><code>...
+<span class="nt">&lt;fo:block</span> <span class="na">role=</span><span class="s">&quot;H1&quot;</span> <span class="na">font-weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">&gt;</span>I. A Level 1 Heading<span class="nt">&lt;/fo:block&gt;</span>
+<span class="nt">&lt;fo:block&gt;</span>This is the first paragraph of the first section...<span class="nt">&lt;/fo:block&gt;</span>
+...
+</code></pre></div>
+
+<p>If a non-standard structure type is specified, FOP will issue a warning and fall back to the default tag associated to the Formatting Object.</p>
+<h2 id="treating-content-as-artifact">Treating Content as Artifact</h2>
+<p>If your document has content that is not meant to appear in the structure tree, you can wrap it in an <code>fo:wrapper</code> element whose <code>role</code> property has been set to ‘artifact’. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:block&gt;</span>blah... blah...
+  <span class="nt">&lt;fo:wrapper</span> <span class="na">role=</span><span class="s">&quot;artifact&quot;</span><span class="nt">&gt;</span>Funny graphical thing without logical meaning<span class="nt">&lt;/fo:wrapper&gt;</span>
+  blah... blah... <span class="nt">&lt;/fo:block&gt;</span>
+</code></pre></div>
+
+<p>This special value for the <code>role</code> property can also be applied to <code>fo:static-content</code> elements; indeed such elements are often used to contain page header information, that is there purely as a reading aid for sighted people and is meaningless when read out loud by a screen reader.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:static-content</span> <span class="na">flow-name=</span><span class="s">&quot;xsl-region-before&quot;</span> <span class="na">role=</span><span class="s">&quot;artifact&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fo:block&gt;</span>Page <span class="nt">&lt;fo:page-number/&gt;&lt;/fo:block&gt;</span>
+<span class="nt">&lt;/fo:static-content&gt;</span>
+</code></pre></div>
+
+<p>This can be applied to table headers and footers also:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:table-header</span> <span class="na">role=</span><span class="s">&quot;artifact&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;fo:table-footer</span> <span class="na">role=</span><span class="s">&quot;artifact&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
+
+<h2 id="fox:header">Scope of Header Table Cells</h2>
+<p>In XSL-FO, tables are inherently defined row by row. The <code>fo:table-header</code> element can be used to define ‘header rows’, in which each cell is a header of the corresponding column (like <code>TH</code> cells in HTML). The cell is said to have a column <em>scope</em>.</p>
+<p>There is no way, however, to define ‘row headers’: cells that have a row scope. Of course it is possible to style a cell to make it look like a header (for example, by using a bolder font), but that won’t be reflected in the structure of the document.</p>
+<p>When creating accessible documents, it is desirable to have that information, as it can be used by a screen reader to help the user build a mental representation of the table.</p>
+<p>For that purpose, FOP defines the <code>fox:header</code> extension property. If an <code>fo:table-column</code> element has this property set to <code>true</code>, then the corresponding cells will receive the <code>TH</code> structure type, and the <code>Scope</code> structure attribute will have one of the following value:</p>
+<ul>
+<li>‘Both’ if the cell also is a descendant of <code>fo:table-header</code>;</li>
+<li>‘Row’ otherwise.</li>
+</ul>
 <table>
 <thead>
 <tr>
-<th></th>
-<th></th>
-<th></th>
+<th><code>fox:header</code></th>
 <th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz&amp;action=download">fop-pdf-images-2.10-bin.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz.sha512">SHA512</a></td>
-<td></td>
+<td>Value:</td>
+<td>true &#x7C; false</td>
 </tr>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip&amp;action=download">fop-pdf-images-2.10-bin.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip.sha512">SHA512</a></td>
-<td></td>
+<td>Initial:</td>
+<td>false</td>
 </tr>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz&amp;action=download">fop-pdf-images-2.10-src.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz.sha512">SHA512</a></td>
-<td></td>
+<td>Inherited:</td>
+<td>no</td>
 </tr>
 <tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip&amp;action=download">fop-pdf-images-2.10-src.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip.sha512">SHA512</a></td>
-<td></td>
+<td>Applies to:</td>
+<td><code>fo:table-column</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="source">Source Download</h2>
+<p>If for some reason a cell inside a header column is not meant to be a header cell, the <code>role</code> property can be used to override the default behavior and set the structure type to <code>TD</code>.</p>
+<p>For example, the following table:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:table</span> <span class="na">width=</span><span class="s">&quot;100%&quot;</span> <span class="na">table-layout=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fo:table-column</span> <span class="na">xmlns:fox=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions&quot;</span> <span class="na">fox:header=</span><span class="s">&quot;true&quot;</span> <span class="na">column-width=</span><span class="s">&quot;proportional-column-width(1)&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;fo:table-column</span> <span class="na">column-width=</span><span class="s">&quot;proportional-column-width(1)&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;fo:table-column</span> <span class="na">column-width=</span><span class="s">&quot;proportional-column-width(1)&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;fo:table-header</span> <span class="na">font-weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;fo:table-row&gt;</span>
+      <span class="nt">&lt;fo:table-cell</span> <span class="na">border=</span><span class="s">&quot;1pt solid black&quot;</span> <span class="na">padding-left=</span><span class="s">&quot;1pt&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fo:block&gt;</span>Header Scope = Both<span class="nt">&lt;/fo:block&gt;</span>
+      <span class="nt">&lt;/fo:table-cell&gt;</span>
+      <span class="nt">&lt;fo:table-cell</span> <span class="na">border=</span><span class="s">&quot;1pt solid black&quot;</span> <span class="na">padding-left=</span><span class="s">&quot;1pt&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fo:block&gt;</span>Header Scope = Column<span class="nt">&lt;/fo:block&gt;</span>
+      <span class="nt">&lt;/fo:table-cell&gt;</span>
+      <span class="nt">&lt;fo:table-cell</span> <span class="na">border=</span><span class="s">&quot;1pt solid black&quot;</span> <span class="na">padding-left=</span><span class="s">&quot;1pt&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fo:block&gt;</span>Header Scope = Column<span class="nt">&lt;/fo:block&gt;</span>
+      <span class="nt">&lt;/fo:table-cell&gt;</span>
+    <span class="nt">&lt;/fo:table-row&gt;</span>
+  <span class="nt">&lt;/fo:table-header&gt;</span>
+  <span class="nt">&lt;fo:table-body&gt;</span>
+    <span class="nt">&lt;fo:table-row&gt;</span>
+      <span class="nt">&lt;fo:table-cell</span> <span class="na">border=</span><span class="s">&quot;1pt solid black&quot;</span> <span class="na">padding-left=</span><span class="s">&quot;1pt&quot;</span> <span class="na">font-weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fo:block&gt;</span>Header Scope = Row<span class="nt">&lt;/fo:block&gt;</span>
+      <span class="nt">&lt;/fo:table-cell&gt;</span>
+      <span class="nt">&lt;fo:table-cell</span> <span class="na">border=</span><span class="s">&quot;1pt solid black&quot;</span> <span class="na">padding-left=</span><span class="s">&quot;1pt&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fo:block&gt;</span>Cell 1.1<span class="nt">&lt;/fo:block&gt;</span>
+      <span class="nt">&lt;/fo:table-cell&gt;</span>
+      <span class="nt">&lt;fo:table-cell</span> <span class="na">border=</span><span class="s">&quot;1pt solid black&quot;</span> <span class="na">padding-left=</span><span class="s">&quot;1pt&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fo:block&gt;</span>Cell 1.2<span class="nt">&lt;/fo:block&gt;</span>
+      <span class="nt">&lt;/fo:table-cell&gt;</span>
+    <span class="nt">&lt;/fo:table-row&gt;</span>
+    <span class="nt">&lt;fo:table-row&gt;</span>
+      <span class="nt">&lt;fo:table-cell</span> <span class="na">border=</span><span class="s">&quot;1pt solid black&quot;</span> <span class="na">padding-left=</span><span class="s">&quot;1pt&quot;</span> <span class="na">font-weight=</span><span class="s">&quot;bold&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fo:block&gt;</span>Header Scope = Row<span class="nt">&lt;/fo:block&gt;</span>
+      <span class="nt">&lt;/fo:table-cell&gt;</span>
+      <span class="nt">&lt;fo:table-cell</span> <span class="na">border=</span><span class="s">&quot;1pt solid black&quot;</span> <span class="na">padding-left=</span><span class="s">&quot;1pt&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fo:block&gt;</span>Cell 2.1<span class="nt">&lt;/fo:block&gt;</span>
+      <span class="nt">&lt;/fo:table-cell&gt;</span>
+      <span class="nt">&lt;fo:table-cell</span> <span class="na">border=</span><span class="s">&quot;1pt solid black&quot;</span> <span class="na">padding-left=</span><span class="s">&quot;1pt&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fo:block&gt;</span>Cell 2.2<span class="nt">&lt;/fo:block&gt;</span>
+      <span class="nt">&lt;/fo:table-cell&gt;</span>
+    <span class="nt">&lt;/fo:table-row&gt;</span>
+    <span class="nt">&lt;fo:table-row&gt;</span>
+      <span class="nt">&lt;fo:table-cell</span> <span class="na">border=</span><span class="s">&quot;1pt solid black&quot;</span> <span class="na">padding-left=</span><span class="s">&quot;1pt&quot;</span> <span class="na">role=</span><span class="s">&quot;TD&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fo:block&gt;</span>Non-header<span class="nt">&lt;/fo:block&gt;</span>
+      <span class="nt">&lt;/fo:table-cell&gt;</span>
+      <span class="nt">&lt;fo:table-cell</span> <span class="na">border=</span><span class="s">&quot;1pt solid black&quot;</span> <span class="na">padding-left=</span><span class="s">&quot;1pt&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fo:block&gt;</span>Cell 3.1<span class="nt">&lt;/fo:block&gt;</span>
+      <span class="nt">&lt;/fo:table-cell&gt;</span>
+      <span class="nt">&lt;fo:table-cell</span> <span class="na">border=</span><span class="s">&quot;1pt solid black&quot;</span> <span class="na">padding-left=</span><span class="s">&quot;1pt&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fo:block&gt;</span>Cell 3.2<span class="nt">&lt;/fo:block&gt;</span>
+      <span class="nt">&lt;/fo:table-cell&gt;</span>
+    <span class="nt">&lt;/fo:table-row&gt;</span>
+  <span class="nt">&lt;/fo:table-body&gt;</span>
+<span class="nt">&lt;/fo:table&gt;</span>
+</code></pre></div>
+
+<p>will be rendered into this:</p>
+<table>
+<thead>
+<tr>
+<th>Header Scope = Both</th>
+<th>Header Scope = Column</th>
+<th>Header Scope = Column</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Header Scope = Row</strong></td>
+<td>Cell 1.1</td>
+<td>Cell 1.2</td>
+</tr>
+<tr>
+<td><strong>Header Scope = Row</strong></td>
+<td>Cell 2.1</td>
+<td>Cell 2.2</td>
+</tr>
+<tr>
+<td>Non-header</td>
+<td>Cell 3.1</td>
+<td>Cell 3.2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="testing">Testing</h2>
+<p>Accessible PDFs can be tested, for example, using Adobe Acrobat Professional. Its Accessibility Check feature creates a report indicating any deficiencies with a PDF document. Alternatively, you can just let a screen reader read the document aloud.</p>
+<h2 id="limitations">Limitations</h2>
+<p>Accessibility support in Apache FOP is relatively new, so there are certain limitations. Please help us identify and close any gaps.</p>
 <ul>
-<li>Download a released version from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>. Source distributions include "-src" in their names.</li>
+<li>
+<p>The natural language can currently only be specified at the page-sequence level. The document language is derived from the language of the first page-sequence. It is currently not possible to override the language inside the content below the page-sequence level.</p>
+</li>
+<li>
+<p>It's currently not possible to specify the expanded form of an abbreviation or acronym.</p>
+</li>
+<li>
+<p>SVG graphics (or images in general) are treated as a single figure. Text contained in SVGs is not accessible. It's only possible to work with <code>fox:alt-text</code>.</p>
+</li>
+<li>
+<p>The side regions (region-before, region-after etc.) are currently not specially identified. Screen readers may read their content at page changes.</p>
+</li>
 </ul>
-<h2 id="older_releases">Older Releases</h2>
-<p>Archive distributions can be downloaded from the archives <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/">binaries</a> &amp; <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/source/">source</a> links.</p>
-<p>The fop-pdf-images plug-in was donated by Jeremias M&auml;rki to the XMLGraphics project in 2012. Older releases can
-be obtained from his plug-in <a href="http://www.jeremias-maerki.ch/development/fop/index.html">page</a>.</p>
-<h1 id="history-of-changes">History of Changes</h1>
-<h2 id="version_trunk">Version trunk</h2>
+<h1 id="pdfua-iso-14289">PDF/UA (ISO 14289)</h1>
+<p>PDF/UA (PDF/Universal Accessibility), the standard for accessible PDF technology.</p>
+<h2 id="fo">Usage (fo)</h2>
+<p>Define document title in fo:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:declarations&gt;</span>
+  <span class="nt">&lt;x:xmpmeta</span> <span class="na">xmlns:x=</span><span class="s">&quot;adobe:ns:meta/&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;rdf:RDF</span> <span class="na">xmlns:rdf=</span><span class="s">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;rdf:Description</span> <span class="na">rdf:about=</span><span class="s">&quot;&quot;</span> <span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;dc:title&gt;</span>Document title<span class="nt">&lt;/dc:title&gt;</span>
+        <span class="nt">&lt;dc:creator&gt;</span>Document author<span class="nt">&lt;/dc:creator&gt;</span>
+        <span class="nt">&lt;dc:description&gt;</span>Document subject<span class="nt">&lt;/dc:description&gt;</span>
+      <span class="nt">&lt;/rdf:Description&gt;</span>
+    <span class="nt">&lt;/rdf:RDF&gt;</span>
+  <span class="nt">&lt;/x:xmpmeta&gt;</span>
+<span class="nt">&lt;/fo:declarations&gt;</span>
+</code></pre></div>
+
+<h2 id="fop-xconf">Usage (fop.xconf)</h2>
+<p>Enable PDF/UA-1 in fop.xconf:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;accessibility&gt;</span>true<span class="nt">&lt;/accessibility&gt;</span>
+  <span class="nt">&lt;renderers&gt;</span>
+    <span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;pdf-ua-mode&gt;</span>PDF/UA-1<span class="nt">&lt;/pdf-ua-mode&gt;</span>  
+    <span class="nt">&lt;/renderer&gt;</span>
+  <span class="nt">&lt;/renderers&gt;</span>
+<span class="nt">&lt;/fop&gt;</span>
+</code></pre></div>
+
+<h2 id="links">Related Links</h2>
+<p>Many resources providing guidance about creating accessible documents can be found on the web. Here are a few links, along with additional resources around the topic:</p>
 <ul>
-<li>FOP-3203: Upgrade to PDFBox 3</li>
-<li>FOP-3210: Correct position when merging pdfs</li>
-<li>FOP-3213: Sort dict hash to find more duplicates</li>
-<li>FOP-3227: Draw softmask without rasterizing page</li>
-<li>FOP-3230: Fix PDF/UA compliance issues when attaching a PDF/UA file</li>
-<li>FOP-3233: Avoid merging fonts without mac cmap</li>
-<li>FOP-3234: Use unique value for glyph index for font merging</li>
-<li>FOP-3235: Correct PS transform for gradients and mask for images</li>
-<li>FOP-3237: Use DPI to set resolution of PDFBox images</li>
-<li>FOP-3240: Use glyph from fonts where is exists for font merge</li>
-</ul>
-<h2 id="version_2.10">Version 2.10</h2>
-<ul>
-<li>FOP-3149: Don't merge fonts when ascent is different</li>
-<li>FOP-3155: Use format 12 for unicode cmap</li>
-<li>FOP-3158: Switch to spotbugs</li>
-<li>FOP-3183: Disable pattern modification using xobjforms</li>
-<li>FOP-3200: Correct end of start code for merging ttf cmap</li>
-</ul>
-<h2 id="version_2.9">Version 2.9</h2>
-<ul>
-<li>FOP-3107: Update to PDFBox 2.0.27</li>
-<li>FOP-3108: Gradient component not displayed correctly after scaling</li>
-<li>FOP-3112: Rotate annotations</li>
-<li>FOP-3123: Modified stream should be used in the cache key</li>
-<li>FOP-3124: Subrs data missing from font merging</li>
-<li>FOP-3136: Softmask dictionary preserved</li>
-<li>FOP-3138: NPE when no fields</li>
-<li>FOP-3140: Merge form fields</li>
-</ul>
-<h2 id="version_2.8">Version 2.8</h2>
-<ul>
-<li>FOP-3051: Upgrade to Commons IO 2.11</li>
-<li>FOP-3073: Preserve bytes when cloning string</li>
-<li>FOP-3089: Switch cmap format to support iPhone</li>
-<li>FOP-3102: Move composite glyphs to the end</li>
-</ul>
-<h2 id="version_2.7">Version 2.7</h2>
-<ul>
-<li>FOP-3034: Update PDFBox to 2.0.24</li>
-<li>FOP-3032: Allow to embed native PDF in AFP</li>
-<li>FOP-3020: Add space to standard position for font merge</li>
-<li>FOP-3009: Avoid merging fonts with different number of cmap formats</li>
-<li>FOP-3001: Deduplicate streams in arrays</li>
-</ul>
-<h2 id="version_2.6">Version 2.6</h2>
-<ul>
-<li>FOP-2951: Add uniquename to xobj form</li>
-<li>FOP-2965: Keep streams with DCT compression</li>
-<li>FOP-2971: Update unique name inside patterns</li>
-<li>FOP-2974: Handle space in COSName</li>
-<li>FOP-2979: Update PDFBox to 2.0.19</li>
-</ul>
-<h2 id="version_2.5">Version 2.5</h2>
-<ul>
-<li>FOP-2904: Handle object for boundingbox</li>
-<li>FOP-2922: Syntax error after writing content stream</li>
-<li>FOP-2933: PDF to PDF checkbox missing</li>
-</ul>
-<h2 id="version_2.4">Version 2.4</h2>
-<ul>
-<li>FOP-2802: Java 10 PDF/SVG to Image box not shown</li>
-<li>FOP-2812: Update PDFBox to 2.0.11</li>
-<li>FOP-2836: Update PDFBox to 2.0.13</li>
-<li>FOP-2840: Image mask in PDF not rendered to PS</li>
-<li>FOP-2841: PDF to PDF with merge-fonts checkbox misaligned</li>
-<li>FOP-2856: Support compile on Java 12</li>
-<li>FOP-2873: Update to PDFBox 2.0.16</li>
-<li>FOP-2879: Add caching to avoid parsing content stream</li>
-<li>FOP-2882: Allow PDFFormXObject to improve performance</li>
-</ul>
-<h2 id="version_2.3">Version 2.3</h2>
-<ul>
-<li>PDF to PDF deduplicate more types of streams</li>
-<li>PDF to PS allow fop fonts as fallback</li>
-</ul>
-<h2 id="version_2.2">Version 2.2</h2>
-<ul>
-<li>Move to PDFBox 2</li>
-<li>Deduplicate PDF streams</li>
-<li>PDF to PS deduplication of images</li>
-<li>Remove xobj type=form</li>
-<li>Merge fonts (off by default)</li>
-<li>Support PDF shading to PS</li>
-<li>Merging of Tagged (Accessible) PDF</li>
+<li>
+<p><a href="http://www.section508.gov/">US Government - Website on Section 508</a></p>
+</li>
+<li>
+<p><a href="http://en.wikipedia.org/wiki/Accessibility">Wikipedia on Accessibility in general</a></p>
+</li>
+<li>
+<p><a href="http://en.wikipedia.org/wiki/Portable_Document_Format#Accessibility">Wikipedia on Accessibility in PDF</a></p>
+</li>
+<li>
+<p><a href="http://partners.adobe.com/public/developer/en/pdf/PDFReference.pdf">PDF Reference 1.4</a> (look up chapters 9.7 "Tagged PDF" and 9.8 "Accessibility Support")</p>
+</li>
+<li>
+<p><a href="pdfa.html">PDF/A support in Apache FOP</a></p>
+</li>
+<li>
+<p><a href="https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/PDF_Accessibility">Developer-oriented details on the accessibility features (on the Wiki)</a></p>
+</li>
 </ul>
         </div>
       </div>

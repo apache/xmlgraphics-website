@@ -25,7 +25,7 @@
 	});
     </script>
 
-   <title>Apache(th) FOP: PDF Images Plug-In</title>
+   <title>Apache(tm) FOP: Embedding</title>
   </head>
 
   <body>
@@ -1676,6 +1676,9 @@ $(document).ready(function () {
 })
 </script>	</div>
 	
+	<div id="outdated-warning" style="padding: .5em; text-align: center; background-color: #FFBABA; color: #6A0E0E;">
+    This document is for an old version of FOP that is no longer supported. <a href="../2.10/embedding.html">Latest version of this page</a>
+    </div>
   
 
 	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
@@ -1697,193 +1700,368 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1 id="apache-fop-pdf-images-plug-in">Apache&trade; FOP: PDF Images Plug-In</h1>
+    <h1 id="apache-fop-embedding">Apache&trade; FOP: Embedding</h1>
+<p><subtitle>How to Embed FOP in a Java application</subtitle></p>
 <h2 id="overview">Overview</h2>
-<p>The <em>fop-pdf-images</em> plug-in extends FOP in order to add support for using PDF images in fo:external-graphic elements when
-generating PDF files. This means one can write something like:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf#page=1&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<p>and</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fox:external-document</span> <span class="na">src=</span><span class="s">&quot;my-doc.pdf&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<h2 id="reduce-file-size">Reduce file size</h2>
-<p>If you input many pdfs together the output pdf has duplicate fonts. Set this flag to merge fonts in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-fonts&gt;</span>true<span class="nt">&lt;/merge-fonts&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<p>Object Streams compress the PDF to reduce file size. Needs to be enabled using fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;use-object-streams&gt;</span>true<span class="nt">&lt;/use-object-streams&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="improve-performance">Improve performance</h2>
-<p>If you use many of the same pdf's and they have a large content stream, this flag can improve performance.
-The disadvantage will be it can cause higher memory use inside your printer.
-Set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;form-xobject&gt;</span>true<span class="nt">&lt;/form-xobject&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="merge-form-fields">Merge form fields</h2>
-<p>If you want to merge form fields data structure across multiple input pdfs set this flag in fop.xconf:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>      
-  <span class="nt">&lt;merge-form-fields&gt;</span>true<span class="nt">&lt;/merge-form-fields&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="known-issues-with-postscript-output">Known issues with Postscript output</h2>
+<p>Review <a href="running.html">Running Apache&trade; FOP</a> for important information that applies to embedded applications as well as command-line use, such as options and performance.</p>
+<p>To embed Apache&trade; FOP in your application, first create a new org.apache.fop.apps.FopFactory instance. This object can be used to launch multiple rendering runs. For each run, create a new org.apache.fop.apps.Fop instance through one of the factory methods of FopFactory. In the method call you specify which output format (i.e. MIME type) to use and, if the selected output format requires an OutputStream, which OutputStream to use for the results of the rendering. You can customize FOP's behaviour in a rendering run by supplying your own FOUserAgent instance. The FOUserAgent can, for example, be used to set your own document handler instance (details below). Finally, you retrieve a SAX DefaultHandler instance from the Fop object and use that as the SAXResult of your transformation.</p>
+<h2 id="API">The API</h2>
+<p>FOP has many classes which express the "public" access modifier, however, this is not indicative of their inclusion into the public API. Every attempt will be made to keep the public API static, to minimize regressions for existing users, however, since the API is not clearly defined, the list of classes below are the generally agreed public API:</p>
 <ul>
-<li>If fonts are not embedded in source PDF:<ul>
-<li>If OTF font type is needed text may be missing if Adobe Reader fonts are not found</li>
-<li>Text may be rendered wrong or poorly if wrong font is selected as replacement   </li>
+<li>org.apache.fop.apps.*</li>
+<li>org.apache.fop.fo.FOEventHandler</li>
+<li>org.apache.fop.fo.ElementMappingRegistry</li>
+<li>org.apache.fop.fonts.FontManager</li>
+<li>org.apache.fop.events.EventListener</li>
+<li>org.apache.fop.events.Event</li>
+<li>org.apache.fop.events.model.EventSeverity</li>
+<li>org.apache.fop.render.ImageHandlerRegistry</li>
+<li>org.apache.fop.render.RendererFactory</li>
+<li>org.apache.fop.render.intermediate.IFContext</li>
+<li>org.apache.fop.render.intermediate.IFDocumentHandler</li>
+<li>org.apache.fop.render.intermediate.IFException</li>
+<li>org.apache.fop.render.intermediate.IFParser</li>
+<li>org.apache.fop.render.intermediate.IFSerializer</li>
+<li>org.apache.fop.render.intermediate.IFUtil</li>
+<li>org.apache.fop.render.intermediate.util.IFConcatenator</li>
 </ul>
+<h2 id="basics">Basic Usage Pattern</h2>
+<p>Apache FOP relies heavily on JAXP. It uses SAX events exclusively to receive the XSL-FO input document. It is therefore a good idea that you know a few things about JAXP (which is a good skill anyway). Let's look at the basic usage pattern for FOP...</p>
+<p>Here is the basic pattern to render an XSL-FO file to PDF:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.fop.apps.FopFactory</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.fop.apps.Fop</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.fop.apps.MimeConstants</span><span class="p">;</span>
+
+<span class="cm">/*..*/</span>
+
+<span class="c1">// Step 1: Construct a FopFactory by specifying a reference to the configuration file</span>
+<span class="c1">// (reuse if you plan to render multiple documents!)</span>
+<span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;C:/Temp/fop.xconf&quot;</span><span class="p">));</span>
+
+<span class="c1">// Step 2: Set up output stream.</span>
+<span class="c1">// Note: Using BufferedOutputStream for performance reasons (helpful with FileOutputStreams).</span>
+<span class="n">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedOutputStream</span><span class="p">(</span><span class="k">new</span> <span class="n">FileOutputStream</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;C:/Temp/myfile.pdf&quot;</span><span class="p">)));</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// Step 3: Construct fop with desired output format</span>
+    <span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">,</span> <span class="n">out</span><span class="p">);</span>
+
+    <span class="c1">// Step 4: Setup JAXP using identity transformer</span>
+    <span class="n">TransformerFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="n">TransformerFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">();</span>
+    <span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">factory</span><span class="p">.</span><span class="na">newTransformer</span><span class="p">();</span> <span class="c1">// identity transformer</span>
+
+    <span class="c1">// Step 5: Setup input and output for XSLT transformation</span>
+    <span class="c1">// Setup input stream</span>
+    <span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;C:/Temp/myfile.fo&quot;</span><span class="p">));</span>
+
+    <span class="c1">// Resulting SAX events (the generated FO) must be piped through to FOP</span>
+    <span class="n">Result</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SAXResult</span><span class="p">(</span><span class="n">fop</span><span class="p">.</span><span class="na">getDefaultHandler</span><span class="p">());</span>
+
+    <span class="c1">// Step 6: Start XSLT transformation and FOP processing</span>
+    <span class="n">transformer</span><span class="p">.</span><span class="na">transform</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+
+<span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+    <span class="c1">//Clean-up</span>
+    <span class="n">out</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Let's discuss these 5 steps in detail:</p>
+<ul>
+<li>
+<p><strong>Step 1:</strong> You create a new FopFactory instance. The FopFactory is created and holds references to configuration information and cached data. It's important to reuse this instance if you plan to render multiple documents during a JVM's lifetime.</p>
 </li>
-<li>Transparency, layers and opacity may not render correctly</li>
-<li>Gradients in text may be different from the source PDF</li>
+<li>
+<p><strong>Step 2:</strong> You set up an OutputStream that the generated document will be written to. It's a good idea to buffer the OutputStream as demonstrated to improve performance.</p>
+</li>
+<li>
+<p><strong>Step 3:</strong> You create a new Fop instance through one of the factory methods on the FopFactory. You tell the FopFactory what your desired output format is. This is done by using the MIME type of the desired output format (ex. "application/pdf"). You can use one of the MimeConstants.* constants. The second parameter is the OutputStream you've setup up in step 2.</p>
+</li>
+<li>
+<p><strong>Step 4</strong> We recommend that you use JAXP Transformers even if you don't do XSLT transformations to generate the XSL-FO file. This way you can always use the same basic pattern. The example here sets up an "identity transformer" which just passes the input (Source) unchanged to the output (Result). You don't have to work with a SAXParser if you don't do any XSLT transformations.</p>
+</li>
+<li>
+<p><strong>Step 5:</strong> Here you set up the input and output for the XSLT transformation. The Source object is set up to load the "myfile.fo" file. The Result is set up so the output of the XSLT transformation is sent to FOP. The FO file is sent to FOP in the form of SAX events which is the most efficient way. Please always avoid saving intermediate results to a file or a memory buffer because that affects performance negatively.</p>
+</li>
+<li>
+<p><strong>Step 6:</strong> Finally, we start the XSLT transformation by starting the JAXP Transformer. As soon as the JAXP Transformer starts to send its output to FOP, FOP itself starts its processing in the background. When the <code>transform()</code> method returns FOP will also have finished converting the FO file to a PDF file and you can close the OutputStream.</p>
+<p><note label="Tip!">It's a good idea to enclose the whole conversion in a try..finally statement. If you close the OutputStream in the finally section, this will make sure that the OutputStream is properly closed even if an exception occurs during the conversion.</note></p>
+</li>
 </ul>
-<h2 id="binary">Binary Download</h2>
-<p>If using the binary package, the four jar files should be placed in the <em>lib</em> directory of your FOP installation.</p>
-<p>Binary distributions include "-bin" in their names, and can be downloaded from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>.</p>
-<p>Here are the links to each package’s signature and checksum files. Signatures can be verified by using our <a href="https://www.apache.org/dist/xmlgraphics/fop/KEYS">KEYS</a> file.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz&amp;action=download">fop-pdf-images-2.10-bin.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.tar.gz.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip&amp;action=download">fop-pdf-images-2.10-bin.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/fop-pdf-images-2.10-bin.zip.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz&amp;action=download">fop-pdf-images-2.10-src.tar.gz</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.tar.gz.sha512">SHA512</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip&amp;action=download">fop-pdf-images-2.10-src.zip</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip.asc">PGP</a></td>
-<td><a href="https://www.apache.org/dist/xmlgraphics/fop-pdf-images/source/fop-pdf-images-2.10-src.zip.sha512">SHA512</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="source">Source Download</h2>
+<p>If you're not totally familiar with JAXP Transformers, please have a look at the <a href="#examples">Embedding examples</a> below. The section contains examples for all sorts of use cases. If you look at all of them in turn you should be able to see the patterns in use and the flexibility this approach offers without adding too much complexity.</p>
+<p>This may look complicated at first, but it's really just the combination of an XSL transformation and a FOP run. It's also easy to comment out the FOP part for debugging purposes, for example when you're tracking down a bug in your stylesheet. You can easily write the XSL-FO output from the XSL transformation to a file to check if that part generates the expected output. An example for that can be found in the <a href="#examples">Embedding examples</a> (See "ExampleXML2FO").</p>
+<h3 id="basic-logging">Logging</h3>
+<p>Logging is now a little different than it was in FOP 0.20.5. We've switched from Avalon Logging to <a href="http://commons.apache.org/logging/">Jakarta Commons Logging</a>. While with Avalon Logging the loggers were directly given to FOP, FOP now retrieves its logger(s) through a statically available LogFactory. This is similar to the general pattern that you use when you work with Apache Log4J directly, for example. We call this "static logging" (Commons Logging, Log4J) as opposed to "instance logging" (Avalon Logging). This has a consequence: You can't give FOP a logger for each processing run anymore. The log output of multiple, simultaneously running FOP instances is sent to the same logger.</p>
+<p>By default, <a href="http://commons.apache.org/logging/">Jakarta Commons Logging</a> uses JDK logging (available in JDKs 1.4 or higher) as its backend. You can configure Commons Logging to use an alternative backend, for example Log4J. Please consult the <a href="http://commons.apache.org/logging/">documentation for Jakarta Commons Logging</a> on how to configure alternative backends.</p>
+<p>As a result of the above we differentiate between two kinds of "logging":</p>
 <ul>
-<li>Download a released version from a <a href="https://www.apache.org/dyn/closer.cgi/xmlgraphics/fop-pdf-images">FOP-PDF-Images Distribution mirror</a>. Source distributions include "-src" in their names.</li>
+<li>
+<p>(FOP-)Developer-oriented logging</p>
+</li>
+<li>
+<p><a href="events.html">User/Integrator-oriented feedback</a> (NEW!)</p>
+</li>
 </ul>
-<h2 id="older_releases">Older Releases</h2>
-<p>Archive distributions can be downloaded from the archives <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/binaries/">binaries</a> &amp; <a href="https://archive.apache.org/dist/xmlgraphics/fop-pdf-images/source/">source</a> links.</p>
-<p>The fop-pdf-images plug-in was donated by Jeremias M&auml;rki to the XMLGraphics project in 2012. Older releases can
-be obtained from his plug-in <a href="http://www.jeremias-maerki.ch/development/fop/index.html">page</a>.</p>
-<h1 id="history-of-changes">History of Changes</h1>
-<h2 id="version_trunk">Version trunk</h2>
+<p>The use of "feedback" instead of "logging" is intentional. Most people were using log output as a means to get feedback from events within FOP. Therefore, FOP now includes an <code>event</code> package which can be used to receive feedback from the layout engine and other components within FOP <strong>per rendering run</strong>. This feedback is not just some text but event objects with parameters so these events can be interpreted by code. Of course, there is a facility to turn these events into normal human-readable messages. For details, please read on on the <a href="events.html">Events page</a>. This leaves normal logging to be mostly a thing used by the FOP developers although anyone can surely activate certain logging categories but the feedback from the loggers won't be separated by processing runs. If this is required, the <a href="events.html">Events subsystem</a> is the right approach.</p>
+<h3 id="render">Processing XSL-FO</h3>
+<p>Once the Fop instance is set up, call <code>getDefaultHandler()</code> to obtain a SAX DefaultHandler instance to which you can send the SAX events making up the XSL-FO document you'd like to render. FOP processing starts as soon as the DefaultHandler's <code>startDocument()</code> method is called. Processing stops again when the DefaultHandler's <code>endDocument()</code> method is called. Please refer to the basic usage pattern shown above to render a simple XSL-FO document.</p>
+<h3 id="render-with-xslt">Processing XSL-FO generated from XML+XSLT</h3>
+<p>If you want to process XSL-FO generated from XML using XSLT we recommend again using standard JAXP to do the XSLT part and piping the generated SAX events directly through to FOP. The only thing you'd change to do that on the basic usage pattern above is to set up the Transformer differently:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//without XSLT:</span>
+<span class="c1">//Transformer transformer = factory.newTransformer(); // identity transformer</span>
+
+<span class="c1">//with XSLT:</span>
+<span class="n">Source</span> <span class="n">xslt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;mystylesheet.xsl&quot;</span><span class="p">));</span>
+<span class="n">Transformer</span> <span class="n">transformer</span> <span class="o">=</span> <span class="n">factory</span><span class="p">.</span><span class="na">newTransformer</span><span class="p">(</span><span class="n">xslt</span><span class="p">);</span>
+</code></pre></div>
+
+<h2 id="input">Input Sources</h2>
+<p>The input XSL-FO document is always received by FOP as a SAX stream (see the <a href="../dev/design/parsing.html">Parsing Design Document</a> for the rationale).</p>
+<p>However, you may not always have your input document available as a SAX stream. But with JAXP it's easy to convert different input sources to a SAX stream so you can pipe it into FOP. That sounds more difficult than it is. You simply have to set up the right Source instance as input for the JAXP transformation. A few examples:</p>
 <ul>
-<li>FOP-3203: Upgrade to PDFBox 3</li>
-<li>FOP-3210: Correct position when merging pdfs</li>
-<li>FOP-3213: Sort dict hash to find more duplicates</li>
-<li>FOP-3227: Draw softmask without rasterizing page</li>
-<li>FOP-3230: Fix PDF/UA compliance issues when attaching a PDF/UA file</li>
-<li>FOP-3233: Avoid merging fonts without mac cmap</li>
-<li>FOP-3234: Use unique value for glyph index for font merging</li>
-<li>FOP-3235: Correct PS transform for gradients and mask for images</li>
-<li>FOP-3237: Use DPI to set resolution of PDFBox images</li>
-<li>FOP-3240: Use glyph from fonts where is exists for font merge</li>
+<li>
+<p><strong>URL:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="s">&quot;http://localhost:8080/testfile.xml&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+</li>
+<li>
+<p><strong>File:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;C:/Temp/myinputfile.xml&quot;</span><span class="p">));</span>
+</code></pre></div>
+
+</li>
+<li>
+<p><strong>String:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">StringReader</span><span class="p">(</span><span class="n">myString</span><span class="p">));</span> <span class="c1">// myString is a String</span>
+</code></pre></div>
+
+</li>
+<li>
+<p><strong>InputStream:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">MyInputStream</span><span class="p">(</span><span class="n">something</span><span class="p">));</span>
+</code></pre></div>
+
+</li>
+<li>
+<p><strong>Byte Array:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StreamSource</span><span class="p">(</span><span class="k">new</span> <span class="n">ByteArrayInputStream</span><span class="p">(</span><span class="n">myBuffer</span><span class="p">));</span> <span class="c1">// myBuffer is a byte[] here</span>
+</code></pre></div>
+
+</li>
+<li>
+<p><strong>DOM:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">Source</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DOMSource</span><span class="p">(</span><span class="n">myDocument</span><span class="p">);</span> <span class="c1">// myDocument is a Document or a Node</span>
+</code></pre></div>
+
+</li>
+<li>
+<p><strong>Java Objects:</strong> Please have a look at the <a href="#examples">Embedding examples</a> which contain an example for this.</p>
+</li>
 </ul>
-<h2 id="version_2.10">Version 2.10</h2>
+<p>There are a variety of upstream data manipulations possible. For example, you may have a DOM and an XSL stylesheet; or you may want to set variables in the stylesheet. Interface documentation and some cookbook solutions to these situations are provided in <a href="http://xml.apache.org/xalan-j/usagepatterns.html">Xalan Basic Usage Patterns</a>.</p>
+<h2 id="config-internal">Configuring Apache FOP Programmatically</h2>
+<p>Apache FOP provides two levels on which you can customize FOP's behaviour: the FopFactory and the user agent.</p>
+<h3 id="fop-factory">Customizing the FopFactory</h3>
+<p>The FopFactory holds configuration data and references to objects which are reusable over multiple rendering runs. It's important to instantiate it only once (except in special environments) and reuse it every time to create new FOUserAgent and Fop instances.</p>
+<p>The FopFactoryBuilder is used to construct a FopFactory object. This builder can be used to set configuration values which will determine the behaviour of the FopFactory object. To create the FopFactoryBuilder the following line can be used as a precursor for the following examples:</p>
+<div class="highlight"><pre><span></span><code><span class="n">FopFactoryBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FopFactoryBuilder</span><span class="p">(</span><span class="n">baseURI</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Set a <strong>URIResolver</strong> for custom URI resolution. By supplying a JAXP URIResolver you can add custom URI resolution functionality to FOP. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// myResourceResolver is a org.apache.xmlgraphics.io.ResourceResolver</span>
+<span class="n">FopFactoryBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FopFactoryBuilder</span><span class="p">(</span><span class="n">baseURI</span><span class="p">,</span> <span class="n">myResourceResolver</span><span class="p">);</span>
+</code></pre></div>
+
 <ul>
-<li>FOP-3149: Don't merge fonts when ascent is different</li>
-<li>FOP-3155: Use format 12 for unicode cmap</li>
-<li>FOP-3158: Switch to spotbugs</li>
-<li>FOP-3183: Disable pattern modification using xobjforms</li>
-<li>FOP-3200: Correct end of start code for merging ttf cmap</li>
+<li>
+<p>Disable <strong>strict validation</strong>. When disabled FOP is less strict about the rules established by the XSL-FO specification. Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">builder</span><span class="p">.</span><span class="na">setStrictFOValidation</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Enable an <strong>alternative set of rules for text indents</strong> that tries to mimic the behaviour of many commercial FO implementations, that chose to break the specification in this respect. The default of this option is 'false', which causes Apache FOP to behave exactly as described in the specification. To enable the alternative behaviour, call:</p>
+<div class="highlight"><pre><span></span><code><span class="n">builder</span><span class="p">.</span><span class="na">setBreakIndentInheritanceOnReferenceAreaBoundary</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Set the <strong>source resolution</strong> for the document. This is used internally to determine the pixel size for SVG images and bitmap images without resolution information. Default: 72 dpi. Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">builder</span><span class="p">.</span><span class="na">setSourceResolution</span><span class="p">(</span><span class="mi">96</span><span class="p">);</span> <span class="c1">// =96dpi (dots/pixels per Inch)</span>
+</code></pre></div>
+
+</li>
 </ul>
-<h2 id="version_2.9">Version 2.9</h2>
+<p>The following example shows how a FopFactory is created using the settings specified:</p>
+<div class="highlight"><pre><span></span><code><span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">builder</span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+</code></pre></div>
+
+<p>Finally, there are several options which can be set on the FopFactory itself including the following example:</p>
 <ul>
-<li>FOP-3107: Update to PDFBox 2.0.27</li>
-<li>FOP-3108: Gradient component not displayed correctly after scaling</li>
-<li>FOP-3112: Rotate annotations</li>
-<li>FOP-3123: Modified stream should be used in the cache key</li>
-<li>FOP-3124: Subrs data missing from font merging</li>
-<li>FOP-3136: Softmask dictionary preserved</li>
-<li>FOP-3138: NPE when no fields</li>
-<li>FOP-3140: Merge form fields</li>
+<li>Manually add an <strong>ElementMapping instance</strong>. If you want to supply a special FOP extension you can give the instance to the FOUserAgent. Normally, the FOP extensions can be automatically detected (see the documentation on extension for more info). Example:<div class="highlight"><pre><span></span><code><span class="n">fopFactory</span><span class="p">.</span><span class="na">addElementMapping</span><span class="p">(</span><span class="n">myElementMapping</span><span class="p">);</span> <span class="c1">// myElementMapping is a org.apache.fop.fo.ElementMapping</span>
+</code></pre></div>
+
+</li>
 </ul>
-<h2 id="version_2.8">Version 2.8</h2>
+<h3 id="user-agent">Customizing the User Agent</h3>
+<p>The user agent is the entity that allows you to interact with a single rendering run, i.e. the processing of a single document. If you wish to customize the user agent's behaviour, the first step is to create your own instance of FOUserAgent using the appropriate factory method on FopFactory and pass that to the factory method that will create a new Fop instance:</p>
+<div class="highlight"><pre><span></span><code><span class="n">FopFactory</span> <span class="n">fopFactory</span> <span class="o">=</span> <span class="n">FopFactory</span><span class="p">.</span><span class="na">newInstance</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">).</span><span class="na">toURI</span><span class="p">());</span> <span class="c1">// Reuse the FopFactory if possible!</span>
+<span class="c1">// do the following for each new rendering run</span>
+<span class="n">FOUserAgent</span> <span class="n">userAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFOUserAgent</span><span class="p">();</span>
+<span class="c1">// customize userAgent</span>
+<span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_POSTSCRIPT</span><span class="p">,</span> <span class="n">userAgent</span><span class="p">,</span> <span class="n">out</span><span class="p">);</span>
+</code></pre></div>
+
+<p>You can do all sorts of things on the user agent:</p>
 <ul>
-<li>FOP-3051: Upgrade to Commons IO 2.11</li>
-<li>FOP-3073: Preserve bytes when cloning string</li>
-<li>FOP-3089: Switch cmap format to support iPhone</li>
-<li>FOP-3102: Move composite glyphs to the end</li>
+<li>
+<p>Set the <strong>producer</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. The default producer is "Apache FOP". Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setProducer</span><span class="p">(</span><span class="s">&quot;MyKillerApplication&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Set the <strong>creating user</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setCreator</span><span class="p">(</span><span class="s">&quot;John Doe&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Set the <strong>author</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setAuthor</span><span class="p">(</span><span class="s">&quot;John Doe&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Override the <strong>creation date and time</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setCreationDate</span><span class="p">(</span><span class="k">new</span> <span class="n">Date</span><span class="p">());</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Set the <strong>title</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setTitle</span><span class="p">(</span><span class="s">&quot;Invoice No 138716847&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Set the <strong>keywords</strong> of the document. This is metadata information that can be used for certain output formats such as PDF. Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setKeywords</span><span class="p">(</span><span class="s">&quot;XML XSL-FO&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Set the <strong>target resolution</strong> for the document. This is used to specify the output resolution for bitmap images generated by bitmap renderers (such as the TIFF renderer) and by bitmaps generated by Apache Batik for filter effects and such. Default: 72 dpi. Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setTargetResolution</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span> <span class="c1">// =300dpi (dots/pixels per Inch)</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Set <strong>your own Document Handler</strong>. This feature can be used for several purposes, the most likey usage of which would probably be binding a MIME type when the output is Intermediate Format (see <a href="#documenthandlers">Document Handlers</a>). This also allows advanced users to create their own implementation of the document handler.</p>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setDocumentHandlerOverride</span><span class="p">(</span><span class="n">documentHandler</span><span class="p">);</span> <span class="c1">// documentHandler is an instance of org.apache.fop.render.intermediate.IFDocumentHandler</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Set <strong>your own FOEventHandler instance</strong>. If you want to supply your own FOEventHandler or configure an FOEventHandler subclass in a special way you can give the instance to the FOUserAgent. Normally, the FOEventHandler instance is created by FOP. Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setFOEventHandlerOverride</span><span class="p">(</span><span class="n">myFOEventHandler</span><span class="p">);</span> <span class="c1">// myFOEventHandler is an org.apache.fop.fo.FOEventHandler</span>
+</code></pre></div>
+
+</li>
 </ul>
-<h2 id="version_2.7">Version 2.7</h2>
+<p><note>You should not reuse an FOUserAgent instance between FOP rendering runs although you can. Especially in multi-threaded environment, this is a bad idea.</note></p>
+<h2 id="config-external">Using a Configuration File</h2>
+<p>Instead of setting the parameters manually in code as shown above you can also set many values from an XML configuration file:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.fop.configuration.Configuration</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.fop.configuration.DefaultConfigurationBuilder</span><span class="p">;</span>
+
+<span class="cm">/*..*/</span>
+
+<span class="n">DefaultConfigurationBuilder</span> <span class="n">cfgBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultConfigurationBuilder</span><span class="p">();</span>
+<span class="n">Configuration</span> <span class="n">cfg</span> <span class="o">=</span> <span class="n">cfgBuilder</span><span class="p">.</span><span class="na">buildFromFile</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;C:/Temp/mycfg.xml&quot;</span><span class="p">));</span>
+<span class="n">fopFactoryBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FopFactoryBuilder</span><span class="p">(</span><span class="n">baseURI</span><span class="p">).</span><span class="na">setConfiguration</span><span class="p">(</span><span class="n">cfg</span><span class="p">);</span>
+</code></pre></div>
+
+<p>The layout of the configuration file is described on the <a href="configuration.html">Configuration page</a>.</p>
+<h2 id="documenthandlers">Document Handlers</h2>
+<p>The document handlers are classes that inherit from <code>org.apache.fop.render.intermediate.IFDocumentHandler</code>. This is an interface for which a MIME type specific implementation can be created. This same handler is used either when XSL-FO is used as the input or when Intermediate Format is used. Since IF is output format agnostic, if custom fonts or other configuration information that affect layout (specific to a particular MIME type) are given then FOP needs that contextual information. The document handler provides that context so that when the IF is rendered, it is more visually consistent with FO rendering. The code below shows an example of how a document handler can be used to provide PDF configuration data to the IFSerializer.</p>
+<div class="highlight"><pre><span></span><code><span class="n">IFDocumentHandler</span> <span class="n">targetHandler</span> <span class="o">=</span> <span class="n">userAgent</span><span class="p">.</span><span class="na">getRendererFactory</span><span class="p">().</span><span class="na">createDocumentHandler</span><span class="p">(</span><span class="n">userAgent</span><span class="p">,</span> <span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">);</span>
+
+<span class="n">IFSerializer</span> <span class="n">ifSerializer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IFSerializer</span><span class="p">(</span><span class="k">new</span> <span class="n">IFContext</span><span class="p">(</span><span class="n">userAgent</span><span class="p">));</span>  <span class="c1">//Create the IFSerializer to write the intermediate format</span>
+<span class="n">ifSerializer</span><span class="p">.</span><span class="na">mimicDocumentHandler</span><span class="p">(</span><span class="n">targetHandler</span><span class="p">);</span>   <span class="c1">//Tell the IFSerializer to mimic the target format</span>
+
+<span class="n">userAgent</span><span class="p">.</span><span class="na">setDocumentHandlerOverride</span><span class="p">(</span><span class="n">ifSerializer</span><span class="p">);</span>  <span class="c1">//Make sure the prepared document handler is used</span>
+</code></pre></div>
+
+<p>The rest of the code is the same as in <a href="#basics">Basic Usage Patterns</a>.</p>
+<h2 id="hints">Hints</h2>
+<h3 id="object-reuse">Object reuse</h3>
+<p>Fop instances shouldn't (and can't) be reused. Please recreate Fop and FOUserAgent instances for each rendering run using the FopFactory. This is a cheap operation as all reusable information is held in the FopFactory. That's why it's so important to reuse the FopFactory instance.</p>
+<h3 id="awt">AWT issues</h3>
+<p>If your XSL-FO files contain SVG then Apache Batik will be used. When Batik is initialised it uses certain classes in <code>java.awt</code> that intialise the Java AWT classes. This means that a daemon thread is created by the JVM and on Unix it will need to connect to a DISPLAY.</p>
+<p>The thread means that the Java application may not automatically quit when finished, you will need to call <code>System.exit()</code>. These issues should be fixed in the JDK 1.4.</p>
+<p>If you run into trouble running FOP on a head-less server, please see the <a href="graphics.html#batik">notes on Batik</a>.</p>
+<h3 id="render-info">Getting information on the rendering process</h3>
+<p>To get the number of pages that were rendered by FOP you can call <code>Fop.getResults()</code>. This returns a <code>FormattingResults</code> object where you can look up the number of pages produced. It also gives you the page-sequences that were produced along with their id attribute and their numbers of pages. This is particularly useful if you render multiple documents (each enclosed by a page-sequence) and have to know the number of pages of each document.</p>
+<h2 id="performance">Improving performance</h2>
+<p>There are several options to consider:</p>
 <ul>
-<li>FOP-3034: Update PDFBox to 2.0.24</li>
-<li>FOP-3032: Allow to embed native PDF in AFP</li>
-<li>FOP-3020: Add space to standard position for font merge</li>
-<li>FOP-3009: Avoid merging fonts with different number of cmap formats</li>
-<li>FOP-3001: Deduplicate streams in arrays</li>
+<li>
+<p>Whenever possible, try to use SAX to couple the individual components involved (parser, XSL transformer, SQL datasource etc.).</p>
+</li>
+<li>
+<p>Depending on the target OutputStream (in case of a FileOutputStream, but not for a ByteArrayOutputStream, for example) it may improve performance considerably if you buffer the OutputStream using a BufferedOutputStream:</p>
+<div class="highlight"><pre><span></span><code><span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">BufferedOutputStream</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Make sure you properly close the OutputStream when FOP is finished.</p>
+</li>
+<li>
+<p>Cache the stylesheet. If you use the same stylesheet multiple times you can set up a JAXP <code>Templates</code> object and reuse it each time you do the XSL transformation. (More information can be found <a href="http://www.javaworld.com/javaworld/jw-05-2003/jw-0502-xsl.html">here</a>.)</p>
+</li>
+<li>
+<p>Use an XSLT compiler like <a href="http://xml.apache.org/xalan-j/xsltc_usage.html">XSLTC</a> that comes with Xalan-J.</p>
+</li>
+<li>
+<p>Fine-tune your stylesheet to make the XSLT process more efficient and to create XSL-FO that can be processed by FOP more efficiently. Less is more: Try to make use of property inheritance where possible.</p>
+</li>
+<li>
+<p>You may also wish to consider trying to reduce <a href="running.html#memory">memory usage</a>.</p>
+</li>
 </ul>
-<h2 id="version_2.6">Version 2.6</h2>
-<ul>
-<li>FOP-2951: Add uniquename to xobj form</li>
-<li>FOP-2965: Keep streams with DCT compression</li>
-<li>FOP-2971: Update unique name inside patterns</li>
-<li>FOP-2974: Handle space in COSName</li>
-<li>FOP-2979: Update PDFBox to 2.0.19</li>
-</ul>
-<h2 id="version_2.5">Version 2.5</h2>
-<ul>
-<li>FOP-2904: Handle object for boundingbox</li>
-<li>FOP-2922: Syntax error after writing content stream</li>
-<li>FOP-2933: PDF to PDF checkbox missing</li>
-</ul>
-<h2 id="version_2.4">Version 2.4</h2>
-<ul>
-<li>FOP-2802: Java 10 PDF/SVG to Image box not shown</li>
-<li>FOP-2812: Update PDFBox to 2.0.11</li>
-<li>FOP-2836: Update PDFBox to 2.0.13</li>
-<li>FOP-2840: Image mask in PDF not rendered to PS</li>
-<li>FOP-2841: PDF to PDF with merge-fonts checkbox misaligned</li>
-<li>FOP-2856: Support compile on Java 12</li>
-<li>FOP-2873: Update to PDFBox 2.0.16</li>
-<li>FOP-2879: Add caching to avoid parsing content stream</li>
-<li>FOP-2882: Allow PDFFormXObject to improve performance</li>
-</ul>
-<h2 id="version_2.3">Version 2.3</h2>
-<ul>
-<li>PDF to PDF deduplicate more types of streams</li>
-<li>PDF to PS allow fop fonts as fallback</li>
-</ul>
-<h2 id="version_2.2">Version 2.2</h2>
-<ul>
-<li>Move to PDFBox 2</li>
-<li>Deduplicate PDF streams</li>
-<li>PDF to PS deduplication of images</li>
-<li>Remove xobj type=form</li>
-<li>Merge fonts (off by default)</li>
-<li>Support PDF shading to PS</li>
-<li>Merging of Tagged (Accessible) PDF</li>
-</ul>
+<h2 id="multithreading">Multithreading FOP</h2>
+<p>Apache FOP may currently not be completely thread safe. The code has not been fully tested for multi-threading issues, yet. If you encounter any suspicious behaviour, please notify us.</p>
+<p>There is also a known issue with fonts being jumbled between threads when using the Java2D/AWT renderer (which is used by the -awt and -print output options). In general, you cannot safely run multiple threads through the AWT renderer.</p>
+<h2 id="examples">Examples</h2>
+<p>The directory "{fop-dir}/examples/embedding" contains several working examples.</p>
+<h3 id="ExampleFO2PDF">ExampleFO2PDF.java</h3>
+<p>This <a href="http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/ExampleFO2PDF.java?view=markup">example</a> demonstrates the basic usage pattern to transform an XSL-FO file to PDF using FOP.</p>
+<p><img alt="Example XSL-FO to PDF" src="images/EmbeddingExampleFO2PDF.png"></p>
+<h3 id="ExampleXML2FO">ExampleXML2FO.java</h3>
+<p>This <a href="http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/ExampleXML2FO.java?view=markup">example</a> has nothing to do with FOP. It is there to show you how an XML file can be converted to XSL-FO using XSLT. The JAXP API is used to do the transformation. Make sure you've got a JAXP-compliant XSLT processor in your classpath (ex. <a href="http://xml.apache.org/xalan-j">Xalan</a>).</p>
+<p><img alt="Example XML to XSL-FO" src="images/EmbeddingExampleXML2FO.png"></p>
+<h3 id="ExampleXML2PDF">ExampleXML2PDF.java</h3>
+<p>This <a href="http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/ExampleXML2PDF.java?view=markup">example</a> demonstrates how you can convert an arbitrary XML file to PDF using XSLT and XSL-FO/FOP. It is a combination of the first two examples above. The example uses JAXP to transform the XML file to XSL-FO and FOP to transform the XSL-FO to PDF.</p>
+<p><img alt="Example XML to PDF (via XSL-FO)" src="images/EmbeddingExampleXML2PDF.png"></p>
+<p>The output (XSL-FO) from the XSL transformation is piped through to FOP using SAX events. This is the most efficient way to do this because the intermediate result doesn't have to be saved somewhere. Often, novice users save the intermediate result in a file, a byte array or a DOM tree. We strongly discourage you to do this if it isn't absolutely necessary. The performance is significantly higher with SAX.</p>
+<h3 id="ExampleObj2XML">ExampleObj2XML.java</h3>
+<p>This <a href="http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/ExampleObj2XML.java?view=markup">example</a> is a preparatory example for the next one. It's an example that shows how an arbitrary Java object can be converted to XML. It's an often needed task to do this. Often people create a DOM tree from a Java object and use that. This is pretty straightforward. The example here, however, shows how to do this using SAX, which will probably be faster and not even more complicated once you know how this works.</p>
+<p><img alt="Example Java object to XML" src="images/EmbeddingExampleObj2XML.png"></p>
+<p>For this example we've created two classes: ProjectTeam and ProjectMember (found in xml-fop/examples/embedding/java/embedding/model). They represent the same data structure found in xml-fop/examples/embedding/xml/xml/projectteam.xml. We want to serialize to XML a project team with several members which exist as Java objects. Therefore we created the two classes: ProjectTeamInputSource and ProjectTeamXMLReader (in the same place as ProjectTeam above).</p>
+<p>The XMLReader implementation (regard it as a special kind of XML parser) is responsible for creating SAX events from the Java object. The InputSource class is only used to hold the ProjectTeam object to be used.</p>
+<p>Have a look at the source of ExampleObj2XML.java to find out how this is used. For more detailed information see other resources on JAXP (ex. <a href="http://java.sun.com/xml/jaxp/dist/1.1/docs/tutorial/xslt/3_generate.html">An older JAXP tutorial</a>).</p>
+<h3 id="ExampleObj2PDF">ExampleObj2PDF.java</h3>
+<p>This <a href="http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/ExampleObj2PDF.java?view=markup">example</a> combines the previous and the third to demonstrate how you can transform a Java object to a PDF directly in one smooth run by generating SAX events from the Java object that get fed to an XSL transformation. The result of the transformation is then converted to PDF using FOP as before.</p>
+<p><img alt="Example Java object to PDF (via XML and XSL-FO)" src="images/EmbeddingExampleObj2PDF.png"></p>
+<h3 id="ExampleDOM2PDF">ExampleDOM2PDF.java</h3>
+<p>This <a href="http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/ExampleDOM2PDF.java?view=markup">example</a> has FOP use a DOMSource instead of a StreamSource in order to use a DOM tree as input for an XSL transformation.</p>
+<h3 id="ExampleSVG2PDF">ExampleSVG2PDF.java (PDF Transcoder example)</h3>
+<p>This <a href="http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/fop/examples/embedding/java/embedding/ExampleSVG2PDF.java?view=markup">example</a> shows the usage of the PDF Transcoder, a sub-application within FOP. It is used to generate a PDF document from an SVG file.</p>
+<h3 id="ExampleConcat">ExampleConcat.java (IF Concatenation example)</h3>
+<p>This can be found in the <code>embedding.intermediate</code> package within the examples and describes how IF can be concatenated to produce a document. Because IF has been through FOPs layout engine, it should be visually consistent with FO rendered documents while allowing the user to merge numerous documents together.</p>
+<h3 id="example-notes">Final notes</h3>
+<p>These examples should give you an idea of what's possible. It should be easy to adjust these examples to your needs. Also, if you have other examples that you think should be added here, please let us know via either the fop-users or fop-dev mailing lists. Finally, for more help please send your questions to the fop-users mailing list.</p>
         </div>
       </div>
       <div class="clear"></div>
