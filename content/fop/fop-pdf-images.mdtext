@@ -103,6 +103,19 @@ be obtained from his plug-in [page](http://www.jeremias-maerki.ch/development/fo
 
 #History of Changes
 
+## Version trunk { #version_trunk}
+
+ - FOP-3203: Upgrade to PDFBox 3
+ - FOP-3210: Correct position when merging pdfs
+ - FOP-3213: Sort dict hash to find more duplicates
+ - FOP-3227: Draw softmask without rasterizing page
+ - FOP-3230: Fix PDF/UA compliance issues when attaching a PDF/UA file
+ - FOP-3233: Avoid merging fonts without mac cmap
+ - FOP-3234: Use unique value for glyph index for font merging
+ - FOP-3235: Correct PS transform for gradients and mask for images
+ - FOP-3237: Use DPI to set resolution of PDFBox images
+ - FOP-3240: Use glyph from fonts where is exists for font merge
+
 ## Version 2.10 { #version_2.10}
 
  - FOP-3149: Don't merge fonts when ascent is different
