@@ -203,3 +203,44 @@ Allows attaching custom XMP metadata to a specific PDF page object
       </pdf:page>
     </fo:simple-page-master>
    
+#PDF Layers
+
+Add a image as a layer, can be hidden using a layers button inside Adobe Reader
+
+## Usage (fo) { #fo}
+
+    :::xml
+    <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:fox="http://xmlgraphics.apache.org/fop/extensions" xmlns:pdf="http://xmlgraphics.apache.org/fop/extensions/pdf">
+      <fo:layout-master-set>
+        <fo:simple-page-master page-width="210mm" page-height="297mm" master-name="Page">
+          <fo:region-body region-name="Body"/>
+        </fo:simple-page-master>
+      </fo:layout-master-set>
+      <fo:declarations>
+        <pdf:layer id="watermark">
+          <pdf:string key="Name">watermark</pdf:string>
+        </pdf:layer>
+        <pdf:catalog>
+          <pdf:dictionary key="OCProperties">
+            <pdf:array key="OCGs">
+              <pdf:reference refid="watermark"/>
+            </pdf:array>
+            <pdf:dictionary key="D">
+              <pdf:array key="Order">
+                <pdf:reference refid="watermark"/>
+              </pdf:array>
+            </pdf:dictionary>
+          </pdf:dictionary>
+        </pdf:catalog>
+      </fo:declarations>
+      <fo:page-sequence master-reference="Page">
+        <fo:flow flow-name="Body">
+          <fo:block>Here is some text</fo:block>
+          <fo:block fox:layer="watermark">
+            <fo:block>
+              <fo:external-graphic src="image.png"/>
+            </fo:block>
+          </fo:block>
+        </fo:flow>
+      </fo:page-sequence>
+    </fo:root>
