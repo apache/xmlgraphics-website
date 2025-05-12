@@ -2038,6 +2038,45 @@ For example:</p>
   <span class="nt">&lt;/pdf:page&gt;</span>
 <span class="nt">&lt;/fo:simple-page-master&gt;</span>
 </code></pre></div>
+
+<h1 id="pdf-layers">PDF Layers</h1>
+<p>Add a image as a layer, can be hidden using a layers button inside Adobe Reader</p>
+<h2 id="fo">Usage (fo)</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:root</span> <span class="na">xmlns:fo=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Format&quot;</span> <span class="na">xmlns:fox=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions&quot;</span> <span class="na">xmlns:pdf=</span><span class="s">&quot;http://xmlgraphics.apache.org/fop/extensions/pdf&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fo:layout-master-set&gt;</span>
+    <span class="nt">&lt;fo:simple-page-master</span> <span class="na">page-width=</span><span class="s">&quot;210mm&quot;</span> <span class="na">page-height=</span><span class="s">&quot;297mm&quot;</span> <span class="na">master-name=</span><span class="s">&quot;Page&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:region-body</span> <span class="na">region-name=</span><span class="s">&quot;Body&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/fo:simple-page-master&gt;</span>
+  <span class="nt">&lt;/fo:layout-master-set&gt;</span>
+  <span class="nt">&lt;fo:declarations&gt;</span>
+    <span class="nt">&lt;pdf:layer</span> <span class="na">id=</span><span class="s">&quot;watermark&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;pdf:string</span> <span class="na">key=</span><span class="s">&quot;Name&quot;</span><span class="nt">&gt;</span>watermark<span class="nt">&lt;/pdf:string&gt;</span>
+    <span class="nt">&lt;/pdf:layer&gt;</span>
+    <span class="nt">&lt;pdf:catalog&gt;</span>
+      <span class="nt">&lt;pdf:dictionary</span> <span class="na">key=</span><span class="s">&quot;OCProperties&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;pdf:array</span> <span class="na">key=</span><span class="s">&quot;OCGs&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;pdf:reference</span> <span class="na">refid=</span><span class="s">&quot;watermark&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/pdf:array&gt;</span>
+        <span class="nt">&lt;pdf:dictionary</span> <span class="na">key=</span><span class="s">&quot;D&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;pdf:array</span> <span class="na">key=</span><span class="s">&quot;Order&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;pdf:reference</span> <span class="na">refid=</span><span class="s">&quot;watermark&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;/pdf:array&gt;</span>
+        <span class="nt">&lt;/pdf:dictionary&gt;</span>
+      <span class="nt">&lt;/pdf:dictionary&gt;</span>
+    <span class="nt">&lt;/pdf:catalog&gt;</span>
+  <span class="nt">&lt;/fo:declarations&gt;</span>
+  <span class="nt">&lt;fo:page-sequence</span> <span class="na">master-reference=</span><span class="s">&quot;Page&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;fo:flow</span> <span class="na">flow-name=</span><span class="s">&quot;Body&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fo:block&gt;</span>Here is some text<span class="nt">&lt;/fo:block&gt;</span>
+      <span class="nt">&lt;fo:block</span> <span class="na">fox:layer=</span><span class="s">&quot;watermark&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fo:block&gt;</span>
+          <span class="nt">&lt;fo:external-graphic</span> <span class="na">src=</span><span class="s">&quot;image.png&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/fo:block&gt;</span>
+      <span class="nt">&lt;/fo:block&gt;</span>
+    <span class="nt">&lt;/fo:flow&gt;</span>
+  <span class="nt">&lt;/fo:page-sequence&gt;</span>
+<span class="nt">&lt;/fo:root&gt;</span>
+</code></pre></div>
         </div>
       </div>
       <div class="clear"></div>
