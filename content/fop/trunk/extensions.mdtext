@@ -9,13 +9,9 @@ The extensions documented here are included with FOP, and are automatically avai
 
 <note>All extensions require the correct use of an appropriate namespace in your input document.</note>
 
-## SVG { #svg}
+For SVG please see the [SVG documentation](graphics.html#svg) for more details.
 
-Please see the [SVG documentation](graphics.html#svg) for more details.
-
-## FO Extensions { #fo-extensions}
-
-### Namespace { #fox-namespace}
+## Namespace { #fox-namespace}
 
 By convention, FO extensions in FOP use the "fox" namespace prefix. To use any of the FO extensions, add a namespace entry for `http://xmlgraphics.apache.org/fop/extensions` to the root element:
 
@@ -23,11 +19,11 @@ By convention, FO extensions in FOP use the "fox" namespace prefix. To use any o
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
              xmlns:fox="http://xmlgraphics.apache.org/fop/extensions">
 
-### PDF Bookmarks { #bookmarks}
+## PDF Bookmarks { #bookmarks}
 
 In old versions of Apache FOP there was a `fox:outline` element which was used to create outlines in PDF files. The redesigned code makes use of the [bookmark feature defined in the W3C XSL 1.1 standard](http://www.w3.org/TR/xsl11/#fo_bookmark-tree).
 
-### Anchors or Named Destinations { #named-destinations}
+## Anchors or Named Destinations { #named-destinations}
 
 Use the fox:destination element to define "named destinations" inside a PDF document. These are useful as fragment identifiers, e.g. "http://server/document.pdf#anchor-name". fox:destination elements can be placed almost anywhere in the fo document, including a child of root, a block-level element, or an inline-level element. For the destination to actually work, it must correspond to an "id" attribute on some fo element within the document. In other words, the "id" attribute actually creates the "view" within the PDF document. The fox:destination simply gives that view an independent name.
 
@@ -38,21 +34,21 @@ Use the fox:destination element to define "named destinations" inside a PDF docu
 
 <warning>It is possible that in some future release of FOP, *all* elements with "id" attributes will generate named-destinations, which will eliminate the need for fox:destination.</warning>
 
-### Table Continuation Label { #table-continue-label}
+## Table Continuation Label { #table-continue-label}
 
 In old versions of Apache FOP, there was a `fox:continued-label` element which was used to insert a message when a table went over several pages.
 This extension element will not be reimplemented for the redesigned code.
 The redesigned code makes use of the [`fo:retrieve-table-marker`](http://www.w3.org/TR/xsl11/#fo_retrieve-table-marker) element defined in the [W3C XSL 1.1](http://www.w3.org/TR/xsl11/) standard.
 
-### Row Scope for Header Table Cells
+## Row Scope for Header Table Cells
 
 This feature is described in the [Accessibility](accessibility.html#fox:header) section.
 
-### fox:orphan-content-limit and fox:widow-content-limit { #widow-orphan-content-limit}
+## fox:orphan-content-limit and fox:widow-content-limit { #widow-orphan-content-limit}
 
 The two proprietary extension properties, `fox:orphan-content-limit` and `fox:widow-content-limit`, are used to improve the layout of list-blocks and tables. If you have a table with many entries, you don't want a single row to be left over on a page. You will want to make sure that at least two or three lines are kept together. The properties take an absolute length which specifies the area at the beginning (`fox:widow-content-limit`) or at the end (`fox:orphan-content-limit`) of a table or list-block. The properties are inherited and only have an effect on `fo:table` and `fo:list-block`. An example: `fox:widow-content-limit="3 * 1.2em"` would make sure the you'll have at least three lines (assuming `line-height="1.2"`) together on a table or list-block.
 
-### fox:external-document { #external-document}
+## fox:external-document { #external-document}
 
 <note>This feature is incomplete. Support for multi-page documents will be added shortly. At the moment, only single-page images will work. And this will not work with RTF output.</note>
 
@@ -62,7 +58,7 @@ The `fox:external-document` element is structurally a peer to `fo:page-sequence`
 
     (layout-master-set, declarations?, bookmark-tree?, (page-sequence|page-sequence-wrapper|fox:external-document|fox:destination)+)
 
-#### Specification { #Specification}
+### Specification { #Specification}
 
 The `fox:external-document` extension formatting object is used to specify how to create a (sub-)sequence of pages within a document. The content of these pages comes from the individual subimages/pages of an image or paged document (for example: multi-page TIFF in the form of faxes or scanned documents, or PDF files). The formatting object creates the necessary areas to display one image per page.
 
@@ -115,7 +111,7 @@ Datatype "page-set": Value: auto | <integer-range>, Default: "auto" which means 
 
 For this, XInclude is recommended.
 
-### Free-form Transformation for fo:block-container { #transform}
+## Free-form Transformation for fo:block-container { #transform}
 
 For `fo:block-container` elements whose `absolute-position` set to "absolute" or "fixed" you can use the extension attribute `fox:transform` to apply a free-form transformation to the whole block-container. The content of the `fox:transform` attribute is the same as for [SVG's transform attribute](http://www.w3.org/TR/SVG/coords.html#TransformAttribute). The transformation specified here is performed in addition to other implicit transformations of the block-container (resulting from top, left and other properties) and after them.
 
@@ -123,17 +119,17 @@ Examples: `fox:transform="rotate(45)"` would rotate the block-container by 45 de
 
 <note>This extension attribute doesn't work for all output formats! It's currently only supported for PDF, PS and Java2D-based renderers.</note>
 
-### Color functions { #color-functions}
+## Color functions { #color-functions}
 
 XSL-FO supports specifying color using the rgb(), rgb-icc() and system-color() functions. Apache FOP provides additional color functions for special use cases. Please note that using these functions compromises the interoperability of an FO document.
 
-#### cmyk() { #color-function-cmyk}
+### cmyk() { #color-function-cmyk}
 
  `color cmyk(numeric, numeric, numeric, numeric)`
 
 This function will construct a color in device-specific CMYK color space. The numbers must be between 0.0 and 1.0. For output formats that don't support device-specific color space the CMYK value is converted to an sRGB value.
 
-#### #CMYK pseudo-profile { #pseudo-color-profiles}
+### #CMYK pseudo-profile { #pseudo-color-profiles}
 
  `color rgb-icc(numeric, numeric, numeric, #CMYK, numeric, numeric, numeric, numeric)`
 
@@ -144,14 +140,14 @@ The `rgb-icc` function will respond to a pseudo-profile called "#CMYK" which ind
 
 -  `rgb-icc(153, 153, 102, #CMYK, 0, 0, 0.2, 0.4)`
 
-#### Transparency
+### Transparency
 
 You can set a RGB color with transparency #00ffff80, where last two hex digits are transparency value 0 to 255
 
 Or you can set via, with 4th argument the transparency: fox-rgb-icc(0, 0, 0, 128, #CMYK, 0, 0, 1, 0)
 This method should be used for AFP output
 
-### Rounded Corners { #rounded-corners}
+## Rounded Corners { #rounded-corners}
 
 Rounded corners on block areas can be specified with the `fox:border-*-*-radius` properties. Each corner can be specified with two radii that define a quarter ellipse that defines the shape of the corner of the outer border edge (in accordance with the [W3 CSS3 Recommendation](http://www.w3.org/TR/css3-background/#the-border-radius)).
 The property `fox:border-BP-IP-radius` specifies the radius of the corner connecting border segment *BP* is one of '*before|after*' and *IP* is one of 'start|end*', and takes one or two values.  A single value will generate circular corners.  Two values define elliptic corners where the first value defines the radius in the *Inline Progression Direction*, and the second the radius in the *Block Progression Direction*.
@@ -160,19 +156,19 @@ The shorthand property `fox:border-radius` can be used to specify uniform corner
 
 The example fo `examples/fo/advanced/rounded-corners.fo` demonstrates some finer points of this extension.
 
-####Current Limitations###
+### Current Limitations
 -  CSS3-style absolute properties, e.g `border-top-left-radius`, are not supported
 
 -  Rounded corners on tables are not directly supported.  To set rounded corners at the table level the table must have the property `border-collapse` property set to `separate`
 
 
-### Prepress Support { #prepress}
+## Prepress Support { #prepress}
 
 This section defines a number of extensions related to [prepress](http://en.wikipedia.org/wiki/Prepress) support. `fox:scale` defines a general scale factor for the generated pages. `fox:bleed` defines the [bleed area](http://en.wikipedia.org/wiki/Bleed_%28printing%29) for a page. `fox:crop-offset` defines the outer edges of the area in which crop marks, registration marks, color bars and page information are placed. For details, please read on below.
 
 <note>Those extensions have been implemented in the PDF and Java2D renderers only.</note>
 
-#### fox:scale { #scale}
+### fox:scale { #scale}
 
 Value: <number>{1,2}
 
@@ -182,7 +178,7 @@ Applies to: fo:simple-page-master
 
 This property specifies a scale factor along resp. the x and y axes. If only one number is provided it is used for both the x and y scales. A scale factor smaller than 1 shrinks the page. A scale factor greater than 1 enlarges the page.
 
-#### fox:bleed { #bleed}
+### fox:bleed { #bleed}
 
 Value: <length>{1,4}
 
@@ -194,7 +190,7 @@ If there is only one value, it applies to all sides. If there are two values, th
 
 This extension indirectly defines the BleedBox and is calculated by expanding the TrimBox by the bleed widths. The lengths must be non-negative.
 
-#### fox:crop-offset { #cropOffset}
+### fox:crop-offset { #cropOffset}
 
 Value: <length>{1,4}
 
@@ -206,7 +202,7 @@ Same behaviour as with fox:bleed. The initial value is set to the same values as
 
 This extension indirectly defines the MediaBox and is calculated by expanding the TrimBox by the crop offsets. The lengths must be non-negative.
 
-#### fox:crop-box { #cropBox}
+### fox:crop-box { #cropBox}
 
 Value: [trim-box | bleed-box | media-box]
 
@@ -218,17 +214,161 @@ The crop box controls how Acrobat displays the page (CropBox in PDF) or how the 
 
 If requested in the future, we could offer to specify the CropBox in absolute coordinates rather than just by referencing another box.
 
-### Background Images { #backgroundimages}
+## Background Images { #backgroundimages}
 
 Background images can be resized on the fly using these two extensions:
 
-#### fox:background-image-width { #backgroundImageWidth}
+### fox:background-image-width { #backgroundImageWidth}
 
 Value: length
 
-#### fox:background-image-height { #backgroundImageHeight}
+### fox:background-image-height { #backgroundImageHeight}
 
 Value: length
 
 These extensions apply to the elements where background-image applies.
 
+
+## Postscript
+
+These insert custom code into PostScript files at key places for mass-printing.
+
+### ps:ps-setup-code
+
+Properties: name (optional)
+
+The content of a ps-setup-code element is inserted into the PostScript stream right after the %%BeginSetup DSC comment and will itself be surrounded by two comments: %FOPBeginSetupCode (with the name as argument to the comment) and %FOPEndSetupCode.
+
+Use case: The user can add special setup code, for example, initializing the InputAttributes dictionary used for media selection.
+
+Add after fo:layout-master-set:
+
+    :::xml
+    <fo:declarations>
+      <ps:ps-setup-code name="media-selection" xmlns:ps="http://xmlgraphics.apache.org/fop/postscript">
+        <![CDATA[<< /MediaType (letterhead) >> setpagedevice]]>
+      </ps:ps-setup-code>
+    </fo:declarations>
+
+### ps:ps-page-setup-code
+
+Properties: name (optional)
+
+The content of a ps-page-setup-code element is inserted into the PostScript stream right after the %%BeginPageSetup DSC comment and will itself be surrounded by two comments: %FOPBeginPageSetupCode (with the name as argument to the comment) and %FOPEndPageSetupCode.
+
+Use case: The user can add media selection setup code.
+
+### Example
+
+    :::xml
+    <fo:simple-page-master master-name="letterhead" page-height="29.7cm" page-width="21cm" margin="2cm">
+      <fo:region-body/>
+      <ps:ps-page-setup-code name="media-selection" xmlns:ps="http://xmlgraphics.apache.org/fop/postscript">
+        <![CDATA[<< /MediaType (letterhead) >> setpagedevice]]>
+      </ps:ps-page-setup-code>
+    </fo:simple-page-master>
+
+will result in PostScript to:
+
+    :::postscript
+    [...]
+    %%Page: 1 1
+    %%PageBoundingBox: 0 0 595 842
+    %%PageHiResBoundingBox: 0 0 595 842
+    %%PageResources: (atend)
+    %%BeginPageSetup
+    %FOPBeginPageSetupCode: media-selection
+    << /MediaType (letterhead) >> setpagedevice
+    %FOPEndPageSetupCode
+    <<
+    /PageSize [595 842]
+    /ImagingBBox null
+    >> setpagedevice
+    [1 0 0 -1 0 360] concat
+    %%EndPageSetup
+    %FOPBeginRegionViewport: xsl-region-body
+    [...]
+
+### ps:ps-page-trailer-code-before
+
+Properties: name (optional)
+
+The content of a ps-page-trailer-code-before element is inserted into the PostScript stream right before the %%PageTrailer DSC comment and will itself be surrounded by two comments: %FOPBeginPageTrailerCodeBefore and %FOPEndPageTrailerCodeBefore.
+
+Use case: The user can add stapling commands (to the last page of the set of pages to be stapled together).
+
+### Example
+
+    :::xml
+    <fo:simple-page-master master-name="letterhead" page-height="29.7cm" page-width="21cm" margin="2cm">
+      <fo:region-body/>
+      <ps:ps-page-trailer-code-before name="staple-off" xmlns:ps="http://xmlgraphics.apache.org/fop/postscript">
+        <![CDATA[<</Staple 0 >> setpagedevice]]>
+      </ps:ps-page-trailer-code-before>
+    </fo:simple-page-master>
+
+will result in PostScript to:
+
+    :::postscript
+    [...]
+    showpage
+    %FOPBeginPageTrailerCodeBefore
+    <</Staple 0 >> setpagedevice
+    %FOPEndPageTrailerCodeBefore
+    %%PageTrailer
+    [...]
+
+### ps:ps-setpagedevice
+
+Where the page device dictionary is to be set, use the new ps-setpagedevice declaration instead of ps:ps-setup-code. This is because directly invoking the setpagedevice postscript command can cause the postscript interpreter on some printers to perform an init-graphics call. This init-graphics call can annoyingly cause unwanted blank pages to be printed.
+
+The FOP postscript renderer now has the ability to hold an internal representation of the printer's page device dictionary. Any additional dictionary items added to this dictionary using the ps-setpagedevice mechanism result in a safe setting of parameters to the postscript page device dictionary. This new ps-setpagedevice mechanism provides a safer way to issue the same instructions to the printer. Cumulative duplicate dictionary values should never be issued more than once to the printer during postscript output rendition.
+
+### ps:ps-comment-before and ps:ps-comment-after
+
+The requirement for the comment-before and comment-after is for post-processing the postscript output. Both these elements may only be declared as child nodes of fo:declarations and/or fo:simple-page-master.
+
+In a fo:declarations context, ps-comment-before is placed in the postscript output just before the %%EndComments DSC comment in the header and ps-comment-after is placed just after the %%Trailer DSC comment in the footer of the output.
+
+In a fo:simple-page-master context, ps-comment-before is placed in the postscript output just after the %%BeginPageSetup DSC comment and a ps-comment-after just after the %%PageTrailer DSC comment in each page of a simple page master referring page sequence.
+
+### Example Usage
+
+    :::xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
+      xmlns:ps="http://xmlgraphics.apache.org/fop/postscript">
+      <fo:layout-master-set>
+        <fo:simple-page-master master-name="A4" page-height="29.7cm" page-width="21cm" margin="2cm">
+          <ps:ps-setpagedevice name="lower tray"><![CDATA[ << /MediaPosition 4 >> ]]></ps:ps-setpagedevice>
+          <ps:ps-comment-before>spm1 before page</ps:ps-comment-before>
+          <ps:ps-comment-after>spm1 after page</ps:ps-comment-after>
+          <fo:region-body/>
+        </fo:simple-page-master>
+        <fo:simple-page-master master-name="A4a" page-height="29.7cm" page-width="21cm" margin="2cm">
+          <ps:ps-setpagedevice name="upper tray"><![CDATA[ << /MediaPosition 1 >> ]]></ps:ps-setpagedevice>
+          <ps:ps-comment-before>spm2 before page</ps:ps-comment-before>
+          <ps:ps-comment-after>spm2 after page</ps:ps-comment-after>
+          <fo:region-body background-color="orange"/>
+        </fo:simple-page-master>
+        <fo:page-sequence-master master-name="complex">
+          <fo:repeatable-page-master-reference master-reference="A4" maximum-repeats="1"/>
+          <fo:repeatable-page-master-reference master-reference="A4a" maximum-repeats="1"/>
+          <fo:repeatable-page-master-reference master-reference="A4"/>
+        </fo:page-sequence-master>
+      </fo:layout-master-set>
+      <fo:declarations>
+        <ps:ps-setpagedevice name="autofeed"><![CDATA[ << /ManualFeed false >> ]]></ps:ps-setpagedevice>
+        <ps:ps-comment-before>header comment</ps:ps-comment-before>
+        <ps:ps-comment-after>footer comment</ps:ps-comment-after>
+      </fo:declarations>
+      <fo:page-sequence master-reference="complex">
+        <fo:flow flow-name="xsl-region-body">
+          <fo:block>Hello World!</fo:block>
+          <fo:block break-before="page"/>
+          <fo:block>Hello World!</fo:block>
+          <fo:block break-before="page"/>
+          <fo:block>Hello World!</fo:block>
+        </fo:flow>
+      </fo:page-sequence>
+    </fo:root>
