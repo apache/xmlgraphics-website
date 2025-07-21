@@ -312,7 +312,7 @@ Check the following possibilities:
 - The FOP distribution contains a schema for configuration files, at src/foschema/fop-configuration.xsd. Did you validate your configuration file against it? Add the following schema location to the `schema` element:
 
     ```
-    <fop xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/fop/src/foschema/fop-configuration.xsd?view=co">
+    <fop xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/apache/xmlgraphics-fop/refs/heads/main/fop/src/foschema/fop-configuration.xsd?view=co">
     ```
 
 and run the configuration file through a validating schema parser. Note that the schema cannot detect all errors, and that it is stricter about the order of some elements than FOP itself is.

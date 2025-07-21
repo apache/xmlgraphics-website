@@ -104,7 +104,7 @@ When you use your existing FO files or XML/XSL files which work fine with FOP ve
 
 - As stated above, empty table cells `<fo:table-cell></fo:table-cell>` are not allowed by the specification. The same applies to empty `fo:static-content` and `fo:block-container` elements, for example.
 
-- Version 0.20.5 is not XSL-FO compliant with respect to sizing images (`external-graphic`) or `instream-foreign-object` objects. If images or SVGs are sized differently in your outputs with the new FOP version check [FOP-1073](https://issues.apache.org/jira/browse/FOP-1073) as it contains some hints on what to do. The file [http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/fop/examples/fo/basic/images.fo?view=markup](http://svn.apache.org/viewcvs.cgi/xmlgraphics/fop/trunk/fop/examples/fo/basic/images.fo?view=markup) has a number of good examples that show the correct behaviour.
+- Version 0.20.5 is not XSL-FO compliant with respect to sizing images (`external-graphic`) or `instream-foreign-object` objects. If images or SVGs are sized differently in your outputs with the new FOP version check [FOP-1073](https://issues.apache.org/jira/browse/FOP-1073) as it contains some hints on what to do. The file [https://raw.githubusercontent.com/apache/xmlgraphics-fop/refs/heads/main/fop/examples/fo/basic/images.fo?view=markup](https://raw.githubusercontent.com/apache/xmlgraphics-fop/refs/heads/main/fop/examples/fo/basic/images.fo?view=markup) has a number of good examples that show the correct behaviour.
 
 - The `fox:outline` extension is not implemented in the current version: it has been superseded by the bookmark elements from XSL-FO 1.1.
 
