@@ -201,7 +201,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <span class="n">g2d</span><span class="p">.</span><span class="na">finish</span><span class="p">();</span> <span class="c1">//Wrap up and finalize the EPS file</span>
 </code></pre></div>
 
-<p>A complete example for generating an EPS files can be found in the <a href="http://svn.apache.org/viewvc/xmlgraphics/commons/trunk/examples/java/java2d/ps/">"examples" directory</a> in the distribution.</p>
+<p>A complete example for generating an EPS files can be found in the <a href="https://github.com/apache/xmlgraphics-commons/tree/main/examples/java/java2d/ps">"examples" directory</a> in the distribution.</p>
 <h2 id="dsc">DSC parser/processor</h2>
 <p>Many PostScript files use special comments to structure a document. This allows manipulation of PostScript files without interpreting them. These special comments are defined in the <a href="http://partners.adobe.com/public/developer/en/ps/5001.DSC_Spec.pdf">Document Structuring Conventions</a>. The code in Commons is designed to work with DSC 3.0. For details on how DSC is used, please take a look at the DSC specification.</p>
 <p>The DSC support in Commons was primarily developed to implement resource optimization features in <a href="http://xmlgraphics.apache.org/fop/">Apache FOP</a> 's PostScript output support. Resources like images which are used repeatedly in a document should not be written to the PostScript file each time it is used. Instead it is written once at the beginning of the file as a PostScript form. The form is then called whenever the image needs painting.</p>
