@@ -562,6 +562,11 @@ When the native-pdf attribute is specified and set to "true", PDF resources will
     :::xml
     <images native-pdf="true"/>
 
+When the metadata-in-object-container is set to "true", triplets are stored in the object container instead of the include object.
+
+    :::xml
+    <images metadata-in-object-container="true"/>
+
 Setting `cmyk="true"` on the `images` element will enable CMYK colors. This will only have an effect if the color mode is set to "color". Example:
 
     :::xml
