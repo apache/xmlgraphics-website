@@ -3,6 +3,7 @@ Title: SVG Generator: SVGGraphics2D
 #SVG Generator: SVGGraphics2D
 
  ![Flow diagram illustrating that Java programs can have their graphics converted to SVG and then viewed in any SVG viewer](images/svggen.jpg)
+
 As SVG is emerging as a promising graphics format for a wide range of domains and applications, bridging it with Java becomes important. This page explains how Batik’s [SVGGraphics2D](../javadoc/org/apache/batik/svggen/SVGGraphics2D.html), referred to as the SVG Generator, makes this possible.
 
 ## The SVGGraphics2D class { #whatIsIt}
@@ -19,6 +20,7 @@ On the Java platform, all rendering goes through the [Graphics2D](http://java.su
 - it offers the user the ability to use the DOM API to manipulate the generated document.
 
  ![Diagram illustrating how the SVGGraphics2D inherits from Graphics2D, and uses Document to generate a DOM tree](images/svggenHighLevelArchi.jpg)
+
 The above figure shows how the generator works with the DOM API. The W3C has defined an API for representing XML content with a Java object. That API allows programmers to manipulate, create, and/or modify XML content in memory. The DOM API contains interfaces such as [Document](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html), [Element](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Element.html), and [Attr](http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Attr.html), which model the Java programming language equivalent of XML documents, elements and attributes.
 
 The generator manages a tree of DOM objects that represent the SVG content corresponding to the rendering calls made on the `SVGGraphics2D` instance. In other words, every time a program invokes a rendering method, such as `fillRect`, on a `SVGGraphics2D` instance, a new DOM object, representing the SVG equivalent, is appended to the DOM tree. For example, a `rect` element will be appended after the `fillRect` method has been invoked).
