@@ -86,7 +86,7 @@ Note that the number of files that can be opened on Windows from the command lin
 
 The following image shows the result of starting the browser, from the binary or source distribution, with the `-font-size 10 samples/batikFX.svg` options.
 
-<div class="figure"> ![Screenshot of Squiggle showing the batikFX.svg sample](images/svgviewerDefaultRegular.png) </div>
+ ![Screenshot of Squiggle showing the batikFX.svg sample](images/svgviewerDefaultRegular.png)
 
 # Viewing SVG documents { #viewing}
 
@@ -106,22 +106,22 @@ The browser has several features to view and browse SVG documents:
 ### Opening a local SVG file { #localFile}
 
 In situations where you want to open SVG files locally on the machine where you are running Squiggle, you can use **File→Open File** menu item to open that file, or use the **Ctrl-F** key accelerator. Doing so brings up a file chooser that lets you select the file you want to view.
-<div class="figure"> ![Screenshot of Squiggle showing the 'File→Open' menu and file chooser](images/svgviewerFileOpen.png) </div>
+ ![Screenshot of Squiggle showing the 'File→Open' menu and file chooser](images/svgviewerFileOpen.png)
 
 ## Opening an SVG file from the web { #urlFile}
 
 There are many situations where the SVG content you want to view is not local to the machine where Squiggle is running. In that case, you can use the **File→Open Location** menu item, or use the **Ctrl-A** key accelerator to open that page. Doing so brings up a dialog box where you can type in the URL for the file you want to view.
-<div class="figure"> ![Screenshot of Squiggle showing the 'File→Open Location' menu and window](images/svgviewerOpenPage.png) </div>
+ ![Screenshot of Squiggle showing the 'File→Open Location' menu and window](images/svgviewerOpenPage.png)
 
 ## Using the location bar text field to view an SVG file { #locationBar}
 
 When you know the URL of the document you want to view, you can enter it directly in the location bar text field at the top of Squiggle, the same way you can enter a URL in an HTML browser.
-<div class="figure"> ![Screenshot of Squiggle showing the location bar](images/svgviewerLocationBar.png) </div>
+ ![Screenshot of Squiggle showing the location bar](images/svgviewerLocationBar.png)
 
 ## Browsing SVG files { #browsing}
 
 As with HTML content, it is common to navigate back and forth between SVG files (remember that SVG files contain hyperlinks, just like HTML does) and, as described later in this document, it is possible to [zoom](#zoomInOut) into SVG documents, [pan](#panning) and [rotate](#rotating).
-<div class="figure"> ![Screnshot of Squiggle showing the 'Go' menu](images/svgviewerBrowsing.png) </div>
+ ![Screnshot of Squiggle showing the 'Go' menu](images/svgviewerBrowsing.png)
 Squiggle offers multiple features to help you browse SVG files:
 
 
@@ -141,7 +141,7 @@ Navigating between views
 The **View→Previous Transform** menu item (**Ctrl-K**) and the **View→Next Transform** menu item (**Ctrl-L**) let you go to the previous or next view of the document. This is useful when, for example, you [pan](#panning) or [rotate](#rotating) the document and want to go back to the previous view you had of the document (i.e., before you panned or rotated it).
 
 ### Viewing multiple SVG files { #viewingMultiple}
-<div class="figure"> ![Screenshot of Squiggle with two windows open](images/svgviewerMultipleFiles.png) </div>
+ ![Screenshot of Squiggle with two windows open](images/svgviewerMultipleFiles.png)
 Squiggle can display multiple files simultaneously in different windows. To view a new file in a separate window, simply select the **File→New Window** menu item or use the **Ctrl-N** keyboard accelerator.
 
 ### Reloading an SVG document { #reloading}
@@ -160,18 +160,18 @@ The browser offers two ways to inspect the source of an SVG document: [viewing t
 
 ### Viewing the source { #viewingSource}
 
-<div class="figure"> ![Screenshot of Squiggle showing the 'View→View Source' menu item and the source window](images/svgviewerViewSource.png) </div>
+ ![Screenshot of Squiggle showing the 'View→View Source' menu item and the source window](images/svgviewerViewSource.png)
 When the browser displays an SVG file, you can select the **View→View Source...** menu item or use the **Ctrl-U** keyboard accelerator to view the source code.
 
 ### Viewing the document tree { #viewingTree}
 
-<div class="figure"> ![Screenshot of Squiggle showing the 'View→DOM Viewer...' menu item and the DOM viewer window](images/svgviewerViewTree.png) </div>
+ ![Screenshot of Squiggle showing the 'View→DOM Viewer...' menu item and the DOM viewer window](images/svgviewerViewTree.png)
 When the browser displays an SVG file, you can select the **View→DOM Viewer...** menu item or use the **Ctrl-D** keyboard accelerator to open a window that shows the SVG document in the form of a tree. The window lets you navigate the tree, select individual elements, such as a path elements, and view the attributes and CSS values that apply to these elements. While the View Source window shows the SVG source as it was when it was loaded, the DOM Viewer window reflects the current state of the document, including any modifications that have occurred due to script.
 
 ## Configuring Squiggle { #configuring}
 
 The **Edit→Preferences** menu item or **Ctrl-G** brings up the dialog box shown in the following figure.
-<div class="figure"> ![Screenshot of Squiggle with the Preferences window open](images/svgviewerPreferences.png) </div>
+ ![Screenshot of Squiggle with the Preferences window open](images/svgviewerPreferences.png)
 This dialog contains several types of options, which can be selected with the left-hand side list. For each type of option, a panel lets you configure various browser parameters:
 
 
@@ -246,7 +246,7 @@ There are several methods to zoom in or out an SVG document:
 - If the mouse is over the document in the display area, you can press the **Ctrl key** then **click the left mouse button and drag** to select the area of interest in the document. This can only be used to zoom into a document.
 
 - If the mouse is over the document in the display area, you can press the **Shift key** then **click the right mouse button and drag** it. This is called the *real time* zoom and can be used both for zooming in and out.
-<div class="figure"> ![Screenshot of Squiggle showing the Zoom In and Zoom Out menu items and tool bar buttons](images/svgviewerZoomin.png) </div><div class="figure"> ![Screenshot of Squiggle zooming to an area of interest](images/svgviewerAOI.png) </div>
+ ![Screenshot of Squiggle showing the Zoom In and Zoom Out menu items and tool bar buttons](images/svgviewerZoomin.png) ![Screenshot of Squiggle zooming to an area of interest](images/svgviewerAOI.png)
 
 ## Panning a document { #panning}
 
@@ -256,7 +256,7 @@ Some documents are too big to fit into the browser, especially when you [zoom](#
 - With the mouse cursor over the SVG document, **press the Shift key** and then **click and drag the left mouse button** to a new location. When you release the mouse, the document will be translated to the new mouse location.
 
 - If you have the [thumbnail](#thumbnail) open, you can select the marker showing the current area of interest and move it to the desired location.
-<div class="figure"> ![Screenshot of Squiggle illustrating the panning gesture](images/svgviewerPan.png) </div>
+ ![Screenshot of Squiggle illustrating the panning gesture](images/svgviewerPan.png)
 
 ## Rotating a document { #rotating}
 
@@ -269,4 +269,4 @@ While the mouse and keyboard interactions give interactive way to navigate an SV
 ### Thumbnail { #thumbnail}
 
 Panning in the document window can be difficult after you have zoomed into a document because you cannot see the whole document. Panning on large documents (or with a large zoom factor) is made easy by the thumbnail that you can bring up through the **View→Thumbnail** menu item or the **Ctrl-Y** keyboard accelerator. The thumbnail shows a rectangular marker that represents the “Area of Interest”, i.e., the region currently displayed in the window (the visible portion of the document). You can **drag out a rectangular marker with the left mouse button pushed down** to select a new area of interest which will then be shown in the main window.
-<div class="figure"> ![Screenshot of Squiggle showing the Thumbnail window](images/svgviewerThumbnail.png) </div>
+ ![Screenshot of Squiggle showing the Thumbnail window](images/svgviewerThumbnail.png)
