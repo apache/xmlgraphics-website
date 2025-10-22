@@ -229,6 +229,15 @@ Value: length
 These extensions apply to the elements where background-image applies.
 
 
+## Extended values for the "force-page-count" property
+
+The "force-page-count" property has been extended by the following values:
+
+* doubly-odd: the amount of pages of the current page sequence can be divided by 3 without remainder
+* end-on-doubly-odd: the total amount of pages can be divided by 3 without remainder
+* doubly-even: the amount of pages of the current page sequence can be divided by 3 without remainder
+* end-on-doubly-even: the total amount of pages can be divided by 4 without remainder
+
 ## Postscript
 
 These insert custom code into PostScript files at key places for mass-printing.
