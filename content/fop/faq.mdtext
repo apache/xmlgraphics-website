@@ -89,6 +89,10 @@ Version 1.1 of FOP was released on 20 October 2012. Work on a new Version 1.2 of
 
 There are numerous ways that you can help. They are outlined in the [Developer's Introduction](dev/index.html) page.
 
+### 1.11. Is FOP output trustworthy? {#trust}
+
+FOP is built using best practices, and is generally trustworthy. That said, FOP is not intended to be used with untrusted input: for example, when targeting PostScript output, there are FOP commands that allow inserting arbitrary PostScript commands in the result, and even when those commands are not used unexpected input might result in commands ending up in the output. If you do use FOP with untrusted input, it is up to you to make sure the result is only evaluated in environments that are properly isolated to prohibit unintended effects.
+
 ## 2. Problems running FOP  { #part-running}
 
 ### 2.1. I get the error: [ERROR]: 'master-reference' for 'fo:page-sequence' matches no 'simple-page-master' or 'page-sequence-master' { #no-page-master}
