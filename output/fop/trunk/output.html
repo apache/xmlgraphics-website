@@ -2281,6 +2281,11 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer-resolution&gt;</span>240<span class="nt">&lt;/renderer-resolution&gt;</span>
 </code></pre></div>
 
+<h4 id="afp-line-width-correction-config">Line Width Correction</h4>
+<p>The default line width in AFP is device dependent. This means that a line width specified in, say, a SVG source file may not render the way it was intended. The output AFP line with can be corrected by the <line-width-correction/> configuration element. Example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;line-width-correction&gt;</span>2.5<span class="nt">&lt;/line-width-correction&gt;</span>
+</code></pre></div>
+
 <h4 id="afp-image-config">Images</h4>
 <p>By default the AFP Renderer converts all images to 8 bit grey level. This can be overridden by the <images/> configuration element. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;images</span> <span class="na">mode=</span><span class="s">&quot;color&quot;</span> <span class="nt">/&gt;</span>
