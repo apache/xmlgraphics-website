@@ -1870,9 +1870,28 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>The PDF profiles "PDF/X-3:2003" and "PDF/A-1b" (or "PDF/A-1a") are compatible and can both be activated at the same time.</p>
 <h2 id="interoperability">Interoperability</h2>
 <p>There has been some confusion about the namespace for the PDF/A indicator in the XMP metadata. At least three variants have been seen in the wild:</p>
-<p>| http://www.aiim.org/pdfa/ns/id.html |  <strong>obsolete</strong>, from an early draft of ISO-19005-1, used by Adobe Acrobat 7.x |
-| http://www.aiim.org/pdfa/ns/id |  <strong>obsolete</strong>, found in the original ISO 19005-1:2005 document |
-| http://www.aiim.org/pdfa/ns/id/ |  <strong>correct</strong>, found in the technical corrigendum 1 of ISO 19005-1:2005 |</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>http://www.aiim.org/pdfa/ns/id.html</td>
+<td><strong>obsolete</strong>, from an early draft of ISO-19005-1, used by Adobe Acrobat 7.x</td>
+</tr>
+<tr>
+<td>http://www.aiim.org/pdfa/ns/id</td>
+<td><strong>obsolete</strong>, found in the original ISO 19005-1:2005 document</td>
+</tr>
+<tr>
+<td>http://www.aiim.org/pdfa/ns/id/</td>
+<td><strong>correct</strong>, found in the technical corrigendum 1 of ISO 19005-1:2005</td>
+</tr>
+</tbody>
+</table>
 <p>If you get an error validating a PDF/A file in Adobe Acrobat 7.x it doesn't mean that FOP did something wrong. It's Acrobat that is at fault. This is fixed in Adobe Acrobat 8.x which uses the correct namespace as described in the technical corrigendum 1.</p>
 <h2 id="metadata-example">Metadata example</h2>
 <p>See <a href="metadata.html">this page</a> for more info</p>
