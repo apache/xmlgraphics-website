@@ -531,6 +531,13 @@ By default the AFP Renderer creates output with a resolution of 240 dpi. This ca
     :::xml
     <renderer-resolution>240</renderer-resolution>
 
+#### Line Width Correction { #afp-line-width-correction-config}
+
+The default line width in AFP is device dependent. This means that a line width specified in, say, a SVG source file may not render the way it was intended. The output AFP line with can be corrected by the <line-width-correction/> configuration element. Example:
+
+    :::xml
+    <line-width-correction>2.5</line-width-correction>
+
 #### Images { #afp-image-config}
 
 By default the AFP Renderer converts all images to 8 bit grey level. This can be overridden by the <images/> configuration element. Example:
