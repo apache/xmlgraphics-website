@@ -185,6 +185,17 @@ Header Scope = Both     | Header Scope = Column | Header Scope = Column
 **Header Scope = Row**  | Cell 2.1              | Cell 2.2
 Non-header              | Cell 3.1              | Cell 3.2
 
+## Abbreviations { #abbreviations}
+
+Abbreviations or acronyms can be expanded by using `fox:abbreviation`. A screen reader will read the value set by the property instead of what it's shown on the page. This only works for **fo:inline**.
+
+For example, the following inline:
+
+    :::xml
+    <fo:inline fox:abbreviation="Apache FOP">FOP</fo:inline>
+
+A screen reader will read **Apache FOP** instead of **FOP**.
+
 ## Testing { #testing}
 
 Accessible PDFs can be tested, for example, using Adobe Acrobat Professional. Its Accessibility Check feature creates a report indicating any deficiencies with a PDF document. Alternatively, you can just let a screen reader read the document aloud.
@@ -195,8 +206,6 @@ Accessibility support in Apache FOP is relatively new, so there are certain limi
 
 
 - The natural language can currently only be specified at the page-sequence level. The document language is derived from the language of the first page-sequence. It is currently not possible to override the language inside the content below the page-sequence level.
-
-- It's currently not possible to specify the expanded form of an abbreviation or acronym.
 
 - SVG graphics (or images in general) are treated as a single figure. Text contained in SVGs is not accessible. It's only possible to work with `fox:alt-text`.
 
