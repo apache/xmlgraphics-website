@@ -13,7 +13,6 @@ SITEURL = ''
 PATH = 'content'
 
 TIMEZONE = 'UTC'
-
 DEFAULT_LANG = u'en'
 
 # Feed generation is usually not desired when developing
