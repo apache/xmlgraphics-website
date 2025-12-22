@@ -1995,6 +1995,13 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </tr>
 </tbody>
 </table>
+<h2 id="abbreviations">Abbreviations</h2>
+<p>Abbreviations or acronyms can be expanded by using <code>fox:abbreviation</code>. A screen reader will read the value set by the property instead of what it's shown on the page. This only works for <strong>fo:inline</strong>.</p>
+<p>For example, the following inline:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:inline</span> <span class="na">fox:abbreviation=</span><span class="s">&quot;Apache FOP&quot;</span><span class="nt">&gt;</span>FOP<span class="nt">&lt;/fo:inline&gt;</span>
+</code></pre></div>
+
+<p>A screen reader will read <strong>Apache FOP</strong> instead of <strong>FOP</strong>.</p>
 <h2 id="testing">Testing</h2>
 <p>Accessible PDFs can be tested, for example, using Adobe Acrobat Professional. Its Accessibility Check feature creates a report indicating any deficiencies with a PDF document. Alternatively, you can just let a screen reader read the document aloud.</p>
 <h2 id="limitations">Limitations</h2>
@@ -2002,9 +2009,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <ul>
 <li>
 <p>The natural language can currently only be specified at the page-sequence level. The document language is derived from the language of the first page-sequence. It is currently not possible to override the language inside the content below the page-sequence level.</p>
-</li>
-<li>
-<p>It's currently not possible to specify the expanded form of an abbreviation or acronym.</p>
 </li>
 <li>
 <p>SVG graphics (or images in general) are treated as a single figure. Text contained in SVGs is not accessible. It's only possible to work with <code>fox:alt-text</code>.</p>
