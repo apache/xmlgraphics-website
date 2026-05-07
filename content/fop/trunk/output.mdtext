@@ -189,6 +189,7 @@ The PostScript renderer configuration currently allows the following settings:
       <dsc-compliant>true</dsc-compliant>
       <rendering>quality</rendering>
       <acrobat-downsample>true</acrobat-downsample>
+      <jpeg-compression>0.8</jpeg-compression>
     </renderer>
 
 The default value for the "auto-rotate-landscape" setting is "false". Setting it to "true" will automatically rotate landscape pages and will mark them as landscape.
@@ -204,6 +205,8 @@ The default value for the "dsc-compliant" setting is "true". Setting it to "fals
 The default value for the "rendering" setting is "quality". Setting it to "size" optimizes rendering for smaller file sizes which can involve minor compromises in rendering quality. For example, solid borders are then painted as plain rectangles instead of the elaborate painting instructions required for mixed-color borders.
 
 The default value for the "acrobat-downsample" setting is "false". Setting it to "true" can involve minor compromises in rendering quality to allow compatibility with Adobe Acrobat.
+
+By default it is disabled, setting "jpeg-compression" compresses generated bitmap images to reduce filesize, the value sets the JPEG compression level, ranging from 0 (maximum compression, lowest quality) to 1 (minimum compression, highest quality).
 
 ### Limitations { #ps-limitations}
 
