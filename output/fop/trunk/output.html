@@ -1949,6 +1949,7 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
   <span class="nt">&lt;dsc-compliant&gt;</span>true<span class="nt">&lt;/dsc-compliant&gt;</span>
   <span class="nt">&lt;rendering&gt;</span>quality<span class="nt">&lt;/rendering&gt;</span>
   <span class="nt">&lt;acrobat-downsample&gt;</span>true<span class="nt">&lt;/acrobat-downsample&gt;</span>
+  <span class="nt">&lt;jpeg-compression&gt;</span>0.8<span class="nt">&lt;/jpeg-compression&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
 
@@ -1959,6 +1960,7 @@ FO document using the <code>pdf:info</code> extension element as a child of <cod
 <p>The default value for the "dsc-compliant" setting is "true". Setting it to "false" will break DSC compliance by minimizing the number of setpagedevice calls in the postscript document output. This feature may be useful when unwanted blank pages are experienced in your postscript output. This problem is caused by the particular postscript implementation issuing unwanted postscript subsystem initgraphics/erasepage calls on each setpagedevice call.</p>
 <p>The default value for the "rendering" setting is "quality". Setting it to "size" optimizes rendering for smaller file sizes which can involve minor compromises in rendering quality. For example, solid borders are then painted as plain rectangles instead of the elaborate painting instructions required for mixed-color borders.</p>
 <p>The default value for the "acrobat-downsample" setting is "false". Setting it to "true" can involve minor compromises in rendering quality to allow compatibility with Adobe Acrobat.</p>
+<p>By default it is disabled, setting "jpeg-compression" compresses generated bitmap images to reduce filesize, the value sets the JPEG compression level, ranging from 0 (maximum compression, lowest quality) to 1 (minimum compression, highest quality).</p>
 <h3 id="ps-limitations">Limitations</h3>
 <ul>
 <li>
