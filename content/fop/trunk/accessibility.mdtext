@@ -200,12 +200,22 @@ A screen reader will read **Apache FOP** instead of **FOP**.
 
 Accessible PDFs can be tested, for example, using Adobe Acrobat Professional. Its Accessibility Check feature creates a report indicating any deficiencies with a PDF document. Alternatively, you can just let a screen reader read the document aloud.
 
+## Natural Language { #naturallanguage}
+
+The natural language of the document can be specified at the page-sequence level.
+It's also possible to override the language for part of the content on any descendant of `fo:page-sequence`. For example:
+
+    :::xml
+    <fo:page-sequence language="en" country="GB" ...>
+      ...
+      <fo:block language="fr" country="FR">Un paragraphe en français.</fo:block>
+      ...
+    </fo:page-sequence>
+
 ## Limitations { #limitations}
 
 Accessibility support in Apache FOP is relatively new, so there are certain limitations. Please help us identify and close any gaps.
 
-
-- The natural language can currently only be specified at the page-sequence level. The document language is derived from the language of the first page-sequence. It is currently not possible to override the language inside the content below the page-sequence level.
 
 - SVG graphics (or images in general) are treated as a single figure. Text contained in SVGs is not accessible. It's only possible to work with `fox:alt-text`.
 
