@@ -2004,12 +2004,19 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>A screen reader will read <strong>Apache FOP</strong> instead of <strong>FOP</strong>.</p>
 <h2 id="testing">Testing</h2>
 <p>Accessible PDFs can be tested, for example, using Adobe Acrobat Professional. Its Accessibility Check feature creates a report indicating any deficiencies with a PDF document. Alternatively, you can just let a screen reader read the document aloud.</p>
+<h2 id="naturallanguage">Natural Language</h2>
+<p>The natural language of the document can be specified at the page-sequence level.
+It's also possible to override the language for part of the content on any descendant of <code>fo:page-sequence</code>. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:page-sequence</span> <span class="na">language=</span><span class="s">&quot;en&quot;</span> <span class="na">country=</span><span class="s">&quot;GB&quot;</span> <span class="err">...</span><span class="nt">&gt;</span>
+  ...
+  <span class="nt">&lt;fo:block</span> <span class="na">language=</span><span class="s">&quot;fr&quot;</span> <span class="na">country=</span><span class="s">&quot;FR&quot;</span><span class="nt">&gt;</span>Un paragraphe en français.<span class="nt">&lt;/fo:block&gt;</span>
+  ...
+<span class="nt">&lt;/fo:page-sequence&gt;</span>
+</code></pre></div>
+
 <h2 id="limitations">Limitations</h2>
 <p>Accessibility support in Apache FOP is relatively new, so there are certain limitations. Please help us identify and close any gaps.</p>
 <ul>
-<li>
-<p>The natural language can currently only be specified at the page-sequence level. The document language is derived from the language of the first page-sequence. It is currently not possible to override the language inside the content below the page-sequence level.</p>
-</li>
 <li>
 <p>SVG graphics (or images in general) are treated as a single figure. Text contained in SVGs is not accessible. It's only possible to work with <code>fox:alt-text</code>.</p>
 </li>
