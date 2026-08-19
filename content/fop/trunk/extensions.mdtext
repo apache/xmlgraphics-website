@@ -392,6 +392,12 @@ Initial: none
 
 Applies to: fo:leader (with `leader-pattern="rule"`)
 
+:::xml
+    <fo:leader leader-pattern="rule"
+               fox:rule-style="square"
+               rule-thickness="2pt"
+               leader-length.optimum="100%"/>
+
 The standard XSL-FO [`rule-style`](http://www.w3.org/TR/xsl11/#rule-style) property, used together with `leader-pattern="rule"` on an `fo:leader`, is limited to the enumerated values defined by the XSL specification. This extension property adds further rule styles that, while not part of the XSL-FO specification, are supported by the renderers. Continue to use the standard `rule-style` property for the spec-defined styles; use `fox:rule-style` for the additional values listed below.
 
 All other leader properties that apply to a `rule` leader (such as `rule-thickness`) apply to `fox:rule-style` in the same way. If `fox:rule-style` is not specified, the default value `none` is used and the standard `rule-style` behaviour applies.
@@ -400,9 +406,3 @@ At the moment the following values are supported:
 
 - `square`: behaves exactly like the standard `dotted` style, but renders a repeating series of squares instead of dots.
 - `none`: the default value; the standard `rule-style` behaviour applies.
-
-    :::xml
-    <fo:leader leader-pattern="rule"
-               fox:rule-style="square"
-               rule-thickness="2pt"
-               leader-length.optimum="100%"/>
