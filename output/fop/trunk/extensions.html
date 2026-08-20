@@ -2091,11 +2091,12 @@ The property <code>fox:border-BP-IP-radius</code> specifies the radius of the co
 <p>Value: none | square</p>
 <p>Initial: none</p>
 <p>Applies to: fo:leader (with <code>leader-pattern="rule"</code>)</p>
-<p>:::xml
-    <fo:leader leader-pattern="rule"
-               fox:rule-style="square"
-               rule-thickness="2pt"
-               leader-length.optimum="100%"/></p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;fo:leader</span> <span class="na">leader-pattern=</span><span class="s">&quot;rule&quot;</span>
+           <span class="na">fox:rule-style=</span><span class="s">&quot;square&quot;</span>
+           <span class="na">rule-thickness=</span><span class="s">&quot;2pt&quot;</span>
+           <span class="na">leader-length.optimum=</span><span class="s">&quot;100%&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+
 <p>The standard XSL-FO <a href="http://www.w3.org/TR/xsl11/#rule-style"><code>rule-style</code></a> property, used together with <code>leader-pattern="rule"</code> on an <code>fo:leader</code>, is limited to the enumerated values defined by the XSL specification. This extension property adds further rule styles that, while not part of the XSL-FO specification, are supported by the renderers. Continue to use the standard <code>rule-style</code> property for the spec-defined styles; use <code>fox:rule-style</code> for the additional values listed below.</p>
 <p>All other leader properties that apply to a <code>rule</code> leader (such as <code>rule-thickness</code>) apply to <code>fox:rule-style</code> in the same way. If <code>fox:rule-style</code> is not specified, the default value <code>none</code> is used and the standard <code>rule-style</code> behaviour applies.</p>
 <p>At the moment the following values are supported:</p>
