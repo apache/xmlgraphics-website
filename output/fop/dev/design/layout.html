@@ -1809,7 +1809,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>The issue here is that we wish to recycle the Area Tree memory as much as possible. The problem is that forward references prevent pages from being resolved until the forward references are resolved. If memory is insufficient to store unresolved pages, Area Tree fragments must be serialized until resolved.</p>
 <p>FOP developers have discussed adding the capability of using an Area Tree to render to more than one output target in the same run, which would be a complicating factor in disposal of pages as they are rendered.</p>
 <h2 id="lm">Layout Managers</h2>
-<p>The layout managers are set up from the hierarchy of the formatting object tree. A manager represents a hierachy of area producing objects. A manager is able to handle the block area(s) that it creates and organise or split areas for page breaks.</p>
+<p>The layout managers are set up from the hierarchy of the formatting object tree. A manager represents a hierarchy of area producing objects. A manager is able to handle the block area(s) that it creates and organise or split areas for page breaks.</p>
 <p>Normally any object that creates a block area will have an associated layout manager. Other cases are tables and lists, these objects will also have layout managers that will manager the group of layout managers that make up the object.</p>
 <p>A layout manager is also able to determine height (min/max/optimum) and keep status. This will be used when organising the layout on a page. The manager will be able to determine the next place a break can be made and then be able to organise the height.</p>
 <p>A layout manager is essentially a bridge between the formatting objects and the area tree. It will keep a list of line areas inside block areas. Each line area will contain a list of inline areas that is able to be adjusted if the need arises.</p>
@@ -1840,16 +1840,16 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>Once the areas for the page are finalised then the spacing will need to be adjusted. The available height on the page is compared with the min and max spacing. All of the spacing in all the areas on the page is then adjusted by the appropriate percentage value.</p>
 <h2 id="multi-column">Multi-Column Pages</h2>
 <p>In the case of multi-column pages the column breaks and eventually the page break must be found in a slightly different way.</p>
-<p>The columns need to be layed out completely from first to last but this can only be done after a rough estimate of all the elements on the page in case of before floats or footnotes.</p>
-<p>So first the complete page is layed out with all columns filled with areas and the spacing at a minimum. Then if there are any before floats or footnotes then the availabe space is adjusted. Then each the best break is found for each column starting from the first column. If any before floats or footnotes are removed as a result of the new breaks and optimised spacing then all the columns should still be layed out for the same column height.</p>
+<p>The columns need to be laid out completely from first to last but this can only be done after a rough estimate of all the elements on the page in case of before floats or footnotes.</p>
+<p>So first the complete page is laid out with all columns filled with areas and the spacing at a minimum. Then if there are any before floats or footnotes then the available space is adjusted. Then each the best break is found for each column starting from the first column. If any before floats or footnotes are removed as a result of the new breaks and optimised spacing then all the columns should still be laid out for the same column height.</p>
 <h2 id="page-complete">Completing Page</h2>
-<p>After the region body has been finished the static areas can be layed out. The width of the static area is set and the height is inifinite, that is all block areas should be placed in the area and their visibility is controlled be other factors.</p>
+<p>After the region body has been finished the static areas can be laid out. The width of the static area is set and the height is infinite, that is all block areas should be placed in the area and their visibility is controlled be other factors.</p>
 <p>The area tree for the region body will contain the information about markers that may be necessary for the retrieve marker.</p>
 <p>The ordering of the area tree must be adjusted so that the areas are before, start, body, end and after in that order. The body region should be in the order before float, main then footnote.</p>
 <h2 id="line-area">Line Areas</h2>
-<p>Creating a line areas uses a similair concept. Each inline area is placed across the available space until there is no room left. The line is then split by considering all keeps and spacing.</p>
+<p>Creating a line areas uses a similar concept. Each inline area is placed across the available space until there is no room left. The line is then split by considering all keeps and spacing.</p>
 <p>Each word (group of adjacent character inline areas) will have keeps based on hyphenation. The line break is at the lowest keep value starting from the end of the line.</p>
-<p>Once a line has been layed out for a particular width then that line is fixed for the page (except for unresolved page references).</p>
+<p>Once a line has been laid out for a particular width then that line is fixed for the page (except for unresolved page references).</p>
 <h2 id="before-float-footnote">Before Floats and Footnotes</h2>
 <p>The before float region and footnote region are handled by the page layoutmanger. These regions will handle the addition and removal of the separator regions when before floats/footnotes area added and removed.</p>
 <p>Footnotes and Before Floats are placed in special areas in the body region of the page. The size of these areas is determined by the content. This in turn effects the available size of the main reference area that contains the flow.</p>
@@ -1860,10 +1860,10 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>This means that the float needs to be handled by the block layout manager so that it can adjust the available inline progression dimension for the relevant line areas.</p>
 <h2 id="unresolved-area">Unresolved Areas</h2>
 <p>Once the layout of the page is complete there may be unresolved areas.</p>
-<p>Page number citations and links may require following pages to be layed out before they can be resolved. These will remain in the area tree as unresolved areas.</p>
+<p>Page number citations and links may require following pages to be laid out before they can be resolved. These will remain in the area tree as unresolved areas.</p>
 <p>As each page is completed the list of unresolved id's will be checked and if the id can be resolved it will be. Once all id's are resolved then the page can be rendered.</p>
 <p>Each page contains a map of all unresolved id's and the corresponding areas.</p>
-<p>In the case of page number citations, the areas reserves the equivalent of 3 number nines in the current font. When the area is resolved then the area is adjusted to its proper size and the line area is re-aligned to accomodate the change.</p>
+<p>In the case of page number citations, the areas reserves the equivalent of 3 number nines in the current font. When the area is resolved then the area is adjusted to its proper size and the line area is re-aligned to accommodate the change.</p>
 <h2 id="id-link-area">ID and Link Areas</h2>
 <p>Any formatting object that has an ID or any inline link defines an area that will be required when rendering and resolving id references.</p>
 <p>This area is stored in the parent area and may be a shape that exists in more than one page, for example over a page break. This shape consists of the boundary of all inline (or block) areas that the shape is defined for.</p>
@@ -1912,8 +1912,8 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </ul>
 <p>Once the layout has been finalised then this information can be discarded.</p>
 <h2 id="page-area">Page Areas</h2>
-<p>Contains inforamtion about all the block areas in the body, before area and footer area.</p>
-<p>Has a list of the unresolved page references and a list of id refences that can be used to obtain the area associated with that id.</p>
+<p>Contains information about all the block areas in the body, before area and footer area.</p>
+<p>Has a list of the unresolved page references and a list of id references that can be used to obtain the area associated with that id.</p>
 <h2 id="test-cases">Test Cases</h2>
 <p>Here a few layout possibilities areas explored to determine how the layout process will handle these situations.</p>
 <h3 id="test-simple">Simple Pages</h3>
@@ -1921,7 +1921,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h3 id="test-before-float-footnote">Before Floats/Footnotes</h3>
 <p>After filling the page with the block areas then the new body height is used to find the best position to break. Before each line area or block area is remove any associated before floats and footnotes are removed. This will then adjust the available space on the page and may allow for a different breaking point. Areas are removed towards the new breaking point until the areas fit on the page. When finding the optimum spacing the removal of before floats and footnotes must also be onsidered.</p>
 <h3 id="test-multi-column">Multicolumn</h3>
-<p>First the page is filled with all columns for the intial page area. Then each column is adjusted for the new height starting from the first column. The best break for the column is found then the next column is considered, any left over areas a pre-pended to the next column. Once all the columns are finished then all the columns are adjusted to fit in the same height columns. This handles the situation where before floats or footnotes may have been removed.</p>
+<p>First the page is filled with all columns for the initial page area. Then each column is adjusted for the new height starting from the first column. The best break for the column is found then the next column is considered, any left over areas a pre-pended to the next column. Once all the columns are finished then all the columns are adjusted to fit in the same height columns. This handles the situation where before floats or footnotes may have been removed.</p>
 <h3 id="test-last-page">Last Page</h3>
 <p>If in the process of adding areas to a page it is found that there are no more areas in the flow then this page will need to be changed to the last page (if applicable). The areas are then placed on a last page.</p>
 <h2 id="status">Status</h2>
@@ -1986,7 +1986,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <td></td>
 </tr>
 <tr>
-<td>Fine-tuning line breaking and hypenation</td>
+<td>Fine-tuning line breaking and hyphenation</td>
 <td>Medium</td>
 <td></td>
 </tr>
@@ -2008,12 +2008,12 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <tr>
 <td>Border collapsing on tables</td>
 <td>Low</td>
-<td>RenderX hasnt implemented this (17/03/04)</td>
+<td>RenderX hasn't implemented this (17/03/04)</td>
 </tr>
 <tr>
 <td>Fine-tuning all other borders</td>
 <td>Low</td>
-<td>Not sure what Joerg means by this, border collapse priorties? Dashed and dotted borders have been implemented in PDF</td>
+<td>Not sure what Joerg means by this, border collapse priorities? Dashed and dotted borders have been implemented in PDF</td>
 </tr>
 <tr>
 <td>BIDI support</td>

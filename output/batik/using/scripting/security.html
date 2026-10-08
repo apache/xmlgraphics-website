@@ -245,10 +245,10 @@ Batik provides the following set of <code>ScriptSecurity</code> implementations:
 The script resource should not be loaded.</p>
 <p>EmbededScriptSecurity
 :
-The script resource will only be loaded if it is embeded in the SVG document referencing it. This means that script attributes (such as <code>onclick</code> on a <code>rect</code> element), inline <code>script</code> elements and <code>script</code> elements using a <code>data:</code> URL as its <code>xlink:href</code> attribute value will be allowed. All other script resources should not be loaded.</p>
+The script resource will only be loaded if it is embedded in the SVG document referencing it. This means that script attributes (such as <code>onclick</code> on a <code>rect</code> element), inline <code>script</code> elements and <code>script</code> elements using a <code>data:</code> URL as its <code>xlink:href</code> attribute value will be allowed. All other script resources should not be loaded.</p>
 <p>DefaultScriptSecurity
 :
-The script resource will only be loaded if it is embeded in the SVG document (see the description of <code>EmbededScriptSecurity</code>) or if it is coming from the same location as the document referencing the script. If the document comes from a network server, then any script coming from that server will be allowed. If the document comes from the file system, then only scripts under the same directory root as the SVG document will be allowed.</p>
+The script resource will only be loaded if it is embedded in the SVG document (see the description of <code>EmbededScriptSecurity</code>) or if it is coming from the same location as the document referencing the script. If the document comes from a network server, then any script coming from that server will be allowed. If the document comes from the file system, then only scripts under the same directory root as the SVG document will be allowed.</p>
 <p>RelaxedScriptSecurity
 :
 Scripts from any location can be loaded.</p>
@@ -258,10 +258,10 @@ Scripts from any location can be loaded.</p>
 No external references are allowed.</p>
 <p>EmbededExternalResourceSecurity
 :
-Only resources embeded into the file are allowed (i.e., references through the <code>data:</code> protocol).</p>
+Only resources embedded into the file are allowed (i.e., references through the <code>data:</code> protocol).</p>
 <p>DefaultExternalResourceSecurity
 :
-Embeded external resources (see above) and resources coming from the same location as the document referencing them are allowed.</p>
+Embedded external resources (see above) and resources coming from the same location as the document referencing them are allowed.</p>
 <p>RelaxedExternalResourceSecurity
 :
 Resources from any location can be loaded.</p>

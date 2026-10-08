@@ -2048,7 +2048,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 
 </li>
 <li>
-<p>Set <strong>your own Document Handler</strong>. This feature can be used for several purposes, the most likey usage of which would probably be binding a MIME type when the output is Intermediate Format (see <a href="#documenthandlers">Document Handlers</a>). This also allows advanced users to create their own implementation of the document handler.</p>
+<p>Set <strong>your own Document Handler</strong>. This feature can be used for several purposes, the most likely usage of which would probably be binding a MIME type when the output is Intermediate Format (see <a href="#documenthandlers">Document Handlers</a>). This also allows advanced users to create their own implementation of the document handler.</p>
 <div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setDocumentHandlerOverride</span><span class="p">(</span><span class="n">documentHandler</span><span class="p">);</span> <span class="c1">// documentHandler is an instance of org.apache.fop.render.intermediate.IFDocumentHandler</span>
 </code></pre></div>
 
@@ -2089,7 +2089,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h3 id="object-reuse">Object reuse</h3>
 <p>Fop instances shouldn't (and can't) be reused. Please recreate Fop and FOUserAgent instances for each rendering run using the FopFactory. This is a cheap operation as all reusable information is held in the FopFactory. That's why it's so important to reuse the FopFactory instance.</p>
 <h3 id="awt">AWT issues</h3>
-<p>If your XSL-FO files contain SVG then Apache Batik will be used. When Batik is initialised it uses certain classes in <code>java.awt</code> that intialise the Java AWT classes. This means that a daemon thread is created by the JVM and on Unix it will need to connect to a DISPLAY.</p>
+<p>If your XSL-FO files contain SVG then Apache Batik will be used. When Batik is initialised it uses certain classes in <code>java.awt</code> that initialise the Java AWT classes. This means that a daemon thread is created by the JVM and on Unix it will need to connect to a DISPLAY.</p>
 <p>The thread means that the Java application may not automatically quit when finished, you will need to call <code>System.exit()</code>. These issues should be fixed in the JDK 1.4.</p>
 <p>If you run into trouble running FOP on a head-less server, please see the <a href="graphics.html#batik">notes on Batik</a>.</p>
 <h3 id="render-info">Getting information on the rendering process</h3>

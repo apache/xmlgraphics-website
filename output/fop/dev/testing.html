@@ -1804,13 +1804,13 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p><warning>The "functional" testing section on this page is currently inoperative.</warning></p>
 <h2 id="Running-and-Using-Tests">Running and Using Tests</h2>
 <p>Testing is an important part of getting FOP to operate correctly and conform to the necessary standards.</p>
-<p>A testing system has been set up that works with as a build target when developing with FOP. A developer can run the tests after making changes to the code, the aim is to have the tests run to verfiy that nothing working has been broken.</p>
+<p>A testing system has been set up that works with as a build target when developing with FOP. A developer can run the tests after making changes to the code, the aim is to have the tests run to verify that nothing working has been broken.</p>
 <p>To setup the testing the developer must place a reference fop.jar in the "<cvs_repository>/test/reference/" directory. This jar will be dynamically loaded to create the reference output.</p>
 <h3 id="W3C-TestSuite">W3C TestSuite</h3>
 <p>The testing is set up so that you can download the testsuite from <a href="http://www.w3.org/Style/XSL/TestSuite/">http://www.w3.org/Style/XSL/TestSuite/</a>, unzip the file into the base directory of FOP. Then you can uncomment the lines in the build.xml file in the test target and itwill run through all the tests in the testsuite distribution.</p>
 <h3 id="Writing-a-Test">Writing a Test</h3>
-<p>A test belongs to one of a few catagories. A basic test should excercise one element in a number of situations such as changing a property. This should have at least one normal value, one border value and one invalid value. If the property can be of different types then this should also be included.</p>
-<p>A bug test is a test that is specifically aimed at a problem with FOP. That is, the test is not excercising the specification but rather a problem with FOP in handling a particular situation that is not exposed with the other testing.</p>
+<p>A test belongs to one of a few categories. A basic test should exercise one element in a number of situations such as changing a property. This should have at least one normal value, one border value and one invalid value. If the property can be of different types then this should also be included.</p>
+<p>A bug test is a test that is specifically aimed at a problem with FOP. That is, the test is not exercising the specification but rather a problem with FOP in handling a particular situation that is not exposed with the other testing.</p>
 <p>A system test is one that tests the abitlity of FOP to handle a number of different elements together.</p>
 <p>A test can consist of a complete fo document or a part of the document such as some elements that will be placed into the flow of a standard document.</p>
 <h3 id="Submitting-a-Test">Submitting a Test</h3>

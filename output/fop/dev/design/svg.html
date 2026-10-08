@@ -1802,7 +1802,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>Normally batik converts text into a set of curved shapes.</p>
 <p>This is handled as any other shapes when rendering to the output. This is not always desirable as the shapes have very fine curves. This can cause the output to look a bit bad in PDF and PS (it can be drawn properly but is not by default). These curves also require much more data than the original text.</p>
 <p>To handle this there is a PDFTextElementBridge that is set when using the bridge in batik. If the text is simple enough for the text to be drawn in the PDF as with all other text then this sets the TextPainter to use the PDFTextPainter. This inserts the text directly into the PDF using the drawString method on the PDFGraphics2D.</p>
-<p>Text is considered simple if the font is available, the font size is useable and there are no tspans or other complications. This can make the resulting PDF significantly smaller.</p>
+<p>Text is considered simple if the font is available, the font size is usable and there are no tspans or other complications. This can make the resulting PDF significantly smaller.</p>
 <h2 id="PDF-Links">PDF Links</h2>
 <p>To support links in PDF another batik element bridge is used. The PDFAElementBridge creates a PDFANode which inserts a link into the PDF document via the PDFGraphics2D.</p>
 <p>Since links are positioned on the page without any transforms then we need to transform the coordinates of the link area so that they match the current position of the a element area. This transform may also need to account for the svg being positioned on the page.</p>

@@ -272,7 +272,7 @@ The <a href="../javadoc/org/apache/batik/transcoder/ErrorHandler.html">ErrorHand
 <div class="highlight"><pre><span></span><code><span class="n">t</span><span class="p">.</span><span class="na">addTranscodingHint</span><span class="p">(</span><span class="n">JPEGTranscoder</span><span class="p">.</span><span class="na">KEY_WIDTH</span><span class="p">,</span> <span class="k">new</span> <span class="n">Float</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
 </code></pre></div>
 
-<p>The transcoder will have the same behavior if you specify the <code>KEY_HEIGHT</code> without initializing the <code>KEY_WIDTH</code>. In all cases (even if both keys are provided), the transcoder will preserve the apsect ratio of the SVG document.</p>
+<p>The transcoder will have the same behavior if you specify the <code>KEY_HEIGHT</code> without initializing the <code>KEY_WIDTH</code>. In all cases (even if both keys are provided), the transcoder will preserve the aspect ratio of the SVG document.</p>
 <h3 id="selectAreaOfIntrest">Selecting an area of interest</h3>
 <p>The image transcoder lets you specify an area of interest (that is, a part of the SVG document). The key <code>KEY_AOI</code> allows you to select the region of the SVG document to render. The value of this key must be a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/awt/Rectangle.html">java.awt.Rectangle</a> specified in pixels, using the coordinate space of the SVG document. The following example shows how you can split an SVG document into 4 tiles.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">java.io.*</span><span class="p">;</span>
