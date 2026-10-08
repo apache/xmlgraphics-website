@@ -25,7 +25,7 @@ This is handled as any other shapes when rendering to the output. This is not al
 
 To handle this there is a PDFTextElementBridge that is set when using the bridge in batik. If the text is simple enough for the text to be drawn in the PDF as with all other text then this sets the TextPainter to use the PDFTextPainter. This inserts the text directly into the PDF using the drawString method on the PDFGraphics2D.
 
-Text is considered simple if the font is available, the font size is useable and there are no tspans or other complications. This can make the resulting PDF significantly smaller.
+Text is considered simple if the font is available, the font size is usable and there are no tspans or other complications. This can make the resulting PDF significantly smaller.
 
 ## PDF Links { #PDF-Links}
 

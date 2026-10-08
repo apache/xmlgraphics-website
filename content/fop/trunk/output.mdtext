@@ -322,7 +322,7 @@ Note: the duplex is a positive integer and the value depends on the target print
 
 ## AFP { #afp}
 
-The FOP AFP Renderer deals with creating documents conforming to the IBM AFP document architecture also refered to as MO:DCA (Mixed Object Document Content Architecture).
+The FOP AFP Renderer deals with creating documents conforming to the IBM AFP document architecture also referred to as MO:DCA (Mixed Object Document Content Architecture).
 
 The mapping of XSL-FO elements to the major MO:DCA structures is as follows:
 
@@ -796,7 +796,7 @@ You can combine the AFP page groups by setting afp:add-to-previous-page-group="t
 
 #### Resource { #afp-foreign-attributes-resource}
 
-The resource foreign attributes provides the ability to name and control where data object resources (e.g. images/scalable vector graphics) will reside in the AFP output. The afp foreign attributes are only used in conjuntion with <fo:external-graphic/> and <instream-foreign-object/>. Example:
+The resource foreign attributes provides the ability to name and control where data object resources (e.g. images/scalable vector graphics) will reside in the AFP output. The afp foreign attributes are only used in conjunction with <fo:external-graphic/> and <instream-foreign-object/>. Example:
 
     :::xml
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
@@ -987,7 +987,7 @@ Because FOP lays the text onto a grid during layout, there are frequently extra 
 Due to the state of certain renderers we moved some of them to a "sandbox" area until they are ready for more serious use. The renderers and FOEventHandlers in the sandbox can be found under src/sandbox and are compiled into build/fop-sandbox.jar during the main build. The output formats in the sandbox are marked as such below.
 
 ### MIF { #mif}
-<warning>The MIF handler is in the sandbox and not yet functional in FOP Trunk!!! Please help us ressurrect this feature.</warning>
+<warning>The MIF handler is in the sandbox and not yet functional in FOP Trunk!!! Please help us resurrect this feature.</warning>
 This format is the Maker Interchange Format which is used by Adobe Framemaker.
 
 ### SVG { #svg}

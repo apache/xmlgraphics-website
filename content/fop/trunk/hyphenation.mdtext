@@ -81,7 +81,7 @@ This element is unused and not even read. It should be considered a documentatio
 
     - the period character (.) represents a word boundary, i.e. either the beginning or ending of a word
 
-    - numeric characters represent a scoring system for indicating the acceptability of a hyphen in this location. Odd numbers represent an acceptable location for a hyphen, with higher values overriding lower inhibiting values. Even numbers indicate an unacceptable location, with higher values overriding lower values indicating an acceptable position. A value of zero (inhibiting) is implied when there is no number present. Generally patterns are constructed so that valuse greater than 4 are rare. Due to a bug currently patterns with values of 8 and greater don't have an effect, so don't wonder.
+    - numeric characters represent a scoring system for indicating the acceptability of a hyphen in this location. Odd numbers represent an acceptable location for a hyphen, with higher values overriding lower inhibiting values. Even numbers indicate an unacceptable location, with higher values overriding lower values indicating an acceptable position. A value of zero (inhibiting) is implied when there is no number present. Generally patterns are constructed so that values greater than 4 are rare. Due to a bug currently patterns with values of 8 and greater don't have an effect, so don't wonder.
 Here are some examples from the English patterns file:
 
     - Knuth (*The TeXBook*, Appendix H) uses the example **hach4**, which indicates that it is extremely undesirable to place a hyphen after the substring "hach", for example in the word "toothach-es".

@@ -25,7 +25,7 @@ After finding the correct Unicode codepoint to represent the character, use [XML
 
 `&#x20AC;`
 
-Getting your XML correctly encoded is only part of the job. If you want the character to display or print correctly (and you probably do), then the selected font must contain the necessary glyph. Because of differences between font encoding methods, and limitations in some font technologies, this can be a troublesome issue, especially for symbol characters. The FOP example file [Base-14 Font Character Mapping](fo/fonts.fo.pdf) is a very useful resource in sorting these issues out for the Base-14 fonts. For other fonts, use font editing sofware or operating system utilities (such as the Character Map in most Windows platforms) to determine what characters the font supports.
+Getting your XML correctly encoded is only part of the job. If you want the character to display or print correctly (and you probably do), then the selected font must contain the necessary glyph. Because of differences between font encoding methods, and limitations in some font technologies, this can be a troublesome issue, especially for symbol characters. The FOP example file [Base-14 Font Character Mapping](fo/fonts.fo.pdf) is a very useful resource in sorting these issues out for the Base-14 fonts. For other fonts, use font editing software or operating system utilities (such as the Character Map in most Windows platforms) to determine what characters the font supports.
 
 An alternative to encoding the character and making it available through a font is to use an embedded graphic to represent the character: GIF, PNG, SVG, etc.
 

@@ -118,7 +118,7 @@ Page breaking currently doesn't support changing available IPD between pages of 
 
 Line breaking is not 100% correct when there's too little space. Overflows are not detected and warned.
 
-**page-height_indefinite_simple.xml** (Indefinite page height handling is imcomplete):
+**page-height_indefinite_simple.xml** (Indefinite page height handling is incomplete):
 
 A RuntimeException is thrown for a page of indefinite height. Lots of warnings.
 
@@ -152,7 +152,7 @@ A table-cell producing an empty area does currently not add any markers to a pag
 
 **table_border-width_conditionality.xml** (Border conditionality on table):
 
-The code should be ok, but the test case uses shorthands and therefore is probably not expressing the indended outcome according to the spec. The test case should be revisited.
+The code should be ok, but the test case uses shorthands and therefore is probably not expressing the intended outcome according to the spec. The test case should be revisited.
 
 **block_shy_linebreaking_hyph.xml** (Soft hyphen with normal hyphenation enabled):
 

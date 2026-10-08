@@ -13,7 +13,7 @@ SVG Graphic - This applies to svg and any other xml document that can be convert
 
 XML Document - Instead of converting the document into svg it can be passed directly to the renderer. The renderer will need to have a handler for the xml document. This handler can add information directly to the output document.
 
-Output Document - This is used to add document level information to the output result. Such an extension will set information that is passed to the output document. The area tree handles these extensions and passs along the information to the renderer. The extension may contain resolveable objects. The extension can be passed to the renderer once resolve either immediately, after the next page or at the end of the document. This is so that the extension can be handled according to other associated data.
+Output Document - This is used to add document level information to the output result. Such an extension will set information that is passed to the output document. The area tree handles these extensions and passes along the information to the renderer. The extension may contain resolveable objects. The extension can be passed to the renderer once resolve either immediately, after the next page or at the end of the document. This is so that the extension can be handled according to other associated data.
 
 FO Area - This is where an extension creates an normal or extended area in the Area Tree. This is useful when the normal FO objects cannot create the area in the way that is needed.
 

@@ -106,7 +106,7 @@ By adding the following line of code to the previous example, you will specify t
     :::java
     t.addTranscodingHint(JPEGTranscoder.KEY_WIDTH, new Float(100));
 
-The transcoder will have the same behavior if you specify the `KEY_HEIGHT` without initializing the `KEY_WIDTH`. In all cases (even if both keys are provided), the transcoder will preserve the apsect ratio of the SVG document.
+The transcoder will have the same behavior if you specify the `KEY_HEIGHT` without initializing the `KEY_WIDTH`. In all cases (even if both keys are provided), the transcoder will preserve the aspect ratio of the SVG document.
 
 ### Selecting an area of interest { #selectAreaOfIntrest}
 

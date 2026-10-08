@@ -37,7 +37,7 @@ FOP developers have discussed adding the capability of using an Area Tree to ren
 
 ## Layout Managers { #lm}
 
-The layout managers are set up from the hierarchy of the formatting object tree. A manager represents a hierachy of area producing objects. A manager is able to handle the block area(s) that it creates and organise or split areas for page breaks.
+The layout managers are set up from the hierarchy of the formatting object tree. A manager represents a hierarchy of area producing objects. A manager is able to handle the block area(s) that it creates and organise or split areas for page breaks.
 
 Normally any object that creates a block area will have an associated layout manager. Other cases are tables and lists, these objects will also have layout managers that will manager the group of layout managers that make up the object.
 
@@ -99,13 +99,13 @@ Once the areas for the page are finalised then the spacing will need to be adjus
 
 In the case of multi-column pages the column breaks and eventually the page break must be found in a slightly different way.
 
-The columns need to be layed out completely from first to last but this can only be done after a rough estimate of all the elements on the page in case of before floats or footnotes.
+The columns need to be laid out completely from first to last but this can only be done after a rough estimate of all the elements on the page in case of before floats or footnotes.
 
-So first the complete page is layed out with all columns filled with areas and the spacing at a minimum. Then if there are any before floats or footnotes then the availabe space is adjusted. Then each the best break is found for each column starting from the first column. If any before floats or footnotes are removed as a result of the new breaks and optimised spacing then all the columns should still be layed out for the same column height.
+So first the complete page is laid out with all columns filled with areas and the spacing at a minimum. Then if there are any before floats or footnotes then the available space is adjusted. Then each the best break is found for each column starting from the first column. If any before floats or footnotes are removed as a result of the new breaks and optimised spacing then all the columns should still be laid out for the same column height.
 
 ## Completing Page { #page-complete}
 
-After the region body has been finished the static areas can be layed out. The width of the static area is set and the height is inifinite, that is all block areas should be placed in the area and their visibility is controlled be other factors.
+After the region body has been finished the static areas can be laid out. The width of the static area is set and the height is infinite, that is all block areas should be placed in the area and their visibility is controlled be other factors.
 
 The area tree for the region body will contain the information about markers that may be necessary for the retrieve marker.
 
@@ -113,11 +113,11 @@ The ordering of the area tree must be adjusted so that the areas are before, sta
 
 ## Line Areas { #line-area}
 
-Creating a line areas uses a similair concept. Each inline area is placed across the available space until there is no room left. The line is then split by considering all keeps and spacing.
+Creating a line areas uses a similar concept. Each inline area is placed across the available space until there is no room left. The line is then split by considering all keeps and spacing.
 
 Each word (group of adjacent character inline areas) will have keeps based on hyphenation. The line break is at the lowest keep value starting from the end of the line.
 
-Once a line has been layed out for a particular width then that line is fixed for the page (except for unresolved page references).
+Once a line has been laid out for a particular width then that line is fixed for the page (except for unresolved page references).
 
 ## Before Floats and Footnotes { #before-float-footnote}
 
@@ -139,13 +139,13 @@ This means that the float needs to be handled by the block layout manager so tha
 
 Once the layout of the page is complete there may be unresolved areas.
 
-Page number citations and links may require following pages to be layed out before they can be resolved. These will remain in the area tree as unresolved areas.
+Page number citations and links may require following pages to be laid out before they can be resolved. These will remain in the area tree as unresolved areas.
 
 As each page is completed the list of unresolved id's will be checked and if the id can be resolved it will be. Once all id's are resolved then the page can be rendered.
 
 Each page contains a map of all unresolved id's and the corresponding areas.
 
-In the case of page number citations, the areas reserves the equivalent of 3 number nines in the current font. When the area is resolved then the area is adjusted to its proper size and the line area is re-aligned to accomodate the change.
+In the case of page number citations, the areas reserves the equivalent of 3 number nines in the current font. When the area is resolved then the area is adjusted to its proper size and the line area is re-aligned to accommodate the change.
 
 ## ID and Link Areas { #id-link-area}
 
@@ -216,9 +216,9 @@ Once the layout has been finalised then this information can be discarded.
 
 ## Page Areas { #page-area}
 
-Contains inforamtion about all the block areas in the body, before area and footer area.
+Contains information about all the block areas in the body, before area and footer area.
 
-Has a list of the unresolved page references and a list of id refences that can be used to obtain the area associated with that id.
+Has a list of the unresolved page references and a list of id references that can be used to obtain the area associated with that id.
 
 ## Test Cases { #test-cases}
 
@@ -234,7 +234,7 @@ After filling the page with the block areas then the new body height is used to 
 
 ### Multicolumn { #test-multi-column}
 
-First the page is filled with all columns for the intial page area. Then each column is adjusted for the new height starting from the first column. The best break for the column is found then the next column is considered, any left over areas a pre-pended to the next column. Once all the columns are finished then all the columns are adjusted to fit in the same height columns. This handles the situation where before floats or footnotes may have been removed.
+First the page is filled with all columns for the initial page area. Then each column is adjusted for the new height starting from the first column. The best break for the column is found then the next column is considered, any left over areas a pre-pended to the next column. Once all the columns are finished then all the columns are adjusted to fit in the same height columns. This handles the situation where before floats or footnotes may have been removed.
 
 ### Last Page { #test-last-page}
 
@@ -256,12 +256,12 @@ If in the process of adding areas to a page it is found that there are no more a
 | Fix break-* properties | High |  |
 | Footnotes | Medium |  |
 | Relative positioned block containers | Medium |  |
-| Fine-tuning line breaking and hypenation | Medium |  |
+| Fine-tuning line breaking and hyphenation | Medium |  |
 | Last page layout | Medium |  |
 | Aligned leaders, especially in justified text | Medium |  |
 | Floats of all kind | Low |  |
-| Border collapsing on tables | Low | RenderX hasnt implemented this (17/03/04) |
-| Fine-tuning all other borders | Low | Not sure what Joerg means by this, border collapse priorties? Dashed and dotted borders have been implemented in PDF |
+| Border collapsing on tables | Low | RenderX hasn't implemented this (17/03/04) |
+| Fine-tuning all other borders | Low | Not sure what Joerg means by this, border collapse priorities? Dashed and dotted borders have been implemented in PDF |
 | BIDI support | Low |  |
 
 ### Work in Progress { #status-wip}

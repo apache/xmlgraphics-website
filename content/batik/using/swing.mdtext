@@ -3,7 +3,7 @@ Title: Batik Swing components
 #Batik Swing components
 
 
-The goal of the Batik Swing component module is to provide a Swing component that can used to display SVG documents. With the [JSVGCanvas](../javadoc/org/apache/batik/swing/JSVGCanvas.html) class, you can easily display an SVG document (from a URI or a DOM tree) and allow the user to manipulate it, such as rotating, zooming, panning, selecting text or activating hyperlinks. First this document explains how to create a `JSVGCanvas` and integrate it in to a Swing application. Then, it descibes some advanced features such as the listener mechanism used to track all events that occurred while displaying or manipulating an SVG document.
+The goal of the Batik Swing component module is to provide a Swing component that can used to display SVG documents. With the [JSVGCanvas](../javadoc/org/apache/batik/swing/JSVGCanvas.html) class, you can easily display an SVG document (from a URI or a DOM tree) and allow the user to manipulate it, such as rotating, zooming, panning, selecting text or activating hyperlinks. First this document explains how to create a `JSVGCanvas` and integrate it in to a Swing application. Then, it describes some advanced features such as the listener mechanism used to track all events that occurred while displaying or manipulating an SVG document.
 
 ## Creating a JSVGCanvas { #creatingJSVGCanvas}
 
@@ -129,12 +129,12 @@ Each time you set a URI or an SVG DOM tree to be displayed in a `JSVGCanvas` (us
 
  `SVGDocumentLoaderListener`
 :
-The [SVGDocumentLoaderListener](../javadoc/org/apache/batik/swing/svg/SVGDocumentLoaderListener) provides a set of methods that can be used to track [SVGDocumentLoaderEvent](../javadoc/org/apache/batik/swing/svg/SVGDocumentLoaderEvent) events. It describes the loading phase: contructing an SVG DOM tree using an SVG file.
+The [SVGDocumentLoaderListener](../javadoc/org/apache/batik/swing/svg/SVGDocumentLoaderListener) provides a set of methods that can be used to track [SVGDocumentLoaderEvent](../javadoc/org/apache/batik/swing/svg/SVGDocumentLoaderEvent) events. It describes the loading phase: constructing an SVG DOM tree using an SVG file.
 
 
  `GVTTreeBuilderListener`
 :
-The [GVTTreeBuilderListener](../javadoc/org/apache/batik/swing/svg/GVTTreeBuilderListener) provides a set of methods that can be used to track [GVTTreeBuilderEvent](../javadoc/org/apache/batik/swing/svg/GVTTreeBuilderEvent) events. It describes the building phase: contructing a GVT (Graphics Vector Toolkit) tree using an SVG DOM tree. The GVT tree will then be used to render the document.
+The [GVTTreeBuilderListener](../javadoc/org/apache/batik/swing/svg/GVTTreeBuilderListener) provides a set of methods that can be used to track [GVTTreeBuilderEvent](../javadoc/org/apache/batik/swing/svg/GVTTreeBuilderEvent) events. It describes the building phase: constructing a GVT (Graphics Vector Toolkit) tree using an SVG DOM tree. The GVT tree will then be used to render the document.
 
 
  `SVGLoadEventDispatcherListener`
@@ -163,4 +163,4 @@ In the case of dynamic documents, the end of the computation (parsing, building,
 
 ## Adding an Interactor { #interactor}
 
-The `JSVGCanvas` provides a set of build-in interactors that let the users manipulate the displayed document, including ones for zooming, panning and rotating. Interactors catch user input to the `JSVGCanvas` component and translate them into behaviour. If you want to add new behaviors to the `JSVGCanvas`, you can implement the [Interactor](../javadoc/org/apache/batik/swing/gvt/Interactor.html) interface. Then, you can register this new interactor to the component by adding an element to the `List` returned by the `getInteractors()` method of the canvas.
+The `JSVGCanvas` provides a set of built-in interactors that let the users manipulate the displayed document, including ones for zooming, panning and rotating. Interactors catch user input to the `JSVGCanvas` component and translate them into behaviour. If you want to add new behaviors to the `JSVGCanvas`, you can implement the [Interactor](../javadoc/org/apache/batik/swing/gvt/Interactor.html) interface. Then, you can register this new interactor to the component by adding an element to the `List` returned by the `getInteractors()` method of the canvas.

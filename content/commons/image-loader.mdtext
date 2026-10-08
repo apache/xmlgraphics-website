@@ -153,7 +153,7 @@ The priority the implementation reports is used to sort all registered implement
 
 ## ImageLoader and ImageLoaderFactory { #ImageLoader}
 
-The factory interface has been created to allow checking if some library that an implementation depends on is really in the classpath so it can report back that the `ImageLoader` is not funtional. The factory also reports what kind of image formats it supports and which image flavors it can return. There can be a complex relationship between the two. It is recommmended, however, to write smaller implementations rather than big, almighty ones.
+The factory interface has been created to allow checking if some library that an implementation depends on is really in the classpath so it can report back that the `ImageLoader` is not functional. The factory also reports what kind of image formats it supports and which image flavors it can return. There can be a complex relationship between the two. It is recommended, however, to write smaller implementations rather than big, almighty ones.
 
 The usage penalty is used when constructing image conversion pipelines. There can be multiple ways to provide an image in one of the supported flavors and this value helps to make the best decision.
 

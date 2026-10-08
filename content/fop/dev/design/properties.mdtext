@@ -90,7 +90,7 @@ The Maker also checks to see if the property is an Enumerated type and then chec
 
 Otherwise the Maker uses the property parser in the fo.expr package to evaluate the attribute value and return a Property object. The parser interprets the expression language and performs numeric operations and function call evaluations.
 
-If the returned Property value is of the correct type (specificed in foproperties.xml, where else?), the Maker returns it. Otherwise, it may be able to convert the returned type into the correct type.
+If the returned Property value is of the correct type (specified in foproperties.xml, where else?), the Maker returns it. Otherwise, it may be able to convert the returned type into the correct type.
 
 Some kinds of property values can't be fully resolved during FO tree building because they depend on layout information. This is the case of length values specified as percentages and of the special proportional-column-width(x) specification for table-column widths. These are stored as special kinds of Length objects which are evaluated during layout. Expressions involving "em" units which are relative to font-size _are_ resolved during the FO tree building however.
 

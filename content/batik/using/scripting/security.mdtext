@@ -74,12 +74,12 @@ The script resource should not be loaded.
 
 EmbededScriptSecurity
 :
-The script resource will only be loaded if it is embeded in the SVG document referencing it. This means that script attributes (such as `onclick` on a `rect` element), inline `script` elements and `script` elements using a `data:` URL as its `xlink:href` attribute value will be allowed. All other script resources should not be loaded.
+The script resource will only be loaded if it is embedded in the SVG document referencing it. This means that script attributes (such as `onclick` on a `rect` element), inline `script` elements and `script` elements using a `data:` URL as its `xlink:href` attribute value will be allowed. All other script resources should not be loaded.
 
 
 DefaultScriptSecurity
 :
-The script resource will only be loaded if it is embeded in the SVG document (see the description of `EmbededScriptSecurity`) or if it is coming from the same location as the document referencing the script. If the document comes from a network server, then any script coming from that server will be allowed. If the document comes from the file system, then only scripts under the same directory root as the SVG document will be allowed.
+The script resource will only be loaded if it is embedded in the SVG document (see the description of `EmbededScriptSecurity`) or if it is coming from the same location as the document referencing the script. If the document comes from a network server, then any script coming from that server will be allowed. If the document comes from the file system, then only scripts under the same directory root as the SVG document will be allowed.
 
 
 RelaxedScriptSecurity
@@ -97,12 +97,12 @@ No external references are allowed.
 
 EmbededExternalResourceSecurity
 :
-Only resources embeded into the file are allowed (i.e., references through the `data:` protocol).
+Only resources embedded into the file are allowed (i.e., references through the `data:` protocol).
 
 
 DefaultExternalResourceSecurity
 :
-Embeded external resources (see above) and resources coming from the same location as the document referencing them are allowed.
+Embedded external resources (see above) and resources coming from the same location as the document referencing them are allowed.
 
 
 RelaxedExternalResourceSecurity

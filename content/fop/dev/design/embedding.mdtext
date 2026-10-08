@@ -17,7 +17,7 @@ Common places where FOP is embedded is in a report production application of a s
 Possible meanings for a user agent:
 
 
-- something that makes decisions where the specifiction indicates that the user agent should decide
+- something that makes decisions where the specification indicates that the user agent should decide
 
 - FOP as the user agent, represented by a class that handles various setup and decision values
 
@@ -89,6 +89,6 @@ The Driver handles the XML input. The user agent information is through the FOUs
 
 ### Others { #Others}
 
-Render to more than one renderer at once (maybe not from the command line). For example you could generate a PDF for the archive and the PS for the printer in one run. It would probably be faster than converting the PDF to PostScript afterwards. Make the fo tree reuseable. If the fonts are the same then use the same area tree to output to different renderers.
+Render to more than one renderer at once (maybe not from the command line). For example you could generate a PDF for the archive and the PS for the printer in one run. It would probably be faster than converting the PDF to PostScript afterwards. Make the fo tree reusable. If the fonts are the same then use the same area tree to output to different renderers.
 
 Several code pieces for resolving URLs and/or file locations are scattered all over FOP and Batik. These should be replaced with an URIResolver invocation to unify behaviour and remove redundancies.

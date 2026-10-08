@@ -261,7 +261,7 @@ You can do all sorts of things on the user agent:
         :::java
         userAgent.setTargetResolution(300); // =300dpi (dots/pixels per Inch)
 
-- Set **your own Document Handler**. This feature can be used for several purposes, the most likey usage of which would probably be binding a MIME type when the output is Intermediate Format (see [Document Handlers](#documenthandlers)). This also allows advanced users to create their own implementation of the document handler.
+- Set **your own Document Handler**. This feature can be used for several purposes, the most likely usage of which would probably be binding a MIME type when the output is Intermediate Format (see [Document Handlers](#documenthandlers)). This also allows advanced users to create their own implementation of the document handler.
 
         :::java
         userAgent.setDocumentHandlerOverride(documentHandler); // documentHandler is an instance of org.apache.fop.render.intermediate.IFDocumentHandler
@@ -311,7 +311,7 @@ Fop instances shouldn't (and can't) be reused. Please recreate Fop and FOUserAge
 
 ### AWT issues { #awt}
 
-If your XSL-FO files contain SVG then Apache Batik will be used. When Batik is initialised it uses certain classes in `java.awt` that intialise the Java AWT classes. This means that a daemon thread is created by the JVM and on Unix it will need to connect to a DISPLAY.
+If your XSL-FO files contain SVG then Apache Batik will be used. When Batik is initialised it uses certain classes in `java.awt` that initialise the Java AWT classes. This means that a daemon thread is created by the JVM and on Unix it will need to connect to a DISPLAY.
 
 The thread means that the Java application may not automatically quit when finished, you will need to call `System.exit()`. These issues should be fixed in the JDK 1.4.
 

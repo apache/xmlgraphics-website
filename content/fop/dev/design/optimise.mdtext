@@ -13,7 +13,7 @@ The fo elements used to construct a page can be discarded as soon as the layout 
 
 Once the layout of a page has been completed, all elements are fully resolved, then the page can be rendered. Some renderers may support out of order rendering of pages.
 
-The main problem that will remain is that any page with forward references will need to be stored until the refence is resolved. This means that the information contained in the page should be as minimal as possible.
+The main problem that will remain is that any page with forward references will need to be stored until the reference is resolved. This means that the information contained in the page should be as minimal as possible.
 
 Line areas can be optimised once the layout for the line has been finalised. Consecutive characters with the same properties can be combined into a "word" to hold the information with limited overhead.
 

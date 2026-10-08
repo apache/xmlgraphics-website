@@ -120,7 +120,7 @@ The ImageLoaderPNG and ImageLoaderRawPNG have a hard-coded penalty of 1000 and a
       <renderers....
     </fop>
 
-You can pass a ICC file via the image-loading to convert RGB images to CMYK. For PDF or PS output you would need to set a custom penalty so ImageIO is used, this isnt needed for AFP output.
+You can pass a ICC file via the image-loading to convert RGB images to CMYK. For PDF or PS output you would need to set a custom penalty so ImageIO is used, this isn't needed for AFP output.
     
     :::xml    
     <image-loading icc-converter="USSheetfedCoated.icc">
