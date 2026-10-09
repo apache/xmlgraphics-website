@@ -25,7 +25,7 @@
 	});
     </script>
 
-   <title>Apache(tm) FOP: Complex Scripts</title>
+   <title>FOP XSL-FO Extensions Reference</title>
   </head>
 
   <body>
@@ -1772,9 +1772,6 @@ $(document).ready(function () {
 })
 </script>	</div>
 	
-	<div id="outdated-warning" style="padding: .5em; text-align: center; background-color: #FFBABA; color: #6A0E0E;">
-    This document is for an old version of FOP that is no longer supported. <a href="../2.11/complexscripts.html">Latest version of this page</a>
-    </div>
   
 
 	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
@@ -1796,611 +1793,593 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1 id="apache-fop-complex-scripts">Apache&trade; FOP: Complex Scripts</h1>
-<h2 id="overview">Overview</h2>
-<p>This page describes the <a href="http://en.wikipedia.org/wiki/Complex_scripts">complex scripts</a> features of Apache&trade; FOP, which include:</p>
-<ul>
-<li>
-<p>Support for languages written with right-to-left scripts, such as Arabic and Hebrew scripts.</p>
-</li>
-<li>
-<p>Support for languages written with South Asian and Southeast Asian scripts, such as Devanagari, Khmer, Tamil, Thai, and others.</p>
-</li>
-<li>
-<p>Support for advanced substitution, reordering, and positioning of glyphs according to language and script sensitive rules.</p>
-</li>
-<li>
-<p>Support for advanced number to string formatting.</p>
-</li>
-</ul>
-<h2 id="Disabling-complex-scripts">Disabling complex scripts</h2>
-<p>Complex script features are enabled by default. If some application of FOP does not require this support, then it can be disabled in three ways:</p>
-<ol>
-<li>
-<p><strong>Command line:</strong></p>
-<p>The command line option <code>-nocs</code> turns off complex script features:</p>
-<div class="highlight"><pre><span></span><code><span class="err">fop -nocs -fo mydocument.fo -pdf mydocument.pdf</span>
-</code></pre></div>
-
-</li>
-<li>
-<p><strong>Embedding:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="n">userAgent</span><span class="p">.</span><span class="na">setComplexScriptFeaturesEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
-</code></pre></div>
-
-</li>
-<li>
-<p><strong>Optional setting in fop.xconf file:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;fop</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;complex-scripts</span> <span class="na">disabled=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-  ...
-<span class="nt">&lt;/fop&gt;</span>`
-</code></pre></div>
-
-</li>
-</ol>
-<p>When complex scripts features are enabled, additional information related to bidirectional level resolution, the association between characters and glyphs, and glyph position adjustments are added to the internal, parsed representation of the XSL-FO tree and its corresponding formatted area tree. This additional information will somewhat increase the memory requirements for processing documents that use these features.</p>
-<p><note>A document author need not make explicit use of any complex scripts feature in order for this additional information to be created. For example, if the author makes use of a font that contains OpenType GSUB and/or GPOS tables, then those tables will be automatically used unless complex scripts features are disabled.</note></p>
-<h2 id="source">Changes to your XSL-FO input files</h2>
-<p>In most circumstances, XSL-FO content does not need to change in order to make use of complex scripts features; however, in certain contexts, fully automatic processing is not sufficient. In these cases, an author may make use of the following XSL-FO constructs:</p>
-<ul>
-<li>
-<p>The <a href="http://www.w3.org/TR/2006/REC-xsl11-20061205/#script">script</a> property.</p>
-</li>
-<li>
-<p>The <a href="http://www.w3.org/TR/2006/REC-xsl11-20061205/#language">language</a> property.</p>
-</li>
-<li>
-<p>The <a href="http://www.w3.org/TR/2006/REC-xsl11-20061205/#writing-mode">writing-mode</a> property.</p>
-</li>
-<li>
-<p>The number to string conversion properties: <a href="http://www.w3.org/TR/2006/REC-xsl11-20061205/#format">format</a>, <a href="http://www.w3.org/TR/2006/REC-xsl11-20061205/#grouping-separator">grouping-separator</a>, <a href="http://www.w3.org/TR/2006/REC-xsl11-20061205/#grouping-size">grouping-size</a>, <a href="http://www.w3.org/TR/2006/REC-xsl11-20061205/#letter-value">letter-value</a>, and <code>fox:number-conversion-features</code>.</p>
-</li>
-<li>
-<p>The <a href="http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override">fo:bidi-override</a> element.</p>
-</li>
-<li>
-<p>Explicit bidirectional control characters: U+200E LRM, U+200F RLM, U+202A LRE, U+202B RLE, U+202C PDF, U+202D LRO, U+202E RLO.</p>
-</li>
-<li>
-<p>Explicit join control characters: U+200C ZWNJ and U+200D ZWJ.</p>
-</li>
-</ul>
-<h2 id="details">Authoring Details</h2>
-<p>The complex scripts related effects of the above enumerated XSL-FO constructs are more fully described in the following sub-sections.</p>
-<h3 id="script_property">Script Property</h3>
-<p>In order to apply font specific complex script features, it is necessary to know the script that applies to the text undergoing layout processing. This script is determined using the following algorithm:</p>
-<ol>
-<li>
-<p>If the FO element that governs the text specifies a <a href="http://www.w3.org/TR/2006/REC-xsl11-20061205/#script">http://www.w3.org/TR/2006/REC-xsl11-20061205/#script</a> property and its value is not the empty string or <code>"auto"</code>, then that script is used.</p>
-</li>
-<li>
-<p>Otherwise, the dominant script of the text is determined automatically by finding the script whose constituent characters appear most frequently in the text.</p>
-</li>
-</ol>
-<p>In case the automatic algorithm does not produce the desired results, an author may explicitly specify a <code>script</code> property with the desired script. If specified, it must be one of the four-letter script code specified in <a href="http://unicode.org/iso15924/iso15924-codes.html">ISO 15924 Code List</a> or in the <a href="#extended_script_codes">Extended Script Codes</a> table. Comparison of script codes is performed in a case-insensitive manner, so it does not matter what case is used when specifying these codes in an XSL-FO document.</p>
-<h4 id="standard_script_codes">Standard Script Codes</h4>
-<p>The following table enumerates the standard ISO 15924 4-letter codes recognized by FOP.</p>
+    <h1 id="fop-xsl-fo-extensions-reference">FOP XSL-FO Extensions Reference</h1>
+<p>Apache FOP extends standard XSL-FO with a number of custom elements and
+attributes, each in its own namespace. These are registered through
+<code>ElementMapping</code> classes (see
+<code>META-INF/services/org.apache.fop.fo.ElementMapping</code>). This document lists
+every extension element and attribute, grouped by namespace.</p>
+<h2 id="namespaces-at-a-glance">Namespaces at a glance</h2>
 <table>
 <thead>
 <tr>
-<th>Code</th>
-<th>Script</th>
+<th>Prefix</th>
+<th>Namespace URI</th>
+<th>Area</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>arab</code></td>
-<td>Arabic</td>
+<td><code>fox</code></td>
+<td><code>http://xmlgraphics.apache.org/fop/extensions</code></td>
+<td>General FOP extensions</td>
 </tr>
 <tr>
-<td><code>beng</code></td>
-<td>Bengali</td>
+<td>(old)</td>
+<td><code>http://xml.apache.org/fop/extensions</code></td>
+<td>Legacy FOP 0.20.5 namespace</td>
 </tr>
 <tr>
-<td><code>bopo</code></td>
-<td>Bopomofo</td>
+<td><code>foi</code></td>
+<td><code>http://xmlgraphics.apache.org/fop/internal</code></td>
+<td>Internal (structure tree)</td>
 </tr>
 <tr>
-<td><code>cyrl</code></td>
-<td>Cyrillic</td>
+<td><code>pdf</code></td>
+<td><code>http://xmlgraphics.apache.org/fop/extensions/pdf</code></td>
+<td>PDF output</td>
 </tr>
 <tr>
-<td><code>deva</code></td>
-<td>Devanagari</td>
+<td><code>afp</code></td>
+<td><code>http://xmlgraphics.apache.org/fop/extensions/afp</code></td>
+<td>AFP output</td>
 </tr>
 <tr>
-<td><code>ethi</code></td>
-<td>Ethiopic</td>
+<td>(ps)</td>
+<td><code>http://xmlgraphics.apache.org/fop/postscript</code></td>
+<td>PostScript output</td>
 </tr>
 <tr>
-<td><code>geor</code></td>
-<td>Georgian</td>
+<td><code>pcl</code></td>
+<td><code>http://xmlgraphics.apache.org/fop/extensions/pcl</code></td>
+<td>PCL output</td>
 </tr>
 <tr>
-<td><code>grek</code></td>
-<td>Greek</td>
+<td><code>svg</code></td>
+<td><code>http://www.w3.org/2000/svg</code></td>
+<td>SVG graphics</td>
 </tr>
 <tr>
-<td><code>gujr</code></td>
-<td>Gujarati</td>
+<td>(batik)</td>
+<td><code>http://xml.apache.org/batik/ext</code></td>
+<td>Batik SVG extensions</td>
 </tr>
 <tr>
-<td><code>guru</code></td>
-<td>Gurmukhi</td>
+<td>(xmp)</td>
+<td><code>adobe:ns:meta/</code></td>
+<td>XMP metadata</td>
 </tr>
 <tr>
-<td><code>hang</code></td>
-<td>Hangul</td>
+<td>(rdf)</td>
+<td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td>
+<td>RDF (inside XMP)</td>
 </tr>
 <tr>
-<td><code>hani</code></td>
-<td>Han</td>
-</tr>
-<tr>
-<td><code>hebr</code></td>
-<td>Hebrew</td>
-</tr>
-<tr>
-<td><code>hira</code></td>
-<td>Hiragana</td>
-</tr>
-<tr>
-<td><code>kana</code></td>
-<td>Katakana</td>
-</tr>
-<tr>
-<td><code>knda</code></td>
-<td>Kannada</td>
-</tr>
-<tr>
-<td><code>khmr</code></td>
-<td>Khmer</td>
-</tr>
-<tr>
-<td><code>laoo</code></td>
-<td>Lao</td>
-</tr>
-<tr>
-<td><code>latn</code></td>
-<td>Latin</td>
-</tr>
-<tr>
-<td><code>mlym</code></td>
-<td>Malayalam</td>
-</tr>
-<tr>
-<td><code>mymr</code></td>
-<td>Burmese</td>
-</tr>
-<tr>
-<td><code>mong</code></td>
-<td>Mongolian</td>
-</tr>
-<tr>
-<td><code>orya</code></td>
-<td>Oriya</td>
-</tr>
-<tr>
-<td><code>sinh</code></td>
-<td>Sinhalese</td>
-</tr>
-<tr>
-<td><code>taml</code></td>
-<td>Tamil</td>
-</tr>
-<tr>
-<td><code>telu</code></td>
-<td>Telugu</td>
-</tr>
-<tr>
-<td><code>thai</code></td>
-<td>Thai</td>
-</tr>
-<tr>
-<td><code>tibt</code></td>
-<td>Tibetan</td>
-</tr>
-<tr>
-<td><code>zmth</code></td>
-<td>Math</td>
-</tr>
-<tr>
-<td><code>zsym</code></td>
-<td>Symbol</td>
-</tr>
-<tr>
-<td><code>zyyy</code></td>
-<td>Undetermined</td>
-</tr>
-<tr>
-<td><code>zzzz</code></td>
-<td>Uncoded</td>
+<td>(plan)</td>
+<td><code>http://xmlgraphics.apache.org/fop/plan</code></td>
+<td>Plan example extension</td>
 </tr>
 </tbody>
 </table>
-<h4 id="extended_script_codes">Extended Script Codes</h4>
-<p>The following table enumerates a number of non-standard extended script codes recognized by FOP.</p>
+<hr>
+<h2 id="1-general-fop-extensions-fox">1. General FOP extensions (<code>fox</code>)</h2>
+<p>Namespace: <code>http://xmlgraphics.apache.org/fop/extensions</code></p>
+<h3 id="elements">Elements</h3>
 <table>
 <thead>
 <tr>
-<th>Code</th>
-<th>Script</th>
-<th>Comments</th>
+<th>Element</th>
+<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>bng2</code></td>
-<td>Bengali</td>
-<td>OpenType Indic Version 2 (May 2008 and following) behavior.</td>
+<td><code>fox:outline</code></td>
+<td>Bookmark/outline grouping (legacy bookmark mechanism).</td>
 </tr>
 <tr>
-<td><code>dev2</code></td>
-<td>Devanagari</td>
-<td>OpenType Indic Version 2 (May 2008 and following) behavior.</td>
+<td><code>fox:label</code></td>
+<td>Label text for an outline/bookmark.</td>
 </tr>
 <tr>
-<td><code>gur2</code></td>
-<td>Gurmukhi</td>
-<td>OpenType Indic Version 2 (May 2008 and following) behavior.</td>
+<td><code>fox:destination</code></td>
+<td>Named internal destination/anchor.</td>
 </tr>
 <tr>
-<td><code>gjr2</code></td>
-<td>Gujarati</td>
-<td>OpenType Indic Version 2 (May 2008 and following) behavior.</td>
-</tr>
-<tr>
-<td><code>knd2</code></td>
-<td>Kannada</td>
-<td>OpenType Indic Version 2 (May 2008 and following) behavior.</td>
-</tr>
-<tr>
-<td><code>mlm2</code></td>
-<td>Malayalam</td>
-<td>OpenType Indic Version 2 (May 2008 and following) behavior.</td>
-</tr>
-<tr>
-<td><code>ory2</code></td>
-<td>Oriya</td>
-<td>OpenType Indic Version 2 (May 2008 and following) behavior.</td>
-</tr>
-<tr>
-<td><code>tml2</code></td>
-<td>Tamil</td>
-<td>OpenType Indic Version 2 (May 2008 and following) behavior.</td>
-</tr>
-<tr>
-<td><code>tel2</code></td>
-<td>Telugu</td>
-<td>OpenType Indic Version 2 (May 2008 and following) behavior.</td>
+<td><code>fox:external-document</code></td>
+<td>Import an entire external multi-page document (e.g. multi-page image/PDF) as its own page sequence. Requires <code>src</code>.</td>
 </tr>
 </tbody>
 </table>
-<p><warning>Explicit use of one of the above extended script codes is not portable, and should be limited to use with FOP only.</warning></p>
-<p><note>When performing automatic script determination, FOP selects the OpenType Indic Version 2 script codes by default. If the author requires Version 1 behavior, then an explicit, non-extension script code should be specified in a governing <code>script</code> property.</note></p>
-<h3 id="language_property">Language Property</h3>
-<p>Certain fonts that support complex script features can make use of language information in order for language specific processing rules to be applied. For example, a font designed for the Arabic script may support typographic variations according to whether the written language is Arabic, Farsi (Persian), Sindhi, Urdu, or another language written with the Arabic script. In order to apply these language specific features, the author may explicitly mark the text with a <a href="http://www.w3.org/TR/2006/REC-xsl11-20061205/#language">http://www.w3.org/TR/2006/REC-xsl11-20061205/#language</a> property.</p>
-<p>When specifying the <code>language</code> property, the value of the property must be either an <a href="http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes">ISO639-2 3-letter code</a> or an <a href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO639-1 2-letter code</a>. Comparison of language codes is performed in a case-insensitive manner, so it does not matter what case is used when specifying these codes in an XSL-FO document.</p>
-<h3 id="writing_mode_property">Writing Mode Property</h3>
-<p>The <code>writing-mode</code> property is used to determine the axes and direction of the inline progression direction, the block progression direction, the column progression direction (in tables and flows), the shift direction, region placement, the resolution of writing-mode relative property values (such as start, end, before, after), and the default block (paragraph) bidirectionality level.</p>
-<p>The <code>writing-mode</code> property is inherited, so it can appear on any XSL-FO element type; however, it applies (semantically) only to the following element types:</p>
-<ul>
-<li>
-<p><code>fo:page-sequence</code></p>
-</li>
-<li>
-<p><code>fo:simple-page-master</code></p>
-</li>
-<li>
-<p><code>fo:region-*</code></p>
-</li>
-<li>
-<p><code>fo:block-container</code></p>
-</li>
-<li>
-<p><code>fo:inline-container</code></p>
-</li>
-<li>
-<p><code>fo:table</code></p>
-</li>
-</ul>
-<p>If it is not specified on one of these element types, but is specified on an ancestor element, then the value specified on that ancestor element (the inherited value) is used; otherwise, the initial value <code>lr-tb</code> is used.</p>
-<p>At present, only the following values of the <code>writing-mode</code> property are supported:</p>
-<ul>
-<li>
-<p><code>lr-tb</code></p>
-</li>
-<li>
-<p><code>rl-tb</code></p>
-</li>
-<li>
-<p><code>lr</code></p>
-</li>
-<li>
-<p><code>rl</code></p>
-</li>
-</ul>
-<p>Writing modes that employ a vertical inline progression direction are not yet supported.</p>
-<h3 id="bidi_override_element">Bidi Override Element</h3>
-<p>The <a href="http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override">fo:bidi-override</a> element may be used to override default bidirectional processing behavior, including default embedding levels and default character directionality. In the absence of either this element or use of explicit <a href="#bidi_controls">Bidi Control Characters</a>, the default behavior prescribed by the <a href="http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override">Unicode Bidirectional Algorithm</a> applies.</p>
-<h3 id="bidi_controls">Bidi Control Characters</h3>
-<p>In addition to the use of the <a href="#bidi_override_element">Bidi Override Element</a>, an author may make use of the following explicit Unicode Bidi Control Characters:</p>
-<ul>
-<li>
-<p>U+200E - LEFT-TO-RIGHT MARK (LRM)</p>
-</li>
-<li>
-<p>U+200F - RIGHT-TO-LEFT MARK (RLM)</p>
-</li>
-<li>
-<p>U+202A - LEFT-TO-RIGHT EMBEDDING (LRE)</p>
-</li>
-<li>
-<p>U+202B - RIGHT-TO-LEFT EMBEDDING (RLE)</p>
-</li>
-<li>
-<p>U+202C - POP DIRECTIONAL FORMATTING (PDF)</p>
-</li>
-<li>
-<p>U+202D - LEFT-TO-RIGHT OVERRIDE (LRO)</p>
-</li>
-<li>
-<p>U+202E - RIGHT-TO-LEFT OVERRIDE (RLO)</p>
-</li>
-</ul>
-<p>If an embedding or override is not terminated (using U+202C PDF) prior to the end of a <a href="http://www.w3.org/TR/2006/REC-xsl11-20061205/#d0e4879">delimited text range</a>, then it is automatically terminated by FOP.</p>
-<h3 id="join_controls">Join Control Characters</h3>
-<p>In order to prevent joining behavior in contexts where joining occurs by default, for example, between U+0628 ARABIC LETTER BEH and U+0646 ARABIC LETTER NOON, an author may used a U+200C ZERO WIDTH NON-JOINER (ZWNJ).</p>
-<p>Conversely, in order to force joining behavior in contexts where joining does not occur by default, for example, between U+0628 ARABIC LETTER BEH and U+0020 SPACE, an author may used a U+200D ZERO WIDTH JOINER (ZWJ).</p>
-<p>The behavior of ZWNJ and ZWJ is script specific. See <a href="http://www.unicode.org/versions/Unicode6.1.0/ch08.pdf">The Unicode Standard, Chapter 8, Middle Eastern Scripts</a> for information on the use of these control characters with the Arabic script. See <a href="http://www.unicode.org/versions/Unicode6.1.0/ch09.pdf">The Unicode Standard, Chapter 9, South Asian Scripts - I</a> for information on the use of these control characters with common Indic scripts.</p>
-<h2 id="supported_scripts">Supported Scripts</h2>
-<p>Support for specific complex scripts is enumerated in the following table. Support for those marked as not being supported is expected to be added in future revisions.</p>
+<h3 id="attributes-used-on-standard-fo-elements">Attributes (used on standard FO elements)</h3>
+<p><strong>Pagination / layout</strong></p>
 <table>
 <thead>
 <tr>
-<th>Script</th>
-<th>Support</th>
-<th>Tested</th>
-<th>Comments</th>
+<th>Attribute</th>
+<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="http://en.wikipedia.org/wiki/Arabic_alphabet">Arabic</a></td>
-<td>full</td>
-<td>full</td>
-<td></td>
+<td><code>fox:block-progression-unit</code></td>
+<td>Force a fixed block-progression grid unit.</td>
 </tr>
 <tr>
-<td><a href="http://en.wikipedia.org/wiki/Bengali_alphabet">Bengali</a></td>
-<td>none</td>
-<td>none</td>
-<td></td>
+<td><code>fox:widow-content-limit</code></td>
+<td>Minimum content kept with widows (on <code>fo:list-block</code>, <code>fo:table</code>).</td>
 </tr>
 <tr>
-<td><a href="http://en.wikipedia.org/wiki/Burmese_alphabet">Burmese</a></td>
-<td>none</td>
-<td>none</td>
-<td></td>
+<td><code>fox:orphan-content-limit</code></td>
+<td>Minimum content kept with orphans (on <code>fo:list-block</code>, <code>fo:table</code>).</td>
 </tr>
 <tr>
-<td><a href="http://en.wikipedia.org/wiki/Devanagari_alphabet">Devanagari</a></td>
-<td>partial</td>
-<td>partial</td>
-<td>join controls (ZWJ, ZWNJ) not yet supported</td>
+<td><code>fox:disable-column-balancing</code></td>
+<td>Disable column balancing on the last page of a multi-column region.</td>
 </tr>
 <tr>
-<td><a href="http://en.wikipedia.org/wiki/Khmer_alphabet">Khmer</a></td>
-<td>none</td>
-<td>none</td>
-<td></td>
+<td><code>fox:scale</code></td>
+<td>Page scaling on <code>fo:simple-page-master</code>; format <code>scaleX [scaleY]</code>.</td>
 </tr>
 <tr>
-<td><a href="http://en.wikipedia.org/wiki/Gujarati_alphabet">Gujarati</a></td>
-<td>partial</td>
-<td>none</td>
-<td>pre-alpha</td>
-</tr>
-<tr>
-<td><a href="http://en.wikipedia.org/wiki/Gurmukhī_alphabet">Gurmukhi</a></td>
-<td>partial</td>
-<td>none</td>
-<td>pre-alpha</td>
-</tr>
-<tr>
-<td><a href="http://en.wikipedia.org/wiki/Hebrew_alphabet">Hebrew</a></td>
-<td>full</td>
-<td>partial</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="http://en.wikipedia.org/wiki/Kannada_alphabet">Kannada</a></td>
-<td>none</td>
-<td>none</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="http://en.wikipedia.org/wiki/Lao_alphabet">Lao</a></td>
-<td>none</td>
-<td>none</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="http://en.wikipedia.org/wiki/Malayalam_alphabet">Malayalam</a></td>
-<td>none</td>
-<td>none</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="http://en.wikipedia.org/wiki/Mongolian_script">Mongolian</a></td>
-<td>none</td>
-<td>none</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="http://en.wikipedia.org/wiki/Oriya_script">Oriya</a></td>
-<td>none</td>
-<td>none</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="http://en.wikipedia.org/wiki/Tamil_alphabet">Tamil</a></td>
-<td>none</td>
-<td>none</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="http://en.wikipedia.org/wiki/Telugu_alphabet">Telugu</a></td>
-<td>none</td>
-<td>none</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="http://en.wikipedia.org/wiki/Tibetan_alphabet">Tibetan</a></td>
-<td>none</td>
-<td>none</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="http://en.wikipedia.org/wiki/Thai_alphabet">Thai</a></td>
-<td>none</td>
-<td>none</td>
-<td></td>
+<td><code>fox:transform</code></td>
+<td>Affine transform applied to blocks/regions.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="supported_fonts">Supported Fonts</h2>
-<p>Support for specific fonts is enumerated in the following sub-sections. If a given font is not listed, then it has not been tested with these complex scripts features.</p>
-<h3 id="fonts_arabic">Arabic Fonts</h3>
+<p><strong>Links / navigation</strong></p>
 <table>
 <thead>
 <tr>
-<th>Font</th>
-<th>Version</th>
-<th>Glyphs</th>
-<th>Comments</th>
+<th>Attribute</th>
+<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="http://www.microsoft.com/typography/fonts/family.aspx?FID=24">Arial Unicode MS</a></td>
-<td><a href="http://www.microsoft.com/typography/fonts/font.aspx?FMID=1081">1.01</a></td>
-<td>50377</td>
-<td>limited GPOS support</td>
+<td><code>fox:internal-destination</code></td>
+<td>Internal link target id.</td>
 </tr>
 <tr>
-<td><a href="http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&amp;id=ArabicFonts">Lateef</a></td>
-<td>1.0</td>
-<td>1147</td>
-<td>language features for Kurdish (KUR), Sindhi (SND), Urdu (URD)</td>
-</tr>
-<tr>
-<td><a href="http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&amp;id=ArabicFonts">Scheherazade</a></td>
-<td>1.0</td>
-<td>1197</td>
-<td>language features for Kurdish (KUR), Sindhi (SND), Urdu (URD)</td>
-</tr>
-<tr>
-<td><a href="http://www.microsoft.com/typography/fonts/family.aspx?FID=261">Simplified Arabic</a></td>
-<td><a href="http://www.microsoft.com/typography/fonts/font.aspx?FMID=867">1.01</a></td>
-<td></td>
-<td>contains invalid, out of order coverage table entries</td>
-</tr>
-<tr>
-<td><a href="http://www.microsoft.com/typography/fonts/font.aspx?FID=261">Simplified Arabic</a></td>
-<td><a href="http://www.microsoft.com/typography/fonts/font.aspx?FMID=1645">5.00</a></td>
-<td>414</td>
-<td>lacks GPOS support</td>
-</tr>
-<tr>
-<td><a href="http://www.microsoft.com/typography/fonts/font.aspx?FID=261">Simplified Arabic</a></td>
-<td>5.92</td>
-<td>473</td>
-<td>includes GPOS for advanced position adjustment</td>
-</tr>
-<tr>
-<td><a href="http://www.microsoft.com/typography/fonts/family.aspx?FID=264">Traditional Arabic</a></td>
-<td><a href="http://www.microsoft.com/typography/fonts/family.aspx?FMID=877">1.01</a></td>
-<td>530</td>
-<td>lacks GPOS support</td>
-</tr>
-<tr>
-<td><a href="http://www.microsoft.com/typography/fonts/font.aspx?FID=264">Traditional Arabic</a></td>
-<td><a href="http://www.microsoft.com/typography/fonts/font.aspx?FMID=1658">5.00</a></td>
-<td>530</td>
-<td>lacks GPOS support</td>
-</tr>
-<tr>
-<td><a href="http://www.microsoft.com/typography/fonts/font.aspx?FID=264">Traditional Arabic</a></td>
-<td>5.92</td>
-<td>589</td>
-<td>includes GPOS for advanced position adjustment</td>
+<td><code>fox:auto-toggle</code></td>
+<td>Auto-toggle behaviour for bookmarks/links.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="devanagari_fonts">Devanagari Fonts</h3>
+<p><strong>Accessibility</strong></p>
 <table>
 <thead>
 <tr>
-<th>Font</th>
-<th>Version</th>
-<th>Glyphs</th>
-<th>Comments</th>
+<th>Attribute</th>
+<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="http://www.microsoft.com/typography/fonts/family.aspx?FID=370">Aparajita</a></td>
-<td><a href="http://www.microsoft.com/typography/fonts/font.aspx?FMID=1700">1.00</a></td>
-<td>706</td>
-<td></td>
+<td><code>fox:alt-text</code></td>
+<td>Alternative text for accessible / tagged output.</td>
 </tr>
 <tr>
-<td><a href="http://www.microsoft.com/typography/fonts/family.aspx?FID=374">Kokila</a></td>
-<td><a href="http://www.microsoft.com/typography/fonts/font.aspx?FMID=1749">1.00</a></td>
-<td>706</td>
-<td></td>
+<td><code>fox:header</code></td>
+<td>Mark a table cell as a header for accessibility.</td>
 </tr>
 <tr>
-<td><a href="http://www.microsoft.com/typography/fonts/family.aspx?FID=243">Mangal</a></td>
-<td><a href="http://www.microsoft.com/typography/fonts/font.aspx?FMID=1759">5.01</a></td>
-<td>885</td>
-<td>designed for use in user interfaces</td>
-</tr>
-<tr>
-<td><a href="http://www.microsoft.com/typography/fonts/family.aspx?FID=384">Utsaah</a></td>
-<td><a href="http://www.microsoft.com/typography/fonts/font.aspx?FMID=1811">1.00</a></td>
-<td>706</td>
-<td></td>
+<td><code>fox:abbreviation</code></td>
+<td>Expansion/abbreviation text for accessibility.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="limitations">Other Limitations</h2>
-<p>Complex scripts support in Apache FOP is relatively new, so there are certain limitations. Please help us identify and close any gaps.</p>
+<p><strong>Rounded borders</strong></p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fox:border-radius</code></td>
+<td>Shorthand for all corner radii.</td>
+</tr>
+<tr>
+<td><code>fox:border-before-radius-start</code></td>
+<td>Corner radius.</td>
+</tr>
+<tr>
+<td><code>fox:border-before-radius-end</code></td>
+<td>Corner radius.</td>
+</tr>
+<tr>
+<td><code>fox:border-after-radius-start</code></td>
+<td>Corner radius.</td>
+</tr>
+<tr>
+<td><code>fox:border-after-radius-end</code></td>
+<td>Corner radius.</td>
+</tr>
+<tr>
+<td><code>fox:border-start-radius-before</code></td>
+<td>Corner radius.</td>
+</tr>
+<tr>
+<td><code>fox:border-start-radius-after</code></td>
+<td>Corner radius.</td>
+</tr>
+<tr>
+<td><code>fox:border-end-radius-before</code></td>
+<td>Corner radius.</td>
+</tr>
+<tr>
+<td><code>fox:border-end-radius-after</code></td>
+<td>Corner radius.</td>
+</tr>
+<tr>
+<td><code>fox:border-before-start-radius</code></td>
+<td>Corner radius (alternate naming).</td>
+</tr>
+<tr>
+<td><code>fox:border-before-end-radius</code></td>
+<td>Corner radius (alternate naming).</td>
+</tr>
+<tr>
+<td><code>fox:border-after-start-radius</code></td>
+<td>Corner radius (alternate naming).</td>
+</tr>
+<tr>
+<td><code>fox:border-after-end-radius</code></td>
+<td>Corner radius (alternate naming).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Backgrounds / layers / rules / numbering</strong></p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fox:background-image-width</code></td>
+<td>Explicit scaling width for a background image.</td>
+</tr>
+<tr>
+<td><code>fox:background-image-height</code></td>
+<td>Explicit scaling height for a background image.</td>
+</tr>
+<tr>
+<td><code>fox:layer</code></td>
+<td>Assign content to a PDF optional content group / layer.</td>
+</tr>
+<tr>
+<td><code>fox:rule-style</code></td>
+<td>Non-standard <code>fo:leader</code> rule styles (e.g. <code>square</code>).</td>
+</tr>
+<tr>
+<td><code>fox:number-conversion-features</code></td>
+<td>ICU number-conversion features for page/number formatting.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="2-legacy-fop-extensions">2. Legacy FOP extensions</h2>
+<p>Namespace: <code>http://xml.apache.org/fop/extensions</code> (FOP 0.20.5 and earlier)</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>outline</code></td>
+<td>Legacy bookmark/outline element.</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td>Legacy label element.</td>
+</tr>
+</tbody>
+</table>
+<p>Kept only for backward compatibility; no attributes.</p>
+<hr>
+<h2 id="3-internal-extensions-foi">3. Internal extensions (<code>foi</code>)</h2>
+<p>Namespace: <code>http://xmlgraphics.apache.org/fop/internal</code></p>
+<p>No public elements. Used internally for the accessibility structure tree.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>foi:struct-id</code></td>
+<td>Identifies a structure-tree element (tagged PDF).</td>
+</tr>
+<tr>
+<td><code>foi:struct-ref</code></td>
+<td>References a structure-tree element.</td>
+</tr>
+<tr>
+<td><code>foi:scope</code></td>
+<td>Scope of a table header cell for the structure tree.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-pdf-extensions-pdf">4. PDF extensions (<code>pdf</code>)</h2>
+<p>Namespace: <code>http://xmlgraphics.apache.org/fop/extensions/pdf</code></p>
+<p>Used to inject raw PDF objects/dictionaries. Typically placed within
+<code>fo:declarations</code> or page/document contexts.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Purpose</th>
+<th>Key attributes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pdf:catalog</code></td>
+<td>Entries injected into the document Catalog dictionary.</td>
+<td>dictionary entries</td>
+</tr>
+<tr>
+<td><code>pdf:page</code></td>
+<td>Entries injected into a page dictionary.</td>
+<td><code>page-numbers</code> (<code>*</code>, ranges <code>n-m</code>, <code>n-LAST</code>, comma lists)</td>
+</tr>
+<tr>
+<td><code>pdf:info</code></td>
+<td>Document Information dictionary entries.</td>
+<td>dictionary entries</td>
+</tr>
+<tr>
+<td><code>pdf:vt</code></td>
+<td>PDF/VT (variable transactional) dictionary.</td>
+<td>dictionary entries</td>
+</tr>
+<tr>
+<td><code>pdf:pagepiece</code></td>
+<td>PagePiece dictionary (private page-level data).</td>
+<td>dictionary entries</td>
+</tr>
+<tr>
+<td><code>pdf:dictionary</code></td>
+<td>Generic / nested dictionary.</td>
+<td><code>key</code> (when nested)</td>
+</tr>
+<tr>
+<td><code>pdf:action</code></td>
+<td>PDF action dictionary.</td>
+<td><code>type</code> (required), <code>id</code></td>
+</tr>
+<tr>
+<td><code>pdf:navigator</code></td>
+<td>Navigation node dictionary.</td>
+<td><code>id</code>, entries</td>
+</tr>
+<tr>
+<td><code>pdf:layer</code></td>
+<td>Optional content group (OCG / layer) dictionary.</td>
+<td><code>id</code>, entries</td>
+</tr>
+<tr>
+<td><code>pdf:embedded-file</code></td>
+<td>Attach an embedded file (child of <code>fo:declarations</code>).</td>
+<td><code>src</code> (required), <code>filename</code>, <code>description</code></td>
+</tr>
+<tr>
+<td><code>pdf:array</code></td>
+<td>Array-valued collection entry.</td>
+<td><code>key</code></td>
+</tr>
+<tr>
+<td><code>pdf:boolean</code></td>
+<td>Boolean-valued entry.</td>
+<td><code>key</code></td>
+</tr>
+<tr>
+<td><code>pdf:name</code></td>
+<td>Name-valued entry.</td>
+<td><code>key</code></td>
+</tr>
+<tr>
+<td><code>pdf:number</code></td>
+<td>Number-valued entry.</td>
+<td><code>key</code></td>
+</tr>
+<tr>
+<td><code>pdf:string</code></td>
+<td>String-valued entry.</td>
+<td><code>key</code></td>
+</tr>
+<tr>
+<td><code>pdf:reference</code></td>
+<td>Indirect object reference entry.</td>
+<td><code>refid</code> (required), <code>key</code></td>
+</tr>
+</tbody>
+</table>
+<p>Attribute notes: dictionary elements accept <code>id</code> (when the type uses an id) and
+<code>key</code> (when the dictionary is itself an entry); collection-entry elements
+require <code>key</code> when they are a dictionary child.</p>
+<hr>
+<h2 id="5-afp-extensions-afp">5. AFP extensions (<code>afp</code>)</h2>
+<p>Namespace: <code>http://xmlgraphics.apache.org/fop/extensions/afp</code></p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Purpose</th>
+<th>Key attributes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>afp:tag-logical-element</code></td>
+<td>Emit a Tag Logical Element (TLE) structured field for indexing.</td>
+<td><code>name</code>, <code>value</code>, <code>encoding</code>, <code>placement</code></td>
+</tr>
+<tr>
+<td><code>afp:include-page-segment</code></td>
+<td>Include an AFP page segment resource.</td>
+<td><code>name</code>, <code>src</code></td>
+</tr>
+<tr>
+<td><code>afp:include-page-overlay</code></td>
+<td>Include a page overlay at an offset.</td>
+<td><code>name</code>, <code>x</code>, <code>y</code></td>
+</tr>
+<tr>
+<td><code>afp:include-form-map</code></td>
+<td>Include a Form Map (IFM) resource.</td>
+<td><code>name</code>, <code>src</code> (required)</td>
+</tr>
+<tr>
+<td><code>afp:no-operation</code></td>
+<td>Insert a No Operation (NOP) structured field carrying arbitrary data.</td>
+<td><code>name</code>, <code>value</code>/text, <code>encoding</code>, <code>placement</code></td>
+</tr>
+<tr>
+<td><code>afp:invoke-medium-map</code></td>
+<td>Invoke a Medium Map (IMM) on an <code>fo:page-sequence</code>.</td>
+<td><code>name</code></td>
+</tr>
+</tbody>
+</table>
+<p>Page grouping is handled through two further namespace names used
+programmatically: <code>afp:page-group</code> and <code>afp:add-to-previous-page-group</code>.</p>
+<hr>
+<h2 id="6-postscript-extensions">6. PostScript extensions</h2>
+<p>Namespace: <code>http://xmlgraphics.apache.org/fop/postscript</code></p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ps-setup-code</code></td>
+<td>Document-level PostScript setup code.</td>
+</tr>
+<tr>
+<td><code>ps-page-setup-code</code></td>
+<td>Per-page PostScript setup code.</td>
+</tr>
+<tr>
+<td><code>ps-page-trailer-code-before</code></td>
+<td>PostScript code emitted before the page trailer.</td>
+</tr>
+<tr>
+<td><code>ps-setpagedevice</code></td>
+<td>Emit a PostScript <code>setpagedevice</code> call for device configuration.</td>
+</tr>
+<tr>
+<td><code>ps-comment-before</code></td>
+<td>Insert a PostScript <code>%%</code>-comment before content.</td>
+</tr>
+<tr>
+<td><code>ps-comment-after</code></td>
+<td>Insert a PostScript <code>%%</code>-comment after content.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="7-pcl-extensions-pcl">7. PCL extensions (<code>pcl</code>)</h2>
+<p>Namespace: <code>http://xmlgraphics.apache.org/fop/extensions/pcl</code></p>
+<p>No elements — attributes only.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pcl:paper-source</code></td>
+<td>Select the PCL printer paper input source/tray.</td>
+</tr>
+<tr>
+<td><code>pcl:output-bin</code></td>
+<td>Select the PCL printer output bin.</td>
+</tr>
+<tr>
+<td><code>pcl:duplex-mode</code></td>
+<td>Set the PCL duplex (double-sided) printing mode.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="8-svg-and-batik">8. SVG and Batik</h2>
 <ul>
-<li>
-<p>Only the PDF output format fully supports complex scripts features at the present time.</p>
-</li>
-<li>
-<p>Shaping context does not extend across an element boundary. This limitation prevents the use of <code>fo:character</code>, <code>fo:inline</code> or <code>fo:wrapper</code> in order to colorize individual Arabic letters without affecting shaping behavior across the element boundary.</p>
-</li>
+<li><strong>SVG</strong> — namespace <code>http://www.w3.org/2000/svg</code>, prefix <code>svg</code>. The <code>&lt;svg:svg&gt;</code>
+  root (and every descendant via a catch-all) is handed to Apache Batik for
+  layout and rendering; individual SVG elements are not registered one by one.
+  Requires Batik on the classpath.</li>
+<li><strong>Batik extensions</strong> — namespace <code>http://xml.apache.org/batik/ext</code>. Same
+  whole-domain handling for Batik-specific SVG extension elements.</li>
 </ul>
-<h2 id="links">Related Links</h2>
-<p>In addition to the XSL-FO specification, a number of external resources provide guidance about authoring documents that employ complex scripts and the features described above:</p>
+<hr>
+<h2 id="9-xmp-rdf-metadata">9. XMP / RDF metadata</h2>
+<p>Used to embed document metadata, usually inside <code>fo:declarations</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Namespace</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>xmpmeta</code></td>
+<td><code>adobe:ns:meta/</code></td>
+<td>Root of embedded XMP metadata.</td>
+</tr>
+<tr>
+<td><code>RDF</code></td>
+<td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td>
+<td>The <code>rdf:RDF</code> container inside <code>xmpmeta</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="10-plan-example-extension">10. Plan (example extension)</h2>
+<p>Namespace: <code>http://xmlgraphics.apache.org/fop/plan</code></p>
+<p>A sample/demo extension under <code>fop/examples/plan</code> (not part of <code>fop-core</code>). The
+<code>&lt;plan:plan&gt;</code> root element (plus a catch-all for descendants) builds a
+project-plan diagram and transforms it into SVG.</p>
+<hr>
+<h2 id="notes">Notes</h2>
 <ul>
-<li>
-<p><a href="http://www.unicode.org/">The Unicode Standard</a></p>
-</li>
-<li>
-<p><a href="http://www.w3.org/TR/2006/REC-xsl11-20061205/#fo_bidi-override">Unicode Bidirectional Algorithm</a></p>
-</li>
-<li>
-<p><a href="http://www.microsoft.com/typography/otspec/ttochap1.htm">OpenType Advanced Typographic Extensions</a></p>
-</li>
-<li>
-<p><a href="http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&amp;item_id=CmplxRndExamples">Examples of Complex Rendering</a></p>
-</li>
+<li><code>fox:scale</code>, <code>fox:transform</code>, and the <code>foi:*</code> / <code>pcl:*</code> attributes are
+  implemented as renderer-side attribute names rather than full FO property
+  makers.</li>
+<li>The <code>fox</code> namespace supersedes the legacy <code>http://xml.apache.org/fop/extensions</code>
+  namespace; prefer <code>fox</code> in new documents.</li>
+<li>SVG, Batik, XMP, RDF, and Plan are handled as whole DOM domains, so their
+  "elements" are the standard elements of those vocabularies rather than a
+  fixed FOP-defined set.</li>
 </ul>
         </div>
       </div>
