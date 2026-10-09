@@ -1790,174 +1790,1345 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1 id="apache-fop-config-options">Apache&trade; FOP: Config Options</h1>
-<h3 id="fopconfparser"><a href="configuration.html">FopConfParser</a></h3>
+    <h1 id="fop-fopxconf-configuration-options-reference">FOP <code>fop.xconf</code> Configuration Options Reference</h1>
+<p>This document lists every configuration option recognised by Apache FOP's
+<code>fop.xconf</code> user-configuration file, extracted from the configuration parsers
+in <code>fop-core</code>. The root element is always <code>&lt;fop version="1.0"&gt;</code>.</p>
+<p>Conventions:</p>
 <ul>
-<li>&lt;prefer-renderer&gt;true/false&lt;/prefer-renderer&gt;</li>
-<li>&lt;table-border-overpaint&gt;true/false&lt;/table-border-overpaint&gt;</li>
-<li>&lt;simple-line-breaking&gt;true/false&lt;/simple-line-breaking&gt;</li>
-<li>&lt;skip-page-position-only-allowed&gt;true/false&lt;/skip-page-position-only-allowed&gt;</li>
-<li>&lt;strict-validation&gt;true/false&lt;/strict-validation&gt;</li>
-<li>&lt;strict-configuration&gt;true/false&lt;/strict-configuration&gt;</li>
-<li>&lt;accessibility&gt;true/false&lt;/accessibility&gt;</li>
-<li>&lt;base/&gt;</li>
-<li>&lt;source-resolution&gt;float&lt;/source-resolution&gt;</li>
-<li>&lt;target-resolution&gt;float&lt;/target-resolution&gt;</li>
-<li>&lt;break-indent-inheritance&gt;true/false&lt;/break-indent-inheritance&gt;</li>
-<li>&lt;default-page-settings/&gt;<ul>
-<li>height=string</li>
-<li>width=string</li>
+<li><strong>Element</strong> — a child XML element, usually <code>&lt;name&gt;value&lt;/name&gt;</code>.</li>
+<li><strong>Attribute</strong> — an XML attribute on an element, <code>attr="value"</code>.</li>
+<li><strong>(bool)</strong> — expects <code>true</code>/<code>false</code>.</li>
+<li><strong>(presence)</strong> — the element takes effect merely by being present.</li>
+<li>Defaults shown are the fallbacks used by the code when the option is absent.</li>
 </ul>
-</li>
-<li>&lt;complex-scripts/&gt;<ul>
-<li>disabled=true/false</li>
-</ul>
-</li>
-<li>&lt;image-loading/&gt;</li>
-<li>&lt;hyphenation-base/&gt;</li>
-<li>&lt;hyphenation-pattern/&gt;<ul>
-<li>lang=string</li>
-<li>country=string</li>
-<li>extension=string</li>
-<li>xml=string</li>
-<li>hyp=string</li>
-</ul>
-</li>
-<li>&lt;penalty/&gt;<ul>
-<li>class=string</li>
-<li>value=string</li>
-</ul>
-</li>
-</ul>
-<h3 id="defaultfontconfig"><a href="fonts.html#bulk">DefaultFontConfig</a></h3>
+<hr>
+<h2 id="1-top-level-options-direct-children-of-fop">1. Top-level options (direct children of <code>&lt;fop&gt;</code>)</h2>
+<p>Parsed by <code>FopConfParser</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>base</code></td>
+<td>URI</td>
+<td>Base URI for resolving relative URLs.</td>
+<td><code>.</code></td>
+</tr>
+<tr>
+<td><code>strict-validation</code></td>
+<td>bool</td>
+<td>Enable strict XSL-FO validation.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>strict-configuration</code></td>
+<td>bool</td>
+<td>Enable strict user-config validation (fail on errors).</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>accessibility</code></td>
+<td>bool</td>
+<td>Enable tagged/accessible output. Has attributes below.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>image-cache</code></td>
+<td>bool</td>
+<td>Enable image caching.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>source-resolution</code></td>
+<td>float</td>
+<td>Source DPI for sizing SVG/bitmap pixels.</td>
+<td>72</td>
+</tr>
+<tr>
+<td><code>target-resolution</code></td>
+<td>float</td>
+<td>Target DPI for generated bitmaps.</td>
+<td>72</td>
+</tr>
+<tr>
+<td><code>break-indent-inheritance</code></td>
+<td>bool</td>
+<td>Break indent inheritance at reference-area boundaries.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>default-page-settings</code></td>
+<td>element</td>
+<td>Default page size when value is <code>auto</code>. Attributes below.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>complex-scripts</code></td>
+<td>element</td>
+<td>Complex-script (BiDi/shaping) support. Attribute below.</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td><code>hyphenation-base</code></td>
+<td>URI</td>
+<td>Base URI for hyphenation pattern files.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>hyphenation-pattern</code></td>
+<td>element (repeatable)</td>
+<td>Map a hyphenation file to a language. Value = filename. Attributes below.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>prefer-renderer</code></td>
+<td>bool</td>
+<td>Prefer the legacy <code>Renderer</code> over the newer <code>IFDocumentHandler</code>.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>table-border-overpaint</code></td>
+<td>bool</td>
+<td>Overpaint collapsing table borders.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>simple-line-breaking</code></td>
+<td>bool</td>
+<td>Use simple (greedy) line-breaking instead of Knuth.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>skip-page-position-only-allowed</code></td>
+<td>bool</td>
+<td>Allow skipping <code>page-position="only"</code> pages.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>legacy-skip-page-position-only</code></td>
+<td>bool</td>
+<td>Legacy behaviour for <code>page-position="only"</code>.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>legacy-last-page-change-ipd</code></td>
+<td>bool</td>
+<td>Legacy last-page IPD-change behaviour.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>legacy-fo-wrapper</code></td>
+<td>bool</td>
+<td>Legacy <code>fo:wrapper</code> handling.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>legacy-invalid-break-position</code></td>
+<td>bool</td>
+<td>Legacy invalid-break-position handling.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>use-parent-ipd-image-scaling</code></td>
+<td>bool</td>
+<td>Scale images against the parent IPD.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>image-loading</code></td>
+<td>element</td>
+<td>Image-loader penalties / ICC converter. See below.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="default-page-settings-attributes"><code>default-page-settings</code> attributes</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>height</code></td>
+<td>Default page height.</td>
+<td><code>11in</code></td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>Default page width.</td>
+<td><code>8.26in</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="accessibility-attributes"><code>accessibility</code> attributes</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static-region-per-page</code></td>
+<td>Emit static regions per page.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>keep-empty-tags</code></td>
+<td>Keep empty structure tags.</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<h3 id="complex-scripts-attributes"><code>complex-scripts</code> attributes</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>disabled</code></td>
+<td>Disable complex-script features.</td>
+<td>false (features on)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hyphenation-pattern-attributes"><code>hyphenation-pattern</code> attributes</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lang</code></td>
+<td>Two-letter language code (required).</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td>Two-letter country code (optional).</td>
+</tr>
+<tr>
+<td><code>extension</code></td>
+<td>File type: <code>xml</code> or <code>hyp</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="image-loading-sub-structure"><code>image-loading</code> sub-structure</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>icc-converter</code></td>
+<td>attribute</td>
+<td>ICC converter implementation name.</td>
+</tr>
+<tr>
+<td><code>penalty</code></td>
+<td>element (repeatable)</td>
+<td>Adjust the penalty of an image loader.</td>
+</tr>
+<tr>
+<td><code>penalty/@class</code></td>
+<td>attribute</td>
+<td>Fully-qualified class name of the image loader.</td>
+</tr>
+<tr>
+<td><code>penalty/@value</code></td>
+<td>attribute</td>
+<td>Integer penalty, or <code>INF</code>/<code>INFINITE</code> for infinite.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="2-font-options">2. Font options</h2>
+<p>Parsed by <code>FontManagerConfigurator</code>, <code>DefaultFontConfig</code>, and
+<code>FontSubstitutionsConfigurator</code>. Font configuration can appear at the top
+level (font cache/base settings) and inside a <code>&lt;fonts&gt;</code> block (which may be at
+the top level or inside a <code>&lt;renderer&gt;</code>).</p>
+<h3 id="21-top-level-font-settings-children-of-fop">2.1 Top-level font settings (children of <code>&lt;fop&gt;</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>font-base</code></td>
+<td>URI</td>
+<td>Base URI for resolving font URLs.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>use-cache</code></td>
+<td>bool</td>
+<td>Enable the font cache.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>cache-file</code></td>
+<td>path</td>
+<td>Location of the font cache file (used when caching is on).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>base14-kerning</code></td>
+<td>bool</td>
+<td>Enable kerning for the Base-14 fonts.</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-the-fonts-block">2.2 The <code>&lt;fonts&gt;</code> block</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fonts</code></td>
+<td>element</td>
+<td>Container for font configuration.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>fonts/@lazy-load</code></td>
+<td>attribute (bool)</td>
+<td>Lazily load fonts on demand.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>auto-detect</code></td>
+<td>element (presence)</td>
+<td>Auto-detect operating-system fonts.</td>
+<td>off</td>
+</tr>
+<tr>
+<td><code>directory</code></td>
+<td>element (repeatable)</td>
+<td>Directory to scan for fonts (value = path).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>directory/@recursive</code></td>
+<td>attribute (bool)</td>
+<td>Recurse into sub-directories.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>font</code></td>
+<td>element (repeatable)</td>
+<td>Define an individual font. See attributes below.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>substitutions</code></td>
+<td>element</td>
+<td>Font substitution rules. See §2.4.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>referenced-fonts</code></td>
+<td>element</td>
+<td>Fonts to reference rather than embed. See §2.5.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-the-font-element">2.3 The <code>&lt;font&gt;</code> element</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute / child</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>embed-url</code></td>
+<td>attribute</td>
+<td>URL of the font file to embed (required).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>sub-font</code></td>
+<td>attribute</td>
+<td>Sub-font name within a collection (TTC).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>metrics-url</code></td>
+<td>attribute</td>
+<td>URL of a metrics file.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>embed-url-afm</code></td>
+<td>attribute</td>
+<td>AFM metrics URL.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>embed-url-pfm</code></td>
+<td>attribute</td>
+<td>PFM metrics URL.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>kerning</code></td>
+<td>attribute (bool)</td>
+<td>Enable kerning.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>advanced</code></td>
+<td>attribute (bool)</td>
+<td>Enable advanced typographic (OpenType) features.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>encoding-mode</code></td>
+<td>attribute</td>
+<td><code>auto</code>, <code>single-byte</code>, or <code>cid</code>.</td>
+<td>auto</td>
+</tr>
+<tr>
+<td><code>embedding-mode</code></td>
+<td>attribute</td>
+<td><code>auto</code>, <code>full</code>, or <code>subset</code>.</td>
+<td>auto</td>
+</tr>
+<tr>
+<td><code>simulate-style</code></td>
+<td>attribute (bool)</td>
+<td>Simulate bold/italic (PDF only).</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>embed-as-type1</code></td>
+<td>attribute (bool)</td>
+<td>Embed as Type 1 (PostScript only).</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>svg</code></td>
+<td>attribute (bool)</td>
+<td>Enable SVG support for this font.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>font-triplet</code></td>
+<td>child element (repeatable)</td>
+<td>Maps the font to a triplet.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>font-triplet/@name</code></td>
+<td>attribute</td>
+<td>Font family name (required).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>font-triplet/@style</code></td>
+<td>attribute</td>
+<td><code>normal</code>, <code>italic</code>, <code>oblique</code>, <code>backslant</code>.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>font-triplet/@weight</code></td>
+<td>attribute</td>
+<td><code>normal</code>, <code>bold</code>, or <code>100</code>–<code>900</code>.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-substitutions-child-of-fonts">2.4 <code>&lt;substitutions&gt;</code> (child of <code>&lt;fonts&gt;</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>substitution</code></td>
+<td>element (repeatable)</td>
+<td>A single substitution rule.</td>
+</tr>
+<tr>
+<td><code>substitution/from</code></td>
+<td>element</td>
+<td>Source font qualifier (required).</td>
+</tr>
+<tr>
+<td><code>substitution/to</code></td>
+<td>element</td>
+<td>Target font qualifier (required).</td>
+</tr>
+<tr>
+<td><code>from</code>/<code>to</code> <code>@font-family</code></td>
+<td>attribute</td>
+<td>Font family (required).</td>
+</tr>
+<tr>
+<td><code>from</code>/<code>to</code> <code>@font-weight</code></td>
+<td>attribute</td>
+<td>Font weight (optional).</td>
+</tr>
+<tr>
+<td><code>from</code>/<code>to</code> <code>@font-style</code></td>
+<td>attribute</td>
+<td>Font style (optional).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="25-referenced-fonts-child-of-fonts">2.5 <code>&lt;referenced-fonts&gt;</code> (child of <code>&lt;fonts&gt;</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>match</code></td>
+<td>element (repeatable)</td>
+<td>A matcher for fonts to reference instead of embed.</td>
+</tr>
+<tr>
+<td><code>match/@font-family</code></td>
+<td>attribute</td>
+<td>Regular expression matched against the font family name.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3-renderer-options-renderersrenderer-mime">3. Renderer options (<code>&lt;renderers&gt;&lt;renderer mime="..."&gt;</code>)</h2>
+<p>Each output format has its own <code>&lt;renderer&gt;</code> block selected by <code>mime</code>. Every
+renderer may also contain a <code>&lt;fonts&gt;</code> block (§2.2) and <code>xml-handler</code> blocks
+(§3.9).</p>
+<h3 id="31-mimeapplicationpdf-pdf">3.1 <code>mime="application/pdf"</code> — PDF</h3>
+<p>Parsed by <code>PDFRendererConfig</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filterList</code></td>
+<td>element (repeatable)</td>
+<td>PDF stream filters; <code>&lt;value&gt;</code> children list filter names (<code>flate</code>, <code>ascii-85</code>, <code>ascii-hex</code>, <code>null</code>).</td>
+<td>flate</td>
+</tr>
+<tr>
+<td><code>filterList/@type</code></td>
+<td>attribute</td>
+<td>Stream type the filter list applies to.</td>
+<td>default</td>
+</tr>
+<tr>
+<td><code>pdf-a-mode</code></td>
+<td>element</td>
+<td>PDF/A conformance (e.g. <code>PDF/A-1b</code>, <code>PDF/A-2b</code>, <code>PDF/A-3b</code>).</td>
+<td>disabled</td>
+</tr>
+<tr>
+<td><code>pdf-ua-mode</code></td>
+<td>element</td>
+<td>PDF/UA conformance (<code>PDF/UA-1</code>).</td>
+<td>disabled</td>
+</tr>
+<tr>
+<td><code>pdf-x-mode</code></td>
+<td>element</td>
+<td>PDF/X conformance (<code>PDF/X-3:2003</code>).</td>
+<td>disabled</td>
+</tr>
+<tr>
+<td><code>pdf-vt-mode</code></td>
+<td>element</td>
+<td>PDF/VT conformance.</td>
+<td>disabled</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>element</td>
+<td>PDF version (e.g. <code>1.4</code>, <code>1.7</code>).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>disable-srgb-colorspace</code></td>
+<td>bool</td>
+<td>Disable the default sRGB colour space.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>merge-fonts</code></td>
+<td>bool</td>
+<td>Merge fonts to reduce size.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>merge-fonts/@remap-singlebyte-font</code></td>
+<td>attribute (bool)</td>
+<td>Remap single-byte fonts when merging.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>merge-form-fields</code></td>
+<td>bool</td>
+<td>Merge form fields of the same name.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>linearization</code></td>
+<td>bool</td>
+<td>Linearise (web-optimise) the PDF.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>form-xobject</code></td>
+<td>bool</td>
+<td>Use form XObjects.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>use-object-streams</code></td>
+<td>bool</td>
+<td>Use object streams (PDF 1.5+).</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>output-profile</code></td>
+<td>URI</td>
+<td>ICC output-intent profile.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>force-uri-basic-link</code></td>
+<td>bool</td>
+<td>Force basic (non-GoTo) URI links.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>encryption-params</code></td>
+<td>element</td>
+<td>Encryption settings. See below.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>sign-params</code></td>
+<td>element</td>
+<td>Digital-signature settings. See below.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="encryption-params"><code>encryption-params</code></h4>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner-password</code></td>
+<td>string</td>
+<td>Owner password.</td>
+<td>""</td>
+</tr>
+<tr>
+<td><code>user-password</code></td>
+<td>string</td>
+<td>User password.</td>
+<td>""</td>
+</tr>
+<tr>
+<td><code>noprint</code></td>
+<td>presence</td>
+<td>Forbid printing.</td>
+<td>allowed</td>
+</tr>
+<tr>
+<td><code>nocopy</code></td>
+<td>presence</td>
+<td>Forbid copying content.</td>
+<td>allowed</td>
+</tr>
+<tr>
+<td><code>noedit</code></td>
+<td>presence</td>
+<td>Forbid editing content.</td>
+<td>allowed</td>
+</tr>
+<tr>
+<td><code>noannotations</code></td>
+<td>presence</td>
+<td>Forbid annotations.</td>
+<td>allowed</td>
+</tr>
+<tr>
+<td><code>nofillinforms</code></td>
+<td>presence</td>
+<td>Forbid filling forms.</td>
+<td>allowed</td>
+</tr>
+<tr>
+<td><code>noaccesscontent</code></td>
+<td>presence</td>
+<td>Forbid text/graphics extraction.</td>
+<td>allowed</td>
+</tr>
+<tr>
+<td><code>noassembledoc</code></td>
+<td>presence</td>
+<td>Forbid assembling the document.</td>
+<td>allowed</td>
+</tr>
+<tr>
+<td><code>noprinthq</code></td>
+<td>presence</td>
+<td>Forbid high-quality printing.</td>
+<td>allowed</td>
+</tr>
+<tr>
+<td><code>encrypt-metadata</code></td>
+<td>bool</td>
+<td>Encrypt document metadata.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>encryption-length</code></td>
+<td>int</td>
+<td>Key length (40–256, multiple of 8).</td>
+<td>128</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sign-params"><code>sign-params</code></h4>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>keystore</code></td>
+<td>Keystore file (required if signing).</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Signer name.</td>
+</tr>
+<tr>
+<td><code>location</code></td>
+<td>Signing location.</td>
+</tr>
+<tr>
+<td><code>reason</code></td>
+<td>Signing reason.</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>Keystore password.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-mimeapplicationpostscript-postscript">3.2 <code>mime="application/postscript"</code> — PostScript</h3>
+<p>Parsed by <code>PSRendererConfig</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>auto-rotate-landscape</code></td>
+<td>bool</td>
+<td>Rotate landscape pages automatically.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>language-level</code></td>
+<td>int</td>
+<td>PostScript language level.</td>
+<td>3</td>
+</tr>
+<tr>
+<td><code>optimize-resources</code></td>
+<td>bool</td>
+<td>Remove unused resources after generation.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>safe-set-page-device</code></td>
+<td>bool</td>
+<td>Use safe <code>setpagedevice</code>.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>dsc-compliant</code></td>
+<td>bool</td>
+<td>Produce DSC-compliant output.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>acrobat-downsample</code></td>
+<td>bool</td>
+<td>Allow Acrobat image downsampling.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>compress-streams</code></td>
+<td>bool</td>
+<td>Compress PostScript streams.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>rendering</code></td>
+<td>enum</td>
+<td><code>size</code> or <code>quality</code>.</td>
+<td>quality</td>
+</tr>
+<tr>
+<td><code>jpeg-compression</code></td>
+<td>string</td>
+<td>JPEG compression ratio.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-mimeapplicationx-afp-afp">3.3 <code>mime="application/x-afp"</code> — AFP</h3>
+<p>Parsed by <code>AFPRendererConfig</code> and <code>AFPFontConfig</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>shading</code></td>
+<td>enum</td>
+<td><code>color</code> or <code>dithered</code>.</td>
+<td>color</td>
+</tr>
+<tr>
+<td><code>renderer-resolution</code></td>
+<td>int</td>
+<td>Output resolution in dpi.</td>
+<td>240</td>
+</tr>
+<tr>
+<td><code>line-width-correction</code></td>
+<td>float</td>
+<td>Line-width correction factor.</td>
+<td>2.5</td>
+</tr>
+<tr>
+<td><code>resource-group-file</code></td>
+<td>URI</td>
+<td>External resource-group file.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>default-resource-levels</code></td>
+<td>element</td>
+<td>Resource levels; each attribute name is a resource type, value is a level (e.g. <code>external</code>, <code>inline</code>, <code>print-file</code>).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>images</code></td>
+<td>element</td>
+<td>Image output settings. See below.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>goca</code></td>
+<td>element</td>
+<td>GOCA (vector graphics) settings. See below.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="images-attributes"><code>images</code> attributes</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mode</code></td>
+<td>enum</td>
+<td><code>b+w</code> (grayscale) or <code>color</code>.</td>
+<td>b+w</td>
+</tr>
+<tr>
+<td><code>bits-per-pixel</code></td>
+<td>int</td>
+<td>Bits per pixel (when <code>mode="b+w"</code>).</td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>cmyk</code></td>
+<td>bool</td>
+<td>Use CMYK (when <code>mode="color"</code>).</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>dithering-quality</code></td>
+<td>float</td>
+<td>Dithering quality (<code>min</code>/<code>max</code> or 0.0–1.0).</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td><code>native</code></td>
+<td>bool</td>
+<td>Pass through native images.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>native-pdf</code></td>
+<td>bool</td>
+<td>Embed native PDF.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>pseg</code></td>
+<td>bool</td>
+<td>Wrap images in a page segment.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>fs45</code></td>
+<td>bool</td>
+<td>Use the FS45 image format.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>mask-enabled</code></td>
+<td>bool</td>
+<td>Enable image masks.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>mapping_option</code></td>
+<td>enum</td>
+<td><code>scale-to-fit</code> → scale-to-fill, else default.</td>
+<td>default</td>
+</tr>
+<tr>
+<td><code>metadata-in-object-container</code></td>
+<td>bool</td>
+<td>Store metadata in the object container.</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<h4 id="imagesjpeg-attributes"><code>images/jpeg</code> attributes</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>allow-embedding</code></td>
+<td>bool</td>
+<td>Allow JPEG embedding.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>use-ioca-images</code></td>
+<td>bool</td>
+<td>Wrap JPEGs in IOCA.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>bitmap-encoding-quality</code></td>
+<td>float</td>
+<td>Bitmap encoding quality.</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<h4 id="goca-attributes"><code>goca</code> attributes</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enabled</code></td>
+<td>bool</td>
+<td>Enable GOCA.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td>enum</td>
+<td><code>stroke</code>/<code>shapes</code> → stroke text, else default.</td>
+<td>default</td>
+</tr>
+<tr>
+<td><code>pseg</code></td>
+<td>bool</td>
+<td>Wrap GOCA in a page segment.</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<h4 id="afp-fonts-fontsfont">AFP fonts (<code>&lt;fonts&gt;&lt;font&gt;</code>)</h4>
+<p>Each <code>&lt;font&gt;</code> has <code>&lt;font-triplet&gt;</code> children (<code>name</code>/<code>style</code>/<code>weight</code>) and
+either an <code>embed-url</code> (TrueType) or an <code>&lt;afp-font&gt;</code> child.</p>
+<p><code>&lt;afp-font&gt;</code> attributes:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><code>raster</code>, <code>outline</code>, <code>CIDKeyed</code>, or <code>truetype</code> (required).</td>
+</tr>
+<tr>
+<td><code>codepage</code></td>
+<td>Code page (required).</td>
+</tr>
+<tr>
+<td><code>encoding</code></td>
+<td>Encoding (required).</td>
+</tr>
+<tr>
+<td><code>characterset</code></td>
+<td>Character set (required for raster/outline/CIDKeyed).</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Font name (defaults to characterset; required for truetype).</td>
+</tr>
+<tr>
+<td><code>base-uri</code></td>
+<td>Base URI for the font resources.</td>
+</tr>
+<tr>
+<td><code>base14-font</code></td>
+<td>Mapped Base-14 font (outline/raster).</td>
+</tr>
+<tr>
+<td><code>sub-font</code></td>
+<td>Sub-font (truetype).</td>
+</tr>
+<tr>
+<td><code>position-by-char</code></td>
+<td>(bool) Position by character (truetype). Default true.</td>
+</tr>
+<tr>
+<td><code>ebcdic-dbcs</code></td>
+<td>(bool) EBCDIC double-byte line data (CIDKeyed). Default false.</td>
+</tr>
+</tbody>
+</table>
+<p><code>&lt;afp-raster-font&gt;</code> (child of raster <code>&lt;afp-font&gt;</code>, repeatable):</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>size</code></td>
+<td>Point size (required).</td>
+</tr>
+<tr>
+<td><code>characterset</code></td>
+<td>Character set for this size (required).</td>
+</tr>
+<tr>
+<td><code>base14-font</code></td>
+<td>Mapped Base-14 font.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="34-mimeimagepng-and-other-bitmaps-bitmap">3.4 <code>mime="image/png"</code> and other bitmaps — Bitmap</h3>
+<p>Parsed by <code>BitmapRendererConfig</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transparent-page-background</code></td>
+<td>bool</td>
+<td>Transparent page background.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>background-color</code></td>
+<td>color</td>
+<td>Page background colour (ignored if transparent).</td>
+<td>white</td>
+</tr>
+<tr>
+<td><code>anti-aliasing</code></td>
+<td>bool</td>
+<td>Enable anti-aliasing.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>rendering</code></td>
+<td>enum</td>
+<td><code>quality</code> or <code>speed</code>.</td>
+<td>quality</td>
+</tr>
+<tr>
+<td><code>color-mode</code></td>
+<td>enum</td>
+<td><code>rgba</code>, <code>rgb</code>, <code>gray</code>, <code>binary</code>, <code>bi-level</code>.</td>
+<td>rgba</td>
+</tr>
+</tbody>
+</table>
+<h3 id="35-mimeimagetiff-tiff">3.5 <code>mime="image/tiff"</code> — TIFF</h3>
+<p>Parsed by <code>TIFFRendererConfig</code>. Inherits all Bitmap options (§3.4) plus:</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>compression</code></td>
+<td>enum</td>
+<td><code>NONE</code>, <code>JPEG</code>, <code>PackBits</code>, <code>Deflate</code>, <code>LZW</code>, <code>ZLib</code>, <code>CCITT T.4</code>, <code>CCITT T.6</code>.</td>
+<td>PackBits</td>
+</tr>
+<tr>
+<td><code>single-strip</code></td>
+<td>bool</td>
+<td>Write all rows in a single strip.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>endianness</code></td>
+<td>enum</td>
+<td><code>DEFAULT</code>, <code>LITTLE_ENDIAN</code>, <code>BIG_ENDIAN</code>.</td>
+<td>DEFAULT</td>
+</tr>
+</tbody>
+</table>
+<h3 id="36-mimeapplicationx-pcl-pcl">3.6 <code>mime="application/x-pcl"</code> — PCL</h3>
+<p>Parsed by <code>PCLRendererConfig</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rendering</code></td>
+<td>enum</td>
+<td><code>quality</code>, <code>speed</code>, or <code>bitmap</code>.</td>
+<td>quality</td>
+</tr>
+<tr>
+<td><code>text-rendering</code></td>
+<td>enum</td>
+<td><code>auto</code> or <code>bitmap</code>.</td>
+<td>auto</td>
+</tr>
+<tr>
+<td><code>disable-pjl</code></td>
+<td>bool</td>
+<td>Disable PJL commands.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>optimize-resources</code></td>
+<td>bool</td>
+<td>Optimise resources.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>images/@mode</code></td>
+<td>attribute</td>
+<td><code>color</code> enables colour output.</td>
+<td>mono</td>
+</tr>
+</tbody>
+</table>
+<h3 id="37-mimeimagesvgxml-and-java2d-base-java2d">3.7 <code>mime="image/svg+xml"</code> (and Java2D base) — Java2D</h3>
+<p>Parsed by <code>Java2DRendererConfig</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transparent-page-background</code></td>
+<td>bool</td>
+<td>Transparent page background.</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<p>Note: the example <code>fop.xconf</code> also shows <code>&lt;format type="paginated"/&gt;</code>,
+<code>&lt;link value="true"/&gt;</code> and <code>&lt;strokeText value="false"/&gt;</code> for the SVG renderer;
+these are handled by the SVG output module.</p>
+<h3 id="38-mimetextplain-text">3.8 <code>mime="text/plain"</code> — Text</h3>
+<p>Parsed by <code>TxtRendererConfig</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>encoding</code></td>
+<td>string</td>
+<td>Output character encoding.</td>
+<td>UTF-8</td>
+</tr>
+</tbody>
+</table>
+<h3 id="39-xml-handler-any-renderer">3.9 <code>xml-handler</code> (any renderer)</h3>
+<p>Parsed by <code>XMLHandlerConfigurator</code>. Lets you pass renderer-specific options to
+a foreign-object (e.g. SVG) handler.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>xml-handler</code></td>
+<td>element (repeatable)</td>
+<td>Per-namespace handler configuration.</td>
+</tr>
+<tr>
+<td><code>xml-handler/@namespace</code></td>
+<td>attribute</td>
+<td>Namespace URI the handler applies to (e.g. <code>http://www.w3.org/2000/svg</code>).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="notes-and-naming-gotchas">Notes and naming gotchas</h2>
 <ul>
-<li>&lt;fonts/&gt;</li>
-<li>&lt;auto-detect/&gt;</li>
-<li>&lt;font/&gt;<ul>
-<li>embed-url=string</li>
-<li>metrics-url=string</li>
-<li>embed-url-afm=string</li>
-<li>embed-url-pfm=string</li>
-<li>sub-font=string</li>
-<li>kerning=true/false</li>
-<li>advanced=true/false</li>
-<li>encoding-mode=string</li>
-<li>embedding-mode=string</li>
-<li>simulate-style=true/false</li>
-<li>embed-as-type1=true/false</li>
-<li>svg=true/false</li>
-</ul>
-</li>
-<li>&lt;font-triplet/&gt;<ul>
-<li>mime=string</li>
-</ul>
-</li>
-<li>&lt;referenced-fonts/&gt;</li>
-<li>&lt;match/&gt;<ul>
-<li>font-family=string</li>
-</ul>
-</li>
-<li>&lt;directory/&gt;<ul>
-<li>recursive=true/false</li>
-<li>name=string</li>
-<li>weight=string</li>
-<li>style=string</li>
-</ul>
-</li>
-</ul>
-<h3 id="afprendererconfig"><a href="output.html#afp-configuration">AFPRendererConfig</a></h3>
-<ul>
-<li>default-resource-levels=string</li>
-<li>images=string</li>
-<li>jpeg=string</li>
-<li>dithering-quality=float</li>
-<li>fs45=true/false</li>
-<li>mapping_option=string</li>
-<li>mode=true/false</li>
-<li>native=true/false</li>
-<li>pseg=true/false</li>
-<li>allow-embedding=true/false</li>
-<li>bitmap-encoding-quality=float</li>
-<li>renderer-resolution=integer</li>
-<li>resource-group-file=string</li>
-<li>shading=string</li>
-<li>line-width-correction=float</li>
-<li>goca=true/false</li>
-<li>text=true/false</li>
-</ul>
-<h3 id="txtrendererconfig"><a href="output.html#txt">TxtRendererConfig</a></h3>
-<ul>
-<li>encoding=string</li>
-</ul>
-<h3 id="tiffrendererconfig"><a href="output.html#bitmap-configuration">TIFFRendererConfig</a></h3>
-<ul>
-<li>compression=string</li>
-<li>single-strip=true/false</li>
-<li>endianness=string</li>
-</ul>
-<h3 id="bitmaprendererconfig"><a href="output.html#bitmap-configuration">BitmapRendererConfig</a></h3>
-<ul>
-<li>transparent-page-background=default: false</li>
-<li>background-color=string</li>
-<li>anti-aliasing=default: true</li>
-<li>rendering=string</li>
-<li>quality=default: true</li>
-<li>speed=string</li>
-<li>color-mode=string</li>
-<li>rgba=string</li>
-<li>rgb=string</li>
-<li>gray=string</li>
-<li>binary=string</li>
-<li>bi-level=string</li>
-</ul>
-<h3 id="psrendererconfig"><a href="output.html#ps-configuration">PSRendererConfig</a></h3>
-<ul>
-<li>auto-rotate-landscape=default: false</li>
-<li>language-level=string</li>
-<li>optimize-resources=default: false</li>
-<li>safe-set-page-device=default: false</li>
-<li>dsc-compliant=default: true</li>
-<li>rendering=string</li>
-<li>acrobat-downsample=default: false</li>
-</ul>
-<h3 id="pdfencryptionconfig"><a href="pdfencryption.html#embedded">PDFEncryptionConfig</a></h3>
-<ul>
-<li>encryption-length=string</li>
-<li>noprinthq=string</li>
-<li>noassembledoc=default: false</li>
-<li>noaccesscontent=default: false</li>
-<li>nofillinforms=default: false</li>
-<li>noannotations=default: false</li>
-<li>noprint=default: false</li>
-<li>nocopy=default: false</li>
-<li>noedit=default: false</li>
-<li>user-password=string</li>
-<li>owner-password=string</li>
-<li>encrypt-metadata=default: true</li>
-<li>encryption-params=string</li>
-</ul>
-<h3 id="pdfrendererconfig"><a href="pdfa.html#fop-xconf">PDFRendererConfig</a></h3>
-<ul>
-<li>filterList=string</li>
-<li>pdf-a-mode=string</li>
-<li>pdf-ua-mode=string</li>
-<li>pdf-x-mode=string</li>
-<li>pdf-vt-mode=string</li>
-<li>version=string</li>
-<li>disable-srgb-colorspace=default: false</li>
-<li>merge-fonts=default: false</li>
-<li>linearization=default: false</li>
-<li>form-xobject=default: false</li>
-<li>output-profile=string</li>
-</ul>
-<h3 id="pclrendererconfig"><a href="output.html#pcl-configuration">PCLRendererConfig</a></h3>
-<ul>
-<li>transparent-page-background=string</li>
-<li>rendering=string</li>
-<li>text-rendering=true/false</li>
-<li>disable-pjl=true/false</li>
-<li>optimize-resources=true/false</li>
-<li>color=true/false</li>
+<li><code>FopFactoryConfigurator</code> no longer exists; factory-level options are parsed
+  by <code>FopConfParser</code>.</li>
+<li>Font cache / base settings (<code>font-base</code>, <code>use-cache</code>, <code>cache-file</code>,
+  <code>base14-kerning</code>) live directly under <code>&lt;fop&gt;</code>, not under <code>&lt;fonts&gt;</code>.</li>
+<li>The element name <code>rendering</code> is reused by several renderers with different
+  allowed values: PostScript (<code>size</code>/<code>quality</code>), PCL
+  (<code>quality</code>/<code>speed</code>/<code>bitmap</code>), Bitmap (<code>quality</code>/<code>speed</code>).</li>
+<li><code>optimize-resources</code> exists for both PostScript and PCL.</li>
+<li>The AFP <code>mapping_option</code> attribute uses an underscore, unlike most names
+  which use hyphens.</li>
+<li>In the Bitmap renderer, <code>background-color</code> is forced transparent when
+  <code>transparent-page-background</code> is <code>true</code>.</li>
 </ul>
         </div>
       </div>
