@@ -1,156 +1,384 @@
 Title: Apache(tm) FOP: Config Options
 
-#Apache&trade; FOP: Config Options
+# FOP `fop.xconf` Configuration Options Reference
 
-### [FopConfParser](configuration.html)
+This document lists every configuration option recognised by Apache FOP's
+`fop.xconf` user-configuration file, extracted from the configuration parsers
+in `fop-core`. The root element is always `<fop version="1.0">`.
 
-- &lt;prefer-renderer&gt;true/false&lt;/prefer-renderer&gt;
-- &lt;table-border-overpaint&gt;true/false&lt;/table-border-overpaint&gt;
-- &lt;simple-line-breaking&gt;true/false&lt;/simple-line-breaking&gt;
-- &lt;skip-page-position-only-allowed&gt;true/false&lt;/skip-page-position-only-allowed&gt;
-- &lt;strict-validation&gt;true/false&lt;/strict-validation&gt;
-- &lt;strict-configuration&gt;true/false&lt;/strict-configuration&gt;
-- &lt;accessibility&gt;true/false&lt;/accessibility&gt;
-- &lt;base/&gt;
-- &lt;source-resolution&gt;float&lt;/source-resolution&gt;
-- &lt;target-resolution&gt;float&lt;/target-resolution&gt;
-- &lt;break-indent-inheritance&gt;true/false&lt;/break-indent-inheritance&gt;
-- &lt;default-page-settings/&gt;
-    - height=string
-    - width=string
-- &lt;complex-scripts/&gt;
-    - disabled=true/false
-- &lt;image-loading/&gt;
-- &lt;hyphenation-base/&gt;
-- &lt;hyphenation-pattern/&gt;
-    - lang=string
-    - country=string
-    - extension=string
-    - xml=string
-    - hyp=string
-- &lt;penalty/&gt;
-    - class=string
-    - value=string
+Conventions:
 
-### [DefaultFontConfig](fonts.html#bulk)
+- **Element** — a child XML element, usually `<name>value</name>`.
+- **Attribute** — an XML attribute on an element, `attr="value"`.
+- **(bool)** — expects `true`/`false`.
+- **(presence)** — the element takes effect merely by being present.
+- Defaults shown are the fallbacks used by the code when the option is absent.
 
-- &lt;fonts/&gt;
-- &lt;auto-detect/&gt;
-- &lt;font/&gt;
-    - embed-url=string
-    - metrics-url=string
-    - embed-url-afm=string
-    - embed-url-pfm=string
-    - sub-font=string
-    - kerning=true/false
-    - advanced=true/false
-    - encoding-mode=string
-    - embedding-mode=string
-    - simulate-style=true/false
-    - embed-as-type1=true/false
-    - svg=true/false
-- &lt;font-triplet/&gt;
-    - mime=string
-- &lt;referenced-fonts/&gt;
-- &lt;match/&gt;
-    - font-family=string
-- &lt;directory/&gt;
-    - recursive=true/false
-    - name=string
-    - weight=string
-    - style=string
+---
 
-### [AFPRendererConfig](output.html#afp-configuration)
+## 1. Top-level options (direct children of `<fop>`)
 
-- default-resource-levels=string
-- images=string
-- jpeg=string
-- dithering-quality=float
-- fs45=true/false
-- mapping_option=string
-- mode=true/false
-- native=true/false
-- pseg=true/false
-- allow-embedding=true/false
-- bitmap-encoding-quality=float
-- renderer-resolution=integer
-- resource-group-file=string
-- shading=string
-- line-width-correction=float
-- goca=true/false
-- text=true/false
+Parsed by `FopConfParser`.
 
-### [TxtRendererConfig](output.html#txt)
+| Element | Type | Purpose | Default |
+|---|---|---|---|
+| `base` | URI | Base URI for resolving relative URLs. | `.` |
+| `strict-validation` | bool | Enable strict XSL-FO validation. | true |
+| `strict-configuration` | bool | Enable strict user-config validation (fail on errors). | false |
+| `accessibility` | bool | Enable tagged/accessible output. Has attributes below. | false |
+| `image-cache` | bool | Enable image caching. | true |
+| `source-resolution` | float | Source DPI for sizing SVG/bitmap pixels. | 72 |
+| `target-resolution` | float | Target DPI for generated bitmaps. | 72 |
+| `break-indent-inheritance` | bool | Break indent inheritance at reference-area boundaries. | false |
+| `default-page-settings` | element | Default page size when value is `auto`. Attributes below. | — |
+| `complex-scripts` | element | Complex-script (BiDi/shaping) support. Attribute below. | enabled |
+| `hyphenation-base` | URI | Base URI for hyphenation pattern files. | — |
+| `hyphenation-pattern` | element (repeatable) | Map a hyphenation file to a language. Value = filename. Attributes below. | — |
+| `prefer-renderer` | bool | Prefer the legacy `Renderer` over the newer `IFDocumentHandler`. | false |
+| `table-border-overpaint` | bool | Overpaint collapsing table borders. | false |
+| `simple-line-breaking` | bool | Use simple (greedy) line-breaking instead of Knuth. | false |
+| `skip-page-position-only-allowed` | bool | Allow skipping `page-position="only"` pages. | — |
+| `legacy-skip-page-position-only` | bool | Legacy behaviour for `page-position="only"`. | — |
+| `legacy-last-page-change-ipd` | bool | Legacy last-page IPD-change behaviour. | — |
+| `legacy-fo-wrapper` | bool | Legacy `fo:wrapper` handling. | — |
+| `legacy-invalid-break-position` | bool | Legacy invalid-break-position handling. | — |
+| `use-parent-ipd-image-scaling` | bool | Scale images against the parent IPD. | — |
+| `image-loading` | element | Image-loader penalties / ICC converter. See below. | — |
 
-- encoding=string
+### `default-page-settings` attributes
 
-### [TIFFRendererConfig](output.html#bitmap-configuration)
+| Attribute | Purpose | Default |
+|---|---|---|
+| `height` | Default page height. | `11in` |
+| `width` | Default page width. | `8.26in` |
 
-- compression=string
-- single-strip=true/false
-- endianness=string
+### `accessibility` attributes
 
-### [BitmapRendererConfig](output.html#bitmap-configuration)
+| Attribute | Purpose | Default |
+|---|---|---|
+| `static-region-per-page` | Emit static regions per page. | false |
+| `keep-empty-tags` | Keep empty structure tags. | true |
 
-- transparent-page-background=default: false
-- background-color=string
-- anti-aliasing=default: true
-- rendering=string
-- quality=default: true
-- speed=string
-- color-mode=string
-- rgba=string
-- rgb=string
-- gray=string
-- binary=string
-- bi-level=string
+### `complex-scripts` attributes
 
-### [PSRendererConfig](output.html#ps-configuration)
+| Attribute | Purpose | Default |
+|---|---|---|
+| `disabled` | Disable complex-script features. | false (features on) |
 
-- auto-rotate-landscape=default: false
-- language-level=string
-- optimize-resources=default: false
-- safe-set-page-device=default: false
-- dsc-compliant=default: true
-- rendering=string
-- acrobat-downsample=default: false
+### `hyphenation-pattern` attributes
 
-### [PDFEncryptionConfig](pdfencryption.html#embedded)
+| Attribute | Purpose |
+|---|---|
+| `lang` | Two-letter language code (required). |
+| `country` | Two-letter country code (optional). |
+| `extension` | File type: `xml` or `hyp`. |
 
-- encryption-length=string
-- noprinthq=string
-- noassembledoc=default: false
-- noaccesscontent=default: false
-- nofillinforms=default: false
-- noannotations=default: false
-- noprint=default: false
-- nocopy=default: false
-- noedit=default: false
-- user-password=string
-- owner-password=string
-- encrypt-metadata=default: true
-- encryption-params=string
+### `image-loading` sub-structure
 
-### [PDFRendererConfig](pdfa.html#fop-xconf)
+| Name | Type | Purpose |
+|---|---|---|
+| `icc-converter` | attribute | ICC converter implementation name. |
+| `penalty` | element (repeatable) | Adjust the penalty of an image loader. |
+| `penalty/@class` | attribute | Fully-qualified class name of the image loader. |
+| `penalty/@value` | attribute | Integer penalty, or `INF`/`INFINITE` for infinite. |
 
-- filterList=string
-- pdf-a-mode=string
-- pdf-ua-mode=string
-- pdf-x-mode=string
-- pdf-vt-mode=string
-- version=string
-- disable-srgb-colorspace=default: false
-- merge-fonts=default: false
-- linearization=default: false
-- form-xobject=default: false
-- output-profile=string
+---
 
-### [PCLRendererConfig](output.html#pcl-configuration)
+## 2. Font options
 
-- transparent-page-background=string
-- rendering=string
-- text-rendering=true/false
-- disable-pjl=true/false
-- optimize-resources=true/false
-- color=true/false
+Parsed by `FontManagerConfigurator`, `DefaultFontConfig`, and
+`FontSubstitutionsConfigurator`. Font configuration can appear at the top
+level (font cache/base settings) and inside a `<fonts>` block (which may be at
+the top level or inside a `<renderer>`).
 
+### 2.1 Top-level font settings (children of `<fop>`)
+
+| Element | Type | Purpose | Default |
+|---|---|---|---|
+| `font-base` | URI | Base URI for resolving font URLs. | — |
+| `use-cache` | bool | Enable the font cache. | true |
+| `cache-file` | path | Location of the font cache file (used when caching is on). | — |
+| `base14-kerning` | bool | Enable kerning for the Base-14 fonts. | false |
+
+### 2.2 The `<fonts>` block
+
+| Name | Type | Purpose | Default |
+|---|---|---|---|
+| `fonts` | element | Container for font configuration. | — |
+| `fonts/@lazy-load` | attribute (bool) | Lazily load fonts on demand. | false |
+| `auto-detect` | element (presence) | Auto-detect operating-system fonts. | off |
+| `directory` | element (repeatable) | Directory to scan for fonts (value = path). | — |
+| `directory/@recursive` | attribute (bool) | Recurse into sub-directories. | false |
+| `font` | element (repeatable) | Define an individual font. See attributes below. | — |
+| `substitutions` | element | Font substitution rules. See §2.4. | — |
+| `referenced-fonts` | element | Fonts to reference rather than embed. See §2.5. | — |
+
+### 2.3 The `<font>` element
+
+| Attribute / child | Type | Purpose | Default |
+|---|---|---|---|
+| `embed-url` | attribute | URL of the font file to embed (required). | — |
+| `sub-font` | attribute | Sub-font name within a collection (TTC). | — |
+| `metrics-url` | attribute | URL of a metrics file. | — |
+| `embed-url-afm` | attribute | AFM metrics URL. | — |
+| `embed-url-pfm` | attribute | PFM metrics URL. | — |
+| `kerning` | attribute (bool) | Enable kerning. | true |
+| `advanced` | attribute (bool) | Enable advanced typographic (OpenType) features. | true |
+| `encoding-mode` | attribute | `auto`, `single-byte`, or `cid`. | auto |
+| `embedding-mode` | attribute | `auto`, `full`, or `subset`. | auto |
+| `simulate-style` | attribute (bool) | Simulate bold/italic (PDF only). | false |
+| `embed-as-type1` | attribute (bool) | Embed as Type 1 (PostScript only). | false |
+| `svg` | attribute (bool) | Enable SVG support for this font. | true |
+| `font-triplet` | child element (repeatable) | Maps the font to a triplet. | — |
+| `font-triplet/@name` | attribute | Font family name (required). | — |
+| `font-triplet/@style` | attribute | `normal`, `italic`, `oblique`, `backslant`. | — |
+| `font-triplet/@weight` | attribute | `normal`, `bold`, or `100`–`900`. | — |
+
+### 2.4 `<substitutions>` (child of `<fonts>`)
+
+| Name | Type | Purpose |
+|---|---|---|
+| `substitution` | element (repeatable) | A single substitution rule. |
+| `substitution/from` | element | Source font qualifier (required). |
+| `substitution/to` | element | Target font qualifier (required). |
+| `from`/`to` `@font-family` | attribute | Font family (required). |
+| `from`/`to` `@font-weight` | attribute | Font weight (optional). |
+| `from`/`to` `@font-style` | attribute | Font style (optional). |
+
+### 2.5 `<referenced-fonts>` (child of `<fonts>`)
+
+| Name | Type | Purpose |
+|---|---|---|
+| `match` | element (repeatable) | A matcher for fonts to reference instead of embed. |
+| `match/@font-family` | attribute | Regular expression matched against the font family name. |
+
+---
+
+## 3. Renderer options (`<renderers><renderer mime="...">`)
+
+Each output format has its own `<renderer>` block selected by `mime`. Every
+renderer may also contain a `<fonts>` block (§2.2) and `xml-handler` blocks
+(§3.9).
+
+### 3.1 `mime="application/pdf"` — PDF
+
+Parsed by `PDFRendererConfig`.
+
+| Element | Type | Purpose | Default |
+|---|---|---|---|
+| `filterList` | element (repeatable) | PDF stream filters; `<value>` children list filter names (`flate`, `ascii-85`, `ascii-hex`, `null`). | flate |
+| `filterList/@type` | attribute | Stream type the filter list applies to. | default |
+| `pdf-a-mode` | element | PDF/A conformance (e.g. `PDF/A-1b`, `PDF/A-2b`, `PDF/A-3b`). | disabled |
+| `pdf-ua-mode` | element | PDF/UA conformance (`PDF/UA-1`). | disabled |
+| `pdf-x-mode` | element | PDF/X conformance (`PDF/X-3:2003`). | disabled |
+| `pdf-vt-mode` | element | PDF/VT conformance. | disabled |
+| `version` | element | PDF version (e.g. `1.4`, `1.7`). | — |
+| `disable-srgb-colorspace` | bool | Disable the default sRGB colour space. | false |
+| `merge-fonts` | bool | Merge fonts to reduce size. | false |
+| `merge-fonts/@remap-singlebyte-font` | attribute (bool) | Remap single-byte fonts when merging. | true |
+| `merge-form-fields` | bool | Merge form fields of the same name. | false |
+| `linearization` | bool | Linearise (web-optimise) the PDF. | false |
+| `form-xobject` | bool | Use form XObjects. | false |
+| `use-object-streams` | bool | Use object streams (PDF 1.5+). | false |
+| `output-profile` | URI | ICC output-intent profile. | — |
+| `force-uri-basic-link` | bool | Force basic (non-GoTo) URI links. | false |
+| `encryption-params` | element | Encryption settings. See below. | — |
+| `sign-params` | element | Digital-signature settings. See below. | — |
+
+#### `encryption-params`
+
+| Element | Type | Purpose | Default |
+|---|---|---|---|
+| `owner-password` | string | Owner password. | "" |
+| `user-password` | string | User password. | "" |
+| `noprint` | presence | Forbid printing. | allowed |
+| `nocopy` | presence | Forbid copying content. | allowed |
+| `noedit` | presence | Forbid editing content. | allowed |
+| `noannotations` | presence | Forbid annotations. | allowed |
+| `nofillinforms` | presence | Forbid filling forms. | allowed |
+| `noaccesscontent` | presence | Forbid text/graphics extraction. | allowed |
+| `noassembledoc` | presence | Forbid assembling the document. | allowed |
+| `noprinthq` | presence | Forbid high-quality printing. | allowed |
+| `encrypt-metadata` | bool | Encrypt document metadata. | true |
+| `encryption-length` | int | Key length (40–256, multiple of 8). | 128 |
+
+#### `sign-params`
+
+| Element | Purpose |
+|---|---|
+| `keystore` | Keystore file (required if signing). |
+| `name` | Signer name. |
+| `location` | Signing location. |
+| `reason` | Signing reason. |
+| `password` | Keystore password. |
+
+### 3.2 `mime="application/postscript"` — PostScript
+
+Parsed by `PSRendererConfig`.
+
+| Element | Type | Purpose | Default |
+|---|---|---|---|
+| `auto-rotate-landscape` | bool | Rotate landscape pages automatically. | false |
+| `language-level` | int | PostScript language level. | 3 |
+| `optimize-resources` | bool | Remove unused resources after generation. | false |
+| `safe-set-page-device` | bool | Use safe `setpagedevice`. | false |
+| `dsc-compliant` | bool | Produce DSC-compliant output. | true |
+| `acrobat-downsample` | bool | Allow Acrobat image downsampling. | false |
+| `compress-streams` | bool | Compress PostScript streams. | false |
+| `rendering` | enum | `size` or `quality`. | quality |
+| `jpeg-compression` | string | JPEG compression ratio. | — |
+
+### 3.3 `mime="application/x-afp"` — AFP
+
+Parsed by `AFPRendererConfig` and `AFPFontConfig`.
+
+| Element | Type | Purpose | Default |
+|---|---|---|---|
+| `shading` | enum | `color` or `dithered`. | color |
+| `renderer-resolution` | int | Output resolution in dpi. | 240 |
+| `line-width-correction` | float | Line-width correction factor. | 2.5 |
+| `resource-group-file` | URI | External resource-group file. | — |
+| `default-resource-levels` | element | Resource levels; each attribute name is a resource type, value is a level (e.g. `external`, `inline`, `print-file`). | — |
+| `images` | element | Image output settings. See below. | — |
+| `goca` | element | GOCA (vector graphics) settings. See below. | — |
+
+#### `images` attributes
+
+| Attribute | Type | Purpose | Default |
+|---|---|---|---|
+| `mode` | enum | `b+w` (grayscale) or `color`. | b+w |
+| `bits-per-pixel` | int | Bits per pixel (when `mode="b+w"`). | 8 |
+| `cmyk` | bool | Use CMYK (when `mode="color"`). | false |
+| `dithering-quality` | float | Dithering quality (`min`/`max` or 0.0–1.0). | 0.5 |
+| `native` | bool | Pass through native images. | false |
+| `native-pdf` | bool | Embed native PDF. | false |
+| `pseg` | bool | Wrap images in a page segment. | false |
+| `fs45` | bool | Use the FS45 image format. | false |
+| `mask-enabled` | bool | Enable image masks. | false |
+| `mapping_option` | enum | `scale-to-fit` → scale-to-fill, else default. | default |
+| `metadata-in-object-container` | bool | Store metadata in the object container. | false |
+
+#### `images/jpeg` attributes
+
+| Attribute | Type | Purpose | Default |
+|---|---|---|---|
+| `allow-embedding` | bool | Allow JPEG embedding. | false |
+| `use-ioca-images` | bool | Wrap JPEGs in IOCA. | true |
+| `bitmap-encoding-quality` | float | Bitmap encoding quality. | 1.0 |
+
+#### `goca` attributes
+
+| Attribute | Type | Purpose | Default |
+|---|---|---|---|
+| `enabled` | bool | Enable GOCA. | true |
+| `text` | enum | `stroke`/`shapes` → stroke text, else default. | default |
+| `pseg` | bool | Wrap GOCA in a page segment. | false |
+
+#### AFP fonts (`<fonts><font>`)
+
+Each `<font>` has `<font-triplet>` children (`name`/`style`/`weight`) and
+either an `embed-url` (TrueType) or an `<afp-font>` child.
+
+`<afp-font>` attributes:
+
+| Attribute | Purpose |
+|---|---|
+| `type` | `raster`, `outline`, `CIDKeyed`, or `truetype` (required). |
+| `codepage` | Code page (required). |
+| `encoding` | Encoding (required). |
+| `characterset` | Character set (required for raster/outline/CIDKeyed). |
+| `name` | Font name (defaults to characterset; required for truetype). |
+| `base-uri` | Base URI for the font resources. |
+| `base14-font` | Mapped Base-14 font (outline/raster). |
+| `sub-font` | Sub-font (truetype). |
+| `position-by-char` | (bool) Position by character (truetype). Default true. |
+| `ebcdic-dbcs` | (bool) EBCDIC double-byte line data (CIDKeyed). Default false. |
+
+`<afp-raster-font>` (child of raster `<afp-font>`, repeatable):
+
+| Attribute | Purpose |
+|---|---|
+| `size` | Point size (required). |
+| `characterset` | Character set for this size (required). |
+| `base14-font` | Mapped Base-14 font. |
+
+### 3.4 `mime="image/png"` and other bitmaps — Bitmap
+
+Parsed by `BitmapRendererConfig`.
+
+| Element | Type | Purpose | Default |
+|---|---|---|---|
+| `transparent-page-background` | bool | Transparent page background. | false |
+| `background-color` | color | Page background colour (ignored if transparent). | white |
+| `anti-aliasing` | bool | Enable anti-aliasing. | true |
+| `rendering` | enum | `quality` or `speed`. | quality |
+| `color-mode` | enum | `rgba`, `rgb`, `gray`, `binary`, `bi-level`. | rgba |
+
+### 3.5 `mime="image/tiff"` — TIFF
+
+Parsed by `TIFFRendererConfig`. Inherits all Bitmap options (§3.4) plus:
+
+| Element | Type | Purpose | Default |
+|---|---|---|---|
+| `compression` | enum | `NONE`, `JPEG`, `PackBits`, `Deflate`, `LZW`, `ZLib`, `CCITT T.4`, `CCITT T.6`. | PackBits |
+| `single-strip` | bool | Write all rows in a single strip. | false |
+| `endianness` | enum | `DEFAULT`, `LITTLE_ENDIAN`, `BIG_ENDIAN`. | DEFAULT |
+
+### 3.6 `mime="application/x-pcl"` — PCL
+
+Parsed by `PCLRendererConfig`.
+
+| Element | Type | Purpose | Default |
+|---|---|---|---|
+| `rendering` | enum | `quality`, `speed`, or `bitmap`. | quality |
+| `text-rendering` | enum | `auto` or `bitmap`. | auto |
+| `disable-pjl` | bool | Disable PJL commands. | false |
+| `optimize-resources` | bool | Optimise resources. | false |
+| `images/@mode` | attribute | `color` enables colour output. | mono |
+
+### 3.7 `mime="image/svg+xml"` (and Java2D base) — Java2D
+
+Parsed by `Java2DRendererConfig`.
+
+| Element | Type | Purpose | Default |
+|---|---|---|---|
+| `transparent-page-background` | bool | Transparent page background. | false |
+
+Note: the example `fop.xconf` also shows `<format type="paginated"/>`,
+`<link value="true"/>` and `<strokeText value="false"/>` for the SVG renderer;
+these are handled by the SVG output module.
+
+### 3.8 `mime="text/plain"` — Text
+
+Parsed by `TxtRendererConfig`.
+
+| Element | Type | Purpose | Default |
+|---|---|---|---|
+| `encoding` | string | Output character encoding. | UTF-8 |
+
+### 3.9 `xml-handler` (any renderer)
+
+Parsed by `XMLHandlerConfigurator`. Lets you pass renderer-specific options to
+a foreign-object (e.g. SVG) handler.
+
+| Name | Type | Purpose |
+|---|---|---|
+| `xml-handler` | element (repeatable) | Per-namespace handler configuration. |
+| `xml-handler/@namespace` | attribute | Namespace URI the handler applies to (e.g. `http://www.w3.org/2000/svg`). |
+
+---
+
+## Notes and naming gotchas
+
+- `FopFactoryConfigurator` no longer exists; factory-level options are parsed
+  by `FopConfParser`.
+- Font cache / base settings (`font-base`, `use-cache`, `cache-file`,
+  `base14-kerning`) live directly under `<fop>`, not under `<fonts>`.
+- The element name `rendering` is reused by several renderers with different
+  allowed values: PostScript (`size`/`quality`), PCL
+  (`quality`/`speed`/`bitmap`), Bitmap (`quality`/`speed`).
+- `optimize-resources` exists for both PostScript and PCL.
+- The AFP `mapping_option` attribute uses an underscore, unlike most names
+  which use hyphens.
+- In the Bitmap renderer, `background-color` is forced transparent when
+  `transparent-page-background` is `true`.
