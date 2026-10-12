@@ -1,0 +1,370 @@
+Title: Apache(tm) FOP Design: Page Breaking
+
+# How FOP Does Page Breaking
+
+This document describes how Apache FOP decides where to break content across
+pages and columns. All paths are relative to
+`fop-core/src/main/java/org/apache/fop/layoutmgr/`.
+
+## Overview
+
+FOP uses a **Knuth-style total-fit breaking algorithm** — the same optimization
+Donald Knuth and Michael Plass designed for breaking paragraphs into lines in
+TeX. FOP reuses it for page breaking by treating a "line" as a page or column
+and the "line width" as the available **block-progression-dimension** (BPD, i.e.
+the page/column height).
+
+The pipeline is, roughly:
+
+1. The layout managers (LMs) convert the vertical content of a flow into a
+   **Knuth element list** — a sequence of boxes, glue, and penalties.
+2. The page-breaking algorithm runs a shortest-path optimization over that list
+   to find the globally optimal set of break points (fewest total demerits).
+3. Each chosen break becomes a `PageBreakPosition`; the driver slices the
+   element list per page and asks the LMs to generate areas.
+4. Special cases (floats, footnotes, column balancing, IPD changes, last-page
+   masters) trigger partial **relayout**.
+
+## 1. The Element List: Boxes, Glue, and Penalties
+
+Content is modelled as a `KnuthSequence` of `KnuthElement`s. There are three
+kinds (`KnuthElement.INFINITE = 1000` is the infinity sentinel):
+
+| Element | Class | Meaning |
+| --- | --- | --- |
+| **Box** | `KnuthBox` | An unbreakable piece of content with fixed width. Never a legal break; never suppressed. |
+| **Glue** | `KnuthGlue` | Adjustable space (natural width + `stretch` + `shrink`). A legal break **only if it immediately follows a box**. |
+| **Penalty** | `KnuthPenalty` | A potential break with a cost. No content of its own. |
+
+Penalties carry the break semantics:
+
+- `penalty == -INFINITE` → a **forced break** (`isForcedBreak()`), e.g.
+  `break-before`/`break-after`.
+- `penalty == +INFINITE` → breaking here is **forbidden** (used for keeps,
+  widows/orphans).
+- A `breakClass` (`EN_AUTO`, `EN_COLUMN`, `EN_PAGE`, `EN_EVEN_PAGE`,
+  `EN_ODD_PAGE`) says what kind of break it is.
+- `FLAGGED_PENALTY = 50` marks penalties (like hyphenation) that are penalized
+  more when they occur on consecutive lines.
+
+Related element types:
+
+- **`KnuthBlockBox`** — a box that also carries *anchors*: footnote bodies
+  (`getFootnoteBodyLMs()`, `getElementLists()`) and floats
+  (`getFloatContentLMs()`, `hasFloatAnchors()`). This is how footnote and float
+  citations ride along inside the vertical element stream.
+- **`BreakElement`** (an `UnresolvedListElement`) — the LM-stage stand-in for an
+  unresolved break possibility. It carries `penaltyWidth`, `penaltyValue`,
+  `breakClass`, and pending border/padding marks, and is converted to a real
+  `KnuthPenalty` by the breaker. Both forced breaks and keep constraints are
+  expressed as `BreakElement`s.
+
+A sequence is terminated with the canonical Knuth "end" idiom (see
+`AbstractBreaker.BlockSequence.endSequence`): a forbidding penalty, a huge
+stretchable glue, then a forced break:
+
+```
+KnuthPenalty(0, INFINITE)         // can't break just before the end glue
+KnuthGlue(0, 10000000, 0)         // lets the last page be short
+KnuthPenalty(0, -INFINITE, pos)   // forces the final break
+```
+
+## 2. The Core Algorithm — `BreakingAlgorithm`
+
+`BreakingAlgorithm.java` is the abstract, generic Knuth engine. It maintains a
+set of **active nodes** — feasible break points still in the running — organized
+per line/part number in the `activeLines` array.
+
+### Feasible breakpoints and the active-node graph
+
+A `KnuthNode` "records all the information of a feasible breaking point":
+
+- `position` — index of the element where this break occurs
+- `line` — the line/part number ending here
+- `fitness` — fitness class (0–3)
+- `totalWidth / totalStretch / totalShrink` — content accumulated up to here
+- `totalDemerits` — minimum total demerits to reach this break
+- `previous` — the best preceding node (the **backpointer** used to reconstruct
+  the optimal break set once the whole list is processed)
+
+Because each node stores running totals, the length of the material between any
+two nodes is computed by simple subtraction.
+
+### The main loop — `findBreakingPoints`
+
+`findBreakingPoints(KnuthSequence par, int startIndex, double threshold, boolean force, int allowedBreaks)`:
+
+1. Create a starting active node at position 0.
+2. Walk the element list. `handleElementAt` routes each element:
+   - `handleBox` — not a legal break; just add its width to the running total.
+   - `handleGlueAt` — a legal break only if the previous element was a box.
+   - `handlePenaltyAt` — a legal break unless the penalty is `+INFINITE`
+     (filtered further by `allowedBreaks`).
+3. If all active nodes are deactivated (no feasible break remains), handle
+   float/IPD change, otherwise either give up (if not `force`) or recover.
+4. At the end, `finish()`, then `filterActiveNodes()`, then walk the surviving
+   node(s) back through their `previous` pointers to emit the chosen breaks.
+
+`allowedBreaks` can be `ALL_BREAKS`, `NO_FLAGGED_PENALTIES` (no hyphenation), or
+`ONLY_FORCED_BREAKS` (`wrap-option="no-wrap"`).
+
+### Considering a legal break — the heart of it
+
+`considerLegalBreak(element, elementIdx)` runs, for every active node:
+
+1. **`computeDifference`** — natural length minus available length (positive =
+   room to spare, negative = overflow).
+2. **`computeAdjustmentRatio`** — the ratio *r*:
+   - `r == 0` → fits exactly
+   - `-1 ≤ r < 0` → fits by shrinking
+   - `0 < r ≤ 1` → fits by stretching
+   - `r > 1` → too short (underfull)
+   - `r < -1` → too long (overfull)
+3. If `r < -1` (or this is a forced break), **deactivate** the node — a page
+   ending at `element` would overflow for this starting node.
+4. Otherwise compute the **fitness class** from *r* and the **demerits**, and if
+   `-1 ≤ r ≤ threshold`, **activate** the node: record it in `BestRecords` if its
+   demerits beat the current best for that fitness class.
+
+**Fitness classes** (`FitnessClasses.computeFitness`): VERY_TIGHT (`r < -0.5`),
+TIGHT (`r ≤ 0.5`), LOOSE (`r ≤ 1.0`), VERY_LOOSE (otherwise). Breaks whose
+fitness classes differ by more than one are penalized, to avoid a very loose
+page next to a very tight one.
+
+### Demerits — the cost function
+
+`computeDemerits` implements the Knuth cost:
+
+```
+f = 1 + 100 * |r|^3
+demerits = (f + penalty)^2       // non-negative penalty
+demerits = f^2 - penalty^2       // negative, non-forced penalty
+demerits = f^2                   // forced break
+```
+
+Then it adds:
+- `repeatedFlaggedDemerit` (= 50) for consecutive flagged-penalty breaks,
+- `incompatibleFitnessDemerit` when adjacent fitness classes clash,
+- and finally **`+= activeNode.totalDemerits`** — the cumulative accumulation
+  that makes this a *total-fit* (shortest-path) algorithm, not a greedy one.
+
+For each line, `addBreaks` promotes the best records into new active nodes,
+keeping all fitness classes within `best.getMinDemerits() + incompatibleFitnessDemerit`.
+
+### Forced recovery
+
+In `force` mode (always used for pages), if content overflows and no feasible
+break exists, the algorithm recovers rather than failing:
+`recoverFromTooLong` ("insert empty page and try again"), `recoverFromOverflow`
+(up to `MAX_RECOVERY_ATTEMPTS = 5`), and `restartFrom`.
+
+## 3. Page Specialization — `PageBreakingAlgorithm`
+
+`PageBreakingAlgorithm` (package-private) extends `BreakingAlgorithm` and adapts
+it to pages and columns.
+
+- **Variable page height**: `getLineWidth(int line)` is overridden to return
+  `pageProvider.getAvailableBPD(line)`, so every page/column can have a
+  different available height.
+- **`KnuthPageNode`** extends `KnuthNode` with footnote bookkeeping
+  (`insertedFootnotes`, `totalFootnotes`, `footnoteListIndex`,
+  `footnoteElementIndex`) and whitespace-management variants.
+- **`compareNodes`** prefers a page break over a mere column break when
+  demerits are equal (using `pageProvider.endPage`).
+- **`handlePenaltyAt`** is overridden so that an `INFINITE` penalty is still a
+  legal break if its break class is `EN_PAGE`/`EN_COLUMN` — a
+  `keep-*.within-page="always"` constraint still permits column breaks.
+- **`updateData2`** walks the best node chain backwards, computes the final
+  adjustment ratio for each page (respecting `display-align` and
+  last-page-vs-not justification), and emits each break as a
+  `PageBreakPosition` via `insertPageBreakAsFirst` (built back-to-front).
+- **`filterActiveNodes`** keeps "only the active node with fewest total
+  demerits" (honoring `favorSinglePart` for block-containers).
+
+## 4. Keeps, Widows, and Orphans
+
+### Keeps
+
+`Keep.java` models a keep constraint. `getPenalty()` maps `auto → 0`,
+`always → INFINITE`, and a numeric strength → `INFINITE - 1`. `getContext()` is
+`EN_LINE`/`EN_COLUMN`/`EN_PAGE`, and `compare` resolves competing keeps
+("always" wins; otherwise the lowest-priority context, then the strongest).
+
+`BlockStackingLayoutManager` emits keeps as `BreakElement`s: when
+`mustKeepTogether()` it builds a `BreakElement` with the keep's penalty and
+context after resolving pending keep-with-next / keep-with-previous.
+`addKnuthElementsForBreakBefore` / `addKnuthElementsForBreakAfter` emit the
+forced-break penalties for `break-before` / `break-after`.
+`BlockLevelLayoutManager` is the interface exposing
+`mustKeepTogether/WithNext/WithPrevious`.
+
+### Widows and orphans
+
+Line-level widows/orphans are handled in `inline/LineLayoutManager.java`. It
+reads `fobj.getOrphans()` / `fobj.getWidows()` and inserts `INFINITE` penalties
+so no break is allowed within the first *orphans* lines or the last *widows*
+lines of a block (unless the block must be kept together anyway).
+
+The FOP extensions `fox:widow-content-limit` / `fox:orphan-content-limit` (for
+lists and tables) are implemented via
+`ElementListUtils.removeLegalBreaks(list, limit)` /
+`removeLegalBreaksFromEnd(list, limit)`, which walk the list promoting penalties
+to `INFINITE` until the content limit is consumed. See
+`list/ListBlockLayoutManager.java` and `table/TableContentLayoutManager.java`.
+
+## 5. Driving the Layout — `AbstractBreaker` and the Page LMs
+
+### `AbstractBreaker` — the three-phase driver
+
+`doLayout(flowBPD, autoHeight)` runs:
+
+- **Phase 1 — `getNextBlockList`**: pull the next chunk of Knuth elements into a
+  `BlockSequence`. A trailing forced break sets `nextSequenceStartsOn`
+  (`EN_ANY` / `EN_COLUMN` / `EN_ODD_PAGE` / `EN_EVEN_PAGE`).
+- **Phase 2**: construct a `PageBreakingAlgorithm`, set the line width to
+  `flowBPD`, and call `findBreakingPoints(blockList, 1, force=true, ALL_BREAKS)`.
+- **Phase 3 — `doPhase3`** (abstract): turn the chosen breaks into areas.
+
+`BlockSequence` (a `BlockKnuthSequence`) adds `ignoreAtStart`/`ignoreAtEnd`, a
+`startOn` page type, and `displayAlign`, and appends the terminating
+penalty-glue-penalty idiom.
+
+**`PageBreakPosition`** (public static nested class) is the concretization of a
+chosen break: `bpdAdjust` (stretch/shrink percentage), `difference`, and the
+four footnote indices marking which footnote content belongs on this page.
+`getLeafPos()` is the element index where the page ends.
+
+`addAreas` iterates the parts: for each `PageBreakPosition` it computes the
+`[start, end]` element slice, applies `display-align` spacing (`EN_CENTER` →
+half the difference as space-before, `EN_AFTER` → all of it), performs space
+resolution, and asks the child LMs to add the areas for that slice.
+
+### `PageSequenceLayoutManager`
+
+`activateLayout()` resolves BIDI, lays out any title, and then loops: make a new
+page, create a `PageBreaker`, read the body region's remaining BPD as the flow
+height, and call `pageBreaker.doLayout(flowBPD)`. The loop repeats for
+page-position replays. It also owns the `PageProvider` and relays footnote/float
+state across restarts (`holdFootnotes`/`retrieveFootnotes`,
+`recordStartOfFloat`/`recordEndOfFloat`, `getFloatHeight`,
+`getOffsetDueToFloat`).
+
+### `PageBreaker` — breaking an `fo:flow`
+
+`PageBreaker` (extends `AbstractBreaker`) wraps the single `FlowLayoutManager`,
+pulls its Knuth elements, and scans for footnotes.
+`handleBreakTrait(breakVal, emptyContent)` turns break classes into actions:
+`EN_ALL`/`EN_NONE` create a column span; `EN_COLUMN`/`EN_PAGE`/`EN_AUTO` move to
+the next column/flow or make a new page. `needBlankPageBeforeNew` /
+`needNewPage` implement odd/even-page forcing by inserting blank pages to reach
+the right handedness.
+
+### `PageProvider` — supplying pages and their dimensions
+
+`PageProvider` "delivers Page instances [and] caches them as necessary," because
+"the page breaker sometimes needs to preallocate additional pages since it
+doesn't know exactly until the end how many pages it really needs." Key methods:
+
+- `getAvailableBPD(index)` — the per-part available height the algorithm asks
+  for via `getLineWidth`; walks columns/pages honoring multi-column spans. It
+  has a one-entry cache because the algorithm queries it repeatedly.
+- `startPage(index)` / `endPage(index)` / `getColumnCount(index)` — let the
+  algorithm distinguish page breaks from column breaks.
+- `compareIPDs(index)` — detects when the next page/column has a different
+  inline-progression-dimension (drives IPD-change relayout, below).
+- `getStartingPartIndexForLastPage`, `setLastPageIndex`, `getPage(... RELTO_PAGE_SEQUENCE / RELTO_CURRENT_ELEMENT_LIST ...)` — support last-page masters and column balancing.
+
+## 6. Columns and Spans
+
+Multi-column layout is handled by treating each column as a "line" of its own
+available BPD. **Column balancing** (making the last page's columns roughly
+equal height, e.g. before a spanning element) is done by
+`BalancingColumnBreakingAlgorithm` (extends `PageBreakingAlgorithm`):
+
+- It sets `considerTooShort = true` ("This is important!").
+- It overrides `computeDemerits` to favor breaks matching a precomputed set of
+  `idealBreaks` (`calculateIdealBreaks` using the average column length, with a
+  ~4000-mpt relax factor so that strict balancing doesn't produce ragged column
+  endings).
+
+`PageBreaker.handleSpanChange` sets `needColumnBalancing` when the next span is
+`EN_ALL` (and balancing isn't disabled); `doPhase3` then routes to `redoLayout`,
+which adds definitive areas for the earlier parts and re-runs the algorithm for
+the last page.
+
+## 7. Footnotes
+
+All footnote handling lives in `PageBreakingAlgorithm`. Citations enter via
+`handleBox` → `handleFootnotes` when a `KnuthBlockBox.hasAnchors()`. The
+algorithm tracks the list of footnote-body element lists, their cumulative BPD,
+the total/inserted lengths, and whether footnotes are pending.
+
+- `computeDifference` is where footnotes consume page space: it adds the
+  footnote-separator height plus as much footnote content as fits. If
+  everything fits, all footnotes are placed; otherwise `getFootnoteSplit` places
+  the largest prefix of a footnote that fits (breaking only at legal points
+  inside the footnote list) and defers the rest.
+- `computeDemerits` biases the optimizer with `splitFootnoteDemerits = 5000`
+  (per footnote split across pages) and `deferredFootnoteDemerits = 10000` (per
+  deferred footnote), so FOP avoids splitting/deferring footnotes when it can.
+- `finish()` → `createFootnotePages` places any still-unplaced footnote bodies
+  on extra pages at the end.
+
+## 8. Floats
+
+Side/before floats use `FloatContentLayoutManager` and `KnuthBlockBox` float
+anchors. `handleBox` sets `handlingStartOfFloat` when a box has float anchors and
+`handlingEndOfFloat` once enough content has passed the float. When no active
+node remains while a float is being handled, the main loop calls `handleFloat`,
+which records the best float-edge node and generates a `FloatPosition`.
+
+`PageBreaker.handleFloatLayout` / `addAreasForFloats` add the already-decided
+float areas and then **restart the flow** from the float edge: they find the
+`restartAtLM` from the position at the break and call `getNextBlockList(...,
+restartAtLM, firstElements)`. Float heights and intrusion adjustments
+(`recordStartOfFloat`, `getOffsetDueToFloat`, …) feed back into the next
+algorithm run through `PageBreakingAlgorithm.initialize()`.
+
+## 9. Relayout: IPD Changes and Last-Page Masters
+
+Sometimes a break decision can't be finalized in a single pass because the next
+page's geometry differs:
+
+- **IPD change** (next page has a different inline width, e.g. a different page
+  master). `addNode` calls `compareIPDs`; on a difference it records
+  `bestNodeForIPDChange` and sets `ipdDifference` rather than adding the node
+  normally. The main loop then returns `handleIpdChange()`.
+  `recoverFromOverflow` bails out early when the next page's IPD changes, "as the
+  inline content has to be re-laid out according to the new IPD anyway." The
+  driver (`AbstractBreaker.doLayout`) detects `ipdChangesOnNextPage` and uses
+  `RestartAtLM.getRestartAtLM(...)` plus a restart-aware
+  `getNextKnuthElements(..., restartAtLM)` to re-lay out the flow from a
+  restartable LM. LMs that return `isRestartable() == false` block this
+  (`containsNonRestartableLM`, `thereIsANonRestartableLM`).
+
+- **Last-page / page-position masters**. `PageBreaker.shouldRedoLayout` triggers
+  when a `page-position="last"` or `"only"` master exists and content is
+  exhausted; `prepareToRedoLayout` / `redoLayout` re-run the algorithm for the
+  final page. For `page-position="only"`, `PagePositionOnlyException` and
+  `shouldRedoLayoutWithoutPagePositionOnly` cause `doLayout` to return `false`,
+  so `PageSequenceLayoutManager.activateLayout` restarts the whole sequence with
+  `skipPagePositionOnly = true`.
+
+## Key Classes at a Glance
+
+| Concern | Classes |
+| --- | --- |
+| Core algorithm | `BreakingAlgorithm`, `PageBreakingAlgorithm`, `BalancingColumnBreakingAlgorithm` |
+| Elements | `KnuthElement`, `KnuthBox`, `KnuthGlue`, `KnuthPenalty`, `KnuthBlockBox`, `BreakElement`, `KnuthSequence`, `ElementListUtils` |
+| Keeps / widows / orphans | `Keep`, `BlockLevelLayoutManager`, `BlockStackingLayoutManager`, `inline/LineLayoutManager` |
+| Driver & pages | `AbstractBreaker` (`PageBreakPosition`, `FloatPosition`, `BlockSequence`), `PageBreaker`, `PageSequenceLayoutManager`, `PageProvider`, `Page` |
+| Relayout | `RestartAtLM`, `FloatContentLayoutManager`, `FootnoteBodyLayoutManager` |
+
+## Reference Constants
+
+- `KnuthElement.INFINITE = 1000`
+- Forced break penalty = `-1000`; forbidding penalty = `+1000`
+- `KnuthPenalty.FLAGGED_PENALTY = 50`
+- `splitFootnoteDemerits = 5000`, `deferredFootnoteDemerits = 10000`
+- `MAX_RECOVERY_ATTEMPTS = 5`
+- Column-balancing relax factor ≈ `4000` mpt
