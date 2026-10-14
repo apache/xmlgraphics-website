@@ -4,8 +4,12 @@ github:
   labels:
     - xmlgraphics
     - apache
-  protected_branches:
-    master:
+  rulesets:
+    - name: "Branch Protection Main"
+      type: branch
+      branches:
+        includes:
+          - "master"
       restrict_deletion: true
       restrict_force_push: true
       required_linear_history: true
