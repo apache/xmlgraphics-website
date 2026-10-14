@@ -1,0 +1,3165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:image" content="http://www.apache.org/images/asf_logo.gif" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/code.css">
+    <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href="/css/xmlgraphics.css" rel="stylesheet" type="text/css" />
+    <link href="/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.stoc.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('ul#navigation a').each(function() {
+		    if (this.href === window.location.href)
+			    { $(this). attr('id', 'forefront');} 
+        });
+        $('ul#navigation a#forefront').each(function() {
+        	
+        });
+    })
+	$(function(){
+		$("#items").stoc({ search: "#content", stocTitle: "<h3>Page Contents</h3>" });
+	});
+    </script>
+
+   <title>Apache(tm) FOP: Config Options</title>
+  </head>
+
+  <body>
+
+	<div id="banner">&nbsp;
+	</div>
+
+	<div id="navigation">
+
+<style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
+<p>
+  <a href="/">
+    <img alt="Apache XML Graphics Project Logo" src="/images/apache-xml-graphics.svg" title="Apache XML Graphics Project" />
+  </a>
+</p>
+<h1 id="apache-fop">Apache&trade; FOP<a class="headerlink" href="#apache-fop" title="Permanent link">&para;</a>
+</h1>
+<ul>
+  <li>
+    <a href="/fop/">FOP Home</a>
+  </li>
+  <li>
+    <a href="/fop/download.html">Download</a>
+  </li>
+  <li>
+    <a href="/fop/quickstartguide.html">Quick Start Guide</a>
+  </li>
+  <li>
+    <a href="/fop/compliance.html">Compliance</a>
+  </li>
+  <li>
+    <a href="/fop/gethelp.html">Getting Help</a>
+  </li>
+  <li>
+    <a href="/fop/faq.html">FAQs</a>
+  </li>
+  <li>
+    <a href="https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP">FOP Wiki</a>
+  </li>
+  <li>
+    <a href="/fop/maillist.html">Mailing Lists</a>
+  </li>
+  <li>
+    <a href="/fop/license.html">License</a>
+  </li>
+  <li>
+    <h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a>
+    </h2>
+    <ul>
+      <li>
+        <a href="/fop/fo.html">XSL-FO</a>
+      </li>
+      <li>
+        <a href="/fop/examples.html">Examples</a>
+      </li>
+      <li>
+        <a href="/fop/bugs.html">Bugs</a>
+      </li>
+      <li>
+        <a href="https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FrontPage">Wiki</a>
+      </li>
+      <li>
+        <a href="/fop/resources.html">Other</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h2 id="project">Project<a class="headerlink" href="#project" title="Permanent link">&para;</a>
+    </h2>
+    <ul>
+      <li>
+        <a href="/fop/news.html">News</a>
+      </li>
+      <li>
+        <a href="/fop/team.html">Who We Are</a>
+      </li>
+      <li>
+        <a href="/fop/status.html">Status</a>
+      </li>
+      <li>
+        <a href="/fop/knownissues.html">Known Issues</a>
+      </li>
+      <li>
+        <a href="/fop/changes.html">Changes</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h2 id="versions">Versions<a class="headerlink" href="#versions" title="Permanent link">&para;</a>
+    </h2>
+    <ul>
+      <li>
+        <h2 id="fop-trunk-dev">FOP Trunk (dev)<a class="headerlink" href="#fop-trunk-dev" title="Permanent link">&para;</a>
+        </h2>
+        <ul>
+          <li>
+            <a href="/fop/trunk/">Overview</a>
+          </li>
+          <li>
+            <a href="/fop/trunk/upgrading.html">Upgrading</a>
+          </li>
+          <li>
+            <h3 id="using-apache-fop">Using Apache&trade; FOP<a class="headerlink" href="#using-apache-fop" title="Permanent link">&para;</a>
+            </h3>
+            <ul>
+              <li>
+                <a href="/fop/trunk/compiling.html">Build</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/configuration.html">Configure</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/running.html">Run</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/embedding.html">Embed</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/servlets.html">Servlets</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/anttask.html">Ant Task</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/fopxconf.html">Config Options</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h3 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a>
+            </h3>
+            <ul>
+              <li>
+                <a href="/fop/trunk/accessibility.html">Accessibility</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/complexscripts.html">Complex Scripts</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/events.html">Events</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/extensions.html">Extensions</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/extensionsreference.html">Extensions Reference</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/fonts.html">Fonts</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/graphics.html">Graphics</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/hyphenation.html">Hyphenation</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/intermediate.html">Intermediate Format</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/metadata.html">Metadata</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/output.html">Output Targets</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/pdfa.html">PDF/A</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/pdfx.html">PDF/X</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/pdfencryption.html">PDF Encryption</a>
+              </li>
+              <li>
+                <a href="/fop/fop-pdf-images.html">PDF Images</a>
+              </li>
+              <li>
+                <a href="/fop/trunk/whitespacemanagement.html">Whitespace Management</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h2 id="fop-29">FOP 2.11<a class="headerlink" href="#fop-29" title="Permanent link">&para;</a>
+        </h2>
+        <ul>
+          <li>
+            <a href="/fop/2.11/">FOP 2.11 Overview</a>
+          </li>
+          <li>
+            <a href="/fop/2.11/releaseNotes_2.11.html">Release Notes</a>
+          </li>
+          <li>
+            <a href="/fop/2.11/changes_2.11.html">Changes (2.11)</a>
+          </li>
+          <li>
+            <a href="/fop/2.11/upgrading.html">Upgrading</a>
+          </li>
+          <li>
+            <h3 id="using-apache-fop-29">Using Apache FOP 2.11<a class="headerlink" href="#using-apache-fop-29" title="Permanent link">&para;</a>
+            </h3>
+            <ul>
+              <li>
+                <a href="/fop/2.11/compiling.html">Build</a>
+              </li>
+              <li>
+                <a href="/fop/2.11/configuration.html">Configure</a>
+              </li>
+              <li>
+                <a href="/fop/2.11/running.html">Run</a>
+              </li>
+              <li>
+                <a href="/fop/2.11/embedding.html">Embed</a>
+              </li>
+              <li>
+                <a href="/fop/2.11/servlets.html">Servlets</a>
+              </li>
+              <li>
+                <a href="/fop/2.11/anttask.html">Ant Task</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h3 id="features_1">Features<a class="headerlink" href="#features_1" title="Permanent link">&para;</a>
+            </h3>
+            <ul>
+              <li>
+                <a href="/fop/2.11/accessibility.html">Accessibility</a>
+              </li>
+              <li>
+                <a href="/fop/2.11/complexscripts.html">Complex Scripts</a>
+              </li>
+              <li>
+                <a href="/fop/2.11/events.html">Events</a>
+              </li>
+              <li>
+                <a href="/fop/2.11/extensions.html">Extensions</a>
+              </li>
+              <li>
+                <a href="/fop/2.11/fonts.html">Fonts</a>
+              </li>
+              <li>
+                <a href="/fop/2.11/graphics.html">Graphics</a>
+              </li>
+              <li>
+                <a href="/fop/2.11/hyphenation.html">Hyphenation</a>
+              </li>
+              <li>
+                <a href="/fop/2.11/intermediate.html">Intermediate Format</a>
+              </li>
+              <li>
+                <a href="/fop/2.11/metadata.html">Metadata</a>
+              </li>
+              <li>
+                <a href="/fop/2.11/output.html">Output Targets</a>
+              </li>
+              <li>
+                <a href="/fop/2.11/pdfa.html">PDF/A</a>
+              </li>
+              <li>
+                <a href="/fop/2.11/pdfx.html">PDF/X</a>
+              </li>
+              <li>
+                <a href="/fop/2.11/pdfencryption.html">PDF Encryption</a>
+              </li>
+              <li>
+                <a href="/fop/fop-pdf-images.html">PDF Images</a>
+              </li>
+              <li>
+                <a href="/fop/2.11/whitespacemanagement.html">Whitespace Management</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>      
+      <li>
+        <h2 id="2x">FOP 2.x<a class="headerlink" href="#2x" title="Permanent link">&para;</a>
+        </h2>
+        <ul>
+          <li>
+            <h2 id="fop-29">FOP 2.10<a class="headerlink" href="#fop-29" title="Permanent link">&para;</a>
+            </h2>
+            <ul>
+              <li>
+                <a href="/fop/2.10/">FOP 2.10 Overview</a>
+              </li>
+              <li>
+                <a href="/fop/2.10/releaseNotes_2.10.html">Release Notes</a>
+              </li>
+              <li>
+                <a href="/fop/2.10/changes_2.10.html">Changes (2.10)</a>
+              </li>
+              <li>
+                <a href="/fop/2.10/upgrading.html">Upgrading</a>
+              </li>
+              <li>
+                <h3 id="using-apache-fop-29">Using Apache FOP 2.10<a class="headerlink" href="#using-apache-fop-29" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.10/compiling.html">Build</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.10/configuration.html">Configure</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.10/running.html">Run</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.10/embedding.html">Embed</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.10/servlets.html">Servlets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.10/anttask.html">Ant Task</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 id="features_1">Features<a class="headerlink" href="#features_1" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.10/accessibility.html">Accessibility</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.10/complexscripts.html">Complex Scripts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.10/events.html">Events</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.10/extensions.html">Extensions</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.10/fonts.html">Fonts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.10/graphics.html">Graphics</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.10/hyphenation.html">Hyphenation</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.10/intermediate.html">Intermediate Format</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.10/metadata.html">Metadata</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.10/output.html">Output Targets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.10/pdfa.html">PDF/A</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.10/pdfx.html">PDF/X</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.10/pdfencryption.html">PDF Encryption</a>
+                  </li>
+                  <li>
+                    <a href="/fop/fop-pdf-images.html">PDF Images</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.10/whitespacemanagement.html">Whitespace Management</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>        
+          <li>
+            <h2 id="fop-29">FOP 2.9<a class="headerlink" href="#fop-29" title="Permanent link">&para;</a>
+            </h2>
+            <ul>
+              <li>
+                <a href="/fop/2.9/">FOP 2.9 Overview</a>
+              </li>
+              <li>
+                <a href="/fop/2.9/releaseNotes_2.9.html">Release Notes</a>
+              </li>
+              <li>
+                <a href="/fop/2.9/changes_2.9.html">Changes (2.9)</a>
+              </li>
+              <li>
+                <a href="/fop/2.9/upgrading.html">Upgrading</a>
+              </li>
+              <li>
+                <h3 id="using-apache-fop-29">Using Apache FOP 2.9<a class="headerlink" href="#using-apache-fop-29" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.9/compiling.html">Build</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.9/configuration.html">Configure</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.9/running.html">Run</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.9/embedding.html">Embed</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.9/servlets.html">Servlets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.9/anttask.html">Ant Task</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 id="features_1">Features<a class="headerlink" href="#features_1" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.9/accessibility.html">Accessibility</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.9/complexscripts.html">Complex Scripts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.9/events.html">Events</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.9/extensions.html">Extensions</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.9/fonts.html">Fonts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.9/graphics.html">Graphics</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.9/hyphenation.html">Hyphenation</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.9/intermediate.html">Intermediate Format</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.9/metadata.html">Metadata</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.9/output.html">Output Targets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.9/pdfa.html">PDF/A</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.9/pdfx.html">PDF/X</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.9/pdfencryption.html">PDF Encryption</a>
+                  </li>
+                  <li>
+                    <a href="/fop/fop-pdf-images.html">PDF Images</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.9/whitespacemanagement.html">Whitespace Management</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        
+          <li>
+            <h2 id="fop-28">FOP 2.8<a class="headerlink" href="#fop-28" title="Permanent link">&para;</a>
+            </h2>
+            <ul>
+              <li>
+                <a href="/fop/2.8/">FOP 2.8 Overview</a>
+              </li>
+              <li>
+                <a href="/fop/2.8/releaseNotes_2.8.html">Release Notes</a>
+              </li>
+              <li>
+                <a href="/fop/2.8/changes_2.8.html">Changes (2.8)</a>
+              </li>
+              <li>
+                <a href="/fop/2.8/upgrading.html">Upgrading</a>
+              </li>
+              <li>
+                <h3 id="using-apache-fop-28">Using Apache FOP 2.8<a class="headerlink" href="#using-apache-fop-28" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.8/compiling.html">Build</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.8/configuration.html">Configure</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.8/running.html">Run</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.8/embedding.html">Embed</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.8/servlets.html">Servlets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.8/anttask.html">Ant Task</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 id="features_1">Features<a class="headerlink" href="#features_1" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.8/accessibility.html">Accessibility</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.8/complexscripts.html">Complex Scripts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.8/events.html">Events</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.8/extensions.html">Extensions</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.8/fonts.html">Fonts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.8/graphics.html">Graphics</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.8/hyphenation.html">Hyphenation</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.8/intermediate.html">Intermediate Format</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.8/metadata.html">Metadata</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.8/output.html">Output Targets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.8/pdfa.html">PDF/A</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.8/pdfx.html">PDF/X</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.8/pdfencryption.html">PDF Encryption</a>
+                  </li>
+                  <li>
+                    <a href="/fop/fop-pdf-images.html">PDF Images</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.8/whitespacemanagement.html">Whitespace Management</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2 id="fop-27">FOP 2.7<a class="headerlink" href="#fop-27" title="Permanent link">&para;</a>
+            </h2>
+            <ul>
+              <li>
+                <a href="/fop/2.7/">FOP 2.7 Overview</a>
+              </li>
+              <li>
+                <a href="/fop/2.7/releaseNotes_2.7.html">Release Notes</a>
+              </li>
+              <li>
+                <a href="/fop/2.7/changes_2.7.html">Changes (2.7)</a>
+              </li>
+              <li>
+                <a href="/fop/2.7/upgrading.html">Upgrading</a>
+              </li>
+              <li>
+                <h3 id="using-apache-fop-27">Using Apache FOP 2.7<a class="headerlink" href="#using-apache-fop-27" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.7/compiling.html">Build</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.7/configuration.html">Configure</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.7/running.html">Run</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.7/embedding.html">Embed</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.7/servlets.html">Servlets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.7/anttask.html">Ant Task</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 id="features_1">Features<a class="headerlink" href="#features_1" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.7/accessibility.html">Accessibility</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.7/complexscripts.html">Complex Scripts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.7/events.html">Events</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.7/extensions.html">Extensions</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.7/fonts.html">Fonts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.7/graphics.html">Graphics</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.7/hyphenation.html">Hyphenation</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.7/intermediate.html">Intermediate Format</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.7/metadata.html">Metadata</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.7/output.html">Output Targets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.7/pdfa.html">PDF/A</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.7/pdfx.html">PDF/X</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.7/pdfencryption.html">PDF Encryption</a>
+                  </li>
+                  <li>
+                    <a href="/fop/fop-pdf-images.html">PDF Images</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.7/whitespacemanagement.html">Whitespace Management</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2 id="fop-26">FOP 2.6<a class="headerlink" href="#fop-26" title="Permanent link">&para;</a>
+            </h2>
+            <ul>
+              <li>
+                <a href="/fop/2.6/">FOP 2.6 Overview</a>
+              </li>
+              <li>
+                <a href="/fop/2.6/releaseNotes_2.6.html">Release Notes</a>
+              </li>
+              <li>
+                <a href="/fop/2.6/changes_2.6.html">Changes (2.6)</a>
+              </li>
+              <li>
+                <a href="/fop/2.6/knownissues_overview.html">Known Issues</a>
+              </li>
+              <li>
+                <a href="/fop/2.6/upgrading.html">Upgrading</a>
+              </li>
+              <li>
+                <h3 id="using-apache-fop-25">Using Apache FOP 2.6<a class="headerlink" href="#using-apache-fop-25" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.6/compiling.html">Build</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.6/configuration.html">Configure</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.6/running.html">Run</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.6/embedding.html">Embed</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.6/servlets.html">Servlets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.6/anttask.html">Ant Task</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 id="features_1">Features<a class="headerlink" href="#features_1" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.6/accessibility.html">Accessibility</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.6/complexscripts.html">Complex Scripts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.6/events.html">Events</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.6/extensions.html">Extensions</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.6/fonts.html">Fonts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.6/graphics.html">Graphics</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.6/hyphenation.html">Hyphenation</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.6/intermediate.html">Intermediate Format</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.6/metadata.html">Metadata</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.6/output.html">Output Targets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.6/pdfa.html">PDF/A</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.6/pdfx.html">PDF/X</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.6/pdfencryption.html">PDF Encryption</a>
+                  </li>
+                  <li>
+                    <a href="/fop/fop-pdf-images.html">PDF Images</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.6/whitespacemanagement.html">Whitespace Management</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2 id="fop-25">FOP 2.5<a class="headerlink" href="#fop-25" title="Permanent link">&para;</a>
+            </h2>
+            <ul>
+              <li>
+                <a href="/fop/2.5/">FOP 2.5 Overview</a>
+              </li>
+              <li>
+                <a href="/fop/2.5/releaseNotes_2.5.html">Release Notes</a>
+              </li>
+              <li>
+                <a href="/fop/2.5/changes_2.5.html">Changes (2.5)</a>
+              </li>
+              <li>
+                <a href="/fop/2.5/knownissues_overview.html">Known Issues</a>
+              </li>
+              <li>
+                <a href="/fop/2.5/upgrading.html">Upgrading</a>
+              </li>
+              <li>
+                <h3 id="using-apache-fop-25">Using Apache FOP 2.5<a class="headerlink" href="#using-apache-fop-25" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.5/compiling.html">Build</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.5/configuration.html">Configure</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.5/running.html">Run</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.5/embedding.html">Embed</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.5/servlets.html">Servlets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.5/anttask.html">Ant Task</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 id="features_1">Features<a class="headerlink" href="#features_1" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.5/accessibility.html">Accessibility</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.5/complexscripts.html">Complex Scripts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.5/events.html">Events</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.5/extensions.html">Extensions</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.5/fonts.html">Fonts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.5/graphics.html">Graphics</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.5/hyphenation.html">Hyphenation</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.5/intermediate.html">Intermediate Format</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.5/metadata.html">Metadata</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.5/output.html">Output Targets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.5/pdfa.html">PDF/A</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.5/pdfx.html">PDF/X</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.5/pdfencryption.html">PDF Encryption</a>
+                  </li>
+                  <li>
+                    <a href="/fop/fop-pdf-images.html">PDF Images</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.5/whitespacemanagement.html">Whitespace Management</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2 id="fop-24">FOP 2.4<a class="headerlink" href="#fop-24" title="Permanent link">&para;</a>
+            </h2>
+            <ul>
+              <li>
+                <a href="/fop/2.4/">FOP 2.4 Overview</a>
+              </li>
+              <li>
+                <a href="/fop/2.4/releaseNotes_2.4.html">Release Notes</a>
+              </li>
+              <li>
+                <a href="/fop/2.4/changes_2.4.html">Changes (2.4)</a>
+              </li>
+              <li>
+                <a href="/fop/2.4/knownissues_overview.html">Known Issues</a>
+              </li>
+              <li>
+                <a href="/fop/2.4/upgrading.html">Upgrading</a>
+              </li>
+              <li>
+                <h3 id="using-apache-fop-24">Using Apache FOP 2.4<a class="headerlink" href="#using-apache-fop-24" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.4/compiling.html">Build</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.4/configuration.html">Configure</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.4/running.html">Run</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.4/embedding.html">Embed</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.4/servlets.html">Servlets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.4/anttask.html">Ant Task</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 id="features_2">Features<a class="headerlink" href="#features_2" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.4/accessibility.html">Accessibility</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.4/complexscripts.html">Complex Scripts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.4/events.html">Events</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.4/extensions.html">Extensions</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.4/fonts.html">Fonts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.4/graphics.html">Graphics</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.4/hyphenation.html">Hyphenation</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.4/intermediate.html">Intermediate Format</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.4/metadata.html">Metadata</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.4/output.html">Output Targets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.4/pdfa.html">PDF/A</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.4/pdfx.html">PDF/X</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.4/pdfencryption.html">PDF Encryption</a>
+                  </li>
+                  <li>
+                    <a href="/fop/fop-pdf-images.html">PDF Images</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.4/whitespacemanagement.html">Whitespace Management</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2 id="fop-23">FOP 2.3<a class="headerlink" href="#fop-23" title="Permanent link">&para;</a>
+            </h2>
+            <ul>
+              <li>
+                <a href="/fop/2.3/">FOP 2.3 Overview</a>
+              </li>
+              <li>
+                <a href="/fop/2.3/releaseNotes_2.3.html">Release Notes</a>
+              </li>
+              <li>
+                <a href="/fop/2.3/changes_2.3.html">Changes (2.3)</a>
+              </li>
+              <li>
+                <a href="/fop/2.3/knownissues_overview.html">Known Issues</a>
+              </li>
+              <li>
+                <a href="/fop/2.3/upgrading.html">Upgrading</a>
+              </li>
+              <li>
+                <h3 id="using-apache-fop-23">Using Apache FOP 2.3<a class="headerlink" href="#using-apache-fop-23" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.3/compiling.html">Build</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.3/configuration.html">Configure</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.3/running.html">Run</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.3/embedding.html">Embed</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.3/servlets.html">Servlets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.3/anttask.html">Ant Task</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 id="features_3">Features<a class="headerlink" href="#features_3" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.3/accessibility.html">Accessibility</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.3/complexscripts.html">Complex Scripts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.3/events.html">Events</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.3/extensions.html">Extensions</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.3/fonts.html">Fonts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.3/graphics.html">Graphics</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.3/hyphenation.html">Hyphenation</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.3/intermediate.html">Intermediate Format</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.3/metadata.html">Metadata</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.3/output.html">Output Targets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.3/pdfa.html">PDF/A</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.3/pdfx.html">PDF/X</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.3/pdfencryption.html">PDF Encryption</a>
+                  </li>
+                  <li>
+                    <a href="/fop/fop-pdf-images.html">PDF Images</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.3/whitespacemanagement.html">Whitespace Management</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2 id="fop-22">FOP 2.2<a class="headerlink" href="#fop-22" title="Permanent link">&para;</a>
+            </h2>
+            <ul>
+              <li>
+                <a href="/fop/2.2/">FOP 2.2 Overview</a>
+              </li>
+              <li>
+                <a href="/fop/2.2/releaseNotes_2.2.html">Release Notes</a>
+              </li>
+              <li>
+                <a href="/fop/2.2/changes_2.2.html">Changes (2.2)</a>
+              </li>
+              <li>
+                <a href="/fop/2.2/knownissues_overview.html">Known Issues</a>
+              </li>
+              <li>
+                <a href="/fop/2.2/upgrading.html">Upgrading</a>
+              </li>
+              <li>
+                <h3 id="using-apache-fop-22">Using Apache FOP 2.2<a class="headerlink" href="#using-apache-fop-22" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.2/compiling.html">Build</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.2/configuration.html">Configure</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.2/running.html">Run</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.2/embedding.html">Embed</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.2/servlets.html">Servlets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.2/anttask.html">Ant Task</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 id="features_4">Features<a class="headerlink" href="#features_4" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.2/accessibility.html">Accessibility</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.2/complexscripts.html">Complex Scripts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.2/events.html">Events</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.2/extensions.html">Extensions</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.2/fonts.html">Fonts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.2/graphics.html">Graphics</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.2/hyphenation.html">Hyphenation</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.2/intermediate.html">Intermediate Format</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.2/metadata.html">Metadata</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.2/output.html">Output Targets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.2/pdfa.html">PDF/A</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.2/pdfx.html">PDF/X</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.2/pdfencryption.html">PDF Encryption</a>
+                  </li>
+                  <li>
+                    <a href="/fop/fop-pdf-images.html">PDF Images</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.2/whitespacemanagement.html">Whitespace Management</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2 id="fop-21">FOP 2.1<a class="headerlink" href="#fop-21" title="Permanent link">&para;</a>
+            </h2>
+            <ul>
+              <li>
+                <a href="/fop/2.1/">FOP 2.1 Overview</a>
+              </li>
+              <li>
+                <a href="/fop/2.1/releaseNotes_2.1.html">Release Notes</a>
+              </li>
+              <li>
+                <a href="/fop/2.1/changes_2.1.html">Changes (2.1)</a>
+              </li>
+              <li>
+                <a href="/fop/2.1/knownissues_overview.html">Known Issues</a>
+              </li>
+              <li>
+                <a href="/fop/2.1/upgrading.html">Upgrading</a>
+              </li>
+              <li>
+                <h3 id="using-apache-fop-21">Using Apache FOP 2.1<a class="headerlink" href="#using-apache-fop-21" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.1/compiling.html">Build</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.1/configuration.html">Configure</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.1/running.html">Run</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.1/embedding.html">Embed</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.1/servlets.html">Servlets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.1/anttask.html">Ant Task</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 id="features_5">Features<a class="headerlink" href="#features_5" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.1/accessibility.html">Accessibility</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.1/complexscripts.html">Complex Scripts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.1/events.html">Events</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.1/extensions.html">Extensions</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.1/fonts.html">Fonts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.1/graphics.html">Graphics</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.1/hyphenation.html">Hyphenation</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.1/intermediate.html">Intermediate Format</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.1/metadata.html">Metadata</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.1/output.html">Output Targets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.1/pdfa.html">PDF/A</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.1/pdfx.html">PDF/X</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.1/pdfencryption.html">PDF Encryption</a>
+                  </li>
+                  <li>
+                    <a href="/fop/fop-pdf-images.html">PDF Images</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.1/whitespacemanagement.html">Whitespace Management</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2 id="fop-20">FOP 2.0<a class="headerlink" href="#fop-20" title="Permanent link">&para;</a>
+            </h2>
+            <ul>
+              <li>
+                <a href="/fop/2.0/">FOP 2.0 Overview</a>
+              </li>
+              <li>
+                <a href="/fop/2.0/releaseNotes_2.0.html">Release Notes</a>
+              </li>
+              <li>
+                <a href="/fop/2.0/changes_2.0.html">Changes (2.0)</a>
+              </li>
+              <li>
+                <a href="/fop/2.0/knownissues_overview.html">Known Issues</a>
+              </li>
+              <li>
+                <a href="/fop/2.0/upgrading.html">Upgrading</a>
+              </li>
+              <li>
+                <h3 id="using-apache-fop-20">Using Apache FOP 2.0<a class="headerlink" href="#using-apache-fop-20" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.0/compiling.html">Build</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.0/configuration.html">Configure</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.0/running.html">Run</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.0/embedding.html">Embed</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.0/servlets.html">Servlets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.0/anttask.html">Ant Task</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 id="features_6">Features<a class="headerlink" href="#features_6" title="Permanent link">&para;</a>
+                </h3>
+                <ul>
+                  <li>
+                    <a href="/fop/2.0/accessibility.html">Accessibility</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.0/complexscripts.html">Complex Scripts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.0/events.html">Events</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.0/extensions.html">Extensions</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.0/fonts.html">Fonts</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.0/graphics.html">Graphics</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.0/hyphenation.html">Hyphenation</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.0/intermediate.html">Intermediate Format</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.0/metadata.html">Metadata</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.0/output.html">Output Targets</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.0/pdfa.html">PDF/A</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.0/pdfx.html">PDF/X</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.0/pdfencryption.html">PDF Encryption</a>
+                  </li>
+                  <li>
+                    <a href="/fop/fop-pdf-images.html">PDF Images</a>
+                  </li>
+                  <li>
+                    <a href="/fop/2.0/whitespacemanagement.html">Whitespace Management</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h2 id="fop-11">FOP 1.1<a class="headerlink" href="#fop-11" title="Permanent link">&para;</a>
+        </h2>
+        <ul>
+          <li>
+            <a href="/fop/1.1/">FOP 1.1 Overview</a>
+          </li>
+          <li>
+            <a href="/fop/1.1/releaseNotes_1.1.html">Release Notes</a>
+          </li>
+          <li>
+            <a href="/fop/1.1/changes_1.1.html">Changes (1.1)</a>
+          </li>
+          <li>
+            <a href="/fop/1.1/knownissues_overview.html">Known Issues</a>
+          </li>
+          <li>
+            <a href="/fop/1.1/upgrading.html">Upgrading</a>
+          </li>
+          <li>
+            <h3 id="using-apache-fop-11">Using Apache FOP 1.1<a class="headerlink" href="#using-apache-fop-11" title="Permanent link">&para;</a>
+            </h3>
+            <ul>
+              <li>
+                <a href="/fop/1.1/compiling.html">Build</a>
+              </li>
+              <li>
+                <a href="/fop/1.1/configuration.html">Configure</a>
+              </li>
+              <li>
+                <a href="/fop/1.1/running.html">Run</a>
+              </li>
+              <li>
+                <a href="/fop/1.1/embedding.html">Embed</a>
+              </li>
+              <li>
+                <a href="/fop/1.1/servlets.html">Servlets</a>
+              </li>
+              <li>
+                <a href="/fop/1.1/anttask.html">Ant Task</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h3 id="features_7">Features<a class="headerlink" href="#features_7" title="Permanent link">&para;</a>
+            </h3>
+            <ul>
+              <li>
+                <a href="/fop/1.1/accessibility.html">Accessibility</a>
+              </li>
+              <li>
+                <a href="/fop/1.1/complexscripts.html">Complex Scripts</a>
+              </li>
+              <li>
+                <a href="/fop/1.1/events.html">Events</a>
+              </li>
+              <li>
+                <a href="/fop/1.1/extensions.html">Extensions</a>
+              </li>
+              <li>
+                <a href="/fop/1.1/fonts.html">Fonts</a>
+              </li>
+              <li>
+                <a href="/fop/1.1/graphics.html">Graphics</a>
+              </li>
+              <li>
+                <a href="/fop/1.1/hyphenation.html">Hyphenation</a>
+              </li>
+              <li>
+                <a href="/fop/1.1/intermediate.html">Intermediate Format</a>
+              </li>
+              <li>
+                <a href="/fop/1.1/metadata.html">Metadata</a>
+              </li>
+              <li>
+                <a href="/fop/1.1/output.html">Output Targets</a>
+              </li>
+              <li>
+                <a href="/fop/1.1/pdfa.html">PDF/A</a>
+              </li>
+              <li>
+                <a href="/fop/1.1/pdfx.html">PDF/X</a>
+              </li>
+              <li>
+                <a href="/fop/1.1/pdfencryption.html">PDF Encryption</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h2 id="fop-10">FOP 1.0<a class="headerlink" href="#fop-10" title="Permanent link">&para;</a>
+        </h2>
+        <ul>
+          <li>
+            <a href="/fop/1.0/">FOP 1.0 Overview</a>
+          </li>
+          <li>
+            <a href="/fop/1.0/releaseNotes_1.0.html">Release Notes</a>
+          </li>
+          <li>
+            <a href="/fop/1.0/changes_1.0.html">Changes (1.0)</a>
+          </li>
+          <li>
+            <a href="/fop/1.0/knownissues_overview.html">Known Issues</a>
+          </li>
+          <li>
+            <a href="/fop/1.0/upgrading.html">Upgrading</a>
+          </li>
+          <li>
+            <h3 id="using-apache-fop-10">Using Apache FOP 1.0<a class="headerlink" href="#using-apache-fop-10" title="Permanent link">&para;</a>
+            </h3>
+            <ul>
+              <li>
+                <a href="/fop/1.0/compiling.html">Build</a>
+              </li>
+              <li>
+                <a href="/fop/1.0/configuration.html">Configure</a>
+              </li>
+              <li>
+                <a href="/fop/1.0/running.html">Run</a>
+              </li>
+              <li>
+                <a href="/fop/1.0/embedding.html">Embed</a>
+              </li>
+              <li>
+                <a href="/fop/1.0/servlets.html">Servlets</a>
+              </li>
+              <li>
+                <a href="/fop/1.0/anttask.html">Ant Task</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h3 id="features_8">Features<a class="headerlink" href="#features_8" title="Permanent link">&para;</a>
+            </h3>
+            <ul>
+              <li>
+                <a href="/fop/1.0/output.html">Output Targets</a>
+              </li>
+              <li>
+                <a href="/fop/1.0/intermediate.html">Intermediate Format</a>
+              </li>
+              <li>
+                <a href="/fop/1.0/pdfencryption.html">PDF Encryption</a>
+              </li>
+              <li>
+                <a href="/fop/1.0/pdfa.html">PDF/A</a>
+              </li>
+              <li>
+                <a href="/fop/1.0/pdfx.html">PDF/X</a>
+              </li>
+              <li>
+                <a href="/fop/1.0/graphics.html">Graphics</a>
+              </li>
+              <li>
+                <a href="/fop/1.0/fonts.html">Fonts</a>
+              </li>
+              <li>
+                <a href="/fop/1.0/hyphenation.html">Hyphenation</a>
+              </li>
+              <li>
+                <a href="/fop/1.0/extensions.html">Extensions</a>
+              </li>
+              <li>
+                <a href="/fop/1.0/events.html">Events</a>
+              </li>
+              <li>
+                <a href="/fop/1.0/metadata.html">Metadata</a>
+              </li>
+              <li>
+                <a href="/fop/1.0/accessibility.html">Accessibility</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h2 id="fop-development">FOP Development<a class="headerlink" href="#fop-development" title="Permanent link">&para;</a>
+    </h2>
+    <ul>
+      <li>
+        <a href="/fop/dev/index.html">General Information</a>
+      </li>
+      <li>
+        <a href="/fop/dev/testing.html">Testing</a>
+      </li>
+      <li>
+        <a href="/fop/dev/tools.html">Developer Tools</a>
+      </li>
+      <li>
+        <a href="/fop/dev/svg.html">SVG Issues</a>
+      </li>
+      <li>
+        <a href="/fop/dev/release.html">Release Process</a>
+      </li>
+      <li>
+        <a href="/fop/dev/conventions.html">Coding Conventions</a>
+      </li>
+      <li>
+        <a href="/fop/dev/faq.html">FAQ</a>
+      </li>
+      <li>
+        <a href="/fop/dev/extensions.html">Adding an Extension</a>
+      </li>
+      <li>
+        <a href="/fop/dev/doc.html">Managing Documentation</a>
+      </li>
+      <li>
+        <a href="/fop/dev/rtflib.html">RTFLib (jfor)</a>
+      </li>
+      <li>
+        <a href="/fop/dev/implement.html">Implementation Overview</a>
+      </li>
+      <li>
+        <a href="https://cwiki.apache.org/confluence/display/XMLGRAPHICSFOP/FOPProjectPages">Unresolved (Wiki)</a>
+      </li>
+      <h3 id="design">Design<a class="headerlink" href="#design" title="Permanent link">&para;</a>
+      </h3>
+      <ul>
+        <li>
+          <a href="/fop/dev/design/index.html">Design Info</a>
+        </li>
+        <li>
+          <a href="/fop/dev/design/parsing.html">Input Parsing</a>
+        </li>
+        <li>
+          <a href="/fop/dev/design/images.html">Images</a>
+        </li>
+        <li>
+          <a href="/fop/dev/design/pdf-library.html">PDF Library</a>
+        </li>
+        <li>
+          <a href="/fop/dev/design/breakpos.html">Layout Managers</a>
+        </li>
+        <li>
+          <a href="/fop/dev/design/fotree.html">FO Tree</a>
+        </li>
+        <li>
+          <a href="/fop/dev/design/svg.html">SVG</a>
+        </li>
+        <li>
+          <a href="/fop/dev/design/areas.html">Area Tree</a>
+        </li>
+        <li>
+          <a href="/fop/dev/design/optimise.html">Optimisations</a>
+        </li>
+        <li>
+          <a href="/fop/dev/design/useragent.html">User Agent</a>
+        </li>
+        <li>
+          <a href="/fop/dev/design/renderers.html">Renderers</a>
+        </li>
+        <li>
+          <a href="/fop/dev/design/extending.html">Extensions</a>
+        </li>
+        <li>
+          <a href="/fop/dev/design/embedding.html">Embedding FOP in Other Applications</a>
+        </li>
+        <li>
+          <a href="/fop/dev/design/startup.html">Startup, Environment, Control</a>
+        </li>
+        <li>
+          <a href="/fop/dev/design/properties.html">Properties</a>
+        </li>
+        <li>
+          <a href="/fop/dev/design/layout.html">Layout</a>
+        </li>
+        <li>
+          <a href="/fop/dev/design/pagebreaking.html">Page Breaking</a>
+        </li>
+      </ul>
+    </ul>
+  </li>
+  <h1 id="apache-xml-graphics">Apache&trade; XML Graphics<a class="headerlink" href="#apache-xml-graphics" title="Permanent link">&para;</a>
+  </h1>
+  <ul>
+    <li>
+      <h2 id="project-overview">Project Overview<a class="headerlink" href="#project-overview" title="Permanent link">&para;</a>
+      </h2>
+      <ul>
+        <li>
+          <a href="/team.html">Who We Are</a>
+        </li>
+        <li>
+          <a href="/legal.html">Legal Stuff</a>
+        </li>
+        <li>
+          <a href="/charter.html">Project Charter</a>
+        </li>
+        <li>
+          <a href="/mail.html">Mailing Lists</a>
+        </li>
+        <li>
+          <a href="/repo.html">Code Repositories</a>
+        </li>
+        <li>
+          <a href="https://www.apache.org/foundation/sponsorship.html">ASF Sponsorship Program</a>
+        </li>
+        <li>
+          <a href="https://www.apache.org/foundation/thanks.html">ASF Thanks</a>
+        </li>
+        <li>
+          <a href="https://www.apache.org/licenses/">Licenses</a>
+        </li>
+        <li>
+          <a href="/security.html">Apache XML Graphics Security</a>
+        </li>
+        <li>
+          <a href="https://www.apache.org/security/">ASF Security</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <h1 id="sub-projects">Sub Projects<a class="headerlink" href="#sub-projects" title="Permanent link">&para;</a>
+  </h1>
+  <ul>
+    <li>
+      <a href="/batik/">Apache Batik</a>
+    </li>
+    <li>
+      <a href="/commons/">Apache XML Graphics Commons</a>
+    </li>
+  </ul>
+  <h3 id="search-apache-xml-graphics">Search Apache XML Graphics<a class="headerlink" href="#search-apache-xml-graphics" title="Permanent link">&para;</a>
+  </h3>
+  <form name="search" id="search" action="https://www.google.com/search" method="get">
+    <input value="xmlgraphics.apache.org" name="sitesearch" type="hidden"/>
+    <input type="text" name="q" id="query" />
+    <input type="submit" id="submit" value="Search" />
+  </form>
+
+  <h3 id="apachecon-n-america">ApacheCon N. America<a class="headerlink" href="#apachecon-n-america" title="Permanent link">&para;</a>
+  </h3>
+  <p>
+    <a title="ApacheCon North America" href="https://www.apachecon.com">
+      <img class="apachecon_logo" alt="ApacheCon North America" src="/images/apachecon-logo.png" width="200" />
+    </a>
+    <br />
+    <br />
+  </p>
+  <ul>
+    <li>
+      <strong>
+        <a href="https://www.apachecon.com/">ApacheCon NA</a>
+      </strong>
+    </li>
+  </ul>
+  <p>Hope to see you there!</p>
+  <h3 id="apachecon-europe">ApacheCon Europe<a class="headerlink" href="#apachecon-europe" title="Permanent link">&para;</a>
+  </h3>
+  <p>
+    <a title="ApacheCon Europe" href="https://www.apachecon.com">
+      <img class="apachecon_logo" alt="ApacheCon Europe" src="/images/apachecon-logo.png" width="200" />
+    </a>
+    <br />
+    <br />
+  </p>
+  <ul>
+    <li>
+      <strong>
+        <a href="https://www.apachecon.com/">ApacheCon Europe</a>
+      </strong>
+    </li>
+  </ul>
+  <p>Hope to see you there!</p>
+  <p>
+    <a title="Apache Software Foundation" href="https://www.apache.org">
+      <img id="asf_logo_url" alt="Apache Software Foundation " src="/images/asflogo_horizontal_color.svg" width="200" />
+    </a>
+    <br />
+    <br />
+  </p>
+  <p>
+    <a title="Support the Apache Software Foundation" href="https://donate.apache.org/">
+      Support the Apache Software Foundation
+    </a>
+  </p>
+  <script>
+$(document).ready(function () {
+    $('#navigation :header').click(function () {
+        var text = $(this).siblings('ul');
+        if (text.is(':hidden')) {
+            text.slideDown('200');
+        } else {
+            text.slideUp('200');
+        }
+    });
+    if ($('#navigation :header').siblings('ul')) {
+      $('#navigation :header').not('#search-apache-xml-graphics, #apachewzxhzdk3-xml-graphics, #sub-projects').append(' &raquo;');
+    }
+  $('#navigation > ul > li > ul > li ul').hide();
+  $('#project-overview').next().hide();
+  $('#fop-development').next().hide();
+  $('#versions').next().show();
+  var str=location.href.toLowerCase();
+  $("#navigation li a").each(function() {
+    if (str.indexOf(this.href.toLowerCase()) > -1) {
+      $(this).parents().slideDown('200');
+      $("li.highlight").removeClass("highlight");
+      $(this).parent().addClass("highlight");
+    }
+  });
+})
+</script>	</div>
+	
+	<div id="outdated-warning" style="padding: .5em; text-align: center; background-color: #FFBABA; color: #6A0E0E;">
+    This document is for an old version of FOP that is no longer supported. <a href="../2.11/fopxconf.html">Latest version of this page</a>
+    </div>
+  
+
+	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
+	  <a href="/fop/"><img src="/images/fop-logo-reconstructed.svg" alt="The Apache FOP Project" width="120" height="65" style="float:left; margin-right: 15px;" /></a>
+	  <h2>The Apache&trade; FOP Project</h2>
+	</div>  
+
+      <div id="content" class="grid_16">
+        <div id="items">
+        </div>
+      	<div class="section-content"><style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
+    <h1 id="fop-fopxconf-configuration-options-reference">FOP <code>fop.xconf</code> Configuration Options Reference</h1>
+<p>This document lists every configuration option recognised by Apache FOP's
+<code>fop.xconf</code> user-configuration file, extracted from the configuration parsers
+in <code>fop-core</code>. The root element is always <code>&lt;fop version="1.0"&gt;</code>.</p>
+<p>Conventions:</p>
+<ul>
+<li><strong>Element</strong> — a child XML element, usually <code>&lt;name&gt;value&lt;/name&gt;</code>.</li>
+<li><strong>Attribute</strong> — an XML attribute on an element, <code>attr="value"</code>.</li>
+<li><strong>(bool)</strong> — expects <code>true</code>/<code>false</code>.</li>
+<li><strong>(presence)</strong> — the element takes effect merely by being present.</li>
+<li>Defaults shown are the fallbacks used by the code when the option is absent.</li>
+</ul>
+<hr>
+<h2 id="1-top-level-options-direct-children-of-fop">1. Top-level options (direct children of <code>&lt;fop&gt;</code>)</h2>
+<p>Parsed by <code>FopConfParser</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>base</code></td>
+<td>URI</td>
+<td>Base URI for resolving relative URLs.</td>
+<td><code>.</code></td>
+</tr>
+<tr>
+<td><code>strict-validation</code></td>
+<td>bool</td>
+<td>Enable strict XSL-FO validation.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>strict-configuration</code></td>
+<td>bool</td>
+<td>Enable strict user-config validation (fail on errors).</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>accessibility</code></td>
+<td>bool</td>
+<td>Enable tagged/accessible output. Has attributes below.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>image-cache</code></td>
+<td>bool</td>
+<td>Enable image caching.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>source-resolution</code></td>
+<td>float</td>
+<td>Source DPI for sizing SVG/bitmap pixels.</td>
+<td>72</td>
+</tr>
+<tr>
+<td><code>target-resolution</code></td>
+<td>float</td>
+<td>Target DPI for generated bitmaps.</td>
+<td>72</td>
+</tr>
+<tr>
+<td><code>break-indent-inheritance</code></td>
+<td>bool</td>
+<td>Break indent inheritance at reference-area boundaries.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>default-page-settings</code></td>
+<td>element</td>
+<td>Default page size when value is <code>auto</code>. Attributes below.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>complex-scripts</code></td>
+<td>element</td>
+<td>Complex-script (BiDi/shaping) support. Attribute below.</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td><code>hyphenation-base</code></td>
+<td>URI</td>
+<td>Base URI for hyphenation pattern files.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>hyphenation-pattern</code></td>
+<td>element (repeatable)</td>
+<td>Map a hyphenation file to a language. Value = filename. Attributes below.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>prefer-renderer</code></td>
+<td>bool</td>
+<td>Prefer the legacy <code>Renderer</code> over the newer <code>IFDocumentHandler</code>.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>table-border-overpaint</code></td>
+<td>bool</td>
+<td>Overpaint collapsing table borders.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>simple-line-breaking</code></td>
+<td>bool</td>
+<td>Use simple (greedy) line-breaking instead of Knuth.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>skip-page-position-only-allowed</code></td>
+<td>bool</td>
+<td>Allow skipping <code>page-position="only"</code> pages.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>legacy-skip-page-position-only</code></td>
+<td>bool</td>
+<td>Legacy behaviour for <code>page-position="only"</code>.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>legacy-last-page-change-ipd</code></td>
+<td>bool</td>
+<td>Legacy last-page IPD-change behaviour.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>legacy-fo-wrapper</code></td>
+<td>bool</td>
+<td>Legacy <code>fo:wrapper</code> handling.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>legacy-invalid-break-position</code></td>
+<td>bool</td>
+<td>Legacy invalid-break-position handling.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>use-parent-ipd-image-scaling</code></td>
+<td>bool</td>
+<td>Scale images against the parent IPD.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>image-loading</code></td>
+<td>element</td>
+<td>Image-loader penalties / ICC converter. See below.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="default-page-settings-attributes"><code>default-page-settings</code> attributes</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>height</code></td>
+<td>Default page height.</td>
+<td><code>11in</code></td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>Default page width.</td>
+<td><code>8.26in</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="accessibility-attributes"><code>accessibility</code> attributes</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>static-region-per-page</code></td>
+<td>Emit static regions per page.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>keep-empty-tags</code></td>
+<td>Keep empty structure tags.</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<h3 id="complex-scripts-attributes"><code>complex-scripts</code> attributes</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>disabled</code></td>
+<td>Disable complex-script features.</td>
+<td>false (features on)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hyphenation-pattern-attributes"><code>hyphenation-pattern</code> attributes</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lang</code></td>
+<td>Two-letter language code (required).</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td>Two-letter country code (optional).</td>
+</tr>
+<tr>
+<td><code>extension</code></td>
+<td>File type: <code>xml</code> or <code>hyp</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="image-loading-sub-structure"><code>image-loading</code> sub-structure</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>icc-converter</code></td>
+<td>attribute</td>
+<td>ICC converter implementation name.</td>
+</tr>
+<tr>
+<td><code>penalty</code></td>
+<td>element (repeatable)</td>
+<td>Adjust the penalty of an image loader.</td>
+</tr>
+<tr>
+<td><code>penalty/@class</code></td>
+<td>attribute</td>
+<td>Fully-qualified class name of the image loader.</td>
+</tr>
+<tr>
+<td><code>penalty/@value</code></td>
+<td>attribute</td>
+<td>Integer penalty, or <code>INF</code>/<code>INFINITE</code> for infinite.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="2-font-options">2. Font options</h2>
+<p>Parsed by <code>FontManagerConfigurator</code>, <code>DefaultFontConfig</code>, and
+<code>FontSubstitutionsConfigurator</code>. Font configuration can appear at the top
+level (font cache/base settings) and inside a <code>&lt;fonts&gt;</code> block (which may be at
+the top level or inside a <code>&lt;renderer&gt;</code>).</p>
+<h3 id="21-top-level-font-settings-children-of-fop">2.1 Top-level font settings (children of <code>&lt;fop&gt;</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>font-base</code></td>
+<td>URI</td>
+<td>Base URI for resolving font URLs.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>use-cache</code></td>
+<td>bool</td>
+<td>Enable the font cache.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>cache-file</code></td>
+<td>path</td>
+<td>Location of the font cache file (used when caching is on).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>base14-kerning</code></td>
+<td>bool</td>
+<td>Enable kerning for the Base-14 fonts.</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-the-fonts-block">2.2 The <code>&lt;fonts&gt;</code> block</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fonts</code></td>
+<td>element</td>
+<td>Container for font configuration.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>fonts/@lazy-load</code></td>
+<td>attribute (bool)</td>
+<td>Lazily load fonts on demand.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>auto-detect</code></td>
+<td>element (presence)</td>
+<td>Auto-detect operating-system fonts.</td>
+<td>off</td>
+</tr>
+<tr>
+<td><code>directory</code></td>
+<td>element (repeatable)</td>
+<td>Directory to scan for fonts (value = path).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>directory/@recursive</code></td>
+<td>attribute (bool)</td>
+<td>Recurse into sub-directories.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>font</code></td>
+<td>element (repeatable)</td>
+<td>Define an individual font. See attributes below.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>substitutions</code></td>
+<td>element</td>
+<td>Font substitution rules. See §2.4.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>referenced-fonts</code></td>
+<td>element</td>
+<td>Fonts to reference rather than embed. See §2.5.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-the-font-element">2.3 The <code>&lt;font&gt;</code> element</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute / child</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>embed-url</code></td>
+<td>attribute</td>
+<td>URL of the font file to embed (required).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>sub-font</code></td>
+<td>attribute</td>
+<td>Sub-font name within a collection (TTC).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>metrics-url</code></td>
+<td>attribute</td>
+<td>URL of a metrics file.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>embed-url-afm</code></td>
+<td>attribute</td>
+<td>AFM metrics URL.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>embed-url-pfm</code></td>
+<td>attribute</td>
+<td>PFM metrics URL.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>kerning</code></td>
+<td>attribute (bool)</td>
+<td>Enable kerning.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>advanced</code></td>
+<td>attribute (bool)</td>
+<td>Enable advanced typographic (OpenType) features.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>encoding-mode</code></td>
+<td>attribute</td>
+<td><code>auto</code>, <code>single-byte</code>, or <code>cid</code>.</td>
+<td>auto</td>
+</tr>
+<tr>
+<td><code>embedding-mode</code></td>
+<td>attribute</td>
+<td><code>auto</code>, <code>full</code>, or <code>subset</code>.</td>
+<td>auto</td>
+</tr>
+<tr>
+<td><code>simulate-style</code></td>
+<td>attribute (bool)</td>
+<td>Simulate bold/italic (PDF only).</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>embed-as-type1</code></td>
+<td>attribute (bool)</td>
+<td>Embed as Type 1 (PostScript only).</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>svg</code></td>
+<td>attribute (bool)</td>
+<td>Enable SVG support for this font.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>font-triplet</code></td>
+<td>child element (repeatable)</td>
+<td>Maps the font to a triplet.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>font-triplet/@name</code></td>
+<td>attribute</td>
+<td>Font family name (required).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>font-triplet/@style</code></td>
+<td>attribute</td>
+<td><code>normal</code>, <code>italic</code>, <code>oblique</code>, <code>backslant</code>.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>font-triplet/@weight</code></td>
+<td>attribute</td>
+<td><code>normal</code>, <code>bold</code>, or <code>100</code>–<code>900</code>.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-substitutions-child-of-fonts">2.4 <code>&lt;substitutions&gt;</code> (child of <code>&lt;fonts&gt;</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>substitution</code></td>
+<td>element (repeatable)</td>
+<td>A single substitution rule.</td>
+</tr>
+<tr>
+<td><code>substitution/from</code></td>
+<td>element</td>
+<td>Source font qualifier (required).</td>
+</tr>
+<tr>
+<td><code>substitution/to</code></td>
+<td>element</td>
+<td>Target font qualifier (required).</td>
+</tr>
+<tr>
+<td><code>from</code>/<code>to</code> <code>@font-family</code></td>
+<td>attribute</td>
+<td>Font family (required).</td>
+</tr>
+<tr>
+<td><code>from</code>/<code>to</code> <code>@font-weight</code></td>
+<td>attribute</td>
+<td>Font weight (optional).</td>
+</tr>
+<tr>
+<td><code>from</code>/<code>to</code> <code>@font-style</code></td>
+<td>attribute</td>
+<td>Font style (optional).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="25-referenced-fonts-child-of-fonts">2.5 <code>&lt;referenced-fonts&gt;</code> (child of <code>&lt;fonts&gt;</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>match</code></td>
+<td>element (repeatable)</td>
+<td>A matcher for fonts to reference instead of embed.</td>
+</tr>
+<tr>
+<td><code>match/@font-family</code></td>
+<td>attribute</td>
+<td>Regular expression matched against the font family name.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3-renderer-options-renderersrenderer-mime">3. Renderer options (<code>&lt;renderers&gt;&lt;renderer mime="..."&gt;</code>)</h2>
+<p>Each output format has its own <code>&lt;renderer&gt;</code> block selected by <code>mime</code>. Every
+renderer may also contain a <code>&lt;fonts&gt;</code> block (§2.2) and <code>xml-handler</code> blocks
+(§3.9).</p>
+<h3 id="31-mimeapplicationpdf-pdf">3.1 <code>mime="application/pdf"</code> — PDF</h3>
+<p>Parsed by <code>PDFRendererConfig</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filterList</code></td>
+<td>element (repeatable)</td>
+<td>PDF stream filters; <code>&lt;value&gt;</code> children list filter names (<code>flate</code>, <code>ascii-85</code>, <code>ascii-hex</code>, <code>null</code>).</td>
+<td>flate</td>
+</tr>
+<tr>
+<td><code>filterList/@type</code></td>
+<td>attribute</td>
+<td>Stream type the filter list applies to.</td>
+<td>default</td>
+</tr>
+<tr>
+<td><code>pdf-a-mode</code></td>
+<td>element</td>
+<td>PDF/A conformance (e.g. <code>PDF/A-1b</code>, <code>PDF/A-2b</code>, <code>PDF/A-3b</code>).</td>
+<td>disabled</td>
+</tr>
+<tr>
+<td><code>pdf-ua-mode</code></td>
+<td>element</td>
+<td>PDF/UA conformance (<code>PDF/UA-1</code>).</td>
+<td>disabled</td>
+</tr>
+<tr>
+<td><code>pdf-x-mode</code></td>
+<td>element</td>
+<td>PDF/X conformance (<code>PDF/X-3:2003</code>).</td>
+<td>disabled</td>
+</tr>
+<tr>
+<td><code>pdf-vt-mode</code></td>
+<td>element</td>
+<td>PDF/VT conformance.</td>
+<td>disabled</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>element</td>
+<td>PDF version (e.g. <code>1.4</code>, <code>1.7</code>).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>disable-srgb-colorspace</code></td>
+<td>bool</td>
+<td>Disable the default sRGB colour space.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>merge-fonts</code></td>
+<td>bool</td>
+<td>Merge fonts to reduce size.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>merge-fonts/@remap-singlebyte-font</code></td>
+<td>attribute (bool)</td>
+<td>Remap single-byte fonts when merging.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>merge-form-fields</code></td>
+<td>bool</td>
+<td>Merge form fields of the same name.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>linearization</code></td>
+<td>bool</td>
+<td>Linearise (web-optimise) the PDF.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>form-xobject</code></td>
+<td>bool</td>
+<td>Use form XObjects.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>use-object-streams</code></td>
+<td>bool</td>
+<td>Use object streams (PDF 1.5+).</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>output-profile</code></td>
+<td>URI</td>
+<td>ICC output-intent profile.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>force-uri-basic-link</code></td>
+<td>bool</td>
+<td>Force basic (non-GoTo) URI links.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>encryption-params</code></td>
+<td>element</td>
+<td>Encryption settings. See below.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>sign-params</code></td>
+<td>element</td>
+<td>Digital-signature settings. See below.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="encryption-params"><code>encryption-params</code></h4>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner-password</code></td>
+<td>string</td>
+<td>Owner password.</td>
+<td>""</td>
+</tr>
+<tr>
+<td><code>user-password</code></td>
+<td>string</td>
+<td>User password.</td>
+<td>""</td>
+</tr>
+<tr>
+<td><code>noprint</code></td>
+<td>presence</td>
+<td>Forbid printing.</td>
+<td>allowed</td>
+</tr>
+<tr>
+<td><code>nocopy</code></td>
+<td>presence</td>
+<td>Forbid copying content.</td>
+<td>allowed</td>
+</tr>
+<tr>
+<td><code>noedit</code></td>
+<td>presence</td>
+<td>Forbid editing content.</td>
+<td>allowed</td>
+</tr>
+<tr>
+<td><code>noannotations</code></td>
+<td>presence</td>
+<td>Forbid annotations.</td>
+<td>allowed</td>
+</tr>
+<tr>
+<td><code>nofillinforms</code></td>
+<td>presence</td>
+<td>Forbid filling forms.</td>
+<td>allowed</td>
+</tr>
+<tr>
+<td><code>noaccesscontent</code></td>
+<td>presence</td>
+<td>Forbid text/graphics extraction.</td>
+<td>allowed</td>
+</tr>
+<tr>
+<td><code>noassembledoc</code></td>
+<td>presence</td>
+<td>Forbid assembling the document.</td>
+<td>allowed</td>
+</tr>
+<tr>
+<td><code>noprinthq</code></td>
+<td>presence</td>
+<td>Forbid high-quality printing.</td>
+<td>allowed</td>
+</tr>
+<tr>
+<td><code>encrypt-metadata</code></td>
+<td>bool</td>
+<td>Encrypt document metadata.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>encryption-length</code></td>
+<td>int</td>
+<td>Key length (40–256, multiple of 8).</td>
+<td>128</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sign-params"><code>sign-params</code></h4>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>keystore</code></td>
+<td>Keystore file (required if signing).</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Signer name.</td>
+</tr>
+<tr>
+<td><code>location</code></td>
+<td>Signing location.</td>
+</tr>
+<tr>
+<td><code>reason</code></td>
+<td>Signing reason.</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>Keystore password.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-mimeapplicationpostscript-postscript">3.2 <code>mime="application/postscript"</code> — PostScript</h3>
+<p>Parsed by <code>PSRendererConfig</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>auto-rotate-landscape</code></td>
+<td>bool</td>
+<td>Rotate landscape pages automatically.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>language-level</code></td>
+<td>int</td>
+<td>PostScript language level.</td>
+<td>3</td>
+</tr>
+<tr>
+<td><code>optimize-resources</code></td>
+<td>bool</td>
+<td>Remove unused resources after generation.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>safe-set-page-device</code></td>
+<td>bool</td>
+<td>Use safe <code>setpagedevice</code>.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>dsc-compliant</code></td>
+<td>bool</td>
+<td>Produce DSC-compliant output.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>acrobat-downsample</code></td>
+<td>bool</td>
+<td>Allow Acrobat image downsampling.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>compress-streams</code></td>
+<td>bool</td>
+<td>Compress PostScript streams.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>rendering</code></td>
+<td>enum</td>
+<td><code>size</code> or <code>quality</code>.</td>
+<td>quality</td>
+</tr>
+<tr>
+<td><code>jpeg-compression</code></td>
+<td>string</td>
+<td>JPEG compression ratio.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-mimeapplicationx-afp-afp">3.3 <code>mime="application/x-afp"</code> — AFP</h3>
+<p>Parsed by <code>AFPRendererConfig</code> and <code>AFPFontConfig</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>shading</code></td>
+<td>enum</td>
+<td><code>color</code> or <code>dithered</code>.</td>
+<td>color</td>
+</tr>
+<tr>
+<td><code>renderer-resolution</code></td>
+<td>int</td>
+<td>Output resolution in dpi.</td>
+<td>240</td>
+</tr>
+<tr>
+<td><code>line-width-correction</code></td>
+<td>float</td>
+<td>Line-width correction factor.</td>
+<td>2.5</td>
+</tr>
+<tr>
+<td><code>resource-group-file</code></td>
+<td>URI</td>
+<td>External resource-group file.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>default-resource-levels</code></td>
+<td>element</td>
+<td>Resource levels; each attribute name is a resource type, value is a level (e.g. <code>external</code>, <code>inline</code>, <code>print-file</code>).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>images</code></td>
+<td>element</td>
+<td>Image output settings. See below.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>goca</code></td>
+<td>element</td>
+<td>GOCA (vector graphics) settings. See below.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="images-attributes"><code>images</code> attributes</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mode</code></td>
+<td>enum</td>
+<td><code>b+w</code> (grayscale) or <code>color</code>.</td>
+<td>b+w</td>
+</tr>
+<tr>
+<td><code>bits-per-pixel</code></td>
+<td>int</td>
+<td>Bits per pixel (when <code>mode="b+w"</code>).</td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>cmyk</code></td>
+<td>bool</td>
+<td>Use CMYK (when <code>mode="color"</code>).</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>dithering-quality</code></td>
+<td>float</td>
+<td>Dithering quality (<code>min</code>/<code>max</code> or 0.0–1.0).</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td><code>native</code></td>
+<td>bool</td>
+<td>Pass through native images.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>native-pdf</code></td>
+<td>bool</td>
+<td>Embed native PDF.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>pseg</code></td>
+<td>bool</td>
+<td>Wrap images in a page segment.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>fs45</code></td>
+<td>bool</td>
+<td>Use the FS45 image format.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>mask-enabled</code></td>
+<td>bool</td>
+<td>Enable image masks.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>mapping_option</code></td>
+<td>enum</td>
+<td><code>scale-to-fit</code> → scale-to-fill, else default.</td>
+<td>default</td>
+</tr>
+<tr>
+<td><code>metadata-in-object-container</code></td>
+<td>bool</td>
+<td>Store metadata in the object container.</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<h4 id="imagesjpeg-attributes"><code>images/jpeg</code> attributes</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>allow-embedding</code></td>
+<td>bool</td>
+<td>Allow JPEG embedding.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>use-ioca-images</code></td>
+<td>bool</td>
+<td>Wrap JPEGs in IOCA.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>bitmap-encoding-quality</code></td>
+<td>float</td>
+<td>Bitmap encoding quality.</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<h4 id="goca-attributes"><code>goca</code> attributes</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enabled</code></td>
+<td>bool</td>
+<td>Enable GOCA.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td>enum</td>
+<td><code>stroke</code>/<code>shapes</code> → stroke text, else default.</td>
+<td>default</td>
+</tr>
+<tr>
+<td><code>pseg</code></td>
+<td>bool</td>
+<td>Wrap GOCA in a page segment.</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<h4 id="afp-fonts-fontsfont">AFP fonts (<code>&lt;fonts&gt;&lt;font&gt;</code>)</h4>
+<p>Each <code>&lt;font&gt;</code> has <code>&lt;font-triplet&gt;</code> children (<code>name</code>/<code>style</code>/<code>weight</code>) and
+either an <code>embed-url</code> (TrueType) or an <code>&lt;afp-font&gt;</code> child.</p>
+<p><code>&lt;afp-font&gt;</code> attributes:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><code>raster</code>, <code>outline</code>, <code>CIDKeyed</code>, or <code>truetype</code> (required).</td>
+</tr>
+<tr>
+<td><code>codepage</code></td>
+<td>Code page (required).</td>
+</tr>
+<tr>
+<td><code>encoding</code></td>
+<td>Encoding (required).</td>
+</tr>
+<tr>
+<td><code>characterset</code></td>
+<td>Character set (required for raster/outline/CIDKeyed).</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Font name (defaults to characterset; required for truetype).</td>
+</tr>
+<tr>
+<td><code>base-uri</code></td>
+<td>Base URI for the font resources.</td>
+</tr>
+<tr>
+<td><code>base14-font</code></td>
+<td>Mapped Base-14 font (outline/raster).</td>
+</tr>
+<tr>
+<td><code>sub-font</code></td>
+<td>Sub-font (truetype).</td>
+</tr>
+<tr>
+<td><code>position-by-char</code></td>
+<td>(bool) Position by character (truetype). Default true.</td>
+</tr>
+<tr>
+<td><code>ebcdic-dbcs</code></td>
+<td>(bool) EBCDIC double-byte line data (CIDKeyed). Default false.</td>
+</tr>
+</tbody>
+</table>
+<p><code>&lt;afp-raster-font&gt;</code> (child of raster <code>&lt;afp-font&gt;</code>, repeatable):</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>size</code></td>
+<td>Point size (required).</td>
+</tr>
+<tr>
+<td><code>characterset</code></td>
+<td>Character set for this size (required).</td>
+</tr>
+<tr>
+<td><code>base14-font</code></td>
+<td>Mapped Base-14 font.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="34-mimeimagepng-and-other-bitmaps-bitmap">3.4 <code>mime="image/png"</code> and other bitmaps — Bitmap</h3>
+<p>Parsed by <code>BitmapRendererConfig</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transparent-page-background</code></td>
+<td>bool</td>
+<td>Transparent page background.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>background-color</code></td>
+<td>color</td>
+<td>Page background colour (ignored if transparent).</td>
+<td>white</td>
+</tr>
+<tr>
+<td><code>anti-aliasing</code></td>
+<td>bool</td>
+<td>Enable anti-aliasing.</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>rendering</code></td>
+<td>enum</td>
+<td><code>quality</code> or <code>speed</code>.</td>
+<td>quality</td>
+</tr>
+<tr>
+<td><code>color-mode</code></td>
+<td>enum</td>
+<td><code>rgba</code>, <code>rgb</code>, <code>gray</code>, <code>binary</code>, <code>bi-level</code>.</td>
+<td>rgba</td>
+</tr>
+</tbody>
+</table>
+<h3 id="35-mimeimagetiff-tiff">3.5 <code>mime="image/tiff"</code> — TIFF</h3>
+<p>Parsed by <code>TIFFRendererConfig</code>. Inherits all Bitmap options (§3.4) plus:</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>compression</code></td>
+<td>enum</td>
+<td><code>NONE</code>, <code>JPEG</code>, <code>PackBits</code>, <code>Deflate</code>, <code>LZW</code>, <code>ZLib</code>, <code>CCITT T.4</code>, <code>CCITT T.6</code>.</td>
+<td>PackBits</td>
+</tr>
+<tr>
+<td><code>single-strip</code></td>
+<td>bool</td>
+<td>Write all rows in a single strip.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>endianness</code></td>
+<td>enum</td>
+<td><code>DEFAULT</code>, <code>LITTLE_ENDIAN</code>, <code>BIG_ENDIAN</code>.</td>
+<td>DEFAULT</td>
+</tr>
+</tbody>
+</table>
+<h3 id="36-mimeapplicationx-pcl-pcl">3.6 <code>mime="application/x-pcl"</code> — PCL</h3>
+<p>Parsed by <code>PCLRendererConfig</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rendering</code></td>
+<td>enum</td>
+<td><code>quality</code>, <code>speed</code>, or <code>bitmap</code>.</td>
+<td>quality</td>
+</tr>
+<tr>
+<td><code>text-rendering</code></td>
+<td>enum</td>
+<td><code>auto</code> or <code>bitmap</code>.</td>
+<td>auto</td>
+</tr>
+<tr>
+<td><code>disable-pjl</code></td>
+<td>bool</td>
+<td>Disable PJL commands.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>optimize-resources</code></td>
+<td>bool</td>
+<td>Optimise resources.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>images/@mode</code></td>
+<td>attribute</td>
+<td><code>color</code> enables colour output.</td>
+<td>mono</td>
+</tr>
+</tbody>
+</table>
+<h3 id="37-mimeimagesvgxml-and-java2d-base-java2d">3.7 <code>mime="image/svg+xml"</code> (and Java2D base) — Java2D</h3>
+<p>Parsed by <code>Java2DRendererConfig</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transparent-page-background</code></td>
+<td>bool</td>
+<td>Transparent page background.</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<p>Note: the example <code>fop.xconf</code> also shows <code>&lt;format type="paginated"/&gt;</code>,
+<code>&lt;link value="true"/&gt;</code> and <code>&lt;strokeText value="false"/&gt;</code> for the SVG renderer;
+these are handled by the SVG output module.</p>
+<h3 id="38-mimetextplain-text">3.8 <code>mime="text/plain"</code> — Text</h3>
+<p>Parsed by <code>TxtRendererConfig</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>encoding</code></td>
+<td>string</td>
+<td>Output character encoding.</td>
+<td>UTF-8</td>
+</tr>
+</tbody>
+</table>
+<h3 id="39-xml-handler-any-renderer">3.9 <code>xml-handler</code> (any renderer)</h3>
+<p>Parsed by <code>XMLHandlerConfigurator</code>. Lets you pass renderer-specific options to
+a foreign-object (e.g. SVG) handler.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>xml-handler</code></td>
+<td>element (repeatable)</td>
+<td>Per-namespace handler configuration.</td>
+</tr>
+<tr>
+<td><code>xml-handler/@namespace</code></td>
+<td>attribute</td>
+<td>Namespace URI the handler applies to (e.g. <code>http://www.w3.org/2000/svg</code>).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="notes-and-naming-gotchas">Notes and naming gotchas</h2>
+<ul>
+<li><code>FopFactoryConfigurator</code> no longer exists; factory-level options are parsed
+  by <code>FopConfParser</code>.</li>
+<li>Font cache / base settings (<code>font-base</code>, <code>use-cache</code>, <code>cache-file</code>,
+  <code>base14-kerning</code>) live directly under <code>&lt;fop&gt;</code>, not under <code>&lt;fonts&gt;</code>.</li>
+<li>The element name <code>rendering</code> is reused by several renderers with different
+  allowed values: PostScript (<code>size</code>/<code>quality</code>), PCL
+  (<code>quality</code>/<code>speed</code>/<code>bitmap</code>), Bitmap (<code>quality</code>/<code>speed</code>).</li>
+<li><code>optimize-resources</code> exists for both PostScript and PCL.</li>
+<li>The AFP <code>mapping_option</code> attribute uses an underscore, unlike most names
+  which use hyphens.</li>
+<li>In the Bitmap renderer, <code>background-color</code> is forced transparent when
+  <code>transparent-page-background</code> is <code>true</code>.</li>
+</ul>
+        </div>
+      </div>
+      <div class="clear"></div>
+
+	  <div id="footer">
+		<div class="copyright">
+		  <div style="float:left; padding: 7px;">
+			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-logo" alt="Apache Software Foundation" src="/images/asflogo_horizontal_color.svg" width="200" /></a>
+        </div>
+		  <p>
+			Copyright &copy; 2025 The Apache Software Foundation, Licensed under
+			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+			<br />
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache logo, and the
+			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
+			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			trademarks of their respective owners.
+			<br />
+		  </p>
+		</div> 
+	  </div>
+	
+  </body>
+</html>
