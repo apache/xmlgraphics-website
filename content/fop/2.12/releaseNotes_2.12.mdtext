@@ -1,0 +1,140 @@
+Title: Release Notes for Apache FOP 2.12
+
+#Release Notes for Apache FOP 2.12
+
+Release date: 20 October 2026
+
+This article explains the new features and notable improvements in Apache&trade; FOP 2.12, compared with 2.11. For the complete list of fixes, see the [Changes page](changes_2.12.html); issue numbers below link to the [FOP project in Jira](https://issues.apache.org/jira/projects/FOP).
+
+## Summary – Release highlights { #summary}
+
+New capabilities:
+
+- [Support for running on Java 25](#java25)
+- [Bengali complex script support](#bengali)
+- [Complex-script support for TrueType fonts in AFP output](#afp-complexscripts)
+- [Support for the `table-and-caption` formatting object](#table-and-caption)
+- [Extended `force-page-count` values](#force-page-count)
+- [A new square style for rule leaders](#leaders)
+
+Output and quality improvements:
+
+- [Smaller, compressible PostScript output](#postscript)
+- [Font substitution for the PDF transcoder](#pdf-transcoder)
+- [Structure-tree merging for embedded PDFs](#structure-merge)
+- [Several accessibility improvements](#accessibility)
+- [Lower memory usage for large and tagged documents](#optimizations)
+
+## New features { #new-features}
+
+### Support for running on Java 25 { #java25}
+
+Apache FOP now builds and runs on Java 25. Java 8 remains the minimum supported runtime, so existing deployments are unaffected. ([FOP-3275](https://issues.apache.org/jira/browse/FOP-3275).)
+
+### Bengali complex script support { #bengali}
+
+Shaping support has been added for the Bengali script, extending FOP's [complex scripts](complexscripts.html) coverage. Bengali text is now reordered and shaped correctly when an appropriate OpenType font is used. ([FOP-3357](https://issues.apache.org/jira/browse/FOP-3357).)
+
+### Complex-script support for TrueType fonts in AFP output { #afp-complexscripts}
+
+Complex-script shaping is now available for TrueType fonts in [AFP output](output.html#afp), so scripts that require reordering and glyph substitution can be used in AFP documents. ([FOP-3337](https://issues.apache.org/jira/browse/FOP-3337).)
+
+### Support for the `table-and-caption` formatting object { #table-and-caption}
+
+FOP now supports the `fo:table-and-caption` formatting object, which associates an `fo:table-caption` with a table and lays the two out as a unit. ([FOP-3252](https://issues.apache.org/jira/browse/FOP-3252).)
+
+### Extended `force-page-count` values { #force-page-count}
+
+In addition to the values defined by XSL-FO, the `force-page-count` property on `fo:page-sequence` now accepts four extension values — `doubly-odd`, `doubly-even`, `end-on-doubly-odd` and `end-on-doubly-even` — which are useful for duplex and signature-based printing where sheet (rather than page) parity matters:
+
+    :::xml
+    <fo:page-sequence master-reference="chapter"
+                      force-page-count="end-on-doubly-even">
+
+([FOP-3279](https://issues.apache.org/jira/browse/FOP-3279).)
+
+### A new square style for rule leaders { #leaders}
+
+The `fox:rule-style` [extension property](extensions.html#fox-rule-style) gains a `square` value, which renders a rule leader as a repeating series of squares (behaving like the standard `dotted` style, but with squares):
+
+    :::xml
+    <fo:leader leader-pattern="rule"
+               fox:rule-style="square"
+               rule-thickness="2pt"
+               leader-length.optimum="100%"/>
+
+Pattern (rule) leaders also now honour spacing between the repeated marks. ([FOP-3327](https://issues.apache.org/jira/browse/FOP-3327), [FOP-3325](https://issues.apache.org/jira/browse/FOP-3325).)
+
+### Font substitution for the PDF transcoder { #pdf-transcoder}
+
+The PDF transcoder, used to convert SVG directly to PDF, now honours the font [substitution](fonts.html) configuration, so font substitutions apply consistently to standalone SVG-to-PDF conversions. ([FOP-3277](https://issues.apache.org/jira/browse/FOP-3277).)
+
+### Structure-tree merging for embedded PDFs { #structure-merge}
+
+When an external PDF is embedded into a document, its tagged structure tree can now be merged into the output document's structure tree, preserving accessibility information from the embedded file. ([FOP-3245](https://issues.apache.org/jira/browse/FOP-3245).)
+
+## Output improvements { #output}
+
+### PDF
+
+- Bookmarks are copied from embedded PDF documents ([FOP-3122](https://issues.apache.org/jira/browse/FOP-3122)).
+- Basic links can be configured to use URIs instead of internal GoTo references ([FOP-3290](https://issues.apache.org/jira/browse/FOP-3290)).
+- Only the first XMP metadata block is rendered to the PDF, avoiding duplicate metadata ([FOP-3309](https://issues.apache.org/jira/browse/FOP-3309)).
+- `fox:alt-text` is now written to the `/Contents` entry of internal link annotations (Contributed by Matthew Roth in [FOP-3322](https://issues.apache.org/jira/browse/FOP-3322)).
+
+### PostScript { #postscript}
+
+- PostScript streams can now be compressed to produce smaller files ([FOP-3326](https://issues.apache.org/jira/browse/FOP-3326)).
+- Embedded raster images can be emitted using JPEG compression ([FOP-3311](https://issues.apache.org/jira/browse/FOP-3311)).
+- Code points for SVG text are now escaped correctly in PostScript ([FOP-3278](https://issues.apache.org/jira/browse/FOP-3278)).
+- A clearer error message is reported when an invalid PostScript `setpagedevice` is used ([FOP-3321](https://issues.apache.org/jira/browse/FOP-3321)).
+
+### AFP
+
+- A font triplet can be moved to the resource ([FOP-3268](https://issues.apache.org/jira/browse/FOP-3268)).
+- Line ends are now set to flat ([FOP-3287](https://issues.apache.org/jira/browse/FOP-3287)).
+- `afp:page-group=false` is allowed on the last page ([FOP-3351](https://issues.apache.org/jira/browse/FOP-3351)).
+- The AFP font cache has been moved to the `FopFactory` ([FOP-3288](https://issues.apache.org/jira/browse/FOP-3288)).
+
+## Accessibility improvements { #accessibility}
+
+- PDF accessibility tagging now continues past the first `fo:page-sequence` instead of stopping ([FOP-3273](https://issues.apache.org/jira/browse/FOP-3273)).
+- Footnotes use the correct reference type ([FOP-3264](https://issues.apache.org/jira/browse/FOP-3264)).
+- Alternative text is encrypted when encryption is enabled ([FOP-3258](https://issues.apache.org/jira/browse/FOP-3258)).
+- A table header that spans several rows is tagged correctly ([FOP-3283](https://issues.apache.org/jira/browse/FOP-3283)).
+- Rule leaders are marked as artifacts when PDF/UA is not active ([FOP-3306](https://issues.apache.org/jira/browse/FOP-3306)).
+
+## Optimizations { #optimizations}
+
+Several changes reduce memory consumption, particularly for large and tagged (accessible) documents:
+
+- Lower memory usage for accessibility ([FOP-3272](https://issues.apache.org/jira/browse/FOP-3272)).
+- Lower memory usage for fonts without kerning data ([FOP-3280](https://issues.apache.org/jira/browse/FOP-3280)).
+- Area traits are deduplicated to save memory ([FOP-3333](https://issues.apache.org/jira/browse/FOP-3333)).
+- The structure-element tree can be garbage collected once it is no longer needed ([FOP-3269](https://issues.apache.org/jira/browse/FOP-3269)).
+- Images with no cache key are no longer cached ([FOP-3291](https://issues.apache.org/jira/browse/FOP-3291)).
+
+## Configuration (`fop.xconf`) changes { #config-changes}
+
+New configuration options introduced in this release (see the [Config Options reference](fopxconf.html) for the full list):
+
+- `<image-cache>` (top level): enable or disable image caching (default `true`).
+- `<use-parent-ipd-image-scaling>` (top level): scale images against the parent content-area IPD ([FOP-3307](https://issues.apache.org/jira/browse/FOP-3307)).
+- `<legacy-invalid-break-position>` (top level): restore the legacy handling of invalid break positions.
+- PDF renderer `<force-uri-basic-link>`: force basic URI links instead of internal GoTo links ([FOP-3290](https://issues.apache.org/jira/browse/FOP-3290)).
+- PDF renderer `<merge-fonts remap-singlebyte-font="...">`: control remapping of single-byte fonts when merging fonts.
+- PostScript renderer `<compress-streams>`: compress PostScript streams ([FOP-3326](https://issues.apache.org/jira/browse/FOP-3326)).
+- PostScript renderer `<jpeg-compression>`: set the JPEG compression used for embedded images ([FOP-3311](https://issues.apache.org/jira/browse/FOP-3311)).
+- AFP renderer `<images metadata-in-object-container="...">`: store image metadata in the object container.
+
+## Security { #security}
+
+- DTDs are no longer allowed in SVG fonts ([FOP-3298](https://issues.apache.org/jira/browse/FOP-3298)).
+- Secure XML processing is applied in `FopServlet` ([FOP-3302](https://issues.apache.org/jira/browse/FOP-3302)).
+- The `DigestMethod` has been removed from PDF signing ([FOP-3299](https://issues.apache.org/jira/browse/FOP-3299)).
+
+## Other changes { #other}
+
+- Updated to Bouncy Castle 1.84 for PDF signing and encryption ([FOP-3308](https://issues.apache.org/jira/browse/FOP-3308)).
+
+To see the full list of changes, please visit the [Changes page](changes_2.12.html).

@@ -1,0 +1,248 @@
+Title: FOP XSL-FO Extensions Reference
+
+# FOP XSL-FO Extensions Reference
+
+Apache FOP extends standard XSL-FO with a number of custom elements and
+attributes, each in its own namespace. These are registered through
+`ElementMapping` classes (see
+`META-INF/services/org.apache.fop.fo.ElementMapping`). This document lists
+every extension element and attribute, grouped by namespace.
+
+## Namespaces at a glance
+
+| Prefix | Namespace URI | Area |
+|---|---|---|
+| `fox` | `http://xmlgraphics.apache.org/fop/extensions` | General FOP extensions |
+| (old) | `http://xml.apache.org/fop/extensions` | Legacy FOP 0.20.5 namespace |
+| `foi` | `http://xmlgraphics.apache.org/fop/internal` | Internal (structure tree) |
+| `pdf` | `http://xmlgraphics.apache.org/fop/extensions/pdf` | PDF output |
+| `afp` | `http://xmlgraphics.apache.org/fop/extensions/afp` | AFP output |
+| (ps) | `http://xmlgraphics.apache.org/fop/postscript` | PostScript output |
+| `pcl` | `http://xmlgraphics.apache.org/fop/extensions/pcl` | PCL output |
+| `svg` | `http://www.w3.org/2000/svg` | SVG graphics |
+| (batik) | `http://xml.apache.org/batik/ext` | Batik SVG extensions |
+| (xmp) | `adobe:ns:meta/` | XMP metadata |
+| (rdf) | `http://www.w3.org/1999/02/22-rdf-syntax-ns#` | RDF (inside XMP) |
+| (plan) | `http://xmlgraphics.apache.org/fop/plan` | Plan example extension |
+
+---
+
+## 1. General FOP extensions (`fox`)
+
+Namespace: `http://xmlgraphics.apache.org/fop/extensions`
+
+### Elements
+
+| Element | Purpose |
+|---|---|
+| `fox:outline` | Bookmark/outline grouping (legacy bookmark mechanism). |
+| `fox:label` | Label text for an outline/bookmark. |
+| `fox:destination` | Named internal destination/anchor. |
+| `fox:external-document` | Import an entire external multi-page document (e.g. multi-page image/PDF) as its own page sequence. Requires `src`. |
+
+### Attributes (used on standard FO elements)
+
+**Pagination / layout**
+
+| Attribute | Purpose |
+|---|---|
+| `fox:block-progression-unit` | Force a fixed block-progression grid unit. |
+| `fox:widow-content-limit` | Minimum content kept with widows (on `fo:list-block`, `fo:table`). |
+| `fox:orphan-content-limit` | Minimum content kept with orphans (on `fo:list-block`, `fo:table`). |
+| `fox:disable-column-balancing` | Disable column balancing on the last page of a multi-column region. |
+| `fox:scale` | Page scaling on `fo:simple-page-master`; format `scaleX [scaleY]`. |
+| `fox:transform` | Affine transform applied to blocks/regions. |
+
+**Links / navigation**
+
+| Attribute | Purpose |
+|---|---|
+| `fox:internal-destination` | Internal link target id. |
+| `fox:auto-toggle` | Auto-toggle behaviour for bookmarks/links. |
+
+**Accessibility**
+
+| Attribute | Purpose |
+|---|---|
+| `fox:alt-text` | Alternative text for accessible / tagged output. |
+| `fox:header` | Mark a table cell as a header for accessibility. |
+| `fox:abbreviation` | Expansion/abbreviation text for accessibility. |
+
+**Rounded borders**
+
+| Attribute | Purpose |
+|---|---|
+| `fox:border-radius` | Shorthand for all corner radii. |
+| `fox:border-before-radius-start` | Corner radius. |
+| `fox:border-before-radius-end` | Corner radius. |
+| `fox:border-after-radius-start` | Corner radius. |
+| `fox:border-after-radius-end` | Corner radius. |
+| `fox:border-start-radius-before` | Corner radius. |
+| `fox:border-start-radius-after` | Corner radius. |
+| `fox:border-end-radius-before` | Corner radius. |
+| `fox:border-end-radius-after` | Corner radius. |
+| `fox:border-before-start-radius` | Corner radius (alternate naming). |
+| `fox:border-before-end-radius` | Corner radius (alternate naming). |
+| `fox:border-after-start-radius` | Corner radius (alternate naming). |
+| `fox:border-after-end-radius` | Corner radius (alternate naming). |
+
+**Backgrounds / layers / rules / numbering**
+
+| Attribute | Purpose |
+|---|---|
+| `fox:background-image-width` | Explicit scaling width for a background image. |
+| `fox:background-image-height` | Explicit scaling height for a background image. |
+| `fox:layer` | Assign content to a PDF optional content group / layer. |
+| `fox:rule-style` | Non-standard `fo:leader` rule styles (e.g. `square`). |
+| `fox:number-conversion-features` | ICU number-conversion features for page/number formatting. |
+
+---
+
+## 2. Legacy FOP extensions
+
+Namespace: `http://xml.apache.org/fop/extensions` (FOP 0.20.5 and earlier)
+
+| Element | Purpose |
+|---|---|
+| `outline` | Legacy bookmark/outline element. |
+| `label` | Legacy label element. |
+
+Kept only for backward compatibility; no attributes.
+
+---
+
+## 3. Internal extensions (`foi`)
+
+Namespace: `http://xmlgraphics.apache.org/fop/internal`
+
+No public elements. Used internally for the accessibility structure tree.
+
+| Attribute | Purpose |
+|---|---|
+| `foi:struct-id` | Identifies a structure-tree element (tagged PDF). |
+| `foi:struct-ref` | References a structure-tree element. |
+| `foi:scope` | Scope of a table header cell for the structure tree. |
+
+---
+
+## 4. PDF extensions (`pdf`)
+
+Namespace: `http://xmlgraphics.apache.org/fop/extensions/pdf`
+
+Used to inject raw PDF objects/dictionaries. Typically placed within
+`fo:declarations` or page/document contexts.
+
+| Element | Purpose | Key attributes |
+|---|---|---|
+| `pdf:catalog` | Entries injected into the document Catalog dictionary. | dictionary entries |
+| `pdf:page` | Entries injected into a page dictionary. | `page-numbers` (`*`, ranges `n-m`, `n-LAST`, comma lists) |
+| `pdf:info` | Document Information dictionary entries. | dictionary entries |
+| `pdf:vt` | PDF/VT (variable transactional) dictionary. | dictionary entries |
+| `pdf:pagepiece` | PagePiece dictionary (private page-level data). | dictionary entries |
+| `pdf:dictionary` | Generic / nested dictionary. | `key` (when nested) |
+| `pdf:action` | PDF action dictionary. | `type` (required), `id` |
+| `pdf:navigator` | Navigation node dictionary. | `id`, entries |
+| `pdf:layer` | Optional content group (OCG / layer) dictionary. | `id`, entries |
+| `pdf:embedded-file` | Attach an embedded file (child of `fo:declarations`). | `src` (required), `filename`, `description` |
+| `pdf:array` | Array-valued collection entry. | `key` |
+| `pdf:boolean` | Boolean-valued entry. | `key` |
+| `pdf:name` | Name-valued entry. | `key` |
+| `pdf:number` | Number-valued entry. | `key` |
+| `pdf:string` | String-valued entry. | `key` |
+| `pdf:reference` | Indirect object reference entry. | `refid` (required), `key` |
+
+Attribute notes: dictionary elements accept `id` (when the type uses an id) and
+`key` (when the dictionary is itself an entry); collection-entry elements
+require `key` when they are a dictionary child.
+
+---
+
+## 5. AFP extensions (`afp`)
+
+Namespace: `http://xmlgraphics.apache.org/fop/extensions/afp`
+
+| Element | Purpose | Key attributes |
+|---|---|---|
+| `afp:tag-logical-element` | Emit a Tag Logical Element (TLE) structured field for indexing. | `name`, `value`, `encoding`, `placement` |
+| `afp:include-page-segment` | Include an AFP page segment resource. | `name`, `src` |
+| `afp:include-page-overlay` | Include a page overlay at an offset. | `name`, `x`, `y` |
+| `afp:include-form-map` | Include a Form Map (IFM) resource. | `name`, `src` (required) |
+| `afp:no-operation` | Insert a No Operation (NOP) structured field carrying arbitrary data. | `name`, `value`/text, `encoding`, `placement` |
+| `afp:invoke-medium-map` | Invoke a Medium Map (IMM) on an `fo:page-sequence`. | `name` |
+
+Page grouping is handled through two further namespace names used
+programmatically: `afp:page-group` and `afp:add-to-previous-page-group`.
+
+---
+
+## 6. PostScript extensions
+
+Namespace: `http://xmlgraphics.apache.org/fop/postscript`
+
+| Element | Purpose |
+|---|---|
+| `ps-setup-code` | Document-level PostScript setup code. |
+| `ps-page-setup-code` | Per-page PostScript setup code. |
+| `ps-page-trailer-code-before` | PostScript code emitted before the page trailer. |
+| `ps-setpagedevice` | Emit a PostScript `setpagedevice` call for device configuration. |
+| `ps-comment-before` | Insert a PostScript `%%`-comment before content. |
+| `ps-comment-after` | Insert a PostScript `%%`-comment after content. |
+
+---
+
+## 7. PCL extensions (`pcl`)
+
+Namespace: `http://xmlgraphics.apache.org/fop/extensions/pcl`
+
+No elements — attributes only.
+
+| Attribute | Purpose |
+|---|---|
+| `pcl:paper-source` | Select the PCL printer paper input source/tray. |
+| `pcl:output-bin` | Select the PCL printer output bin. |
+| `pcl:duplex-mode` | Set the PCL duplex (double-sided) printing mode. |
+
+---
+
+## 8. SVG and Batik
+
+- **SVG** — namespace `http://www.w3.org/2000/svg`, prefix `svg`. The `<svg:svg>`
+  root (and every descendant via a catch-all) is handed to Apache Batik for
+  layout and rendering; individual SVG elements are not registered one by one.
+  Requires Batik on the classpath.
+- **Batik extensions** — namespace `http://xml.apache.org/batik/ext`. Same
+  whole-domain handling for Batik-specific SVG extension elements.
+
+---
+
+## 9. XMP / RDF metadata
+
+Used to embed document metadata, usually inside `fo:declarations`.
+
+| Element | Namespace | Purpose |
+|---|---|---|
+| `xmpmeta` | `adobe:ns:meta/` | Root of embedded XMP metadata. |
+| `RDF` | `http://www.w3.org/1999/02/22-rdf-syntax-ns#` | The `rdf:RDF` container inside `xmpmeta`. |
+
+---
+
+## 10. Plan (example extension)
+
+Namespace: `http://xmlgraphics.apache.org/fop/plan`
+
+A sample/demo extension under `fop/examples/plan` (not part of `fop-core`). The
+`<plan:plan>` root element (plus a catch-all for descendants) builds a
+project-plan diagram and transforms it into SVG.
+
+---
+
+## Notes
+
+- `fox:scale`, `fox:transform`, and the `foi:*` / `pcl:*` attributes are
+  implemented as renderer-side attribute names rather than full FO property
+  makers.
+- The `fox` namespace supersedes the legacy `http://xml.apache.org/fop/extensions`
+  namespace; prefer `fox` in new documents.
+- SVG, Batik, XMP, RDF, and Plan are handled as whole DOM domains, so their
+  "elements" are the standard elements of those vocabularies rather than a
+  fixed FOP-defined set.

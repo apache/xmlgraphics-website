@@ -1,0 +1,75 @@
+Title: Apache(tm) FOP: History of Changes 2.12
+
+#History of Changes 2.12
+
+## Version 2.12 (20 Oct 2026) { #version_2.12}
+
+See [Change list in Jira](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20resolution%20%3D%20Fixed%20AND%20fixVersion%20%3D%202.12%20ORDER%20BY%20updated%20DESC%2C%20created%20DESC%2C%20priority%20DESC).
+
+ - FOP-2722: Fix illegal argument exception when using custom ttf font and chinese characters
+ - FOP-2758: Avoid MalformedURLException when using custom URI schemes
+ - FOP-2763: Only flag local table cell for table marker
+ - FOP-2872: Fix NPE when using em units on SVG
+ - FOP-2880: Use soft hyphen for hyphenation
+ - FOP-3087: Add fonts element after auto-detect element is added to it
+ - FOP-3122: Copy bookmarks
+ - FOP-3165: Fix table structure creation when using PDFUA
+ - FOP-3181: Prevent page duplication when ipd changes
+ - FOP-3245: Add structure tree merging to external document
+ - FOP-3251: Use MD5 instead of hashcode
+ - FOP-3252: Add support for table-and-caption
+ - FOP-3253: Use rest page when we cant fit on last page
+ - FOP-3256: Include last page when we cant fit on last page
+ - FOP-3257: Avoid possible NPE
+ - FOP-3258: Encrypt altText if needed
+ - FOP-3261: Remap conflicting GID for font merge
+ - FOP-3264: Footnote accessibility should use reference type
+ - FOP-3268: Add option to move AFP triplet to the resource
+ - FOP-3269: Allow GC to remove structelem tree
+ - FOP-3270: Country specific hyphenation file not found
+ - FOP-3272: Optimise memory usage for accessibility
+ - FOP-3273: PDF accessibility tagging stops after first fo/page-sequence
+ - FOP-3275: Support for Java 25
+ - FOP-3277: Add font substitution support for PDFTranscoder
+ - FOP-3278: Escape codepoint for SVG in PS
+ - FOP-3279: implement support for force-page-count extension attribute values doubly-odd, doubly-even, end-on-doubly-odd and end-on-doubly-even
+ - FOP-3280: Optimise memory when font has no kerning
+ - FOP-3281: Remove checkstyle from junit
+ - FOP-3282: Duplicate spanned table header when static region per page conf is true
+ - FOP-3283: Fix header accessibility issue when it spans over several rows
+ - FOP-3284: Correct temp name
+ - FOP-3286: Fix rounded borders
+ - FOP-3287: Set line end to flat for AFP
+ - FOP-3288: Move AFP font cache to fopfactory
+ - FOP-3290: Add conf to allow basic links to use URIs instead
+ - FOP-3291: Skip cache of images with no key
+ - FOP-3292: Remove character max index restriction
+ - FOP-3293: Test caching of pdf image object streams
+ - FOP-3298: Disallow DTD from SVG font
+ - FOP-3299: Remove DigestMethod from pdf signing
+ - FOP-3302: Add secure processing to FopServlet
+ - FOP-3304: Allow FO to add custom schemas
+ - FOP-3306: Allow rule leader to be marked as Artifact when PDFUA is not active
+ - FOP-3307: Use parent content area IPD to scale image to cell size
+ - FOP-3308: Update to bouncycastle 1.84
+ - FOP-3309: Only render first metadata to PDF
+ - FOP-3311: Allow to compress RenderedImage for PS
+ - FOP-3316: Fix reading order when using the static-region-per-page conf
+ - FOP-3317: Set QDox to provided
+ - FOP-3321: Improve error message when invalid PS setpagedevice used
+ - FOP-3322: Write fox:alt-text to /Contents on internal link annotations by Matthew Roth
+ - FOP-3323: Prevent NPE when adding invalid property to fo:title
+ - FOP-3325: Add spacing support to pattern rule leader
+ - FOP-3326: Add option to compress postscript graphics
+ - FOP-3327: Add square leader style
+ - FOP-3331: Prevent first word from being removed by the left float
+ - FOP-3332: Checkstyle
+ - FOP-3333: Deduplicate traits to save memory
+ - FOP-3337: Add AFP truetype complex script support
+ - FOP-3348: A nested block's positions are not wrapped twice when line breaking runs again by Jason Harrop
+ - FOP-3349: A line that overflows on the float re-layout pass is reported, not a NullPointerException by Jason Harrop
+ - FOP-3351: Allow afp:page-group=false on last page
+ - FOP-3352: Avoid exception when checking contour data on empty glyphs
+ - FOP-3356: simulate-style does not slant an italic face or stroke a bold one, and stroke at 1/35em by Jason Harrop
+ - FOP-3357: Add Bengali support
+
