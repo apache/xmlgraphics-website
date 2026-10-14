@@ -6,6 +6,8 @@ github:
     - apache
   protected_branches:
     master:
+      restrict_deletion: true
+      restrict_force_push: true
       required_linear_history: true
 
 staging:
