@@ -75,33 +75,22 @@ The checklist below is based on a combination of input from from Christian Geise
 
 ### 5.4 Maven { #maven}
 
-- Run: mvn clean install javadoc:jar source:jar repository:bundle-create -B -DskipTests
+- Run with settings.xml: PASSWORD=xxx mvn -Prelease deploy -DskipTests
 
-- Copy the *-bundle.jar files to a new directory
+settings.xml:
 
-- Run this command
+    :::xml
+    <settings>
+        <servers>
+            <server>
+                  <id>apache.releases.https</id>
+                  <username>xxx</username>
+                  <password>${env.PASSWORD}</password>
+            </server>
+        </servers>
+    </settings>
 
-python signmvn.py:
-
-    :::python
-    import os
-    import shutil
-    def addasc(bundle, afile):
-        os.system('jar xf ' + bundle + ' ' + afile)
-        if os.path.exists(afile):
-            os.system('gpg --armor --detach-sign --force-v3-sigs --batch --verbose ' + afile)
-            os.system('jar uf ' + bundle + ' ' + afile + '.asc')
-            os.remove(afile)
-            os.remove(afile + '.asc')
-    for bundle in os.listdir('.'):
-        if bundle.endswith('bundle.jar'):
-            addasc(bundle, 'pom.xml')
-            addasc(bundle, bundle.replace('-bundle', ''))
-            addasc(bundle, bundle.replace('-bundle', '-javadoc'))
-            addasc(bundle, bundle.replace('-bundle', '-sources'))
-            addasc(bundle, bundle.replace('-bundle', '-tests'))
-
-- Upload to: https://repository.apache.org/#staging-upload check for errors at https://repository.apache.org/#stagingRepositories
+- Check for errors at https://repository.apache.org/#stagingRepositories and click close
 
 - Setup staging config in ~/.m2/settings.xml, rename ~/.m2/repository
 
