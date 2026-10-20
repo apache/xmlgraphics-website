@@ -1893,38 +1893,23 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 </ul>
 <h3 id="maven">5.4 Maven</h3>
 <ul>
-<li>
-<p>Run: mvn clean install javadoc:jar source:jar repository:bundle-create -B -DskipTests</p>
-</li>
-<li>
-<p>Copy the *-bundle.jar files to a new directory</p>
-</li>
-<li>
-<p>Run this command</p>
-</li>
+<li>Run with settings.xml: PASSWORD=xxx mvn -Prelease deploy -DskipTests</li>
 </ul>
-<p>python signmvn.py:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">shutil</span>
-<span class="k">def</span> <span class="nf">addasc</span><span class="p">(</span><span class="n">bundle</span><span class="p">,</span> <span class="n">afile</span><span class="p">):</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;jar xf &#39;</span> <span class="o">+</span> <span class="n">bundle</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">afile</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">afile</span><span class="p">):</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;gpg --armor --detach-sign --force-v3-sigs --batch --verbose &#39;</span> <span class="o">+</span> <span class="n">afile</span><span class="p">)</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;jar uf &#39;</span> <span class="o">+</span> <span class="n">bundle</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">afile</span> <span class="o">+</span> <span class="s1">&#39;.asc&#39;</span><span class="p">)</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">afile</span><span class="p">)</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">afile</span> <span class="o">+</span> <span class="s1">&#39;.asc&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">bundle</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">bundle</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;bundle.jar&#39;</span><span class="p">):</span>
-        <span class="n">addasc</span><span class="p">(</span><span class="n">bundle</span><span class="p">,</span> <span class="s1">&#39;pom.xml&#39;</span><span class="p">)</span>
-        <span class="n">addasc</span><span class="p">(</span><span class="n">bundle</span><span class="p">,</span> <span class="n">bundle</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-bundle&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
-        <span class="n">addasc</span><span class="p">(</span><span class="n">bundle</span><span class="p">,</span> <span class="n">bundle</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-bundle&#39;</span><span class="p">,</span> <span class="s1">&#39;-javadoc&#39;</span><span class="p">))</span>
-        <span class="n">addasc</span><span class="p">(</span><span class="n">bundle</span><span class="p">,</span> <span class="n">bundle</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-bundle&#39;</span><span class="p">,</span> <span class="s1">&#39;-sources&#39;</span><span class="p">))</span>
-        <span class="n">addasc</span><span class="p">(</span><span class="n">bundle</span><span class="p">,</span> <span class="n">bundle</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-bundle&#39;</span><span class="p">,</span> <span class="s1">&#39;-tests&#39;</span><span class="p">))</span>
+<p>settings.xml:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;settings&gt;</span>
+    <span class="nt">&lt;servers&gt;</span>
+        <span class="nt">&lt;server&gt;</span>
+              <span class="nt">&lt;id&gt;</span>apache.releases.https<span class="nt">&lt;/id&gt;</span>
+              <span class="nt">&lt;username&gt;</span>xxx<span class="nt">&lt;/username&gt;</span>
+              <span class="nt">&lt;password&gt;</span>${env.PASSWORD}<span class="nt">&lt;/password&gt;</span>
+        <span class="nt">&lt;/server&gt;</span>
+    <span class="nt">&lt;/servers&gt;</span>
+<span class="nt">&lt;/settings&gt;</span>
 </code></pre></div>
 
 <ul>
 <li>
-<p>Upload to: https://repository.apache.org/#staging-upload check for errors at https://repository.apache.org/#stagingRepositories</p>
+<p>Check for errors at https://repository.apache.org/#stagingRepositories and click close</p>
 </li>
 <li>
 <p>Setup staging config in ~/.m2/settings.xml, rename ~/.m2/repository</p>
