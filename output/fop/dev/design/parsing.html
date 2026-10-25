@@ -25,7 +25,7 @@
 	});
     </script>
 
-   <title>Apache(tm) FOP Design: Input Parsing</title>
+   <title>Apache FOP&trade; Design: Input Parsing</title>
   </head>
 
   <body>
@@ -51,7 +51,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <img alt="Apache XML Graphics Project Logo" src="/images/apache-xml-graphics.svg" title="Apache XML Graphics Project" />
   </a>
 </p>
-<h1 id="apache-fop">Apache&trade; FOP<a class="headerlink" href="#apache-fop" title="Permanent link">&para;</a>
+<h1 id="apache-fop">Apache FOP&trade;<a class="headerlink" href="#apache-fop" title="Permanent link">&para;</a>
 </h1>
 <ul>
   <li>
@@ -138,7 +138,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
             <a href="/fop/trunk/upgrading.html">Upgrading</a>
           </li>
           <li>
-            <h3 id="using-apache-fop">Using Apache&trade; FOP<a class="headerlink" href="#using-apache-fop" title="Permanent link">&para;</a>
+            <h3 id="using-apache-fop">Using Apache FOP&trade;<a class="headerlink" href="#using-apache-fop" title="Permanent link">&para;</a>
             </h3>
             <ul>
               <li>
@@ -1742,7 +1742,7 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
       </ul>
     </ul>
   </li>
-  <h1 id="apache-xml-graphics">Apache&trade; XML Graphics<a class="headerlink" href="#apache-xml-graphics" title="Permanent link">&para;</a>
+  <h1 id="apache-xml-graphics">Apache&reg; XML Graphics<a class="headerlink" href="#apache-xml-graphics" title="Permanent link">&para;</a>
   </h1>
   <ul>
     <li>
@@ -1878,7 +1878,7 @@ $(document).ready(function () {
 
 	<div id="bannertext" style="border-bottom: 2px dashed #666666; height: 70px;">
 	  <a href="/fop/"><img src="/images/fop-logo-reconstructed.svg" alt="The Apache FOP Project" width="120" height="65" style="float:left; margin-right: 15px;" /></a>
-	  <h2>The Apache&trade; FOP Project</h2>
+	  <h2>The Apache FOP&trade; Project</h2>
 	</div>  
 
       <div id="content" class="grid_16">
@@ -1895,9 +1895,9 @@ $(document).ready(function () {
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>        
-    <h1 id="apache-fop-design-input-parsing">Apache&trade; FOP Design: Input Parsing</h1>
+    <h1 id="apache-fop-design-input-parsing">Apache FOP&trade; Design: Input Parsing</h1>
 <h2 id="intro">Introduction</h2>
-<p>Parsing is the process of reading the XSL-FO input and making the information in it available to Apache&trade; FOP.</p>
+<p>Parsing is the process of reading the XSL-FO input and making the information in it available to Apache FOP&trade;.</p>
 <h2 id="input">SAX for Input</h2>
 <p>The two standard ways of dealing with XML input are SAX and DOM. SAX basically creates events as it parses an XML document in a serial fashion; a program using SAX (and not storing anything internally) will only see a small window of the document at any point in time, and can never look forward in the document. DOM creates and stores a tree representation of the document, allowing a view of the entire document as an integrated whole. One issue that may seem counter-intuitive to some new FOP developers, and which has from time to time been contentious, is that FOP uses SAX for input. (DOM can be used as input as well, but it is converted into SAX events before entering FOP, effectively negating its advantages).</p>
 <p>Since FOP essentially needs a tree representation of the FO input, at first glance it seems to make sense to use DOM. Instead, FOP takes SAX events and builds its own tree-like structure. Why?</p>
@@ -1944,12 +1944,12 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 			<a title="Apache Software Foundation" href="http://www.apache.org"><img id="asf-logo" alt="Apache Software Foundation" src="/images/asflogo_horizontal_color.svg" width="200" /></a>
         </div>
 		  <p>
-			Copyright &copy; 2025 The Apache Software Foundation, Licensed under
+			Copyright &copy; 2026 The Apache Software Foundation, Licensed under
 			the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
 			<br />
-			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache logo, and the
-			Apache XML Graphics logos are trademarks of <a href="http://www.apache.org">The Apache
-			Software Foundation</a>. All other marks mentioned may be trademarks or registered
+			Apache, Apache XML Graphics, Apache FOP, Apache Batik, the Apache logo,
+			and the Apache XML Graphics logos are either registered trademarks or
+			trademarks of <a href="http://www.apache.org">The Apache Software Foundation</a>. All other marks mentioned may be trademarks or registered
 			trademarks of their respective owners.
 			<br />
 		  </p>
