@@ -104,8 +104,8 @@ for root, _, files in os.walk(args.website + '/content/fop/trunk'):
 
 f = open(args.website + '/content/fop/trunk/fopxconf.mdtext', 'w')
 
-f.write('Title: Apache(tm) FOP: Config Options\n\n')
-f.write('#Apache&trade; FOP: Config Options\n\n')
+f.write('Title: Apache FOP&trade;: Config Options\n\n')
+f.write('#Apache FOP&trade;: Config Options\n\n')
 
 links = {
 'FopConfParser':'configuration.html',
