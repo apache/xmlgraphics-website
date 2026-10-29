@@ -1898,279 +1898,269 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     <h1 id="apache-fop-pdf-signing-and-encryption">Apache FOP&trade;: PDF signing and encryption.</h1>
 <p><authors><person email="pietsch@apache.org" name="J.Pietschmann"></person><person email="jeremias@apache.org" name="Jeremias Märki"></person></authors></p>
 <h2 id="Overview">Overview</h2>
-<p>Apache FOP&trade; supports encryption of PDF output, thanks to Patrick C. Lankswert and others. This feature is commonly used to prevent unauthorized viewing, printing, editing, copying text from the document and doing annotations. It is also possible to ask the user for a password in order to view the contents. Note that there already exist third party applications which can decrypt an encrypted PDF without effort and allow the aforementioned operations, therefore the degree of protection is limited.</p>
-<p>For further information about features and restrictions regarding PDF encryption, look at the documentation coming with Adobe Acrobat or the technical documentation on the Adobe web site.</p>
-<h2 id="signing-usage">Signing usage</h2>
-<p>To sign a PDF you need to generate a pkcs12 file using the openssl command line tool:</p>
+<p>Apache FOP&trade; can digitally sign and encrypt PDF output. Encryption support was originally contributed by Patrick C. Lankswert and others.</p>
+<p>Encryption is commonly used to prevent unauthorized viewing, printing, editing, copying text from the document and doing annotations. It is also possible to ask the user for a password in order to view the contents. Note that the permissions are only enforced by well-behaved PDF viewers: there are third party applications which can remove the restrictions without effort, therefore the degree of protection is limited.</p>
+<p>For further information about features and restrictions regarding PDF encryption, see ISO 32000-1 (PDF 1.7) and ISO 32000-2 (PDF 2.0).</p>
+<h2 id="signing">Signing</h2>
+<p>Signing requires BouncyCastle on the classpath. Add these to your classpath or Maven pom file:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>org.bouncycastle<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>bcpkix-jdk15to18<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.86<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>org.bouncycastle<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>bcprov-jdk15to18<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.86<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+
+<p>To sign a PDF you need a PKCS#12 keystore. One can be generated with the openssl command line tool:</p>
 <div class="highlight"><pre><span></span><code><span class="err">openssl req -new -newkey rsa:4096 -nodes -keyout my.key -out my.csr</span>
 <span class="err">openssl x509 -req -sha256 -days 365 -in my.csr -signkey my.key -out my.pem</span>
 <span class="err">cat my.key my.pem &gt; my2.pem</span>
 <span class="err">openssl pkcs12 -export -in my2.pem -out mykeystore.pkcs12 -name myAlias</span>
 </code></pre></div>
 
-<p>Add params to the fop.xconf:</p>
+<p>Then add a <code>sign-params</code> element to the PDF renderer section of the <a href="configuration.html">configuration file</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;sign-params&gt;</span>
-      <span class="nt">&lt;keystore&gt;</span>path/mykeystore.pkcs12<span class="nt">&lt;/keystore&gt;</span>
-      <span class="nt">&lt;name&gt;</span>your name<span class="nt">&lt;/name&gt;</span>
-      <span class="c">&lt;!-- Below are optional --&gt;</span>
-      <span class="nt">&lt;location&gt;</span>London UK<span class="nt">&lt;/location&gt;</span>
-      <span class="nt">&lt;reason&gt;</span>text<span class="nt">&lt;/reason&gt;</span>
-      <span class="nt">&lt;password&gt;</span>pkcs12 password<span class="nt">&lt;/password&gt;</span>
-    <span class="nt">&lt;/sign-params&gt;</span>
+  <span class="nt">&lt;sign-params&gt;</span>
+    <span class="nt">&lt;keystore&gt;</span>path/mykeystore.pkcs12<span class="nt">&lt;/keystore&gt;</span>
+    <span class="nt">&lt;name&gt;</span>your name<span class="nt">&lt;/name&gt;</span>
+    <span class="c">&lt;!-- Below are optional --&gt;</span>
+    <span class="nt">&lt;location&gt;</span>London UK<span class="nt">&lt;/location&gt;</span>
+    <span class="nt">&lt;reason&gt;</span>text<span class="nt">&lt;/reason&gt;</span>
+    <span class="nt">&lt;password&gt;</span>pkcs12 password<span class="nt">&lt;/password&gt;</span>
+  <span class="nt">&lt;/sign-params&gt;</span>
 <span class="nt">&lt;/renderer&gt;</span>
 </code></pre></div>
 
-<p>Add these to your classpath or maven pom file:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.bouncycastle<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>bcpkix-jdk15to18<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>1.81<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.bouncycastle<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>bcprov-jdk15to18<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>1.81<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</code></pre></div>
-
-<h2 id="fopxconf">Encryption usage (fop.xconf)</h2>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;encryption-params&gt;</span>
-        <span class="nt">&lt;user-password&gt;</span>testuserpass<span class="nt">&lt;/user-password&gt;</span>
-        <span class="nt">&lt;owner-password&gt;</span>testownerpass<span class="nt">&lt;/owner-password&gt;</span>
-        <span class="nt">&lt;noprint/&gt;</span>
-        <span class="nt">&lt;nocopy/&gt;</span>
-        <span class="nt">&lt;noedit/&gt;</span>
-        <span class="nt">&lt;noannotations/&gt;</span>
-        <span class="nt">&lt;encryption-length&gt;</span>128<span class="nt">&lt;/encryption-length&gt;</span>
-        <span class="nt">&lt;encrypt-metadata&gt;</span>false<span class="nt">&lt;/encrypt-metadata&gt;</span>
-    <span class="nt">&lt;/encryption-params&gt;</span>
-<span class="nt">&lt;/renderer&gt;</span>
-</code></pre></div>
-
-<h2 id="commandline">Encryption usage (command line)</h2>
-<p>Encryption is enabled by supplying any of the encryption related options.</p>
-<p>An owner password is set with the <code>-o</code> option. This password is actually used as encryption key. Many tools for PDF processing ask for this password to disregard any restriction imposed on the PDF document.</p>
-<p>If no owner password has been supplied but FOP was asked to apply some restrictions, a random password is used. In this case it is obviously impossiible to disregard restrictions in PDF processing tools.</p>
-<p>A user password, supplied with the <code>-u</code> option, will cause the PDF display software to ask the reader for this password in order to view the contents of the document. If no user password was supplied, viewing the content is not restricted.</p>
-<p>Further restrictions can be imposed by using the following command-line options:</p>
 <table>
 <thead>
 <tr>
-<th>Option</th>
+<th>Element</th>
 <th>Description</th>
+<th>Required</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>-noprint</code></td>
+<td>keystore</td>
+<td>Path to the PKCS#12 keystore file</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Name of the signer</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>location</td>
+<td>Location of signing</td>
+<td>No</td>
+</tr>
+<tr>
+<td>reason</td>
+<td>Reason for signing</td>
+<td>No</td>
+</tr>
+<tr>
+<td>password</td>
+<td>Password of the keystore</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h2 id="encryption">Encryption</h2>
+<h3 id="passwords">Passwords and permissions</h3>
+<p>The owner password is used to encrypt the document. Many tools for PDF processing ask for this password to disregard any restriction imposed on the PDF document. If no owner password has been supplied but FOP was asked to apply some restrictions, a random password is used. In this case it is impossible to disregard the restrictions in PDF processing tools.</p>
+<p>A user password will cause the PDF display software to ask the reader for this password in order to view the contents of the document. If no user password is supplied, viewing the content is not restricted.</p>
+<p>All permissions are granted by default. Each restriction removes one permission:</p>
+<table>
+<thead>
+<tr>
+<th>Configuration / command line</th>
+<th>Restriction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>noprint</code></td>
 <td>disable printing</td>
 </tr>
 <tr>
-<td><code>-nocopy</code></td>
+<td><code>nocopy</code></td>
 <td>disable copy/paste of content</td>
 </tr>
 <tr>
-<td><code>-noedit</code></td>
+<td><code>noedit</code></td>
 <td>disable editing in Adobe Acrobat</td>
 </tr>
 <tr>
-<td><code>-noannotations</code></td>
+<td><code>noannotations</code></td>
 <td>disable editing of annotations</td>
 </tr>
 <tr>
-<td><code>-nofillinforms</code></td>
+<td><code>nofillinforms</code></td>
 <td>disable filling in forms</td>
 </tr>
 <tr>
-<td><code>-noaccesscontent</code></td>
+<td><code>noaccesscontent</code></td>
 <td>disable text and graphics extraction for accessibility purposes</td>
 </tr>
 <tr>
-<td><code>-noassembledoc</code></td>
+<td><code>noassembledoc</code></td>
 <td>disable assembling documents</td>
 </tr>
 <tr>
-<td><code>-noprinthq</code></td>
+<td><code>noprinthq</code></td>
 <td>disable high quality printing</td>
 </tr>
 </tbody>
 </table>
-<h2 id="embedded">Encryption usage (embedded)</h2>
-<p>When FOP is embedded in another Java application you need to set an options map on the renderer. These are the supported options:</p>
+<p>The password length is restricted to a maximum of 32 bytes if the encryption length is 128 or less, and to a maximum of 127 bytes if the encryption length is 256 (longer passwords will be truncated to the maximum allowed).</p>
+<h3 id="algorithm">Encryption length and algorithm</h3>
+<p>The encryption length determines the algorithm used:</p>
 <table>
 <thead>
 <tr>
-<th>Option</th>
+<th>Encryption length</th>
+<th>Algorithm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40 to 128 (multiple of 8)</td>
+<td>RC4 (revision 2 or 3)</td>
+</tr>
+<tr>
+<td>256</td>
+<td>AES-256 (revision 5 or 6)</td>
+</tr>
+</tbody>
+</table>
+<p>The default is 128. RC4 is considered insecure and is deprecated in PDF 2.0, so an encryption length of 256 is recommended. Other values are adjusted to the nearest supported value and a warning is issued.</p>
+<p>With AES-256, revision 5 (Adobe Supplement to ISO 32000, Extension Level 3) is used by default and the PDF version is set to 1.7. If the PDF version is set to 2.0 (for example <code>&lt;version&gt;2.0&lt;/version&gt;</code> in the PDF renderer configuration), revision 6 as defined in ISO 32000-2 (PDF 2.0) is used instead.</p>
+<h3 id="fopxconf">Configuration file</h3>
+<p>Add an <code>encryption-params</code> element to the PDF renderer section of the <a href="configuration.html">configuration file</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;renderer</span> <span class="na">mime=</span><span class="s">&quot;application/pdf&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;encryption-params&gt;</span>
+    <span class="nt">&lt;user-password&gt;</span>testuserpass<span class="nt">&lt;/user-password&gt;</span>
+    <span class="nt">&lt;owner-password&gt;</span>testownerpass<span class="nt">&lt;/owner-password&gt;</span>
+    <span class="nt">&lt;noprint/&gt;</span>
+    <span class="nt">&lt;nocopy/&gt;</span>
+    <span class="nt">&lt;noedit/&gt;</span>
+    <span class="nt">&lt;noannotations/&gt;</span>
+    <span class="nt">&lt;encryption-length&gt;</span>256<span class="nt">&lt;/encryption-length&gt;</span>
+    <span class="nt">&lt;encrypt-metadata&gt;</span>false<span class="nt">&lt;/encrypt-metadata&gt;</span>
+  <span class="nt">&lt;/encryption-params&gt;</span>
+<span class="nt">&lt;/renderer&gt;</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Element</th>
 <th>Description</th>
-<th>Values</th>
 <th>Default</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>user-password</td>
+<td>The user password</td>
+<td></td>
+</tr>
+<tr>
+<td>owner-password</td>
+<td>The owner password</td>
+<td></td>
+</tr>
+<tr>
+<td>noprint, nocopy, ...</td>
+<td>The <a href="#passwords">restrictions</a> to apply (empty elements)</td>
+<td></td>
+</tr>
+<tr>
 <td>encryption-length</td>
-<td>The encryption length in bit</td>
-<td>Any multiple of 8 between 40 and 128, or 256</td>
+<td>The <a href="#algorithm">encryption length</a> in bits</td>
 <td>128</td>
 </tr>
 <tr>
-<td>ownerPassword</td>
-<td>The owner password</td>
-<td>String</td>
-<td></td>
-</tr>
-<tr>
-<td>userPassword</td>
-<td>The user password</td>
-<td>String</td>
-<td></td>
-</tr>
-<tr>
-<td>allowPrint</td>
-<td>Allows/disallows printing of the PDF</td>
-<td>"TRUE" or "FALSE"</td>
-<td>"TRUE"</td>
-</tr>
-<tr>
-<td>allowCopyContent</td>
-<td>Allows/disallows copy/paste of content</td>
-<td>"TRUE" or "FALSE"</td>
-<td>"TRUE"</td>
-</tr>
-<tr>
-<td>allowEditContent</td>
-<td>Allows/disallows editing in Adobe Acrobat</td>
-<td>"TRUE" or "FALSE"</td>
-<td>"TRUE"</td>
-</tr>
-<tr>
-<td>allowEditAnnotations</td>
-<td>Allows/disallows editing of annotations</td>
-<td>"TRUE" or "FALSE"</td>
-<td>"TRUE"</td>
-</tr>
-<tr>
-<td>allowFillInForms</td>
-<td>Allows/disallows filling in forms</td>
-<td>"TRUE" or "FALSE"</td>
-<td>"TRUE"</td>
-</tr>
-<tr>
-<td>allowAccessContent</td>
-<td>Allows/disallows text and graphics extraction for accessibility purposes</td>
-<td>"TRUE" or "FALSE"</td>
-<td>"TRUE"</td>
-</tr>
-<tr>
-<td>allowAssembleDocument</td>
-<td>Allows/disallows assembling document</td>
-<td>"TRUE" or "FALSE"</td>
-<td>"TRUE"</td>
-</tr>
-<tr>
-<td>allowPrintHq</td>
-<td>Allows/disallows high quality printing</td>
-<td>"TRUE" or "FALSE"</td>
-<td>"TRUE"</td>
-</tr>
-<tr>
 <td>encrypt-metadata</td>
-<td>Whether to encrypt the Metadata stream</td>
-<td>"TRUE" or "FALSE"</td>
-<td>"TRUE"</td>
+<td>Whether to encrypt the Metadata stream (<code>true</code> or <code>false</code>)</td>
+<td>true</td>
 </tr>
 </tbody>
 </table>
-<p><note>Encryption is enabled as soon as one of these options is set.</note></p>
-<p>An example to enable PDF encryption in Java code:</p>
+<h3 id="commandline">Command line</h3>
+<p>Encryption is enabled by supplying any of the encryption related options:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-o [password]</code></td>
+<td>set the owner password</td>
+</tr>
+<tr>
+<td><code>-u [password]</code></td>
+<td>set the user password</td>
+</tr>
+<tr>
+<td><code>-noprint</code>, <code>-nocopy</code>, ...</td>
+<td>apply a <a href="#passwords">restriction</a></td>
+</tr>
+</tbody>
+</table>
+<p>The encryption length and metadata encryption cannot be set on the command line; use the <a href="#fopxconf">configuration file</a> for these.</p>
+<h3 id="embedded">Embedded</h3>
+<p>When FOP is embedded in another Java application, pass a <code>PDFEncryptionParams</code> object as the <code>encryption-params</code> renderer option:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.fop.pdf.PDFEncryptionParams</span><span class="p">;</span>
 
 <span class="o">[</span><span class="p">..</span><span class="o">]</span>
 
 <span class="n">FOUserAgent</span> <span class="n">userAgent</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFOUserAgent</span><span class="p">();</span>
-<span class="n">userAgent</span><span class="p">.</span><span class="na">getRendererOptions</span><span class="p">().</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;encryption-params&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">PDFEncryptionParams</span><span class="p">(</span>
-    <span class="kc">null</span><span class="p">,</span> <span class="s">&quot;password&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">));</span>
+<span class="n">PDFEncryptionParams</span> <span class="n">params</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PDFEncryptionParams</span><span class="p">();</span>
+<span class="n">params</span><span class="p">.</span><span class="na">setOwnerPassword</span><span class="p">(</span><span class="s">&quot;password&quot;</span><span class="p">);</span>
+<span class="n">params</span><span class="p">.</span><span class="na">setAllowPrint</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="n">params</span><span class="p">.</span><span class="na">setAllowCopyContent</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="n">params</span><span class="p">.</span><span class="na">setEncryptionLengthInBits</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span>
+<span class="n">userAgent</span><span class="p">.</span><span class="na">getRendererOptions</span><span class="p">().</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;encryption-params&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">);</span>
 <span class="n">Fop</span> <span class="n">fop</span> <span class="o">=</span> <span class="n">fopFactory</span><span class="p">.</span><span class="na">newFop</span><span class="p">(</span><span class="n">MimeConstants</span><span class="p">.</span><span class="na">MIME_PDF</span><span class="p">,</span> <span class="n">userAgent</span><span class="p">);</span>
 <span class="o">[</span><span class="p">..</span><span class="o">]</span>
 </code></pre></div>
 
-<p>The parameters for the constructor of PDFEncryptionParams are:</p>
-<ol>
-<li>
-<p>userPassword: String, may be null</p>
-</li>
-<li>
-<p>ownerPassword: String, may be null</p>
-</li>
-<li>
-<p>allowPrint: true if printing is allowed</p>
-</li>
-<li>
-<p>allowCopyContent: true if copying content is allowed</p>
-</li>
-<li>
-<p>allowEditContent: true if editing content is allowed</p>
-</li>
-<li>
-<p>allowEditAnnotations: true if editing annotations is allowed</p>
-</li>
-<li>
-<p>allowFillInForms: true if filling in forms is allowed.</p>
-</li>
-<li>
-<p>allowAccessContent: true if extracting text and graphics is allowed</p>
-</li>
-<li>
-<p>allowAssembleDocument: true if assembling document is allowed</p>
-</li>
-<li>
-<p>allowPrintHq: true if printing to high quality is allowed</p>
-</li>
-<li>
-<p>encryptMetadata: true if the Metadata stream should be encrypted</p>
-</li>
-</ol>
-<p>Alternatively, you can set each value separately in the Map provided by FOUserAgent.getRendererOptions() by using the following keys:</p>
-<ol>
-<li>
-<p>user-password: String</p>
-</li>
-<li>
-<p>owner-password: String</p>
-</li>
-<li>
-<p>noprint: Boolean or "true"/"false"</p>
-</li>
-<li>
-<p>nocopy: Boolean or "true"/"false"</p>
-</li>
-<li>
-<p>noedit: Boolean or "true"/"false"</p>
-</li>
-<li>
-<p>noannotations: Boolean or "true"/"false"</p>
-</li>
-<li>
-<p>nofillinforms: Boolean or "true"/"false"</p>
-</li>
-<li>
-<p>noaccesscontent: Boolean or "true"/"false"</p>
-</li>
-<li>
-<p>noassembledoc: Boolean or "true"/"false"</p>
-</li>
-<li>
-<p>noprinthq: Boolean or "true"/"false"</p>
-</li>
-<li>
-<p>encrypt-metadata: Boolean or "true"/"false"</p>
-</li>
-</ol>
-<p>The password length is restricted to a maximum of 32 bytes if the encryption-length is 128 or less, and to a maximum of 127 bytes if the encryption-length is 256 (longer passwords will be truncated to the maximum allowed).</p>
+<p><code>PDFEncryptionParams</code> provides these setters: <code>setUserPassword</code>, <code>setOwnerPassword</code>, <code>setAllowPrint</code>, <code>setAllowCopyContent</code>, <code>setAllowEditContent</code>, <code>setAllowEditAnnotations</code>, <code>setAllowFillInForms</code>, <code>setAllowAccessContent</code>, <code>setAllowAssembleDocument</code>, <code>setAllowPrintHq</code>, <code>setEncryptMetadata</code> and <code>setEncryptionLengthInBits</code>. There is also a constructor <code>PDFEncryptionParams(userPassword, ownerPassword, allowPrint, allowCopyContent, allowEditContent, allowEditAnnotations, encryptMetadata)</code>.</p>
+<p>Alternatively, you can set the passwords and restrictions separately in the Map provided by <code>FOUserAgent.getRendererOptions()</code> using the following keys. These are applied on top of <code>encryption-params</code> if both are present, and encryption is enabled as soon as one of them is set.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user-password</td>
+<td>String</td>
+</tr>
+<tr>
+<td>owner-password</td>
+<td>String</td>
+</tr>
+<tr>
+<td>noprint, nocopy, noedit, noannotations, nofillinforms, noaccesscontent, noassembledoc, noprinthq</td>
+<td>Boolean or "true"/"false"</td>
+</tr>
+</tbody>
+</table>
 <h2 id="Environment">Environment</h2>
-<p>The PDF encryption implemented in FOP does not need external libraries to perform encryption. A recent JDK (1.5+) is sufficient. However, encryption using keys with 256 bits requires the installation of the JCE Unlimited Strength Jurisdiction Policy files from Oracle.</p>
+<p>The PDF encryption implemented in FOP does not need external libraries. Java 1.8 or later is sufficient. Encryption using keys with 256 bits requires unlimited strength cryptography, which is enabled by default since Java 8u161. On older Java 8 updates, the JCE Unlimited Strength Jurisdiction Policy files from Oracle must be installed, or the <code>crypto.policy</code> security property set to <code>unlimited</code>.</p>
         </div>
       </div>
       <div class="clear"></div>
